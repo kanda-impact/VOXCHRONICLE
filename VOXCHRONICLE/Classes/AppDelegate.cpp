@@ -26,10 +26,11 @@ bool AppDelegate::applicationDidFinishLaunching()
 {
   // initialize director
   CCDirector *pDirector = CCDirector::sharedDirector();
+  CCApplication::sharedApplication().setOrientation(kOrientationLandscapeLeft);
   pDirector->setOpenGLView(&CCEGLView::sharedOpenGLView());
   
   // enable High Resource Mode(2x, such as iphone4) and maintains low resource on other devices.
-  // pDirector->enableRetinaDisplay(true);
+  //pDirector->enableRetinaDisplay(true);
   
   // turn on display FPS
   pDirector->setDisplayStats(true);
@@ -39,6 +40,7 @@ bool AppDelegate::applicationDidFinishLaunching()
   
   // create a scene. it's an autorelease object
   CCScene *pScene = LogoScene::scene();
+  
   
   // run
   pDirector->runWithScene(pScene);

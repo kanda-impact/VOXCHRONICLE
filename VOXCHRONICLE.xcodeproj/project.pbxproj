@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0711459115EBB8B400063A74 /* kawaz.png in Resources */ = {isa = PBXBuildFile; fileRef = 0711459015EBB8B400063A74 /* kawaz.png */; };
 		076F1A5115EB94750013A45E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F1A5015EB94750013A45E /* QuartzCore.framework */; };
 		076F1A5315EB94750013A45E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F1A5215EB94750013A45E /* OpenGLES.framework */; };
 		076F1A5515EB94750013A45E /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F1A5415EB94750013A45E /* OpenAL.framework */; };
@@ -231,11 +232,11 @@
 		0791587A15EBB50E0083D348 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586E15EBB4BB0083D348 /* Icon-Small@2x.png */; };
 		0791587B15EBB50E0083D348 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586F15EBB4BB0083D348 /* Icon.png */; };
 		0791587C15EBB50E0083D348 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791587015EBB4BB0083D348 /* Icon@2x.png */; };
-		0791587D15EBB50E0083D348 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0791587115EBB4BB0083D348 /* Info.plist */; };
 		0791587E15EBB50E0083D348 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 0791587215EBB4BB0083D348 /* iTunesArtwork */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0711459015EBB8B400063A74 /* kawaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kawaz.png; path = Resources/Title/kawaz.png; sourceTree = "<group>"; };
 		076F1A4C15EB94750013A45E /* VOXCHRONICLE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VOXCHRONICLE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		076F1A5015EB94750013A45E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		076F1A5215EB94750013A45E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -726,6 +727,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0711458E15EBB8AA00063A74 /* Title */ = {
+			isa = PBXGroup;
+			children = (
+				0711459015EBB8B400063A74 /* kawaz.png */,
+			);
+			name = Title;
+			sourceTree = "<group>";
+		};
 		076F1A4115EB94750013A45E = {
 			isa = PBXGroup;
 			children = (
@@ -773,6 +782,7 @@
 		076F1A6115EB94750013A45E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0711458E15EBB8AA00063A74 /* Title */,
 				0791586815EBB4AF0083D348 /* ios */,
 			);
 			name = Resources;
@@ -1626,8 +1636,8 @@
 			children = (
 				076F1D3A15EB94780013A45E /* AppDelegate.h */,
 				076F1D3B15EB94780013A45E /* AppDelegate.cpp */,
-				0791585815EBA8350083D348 /* LogoScene.cpp */,
 				0791585915EBA8350083D348 /* LogoScene.h */,
+				0791585815EBA8350083D348 /* LogoScene.cpp */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1675,7 +1685,7 @@
 		076F1A4315EB94750013A45E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = 076F1A4615EB94750013A45E /* Build configuration list for PBXProject "VOXCHRONICLE" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1707,9 +1717,9 @@
 				0791587A15EBB50E0083D348 /* Icon-Small@2x.png in Resources */,
 				0791587B15EBB50E0083D348 /* Icon.png in Resources */,
 				0791587C15EBB50E0083D348 /* Icon@2x.png in Resources */,
-				0791587D15EBB50E0083D348 /* Info.plist in Resources */,
 				0791587E15EBB50E0083D348 /* iTunesArtwork in Resources */,
 				076F1B7515EB94760013A45E /* ChangeLog in Resources */,
+				0711459115EBB8B400063A74 /* kawaz.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1997,6 +2007,7 @@
 				GCC_PREFIX_HEADER = VOXCHRONICLE/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = "$(SRCROOT)/VOXCHRONICLE/Resources/ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",
@@ -2015,6 +2026,7 @@
 				GCC_PREFIX_HEADER = VOXCHRONICLE/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = "$(SRCROOT)/VOXCHRONICLE/Resources/ios/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",
