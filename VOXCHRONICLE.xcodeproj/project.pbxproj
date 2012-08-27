@@ -244,6 +244,7 @@
 		076F1D4C15EB94780013A45E /* menu2.png in Resources */ = {isa = PBXBuildFile; fileRef = 076F1D4B15EB94780013A45E /* menu2.png */; };
 		076F1D4E15EB94780013A45E /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 076F1D4D15EB94780013A45E /* background.mp3 */; };
 		076F1D5015EB94780013A45E /* effect1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 076F1D4F15EB94780013A45E /* effect1.wav */; };
+		0791585A15EBA8350083D348 /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0791585815EBA8350083D348 /* LogoScene.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -727,6 +728,8 @@
 		076F1D4B15EB94780013A45E /* menu2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu2.png; path = Resources/menu2.png; sourceTree = "<group>"; };
 		076F1D4D15EB94780013A45E /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = background.mp3; path = Resources/background.mp3; sourceTree = "<group>"; };
 		076F1D4F15EB94780013A45E /* effect1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = effect1.wav; path = Resources/effect1.wav; sourceTree = "<group>"; };
+		0791585815EBA8350083D348 /* LogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LogoScene.cpp; path = Classes/Scene/LogoScene.cpp; sourceTree = "<group>"; };
+		0791585915EBA8350083D348 /* LogoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogoScene.h; path = Classes/Scene/LogoScene.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1670,6 +1673,8 @@
 			children = (
 				076F1D3A15EB94780013A45E /* AppDelegate.h */,
 				076F1D3B15EB94780013A45E /* AppDelegate.cpp */,
+				0791585815EBA8350083D348 /* LogoScene.cpp */,
+				0791585915EBA8350083D348 /* LogoScene.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1963,6 +1968,7 @@
 				076F1D3515EB94780013A45E /* AppController.mm in Sources */,
 				076F1D3815EB94780013A45E /* RootViewController.mm in Sources */,
 				076F1D3C15EB94780013A45E /* AppDelegate.cpp in Sources */,
+				0791585A15EBA8350083D348 /* LogoScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2080,6 +2086,7 @@
 				076F1D5515EB94780013A45E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
