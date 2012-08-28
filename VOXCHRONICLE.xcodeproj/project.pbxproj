@@ -233,6 +233,7 @@
 		0791587B15EBB50E0083D348 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586F15EBB4BB0083D348 /* Icon.png */; };
 		0791587C15EBB50E0083D348 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791587015EBB4BB0083D348 /* Icon@2x.png */; };
 		0791587E15EBB50E0083D348 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 0791587215EBB4BB0083D348 /* iTunesArtwork */; };
+		07D8731615ECEE10009CC446 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07D8731415ECEE10009CC446 /* MainScene.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -706,6 +707,8 @@
 		0791587015EBB4BB0083D348 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Resources/ios/Icon@2x.png"; sourceTree = "<group>"; };
 		0791587115EBB4BB0083D348 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/ios/Info.plist; sourceTree = "<group>"; };
 		0791587215EBB4BB0083D348 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Resources/ios/iTunesArtwork; sourceTree = "<group>"; };
+		07D8731415ECEE10009CC446 /* MainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainScene.cpp; path = Classes/Scene/MainScene.cpp; sourceTree = "<group>"; };
+		07D8731515ECEE10009CC446 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = Classes/Scene/MainScene.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1638,6 +1641,8 @@
 				076F1D3B15EB94780013A45E /* AppDelegate.cpp */,
 				0791585915EBA8350083D348 /* LogoScene.h */,
 				0791585815EBA8350083D348 /* LogoScene.cpp */,
+				07D8731515ECEE10009CC446 /* MainScene.h */,
+				07D8731415ECEE10009CC446 /* MainScene.cpp */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1937,6 +1942,7 @@
 				076F1D3815EB94780013A45E /* RootViewController.mm in Sources */,
 				076F1D3C15EB94780013A45E /* AppDelegate.cpp in Sources */,
 				0791585A15EBA8350083D348 /* LogoScene.cpp in Sources */,
+				07D8731615ECEE10009CC446 /* MainScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
