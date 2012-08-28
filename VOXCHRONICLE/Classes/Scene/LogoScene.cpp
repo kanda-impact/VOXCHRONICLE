@@ -15,15 +15,15 @@ CCScene* LogoScene::scene() {
   LogoScene* layer = LogoScene::create();
   
   scene->addChild(layer);
+
   return scene;
 }
 
 bool LogoScene::init() {
-  //////////////////////////////
-  // 1. super init first
   if ( !CCLayer::init() ) {
     return false;
   }
+  this->setTouchEnabled(true);
   CCDirector* director = CCDirector::sharedDirector();
   CCSize winSize = director->getWinSize();
   CCSprite* logo = CCSprite::create("kawaz.png");
@@ -32,9 +32,11 @@ bool LogoScene::init() {
   logo->setPosition(ccp(winSize.width / 2, winSize.height / 2));
   logo->setOpacity(0);
   logo->runAction(CCSequence::create(
-                                     CCFadeIn::create(1.0),
+                                     CCFadeIn::create(2.0),
                                      CCDelayTime::create(2.0),
-                                     CCFadeOut::create(1.0), NULL));
+                                     CCFadeOut::create(2.0),
+                                     CCCallFunc::actionWithTarget(this, callfunc_selector(LogoScene::nextScene)),
+                                     NULL));
   this->addChild(background);
   this->addChild(logo);
 
@@ -47,4 +49,20 @@ void LogoScene::menuCloseCallback(CCObject* pSender) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
   exit(0);
 #endif
+  
+}
+
+void LogoScene::registerWithTouchDispatcher() {
+  CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+}
+
+bool LogoScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
+  CCLog("test");
+  nextScene();
+  return true;
+}
+
+void LogoScene::nextScene() {
+  CCTransitionFade* transition = CCTransitionFade::transitionWithDuration(1.0, LogoScene::scene());
+  CCDirector::sharedDirector()->replaceScene(transition);
 }

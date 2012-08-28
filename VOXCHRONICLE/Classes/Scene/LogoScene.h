@@ -14,6 +14,11 @@
 #include "LogoScene.h"
 
 class LogoScene : public cocos2d::CCLayer {
+ private:
+  virtual bool ccTouchBegan(cocos2d::CCTouch* pTouch, cocos2d::CCEvent* pEvent);
+  virtual void nextScene();
+  virtual void registerWithTouchDispatcher();
+
 public:
   virtual bool init();
   static cocos2d::CCScene* scene();
