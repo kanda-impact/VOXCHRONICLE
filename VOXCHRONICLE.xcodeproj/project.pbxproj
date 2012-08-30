@@ -233,7 +233,26 @@
 		0791587B15EBB50E0083D348 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586F15EBB4BB0083D348 /* Icon.png */; };
 		0791587C15EBB50E0083D348 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791587015EBB4BB0083D348 /* Icon@2x.png */; };
 		0791587E15EBB50E0083D348 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 0791587215EBB4BB0083D348 /* iTunesArtwork */; };
-		07D8731615ECEE10009CC446 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07D8731415ECEE10009CC446 /* MainScene.cpp */; };
+		07D873F515ED1215009CC446 /* attack0.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E415ED1215009CC446 /* attack0.WAV */; };
+		07D873F615ED1215009CC446 /* attack1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E515ED1215009CC446 /* attack1.WAV */; };
+		07D873F715ED1215009CC446 /* attack2.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E615ED1215009CC446 /* attack2.WAV */; };
+		07D873F815ED1215009CC446 /* attack3.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E715ED1215009CC446 /* attack3.WAV */; };
+		07D873F915ED1215009CC446 /* cure0.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E815ED1215009CC446 /* cure0.WAV */; };
+		07D873FA15ED1215009CC446 /* drum0.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E915ED1215009CC446 /* drum0.WAV */; };
+		07D873FB15ED1215009CC446 /* drum1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873EA15ED1215009CC446 /* drum1.WAV */; };
+		07D873FC15ED1215009CC446 /* magic_charge.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873EB15ED1215009CC446 /* magic_charge.WAV */; };
+		07D873FD15ED1215009CC446 /* magic0.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873EC15ED1215009CC446 /* magic0.WAV */; };
+		07D873FE15ED1215009CC446 /* nute.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07D873ED15ED1215009CC446 /* nute.wav */; };
+		07D873FF15ED1215009CC446 /* power_charge.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873EE15ED1215009CC446 /* power_charge.WAV */; };
+		07D8740015ED1215009CC446 /* power_plus.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873EF15ED1215009CC446 /* power_plus.WAV */; };
+		07D8740115ED1215009CC446 /* power0.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873F015ED1215009CC446 /* power0.WAV */; };
+		07D8740215ED1215009CC446 /* powerup0.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873F115ED1215009CC446 /* powerup0.WAV */; };
+		07D8740315ED1215009CC446 /* run0.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873F215ED1215009CC446 /* run0.WAV */; };
+		07D8740415ED1215009CC446 /* run1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873F315ED1215009CC446 /* run1.WAV */; };
+		07D8740515ED1215009CC446 /* wait.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873F415ED1215009CC446 /* wait.WAV */; };
+		07D8740715ED13CD009CC446 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07D8740615ED13CD009CC446 /* MainScene.cpp */; };
+		07D8740B15F0001F009CC446 /* Music.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07D8740915F0001F009CC446 /* Music.cpp */; };
+		07D8740E15F00077009CC446 /* Track.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07D8740C15F00077009CC446 /* Track.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -707,8 +726,29 @@
 		0791587015EBB4BB0083D348 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Resources/ios/Icon@2x.png"; sourceTree = "<group>"; };
 		0791587115EBB4BB0083D348 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/ios/Info.plist; sourceTree = "<group>"; };
 		0791587215EBB4BB0083D348 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Resources/ios/iTunesArtwork; sourceTree = "<group>"; };
-		07D8731415ECEE10009CC446 /* MainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainScene.cpp; path = Classes/Scene/MainScene.cpp; sourceTree = "<group>"; };
 		07D8731515ECEE10009CC446 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = Classes/Scene/MainScene.h; sourceTree = "<group>"; };
+		07D873E415ED1215009CC446 /* attack0.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack0.WAV; path = Resources/Music/VOXQUEST/attack0.WAV; sourceTree = "<group>"; };
+		07D873E515ED1215009CC446 /* attack1.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack1.WAV; path = Resources/Music/VOXQUEST/attack1.WAV; sourceTree = "<group>"; };
+		07D873E615ED1215009CC446 /* attack2.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack2.WAV; path = Resources/Music/VOXQUEST/attack2.WAV; sourceTree = "<group>"; };
+		07D873E715ED1215009CC446 /* attack3.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack3.WAV; path = Resources/Music/VOXQUEST/attack3.WAV; sourceTree = "<group>"; };
+		07D873E815ED1215009CC446 /* cure0.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = cure0.WAV; path = Resources/Music/VOXQUEST/cure0.WAV; sourceTree = "<group>"; };
+		07D873E915ED1215009CC446 /* drum0.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = drum0.WAV; path = Resources/Music/VOXQUEST/drum0.WAV; sourceTree = "<group>"; };
+		07D873EA15ED1215009CC446 /* drum1.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = drum1.WAV; path = Resources/Music/VOXQUEST/drum1.WAV; sourceTree = "<group>"; };
+		07D873EB15ED1215009CC446 /* magic_charge.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = magic_charge.WAV; path = Resources/Music/VOXQUEST/magic_charge.WAV; sourceTree = "<group>"; };
+		07D873EC15ED1215009CC446 /* magic0.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = magic0.WAV; path = Resources/Music/VOXQUEST/magic0.WAV; sourceTree = "<group>"; };
+		07D873ED15ED1215009CC446 /* nute.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = nute.wav; path = Resources/Music/VOXQUEST/nute.wav; sourceTree = "<group>"; };
+		07D873EE15ED1215009CC446 /* power_charge.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = power_charge.WAV; path = Resources/Music/VOXQUEST/power_charge.WAV; sourceTree = "<group>"; };
+		07D873EF15ED1215009CC446 /* power_plus.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = power_plus.WAV; path = Resources/Music/VOXQUEST/power_plus.WAV; sourceTree = "<group>"; };
+		07D873F015ED1215009CC446 /* power0.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = power0.WAV; path = Resources/Music/VOXQUEST/power0.WAV; sourceTree = "<group>"; };
+		07D873F115ED1215009CC446 /* powerup0.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = powerup0.WAV; path = Resources/Music/VOXQUEST/powerup0.WAV; sourceTree = "<group>"; };
+		07D873F215ED1215009CC446 /* run0.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = run0.WAV; path = Resources/Music/VOXQUEST/run0.WAV; sourceTree = "<group>"; };
+		07D873F315ED1215009CC446 /* run1.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = run1.WAV; path = Resources/Music/VOXQUEST/run1.WAV; sourceTree = "<group>"; };
+		07D873F415ED1215009CC446 /* wait.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = wait.WAV; path = Resources/Music/VOXQUEST/wait.WAV; sourceTree = "<group>"; };
+		07D8740615ED13CD009CC446 /* MainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainScene.cpp; path = Classes/Scene/MainScene.cpp; sourceTree = "<group>"; };
+		07D8740915F0001F009CC446 /* Music.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Music.cpp; path = Classes/Music/Music.cpp; sourceTree = "<group>"; };
+		07D8740A15F0001F009CC446 /* Music.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Music.h; path = Classes/Music/Music.h; sourceTree = "<group>"; };
+		07D8740C15F00077009CC446 /* Track.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Track.cpp; path = Classes/Music/Track.cpp; sourceTree = "<group>"; };
+		07D8740D15F00077009CC446 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Track.h; path = Classes/Music/Track.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -785,6 +825,7 @@
 		076F1A6115EB94750013A45E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				07D873E215ED1200009CC446 /* Music */,
 				0711458E15EBB8AA00063A74 /* Title */,
 				0791586815EBB4AF0083D348 /* ios */,
 			);
@@ -1637,12 +1678,13 @@
 		076F1D3915EB94780013A45E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				07D8740815EFFFFC009CC446 /* Music */,
 				076F1D3A15EB94780013A45E /* AppDelegate.h */,
 				076F1D3B15EB94780013A45E /* AppDelegate.cpp */,
 				0791585915EBA8350083D348 /* LogoScene.h */,
 				0791585815EBA8350083D348 /* LogoScene.cpp */,
 				07D8731515ECEE10009CC446 /* MainScene.h */,
-				07D8731415ECEE10009CC446 /* MainScene.cpp */,
+				07D8740615ED13CD009CC446 /* MainScene.cpp */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1662,6 +1704,49 @@
 				0791587215EBB4BB0083D348 /* iTunesArtwork */,
 			);
 			name = ios;
+			sourceTree = "<group>";
+		};
+		07D873E215ED1200009CC446 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				07D873E315ED1205009CC446 /* VOXQUEST */,
+			);
+			name = Music;
+			sourceTree = "<group>";
+		};
+		07D873E315ED1205009CC446 /* VOXQUEST */ = {
+			isa = PBXGroup;
+			children = (
+				07D873E415ED1215009CC446 /* attack0.WAV */,
+				07D873E515ED1215009CC446 /* attack1.WAV */,
+				07D873E615ED1215009CC446 /* attack2.WAV */,
+				07D873E715ED1215009CC446 /* attack3.WAV */,
+				07D873E815ED1215009CC446 /* cure0.WAV */,
+				07D873E915ED1215009CC446 /* drum0.WAV */,
+				07D873EA15ED1215009CC446 /* drum1.WAV */,
+				07D873EB15ED1215009CC446 /* magic_charge.WAV */,
+				07D873EC15ED1215009CC446 /* magic0.WAV */,
+				07D873ED15ED1215009CC446 /* nute.wav */,
+				07D873EE15ED1215009CC446 /* power_charge.WAV */,
+				07D873EF15ED1215009CC446 /* power_plus.WAV */,
+				07D873F015ED1215009CC446 /* power0.WAV */,
+				07D873F115ED1215009CC446 /* powerup0.WAV */,
+				07D873F215ED1215009CC446 /* run0.WAV */,
+				07D873F315ED1215009CC446 /* run1.WAV */,
+				07D873F415ED1215009CC446 /* wait.WAV */,
+			);
+			name = VOXQUEST;
+			sourceTree = "<group>";
+		};
+		07D8740815EFFFFC009CC446 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				07D8740915F0001F009CC446 /* Music.cpp */,
+				07D8740A15F0001F009CC446 /* Music.h */,
+				07D8740C15F00077009CC446 /* Track.cpp */,
+				07D8740D15F00077009CC446 /* Track.h */,
+			);
+			name = Music;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1725,6 +1810,23 @@
 				0791587E15EBB50E0083D348 /* iTunesArtwork in Resources */,
 				076F1B7515EB94760013A45E /* ChangeLog in Resources */,
 				0711459115EBB8B400063A74 /* kawaz.png in Resources */,
+				07D873F515ED1215009CC446 /* attack0.WAV in Resources */,
+				07D873F615ED1215009CC446 /* attack1.WAV in Resources */,
+				07D873F715ED1215009CC446 /* attack2.WAV in Resources */,
+				07D873F815ED1215009CC446 /* attack3.WAV in Resources */,
+				07D873F915ED1215009CC446 /* cure0.WAV in Resources */,
+				07D873FA15ED1215009CC446 /* drum0.WAV in Resources */,
+				07D873FB15ED1215009CC446 /* drum1.WAV in Resources */,
+				07D873FC15ED1215009CC446 /* magic_charge.WAV in Resources */,
+				07D873FD15ED1215009CC446 /* magic0.WAV in Resources */,
+				07D873FE15ED1215009CC446 /* nute.wav in Resources */,
+				07D873FF15ED1215009CC446 /* power_charge.WAV in Resources */,
+				07D8740015ED1215009CC446 /* power_plus.WAV in Resources */,
+				07D8740115ED1215009CC446 /* power0.WAV in Resources */,
+				07D8740215ED1215009CC446 /* powerup0.WAV in Resources */,
+				07D8740315ED1215009CC446 /* run0.WAV in Resources */,
+				07D8740415ED1215009CC446 /* run1.WAV in Resources */,
+				07D8740515ED1215009CC446 /* wait.WAV in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1942,7 +2044,9 @@
 				076F1D3815EB94780013A45E /* RootViewController.mm in Sources */,
 				076F1D3C15EB94780013A45E /* AppDelegate.cpp in Sources */,
 				0791585A15EBA8350083D348 /* LogoScene.cpp in Sources */,
-				07D8731615ECEE10009CC446 /* MainScene.cpp in Sources */,
+				07D8740715ED13CD009CC446 /* MainScene.cpp in Sources */,
+				07D8740B15F0001F009CC446 /* Music.cpp in Sources */,
+				07D8740E15F00077009CC446 /* Track.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

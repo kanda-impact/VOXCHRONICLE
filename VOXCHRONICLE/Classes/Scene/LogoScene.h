@@ -11,7 +11,6 @@
 
 #include <iostream>
 #include "cocos2d.h"
-#include "LogoScene.h"
 
 class LogoScene : public cocos2d::CCLayer {
  private:

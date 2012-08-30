@@ -7,13 +7,15 @@
 //
 
 #include "MainScene.h"
-NS_CC_BEGIN
+#include "SimpleAudioEngine.h"
+
+using namespace cocos2d;
 
 bool MainScene::init() {
   if ( !CCLayer::init() ) {
     return false;
   }
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("attack0.WAV");
   return true;
 }
 
-NS_CC_END
