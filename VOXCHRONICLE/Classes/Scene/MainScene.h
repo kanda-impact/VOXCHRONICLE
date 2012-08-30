@@ -11,8 +11,12 @@
 
 #include <iostream>
 #include "cocos2d.h"
+#include "Track.h"
 
 class MainScene : public cocos2d::CCLayer {
+ private:
+  VISS::Track* _test;
+  
  public:
   virtual bool init();
   

@@ -1,0 +1,3 @@
+[submodule "VOXCHRONICLE/libs/ios/ObjectAL"]
+	path = VOXCHRONICLE/libs/ios/ObjectAL
+	url = git://github.com/kstenerud/ObjectAL-for-iPhone.git
