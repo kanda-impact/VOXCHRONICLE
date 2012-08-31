@@ -46,5 +46,5 @@ float VISS::Track::getDuration() {
 }
 
 float VISS::Track::getPosition() {
-  return _track->track.deviceCurrentTime;
+  return _track->track.currentTime;
 }

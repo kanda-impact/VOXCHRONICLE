@@ -8,12 +8,11 @@
 
 #ifndef __VOXCHRONICLE__Track__
 #define __VOXCHRONICLE__Track__
-#define IS_IOS (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-#define IS_WIN32 (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 
 #include <iostream>
 #include <string>
 #include <boost/shared_ptr.hpp>
+#include "macros.h"
 
 namespace VISS {
   class Track {

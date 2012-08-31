@@ -15,9 +15,13 @@ bool MainScene::init() {
   if ( !CCLayer::init() ) {
     return false;
   }
-  const std::string* filename = new std::string("attack0.WAV");
-  _test = new Track(filename);
-  _test->play();
+  _music = new Music(2);
+  _music->setTrack(new std::string("attack0.WAV"), 0);
+  _music->setNextTrack(new std::string("attack1.WAV"), 0);
+  _music->setTrack(new std::string("drum0.WAV"), 1);
+  _music->setNextTrack(new std::string("drum1.WAV"), 1);
+  _music->play();
+  
   return true;
 }
 

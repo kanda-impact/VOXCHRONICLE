@@ -11,11 +11,11 @@
 
 #include <iostream>
 #include "cocos2d.h"
-#include "Track.h"
+#include "Music.h"
 
 class MainScene : public cocos2d::CCLayer {
  private:
-  VISS::Track* _test;
+  VISS::Music* _music;
   
  public:
   virtual bool init();

@@ -12,25 +12,32 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <boost/shared_ptr.hpp>
+#include "macros.h"
+
 #include "cocos2d.h"
 #include "Track.h"
 
 namespace VISS {
-  class Music {
-  private:
+  class Music : public cocos2d::CCObject {
+   private:
     int _trackCount;
-    std::vector<Track*> _tracks;
-    std::vector<Track*> _nextTracks;
-  public:
+    std::vector< boost::shared_ptr<Track> > _tracks;
+    std::vector< boost::shared_ptr<Track> > _nextTracks;
+   private:
+    void update(float dt);
+   public:
     Music();
     Music(int trackCount);
     ~Music();
-    Track* getTrack(int trackNumber);
-    bool setNextTrack(std::string* fileName, int trackNumber);
+    boost::shared_ptr<Track> getTrack(int trackNumber);
+    bool setTrack(const std::string* fileName, int trackNumber);
+    bool setTrack(Track* track, int trackNumber);
+    bool setNextTrack(const std::string* fileName, int trackNumber);
     bool setNextTrack(Track* track, int trackNumber);
     bool play();
-    bool stop();
-    bool pause();
+    void stop();
+    void pause();
   };
 }
 
