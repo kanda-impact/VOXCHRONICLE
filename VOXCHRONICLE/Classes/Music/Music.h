@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <vector>
+#include <deque>
 #include <string>
 #include <boost/shared_ptr.hpp>
 #include "macros.h"
@@ -22,8 +23,7 @@ namespace VISS {
   class Music : public cocos2d::CCObject {
    private:
     int _trackCount;
-    std::vector< boost::shared_ptr<Track> > _tracks;
-    std::vector< boost::shared_ptr<Track> > _nextTracks;
+    std::vector< std::deque<boost::shared_ptr<Track> > > _tracks;
    private:
     void update(float dt);
    public:
@@ -31,10 +31,11 @@ namespace VISS {
     Music(int trackCount);
     ~Music();
     boost::shared_ptr<Track> getTrack(int trackNumber);
-    bool setTrack(const std::string* fileName, int trackNumber);
-    bool setTrack(Track* track, int trackNumber);
-    bool setNextTrack(const std::string* fileName, int trackNumber);
-    bool setNextTrack(Track* track, int trackNumber);
+    boost::shared_ptr<Track> getNextTrack(int trackNumber);
+    bool pushTrack(const std::string* fileName, int trackNumber);
+    bool pushTrack(Track* track, int trackNumber);
+    bool setTrack(const std::string* fileName, int trackNumber, int index);
+    bool setTrack(Track* track, int trackNumber, int index);
     bool play();
     void stop();
     void pause();
