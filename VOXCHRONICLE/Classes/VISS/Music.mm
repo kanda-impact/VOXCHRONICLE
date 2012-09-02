@@ -30,7 +30,7 @@ boost::shared_ptr<VISS::Track> VISS::Music::getNextTrack(int trackNumber) {
   return _tracks.at(trackNumber).at(1);
 }
   
-bool VISS::Music::setTrack(const std::string* fileName, int trackNumber, int index) {
+bool VISS::Music::setTrack(const char* fileName, int trackNumber, int index) {
   Track* next = new Track(fileName);
   return setTrack(next, trackNumber, index);
 }
@@ -43,11 +43,11 @@ bool VISS::Music::setTrack(Track* track, int trackNumber, int index) {
   return true;
 }
 
-bool VISS::Music::pushTrack(const std::string* fileName, int trackNumber) {
+bool VISS::Music::pushTrack(const char* fileName, int trackNumber) {
   return pushTrack(fileName, trackNumber, 1);
 }
 
-bool VISS::Music::pushTrack(const std::string* fileName, int trackNumber, int repeat) {
+bool VISS::Music::pushTrack(const char* fileName, int trackNumber, int repeat) {
   for (int i = 0; i < repeat; ++i) {
     Track* next = new Track(fileName);
     bool result = pushTrack(next, trackNumber);

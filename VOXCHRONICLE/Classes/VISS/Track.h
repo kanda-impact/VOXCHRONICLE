@@ -20,7 +20,7 @@ namespace VISS {
     struct AudioTrack;
 #endif
   private:
-    std::string* _fileName;
+    char* _fileName;
 #if IS_IOS
     // for iOS
     // OALAudioTrackをラップしたC++のオブジェクトを保持する
@@ -31,9 +31,9 @@ namespace VISS {
   public:
     /**
      @brief トラックを生成します。引数にはファイル名を指定します
-     @param const std::string fileName ファイル名
+     @param const char fileName ファイル名
      */
-    Track(const std::string* fileName);
+    Track(const char* fileName);
     
     ~Track();
     

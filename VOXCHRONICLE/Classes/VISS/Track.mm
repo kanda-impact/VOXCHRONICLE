@@ -15,8 +15,8 @@ struct VISS::Track::AudioTrack {
   OALAudioTrack* track;
 };
 
-VISS::Track::Track(const std::string* fileName) : _track(new VISS::Track::AudioTrack) {
-  NSString* file = [NSString stringWithUTF8String:fileName->c_str()];
+VISS::Track::Track(const char* fileName) : _track(new VISS::Track::AudioTrack) {
+  NSString* file = [NSString stringWithUTF8String:fileName];
   _track->track = [[OALAudioTrack alloc] init];
   [_track->track preloadFile:file];
 }
