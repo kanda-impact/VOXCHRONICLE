@@ -101,8 +101,8 @@ void VISS::Music::update(float dt) {
     float sub = current->getDuration() - current->getPosition();
     if (it->size() > 1 && sub <= current->getDuration() * 0.1) {
       it->pop_front();
-      if (sub - dt > 0) {
-        it->front()->playAfterTime(sub - dt);
+      if (sub - dt / 2.0 > 0) {
+        it->front()->playAfterTime(sub - dt / 2.0);
       } else {
         it->front()->play();
       }
