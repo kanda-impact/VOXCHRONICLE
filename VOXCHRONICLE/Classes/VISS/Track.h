@@ -43,6 +43,8 @@ namespace VISS {
      */
     bool play();
     
+    void playAfterTime(float time);
+    
     /**
      @brief トラックを停止します。再生位置は最初に戻ります
      */
@@ -70,8 +72,6 @@ namespace VISS {
      @return float トラックの現在の再生位置
      */
     float getPosition();
-    
-    void playAfterTime(float time);
   };
 }
 

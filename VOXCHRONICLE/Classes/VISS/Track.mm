@@ -28,6 +28,11 @@ VISS::Track::~Track() {
 bool VISS::Track::play() {
   return [_track->track play];
 }
+
+void VISS::Track::playAfterTime(float time) {
+  float dt = _track->track.deviceCurrentTime;
+  [_track->track playAtTime:dt + time];
+}
   
 void VISS::Track::stop() {
   return [_track->track stop];
@@ -47,9 +52,4 @@ float VISS::Track::getDuration() {
 
 float VISS::Track::getPosition() {
   return _track->track.currentTime;
-}
-
-void VISS::Track::playAfterTime(float time) {
-  float dt = _track->track.deviceCurrentTime;
-  [_track->track playAtTime:dt + time];
 }

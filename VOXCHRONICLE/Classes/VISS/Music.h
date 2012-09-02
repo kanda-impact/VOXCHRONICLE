@@ -33,6 +33,7 @@ namespace VISS {
     boost::shared_ptr<Track> getTrack(int trackNumber);
     boost::shared_ptr<Track> getNextTrack(int trackNumber);
     bool pushTrack(const std::string* fileName, int trackNumber);
+    bool pushTrack(const std::string* fileName, int trackNumber, int repeat);
     bool pushTrack(Track* track, int trackNumber);
     bool setTrack(const std::string* fileName, int trackNumber, int index);
     bool setTrack(Track* track, int trackNumber, int index);

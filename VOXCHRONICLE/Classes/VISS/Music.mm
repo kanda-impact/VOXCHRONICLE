@@ -44,8 +44,18 @@ bool VISS::Music::setTrack(Track* track, int trackNumber, int index) {
 }
 
 bool VISS::Music::pushTrack(const std::string* fileName, int trackNumber) {
-  Track* next = new Track(fileName);
-  return pushTrack(next, trackNumber);
+  return pushTrack(fileName, trackNumber, 1);
+}
+
+bool VISS::Music::pushTrack(const std::string* fileName, int trackNumber, int repeat) {
+  for (int i = 0; i < repeat; ++i) {
+    Track* next = new Track(fileName);
+    bool result = pushTrack(next, trackNumber);
+    if (!result) {
+      return false;
+    }
+  }
+  return true;
 }
 
 bool VISS::Music::pushTrack(Track* track, int trackNumber) {
@@ -91,8 +101,8 @@ void VISS::Music::update(float dt) {
     float sub = current->getDuration() - current->getPosition();
     if (it->size() > 1 && sub <= current->getDuration() * 0.1) {
       it->pop_front();
-      if (sub > 0) {
-        it->front()->playAfterTime(sub);
+      if (sub - dt > 0) {
+        it->front()->playAfterTime(sub - dt);
       } else {
         it->front()->play();
       }
