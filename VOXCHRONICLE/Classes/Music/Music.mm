@@ -57,8 +57,7 @@ bool VISS::Music::pushTrack(Track* track, int trackNumber) {
 }
     
 bool VISS::Music::play() {
-  cocos2d::SEL_SCHEDULE selector = (cocos2d::SEL_SCHEDULE)&Music::update;
-  cocos2d::CCDirector::sharedDirector()->getScheduler()->scheduleSelector(selector, this, 0.01, false, -1, 0);
+  cocos2d::CCDirector::sharedDirector()->getScheduler()->scheduleUpdateForTarget(this, -127, false);
   for (std::vector< std::deque< boost::shared_ptr<Track> > >::iterator it = _tracks.begin(); it != _tracks.end(); ++it) {
     if (it->size() > 0 && !it->at(0)->play()) {
       return false;
@@ -88,9 +87,15 @@ void VISS::Music::pause() {
 void VISS::Music::update(float dt) {
   for (int i = 0; i < _trackCount; ++i) {
     std::deque< boost::shared_ptr<Track> >* it = &_tracks.at(i);
-    if (it->size() > 1 && (!it->front()->isPlaying() || (it->front()->getDuration() - it->front()->getPosition()) <= dt * 2)) {
+    boost::shared_ptr<VISS::Track> current = it->front();
+    float sub = current->getDuration() - current->getPosition();
+    if (it->size() > 1 && sub <= current->getDuration() * 0.1) {
       it->pop_front();
-      it->front()->play();
+      if (sub > 0) {
+        it->front()->playAfterTime(sub);
+      } else {
+        it->front()->play();
+      }
     }
   }
 }

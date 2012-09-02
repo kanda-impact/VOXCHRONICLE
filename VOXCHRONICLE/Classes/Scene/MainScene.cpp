@@ -28,6 +28,7 @@ bool MainScene::init() {
   _music->pushTrack(new std::string("dub_voxnormal05.wav"), 0);
   _music->pushTrack(new std::string("dub_voxnormal06.wav"), 0);
   _music->pushTrack(new std::string("dub_voxnormal07.wav"), 0);
+  _music->pushTrack(new std::string("dub_end.wav"), 0);
   _music->pushTrack(new std::string("dub_basschord00.wav"), 1);
   _music->pushTrack(new std::string("dub_basschord01.wav"), 1);
   _music->pushTrack(new std::string("dub_basschord02.wav"), 1);
@@ -40,10 +41,12 @@ bool MainScene::init() {
   _music->pushTrack(new std::string("dub_basschord05.wav"), 1);
   _music->pushTrack(new std::string("dub_basschord06.wav"), 1);
   _music->pushTrack(new std::string("dub_basschord07.wav"), 1);
+  _music->pushTrack(new std::string("dub_basschord07.wav"), 1);
   _music->pushTrack(new std::string("dub_drum00.wav"), 2);
   _music->pushTrack(new std::string("dub_drum01.wav"), 2);
   _music->pushTrack(new std::string("dub_drum02.wav"), 2);
   _music->pushTrack(new std::string("dub_drum03.wav"), 2);
+  _music->pushTrack(new std::string("dub_drum04.wav"), 2);
   _music->pushTrack(new std::string("dub_drum04.wav"), 2);
   _music->pushTrack(new std::string("dub_drum04.wav"), 2);
   _music->pushTrack(new std::string("dub_drum04.wav"), 2);

@@ -70,6 +70,8 @@ namespace VISS {
      @return float トラックの現在の再生位置
      */
     float getPosition();
+    
+    void playAfterTime(float time);
   };
 }
 

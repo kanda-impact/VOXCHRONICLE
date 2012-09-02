@@ -48,3 +48,8 @@ float VISS::Track::getDuration() {
 float VISS::Track::getPosition() {
   return _track->track.currentTime;
 }
+
+void VISS::Track::playAfterTime(float time) {
+  float dt = _track->track.deviceCurrentTime;
+  [_track->track playAtTime:dt + time];
+}
