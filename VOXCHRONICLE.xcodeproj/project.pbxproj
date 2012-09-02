@@ -298,6 +298,8 @@
 		07AE14B015F043890045E8F3 /* dub_voxnormal05.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE146F15F043890045E8F3 /* dub_voxnormal05.wav */; };
 		07AE14B115F043890045E8F3 /* dub_voxnormal06.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE147015F043890045E8F3 /* dub_voxnormal06.wav */; };
 		07AE14B215F043890045E8F3 /* dub_voxnormal07.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE147115F043890045E8F3 /* dub_voxnormal07.wav */; };
+		07B95E1A15F304120024C672 /* Music.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B95E1715F303E30024C672 /* Music.mm */; };
+		07B95E1B15F304120024C672 /* Track.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B95E1915F303E30024C672 /* Track.mm */; };
 		07D873F515ED1215009CC446 /* attack0.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E415ED1215009CC446 /* attack0.WAV */; };
 		07D873F615ED1215009CC446 /* attack1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E515ED1215009CC446 /* attack1.WAV */; };
 		07D873F715ED1215009CC446 /* attack2.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E615ED1215009CC446 /* attack2.WAV */; };
@@ -316,7 +318,6 @@
 		07D8740415ED1215009CC446 /* run1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873F315ED1215009CC446 /* run1.WAV */; };
 		07D8740515ED1215009CC446 /* wait.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873F415ED1215009CC446 /* wait.WAV */; };
 		07D8740715ED13CD009CC446 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07D8740615ED13CD009CC446 /* MainScene.cpp */; };
-		07D8740E15F00077009CC446 /* Track.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07D8740C15F00077009CC446 /* Track.mm */; };
 		07D8745815F01A15009CC446 /* ALBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8741E15F01500009CC446 /* ALBuffer.m */; };
 		07D8745915F01A15009CC446 /* ALCaptureDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8742015F01500009CC446 /* ALCaptureDevice.m */; };
 		07D8745A15F01A15009CC446 /* ALChannelSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8742215F01500009CC446 /* ALChannelSource.m */; };
@@ -342,7 +343,6 @@
 		07D8746E15F01A15009CC446 /* OALTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8744F15F01500009CC446 /* OALTools.m */; };
 		07D8746F15F01A15009CC446 /* OALUtilityActions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8745115F01500009CC446 /* OALUtilityActions.m */; };
 		07D8747015F01A15009CC446 /* OpenALManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8745615F01500009CC446 /* OpenALManager.m */; };
-		07D8747215F01B38009CC446 /* Music.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07D8747115F01B38009CC446 /* Music.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -882,6 +882,10 @@
 		07AE146F15F043890045E8F3 /* dub_voxnormal05.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxnormal05.wav; path = Resources/Music/dub/dub_voxnormal05.wav; sourceTree = "<group>"; };
 		07AE147015F043890045E8F3 /* dub_voxnormal06.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxnormal06.wav; path = Resources/Music/dub/dub_voxnormal06.wav; sourceTree = "<group>"; };
 		07AE147115F043890045E8F3 /* dub_voxnormal07.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxnormal07.wav; path = Resources/Music/dub/dub_voxnormal07.wav; sourceTree = "<group>"; };
+		07B95E1615F303E30024C672 /* Music.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Music.h; path = Classes/VISS/Music.h; sourceTree = "<group>"; };
+		07B95E1715F303E30024C672 /* Music.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = Music.mm; path = Classes/VISS/Music.mm; sourceTree = "<group>"; };
+		07B95E1815F303E30024C672 /* Track.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Track.h; path = Classes/VISS/Track.h; sourceTree = "<group>"; };
+		07B95E1915F303E30024C672 /* Track.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = Track.mm; path = Classes/VISS/Track.mm; sourceTree = "<group>"; };
 		07D8731515ECEE10009CC446 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = Classes/Scene/MainScene.h; sourceTree = "<group>"; };
 		07D873E415ED1215009CC446 /* attack0.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack0.WAV; path = Resources/Music/VOXQUEST/attack0.WAV; sourceTree = "<group>"; };
 		07D873E515ED1215009CC446 /* attack1.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack1.WAV; path = Resources/Music/VOXQUEST/attack1.WAV; sourceTree = "<group>"; };
@@ -901,9 +905,6 @@
 		07D873F315ED1215009CC446 /* run1.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = run1.WAV; path = Resources/Music/VOXQUEST/run1.WAV; sourceTree = "<group>"; };
 		07D873F415ED1215009CC446 /* wait.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = wait.WAV; path = Resources/Music/VOXQUEST/wait.WAV; sourceTree = "<group>"; };
 		07D8740615ED13CD009CC446 /* MainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainScene.cpp; path = Classes/Scene/MainScene.cpp; sourceTree = "<group>"; };
-		07D8740A15F0001F009CC446 /* Music.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Music.h; path = Classes/Music/Music.h; sourceTree = "<group>"; };
-		07D8740C15F00077009CC446 /* Track.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Track.mm; path = Classes/Music/Track.mm; sourceTree = "<group>"; };
-		07D8740D15F00077009CC446 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Track.h; path = Classes/Music/Track.h; sourceTree = "<group>"; };
 		07D8741D15F01500009CC446 /* ALBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ALBuffer.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/ALBuffer.h; sourceTree = "<group>"; };
 		07D8741E15F01500009CC446 /* ALBuffer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ALBuffer.m; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/ALBuffer.m; sourceTree = "<group>"; };
 		07D8741F15F01500009CC446 /* ALCaptureDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ALCaptureDevice.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/ALCaptureDevice.h; sourceTree = "<group>"; };
@@ -962,7 +963,6 @@
 		07D8745515F01500009CC446 /* OpenALManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OpenALManager.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/OpenALManager.h; sourceTree = "<group>"; };
 		07D8745615F01500009CC446 /* OpenALManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OpenALManager.m; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/OpenALManager.m; sourceTree = "<group>"; };
 		07D8745715F01500009CC446 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/Support/SynthesizeSingleton.h; sourceTree = "<group>"; };
-		07D8747115F01B38009CC446 /* Music.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Music.mm; path = Classes/Music/Music.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1893,7 +1893,7 @@
 		076F1D3915EB94780013A45E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				07D8740815EFFFFC009CC446 /* Music */,
+				07D8740815EFFFFC009CC446 /* VISS */,
 				076F1D3A15EB94780013A45E /* AppDelegate.h */,
 				076F1D3B15EB94780013A45E /* AppDelegate.cpp */,
 				0791585915EBA8350083D348 /* LogoScene.h */,
@@ -2027,15 +2027,15 @@
 			name = VOXQUEST;
 			sourceTree = "<group>";
 		};
-		07D8740815EFFFFC009CC446 /* Music */ = {
+		07D8740815EFFFFC009CC446 /* VISS */ = {
 			isa = PBXGroup;
 			children = (
-				07D8740A15F0001F009CC446 /* Music.h */,
-				07D8747115F01B38009CC446 /* Music.mm */,
-				07D8740D15F00077009CC446 /* Track.h */,
-				07D8740C15F00077009CC446 /* Track.mm */,
+				07B95E1615F303E30024C672 /* Music.h */,
+				07B95E1715F303E30024C672 /* Music.mm */,
+				07B95E1815F303E30024C672 /* Track.h */,
+				07B95E1915F303E30024C672 /* Track.mm */,
 			);
-			name = Music;
+			name = VISS;
 			sourceTree = "<group>";
 		};
 		07D8741115F0148F009CC446 /* ios */ = {
@@ -2264,6 +2264,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07B95E1A15F304120024C672 /* Music.mm in Sources */,
+				07B95E1B15F304120024C672 /* Track.mm in Sources */,
 				07D8745815F01A15009CC446 /* ALBuffer.m in Sources */,
 				07D8745915F01A15009CC446 /* ALCaptureDevice.m in Sources */,
 				07D8745A15F01A15009CC446 /* ALChannelSource.m in Sources */,
@@ -2497,8 +2499,6 @@
 				076F1D3C15EB94780013A45E /* AppDelegate.cpp in Sources */,
 				0791585A15EBA8350083D348 /* LogoScene.cpp in Sources */,
 				07D8740715ED13CD009CC446 /* MainScene.cpp in Sources */,
-				07D8740E15F00077009CC446 /* Track.mm in Sources */,
-				07D8747215F01B38009CC446 /* Music.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
