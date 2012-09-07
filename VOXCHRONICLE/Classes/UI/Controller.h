@@ -14,10 +14,7 @@
 
 class Controller : public cocos2d::CCNode {
  private:
-  cocos2d::CCArray* triggers;
-  /*virtual bool ccTouchBegan(cocos2d::CCTouch* pTouch, cocos2d::CCEvent* pEvent);
-  virtual void nextScene();
-  virtual void registerWithTouchDispatcher();*/
+  cocos2d::CCArray* _triggers;
 
 public:
   static Controller* create();

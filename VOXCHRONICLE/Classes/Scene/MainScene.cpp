@@ -56,11 +56,17 @@ bool MainScene::init() {
   _music->pushTrack("dub_drum04.wav", 2);
   _music->pushTrack("dub_drum00.wav", 2, 3);
   _music->pushTrack("dub_drum04.wav", 2);
-  _music->play();
+  
+  CCDirector* director = CCDirector::sharedDirector();
   Controller* controller = Controller::create();
-  controller->setPosition(ccp(100, 100));
+  CCSize size = director->getWinSize();
+  controller->setPosition(ccp(0, 5));
   this->addChild(controller);
   
   return true;
+}
+
+void MainScene::onEnterTransitionDidFinish() {
+  _music->play();
 }
 

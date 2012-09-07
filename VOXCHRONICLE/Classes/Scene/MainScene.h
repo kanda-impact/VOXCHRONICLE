@@ -16,6 +16,7 @@
 class MainScene : public cocos2d::CCLayer {
  private:
   VISS::Music* _music;
+  void onEnterTransitionDidFinish();
   
  public:
   virtual bool init();

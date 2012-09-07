@@ -10,5 +10,21 @@
 #define __VOXCHRONICLE__SkillTrigger__
 
 #include <iostream>
+#include "cocos2d.h"
+
+using namespace cocos2d;
+
+/**
+ コントローラー上に配置されるボタンクラスです
+*/
+class SkillTrigger : public CCSprite {
+ private:
+  // Skill* _skill;
+
+ public:
+  static SkillTrigger* create(const char* filename);
+  ~SkillTrigger();
+  SkillTrigger();
+};
 
 #endif /* defined(__VOXCHRONICLE__SkillTrigger__) */
