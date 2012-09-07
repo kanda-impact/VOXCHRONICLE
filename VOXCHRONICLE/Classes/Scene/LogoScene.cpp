@@ -36,21 +36,12 @@ bool LogoScene::init() {
                                      CCFadeIn::create(2.0),
                                      CCDelayTime::create(2.0),
                                      CCFadeOut::create(2.0),
-                                     CCCallFunc::actionWithTarget(this, callfunc_selector(LogoScene::nextScene)),
+                                     CCCallFunc::create(this, callfunc_selector(LogoScene::nextScene)),
                                      NULL));
   this->addChild(background);
   this->addChild(logo);
 
   return true;
-}
-
-void LogoScene::menuCloseCallback(CCObject* pSender) {
-  CCDirector::sharedDirector()->end();
-  
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-  exit(0);
-#endif
-  
 }
 
 void LogoScene::registerWithTouchDispatcher() {
@@ -66,6 +57,6 @@ bool LogoScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
 void LogoScene::nextScene() {
   CCScene* scene = CCScene::create();
   scene->addChild(MainScene::create());
-  CCTransitionFade* transition = CCTransitionFade::transitionWithDuration(0.5, scene);
+  CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
   CCDirector::sharedDirector()->replaceScene(transition);
 }

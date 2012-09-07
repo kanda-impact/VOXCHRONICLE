@@ -22,8 +22,6 @@ public:
   virtual bool init();
   static cocos2d::CCScene* scene();
   
-  void menuCloseCallback(cocos2d::CCObject* pSender);
-  
   LAYER_CREATE_FUNC(LogoScene);
 };
 

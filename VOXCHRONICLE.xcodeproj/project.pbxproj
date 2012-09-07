@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0711459115EBB8B400063A74 /* kawaz.png in Resources */ = {isa = PBXBuildFile; fileRef = 0711459015EBB8B400063A74 /* kawaz.png */; };
+		074EFCFF15FA8E2D004D8273 /* kawaz.png in Resources */ = {isa = PBXBuildFile; fileRef = 074EFCFE15FA8E2D004D8273 /* kawaz.png */; };
+		074EFD0415FA8EB5004D8273 /* sword.png in Resources */ = {isa = PBXBuildFile; fileRef = 074EFD0215FA8EB5004D8273 /* sword.png */; };
+		074EFD0515FA8EB5004D8273 /* trigger_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 074EFD0315FA8EB5004D8273 /* trigger_bg.png */; };
 		076F1A5115EB94750013A45E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F1A5015EB94750013A45E /* QuartzCore.framework */; };
 		076F1A5315EB94750013A45E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F1A5215EB94750013A45E /* OpenGLES.framework */; };
 		076F1A5515EB94750013A45E /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F1A5415EB94750013A45E /* OpenAL.framework */; };
@@ -346,7 +348,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0711459015EBB8B400063A74 /* kawaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kawaz.png; path = Resources/Title/kawaz.png; sourceTree = "<group>"; };
+		074EFCFE15FA8E2D004D8273 /* kawaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kawaz.png; path = Resources/Image/Title/kawaz.png; sourceTree = "<group>"; };
+		074EFD0215FA8EB5004D8273 /* sword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sword.png; path = Resources/Image/Main/UI/sword.png; sourceTree = "<group>"; };
+		074EFD0315FA8EB5004D8273 /* trigger_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trigger_bg.png; path = Resources/Image/Main/UI/trigger_bg.png; sourceTree = "<group>"; };
+		074EFD0715FA906C004D8273 /* Controller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Controller.cpp; path = Classes/UI/Controller.cpp; sourceTree = "<group>"; };
+		074EFD0815FA906C004D8273 /* Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Controller.h; path = Classes/UI/Controller.h; sourceTree = "<group>"; };
+		074EFD0915FA906D004D8273 /* SkillTrigger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SkillTrigger.cpp; path = Classes/UI/SkillTrigger.cpp; sourceTree = "<group>"; };
+		074EFD0A15FA906D004D8273 /* SkillTrigger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SkillTrigger.h; path = Classes/UI/SkillTrigger.h; sourceTree = "<group>"; };
 		076F1A4C15EB94750013A45E /* VOXCHRONICLE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VOXCHRONICLE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		076F1A5015EB94750013A45E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		076F1A5215EB94750013A45E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -987,9 +995,57 @@
 		0711458E15EBB8AA00063A74 /* Title */ = {
 			isa = PBXGroup;
 			children = (
-				0711459015EBB8B400063A74 /* kawaz.png */,
+				074EFCFE15FA8E2D004D8273 /* kawaz.png */,
 			);
 			name = Title;
+			sourceTree = "<group>";
+		};
+		074EFCF515FA8B44004D8273 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				074EFD0715FA906C004D8273 /* Controller.cpp */,
+				074EFD0815FA906C004D8273 /* Controller.h */,
+				074EFD0915FA906D004D8273 /* SkillTrigger.cpp */,
+				074EFD0A15FA906D004D8273 /* SkillTrigger.h */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		074EFCFD15FA8E24004D8273 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				074EFD0015FA8EAA004D8273 /* Main */,
+				0711458E15EBB8AA00063A74 /* Title */,
+			);
+			name = Image;
+			sourceTree = "<group>";
+		};
+		074EFD0015FA8EAA004D8273 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				074EFD0115FA8EAE004D8273 /* UI */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		074EFD0115FA8EAE004D8273 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				074EFD0215FA8EB5004D8273 /* sword.png */,
+				074EFD0315FA8EB5004D8273 /* trigger_bg.png */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		074EFD0615FA8FF2004D8273 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				0791585915EBA8350083D348 /* LogoScene.h */,
+				0791585815EBA8350083D348 /* LogoScene.cpp */,
+				07D8731515ECEE10009CC446 /* MainScene.h */,
+				07D8740615ED13CD009CC446 /* MainScene.cpp */,
+			);
+			name = Scene;
 			sourceTree = "<group>";
 		};
 		076F1A4115EB94750013A45E = {
@@ -1039,8 +1095,8 @@
 		076F1A6115EB94750013A45E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				074EFCFD15FA8E24004D8273 /* Image */,
 				07D873E215ED1200009CC446 /* Music */,
-				0711458E15EBB8AA00063A74 /* Title */,
 				0791586815EBB4AF0083D348 /* ios */,
 			);
 			name = Resources;
@@ -1893,13 +1949,11 @@
 		076F1D3915EB94780013A45E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				074EFD0615FA8FF2004D8273 /* Scene */,
+				074EFCF515FA8B44004D8273 /* UI */,
 				07D8740815EFFFFC009CC446 /* VISS */,
 				076F1D3A15EB94780013A45E /* AppDelegate.h */,
 				076F1D3B15EB94780013A45E /* AppDelegate.cpp */,
-				0791585915EBA8350083D348 /* LogoScene.h */,
-				0791585815EBA8350083D348 /* LogoScene.cpp */,
-				07D8731515ECEE10009CC446 /* MainScene.h */,
-				07D8740615ED13CD009CC446 /* MainScene.cpp */,
 				07AE142915F028E50045E8F3 /* macros.h */,
 			);
 			name = Classes;
@@ -2171,7 +2225,6 @@
 				0791587C15EBB50E0083D348 /* Icon@2x.png in Resources */,
 				0791587E15EBB50E0083D348 /* iTunesArtwork in Resources */,
 				076F1B7515EB94760013A45E /* ChangeLog in Resources */,
-				0711459115EBB8B400063A74 /* kawaz.png in Resources */,
 				07D873F515ED1215009CC446 /* attack0.WAV in Resources */,
 				07D873F615ED1215009CC446 /* attack1.WAV in Resources */,
 				07D873F715ED1215009CC446 /* attack2.WAV in Resources */,
@@ -2254,6 +2307,9 @@
 				07AE14B015F043890045E8F3 /* dub_voxnormal05.wav in Resources */,
 				07AE14B115F043890045E8F3 /* dub_voxnormal06.wav in Resources */,
 				07AE14B215F043890045E8F3 /* dub_voxnormal07.wav in Resources */,
+				074EFCFF15FA8E2D004D8273 /* kawaz.png in Resources */,
+				074EFD0415FA8EB5004D8273 /* sword.png in Resources */,
+				074EFD0515FA8EB5004D8273 /* trigger_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

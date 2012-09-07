@@ -7,6 +7,7 @@
 //
 
 #include "MainScene.h"
+#include "Controller.h"
 
 using namespace cocos2d;
 using namespace VISS;
@@ -56,6 +57,9 @@ bool MainScene::init() {
   _music->pushTrack("dub_drum00.wav", 2, 3);
   _music->pushTrack("dub_drum04.wav", 2);
   _music->play();
+  Controller* controller = Controller::create();
+  controller->setPosition(ccp(100, 100));
+  this->addChild(controller);
   
   return true;
 }
