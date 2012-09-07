@@ -60,7 +60,6 @@ bool MainScene::init() {
   CCDirector* director = CCDirector::sharedDirector();
   Controller* controller = Controller::create();
   CCSize size = director->getWinSize();
-  controller->setPosition(ccp(0, 5));
   this->addChild(controller);
   
   return true;

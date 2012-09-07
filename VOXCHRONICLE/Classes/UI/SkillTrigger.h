@@ -17,12 +17,13 @@ using namespace cocos2d;
 /**
  コントローラー上に配置されるボタンクラスです
 */
-class SkillTrigger : public CCSprite {
+class SkillTrigger : public CCSprite, CCTouchDelegate {
  private:
   // Skill* _skill;
 
  public:
   static SkillTrigger* create(const char* filename);
+  void setPress(bool press);
   ~SkillTrigger();
   SkillTrigger();
 };

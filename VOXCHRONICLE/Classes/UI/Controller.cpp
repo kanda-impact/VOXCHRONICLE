@@ -10,14 +10,12 @@
 #include "SkillTrigger.h"
 using namespace cocos2d;
 
-Controller * Controller::create(void) {
-  Controller * pRet = new Controller();
-  pRet->autorelease();
-  return pRet;
-}
-
-Controller::Controller() : CCNode() {
+bool Controller::init() {
+  if (!CCLayer::init()) {
+    return false;
+  }
   _triggers = CCArray::create();
+  _triggers->retain();
   const int rotation[] = {0, 30, 60, 0, -30, -60};
   const int x[] = {95, 235, 310, 866, 727, 651};
   const int y[] = {298.5, 207, 62, 298.5, 208, 62};
@@ -28,8 +26,33 @@ Controller::Controller() : CCNode() {
     if (i < 3) trigger->setScaleX(-1);
     this->addChild(trigger);
     _triggers->addObject(trigger);
+    this->setTouchEnabled(true);
   }
+  return true;
+}
+
+Controller::Controller() {
 }
 
 Controller::~Controller() {
+  _triggers->release();
+}
+
+void Controller::registerWithTouchDispatcher() {
+  CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+}
+
+bool Controller::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
+  const CCPoint triggerCenter = ccp(50, 60);
+  const int triggerRadius = 40;
+  CCObject* trigger = NULL;
+  CCARRAY_FOREACH(_triggers, trigger) {
+    CCPoint p = ((SkillTrigger*)trigger)->convertTouchToNodeSpace(pTouch);
+    if (ccpDistance(triggerCenter, p) < triggerRadius) {
+      ((SkillTrigger*)trigger)->setPress(true);
+      break;
+    }
+  }
+  
+  return true;
 }

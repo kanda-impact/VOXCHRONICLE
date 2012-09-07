@@ -12,6 +12,7 @@
 		074EFD0515FA8EB5004D8273 /* trigger_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 074EFD0315FA8EB5004D8273 /* trigger_bg.png */; };
 		074EFD0B15FA926E004D8273 /* SkillTrigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 074EFD0915FA906D004D8273 /* SkillTrigger.cpp */; };
 		074EFD0C15FA93AA004D8273 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 074EFD0715FA906C004D8273 /* Controller.cpp */; };
+		074EFD1215FA9E17004D8273 /* trigger_bg_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 074EFD1115FA9E17004D8273 /* trigger_bg_selected.png */; };
 		076F1A5115EB94750013A45E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F1A5015EB94750013A45E /* QuartzCore.framework */; };
 		076F1A5315EB94750013A45E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F1A5215EB94750013A45E /* OpenGLES.framework */; };
 		076F1A5515EB94750013A45E /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F1A5415EB94750013A45E /* OpenAL.framework */; };
@@ -357,6 +358,7 @@
 		074EFD0815FA906C004D8273 /* Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Controller.h; path = Classes/UI/Controller.h; sourceTree = "<group>"; };
 		074EFD0915FA906D004D8273 /* SkillTrigger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SkillTrigger.cpp; path = Classes/UI/SkillTrigger.cpp; sourceTree = "<group>"; };
 		074EFD0A15FA906D004D8273 /* SkillTrigger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SkillTrigger.h; path = Classes/UI/SkillTrigger.h; sourceTree = "<group>"; };
+		074EFD1115FA9E17004D8273 /* trigger_bg_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trigger_bg_selected.png; path = Resources/Image/Main/UI/trigger_bg_selected.png; sourceTree = "<group>"; };
 		076F1A4C15EB94750013A45E /* VOXCHRONICLE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VOXCHRONICLE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		076F1A5015EB94750013A45E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		076F1A5215EB94750013A45E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1035,6 +1037,7 @@
 			children = (
 				074EFD0215FA8EB5004D8273 /* sword.png */,
 				074EFD0315FA8EB5004D8273 /* trigger_bg.png */,
+				074EFD1115FA9E17004D8273 /* trigger_bg_selected.png */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -2312,6 +2315,7 @@
 				074EFCFF15FA8E2D004D8273 /* kawaz.png in Resources */,
 				074EFD0415FA8EB5004D8273 /* sword.png in Resources */,
 				074EFD0515FA8EB5004D8273 /* trigger_bg.png in Resources */,
+				074EFD1215FA9E17004D8273 /* trigger_bg_selected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

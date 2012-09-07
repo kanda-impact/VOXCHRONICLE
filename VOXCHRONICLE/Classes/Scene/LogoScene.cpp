@@ -49,7 +49,6 @@ void LogoScene::registerWithTouchDispatcher() {
 }
 
 bool LogoScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
-  CCLog("test");
   nextScene();
   return true;
 }

@@ -24,3 +24,13 @@ SkillTrigger::SkillTrigger() : CCSprite() {
 
 SkillTrigger::~SkillTrigger() {
 }
+
+void SkillTrigger::setPress(bool press) {
+  if (press) {
+    CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage("trigger_bg_selected.png");
+    this->setTexture(texture);
+  } else {
+    CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage("trigger_bg.png");
+    this->setTexture(texture);
+  }
+}

@@ -12,14 +12,17 @@
 #include <iostream>
 #include "cocos2d.h"
 
-class Controller : public cocos2d::CCNode {
+class Controller : public cocos2d::CCLayer {
  private:
   cocos2d::CCArray* _triggers;
+  virtual bool ccTouchBegan(cocos2d::CCTouch* pTouch, cocos2d::CCEvent* pEvent);
+  virtual void registerWithTouchDispatcher();
 
 public:
-  static Controller* create();
+  virtual bool init();
   ~Controller();
   Controller();
+  LAYER_CREATE_FUNC(Controller)
 };
 
 #endif /* defined(__VOXCHRONICLE__Controller__) */
