@@ -6,6 +6,8 @@
 //
 //
 
+#include <sstream>
+
 #include <boost/function.hpp>
 #include <boost/bind.hpp>
 
@@ -24,45 +26,9 @@ bool MainScene::init() {
   _music->setTrackWillFinishFunction(boost::bind(&MainScene::trackWillFinishPlaying, this, _1, _2, _3, _4));
   
   _music->pushTrack("dub_voxnormal00.wav", 0);
-  _music->pushTrack("dub_voxnormal01.wav", 0);
-  _music->pushTrack("dub_voxnormal02.wav", 0);
-  _music->pushTrack("dub_voxnormal03.wav", 0);
-  _music->pushTrack("dub_voxnormal04.wav", 0);
-  _music->pushTrack("dub_voxnormal05.wav", 0);
-  _music->pushTrack("dub_voxnormal06.wav", 0);
-  _music->pushTrack("dub_voxnormal07.wav", 0);
-  _music->pushTrack("dub_voxnormal04.wav", 0);
-  _music->pushTrack("dub_voxnormal05.wav", 0);
-  _music->pushTrack("dub_voxnormal06.wav", 0);
-  _music->pushTrack("dub_voxnormal07.wav", 0);
-  _music->pushTrack("dub_end.wav", 0);
   _music->pushTrack("dub_basschord00.wav", 1);
-  _music->pushTrack("dub_basschord01.wav", 1);
-  _music->pushTrack("dub_basschord02.wav", 1);
-  _music->pushTrack("dub_basschord03.wav", 1);
-  _music->pushTrack("dub_basschord04.wav", 1);
-  _music->pushTrack("dub_basschord05.wav", 1);
-  _music->pushTrack("dub_basschord06.wav", 1);
-  _music->pushTrack("dub_basschord07.wav", 1);
-  _music->pushTrack("dub_basschord04.wav", 1);
-  _music->pushTrack("dub_basschord05.wav", 1);
-  _music->pushTrack("dub_basschord06.wav", 1);
-  _music->pushTrack("dub_basschord07.wav", 1);
   _music->pushTrack("dub_drum00.wav", 2);
-  _music->pushTrack("dub_drum01.wav", 2);
-  _music->pushTrack("dub_drum02.wav", 2);
-  _music->pushTrack("dub_drum03.wav", 2);
-  _music->pushTrack("dub_drum04.wav", 2);
-  _music->pushTrack("dub_drum04.wav", 2);
-  _music->pushTrack("dub_drum04.wav", 2);
-  _music->pushTrack("dub_drum04.wav", 2);
-  _music->pushTrack("dub_drum04.wav", 2);
-  _music->pushTrack("dub_drum04.wav", 2);
-  _music->pushTrack("dub_drum04.wav", 2);
-  _music->pushTrack("dub_drum04.wav", 2);
-  _music->pushTrack("dub_drum00.wav", 2, 3);
-  _music->pushTrack("dub_drum04.wav", 2);
-
+  
   CCDirector* director = CCDirector::sharedDirector();
   _controller = Controller::create();
   CCSize size = director->getWinSize();
@@ -82,6 +48,20 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
 }
 
 void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track *nextTrack, int trackNumber) {
+  if (trackNumber == 0) {
+    int index = _controller->currentTriggerIndex();
+    std::ostringstream os;
+    if (index == -1) {
+      os << "dub_voxnormal00.wav";
+    } else {
+      os << "dub_voxnormal0" << index + 1 << ".wav";
+    }
+    _music->pushTrack(os.str().c_str(), 0);
+  } else if (trackNumber == 1) {
+    _music->pushTrack("dub_basschord00.wav", 1);
+  } else if (trackNumber == 2) {
+    _music->pushTrack("dub_drum00.wav", 2);
+  }
 }
 
 void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track *nextTrack, int trackNumber) {

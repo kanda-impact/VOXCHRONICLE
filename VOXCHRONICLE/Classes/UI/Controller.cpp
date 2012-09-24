@@ -68,3 +68,15 @@ void Controller::resetAllTriggers() {
     ((SkillTrigger*)trigger)->setPress(false);
   }
 }
+
+int Controller::currentTriggerIndex() {
+  int i = 0;
+  CCObject* trigger = NULL;
+  CCARRAY_FOREACH(_triggers, trigger) {
+    if (((SkillTrigger*)trigger)->getPress() ){
+      return i;
+    }
+    ++i;
+  }
+  return -1;
+}

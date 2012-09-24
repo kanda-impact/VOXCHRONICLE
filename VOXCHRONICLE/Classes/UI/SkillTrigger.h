@@ -20,9 +20,11 @@ using namespace cocos2d;
 class SkillTrigger : public CCSprite, CCTouchDelegate {
  private:
   // Skill* _skill;
+  bool _press;
 
  public:
   static SkillTrigger* create(const char* filename);
+  bool getPress();
   void setPress(bool press);
   ~SkillTrigger();
   SkillTrigger();

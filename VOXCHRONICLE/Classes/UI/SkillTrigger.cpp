@@ -20,12 +20,18 @@ SkillTrigger* SkillTrigger::create(const char *pszFileName) {
 }
 
 SkillTrigger::SkillTrigger() : CCSprite() {
+  _press = false;
 }
 
 SkillTrigger::~SkillTrigger() {
 }
 
+bool SkillTrigger::getPress() {
+  return _press;
+}
+
 void SkillTrigger::setPress(bool press) {
+  _press = press;
   if (press) {
     CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage("trigger_bg_selected.png");
     this->setTexture(texture);

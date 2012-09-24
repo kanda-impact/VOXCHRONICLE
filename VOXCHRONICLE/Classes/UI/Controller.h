@@ -23,6 +23,7 @@ public:
   ~Controller();
   Controller();
   void resetAllTriggers();
+  int currentTriggerIndex();
   LAYER_CREATE_FUNC(Controller)
 };
 
