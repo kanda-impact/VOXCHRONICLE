@@ -6,6 +6,9 @@
 //
 //
 
+#include <boost/function.hpp>
+#include <boost/bind.hpp>
+
 #include "MainScene.h"
 #include "Controller.h"
 
@@ -17,6 +20,10 @@ bool MainScene::init() {
     return false;
   }
   _music = new Music(3);
+  _music->setTrackDidBackFunction(boost::bind(&MainScene::trackDidBack, this, _1, _2, _3));
+  _music->setTrackDidFinishFunction(boost::bind(&MainScene::trackDidFinishPlaying, this, _1, _2, _3, _4));
+  _music->setTrackWillFinishFunction(boost::bind(&MainScene::trackWillFinishPlaying, this, _1, _2, _3, _4));
+  
   _music->pushTrack("dub_voxnormal00.wav", 0);
   _music->pushTrack("dub_voxnormal01.wav", 0);
   _music->pushTrack("dub_voxnormal02.wav", 0);
@@ -69,3 +76,17 @@ void MainScene::onEnterTransitionDidFinish() {
   _music->play();
 }
 
+void MainScene::trackDidBack(VISS::Music *music, VISS::Track *currentTrack, int trackNumber) {
+  if (trackNumber == 0) {
+    std::cout << "back" << std::endl;
+  }
+}
+
+void MainScene::trackWillFinishPlaying(Music *music, VISS::Track *currentTrack, VISS::Track *nextTrack, int trackNumber) {
+}
+
+void MainScene::trackDidFinishPlaying(Music *music, VISS::Track *finishedTrack, VISS::Track *nextTrack, int trackNumber) {
+  if (trackNumber == 0) {
+    std::cout << "next Track" << std::endl;
+  }
+}

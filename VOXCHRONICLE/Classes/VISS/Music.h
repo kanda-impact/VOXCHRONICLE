@@ -14,6 +14,7 @@
 #include <deque>
 #include <string>
 #include <boost/shared_ptr.hpp>
+#include <boost/function.hpp>
 #include "macros.h"
 
 #include "cocos2d.h"
@@ -24,8 +25,10 @@ namespace VISS {
    private:
     int _trackCount;
     std::vector< std::deque<boost::shared_ptr<Track> > > _tracks;
-   private:
     void update(float dt);
+    boost::function<void (Music*, Track*, Track*, int)> _trackWillFinishFunction;
+    boost::function<void (Music*, Track*, Track*, int)> _trackDidFinishFunction;
+    boost::function<void (Music*, Track*, int)> _trackDidBackFunction;
    public:
     Music();
     Music(int trackCount);
@@ -40,6 +43,9 @@ namespace VISS {
     bool play();
     void stop();
     void pause();
+    void setTrackWillFinishFunction(boost::function<void (Music*, Track*, Track*, int)>);
+    void setTrackDidFinishFunction(boost::function<void (Music*, Track*, Track*, int)>);
+    void setTrackDidBackFunction(boost::function<void (Music*, Track*, int)>);
   };
 }
 

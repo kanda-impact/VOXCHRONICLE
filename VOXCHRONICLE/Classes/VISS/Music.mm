@@ -94,15 +94,39 @@ void VISS::Music::pause() {
   cocos2d::CCDirector::sharedDirector()->getScheduler()->unscheduleAllSelectorsForTarget(this);
 }
 
+void VISS::Music::setTrackDidBackFunction(boost::function<void (Music *, Track *, int)> f) {
+  _trackDidBackFunction = f;
+}
+
+void VISS::Music::setTrackWillFinishFunction(boost::function<void (Music *, Track *, Track *, int)> f) {
+  _trackWillFinishFunction = f;
+}
+
+void VISS::Music::setTrackDidFinishFunction(boost::function<void (Music *, Track *, Track *, int)> f) {
+  _trackDidFinishFunction = f;
+}
+
 void VISS::Music::update(float dt) {
-  for (int i = 0; i < _trackCount; ++i) {
-    std::deque< boost::shared_ptr<Track> >* it = &_tracks.at(i);
+  for (int trackNumber = 0; trackNumber < _trackCount; ++trackNumber) {
+    std::deque< boost::shared_ptr<Track> >* it = &_tracks.at(trackNumber);
     boost::shared_ptr<VISS::Track> current = it->front();
     float sub = current->getDuration() - current->getPosition();
-    if (it->size() > 1 && sub <= dt * 5) {
-      std::cout << dt << std::endl;
-      it->pop_front();
-      it->front()->play();
+    if (sub - dt * 5 < current->getDuration() / 2 && current->getDuration() <= sub) {
+      if (_trackDidBackFunction != NULL) {
+        _trackDidBackFunction(this, current.get(), trackNumber);
+      }
+    }
+    if (sub <= dt * 5) {
+      if (_trackWillFinishFunction != NULL) {
+        _trackWillFinishFunction(this, current.get(), NULL, trackNumber);
+      }
+      if (it->size() > 1) {
+        it->pop_front();
+        it->front()->play();
+        if (_trackDidFinishFunction != NULL) {
+          _trackDidFinishFunction(this, current.get(), it->front().get(), trackNumber);
+        }
+      }
     }
   }
 }
