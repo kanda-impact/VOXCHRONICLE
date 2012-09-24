@@ -74,5 +74,14 @@
   [super dealloc];
 }
 
+// For ios6, use supportedInterfaceOrientations & shouldAutorotate instead of shouldAutorotateToInterfaceOrientation
+- (NSUInteger) supportedInterfaceOrientations{
+  return UIInterfaceOrientationMaskLandscape;
+}
+
+- (BOOL) shouldAutorotate {
+  return YES;
+}
+
 
 @end
