@@ -348,6 +348,7 @@
 		07D8746E15F01A15009CC446 /* OALTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8744F15F01500009CC446 /* OALTools.m */; };
 		07D8746F15F01A15009CC446 /* OALUtilityActions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8745115F01500009CC446 /* OALUtilityActions.m */; };
 		07D8747015F01A15009CC446 /* OpenALManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8745615F01500009CC446 /* OpenALManager.m */; };
+		07FA3B2C16107FCC00E9C7DE /* decide.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07FA3B2B16107F0400E9C7DE /* decide.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -975,6 +976,7 @@
 		07D8745515F01500009CC446 /* OpenALManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OpenALManager.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/OpenALManager.h; sourceTree = "<group>"; };
 		07D8745615F01500009CC446 /* OpenALManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OpenALManager.m; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/OpenALManager.m; sourceTree = "<group>"; };
 		07D8745715F01500009CC446 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/Support/SynthesizeSingleton.h; sourceTree = "<group>"; };
+		07FA3B2B16107F0400E9C7DE /* decide.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = decide.caf; path = Resources/SE/decide.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1007,10 +1009,10 @@
 		074EFCF515FA8B44004D8273 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				074EFD0715FA906C004D8273 /* Controller.cpp */,
 				074EFD0815FA906C004D8273 /* Controller.h */,
-				074EFD0915FA906D004D8273 /* SkillTrigger.cpp */,
+				074EFD0715FA906C004D8273 /* Controller.cpp */,
 				074EFD0A15FA906D004D8273 /* SkillTrigger.h */,
+				074EFD0915FA906D004D8273 /* SkillTrigger.cpp */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1102,6 +1104,7 @@
 			children = (
 				074EFCFD15FA8E24004D8273 /* Image */,
 				07D873E215ED1200009CC446 /* Music */,
+				07FA3B2A16107EE500E9C7DE /* SE */,
 				0791586815EBB4AF0083D348 /* ios */,
 			);
 			name = Resources;
@@ -2170,6 +2173,14 @@
 			name = ObjectAL;
 			sourceTree = "<group>";
 		};
+		07FA3B2A16107EE500E9C7DE /* SE */ = {
+			isa = PBXGroup;
+			children = (
+				07FA3B2B16107F0400E9C7DE /* decide.caf */,
+			);
+			name = SE;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2220,6 +2231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07FA3B2C16107FCC00E9C7DE /* decide.caf in Resources */,
 				0791587515EBB50E0083D348 /* Default.png in Resources */,
 				0791587615EBB50E0083D348 /* fps_images.png in Resources */,
 				0791587715EBB50E0083D348 /* Icon-72.png in Resources */,

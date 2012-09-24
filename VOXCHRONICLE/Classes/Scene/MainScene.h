@@ -14,11 +14,15 @@
 #include "Track.h"
 #include "Music.h"
 
+#include "Controller.h"
+
 using namespace VISS;
 
 class MainScene : public cocos2d::CCLayer {
  private:
-  VISS::Music* _music;
+  Music* _music;
+  Controller* _controller;
+  
   void onEnterTransitionDidFinish();
   
   void trackDidBack(Music* music, Track* currentTrack, int trackNumber);

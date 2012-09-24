@@ -10,7 +10,6 @@
 #include <boost/bind.hpp>
 
 #include "MainScene.h"
-#include "Controller.h"
 
 using namespace cocos2d;
 using namespace VISS;
@@ -65,9 +64,9 @@ bool MainScene::init() {
   _music->pushTrack("dub_drum04.wav", 2);
 
   CCDirector* director = CCDirector::sharedDirector();
-  Controller* controller = Controller::create();
+  _controller = Controller::create();
   CCSize size = director->getWinSize();
-  this->addChild(controller);
+  this->addChild(_controller);
   
   return true;
 }
@@ -76,17 +75,18 @@ void MainScene::onEnterTransitionDidFinish() {
   _music->play();
 }
 
-void MainScene::trackDidBack(VISS::Music *music, VISS::Track *currentTrack, int trackNumber) {
+void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber) {
   if (trackNumber == 0) {
     std::cout << "back" << std::endl;
   }
 }
 
-void MainScene::trackWillFinishPlaying(Music *music, VISS::Track *currentTrack, VISS::Track *nextTrack, int trackNumber) {
+void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track *nextTrack, int trackNumber) {
 }
 
-void MainScene::trackDidFinishPlaying(Music *music, VISS::Track *finishedTrack, VISS::Track *nextTrack, int trackNumber) {
+void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track *nextTrack, int trackNumber) {
   if (trackNumber == 0) {
+    _controller->resetAllTriggers();
     std::cout << "next Track" << std::endl;
   }
 }

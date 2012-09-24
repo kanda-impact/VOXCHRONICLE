@@ -6,8 +6,11 @@
 //
 //
 
+#include "SimpleAudioEngine.h"
+
 #include "Controller.h"
 #include "SkillTrigger.h"
+
 using namespace cocos2d;
 
 bool Controller::init() {
@@ -49,10 +52,19 @@ bool Controller::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
   CCARRAY_FOREACH(_triggers, trigger) {
     CCPoint p = ((SkillTrigger*)trigger)->convertTouchToNodeSpace(pTouch);
     if (ccpDistance(triggerCenter, p) < triggerRadius) {
+      this->resetAllTriggers();
+      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("decide.caf");
       ((SkillTrigger*)trigger)->setPress(true);
       break;
     }
   }
   
   return true;
+}
+
+void Controller::resetAllTriggers() {
+  CCObject* trigger = NULL;
+  CCARRAY_FOREACH(_triggers, trigger) {
+    ((SkillTrigger*)trigger)->setPress(false);
+  }
 }

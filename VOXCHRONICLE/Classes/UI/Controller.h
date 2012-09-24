@@ -22,6 +22,7 @@ public:
   virtual bool init();
   ~Controller();
   Controller();
+  void resetAllTriggers();
   LAYER_CREATE_FUNC(Controller)
 };
 
