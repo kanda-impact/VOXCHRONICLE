@@ -17,6 +17,8 @@ VISS::Music::Music() {
 VISS::Music::Music(int trackCount) {
   _trackCount = trackCount;
   _tracks = std::vector< std::deque<boost::shared_ptr<Track> > >(trackCount);
+  _backed = std::vector<bool>(trackCount);
+  for (int i = 0; i < trackCount; ++i) _backed.push_back(false);
 }
 
 VISS::Music::~Music() {
@@ -111,10 +113,11 @@ void VISS::Music::update(float dt) {
     std::deque< boost::shared_ptr<Track> >* it = &_tracks.at(trackNumber);
     boost::shared_ptr<VISS::Track> current = it->front();
     float sub = current->getDuration() - current->getPosition();
-    if (sub - dt * 5 < current->getDuration() / 2 && current->getDuration() <= sub) {
+    if (!_backed.at(trackNumber) && current->getDuration() / 2 < current->getPosition()) {
       if (_trackDidBackFunction != NULL) {
         _trackDidBackFunction(this, current.get(), trackNumber);
       }
+      _backed.at(trackNumber) = true;
     }
     if (sub <= dt * 5) {
       if (_trackWillFinishFunction != NULL) {
@@ -123,6 +126,7 @@ void VISS::Music::update(float dt) {
       if (it->size() > 1) {
         it->pop_front();
         it->front()->play();
+        _backed.at(trackNumber) = false;
         if (_trackDidFinishFunction != NULL) {
           _trackDidFinishFunction(this, current.get(), it->front().get(), trackNumber);
         }

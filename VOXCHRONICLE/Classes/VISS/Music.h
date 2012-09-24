@@ -25,6 +25,7 @@ namespace VISS {
    private:
     int _trackCount;
     std::vector< std::deque<boost::shared_ptr<Track> > > _tracks;
+    std::vector<bool> _backed;
     void update(float dt);
     boost::function<void (Music*, Track*, Track*, int)> _trackWillFinishFunction;
     boost::function<void (Music*, Track*, Track*, int)> _trackDidFinishFunction;
