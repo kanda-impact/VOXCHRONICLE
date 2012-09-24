@@ -99,13 +99,10 @@ void VISS::Music::update(float dt) {
     std::deque< boost::shared_ptr<Track> >* it = &_tracks.at(i);
     boost::shared_ptr<VISS::Track> current = it->front();
     float sub = current->getDuration() - current->getPosition();
-    if (it->size() > 1 && sub <= current->getDuration() * 0.1) {
+    if (it->size() > 1 && sub <= dt * 5) {
+      std::cout << dt << std::endl;
       it->pop_front();
-      if (sub - dt * 2.0 > 0) {
-        it->front()->playAfterTime(sub - dt * 2.0);
-      } else {
-        it->front()->play();
-      }
+      it->front()->play();
     }
   }
 }

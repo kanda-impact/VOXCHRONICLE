@@ -56,7 +56,7 @@ bool MainScene::init() {
   _music->pushTrack("dub_drum04.wav", 2);
   _music->pushTrack("dub_drum00.wav", 2, 3);
   _music->pushTrack("dub_drum04.wav", 2);
-  
+
   CCDirector* director = CCDirector::sharedDirector();
   Controller* controller = Controller::create();
   CCSize size = director->getWinSize();
