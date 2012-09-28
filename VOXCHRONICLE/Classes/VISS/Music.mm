@@ -109,7 +109,9 @@ void VISS::Music::setTrackDidFinishFunction(boost::function<void (Music *, Track
 }
 
 void VISS::Music::update(float dt) {
+  Track* finished[_trackCount];
   for (int trackNumber = 0; trackNumber < _trackCount; ++trackNumber) {
+    finished[trackNumber] = NULL;
     std::deque< boost::shared_ptr<Track> >* it = &_tracks.at(trackNumber);
     boost::shared_ptr<VISS::Track> current = it->front();
     float sub = current->getDuration() - current->getPosition();
@@ -119,17 +121,24 @@ void VISS::Music::update(float dt) {
       }
       _backed.at(trackNumber) = true;
     }
-    if (sub <= dt * 9) {
-      if (_trackWillFinishFunction != NULL) {
-        _trackWillFinishFunction(this, current.get(), NULL, trackNumber);
-      }
-      if (it->size() > 1) {
-        it->pop_front();
-        it->front()->play();
-        _backed.at(trackNumber) = false;
-        if (_trackDidFinishFunction != NULL) {
-          _trackDidFinishFunction(this, current.get(), it->front().get(), trackNumber);
-        }
+    if (!current->isPlaying() || sub <= 0.12) {
+      finished[trackNumber] = current.get();
+    }
+  }
+  for (int trackNumber = 0; trackNumber < _trackCount; ++trackNumber) {
+    Track* current = finished[trackNumber];
+    if (current == NULL) continue;
+    if (_trackWillFinishFunction != NULL) {
+      _trackWillFinishFunction(this, current, NULL, trackNumber);
+    }
+    std::deque< boost::shared_ptr<Track> >* it = &_tracks.at(trackNumber);
+    if (it->size() > 1) {
+      it->front()->stop();
+      it->pop_front();
+      it->front()->play();
+      _backed.at(trackNumber) = false;
+      if (_trackDidFinishFunction != NULL) {
+        _trackDidFinishFunction(this, current, it->front().get(), trackNumber);
       }
     }
   }

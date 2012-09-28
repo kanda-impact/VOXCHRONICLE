@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0739C4441615CEAF00CB864D /* dub_silent.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0739C4431615CEAF00CB864D /* dub_silent.wav */; };
 		074EFCFF15FA8E2D004D8273 /* kawaz.png in Resources */ = {isa = PBXBuildFile; fileRef = 074EFCFE15FA8E2D004D8273 /* kawaz.png */; };
 		074EFD0415FA8EB5004D8273 /* sword.png in Resources */ = {isa = PBXBuildFile; fileRef = 074EFD0215FA8EB5004D8273 /* sword.png */; };
 		074EFD0515FA8EB5004D8273 /* trigger_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 074EFD0315FA8EB5004D8273 /* trigger_bg.png */; };
@@ -352,6 +353,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0739C4431615CEAF00CB864D /* dub_silent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_silent.wav; path = Resources/Music/dub/dub_silent.wav; sourceTree = "<group>"; };
 		074EFCFE15FA8E2D004D8273 /* kawaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kawaz.png; path = Resources/Image/Title/kawaz.png; sourceTree = "<group>"; };
 		074EFD0215FA8EB5004D8273 /* sword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sword.png; path = Resources/Image/Main/UI/sword.png; sourceTree = "<group>"; };
 		074EFD0315FA8EB5004D8273 /* trigger_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trigger_bg.png; path = Resources/Image/Main/UI/trigger_bg.png; sourceTree = "<group>"; };
@@ -1987,6 +1989,7 @@
 		07AE143015F043520045E8F3 /* dub */ = {
 			isa = PBXGroup;
 			children = (
+				0739C4431615CEAF00CB864D /* dub_silent.wav */,
 				07AE143115F043890045E8F3 /* dub_basschord00.wav */,
 				07AE143215F043890045E8F3 /* dub_basschord01.wav */,
 				07AE143315F043890045E8F3 /* dub_basschord02.wav */,
@@ -2328,6 +2331,7 @@
 				074EFD0415FA8EB5004D8273 /* sword.png in Resources */,
 				074EFD0515FA8EB5004D8273 /* trigger_bg.png in Resources */,
 				074EFD1215FA9E17004D8273 /* trigger_bg_selected.png in Resources */,
+				0739C4441615CEAF00CB864D /* dub_silent.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

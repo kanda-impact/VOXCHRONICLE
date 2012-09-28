@@ -53,16 +53,13 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     int index = _controller->currentTriggerIndex();
     std::ostringstream os;
     if (index == -1) {
-      os << "dub_voxnormal00.wav";
+      os << "dub_silent.wav";
     } else {
-      os << "dub_voxnormal0" << index + 1 << ".wav";
+      os << "dub_voxnormal0" << index << ".wav";
     }
     _music->pushTrack(os.str().c_str(), 0);
   } else if (trackNumber == 1) {
-    int index = rand() % 8;
-    std::ostringstream os;
-    os << "dub_basschord0" << index << ".wav";
-    _music->pushTrack(os.str().c_str(), 1);
+    _music->pushTrack("dub_basschord00.wav", 1);
   } else if (trackNumber == 2) {
     _music->pushTrack("dub_drum00.wav", 2);
   }
