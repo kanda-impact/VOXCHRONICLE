@@ -18,12 +18,13 @@
 
 using namespace cocos2d;
 
-class EnemyManager :public CCObject {
+class EnemyManager :public CCLayer {
  private:
   CCArray* _enemies;
   int _enemyCount;
   //Level* _level;
  public:
+  virtual bool init();
   EnemyManager();
   ~EnemyManager();
   Enemy* popEnemy();
@@ -37,6 +38,7 @@ class EnemyManager :public CCObject {
   Enemy* getNearestEnemy();
   CCArray* getFilteredEnemies(boost::function<bool (Enemy*)>filter);
   bool attackEnemy(Enemy* enemy, int attack);
+  LAYER_CREATE_FUNC(EnemyManager)
 };
 
 #endif /* defined(__VOXCHRONICLE__EnemyManager__) */

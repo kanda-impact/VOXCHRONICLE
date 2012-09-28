@@ -27,17 +27,14 @@ bool MainScene::init() {
   _music->setTrackDidFinishFunction(boost::bind(&MainScene::trackDidFinishPlaying, this, _1, _2, _3, _4));
   _music->setTrackWillFinishFunction(boost::bind(&MainScene::trackWillFinishPlaying, this, _1, _2, _3, _4));
   
-  _music->pushTrack("dub_voxnormal00.wav", 0);
+  _music->pushTrack("dub_silent.wav", 0);
   _music->pushTrack("dub_basschord00.wav", 1);
   _music->pushTrack("dub_drum00.wav", 2);
   
-  _stage = CCLayer::create();
-  _stage->retain();
-  this->addChild(_stage);
-  _enemyManager = new EnemyManager();
+  _enemyManager = EnemyManager::create();
   _enemyManager->retain();
+  this->addChild(_enemyManager);
   Enemy* enemy = _enemyManager->popEnemy();
-  if (enemy) _stage->addChild(enemy);
   
   CCDirector* director = CCDirector::sharedDirector();
   _controller = Controller::create();
@@ -54,7 +51,6 @@ bool MainScene::init() {
 MainScene::~MainScene() {
   delete _music;
   _controller->release();
-  _stage->release();
   _enemyManager->release();
   _characterManager->release();
 }
@@ -66,7 +62,6 @@ void MainScene::onEnterTransitionDidFinish() {
 void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber) {
   if (trackNumber == 0) {
     Enemy* newEnemy = _enemyManager->lotPopEnemy();
-    if (newEnemy) _stage->addChild(newEnemy);
     CCObject* obj = NULL;
     CCARRAY_FOREACH(_enemyManager->getEnemies(), obj) {
       Enemy* enemy = (Enemy*)obj;
@@ -74,7 +69,6 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
         enemy->moveRow(-1);
       } else {
         _enemyManager->removeEnemy(enemy);
-        _stage->removeChild(enemy, true);
       }
     }
   }

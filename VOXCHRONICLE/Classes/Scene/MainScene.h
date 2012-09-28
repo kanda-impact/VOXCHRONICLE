@@ -26,7 +26,6 @@ class MainScene : public cocos2d::CCLayer {
   Controller* _controller;
   EnemyManager* _enemyManager;
   CharacterManager* _characterManager;
-  CCLayer* _stage;
   
   void onEnterTransitionDidFinish();
   

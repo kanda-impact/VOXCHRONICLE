@@ -12,7 +12,10 @@
 
 using namespace boost;
 
-EnemyManager::EnemyManager() {
+bool EnemyManager::init() {
+  if (!CCLayer::init()) {
+    return false;
+  }
   _enemies = CCArray::create();
   _enemies->retain();
   mt19937 gen( static_cast<unsigned long>(time(0)) );
@@ -21,6 +24,10 @@ EnemyManager::EnemyManager() {
   mt19937&, uniform_smallint<>
   > rand( gen, dst );
   _enemyCount = 0;
+  return true;
+}
+
+EnemyManager::EnemyManager() {
 }
 
 EnemyManager::~EnemyManager() {
@@ -32,6 +39,7 @@ Enemy* EnemyManager::popEnemy() {
   int col = rand() % 3;
   enemy->setCol(col);
   _enemies->addObject(enemy);
+  this->addChild(enemy);
   return enemy;
 }
 
@@ -65,6 +73,7 @@ CCArray* EnemyManager::getEnemies() {
 
 bool EnemyManager::removeEnemy(Enemy* enemy) {
   if (_enemies->containsObject(enemy)) {
+    this->removeChild(enemy, true);
     _enemies->removeObject(enemy);
     return true;
   }
