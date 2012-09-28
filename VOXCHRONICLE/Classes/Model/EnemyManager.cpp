@@ -70,3 +70,27 @@ bool EnemyManager::removeEnemy(Enemy* enemy) {
   }
   return false;
 }
+
+Enemy* EnemyManager::getNearestEnemy() {
+  CCObject* obj = NULL;
+  Enemy* minEnemy = NULL;
+  CCARRAY_FOREACH(_enemies, obj) {
+    Enemy* enemy = (Enemy*)obj;
+    if (!minEnemy || enemy->getRow() < minEnemy->getRow() || (enemy->getRow() == minEnemy->getRow() && enemy->getCol() < minEnemy->getCol())) {
+      minEnemy = enemy;
+    }
+  }
+  return minEnemy;
+}
+
+CCArray* EnemyManager::getFilteredEnemies(boost::function<bool (Enemy*)>filter) {
+  CCArray* enemies = CCArray::create();
+  CCObject* obj = NULL;
+  CCARRAY_FOREACH(_enemies, obj) {
+    Enemy* enemy = (Enemy*)obj;
+    if (filter(enemy)) {
+      enemies->addObject(enemy);
+    }
+  }
+  return enemies;
+}

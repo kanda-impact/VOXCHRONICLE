@@ -10,6 +10,7 @@
 #define __VOXCHRONICLE__EnemyManager__
 
 #include <iostream>
+#include <boost/function.hpp>
 
 #include "cocos2d.h"
 
@@ -33,6 +34,8 @@ class EnemyManager {
   //void setLevel(Level* lv);
   Enemy* enemyAt(int col, int row);
   bool removeEnemy(Enemy* enemy);
+  Enemy* getNearestEnemy();
+  CCArray* getFilteredEnemies(boost::function<bool (Enemy*)>filter);
 };
 
 #endif /* defined(__VOXCHRONICLE__EnemyManager__) */

@@ -8,6 +8,7 @@
 
 #ifndef __VOXCHRONICLE__Enemy__
 #define __VOXCHRONICLE__Enemy__
+#define MAX_ROW 8.0
 
 #include <iostream>
 #include "CCSprite.h"
