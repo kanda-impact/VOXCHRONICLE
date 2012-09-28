@@ -32,7 +32,7 @@ Enemy::~Enemy() {
 void Enemy::update(float dt) {
   this->setColor(ccc3(255, 0, 0));
   this->setScale((float)(8 - this->getRow()) / 8.0);
-  this->setPosition(CCPointMake(30 + _col * 140, 40 + 35 * _row));
+  this->setPosition(CCPointMake(60 + _col * 120, 40 + 35 * _row));
 }
 
 float Enemy::getRow() {

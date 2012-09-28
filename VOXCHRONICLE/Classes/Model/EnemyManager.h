@@ -20,11 +20,13 @@ using namespace cocos2d;
 class EnemyManager {
  private:
   CCArray* _enemies;
+  int _enemyCount;
   //Level* _level;
  public:
   EnemyManager();
   ~EnemyManager();
   Enemy* popEnemy();
+  Enemy* lotPopEnemy();
   bool isExistEnemy(int col, int row);
   CCArray* getEnemies();
   //Level* getLevel();

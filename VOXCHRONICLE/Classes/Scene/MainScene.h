@@ -24,6 +24,7 @@ class MainScene : public cocos2d::CCLayer {
   Music* _music;
   Controller* _controller;
   EnemyManager* _enemyManager;
+  CCLayer* _stage;
   
   void onEnterTransitionDidFinish();
   

@@ -31,9 +31,12 @@ bool MainScene::init() {
   _music->pushTrack("dub_basschord00.wav", 1);
   _music->pushTrack("dub_drum00.wav", 2);
   
+  _stage = CCLayer::create();
+  _stage->retain();
+  this->addChild(_stage);
    _enemyManager = new EnemyManager();
   Enemy* enemy = _enemyManager->popEnemy();
-  if (enemy) this->addChild(enemy);
+  if (enemy) _stage->addChild(enemy);
   
   CCDirector* director = CCDirector::sharedDirector();
   _controller = Controller::create();
@@ -47,6 +50,7 @@ bool MainScene::init() {
 MainScene::~MainScene() {
   delete _music;
   _controller->release();
+  _stage->release();
   delete _enemyManager;
 }
 
@@ -56,7 +60,8 @@ void MainScene::onEnterTransitionDidFinish() {
 
 void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber) {
   if (trackNumber == 0) {
-    std::cout << "back" << std::endl;
+    Enemy* newEnemy = _enemyManager->lotPopEnemy();
+    if (newEnemy) _stage->addChild(newEnemy);
     CCObject* obj = NULL;
     CCARRAY_FOREACH(_enemyManager->getEnemies(), obj) {
       Enemy* enemy = (Enemy*)obj;
@@ -64,7 +69,7 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
         enemy->moveRow(-1);
       } else {
         _enemyManager->removeEnemy(enemy);
-        this->removeChild(enemy, true);
+        _stage->removeChild(enemy, true);
       }
     }
   }

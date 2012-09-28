@@ -20,6 +20,7 @@ EnemyManager::EnemyManager() {
   variate_generator<
   mt19937&, uniform_smallint<>
   > rand( gen, dst );
+  _enemyCount = 0;
 }
 
 EnemyManager::~EnemyManager() {
@@ -29,10 +30,18 @@ EnemyManager::~EnemyManager() {
 Enemy* EnemyManager::popEnemy() {
   Enemy* enemy = Enemy::create("enemy.png");
   int col = rand() % 3;
-  std::cout << "col : " << col << std::endl;
   enemy->setCol(col);
   _enemies->addObject(enemy);
   return enemy;
+}
+
+Enemy* EnemyManager::lotPopEnemy() {
+  _enemyCount += rand() % 20;
+  if (_enemyCount > 50) {
+    _enemyCount = 0;
+    return this->popEnemy();
+  }
+  return NULL;
 }
 
 bool EnemyManager::isExistEnemy(int col, int row) {
