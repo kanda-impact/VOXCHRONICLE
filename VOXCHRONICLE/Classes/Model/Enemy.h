@@ -30,6 +30,7 @@ class Enemy : public CCSprite {
   int getCol();
   void setCol(int c);
   float bottomLine();
+  void moveRow(float r);
 };
 
 #endif /* defined(__VOXCHRONICLE__Enemy__) */

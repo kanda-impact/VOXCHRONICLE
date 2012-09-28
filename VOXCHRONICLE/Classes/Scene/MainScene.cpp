@@ -31,15 +31,15 @@ bool MainScene::init() {
   _music->pushTrack("dub_basschord00.wav", 1);
   _music->pushTrack("dub_drum00.wav", 2);
   
+   _enemyManager = new EnemyManager();
+  Enemy* enemy = _enemyManager->popEnemy();
+  if (enemy) this->addChild(enemy);
+  
   CCDirector* director = CCDirector::sharedDirector();
   _controller = Controller::create();
   _controller->retain();
   CCSize size = director->getWinSize();
   this->addChild(_controller);
-  
-  _enemyManager = new EnemyManager();
-  Enemy* enemy = _enemyManager->popEnemy();
-  if (enemy) this->addChild(enemy);
   
   return true;
 }
@@ -60,8 +60,12 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
     CCObject* obj = NULL;
     CCARRAY_FOREACH(_enemyManager->getEnemies(), obj) {
       Enemy* enemy = (Enemy*)obj;
-      std::cout << enemy->getRow() - 1 << std::endl;
-      enemy->setRow(enemy->getRow() - 1);
+      if (enemy->getRow() > 0) {
+        enemy->moveRow(-1);
+      } else {
+        _enemyManager->removeEnemy(enemy);
+        this->removeChild(enemy, true);
+      }
     }
   }
 }

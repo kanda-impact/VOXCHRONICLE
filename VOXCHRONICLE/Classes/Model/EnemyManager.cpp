@@ -53,3 +53,11 @@ Enemy* EnemyManager::enemyAt(int col, int row) {
 CCArray* EnemyManager::getEnemies() {
   return _enemies;
 }
+
+bool EnemyManager::removeEnemy(Enemy* enemy) {
+  if (_enemies->containsObject(enemy)) {
+    _enemies->removeObject(enemy);
+    return true;
+  }
+  return false;
+}

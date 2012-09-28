@@ -30,6 +30,7 @@ class EnemyManager {
   //Level* getLevel();
   //void setLevel(Level* lv);
   Enemy* enemyAt(int col, int row);
+  bool removeEnemy(Enemy* enemy);
 };
 
 #endif /* defined(__VOXCHRONICLE__EnemyManager__) */
