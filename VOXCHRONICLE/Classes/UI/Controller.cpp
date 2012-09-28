@@ -80,3 +80,12 @@ int Controller::currentTriggerIndex() {
   }
   return -1;
 }
+
+void Controller::setSkills(CCArray* skills) {
+  for (int i = 0; i < _triggers->count(); ++i) {
+    if (i >= skills->count()) break;
+    Skill* skill = (Skill*)skills->objectAtIndex(i);
+    SkillTrigger* trigger = (SkillTrigger*)_triggers->objectAtIndex(i);
+    trigger->setSkill(skill);
+  }
+}

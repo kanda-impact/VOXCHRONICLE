@@ -12,10 +12,12 @@
 #include <iostream>
 #include "cocos2d.h"
 
-class Controller : public cocos2d::CCLayer {
+using namespace cocos2d;
+
+class Controller : public CCLayer {
  private:
-  cocos2d::CCArray* _triggers;
-  virtual bool ccTouchBegan(cocos2d::CCTouch* pTouch, cocos2d::CCEvent* pEvent);
+  CCArray* _triggers;
+  virtual bool ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent);
   virtual void registerWithTouchDispatcher();
 
 public:
@@ -24,6 +26,7 @@ public:
   Controller();
   void resetAllTriggers();
   int currentTriggerIndex();
+  void setSkills(CCArray* skills);
   LAYER_CREATE_FUNC(Controller)
 };
 

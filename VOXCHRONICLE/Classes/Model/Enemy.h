@@ -32,6 +32,11 @@ class Enemy : public CCSprite {
   void setCol(int c);
   float bottomLine();
   void moveRow(float r);
+  
+  /**
+   ダメージを与えます。死亡時にはtrueを返します
+   */
+  bool damage(int d);
 };
 
 #endif /* defined(__VOXCHRONICLE__Enemy__) */

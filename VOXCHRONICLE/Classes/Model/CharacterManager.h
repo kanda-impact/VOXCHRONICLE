@@ -17,7 +17,7 @@ class CharacterManager {
   int _hp;
   int _mp;
   Character* _currentCharacter;
-  Character* _characters[2];
+  CCArray* _characters;
  public:
   CharacterManager();
   ~CharacterManager();

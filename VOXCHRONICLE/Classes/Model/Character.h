@@ -10,13 +10,18 @@
 #define __VOXCHRONICLE__Character__
 
 #include <iostream>
+#include "cocos2d.h"
 
-class Character {
+using namespace cocos2d;
+
+class Character :public CCObject {
  private:
-  //Skill* _skills;
+  CCArray* _skills;
+  const char* _name;
  public:
-  Character();
+  Character(CCArray* skills);
   ~Character();
+  const char* getName();
 };
 
 #endif /* defined(__VOXCHRONICLE__Character__) */

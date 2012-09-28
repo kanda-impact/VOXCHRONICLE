@@ -311,6 +311,7 @@
 		07C6F6AD1615D6300084708C /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AB1615D6300084708C /* Enemy.cpp */; };
 		07C6F6B11615D6420084708C /* EnemyManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AF1615D6420084708C /* EnemyManager.cpp */; };
 		07C6F6D21615DE330084708C /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C6F6D11615DE330084708C /* enemy.png */; };
+		07C6F6D516161CCF0084708C /* Skill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6D316161CCE0084708C /* Skill.cpp */; };
 		07D873F515ED1215009CC446 /* attack0.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E415ED1215009CC446 /* attack0.WAV */; };
 		07D873F615ED1215009CC446 /* attack1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E515ED1215009CC446 /* attack1.WAV */; };
 		07D873F715ED1215009CC446 /* attack2.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E615ED1215009CC446 /* attack2.WAV */; };
@@ -915,6 +916,8 @@
 		07C6F6AF1615D6420084708C /* EnemyManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyManager.cpp; path = Classes/Model/EnemyManager.cpp; sourceTree = "<group>"; };
 		07C6F6B01615D6420084708C /* EnemyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyManager.h; path = Classes/Model/EnemyManager.h; sourceTree = "<group>"; };
 		07C6F6D11615DE330084708C /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemy.png; path = Resources/Image/Enemy/enemy.png; sourceTree = "<group>"; };
+		07C6F6D316161CCE0084708C /* Skill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Skill.cpp; path = Classes/Skill.cpp; sourceTree = "<group>"; };
+		07C6F6D416161CCE0084708C /* Skill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Skill.h; path = Classes/Skill.h; sourceTree = "<group>"; };
 		07D8731515ECEE10009CC446 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = Classes/Scene/MainScene.h; sourceTree = "<group>"; };
 		07D873E415ED1215009CC446 /* attack0.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack0.WAV; path = Resources/Music/VOXQUEST/attack0.WAV; sourceTree = "<group>"; };
 		07D873E515ED1215009CC446 /* attack1.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack1.WAV; path = Resources/Music/VOXQUEST/attack1.WAV; sourceTree = "<group>"; };
@@ -1033,6 +1036,8 @@
 				07C6F6AB1615D6300084708C /* Enemy.cpp */,
 				07C6F6B01615D6420084708C /* EnemyManager.h */,
 				07C6F6AF1615D6420084708C /* EnemyManager.cpp */,
+				07C6F6D416161CCE0084708C /* Skill.h */,
+				07C6F6D316161CCE0084708C /* Skill.cpp */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -2623,6 +2628,7 @@
 				0739C44B1615D30800CB864D /* Character.cpp in Sources */,
 				07C6F6AD1615D6300084708C /* Enemy.cpp in Sources */,
 				07C6F6B11615D6420084708C /* EnemyManager.cpp in Sources */,
+				07C6F6D516161CCF0084708C /* Skill.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

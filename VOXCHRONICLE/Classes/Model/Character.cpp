@@ -8,8 +8,16 @@
 
 #include "Character.h"
 
-Character::Character() {
+Character::Character(CCArray* skills) {
+  _skills = skills;
+  _skills->retain();
+  _name = "オクス"; // とりあえずハードコード
 }
 
 Character::~Character() {
+  _skills->release();
+}
+
+const char* Character::getName() {
+  return _name;
 }

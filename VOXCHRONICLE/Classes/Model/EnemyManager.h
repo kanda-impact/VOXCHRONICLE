@@ -36,6 +36,7 @@ class EnemyManager {
   bool removeEnemy(Enemy* enemy);
   Enemy* getNearestEnemy();
   CCArray* getFilteredEnemies(boost::function<bool (Enemy*)>filter);
+  bool attackEnemy(Enemy* enemy, int attack);
 };
 
 #endif /* defined(__VOXCHRONICLE__EnemyManager__) */

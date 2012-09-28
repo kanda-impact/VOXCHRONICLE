@@ -40,3 +40,15 @@ void SkillTrigger::setPress(bool press) {
     this->setTexture(texture);
   }
 }
+
+Skill* SkillTrigger::getSkill() {
+  return _skill;
+}
+
+void SkillTrigger::setSkill(Skill* skill) {
+  if (_skill) {
+    _skill->release();
+  }
+  skill->retain();
+  _skill = skill;
+}

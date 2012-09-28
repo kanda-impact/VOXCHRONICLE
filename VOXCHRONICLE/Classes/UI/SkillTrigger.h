@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include "cocos2d.h"
+#include "Skill.h"
 
 using namespace cocos2d;
 
@@ -19,13 +20,15 @@ using namespace cocos2d;
 */
 class SkillTrigger : public CCSprite, CCTouchDelegate {
  private:
-  // Skill* _skill;
   bool _press;
-
+  Skill* _skill;
+  
  public:
   static SkillTrigger* create(const char* filename);
   bool getPress();
   void setPress(bool press);
+  Skill* getSkill();
+  void setSkill(Skill* skill);
   ~SkillTrigger();
   SkillTrigger();
 };

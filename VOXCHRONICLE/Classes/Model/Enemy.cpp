@@ -58,3 +58,8 @@ float Enemy::bottomLine() {
 void Enemy::moveRow(float r) {
   _row += r;
 }
+
+bool Enemy::damage(int d) {
+  _hp -= d;
+  return (_hp <= 0);
+}

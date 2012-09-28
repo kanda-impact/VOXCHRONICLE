@@ -94,3 +94,10 @@ CCArray* EnemyManager::getFilteredEnemies(boost::function<bool (Enemy*)>filter) 
   }
   return enemies;
 }
+
+bool EnemyManager::attackEnemy(Enemy* enemy, int damage) {
+  if (_enemies->containsObject(enemy)) {
+    return enemy->damage(damage);
+  }
+  return false;
+}
