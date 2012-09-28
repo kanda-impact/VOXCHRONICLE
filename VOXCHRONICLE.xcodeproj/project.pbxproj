@@ -298,10 +298,9 @@
 		07AE14A815F043890045E8F3 /* dub_voxmagic05.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE146715F043890045E8F3 /* dub_voxmagic05.wav */; };
 		07AE14A915F043890045E8F3 /* dub_voxmagic06.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE146815F043890045E8F3 /* dub_voxmagic06.wav */; };
 		07AE14AA15F043890045E8F3 /* dub_voxmagic07.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE146915F043890045E8F3 /* dub_voxmagic07.wav */; };
-		07AE14AB15F043890045E8F3 /* dub_voxnormal00.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE146A15F043890045E8F3 /* dub_voxnormal00.wav */; };
-		07AE14AC15F043890045E8F3 /* dub_voxnormal01.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE146B15F043890045E8F3 /* dub_voxnormal01.wav */; };
-		07AE14AD15F043890045E8F3 /* dub_voxnormal02.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE146C15F043890045E8F3 /* dub_voxnormal02.wav */; };
-		07AE14AE15F043890045E8F3 /* dub_voxnormal03.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE146D15F043890045E8F3 /* dub_voxnormal03.wav */; };
+		07AE14AC15F043890045E8F3 /* dub_voxattack1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE146B15F043890045E8F3 /* dub_voxattack1.wav */; };
+		07AE14AD15F043890045E8F3 /* dub_voxattack2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE146C15F043890045E8F3 /* dub_voxattack2.wav */; };
+		07AE14AE15F043890045E8F3 /* dub_voxattack3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE146D15F043890045E8F3 /* dub_voxattack3.wav */; };
 		07AE14AF15F043890045E8F3 /* dub_voxnormal04.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE146E15F043890045E8F3 /* dub_voxnormal04.wav */; };
 		07AE14B015F043890045E8F3 /* dub_voxnormal05.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE146F15F043890045E8F3 /* dub_voxnormal05.wav */; };
 		07AE14B115F043890045E8F3 /* dub_voxnormal06.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE147015F043890045E8F3 /* dub_voxnormal06.wav */; };
@@ -312,6 +311,7 @@
 		07C6F6B11615D6420084708C /* EnemyManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AF1615D6420084708C /* EnemyManager.cpp */; };
 		07C6F6D21615DE330084708C /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C6F6D11615DE330084708C /* enemy.png */; };
 		07C6F6D516161CCF0084708C /* Skill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6D316161CCE0084708C /* Skill.cpp */; };
+		07C6F6DC161635C80084708C /* dub_voxattack0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07C6F6DB161635C80084708C /* dub_voxattack0.wav */; };
 		07D873F515ED1215009CC446 /* attack0.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E415ED1215009CC446 /* attack0.WAV */; };
 		07D873F615ED1215009CC446 /* attack1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E515ED1215009CC446 /* attack1.WAV */; };
 		07D873F715ED1215009CC446 /* attack2.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E615ED1215009CC446 /* attack2.WAV */; };
@@ -899,10 +899,9 @@
 		07AE146715F043890045E8F3 /* dub_voxmagic05.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxmagic05.wav; path = Resources/Music/dub/dub_voxmagic05.wav; sourceTree = "<group>"; };
 		07AE146815F043890045E8F3 /* dub_voxmagic06.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxmagic06.wav; path = Resources/Music/dub/dub_voxmagic06.wav; sourceTree = "<group>"; };
 		07AE146915F043890045E8F3 /* dub_voxmagic07.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxmagic07.wav; path = Resources/Music/dub/dub_voxmagic07.wav; sourceTree = "<group>"; };
-		07AE146A15F043890045E8F3 /* dub_voxnormal00.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxnormal00.wav; path = Resources/Music/dub/dub_voxnormal00.wav; sourceTree = "<group>"; };
-		07AE146B15F043890045E8F3 /* dub_voxnormal01.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxnormal01.wav; path = Resources/Music/dub/dub_voxnormal01.wav; sourceTree = "<group>"; };
-		07AE146C15F043890045E8F3 /* dub_voxnormal02.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxnormal02.wav; path = Resources/Music/dub/dub_voxnormal02.wav; sourceTree = "<group>"; };
-		07AE146D15F043890045E8F3 /* dub_voxnormal03.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxnormal03.wav; path = Resources/Music/dub/dub_voxnormal03.wav; sourceTree = "<group>"; };
+		07AE146B15F043890045E8F3 /* dub_voxattack1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxattack1.wav; path = Resources/Music/dub/dub_voxattack1.wav; sourceTree = "<group>"; };
+		07AE146C15F043890045E8F3 /* dub_voxattack2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxattack2.wav; path = Resources/Music/dub/dub_voxattack2.wav; sourceTree = "<group>"; };
+		07AE146D15F043890045E8F3 /* dub_voxattack3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxattack3.wav; path = Resources/Music/dub/dub_voxattack3.wav; sourceTree = "<group>"; };
 		07AE146E15F043890045E8F3 /* dub_voxnormal04.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxnormal04.wav; path = Resources/Music/dub/dub_voxnormal04.wav; sourceTree = "<group>"; };
 		07AE146F15F043890045E8F3 /* dub_voxnormal05.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxnormal05.wav; path = Resources/Music/dub/dub_voxnormal05.wav; sourceTree = "<group>"; };
 		07AE147015F043890045E8F3 /* dub_voxnormal06.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxnormal06.wav; path = Resources/Music/dub/dub_voxnormal06.wav; sourceTree = "<group>"; };
@@ -918,6 +917,7 @@
 		07C6F6D11615DE330084708C /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemy.png; path = Resources/Image/Enemy/enemy.png; sourceTree = "<group>"; };
 		07C6F6D316161CCE0084708C /* Skill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Skill.cpp; path = Classes/Skill.cpp; sourceTree = "<group>"; };
 		07C6F6D416161CCE0084708C /* Skill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Skill.h; path = Classes/Skill.h; sourceTree = "<group>"; };
+		07C6F6DB161635C80084708C /* dub_voxattack0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxattack0.wav; path = Resources/Music/dub/dub_voxattack0.wav; sourceTree = "<group>"; };
 		07D8731515ECEE10009CC446 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = Classes/Scene/MainScene.h; sourceTree = "<group>"; };
 		07D873E415ED1215009CC446 /* attack0.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack0.WAV; path = Resources/Music/VOXQUEST/attack0.WAV; sourceTree = "<group>"; };
 		07D873E515ED1215009CC446 /* attack1.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack1.WAV; path = Resources/Music/VOXQUEST/attack1.WAV; sourceTree = "<group>"; };
@@ -2083,10 +2083,10 @@
 				07AE146715F043890045E8F3 /* dub_voxmagic05.wav */,
 				07AE146815F043890045E8F3 /* dub_voxmagic06.wav */,
 				07AE146915F043890045E8F3 /* dub_voxmagic07.wav */,
-				07AE146A15F043890045E8F3 /* dub_voxnormal00.wav */,
-				07AE146B15F043890045E8F3 /* dub_voxnormal01.wav */,
-				07AE146C15F043890045E8F3 /* dub_voxnormal02.wav */,
-				07AE146D15F043890045E8F3 /* dub_voxnormal03.wav */,
+				07C6F6DB161635C80084708C /* dub_voxattack0.wav */,
+				07AE146B15F043890045E8F3 /* dub_voxattack1.wav */,
+				07AE146C15F043890045E8F3 /* dub_voxattack2.wav */,
+				07AE146D15F043890045E8F3 /* dub_voxattack3.wav */,
 				07AE146E15F043890045E8F3 /* dub_voxnormal04.wav */,
 				07AE146F15F043890045E8F3 /* dub_voxnormal05.wav */,
 				07AE147015F043890045E8F3 /* dub_voxnormal06.wav */,
@@ -2363,10 +2363,9 @@
 				07AE14A815F043890045E8F3 /* dub_voxmagic05.wav in Resources */,
 				07AE14A915F043890045E8F3 /* dub_voxmagic06.wav in Resources */,
 				07AE14AA15F043890045E8F3 /* dub_voxmagic07.wav in Resources */,
-				07AE14AB15F043890045E8F3 /* dub_voxnormal00.wav in Resources */,
-				07AE14AC15F043890045E8F3 /* dub_voxnormal01.wav in Resources */,
-				07AE14AD15F043890045E8F3 /* dub_voxnormal02.wav in Resources */,
-				07AE14AE15F043890045E8F3 /* dub_voxnormal03.wav in Resources */,
+				07AE14AC15F043890045E8F3 /* dub_voxattack1.wav in Resources */,
+				07AE14AD15F043890045E8F3 /* dub_voxattack2.wav in Resources */,
+				07AE14AE15F043890045E8F3 /* dub_voxattack3.wav in Resources */,
 				07AE14AF15F043890045E8F3 /* dub_voxnormal04.wav in Resources */,
 				07AE14B015F043890045E8F3 /* dub_voxnormal05.wav in Resources */,
 				07AE14B115F043890045E8F3 /* dub_voxnormal06.wav in Resources */,
@@ -2377,6 +2376,7 @@
 				074EFD1215FA9E17004D8273 /* trigger_bg_selected.png in Resources */,
 				0739C4441615CEAF00CB864D /* dub_silent.wav in Resources */,
 				07C6F6D21615DE330084708C /* enemy.png in Resources */,
+				07C6F6DC161635C80084708C /* dub_voxattack0.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,17 +11,26 @@
 
 #include <iostream>
 #include "Character.h"
+#include "Skill.h"
 
-class CharacterManager {
+class CharacterManager :public CCObject {
  private:
   int _hp;
   int _mp;
   Character* _currentCharacter;
   CCArray* _characters;
+  Skill* _lastSkill;
+  Skill* _currentSkill;
+  int _repeatCount;
+  int _waitTurn;
  public:
   CharacterManager();
   ~CharacterManager();
   Character* getCurrentCharacter();
+  const char* performSkill(Skill* skill);
+  bool isPerforming();
+  void setLastSkill(Skill* skill);
+  void setCurrentSkill(Skill* skill);
 };
 
 #endif /* defined(__VOXCHRONICLE__CharacterManager__) */

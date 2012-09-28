@@ -40,6 +40,11 @@ class Skill :public CCObject {
  public:
   Skill(CCDictionary* info);
   ~Skill();
+  const char* getName();
+  const char* getSlug();
+  int getTurn();
+  int getAttack();
+  int getMaxRepeat();
 };
 
 #endif /* defined(__VOXCHRONICLE__Skill__) */

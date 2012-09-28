@@ -51,6 +51,8 @@ void SkillTrigger::setSkill(Skill* skill) {
   if (_skill) {
     _skill->release();
   }
-  skill->retain();
+  if (skill) {
+    skill->retain();
+  }
   _skill = skill;
 }

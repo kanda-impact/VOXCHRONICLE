@@ -21,3 +21,23 @@ Skill::Skill(CCDictionary* info) {
 
 Skill::~Skill() {
 }
+
+const char* Skill::getName() {
+  return _name;
+}
+
+const char* Skill::getSlug() {
+  return _slug;
+}
+
+int Skill::getTurn() {
+  return _turn;
+}
+
+int Skill::getMaxRepeat() {
+  return _maxRepeat;
+}
+
+int Skill::getAttack() {
+  return _attack;
+}

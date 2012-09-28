@@ -34,7 +34,8 @@ bool MainScene::init() {
   _stage = CCLayer::create();
   _stage->retain();
   this->addChild(_stage);
-   _enemyManager = new EnemyManager();
+  _enemyManager = new EnemyManager();
+  _enemyManager->retain();
   Enemy* enemy = _enemyManager->popEnemy();
   if (enemy) _stage->addChild(enemy);
   
@@ -42,6 +43,7 @@ bool MainScene::init() {
   _controller = Controller::create();
   _controller->retain();
   _characterManager = new CharacterManager();
+  _characterManager->retain();
   _controller->setSkills(_characterManager->getCurrentCharacter()->getSkills());
   CCSize size = director->getWinSize();
   this->addChild(_controller);
@@ -53,7 +55,8 @@ MainScene::~MainScene() {
   delete _music;
   _controller->release();
   _stage->release();
-  delete _enemyManager;
+  _enemyManager->release();
+  _characterManager->release();
 }
 
 void MainScene::onEnterTransitionDidFinish() {
@@ -81,11 +84,8 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
   if (trackNumber == 0) {
     Skill* skill = _controller->currentTriggerSkill();
     std::ostringstream os;
-    if (!skill) {
-      os << "dub_silent.wav";
-    } else {
-      os << "dub_voxnormal0" << 0 << ".wav";
-    }
+    const char* name = _characterManager->performSkill(skill);
+    os << "dub_" << name << ".wav";
     _music->pushTrack(os.str().c_str(), 0);
   } else if (trackNumber == 1) {
     _music->pushTrack("dub_basschord00.wav", 1);

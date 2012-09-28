@@ -18,7 +18,7 @@
 
 using namespace cocos2d;
 
-class EnemyManager {
+class EnemyManager :public CCObject {
  private:
   CCArray* _enemies;
   int _enemyCount;

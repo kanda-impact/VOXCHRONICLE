@@ -18,10 +18,12 @@ class Character :public CCObject {
  private:
   CCArray* _skills;
   const char* _name;
+  const char* _slug;
  public:
   Character(CCArray* skills);
   ~Character();
   const char* getName();
+  const char* getSlug();
   CCArray* getSkills();
 };
 
