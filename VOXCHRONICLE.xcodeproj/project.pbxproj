@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0739C4441615CEAF00CB864D /* dub_silent.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0739C4431615CEAF00CB864D /* dub_silent.wav */; };
+		0739C4481615D2FD00CB864D /* CharacterManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0739C4461615D2FD00CB864D /* CharacterManager.cpp */; };
+		0739C44B1615D30800CB864D /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0739C4491615D30800CB864D /* Character.cpp */; };
 		074EFCFF15FA8E2D004D8273 /* kawaz.png in Resources */ = {isa = PBXBuildFile; fileRef = 074EFCFE15FA8E2D004D8273 /* kawaz.png */; };
 		074EFD0415FA8EB5004D8273 /* sword.png in Resources */ = {isa = PBXBuildFile; fileRef = 074EFD0215FA8EB5004D8273 /* sword.png */; };
 		074EFD0515FA8EB5004D8273 /* trigger_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 074EFD0315FA8EB5004D8273 /* trigger_bg.png */; };
@@ -306,6 +308,9 @@
 		07AE14B215F043890045E8F3 /* dub_voxnormal07.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE147115F043890045E8F3 /* dub_voxnormal07.wav */; };
 		07B95E1A15F304120024C672 /* Music.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B95E1715F303E30024C672 /* Music.mm */; };
 		07B95E1B15F304120024C672 /* Track.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B95E1915F303E30024C672 /* Track.mm */; };
+		07C6F6AD1615D6300084708C /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AB1615D6300084708C /* Enemy.cpp */; };
+		07C6F6B11615D6420084708C /* EnemyManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AF1615D6420084708C /* EnemyManager.cpp */; };
+		07C6F6D21615DE330084708C /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C6F6D11615DE330084708C /* enemy.png */; };
 		07D873F515ED1215009CC446 /* attack0.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E415ED1215009CC446 /* attack0.WAV */; };
 		07D873F615ED1215009CC446 /* attack1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E515ED1215009CC446 /* attack1.WAV */; };
 		07D873F715ED1215009CC446 /* attack2.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E615ED1215009CC446 /* attack2.WAV */; };
@@ -354,6 +359,10 @@
 
 /* Begin PBXFileReference section */
 		0739C4431615CEAF00CB864D /* dub_silent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_silent.wav; path = Resources/Music/dub/dub_silent.wav; sourceTree = "<group>"; };
+		0739C4461615D2FD00CB864D /* CharacterManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CharacterManager.cpp; path = Classes/Model/CharacterManager.cpp; sourceTree = "<group>"; };
+		0739C4471615D2FD00CB864D /* CharacterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharacterManager.h; path = Classes/Model/CharacterManager.h; sourceTree = "<group>"; };
+		0739C4491615D30800CB864D /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Character.cpp; path = Classes/Model/Character.cpp; sourceTree = "<group>"; };
+		0739C44A1615D30800CB864D /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Character.h; path = Classes/Model/Character.h; sourceTree = "<group>"; };
 		074EFCFE15FA8E2D004D8273 /* kawaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kawaz.png; path = Resources/Image/Title/kawaz.png; sourceTree = "<group>"; };
 		074EFD0215FA8EB5004D8273 /* sword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sword.png; path = Resources/Image/Main/UI/sword.png; sourceTree = "<group>"; };
 		074EFD0315FA8EB5004D8273 /* trigger_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trigger_bg.png; path = Resources/Image/Main/UI/trigger_bg.png; sourceTree = "<group>"; };
@@ -901,6 +910,11 @@
 		07B95E1715F303E30024C672 /* Music.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = Music.mm; path = Classes/VISS/Music.mm; sourceTree = "<group>"; };
 		07B95E1815F303E30024C672 /* Track.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Track.h; path = Classes/VISS/Track.h; sourceTree = "<group>"; };
 		07B95E1915F303E30024C672 /* Track.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = Track.mm; path = Classes/VISS/Track.mm; sourceTree = "<group>"; };
+		07C6F6AB1615D6300084708C /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = Classes/Model/Enemy.cpp; sourceTree = "<group>"; };
+		07C6F6AC1615D6300084708C /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enemy.h; path = Classes/Model/Enemy.h; sourceTree = "<group>"; };
+		07C6F6AF1615D6420084708C /* EnemyManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyManager.cpp; path = Classes/Model/EnemyManager.cpp; sourceTree = "<group>"; };
+		07C6F6B01615D6420084708C /* EnemyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyManager.h; path = Classes/Model/EnemyManager.h; sourceTree = "<group>"; };
+		07C6F6D11615DE330084708C /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemy.png; path = Resources/Image/Enemy/enemy.png; sourceTree = "<group>"; };
 		07D8731515ECEE10009CC446 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = Classes/Scene/MainScene.h; sourceTree = "<group>"; };
 		07D873E415ED1215009CC446 /* attack0.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack0.WAV; path = Resources/Music/VOXQUEST/attack0.WAV; sourceTree = "<group>"; };
 		07D873E515ED1215009CC446 /* attack1.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack1.WAV; path = Resources/Music/VOXQUEST/attack1.WAV; sourceTree = "<group>"; };
@@ -1008,6 +1022,21 @@
 			name = Title;
 			sourceTree = "<group>";
 		};
+		0739C4451615D2D700CB864D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0739C4471615D2FD00CB864D /* CharacterManager.h */,
+				0739C4461615D2FD00CB864D /* CharacterManager.cpp */,
+				0739C44A1615D30800CB864D /* Character.h */,
+				0739C4491615D30800CB864D /* Character.cpp */,
+				07C6F6AC1615D6300084708C /* Enemy.h */,
+				07C6F6AB1615D6300084708C /* Enemy.cpp */,
+				07C6F6B01615D6420084708C /* EnemyManager.h */,
+				07C6F6AF1615D6420084708C /* EnemyManager.cpp */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		074EFCF515FA8B44004D8273 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1031,6 +1060,7 @@
 		074EFD0015FA8EAA004D8273 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				07C6F6D01615DE280084708C /* Enemy */,
 				074EFD0115FA8EAE004D8273 /* UI */,
 			);
 			name = Main;
@@ -1959,6 +1989,7 @@
 		076F1D3915EB94780013A45E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0739C4451615D2D700CB864D /* Model */,
 				074EFD0615FA8FF2004D8273 /* Scene */,
 				074EFCF515FA8B44004D8273 /* UI */,
 				07D8740815EFFFFC009CC446 /* VISS */,
@@ -2057,6 +2088,14 @@
 				07AE147115F043890045E8F3 /* dub_voxnormal07.wav */,
 			);
 			name = dub;
+			sourceTree = "<group>";
+		};
+		07C6F6D01615DE280084708C /* Enemy */ = {
+			isa = PBXGroup;
+			children = (
+				07C6F6D11615DE330084708C /* enemy.png */,
+			);
+			name = Enemy;
 			sourceTree = "<group>";
 		};
 		07D873E215ED1200009CC446 /* Music */ = {
@@ -2332,6 +2371,7 @@
 				074EFD0515FA8EB5004D8273 /* trigger_bg.png in Resources */,
 				074EFD1215FA9E17004D8273 /* trigger_bg_selected.png in Resources */,
 				0739C4441615CEAF00CB864D /* dub_silent.wav in Resources */,
+				07C6F6D21615DE330084708C /* enemy.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2579,6 +2619,10 @@
 				076F1D3C15EB94780013A45E /* AppDelegate.cpp in Sources */,
 				0791585A15EBA8350083D348 /* LogoScene.cpp in Sources */,
 				07D8740715ED13CD009CC446 /* MainScene.cpp in Sources */,
+				0739C4481615D2FD00CB864D /* CharacterManager.cpp in Sources */,
+				0739C44B1615D30800CB864D /* Character.cpp in Sources */,
+				07C6F6AD1615D6300084708C /* Enemy.cpp in Sources */,
+				07C6F6B11615D6420084708C /* EnemyManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,7 @@
 #include <boost/bind.hpp>
 
 #include "MainScene.h"
+#include "Enemy.h"
 
 using namespace cocos2d;
 using namespace VISS;
@@ -34,6 +35,9 @@ bool MainScene::init() {
   _controller = Controller::create();
   CCSize size = director->getWinSize();
   this->addChild(_controller);
+  
+  Enemy* enemy = Enemy::create("enemy.png");
+  this->addChild(enemy);
   
   return true;
 }
