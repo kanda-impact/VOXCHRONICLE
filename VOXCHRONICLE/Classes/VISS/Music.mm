@@ -119,7 +119,7 @@ void VISS::Music::update(float dt) {
       }
       _backed.at(trackNumber) = true;
     }
-    if (sub <= dt * 5) {
+    if (sub <= dt * 9) {
       if (_trackWillFinishFunction != NULL) {
         _trackWillFinishFunction(this, current.get(), NULL, trackNumber);
       }

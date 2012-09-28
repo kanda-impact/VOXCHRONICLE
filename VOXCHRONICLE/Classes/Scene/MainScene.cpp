@@ -7,7 +7,8 @@
 //
 
 #include <sstream>
-
+#include <cstdlib>
+#include <boost/random.hpp>
 #include <boost/function.hpp>
 #include <boost/bind.hpp>
 
@@ -58,7 +59,10 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     }
     _music->pushTrack(os.str().c_str(), 0);
   } else if (trackNumber == 1) {
-    _music->pushTrack("dub_basschord00.wav", 1);
+    int index = rand() % 8;
+    std::ostringstream os;
+    os << "dub_basschord0" << index << ".wav";
+    _music->pushTrack(os.str().c_str(), 1);
   } else if (trackNumber == 2) {
     _music->pushTrack("dub_drum00.wav", 2);
   }
