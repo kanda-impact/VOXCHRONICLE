@@ -93,7 +93,7 @@ Enemy* EnemyManager::getNearestEnemy() {
 }
 
 CCArray* EnemyManager::getFilteredEnemies(boost::function<bool (Enemy*)>filter) {
-  CCArray* enemies = CCArray::create();
+  CCArray* enemies = (CCArray*)CCArray::create();
   CCObject* obj = NULL;
   CCARRAY_FOREACH(_enemies, obj) {
     Enemy* enemy = (Enemy*)obj;
@@ -109,4 +109,23 @@ bool EnemyManager::attackEnemy(Enemy* enemy, int damage) {
     return enemy->damage(damage);
   }
   return false;
+}
+
+CCArray* EnemyManager::performSkill(Skill* skill) {
+  SkillRange range = skill->getRange();
+  CCArray* targets = (CCArray*)CCArray::create();
+  if (range == SkillRangeSingle) {
+    Enemy* target = this->getNearestEnemy();
+    if (target) {
+      targets->addObject(target);
+    }
+  }
+  CCObject* obj = NULL;
+  CCARRAY_FOREACH(targets, obj) {
+    Enemy* target = (Enemy*)obj;
+    if (target->damage(skill->getAttack())) {
+      this->removeEnemy(target);
+    }
+  }
+  return targets;
 }

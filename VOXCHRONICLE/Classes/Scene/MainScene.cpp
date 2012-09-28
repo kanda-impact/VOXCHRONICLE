@@ -34,7 +34,6 @@ bool MainScene::init() {
   _enemyManager = EnemyManager::create();
   _enemyManager->retain();
   this->addChild(_enemyManager);
-  Enemy* enemy = _enemyManager->popEnemy();
   
   CCDirector* director = CCDirector::sharedDirector();
   _controller = Controller::create();
@@ -61,7 +60,7 @@ void MainScene::onEnterTransitionDidFinish() {
 
 void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber) {
   if (trackNumber == 0) {
-    Enemy* newEnemy = _enemyManager->lotPopEnemy();
+    _enemyManager->lotPopEnemy();
     CCObject* obj = NULL;
     CCARRAY_FOREACH(_enemyManager->getEnemies(), obj) {
       Enemy* enemy = (Enemy*)obj;
@@ -81,6 +80,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     const char* name = _characterManager->performSkill(skill);
     os << "dub_" << name << ".wav";
     _music->pushTrack(os.str().c_str(), 0);
+    if (skill) _enemyManager->performSkill(skill);
   } else if (trackNumber == 1) {
     _music->pushTrack("dub_basschord00.wav", 1);
   } else if (trackNumber == 2) {

@@ -25,7 +25,8 @@ typedef enum {
   SkillRangeAll,        // 全体攻撃
   SkillRangeHorizontal, // 横攻撃
   SkillRangeVertical,   // 縦攻撃
-  SkillRangeBack        // 一番奥の敵攻撃
+  SkillRangeBack,       // 一番奥の敵攻撃
+  SkillRangeSelf        // 自分が対象
 } SkillRange;
 
 class Skill :public CCObject {
@@ -45,6 +46,8 @@ class Skill :public CCObject {
   int getTurn();
   int getAttack();
   int getMaxRepeat();
+  SkillRange getRange();
+  SkillType getType();
 };
 
 #endif /* defined(__VOXCHRONICLE__Skill__) */

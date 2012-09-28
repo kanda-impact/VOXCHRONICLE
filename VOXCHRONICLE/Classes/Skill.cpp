@@ -41,3 +41,11 @@ int Skill::getMaxRepeat() {
 int Skill::getAttack() {
   return _attack;
 }
+
+SkillRange Skill::getRange() {
+  return _range;
+}
+
+SkillType Skill::getType() {
+  return _type;
+}

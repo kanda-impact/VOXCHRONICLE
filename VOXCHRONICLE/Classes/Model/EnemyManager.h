@@ -15,6 +15,7 @@
 #include "cocos2d.h"
 
 #include "Enemy.h"
+#include "Skill.h"
 
 using namespace cocos2d;
 
@@ -38,6 +39,7 @@ class EnemyManager :public CCLayer {
   Enemy* getNearestEnemy();
   CCArray* getFilteredEnemies(boost::function<bool (Enemy*)>filter);
   bool attackEnemy(Enemy* enemy, int attack);
+  CCArray* performSkill(Skill* skill);
   LAYER_CREATE_FUNC(EnemyManager)
 };
 
