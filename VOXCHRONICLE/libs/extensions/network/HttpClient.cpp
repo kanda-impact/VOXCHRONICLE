@@ -31,7 +31,7 @@
 #include <semaphore.h>
 #include <errno.h>
 
-#include "curl/curl.h"
+#include "curl.h"
 
 NS_CC_EXT_BEGIN
 

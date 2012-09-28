@@ -12,6 +12,8 @@
 #include <boost/function.hpp>
 #include <boost/bind.hpp>
 
+#include "CCLuaEngine.h"
+
 #include "MainScene.h"
 #include "Enemy.h"
 
@@ -43,6 +45,12 @@ bool MainScene::init() {
   _controller->setSkills(_characterManager->getCurrentCharacter()->getSkills());
   CCSize size = director->getWinSize();
   this->addChild(_controller);
+  
+  CCLuaEngine* pEngine = CCLuaEngine::defaultEngine();
+  CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
+  std::string path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("hello.lua");
+  pEngine->addSearchPath(path.substr(0, path.find_last_of("/")).c_str());
+  pEngine->executeScriptFile(path.c_str());
   
   return true;
 }
