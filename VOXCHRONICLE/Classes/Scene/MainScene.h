@@ -15,6 +15,7 @@
 #include "Music.h"
 
 #include "Controller.h"
+#include "EnemyManager.h"
 
 using namespace VISS;
 
@@ -22,6 +23,7 @@ class MainScene : public cocos2d::CCLayer {
  private:
   Music* _music;
   Controller* _controller;
+  EnemyManager* _enemyManager;
   
   void onEnterTransitionDidFinish();
   
@@ -31,6 +33,7 @@ class MainScene : public cocos2d::CCLayer {
   
  public:
   virtual bool init();
+  ~MainScene();
   
   LAYER_CREATE_FUNC(MainScene);
 };

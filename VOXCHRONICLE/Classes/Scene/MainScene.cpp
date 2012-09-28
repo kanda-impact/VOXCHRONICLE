@@ -33,13 +33,21 @@ bool MainScene::init() {
   
   CCDirector* director = CCDirector::sharedDirector();
   _controller = Controller::create();
+  _controller->retain();
   CCSize size = director->getWinSize();
   this->addChild(_controller);
   
-  Enemy* enemy = Enemy::create("enemy.png");
-  this->addChild(enemy);
+  _enemyManager = new EnemyManager();
+  Enemy* enemy = _enemyManager->popEnemy();
+  if (enemy) this->addChild(enemy);
   
   return true;
+}
+
+MainScene::~MainScene() {
+  delete _music;
+  _controller->release();
+  delete _enemyManager;
 }
 
 void MainScene::onEnterTransitionDidFinish() {
@@ -49,6 +57,12 @@ void MainScene::onEnterTransitionDidFinish() {
 void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber) {
   if (trackNumber == 0) {
     std::cout << "back" << std::endl;
+    CCObject* obj = NULL;
+    CCARRAY_FOREACH(_enemyManager->getEnemies(), obj) {
+      Enemy* enemy = (Enemy*)obj;
+      std::cout << enemy->getRow() - 1 << std::endl;
+      enemy->setRow(enemy->getRow() - 1);
+    }
   }
 }
 
