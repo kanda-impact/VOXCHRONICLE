@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include "cocos2d.h"
+#include "Skill.h"
 
 using namespace cocos2d;
 
@@ -26,6 +27,7 @@ public:
   Controller();
   void resetAllTriggers();
   int currentTriggerIndex();
+  Skill* currentTriggerSkill();
   void setSkills(CCArray* skills);
   LAYER_CREATE_FUNC(Controller)
 };

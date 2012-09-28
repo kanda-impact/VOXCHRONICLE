@@ -21,6 +21,7 @@ class CharacterManager {
  public:
   CharacterManager();
   ~CharacterManager();
+  Character* getCurrentCharacter();
 };
 
 #endif /* defined(__VOXCHRONICLE__CharacterManager__) */

@@ -20,3 +20,7 @@ CharacterManager::CharacterManager() {
 CharacterManager::~CharacterManager() {
   _characters->release();
 }
+
+Character* CharacterManager::getCurrentCharacter() {
+  return _currentCharacter;
+}

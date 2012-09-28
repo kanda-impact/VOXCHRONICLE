@@ -21,9 +21,11 @@ SkillTrigger* SkillTrigger::create(const char *pszFileName) {
 
 SkillTrigger::SkillTrigger() : CCSprite() {
   _press = false;
+  _skill = NULL;
 }
 
 SkillTrigger::~SkillTrigger() {
+  _skill->release();
 }
 
 bool SkillTrigger::getPress() {

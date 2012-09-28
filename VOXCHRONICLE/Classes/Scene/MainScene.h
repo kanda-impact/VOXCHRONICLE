@@ -16,6 +16,7 @@
 
 #include "Controller.h"
 #include "EnemyManager.h"
+#include "CharacterManager.h"
 
 using namespace VISS;
 
@@ -24,6 +25,7 @@ class MainScene : public cocos2d::CCLayer {
   Music* _music;
   Controller* _controller;
   EnemyManager* _enemyManager;
+  CharacterManager* _characterManager;
   CCLayer* _stage;
   
   void onEnterTransitionDidFinish();

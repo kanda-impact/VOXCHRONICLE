@@ -89,3 +89,11 @@ void Controller::setSkills(CCArray* skills) {
     trigger->setSkill(skill);
   }
 }
+
+Skill* Controller::currentTriggerSkill() {
+  int index = this->currentTriggerIndex();
+  if (index >= 0) {
+    return ((SkillTrigger*)_triggers->objectAtIndex(index))->getSkill();
+  }
+  return NULL;
+}

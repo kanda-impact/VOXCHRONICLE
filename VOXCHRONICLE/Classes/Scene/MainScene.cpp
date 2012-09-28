@@ -41,6 +41,8 @@ bool MainScene::init() {
   CCDirector* director = CCDirector::sharedDirector();
   _controller = Controller::create();
   _controller->retain();
+  _characterManager = new CharacterManager();
+  _controller->setSkills(_characterManager->getCurrentCharacter()->getSkills());
   CCSize size = director->getWinSize();
   this->addChild(_controller);
   
@@ -77,12 +79,12 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
 
 void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track *nextTrack, int trackNumber) {
   if (trackNumber == 0) {
-    int index = _controller->currentTriggerIndex();
+    Skill* skill = _controller->currentTriggerSkill();
     std::ostringstream os;
-    if (index == -1) {
+    if (!skill) {
       os << "dub_silent.wav";
     } else {
-      os << "dub_voxnormal0" << index << ".wav";
+      os << "dub_voxnormal0" << 0 << ".wav";
     }
     _music->pushTrack(os.str().c_str(), 0);
   } else if (trackNumber == 1) {

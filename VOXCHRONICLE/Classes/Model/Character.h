@@ -22,6 +22,7 @@ class Character :public CCObject {
   Character(CCArray* skills);
   ~Character();
   const char* getName();
+  CCArray* getSkills();
 };
 
 #endif /* defined(__VOXCHRONICLE__Character__) */

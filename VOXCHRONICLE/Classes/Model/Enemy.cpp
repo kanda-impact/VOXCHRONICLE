@@ -22,7 +22,7 @@ Enemy* Enemy::create(const char *pszFileName) {
 Enemy::Enemy() {
   _row = 7;
   _col = 0;
-  _hp = 0;
+  _hp = 1;
   this->scheduleUpdate();
 }
 

@@ -21,3 +21,7 @@ Character::~Character() {
 const char* Character::getName() {
   return _name;
 }
+
+CCArray* Character::getSkills() {
+  return _skills;
+}
