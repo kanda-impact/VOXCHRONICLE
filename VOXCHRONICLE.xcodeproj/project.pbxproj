@@ -322,6 +322,7 @@
 		07C6092E16164FEE0084708C /* tolua_map.c in Sources */ = {isa = PBXBuildFile; fileRef = 07C6085516164FEE0084708C /* tolua_map.c */; };
 		07C6092F16164FEE0084708C /* tolua_push.c in Sources */ = {isa = PBXBuildFile; fileRef = 07C6085616164FEE0084708C /* tolua_push.c */; };
 		07C6093016164FEE0084708C /* tolua_to.c in Sources */ = {isa = PBXBuildFile; fileRef = 07C6085716164FEE0084708C /* tolua_to.c */; };
+		07C60932161667930084708C /* attack.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07C60931161667930084708C /* attack.lua */; };
 		07C6F6AD1615D6300084708C /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AB1615D6300084708C /* Enemy.cpp */; };
 		07C6F6B11615D6420084708C /* EnemyManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AF1615D6420084708C /* EnemyManager.cpp */; };
 		07C6F6D21615DE330084708C /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C6F6D11615DE330084708C /* enemy.png */; };
@@ -964,6 +965,7 @@
 		07C6085516164FEE0084708C /* tolua_map.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tolua_map.c; sourceTree = "<group>"; };
 		07C6085616164FEE0084708C /* tolua_push.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tolua_push.c; sourceTree = "<group>"; };
 		07C6085716164FEE0084708C /* tolua_to.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tolua_to.c; sourceTree = "<group>"; };
+		07C60931161667930084708C /* attack.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attack.lua; sourceTree = "<group>"; };
 		07C6F6AB1615D6300084708C /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = Classes/Model/Enemy.cpp; sourceTree = "<group>"; };
 		07C6F6AC1615D6300084708C /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enemy.h; path = Classes/Model/Enemy.h; sourceTree = "<group>"; };
 		07C6F6AF1615D6420084708C /* EnemyManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyManager.cpp; path = Classes/Model/EnemyManager.cpp; sourceTree = "<group>"; };
@@ -1343,6 +1345,7 @@
 			isa = PBXGroup;
 			children = (
 				07C6064116164F810084708C /* hello.lua */,
+				07C60931161667930084708C /* attack.lua */,
 			);
 			name = Script;
 			path = Resources/Script;
@@ -2518,6 +2521,7 @@
 				07C6064216164F810084708C /* hello.lua in Resources */,
 				07C6087A16164FEE0084708C /* ChangeLog in Resources */,
 				07C6087B16164FEE0084708C /* CMakeLists.txt in Resources */,
+				07C60932161667930084708C /* attack.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

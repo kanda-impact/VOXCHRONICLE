@@ -11,7 +11,7 @@
 #include "Skill.h"
 
 CharacterManager::CharacterManager() {
-  CCArray* skills = CCArray::create(new Skill(NULL), NULL);
+  CCArray* skills = CCArray::create(new Skill("attack"), NULL);
   Character* vox = new Character(skills);
   vox->autorelease();
   _characters = CCArray::create(vox, NULL);

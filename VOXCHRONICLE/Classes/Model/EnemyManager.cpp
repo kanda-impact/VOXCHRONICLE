@@ -123,7 +123,7 @@ CCArray* EnemyManager::performSkill(Skill* skill) {
   CCObject* obj = NULL;
   CCARRAY_FOREACH(targets, obj) {
     Enemy* target = (Enemy*)obj;
-    if (target->damage(skill->getAttack())) {
+    if (target->damage(skill->getPower())) {
       this->removeEnemy(target);
     }
   }

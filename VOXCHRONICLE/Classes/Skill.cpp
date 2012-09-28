@@ -6,17 +6,41 @@
 //
 //
 
+#include <sstream>
 #include "Skill.h"
+#include "LuaCocos2d.h"
 
-Skill::Skill(CCDictionary* info) {
+Skill::Skill(const char* slug) {
+  std::ostringstream os;
+  os << slug << ".lua";
+  CCLuaEngine* pEngine = CCLuaEngine::defaultEngine();
+  CCScriptEngineManager::sharedManager()->setScriptEngine(pEngine);
+  std::string path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath(os.str().c_str());
+  pEngine->addSearchPath(path.substr(0, path.find_last_of("/")).c_str());
+  pEngine->executeScriptFile(path.c_str());
+  lua_State* L = pEngine->getLuaState();
+  lua_getglobal(L, "skill");
+  int table = lua_gettop(L);
   // テスト用にハードコード
-  _name = "攻撃";
-  _slug = "attack";
-  _attack = 1;
-  _maxRepeat = 4;
-  _turn = 0;
-  _range = SkillRangeSingle;
-  _type = SkillTypePhysical;
+  lua_getfield(L, table, "name");
+  _name = lua_tostring(L, -1);
+  lua_pop(L, 1);
+  _slug = slug;
+  lua_getfield(L, table, "power");
+  _power = lua_tointeger(L, -1);
+  lua_pop(L, 1);
+  lua_getfield(L, table, "maxRepeat");
+  _maxRepeat = lua_tointeger(L, -1);
+  lua_pop(L, 1);
+  lua_getfield(L, table, "turn");
+  _turn = lua_tointeger(L, -1);
+  lua_pop(L, 1);
+  lua_getfield(L, table, "skillRange");
+  _range = (SkillRange)lua_tointeger(L, -1);
+  lua_pop(L, 1);
+  lua_getfield(L, table, "skillType");
+  _type = (SkillType)lua_tointeger(L, -1);
+  lua_pop(L, 1);
 }
 
 Skill::~Skill() {
@@ -38,8 +62,8 @@ int Skill::getMaxRepeat() {
   return _maxRepeat;
 }
 
-int Skill::getAttack() {
-  return _attack;
+int Skill::getPower() {
+  return _power;
 }
 
 SkillRange Skill::getRange() {

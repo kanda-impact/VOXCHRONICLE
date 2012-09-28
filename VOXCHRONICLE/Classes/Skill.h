@@ -33,18 +33,18 @@ class Skill :public CCObject {
  private:
   int _maxRepeat;
   int _turn;
-  int _attack;
+  int _power;
   const char* _name;
   const char* _slug;
   SkillRange _range;
   SkillType _type;
  public:
-  Skill(CCDictionary* info);
+  Skill(const char* slug);
   ~Skill();
   const char* getName();
   const char* getSlug();
   int getTurn();
-  int getAttack();
+  int getPower();
   int getMaxRepeat();
   SkillRange getRange();
   SkillType getType();
