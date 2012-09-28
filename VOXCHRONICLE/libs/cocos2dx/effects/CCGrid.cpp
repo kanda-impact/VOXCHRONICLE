@@ -1,5 +1,5 @@
 /****************************************************************************
-Copyright (c) 2010-2011 cocos2d-x.org
+Copyright (c) 2010-2012 cocos2d-x.org
 Copyright (c) 2009      On-Core
 
 http://www.cocos2d-x.org
@@ -146,7 +146,6 @@ bool CCGridBase::initWithSize(const ccGridSize& gridSize)
     if (! pTexture)
     {
         CCLOG("cocos2d: CCGrid: error creating texture");
-        delete this;
         return false;
     }
 
@@ -264,8 +263,12 @@ void CCGridBase::calculateVertexPoints(void)
 }
 
 // implementation of CCGrid3D
-
 CCGrid3D* CCGrid3D::gridWithSize(const ccGridSize& gridSize, CCTexture2D *pTexture, bool bFlipped)
+{
+    return CCGrid3D::create(gridSize, pTexture, bFlipped);
+}
+
+CCGrid3D* CCGrid3D::create(const ccGridSize& gridSize, CCTexture2D *pTexture, bool bFlipped)
 {
     CCGrid3D *pRet= new CCGrid3D();
 
@@ -286,6 +289,11 @@ CCGrid3D* CCGrid3D::gridWithSize(const ccGridSize& gridSize, CCTexture2D *pTextu
 }
 
 CCGrid3D* CCGrid3D::gridWithSize(const ccGridSize& gridSize)
+{
+    return CCGrid3D::create(gridSize);
+}
+
+CCGrid3D* CCGrid3D::create(const ccGridSize& gridSize)
 {
     CCGrid3D *pRet= new CCGrid3D();
 
@@ -338,7 +346,7 @@ void CCGrid3D::blit(void)
     // position
     glVertexAttribPointer(kCCVertexAttrib_Position, 3, GL_FLOAT, GL_FALSE, 0, m_pVertices);
 
-    // texCoods
+    // texCoords
     glVertexAttribPointer(kCCVertexAttrib_TexCoords, 2, GL_FLOAT, GL_FALSE, 0, m_pTexCoordinates);
 
     glDrawElements(GL_TRIANGLES, (GLsizei) n*6, GL_UNSIGNED_SHORT, m_pIndices);
@@ -480,6 +488,11 @@ CCTiledGrid3D::~CCTiledGrid3D(void)
 
 CCTiledGrid3D* CCTiledGrid3D::gridWithSize(const ccGridSize& gridSize, CCTexture2D *pTexture, bool bFlipped)
 {
+    return CCTiledGrid3D::create(gridSize, pTexture, bFlipped);
+}
+
+CCTiledGrid3D* CCTiledGrid3D::create(const ccGridSize& gridSize, CCTexture2D *pTexture, bool bFlipped)
+{
     CCTiledGrid3D *pRet= new CCTiledGrid3D();
 
     if (pRet)
@@ -499,6 +512,11 @@ CCTiledGrid3D* CCTiledGrid3D::gridWithSize(const ccGridSize& gridSize, CCTexture
 }
 
 CCTiledGrid3D* CCTiledGrid3D::gridWithSize(const ccGridSize& gridSize)
+{
+    return CCTiledGrid3D::create(gridSize);
+}
+
+CCTiledGrid3D* CCTiledGrid3D::create(const ccGridSize& gridSize)
 {
     CCTiledGrid3D *pRet= new CCTiledGrid3D();
 
@@ -533,7 +551,7 @@ void CCTiledGrid3D::blit(void)
     // position
     glVertexAttribPointer(kCCVertexAttrib_Position, 3, GL_FLOAT, GL_FALSE, 0, m_pVertices);
 
-    // texCoods
+    // texCoords
     glVertexAttribPointer(kCCVertexAttrib_TexCoords, 2, GL_FLOAT, GL_FALSE, 0, m_pTexCoordinates);
 
     glDrawElements(GL_TRIANGLES, (GLsizei)n*6, GL_UNSIGNED_SHORT, m_pIndices);

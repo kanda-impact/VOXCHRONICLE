@@ -48,10 +48,10 @@ NS_CC_BEGIN
 
 CCSpriteBatchNode* CCSpriteBatchNode::batchNodeWithTexture(CCTexture2D* tex, unsigned int capacity/* = kDefaultSpriteBatchCapacity*/)
 {
-    return CCSpriteBatchNode::create(tex, capacity);
+    return CCSpriteBatchNode::createWithTexture(tex, capacity);
 }
 
-CCSpriteBatchNode* CCSpriteBatchNode::create(CCTexture2D* tex, unsigned int capacity/* = kDefaultSpriteBatchCapacity*/)
+CCSpriteBatchNode* CCSpriteBatchNode::createWithTexture(CCTexture2D* tex, unsigned int capacity/* = kDefaultSpriteBatchCapacity*/)
 {
     CCSpriteBatchNode *batchNode = new CCSpriteBatchNode();
     batchNode->initWithTexture(tex, capacity);
@@ -139,7 +139,7 @@ void CCSpriteBatchNode::visit(void)
     // with the exception that it doesn't call visit on it's children
     //
     // The alternative is to have a void CCSprite#visit, but
-    // although this is less mantainable, is faster
+    // although this is less maintainable, is faster
     //
     if (! m_bIsVisible)
     {
@@ -280,7 +280,7 @@ void CCSpriteBatchNode::sortAllChildren()
 
             CCObject* pObj = NULL;
             //fast dispatch, give every child a new atlasIndex based on their relative zOrder (keep parent -> child relations intact)
-            // and at the same time reorder descedants and the quads to the right index
+            // and at the same time reorder descendants and the quads to the right index
             CCARRAY_FOREACH(m_pChildren, pObj)
             {
                 CCSprite* pChild = (CCSprite*)pObj;
@@ -424,7 +424,7 @@ void CCSpriteBatchNode::increaseAtlasCapacity(void)
     {
         // serious problems
         CCLOGWARN("cocos2d: WARNING: Not enough memory to resize the atlas");
-        CCAssert(false, "Not enough memory to resize the atla");
+        CCAssert(false, "Not enough memory to resize the atlas");
     }
 }
 

@@ -37,7 +37,7 @@ class MainScene : public cocos2d::CCLayer {
   virtual bool init();
   ~MainScene();
   
-  LAYER_CREATE_FUNC(MainScene);
+  CREATE_FUNC(MainScene);
 };
 
 #endif /* defined(__VOXCHRONICLE__MainScene__) */

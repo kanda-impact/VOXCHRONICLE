@@ -71,7 +71,7 @@ CCNode::CCNode(void)
 , m_tContentSize(CCSizeZero)
 , m_bIsRunning(false)
 , m_pParent(NULL)
-// "whole screen" objects. like Scenes and Layers, should set isRelativeAnchorPoint to false
+// "whole screen" objects. like Scenes and Layers, should set m_bIgnoreAnchorPointForPosition to false
 , m_bIgnoreAnchorPointForPosition(false)
 , m_nTag(kCCNodeTagInvalid)
 // userData is always inited as nil
@@ -91,11 +91,16 @@ CCNode::CCNode(void)
     m_pActionManager->retain();
     m_pScheduler = director->getScheduler();
     m_pScheduler->retain();
+
+    CCScriptEngineProtocol* pEngine = CCScriptEngineManager::sharedManager()->getScriptEngine();
+    m_eScriptType = pEngine != NULL ? pEngine->getScriptType() : kScriptTypeNone;
 }
 
 CCNode::~CCNode(void)
 {
     CCLOGINFO( "cocos2d: deallocing" );
+    
+    unregisterScriptHandler();
 
     CC_SAFE_RELEASE(m_pActionManager);
     CC_SAFE_RELEASE(m_pScheduler);
@@ -121,7 +126,6 @@ CCNode::~CCNode(void)
 
     // children
     CC_SAFE_RELEASE(m_pChildren);
-
 }
 
 float CCNode::getSkewX()
@@ -169,7 +173,7 @@ void CCNode::setZOrder(int z)
     }
 }
 
-/// ertexZ getter
+/// vertexZ getter
 float CCNode::getVertexZ()
 {
     return m_fVertexZ;
@@ -348,7 +352,7 @@ const CCPoint& CCNode::getAnchorPoint()
 
 void CCNode::setAnchorPoint(const CCPoint& point)
 {
-    if( ! CCPoint::CCPointEqualToPoint(point, m_tAnchorPoint) ) 
+    if( ! point.equals(m_tAnchorPoint))
     {
         m_tAnchorPoint = point;
         m_tAnchorPointInPoints = ccp( m_tContentSize.width * m_tAnchorPoint.x, m_tContentSize.height * m_tAnchorPoint.y );
@@ -357,14 +361,14 @@ void CCNode::setAnchorPoint(const CCPoint& point)
 }
 
 /// contentSize getter
-CCSize CCNode::getContentSize()
+const CCSize & CCNode::getContentSize()
 {
     return m_tContentSize;
 }
 
-void CCNode::setContentSize(CCSize size)
+void CCNode::setContentSize(const CCSize & size)
 {
-    if( ! CCSize::CCSizeEqualToSize(size, m_tContentSize) ) 
+    if( ! size.equals(m_tContentSize))
     {
         m_tContentSize = size;
 
@@ -467,7 +471,7 @@ const char* CCNode::description()
 // lazy allocs
 void CCNode::childrenAlloc(void)
 {
-    m_pChildren = CCArray::create(4);
+    m_pChildren = CCArray::createWithCapacity(4);
     m_pChildren->retain();
 }
 
@@ -489,7 +493,7 @@ CCNode* CCNode::getChildByTag(int aTag)
 }
 
 /* "add" logic MUST only be on this method
-* If a class want's to extend the 'addChild' behaviour it only needs
+* If a class want's to extend the 'addChild' behavior it only needs
 * to override this method
 */
 void CCNode::addChild(CCNode *child, int zOrder, int tag)
@@ -679,7 +683,7 @@ void CCNode::sortAllChildren()
  {
      //CCAssert(0);
      // override me
-     // Only use- this function to draw your staff.
+     // Only use- this function to draw your stuff.
      // DON'T draw your stuff outside this method
  }
 
@@ -796,20 +800,30 @@ void CCNode::onEnter()
 
     m_bIsRunning = true;
 
-    if (m_nScriptHandler)
+    if (m_eScriptType != kScriptTypeNone)
     {
-        CCScriptEngineManager::sharedManager()->getScriptEngine()->executeFunctionWithIntegerData(m_nScriptHandler, kCCNodeOnEnter);
+        CCScriptEngineManager::sharedManager()->getScriptEngine()->executeNodeEvent(this, kCCNodeOnEnter);
     }
 }
 
 void CCNode::onEnterTransitionDidFinish()
 {
     arrayMakeObjectsPerformSelector(m_pChildren, onEnterTransitionDidFinish, CCNode*);
+
+    if (m_eScriptType == kScriptTypeJavascript)
+    {
+        CCScriptEngineManager::sharedManager()->getScriptEngine()->executeNodeEvent(this, kCCNodeOnEnterTransitionDidFinish);
+    }
 }
 
 void CCNode::onExitTransitionDidStart()
 {
     arrayMakeObjectsPerformSelector(m_pChildren, onExitTransitionDidStart, CCNode*);
+
+    if (m_eScriptType == kScriptTypeJavascript)
+    {
+        CCScriptEngineManager::sharedManager()->getScriptEngine()->executeNodeEvent(this, kCCNodeOnExitTransitionDidStart);
+    }
 }
 
 void CCNode::onExit()
@@ -818,9 +832,9 @@ void CCNode::onExit()
 
     m_bIsRunning = false;
 
-    if (m_nScriptHandler)
+    if ( m_eScriptType != kScriptTypeNone)
     {
-        CCScriptEngineManager::sharedManager()->getScriptEngine()->executeFunctionWithIntegerData(m_nScriptHandler, kCCNodeOnExit);
+        CCScriptEngineManager::sharedManager()->getScriptEngine()->executeNodeEvent(this, kCCNodeOnExit);
     }
 
     arrayMakeObjectsPerformSelector(m_pChildren, onExit, CCNode*);
@@ -837,7 +851,7 @@ void CCNode::unregisterScriptHandler(void)
 {
     if (m_nScriptHandler)
     {
-        CCScriptEngineManager::sharedManager()->getScriptEngine()->removeLuaHandler(m_nScriptHandler);
+        CCScriptEngineManager::sharedManager()->getScriptEngine()->removeScriptHandler(m_nScriptHandler);
         LUALOG("[LUA] Remove CCNode event handler: %d", m_nScriptHandler);
         m_nScriptHandler = 0;
     }
@@ -1002,7 +1016,7 @@ CCAffineTransform CCNode::nodeToParentTransform(void)
 
         // optimization:
         // inline anchor point calculation if skew is not needed
-        if (! needsSkewMatrix && !CCPoint::CCPointEqualToPoint(m_tAnchorPointInPoints, CCPointZero)) 
+        if (! needsSkewMatrix && !m_tAnchorPointInPoints.equals(CCPointZero))
         {
             x += c * -m_tAnchorPointInPoints.x * m_fScaleX + -s * -m_tAnchorPointInPoints.y * m_fScaleY;
             y += s * -m_tAnchorPointInPoints.x * m_fScaleX +  c * -m_tAnchorPointInPoints.y * m_fScaleY;
@@ -1024,7 +1038,7 @@ CCAffineTransform CCNode::nodeToParentTransform(void)
             m_tTransform = CCAffineTransformConcat(skewMatrix, m_tTransform);
 
             // adjust anchor point
-            if (! CCPoint::CCPointEqualToPoint(m_tAnchorPointInPoints, CCPointZero))
+            if (!m_tAnchorPointInPoints.equals(CCPointZero))
             {
                 m_tTransform = CCAffineTransformTranslate(m_tTransform, -m_tAnchorPointInPoints.x, -m_tAnchorPointInPoints.y);
             }
@@ -1094,14 +1108,12 @@ CCPoint CCNode::convertToWindowSpace(const CCPoint& nodePoint)
 // convenience methods which take a CCTouch instead of CCPoint
 CCPoint CCNode::convertTouchToNodeSpace(CCTouch *touch)
 {
-    CCPoint point = touch->locationInView();
-    point = CCDirector::sharedDirector()->convertToGL(point);
+    CCPoint point = touch->getLocation();
     return this->convertToNodeSpace(point);
 }
 CCPoint CCNode::convertTouchToNodeSpaceAR(CCTouch *touch)
 {
-    CCPoint point = touch->locationInView();
-    point = CCDirector::sharedDirector()->convertToGL(point);
+    CCPoint point = touch->getLocation();
     return this->convertToNodeSpaceAR(point);
 }
 

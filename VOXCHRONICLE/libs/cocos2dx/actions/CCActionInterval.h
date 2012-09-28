@@ -1,5 +1,5 @@
 /****************************************************************************
-Copyright (c) 2010-2011 cocos2d-x.org
+Copyright (c) 2010-2012 cocos2d-x.org
 Copyright (c) 2008-2011 Ricardo Quesada
 Copyright (c) 2011 Zynga Inc.
 
@@ -87,8 +87,8 @@ public:
 
 public:
     //extension in CCGridAction 
-    void setAmplitudeRate(CCFloat amp);
-    CCFloat getAmplitudeRate(void);
+    void setAmplitudeRate(float amp);
+    float getAmplitudeRate(void);
 
 protected:
     float m_elapsed;
@@ -103,7 +103,7 @@ public:
     ~CCSequence(void);
 
     /** initializes the action */
-    bool initOneTwo(CCFiniteTimeAction *pActionOne, CCFiniteTimeAction *pActionTwo);
+    bool initWithTwoActions(CCFiniteTimeAction *pActionOne, CCFiniteTimeAction *pActionTwo);
 
     virtual CCObject* copyWithZone(CCZone* pZone);
     virtual void startWithTarget(CCNode *pTarget);
@@ -116,7 +116,7 @@ public:
     @deprecated: This interface will be deprecated sooner or later.
     */
     CC_DEPRECATED_ATTRIBUTE static CCFiniteTimeAction* actions(CCFiniteTimeAction *pAction1, ...);
-    /** helper contructor to create an array of sequenceable actions given an array 
+    /** helper constructor to create an array of sequenceable actions given an array 
     @deprecated: This interface will be deprecated sooner or later.
     */
     CC_DEPRECATED_ATTRIBUTE static CCFiniteTimeAction* actionWithArray(CCArray *arrayOfActions);
@@ -127,10 +127,10 @@ public:
 
     /** helper constructor to create an array of sequenceable actions */
     static CCFiniteTimeAction* create(CCFiniteTimeAction *pAction1, ...);
-    /** helper contructor to create an array of sequenceable actions given an array */
+    /** helper constructor to create an array of sequenceable actions given an array */
     static CCFiniteTimeAction* create(CCArray *arrayOfActions);
     /** creates the action */
-    static CCSequence* create(CCFiniteTimeAction *pActionOne, CCFiniteTimeAction *pActionTwo);
+    static CCSequence* createWithTwoActions(CCFiniteTimeAction *pActionOne, CCFiniteTimeAction *pActionTwo);
 
 protected:
     CCFiniteTimeAction *m_pActions[2];
@@ -243,7 +243,7 @@ public:
     ~CCSpawn(void);
 
     /** initializes the Spawn action with the 2 actions to spawn */
-    bool initOneTwo(CCFiniteTimeAction *pAction1, CCFiniteTimeAction *pAction2);
+    bool initWithTwoActions(CCFiniteTimeAction *pAction1, CCFiniteTimeAction *pAction2);
 
     virtual CCObject* copyWithZone(CCZone* pZone);
     virtual void startWithTarget(CCNode *pTarget);
@@ -257,7 +257,7 @@ public:
     */
     CC_DEPRECATED_ATTRIBUTE static CCFiniteTimeAction* actions(CCFiniteTimeAction *pAction1, ...);
 
-    /** helper contructor to create an array of spawned actions given an array 
+    /** helper constructor to create an array of spawned actions given an array 
     @deprecated: This interface will be deprecated sooner or later.
     */
     CC_DEPRECATED_ATTRIBUTE static CCFiniteTimeAction* actionWithArray(CCArray *arrayOfActions);
@@ -270,11 +270,11 @@ public:
     /** helper constructor to create an array of spawned actions */
     static CCFiniteTimeAction* create(CCFiniteTimeAction *pAction1, ...);
 
-    /** helper contructor to create an array of spawned actions given an array */
+    /** helper constructor to create an array of spawned actions given an array */
     static CCFiniteTimeAction* create(CCArray *arrayOfActions);
 
     /** creates the Spawn action */
-    static CCSpawn* create(CCFiniteTimeAction *pAction1, CCFiniteTimeAction *pAction2);
+    static CCSpawn* createWithTwoActions(CCFiniteTimeAction *pAction1, CCFiniteTimeAction *pAction2);
 
 protected:
     CCFiniteTimeAction *m_pOne;

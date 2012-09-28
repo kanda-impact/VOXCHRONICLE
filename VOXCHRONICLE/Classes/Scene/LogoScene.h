@@ -22,7 +22,7 @@ public:
   virtual bool init();
   static cocos2d::CCScene* scene();
   
-  LAYER_CREATE_FUNC(LogoScene);
+  CREATE_FUNC(LogoScene);
 };
 
 #endif /* defined(__VOXCHRONICLE__LogoScene__) */

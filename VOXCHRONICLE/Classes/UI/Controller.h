@@ -29,7 +29,7 @@ public:
   int currentTriggerIndex();
   Skill* currentTriggerSkill();
   void setSkills(CCArray* skills);
-  LAYER_CREATE_FUNC(Controller)
+  CREATE_FUNC(Controller);
 };
 
 #endif /* defined(__VOXCHRONICLE__Controller__) */

@@ -51,7 +51,7 @@ enum {
 * 
 * Features and Limitation:
 *  - You can add MenuItem objects in runtime using addChild:
-*  - But the only accecpted children are MenuItem objects
+*  - But the only accepted children are MenuItem objects
 */
 class CC_DLL CCMenu : public CCLayer, public CCRGBAProtocol
 {
@@ -98,7 +98,7 @@ public:
     static CCMenu* create(CCMenuItem* item, ...);
 
     /** creates a CCMenu with a CCArray of CCMenuItem objects */
-    static CCMenu* create(CCArray* pArrayOfItems);
+    static CCMenu* createWithArray(CCArray* pArrayOfItems);
 
     /** creates a CCMenu with it's item, then use addChild() to add 
       * other items. It is used for script, it can't init with undetermined

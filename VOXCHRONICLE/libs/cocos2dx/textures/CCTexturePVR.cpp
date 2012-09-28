@@ -1,6 +1,6 @@
 /****************************************************************************
 Copyright (c) 2011        Jirka Fajfr for cocos2d-x
-Copyright (c) 2010-2011 cocos2d-x.org
+Copyright (c) 2010-2012 cocos2d-x.org
 Copyright (c) 2008      Apple Inc. All Rights Reserved.
 
 http://www.cocos2d-x.org
@@ -33,6 +33,7 @@ THE SOFTWARE.
 #include "platform/CCFileUtils.h"
 #include "support/zip_support/ZipUtils.h"
 #include "shaders/ccGLStateCache.h"
+#include <ctype.h>
 #include <cctype>
 
 NS_CC_BEGIN
@@ -46,7 +47,7 @@ enum {
     kPVRTextureFlagBumpmap        = (1<<10),       // has normals encoded for a bump map
     kPVRTextureFlagTiling         = (1<<11),       // is bordered for tiled pvr
     kPVRTextureFlagCubemap        = (1<<12),       // is a cubemap/skybox
-    kPVRTextureFlagFalseMipCol    = (1<<13),       // are there false coloured MIP levels
+    kPVRTextureFlagFalseMipCol    = (1<<13),       // are there false colored MIP levels
     kPVRTextureFlagVolume         = (1<<14),       // is this a volume texture
     kPVRTextureFlagAlpha          = (1<<15),       // v2.1 is there transparency info in the texture
     kPVRTextureFlagVerticalFlip   = (1<<16),       // v2.1 is the texture vertically flipped
@@ -88,8 +89,8 @@ static const unsigned int tableFormats[][7] = {
 	{ kPVRTexturePixelTypeI_8,		 GL_LUMINANCE,	GL_LUMINANCE,	GL_UNSIGNED_BYTE,		8,	false, kCCTexture2DPixelFormat_I8		},
 	{ kPVRTexturePixelTypeAI_88,	 GL_LUMINANCE_ALPHA,	GL_LUMINANCE_ALPHA, GL_UNSIGNED_BYTE,16,	false, kCCTexture2DPixelFormat_AI88	},
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)  
-	{ kPVRTexturePixelTypePVRTC_2,	 GL_COMPRESSED_RGBA_PVRTC_2BPPV1_IMG, -1, -1,			2,	true, kCCTexture2DPixelFormat_PVRTC2	},
-	{ kPVRTexturePixelTypePVRTC_4,	 GL_COMPRESSED_RGBA_PVRTC_4BPPV1_IMG, -1, -1,			4,	true, kCCTexture2DPixelFormat_PVRTC4	},
+	{ kPVRTexturePixelTypePVRTC_2,	 GL_COMPRESSED_RGBA_PVRTC_2BPPV1_IMG, (unsigned int)-1, (unsigned int)-1,			2,	true, kCCTexture2DPixelFormat_PVRTC2	},
+	{ kPVRTexturePixelTypePVRTC_4,	 GL_COMPRESSED_RGBA_PVRTC_4BPPV1_IMG, (unsigned int)-1, (unsigned int)-1,			4,	true, kCCTexture2DPixelFormat_PVRTC4	},
 
 	{ kPVRTexturePixelTypeBGRA_8888, GL_RGBA,	GL_BGRA, GL_UNSIGNED_BYTE,					32,	false, kCCTexture2DPixelFormat_RGBA8888	},
 #endif // iphone only
@@ -194,7 +195,7 @@ bool CCTexturePVR::unpackPVRData(unsigned char* data, unsigned int len)
     if (! configuration->supportsNPOT() &&
         (header->width != ccNextPOT(header->width) || header->height != ccNextPOT(header->height)))
     {
-        CCLOG("cocos2d: ERROR: Loding an NPOT texture (%dx%d) but is not supported on this device", header->width, header->height);
+        CCLOG("cocos2d: ERROR: Loading an NPOT texture (%dx%d) but is not supported on this device", header->width, header->height);
         return false;
     }
 
@@ -206,7 +207,7 @@ bool CCTexturePVR::unpackPVRData(unsigned char* data, unsigned int len)
             //Reset num of mipmaps
             m_uNumberOfMipmaps = 0;
 
-            //Get size of maimap
+            //Get size of mipmap
             m_uWidth = width = CC_SWAP_INT32_LITTLE_TO_HOST(header->width);
             m_uHeight = height = CC_SWAP_INT32_LITTLE_TO_HOST(header->height);
             
@@ -266,17 +267,17 @@ bool CCTexturePVR::unpackPVRData(unsigned char* data, unsigned int len)
                 }
 
                 dataSize = widthBlocks * heightBlocks * ((blockSize  * bpp) / 8);
-                float packetLength = (dataLength - dataOffset);
+                unsigned int packetLength = (dataLength - dataOffset);
                 packetLength = packetLength > dataSize ? dataSize : packetLength;
                 
-                //Make record to the mipmaps array and increment coutner
+                //Make record to the mipmaps array and increment counter
                 m_asMipmaps[m_uNumberOfMipmaps].address = bytes + dataOffset;
                 m_asMipmaps[m_uNumberOfMipmaps].len = packetLength;
                 m_uNumberOfMipmaps++;
                 
                 //Check that we didn't overflow
                 CCAssert(m_uNumberOfMipmaps < CC_PVRMIPMAP_MAX, 
-                         "TexturePVR: Maximum number of mimpaps reached. Increate the CC_PVRMIPMAP_MAX value");
+                         "TexturePVR: Maximum number of mipmaps reached. Increase the CC_PVRMIPMAP_MAX value");
                 
                 dataOffset += packetLength;
                 
@@ -432,6 +433,11 @@ bool CCTexturePVR::initWithContentsOfFile(const char* path)
 }
 
 CCTexturePVR * CCTexturePVR::pvrTextureWithContentsOfFile(const char* path)
+{
+    return CCTexturePVR::create(path);
+}
+
+CCTexturePVR * CCTexturePVR::create(const char* path)
 {
     CCTexturePVR * pTexture = new CCTexturePVR();
     if (pTexture)

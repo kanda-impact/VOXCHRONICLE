@@ -53,7 +53,7 @@ public:
     // Lua reference id
     int                 m_nLuaID;
 protected:
-    // count of refrence
+    // count of references
     unsigned int        m_uReference;
     // is the object autoreleased
     bool        m_bManaged;        
@@ -65,7 +65,7 @@ public:
     void retain(void);
     CCObject* autorelease(void);
     CCObject* copy(void);
-    bool isSingleRefrence(void);
+    bool isSingleReference(void);
     unsigned int retainCount(void);
     virtual bool isEqual(const CCObject* pObject);
 

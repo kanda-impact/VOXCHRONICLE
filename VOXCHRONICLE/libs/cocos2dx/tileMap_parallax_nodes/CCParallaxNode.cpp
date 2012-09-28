@@ -1,5 +1,5 @@
 /****************************************************************************
-Copyright (c) 2010-2011 cocos2d-x.org
+Copyright (c) 2010-2012 cocos2d-x.org
 Copyright (c) 2009-2010 Ricardo Quesada
 Copyright (c) 2011      Zynga Inc.
 
@@ -138,7 +138,7 @@ void CCParallaxNode::visit()
     //    CCPoint pos = position_;
     //    CCPoint    pos = [self convertToWorldSpace:CCPointZero];
     CCPoint pos = this->absolutePosition();
-    if( ! CCPoint::CCPointEqualToPoint(pos, m_tLastPosition) )
+    if( ! pos.equals(m_tLastPosition) )
     {
         for(unsigned int i=0; i < m_pParallaxArray->num; i++ ) 
         {

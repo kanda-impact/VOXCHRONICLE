@@ -40,7 +40,7 @@ class EnemyManager :public CCLayer {
   CCArray* getFilteredEnemies(boost::function<bool (Enemy*)>filter);
   bool attackEnemy(Enemy* enemy, int attack);
   CCArray* performSkill(Skill* skill);
-  LAYER_CREATE_FUNC(EnemyManager)
+  CREATE_FUNC(EnemyManager)
 };
 
 #endif /* defined(__VOXCHRONICLE__EnemyManager__) */

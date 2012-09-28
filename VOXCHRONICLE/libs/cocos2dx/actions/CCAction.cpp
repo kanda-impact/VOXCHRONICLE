@@ -1,5 +1,5 @@
 /****************************************************************************
-Copyright (c) 2010-2011 cocos2d-x.org
+Copyright (c) 2010-2012 cocos2d-x.org
 Copyright (c) 2008-2010 Ricardo Quesada
 Copyright (c) 2011      Zynga Inc.
  
@@ -76,7 +76,7 @@ CCObject* CCAction::copyWithZone(CCZone *pZone)
     else
     {
         pRet = new CCAction();
-        pZone = pNewZone = new CCZone(pRet);
+        pNewZone = new CCZone(pRet);
     }
     //copy member data
     pRet->m_nTag = m_nTag;
@@ -244,7 +244,7 @@ bool CCFollow::initWithTarget(CCNode *pFollowedNode, const CCRect& rect/* = CCRe
  
     pFollowedNode->retain();
     m_pobFollowedNode = pFollowedNode;
-    if (CCRect::CCRectEqualToRect(rect, CCRectZero))
+    if (rect.equals(CCRectZero))
     {
         m_bBoundarySet = false;
     }

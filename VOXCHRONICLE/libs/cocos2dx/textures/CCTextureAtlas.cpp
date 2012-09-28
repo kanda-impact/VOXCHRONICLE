@@ -1,5 +1,5 @@
 /****************************************************************************
-Copyright (c) 2010-2011 cocos2d-x.org
+Copyright (c) 2010-2012 cocos2d-x.org
 Copyright (c) 2008-2010 Ricardo Quesada
 Copyright (c) 2011      Zynga Inc.
 
@@ -30,7 +30,7 @@ THE SOFTWARE.
 #include "ccMacros.h"
 #include "shaders/CCGLProgram.h"
 #include "shaders/ccGLStateCache.h"
-#include "extensions/CCNotificationCenter/CCNotificationCenter.h"
+#include "support/CCNotificationCenter.h"
 #include "CCEventType.h"
 // support
 #include "CCTexture2D.h"
@@ -64,7 +64,7 @@ CCTextureAtlas::~CCTextureAtlas()
 #endif
     CC_SAFE_RELEASE(m_pTexture);
     
-    extension::CCNotificationCenter::sharedNotificationCenter()->removeObserver(this, EVNET_COME_TO_FOREGROUND);
+    CCNotificationCenter::sharedNotificationCenter()->removeObserver(this, EVNET_COME_TO_FOREGROUND);
 }
 
 unsigned int CCTextureAtlas::getTotalQuads()
@@ -121,10 +121,10 @@ CCTextureAtlas * CCTextureAtlas::create(const char* file, unsigned int capacity)
 
 CCTextureAtlas * CCTextureAtlas::textureAtlasWithTexture(CCTexture2D *texture, unsigned int capacity)
 {
-    return CCTextureAtlas::create(texture, capacity);
+    return CCTextureAtlas::createWithTexture(texture, capacity);
 }
 
-CCTextureAtlas * CCTextureAtlas::create(CCTexture2D *texture, unsigned int capacity)
+CCTextureAtlas * CCTextureAtlas::createWithTexture(CCTexture2D *texture, unsigned int capacity)
 {
     CCTextureAtlas * pTextureAtlas = new CCTextureAtlas();
     if (pTextureAtlas && pTextureAtlas->initWithTexture(texture, capacity))
@@ -148,9 +148,7 @@ bool CCTextureAtlas::initWithFile(const char * file, unsigned int capacity)
     else
     {
         CCLOG("cocos2d: Could not open file: %s", file);
-        delete this;
-
-        return NULL;
+        return false;
     }
 }
 
@@ -186,7 +184,7 @@ bool CCTextureAtlas::initWithTexture(CCTexture2D *texture, unsigned int capacity
     memset( m_pIndices, 0, m_uCapacity * 6 * sizeof(GLushort) );
     
     // listen the event when app go to background
-    extension::CCNotificationCenter::sharedNotificationCenter()->addObserver(this,
+    CCNotificationCenter::sharedNotificationCenter()->addObserver(this,
                                                            callfuncO_selector(CCTextureAtlas::listenBackToForeground),
                                                            EVNET_COME_TO_FOREGROUND,
                                                            NULL);
@@ -386,7 +384,7 @@ void CCTextureAtlas::insertQuadFromIndex(unsigned int oldIndex, unsigned int new
     {
         return;
     }
-    // because it is ambigious in iphone, so we implement abs ourself
+    // because it is ambiguous in iphone, so we implement abs ourselves
     // unsigned int howMany = abs( oldIndex - newIndex);
     unsigned int howMany = (oldIndex - newIndex) > 0 ? (oldIndex - newIndex) :  (newIndex - oldIndex);
     unsigned int dst = oldIndex;
