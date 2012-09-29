@@ -123,6 +123,9 @@ CCArray* EnemyManager::performSkill(Skill* skill) {
   CCObject* obj = NULL;
   CCARRAY_FOREACH(targets, obj) {
     Enemy* target = (Enemy*)obj;
+    if (!strcmp(skill->getSlug(), "knockback")) {
+      target->moveRow(MAX_ROW - target->getRow() - 1);
+    }
     if (target->damage(skill->getPower())) {
       this->removeEnemy(target);
     }

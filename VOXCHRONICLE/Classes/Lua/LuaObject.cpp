@@ -8,10 +8,9 @@
 #include "LuaObject.h"
 
 LuaObject::LuaObject(const char* scriptName, const char* className) {
-  _engine = CCLuaEngine::defaultEngine();
+  _engine = CCLuaEngine::create();
   _path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath(scriptName);
   _engine->addSearchPath(_path.substr(0, _path.find_last_of("/")).c_str());
-  CCScriptEngineManager::sharedManager()->setScriptEngine(_engine);
   _engine->executeScriptFile(_path.c_str());
   _scriptName = scriptName;
   _className = className;
