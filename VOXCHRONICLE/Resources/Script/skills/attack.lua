@@ -1,3 +1,4 @@
+require "skill"
 params = {
   name = "攻撃",
   slug = "attack",

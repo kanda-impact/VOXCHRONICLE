@@ -9,14 +9,6 @@
 #include <boost/random.hpp>
 
 #include <boost/lambda/lambda.hpp>
-#include <boost/lambda/bind.hpp>
-#include <boost/lambda/if.hpp>
-#include <boost/lambda/loops.hpp>
-#include <boost/lambda/switch.hpp>
-#include <boost/lambda/construct.hpp>
-#include <boost/lambda/casts.hpp>
-#include <boost/lambda/exceptions.hpp>
-#include <boost/lambda/algorithm.hpp>
 
 #include "EnemyManager.h"
 
@@ -55,7 +47,7 @@ Enemy* EnemyManager::popEnemy() {
 }
 
 Enemy* EnemyManager::lotPopEnemy() {
-  _enemyCount += rand() % 20;
+  _enemyCount += rand() % 50;
   if (_enemyCount > 50) {
     _enemyCount = 0;
     return this->popEnemy();
@@ -122,7 +114,7 @@ bool EnemyManager::attackEnemy(Enemy* enemy, int damage) {
   return false;
 }
 
-CCArray* EnemyManager::performSkill(Skill* skill) {
+CCArray* EnemyManager::performSkill(Skill* skill, CharacterManager* characterManager) {
   SkillRange range = skill->getRange();
   CCArray* targets = (CCArray*)CCArray::create();
   if (range == SkillRangeSingle) {
@@ -141,15 +133,29 @@ CCArray* EnemyManager::performSkill(Skill* skill) {
     boost::function<bool (int, float)> predicate = _1 == target->getCol();
     targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
   }
+  
   CCObject* obj = NULL;
-  CCARRAY_FOREACH(targets, obj) {
-    Enemy* target = (Enemy*)obj;
-    if (!strcmp(skill->getSlug(), "knockback")) {
-      target->moveRow(MAX_ROW - target->getRow() - 1);
+  if (skill->getRange() == SkillRangeSelf) {
+    if (!strcmp(skill->getSlug(), "tension")) {
+      characterManager->chargeTension();
+      std::cout << "tension = " << characterManager->getTension() << std::endl;
     }
-    if (target->damage(skill->getPower())) {
-      this->removeEnemy(target);
+  } else {
+    CCARRAY_FOREACH(targets, obj) {
+      Enemy* target = (Enemy*)obj;
+      if (!strcmp(skill->getSlug(), "knockback")) {
+        target->moveRow(MAX_ROW - target->getRow() - 1);
+      }
+      if (target->damage(characterManager->calcDamage(target, skill))) {
+        this->removeEnemy(target);
+      }
     }
   }
+  
+  // テンション使ってないときreset
+  if (strcmp(skill->getSlug(), "tension")) {
+    characterManager->resetTension();
+  }
+  
   return targets;
 }

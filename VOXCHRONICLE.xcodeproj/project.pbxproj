@@ -39,6 +39,8 @@
 		0791587C15EBB50E0083D348 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791587015EBB4BB0083D348 /* Icon@2x.png */; };
 		0791587E15EBB50E0083D348 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 0791587215EBB4BB0083D348 /* iTunesArtwork */; };
 		079487951616D8C5004ABCF5 /* knockback.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079487941616D8C5004ABCF5 /* knockback.lua */; };
+		0794879C1616EC7E004ABCF5 /* tension.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0794879B1616EC7E004ABCF5 /* tension.lua */; };
+		07948A2D1616FCBD004ABCF5 /* skill.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07948A2C1616FCBD004ABCF5 /* skill.lua */; };
 		07AE147215F043890045E8F3 /* dub_basschord00.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE143115F043890045E8F3 /* dub_basschord00.wav */; };
 		07AE147315F043890045E8F3 /* dub_basschord01.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE143215F043890045E8F3 /* dub_basschord01.wav */; };
 		07AE147415F043890045E8F3 /* dub_basschord02.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE143315F043890045E8F3 /* dub_basschord02.wav */; };
@@ -87,7 +89,7 @@
 		07AE149F15F043890045E8F3 /* dub_sideattack02.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE145E15F043890045E8F3 /* dub_sideattack02.wav */; };
 		07AE14A015F043890045E8F3 /* dub_sideattack03.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE145F15F043890045E8F3 /* dub_sideattack03.wav */; };
 		07AE14A115F043890045E8F3 /* dub_startboss.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE146015F043890045E8F3 /* dub_startboss.wav */; };
-		07AE14A215F043890045E8F3 /* dub_tension.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE146115F043890045E8F3 /* dub_tension.wav */; };
+		07AE14A215F043890045E8F3 /* dub_voxtension0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE146115F043890045E8F3 /* dub_voxtension0.wav */; };
 		07AE14A315F043890045E8F3 /* dub_voxmagic00.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE146215F043890045E8F3 /* dub_voxmagic00.wav */; };
 		07AE14A415F043890045E8F3 /* dub_voxmagic01.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE146315F043890045E8F3 /* dub_voxmagic01.wav */; };
 		07AE14A515F043890045E8F3 /* dub_voxmagic02.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE146415F043890045E8F3 /* dub_voxmagic02.wav */; };
@@ -420,6 +422,8 @@
 		0791587115EBB4BB0083D348 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/ios/Info.plist; sourceTree = "<group>"; };
 		0791587215EBB4BB0083D348 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Resources/ios/iTunesArtwork; sourceTree = "<group>"; };
 		079487941616D8C5004ABCF5 /* knockback.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knockback.lua; sourceTree = "<group>"; };
+		0794879B1616EC7E004ABCF5 /* tension.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tension.lua; sourceTree = "<group>"; };
+		07948A2C1616FCBD004ABCF5 /* skill.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = skill.lua; sourceTree = "<group>"; };
 		07AE142915F028E50045E8F3 /* macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macros.h; sourceTree = "<group>"; };
 		07AE143115F043890045E8F3 /* dub_basschord00.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_basschord00.wav; path = Resources/Music/dub/dub_basschord00.wav; sourceTree = "<group>"; };
 		07AE143215F043890045E8F3 /* dub_basschord01.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_basschord01.wav; path = Resources/Music/dub/dub_basschord01.wav; sourceTree = "<group>"; };
@@ -469,7 +473,7 @@
 		07AE145E15F043890045E8F3 /* dub_sideattack02.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_sideattack02.wav; path = Resources/Music/dub/dub_sideattack02.wav; sourceTree = "<group>"; };
 		07AE145F15F043890045E8F3 /* dub_sideattack03.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_sideattack03.wav; path = Resources/Music/dub/dub_sideattack03.wav; sourceTree = "<group>"; };
 		07AE146015F043890045E8F3 /* dub_startboss.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_startboss.wav; path = Resources/Music/dub/dub_startboss.wav; sourceTree = "<group>"; };
-		07AE146115F043890045E8F3 /* dub_tension.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_tension.wav; path = Resources/Music/dub/dub_tension.wav; sourceTree = "<group>"; };
+		07AE146115F043890045E8F3 /* dub_voxtension0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxtension0.wav; path = Resources/Music/dub/dub_voxtension0.wav; sourceTree = "<group>"; };
 		07AE146215F043890045E8F3 /* dub_voxmagic00.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxmagic00.wav; path = Resources/Music/dub/dub_voxmagic00.wav; sourceTree = "<group>"; };
 		07AE146315F043890045E8F3 /* dub_voxmagic01.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxmagic01.wav; path = Resources/Music/dub/dub_voxmagic01.wav; sourceTree = "<group>"; };
 		07AE146415F043890045E8F3 /* dub_voxmagic02.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxmagic02.wav; path = Resources/Music/dub/dub_voxmagic02.wav; sourceTree = "<group>"; };
@@ -1326,7 +1330,7 @@
 				07AE145E15F043890045E8F3 /* dub_sideattack02.wav */,
 				07AE145F15F043890045E8F3 /* dub_sideattack03.wav */,
 				07AE146015F043890045E8F3 /* dub_startboss.wav */,
-				07AE146115F043890045E8F3 /* dub_tension.wav */,
+				07AE146115F043890045E8F3 /* dub_voxtension0.wav */,
 				07AE146215F043890045E8F3 /* dub_voxmagic00.wav */,
 				07AE146315F043890045E8F3 /* dub_voxmagic01.wav */,
 				07AE146415F043890045E8F3 /* dub_voxmagic02.wav */,
@@ -2254,8 +2258,10 @@
 		07C6093B161674650084708C /* skills */ = {
 			isa = PBXGroup;
 			children = (
+				07948A2C1616FCBD004ABCF5 /* skill.lua */,
 				07C6093C161674650084708C /* attack.lua */,
 				079487941616D8C5004ABCF5 /* knockback.lua */,
+				0794879B1616EC7E004ABCF5 /* tension.lua */,
 			);
 			path = skills;
 			sourceTree = "<group>";
@@ -2527,7 +2533,7 @@
 				07AE149F15F043890045E8F3 /* dub_sideattack02.wav in Resources */,
 				07AE14A015F043890045E8F3 /* dub_sideattack03.wav in Resources */,
 				07AE14A115F043890045E8F3 /* dub_startboss.wav in Resources */,
-				07AE14A215F043890045E8F3 /* dub_tension.wav in Resources */,
+				07AE14A215F043890045E8F3 /* dub_voxtension0.wav in Resources */,
 				07AE14A315F043890045E8F3 /* dub_voxmagic00.wav in Resources */,
 				07AE14A415F043890045E8F3 /* dub_voxmagic01.wav in Resources */,
 				07AE14A515F043890045E8F3 /* dub_voxmagic02.wav in Resources */,
@@ -2555,6 +2561,8 @@
 				07C6087B16164FEE0084708C /* CMakeLists.txt in Resources */,
 				07C6093D161674650084708C /* attack.lua in Resources */,
 				079487951616D8C5004ABCF5 /* knockback.lua in Resources */,
+				0794879C1616EC7E004ABCF5 /* tension.lua in Resources */,
+				07948A2D1616FCBD004ABCF5 /* skill.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

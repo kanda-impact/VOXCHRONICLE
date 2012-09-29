@@ -15,18 +15,19 @@
 using namespace cocos2d;
 
 typedef enum {
-  SkillTypeNormal,   // 無属性
-  SkillTypePhysical, // 物理属性
-  SkillTypeMagical   // 魔法属性
+  SkillTypeNone = 0,
+  SkillTypeNormal = 1,   // 無属性
+  SkillTypePhysical = 2, // 物理属性
+  SkillTypeMagical = 3   // 魔法属性
 } SkillType;
 
 typedef enum {
-  SkillRangeSingle,     // 単体攻撃
-  SkillRangeAll,        // 全体攻撃
-  SkillRangeHorizontal, // 横攻撃
-  SkillRangeVertical,   // 縦攻撃
-  SkillRangeBack,       // 一番奥の敵攻撃
-  SkillRangeSelf        // 自分が対象
+  SkillRangeSingle = 0,     // 単体攻撃
+  SkillRangeAll = 1,        // 全体攻撃
+  SkillRangeHorizontal = 2, // 横攻撃
+  SkillRangeVertical = 3,   // 縦攻撃
+  SkillRangeBack = 4,       // 一番奥の敵攻撃
+  SkillRangeSelf = 5        // 自分が対象
 } SkillRange;
 
 class Skill :public CCObject {

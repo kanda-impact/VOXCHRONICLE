@@ -81,7 +81,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     const char* name = _characterManager->performSkill(skill);
     os << "dub_" << name << ".wav";
     _music->pushTrack(os.str().c_str(), 0);
-    if (skill) _enemyManager->performSkill(skill);
+    if (skill) _enemyManager->performSkill(skill, _characterManager);
   } else if (trackNumber == 1) {
     _music->pushTrack("dub_basschord00.wav", 1);
   } else if (trackNumber == 2) {

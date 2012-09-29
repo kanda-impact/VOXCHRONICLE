@@ -1,3 +1,4 @@
+require "skill"
 params = {
   name = "ノックバック",
   slug = "knockback",
@@ -5,5 +6,5 @@ params = {
   maxRepeat = 1,
   turn = 1,
   skillRange = SkillRangeSingle,
-  skillType = SkillTypePhysical,
+  skillType = SkillTypePhysical
 }

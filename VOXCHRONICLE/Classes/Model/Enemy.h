@@ -22,6 +22,7 @@ class Enemy : public CCSprite {
   int _row;
   int _col;
   void update(float dt);
+  void setLifeColor();
  public:
   static Enemy* create(const char* filename);
   Enemy();

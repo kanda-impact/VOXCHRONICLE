@@ -12,6 +12,7 @@
 #include <iostream>
 #include "Character.h"
 #include "Skill.h"
+#include "Enemy.h"
 
 class CharacterManager :public CCObject {
  private:
@@ -23,6 +24,7 @@ class CharacterManager :public CCObject {
   Skill* _currentSkill;
   int _repeatCount;
   int _waitTurn;
+  int _tension;
  public:
   CharacterManager();
   ~CharacterManager();
@@ -31,6 +33,10 @@ class CharacterManager :public CCObject {
   bool isPerforming();
   void setLastSkill(Skill* skill);
   void setCurrentSkill(Skill* skill);
+  int getTension();
+  void chargeTension();
+  void resetTension();
+  int calcDamage(Enemy* enemy, Skill* skill);
 };
 
 #endif /* defined(__VOXCHRONICLE__CharacterManager__) */

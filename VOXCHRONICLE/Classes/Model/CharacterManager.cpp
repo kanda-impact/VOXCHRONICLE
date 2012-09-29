@@ -11,7 +11,9 @@
 #include "Skill.h"
 
 CharacterManager::CharacterManager() {
-  CCArray* skills = CCArray::create(new Skill("attack"), new Skill("knockback"), NULL);
+  CCArray* skills = CCArray::create(new Skill("attack"),
+                                    new Skill("knockback"),
+                                    new Skill("tension"), NULL);
   Character* vox = new Character(skills);
   vox->autorelease();
   _characters = CCArray::create(vox, NULL);
@@ -21,6 +23,7 @@ CharacterManager::CharacterManager() {
   _waitTurn = 0;
   _currentSkill = NULL;
   _lastSkill = NULL;
+  _tension = 0;
 }
 
 CharacterManager::~CharacterManager() {
@@ -73,4 +76,23 @@ void CharacterManager::setCurrentSkill(Skill* skill) {
     skill->retain();
   }
   _currentSkill = skill;
+}
+
+int CharacterManager::getTension() {
+  return _tension;
+}
+
+void CharacterManager::chargeTension() {
+  if (_tension < 4) _tension += 1;
+}
+
+void CharacterManager::resetTension() {
+  _tension = 0;
+}
+
+int CharacterManager::calcDamage(Enemy *enemy, Skill *skill) {
+  const float tensions[] = {1.0, 1.5, 3.0, 4.5, 6};
+  // ToDo 属性によるダメージ軽減とかもこの辺に載せてやる
+  int result = round(skill->getPower() * tensions[_tension]);
+  return result;
 }
