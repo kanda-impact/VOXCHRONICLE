@@ -37,7 +37,7 @@ class EnemyManager :public CCLayer {
   Enemy* enemyAt(int col, int row);
   bool removeEnemy(Enemy* enemy);
   Enemy* getNearestEnemy();
-  CCArray* getFilteredEnemies(boost::function<bool (Enemy*)>filter);
+  CCArray* getFilteredEnemies(boost::function<bool (int, float)>filter);
   bool attackEnemy(Enemy* enemy, int attack);
   CCArray* performSkill(Skill* skill);
   CREATE_FUNC(EnemyManager)

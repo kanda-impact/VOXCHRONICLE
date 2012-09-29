@@ -8,9 +8,20 @@
 
 #include <boost/random.hpp>
 
+#include <boost/lambda/lambda.hpp>
+#include <boost/lambda/bind.hpp>
+#include <boost/lambda/if.hpp>
+#include <boost/lambda/loops.hpp>
+#include <boost/lambda/switch.hpp>
+#include <boost/lambda/construct.hpp>
+#include <boost/lambda/casts.hpp>
+#include <boost/lambda/exceptions.hpp>
+#include <boost/lambda/algorithm.hpp>
+
 #include "EnemyManager.h"
 
 using namespace boost;
+using namespace boost::lambda;
 
 bool EnemyManager::init() {
   if (!CCLayer::init()) {
@@ -92,12 +103,12 @@ Enemy* EnemyManager::getNearestEnemy() {
   return minEnemy;
 }
 
-CCArray* EnemyManager::getFilteredEnemies(boost::function<bool (Enemy*)>filter) {
+CCArray* EnemyManager::getFilteredEnemies(boost::function<bool (int, float)>filter) {
   CCArray* enemies = (CCArray*)CCArray::create();
   CCObject* obj = NULL;
   CCARRAY_FOREACH(_enemies, obj) {
     Enemy* enemy = (Enemy*)obj;
-    if (filter(enemy)) {
+    if (filter(enemy->getRow(), enemy->getCol())) {
       enemies->addObject(enemy);
     }
   }
@@ -119,6 +130,16 @@ CCArray* EnemyManager::performSkill(Skill* skill) {
     if (target) {
       targets->addObject(target);
     }
+  } else if (range == SkillRangeAll) {
+    targets->addObjectsFromArray(_enemies);
+  } else if (range == SkillRangeHorizontal) {
+    Enemy* target = this->getNearestEnemy();
+    boost::function<bool (int, float)> predicate = _2 == target->getRow();
+    targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
+  } else if (range == SkillRangeVertical) {
+    Enemy* target = this->getNearestEnemy();
+    boost::function<bool (int, float)> predicate = _1 == target->getCol();
+    targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
   }
   CCObject* obj = NULL;
   CCARRAY_FOREACH(targets, obj) {

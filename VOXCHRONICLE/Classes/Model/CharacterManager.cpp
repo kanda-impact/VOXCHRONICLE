@@ -37,7 +37,7 @@ const char* CharacterManager::performSkill(Skill* skill) {
   if (skill) {
     std::ostringstream os;
     os << _currentCharacter->getSlug() << skill->getSlug() << _repeatCount;
-    if (!_lastSkill || _lastSkill->isEqual(skill)) {
+    if (!_lastSkill || !strcmp(_lastSkill->getSlug(), skill->getSlug())) {
       _repeatCount = (_repeatCount + 1) % skill->getMaxRepeat();
     } else {
       _repeatCount = 0;
