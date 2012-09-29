@@ -14,10 +14,24 @@
 CharacterManager::CharacterManager() {
   CCArray* skills = CCArray::create(new Skill("attack"),
                                     new Skill("knockback"),
-                                    new Skill("tension"), NULL);
+                                    new Skill("tension"),
+                                    new Skill("change"),
+                                    NULL);
   Character* vox = new Character(skills);
   vox->autorelease();
-  _characters = CCArray::create(vox, NULL);
+  vox->setName("オクス");
+  vox->setSlug("vox");
+  
+  CCArray* lskSkills = CCArray::create(new Skill("magic"),
+                                       new Skill("knockback"),
+                                       new Skill("tension"),
+                                       new Skill("change"),
+                                       NULL);
+  Character* lsk = new Character(lskSkills);
+  lsk->setName("ラスカ");
+  lsk->setSlug("lsk");
+  
+  _characters = CCArray::create(vox, lsk, NULL);
   _characters->retain();
   _currentCharacter = vox;
   _repeatCount = 0;
@@ -116,4 +130,12 @@ int CharacterManager::getLevel(int exp) {
     }
   }
   return lua_tointeger(L, lua_gettop(L));
+}
+
+void CharacterManager::setCurrentCharacter(int idx) {
+  _currentCharacter = (Character*)_characters->objectAtIndex(idx);
+}
+
+int CharacterManager::getCurrentCharacterIndex() {
+  return _characters->indexOfObject(this->getCurrentCharacter());
 }

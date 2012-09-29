@@ -40,6 +40,8 @@ class CharacterManager :public CCObject {
   int calcDamage(Enemy* enemy, Skill* skill);
   void addExp(int exp);
   int getLevel(int exp);
+  void setCurrentCharacter(int idx);
+  int getCurrentCharacterIndex();
 };
 
 #endif /* defined(__VOXCHRONICLE__CharacterManager__) */

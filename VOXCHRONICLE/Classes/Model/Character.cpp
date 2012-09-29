@@ -11,8 +11,8 @@
 Character::Character(CCArray* skills) {
   _skills = skills;
   _skills->retain();
-  _name = "オクス"; // とりあえずハードコード
-  _slug = "vox";
+  _name = "";
+  _slug = "";
 }
 
 Character::~Character() {
@@ -29,4 +29,12 @@ CCArray* Character::getSkills() {
 
 const char* Character::getSlug() {
   return _slug;
+}
+
+void Character::setName(const char *name) {
+  _name = name;
+}
+
+void Character::setSlug(const char *slug) {
+  _slug = slug;
 }

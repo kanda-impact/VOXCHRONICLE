@@ -138,6 +138,8 @@ CCArray* EnemyManager::performSkill(Skill* skill, CharacterManager* characterMan
   if (skill->getRange() == SkillRangeSelf) {
     if (!strcmp(skill->getSlug(), "tension")) {
       characterManager->chargeTension();
+    } else if (!strcmp(skill->getSlug(), "change")) {
+      characterManager->setCurrentCharacter((characterManager->getCurrentCharacterIndex() + 1) % 2);
     }
   } else {
     CCARRAY_FOREACH(targets, obj) {

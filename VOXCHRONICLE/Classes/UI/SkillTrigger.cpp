@@ -62,6 +62,10 @@ void SkillTrigger::setSkill(Skill* skill) {
     CCSprite* icon = CCSprite::create(os.str().c_str());
     icon->setColor(ccc3(255, 0, 0));
     icon->setPosition(CCPointMake(40, 40));
-    this->addChild(icon, 1000);
+    const int iconTag = 1;
+    if (this->getChildByTag(iconTag)) {
+      this->removeChildByTag(iconTag, true);
+    }
+    this->addChild(icon, 1000, iconTag);
   }
 }

@@ -24,6 +24,8 @@ class Character :public CCObject {
   ~Character();
   const char* getName();
   const char* getSlug();
+  void setName(const char* name);
+  void setSlug(const char* slug);
   CCArray* getSkills();
 };
 
