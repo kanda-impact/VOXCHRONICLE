@@ -6,6 +6,7 @@
 //
 //
 
+#include <sstream>
 #include "SkillTrigger.h"
 
 SkillTrigger* SkillTrigger::create(const char *pszFileName) {
@@ -55,4 +56,12 @@ void SkillTrigger::setSkill(Skill* skill) {
     skill->retain();
   }
   _skill = skill;
+  if (_skill) {
+    std::ostringstream os;
+    os << skill->getSlug() << "_icon.png";
+    CCSprite* icon = CCSprite::create(os.str().c_str());
+    icon->setColor(ccc3(255, 0, 0));
+    icon->setPosition(CCPointMake(40, 40));
+    this->addChild(icon, 1000);
+  }
 }

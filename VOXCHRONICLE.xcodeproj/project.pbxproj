@@ -18,6 +18,9 @@
 		074EFD1215FA9E17004D8273 /* trigger_bg_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 074EFD1115FA9E17004D8273 /* trigger_bg_selected.png */; };
 		07565378161705B200C69E27 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07565376161705B200C69E27 /* Level.cpp */; };
 		0756539516170F7A00C69E27 /* exp.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0756539416170F7A00C69E27 /* exp.lua */; };
+		0756539A1617131C00C69E27 /* attack_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 075653971617131C00C69E27 /* attack_icon.png */; };
+		0756539B1617131C00C69E27 /* knockback_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 075653981617131C00C69E27 /* knockback_icon.png */; };
+		0756539E161713BE00C69E27 /* tension_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0756539D161713BE00C69E27 /* tension_icon.png */; };
 		076F1A5115EB94750013A45E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F1A5015EB94750013A45E /* QuartzCore.framework */; };
 		076F1A5315EB94750013A45E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F1A5215EB94750013A45E /* OpenGLES.framework */; };
 		076F1A5515EB94750013A45E /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F1A5415EB94750013A45E /* OpenAL.framework */; };
@@ -397,6 +400,9 @@
 		07565376161705B200C69E27 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Level.cpp; path = Classes/Model/Level.cpp; sourceTree = "<group>"; };
 		07565377161705B200C69E27 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Level.h; path = Classes/Model/Level.h; sourceTree = "<group>"; };
 		0756539416170F7A00C69E27 /* exp.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = exp.lua; sourceTree = "<group>"; };
+		075653971617131C00C69E27 /* attack_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attack_icon.png; sourceTree = "<group>"; };
+		075653981617131C00C69E27 /* knockback_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knockback_icon.png; sourceTree = "<group>"; };
+		0756539D161713BE00C69E27 /* tension_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tension_icon.png; sourceTree = "<group>"; };
 		076F1A4C15EB94750013A45E /* VOXCHRONICLE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VOXCHRONICLE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		076F1A5015EB94750013A45E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		076F1A5215EB94750013A45E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1147,6 +1153,7 @@
 		074EFD0115FA8EAE004D8273 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				075653961617131C00C69E27 /* command */,
 				074EFD0215FA8EB5004D8273 /* sword.png */,
 				074EFD0315FA8EB5004D8273 /* trigger_bg.png */,
 				074EFD1115FA9E17004D8273 /* trigger_bg_selected.png */,
@@ -1163,6 +1170,17 @@
 				07D8740615ED13CD009CC446 /* MainScene.cpp */,
 			);
 			name = Scene;
+			sourceTree = "<group>";
+		};
+		075653961617131C00C69E27 /* command */ = {
+			isa = PBXGroup;
+			children = (
+				075653971617131C00C69E27 /* attack_icon.png */,
+				075653981617131C00C69E27 /* knockback_icon.png */,
+				0756539D161713BE00C69E27 /* tension_icon.png */,
+			);
+			name = command;
+			path = Resources/Image/Main/UI/command;
 			sourceTree = "<group>";
 		};
 		076F1A4115EB94750013A45E = {
@@ -2572,6 +2590,9 @@
 				0794879C1616EC7E004ABCF5 /* tension.lua in Resources */,
 				07948A2D1616FCBD004ABCF5 /* skill.lua in Resources */,
 				0756539516170F7A00C69E27 /* exp.lua in Resources */,
+				0756539A1617131C00C69E27 /* attack_icon.png in Resources */,
+				0756539B1617131C00C69E27 /* knockback_icon.png in Resources */,
+				0756539E161713BE00C69E27 /* tension_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

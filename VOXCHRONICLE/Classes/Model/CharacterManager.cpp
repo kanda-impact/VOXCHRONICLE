@@ -41,12 +41,11 @@ Character* CharacterManager::getCurrentCharacter() {
 const char* CharacterManager::performSkill(Skill* skill) {
   if (skill) {
     std::ostringstream os;
-    os << _currentCharacter->getSlug() << skill->getSlug() << _repeatCount;
-    if (!_lastSkill || !strcmp(_lastSkill->getSlug(), skill->getSlug())) {
-      _repeatCount = (_repeatCount + 1) % skill->getMaxRepeat();
-    } else {
+    if (_lastSkill && strcmp(_lastSkill->getSlug(), skill->getSlug())) {
       _repeatCount = 0;
     }
+    os << _currentCharacter->getSlug() << skill->getSlug() << _repeatCount;
+    _repeatCount = (_repeatCount + 1) % skill->getMaxRepeat();
     this->setLastSkill(skill);
     return os.str().c_str();
   } else {
@@ -101,8 +100,6 @@ int CharacterManager::calcDamage(Enemy *enemy, Skill *skill) {
 
 void CharacterManager::addExp(int exp) {
   _exp += exp;
-  std::cout << "exp = " << _exp << std::endl;
-  std::cout << "level = " << getLevel(_exp) << std::endl;
 }
 
 int CharacterManager::getLevel(int exp) {
