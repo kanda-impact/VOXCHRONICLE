@@ -16,7 +16,6 @@ Skill::Skill(const char* slug) {
   os << slug << ".lua";
   LuaObject* lua = new LuaObject(os.str().c_str(), "params");
   
-  std::cout << lua << std::endl;
   _name = lua->getString("name");
   _slug = slug;
   _power = lua->getInt("power");

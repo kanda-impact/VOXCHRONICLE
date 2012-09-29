@@ -19,6 +19,7 @@ class Enemy : public CCSprite {
  private:
   int _hp;
   int _mp;
+  int _exp;
   int _row;
   int _col;
   void update(float dt);
@@ -38,6 +39,8 @@ class Enemy : public CCSprite {
    ダメージを与えます。死亡時にはtrueを返します
    */
   bool damage(int d);
+  
+  int getExp();
 };
 
 #endif /* defined(__VOXCHRONICLE__Enemy__) */

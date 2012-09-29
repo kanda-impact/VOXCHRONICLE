@@ -29,7 +29,6 @@ bool LogoScene::init() {
   CCSize winSize = director->getWinSize();
   CCSprite* logo = CCSprite::create("kawaz.png");
   CCLayerColor* background = CCLayerColor::create(ccc4(255, 255, 255, 255), winSize.width, winSize.height);
-  std::cout << winSize.width << "," << winSize.height;
   logo->setPosition(ccp(winSize.width / 2, winSize.height / 2));
   logo->setOpacity(0);
   logo->runAction(CCSequence::create(

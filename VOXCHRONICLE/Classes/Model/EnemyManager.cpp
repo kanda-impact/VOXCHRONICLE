@@ -138,7 +138,6 @@ CCArray* EnemyManager::performSkill(Skill* skill, CharacterManager* characterMan
   if (skill->getRange() == SkillRangeSelf) {
     if (!strcmp(skill->getSlug(), "tension")) {
       characterManager->chargeTension();
-      std::cout << "tension = " << characterManager->getTension() << std::endl;
     }
   } else {
     CCARRAY_FOREACH(targets, obj) {
@@ -147,6 +146,7 @@ CCArray* EnemyManager::performSkill(Skill* skill, CharacterManager* characterMan
         target->moveRow(MAX_ROW - target->getRow() - 1);
       }
       if (target->damage(characterManager->calcDamage(target, skill))) {
+        characterManager->addExp(target->getExp());
         this->removeEnemy(target);
       }
     }

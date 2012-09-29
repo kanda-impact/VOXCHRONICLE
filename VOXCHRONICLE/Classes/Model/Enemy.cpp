@@ -22,7 +22,8 @@ Enemy* Enemy::create(const char *pszFileName) {
 Enemy::Enemy() {
   _row = 7;
   _col = 0;
-  _hp = 5;
+  _hp = 1;
+  _exp = 5;
   this->scheduleUpdate();
 }
 
@@ -79,4 +80,8 @@ void Enemy::setLifeColor() {
   int index = _hp;
   if (_hp > 8) index = 8;
   this->cocos2d::CCSprite::setColor(colors[index - 1]);
+}
+
+int Enemy::getExp() {
+  return _exp;
 }

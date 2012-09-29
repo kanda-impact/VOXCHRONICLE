@@ -9,6 +9,7 @@
 #include <sstream>
 #include "CharacterManager.h"
 #include "Skill.h"
+#include "CCLuaEngine.h"
 
 CharacterManager::CharacterManager() {
   CCArray* skills = CCArray::create(new Skill("attack"),
@@ -24,6 +25,7 @@ CharacterManager::CharacterManager() {
   _currentSkill = NULL;
   _lastSkill = NULL;
   _tension = 0;
+  _exp = 0;
 }
 
 CharacterManager::~CharacterManager() {
@@ -95,4 +97,26 @@ int CharacterManager::calcDamage(Enemy *enemy, Skill *skill) {
   // ToDo 属性によるダメージ軽減とかもこの辺に載せてやる
   int result = round(skill->getPower() * tensions[_tension]);
   return result;
+}
+
+void CharacterManager::addExp(int exp) {
+  _exp += exp;
+  std::cout << "exp = " << _exp << std::endl;
+  std::cout << "level = " << getLevel(_exp) << std::endl;
+}
+
+int CharacterManager::getLevel(int exp) {
+  CCLuaEngine* engine = CCLuaEngine::defaultEngine();
+  std::string path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("exp.lua");
+  engine->executeScriptFile(path.c_str());
+  lua_State* L = engine->getLuaState();
+  lua_getglobal(L, "getLevel");
+  if (lua_isfunction(L, lua_gettop(L))) {
+    engine->pushInt(exp);
+    if (lua_pcall(L, 1, 1, 0)) {
+      std::cout << lua_gettop(L) << std::endl;
+      return 1;
+    }
+  }
+  return lua_tointeger(L, lua_gettop(L));
 }

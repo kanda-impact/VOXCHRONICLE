@@ -18,6 +18,7 @@ class CharacterManager :public CCObject {
  private:
   int _hp;
   int _mp;
+  int _exp;
   Character* _currentCharacter;
   CCArray* _characters;
   Skill* _lastSkill;
@@ -37,6 +38,8 @@ class CharacterManager :public CCObject {
   void chargeTension();
   void resetTension();
   int calcDamage(Enemy* enemy, Skill* skill);
+  void addExp(int exp);
+  int getLevel(int exp);
 };
 
 #endif /* defined(__VOXCHRONICLE__CharacterManager__) */

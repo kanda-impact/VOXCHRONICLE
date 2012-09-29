@@ -16,6 +16,8 @@
 		074EFD0B15FA926E004D8273 /* SkillTrigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 074EFD0915FA906D004D8273 /* SkillTrigger.cpp */; };
 		074EFD0C15FA93AA004D8273 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 074EFD0715FA906C004D8273 /* Controller.cpp */; };
 		074EFD1215FA9E17004D8273 /* trigger_bg_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 074EFD1115FA9E17004D8273 /* trigger_bg_selected.png */; };
+		07565378161705B200C69E27 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07565376161705B200C69E27 /* Level.cpp */; };
+		0756539516170F7A00C69E27 /* exp.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0756539416170F7A00C69E27 /* exp.lua */; };
 		076F1A5115EB94750013A45E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F1A5015EB94750013A45E /* QuartzCore.framework */; };
 		076F1A5315EB94750013A45E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F1A5215EB94750013A45E /* OpenGLES.framework */; };
 		076F1A5515EB94750013A45E /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F1A5415EB94750013A45E /* OpenAL.framework */; };
@@ -392,6 +394,9 @@
 		074EFD0915FA906D004D8273 /* SkillTrigger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SkillTrigger.cpp; path = Classes/UI/SkillTrigger.cpp; sourceTree = "<group>"; };
 		074EFD0A15FA906D004D8273 /* SkillTrigger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SkillTrigger.h; path = Classes/UI/SkillTrigger.h; sourceTree = "<group>"; };
 		074EFD1115FA9E17004D8273 /* trigger_bg_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trigger_bg_selected.png; path = Resources/Image/Main/UI/trigger_bg_selected.png; sourceTree = "<group>"; };
+		07565376161705B200C69E27 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Level.cpp; path = Classes/Model/Level.cpp; sourceTree = "<group>"; };
+		07565377161705B200C69E27 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Level.h; path = Classes/Model/Level.h; sourceTree = "<group>"; };
+		0756539416170F7A00C69E27 /* exp.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = exp.lua; sourceTree = "<group>"; };
 		076F1A4C15EB94750013A45E /* VOXCHRONICLE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VOXCHRONICLE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		076F1A5015EB94750013A45E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		076F1A5215EB94750013A45E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1104,6 +1109,8 @@
 				07C6F6AF1615D6420084708C /* EnemyManager.cpp */,
 				07C6F6D416161CCE0084708C /* Skill.h */,
 				07C6F6D316161CCE0084708C /* Skill.cpp */,
+				07565377161705B200C69E27 /* Level.h */,
+				07565376161705B200C69E27 /* Level.cpp */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1357,6 +1364,7 @@
 				07C6093A161674650084708C /* enemies */,
 				07C6093B161674650084708C /* skills */,
 				07C6064116164F810084708C /* hello.lua */,
+				0756539416170F7A00C69E27 /* exp.lua */,
 			);
 			name = Script;
 			path = Resources/Script;
@@ -2563,6 +2571,7 @@
 				079487951616D8C5004ABCF5 /* knockback.lua in Resources */,
 				0794879C1616EC7E004ABCF5 /* tension.lua in Resources */,
 				07948A2D1616FCBD004ABCF5 /* skill.lua in Resources */,
+				0756539516170F7A00C69E27 /* exp.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2828,6 +2837,7 @@
 				07C6092F16164FEE0084708C /* tolua_push.c in Sources */,
 				07C6093016164FEE0084708C /* tolua_to.c in Sources */,
 				07C60942161678400084708C /* LuaObject.cpp in Sources */,
+				07565378161705B200C69E27 /* Level.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
