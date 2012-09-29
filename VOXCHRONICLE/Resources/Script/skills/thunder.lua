@@ -1,12 +1,12 @@
 require "skill"
 params = {
-  name = "魔法",
-  slug = "magic",
+  name = "雷",
+  slug = "thunder",
   power = 1,
-  mp = 0,
+  mp = 1,
   common = false,
   maxRepeat = 4,
   turn = 1,
-  skillRange = SkillRangeSingle,
+  skillRange = SkillRangeAll,
   skillType = SkillTypeMagical
 }

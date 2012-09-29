@@ -16,6 +16,7 @@ CharacterManager::CharacterManager() {
                                     new Skill("knockback"),
                                     new Skill("tension"),
                                     new Skill("change"),
+                                    new Skill("shield"),
                                     NULL);
   Character* vox = new Character(skills);
   vox->autorelease();
@@ -23,9 +24,10 @@ CharacterManager::CharacterManager() {
   vox->setSlug("vox");
   
   CCArray* lskSkills = CCArray::create(new Skill("magic"),
-                                       new Skill("knockback"),
+                                       new Skill("thunder"),
                                        new Skill("tension"),
                                        new Skill("change"),
+                                       new Skill("shield"),
                                        NULL);
   Character* lsk = new Character(lskSkills);
   lsk->setName("ラスカ");
@@ -40,6 +42,7 @@ CharacterManager::CharacterManager() {
   _lastSkill = NULL;
   _tension = 0;
   _exp = 0;
+  _shield = false;
 }
 
 CharacterManager::~CharacterManager() {
@@ -146,4 +149,12 @@ void CharacterManager::setCurrentCharacter(int idx) {
 
 int CharacterManager::getCurrentCharacterIndex() {
   return _characters->indexOfObject(this->getCurrentCharacter());
+}
+
+bool CharacterManager::getShield() {
+  return _shield;
+}
+
+void CharacterManager::setShield(bool s) {
+  _shield = s;
 }

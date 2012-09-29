@@ -47,7 +47,7 @@ Enemy* EnemyManager::popEnemy() {
 }
 
 Enemy* EnemyManager::lotPopEnemy() {
-  _enemyCount += rand() % 50;
+  _enemyCount += rand() % 100;
   if (_enemyCount > 50) {
     _enemyCount = 0;
     return this->popEnemy();
@@ -115,6 +115,9 @@ bool EnemyManager::attackEnemy(Enemy* enemy, int damage) {
 }
 
 CCArray* EnemyManager::performSkill(Skill* skill, CharacterManager* characterManager) {
+  
+  characterManager->setShield(false);
+  // ターゲットの決定
   SkillRange range = skill->getRange();
   CCArray* targets = (CCArray*)CCArray::create();
   if (range == SkillRangeSingle) {
@@ -126,20 +129,31 @@ CCArray* EnemyManager::performSkill(Skill* skill, CharacterManager* characterMan
     targets->addObjectsFromArray(_enemies);
   } else if (range == SkillRangeHorizontal) {
     Enemy* target = this->getNearestEnemy();
+    targets->addObject(target);
     boost::function<bool (int, float)> predicate = _2 == target->getRow();
     targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
   } else if (range == SkillRangeVertical) {
     Enemy* target = this->getNearestEnemy();
+    targets->addObject(target);
+    boost::function<bool (int, float)> predicate = _1 == target->getCol();
+    targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
+  } else if (range == SkillRangeBack) {
+    // 実装途中。後で考える
+    Enemy* target = this->getNearestEnemy();
+    targets->addObject(target);
     boost::function<bool (int, float)> predicate = _1 == target->getCol();
     targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
   }
   
+  // ターゲットに技の効果を与える
   CCObject* obj = NULL;
   if (skill->getRange() == SkillRangeSelf) {
     if (!strcmp(skill->getSlug(), "tension")) {
       characterManager->chargeTension();
     } else if (!strcmp(skill->getSlug(), "change")) {
       characterManager->setCurrentCharacter((characterManager->getCurrentCharacterIndex() + 1) % 2);
+    } else if (!strcmp(skill->getSlug(), "shield")) {
+      characterManager->setShield(true);
     }
   } else {
     CCARRAY_FOREACH(targets, obj) {

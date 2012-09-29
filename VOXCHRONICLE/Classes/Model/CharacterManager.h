@@ -26,6 +26,7 @@ class CharacterManager :public CCObject {
   int _repeatCount;
   int _waitTurn;
   int _tension;
+  bool _shield;
  public:
   CharacterManager();
   ~CharacterManager();
@@ -42,6 +43,8 @@ class CharacterManager :public CCObject {
   int getLevel(int exp);
   void setCurrentCharacter(int idx);
   int getCurrentCharacterIndex();
+  bool getShield();
+  void setShield(bool s);
 };
 
 #endif /* defined(__VOXCHRONICLE__CharacterManager__) */
