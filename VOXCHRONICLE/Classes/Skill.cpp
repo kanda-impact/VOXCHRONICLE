@@ -19,6 +19,8 @@ Skill::Skill(const char* slug) {
   _name = lua->getString("name");
   _slug = slug;
   _power = lua->getInt("power");
+  _mp = lua->getInt("mp");
+  _common = lua->getBoolean("common");
   _maxRepeat = lua->getInt("maxRepeat");
   _turn = lua->getInt("turn");
   _range = (SkillRange)lua->getInt("skillRange");
@@ -46,6 +48,14 @@ int Skill::getMaxRepeat() {
 
 int Skill::getPower() {
   return _power;
+}
+
+int Skill::getMP() {
+  return _mp;
+}
+
+bool Skill::isCommon() {
+  return _common;
 }
 
 SkillRange Skill::getRange() {

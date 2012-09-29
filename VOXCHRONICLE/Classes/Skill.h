@@ -35,6 +35,8 @@ class Skill :public CCObject {
   int _maxRepeat;
   int _turn;
   int _power;
+  int _mp;
+  bool _common;
   const char* _name;
   const char* _slug;
   SkillRange _range;
@@ -47,6 +49,8 @@ class Skill :public CCObject {
   int getTurn();
   int getPower();
   int getMaxRepeat();
+  int getMP();
+  bool isCommon();
   SkillRange getRange();
   SkillType getType();
 };
