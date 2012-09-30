@@ -18,6 +18,13 @@
 		0731E4D916176C2F006AEF3D /* dub_lskmagic1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4D816176C29006AEF3D /* dub_lskmagic1.wav */; };
 		0731E4DB16176C96006AEF3D /* thunder.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4DA16176C95006AEF3D /* thunder.lua */; };
 		0731E4DE161804C0006AEF3D /* tnt.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4DD161804C0006AEF3D /* tnt.lua */; };
+		0731E4E616180A0B006AEF3D /* tnt0.png in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4DF16180A0B006AEF3D /* tnt0.png */; };
+		0731E4E716180A0B006AEF3D /* tnt1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4E016180A0B006AEF3D /* tnt1.png */; };
+		0731E4E816180A0B006AEF3D /* tnt2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4E116180A0B006AEF3D /* tnt2.png */; };
+		0731E4E916180A0B006AEF3D /* tnt3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4E216180A0B006AEF3D /* tnt3.png */; };
+		0731E4EA16180A0B006AEF3D /* tnt4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4E316180A0B006AEF3D /* tnt4.png */; };
+		0731E4EB16180A0B006AEF3D /* tnt5.png in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4E416180A0B006AEF3D /* tnt5.png */; };
+		0731E4EC16180A0B006AEF3D /* tnt6.png in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4E516180A0B006AEF3D /* tnt6.png */; };
 		0739C4441615CEAF00CB864D /* dub_silent.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0739C4431615CEAF00CB864D /* dub_silent.wav */; };
 		0739C4481615D2FD00CB864D /* CharacterManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0739C4461615D2FD00CB864D /* CharacterManager.cpp */; };
 		0739C44B1615D30800CB864D /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0739C4491615D30800CB864D /* Character.cpp */; };
@@ -345,7 +352,6 @@
 		07C60942161678400084708C /* LuaObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C60940161678400084708C /* LuaObject.cpp */; };
 		07C6F6AD1615D6300084708C /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AB1615D6300084708C /* Enemy.cpp */; };
 		07C6F6B11615D6420084708C /* EnemyManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AF1615D6420084708C /* EnemyManager.cpp */; };
-		07C6F6D21615DE330084708C /* tnt0.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C6F6D11615DE330084708C /* tnt0.png */; };
 		07C6F6D516161CCF0084708C /* Skill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6D316161CCE0084708C /* Skill.cpp */; };
 		07C6F6DC161635C80084708C /* dub_voxattack0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07C6F6DB161635C80084708C /* dub_voxattack0.wav */; };
 		07D873F515ED1215009CC446 /* attack0.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E415ED1215009CC446 /* attack0.WAV */; };
@@ -406,6 +412,13 @@
 		0731E4D816176C29006AEF3D /* dub_lskmagic1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_lskmagic1.wav; path = Resources/Music/dub/dub_lskmagic1.wav; sourceTree = "<group>"; };
 		0731E4DA16176C95006AEF3D /* thunder.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = thunder.lua; sourceTree = "<group>"; };
 		0731E4DD161804C0006AEF3D /* tnt.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tnt.lua; sourceTree = "<group>"; };
+		0731E4DF16180A0B006AEF3D /* tnt0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tnt0.png; path = Resources/Image/Enemy/tnt0.png; sourceTree = "<group>"; };
+		0731E4E016180A0B006AEF3D /* tnt1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tnt1.png; path = Resources/Image/Enemy/tnt1.png; sourceTree = "<group>"; };
+		0731E4E116180A0B006AEF3D /* tnt2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tnt2.png; path = Resources/Image/Enemy/tnt2.png; sourceTree = "<group>"; };
+		0731E4E216180A0B006AEF3D /* tnt3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tnt3.png; path = Resources/Image/Enemy/tnt3.png; sourceTree = "<group>"; };
+		0731E4E316180A0B006AEF3D /* tnt4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tnt4.png; path = Resources/Image/Enemy/tnt4.png; sourceTree = "<group>"; };
+		0731E4E416180A0B006AEF3D /* tnt5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tnt5.png; path = Resources/Image/Enemy/tnt5.png; sourceTree = "<group>"; };
+		0731E4E516180A0B006AEF3D /* tnt6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tnt6.png; path = Resources/Image/Enemy/tnt6.png; sourceTree = "<group>"; };
 		0739C4431615CEAF00CB864D /* dub_silent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_silent.wav; path = Resources/Music/dub/dub_silent.wav; sourceTree = "<group>"; };
 		0739C4461615D2FD00CB864D /* CharacterManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CharacterManager.cpp; path = Classes/Model/CharacterManager.cpp; sourceTree = "<group>"; };
 		0739C4471615D2FD00CB864D /* CharacterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharacterManager.h; path = Classes/Model/CharacterManager.h; sourceTree = "<group>"; };
@@ -1012,7 +1025,6 @@
 		07C6F6AC1615D6300084708C /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enemy.h; path = Classes/Model/Enemy.h; sourceTree = "<group>"; };
 		07C6F6AF1615D6420084708C /* EnemyManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyManager.cpp; path = Classes/Model/EnemyManager.cpp; sourceTree = "<group>"; };
 		07C6F6B01615D6420084708C /* EnemyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyManager.h; path = Classes/Model/EnemyManager.h; sourceTree = "<group>"; };
-		07C6F6D11615DE330084708C /* tnt0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tnt0.png; path = Resources/Image/Enemy/tnt0.png; sourceTree = "<group>"; };
 		07C6F6D316161CCE0084708C /* Skill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Skill.cpp; path = Classes/Skill.cpp; sourceTree = "<group>"; };
 		07C6F6D416161CCE0084708C /* Skill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Skill.h; path = Classes/Skill.h; sourceTree = "<group>"; };
 		07C6F6DB161635C80084708C /* dub_voxattack0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxattack0.wav; path = Resources/Music/dub/dub_voxattack0.wav; sourceTree = "<group>"; };
@@ -2337,7 +2349,13 @@
 		07C6F6D01615DE280084708C /* Enemy */ = {
 			isa = PBXGroup;
 			children = (
-				07C6F6D11615DE330084708C /* tnt0.png */,
+				0731E4DF16180A0B006AEF3D /* tnt0.png */,
+				0731E4E016180A0B006AEF3D /* tnt1.png */,
+				0731E4E116180A0B006AEF3D /* tnt2.png */,
+				0731E4E216180A0B006AEF3D /* tnt3.png */,
+				0731E4E316180A0B006AEF3D /* tnt4.png */,
+				0731E4E416180A0B006AEF3D /* tnt5.png */,
+				0731E4E516180A0B006AEF3D /* tnt6.png */,
 			);
 			name = Enemy;
 			sourceTree = "<group>";
@@ -2610,7 +2628,6 @@
 				074EFD0515FA8EB5004D8273 /* trigger_bg.png in Resources */,
 				074EFD1215FA9E17004D8273 /* trigger_bg_selected.png in Resources */,
 				0739C4441615CEAF00CB864D /* dub_silent.wav in Resources */,
-				07C6F6D21615DE330084708C /* tnt0.png in Resources */,
 				07C6F6DC161635C80084708C /* dub_voxattack0.wav in Resources */,
 				07C6064216164F810084708C /* hello.lua in Resources */,
 				07C6087A16164FEE0084708C /* ChangeLog in Resources */,
@@ -2638,6 +2655,13 @@
 				0731E4D916176C2F006AEF3D /* dub_lskmagic1.wav in Resources */,
 				0731E4DB16176C96006AEF3D /* thunder.lua in Resources */,
 				0731E4DE161804C0006AEF3D /* tnt.lua in Resources */,
+				0731E4E616180A0B006AEF3D /* tnt0.png in Resources */,
+				0731E4E716180A0B006AEF3D /* tnt1.png in Resources */,
+				0731E4E816180A0B006AEF3D /* tnt2.png in Resources */,
+				0731E4E916180A0B006AEF3D /* tnt3.png in Resources */,
+				0731E4EA16180A0B006AEF3D /* tnt4.png in Resources */,
+				0731E4EB16180A0B006AEF3D /* tnt5.png in Resources */,
+				0731E4EC16180A0B006AEF3D /* tnt6.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

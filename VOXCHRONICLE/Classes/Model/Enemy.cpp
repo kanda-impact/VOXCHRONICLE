@@ -99,10 +99,23 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _exp = obj->getInt("exp");
   _name = obj->getString("name");
   const char* imageName = obj->getString("imageName");
+  int frameCount = obj->getInt("animationFrames");
   stringstream ss;
   ss << imageName << "0.png";
-  delete obj;
-  if (this->initWithFile(ss.str().c_str())) {
+  bool success = (bool)this->initWithFile(ss.str().c_str());
+  if (success) {
+    CCAnimation* animation = CCAnimation::create();
+    CCSize size = this->getTexture()->getContentSize();
+    for (int i = 0; i < frameCount; ++i) {
+      stringstream frameSS;
+      frameSS << imageName << i << ".png";
+      CCSpriteFrame* frame = CCSpriteFrame::create(frameSS.str().c_str(), CCRectMake(0, 0, size.width, size.height));
+      animation->addSpriteFrame(frame);
+    }
+    animation->setLoops(-1);
+    animation->setDelayPerUnit(10.0 / 60.0);
+    this->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
+    delete obj;
     return this;
   }
   return NULL;
