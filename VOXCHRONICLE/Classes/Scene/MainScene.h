@@ -42,6 +42,8 @@ class MainScene : public CCLayer {
   
   void updateGUI();
   
+  void update(float dt);
+  
  public:
   virtual bool init();
   ~MainScene();

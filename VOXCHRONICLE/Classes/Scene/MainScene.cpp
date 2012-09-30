@@ -55,6 +55,7 @@ bool MainScene::init() {
   
   _map = new Map("test");
   
+  this->scheduleUpdate();
   return true;
 }
 
@@ -63,6 +64,10 @@ MainScene::~MainScene() {
   _controller->release();
   _enemyManager->release();
   _characterManager->release();
+}
+
+void MainScene::update(float dt) {
+  _controller->setEnable(!_characterManager->isPerforming());
 }
 
 void MainScene::onEnterTransitionDidFinish() {
@@ -91,7 +96,12 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
 
 void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track *nextTrack, int trackNumber) {
   if (trackNumber == 0) {
-    Skill* skill = _controller->currentTriggerSkill();
+    Skill* skill = NULL;
+    if (_characterManager->isPerforming()) {
+      skill = _characterManager->getCurrentSkill();
+    } else {
+      skill = _controller->currentTriggerSkill();
+    }
     std::stringstream ss;
     const char* name = _characterManager->performSkill(skill);
     ss << name << ".wav";
@@ -110,8 +120,9 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
 
 void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track *nextTrack, int trackNumber) {
   if (trackNumber == 0) {
-    _controller->resetAllTriggers();
-    std::cout << "next Track" << std::endl;
+    if (!_characterManager->isPerforming()) {
+      _controller->resetAllTriggers();
+    }
   }
 }
 

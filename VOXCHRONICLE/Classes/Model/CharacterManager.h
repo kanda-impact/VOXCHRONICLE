@@ -55,6 +55,7 @@ class CharacterManager :public CCObject {
   Character* getCurrentCharacter();
   int getTension();
   bool getShield();
+  Skill* getCurrentSkill();
   int getHP();
   int getMP();
   

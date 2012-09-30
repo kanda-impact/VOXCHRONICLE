@@ -19,6 +19,7 @@ bool Controller::init() {
   }
   _triggers = CCArray::create();
   _triggers->retain();
+  _enable = true;
   const int rotation[] = {0, 30, 60, 0, -30, -60};
   const int x[] = {95, 235, 310, 866, 727, 651};
   const int y[] = {298.5, 207, 62, 298.5, 208, 62};
@@ -46,6 +47,7 @@ void Controller::registerWithTouchDispatcher() {
 }
 
 bool Controller::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
+  if (!_enable) return false;
   const CCPoint triggerCenter = ccp(50, 60);
   const int triggerRadius = 40;
   CCObject* trigger = NULL;
@@ -96,4 +98,8 @@ Skill* Controller::currentTriggerSkill() {
     return ((SkillTrigger*)_triggers->objectAtIndex(index))->getSkill();
   }
   return NULL;
+}
+
+void Controller::setEnable(bool enable) {
+  _enable = enable;
 }

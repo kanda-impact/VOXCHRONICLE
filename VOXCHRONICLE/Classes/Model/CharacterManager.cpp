@@ -60,22 +60,29 @@ Character* CharacterManager::getCurrentCharacter() {
 
 const char* CharacterManager::performSkill(Skill* skill) {
   if (skill) {
-    std::stringstream ss;
-    if (_lastSkill && strcmp(_lastSkill->getSlug(), skill->getSlug())) {
-      _repeatCount = 0;
-    }
-    if (skill->isCommon()) {
-      // スキルのcommonがfalseのとき、曲名にキャラ名が付かない
-      // tension0.wav
-      ss << skill->getSlug() << _repeatCount;
+    _waitTurn += 1;
+    if (_waitTurn == skill->getTurn()) {
+      std::stringstream ss;
+      if (_lastSkill && strcmp(_lastSkill->getSlug(), skill->getSlug())) {
+        _repeatCount = 0;
+      }
+      if (skill->isCommon()) {
+        // スキルのcommonがfalseのとき、曲名にキャラ名が付かない
+        // tension0.wav
+        ss << skill->getSlug() << _repeatCount;
+      } else {
+        // commonがtrueのとき、曲名にキャラ名が付く
+        // ex: voxattack0.wav
+        ss << _currentCharacter->getSlug() << skill->getSlug() << _repeatCount;
+      }
+      _repeatCount = (_repeatCount + 1) % skill->getMaxRepeat();
+      this->setLastSkill(skill);
+      this->setCurrentSkill(NULL);
+      _waitTurn = 0;
+      return ss.str().c_str();
     } else {
-      // commonがtrueのとき、曲名にキャラ名が付く
-      // ex: voxattack0.wav
-      ss << _currentCharacter->getSlug() << skill->getSlug() << _repeatCount;
+      this->setCurrentSkill(skill);
     }
-    _repeatCount = (_repeatCount + 1) % skill->getMaxRepeat();
-    this->setLastSkill(skill);
-    return ss.str().c_str();
   } else {
     _repeatCount = 0;
     this->setLastSkill(skill);
@@ -180,4 +187,8 @@ int CharacterManager::getHP() {
 
 int CharacterManager::getMP() {
   return _mp;
+}
+
+Skill* CharacterManager::getCurrentSkill() {
+  return _currentSkill;
 }

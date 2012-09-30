@@ -20,6 +20,7 @@ class Controller : public CCLayer {
   CCArray* _triggers;
   virtual bool ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent);
   virtual void registerWithTouchDispatcher();
+  bool _enable;
 
 public:
   virtual bool init();
@@ -29,6 +30,7 @@ public:
   int currentTriggerIndex();
   Skill* currentTriggerSkill();
   void setSkills(CCArray* skills);
+  void setEnable(bool enable);
   CREATE_FUNC(Controller);
 };
 
