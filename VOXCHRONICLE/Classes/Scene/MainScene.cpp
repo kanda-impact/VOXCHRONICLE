@@ -51,6 +51,7 @@ bool MainScene::init() {
   _mpLabel->setPosition(CCPointMake(400, 270));
   this->addChild(_hpLabel);
   this->addChild(_mpLabel);
+  this->updateGUI();
   
   return true;
 }

@@ -6,15 +6,20 @@
 //
 //
 
+#include <sstream>
 #include "Enemy.h"
+#include "LuaObject.h"
 
-Enemy* Enemy::create(const char *pszFileName) {
+using namespace std;
+
+Enemy* Enemy::create(const char *enemyName) {
   Enemy *pobSprite = new Enemy();
-  if (pobSprite && pobSprite->initWithFile(pszFileName))
-    {
+  stringstream ss;
+  ss << enemyName << ".lua";
+  if (pobSprite && pobSprite->initWithScriptName(ss.str().c_str())) {
     pobSprite->autorelease();
     return pobSprite;
-    }
+  }
   CC_SAFE_DELETE(pobSprite);
   return NULL;
 }
@@ -22,8 +27,8 @@ Enemy* Enemy::create(const char *pszFileName) {
 Enemy::Enemy() {
   _row = 7;
   _col = 0;
-  _hp = 1 + rand() % 4;
-  _exp = 5;
+  _hp = 1;
+  _exp = 0;
   this->scheduleUpdate();
 }
 
@@ -85,4 +90,20 @@ void Enemy::setLifeColor() {
 
 int Enemy::getExp() {
   return _exp;
+}
+
+Enemy* Enemy::initWithScriptName(const char* scriptName) {
+  LuaObject* obj = new LuaObject(scriptName, "Enemy");
+  _hp = obj->getInt("hp");
+  _power = obj->getInt("power");
+  _exp = obj->getInt("exp");
+  _name = obj->getString("name");
+  const char* imageName = obj->getString("imageName");
+  stringstream ss;
+  ss << imageName << "0.png";
+  delete obj;
+  if (this->initWithFile(ss.str().c_str())) {
+    return this;
+  }
+  return NULL;
 }

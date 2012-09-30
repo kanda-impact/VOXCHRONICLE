@@ -38,7 +38,7 @@ EnemyManager::~EnemyManager() {
 }
 
 Enemy* EnemyManager::popEnemy() {
-  Enemy* enemy = Enemy::create("enemy.png");
+  Enemy* enemy = Enemy::create("tnt");
   int col = rand() % 3;
   enemy->setCol(col);
   _enemies->addObject(enemy);

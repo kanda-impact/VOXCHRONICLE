@@ -17,15 +17,17 @@ using namespace cocos2d;
 
 class Enemy : public CCSprite {
  private:
+  const char* _name;
   int _hp;
   int _mp;
   int _exp;
+  int _power;
   int _row;
   int _col;
   void update(float dt);
   void setLifeColor();
  public:
-  static Enemy* create(const char* filename);
+  static Enemy* create(const char* enemyName);
   Enemy();
   ~Enemy();
   float getRow();
@@ -34,6 +36,7 @@ class Enemy : public CCSprite {
   void setCol(int c);
   float bottomLine();
   void moveRow(float r);
+  Enemy* initWithScriptName(const char* scriptName);
   
   /**
    ダメージを与えます。死亡時にはtrueを返します
