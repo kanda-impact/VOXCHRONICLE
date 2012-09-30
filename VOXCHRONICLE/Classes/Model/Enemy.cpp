@@ -9,6 +9,7 @@
 #include <sstream>
 #include "Enemy.h"
 #include "LuaObject.h"
+#include "Utils.h"
 
 using namespace std;
 
@@ -28,6 +29,7 @@ Enemy::Enemy() {
   _row = 7;
   _col = 0;
   _hp = 1;
+  _maxHP = _hp;
   _exp = 0;
   this->scheduleUpdate();
 }
@@ -72,20 +74,13 @@ bool Enemy::damage(int d) {
 }
 
 void Enemy::setLifeColor() {
-  ccColor3B colors[] = {
-    ccc3(255, 241, 0),
-    ccc3(174, 208, 61),
-    ccc3(0, 167, 83),
-    ccc3(0, 160, 180),
-    ccc3(0, 100, 162),
-    ccc3(30, 30, 140),
-    ccc3(120, 20, 130),
-    ccc3(230, 60, 140),
-    ccc3(230, 0, 36)
-  };
-  int index = _hp;
-  if (_hp > 8) index = 8;
-  this->cocos2d::CCSprite::setColor(colors[index - 1]);
+  const float maxColor = (5 * 255 + 247);
+  const float minColor = (0 * 255 + 244);
+  const float endColor = maxColor * ((float)_maxHP / 10.0);
+  const float cast = 360.0 / (float)(255 * 6);
+  float hpRate = (float)_hp / (float)_maxHP;
+  ccColor3B color = HSVToColor3B((minColor + (endColor - minColor) * hpRate) * cast, 1, 1);
+  this->cocos2d::CCSprite::setColor(color);
 }
 
 int Enemy::getExp() {
@@ -95,6 +90,7 @@ int Enemy::getExp() {
 Enemy* Enemy::initWithScriptName(const char* scriptName) {
   LuaObject* obj = new LuaObject(scriptName, "Enemy");
   _hp = obj->getInt("hp");
+  _maxHP = _hp;
   _power = obj->getInt("power");
   _exp = obj->getInt("exp");
   _name = obj->getString("name");

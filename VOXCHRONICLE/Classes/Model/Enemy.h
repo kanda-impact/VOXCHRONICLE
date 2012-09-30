@@ -19,6 +19,7 @@ class Enemy : public CCSprite {
  private:
   const char* _name;
   int _hp;
+  int _maxHP;
   int _mp;
   int _exp;
   int _power;

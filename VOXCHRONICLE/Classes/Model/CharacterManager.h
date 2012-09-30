@@ -26,6 +26,7 @@ typedef enum {
 
 class CharacterManager :public CCObject {
  private:
+  int _maxHP;
   int _hp;
   int _mp;
   int _exp;

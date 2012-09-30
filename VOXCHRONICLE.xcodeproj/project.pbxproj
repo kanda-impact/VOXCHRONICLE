@@ -25,6 +25,9 @@
 		0731E4EA16180A0B006AEF3D /* tnt4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4E316180A0B006AEF3D /* tnt4.png */; };
 		0731E4EB16180A0B006AEF3D /* tnt5.png in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4E416180A0B006AEF3D /* tnt5.png */; };
 		0731E4EC16180A0B006AEF3D /* tnt6.png in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4E516180A0B006AEF3D /* tnt6.png */; };
+		0731E4EF16181025006AEF3D /* Skill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0731E4ED16181024006AEF3D /* Skill.cpp */; };
+		0731E4F316181052006AEF3D /* LuaObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0731E4F116181052006AEF3D /* LuaObject.cpp */; };
+		0731E4F616181060006AEF3D /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0731E4F416181060006AEF3D /* Utils.cpp */; };
 		0739C4441615CEAF00CB864D /* dub_silent.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0739C4431615CEAF00CB864D /* dub_silent.wav */; };
 		0739C4481615D2FD00CB864D /* CharacterManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0739C4461615D2FD00CB864D /* CharacterManager.cpp */; };
 		0739C44B1615D30800CB864D /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0739C4491615D30800CB864D /* Character.cpp */; };
@@ -349,10 +352,8 @@
 		07C6092F16164FEE0084708C /* tolua_push.c in Sources */ = {isa = PBXBuildFile; fileRef = 07C6085616164FEE0084708C /* tolua_push.c */; };
 		07C6093016164FEE0084708C /* tolua_to.c in Sources */ = {isa = PBXBuildFile; fileRef = 07C6085716164FEE0084708C /* tolua_to.c */; };
 		07C6093D161674650084708C /* attack.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07C6093C161674650084708C /* attack.lua */; };
-		07C60942161678400084708C /* LuaObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C60940161678400084708C /* LuaObject.cpp */; };
 		07C6F6AD1615D6300084708C /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AB1615D6300084708C /* Enemy.cpp */; };
 		07C6F6B11615D6420084708C /* EnemyManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AF1615D6420084708C /* EnemyManager.cpp */; };
-		07C6F6D516161CCF0084708C /* Skill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6D316161CCE0084708C /* Skill.cpp */; };
 		07C6F6DC161635C80084708C /* dub_voxattack0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07C6F6DB161635C80084708C /* dub_voxattack0.wav */; };
 		07D873F515ED1215009CC446 /* attack0.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E415ED1215009CC446 /* attack0.WAV */; };
 		07D873F615ED1215009CC446 /* attack1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E515ED1215009CC446 /* attack1.WAV */; };
@@ -419,6 +420,12 @@
 		0731E4E316180A0B006AEF3D /* tnt4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tnt4.png; path = Resources/Image/Enemy/tnt4.png; sourceTree = "<group>"; };
 		0731E4E416180A0B006AEF3D /* tnt5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tnt5.png; path = Resources/Image/Enemy/tnt5.png; sourceTree = "<group>"; };
 		0731E4E516180A0B006AEF3D /* tnt6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tnt6.png; path = Resources/Image/Enemy/tnt6.png; sourceTree = "<group>"; };
+		0731E4ED16181024006AEF3D /* Skill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Skill.cpp; path = Classes/Model/Skill.cpp; sourceTree = "<group>"; };
+		0731E4EE16181024006AEF3D /* Skill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Skill.h; path = Classes/Model/Skill.h; sourceTree = "<group>"; };
+		0731E4F116181052006AEF3D /* LuaObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LuaObject.cpp; sourceTree = "<group>"; };
+		0731E4F216181052006AEF3D /* LuaObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaObject.h; sourceTree = "<group>"; };
+		0731E4F416181060006AEF3D /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
+		0731E4F516181060006AEF3D /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		0739C4431615CEAF00CB864D /* dub_silent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_silent.wav; path = Resources/Music/dub/dub_silent.wav; sourceTree = "<group>"; };
 		0739C4461615D2FD00CB864D /* CharacterManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CharacterManager.cpp; path = Classes/Model/CharacterManager.cpp; sourceTree = "<group>"; };
 		0739C4471615D2FD00CB864D /* CharacterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharacterManager.h; path = Classes/Model/CharacterManager.h; sourceTree = "<group>"; };
@@ -1019,14 +1026,10 @@
 		07C6085616164FEE0084708C /* tolua_push.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tolua_push.c; sourceTree = "<group>"; };
 		07C6085716164FEE0084708C /* tolua_to.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tolua_to.c; sourceTree = "<group>"; };
 		07C6093C161674650084708C /* attack.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attack.lua; sourceTree = "<group>"; };
-		07C60940161678400084708C /* LuaObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaObject.cpp; path = Classes/Lua/LuaObject.cpp; sourceTree = "<group>"; };
-		07C60941161678400084708C /* LuaObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LuaObject.h; path = Classes/Lua/LuaObject.h; sourceTree = "<group>"; };
 		07C6F6AB1615D6300084708C /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = Classes/Model/Enemy.cpp; sourceTree = "<group>"; };
 		07C6F6AC1615D6300084708C /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enemy.h; path = Classes/Model/Enemy.h; sourceTree = "<group>"; };
 		07C6F6AF1615D6420084708C /* EnemyManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyManager.cpp; path = Classes/Model/EnemyManager.cpp; sourceTree = "<group>"; };
 		07C6F6B01615D6420084708C /* EnemyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyManager.h; path = Classes/Model/EnemyManager.h; sourceTree = "<group>"; };
-		07C6F6D316161CCE0084708C /* Skill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Skill.cpp; path = Classes/Skill.cpp; sourceTree = "<group>"; };
-		07C6F6D416161CCE0084708C /* Skill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Skill.h; path = Classes/Skill.h; sourceTree = "<group>"; };
 		07C6F6DB161635C80084708C /* dub_voxattack0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxattack0.wav; path = Resources/Music/dub/dub_voxattack0.wav; sourceTree = "<group>"; };
 		07D8731515ECEE10009CC446 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = Classes/Scene/MainScene.h; sourceTree = "<group>"; };
 		07D873E415ED1215009CC446 /* attack0.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack0.WAV; path = Resources/Music/VOXQUEST/attack0.WAV; sourceTree = "<group>"; };
@@ -1136,6 +1139,18 @@
 			name = Title;
 			sourceTree = "<group>";
 		};
+		0731E4F016181051006AEF3D /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				0731E4F116181052006AEF3D /* LuaObject.cpp */,
+				0731E4F216181052006AEF3D /* LuaObject.h */,
+				0731E4F416181060006AEF3D /* Utils.cpp */,
+				0731E4F516181060006AEF3D /* Utils.h */,
+			);
+			name = Util;
+			path = Classes/Util;
+			sourceTree = "<group>";
+		};
 		0739C4451615D2D700CB864D /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1147,8 +1162,8 @@
 				07C6F6AB1615D6300084708C /* Enemy.cpp */,
 				07C6F6B01615D6420084708C /* EnemyManager.h */,
 				07C6F6AF1615D6420084708C /* EnemyManager.cpp */,
-				07C6F6D416161CCE0084708C /* Skill.h */,
-				07C6F6D316161CCE0084708C /* Skill.cpp */,
+				0731E4ED16181024006AEF3D /* Skill.cpp */,
+				0731E4EE16181024006AEF3D /* Skill.h */,
 				07565377161705B200C69E27 /* Level.h */,
 				07565376161705B200C69E27 /* Level.cpp */,
 			);
@@ -1313,7 +1328,7 @@
 		076F1D3915EB94780013A45E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				07C6093F1616782B0084708C /* Lua */,
+				0731E4F016181051006AEF3D /* Util */,
 				0739C4451615D2D700CB864D /* Model */,
 				074EFD0615FA8FF2004D8273 /* Scene */,
 				074EFCF515FA8B44004D8273 /* UI */,
@@ -2337,15 +2352,6 @@
 			path = skills;
 			sourceTree = "<group>";
 		};
-		07C6093F1616782B0084708C /* Lua */ = {
-			isa = PBXGroup;
-			children = (
-				07C60940161678400084708C /* LuaObject.cpp */,
-				07C60941161678400084708C /* LuaObject.h */,
-			);
-			name = Lua;
-			sourceTree = "<group>";
-		};
 		07C6F6D01615DE280084708C /* Enemy */ = {
 			isa = PBXGroup;
 			children = (
@@ -2727,7 +2733,6 @@
 				0739C44B1615D30800CB864D /* Character.cpp in Sources */,
 				07C6F6AD1615D6300084708C /* Enemy.cpp in Sources */,
 				07C6F6B11615D6420084708C /* EnemyManager.cpp in Sources */,
-				07C6F6D516161CCF0084708C /* Skill.cpp in Sources */,
 				07C6085816164FEE0084708C /* CCAction.cpp in Sources */,
 				07C6085916164FEE0084708C /* CCActionCamera.cpp in Sources */,
 				07C6085A16164FEE0084708C /* CCActionCatmullRom.cpp in Sources */,
@@ -2942,8 +2947,10 @@
 				07C6092E16164FEE0084708C /* tolua_map.c in Sources */,
 				07C6092F16164FEE0084708C /* tolua_push.c in Sources */,
 				07C6093016164FEE0084708C /* tolua_to.c in Sources */,
-				07C60942161678400084708C /* LuaObject.cpp in Sources */,
 				07565378161705B200C69E27 /* Level.cpp in Sources */,
+				0731E4EF16181025006AEF3D /* Skill.cpp in Sources */,
+				0731E4F316181052006AEF3D /* LuaObject.cpp in Sources */,
+				0731E4F616181060006AEF3D /* Utils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

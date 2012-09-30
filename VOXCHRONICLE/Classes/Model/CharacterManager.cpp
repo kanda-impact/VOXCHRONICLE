@@ -44,6 +44,7 @@ CharacterManager::CharacterManager() {
   _exp = 0;
   _shield = false;
   _hp = 5;
+  _maxHP = _hp;
   _mp = 0;
 }
 
