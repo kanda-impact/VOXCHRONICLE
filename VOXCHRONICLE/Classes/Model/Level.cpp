@@ -10,3 +10,12 @@
 
 Level::Level() {
 }
+
+int Level::getLevel() {
+  return _level;
+}
+
+vector<const char*> getEnemies() {
+  vector<const char*> enemies;
+  return enemies;
+}

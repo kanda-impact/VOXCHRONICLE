@@ -13,11 +13,12 @@
 #include <iostream>
 #include "CCSprite.h"
 
+using namespace std;
 using namespace cocos2d;
 
 class Enemy : public CCSprite {
  private:
-  const char* _name;
+  string* _name;
   int _hp;
   int _maxHP;
   int _mp;

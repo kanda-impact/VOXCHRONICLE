@@ -7,16 +7,16 @@
 //
 
 #include <sstream>
+#include <string>
 #include "Skill.h"
 #include "LuaCocos2d.h"
 #include "LuaObject.h"
 
 Skill::Skill(const char* slug) {
-  std::ostringstream os;
-  os << slug << ".lua";
-  LuaObject* lua = new LuaObject(os.str().c_str(), "params");
-  
-  _name = lua->getString("name");
+  std::stringstream ss;
+  ss << slug << ".lua";
+  LuaObject* lua = new LuaObject(ss.str().c_str(), "params");
+  _name = new std::string(lua->getString("name"));
   _slug = slug;
   _power = lua->getInt("power");
   _mp = lua->getInt("mp");
@@ -28,10 +28,11 @@ Skill::Skill(const char* slug) {
 }
 
 Skill::~Skill() {
+  delete _name;
 }
 
 const char* Skill::getName() {
-  return _name;
+  return _name->c_str();
 }
 
 const char* Skill::getSlug() {

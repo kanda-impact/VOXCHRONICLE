@@ -53,6 +53,8 @@ bool MainScene::init() {
   this->addChild(_mpLabel);
   this->updateGUI();
   
+  _map = new Map("test");
+  
   return true;
 }
 
@@ -90,16 +92,19 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
 void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track *nextTrack, int trackNumber) {
   if (trackNumber == 0) {
     Skill* skill = _controller->currentTriggerSkill();
-    std::ostringstream os;
+    std::stringstream ss;
     const char* name = _characterManager->performSkill(skill);
-    os << "dub_" << name << ".wav";
-    _music->pushTrack(os.str().c_str(), 0);
+    ss << name << ".wav";
+    string file(_map->getPrefixedMusicName(ss.str().c_str()));
+    _music->pushTrack(file.c_str(), 0);
     if (skill) _enemyManager->performSkill(skill, _characterManager);
     _controller->setSkills(_characterManager->getCurrentCharacter()->getSkills());
   } else if (trackNumber == 1) {
-    _music->pushTrack("dub_basschord00.wav", 1);
+    string file(_map->getPrefixedMusicName("basschord00.wav"));
+    _music->pushTrack(file.c_str(), 1);
   } else if (trackNumber == 2) {
-    _music->pushTrack("dub_drum00.wav", 2);
+    string file(_map->getPrefixedMusicName("drum00.wav"));
+    _music->pushTrack(file.c_str(), 2);
   }
 }
 

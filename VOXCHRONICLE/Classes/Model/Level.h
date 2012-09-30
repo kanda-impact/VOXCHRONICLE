@@ -10,10 +10,17 @@
 #define __VOXCHRONICLE__Level__
 
 #include <iostream>
+#include <vector>
+
+using namespace std;
 
 class Level {
+ private:
+  int _level;
  public:
   Level();
+  int getLevel();
+  vector<const char*> getEnemies();
 };
 
 #endif /* defined(__VOXCHRONICLE__Level__) */

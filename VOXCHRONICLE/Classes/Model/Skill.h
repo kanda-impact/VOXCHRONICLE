@@ -37,7 +37,7 @@ class Skill :public CCObject {
   int _power;
   int _mp;
   bool _common;
-  const char* _name;
+  std::string* _name;
   const char* _slug;
   SkillRange _range;
   SkillType _type;

@@ -60,27 +60,27 @@ Character* CharacterManager::getCurrentCharacter() {
 
 const char* CharacterManager::performSkill(Skill* skill) {
   if (skill) {
-    std::ostringstream os;
+    std::stringstream ss;
     if (_lastSkill && strcmp(_lastSkill->getSlug(), skill->getSlug())) {
       _repeatCount = 0;
     }
     if (skill->isCommon()) {
       // スキルのcommonがfalseのとき、曲名にキャラ名が付かない
       // tension0.wav
-      os << skill->getSlug() << _repeatCount;
+      ss << skill->getSlug() << _repeatCount;
     } else {
       // commonがtrueのとき、曲名にキャラ名が付く
       // ex: voxattack0.wav
-      os << _currentCharacter->getSlug() << skill->getSlug() << _repeatCount;
+      ss << _currentCharacter->getSlug() << skill->getSlug() << _repeatCount;
     }
     _repeatCount = (_repeatCount + 1) % skill->getMaxRepeat();
     this->setLastSkill(skill);
-    return os.str().c_str();
+    return ss.str().c_str();
   } else {
     _repeatCount = 0;
     this->setLastSkill(skill);
-    return "silent";
   }
+  return "silent";
 }
 
 bool CharacterManager::isPerforming() {

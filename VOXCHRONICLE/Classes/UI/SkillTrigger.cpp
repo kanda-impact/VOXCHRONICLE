@@ -57,9 +57,9 @@ void SkillTrigger::setSkill(Skill* skill) {
   }
   _skill = skill;
   if (_skill) {
-    std::ostringstream os;
-    os << skill->getSlug() << "_icon.png";
-    CCSprite* icon = CCSprite::create(os.str().c_str());
+    std::stringstream ss;
+    ss << skill->getSlug() << "_icon.png";
+    CCSprite* icon = CCSprite::create(ss.str().c_str());
     icon->setColor(ccc3(255, 0, 0));
     icon->setPosition(CCPointMake(40, 40));
     const int iconTag = 1;

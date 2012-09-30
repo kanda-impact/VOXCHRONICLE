@@ -13,6 +13,7 @@
 #include "cocos2d.h"
 #include "Track.h"
 #include "Music.h"
+#include "Map.h"
 
 #include "Controller.h"
 #include "EnemyManager.h"
@@ -30,6 +31,8 @@ class MainScene : public CCLayer {
   
   CCLabelTTF* _hpLabel;
   CCLabelTTF* _mpLabel;
+  
+  Map* _map;
   
   void onEnterTransitionDidFinish();
   

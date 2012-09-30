@@ -28,6 +28,8 @@
 		0731E4EF16181025006AEF3D /* Skill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0731E4ED16181024006AEF3D /* Skill.cpp */; };
 		0731E4F316181052006AEF3D /* LuaObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0731E4F116181052006AEF3D /* LuaObject.cpp */; };
 		0731E4F616181060006AEF3D /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0731E4F416181060006AEF3D /* Utils.cpp */; };
+		0731E4F916181DD5006AEF3D /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0731E4F716181DD4006AEF3D /* Map.cpp */; };
+		0731E4FC16184A87006AEF3D /* test.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4FB16184A87006AEF3D /* test.lua */; };
 		0739C4441615CEAF00CB864D /* dub_silent.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0739C4431615CEAF00CB864D /* dub_silent.wav */; };
 		0739C4481615D2FD00CB864D /* CharacterManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0739C4461615D2FD00CB864D /* CharacterManager.cpp */; };
 		0739C44B1615D30800CB864D /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0739C4491615D30800CB864D /* Character.cpp */; };
@@ -426,6 +428,9 @@
 		0731E4F216181052006AEF3D /* LuaObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaObject.h; sourceTree = "<group>"; };
 		0731E4F416181060006AEF3D /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
 		0731E4F516181060006AEF3D /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		0731E4F716181DD4006AEF3D /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Map.cpp; path = Classes/Model/Map.cpp; sourceTree = "<group>"; };
+		0731E4F816181DD4006AEF3D /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Map.h; path = Classes/Model/Map.h; sourceTree = "<group>"; };
+		0731E4FB16184A87006AEF3D /* test.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = test.lua; path = map/test.lua; sourceTree = "<group>"; };
 		0739C4431615CEAF00CB864D /* dub_silent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_silent.wav; path = Resources/Music/dub/dub_silent.wav; sourceTree = "<group>"; };
 		0739C4461615D2FD00CB864D /* CharacterManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CharacterManager.cpp; path = Classes/Model/CharacterManager.cpp; sourceTree = "<group>"; };
 		0739C4471615D2FD00CB864D /* CharacterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharacterManager.h; path = Classes/Model/CharacterManager.h; sourceTree = "<group>"; };
@@ -1151,6 +1156,14 @@
 			path = Classes/Util;
 			sourceTree = "<group>";
 		};
+		0731E4FA16184A59006AEF3D /* map */ = {
+			isa = PBXGroup;
+			children = (
+				0731E4FB16184A87006AEF3D /* test.lua */,
+			);
+			name = map;
+			sourceTree = "<group>";
+		};
 		0739C4451615D2D700CB864D /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1166,6 +1179,8 @@
 				0731E4EE16181024006AEF3D /* Skill.h */,
 				07565377161705B200C69E27 /* Level.h */,
 				07565376161705B200C69E27 /* Level.cpp */,
+				0731E4F816181DD4006AEF3D /* Map.h */,
+				0731E4F716181DD4006AEF3D /* Map.cpp */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1433,6 +1448,7 @@
 		07C6064016164F810084708C /* Script */ = {
 			isa = PBXGroup;
 			children = (
+				0731E4FA16184A59006AEF3D /* map */,
 				07C6093A161674650084708C /* enemies */,
 				07C6093B161674650084708C /* skills */,
 				07C6064116164F810084708C /* hello.lua */,
@@ -2668,6 +2684,7 @@
 				0731E4EA16180A0B006AEF3D /* tnt4.png in Resources */,
 				0731E4EB16180A0B006AEF3D /* tnt5.png in Resources */,
 				0731E4EC16180A0B006AEF3D /* tnt6.png in Resources */,
+				0731E4FC16184A87006AEF3D /* test.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2951,6 +2968,7 @@
 				0731E4EF16181025006AEF3D /* Skill.cpp in Sources */,
 				0731E4F316181052006AEF3D /* LuaObject.cpp in Sources */,
 				0731E4F616181060006AEF3D /* Utils.cpp in Sources */,
+				0731E4F916181DD5006AEF3D /* Map.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

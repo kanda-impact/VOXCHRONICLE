@@ -35,6 +35,7 @@ Enemy::Enemy() {
 }
 
 Enemy::~Enemy() {
+  delete _name;
 }
 
 void Enemy::update(float dt) {
@@ -93,7 +94,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _maxHP = _hp;
   _power = obj->getInt("power");
   _exp = obj->getInt("exp");
-  _name = obj->getString("name");
+  _name = new string(obj->getString("name"));
   const char* imageName = obj->getString("imageName");
   int frameCount = obj->getInt("animationFrames");
   stringstream ss;
