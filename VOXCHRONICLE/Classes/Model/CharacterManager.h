@@ -14,6 +14,16 @@
 #include "Skill.h"
 #include "Enemy.h"
 
+// ダメージタイプ
+typedef enum {
+  DamageTypeHit,
+  DamageTypeShield,
+  DamageTypeInvisible,
+  DamageTypeWeak,
+  DamageTypeDeath,
+  DamageTypeAbsorption
+} DamageType;
+
 class CharacterManager :public CCObject {
  private:
   int _hp;
@@ -30,21 +40,29 @@ class CharacterManager :public CCObject {
  public:
   CharacterManager();
   ~CharacterManager();
-  Character* getCurrentCharacter();
   const char* performSkill(Skill* skill);
   bool isPerforming();
-  void setLastSkill(Skill* skill);
-  void setCurrentSkill(Skill* skill);
-  int getTension();
   void chargeTension();
   void resetTension();
   int calcDamage(Enemy* enemy, Skill* skill);
   void addExp(int exp);
   int getLevel(int exp);
-  void setCurrentCharacter(int idx);
   int getCurrentCharacterIndex();
+  DamageType damage(Enemy* attacker, int damage);
+  
+  // getter
+  Character* getCurrentCharacter();
+  int getTension();
   bool getShield();
+  int getHP();
+  int getMP();
+  
+  // setter
+  void setLastSkill(Skill* skill);
+  void setCurrentSkill(Skill* skill);
+  void setCurrentCharacter(int idx);
   void setShield(bool s);
+  
 };
 
 #endif /* defined(__VOXCHRONICLE__CharacterManager__) */

@@ -43,6 +43,8 @@ CharacterManager::CharacterManager() {
   _tension = 0;
   _exp = 0;
   _shield = false;
+  _hp = 5;
+  _mp = 0;
 }
 
 CharacterManager::~CharacterManager() {
@@ -157,4 +159,24 @@ bool CharacterManager::getShield() {
 
 void CharacterManager::setShield(bool s) {
   _shield = s;
+}
+
+DamageType CharacterManager::damage(Enemy *attacker, int damage) {
+  // 属性とか後で考える
+  if (_shield) {
+    return DamageTypeShield;
+  }
+  _hp -= damage;
+  if (_hp <= 0) {
+    return DamageTypeDeath;
+  }
+  return DamageTypeHit;
+}
+
+int CharacterManager::getHP() {
+  return _hp;
+}
+
+int CharacterManager::getMP() {
+  return _mp;
 }

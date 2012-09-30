@@ -45,6 +45,13 @@ bool MainScene::init() {
   CCSize size = director->getWinSize();
   this->addChild(_controller);
   
+  _hpLabel = CCLabelTTF::create("", "Helvetica", 16);
+  _hpLabel->setPosition(CCPointMake(400, 290));
+  _mpLabel = CCLabelTTF::create("", "Helvetica", 16);
+  _mpLabel->setPosition(CCPointMake(400, 270));
+  this->addChild(_hpLabel);
+  this->addChild(_mpLabel);
+  
   return true;
 }
 
@@ -68,9 +75,14 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
       if (enemy->getRow() > 0) {
         enemy->moveRow(-1);
       } else {
+        DamageType result = _characterManager->damage(enemy, 1);
+        if (result == DamageTypeDeath) {
+          std::cout << "game over" << std::endl;
+        }
         _enemyManager->removeEnemy(enemy);
       }
     }
+    this->updateGUI();
   }
 }
 
@@ -95,4 +107,14 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     _controller->resetAllTriggers();
     std::cout << "next Track" << std::endl;
   }
+}
+
+void MainScene::updateGUI() {
+  stringstream ss;
+  ss <<_characterManager->getHP();
+  _hpLabel->setString(ss.str().c_str());
+  ss.str("");
+  ss <<_characterManager->getMP();
+  _mpLabel->setString(ss.str().c_str());
+  
 }

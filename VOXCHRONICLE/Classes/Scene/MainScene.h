@@ -19,19 +19,25 @@
 #include "CharacterManager.h"
 
 using namespace VISS;
+using namespace cocos2d;
 
-class MainScene : public cocos2d::CCLayer {
+class MainScene : public CCLayer {
  private:
   Music* _music;
   Controller* _controller;
   EnemyManager* _enemyManager;
   CharacterManager* _characterManager;
   
+  CCLabelTTF* _hpLabel;
+  CCLabelTTF* _mpLabel;
+  
   void onEnterTransitionDidFinish();
   
   void trackDidBack(Music* music, Track* currentTrack, int trackNumber);
   void trackWillFinishPlaying(Music* music, Track* currentTrack, Track* nextTrack, int trackNumber);
   void trackDidFinishPlaying(Music* music, Track* finishedTrack, Track* nextTrack, int trackNumber);
+  
+  void updateGUI();
   
  public:
   virtual bool init();
