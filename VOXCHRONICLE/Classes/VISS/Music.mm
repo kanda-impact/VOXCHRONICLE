@@ -127,6 +127,7 @@ void VISS::Music::update(float dt) {
   for (int trackNumber = 0; trackNumber < _trackCount; ++trackNumber) {
     std::deque< boost::shared_ptr<Track> >* it = &_tracks.at(trackNumber);
     boost::shared_ptr<VISS::Track> current = it->front();
+    if (!current) return;
     float sub = current->getDuration() - current->getPosition();
     if (!current->isPlaying()) {
       //終わったとき
