@@ -58,6 +58,7 @@ float Enemy::bottomLine() {
 
 void Enemy::moveRow(float r) {
   _row += r;
+  this->getParent()->reorderChild(this, (MAX_ROW - _row));
 }
 
 bool Enemy::damage(int d) {

@@ -42,7 +42,7 @@ Enemy* EnemyManager::popEnemy() {
   int col = rand() % 3;
   enemy->setCol(col);
   _enemies->addObject(enemy);
-  this->addChild(enemy);
+  this->addChild(enemy, (MAX_ROW - enemy->getRow()));
   return enemy;
 }
 
