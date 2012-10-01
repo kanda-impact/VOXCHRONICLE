@@ -13,12 +13,16 @@
 #include <string>
 #include "LuaCocos2d.h"
 
+using namespace std;
+
 class LuaObject {
  private:
   CCLuaEngine* _engine;
   const char* _className;
   const char* _scriptName;
   std::string _path;
+  float getFloatFromTable(lua_State* state, int index);
+  void internalLoadSubTableWithKey(string key, lua_State* state, CCLuaValueDict* dict);
  public:
   LuaObject(const char* scriptName, const char* className);
   ~LuaObject();
@@ -29,6 +33,8 @@ class LuaObject {
   lua_CFunction getFunction(const char* key);
   const void* getObject(const char* key);
   CCLuaEngine* getLuaEngine();
+  CCLuaValueDict* internalRecursivelyLoadTable(lua_State* state, int index);
+  CCLuaValueDict* loadLuaTableFromFile(const char* scriptName);
 };
 
 #endif /* defined(__VOXCHRONICLE__LuaObject__) */
