@@ -7,7 +7,6 @@
 //
 
 #include <boost/random.hpp>
-
 #include <boost/lambda/lambda.hpp>
 
 #include "EnemyManager.h"
@@ -21,6 +20,9 @@ bool EnemyManager::init() {
   }
   _enemies = CCArray::create();
   _enemies->retain();
+  _enemiesQueue = CCArray::create();
+  _enemiesQueue->retain();
+  _level = NULL;
   mt19937 gen( static_cast<unsigned long>(time(0)) );
   uniform_smallint<> dst( 0, 2 );
   variate_generator<
@@ -35,10 +37,15 @@ EnemyManager::EnemyManager() {
 
 EnemyManager::~EnemyManager() {
   _enemies->release();
+  _enemiesQueue->release();
 }
 
 Enemy* EnemyManager::popEnemy() {
-  Enemy* enemy = Enemy::create("tnt");
+  if (_enemiesQueue->count() == 0) {
+    _enemiesQueue->addObjectsFromArray(this->createEnemyQueue());
+  }
+  Enemy* enemy = (Enemy*)_enemiesQueue->lastObject();
+  _enemiesQueue->removeLastObject();
   int col = rand() % 3;
   enemy->setCol(col);
   _enemies->addObject(enemy);
@@ -174,4 +181,36 @@ CCArray* EnemyManager::performSkill(Skill* skill, CharacterManager* characterMan
   }
   
   return targets;
+}
+
+Level* EnemyManager::getLevel() {
+  return _level;
+}
+
+void EnemyManager::setLevel(Level *lv) {
+  if (_level) {
+    _level->release();
+  }
+  if (lv) {
+    lv->retain();
+  }
+  _level = lv;
+}
+
+CCArray* EnemyManager::createEnemyQueue() {
+  CCArray* queue = CCArray::create();
+  list< pair<string, int> > table = _level->getEnemyTable();
+  for (list< pair<string, int> >::iterator it = table.begin(); it != table.end(); ++it ) {
+    string enemyName = it->first;
+    int count = it->second;
+    for (int i = 0; i < count; ++i) {
+      Enemy* enemy = Enemy::create(enemyName.c_str());
+      queue->addObject(enemy);
+    }
+  }
+  int size = queue->count();
+  for (int i = 0; i < size; ++i) {
+    queue->exchangeObjectAtIndex(i, rand() % size);
+  }
+  return queue;
 }

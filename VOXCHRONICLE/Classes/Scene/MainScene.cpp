@@ -55,6 +55,7 @@ bool MainScene::init() {
   
   _map = new Map("test");
   _level = _map->createInitialLevel();
+  _enemyManager->setLevel(_level);
   
   this->scheduleUpdate();
   return true;

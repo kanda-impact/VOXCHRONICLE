@@ -11,10 +11,12 @@
 
 #include <iostream>
 #include <list>
+#include "cocos2d.h"
 
 using namespace std;
+using namespace cocos2d;
 
-class Level {
+class Level :public CCObject {
  private:
   int _level;
   list<pair<string, int> > _enemyTable;

@@ -16,6 +16,7 @@
 
 #include "Enemy.h"
 #include "Skill.h"
+#include "Level.h"
 #include "CharacterManager.h"
 
 using namespace cocos2d;
@@ -24,7 +25,9 @@ class EnemyManager :public CCLayer {
  private:
   CCArray* _enemies;
   int _enemyCount;
-  //Level* _level;
+  Level* _level;
+  CCArray* _enemiesQueue;
+  CCArray* createEnemyQueue();
  public:
   virtual bool init();
   EnemyManager();
@@ -33,8 +36,8 @@ class EnemyManager :public CCLayer {
   Enemy* lotPopEnemy();
   bool isExistEnemy(int col, int row);
   CCArray* getEnemies();
-  //Level* getLevel();
-  //void setLevel(Level* lv);
+  Level* getLevel();
+  void setLevel(Level* lv);
   Enemy* enemyAt(int col, int row);
   bool removeEnemy(Enemy* enemy);
   Enemy* getNearestEnemy();
