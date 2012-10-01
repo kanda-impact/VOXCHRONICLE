@@ -21,6 +21,13 @@ Map::Map(const char* mapName) {
   _name = new string(lua->getString("name"));
   _prefix = new string(lua->getString("prefix"));
   _backgroundImageName = new string(lua->getString("backgroundImage"));
+  CCLuaValueDict* nexts = lua->getTable("nextMaps");
+  _initialLevel = lua->getInt("initialLevel");
+  for (int i = 1; i <= nexts->size(); ++i) {
+    stringstream ss;
+    ss << i;
+    _nextMaps->push_back((*nexts)[ss.str()].stringValue());
+  }
   delete lua;
 }
 

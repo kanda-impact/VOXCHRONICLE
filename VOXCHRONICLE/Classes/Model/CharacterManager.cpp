@@ -135,7 +135,6 @@ int CharacterManager::calcDamage(Enemy *enemy, Skill *skill) {
 
 void CharacterManager::addExp(int exp) {
   _exp += exp;
-  cout << "level = " << this->getLevel(_exp) << endl;
 }
 
 int CharacterManager::getLevel(int exp) {

@@ -98,6 +98,17 @@ const void* LuaObject::getObject(const char *key) {
   return result;
 }
 
+CCLuaValueDict* LuaObject::getTable(const char* key) {
+  _engine->executeScriptFile(_path.c_str());
+  lua_State* L = _engine->getLuaState();
+  lua_getglobal(L, _className);
+  int table = lua_gettop(L);
+  lua_getfield(L, table, key);
+  CCLuaValueDict* dict = recursivelyLoadTable(lua_gettop(L));
+  lua_pop(L, 1);
+  return dict;
+}
+
 CCLuaEngine* LuaObject::getLuaEngine() {
   return _engine;
 }
@@ -149,7 +160,7 @@ void LuaObject::internalLoadSubTableWithKey(string key, lua_State* state, CCLuaV
     case kStructType_INVALID:
     {
     // assume it's a user table, recurse into it
-    CCLuaValueDict* tableDict = this->internalRecursivelyLoadTable(state, -1);
+    CCLuaValueDict* tableDict = this->recursivelyLoadTable(-1);
     if (tableDict != NULL) {
       (*dict)[key] = CCLuaValue::dictValue(*tableDict);
     }
@@ -158,7 +169,8 @@ void LuaObject::internalLoadSubTableWithKey(string key, lua_State* state, CCLuaV
   }
 }
 
-CCLuaValueDict* LuaObject::internalRecursivelyLoadTable(lua_State* state, int index) {
+CCLuaValueDict* LuaObject::recursivelyLoadTable(int index) {
+  lua_State* state = this->getLuaEngine()->getLuaState();
   string error = "";
   CCLuaValueDict* dict = NULL;
   if (lua_istable(state, index)) {
@@ -212,7 +224,7 @@ CCLuaValueDict* LuaObject::internalRecursivelyLoadTable(lua_State* state, int in
   return dict;
 }
 
-CCLuaValueDict* LuaObject::loadLuaTableFromFile(const char* scriptName) {
+const CCLuaValueDict* LuaObject::loadLuaTableFromFile(const char* scriptName) {
   CCLuaValueDict* dict = NULL;
   string path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath(scriptName);
   _engine->executeScriptFile(path.c_str());
@@ -220,7 +232,7 @@ CCLuaValueDict* LuaObject::loadLuaTableFromFile(const char* scriptName) {
   lua_State* L = this->getLuaEngine()->getLuaState();
   
   if (lua_istable(L, -1)) {
-    dict = this->internalRecursivelyLoadTable(L, -1);
+    dict = this->recursivelyLoadTable(-1);
     //LOG_EXPR(dict);
   } else {
     string error = lua_tostring(L, -1);

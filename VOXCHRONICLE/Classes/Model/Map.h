@@ -19,11 +19,12 @@ using namespace cocos2d;
 class Map :public CCObject {
  private:
   int _endLevel;
-  string* _name;
+  int _initialLevel;
   const char* _slug;
+  vector<string>* _nextMaps;
+  string* _name;
   string* _prefix;
   string* _backgroundImageName;
-  CCArray* _nextMaps;
  public:
   Map(const char* mapName);
   ~Map();

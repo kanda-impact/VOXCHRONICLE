@@ -2,12 +2,13 @@ Map = {
   name = "テストマップ",
   prefix = "dub",
   backgroundImage = "",
-  nextMaps = {},
+  nextMaps = {"test", "test"},
+  initialLevel = 1,
   getEnemyTables = function(level)
-    enemies = {};
+    enemies = {}
     if true then
-      enemies = {"tnt"}
+      enemies = {tnt = 30}
     end
-    return table.maxn(enemies), enemies
+    return enemies
   end
 }

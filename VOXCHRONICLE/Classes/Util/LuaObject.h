@@ -31,10 +31,11 @@ class LuaObject {
   bool getBoolean(const char* key);
   const char* getString(const char* key);
   lua_CFunction getFunction(const char* key);
+  CCLuaValueDict* getTable(const char* key);
   const void* getObject(const char* key);
   CCLuaEngine* getLuaEngine();
-  CCLuaValueDict* internalRecursivelyLoadTable(lua_State* state, int index);
-  CCLuaValueDict* loadLuaTableFromFile(const char* scriptName);
+  const CCLuaValueDict* loadLuaTableFromFile(const char* scriptName);
+  CCLuaValueDict* recursivelyLoadTable(int index);
 };
 
 #endif /* defined(__VOXCHRONICLE__LuaObject__) */
