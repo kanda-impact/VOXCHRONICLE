@@ -38,6 +38,7 @@ class CharacterManager :public CCObject {
   int _waitTurn;
   int _tension;
   bool _shield;
+  int executeExpLua(const char* methodName, int argument);
  public:
   CharacterManager();
   ~CharacterManager();
@@ -48,6 +49,7 @@ class CharacterManager :public CCObject {
   int calcDamage(Enemy* enemy, Skill* skill);
   void addExp(int exp);
   int getLevel(int exp);
+  int getExpWithLevel(int level);
   int getCurrentCharacterIndex();
   DamageType damage(Enemy* attacker, int damage);
   

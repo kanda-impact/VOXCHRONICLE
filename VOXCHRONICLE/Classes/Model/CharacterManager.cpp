@@ -135,16 +135,25 @@ int CharacterManager::calcDamage(Enemy *enemy, Skill *skill) {
 
 void CharacterManager::addExp(int exp) {
   _exp += exp;
+  cout << "level = " << this->getLevel(_exp) << endl;
 }
 
 int CharacterManager::getLevel(int exp) {
+  return executeExpLua("getLevel", exp);
+}
+
+int CharacterManager::getExpWithLevel(int level) {
+  return executeExpLua("getExp", level);
+}
+
+int CharacterManager::executeExpLua(const char *methodName, int argument) {
   CCLuaEngine* engine = CCLuaEngine::defaultEngine();
   std::string path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("exp.lua");
   engine->executeScriptFile(path.c_str());
   lua_State* L = engine->getLuaState();
-  lua_getglobal(L, "getLevel");
+  lua_getglobal(L, methodName);
   if (lua_isfunction(L, lua_gettop(L))) {
-    engine->pushInt(exp);
+    engine->pushInt(argument);
     if (lua_pcall(L, 1, 1, 0)) {
       std::cout << lua_gettop(L) << std::endl;
       return 1;
