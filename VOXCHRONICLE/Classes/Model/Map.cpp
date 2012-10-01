@@ -8,6 +8,7 @@
 
 #include <sstream>
 #include "Map.h"
+#include "Level.h"
 #include "LuaObject.h"
 
 using namespace std;
@@ -18,17 +19,15 @@ Map::Map(const char* mapName) {
   stringstream ss;
   ss << mapName << ".lua";
   LuaObject* lua = new LuaObject(ss.str().c_str(), "Map");
+  lua->autorelease();
   _name = new string(lua->getString("name"));
   _prefix = new string(lua->getString("prefix"));
   _backgroundImageName = new string(lua->getString("backgroundImage"));
-  CCLuaValueDict* nexts = lua->getTable("nextMaps");
+  CCLuaValueArray* nexts = lua->getArray("nextMaps");
   _initialLevel = lua->getInt("initialLevel");
-  for (int i = 1; i <= nexts->size(); ++i) {
-    stringstream ss;
-    ss << i;
-    _nextMaps->push_back((*nexts)[ss.str()].stringValue());
+  for (CCLuaValueArray::const_iterator it = nexts->begin(); it != nexts->end(); ++it) {
+    _nextMaps->push_back(it->stringValue());
   }
-  delete lua;
 }
 
 Map::~Map() {
@@ -36,7 +35,32 @@ Map::~Map() {
 }
 
 Level* Map::createLevel(int level) {
-  return NULL;
+  Level* lv = new Level(level);
+  stringstream ss;
+  ss << _slug << ".lua";
+  LuaObject* lua = new LuaObject(ss.str().c_str(), "Map");
+  lua->autorelease();
+  lua_State* L = lua->getLuaEngine()->getLuaState();
+  lua_getglobal(L, "Map");
+  int table = lua_gettop(L);
+  lua_getfield(L, table, "getEnemyTable");
+  lua_pushinteger(L, level);
+  if (lua_pcall(L, 1, 1, 0)) {
+    cout << lua_tostring(L, lua_gettop(L)) << endl;
+  }
+  list< pair<string, int> > enemyTable;
+  CCLuaValueDict* dict = lua->recursivelyLoadTable(lua_gettop(L));
+  for (CCLuaValueDict::iterator it = dict->begin(); it != dict->end(); ++it) {
+    string key = it->first;
+    CCLuaValue value = it->second;
+    enemyTable.push_back( pair<string, int>(key, (int)value.floatValue()) );
+  }
+  lv->setEnemyTable(enemyTable);
+  return lv;
+}
+
+Level* Map::createInitialLevel() {
+  return this->createLevel(_initialLevel);
 }
 
 const char* Map::getPrefixedMusicName(const char *musicName) {

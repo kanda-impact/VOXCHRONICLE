@@ -8,14 +8,18 @@
 
 #include "Level.h"
 
-Level::Level() {
+Level::Level(int level) {
+  _level = level;
 }
 
 int Level::getLevel() {
   return _level;
 }
 
-vector<const char*> getEnemies() {
-  vector<const char*> enemies;
-  return enemies;
+list< pair<string, int> > Level::getEnemyTable() {
+  return _enemyTable;
+}
+
+void Level::setEnemyTable(list<pair<string, int> > table) {
+  _enemyTable = table;
 }

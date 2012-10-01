@@ -54,6 +54,7 @@ bool MainScene::init() {
   this->updateGUI();
   
   _map = new Map("test");
+  _level = _map->createInitialLevel();
   
   this->scheduleUpdate();
   return true;

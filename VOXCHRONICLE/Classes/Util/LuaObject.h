@@ -14,8 +14,9 @@
 #include "LuaCocos2d.h"
 
 using namespace std;
+using namespace cocos2d;
 
-class LuaObject {
+class LuaObject :public CCObject {
  private:
   CCLuaEngine* _engine;
   const char* _className;
@@ -32,10 +33,12 @@ class LuaObject {
   const char* getString(const char* key);
   lua_CFunction getFunction(const char* key);
   CCLuaValueDict* getTable(const char* key);
+  CCLuaValueArray* getArray(const char* key);
   const void* getObject(const char* key);
   CCLuaEngine* getLuaEngine();
-  const CCLuaValueDict* loadLuaTableFromFile(const char* scriptName);
+  static CCLuaValueDict* loadLuaTableFromFile(const char* scriptName);
   CCLuaValueDict* recursivelyLoadTable(int index);
+  static CCLuaValueArray* luaTableToArray(CCLuaValueDict* dict);
 };
 
 #endif /* defined(__VOXCHRONICLE__LuaObject__) */

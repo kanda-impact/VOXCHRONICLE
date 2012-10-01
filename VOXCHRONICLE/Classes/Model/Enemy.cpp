@@ -90,6 +90,7 @@ int Enemy::getExp() {
 
 Enemy* Enemy::initWithScriptName(const char* scriptName) {
   LuaObject* obj = new LuaObject(scriptName, "Enemy");
+  obj->autorelease();
   _hp = obj->getInt("hp");
   _maxHP = _hp;
   _power = obj->getInt("power");
@@ -112,7 +113,6 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
     animation->setLoops(-1);
     animation->setDelayPerUnit(10.0 / 60.0);
     this->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
-    delete obj;
     return this;
   }
   return NULL;

@@ -14,6 +14,7 @@
 #include "Track.h"
 #include "Music.h"
 #include "Map.h"
+#include "Level.h"
 
 #include "Controller.h"
 #include "EnemyManager.h"
@@ -32,6 +33,7 @@ class MainScene : public CCLayer {
   CCLabelTTF* _hpLabel;
   CCLabelTTF* _mpLabel;
   
+  Level* _level;
   Map* _map;
   
   void onEnterTransitionDidFinish();

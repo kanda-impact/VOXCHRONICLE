@@ -4,7 +4,7 @@ Map = {
   backgroundImage = "",
   nextMaps = {"test", "test"},
   initialLevel = 1,
-  getEnemyTables = function(level)
+  getEnemyTable = function(level)
     enemies = {}
     if true then
       enemies = {tnt = 30}

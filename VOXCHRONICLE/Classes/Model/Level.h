@@ -10,17 +10,19 @@
 #define __VOXCHRONICLE__Level__
 
 #include <iostream>
-#include <vector>
+#include <list>
 
 using namespace std;
 
 class Level {
  private:
   int _level;
+  list<pair<string, int> > _enemyTable;
  public:
-  Level();
+  Level(int level);
   int getLevel();
-  vector<const char*> getEnemies();
+  list<pair<string, int> > getEnemyTable();
+  void setEnemyTable(list<pair<string, int> > table);
 };
 
 #endif /* defined(__VOXCHRONICLE__Level__) */

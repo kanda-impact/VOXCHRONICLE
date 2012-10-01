@@ -109,6 +109,10 @@ CCLuaValueDict* LuaObject::getTable(const char* key) {
   return dict;
 }
 
+CCLuaValueArray* LuaObject::getArray(const char *key) {
+  return LuaObject::luaTableToArray(this->getTable(key));
+}
+
 CCLuaEngine* LuaObject::getLuaEngine() {
   return _engine;
 }
@@ -224,15 +228,17 @@ CCLuaValueDict* LuaObject::recursivelyLoadTable(int index) {
   return dict;
 }
 
-const CCLuaValueDict* LuaObject::loadLuaTableFromFile(const char* scriptName) {
+CCLuaValueDict* LuaObject::loadLuaTableFromFile(const char* scriptName) {
+  LuaObject* obj = new LuaObject(scriptName, "");
+  obj->retain();
   CCLuaValueDict* dict = NULL;
   string path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath(scriptName);
-  _engine->executeScriptFile(path.c_str());
+  obj->getLuaEngine()->executeScriptFile(path.c_str());
   
-  lua_State* L = this->getLuaEngine()->getLuaState();
+  lua_State* L = obj->getLuaEngine()->getLuaState();
   
   if (lua_istable(L, -1)) {
-    dict = this->recursivelyLoadTable(-1);
+    dict = obj->recursivelyLoadTable(-1);
     //LOG_EXPR(dict);
   } else {
     string error = lua_tostring(L, -1);
@@ -240,6 +246,15 @@ const CCLuaValueDict* LuaObject::loadLuaTableFromFile(const char* scriptName) {
   }
   
   lua_pop(L, 1);
-  
   return dict;
+}
+
+CCLuaValueArray* LuaObject::luaTableToArray(CCLuaValueDict* dict) {
+  CCLuaValueArray* array = new CCLuaValueArray();
+  for (int i = 1; i <= dict->size(); ++i) {
+    stringstream ss;
+    ss << i;
+    array->push_back((*dict)[ss.str()]);
+  }
+  return array;
 }
