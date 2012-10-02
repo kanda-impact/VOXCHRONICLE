@@ -4,6 +4,7 @@ Map = {
   backgroundImage = "",
   nextMaps = {"test", "test"},
   initialLevel = 1,
+  maxLevel = 10,
   getEnemyTable = function(level)
     enemies = {}
     if true then

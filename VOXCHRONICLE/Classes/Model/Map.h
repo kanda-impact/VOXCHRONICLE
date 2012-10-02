@@ -20,6 +20,7 @@ class Map :public CCObject {
  private:
   int _endLevel;
   int _initialLevel;
+  int _maxLevel;
   const char* _slug;
   vector<string>* _nextMaps;
   string* _name;

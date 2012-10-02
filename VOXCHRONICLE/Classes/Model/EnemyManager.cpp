@@ -18,8 +18,6 @@ bool EnemyManager::init() {
   if (!CCLayer::init()) {
     return false;
   }
-  _enemies = CCArray::create();
-  _enemies->retain();
   _enemiesQueue = CCArray::create();
   _enemiesQueue->retain();
   _level = NULL;
@@ -36,7 +34,6 @@ EnemyManager::EnemyManager() {
 }
 
 EnemyManager::~EnemyManager() {
-  _enemies->release();
   _enemiesQueue->release();
 }
 
@@ -48,7 +45,6 @@ Enemy* EnemyManager::popEnemy() {
   _enemiesQueue->removeLastObject();
   int col = rand() % 3;
   enemy->setCol(col);
-  _enemies->addObject(enemy);
   this->addChild(enemy, (MAX_ROW - enemy->getRow()));
   return enemy;
 }
@@ -68,7 +64,7 @@ bool EnemyManager::isExistEnemy(int col, int row) {
 
 Enemy* EnemyManager::enemyAt(int col, int row) {
   CCObject* obj = NULL;
-  CCARRAY_FOREACH(_enemies, obj) {
+  CCARRAY_FOREACH(this->getChildren(), obj) {
     Enemy* enemy = (Enemy*)obj;
     if (enemy->getRow() == row && enemy->getCol() == col) {
       return enemy;
@@ -78,13 +74,12 @@ Enemy* EnemyManager::enemyAt(int col, int row) {
 }
 
 CCArray* EnemyManager::getEnemies() {
-  return _enemies;
+  return this->getChildren();
 }
 
 bool EnemyManager::removeEnemy(Enemy* enemy) {
-  if (_enemies->containsObject(enemy)) {
+  if (this->getChildren()->containsObject(enemy)) {
     this->removeChild(enemy, true);
-    _enemies->removeObject(enemy);
     return true;
   }
   return false;
@@ -93,7 +88,7 @@ bool EnemyManager::removeEnemy(Enemy* enemy) {
 Enemy* EnemyManager::getNearestEnemy() {
   CCObject* obj = NULL;
   Enemy* minEnemy = NULL;
-  CCARRAY_FOREACH(_enemies, obj) {
+  CCARRAY_FOREACH(this->getChildren(), obj) {
     Enemy* enemy = (Enemy*)obj;
     if (!minEnemy || enemy->getRow() < minEnemy->getRow() || (enemy->getRow() == minEnemy->getRow() && enemy->getCol() < minEnemy->getCol())) {
       minEnemy = enemy;
@@ -105,7 +100,7 @@ Enemy* EnemyManager::getNearestEnemy() {
 CCArray* EnemyManager::getFilteredEnemies(boost::function<bool (int, float)>filter) {
   CCArray* enemies = (CCArray*)CCArray::create();
   CCObject* obj = NULL;
-  CCARRAY_FOREACH(_enemies, obj) {
+  CCARRAY_FOREACH(this->getChildren(), obj) {
     Enemy* enemy = (Enemy*)obj;
     if (filter(enemy->getRow(), enemy->getCol())) {
       enemies->addObject(enemy);
@@ -115,7 +110,7 @@ CCArray* EnemyManager::getFilteredEnemies(boost::function<bool (int, float)>filt
 }
 
 bool EnemyManager::attackEnemy(Enemy* enemy, int damage) {
-  if (_enemies->containsObject(enemy)) {
+  if (this->getChildren()->containsObject(enemy)) {
     return enemy->damage(damage);
   }
   return false;
@@ -133,7 +128,7 @@ CCArray* EnemyManager::performSkill(Skill* skill, CharacterManager* characterMan
       targets->addObject(target);
     }
   } else if (range == SkillRangeAll) {
-    targets->addObjectsFromArray(_enemies);
+    targets->addObjectsFromArray(this->getChildren());
   } else if (range == SkillRangeHorizontal) {
     Enemy* target = this->getNearestEnemy();
     targets->addObject(target);

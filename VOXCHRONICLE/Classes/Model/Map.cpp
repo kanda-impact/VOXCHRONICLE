@@ -25,6 +25,8 @@ Map::Map(const char* mapName) {
   _backgroundImageName = new string(lua->getString("backgroundImage"));
   CCLuaValueArray* nexts = lua->getArray("nextMaps");
   _initialLevel = lua->getInt("initialLevel");
+  _maxLevel = lua->getInt("maxLevel");
+  _nextMaps = new vector<string>();
   for (CCLuaValueArray::const_iterator it = nexts->begin(); it != nexts->end(); ++it) {
     _nextMaps->push_back(it->stringValue());
   }
