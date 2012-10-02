@@ -23,3 +23,11 @@ list< pair<string, int> > Level::getEnemyTable() {
 void Level::setEnemyTable(list<pair<string, int> > table) {
   _enemyTable = table;
 }
+
+float Level::getEnemyPopRate() {
+  return _enemyPopRate;
+}
+
+void Level::setEnemyPopRate(float rate) {
+  _enemyPopRate = rate;
+}

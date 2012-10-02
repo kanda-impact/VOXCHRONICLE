@@ -38,6 +38,8 @@ Level* Map::createLevel(int level) {
   Level* lv = new Level(level);
   stringstream ss;
   ss << _slug << ".lua";
+  
+  // モンスターテーブルを設定
   LuaObject* lua = new LuaObject(ss.str().c_str(), "Map");
   lua->autorelease();
   lua_State* L = lua->getLuaEngine()->getLuaState();
@@ -56,6 +58,18 @@ Level* Map::createLevel(int level) {
     enemyTable.push_back( pair<string, int>(key, (int)value.floatValue()) );
   }
   lv->setEnemyTable(enemyTable);
+  
+  // モンスター出現率を設定
+  lua_getglobal(L, "Map");
+  table = lua_gettop(L);
+  lua_getfield(L, table, "getEnemyPopRate");
+  lua_pushinteger(L, level);
+  if (lua_pcall(L, 1, 1, 0)) {
+    cout << lua_tostring(L, lua_gettop(L)) << endl;
+  }
+  float enemyPopRate = lua_tonumber(L, lua_gettop(L));
+  lv->setEnemyPopRate(enemyPopRate);
+  
   return lv;
 }
 

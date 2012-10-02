@@ -20,9 +20,12 @@ class Level :public CCObject {
  private:
   int _level;
   list<pair<string, int> > _enemyTable;
+  float _enemyPopRate;
  public:
   Level(int level);
   int getLevel();
+  float getEnemyPopRate();
+  void setEnemyPopRate(float rate);
   list<pair<string, int> > getEnemyTable();
   void setEnemyTable(list<pair<string, int> > table);
 };

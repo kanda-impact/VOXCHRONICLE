@@ -10,5 +10,8 @@ Map = {
       enemies = {tnt = 30}
     end
     return enemies
+  end,
+  getEnemyPopRate = function(level)
+    return 0.25
   end
 }
