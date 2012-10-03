@@ -13,6 +13,6 @@ Map = {
     return enemies
   end,
   getEnemyPopRate = function(level)
-    return 0.25
+    return 0.4
   end
 }

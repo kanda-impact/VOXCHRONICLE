@@ -26,7 +26,7 @@ bool EnemyManager::init() {
   variate_generator<
   mt19937&, uniform_smallint<>
   > rand( gen, dst );
-  _enemyCount = 0;
+  _enemyPopLots = new vector<bool>();
   return true;
 }
 
@@ -35,6 +35,7 @@ EnemyManager::EnemyManager() {
 
 EnemyManager::~EnemyManager() {
   _enemiesQueue->release();
+  delete _enemyPopLots;
 }
 
 Enemy* EnemyManager::popEnemy() {
@@ -50,9 +51,19 @@ Enemy* EnemyManager::popEnemy() {
 }
 
 Enemy* EnemyManager::lotPopEnemy() {
-  _enemyCount += rand() % 100;
-  if (_enemyCount > 50) {
-    _enemyCount = 0;
+  if (_enemyPopLots->size() == 0) {
+    for (int i = 0; i < 100; ++i) {
+      if (i < 100.0 * this->getLevel()->getEnemyPopRate()) {
+        _enemyPopLots->push_back(true);
+      } else {
+        _enemyPopLots->push_back(false);
+      }
+    }
+    random_shuffle(_enemyPopLots->begin(), _enemyPopLots->end());
+  }
+  bool lot = _enemyPopLots->back();
+  _enemyPopLots->pop_back();
+  if (lot) {
     return this->popEnemy();
   }
   return NULL;
@@ -183,13 +194,19 @@ Level* EnemyManager::getLevel() {
 }
 
 void EnemyManager::setLevel(Level *lv) {
+  float preEnemyPopRate = 0;
   if (_level) {
     _level->release();
+    preEnemyPopRate = _level->getEnemyPopRate();
   }
   if (lv) {
     lv->retain();
   }
   _level = lv;
+  // モンスター出現率が変化していたら、クジをリセットする
+  if (preEnemyPopRate != _level->getEnemyPopRate()) {
+    _enemyPopLots->clear();
+  }
 }
 
 CCArray* EnemyManager::createEnemyQueue() {
