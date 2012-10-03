@@ -127,8 +127,9 @@ bool EnemyManager::attackEnemy(Enemy* enemy, int damage) {
   return false;
 }
 
-CCArray* EnemyManager::performSkill(Skill* skill, CharacterManager* characterManager) {
-  
+CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* characterManager) {
+  int exp = 0;
+  CCDictionary* info = CCDictionary::create();
   characterManager->setShield(false);
   // ターゲットの決定
   SkillRange range = skill->getRange();
@@ -175,7 +176,7 @@ CCArray* EnemyManager::performSkill(Skill* skill, CharacterManager* characterMan
         target->moveRow(MAX_ROW - target->getRow() - 1);
       }
       if (target->damage(characterManager->calcDamage(target, skill))) {
-        characterManager->addExp(target->getExp());
+        exp += target->getExp();
         this->removeEnemy(target);
       }
     }
@@ -185,8 +186,10 @@ CCArray* EnemyManager::performSkill(Skill* skill, CharacterManager* characterMan
   if (strcmp(skill->getSlug(), "tension")) {
     characterManager->resetTension();
   }
-  
-  return targets;
+  info->setObject(targets, "enemies");
+  info->setObject(CCInteger::create(exp), "exp");
+  characterManager->addExp(exp);
+  return info;
 }
 
 Level* EnemyManager::getLevel() {

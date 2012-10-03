@@ -30,6 +30,7 @@ class MainScene : public CCLayer {
   EnemyManager* _enemyManager;
   CharacterManager* _characterManager;
   
+  CCLabelTTF* _levelLabel;
   CCLabelTTF* _hpLabel;
   CCLabelTTF* _mpLabel;
   

@@ -46,6 +46,7 @@ CharacterManager::CharacterManager() {
   _hp = 5;
   _maxHP = _hp;
   _mp = 0;
+  _isExpDirty = true;
 }
 
 CharacterManager::~CharacterManager() {
@@ -135,10 +136,19 @@ int CharacterManager::calcDamage(Enemy *enemy, Skill *skill) {
 
 void CharacterManager::addExp(int exp) {
   _exp += exp;
+  _isExpDirty = true;
+}
+
+int CharacterManager::getLevel() {
+  return this->getLevel(_exp);
 }
 
 int CharacterManager::getLevel(int exp) {
-  return executeExpLua("getLevel", exp);
+  if (_isExpDirty) {
+    _levelCache = executeExpLua("getLevel", exp);
+    _isExpDirty = false;
+  }
+  return _levelCache;
 }
 
 int CharacterManager::getExpWithLevel(int level) {

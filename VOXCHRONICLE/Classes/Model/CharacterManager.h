@@ -38,7 +38,11 @@ class CharacterManager :public CCObject {
   int _waitTurn;
   int _tension;
   bool _shield;
+  
+  int _levelCache;
+  bool _isExpDirty;
   int executeExpLua(const char* methodName, int argument);
+  int getLevel(int exp);
  public:
   CharacterManager();
   ~CharacterManager();
@@ -48,7 +52,6 @@ class CharacterManager :public CCObject {
   void resetTension();
   int calcDamage(Enemy* enemy, Skill* skill);
   void addExp(int exp);
-  int getLevel(int exp);
   int getExpWithLevel(int level);
   int getCurrentCharacterIndex();
   DamageType damage(Enemy* attacker, int damage);
@@ -60,6 +63,7 @@ class CharacterManager :public CCObject {
   Skill* getCurrentSkill();
   int getHP();
   int getMP();
+  int getLevel();
   
   // setter
   void setLastSkill(Skill* skill);

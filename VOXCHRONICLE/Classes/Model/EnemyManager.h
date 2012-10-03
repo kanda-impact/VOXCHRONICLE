@@ -43,7 +43,13 @@ class EnemyManager :public CCLayer {
   Enemy* getNearestEnemy();
   CCArray* getFilteredEnemies(boost::function<bool (int, float)>filter);
   bool attackEnemy(Enemy* enemy, int attack);
-  CCArray* performSkill(Skill* skill, CharacterManager* characterManager);
+  
+  /**
+   モンスターに実際にスキルを使用し、情報を返します
+   enemies : CCArray 攻撃を当てた敵のリスト
+   exp : 得られた総経験値
+   */
+  CCDictionary* performSkill(Skill* skill, CharacterManager* characterManager);
   CREATE_FUNC(EnemyManager)
 };
 

@@ -45,10 +45,13 @@ bool MainScene::init() {
   CCSize size = director->getWinSize();
   this->addChild(_controller);
   
+  _levelLabel = CCLabelTTF::create("", "Helvetica", 16);
+  _levelLabel->setPosition(CCPointMake(40, 280));
   _hpLabel = CCLabelTTF::create("", "Helvetica", 16);
   _hpLabel->setPosition(CCPointMake(400, 290));
   _mpLabel = CCLabelTTF::create("", "Helvetica", 16);
   _mpLabel->setPosition(CCPointMake(400, 270));
+  this->addChild(_levelLabel);
   this->addChild(_hpLabel);
   this->addChild(_mpLabel);
   this->updateGUI();
@@ -109,7 +112,17 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     ss << name << ".wav";
     string file(_map->getPrefixedMusicName(ss.str().c_str()));
     _music->pushTrack(file.c_str(), 0);
-    if (skill) _enemyManager->performSkill(skill, _characterManager);
+    if (skill) {
+      int currentLevel = _characterManager->getLevel();
+      _enemyManager->performSkill(skill, _characterManager);
+      int newLevel = _characterManager->getLevel();
+      if (currentLevel != newLevel) {
+        cout << "Level Up!" << endl;
+        _level = _map->createLevel(newLevel);
+        _enemyManager->setLevel(_level);
+        this->updateGUI();
+      }
+    }
     _controller->setSkills(_characterManager->getCurrentCharacter()->getSkills());
   } else if (trackNumber == 1) {
     string file(_map->getPrefixedMusicName("basschord00.wav"));
@@ -135,5 +148,7 @@ void MainScene::updateGUI() {
   ss.str("");
   ss <<_characterManager->getMP();
   _mpLabel->setString(ss.str().c_str());
-  
+  ss.str("");
+  ss << _characterManager->getLevel();
+  _levelLabel->setString(ss.str().c_str());
 }
