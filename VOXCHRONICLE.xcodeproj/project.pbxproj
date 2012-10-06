@@ -141,6 +141,24 @@
 		07B7A6B3162071AB00FCE64C /* dub_tension1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6B0162071AB00FCE64C /* dub_tension1.wav */; };
 		07B7A6B4162071AB00FCE64C /* dub_tension2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6B1162071AB00FCE64C /* dub_tension2.wav */; };
 		07B7A6B5162071AB00FCE64C /* dub_tension3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6B2162071AB00FCE64C /* dub_tension3.wav */; };
+		07B7A6C51620775700FCE64C /* geek0.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6B61620775700FCE64C /* geek0.png */; };
+		07B7A6C61620775700FCE64C /* geek1.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6B71620775700FCE64C /* geek1.png */; };
+		07B7A6C71620775700FCE64C /* geek2.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6B81620775700FCE64C /* geek2.png */; };
+		07B7A6C81620775700FCE64C /* geek3.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6B91620775700FCE64C /* geek3.png */; };
+		07B7A6C91620775700FCE64C /* ginet0.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6BA1620775700FCE64C /* ginet0.png */; };
+		07B7A6CA1620775700FCE64C /* ginet1.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6BB1620775700FCE64C /* ginet1.png */; };
+		07B7A6CB1620775700FCE64C /* ginet2.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6BC1620775700FCE64C /* ginet2.png */; };
+		07B7A6CC1620775700FCE64C /* tetufez0.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6BD1620775700FCE64C /* tetufez0.png */; };
+		07B7A6CD1620775700FCE64C /* tetufez1.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6BE1620775700FCE64C /* tetufez1.png */; };
+		07B7A6CE1620775700FCE64C /* tetufez2.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6BF1620775700FCE64C /* tetufez2.png */; };
+		07B7A6CF1620775700FCE64C /* tetufez3.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6C01620775700FCE64C /* tetufez3.png */; };
+		07B7A6D01620775700FCE64C /* tetufez4.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6C11620775700FCE64C /* tetufez4.png */; };
+		07B7A6D11620775700FCE64C /* tetufez5.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6C21620775700FCE64C /* tetufez5.png */; };
+		07B7A6D21620775700FCE64C /* tetufez6.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6C31620775700FCE64C /* tetufez6.png */; };
+		07B7A6D31620775700FCE64C /* tetufez7.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6C41620775700FCE64C /* tetufez7.png */; };
+		07B7A6D71620777800FCE64C /* geek.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6D41620777800FCE64C /* geek.lua */; };
+		07B7A6D81620777800FCE64C /* ginet.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6D51620777800FCE64C /* ginet.lua */; };
+		07B7A6D91620777800FCE64C /* tetufez.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6D61620777800FCE64C /* tetufez.lua */; };
 		07B95E1A15F304120024C672 /* Music.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B95E1715F303E30024C672 /* Music.mm */; };
 		07B95E1B15F304120024C672 /* Track.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B95E1915F303E30024C672 /* Track.mm */; };
 		07C6064216164F810084708C /* hello.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07C6064116164F810084708C /* hello.lua */; };
@@ -565,6 +583,24 @@
 		07B7A6B0162071AB00FCE64C /* dub_tension1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_tension1.wav; path = Resources/Music/dub/dub_tension1.wav; sourceTree = "<group>"; };
 		07B7A6B1162071AB00FCE64C /* dub_tension2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_tension2.wav; path = Resources/Music/dub/dub_tension2.wav; sourceTree = "<group>"; };
 		07B7A6B2162071AB00FCE64C /* dub_tension3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_tension3.wav; path = Resources/Music/dub/dub_tension3.wav; sourceTree = "<group>"; };
+		07B7A6B61620775700FCE64C /* geek0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = geek0.png; path = Resources/Image/Enemy/geek0.png; sourceTree = "<group>"; };
+		07B7A6B71620775700FCE64C /* geek1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = geek1.png; path = Resources/Image/Enemy/geek1.png; sourceTree = "<group>"; };
+		07B7A6B81620775700FCE64C /* geek2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = geek2.png; path = Resources/Image/Enemy/geek2.png; sourceTree = "<group>"; };
+		07B7A6B91620775700FCE64C /* geek3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = geek3.png; path = Resources/Image/Enemy/geek3.png; sourceTree = "<group>"; };
+		07B7A6BA1620775700FCE64C /* ginet0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ginet0.png; path = Resources/Image/Enemy/ginet0.png; sourceTree = "<group>"; };
+		07B7A6BB1620775700FCE64C /* ginet1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ginet1.png; path = Resources/Image/Enemy/ginet1.png; sourceTree = "<group>"; };
+		07B7A6BC1620775700FCE64C /* ginet2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ginet2.png; path = Resources/Image/Enemy/ginet2.png; sourceTree = "<group>"; };
+		07B7A6BD1620775700FCE64C /* tetufez0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetufez0.png; path = Resources/Image/Enemy/tetufez0.png; sourceTree = "<group>"; };
+		07B7A6BE1620775700FCE64C /* tetufez1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetufez1.png; path = Resources/Image/Enemy/tetufez1.png; sourceTree = "<group>"; };
+		07B7A6BF1620775700FCE64C /* tetufez2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetufez2.png; path = Resources/Image/Enemy/tetufez2.png; sourceTree = "<group>"; };
+		07B7A6C01620775700FCE64C /* tetufez3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetufez3.png; path = Resources/Image/Enemy/tetufez3.png; sourceTree = "<group>"; };
+		07B7A6C11620775700FCE64C /* tetufez4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetufez4.png; path = Resources/Image/Enemy/tetufez4.png; sourceTree = "<group>"; };
+		07B7A6C21620775700FCE64C /* tetufez5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetufez5.png; path = Resources/Image/Enemy/tetufez5.png; sourceTree = "<group>"; };
+		07B7A6C31620775700FCE64C /* tetufez6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetufez6.png; path = Resources/Image/Enemy/tetufez6.png; sourceTree = "<group>"; };
+		07B7A6C41620775700FCE64C /* tetufez7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetufez7.png; path = Resources/Image/Enemy/tetufez7.png; sourceTree = "<group>"; };
+		07B7A6D41620777800FCE64C /* geek.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = geek.lua; sourceTree = "<group>"; };
+		07B7A6D51620777800FCE64C /* ginet.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ginet.lua; sourceTree = "<group>"; };
+		07B7A6D61620777800FCE64C /* tetufez.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tetufez.lua; sourceTree = "<group>"; };
 		07B95E1615F303E30024C672 /* Music.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Music.h; path = Classes/VISS/Music.h; sourceTree = "<group>"; };
 		07B95E1715F303E30024C672 /* Music.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = Music.mm; path = Classes/VISS/Music.mm; sourceTree = "<group>"; };
 		07B95E1815F303E30024C672 /* Track.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Track.h; path = Classes/VISS/Track.h; sourceTree = "<group>"; };
@@ -2383,6 +2419,9 @@
 			isa = PBXGroup;
 			children = (
 				0731E4DD161804C0006AEF3D /* tnt.lua */,
+				07B7A6D41620777800FCE64C /* geek.lua */,
+				07B7A6D51620777800FCE64C /* ginet.lua */,
+				07B7A6D61620777800FCE64C /* tetufez.lua */,
 			);
 			path = enemies;
 			sourceTree = "<group>";
@@ -2405,6 +2444,21 @@
 		07C6F6D01615DE280084708C /* Enemy */ = {
 			isa = PBXGroup;
 			children = (
+				07B7A6B61620775700FCE64C /* geek0.png */,
+				07B7A6B71620775700FCE64C /* geek1.png */,
+				07B7A6B81620775700FCE64C /* geek2.png */,
+				07B7A6B91620775700FCE64C /* geek3.png */,
+				07B7A6BA1620775700FCE64C /* ginet0.png */,
+				07B7A6BB1620775700FCE64C /* ginet1.png */,
+				07B7A6BC1620775700FCE64C /* ginet2.png */,
+				07B7A6BD1620775700FCE64C /* tetufez0.png */,
+				07B7A6BE1620775700FCE64C /* tetufez1.png */,
+				07B7A6BF1620775700FCE64C /* tetufez2.png */,
+				07B7A6C01620775700FCE64C /* tetufez3.png */,
+				07B7A6C11620775700FCE64C /* tetufez4.png */,
+				07B7A6C21620775700FCE64C /* tetufez5.png */,
+				07B7A6C31620775700FCE64C /* tetufez6.png */,
+				07B7A6C41620775700FCE64C /* tetufez7.png */,
 				0731E4DF16180A0B006AEF3D /* tnt0.png */,
 				0731E4E016180A0B006AEF3D /* tnt1.png */,
 				0731E4E116180A0B006AEF3D /* tnt2.png */,
@@ -2727,6 +2781,24 @@
 				07B7A6B3162071AB00FCE64C /* dub_tension1.wav in Resources */,
 				07B7A6B4162071AB00FCE64C /* dub_tension2.wav in Resources */,
 				07B7A6B5162071AB00FCE64C /* dub_tension3.wav in Resources */,
+				07B7A6C51620775700FCE64C /* geek0.png in Resources */,
+				07B7A6C61620775700FCE64C /* geek1.png in Resources */,
+				07B7A6C71620775700FCE64C /* geek2.png in Resources */,
+				07B7A6C81620775700FCE64C /* geek3.png in Resources */,
+				07B7A6C91620775700FCE64C /* ginet0.png in Resources */,
+				07B7A6CA1620775700FCE64C /* ginet1.png in Resources */,
+				07B7A6CB1620775700FCE64C /* ginet2.png in Resources */,
+				07B7A6CC1620775700FCE64C /* tetufez0.png in Resources */,
+				07B7A6CD1620775700FCE64C /* tetufez1.png in Resources */,
+				07B7A6CE1620775700FCE64C /* tetufez2.png in Resources */,
+				07B7A6CF1620775700FCE64C /* tetufez3.png in Resources */,
+				07B7A6D01620775700FCE64C /* tetufez4.png in Resources */,
+				07B7A6D11620775700FCE64C /* tetufez5.png in Resources */,
+				07B7A6D21620775700FCE64C /* tetufez6.png in Resources */,
+				07B7A6D31620775700FCE64C /* tetufez7.png in Resources */,
+				07B7A6D71620777800FCE64C /* geek.lua in Resources */,
+				07B7A6D81620777800FCE64C /* ginet.lua in Resources */,
+				07B7A6D91620777800FCE64C /* tetufez.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

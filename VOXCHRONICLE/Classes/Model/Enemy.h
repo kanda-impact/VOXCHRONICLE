@@ -26,6 +26,7 @@ class Enemy : public CCSprite {
   int _power;
   int _row;
   int _col;
+  int _counter;
   void update(float dt);
   void setLifeColor();
  public:
@@ -48,6 +49,7 @@ class Enemy : public CCSprite {
   bool damage(int d);
   
   int getExp();
+  int getCounter();
 };
 
 #endif /* defined(__VOXCHRONICLE__Enemy__) */

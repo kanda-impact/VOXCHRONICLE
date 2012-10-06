@@ -1,9 +1,10 @@
 Enemy = {
   name = "ティエヌティ",
   imageName = "tnt",
-  hp = 1,
-  exp = 10,
-  attack = 1,
+  hp = 4,
+  exp = 20,
+  attack = 3,
+  counter = 0,
   animationFrames = 7,
   choiceSkill = function(self)
     return nil

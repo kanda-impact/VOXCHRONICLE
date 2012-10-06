@@ -130,16 +130,22 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     _controller->setSkills(_characterManager->getCurrentCharacter()->getSkills());
     ++_turnCount;
   } else if (trackNumber == 1) {
-    string file(_map->getPrefixedMusicName("ura00.wav"));
-    Track* track = _music->pushTrack(file.c_str(), 1);
+    stringstream ss;
     Enemy* nearest = _enemyManager->getNearestEnemy();
     if (nearest) {
+      stringstream ss;
+      ss << "ura0" << nearest->getCounter() << ".wav";
+      string file(_map->getPrefixedMusicName(ss.str().c_str()));
+      Track* track = _music->pushTrack(file.c_str(), 1);
+      
       int row = nearest->getRow();
       int denominator = (MAX_ROW + 1) * MAX_ROW / 2.0;
       int numerator = ((MAX_ROW - row) + 1) * (MAX_ROW - row) / 2.0;
       float volume = 1.0 * numerator / denominator;
       track->setVolume(volume);
     } else {
+      string file(_map->getPrefixedMusicName("ura00.wav"));
+      Track* track = _music->pushTrack(file.c_str(), 1);
       track->setVolume(0);
     }
     

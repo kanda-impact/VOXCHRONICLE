@@ -25,6 +25,37 @@ Enemy* Enemy::create(const char *enemyName) {
   return NULL;
 }
 
+Enemy* Enemy::initWithScriptName(const char* scriptName) {
+  LuaObject* obj = new LuaObject(scriptName, "Enemy");
+  obj->autorelease();
+  _hp = obj->getInt("hp");
+  _maxHP = _hp;
+  _power = obj->getInt("power");
+  _exp = obj->getInt("exp");
+  _name = new string(obj->getString("name"));
+  _counter = obj->getInt("counter");
+  const char* imageName = obj->getString("imageName");
+  int frameCount = obj->getInt("animationFrames");
+  stringstream ss;
+  ss << imageName << "0.png";
+  bool success = (bool)this->initWithFile(ss.str().c_str());
+  if (success) {
+    CCAnimation* animation = CCAnimation::create();
+    CCSize size = this->getTexture()->getContentSize();
+    for (int i = 0; i < frameCount; ++i) {
+      stringstream frameSS;
+      frameSS << imageName << i << ".png";
+      CCSpriteFrame* frame = CCSpriteFrame::create(frameSS.str().c_str(), CCRectMake(0, 0, size.width, size.height));
+      animation->addSpriteFrame(frame);
+    }
+    animation->setLoops(-1);
+    animation->setDelayPerUnit(10.0 / 60.0);
+    this->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
+    return this;
+  }
+  return NULL;
+}
+
 Enemy::Enemy() {
   _row = 7;
   _col = 0;
@@ -80,36 +111,6 @@ int Enemy::getExp() {
   return _exp;
 }
 
-Enemy* Enemy::initWithScriptName(const char* scriptName) {
-  LuaObject* obj = new LuaObject(scriptName, "Enemy");
-  obj->autorelease();
-  _hp = obj->getInt("hp");
-  _maxHP = _hp;
-  _power = obj->getInt("power");
-  _exp = obj->getInt("exp");
-  _name = new string(obj->getString("name"));
-  const char* imageName = obj->getString("imageName");
-  int frameCount = obj->getInt("animationFrames");
-  stringstream ss;
-  ss << imageName << "0.png";
-  bool success = (bool)this->initWithFile(ss.str().c_str());
-  if (success) {
-    CCAnimation* animation = CCAnimation::create();
-    CCSize size = this->getTexture()->getContentSize();
-    for (int i = 0; i < frameCount; ++i) {
-      stringstream frameSS;
-      frameSS << imageName << i << ".png";
-      CCSpriteFrame* frame = CCSpriteFrame::create(frameSS.str().c_str(), CCRectMake(0, 0, size.width, size.height));
-      animation->addSpriteFrame(frame);
-    }
-    animation->setLoops(-1);
-    animation->setDelayPerUnit(10.0 / 60.0);
-    this->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
-    return this;
-  }
-  return NULL;
-}
-
 void Enemy::setColAndRow(int col, float row) {
   int sx = 200 + 40 * col;
   int sy = 80 + 25 * (MAX_ROW - 1);
@@ -138,4 +139,8 @@ void Enemy::setRow(float r) {
 
 void Enemy::setCol(int c) {
   this->setColAndRow(c, this->getRow());
+}
+
+int Enemy::getCounter() {
+  return _counter;
 }
