@@ -39,6 +39,8 @@ class Enemy : public CCSprite {
   float bottomLine();
   void moveRow(float r);
   Enemy* initWithScriptName(const char* scriptName);
+  void setColAndRow(int col, float row);
+  float getCurrentScale(float row);
   
   /**
    ダメージを与えます。死亡時にはtrueを返します

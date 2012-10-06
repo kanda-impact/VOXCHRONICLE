@@ -50,6 +50,9 @@ class EnemyManager :public CCLayer {
    exp : 得られた総経験値
    */
   CCDictionary* performSkill(Skill* skill, CharacterManager* characterManager);
+  
+  void draw();
+  
   CREATE_FUNC(EnemyManager)
 };
 

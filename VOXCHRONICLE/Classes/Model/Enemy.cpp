@@ -40,24 +40,16 @@ Enemy::~Enemy() {
 
 void Enemy::update(float dt) {
   this->setLifeColor();
-  this->setScale((float)(MAX_ROW - this->getRow()) / MAX_ROW);
-  this->setPosition(CCPointMake(60 + _col * 120, 40 + 35 * _row));
+  this->setScale(this->getCurrentScale(_row));
+  //this->setPosition(CCPointMake(60 + _col * 120, 40 + 35 * _row));
 }
 
 float Enemy::getRow() {
   return _row;
 }
 
-void Enemy::setRow(float r) {
-  _row = r;
-}
-
 int Enemy::getCol() {
   return _col;
-}
-
-void Enemy::setCol(int c) {
-  _col = c;
 }
 
 float Enemy::bottomLine() {
@@ -65,7 +57,7 @@ float Enemy::bottomLine() {
 }
 
 void Enemy::moveRow(float r) {
-  _row += r;
+  this->setRow(this->getRow()  + r);
   this->getParent()->reorderChild(this, (MAX_ROW - _row));
 }
 
@@ -116,4 +108,34 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
     return this;
   }
   return NULL;
+}
+
+void Enemy::setColAndRow(int col, float row) {
+  int sx = 200 + 40 * col;
+  int sy = 80 + 25 * (MAX_ROW - 1);
+  int ex = 30 + 210 * col;
+  int ey = 80;
+  CCPoint sp = CCPointMake(sx, sy);
+  CCPoint ep = CCPointMake(ex, ey);
+  CCPoint sub = ccpSub(sp, ep);
+  float scale = this->getCurrentScale(row);
+  CCPoint p = ccpAdd(ep, ccpMult(sub, 1.0 - scale));
+  this->setPosition(p);
+  _row = row;
+  _col = col;
+}
+
+float Enemy::getCurrentScale(float row) {
+  int nr = (MAX_ROW - row);
+  float sum = (float)(1 + MAX_ROW) * (float)MAX_ROW / 2.0;
+  float tempSum = (float)(1 + nr) * (float)nr / 2.0;
+  return 1.0 * tempSum / sum;
+}
+
+void Enemy::setRow(float r) {
+  this->setColAndRow(this->getCol(), r);
+}
+
+void Enemy::setCol(int c) {
+  this->setColAndRow(c, this->getRow());
 }

@@ -229,3 +229,24 @@ CCArray* EnemyManager::createEnemyQueue() {
   }
   return queue;
 }
+
+void EnemyManager::draw() {
+  // とりあえずVOX1を移植
+  // 面倒なので他の人に計算してもらう
+  CCLayer::draw();
+  CCDirector* director = CCDirector::sharedDirector();
+  float sum = (1 + MAX_ROW) * MAX_ROW / 2;
+  for (int i = 0; i < MAX_ROW; ++i) {
+    int sy = 80 + 25 * 0;
+    int ey = 80 + 25 * (MAX_ROW - 1);
+    float tempSum = (1 + (MAX_ROW - i)) * (MAX_ROW - i) / 2;
+    float scale = 1.0 * tempSum / sum;
+    float y = ey + (sy - ey) * tempSum / sum - 125 * scale;
+    CCPoint origin = CCPointMake(0, y);
+    CCSize size = director->getWinSize();
+    CCPoint dest = CCPointMake(size.width, y);
+    float opacity = 0.25 + 0.75 * ((float)(MAX_ROW - i) / MAX_ROW);
+    ccDrawColor4F(1.0 * opacity, 1.0 * opacity, 1.0 * opacity, 1);
+    ccDrawLine(origin, dest);
+  }
+}
