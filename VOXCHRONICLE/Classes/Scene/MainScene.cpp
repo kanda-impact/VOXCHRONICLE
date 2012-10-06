@@ -32,6 +32,7 @@ bool MainScene::init() {
   _music->pushTrack("dub_ura00.wav", 1);
   _music->pushTrack("dub_basschord00.wav", 2);
   _music->pushTrack("dub_drum00.wav", 3);
+  _music->getTrack(1)->setVolume(0);
   
   _enemyManager = EnemyManager::create();
   _enemyManager->retain();
@@ -130,7 +131,18 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     ++_turnCount;
   } else if (trackNumber == 1) {
     string file(_map->getPrefixedMusicName("ura00.wav"));
-    _music->pushTrack(file.c_str(), 1);
+    Track* track = _music->pushTrack(file.c_str(), 1);
+    Enemy* nearest = _enemyManager->getNearestEnemy();
+    if (nearest) {
+      int row = nearest->getRow();
+      int denominator = (MAX_ROW + 1) * MAX_ROW / 2.0;
+      int numerator = ((MAX_ROW - row) + 1) * (MAX_ROW - row) / 2.0;
+      float volume = 1.0 * numerator / denominator;
+      track->setVolume(volume);
+    } else {
+      track->setVolume(0);
+    }
+    
   } else if (trackNumber == 2) {
     stringstream ss;
     ss << "basschord0" << _turnCount % 4 << ".wav";

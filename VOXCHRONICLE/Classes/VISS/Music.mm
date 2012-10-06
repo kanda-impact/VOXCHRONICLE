@@ -50,27 +50,28 @@ bool Music::setTrack(Track* track, int trackNumber, int index) {
   return true;
 }
 
-bool Music::pushTrack(const char* fileName, int trackNumber) {
+Track* Music::pushTrack(const char* fileName, int trackNumber) {
   return pushTrack(fileName, trackNumber, 1);
 }
 
-bool Music::pushTrack(const char* fileName, int trackNumber, int repeat) {
+Track* Music::pushTrack(const char* fileName, int trackNumber, int repeat) {
+  Track* next;
   for (int i = 0; i < repeat; ++i) {
-    Track* next = new Track(fileName);
+    next = new Track(fileName);
     bool result = pushTrack(next, trackNumber);
     if (!result) {
-      return false;
+      return NULL;
     }
   }
-  return true;
+  return next;
 }
 
-bool Music::pushTrack(Track* track, int trackNumber) {
+Track* Music::pushTrack(Track* track, int trackNumber) {
   if (trackNumber >= _trackCount) {
-    return false;
+    return NULL;
   }
   _tracks.at(trackNumber).push_back(track);
-  return true;
+  return track;
 }
     
 bool Music::play() {

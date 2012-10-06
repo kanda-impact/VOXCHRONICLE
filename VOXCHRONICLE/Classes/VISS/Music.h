@@ -39,9 +39,9 @@ namespace VISS {
     ~Music();
     Track* getTrack(int trackNumber);
     Track* getNextTrack(int trackNumber);
-    bool pushTrack(const char* fileName, int trackNumber);
-    bool pushTrack(const char* fileName, int trackNumber, int repeat);
-    bool pushTrack(Track* track, int trackNumber);
+    Track* pushTrack(const char* fileName, int trackNumber);
+    Track* pushTrack(const char* fileName, int trackNumber, int repeat);
+    Track* pushTrack(Track* track, int trackNumber);
     bool setTrack(const char* fileName, int trackNumber, int index);
     bool setTrack(Track* track, int trackNumber, int index);
     bool play();
