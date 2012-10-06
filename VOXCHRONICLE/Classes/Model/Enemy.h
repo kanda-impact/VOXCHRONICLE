@@ -33,6 +33,7 @@ class Enemy : public CCSprite {
   static Enemy* create(const char* enemyName);
   Enemy();
   ~Enemy();
+  int getHP();
   float getRow();
   void setRow(float r);
   int getCol();

@@ -10,6 +10,7 @@
 #include <boost/lambda/lambda.hpp>
 
 #include "EnemyManager.h"
+#include "LuaObject.h"
 
 using namespace boost;
 using namespace boost::lambda;
@@ -170,12 +171,23 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
       characterManager->setShield(true);
     }
   } else {
+    LuaObject* lua = new LuaObject(skill->getSlug(), "Skill");
+    lua->autorelease();
+    lua_State* L = lua->getLuaEngine()->getLuaState();
     CCARRAY_FOREACH(targets, obj) {
       Enemy* target = (Enemy*)obj;
-      if (!strcmp(skill->getSlug(), "knockback")) {
-        target->moveRow(MAX_ROW - target->getRow() - 1);
+      lua_getglobal(L, "Skill");
+      int table = lua_gettop(L);
+      lua_getfield(L, table, "performSkill");
+      if (lua_isfunction(L, lua_gettop(L))) {
+        lua->getLuaEngine()->pushCCObject(target, "Enemy");
+        if (lua_pcall(L, 1, 1, 0)) {
+          cout << lua_tostring(L, lua_gettop(L)) << endl;
+        }
+      } else {
+        target->damage(characterManager->calcDamage(target, skill));
       }
-      if (target->damage(characterManager->calcDamage(target, skill))) {
+      if (target->getHP() <= 0) {
         exp += target->getExp();
         this->removeEnemy(target);
       }

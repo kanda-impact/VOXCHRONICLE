@@ -142,3 +142,7 @@ void Enemy::setCol(int c) {
 int Enemy::getCounter() {
   return _counter;
 }
+
+int Enemy::getHP() {
+  return _hp;
+}

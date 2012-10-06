@@ -9,10 +9,42 @@
 #include "LuaBind.h"
 #include "LuaCocos2d.h"
 #include "Skill.h"
+#include "Enemy.h"
 
 static void tolua_reg_types (lua_State* tolua_S) {
   tolua_usertype(tolua_S, "Skill");
+  tolua_usertype(tolua_S, "Enemy");
 }
+
+static int tolua_VC_Enemy_getRow(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+  tolua_Error tolua_err;
+  if (
+      !tolua_isusertype(tolua_S,1,"Enemy",0,&tolua_err) ||
+      !tolua_isnoobj(tolua_S,2,&tolua_err)
+      )
+    goto tolua_lerror;
+  else
+#endif
+    {
+    Enemy* self = (Enemy*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+    if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getRow'", NULL);
+#endif
+      {
+      float tolua_ret = (float)  self->getRow();
+      tolua_pushnumber(tolua_S, (float)tolua_ret);
+      }
+    }
+  return 1;
+#ifndef TOLUA_RELEASE
+tolua_lerror:
+  tolua_error(tolua_S,"#ferror in function 'getRow'.",&tolua_err);
+  return 0;
+#endif
+}
+
 
 TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_open(tolua_S);
@@ -30,7 +62,12 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_constant(tolua_S, "SkillTypePhysical", SkillTypePhysical);
   tolua_constant(tolua_S, "SkillTypeMagical", SkillTypeMagical);
   tolua_beginmodule(tolua_S, "Skill");
-   tolua_endmodule(tolua_S);
+  tolua_endmodule(tolua_S);
+  tolua_cclass(tolua_S, "Enemy", "Enemy", "CCSprite", NULL);
+  tolua_beginmodule(tolua_S, "Enemy");
+  tolua_function(tolua_S, "getRow", tolua_VC_Enemy_getRow);
+  tolua_endmodule(tolua_S);
+  
   tolua_endmodule(tolua_S);
   return 1;
 }
