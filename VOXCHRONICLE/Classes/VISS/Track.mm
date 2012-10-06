@@ -11,6 +11,7 @@
 
 // It is wrapper class for ObjectAL::OALAudioTrack.
 
+using namespace std;
 using namespace VISS;
 
 struct Track::AudioTrack {
@@ -54,4 +55,14 @@ float Track::getDuration() {
 
 float Track::getPosition() {
   return _track->track.currentTime;
+}
+
+float Track::getDeviceCurrentTime() {
+  return _track->track.deviceCurrentTime;
+}
+
+void Track::playAfterTrack(VISS::Track *track) {
+  NSTimeInterval deviceTime = track->getDeviceCurrentTime();
+  NSTimeInterval trackTimeRemaining = track->getDuration() - track->getPosition();
+  [_track->track playAtTime:deviceTime + trackTimeRemaining];
 }

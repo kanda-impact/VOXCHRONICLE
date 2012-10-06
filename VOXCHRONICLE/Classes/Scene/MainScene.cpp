@@ -23,14 +23,14 @@ bool MainScene::init() {
   if ( !CCLayer::init() ) {
     return false;
   }
-  _music = new Music(1);
+  _music = new Music(3);
   _music->setTrackDidBackFunction(boost::bind(&MainScene::trackDidBack, this, _1, _2, _3));
   _music->setTrackDidFinishFunction(boost::bind(&MainScene::trackDidFinishPlaying, this, _1, _2, _3, _4));
   _music->setTrackWillFinishFunction(boost::bind(&MainScene::trackWillFinishPlaying, this, _1, _2, _3, _4));
   
-  _music->pushTrack("dub_basschord00.wav", 0);
-  //_music->pushTrack("dub_basschord00.wav", 1);
-  //_music->pushTrack("dub_drum00.wav", 2);
+  _music->pushTrack("dub_silent.wav", 0);
+  _music->pushTrack("dub_basschord00.wav", 1);
+  _music->pushTrack("dub_drum00.wav", 2);
   
   _enemyManager = EnemyManager::create();
   _enemyManager->retain();
@@ -100,7 +100,7 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
 }
 
 void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track *nextTrack, int trackNumber) {
-  /*if (trackNumber == 0) {
+  if (trackNumber == 0) {
     Skill* skill = NULL;
     if (_characterManager->isPerforming()) {
       skill = _characterManager->getCurrentSkill();
@@ -130,8 +130,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
   } else if (trackNumber == 2) {
     string file(_map->getPrefixedMusicName("drum00.wav"));
     _music->pushTrack(file.c_str(), 2);
-  }*/
-  _music->pushTrack("dub_basschord00.wav", 0);
+  }
 }
 
 void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track *nextTrack, int trackNumber) {

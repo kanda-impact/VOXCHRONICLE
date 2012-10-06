@@ -37,7 +37,8 @@ Track* Music::getNextTrack(int trackNumber) {
 }
   
 bool Music::setTrack(const char* fileName, int trackNumber, int index) {
-  Track* next = new Track(fileName);
+  //Track* next = new Track(fileName);
+  Track* next = TrackCache::sharedCache()->addTrack(fileName);
   return setTrack(next, trackNumber, index);
 }
 
@@ -55,7 +56,7 @@ bool Music::pushTrack(const char* fileName, int trackNumber) {
 
 bool Music::pushTrack(const char* fileName, int trackNumber, int repeat) {
   for (int i = 0; i < repeat; ++i) {
-    Track* next = TrackCache::sharedCache()->addTrack(fileName);
+    Track* next = new Track(fileName);
     bool result = pushTrack(next, trackNumber);
     if (!result) {
       return false;
@@ -124,35 +125,30 @@ void Music::didFinishPlaying(Track *track, int trackCount) {
   
 }
 
-using namespace std;
-void Music::update(float dt) {
+void VISS::Music::update(float dt) {
   for (int trackNumber = 0; trackNumber < _trackCount; ++trackNumber) {
-    std::deque< Track* >* it = &_tracks.at(trackNumber);
+    std::deque<Track*>* it = &_tracks.at(trackNumber);
+    if (it->size() == 0) return;
     Track* current = it->front();
     float sub = current->getDuration() - current->getPosition();
-    if (!_willFinish.at(trackNumber) && sub < 0.2) {
+    if (!current->isPlaying() && _willFinish.at(trackNumber)) {
+      //終わったとき
+      it->pop_front();
+      current->release();
+      _backed.at(trackNumber) = false;
+      _willFinish.at(trackNumber) = false;
+      if (_trackDidFinishFunction != NULL) {
+        _trackDidFinishFunction(this, current, it->front(), trackNumber);
+      }
+    } else if (!_willFinish.at(trackNumber) && (sub < 0.2 || !current->isPlaying())) {
       //終わりそうなとき
       if (_trackWillFinishFunction != NULL) {
         _trackWillFinishFunction(this, current, NULL, trackNumber);
       }
       _willFinish.at(trackNumber) = true;
       if (it->size() > 1) {
-        cout << current->isPlaying() << endl;
         Track* next = it->at(1);
-        sub = current->getDuration() - current->getPosition();
-        cout << "sub = " << sub - dt << endl;
-        //next->playAfterTime(sub - dt);
-        next->play();
-      }
-    }
-    if (_willFinish.at(trackNumber)) {
-      //終わったとき
-      it->pop_front();
-      _backed.at(trackNumber) = false;
-      _willFinish.at(trackNumber) = false;
-      if (_trackDidFinishFunction != NULL) {
-        _trackDidFinishFunction(this, current, it->front(), trackNumber);
-        cout << "finish" << trackNumber << endl;
+        next->playAfterTrack(current);
       }
     } else if (!_backed.at(trackNumber) && current->getDuration() / 2 < current->getPosition()) {
       //裏打ちのとき
