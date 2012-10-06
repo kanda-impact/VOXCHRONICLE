@@ -6,6 +6,8 @@ Skill = {
   common = false,
   maxRepeat = 1,
   turn = 1,
+  performSkill = function()
+  end,
   skillRange = SkillRangeSingle,
   skillType = SkillTypePhysical
 }

@@ -15,9 +15,7 @@ using namespace std;
 
 Enemy* Enemy::create(const char *enemyName) {
   Enemy *pobSprite = new Enemy();
-  stringstream ss;
-  ss << enemyName << ".lua";
-  if (pobSprite && pobSprite->initWithScriptName(ss.str().c_str())) {
+  if (pobSprite && pobSprite->initWithScriptName(enemyName)) {
     pobSprite->autorelease();
     return pobSprite;
   }
