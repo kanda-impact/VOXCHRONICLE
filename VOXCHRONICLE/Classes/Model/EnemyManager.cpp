@@ -128,6 +128,29 @@ bool EnemyManager::attackEnemy(Enemy* enemy, int damage) {
   return false;
 }
 
+bool EnemyManager::performLuaFunction(Skill* skill, Enemy* target, CharacterManager* characterManager) {
+  LuaObject* lua = new LuaObject(skill->getSlug(), "Skill");
+  lua->autorelease();
+  lua_State* L = lua->getLuaEngine()->getLuaState();
+  lua_getglobal(L, "Skill");
+  int table = lua_gettop(L);
+  lua_getfield(L, table, "performSkill");
+  if (lua_isfunction(L, lua_gettop(L))) {
+    if (target) {
+      lua->getLuaEngine()->pushCCObject(target, "Enemy");
+    } else {
+      lua->getLuaEngine()->pushNil();
+    }
+    lua->getLuaEngine()->pushCCObject(characterManager, "CharacterManager");
+    if (lua_pcall(L, 2, 1, 0)) {
+      cout << lua_tostring(L, lua_gettop(L)) << endl;
+      return false;
+    }
+    return true;
+  }
+  return false;
+}
+
 CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* characterManager) {
   int exp = 0;
   CCDictionary* info = CCDictionary::create();
@@ -163,28 +186,11 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
   // ターゲットに技の効果を与える
   CCObject* obj = NULL;
   if (skill->getRange() == SkillRangeSelf) {
-    if (!strcmp(skill->getSlug(), "tension")) {
-      characterManager->chargeTension();
-    } else if (!strcmp(skill->getSlug(), "change")) {
-      characterManager->setCurrentCharacter((characterManager->getCurrentCharacterIndex() + 1) % 2);
-    } else if (!strcmp(skill->getSlug(), "shield")) {
-      characterManager->setShield(true);
-    }
+    this->performLuaFunction(skill, NULL, characterManager);
   } else {
-    LuaObject* lua = new LuaObject(skill->getSlug(), "Skill");
-    lua->autorelease();
-    lua_State* L = lua->getLuaEngine()->getLuaState();
     CCARRAY_FOREACH(targets, obj) {
       Enemy* target = (Enemy*)obj;
-      lua_getglobal(L, "Skill");
-      int table = lua_gettop(L);
-      lua_getfield(L, table, "performSkill");
-      if (lua_isfunction(L, lua_gettop(L))) {
-        lua->getLuaEngine()->pushCCObject(target, "Enemy");
-        if (lua_pcall(L, 1, 1, 0)) {
-          cout << lua_tostring(L, lua_gettop(L)) << endl;
-        }
-      } else {
+      if (!performLuaFunction(skill, target, characterManager)) {
         target->damage(characterManager->calcDamage(target, skill));
       }
       if (target->getHP() <= 0) {

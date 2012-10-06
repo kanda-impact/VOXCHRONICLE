@@ -6,6 +6,9 @@ Skill = {
   common = true,
   maxRepeat = 4,
   turn = 1,
+  performSkill = function(target, characterManager)
+    characterManager:addTension(1)
+  end,
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone
 }

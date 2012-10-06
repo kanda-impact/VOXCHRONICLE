@@ -10,38 +10,19 @@
 #include "LuaCocos2d.h"
 #include "Skill.h"
 #include "Enemy.h"
+#include "CharacterManager.h"
 
 static void tolua_reg_types (lua_State* tolua_S) {
   tolua_usertype(tolua_S, "Skill");
   tolua_usertype(tolua_S, "Enemy");
+  tolua_usertype(tolua_S, "CharacterManager");
 }
 
 static int tolua_VC_Enemy_getRow(lua_State* tolua_S) {
-#ifndef TOLUA_RELEASE
-  tolua_Error tolua_err;
-  if (
-      !tolua_isusertype(tolua_S,1,"Enemy",0,&tolua_err) ||
-      !tolua_isnoobj(tolua_S,2,&tolua_err)
-      )
-    goto tolua_lerror;
-  else
-#endif
-    {
-    Enemy* self = (Enemy*)  tolua_tousertype(tolua_S,1,0);
-#ifndef TOLUA_RELEASE
-    if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getRow'", NULL);
-#endif
-      {
-      float tolua_ret = (float)  self->getRow();
-      tolua_pushnumber(tolua_S, (float)tolua_ret);
-      }
-    }
+  Enemy* self = (Enemy*)  tolua_tousertype(tolua_S, 1, 0);
+  float tolua_ret = (float)  self->getRow();
+  tolua_pushnumber(tolua_S, (float)tolua_ret);
   return 1;
-#ifndef TOLUA_RELEASE
-tolua_lerror:
-  tolua_error(tolua_S,"#ferror in function 'getRow'.",&tolua_err);
-  return 0;
-#endif
 }
 
 static int tolua_VC_Enemy_moveRow(lua_State* tolua_S) {
@@ -55,6 +36,26 @@ static int tolua_VC_Enemy_setRow(lua_State* tolua_S) {
   Enemy* self = (Enemy*)tolua_tousertype(tolua_S, 1, 0);
   float row = (float)tolua_tonumber(tolua_S, 2, 0);
   self->setRow(row);
+  return 0;
+}
+
+static int tolua_VC_CharacterManager_setShield(lua_State* tolua_S) {
+  CharacterManager* self = (CharacterManager*)tolua_tousertype(tolua_S, 1, 0);
+  bool shield = (bool)tolua_tonumber(tolua_S, 2, 0);
+  self->setShield(shield);
+  return 0;
+}
+
+static int tolua_VC_CharacterManager_changeCharacter(lua_State* tolua_S) {
+  CharacterManager* self = (CharacterManager*)tolua_tousertype(tolua_S, 1, 0);
+  self->changeCharacter();
+  return 0;
+}
+
+static int tolua_VC_CharacterManager_addTension(lua_State* tolua_S) {
+  CharacterManager* self = (CharacterManager*)tolua_tousertype(tolua_S, 1, 0);
+  int tension = (int)tolua_tonumber(tolua_S, 2, 0);
+  self->addTension(tension);
   return 0;
 }
 
@@ -82,7 +83,12 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_function(tolua_S, "moveRow", tolua_VC_Enemy_moveRow);
   tolua_function(tolua_S, "setRow", tolua_VC_Enemy_setRow);
   tolua_endmodule(tolua_S);
-
+  tolua_cclass(tolua_S, "CharacterManager", "CharacterManager", "CCObject", NULL);
+  tolua_beginmodule(tolua_S, "CharacterManager");
+  tolua_function(tolua_S, "setShield", tolua_VC_CharacterManager_setShield);
+  tolua_function(tolua_S, "addTension", tolua_VC_CharacterManager_addTension);
+  tolua_function(tolua_S, "changeCharacter", tolua_VC_CharacterManager_changeCharacter);
+  tolua_endmodule(tolua_S);
   tolua_endmodule(tolua_S);
   return 1;
 }

@@ -28,6 +28,7 @@ class EnemyManager :public CCLayer {
   Level* _level;
   CCArray* _enemiesQueue;
   CCArray* createEnemyQueue();
+  bool performLuaFunction(Skill* skill, Enemy* target, CharacterManager* characterManager);
  public:
   virtual bool init();
   EnemyManager();

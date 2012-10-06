@@ -6,6 +6,9 @@ Skill = {
   common = true,
   maxRepeat = 1,
   turn = 1,
+  performSkill = function(target, characterManager)
+    characterManager:setShield(true);
+  end,
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone
 }

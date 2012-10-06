@@ -119,8 +119,9 @@ int CharacterManager::getTension() {
   return _tension;
 }
 
-void CharacterManager::chargeTension() {
-  if (_tension < 4) _tension += 1;
+void CharacterManager::addTension(int t) {
+  _tension += t;
+  if (_tension >= 4) _tension = 3;
 }
 
 void CharacterManager::resetTension() {
@@ -171,8 +172,8 @@ int CharacterManager::executeExpLua(const char *methodName, int argument) {
   return lua_tointeger(L, lua_gettop(L));
 }
 
-void CharacterManager::setCurrentCharacter(int idx) {
-  _currentCharacter = (Character*)_characters->objectAtIndex(idx);
+void CharacterManager::changeCharacter() {
+  _currentCharacter = (Character*)_characters->objectAtIndex((this->getCurrentCharacterIndex() + 1) % 2);
 }
 
 int CharacterManager::getCurrentCharacterIndex() {

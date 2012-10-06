@@ -43,18 +43,19 @@ class CharacterManager :public CCObject {
   bool _isExpDirty;
   int executeExpLua(const char* methodName, int argument);
   int getLevel(int exp);
+  int getCurrentCharacterIndex();
+  
  public:
   CharacterManager();
   ~CharacterManager();
   const char* performSkill(Skill* skill);
   bool isPerforming();
-  void chargeTension();
+  void addTension(int t);
   void resetTension();
   int calcDamage(Enemy* enemy, Skill* skill);
   void addExp(int exp);
-  int getExpWithLevel(int level);
-  int getCurrentCharacterIndex();
   DamageType damage(Enemy* attacker, int damage);
+  void changeCharacter();
   
   // getter
   Character* getCurrentCharacter();
@@ -64,11 +65,11 @@ class CharacterManager :public CCObject {
   int getHP();
   int getMP();
   int getLevel();
+  int getExpWithLevel(int level);
   
   // setter
   void setLastSkill(Skill* skill);
   void setCurrentSkill(Skill* skill);
-  void setCurrentCharacter(int idx);
   void setShield(bool s);
   
 };
