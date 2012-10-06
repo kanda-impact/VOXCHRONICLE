@@ -14,7 +14,7 @@
 Skill::Skill(const char* slug) {
   std::stringstream ss;
   ss << slug << ".lua";
-  LuaObject* lua = new LuaObject(ss.str().c_str(), "params");
+  LuaObject* lua = new LuaObject(ss.str().c_str(), "Skill");
   lua->autorelease();
   _name = new std::string(lua->getString("name"));
   _slug = slug;
