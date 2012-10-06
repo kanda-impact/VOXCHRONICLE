@@ -114,24 +114,23 @@ void Music::setTrackDidFinishFunction(boost::function<void (Music *, Track *, Tr
   _trackDidFinishFunction = f;
 }
 
-void Music::didBacking(Track *track, int trackCount) {
-  
-}
-
-void Music::willFinishPlaying(Track *track, int trackCount) {
-  
-}
-
-void Music::didFinishPlaying(Track *track, int trackCount) {
-  
-}
-
 void VISS::Music::update(float dt) {
   for (int trackNumber = 0; trackNumber < _trackCount; ++trackNumber) {
     std::deque<Track*>* it = &_tracks.at(trackNumber);
-    if (it->size() == 0) return;
+    if (it->size() == 0) continue;
     Track* current = it->front();
     float sub = current->getDuration() - current->getPosition();
+    if (!_willFinish.at(trackNumber) && (sub < 0.20 || !current->isPlaying())) {
+      //終わりそうなとき
+      if (_trackWillFinishFunction != NULL) {
+        _trackWillFinishFunction(this, current, NULL, trackNumber);
+      }
+      _willFinish.at(trackNumber) = true;
+      if (it->size() > 1) {
+        Track* next = this->getNextTrack(trackNumber);
+        next->playAfterTrack(current);
+      }
+    }
     if (!current->isPlaying() && _willFinish.at(trackNumber)) {
       //終わったとき
       it->pop_front();
@@ -140,16 +139,6 @@ void VISS::Music::update(float dt) {
       _willFinish.at(trackNumber) = false;
       if (_trackDidFinishFunction != NULL) {
         _trackDidFinishFunction(this, current, it->front(), trackNumber);
-      }
-    } else if (!_willFinish.at(trackNumber) && (sub < 0.2 || !current->isPlaying())) {
-      //終わりそうなとき
-      if (_trackWillFinishFunction != NULL) {
-        _trackWillFinishFunction(this, current, NULL, trackNumber);
-      }
-      _willFinish.at(trackNumber) = true;
-      if (it->size() > 1) {
-        Track* next = it->at(1);
-        next->playAfterTrack(current);
       }
     } else if (!_backed.at(trackNumber) && current->getDuration() / 2 < current->getPosition()) {
       //裏打ちのとき
