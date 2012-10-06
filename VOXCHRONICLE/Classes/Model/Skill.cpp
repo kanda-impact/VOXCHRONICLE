@@ -9,7 +9,6 @@
 #include <sstream>
 #include <string>
 #include "Skill.h"
-#include "LuaCocos2d.h"
 #include "LuaObject.h"
 
 Skill::Skill(const char* slug) {

@@ -1,5 +1,4 @@
-require "skill"
-params = {
+Skill = {
   name = "溜める",
   slug = "tension",
   power = 0,
