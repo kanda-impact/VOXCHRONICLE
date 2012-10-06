@@ -8,7 +8,7 @@ Map = {
   getEnemyTable = function(level)
     enemies = {}
     if true then
-      enemies = {tnt = 30}
+      enemies = {tnt = 1}
     end
     return enemies
   end,

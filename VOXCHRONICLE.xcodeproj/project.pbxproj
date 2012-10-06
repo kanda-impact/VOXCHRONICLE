@@ -133,6 +133,7 @@
 		07AE14B015F043890045E8F3 /* dub_voxnormal05.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE146F15F043890045E8F3 /* dub_voxnormal05.wav */; };
 		07AE14B115F043890045E8F3 /* dub_voxnormal06.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE147015F043890045E8F3 /* dub_voxnormal06.wav */; };
 		07AE14B215F043890045E8F3 /* dub_voxnormal07.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07AE147115F043890045E8F3 /* dub_voxnormal07.wav */; };
+		07B7A676161FF87C00FCE64C /* TrackCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A674161FF87C00FCE64C /* TrackCache.cpp */; };
 		07B95E1A15F304120024C672 /* Music.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B95E1715F303E30024C672 /* Music.mm */; };
 		07B95E1B15F304120024C672 /* Track.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B95E1915F303E30024C672 /* Track.mm */; };
 		07C6064216164F810084708C /* hello.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07C6064116164F810084708C /* hello.lua */; };
@@ -547,6 +548,8 @@
 		07AE146F15F043890045E8F3 /* dub_voxnormal05.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxnormal05.wav; path = Resources/Music/dub/dub_voxnormal05.wav; sourceTree = "<group>"; };
 		07AE147015F043890045E8F3 /* dub_voxnormal06.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxnormal06.wav; path = Resources/Music/dub/dub_voxnormal06.wav; sourceTree = "<group>"; };
 		07AE147115F043890045E8F3 /* dub_voxnormal07.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxnormal07.wav; path = Resources/Music/dub/dub_voxnormal07.wav; sourceTree = "<group>"; };
+		07B7A674161FF87C00FCE64C /* TrackCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TrackCache.cpp; path = Classes/VISS/TrackCache.cpp; sourceTree = "<group>"; };
+		07B7A675161FF87C00FCE64C /* TrackCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrackCache.h; path = Classes/VISS/TrackCache.h; sourceTree = "<group>"; };
 		07B95E1615F303E30024C672 /* Music.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Music.h; path = Classes/VISS/Music.h; sourceTree = "<group>"; };
 		07B95E1715F303E30024C672 /* Music.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = Music.mm; path = Classes/VISS/Music.mm; sourceTree = "<group>"; };
 		07B95E1815F303E30024C672 /* Track.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Track.h; path = Classes/VISS/Track.h; sourceTree = "<group>"; };
@@ -2422,6 +2425,8 @@
 				07B95E1715F303E30024C672 /* Music.mm */,
 				07B95E1815F303E30024C672 /* Track.h */,
 				07B95E1915F303E30024C672 /* Track.mm */,
+				07B7A674161FF87C00FCE64C /* TrackCache.cpp */,
+				07B7A675161FF87C00FCE64C /* TrackCache.h */,
 			);
 			name = VISS;
 			sourceTree = "<group>";
@@ -2969,6 +2974,7 @@
 				0731E4F316181052006AEF3D /* LuaObject.cpp in Sources */,
 				0731E4F616181060006AEF3D /* Utils.cpp in Sources */,
 				0731E4F916181DD5006AEF3D /* Map.cpp in Sources */,
+				07B7A676161FF87C00FCE64C /* TrackCache.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

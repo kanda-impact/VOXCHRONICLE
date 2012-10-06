@@ -11,45 +11,47 @@
 
 // It is wrapper class for ObjectAL::OALAudioTrack.
 
-struct VISS::Track::AudioTrack {
+using namespace VISS;
+
+struct Track::AudioTrack {
   OALAudioTrack* track;
 };
 
-VISS::Track::Track(const char* fileName) : _track(new VISS::Track::AudioTrack) {
+Track::Track(const char* fileName) : _track(new VISS::Track::AudioTrack) {
   NSString* file = [NSString stringWithUTF8String:fileName];
   _track->track = [[OALAudioTrack alloc] init];
   [_track->track preloadFile:file];
 }
 
-VISS::Track::~Track() {
+Track::~Track() {
   [_track->track release];
 }
 
-bool VISS::Track::play() {
+bool Track::play() {
   return [_track->track play];
 }
 
-void VISS::Track::playAfterTime(float time) {
+void Track::playAfterTime(float time) {
   float dt = _track->track.deviceCurrentTime;
   [_track->track playAtTime:dt + time];
 }
   
-void VISS::Track::stop() {
+void Track::stop() {
   return [_track->track stop];
 }
   
-void VISS::Track::pause() {
+void Track::pause() {
   _track->track.paused = YES;
 }
 
-bool VISS::Track::isPlaying() {
+bool Track::isPlaying() {
   return _track->track.playing;
 }
 
-float VISS::Track::getDuration() {
+float Track::getDuration() {
   return _track->track.duration;
 }
 
-float VISS::Track::getPosition() {
+float Track::getPosition() {
   return _track->track.currentTime;
 }

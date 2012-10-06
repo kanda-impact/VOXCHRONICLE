@@ -12,10 +12,13 @@
 #include <iostream>
 #include <string>
 #include <boost/shared_ptr.hpp>
+#include "cocos2d.h"
 #include "macros.h"
 
+using namespace cocos2d;
+
 namespace VISS {
-  class Track {
+  class Track :public CCObject {
 #if IS_IOS
     struct AudioTrack;
 #endif
