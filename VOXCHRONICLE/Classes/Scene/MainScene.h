@@ -25,6 +25,7 @@ using namespace cocos2d;
 
 class MainScene : public CCLayer {
  private:
+  int _turnCount;
   Music* _music;
   Controller* _controller;
   EnemyManager* _enemyManager;

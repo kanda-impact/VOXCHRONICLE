@@ -22,6 +22,7 @@ typedef enum {
 
 LuaObject::LuaObject(const char* scriptName, const char* className) {
   _engine = CCLuaEngine::create();
+  string name(scriptName);
   tolua_voxchronicle_open(this->getLuaEngine()->getLuaState());
   _path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath(scriptName);
   _engine->addSearchPath(_path.substr(0, _path.find_last_of("/")).c_str());
