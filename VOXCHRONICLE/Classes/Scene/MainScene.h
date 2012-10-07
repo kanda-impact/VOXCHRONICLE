@@ -34,6 +34,7 @@ using namespace cocos2d;
 
 class MainScene : public CCLayer {
  private:
+  int _preLevel;
   int _turnCount;
   Music* _music;
   Controller* _controller;
@@ -62,6 +63,7 @@ class MainScene : public CCLayer {
   void pushInitialTracks(Map* map);
   
   void update(float dt);
+  bool checkLevelUp();
   
  public:
   virtual bool init();

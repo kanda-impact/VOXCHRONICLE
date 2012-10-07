@@ -80,7 +80,7 @@ bool MainScene::init() {
   this->updateGUI();
   
   this->scheduleUpdate();
-  
+  _preLevel = _level->getLevel();
   _turnCount = 0;
   return true;
 }
@@ -140,37 +140,12 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       string file(_map->getPrefixedMusicName(ss.str().c_str()));
       _music->pushTrack(file.c_str(), 0);
       if (skill) {
-        int currentLevel = _characterManager->getLevel();
         _enemyManager->performSkill(skill, _characterManager);
-        int newLevel = _characterManager->getLevel();
-        if (currentLevel != newLevel) {
-          cout << "Level Up!" << endl;
-          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("levelup.caf");
-          _level = _map->createLevel(newLevel);
-          _enemyManager->setLevel(_level);
-          this->updateGUI();
-          if (_level->getLevel() >= _map->getMaxLevel()) {
-            CCArray* maps = _map->getNextMaps();
-            if (maps->count() >= 1) {
-              _mapSelector = MapSelector::create();
-              _mapSelector->retain();
-              _mapSelector->setNextMaps(maps);
-              if (maps->count() >= 2) {
-                _mapSelector->setPosition(CCPointMake(0, 60));
-                this->addChild(_mapSelector);
-                _music->removeAllNextTracks();
-                _music->pushTrack("select_stage.wav", 0);
-                _music->pushTrack("select_silent.wav", 1);
-                _music->pushTrack("select_silent.wav", 2);
-                _music->pushTrack("select_silent.wav", 3);
-              }
-              _state = VCStateStageSelect;
-            }
-          }
-        }
+        this->checkLevelUp();
       }
       _controller->setSkills(_characterManager->getCurrentCharacter()->getSkills());
       ++_turnCount;
+      this->checkLevelUp();
     } else if (trackNumber == 1) {
       stringstream ss;
       Enemy* nearest = _enemyManager->getNearestEnemy();
@@ -260,4 +235,36 @@ void MainScene::pushInitialTracks(Map *map) {
   _music->pushTrack(drum.c_str(), 3);
   _music->getTrack(1)->setVolume(0);
   
+}
+
+bool MainScene::checkLevelUp() {
+  int currentLevel = _characterManager->getLevel();
+  if (currentLevel != _preLevel) {
+    _preLevel = currentLevel;
+    cout << "Level Up!" << endl;
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("levelup.caf");
+    _level = _map->createLevel(currentLevel);
+    _enemyManager->setLevel(_level);
+    this->updateGUI();
+    if (_level->getLevel() >= _map->getMaxLevel()) {
+      CCArray* maps = _map->getNextMaps();
+      if (maps->count() >= 1) {
+        _mapSelector = MapSelector::create();
+        _mapSelector->retain();
+        _mapSelector->setNextMaps(maps);
+        if (maps->count() >= 2) {
+          _mapSelector->setPosition(CCPointMake(0, 60));
+          this->addChild(_mapSelector);
+          _music->removeAllNextTracks();
+          _music->pushTrack("select_stage.wav", 0);
+          _music->pushTrack("select_silent.wav", 1);
+          _music->pushTrack("select_silent.wav", 2);
+          _music->pushTrack("select_silent.wav", 3);
+        }
+        _state = VCStateStageSelect;
+      }
+    }
+    return true;
+  }
+  return false;
 }

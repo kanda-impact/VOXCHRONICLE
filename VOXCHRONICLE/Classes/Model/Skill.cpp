@@ -15,7 +15,7 @@ Skill::Skill(const char* slug) {
   _lua = new LuaObject(slug, "Skill");
   _lua->retain();
   _name = new std::string(_lua->getString("name"));
-  _slug = slug;
+  _slug = _lua->getString("slug");
   _power = _lua->getInt("power");
   _mp = _lua->getInt("mp");
   _common = _lua->getBoolean("common");

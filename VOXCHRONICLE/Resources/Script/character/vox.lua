@@ -5,6 +5,7 @@ Character = {
     {"knockback", 3},
     {"tension", 1},
     {"change", 1},
-    {"shield", 5}
+    {"shield", 5},
+    {"levelup", 1}
   }
 }

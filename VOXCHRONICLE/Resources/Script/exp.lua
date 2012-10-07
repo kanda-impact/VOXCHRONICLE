@@ -5,7 +5,7 @@ function getExp(level)
   ]]
   local exp = 0
   for l = 2, level do
-    exp = exp + math.pow(l / 2 , 2)
+    exp = exp + math.pow(l / 2 + 3 , 2)
   end
   return exp
 end
@@ -17,7 +17,7 @@ function getLevel(exp)
     ここは変えない方がよさげです
   ]]
   for level = 1, 30 do
-    if getExp(level) > exp then
+    if math.floor(getExp(level)) > exp then
       return level - 1
     end
   end
