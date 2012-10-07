@@ -5,7 +5,7 @@ function getExp(level)
   ]]
   local exp = 0
   for l = 2, level do
-    exp = exp + math.pow(l / 2 + 3, 2)
+    exp = exp + math.pow(l / 2 , 2)
   end
   return exp
 end
