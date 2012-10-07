@@ -21,6 +21,14 @@
 #include "CharacterManager.h"
 #include "MapSelector.h"
 
+typedef enum {
+  VCStateMain,
+  VCStateGameOver,
+  VCStateBoss,
+  VCStateStageSelect,
+  VCStateEnding
+} VCState;
+
 using namespace VISS;
 using namespace cocos2d;
 
@@ -41,6 +49,7 @@ class MainScene : public CCLayer {
   
   Level* _level;
   Map* _map;
+  VCState _state;
   
   void onEnterTransitionDidFinish();
   
@@ -49,6 +58,7 @@ class MainScene : public CCLayer {
   void trackDidFinishPlaying(Music* music, Track* finishedTrack, Track* nextTrack, int trackNumber);
   
   void updateGUI();
+  void pushInitialTracks(Map* map);
   
   void update(float dt);
   

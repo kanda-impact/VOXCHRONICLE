@@ -25,6 +25,7 @@ bool MapSelector::init() {
   CCMenu* menu = CCMenu::create(leftArrow, rightArrow, NULL);
   menu->alignItemsHorizontallyWithPadding(180);
   this->addChild(menu);
+  _nextMaps = NULL;
   return true;
 }
 
@@ -33,8 +34,27 @@ MapSelector::MapSelector() {
 
 void MapSelector::leftButtonPressed(cocos2d::CCObject *sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("decide.caf");
+  _selectedMap = (Map*)_nextMaps->objectAtIndex(0);
 }
 
 void MapSelector::rightButtonPressed(cocos2d::CCObject *sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("decide.caf");
+  _selectedMap = (Map*)_nextMaps->objectAtIndex(1);
+}
+
+void MapSelector::setNextMaps(cocos2d::CCArray *maps) {
+  if (_nextMaps) {
+    _nextMaps->release();
+  }
+  if (maps) {
+    maps->retain();
+  }
+  _nextMaps = maps;
+  if (maps && maps->count() > 0) {
+    _selectedMap = (Map*)maps->objectAtIndex(0);
+  }
+}
+
+Map* MapSelector::getSelectedMap() {
+  return _selectedMap;
 }
