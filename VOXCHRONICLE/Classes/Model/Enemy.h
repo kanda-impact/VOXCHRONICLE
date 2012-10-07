@@ -26,6 +26,8 @@ class Enemy : public CCSprite {
   int _power;
   int _row;
   int _col;
+  int _speed;
+  int _speedCount;
   int _counter;
   void update(float dt);
   void setLifeColor();
@@ -43,6 +45,7 @@ class Enemy : public CCSprite {
   Enemy* initWithScriptName(const char* scriptName);
   void setColAndRow(int col, float row);
   float getCurrentScale(float row);
+  bool canMove();
   
   /**
    ダメージを与えます。死亡時にはtrueを返します

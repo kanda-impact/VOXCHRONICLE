@@ -34,7 +34,6 @@
 		0739C44B1615D30800CB864D /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0739C4491615D30800CB864D /* Character.cpp */; };
 		073B4C6D162168BA003E0CC8 /* geek.lua in Resources */ = {isa = PBXBuildFile; fileRef = 073B4C6C162168BA003E0CC8 /* geek.lua */; };
 		073B4C7216216976003E0CC8 /* ginet1.lua in Resources */ = {isa = PBXBuildFile; fileRef = 073B4C7116216976003E0CC8 /* ginet1.lua */; };
-		073B4C741621697B003E0CC8 /* ginet2.lua in Resources */ = {isa = PBXBuildFile; fileRef = 073B4C731621697B003E0CC8 /* ginet2.lua */; };
 		074EFCFF15FA8E2D004D8273 /* kawaz.png in Resources */ = {isa = PBXBuildFile; fileRef = 074EFCFE15FA8E2D004D8273 /* kawaz.png */; };
 		074EFD0415FA8EB5004D8273 /* sword.png in Resources */ = {isa = PBXBuildFile; fileRef = 074EFD0215FA8EB5004D8273 /* sword.png */; };
 		074EFD0515FA8EB5004D8273 /* trigger_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 074EFD0315FA8EB5004D8273 /* trigger_bg.png */; };
@@ -427,6 +426,7 @@
 		07D8746E15F01A15009CC446 /* OALTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8744F15F01500009CC446 /* OALTools.m */; };
 		07D8746F15F01A15009CC446 /* OALUtilityActions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8745115F01500009CC446 /* OALUtilityActions.m */; };
 		07D8747015F01A15009CC446 /* OpenALManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8745615F01500009CC446 /* OpenALManager.m */; };
+		07E134FF162167CC00CCF72E /* MapSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E134FD162167CB00CCF72E /* MapSelector.cpp */; };
 		07FA3B2C16107FCC00E9C7DE /* decide.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07FA3B2B16107F0400E9C7DE /* decide.caf */; };
 		07FD921E1621099B00E74459 /* vox.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921D1621099B00E74459 /* vox.lua */; };
 		07FD922016210A2300E74459 /* lsk.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921F16210A2300E74459 /* lsk.lua */; };
@@ -464,7 +464,6 @@
 		0739C4491615D30800CB864D /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Character.cpp; path = Classes/Model/Character.cpp; sourceTree = "<group>"; };
 		073B4C6C162168BA003E0CC8 /* geek.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = geek.lua; sourceTree = "<group>"; };
 		073B4C7116216976003E0CC8 /* ginet1.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ginet1.lua; sourceTree = "<group>"; };
-		073B4C731621697B003E0CC8 /* ginet2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ginet2.lua; sourceTree = "<group>"; };
 		074EFCFE15FA8E2D004D8273 /* kawaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kawaz.png; path = Resources/Image/Title/kawaz.png; sourceTree = "<group>"; };
 		074EFD0215FA8EB5004D8273 /* sword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sword.png; path = Resources/Image/Main/UI/sword.png; sourceTree = "<group>"; };
 		074EFD0315FA8EB5004D8273 /* trigger_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trigger_bg.png; path = Resources/Image/Main/UI/trigger_bg.png; sourceTree = "<group>"; };
@@ -1171,6 +1170,8 @@
 		07D8745615F01500009CC446 /* OpenALManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OpenALManager.m; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/OpenALManager.m; sourceTree = "<group>"; };
 		07D8745715F01500009CC446 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/Support/SynthesizeSingleton.h; sourceTree = "<group>"; };
 		07E134FC162152E400CCF72E /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Character.h; path = Classes/Model/Character.h; sourceTree = "<group>"; };
+		07E134FD162167CB00CCF72E /* MapSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapSelector.cpp; path = Classes/Model/MapSelector.cpp; sourceTree = "<group>"; };
+		07E134FE162167CB00CCF72E /* MapSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapSelector.h; path = Classes/Model/MapSelector.h; sourceTree = "<group>"; };
 		07FA3B2B16107F0400E9C7DE /* decide.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = decide.caf; path = Resources/SE/decide.caf; sourceTree = "<group>"; };
 		07FD921D1621099B00E74459 /* vox.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vox.lua; path = character/vox.lua; sourceTree = "<group>"; };
 		07FD921F16210A2300E74459 /* lsk.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lsk.lua; path = character/lsk.lua; sourceTree = "<group>"; };
@@ -1239,6 +1240,8 @@
 				07565376161705B200C69E27 /* Level.cpp */,
 				0731E4F816181DD4006AEF3D /* Map.h */,
 				0731E4F716181DD4006AEF3D /* Map.cpp */,
+				07E134FD162167CB00CCF72E /* MapSelector.cpp */,
+				07E134FE162167CB00CCF72E /* MapSelector.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -2428,7 +2431,6 @@
 				0731E4DD161804C0006AEF3D /* tnt.lua */,
 				073B4C6C162168BA003E0CC8 /* geek.lua */,
 				073B4C7116216976003E0CC8 /* ginet1.lua */,
-				073B4C731621697B003E0CC8 /* ginet2.lua */,
 				07B7A6D61620777800FCE64C /* tetufez.lua */,
 			);
 			path = enemies;
@@ -2818,7 +2820,6 @@
 				07FD922016210A2300E74459 /* lsk.lua in Resources */,
 				073B4C6D162168BA003E0CC8 /* geek.lua in Resources */,
 				073B4C7216216976003E0CC8 /* ginet1.lua in Resources */,
-				073B4C741621697B003E0CC8 /* ginet2.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3105,6 +3106,7 @@
 				07B7A676161FF87C00FCE64C /* TrackCache.cpp in Sources */,
 				07B7A6981620470000FCE64C /* LuaObject.cpp in Sources */,
 				07B7A69E16204D4D00FCE64C /* LuaBind.cpp in Sources */,
+				07E134FF162167CC00CCF72E /* MapSelector.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

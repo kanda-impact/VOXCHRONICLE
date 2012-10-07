@@ -5,6 +5,7 @@ Enemy = {
   exp = 20,
   attack = 3,
   counter = 0,
+  speed = 3,
   animationFrames = 7,
   choiceSkill = function(self)
     return nil

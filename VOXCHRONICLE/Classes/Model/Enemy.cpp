@@ -32,6 +32,8 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _exp = obj->getInt("exp");
   _name = new string(obj->getString("name"));
   _counter = obj->getInt("counter");
+  _speed = obj->getInt("speed");
+  _speedCount = 0;
   const char* imageName = obj->getString("imageName");
   int frameCount = obj->getInt("animationFrames");
   stringstream ss;
@@ -143,4 +145,9 @@ int Enemy::getCounter() {
 
 int Enemy::getHP() {
   return _hp;
+}
+
+bool Enemy::canMove() {
+  _speedCount = (_speedCount + 1) % _speed;
+  return _speedCount == 0;
 }

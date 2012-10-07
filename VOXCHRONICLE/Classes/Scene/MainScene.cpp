@@ -53,9 +53,15 @@ bool MainScene::init() {
   _hpLabel->setPosition(CCPointMake(400, 290));
   _mpLabel = CCLabelTTF::create("", "Helvetica", 16);
   _mpLabel->setPosition(CCPointMake(400, 270));
+  _expLabel = CCLabelTTF::create("", "Helvetica", 16);
+  _expLabel->setPosition(CCPointMake(40, 260));
+  _nextExpLabel = CCLabelTTF::create("", "Helvetica", 16);
+  _nextExpLabel->setPosition(CCPointMake(40, 240));
   this->addChild(_levelLabel);
   this->addChild(_hpLabel);
   this->addChild(_mpLabel);
+  this->addChild(_expLabel);
+  this->addChild(_nextExpLabel);
   this->updateGUI();
   
   _map = new Map("test");
@@ -90,7 +96,9 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
     CCARRAY_FOREACH(_enemyManager->getEnemies(), obj) {
       Enemy* enemy = (Enemy*)obj;
       if (enemy->getRow() > 0) {
-        enemy->moveRow(-1);
+        if (enemy->canMove()) {
+          enemy->moveRow(-1);
+        }
       } else {
         DamageType result = _characterManager->damage(enemy, 1);
         if (result == DamageTypeDeath) {
@@ -179,4 +187,12 @@ void MainScene::updateGUI() {
   ss.str("");
   ss << _characterManager->getLevel();
   _levelLabel->setString(ss.str().c_str());
+  ss.str("");
+  ss << _characterManager->getExp();
+  _expLabel->setString(ss.str().c_str());
+  ss.str("");
+  int currentLevel = _characterManager->getLevel();
+  int nextExp = _characterManager->getExpWithLevel(currentLevel + 1);
+  ss << nextExp;
+  _nextExpLabel->setString(ss.str().c_str());
 }
