@@ -149,17 +149,22 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
           _enemyManager->setLevel(_level);
           this->updateGUI();
           if (_level->getLevel() >= _map->getMaxLevel()) {
-            _mapSelector = MapSelector::create();
-            _mapSelector->retain();
-            _mapSelector->setPosition(CCPointMake(0, 60));
-            this->addChild(_mapSelector);
-            _mapSelector->setNextMaps(_map->getNextMaps());
-            _music->removeAllNextTracks();
-            _music->pushTrack("select_stage.wav", 0);
-            _music->pushTrack("select_silent.wav", 1);
-            _music->pushTrack("select_silent.wav", 2);
-            _music->pushTrack("select_silent.wav", 3);
-            _state = VCStateStageSelect;
+            CCArray* maps = _map->getNextMaps();
+            if (maps->count() >= 1) {
+              _mapSelector = MapSelector::create();
+              _mapSelector->retain();
+              _mapSelector->setNextMaps(maps);
+              if (maps->count() >= 2) {
+                _mapSelector->setPosition(CCPointMake(0, 60));
+                this->addChild(_mapSelector);
+                _music->removeAllNextTracks();
+                _music->pushTrack("select_stage.wav", 0);
+                _music->pushTrack("select_silent.wav", 1);
+                _music->pushTrack("select_silent.wav", 2);
+                _music->pushTrack("select_silent.wav", 3);
+              }
+              _state = VCStateStageSelect;
+            }
           }
         }
       }
