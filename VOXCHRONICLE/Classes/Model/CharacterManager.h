@@ -49,7 +49,7 @@ class CharacterManager :public CCObject {
  public:
   CharacterManager();
   ~CharacterManager();
-  const char* performSkill(Skill* skill);
+  const char* checkSkillTrackName(Skill* skill, bool& performed);
   bool isPerforming();
   void addTension(int t);
   void resetTension();

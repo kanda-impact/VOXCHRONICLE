@@ -45,7 +45,8 @@ Character* CharacterManager::getCurrentCharacter() {
   return _currentCharacter;
 }
 
-const char* CharacterManager::performSkill(Skill* skill) {
+const char* CharacterManager::checkSkillTrackName(Skill* skill, bool& performed) {
+  performed = false;
   if (skill) {
     _waitTurn += 1;
     if (_waitTurn == skill->getTurn()) {
@@ -68,6 +69,7 @@ const char* CharacterManager::performSkill(Skill* skill) {
       _waitTurn = 0;
       if (skill->getMP() <= this->getMP()) {
         // MP足りてるときだけ
+        performed = true;
         return ss.str().c_str();
       }
     } else {

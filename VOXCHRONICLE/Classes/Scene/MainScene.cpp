@@ -135,11 +135,13 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         skill = _controller->currentTriggerSkill();
       }
       std::stringstream ss;
-      const char* name = _characterManager->performSkill(skill);
+      bool performed = false;
+      const char* name = _characterManager->checkSkillTrackName(skill, performed);
       ss << name << ".wav";
       string file(_map->getPrefixedMusicName(ss.str().c_str()));
+      string trackName(name);
       _music->pushTrack(file.c_str(), 0);
-      if (skill) {
+      if (skill && performed) {
         _enemyManager->performSkill(skill, _characterManager);
         this->checkLevelUp();
       } else {
@@ -148,7 +150,6 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       }
       _controller->updateSkills(_characterManager);
       ++_turnCount;
-      this->checkLevelUp();
     } else if (trackNumber == 1) {
       stringstream ss;
       Enemy* nearest = _enemyManager->getNearestEnemy();
