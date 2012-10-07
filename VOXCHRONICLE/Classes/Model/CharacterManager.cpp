@@ -30,7 +30,8 @@ CharacterManager::CharacterManager() {
   _shield = false;
   _hp = 5;
   _maxHP = _hp;
-  _mp = 0;
+  _mp = 5;
+  _maxMP = _mp;
   _isExpDirty = true;
 }
 
@@ -65,7 +66,10 @@ const char* CharacterManager::performSkill(Skill* skill) {
       this->setLastSkill(skill);
       this->setCurrentSkill(NULL);
       _waitTurn = 0;
-      return ss.str().c_str();
+      if (skill->getMP() <= this->getMP()) {
+        // MP足りてるときだけ
+        return ss.str().c_str();
+      }
     } else {
       this->setCurrentSkill(skill);
     }
@@ -205,4 +209,13 @@ void CharacterManager::setLevel(int l) {
   _exp = this->getExpWithLevel(l);
   _levelCache = l;
   _isExpDirty = false;
+}
+
+void CharacterManager::useMP(int mp) {
+  _mp -= mp;
+  if (_mp > _maxMP) {
+    _mp = _maxMP;
+  } else if (_mp < 0) {
+    _mp = 0;
+  }
 }

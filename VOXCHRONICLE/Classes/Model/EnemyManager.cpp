@@ -164,40 +164,41 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
   int exp = 0;
   CCDictionary* info = CCDictionary::create();
   characterManager->setShield(false);
-  // ターゲットの決定
-  SkillRange range = skill->getRange();
   CCArray* targets = (CCArray*)CCArray::create();
-  if (range == SkillRangeSingle) {
-    Enemy* target = this->getNearestEnemy();
-    if (target) {
+  if (skill->getMP() <= characterManager->getMP()) {
+    // ターゲットの決定
+    SkillRange range = skill->getRange();
+    if (range == SkillRangeSingle) {
+      Enemy* target = this->getNearestEnemy();
+      if (target) {
+        targets->addObject(target);
+      }
+    } else if (range == SkillRangeAll) {
+      if (this->getChildrenCount() > 0) {
+        targets->addObjectsFromArray(this->getChildren());
+      }
+    } else if (range == SkillRangeHorizontal) {
+      Enemy* target = this->getNearestEnemy();
       targets->addObject(target);
+      boost::function<bool (int, float)> predicate = _2 == target->getRow();
+      targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
+    } else if (range == SkillRangeVertical) {
+      Enemy* target = this->getNearestEnemy();
+      targets->addObject(target);
+      boost::function<bool (int, float)> predicate = _1 == target->getCol();
+      targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
+    } else if (range == SkillRangeBack) {
+      // 実装途中。後で考える
+      Enemy* target = this->getNearestEnemy();
+      targets->addObject(target);
+      boost::function<bool (int, float)> predicate = _1 == target->getCol();
+      targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
     }
-  } else if (range == SkillRangeAll) {
-    if (this->getChildrenCount() > 0) {
-      targets->addObjectsFromArray(this->getChildren());
+    
+    // ターゲットに技の効果を与える
+    if (skill->getRange() == SkillRangeSelf) {
+      this->performLuaFunction(skill, NULL, characterManager);
     }
-  } else if (range == SkillRangeHorizontal) {
-    Enemy* target = this->getNearestEnemy();
-    targets->addObject(target);
-    boost::function<bool (int, float)> predicate = _2 == target->getRow();
-    targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
-  } else if (range == SkillRangeVertical) {
-    Enemy* target = this->getNearestEnemy();
-    targets->addObject(target);
-    boost::function<bool (int, float)> predicate = _1 == target->getCol();
-    targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
-  } else if (range == SkillRangeBack) {
-    // 実装途中。後で考える
-    Enemy* target = this->getNearestEnemy();
-    targets->addObject(target);
-    boost::function<bool (int, float)> predicate = _1 == target->getCol();
-    targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
-  }
-  
-  // ターゲットに技の効果を与える
-  if (skill->getRange() == SkillRangeSelf) {
-    this->performLuaFunction(skill, NULL, characterManager);
-  } else {
     CCObject* obj = NULL;
     CCARRAY_FOREACH(targets, obj) {
       Enemy* target = (Enemy*)obj;
@@ -210,6 +211,9 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
         this->removeEnemy(target);
       }
     }
+    characterManager->useMP(skill->getMP());
+  } else {
+    cout << "MP is nothing!" << endl;
   }
   
   // テンション使ってないときreset
