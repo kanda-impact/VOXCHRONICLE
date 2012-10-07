@@ -149,3 +149,10 @@ void VISS::Music::update(float dt) {
     }
   }
 }
+
+void Music::removeAllNextTracks() {
+  for (int trackNumber = 0; trackNumber < _trackCount; ++trackNumber) {
+    std::deque<Track*>* it = &_tracks.at(trackNumber);
+    if (it->size() >= 2) it->erase(it->begin() + 1, it->end());
+  }
+}

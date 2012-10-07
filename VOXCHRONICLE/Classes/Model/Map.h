@@ -34,6 +34,10 @@ class Map :public CCObject {
   Level* createLevel(int lebel);
   Level* createInitialLevel();
   const char* getPrefixedMusicName(const char* musicName);
+  int getMaxLevel();
+  int getInitialLevel();
+  
+  CCArray* getNextMaps();
 };
 
 #endif /* defined(__VOXCHRONICLE__Map__) */
