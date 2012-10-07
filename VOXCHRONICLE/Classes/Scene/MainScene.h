@@ -19,6 +19,7 @@
 #include "Controller.h"
 #include "EnemyManager.h"
 #include "CharacterManager.h"
+#include "MapSelector.h"
 
 using namespace VISS;
 using namespace cocos2d;
@@ -30,6 +31,7 @@ class MainScene : public CCLayer {
   Controller* _controller;
   EnemyManager* _enemyManager;
   CharacterManager* _characterManager;
+  MapSelector* _mapSelector;
   
   CCLabelTTF* _levelLabel;
   CCLabelTTF* _hpLabel;

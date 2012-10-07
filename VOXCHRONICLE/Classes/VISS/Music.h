@@ -47,6 +47,7 @@ namespace VISS {
     void setTrackWillFinishFunction(boost::function<void (Music*, Track*, Track*, int)>);
     void setTrackDidFinishFunction(boost::function<void (Music*, Track*, Track*, int)>);
     void setTrackDidBackFunction(boost::function<void (Music*, Track*, int)>);
+    void removeAllNextTracks();
   };
 }
 

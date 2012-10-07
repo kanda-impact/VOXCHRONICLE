@@ -80,6 +80,9 @@ MainScene::~MainScene() {
   _controller->release();
   _enemyManager->release();
   _characterManager->release();
+  if (_mapSelector) {
+    _mapSelector->release();
+  }
 }
 
 void MainScene::update(float dt) {
@@ -135,9 +138,15 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         _enemyManager->setLevel(_level);
         this->updateGUI();
         if (_level->getLevel() == _map->getMaxLevel()) {
-          MapSelector* selector = MapSelector::create();
-          selector->setPosition(CCPointMake(0, 60));
-          this->addChild(selector);
+          _mapSelector = MapSelector::create();
+          _mapSelector->retain();
+          _mapSelector->setPosition(CCPointMake(0, 60));
+          this->addChild(_mapSelector);
+          _music->removeAllNextTracks();
+          _music->pushTrack("select_stage.wav", 0);
+          _music->pushTrack("select_silent.wav", 1);
+          _music->pushTrack("select_silent.wav", 2);
+          _music->pushTrack("select_silent.wav", 3);
         }
       }
     }
