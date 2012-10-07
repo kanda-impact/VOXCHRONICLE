@@ -23,3 +23,11 @@ function getLevel(exp)
   end
   return 1
 end
+
+function getMaxHP(level)
+  return 5
+end
+
+function getMaxMP(level)
+  return 5
+end

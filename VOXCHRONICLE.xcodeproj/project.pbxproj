@@ -42,7 +42,6 @@
 		074EFD0C15FA93AA004D8273 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 074EFD0715FA906C004D8273 /* Controller.cpp */; };
 		074EFD1215FA9E17004D8273 /* trigger_bg_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 074EFD1115FA9E17004D8273 /* trigger_bg_selected.png */; };
 		07565378161705B200C69E27 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07565376161705B200C69E27 /* Level.cpp */; };
-		0756539516170F7A00C69E27 /* exp.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0756539416170F7A00C69E27 /* exp.lua */; };
 		0756539A1617131C00C69E27 /* attack_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 075653971617131C00C69E27 /* attack_icon.png */; };
 		0756539B1617131C00C69E27 /* knockback_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 075653981617131C00C69E27 /* knockback_icon.png */; };
 		0756539E161713BE00C69E27 /* tension_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0756539D161713BE00C69E27 /* tension_icon.png */; };
@@ -439,6 +438,7 @@
 		07E1351B1621A04300CCF72E /* setting.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07E1351A1621A04300CCF72E /* setting.lua */; };
 		07E1351D1621ACD900CCF72E /* levelup.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07E1351C1621ACD900CCF72E /* levelup.caf */; };
 		07E1351F1621AF2700CCF72E /* levelup.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07E1351E1621AF2700CCF72E /* levelup.lua */; };
+		07E135261621CABF00CCF72E /* character.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07E135251621CABF00CCF72E /* character.lua */; };
 		07FA3B2C16107FCC00E9C7DE /* decide.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07FA3B2B16107F0400E9C7DE /* decide.caf */; };
 		07FD921E1621099B00E74459 /* vox.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921D1621099B00E74459 /* vox.lua */; };
 		07FD922016210A2300E74459 /* lsk.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921F16210A2300E74459 /* lsk.lua */; };
@@ -487,7 +487,6 @@
 		074EFD1115FA9E17004D8273 /* trigger_bg_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trigger_bg_selected.png; path = Resources/Image/Main/UI/trigger_bg_selected.png; sourceTree = "<group>"; };
 		07565376161705B200C69E27 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Level.cpp; path = Classes/Model/Level.cpp; sourceTree = "<group>"; };
 		07565377161705B200C69E27 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Level.h; path = Classes/Model/Level.h; sourceTree = "<group>"; };
-		0756539416170F7A00C69E27 /* exp.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = exp.lua; sourceTree = "<group>"; };
 		075653971617131C00C69E27 /* attack_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attack_icon.png; sourceTree = "<group>"; };
 		075653981617131C00C69E27 /* knockback_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knockback_icon.png; sourceTree = "<group>"; };
 		0756539D161713BE00C69E27 /* tension_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tension_icon.png; sourceTree = "<group>"; };
@@ -1196,6 +1195,7 @@
 		07E1351A1621A04300CCF72E /* setting.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = setting.lua; sourceTree = "<group>"; };
 		07E1351C1621ACD900CCF72E /* levelup.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = levelup.caf; path = Resources/SE/levelup.caf; sourceTree = "<group>"; };
 		07E1351E1621AF2700CCF72E /* levelup.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = levelup.lua; sourceTree = "<group>"; };
+		07E135251621CABF00CCF72E /* character.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = character.lua; path = character/character.lua; sourceTree = "<group>"; };
 		07FA3B2B16107F0400E9C7DE /* decide.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = decide.caf; path = Resources/SE/decide.caf; sourceTree = "<group>"; };
 		07FD921D1621099B00E74459 /* vox.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vox.lua; path = character/vox.lua; sourceTree = "<group>"; };
 		07FD921F16210A2300E74459 /* lsk.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lsk.lua; path = character/lsk.lua; sourceTree = "<group>"; };
@@ -1563,7 +1563,6 @@
 				07C6093A161674650084708C /* enemies */,
 				07C6093B161674650084708C /* skills */,
 				07C6064116164F810084708C /* hello.lua */,
-				0756539416170F7A00C69E27 /* exp.lua */,
 				07E1351A1621A04300CCF72E /* setting.lua */,
 			);
 			name = Script;
@@ -2656,6 +2655,7 @@
 			children = (
 				07FD921D1621099B00E74459 /* vox.lua */,
 				07FD921F16210A2300E74459 /* lsk.lua */,
+				07E135251621CABF00CCF72E /* character.lua */,
 			);
 			name = character;
 			sourceTree = "<group>";
@@ -2810,7 +2810,6 @@
 				07C6093D161674650084708C /* attack.lua in Resources */,
 				079487951616D8C5004ABCF5 /* knockback.lua in Resources */,
 				0794879C1616EC7E004ABCF5 /* tension.lua in Resources */,
-				0756539516170F7A00C69E27 /* exp.lua in Resources */,
 				0756539A1617131C00C69E27 /* attack_icon.png in Resources */,
 				0756539B1617131C00C69E27 /* knockback_icon.png in Resources */,
 				0756539E161713BE00C69E27 /* tension_icon.png in Resources */,
@@ -2876,6 +2875,7 @@
 				07E1351F1621AF2700CCF72E /* levelup.lua in Resources */,
 				073B4CAB1621C185003E0CC8 /* ginet.lua in Resources */,
 				073B4CAD1621C199003E0CC8 /* ginet2.lua in Resources */,
+				07E135261621CABF00CCF72E /* character.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

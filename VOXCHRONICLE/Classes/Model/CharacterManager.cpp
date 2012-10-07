@@ -28,11 +28,12 @@ CharacterManager::CharacterManager() {
   _tension = 0;
   _exp = 0;
   _shield = false;
-  _hp = 5;
-  _maxHP = _hp;
-  _mp = 5;
-  _maxMP = _mp;
+  _maxHP = 0;
+  _maxMP = 0;
   _isExpDirty = true;
+  this->updateParameters();
+  _hp = _maxHP;
+  _mp = _maxMP;
 }
 
 CharacterManager::~CharacterManager() {
@@ -137,19 +138,19 @@ int CharacterManager::getLevel() {
 
 int CharacterManager::getLevel(int exp) {
   if (_isExpDirty) {
-    _levelCache = executeExpLua("getLevel", exp);
+    _levelCache = executeLuaFunction("getLevel", exp);
     _isExpDirty = false;
   }
   return _levelCache;
 }
 
 int CharacterManager::getExpWithLevel(int level) {
-  return executeExpLua("getExp", level);
+  return executeLuaFunction("getExp", level);
 }
 
-int CharacterManager::executeExpLua(const char *methodName, int argument) {
+int CharacterManager::executeLuaFunction(const char *methodName, int argument) {
   CCLuaEngine* engine = CCLuaEngine::defaultEngine();
-  std::string path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("exp.lua");
+  std::string path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("character.lua");
   engine->executeScriptFile(path.c_str());
   lua_State* L = engine->getLuaState();
   lua_getglobal(L, methodName);
@@ -220,4 +221,21 @@ void CharacterManager::useMP(int mp) {
   } else if (_mp < 0) {
     _mp = 0;
   }
+}
+
+int CharacterManager::getMaxHP() {
+  return this->executeLuaFunction("getMaxHP", this->getLevel());
+}
+
+int CharacterManager::getMaxMP() {
+  return this->executeLuaFunction("getMaxMP", this->getLevel());
+}
+
+void CharacterManager::updateParameters() {
+  float rateHP = (float)_hp / (float)_maxHP;
+  float rateMP = (float)_mp / (float)_maxMP;
+  _maxHP = this->getMaxHP();
+  _maxMP = this->getMaxMP();
+  _hp = _maxHP * rateHP;
+  _mp = _maxMP * rateMP;
 }

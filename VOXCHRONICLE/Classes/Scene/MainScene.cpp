@@ -246,6 +246,7 @@ bool MainScene::checkLevelUp() {
   if (currentLevel != _preLevel) {
     _preLevel = currentLevel;
     cout << "Level Up!" << endl;
+    _characterManager->updateParameters();
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("levelup.caf");
     _level = _map->createLevel(currentLevel);
     _enemyManager->setLevel(_level);

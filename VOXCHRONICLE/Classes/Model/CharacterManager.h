@@ -42,7 +42,7 @@ class CharacterManager :public CCObject {
   
   int _levelCache;
   bool _isExpDirty;
-  int executeExpLua(const char* methodName, int argument);
+  int executeLuaFunction(const char* methodName, int argument);
   int getLevel(int exp);
   int getCurrentCharacterIndex();
   
@@ -58,6 +58,7 @@ class CharacterManager :public CCObject {
   DamageType damage(Enemy* attacker, int damage);
   void changeCharacter();
   void useMP(int mp);
+  void updateParameters();
   
   // getter
   Character* getCurrentCharacter();
@@ -69,6 +70,8 @@ class CharacterManager :public CCObject {
   int getLevel();
   int getExpWithLevel(int level);
   int getExp();
+  int getMaxHP();
+  int getMaxMP();
   
   // setter
   void setLastSkill(Skill* skill);
