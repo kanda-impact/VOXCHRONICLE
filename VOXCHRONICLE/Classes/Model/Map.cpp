@@ -95,3 +95,7 @@ CCArray* Map::getNextMaps() {
   }
   return maps;
 }
+
+string* Map::getName() {
+  return _name;
+}

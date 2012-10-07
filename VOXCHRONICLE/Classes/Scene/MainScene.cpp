@@ -57,11 +57,14 @@ bool MainScene::init() {
   _expLabel->setPosition(CCPointMake(40, 260));
   _nextExpLabel = CCLabelTTF::create("", "Helvetica", 16);
   _nextExpLabel->setPosition(CCPointMake(40, 240));
+  _mapLabel = CCLabelTTF::create("", "Helvetica", 16);
+  _mapLabel->setPosition(CCPointMake(60, 220));
   this->addChild(_levelLabel);
   this->addChild(_hpLabel);
   this->addChild(_mpLabel);
   this->addChild(_expLabel);
   this->addChild(_nextExpLabel);
+  this->addChild(_mapLabel);
 
   TrackCache::sharedCache()->addTrack("select_stage.wav");
   
@@ -199,6 +202,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       _mapSelector = NULL;
       TrackCache::sharedCache()->purgeAllTracks();
       this->pushInitialTracks(_map);
+      this->updateGUI();
       _state = VCStateMain;
     }
   }
@@ -231,6 +235,7 @@ void MainScene::updateGUI() {
   int nextExp = _characterManager->getExpWithLevel(currentLevel + 1);
   ss << nextExp;
   _nextExpLabel->setString(ss.str().c_str());
+  _mapLabel->setString(_map->getName()->c_str());
 }
 
 void MainScene::pushInitialTracks(Map *map) {

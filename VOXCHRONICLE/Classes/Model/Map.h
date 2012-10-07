@@ -36,6 +36,7 @@ class Map :public CCObject {
   const char* getPrefixedMusicName(const char* musicName);
   int getMaxLevel();
   int getInitialLevel();
+  string* getName();
   
   CCArray* getNextMaps();
 };
