@@ -13,14 +13,24 @@ Character::Character(const char* slug) {
   _lua = new LuaObject(slug, "Character");
   _skills = CCArray::create();
   _skills->retain();
-  CCLuaValueDict* dict = _lua->getTable("skills");
-  for (map<string, CCLuaValue>::iterator it = dict->begin(); it != dict->end(); ++it) {
-    string str = it->first;
-    Skill* skill = new Skill(str.c_str());
-    CCLuaValue value = it->second;
-    int level = value.intValue();
+  CCLuaValueDict* sks = _lua->getTable("skills");
+  cout << sks->size() << endl;
+  for (int i = 1; i <= sks->size(); ++i) {
+    stringstream ss;
+    ss << i;
+    CCLuaValueDict a = (*sks)[ss.str()].dictValue();
+    string skillName;
+    int alv = 0;
+    for (int i = 1; i <= 2; ++i) {
+      if (i == 1) {
+        skillName = a["1"].stringValue();
+      } else if (i == 2){
+        alv = a["2"].floatValue();
+      }
+    }
+    Skill* skill = new Skill(skillName.c_str());
+    skill->setAcquirementLV(alv);
     _skills->addObject(skill);
-    skill->setAcquirementLV(level);
   }
   _name = _lua->getString("name");
   _slug = slug;
@@ -28,7 +38,6 @@ Character::Character(const char* slug) {
 
 Character::~Character() {
   _skills->release();
-  cout << "destruct" << endl;
 }
 
 const char* Character::getName() {
