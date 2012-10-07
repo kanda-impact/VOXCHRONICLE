@@ -173,7 +173,9 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
       targets->addObject(target);
     }
   } else if (range == SkillRangeAll) {
-    targets->addObjectsFromArray(this->getChildren());
+    if (this->getChildrenCount() > 0) {
+      targets->addObjectsFromArray(this->getChildren());
+    }
   } else if (range == SkillRangeHorizontal) {
     Enemy* target = this->getNearestEnemy();
     targets->addObject(target);
