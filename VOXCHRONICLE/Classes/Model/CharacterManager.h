@@ -66,6 +66,7 @@ class CharacterManager :public CCObject {
   int getMP();
   int getLevel();
   int getExpWithLevel(int level);
+  int getExp();
   
   // setter
   void setLastSkill(Skill* skill);

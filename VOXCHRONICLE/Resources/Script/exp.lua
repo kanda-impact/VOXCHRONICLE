@@ -16,10 +16,8 @@ function getLevel(exp)
     経験値に対応したレベルを返します。
     ここは変えない方がよさげです
   ]]
-  local expSum = 0
   for level = 1, 30 do
-    expSum = expSum + getExp(level)
-    if expSum > exp then
+    if getExp(level) > exp then
       return level - 1
     end
   end

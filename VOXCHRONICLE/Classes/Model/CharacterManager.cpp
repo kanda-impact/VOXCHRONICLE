@@ -154,7 +154,7 @@ int CharacterManager::executeExpLua(const char *methodName, int argument) {
       return 1;
     }
   }
-  return lua_tointeger(L, lua_gettop(L));
+  return (int)lua_tonumber(L, lua_gettop(L));
 }
 
 void CharacterManager::changeCharacter() {
@@ -195,4 +195,8 @@ int CharacterManager::getMP() {
 
 Skill* CharacterManager::getCurrentSkill() {
   return _currentSkill;
+}
+
+int CharacterManager::getExp() {
+  return _exp;
 }

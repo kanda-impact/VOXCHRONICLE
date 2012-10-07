@@ -34,6 +34,8 @@ class MainScene : public CCLayer {
   CCLabelTTF* _levelLabel;
   CCLabelTTF* _hpLabel;
   CCLabelTTF* _mpLabel;
+  CCLabelTTF* _expLabel;
+  CCLabelTTF* _nextExpLabel;
   
   Level* _level;
   Map* _map;
