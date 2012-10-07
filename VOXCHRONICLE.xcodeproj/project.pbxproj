@@ -436,6 +436,7 @@
 		07E1351716219F9600CCF72E /* test2a.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07E1351516219F9600CCF72E /* test2a.lua */; };
 		07E1351816219F9600CCF72E /* test2b.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07E1351616219F9600CCF72E /* test2b.lua */; };
 		07E1351B1621A04300CCF72E /* setting.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07E1351A1621A04300CCF72E /* setting.lua */; };
+		07E1351D1621ACD900CCF72E /* levelup.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07E1351C1621ACD900CCF72E /* levelup.caf */; };
 		07FA3B2C16107FCC00E9C7DE /* decide.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07FA3B2B16107F0400E9C7DE /* decide.caf */; };
 		07FD921E1621099B00E74459 /* vox.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921D1621099B00E74459 /* vox.lua */; };
 		07FD922016210A2300E74459 /* lsk.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921F16210A2300E74459 /* lsk.lua */; };
@@ -1190,6 +1191,7 @@
 		07E1351516219F9600CCF72E /* test2a.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = test2a.lua; path = map/test2a.lua; sourceTree = "<group>"; };
 		07E1351616219F9600CCF72E /* test2b.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = test2b.lua; path = map/test2b.lua; sourceTree = "<group>"; };
 		07E1351A1621A04300CCF72E /* setting.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = setting.lua; sourceTree = "<group>"; };
+		07E1351C1621ACD900CCF72E /* levelup.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = levelup.caf; path = Resources/SE/levelup.caf; sourceTree = "<group>"; };
 		07FA3B2B16107F0400E9C7DE /* decide.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = decide.caf; path = Resources/SE/decide.caf; sourceTree = "<group>"; };
 		07FD921D1621099B00E74459 /* vox.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vox.lua; path = character/vox.lua; sourceTree = "<group>"; };
 		07FD921F16210A2300E74459 /* lsk.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lsk.lua; path = character/lsk.lua; sourceTree = "<group>"; };
@@ -2638,6 +2640,7 @@
 			isa = PBXGroup;
 			children = (
 				07FA3B2B16107F0400E9C7DE /* decide.caf */,
+				07E1351C1621ACD900CCF72E /* levelup.caf */,
 			);
 			name = SE;
 			sourceTree = "<group>";
@@ -2864,6 +2867,7 @@
 				07E1351716219F9600CCF72E /* test2a.lua in Resources */,
 				07E1351816219F9600CCF72E /* test2b.lua in Resources */,
 				07E1351B1621A04300CCF72E /* setting.lua in Resources */,
+				07E1351D1621ACD900CCF72E /* levelup.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -145,6 +145,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         int newLevel = _characterManager->getLevel();
         if (currentLevel != newLevel) {
           cout << "Level Up!" << endl;
+          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("levelup.caf");
           _level = _map->createLevel(newLevel);
           _enemyManager->setLevel(_level);
           this->updateGUI();

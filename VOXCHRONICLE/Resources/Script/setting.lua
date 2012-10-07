@@ -1,4 +1,4 @@
 Setting = {
   initialMap = "test",
-  initialLevel = 9
+  initialLevel = 1
 }
