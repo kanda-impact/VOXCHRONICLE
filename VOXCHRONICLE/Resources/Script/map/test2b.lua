@@ -1,5 +1,5 @@
 Map = {
-  name = "テストマップ2",
+  name = "テストマップ2b",
   prefix = "dub",
   backgroundImage = "",
   nextMaps = {},

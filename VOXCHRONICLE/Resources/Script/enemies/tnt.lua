@@ -1,8 +1,8 @@
 Enemy = {
   name = "ティエヌティ",
   imageName = "tnt",
-  hp = 4,
-  exp = 20,
+  hp = 3,
+  exp = 18,
   attack = 3,
   counter = 0,
   speed = 3,
