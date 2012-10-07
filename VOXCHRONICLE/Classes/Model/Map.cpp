@@ -78,3 +78,11 @@ const char* Map::getPrefixedMusicName(const char *musicName) {
   ss << _prefix->c_str() << "_" << musicName;
   return ss.str().c_str();
 }
+
+int Map::getMaxLevel() {
+  return _maxLevel;
+}
+
+int Map::getInitialLevel() {
+  return _initialLevel;
+}

@@ -427,6 +427,12 @@
 		07D8746F15F01A15009CC446 /* OALUtilityActions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8745115F01500009CC446 /* OALUtilityActions.m */; };
 		07D8747015F01A15009CC446 /* OpenALManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8745615F01500009CC446 /* OpenALManager.m */; };
 		07E134FF162167CC00CCF72E /* MapSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E134FD162167CB00CCF72E /* MapSelector.cpp */; };
+		07E1350216217A1300CCF72E /* left_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E1350016217A1300CCF72E /* left_arrow.png */; };
+		07E1350316217A1300CCF72E /* right_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E1350116217A1300CCF72E /* right_arrow.png */; };
+		07E1350A16217D1200CCF72E /* left_arrow_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E1350816217D1200CCF72E /* left_arrow_selected.png */; };
+		07E1350B16217D1200CCF72E /* right_arrow_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E1350916217D1200CCF72E /* right_arrow_selected.png */; };
+		07E1350F1621816400CCF72E /* select_silent.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E1350D1621816400CCF72E /* select_silent.wav */; };
+		07E135101621816400CCF72E /* select_stage.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E1350E1621816400CCF72E /* select_stage.wav */; };
 		07FA3B2C16107FCC00E9C7DE /* decide.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07FA3B2B16107F0400E9C7DE /* decide.caf */; };
 		07FD921E1621099B00E74459 /* vox.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921D1621099B00E74459 /* vox.lua */; };
 		07FD922016210A2300E74459 /* lsk.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921F16210A2300E74459 /* lsk.lua */; };
@@ -1172,6 +1178,12 @@
 		07E134FC162152E400CCF72E /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Character.h; path = Classes/Model/Character.h; sourceTree = "<group>"; };
 		07E134FD162167CB00CCF72E /* MapSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapSelector.cpp; path = Classes/Model/MapSelector.cpp; sourceTree = "<group>"; };
 		07E134FE162167CB00CCF72E /* MapSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapSelector.h; path = Classes/Model/MapSelector.h; sourceTree = "<group>"; };
+		07E1350016217A1300CCF72E /* left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = left_arrow.png; path = Resources/Image/Main/UI/left_arrow.png; sourceTree = "<group>"; };
+		07E1350116217A1300CCF72E /* right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = right_arrow.png; path = Resources/Image/Main/UI/right_arrow.png; sourceTree = "<group>"; };
+		07E1350816217D1200CCF72E /* left_arrow_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = left_arrow_selected.png; path = Resources/Image/Main/UI/left_arrow_selected.png; sourceTree = "<group>"; };
+		07E1350916217D1200CCF72E /* right_arrow_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = right_arrow_selected.png; path = Resources/Image/Main/UI/right_arrow_selected.png; sourceTree = "<group>"; };
+		07E1350D1621816400CCF72E /* select_silent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = select_silent.wav; path = Resources/Music/select/select_silent.wav; sourceTree = "<group>"; };
+		07E1350E1621816400CCF72E /* select_stage.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = select_stage.wav; path = Resources/Music/select/select_stage.wav; sourceTree = "<group>"; };
 		07FA3B2B16107F0400E9C7DE /* decide.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = decide.caf; path = Resources/SE/decide.caf; sourceTree = "<group>"; };
 		07FD921D1621099B00E74459 /* vox.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vox.lua; path = character/vox.lua; sourceTree = "<group>"; };
 		07FD921F16210A2300E74459 /* lsk.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lsk.lua; path = character/lsk.lua; sourceTree = "<group>"; };
@@ -1282,6 +1294,10 @@
 				074EFD0215FA8EB5004D8273 /* sword.png */,
 				074EFD0315FA8EB5004D8273 /* trigger_bg.png */,
 				074EFD1115FA9E17004D8273 /* trigger_bg_selected.png */,
+				07E1350016217A1300CCF72E /* left_arrow.png */,
+				07E1350116217A1300CCF72E /* right_arrow.png */,
+				07E1350816217D1200CCF72E /* left_arrow_selected.png */,
+				07E1350916217D1200CCF72E /* right_arrow_selected.png */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -2483,6 +2499,7 @@
 		07D873E215ED1200009CC446 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				07E1350C1621812F00CCF72E /* select */,
 				07AE143015F043520045E8F3 /* dub */,
 				07D873E315ED1205009CC446 /* VOXQUEST */,
 			);
@@ -2597,6 +2614,15 @@
 				07D8745715F01500009CC446 /* SynthesizeSingleton.h */,
 			);
 			name = ObjectAL;
+			sourceTree = "<group>";
+		};
+		07E1350C1621812F00CCF72E /* select */ = {
+			isa = PBXGroup;
+			children = (
+				07E1350D1621816400CCF72E /* select_silent.wav */,
+				07E1350E1621816400CCF72E /* select_stage.wav */,
+			);
+			name = select;
 			sourceTree = "<group>";
 		};
 		07FA3B2A16107EE500E9C7DE /* SE */ = {
@@ -2820,6 +2846,12 @@
 				07B7A6D91620777800FCE64C /* tetufez.lua in Resources */,
 				07FD921E1621099B00E74459 /* vox.lua in Resources */,
 				07FD922016210A2300E74459 /* lsk.lua in Resources */,
+				07E1350216217A1300CCF72E /* left_arrow.png in Resources */,
+				07E1350316217A1300CCF72E /* right_arrow.png in Resources */,
+				07E1350A16217D1200CCF72E /* left_arrow_selected.png in Resources */,
+				07E1350B16217D1200CCF72E /* right_arrow_selected.png in Resources */,
+				07E1350F1621816400CCF72E /* select_silent.wav in Resources */,
+				07E135101621816400CCF72E /* select_stage.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

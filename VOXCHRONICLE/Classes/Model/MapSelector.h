@@ -11,5 +11,17 @@
 
 #include <iostream>
 #include "cocos2d.h"
+#include "Map.h"
+
+using namespace cocos2d;
+class MapSelector :public CCLayer {
+ private:
+  void leftButtonPressed(CCObject* sender);
+  void rightButtonPressed(CCObject* sender);
+ public:
+  virtual bool init();
+  MapSelector();
+  CREATE_FUNC(MapSelector)
+};
 
 #endif /* defined(__VOXCHRONICLE__MapSelector__) */

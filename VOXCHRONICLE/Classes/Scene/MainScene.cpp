@@ -14,6 +14,7 @@
 
 #include "MainScene.h"
 #include "Enemy.h"
+#include "MapSelector.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -47,6 +48,10 @@ bool MainScene::init() {
   CCSize size = director->getWinSize();
   this->addChild(_controller);
   
+  _map = new Map("test");
+  _level = _map->createInitialLevel();
+  _enemyManager->setLevel(_level);
+  
   _levelLabel = CCLabelTTF::create("", "Helvetica", 16);
   _levelLabel->setPosition(CCPointMake(40, 280));
   _hpLabel = CCLabelTTF::create("", "Helvetica", 16);
@@ -63,10 +68,6 @@ bool MainScene::init() {
   this->addChild(_expLabel);
   this->addChild(_nextExpLabel);
   this->updateGUI();
-  
-  _map = new Map("test");
-  _level = _map->createInitialLevel();
-  _enemyManager->setLevel(_level);
   
   this->scheduleUpdate();
   
@@ -133,6 +134,11 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         _level = _map->createLevel(newLevel);
         _enemyManager->setLevel(_level);
         this->updateGUI();
+        if (_level->getLevel() == _map->getMaxLevel()) {
+          MapSelector* selector = MapSelector::create();
+          selector->setPosition(CCPointMake(0, 60));
+          this->addChild(selector);
+        }
       }
     }
     _controller->setSkills(_characterManager->getCurrentCharacter()->getSkills());
@@ -191,7 +197,7 @@ void MainScene::updateGUI() {
   ss << _characterManager->getExp();
   _expLabel->setString(ss.str().c_str());
   ss.str("");
-  int currentLevel = _characterManager->getLevel();
+  int currentLevel = _level->getLevel();
   int nextExp = _characterManager->getExpWithLevel(currentLevel + 1);
   ss << nextExp;
   _nextExpLabel->setString(ss.str().c_str());
