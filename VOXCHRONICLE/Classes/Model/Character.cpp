@@ -52,7 +52,7 @@ CCArray* Character::getSkills(int level) {
   CCArray* array = CCArray::create();
   CCObject* obj = NULL;
   CCARRAY_FOREACH(_skills, obj) {
-    if (((Skill*)obj)->getAcquirementLV() < level) {
+    if (((Skill*)obj)->getAcquirementLV() <= level) {
       array->addObject(obj);
     }
   }

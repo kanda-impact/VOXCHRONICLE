@@ -53,7 +53,7 @@ bool Controller::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
   CCObject* trigger = NULL;
   CCARRAY_FOREACH(_triggers, trigger) {
     CCPoint p = ((SkillTrigger*)trigger)->convertTouchToNodeSpace(pTouch);
-    if (ccpDistance(triggerCenter, p) < triggerRadius) {
+    if (((SkillTrigger*)trigger)->getEnable() && ccpDistance(triggerCenter, p) < triggerRadius) {
       this->resetAllTriggers();
       CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("decide.caf");
       ((SkillTrigger*)trigger)->setPress(true);
@@ -83,12 +83,16 @@ int Controller::currentTriggerIndex() {
   return -1;
 }
 
-void Controller::setSkills(CCArray* skills) {
+void Controller::updateSkills(CharacterManager* manager) {
+  CCArray* allSkills = manager->getCurrentCharacter()->getSkills();
+  int level = manager->getLevel();
+  CCArray* skills = manager->getCurrentCharacter()->getSkills(level);
   for (int i = 0; i < _triggers->count(); ++i) {
-    if (i >= skills->count()) break;
-    Skill* skill = (Skill*)skills->objectAtIndex(i);
+    if (i >= allSkills->count()) break;
+    Skill* skill = (Skill*)allSkills->objectAtIndex(i);
     SkillTrigger* trigger = (SkillTrigger*)_triggers->objectAtIndex(i);
     trigger->setSkill(skill);
+    trigger->setEnable(skills->containsObject(skill));
   }
 }
 

@@ -43,10 +43,10 @@ bool MainScene::init() {
   _controller->retain();
   _characterManager = new CharacterManager();
   _characterManager->retain();
-  _controller->setSkills(_characterManager->getCurrentCharacter()->getSkills());
   CCSize size = director->getWinSize();
   this->addChild(_controller);
   _characterManager->setLevel(setting->getInt("initialLevel"));
+  _controller->updateSkills(_characterManager);
   
   _map = new Map(setting->getString("initialMap"));
   _level = _map->createInitialLevel();
@@ -143,7 +143,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         _enemyManager->performSkill(skill, _characterManager);
         this->checkLevelUp();
       }
-      _controller->setSkills(_characterManager->getCurrentCharacter()->getSkills());
+      _controller->updateSkills(_characterManager);
       ++_turnCount;
       this->checkLevelUp();
     } else if (trackNumber == 1) {
