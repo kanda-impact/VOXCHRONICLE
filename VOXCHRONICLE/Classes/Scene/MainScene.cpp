@@ -90,7 +90,9 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
     CCARRAY_FOREACH(_enemyManager->getEnemies(), obj) {
       Enemy* enemy = (Enemy*)obj;
       if (enemy->getRow() > 0) {
-        enemy->moveRow(-1);
+        if (enemy->canMove()) {
+          enemy->moveRow(-1);
+        }
       } else {
         DamageType result = _characterManager->damage(enemy, 1);
         if (result == DamageTypeDeath) {

@@ -14,7 +14,6 @@ Character::Character(const char* slug) {
   _skills = CCArray::create();
   _skills->retain();
   CCLuaValueDict* sks = _lua->getTable("skills");
-  cout << sks->size() << endl;
   for (int i = 1; i <= sks->size(); ++i) {
     stringstream ss;
     ss << i;
