@@ -142,6 +142,9 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       if (skill) {
         _enemyManager->performSkill(skill, _characterManager);
         this->checkLevelUp();
+      } else {
+        // 何も実行しなかったとき
+        _characterManager->useMP(-1);
       }
       _controller->updateSkills(_characterManager);
       ++_turnCount;

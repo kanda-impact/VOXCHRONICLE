@@ -27,6 +27,7 @@ typedef enum {
 class CharacterManager :public CCObject {
  private:
   int _maxHP;
+  int _maxMP;
   int _hp;
   int _mp;
   int _exp;
@@ -56,6 +57,7 @@ class CharacterManager :public CCObject {
   void addExp(int exp);
   DamageType damage(Enemy* attacker, int damage);
   void changeCharacter();
+  void useMP(int mp);
   
   // getter
   Character* getCurrentCharacter();
