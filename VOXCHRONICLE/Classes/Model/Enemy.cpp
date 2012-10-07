@@ -96,12 +96,10 @@ bool Enemy::damage(int d) {
 }
 
 void Enemy::setLifeColor() {
-  const float maxColor = (5 * 255 + 247);
   const float minColor = (0 * 255 + 244);
-  const float endColor = maxColor * ((float)_maxHP / 10.0);
+  const float maxColor = (5 * 255 + 247);
   const float cast = 360.0 / (float)(255 * 6);
-  float hpRate = (float)_hp / (float)_maxHP;
-  ccColor3B color = HSVToColor3B((minColor + (endColor - minColor) * hpRate) * cast, 1, 1);
+  ccColor3B color = HSVToColor3B((minColor + 150 * (_hp - 1)) * cast, 1, 1);
   this->cocos2d::CCSprite::setColor(color);
 }
 

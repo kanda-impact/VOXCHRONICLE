@@ -164,6 +164,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
   if (trackNumber == 0) {
     if (!_characterManager->isPerforming()) {
       _controller->resetAllTriggers();
+      _enemyManager->purgeAllTrash();
     }
   }
 }

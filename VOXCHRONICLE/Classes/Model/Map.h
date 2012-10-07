@@ -12,6 +12,7 @@
 #include <iostream>
 #include "cocos2d.h"
 #include "Level.h"
+#include "LuaObject.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -26,6 +27,7 @@ class Map :public CCObject {
   string* _name;
   string* _prefix;
   string* _backgroundImageName;
+  LuaObject* _lua;
  public:
   Map(const char* mapName);
   ~Map();

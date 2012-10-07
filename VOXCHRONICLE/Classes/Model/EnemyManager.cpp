@@ -32,9 +32,12 @@ bool EnemyManager::init() {
 }
 
 EnemyManager::EnemyManager() {
+  _trash = CCArray::create();
+  _trash->retain();
 }
 
 EnemyManager::~EnemyManager() {
+  _trash->release();
   _enemiesQueue->release();
   delete _enemyPopLots;
 }
@@ -129,8 +132,7 @@ bool EnemyManager::attackEnemy(Enemy* enemy, int damage) {
 }
 
 bool EnemyManager::performLuaFunction(Skill* skill, Enemy* target, CharacterManager* characterManager) {
-  LuaObject* lua = new LuaObject(skill->getSlug(), "Skill");
-  lua->autorelease();
+  LuaObject* lua = skill->getLuaObject();
   lua_State* L = lua->getLuaEngine()->getLuaState();
   lua_getglobal(L, "Skill");
   int table = lua_gettop(L);
@@ -138,16 +140,23 @@ bool EnemyManager::performLuaFunction(Skill* skill, Enemy* target, CharacterMana
   if (lua_isfunction(L, lua_gettop(L))) {
     if (target) {
       lua->getLuaEngine()->pushCCObject(target, "Enemy");
+      target->retain();
     } else {
       lua->getLuaEngine()->pushNil();
     }
     lua->getLuaEngine()->pushCCObject(characterManager, "CharacterManager");
+    characterManager->retain();
     if (lua_pcall(L, 2, 1, 0)) {
       cout << lua_tostring(L, lua_gettop(L)) << endl;
       return false;
     }
+    if (target) {
+      lua->getLuaEngine()->removeScriptObjectByCCObject(target);
+    }
+    lua->getLuaEngine()->removeScriptObjectByCCObject(characterManager);
     return true;
   }
+  lua->getLuaEngine()->cleanStack();
   return false;
 }
 
@@ -184,10 +193,10 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
   }
   
   // ターゲットに技の効果を与える
-  CCObject* obj = NULL;
   if (skill->getRange() == SkillRangeSelf) {
     this->performLuaFunction(skill, NULL, characterManager);
   } else {
+    CCObject* obj = NULL;
     CCARRAY_FOREACH(targets, obj) {
       Enemy* target = (Enemy*)obj;
       if (!performLuaFunction(skill, target, characterManager)) {
@@ -195,6 +204,7 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
       }
       if (target->getHP() <= 0) {
         exp += target->getExp();
+        _trash->addObject(target);
         this->removeEnemy(target);
       }
     }
@@ -267,4 +277,8 @@ void EnemyManager::draw() {
     ccDrawColor4F(1.0 * opacity, 1.0 * opacity, 1.0 * opacity, 1);
     ccDrawLine(origin, dest);
   }
+}
+
+void EnemyManager::purgeAllTrash() {
+  _trash->removeAllObjects();
 }

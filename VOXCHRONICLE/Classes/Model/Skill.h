@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include "cocos2d.h"
+#include "LuaObject.h"
 
 using namespace cocos2d;
 
@@ -41,6 +42,7 @@ class Skill :public CCObject {
   const char* _slug;
   SkillRange _range;
   SkillType _type;
+  LuaObject* _lua;
  public:
   Skill(const char* slug);
   ~Skill();
@@ -53,6 +55,7 @@ class Skill :public CCObject {
   bool isCommon();
   SkillRange getRange();
   SkillType getType();
+  LuaObject* getLuaObject();
 };
 
 #endif /* defined(__VOXCHRONICLE__Skill__) */

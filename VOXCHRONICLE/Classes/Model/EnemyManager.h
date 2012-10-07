@@ -28,6 +28,7 @@ class EnemyManager :public CCLayer {
   Level* _level;
   CCArray* _enemiesQueue;
   CCArray* createEnemyQueue();
+  CCArray* _trash;
   bool performLuaFunction(Skill* skill, Enemy* target, CharacterManager* characterManager);
  public:
   virtual bool init();
@@ -44,6 +45,7 @@ class EnemyManager :public CCLayer {
   Enemy* getNearestEnemy();
   CCArray* getFilteredEnemies(boost::function<bool (int, float)>filter);
   bool attackEnemy(Enemy* enemy, int attack);
+  void purgeAllTrash();
   
   /**
    モンスターに実際にスキルを使用し、情報を返します
