@@ -16,6 +16,7 @@
 #include "Enemy.h"
 #include "MapSelector.h"
 #include "TrackCache.h"
+#include "LuaObject.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -30,6 +31,9 @@ bool MainScene::init() {
   _music->setTrackDidFinishFunction(boost::bind(&MainScene::trackDidFinishPlaying, this, _1, _2, _3, _4));
   _music->setTrackWillFinishFunction(boost::bind(&MainScene::trackWillFinishPlaying, this, _1, _2, _3, _4));
   
+  LuaObject* setting = new LuaObject("setting", "Setting");
+  setting->autorelease();
+  
   _enemyManager = EnemyManager::create();
   _enemyManager->retain();
   this->addChild(_enemyManager);
@@ -42,8 +46,9 @@ bool MainScene::init() {
   _controller->setSkills(_characterManager->getCurrentCharacter()->getSkills());
   CCSize size = director->getWinSize();
   this->addChild(_controller);
+  _characterManager->setLevel(setting->getInt("initialLevel"));
   
-  _map = new Map("test");
+  _map = new Map(setting->getString("initialMap"));
   _level = _map->createInitialLevel();
   _enemyManager->setLevel(_level);
   
@@ -65,7 +70,7 @@ bool MainScene::init() {
   this->addChild(_expLabel);
   this->addChild(_nextExpLabel);
   this->addChild(_mapLabel);
-
+  
   TrackCache::sharedCache()->addTrack("select_stage.wav");
   
   this->pushInitialTracks(_map);

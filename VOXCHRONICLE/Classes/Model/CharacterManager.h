@@ -72,6 +72,7 @@ class CharacterManager :public CCObject {
   void setLastSkill(Skill* skill);
   void setCurrentSkill(Skill* skill);
   void setShield(bool s);
+  void setLevel(int l);
   
 };
 

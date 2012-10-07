@@ -200,3 +200,9 @@ Skill* CharacterManager::getCurrentSkill() {
 int CharacterManager::getExp() {
   return _exp;
 }
+
+void CharacterManager::setLevel(int l) {
+  _exp = this->getExpWithLevel(l);
+  _levelCache = l;
+  _isExpDirty = false;
+}
