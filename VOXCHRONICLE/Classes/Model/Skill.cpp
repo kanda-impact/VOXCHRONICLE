@@ -69,3 +69,11 @@ SkillType Skill::getType() {
 LuaObject* Skill::getLuaObject() {
   return _lua;
 }
+
+int Skill::getAcquirementLV() {
+  return _acquirementLV;
+}
+
+void Skill::setAcquirementLV(int lv) {
+  _acquirementLV = lv;
+}

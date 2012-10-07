@@ -427,6 +427,8 @@
 		07D8746F15F01A15009CC446 /* OALUtilityActions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8745115F01500009CC446 /* OALUtilityActions.m */; };
 		07D8747015F01A15009CC446 /* OpenALManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8745615F01500009CC446 /* OpenALManager.m */; };
 		07FA3B2C16107FCC00E9C7DE /* decide.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07FA3B2B16107F0400E9C7DE /* decide.caf */; };
+		07FD921E1621099B00E74459 /* vox.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921D1621099B00E74459 /* vox.lua */; };
+		07FD922016210A2300E74459 /* lsk.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921F16210A2300E74459 /* lsk.lua */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -459,7 +461,6 @@
 		0739C4461615D2FD00CB864D /* CharacterManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CharacterManager.cpp; path = Classes/Model/CharacterManager.cpp; sourceTree = "<group>"; };
 		0739C4471615D2FD00CB864D /* CharacterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharacterManager.h; path = Classes/Model/CharacterManager.h; sourceTree = "<group>"; };
 		0739C4491615D30800CB864D /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Character.cpp; path = Classes/Model/Character.cpp; sourceTree = "<group>"; };
-		0739C44A1615D30800CB864D /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Character.h; path = Classes/Model/Character.h; sourceTree = "<group>"; };
 		074EFCFE15FA8E2D004D8273 /* kawaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kawaz.png; path = Resources/Image/Title/kawaz.png; sourceTree = "<group>"; };
 		074EFD0215FA8EB5004D8273 /* sword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sword.png; path = Resources/Image/Main/UI/sword.png; sourceTree = "<group>"; };
 		074EFD0315FA8EB5004D8273 /* trigger_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trigger_bg.png; path = Resources/Image/Main/UI/trigger_bg.png; sourceTree = "<group>"; };
@@ -1167,7 +1168,10 @@
 		07D8745515F01500009CC446 /* OpenALManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OpenALManager.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/OpenALManager.h; sourceTree = "<group>"; };
 		07D8745615F01500009CC446 /* OpenALManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OpenALManager.m; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/OpenALManager.m; sourceTree = "<group>"; };
 		07D8745715F01500009CC446 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/Support/SynthesizeSingleton.h; sourceTree = "<group>"; };
+		07E134FC162152E400CCF72E /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Character.h; path = Classes/Model/Character.h; sourceTree = "<group>"; };
 		07FA3B2B16107F0400E9C7DE /* decide.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = decide.caf; path = Resources/SE/decide.caf; sourceTree = "<group>"; };
+		07FD921D1621099B00E74459 /* vox.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vox.lua; path = character/vox.lua; sourceTree = "<group>"; };
+		07FD921F16210A2300E74459 /* lsk.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lsk.lua; path = character/lsk.lua; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1221,7 +1225,7 @@
 			children = (
 				0739C4471615D2FD00CB864D /* CharacterManager.h */,
 				0739C4461615D2FD00CB864D /* CharacterManager.cpp */,
-				0739C44A1615D30800CB864D /* Character.h */,
+				07E134FC162152E400CCF72E /* Character.h */,
 				0739C4491615D30800CB864D /* Character.cpp */,
 				07C6F6AC1615D6300084708C /* Enemy.h */,
 				07C6F6AB1615D6300084708C /* Enemy.cpp */,
@@ -1519,6 +1523,7 @@
 		07C6064016164F810084708C /* Script */ = {
 			isa = PBXGroup;
 			children = (
+				07FD921C1621097700E74459 /* character */,
 				0731E4FA16184A59006AEF3D /* map */,
 				07C6093A161674650084708C /* enemies */,
 				07C6093B161674650084708C /* skills */,
@@ -2597,6 +2602,15 @@
 			name = SE;
 			sourceTree = "<group>";
 		};
+		07FD921C1621097700E74459 /* character */ = {
+			isa = PBXGroup;
+			children = (
+				07FD921D1621099B00E74459 /* vox.lua */,
+				07FD921F16210A2300E74459 /* lsk.lua */,
+			);
+			name = character;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2799,6 +2813,8 @@
 				07B7A6D71620777800FCE64C /* geek.lua in Resources */,
 				07B7A6D81620777800FCE64C /* ginet.lua in Resources */,
 				07B7A6D91620777800FCE64C /* tetufez.lua in Resources */,
+				07FD921E1621099B00E74459 /* vox.lua in Resources */,
+				07FD922016210A2300E74459 /* lsk.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

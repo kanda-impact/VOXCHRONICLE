@@ -33,6 +33,7 @@ typedef enum {
 
 class Skill :public CCObject {
  private:
+  int _acquirementLV;
   int _maxRepeat;
   int _turn;
   int _power;
@@ -52,6 +53,8 @@ class Skill :public CCObject {
   int getPower();
   int getMaxRepeat();
   int getMP();
+  int getAcquirementLV();
+  void setAcquirementLV(int lv);
   bool isCommon();
   SkillRange getRange();
   SkillType getType();

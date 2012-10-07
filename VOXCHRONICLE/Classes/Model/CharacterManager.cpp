@@ -12,26 +12,11 @@
 #include "CCLuaEngine.h"
 
 CharacterManager::CharacterManager() {
-  CCArray* skills = CCArray::create(new Skill("attack"),
-                                    new Skill("knockback"),
-                                    new Skill("tension"),
-                                    new Skill("change"),
-                                    new Skill("shield"),
-                                    NULL);
-  Character* vox = new Character(skills);
+  Character* vox = new Character("vox");
   vox->autorelease();
-  vox->setName("オクス");
-  vox->setSlug("vox");
   
-  CCArray* lskSkills = CCArray::create(new Skill("magic"),
-                                       new Skill("thunder"),
-                                       new Skill("tension"),
-                                       new Skill("change"),
-                                       new Skill("shield"),
-                                       NULL);
-  Character* lsk = new Character(lskSkills);
-  lsk->setName("ラスカ");
-  lsk->setSlug("lsk");
+  Character* lsk = new Character("lsk");
+  lsk->autorelease();
   
   _characters = CCArray::create(vox, lsk, NULL);
   _characters->retain();
