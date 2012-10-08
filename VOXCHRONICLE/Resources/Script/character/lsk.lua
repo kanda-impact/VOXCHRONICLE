@@ -8,3 +8,4 @@ Character = {
     {"shield", 5}
   }
 }
+return Character

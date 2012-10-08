@@ -18,13 +18,16 @@ using namespace cocos2d;
 
 class LuaObject :public CCObject {
  private:
+  void init(const char* scriptName, const char* className);
   CCLuaEngine* _engine;
   const char* _className;
   const char* _scriptName;
   std::string _path;
   float getFloatFromTable(lua_State* state, int index);
   void internalLoadSubTableWithKey(string key, lua_State* state, CCLuaValueDict* dict);
+  void loadTable();
  public:
+  LuaObject(const char* scriptName);
   LuaObject(const char* scriptName, const char* className);
   ~LuaObject();
   int getInt(const char* key);

@@ -20,7 +20,15 @@ typedef enum {
   kStructTypeRect,
 } EStructTypes;
 
+LuaObject::LuaObject(const char* scriptName) {
+  this->init(scriptName, NULL);
+}
+
 LuaObject::LuaObject(const char* scriptName, const char* className) {
+  this->init(scriptName, className);
+}
+
+void LuaObject::init(const char* scriptName, const char* className) {
   _engine = CCLuaEngine::create();
   string name(scriptName);
   stringstream ss;
@@ -31,7 +39,6 @@ LuaObject::LuaObject(const char* scriptName, const char* className) {
   tolua_voxchronicle_open(this->getLuaEngine()->getLuaState());
   _path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath(name.c_str());
   _engine->addSearchPath(_path.substr(0, _path.find_last_of("/")).c_str());
-  _engine->executeScriptFile(_path.c_str());
   _scriptName = name.c_str();
   _className = className;
 }
@@ -41,9 +48,8 @@ LuaObject::~LuaObject() {
 }
 
 int LuaObject::getInt(const char *key) {
-  _engine->executeScriptFile(_path.c_str());
   lua_State* L = _engine->getLuaState();
-  lua_getglobal(L, _className);
+  this->loadTable();
   int table = lua_gettop(L);
   lua_getfield(L, table, key);
   int result = lua_tointeger(L, -1);
@@ -52,9 +58,8 @@ int LuaObject::getInt(const char *key) {
 }
 
 float LuaObject::getNumber(const char *key) {
-  _engine->executeScriptFile(_path.c_str());
   lua_State* L = _engine->getLuaState();
-  lua_getglobal(L, _className);
+  this->loadTable();
   int table = lua_gettop(L);
   lua_getfield(L, table, key);
   float result = lua_tonumber(L, -1);
@@ -63,9 +68,8 @@ float LuaObject::getNumber(const char *key) {
 }
 
 bool LuaObject::getBoolean(const char *key) {
-  _engine->executeScriptFile(_path.c_str());
   lua_State* L = _engine->getLuaState();
-  lua_getglobal(L, _className);
+  this->loadTable();
   int table = lua_gettop(L);
   lua_getfield(L, table, key);
   bool result = lua_toboolean(L, -1);
@@ -74,9 +78,8 @@ bool LuaObject::getBoolean(const char *key) {
 }
 
 const char* LuaObject::getString(const char *key) {
-  _engine->executeScriptFile(_path.c_str());
   lua_State* L = _engine->getLuaState();
-  lua_getglobal(L, _className);
+  this->loadTable();
   int table = lua_gettop(L);
   lua_getfield(L, table, key);
   const char* result = lua_tostring(L, -1);
@@ -85,9 +88,8 @@ const char* LuaObject::getString(const char *key) {
 }
 
 lua_CFunction LuaObject::getFunction(const char *key) {
-  _engine->executeScriptFile(_path.c_str());
   lua_State* L = _engine->getLuaState();
-  lua_getglobal(L, _className);
+  this->loadTable();
   int table = lua_gettop(L);
   lua_getfield(L, table, key);
   lua_CFunction result = lua_tocfunction(L, -1);
@@ -96,9 +98,8 @@ lua_CFunction LuaObject::getFunction(const char *key) {
 }
 
 const void* LuaObject::getObject(const char *key) {
-  _engine->executeScriptFile(_path.c_str());
   lua_State* L = _engine->getLuaState();
-  lua_getglobal(L, _className);
+  this->loadTable();
   int table = lua_gettop(L);
   lua_getfield(L, table, key);
   const void* result = lua_topointer(L, -1);
@@ -107,9 +108,8 @@ const void* LuaObject::getObject(const char *key) {
 }
 
 CCLuaValueDict* LuaObject::getTable(const char* key) {
-  _engine->executeScriptFile(_path.c_str());
+  this->loadTable();
   lua_State* L = _engine->getLuaState();
-  lua_getglobal(L, _className);
   int table = lua_gettop(L);
   lua_getfield(L, table, key);
   CCLuaValueDict* dict = recursivelyLoadTable(lua_gettop(L));
@@ -265,4 +265,12 @@ CCLuaValueArray* LuaObject::luaTableToArray(CCLuaValueDict* dict) {
     array->push_back((*dict)[ss.str()]);
   }
   return array;
+}
+
+void LuaObject::loadTable() {
+  _engine->executeScriptFile(_path.c_str());
+  lua_State* L = _engine->getLuaState();
+  if (_className != NULL) {
+    lua_getglobal(L, _className);
+  }
 }

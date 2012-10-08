@@ -9,3 +9,4 @@ Character = {
     {"levelup", 1}
   }
 }
+return Character
