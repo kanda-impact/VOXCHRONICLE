@@ -1,5 +1,4 @@
-require "skill"
-params = {
+Skill = {
   name = "チェンジ",
   slug = "change",
   power = 0,
@@ -7,6 +6,9 @@ params = {
   common = false,
   maxRepeat = 1,
   turn = 1,
+  performSkill = function(target, characterManager)
+    characterManager:changeCharacter()
+  end,
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone
 }

@@ -77,6 +77,8 @@ namespace VISS {
      */
     float getPosition();
     
+    void setVolume(float v);
+    
     float getDeviceCurrentTime();
   };
 }

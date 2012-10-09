@@ -12,26 +12,11 @@
 #include "CCLuaEngine.h"
 
 CharacterManager::CharacterManager() {
-  CCArray* skills = CCArray::create(new Skill("attack"),
-                                    new Skill("knockback"),
-                                    new Skill("tension"),
-                                    new Skill("change"),
-                                    new Skill("shield"),
-                                    NULL);
-  Character* vox = new Character(skills);
+  Character* vox = new Character("vox");
   vox->autorelease();
-  vox->setName("オクス");
-  vox->setSlug("vox");
   
-  CCArray* lskSkills = CCArray::create(new Skill("magic"),
-                                       new Skill("thunder"),
-                                       new Skill("tension"),
-                                       new Skill("change"),
-                                       new Skill("shield"),
-                                       NULL);
-  Character* lsk = new Character(lskSkills);
-  lsk->setName("ラスカ");
-  lsk->setSlug("lsk");
+  Character* lsk = new Character("lsk");
+  lsk->autorelease();
   
   _characters = CCArray::create(vox, lsk, NULL);
   _characters->retain();
@@ -43,10 +28,12 @@ CharacterManager::CharacterManager() {
   _tension = 0;
   _exp = 0;
   _shield = false;
-  _hp = 5;
-  _maxHP = _hp;
-  _mp = 0;
+  _maxHP = 0;
+  _maxMP = 0;
   _isExpDirty = true;
+  this->updateParameters();
+  _hp = _maxHP;
+  _mp = _maxMP;
 }
 
 CharacterManager::~CharacterManager() {
@@ -59,7 +46,8 @@ Character* CharacterManager::getCurrentCharacter() {
   return _currentCharacter;
 }
 
-const char* CharacterManager::performSkill(Skill* skill) {
+const char* CharacterManager::checkSkillTrackName(Skill* skill, bool& performed) {
+  performed = false;
   if (skill) {
     _waitTurn += 1;
     if (_waitTurn == skill->getTurn()) {
@@ -80,7 +68,11 @@ const char* CharacterManager::performSkill(Skill* skill) {
       this->setLastSkill(skill);
       this->setCurrentSkill(NULL);
       _waitTurn = 0;
-      return ss.str().c_str();
+      if (skill->getMP() <= this->getMP()) {
+        // MP足りてるときだけ
+        performed = true;
+        return ss.str().c_str();
+      }
     } else {
       this->setCurrentSkill(skill);
     }
@@ -119,8 +111,9 @@ int CharacterManager::getTension() {
   return _tension;
 }
 
-void CharacterManager::chargeTension() {
-  if (_tension < 4) _tension += 1;
+void CharacterManager::addTension(int t) {
+  _tension += t;
+  if (_tension >= 4) _tension = 3;
 }
 
 void CharacterManager::resetTension() {
@@ -145,19 +138,19 @@ int CharacterManager::getLevel() {
 
 int CharacterManager::getLevel(int exp) {
   if (_isExpDirty) {
-    _levelCache = executeExpLua("getLevel", exp);
+    _levelCache = executeLuaFunction("getLevel", exp);
     _isExpDirty = false;
   }
   return _levelCache;
 }
 
 int CharacterManager::getExpWithLevel(int level) {
-  return executeExpLua("getExp", level);
+  return executeLuaFunction("getExp", level);
 }
 
-int CharacterManager::executeExpLua(const char *methodName, int argument) {
+int CharacterManager::executeLuaFunction(const char *methodName, int argument) {
   CCLuaEngine* engine = CCLuaEngine::defaultEngine();
-  std::string path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("exp.lua");
+  std::string path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("character.lua");
   engine->executeScriptFile(path.c_str());
   lua_State* L = engine->getLuaState();
   lua_getglobal(L, methodName);
@@ -168,11 +161,11 @@ int CharacterManager::executeExpLua(const char *methodName, int argument) {
       return 1;
     }
   }
-  return lua_tointeger(L, lua_gettop(L));
+  return (int)lua_tonumber(L, lua_gettop(L));
 }
 
-void CharacterManager::setCurrentCharacter(int idx) {
-  _currentCharacter = (Character*)_characters->objectAtIndex(idx);
+void CharacterManager::changeCharacter() {
+  _currentCharacter = (Character*)_characters->objectAtIndex((this->getCurrentCharacterIndex() + 1) % 2);
 }
 
 int CharacterManager::getCurrentCharacterIndex() {
@@ -199,6 +192,16 @@ DamageType CharacterManager::damage(Enemy *attacker, int damage) {
   return DamageTypeHit;
 }
 
+int CharacterManager::cureHP(int hp) {
+  _hp += hp;
+  if (_hp > _maxHP) {
+    _hp = _maxHP;
+  } else if (_hp < 0) {
+    _hp = 0;
+  }
+  return _hp;
+}
+
 int CharacterManager::getHP() {
   return _hp;
 }
@@ -209,4 +212,40 @@ int CharacterManager::getMP() {
 
 Skill* CharacterManager::getCurrentSkill() {
   return _currentSkill;
+}
+
+int CharacterManager::getExp() {
+  return _exp;
+}
+
+void CharacterManager::setLevel(int l) {
+  _exp = this->getExpWithLevel(l);
+  _levelCache = l;
+  _isExpDirty = false;
+}
+
+void CharacterManager::useMP(int mp) {
+  _mp -= mp;
+  if (_mp > _maxMP) {
+    _mp = _maxMP;
+  } else if (_mp < 0) {
+    _mp = 0;
+  }
+}
+
+int CharacterManager::getMaxHP() {
+  return this->executeLuaFunction("getMaxHP", this->getLevel());
+}
+
+int CharacterManager::getMaxMP() {
+  return this->executeLuaFunction("getMaxMP", this->getLevel());
+}
+
+void CharacterManager::updateParameters() {
+  float rateHP = (float)_hp / (float)_maxHP;
+  float rateMP = (float)_mp / (float)_maxMP;
+  _maxHP = this->getMaxHP();
+  _maxMP = this->getMaxMP();
+  _hp = _maxHP * rateHP;
+  _mp = _maxMP * rateMP;
 }

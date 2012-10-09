@@ -7,12 +7,32 @@
 //
 
 #include "Character.h"
+#include "Skill.h"
 
-Character::Character(CCArray* skills) {
-  _skills = skills;
+Character::Character(const char* slug) {
+  _lua = new LuaObject(slug);
+  _skills = CCArray::create();
   _skills->retain();
-  _name = "";
-  _slug = "";
+  CCLuaValueDict* sks = _lua->getTable("skills");
+  for (int i = 1; i <= sks->size(); ++i) {
+    stringstream ss;
+    ss << i;
+    CCLuaValueDict a = (*sks)[ss.str()].dictValue();
+    string skillName;
+    int alv = 0;
+    for (int i = 1; i <= 2; ++i) {
+      if (i == 1) {
+        skillName = a["1"].stringValue();
+      } else if (i == 2){
+        alv = a["2"].floatValue();
+      }
+    }
+    Skill* skill = new Skill(skillName.c_str());
+    skill->setAcquirementLV(alv);
+    _skills->addObject(skill);
+  }
+  _name = _lua->getString("name");
+  _slug = slug;
 }
 
 Character::~Character() {
@@ -23,18 +43,22 @@ const char* Character::getName() {
   return _name;
 }
 
+using namespace std;
 CCArray* Character::getSkills() {
   return _skills;
 }
 
+CCArray* Character::getSkills(int level) {
+  CCArray* array = CCArray::create();
+  CCObject* obj = NULL;
+  CCARRAY_FOREACH(_skills, obj) {
+    if (((Skill*)obj)->getAcquirementLV() <= level) {
+      array->addObject(obj);
+    }
+  }
+  return array;
+}
+
 const char* Character::getSlug() {
   return _slug;
-}
-
-void Character::setName(const char *name) {
-  _name = name;
-}
-
-void Character::setSlug(const char *slug) {
-  _slug = slug;
 }

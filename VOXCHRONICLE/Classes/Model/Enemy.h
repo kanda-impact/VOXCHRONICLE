@@ -26,12 +26,16 @@ class Enemy : public CCSprite {
   int _power;
   int _row;
   int _col;
+  int _speed;
+  int _speedCount;
+  int _counter;
   void update(float dt);
   void setLifeColor();
  public:
   static Enemy* create(const char* enemyName);
   Enemy();
   ~Enemy();
+  int getHP();
   float getRow();
   void setRow(float r);
   int getCol();
@@ -39,6 +43,9 @@ class Enemy : public CCSprite {
   float bottomLine();
   void moveRow(float r);
   Enemy* initWithScriptName(const char* scriptName);
+  void setColAndRow(int col, float row);
+  float getCurrentScale(float row);
+  bool canMove();
   
   /**
    ダメージを与えます。死亡時にはtrueを返します
@@ -46,6 +53,7 @@ class Enemy : public CCSprite {
   bool damage(int d);
   
   int getExp();
+  int getCounter();
 };
 
 #endif /* defined(__VOXCHRONICLE__Enemy__) */

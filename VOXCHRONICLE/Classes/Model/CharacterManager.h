@@ -27,6 +27,7 @@ typedef enum {
 class CharacterManager :public CCObject {
  private:
   int _maxHP;
+  int _maxMP;
   int _hp;
   int _mp;
   int _exp;
@@ -41,20 +42,24 @@ class CharacterManager :public CCObject {
   
   int _levelCache;
   bool _isExpDirty;
-  int executeExpLua(const char* methodName, int argument);
+  int executeLuaFunction(const char* methodName, int argument);
   int getLevel(int exp);
+  int getCurrentCharacterIndex();
+  
  public:
   CharacterManager();
   ~CharacterManager();
-  const char* performSkill(Skill* skill);
+  const char* checkSkillTrackName(Skill* skill, bool& performed);
   bool isPerforming();
-  void chargeTension();
+  void addTension(int t);
   void resetTension();
   int calcDamage(Enemy* enemy, Skill* skill);
   void addExp(int exp);
-  int getExpWithLevel(int level);
-  int getCurrentCharacterIndex();
   DamageType damage(Enemy* attacker, int damage);
+  void changeCharacter();
+  int cureHP(int hp);
+  void useMP(int mp);
+  void updateParameters();
   
   // getter
   Character* getCurrentCharacter();
@@ -64,12 +69,16 @@ class CharacterManager :public CCObject {
   int getHP();
   int getMP();
   int getLevel();
+  int getExpWithLevel(int level);
+  int getExp();
+  int getMaxHP();
+  int getMaxMP();
   
   // setter
   void setLastSkill(Skill* skill);
   void setCurrentSkill(Skill* skill);
-  void setCurrentCharacter(int idx);
   void setShield(bool s);
+  void setLevel(int l);
   
 };
 

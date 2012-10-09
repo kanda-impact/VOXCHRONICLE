@@ -16,16 +16,14 @@ using namespace std;
 Map::Map(const char* mapName) {
   // ここでスクリプトを読ませる
   _slug = mapName;
-  stringstream ss;
-  ss << mapName << ".lua";
-  LuaObject* lua = new LuaObject(ss.str().c_str(), "Map");
-  lua->autorelease();
-  _name = new string(lua->getString("name"));
-  _prefix = new string(lua->getString("prefix"));
-  _backgroundImageName = new string(lua->getString("backgroundImage"));
-  CCLuaValueArray* nexts = lua->getArray("nextMaps");
-  _initialLevel = lua->getInt("initialLevel");
-  _maxLevel = lua->getInt("maxLevel");
+  _lua = new LuaObject(mapName, "Map");
+  _lua->retain();
+  _name = new string(_lua->getString("name"));
+  _prefix = new string(_lua->getString("prefix"));
+  _backgroundImageName = new string(_lua->getString("backgroundImage"));
+  CCLuaValueArray* nexts = _lua->getArray("nextMaps");
+  _initialLevel = _lua->getInt("initialLevel");
+  _maxLevel = _lua->getInt("maxLevel");
   _nextMaps = new vector<string>();
   for (CCLuaValueArray::const_iterator it = nexts->begin(); it != nexts->end(); ++it) {
     _nextMaps->push_back(it->stringValue());
@@ -34,17 +32,13 @@ Map::Map(const char* mapName) {
 
 Map::~Map() {
   delete _name;
+  _lua->release();
 }
 
 Level* Map::createLevel(int level) {
   Level* lv = new Level(level);
-  stringstream ss;
-  ss << _slug << ".lua";
-  
   // モンスターテーブルを設定
-  LuaObject* lua = new LuaObject(ss.str().c_str(), "Map");
-  lua->autorelease();
-  lua_State* L = lua->getLuaEngine()->getLuaState();
+  lua_State* L = _lua->getLuaEngine()->getLuaState();
   lua_getglobal(L, "Map");
   int table = lua_gettop(L);
   lua_getfield(L, table, "getEnemyTable");
@@ -53,7 +47,7 @@ Level* Map::createLevel(int level) {
     cout << lua_tostring(L, lua_gettop(L)) << endl;
   }
   list< pair<string, int> > enemyTable;
-  CCLuaValueDict* dict = lua->recursivelyLoadTable(lua_gettop(L));
+  CCLuaValueDict* dict = _lua->recursivelyLoadTable(lua_gettop(L));
   for (CCLuaValueDict::iterator it = dict->begin(); it != dict->end(); ++it) {
     string key = it->first;
     CCLuaValue value = it->second;
@@ -83,4 +77,25 @@ const char* Map::getPrefixedMusicName(const char *musicName) {
   stringstream ss;
   ss << _prefix->c_str() << "_" << musicName;
   return ss.str().c_str();
+}
+
+int Map::getMaxLevel() {
+  return _maxLevel;
+}
+
+int Map::getInitialLevel() {
+  return _initialLevel;
+}
+
+CCArray* Map::getNextMaps() {
+  CCArray* maps = CCArray::create();
+  for (vector<string>::iterator it = _nextMaps->begin(); it != _nextMaps->end(); ++it) {
+    Map* newMap = new Map(it->c_str());
+    maps->addObject(newMap);
+  }
+  return maps;
+}
+
+string* Map::getName() {
+  return _name;
 }

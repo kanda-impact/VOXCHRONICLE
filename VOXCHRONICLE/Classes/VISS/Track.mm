@@ -61,6 +61,10 @@ float Track::getDeviceCurrentTime() {
   return _track->track.deviceCurrentTime;
 }
 
+void Track::setVolume(float v) {
+  [_track->track setVolume:v];
+}
+
 void Track::playAfterTrack(VISS::Track *track) {
   NSTimeInterval deviceTime = track->getDeviceCurrentTime();
   NSTimeInterval trackTimeRemaining = track->getDuration() - track->getPosition();

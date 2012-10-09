@@ -30,18 +30,15 @@ namespace VISS {
     boost::function<void (Music*, Track*, Track*, int)> _trackWillFinishFunction;
     boost::function<void (Music*, Track*, Track*, int)> _trackDidFinishFunction;
     boost::function<void (Music*, Track*, int)> _trackDidBackFunction;
-    void willFinishPlaying(Track* track, int trackCount);
-    void didFinishPlaying(Track* track, int trackCount);
-    void didBacking(Track* track, int trackCount);
    public:
     Music();
     Music(int trackCount);
     ~Music();
     Track* getTrack(int trackNumber);
     Track* getNextTrack(int trackNumber);
-    bool pushTrack(const char* fileName, int trackNumber);
-    bool pushTrack(const char* fileName, int trackNumber, int repeat);
-    bool pushTrack(Track* track, int trackNumber);
+    Track* pushTrack(const char* fileName, int trackNumber);
+    Track* pushTrack(const char* fileName, int trackNumber, int repeat);
+    Track* pushTrack(Track* track, int trackNumber);
     bool setTrack(const char* fileName, int trackNumber, int index);
     bool setTrack(Track* track, int trackNumber, int index);
     bool play();
@@ -50,6 +47,7 @@ namespace VISS {
     void setTrackWillFinishFunction(boost::function<void (Music*, Track*, Track*, int)>);
     void setTrackDidFinishFunction(boost::function<void (Music*, Track*, Track*, int)>);
     void setTrackDidBackFunction(boost::function<void (Music*, Track*, int)>);
+    void removeAllNextTracks();
   };
 }
 

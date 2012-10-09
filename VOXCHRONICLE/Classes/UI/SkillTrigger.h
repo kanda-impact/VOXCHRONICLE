@@ -21,6 +21,7 @@ using namespace cocos2d;
 class SkillTrigger : public CCSprite, CCTouchDelegate {
  private:
   bool _press;
+  bool _enable;
   Skill* _skill;
   
  public:
@@ -31,6 +32,8 @@ class SkillTrigger : public CCSprite, CCTouchDelegate {
   void setSkill(Skill* skill);
   ~SkillTrigger();
   SkillTrigger();
+  bool getEnable();
+  void setEnable(bool e);
 };
 
 #endif /* defined(__VOXCHRONICLE__SkillTrigger__) */

@@ -23,6 +23,7 @@ SkillTrigger* SkillTrigger::create(const char *pszFileName) {
 SkillTrigger::SkillTrigger() : CCSprite() {
   _press = false;
   _skill = NULL;
+  _enable = true;
 }
 
 SkillTrigger::~SkillTrigger() {
@@ -34,6 +35,7 @@ bool SkillTrigger::getPress() {
 }
 
 void SkillTrigger::setPress(bool press) {
+  if (!_enable) return;
   _press = press;
   if (press) {
     CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage("trigger_bg_selected.png");
@@ -68,4 +70,20 @@ void SkillTrigger::setSkill(Skill* skill) {
     }
     this->addChild(icon, 1000, iconTag);
   }
+  this->setEnable(true);
+}
+
+bool SkillTrigger::getEnable() {
+  return _enable;
+}
+
+void SkillTrigger::setEnable(bool e) {
+  _enable = e;
+  float opacity = 255;
+  if (!_enable) {
+    opacity = 64;
+  }
+  this->setOpacity(opacity);
+  CCSprite* icon = (CCSprite*)this->getChildByTag(1);
+  icon->setOpacity(opacity);
 }

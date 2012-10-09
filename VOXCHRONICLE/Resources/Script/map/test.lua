@@ -2,17 +2,25 @@ Map = {
   name = "テストマップ",
   prefix = "dub",
   backgroundImage = "",
-  nextMaps = {"test", "test"},
+  nextMaps = {"test2a", "test2b"},
   initialLevel = 1,
   maxLevel = 10,
   getEnemyTable = function(level)
-    enemies = {}
-    if true then
-      enemies = {tnt = 1}
+    if level <=3 then
+      return {geek = 4, ginet = 1}
+    elseif level <= 7 then
+      return {geek = 2, ginet = 3, tnt = 1}
+    else
+      return {geek = 1, ginet = 3, tnt = 2, tetufez = 1}
     end
-    return enemies
+    return {}
   end,
   getEnemyPopRate = function(level)
-    return 0.4
+    if level <=5 then
+      return 0.6
+    end
+    return 0.7
+
+
   end
 }

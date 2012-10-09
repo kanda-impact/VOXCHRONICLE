@@ -12,6 +12,7 @@
 #include <iostream>
 #include "cocos2d.h"
 #include "Skill.h"
+#include "CharacterManager.h"
 
 using namespace cocos2d;
 
@@ -29,7 +30,7 @@ public:
   void resetAllTriggers();
   int currentTriggerIndex();
   Skill* currentTriggerSkill();
-  void setSkills(CCArray* skills);
+  void updateSkills(CharacterManager* manager);
   void setEnable(bool enable);
   CREATE_FUNC(Controller);
 };

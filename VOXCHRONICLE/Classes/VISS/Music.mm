@@ -50,27 +50,28 @@ bool Music::setTrack(Track* track, int trackNumber, int index) {
   return true;
 }
 
-bool Music::pushTrack(const char* fileName, int trackNumber) {
+Track* Music::pushTrack(const char* fileName, int trackNumber) {
   return pushTrack(fileName, trackNumber, 1);
 }
 
-bool Music::pushTrack(const char* fileName, int trackNumber, int repeat) {
+Track* Music::pushTrack(const char* fileName, int trackNumber, int repeat) {
+  Track* next;
   for (int i = 0; i < repeat; ++i) {
-    Track* next = new Track(fileName);
+    next = new Track(fileName);
     bool result = pushTrack(next, trackNumber);
     if (!result) {
-      return false;
+      return NULL;
     }
   }
-  return true;
+  return next;
 }
 
-bool Music::pushTrack(Track* track, int trackNumber) {
+Track* Music::pushTrack(Track* track, int trackNumber) {
   if (trackNumber >= _trackCount) {
-    return false;
+    return NULL;
   }
   _tracks.at(trackNumber).push_back(track);
-  return true;
+  return track;
 }
     
 bool Music::play() {
@@ -113,24 +114,23 @@ void Music::setTrackDidFinishFunction(boost::function<void (Music *, Track *, Tr
   _trackDidFinishFunction = f;
 }
 
-void Music::didBacking(Track *track, int trackCount) {
-  
-}
-
-void Music::willFinishPlaying(Track *track, int trackCount) {
-  
-}
-
-void Music::didFinishPlaying(Track *track, int trackCount) {
-  
-}
-
 void VISS::Music::update(float dt) {
   for (int trackNumber = 0; trackNumber < _trackCount; ++trackNumber) {
     std::deque<Track*>* it = &_tracks.at(trackNumber);
-    if (it->size() == 0) return;
+    if (it->size() == 0) continue;
     Track* current = it->front();
     float sub = current->getDuration() - current->getPosition();
+    if (!_willFinish.at(trackNumber) && (sub < 0.20 || !current->isPlaying())) {
+      //終わりそうなとき
+      if (_trackWillFinishFunction != NULL) {
+        _trackWillFinishFunction(this, current, NULL, trackNumber);
+      }
+      _willFinish.at(trackNumber) = true;
+      if (it->size() > 1) {
+        Track* next = this->getNextTrack(trackNumber);
+        next->playAfterTrack(current);
+      }
+    }
     if (!current->isPlaying() && _willFinish.at(trackNumber)) {
       //終わったとき
       it->pop_front();
@@ -140,16 +140,6 @@ void VISS::Music::update(float dt) {
       if (_trackDidFinishFunction != NULL) {
         _trackDidFinishFunction(this, current, it->front(), trackNumber);
       }
-    } else if (!_willFinish.at(trackNumber) && (sub < 0.2 || !current->isPlaying())) {
-      //終わりそうなとき
-      if (_trackWillFinishFunction != NULL) {
-        _trackWillFinishFunction(this, current, NULL, trackNumber);
-      }
-      _willFinish.at(trackNumber) = true;
-      if (it->size() > 1) {
-        Track* next = it->at(1);
-        next->playAfterTrack(current);
-      }
     } else if (!_backed.at(trackNumber) && current->getDuration() / 2 < current->getPosition()) {
       //裏打ちのとき
       if (_trackDidBackFunction != NULL) {
@@ -157,5 +147,12 @@ void VISS::Music::update(float dt) {
       }
       _backed.at(trackNumber) = true;
     }
+  }
+}
+
+void Music::removeAllNextTracks() {
+  for (int trackNumber = 0; trackNumber < _trackCount; ++trackNumber) {
+    std::deque<Track*>* it = &_tracks.at(trackNumber);
+    if (it->size() >= 2) it->erase(it->begin() + 1, it->end());
   }
 }

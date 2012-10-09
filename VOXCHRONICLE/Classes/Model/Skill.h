@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include "cocos2d.h"
+#include "LuaObject.h"
 
 using namespace cocos2d;
 
@@ -32,6 +33,7 @@ typedef enum {
 
 class Skill :public CCObject {
  private:
+  int _acquirementLV;
   int _maxRepeat;
   int _turn;
   int _power;
@@ -41,6 +43,7 @@ class Skill :public CCObject {
   const char* _slug;
   SkillRange _range;
   SkillType _type;
+  LuaObject* _lua;
  public:
   Skill(const char* slug);
   ~Skill();
@@ -50,9 +53,12 @@ class Skill :public CCObject {
   int getPower();
   int getMaxRepeat();
   int getMP();
+  int getAcquirementLV();
+  void setAcquirementLV(int lv);
   bool isCommon();
   SkillRange getRange();
   SkillType getType();
+  LuaObject* getLuaObject();
 };
 
 #endif /* defined(__VOXCHRONICLE__Skill__) */

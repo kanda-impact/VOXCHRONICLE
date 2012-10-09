@@ -11,22 +11,24 @@
 
 #include <iostream>
 #include "cocos2d.h"
+#include "LuaObject.h"
+#include "Skill.h"
 
 using namespace cocos2d;
 
 class Character :public CCObject {
  private:
-  CCArray* _skills;
   const char* _name;
   const char* _slug;
+  LuaObject* _lua;
+  CCArray* _skills;
  public:
-  Character(CCArray* skills);
+  Character(const char* slug);
   ~Character();
   const char* getName();
   const char* getSlug();
-  void setName(const char* name);
-  void setSlug(const char* slug);
   CCArray* getSkills();
+  CCArray* getSkills(int level);
 };
 
 #endif /* defined(__VOXCHRONICLE__Character__) */

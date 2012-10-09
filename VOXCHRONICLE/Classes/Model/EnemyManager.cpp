@@ -10,6 +10,7 @@
 #include <boost/lambda/lambda.hpp>
 
 #include "EnemyManager.h"
+#include "LuaObject.h"
 
 using namespace boost;
 using namespace boost::lambda;
@@ -31,9 +32,12 @@ bool EnemyManager::init() {
 }
 
 EnemyManager::EnemyManager() {
+  _trash = CCArray::create();
+  _trash->retain();
 }
 
 EnemyManager::~EnemyManager() {
+  _trash->release();
   _enemiesQueue->release();
   delete _enemyPopLots;
 }
@@ -127,59 +131,89 @@ bool EnemyManager::attackEnemy(Enemy* enemy, int damage) {
   return false;
 }
 
+bool EnemyManager::performLuaFunction(Skill* skill, Enemy* target, CharacterManager* characterManager) {
+  LuaObject* lua = skill->getLuaObject();
+  lua_State* L = lua->getLuaEngine()->getLuaState();
+  lua_getglobal(L, "Skill");
+  int table = lua_gettop(L);
+  lua_getfield(L, table, "performSkill");
+  if (lua_isfunction(L, lua_gettop(L))) {
+    if (target) {
+      lua->getLuaEngine()->pushCCObject(target, "Enemy");
+      target->retain();
+    } else {
+      lua->getLuaEngine()->pushNil();
+    }
+    lua->getLuaEngine()->pushCCObject(characterManager, "CharacterManager");
+    characterManager->retain();
+    if (lua_pcall(L, 2, 1, 0)) {
+      cout << lua_tostring(L, lua_gettop(L)) << endl;
+      return false;
+    }
+    if (target) {
+      lua->getLuaEngine()->removeScriptObjectByCCObject(target);
+    }
+    lua->getLuaEngine()->removeScriptObjectByCCObject(characterManager);
+    return true;
+  }
+  lua->getLuaEngine()->cleanStack();
+  return false;
+}
+
 CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* characterManager) {
   int exp = 0;
   CCDictionary* info = CCDictionary::create();
   characterManager->setShield(false);
-  // ターゲットの決定
-  SkillRange range = skill->getRange();
   CCArray* targets = (CCArray*)CCArray::create();
-  if (range == SkillRangeSingle) {
-    Enemy* target = this->getNearestEnemy();
-    if (target) {
+  if (skill->getMP() <= characterManager->getMP()) {
+    // ターゲットの決定
+    SkillRange range = skill->getRange();
+    if (range == SkillRangeSingle) {
+      Enemy* target = this->getNearestEnemy();
+      if (target) {
+        targets->addObject(target);
+      }
+    } else if (range == SkillRangeAll) {
+      if (this->getChildrenCount() > 0) {
+        targets->addObjectsFromArray(this->getChildren());
+      }
+    } else if (range == SkillRangeHorizontal) {
+      Enemy* target = this->getNearestEnemy();
       targets->addObject(target);
+      boost::function<bool (int, float)> predicate = _2 == target->getRow();
+      targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
+    } else if (range == SkillRangeVertical) {
+      Enemy* target = this->getNearestEnemy();
+      targets->addObject(target);
+      boost::function<bool (int, float)> predicate = _1 == target->getCol();
+      targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
+    } else if (range == SkillRangeBack) {
+      // 実装途中。後で考える
+      Enemy* target = this->getNearestEnemy();
+      targets->addObject(target);
+      boost::function<bool (int, float)> predicate = _1 == target->getCol();
+      targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
     }
-  } else if (range == SkillRangeAll) {
-    targets->addObjectsFromArray(this->getChildren());
-  } else if (range == SkillRangeHorizontal) {
-    Enemy* target = this->getNearestEnemy();
-    targets->addObject(target);
-    boost::function<bool (int, float)> predicate = _2 == target->getRow();
-    targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
-  } else if (range == SkillRangeVertical) {
-    Enemy* target = this->getNearestEnemy();
-    targets->addObject(target);
-    boost::function<bool (int, float)> predicate = _1 == target->getCol();
-    targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
-  } else if (range == SkillRangeBack) {
-    // 実装途中。後で考える
-    Enemy* target = this->getNearestEnemy();
-    targets->addObject(target);
-    boost::function<bool (int, float)> predicate = _1 == target->getCol();
-    targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
-  }
-  
-  // ターゲットに技の効果を与える
-  CCObject* obj = NULL;
-  if (skill->getRange() == SkillRangeSelf) {
-    if (!strcmp(skill->getSlug(), "tension")) {
-      characterManager->chargeTension();
-    } else if (!strcmp(skill->getSlug(), "change")) {
-      characterManager->setCurrentCharacter((characterManager->getCurrentCharacterIndex() + 1) % 2);
-    } else if (!strcmp(skill->getSlug(), "shield")) {
-      characterManager->setShield(true);
+    
+    // ターゲットに技の効果を与える
+    if (skill->getRange() == SkillRangeSelf) {
+      this->performLuaFunction(skill, NULL, characterManager);
     }
-  } else {
+    CCObject* obj = NULL;
     CCARRAY_FOREACH(targets, obj) {
       Enemy* target = (Enemy*)obj;
-      if (!strcmp(skill->getSlug(), "knockback")) {
-        target->moveRow(MAX_ROW - target->getRow() - 1);
+      if (!performLuaFunction(skill, target, characterManager)) {
+        target->damage(characterManager->calcDamage(target, skill));
       }
-      if (target->damage(characterManager->calcDamage(target, skill))) {
+      if (target->getHP() <= 0) {
         exp += target->getExp();
+        _trash->addObject(target);
         this->removeEnemy(target);
       }
     }
+    characterManager->useMP(skill->getMP());
+  } else {
+    cout << "MP is nothing!" << endl;
   }
   
   // テンション使ってないときreset
@@ -228,4 +262,29 @@ CCArray* EnemyManager::createEnemyQueue() {
     queue->exchangeObjectAtIndex(i, rand() % size);
   }
   return queue;
+}
+
+void EnemyManager::draw() {
+  // とりあえずVOX1を移植
+  // 面倒なので他の人に計算してもらう
+  CCLayer::draw();
+  CCDirector* director = CCDirector::sharedDirector();
+  float sum = (1 + MAX_ROW) * MAX_ROW / 2;
+  for (int i = 0; i < MAX_ROW; ++i) {
+    int sy = 80 + 25 * 0;
+    int ey = 80 + 25 * (MAX_ROW - 1);
+    float tempSum = (1 + (MAX_ROW - i)) * (MAX_ROW - i) / 2;
+    float scale = 1.0 * tempSum / sum;
+    float y = ey + (sy - ey) * tempSum / sum - 125 * scale;
+    CCPoint origin = CCPointMake(0, y);
+    CCSize size = director->getWinSize();
+    CCPoint dest = CCPointMake(size.width, y);
+    float opacity = 0.25 + 0.75 * ((float)(MAX_ROW - i) / MAX_ROW);
+    ccDrawColor4F(1.0 * opacity, 1.0 * opacity, 1.0 * opacity, 1);
+    ccDrawLine(origin, dest);
+  }
+}
+
+void EnemyManager::purgeAllTrash() {
+  _trash->removeAllObjects();
 }
