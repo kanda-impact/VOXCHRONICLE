@@ -192,6 +192,16 @@ DamageType CharacterManager::damage(Enemy *attacker, int damage) {
   return DamageTypeHit;
 }
 
+int CharacterManager::cureHP(int hp) {
+  _hp += hp;
+  if (_hp > _maxHP) {
+    _hp = _maxHP;
+  } else if (_hp < 0) {
+    _hp = 0;
+  }
+  return _hp;
+}
+
 int CharacterManager::getHP() {
   return _hp;
 }

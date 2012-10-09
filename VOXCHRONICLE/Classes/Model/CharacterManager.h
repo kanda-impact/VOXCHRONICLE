@@ -57,6 +57,7 @@ class CharacterManager :public CCObject {
   void addExp(int exp);
   DamageType damage(Enemy* attacker, int damage);
   void changeCharacter();
+  int cureHP(int hp);
   void useMP(int mp);
   void updateParameters();
   

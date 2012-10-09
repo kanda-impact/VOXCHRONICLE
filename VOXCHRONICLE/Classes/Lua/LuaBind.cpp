@@ -73,6 +73,14 @@ static int tolua_VC_CharacterManager_setLevel(lua_State* tolua_S) {
   return 0;
 }
 
+static int tolua_VC_CharacterManager_cureHP(lua_State* tolua_S) {
+  CharacterManager* self = (CharacterManager*)tolua_tousertype(tolua_S, 1, 0);
+  int hp = (int)tolua_tonumber(tolua_S, 2, 0);
+  int newHP = self->cureHP(hp);
+  tolua_pushnumber(tolua_S, newHP);
+  return 1;
+}
+
 TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_open(tolua_S);
   tolua_reg_types(tolua_S);
@@ -104,6 +112,7 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_function(tolua_S, "changeCharacter", tolua_VC_CharacterManager_changeCharacter);
   tolua_function(tolua_S, "setLevel", tolua_VC_CharacterManager_setLevel);
   tolua_function(tolua_S, "getLevel", tolua_VC_CharacterManager_getLevel);
+  tolua_function(tolua_S, "cureHP", tolua_VC_CharacterManager_cureHP);
   tolua_endmodule(tolua_S);
   tolua_endmodule(tolua_S);
   return 1;

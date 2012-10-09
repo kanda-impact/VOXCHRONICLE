@@ -7,7 +7,7 @@ Skill = {
   maxRepeat = 1,
   turn = 1,
   performSkill = function(target, characterManager)
-    characterManager:setShield(true);
+    characterManager:cureHP(1)
   end,
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone
