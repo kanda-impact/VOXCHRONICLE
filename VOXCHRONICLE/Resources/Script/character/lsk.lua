@@ -5,7 +5,7 @@ Character = {
     {"thunder", 10},
     {"tension", 1},
     {"change", 1},
-    {"shield", 5}
+    {"cure", 5}
   }
 }
 return Character

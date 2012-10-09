@@ -1,8 +1,8 @@
 Skill = {
-  name = "盾",
-  slug = "shield",
+  name = "回復",
+  slug = "cure",
   power = 0,
-  mp = 0,
+  mp = 1,
   common = false,
   maxRepeat = 1,
   turn = 1,
