@@ -24,6 +24,13 @@ typedef enum {
   DamageTypeAbsorption
 } DamageType;
 
+typedef enum {
+  SkillPerformTypeNone,
+  SkillPerformTypeSuccess,
+  SkillPerformTypeCharge,
+  SkillPerformTypeFailure
+} SkillPerformType;
+
 class CharacterManager :public CCObject {
  private:
   int _maxHP;
@@ -49,7 +56,7 @@ class CharacterManager :public CCObject {
  public:
   CharacterManager();
   ~CharacterManager();
-  const char* checkSkillTrackName(Skill* skill, bool& performed);
+  const char* checkSkillTrackName(Skill* skill, SkillPerformType& performeType);
   bool isPerforming();
   void addTension(int t);
   void resetTension();

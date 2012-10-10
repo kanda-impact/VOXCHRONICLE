@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		072D188E1625A93A00745275 /* dub_lskthunder_charge0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 072D188C1625A93A00745275 /* dub_lskthunder_charge0.wav */; };
+		072D188F1625A93A00745275 /* dub_miss.wav in Resources */ = {isa = PBXBuildFile; fileRef = 072D188D1625A93A00745275 /* dub_miss.wav */; };
 		0731E4C9161766EB006AEF3D /* shield_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4C8161766EB006AEF3D /* shield_icon.png */; };
 		0731E4CB16176787006AEF3D /* shield.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4CA16176787006AEF3D /* shield.lua */; };
 		0731E4CF16176A91006AEF3D /* bow.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4CE16176A91006AEF3D /* bow.lua */; };
@@ -380,9 +382,6 @@
 		07E135561624A7BE00CCF72E /* dub_lskchange0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E135381624A7BE00CCF72E /* dub_lskchange0.wav */; };
 		07E135571624A7BE00CCF72E /* dub_lskcure0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E135391624A7BE00CCF72E /* dub_lskcure0.wav */; };
 		07E135581624A7BE00CCF72E /* dub_lskthunder0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E1353A1624A7BE00CCF72E /* dub_lskthunder0.wav */; };
-		07E135591624A7BE00CCF72E /* dub_lskthunder1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E1353B1624A7BE00CCF72E /* dub_lskthunder1.wav */; };
-		07E1355A1624A7BE00CCF72E /* dub_lskthunder2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E1353C1624A7BE00CCF72E /* dub_lskthunder2.wav */; };
-		07E1355B1624A7BE00CCF72E /* dub_lskthunder3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E1353D1624A7BE00CCF72E /* dub_lskthunder3.wav */; };
 		07E1355C1624A7BE00CCF72E /* dub_silent.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E1353E1624A7BE00CCF72E /* dub_silent.wav */; };
 		07E1355D1624A7BE00CCF72E /* dub_tention0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E1353F1624A7BE00CCF72E /* dub_tention0.wav */; };
 		07E1355E1624A7BE00CCF72E /* dub_tention1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E135401624A7BE00CCF72E /* dub_tention1.wav */; };
@@ -408,6 +407,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		072D188C1625A93A00745275 /* dub_lskthunder_charge0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_lskthunder_charge0.wav; path = Resources/Music/dub/dub_lskthunder_charge0.wav; sourceTree = "<group>"; };
+		072D188D1625A93A00745275 /* dub_miss.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_miss.wav; path = Resources/Music/dub/dub_miss.wav; sourceTree = "<group>"; };
 		0731E4C8161766EB006AEF3D /* shield_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield_icon.png; sourceTree = "<group>"; };
 		0731E4CA16176787006AEF3D /* shield.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shield.lua; sourceTree = "<group>"; };
 		0731E4CE16176A91006AEF3D /* bow.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bow.lua; sourceTree = "<group>"; };
@@ -1100,9 +1101,6 @@
 		07E135381624A7BE00CCF72E /* dub_lskchange0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_lskchange0.wav; path = Resources/Music/dub/dub_lskchange0.wav; sourceTree = "<group>"; };
 		07E135391624A7BE00CCF72E /* dub_lskcure0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_lskcure0.wav; path = Resources/Music/dub/dub_lskcure0.wav; sourceTree = "<group>"; };
 		07E1353A1624A7BE00CCF72E /* dub_lskthunder0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_lskthunder0.wav; path = Resources/Music/dub/dub_lskthunder0.wav; sourceTree = "<group>"; };
-		07E1353B1624A7BE00CCF72E /* dub_lskthunder1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_lskthunder1.wav; path = Resources/Music/dub/dub_lskthunder1.wav; sourceTree = "<group>"; };
-		07E1353C1624A7BE00CCF72E /* dub_lskthunder2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_lskthunder2.wav; path = Resources/Music/dub/dub_lskthunder2.wav; sourceTree = "<group>"; };
-		07E1353D1624A7BE00CCF72E /* dub_lskthunder3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_lskthunder3.wav; path = Resources/Music/dub/dub_lskthunder3.wav; sourceTree = "<group>"; };
 		07E1353E1624A7BE00CCF72E /* dub_silent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_silent.wav; path = Resources/Music/dub/dub_silent.wav; sourceTree = "<group>"; };
 		07E1353F1624A7BE00CCF72E /* dub_tention0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_tention0.wav; path = Resources/Music/dub/dub_tention0.wav; sourceTree = "<group>"; };
 		07E135401624A7BE00CCF72E /* dub_tention1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_tention1.wav; path = Resources/Music/dub/dub_tention1.wav; sourceTree = "<group>"; };
@@ -1413,9 +1411,8 @@
 				07E135381624A7BE00CCF72E /* dub_lskchange0.wav */,
 				07E135391624A7BE00CCF72E /* dub_lskcure0.wav */,
 				07E1353A1624A7BE00CCF72E /* dub_lskthunder0.wav */,
-				07E1353B1624A7BE00CCF72E /* dub_lskthunder1.wav */,
-				07E1353C1624A7BE00CCF72E /* dub_lskthunder2.wav */,
-				07E1353D1624A7BE00CCF72E /* dub_lskthunder3.wav */,
+				072D188C1625A93A00745275 /* dub_lskthunder_charge0.wav */,
+				072D188D1625A93A00745275 /* dub_miss.wav */,
 				07E1353E1624A7BE00CCF72E /* dub_silent.wav */,
 				07E1353F1624A7BE00CCF72E /* dub_tention0.wav */,
 				07E135401624A7BE00CCF72E /* dub_tention1.wav */,
@@ -2706,9 +2703,6 @@
 				07E135561624A7BE00CCF72E /* dub_lskchange0.wav in Resources */,
 				07E135571624A7BE00CCF72E /* dub_lskcure0.wav in Resources */,
 				07E135581624A7BE00CCF72E /* dub_lskthunder0.wav in Resources */,
-				07E135591624A7BE00CCF72E /* dub_lskthunder1.wav in Resources */,
-				07E1355A1624A7BE00CCF72E /* dub_lskthunder2.wav in Resources */,
-				07E1355B1624A7BE00CCF72E /* dub_lskthunder3.wav in Resources */,
 				07E1355C1624A7BE00CCF72E /* dub_silent.wav in Resources */,
 				07E1355D1624A7BE00CCF72E /* dub_tention0.wav in Resources */,
 				07E1355E1624A7BE00CCF72E /* dub_tention1.wav in Resources */,
@@ -2728,6 +2722,8 @@
 				07E135711624A93E00CCF72E /* dub_lskmagic3.wav in Resources */,
 				07E135731624AC4700CCF72E /* cure.lua in Resources */,
 				07E135751624AD2000CCF72E /* cure_icon.png in Resources */,
+				072D188E1625A93A00745275 /* dub_lskthunder_charge0.wav in Resources */,
+				072D188F1625A93A00745275 /* dub_miss.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

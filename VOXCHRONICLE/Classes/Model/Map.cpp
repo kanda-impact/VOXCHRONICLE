@@ -85,6 +85,7 @@ int Map::getMaxLevel() {
 
 int Map::getInitialLevel() {
   return _initialLevel;
+  
 }
 
 CCArray* Map::getNextMaps() {

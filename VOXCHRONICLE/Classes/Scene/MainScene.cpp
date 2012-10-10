@@ -135,16 +135,16 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         skill = _controller->currentTriggerSkill();
       }
       std::stringstream ss;
-      bool performed = false;
-      const char* name = _characterManager->checkSkillTrackName(skill, performed);
+      SkillPerformType performType = SkillPerformTypeNone;
+      const char* name = _characterManager->checkSkillTrackName(skill, performType);
       ss << name << ".wav";
       string file(_map->getPrefixedMusicName(ss.str().c_str()));
       string trackName(name);
       _music->pushTrack(file.c_str(), 0);
-      if (skill && performed) {
+      if (skill && performType == SkillPerformTypeSuccess) {
         _enemyManager->performSkill(skill, _characterManager);
         this->checkLevelUp();
-      } else {
+      } else if (performType == SkillPerformTypeNone) {
         // 何も実行しなかったとき
         _characterManager->useMP(-1);
       }

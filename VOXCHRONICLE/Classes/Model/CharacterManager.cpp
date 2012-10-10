@@ -46,8 +46,8 @@ Character* CharacterManager::getCurrentCharacter() {
   return _currentCharacter;
 }
 
-const char* CharacterManager::checkSkillTrackName(Skill* skill, bool& performed) {
-  performed = false;
+const char* CharacterManager::checkSkillTrackName(Skill* skill, SkillPerformType& performeType) {
+  performeType = SkillPerformTypeNone;
   if (skill) {
     _waitTurn += 1;
     if (_waitTurn == skill->getTurn()) {
@@ -70,11 +70,18 @@ const char* CharacterManager::checkSkillTrackName(Skill* skill, bool& performed)
       _waitTurn = 0;
       if (skill->getMP() <= this->getMP()) {
         // MP足りてるときだけ
-        performed = true;
+        performeType = SkillPerformTypeSuccess;
         return ss.str().c_str();
+      } else {
+        performeType = SkillPerformTypeFailure;
+        return "miss"; // MP足りてないとき、ミス音を返す
       }
     } else {
       this->setCurrentSkill(skill);
+      performeType = SkillPerformTypeCharge;
+      std::stringstream ss;
+      ss << _currentCharacter->getSlug() << skill->getSlug() << "_charge" << (_waitTurn - 1); // チャージ中の時、チャージ音返す
+      return ss.str().c_str();
     }
   } else {
     _repeatCount = 0;
