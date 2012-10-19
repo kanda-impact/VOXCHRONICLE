@@ -44,7 +44,6 @@ class EnemyManager :public CCLayer {
   bool removeEnemy(Enemy* enemy);
   Enemy* getNearestEnemy();
   CCArray* getFilteredEnemies(boost::function<bool (int, float)>filter);
-  bool attackEnemy(Enemy* enemy, int attack);
   void purgeAllTrash();
   
   /**

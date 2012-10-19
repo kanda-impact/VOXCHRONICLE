@@ -12,7 +12,6 @@
 #include <iostream>
 #include "Character.h"
 #include "Skill.h"
-#include "Enemy.h"
 
 // ダメージタイプ
 typedef enum {
@@ -20,6 +19,8 @@ typedef enum {
   DamageTypeShield,
   DamageTypeInvisible,
   DamageTypeWeak,
+  DamageTypePhysicalTolerant,
+  DamageTypeMagicalTolerant,
   DamageTypeDeath,
   DamageTypeAbsorption
 } DamageType;
@@ -60,9 +61,8 @@ class CharacterManager :public CCObject {
   bool isPerforming();
   void addTension(int t);
   void resetTension();
-  int calcDamage(Enemy* enemy, Skill* skill);
   void addExp(int exp);
-  DamageType damage(Enemy* attacker, int damage);
+  DamageType damage(int damage);
   void changeCharacter();
   int cureHP(int hp);
   void useMP(int mp);

@@ -124,13 +124,6 @@ CCArray* EnemyManager::getFilteredEnemies(boost::function<bool (int, float)>filt
   return enemies;
 }
 
-bool EnemyManager::attackEnemy(Enemy* enemy, int damage) {
-  if (this->getChildren()->containsObject(enemy)) {
-    return enemy->damage(damage);
-  }
-  return false;
-}
-
 bool EnemyManager::performLuaFunction(Skill* skill, Enemy* target, CharacterManager* characterManager) {
   LuaObject* lua = skill->getLuaObject();
   lua_State* L = lua->getLuaEngine()->getLuaState();
@@ -203,7 +196,7 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
     CCARRAY_FOREACH(targets, obj) {
       Enemy* target = (Enemy*)obj;
       if (!performLuaFunction(skill, target, characterManager)) {
-        target->damage(characterManager->calcDamage(target, skill));
+        target->damage(skill, characterManager);
       }
       if (target->getHP() <= 0) {
         exp += target->getExp();

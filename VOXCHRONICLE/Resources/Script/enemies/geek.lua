@@ -7,6 +7,7 @@ Enemy = {
   counter = 1,
   speed = 2,
   animationFrames = 4,
+  type = SkillTypeNormal,
   choiceSkill = function(self)
     return nil
   end

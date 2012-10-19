@@ -33,6 +33,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _name = new string(obj->getString("name"));
   _counter = obj->getInt("counter");
   _speed = obj->getInt("speed");
+  _type = (SkillType)obj->getInt("type");
   _speedCount = 0;
   const char* imageName = obj->getString("imageName");
   int frameCount = obj->getInt("animationFrames");
@@ -92,14 +93,28 @@ void Enemy::moveRow(float r) {
   this->getParent()->reorderChild(this, (MAX_ROW - _row));
 }
 
-bool Enemy::damage(int d) {
-  _hp -= d;
-  return (_hp <= 0);
+DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager) {
+  const float tensions[] = {1.0, 1.5, 3.0, 4.5, 6};
+  // ToDo 属性によるダメージ軽減とかもこの辺に載せてやる
+  int damage = round(skill->getPower() * tensions[characterManager->getTension()]);
+  DamageType type = DamageTypeHit;
+  if (skill->getType() == SkillTypePhysical && this->getType() == SkillTypePhysical) {
+    type = DamageTypePhysicalTolerant;
+    damage *= 0.5;
+  } else if (skill->getType() == SkillTypeMagical && this->getType() == SkillTypeMagical) {
+    type = DamageTypeMagicalTolerant;
+    damage *= 0.5;
+  }
+  _hp -= damage;
+  if (_hp <= 0) {
+    type = DamageTypeDeath;
+  }
+  return type;
 }
 
 void Enemy::setLifeColor() {
   const float minColor = (0 * 255 + 244);
-  const float maxColor = (5 * 255 + 247);
+  //const float maxColor = (5 * 255 + 247);
   const float cast = 360.0 / (float)(255 * 6);
   ccColor3B color = HSVToColor3B((minColor + 150 * (_hp - 1)) * cast, 1, 1);
   this->cocos2d::CCSprite::setColor(color);
@@ -151,3 +166,8 @@ bool Enemy::canMove() {
   _speedCount = (_speedCount + 1) % _speed;
   return _speedCount == 0;
 }
+
+SkillType Enemy::getType() {
+  return _type;
+}
+

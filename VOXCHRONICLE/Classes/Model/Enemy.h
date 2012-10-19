@@ -11,7 +11,9 @@
 #define MAX_ROW 8.0
 
 #include <iostream>
+#include "Skill.h"
 #include "CCSprite.h"
+#include "CharacterManager.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -29,6 +31,7 @@ class Enemy : public CCSprite {
   int _speed;
   int _speedCount;
   int _counter;
+  SkillType _type;
   void update(float dt);
   void setLifeColor();
  public:
@@ -50,10 +53,11 @@ class Enemy : public CCSprite {
   /**
    ダメージを与えます。死亡時にはtrueを返します
    */
-  bool damage(int d);
+  DamageType damage(Skill* skill, CharacterManager* characterManager);
   
   int getExp();
   int getCounter();
+  SkillType getType();
 };
 
 #endif /* defined(__VOXCHRONICLE__Enemy__) */

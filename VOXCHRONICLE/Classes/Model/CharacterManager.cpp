@@ -127,13 +127,6 @@ void CharacterManager::resetTension() {
   _tension = 0;
 }
 
-int CharacterManager::calcDamage(Enemy *enemy, Skill *skill) {
-  const float tensions[] = {1.0, 1.5, 3.0, 4.5, 6};
-  // ToDo 属性によるダメージ軽減とかもこの辺に載せてやる
-  int result = round(skill->getPower() * tensions[_tension]);
-  return result;
-}
-
 void CharacterManager::addExp(int exp) {
   _exp += exp;
   _isExpDirty = true;
@@ -187,7 +180,7 @@ void CharacterManager::setShield(bool s) {
   _shield = s;
 }
 
-DamageType CharacterManager::damage(Enemy *attacker, int damage) {
+DamageType CharacterManager::damage(int damage) {
   // 属性とか後で考える
   if (_shield) {
     return DamageTypeShield;
