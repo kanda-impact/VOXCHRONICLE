@@ -224,13 +224,14 @@ void CharacterManager::setLevel(int l) {
   _isExpDirty = false;
 }
 
-void CharacterManager::useMP(int mp) {
+int CharacterManager::useMP(int mp) {
   _mp -= mp;
   if (_mp > _maxMP) {
     _mp = _maxMP;
   } else if (_mp < 0) {
     _mp = 0;
   }
+  return _mp;
 }
 
 int CharacterManager::getMaxHP() {
