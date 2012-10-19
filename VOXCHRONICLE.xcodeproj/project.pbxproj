@@ -368,10 +368,6 @@
 		07E1351D1621ACD900CCF72E /* levelup.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07E1351C1621ACD900CCF72E /* levelup.caf */; };
 		07E1351F1621AF2700CCF72E /* levelup.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07E1351E1621AF2700CCF72E /* levelup.lua */; };
 		07E135261621CABF00CCF72E /* character.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07E135251621CABF00CCF72E /* character.lua */; };
-		07E1354A1624A7BE00CCF72E /* dub_basschord0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E1352C1624A7BE00CCF72E /* dub_basschord0.wav */; };
-		07E1354B1624A7BE00CCF72E /* dub_basschord1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E1352D1624A7BE00CCF72E /* dub_basschord1.wav */; };
-		07E1354C1624A7BE00CCF72E /* dub_basschord2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E1352E1624A7BE00CCF72E /* dub_basschord2.wav */; };
-		07E1354D1624A7BE00CCF72E /* dub_basschord3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E1352F1624A7BE00CCF72E /* dub_basschord3.wav */; };
 		07E1354E1624A7BE00CCF72E /* dub_drum0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E135301624A7BE00CCF72E /* dub_drum0.wav */; };
 		07E1354F1624A7BE00CCF72E /* dub_drum1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E135311624A7BE00CCF72E /* dub_drum1.wav */; };
 		07E135501624A7BE00CCF72E /* dub_drum2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E135321624A7BE00CCF72E /* dub_drum2.wav */; };
@@ -1087,10 +1083,6 @@
 		07E1351C1621ACD900CCF72E /* levelup.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = levelup.caf; path = Resources/SE/levelup.caf; sourceTree = "<group>"; };
 		07E1351E1621AF2700CCF72E /* levelup.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = levelup.lua; sourceTree = "<group>"; };
 		07E135251621CABF00CCF72E /* character.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = character.lua; path = character/character.lua; sourceTree = "<group>"; };
-		07E1352C1624A7BE00CCF72E /* dub_basschord0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_basschord0.wav; path = Resources/Music/dub/dub_basschord0.wav; sourceTree = "<group>"; };
-		07E1352D1624A7BE00CCF72E /* dub_basschord1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_basschord1.wav; path = Resources/Music/dub/dub_basschord1.wav; sourceTree = "<group>"; };
-		07E1352E1624A7BE00CCF72E /* dub_basschord2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_basschord2.wav; path = Resources/Music/dub/dub_basschord2.wav; sourceTree = "<group>"; };
-		07E1352F1624A7BE00CCF72E /* dub_basschord3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_basschord3.wav; path = Resources/Music/dub/dub_basschord3.wav; sourceTree = "<group>"; };
 		07E135301624A7BE00CCF72E /* dub_drum0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_drum0.wav; path = Resources/Music/dub/dub_drum0.wav; sourceTree = "<group>"; };
 		07E135311624A7BE00CCF72E /* dub_drum1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_drum1.wav; path = Resources/Music/dub/dub_drum1.wav; sourceTree = "<group>"; };
 		07E135321624A7BE00CCF72E /* dub_drum2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_drum2.wav; path = Resources/Music/dub/dub_drum2.wav; sourceTree = "<group>"; };
@@ -1396,10 +1388,6 @@
 				07E135691624A80A00CCF72E /* dub_counter1.wav */,
 				07E1356A1624A80A00CCF72E /* dub_counter2.wav */,
 				07E1356B1624A80A00CCF72E /* dub_counter3.wav */,
-				07E1352C1624A7BE00CCF72E /* dub_basschord0.wav */,
-				07E1352D1624A7BE00CCF72E /* dub_basschord1.wav */,
-				07E1352E1624A7BE00CCF72E /* dub_basschord2.wav */,
-				07E1352F1624A7BE00CCF72E /* dub_basschord3.wav */,
 				07E135301624A7BE00CCF72E /* dub_drum0.wav */,
 				07E135311624A7BE00CCF72E /* dub_drum1.wav */,
 				07E135321624A7BE00CCF72E /* dub_drum2.wav */,
@@ -2689,10 +2677,6 @@
 				073B4CAB1621C185003E0CC8 /* ginet.lua in Resources */,
 				073B4CAD1621C199003E0CC8 /* ginet2.lua in Resources */,
 				07E135261621CABF00CCF72E /* character.lua in Resources */,
-				07E1354A1624A7BE00CCF72E /* dub_basschord0.wav in Resources */,
-				07E1354B1624A7BE00CCF72E /* dub_basschord1.wav in Resources */,
-				07E1354C1624A7BE00CCF72E /* dub_basschord2.wav in Resources */,
-				07E1354D1624A7BE00CCF72E /* dub_basschord3.wav in Resources */,
 				07E1354E1624A7BE00CCF72E /* dub_drum0.wav in Resources */,
 				07E1354F1624A7BE00CCF72E /* dub_drum1.wav in Resources */,
 				07E135501624A7BE00CCF72E /* dub_drum2.wav in Resources */,

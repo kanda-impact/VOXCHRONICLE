@@ -26,7 +26,7 @@ bool MainScene::init() {
   if ( !CCLayer::init() ) {
     return false;
   }
-  _music = new Music(4);
+  _music = new Music(3);
   _music->setTrackDidBackFunction(boost::bind(&MainScene::trackDidBack, this, _1, _2, _3));
   _music->setTrackDidFinishFunction(boost::bind(&MainScene::trackDidFinishPlaying, this, _1, _2, _3, _4));
   _music->setTrackWillFinishFunction(boost::bind(&MainScene::trackWillFinishPlaying, this, _1, _2, _3, _4));
@@ -169,15 +169,9 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         Track* track = _music->pushTrack(file.c_str(), 1);
         track->setVolume(0);
       }
-      
     } else if (trackNumber == 2) {
-      stringstream ss;
-      ss << "basschord" << _turnCount % 4 << ".wav";
-      string file(_map->getPrefixedMusicName(ss.str().c_str()));
-      _music->pushTrack(file.c_str(), 2);
-    } else if (trackNumber == 3) {
       string file(_map->getPrefixedMusicName("drum0.wav"));
-      Track* t = _music->pushTrack(file.c_str(), 3);
+      Track* t = _music->pushTrack(file.c_str(), 2);
       t->setVolume(0.7);
     }
   } else if (_state == VCStateStageSelect) {
@@ -232,12 +226,10 @@ void MainScene::updateGUI() {
 void MainScene::pushInitialTracks(Map *map) {
   string main(_map->getPrefixedMusicName("silent.wav"));
   string counter(_map->getPrefixedMusicName("counter0.wav"));
-  string bass(_map->getPrefixedMusicName("basschord0.wav"));
   string drum(_map->getPrefixedMusicName("drum0.wav"));
   _music->pushTrack(main.c_str(), 0);
   _music->pushTrack(counter.c_str(), 1);
-  _music->pushTrack(bass.c_str(), 2);
-  _music->pushTrack(drum.c_str(), 3);
+  _music->pushTrack(drum.c_str(), 2);
   _music->getTrack(1)->setVolume(0);
   _music->getTrack(2)->setVolume(0.7);
 }
@@ -265,7 +257,6 @@ bool MainScene::checkLevelUp() {
           _music->pushTrack("select_stage.wav", 0);
           _music->pushTrack("select_silent.wav", 1);
           _music->pushTrack("select_silent.wav", 2);
-          _music->pushTrack("select_silent.wav", 3);
         }
         _state = VCStateStageSelect;
       }
