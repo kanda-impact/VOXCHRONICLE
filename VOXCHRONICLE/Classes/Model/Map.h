@@ -28,6 +28,7 @@ class Map :public CCObject {
   string* _prefix;
   string* _backgroundImageName;
   LuaObject* _lua;
+  list< pair<string, int> >* _fixedEnemyTable; // 固定モンスターテーブル
  public:
   Map(const char* mapName);
   ~Map();
@@ -37,7 +38,7 @@ class Map :public CCObject {
   int getMaxLevel();
   int getInitialLevel();
   string* getName();
-  
+  CCArray* getFixedEnemies(int preExp, int currentExp);
   CCArray* getNextMaps();
 };
 

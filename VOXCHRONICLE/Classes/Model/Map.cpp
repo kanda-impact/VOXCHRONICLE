@@ -10,6 +10,7 @@
 #include "Map.h"
 #include "Level.h"
 #include "LuaObject.h"
+#include "Enemy.h"
 
 using namespace std;
 
@@ -25,13 +26,29 @@ Map::Map(const char* mapName) {
   _initialLevel = _lua->getInt("initialLevel");
   _maxLevel = _lua->getInt("maxLevel");
   _nextMaps = new vector<string>();
+  _fixedEnemyTable = new list< pair<string, int> >();
   for (CCLuaValueArray::const_iterator it = nexts->begin(); it != nexts->end(); ++it) {
     _nextMaps->push_back(it->stringValue());
+  }
+  
+  CCLuaValueDict* table = _lua->getTable("fixedEnemies");
+  if (table) {
+    for (CCLuaValueDictIterator it = table->begin(); it != table->end(); ++it) {
+      if (it->second.getType() != CCLuaValueTypeDict) {
+        assert("fixedEnemies must contain array only.");
+      }
+      CCLuaValueDict array = it->second.dictValue();
+      string enemy = array["1"].stringValue();
+      int exp = array["2"].floatValue();
+      pair<string, int> table(enemy, exp);
+      _fixedEnemyTable->push_back(table);
+    }
   }
 }
 
 Map::~Map() {
   delete _name;
+  delete _fixedEnemyTable;
   _lua->release();
 }
 
@@ -54,7 +71,7 @@ Level* Map::createLevel(int level) {
     enemyTable.push_back( pair<string, int>(key, (int)value.floatValue()) );
   }
   lv->setEnemyTable(enemyTable);
-  
+
   // モンスター出現率を設定
   lua_getglobal(L, "Map");
   table = lua_gettop(L);
@@ -99,4 +116,16 @@ CCArray* Map::getNextMaps() {
 
 string* Map::getName() {
   return _name;
+}
+
+CCArray* Map::getFixedEnemies(int preExp, int currentExp) {
+  CCArray* enemies = CCArray::create();
+  for (list< pair<string, int> >::iterator it = _fixedEnemyTable->begin(); it != _fixedEnemyTable->end(); ++it) {
+    int exp = it->second;
+    if ( preExp <= exp && exp <= currentExp ) {
+      Enemy* enemy = Enemy::create(it->first.c_str());
+      enemies->addObject(enemy);
+    }
+  }
+  return enemies;
 }

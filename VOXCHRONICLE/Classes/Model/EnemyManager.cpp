@@ -288,3 +288,10 @@ void EnemyManager::draw() {
 void EnemyManager::purgeAllTrash() {
   _trash->removeAllObjects();
 }
+
+void EnemyManager::unshiftEnemiesQueue(cocos2d::CCArray *enemies) {
+  CCObject* obj = NULL;
+  CCARRAY_FOREACH(enemies, obj) {
+    _enemiesQueue->insertObject(obj, 0);
+  }
+}

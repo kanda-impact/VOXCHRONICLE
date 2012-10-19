@@ -142,7 +142,10 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       string trackName(name);
       _music->pushTrack(file.c_str(), 0);
       if (skill && performType == SkillPerformTypeSuccess) {
-        _enemyManager->performSkill(skill, _characterManager);
+        int preExp = _characterManager->getExp();
+        CCDictionary* info = _enemyManager->performSkill(skill, _characterManager); // ここで経験値が貰える
+        int getExp = ((CCInteger*)info->objectForKey("exp"))->getValue();
+        _enemyManager->unshiftEnemiesQueue(_map->getFixedEnemies(preExp, preExp + getExp));
         this->checkLevelUp();
       } else if (performType == SkillPerformTypeNone) {
         // 何も実行しなかったとき

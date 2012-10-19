@@ -20,7 +20,9 @@ Map = {
       return 0.6
     end
     return 0.7
-
-
-  end
+  end,
+  fixedEnemies = {
+    {"ginet", 100},
+    {"tnt", 20}
+  }
 }

@@ -56,6 +56,8 @@ class EnemyManager :public CCLayer {
   
   void draw();
   
+  void unshiftEnemiesQueue(CCArray* enemies);
+  
   CREATE_FUNC(EnemyManager)
 };
 
