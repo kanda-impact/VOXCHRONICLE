@@ -1,6 +1,7 @@
 Enemy = {
   name = "ティエヌティ",
   imageName = "tnt",
+  level = 5,
   hp = 3,
   exp = 18,
   attack = 3,

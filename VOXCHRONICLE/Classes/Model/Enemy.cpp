@@ -34,6 +34,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _counter = obj->getInt("counter");
   _speed = obj->getInt("speed");
   _type = (SkillType)obj->getInt("type");
+  _level = obj->getInt("level");
   _speedCount = 0;
   const char* imageName = obj->getString("imageName");
   int frameCount = obj->getInt("animationFrames");
@@ -105,7 +106,8 @@ DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager) {
     type = DamageTypeMagicalTolerant;
     damage *= 0.5;
   }
-  _hp -= damage;
+  float levelOffset = characterManager->getLevelOffsetRate(characterManager->getLevel(), this->getLevel());
+  _hp -= round(damage * levelOffset);
   if (_hp <= 0) {
     type = DamageTypeDeath;
   }
@@ -169,5 +171,9 @@ bool Enemy::canMove() {
 
 SkillType Enemy::getType() {
   return _type;
+}
+
+int Enemy::getLevel() {
+  return _level;
 }
 

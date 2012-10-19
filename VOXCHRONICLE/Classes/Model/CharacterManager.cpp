@@ -249,3 +249,18 @@ void CharacterManager::updateParameters() {
   _hp = _maxHP * rateHP;
   _mp = _maxMP * rateMP;
 }
+
+float CharacterManager::getLevelOffsetRate(int attackLevel, int defenseLevel) {
+  CCLuaEngine* engine = CCLuaEngine::defaultEngine();
+  lua_State* L = engine->getLuaState();
+  std::string path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("character.lua");
+  engine->executeScriptFile(path.c_str());
+  lua_getglobal(L, "getLevelOffsetRate");
+  lua_pushinteger(L, attackLevel);
+  lua_pushinteger(L, defenseLevel);
+  if (lua_pcall(L, 2, 1, 0)) {
+    cout << lua_tostring(L, lua_gettop(L)) << endl;
+  }
+  float offset = lua_tonumber(L, lua_gettop(L));
+  return offset;
+}

@@ -15,21 +15,21 @@
 
 // ダメージタイプ
 typedef enum {
-  DamageTypeHit,
-  DamageTypeShield,
-  DamageTypeInvisible,
-  DamageTypeWeak,
-  DamageTypePhysicalTolerant,
-  DamageTypeMagicalTolerant,
-  DamageTypeDeath,
-  DamageTypeAbsorption
+  DamageTypeHit, // 通常攻撃命中
+  DamageTypeShield, // 盾による無効化
+  DamageTypeInvisible, // 無敵による無効化
+  DamageTypeWeak, // 弱点
+  DamageTypePhysicalTolerant, // 物理攻撃態勢
+  DamageTypeMagicalTolerant, // 魔法攻撃態勢
+  DamageTypeDeath, // 死亡
+  DamageTypeAbsorption // ダメージ吸収
 } DamageType;
 
 typedef enum {
   SkillPerformTypeNone,
-  SkillPerformTypeSuccess,
-  SkillPerformTypeCharge,
-  SkillPerformTypeFailure
+  SkillPerformTypeSuccess, // スキル成功
+  SkillPerformTypeCharge, // スキルチャージ中
+  SkillPerformTypeFailure // スキル失敗
 } SkillPerformType;
 
 class CharacterManager :public CCObject {
@@ -80,6 +80,15 @@ class CharacterManager :public CCObject {
   int getExp();
   int getMaxHP();
   int getMaxMP();
+  
+  /**
+   レベル補正値を返します。
+   character.luaのgetLevelOffsetRateを実行します
+   @param int attackLevel 攻撃側のレベル
+   @param int defenseLevel 防御側のレベル
+   @return float レベル補正値を返します。通常、攻撃側のレベルが高いほど大きな値が得られます
+   */
+  float getLevelOffsetRate(int attackLevel, int defenseLevel);
   
   // setter
   void setLastSkill(Skill* skill);

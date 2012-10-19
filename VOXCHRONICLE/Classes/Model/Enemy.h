@@ -31,6 +31,7 @@ class Enemy : public CCSprite {
   int _speed;
   int _speedCount;
   int _counter;
+  int _level;
   SkillType _type;
   void update(float dt);
   void setLifeColor();
@@ -49,9 +50,11 @@ class Enemy : public CCSprite {
   void setColAndRow(int col, float row);
   float getCurrentScale(float row);
   bool canMove();
+  int getLevel();
   
   /**
-   ダメージを与えます。死亡時にはtrueを返します
+   使用したSkillとCharacterManagerを与えてダメージを与えます。
+   ダメージの状態をDamageTypeとして返します
    */
   DamageType damage(Skill* skill, CharacterManager* characterManager);
   
