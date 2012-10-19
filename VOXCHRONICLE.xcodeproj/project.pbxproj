@@ -70,6 +70,10 @@
 		0791587E15EBB50E0083D348 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 0791587215EBB4BB0083D348 /* iTunesArtwork */; };
 		079487951616D8C5004ABCF5 /* knockback.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079487941616D8C5004ABCF5 /* knockback.lua */; };
 		0794879C1616EC7E004ABCF5 /* tension.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0794879B1616EC7E004ABCF5 /* tension.lua */; };
+		07A8E9CB16317F0500E007C9 /* dub_tension0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07A8E9C716317F0500E007C9 /* dub_tension0.wav */; };
+		07A8E9CC16317F0500E007C9 /* dub_tension1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07A8E9C816317F0500E007C9 /* dub_tension1.wav */; };
+		07A8E9CD16317F0500E007C9 /* dub_tension2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07A8E9C916317F0500E007C9 /* dub_tension2.wav */; };
+		07A8E9CE16317F0500E007C9 /* dub_tension3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07A8E9CA16317F0500E007C9 /* dub_tension3.wav */; };
 		07B7A676161FF87C00FCE64C /* TrackCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A674161FF87C00FCE64C /* TrackCache.cpp */; };
 		07B7A6981620470000FCE64C /* LuaObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A6961620470000FCE64C /* LuaObject.cpp */; };
 		07B7A69E16204D4D00FCE64C /* LuaBind.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A69C16204D4D00FCE64C /* LuaBind.cpp */; };
@@ -379,10 +383,6 @@
 		07E135571624A7BE00CCF72E /* dub_lskcure0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E135391624A7BE00CCF72E /* dub_lskcure0.wav */; };
 		07E135581624A7BE00CCF72E /* dub_lskthunder0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E1353A1624A7BE00CCF72E /* dub_lskthunder0.wav */; };
 		07E1355C1624A7BE00CCF72E /* dub_silent.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E1353E1624A7BE00CCF72E /* dub_silent.wav */; };
-		07E1355D1624A7BE00CCF72E /* dub_tention0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E1353F1624A7BE00CCF72E /* dub_tention0.wav */; };
-		07E1355E1624A7BE00CCF72E /* dub_tention1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E135401624A7BE00CCF72E /* dub_tention1.wav */; };
-		07E1355F1624A7BE00CCF72E /* dub_tention2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E135411624A7BE00CCF72E /* dub_tention2.wav */; };
-		07E135601624A7BE00CCF72E /* dub_tention3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E135421624A7BE00CCF72E /* dub_tention3.wav */; };
 		07E135611624A7BE00CCF72E /* dub_voxattack0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E135431624A7BE00CCF72E /* dub_voxattack0.wav */; };
 		07E135621624A7BE00CCF72E /* dub_voxattack1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E135441624A7BE00CCF72E /* dub_voxattack1.wav */; };
 		07E135631624A7BE00CCF72E /* dub_voxattack2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E135451624A7BE00CCF72E /* dub_voxattack2.wav */; };
@@ -480,6 +480,10 @@
 		0791587215EBB4BB0083D348 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Resources/ios/iTunesArtwork; sourceTree = "<group>"; };
 		079487941616D8C5004ABCF5 /* knockback.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knockback.lua; sourceTree = "<group>"; };
 		0794879B1616EC7E004ABCF5 /* tension.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tension.lua; sourceTree = "<group>"; };
+		07A8E9C716317F0500E007C9 /* dub_tension0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_tension0.wav; path = Resources/Music/dub/dub_tension0.wav; sourceTree = "<group>"; };
+		07A8E9C816317F0500E007C9 /* dub_tension1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_tension1.wav; path = Resources/Music/dub/dub_tension1.wav; sourceTree = "<group>"; };
+		07A8E9C916317F0500E007C9 /* dub_tension2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_tension2.wav; path = Resources/Music/dub/dub_tension2.wav; sourceTree = "<group>"; };
+		07A8E9CA16317F0500E007C9 /* dub_tension3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_tension3.wav; path = Resources/Music/dub/dub_tension3.wav; sourceTree = "<group>"; };
 		07AE142915F028E50045E8F3 /* macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macros.h; sourceTree = "<group>"; };
 		07B7A674161FF87C00FCE64C /* TrackCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TrackCache.cpp; path = Classes/VISS/TrackCache.cpp; sourceTree = "<group>"; };
 		07B7A675161FF87C00FCE64C /* TrackCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrackCache.h; path = Classes/VISS/TrackCache.h; sourceTree = "<group>"; };
@@ -1094,10 +1098,6 @@
 		07E135391624A7BE00CCF72E /* dub_lskcure0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_lskcure0.wav; path = Resources/Music/dub/dub_lskcure0.wav; sourceTree = "<group>"; };
 		07E1353A1624A7BE00CCF72E /* dub_lskthunder0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_lskthunder0.wav; path = Resources/Music/dub/dub_lskthunder0.wav; sourceTree = "<group>"; };
 		07E1353E1624A7BE00CCF72E /* dub_silent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_silent.wav; path = Resources/Music/dub/dub_silent.wav; sourceTree = "<group>"; };
-		07E1353F1624A7BE00CCF72E /* dub_tention0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_tention0.wav; path = Resources/Music/dub/dub_tention0.wav; sourceTree = "<group>"; };
-		07E135401624A7BE00CCF72E /* dub_tention1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_tention1.wav; path = Resources/Music/dub/dub_tention1.wav; sourceTree = "<group>"; };
-		07E135411624A7BE00CCF72E /* dub_tention2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_tention2.wav; path = Resources/Music/dub/dub_tention2.wav; sourceTree = "<group>"; };
-		07E135421624A7BE00CCF72E /* dub_tention3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_tention3.wav; path = Resources/Music/dub/dub_tention3.wav; sourceTree = "<group>"; };
 		07E135431624A7BE00CCF72E /* dub_voxattack0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxattack0.wav; path = Resources/Music/dub/dub_voxattack0.wav; sourceTree = "<group>"; };
 		07E135441624A7BE00CCF72E /* dub_voxattack1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxattack1.wav; path = Resources/Music/dub/dub_voxattack1.wav; sourceTree = "<group>"; };
 		07E135451624A7BE00CCF72E /* dub_voxattack2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxattack2.wav; path = Resources/Music/dub/dub_voxattack2.wav; sourceTree = "<group>"; };
@@ -1402,10 +1402,10 @@
 				072D188C1625A93A00745275 /* dub_lskthunder_charge0.wav */,
 				072D188D1625A93A00745275 /* dub_miss.wav */,
 				07E1353E1624A7BE00CCF72E /* dub_silent.wav */,
-				07E1353F1624A7BE00CCF72E /* dub_tention0.wav */,
-				07E135401624A7BE00CCF72E /* dub_tention1.wav */,
-				07E135411624A7BE00CCF72E /* dub_tention2.wav */,
-				07E135421624A7BE00CCF72E /* dub_tention3.wav */,
+				07A8E9C716317F0500E007C9 /* dub_tension0.wav */,
+				07A8E9C816317F0500E007C9 /* dub_tension1.wav */,
+				07A8E9C916317F0500E007C9 /* dub_tension2.wav */,
+				07A8E9CA16317F0500E007C9 /* dub_tension3.wav */,
 				07E135431624A7BE00CCF72E /* dub_voxattack0.wav */,
 				07E135441624A7BE00CCF72E /* dub_voxattack1.wav */,
 				07E135451624A7BE00CCF72E /* dub_voxattack2.wav */,
@@ -2688,10 +2688,6 @@
 				07E135571624A7BE00CCF72E /* dub_lskcure0.wav in Resources */,
 				07E135581624A7BE00CCF72E /* dub_lskthunder0.wav in Resources */,
 				07E1355C1624A7BE00CCF72E /* dub_silent.wav in Resources */,
-				07E1355D1624A7BE00CCF72E /* dub_tention0.wav in Resources */,
-				07E1355E1624A7BE00CCF72E /* dub_tention1.wav in Resources */,
-				07E1355F1624A7BE00CCF72E /* dub_tention2.wav in Resources */,
-				07E135601624A7BE00CCF72E /* dub_tention3.wav in Resources */,
 				07E135611624A7BE00CCF72E /* dub_voxattack0.wav in Resources */,
 				07E135621624A7BE00CCF72E /* dub_voxattack1.wav in Resources */,
 				07E135631624A7BE00CCF72E /* dub_voxattack2.wav in Resources */,
@@ -2708,6 +2704,10 @@
 				07E135751624AD2000CCF72E /* cure_icon.png in Resources */,
 				072D188E1625A93A00745275 /* dub_lskthunder_charge0.wav in Resources */,
 				072D188F1625A93A00745275 /* dub_miss.wav in Resources */,
+				07A8E9CB16317F0500E007C9 /* dub_tension0.wav in Resources */,
+				07A8E9CC16317F0500E007C9 /* dub_tension1.wav in Resources */,
+				07A8E9CD16317F0500E007C9 /* dub_tension2.wav in Resources */,
+				07A8E9CE16317F0500E007C9 /* dub_tension3.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

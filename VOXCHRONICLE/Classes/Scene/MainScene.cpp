@@ -155,7 +155,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       Enemy* nearest = _enemyManager->getNearestEnemy();
       if (nearest) {
         stringstream ss;
-        ss << "ura0" << nearest->getCounter() << ".wav";
+        ss << "counter" << nearest->getCounter() << ".wav";
         string file(_map->getPrefixedMusicName(ss.str().c_str()));
         Track* track = _music->pushTrack(file.c_str(), 1);
         
