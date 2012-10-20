@@ -20,6 +20,7 @@
 #include "EnemyManager.h"
 #include "CharacterManager.h"
 #include "MapSelector.h"
+#include "MessageWindow.h"
 
 typedef enum {
   VCStateMain,
@@ -41,6 +42,7 @@ class MainScene : public CCLayer {
   EnemyManager* _enemyManager;
   CharacterManager* _characterManager;
   MapSelector* _mapSelector;
+  MessageWindow* _messageWindow;
   
   CCLabelTTF* _levelLabel;
   CCLabelTTF* _hpLabel;

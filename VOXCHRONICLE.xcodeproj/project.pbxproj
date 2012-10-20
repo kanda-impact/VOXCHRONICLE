@@ -74,6 +74,7 @@
 		07A8E9CC16317F0500E007C9 /* dub_tension1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07A8E9C816317F0500E007C9 /* dub_tension1.wav */; };
 		07A8E9CD16317F0500E007C9 /* dub_tension2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07A8E9C916317F0500E007C9 /* dub_tension2.wav */; };
 		07A8E9CE16317F0500E007C9 /* dub_tension3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07A8E9CA16317F0500E007C9 /* dub_tension3.wav */; };
+		07A8E9F316320DBC00E007C9 /* MessageWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */; };
 		07B7A676161FF87C00FCE64C /* TrackCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A674161FF87C00FCE64C /* TrackCache.cpp */; };
 		07B7A6981620470000FCE64C /* LuaObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A6961620470000FCE64C /* LuaObject.cpp */; };
 		07B7A69E16204D4D00FCE64C /* LuaBind.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A69C16204D4D00FCE64C /* LuaBind.cpp */; };
@@ -484,6 +485,8 @@
 		07A8E9C816317F0500E007C9 /* dub_tension1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_tension1.wav; path = Resources/Music/dub/dub_tension1.wav; sourceTree = "<group>"; };
 		07A8E9C916317F0500E007C9 /* dub_tension2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_tension2.wav; path = Resources/Music/dub/dub_tension2.wav; sourceTree = "<group>"; };
 		07A8E9CA16317F0500E007C9 /* dub_tension3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_tension3.wav; path = Resources/Music/dub/dub_tension3.wav; sourceTree = "<group>"; };
+		07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageWindow.cpp; path = Classes/UI/MessageWindow.cpp; sourceTree = "<group>"; };
+		07A8E9F216320DBC00E007C9 /* MessageWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageWindow.h; path = Classes/UI/MessageWindow.h; sourceTree = "<group>"; };
 		07AE142915F028E50045E8F3 /* macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macros.h; sourceTree = "<group>"; };
 		07B7A674161FF87C00FCE64C /* TrackCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TrackCache.cpp; path = Classes/VISS/TrackCache.cpp; sourceTree = "<group>"; };
 		07B7A675161FF87C00FCE64C /* TrackCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrackCache.h; path = Classes/VISS/TrackCache.h; sourceTree = "<group>"; };
@@ -1195,6 +1198,8 @@
 				074EFD0715FA906C004D8273 /* Controller.cpp */,
 				074EFD0A15FA906D004D8273 /* SkillTrigger.h */,
 				074EFD0915FA906D004D8273 /* SkillTrigger.cpp */,
+				07A8E9F216320DBC00E007C9 /* MessageWindow.h */,
+				07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -2995,6 +3000,7 @@
 				07B7A6981620470000FCE64C /* LuaObject.cpp in Sources */,
 				07B7A69E16204D4D00FCE64C /* LuaBind.cpp in Sources */,
 				07E134FF162167CC00CCF72E /* MapSelector.cpp in Sources */,
+				07A8E9F316320DBC00E007C9 /* MessageWindow.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
