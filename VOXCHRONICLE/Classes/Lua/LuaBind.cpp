@@ -127,8 +127,8 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_function(tolua_S, "setLevel", tolua_VC_CharacterManager_setLevel);
   tolua_function(tolua_S, "getLevel", tolua_VC_CharacterManager_getLevel);
   tolua_function(tolua_S, "cureHP", tolua_VC_CharacterManager_cureHP);
-  tolua_function(tolua_S, "getDrumLevel", tolua_VC_CharacterManager_cureHP);
-  tolua_function(tolua_S, "setDrumLevel", tolua_VC_CharacterManager_cureHP);
+  tolua_function(tolua_S, "getDrumLevel", tolua_VC_CharacterManager_getDrumLevel);
+  tolua_function(tolua_S, "setDrumLevel", tolua_VC_CharacterManager_setDrumLevel);
   tolua_endmodule(tolua_S);
   tolua_endmodule(tolua_S);
   return 1;
