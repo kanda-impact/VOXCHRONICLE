@@ -45,6 +45,8 @@
     <OutDir>$(SolutionDir)$(Configuration).win32\</OutDir>
     <IntDir>$(Configuration).win32\</IntDir>
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;C:\Program Files\boost\boost_1_51;</IncludePath>
+    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;C:\Program Files\boost\boost_1_51\libs;</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -84,10 +86,13 @@
       <DllDataFileName>
       </DllDataFileName>
     </Midl>
+    <PreBuildEvent>
+      <Command>xcopy /Y /E $(SolutionDir)..\..\VOXCHRONICLE\Resources\*.* $(OutDir)</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>.;..\Classes;$(SolutionDir)cocos2dx;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx\kazmath\include;$(SolutionDir)cocos2dx\platform\win32;$(SolutionDir)cocos2dx\platform\third_party\win32;$(SolutionDir)cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)CocosDenshion\include;$(SolutionDir)scripting\lua\cocos2dx_support;$(SolutionDir)scripting\lua\tolua;$(SolutionDir)scripting\lua\lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\VOXCHRONICLE\Classes\includes;$(SolutionDir)..\..\VOXCHRONICLE\Classes;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\include;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\script_support;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\kazmath\include;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\platform\win32;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\platform\third_party\win32;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)..\..\VOXCHRONICLE\libs\CocosDenshion\include;$(SolutionDir)..\..\VOXCHRONICLE\libs\lua\cocos2dx_support;$(SolutionDir)..\..\VOXCHRONICLE\libs\lua\tolua;$(SolutionDir)..\..\VOXCHRONICLE\libs\lua\lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
@@ -122,6 +127,9 @@
       <DllDataFileName>
       </DllDataFileName>
     </Midl>
+    <PreBuildEvent>
+      <Command>xcopy /Y /E $(SolutionDir)..\..\VOXCHRONICLE\Resources\*.* $(OutDir)</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Character.h" />
