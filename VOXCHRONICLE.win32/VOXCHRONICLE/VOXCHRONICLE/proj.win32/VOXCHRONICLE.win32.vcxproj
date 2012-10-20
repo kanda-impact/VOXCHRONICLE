@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FE7FA8C0-DDB9-4A22-96A0-C22986E3A4D3}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir>$(Configuration).win32\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;C:\Program Files\boost\boost_1_51\libs;</LibraryPath>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;C:\Program Files\boost\boost_1_51;</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir>$(Configuration).win32\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\VOXCHRONICLE\Classes\includes;$(SolutionDir)..\..\VOXCHRONICLE\Classes;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\include;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\script_support;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\kazmath\include;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\platform\win32;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\platform\third_party\win32;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)..\..\VOXCHRONICLE\libs\CocosDenshion\include;$(SolutionDir)..\..\VOXCHRONICLE\libs\lua\cocos2dx_support;$(SolutionDir)..\..\VOXCHRONICLE\libs\lua\tolua;$(SolutionDir)..\..\VOXCHRONICLE\libs\lua\lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <MinimalRebuild>true</MinimalRebuild>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;STRICT;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS_DEBUG;COCOS2D_DEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcocos2d.lib;libExtensions.lib;opengl32.lib;glew32.lib;libCocosDenshion.lib;liblua.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <HeaderFileName>VOXCHRONICLE.h</HeaderFileName>
+      <InterfaceIdentifierFileName>VOXCHRONICLE_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>VOXCHRONICLE_p.c</ProxyFileName>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>$(IntDir)/VOXCHRONICLE.tlb</TypeLibraryName>
+      <DllDataFileName>
+      </DllDataFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;..\Classes;$(SolutionDir)cocos2dx;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx\kazmath\include;$(SolutionDir)cocos2dx\platform\win32;$(SolutionDir)cocos2dx\platform\third_party\win32;$(SolutionDir)cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)CocosDenshion\include;$(SolutionDir)scripting\lua\cocos2dx_support;$(SolutionDir)scripting\lua\tolua;$(SolutionDir)scripting\lua\lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;STRICT;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGSNDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcocos2d.lib;libExtensions.lib;opengl32.lib;glew32.lib;libCocosDenshion.lib;liblua.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <HeaderFileName>VOXCHRONICLE.h</HeaderFileName>
+      <InterfaceIdentifierFileName>VOXCHRONICLE_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>VOXCHRONICLE_p.c</ProxyFileName>
+      <GenerateStublessProxies>true</GenerateStublessProxies>
+      <TypeLibraryName>$(IntDir)/VOXCHRONICLE.tlb</TypeLibraryName>
+      <DllDataFileName>
+      </DllDataFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Character.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\CharacterManager.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Controller.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Enemy.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\EnemyManager.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Level.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\LogoScene.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\LuaBind.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\LuaObject.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\macros.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\MainScene.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Map.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\MapSelector.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Music.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Skill.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\SkillTrigger.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Track.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\TrackCache.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Utils.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\libs\lua\cocos2dx_support\CCLuaEngine.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\libs\lua\cocos2dx_support\Cocos2dxLuaLoader.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\libs\lua\cocos2dx_support\LuaCocos2d.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\libs\lua\cocos2dx_support\tolua_fix.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Lua\LuaBind.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Lua\LuaObject.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Model\Character.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Model\CharacterManager.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Model\Enemy.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Model\EnemyManager.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Model\Level.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Model\Map.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Model\MapSelector.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Model\Skill.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Scene\LogoScene.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Scene\MainScene.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\UI\Controller.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\UI\SkillTrigger.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Util\Utils.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\VISS\Music.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\VISS\Track.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\VISS\TrackCache.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\libs\lua\cocos2dx_support\CCLuaEngine.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\libs\lua\cocos2dx_support\Cocos2dxLuaLoader.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\libs\lua\cocos2dx_support\LuaCocos2d.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\libs\lua\cocos2dx_support\tolua_fix.c" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\geek0.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\geek1.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\geek2.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\geek3.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\ginet0.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\ginet1.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\ginet2.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tetufez0.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tetufez1.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tetufez2.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tetufez3.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tetufez4.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tetufez5.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tetufez6.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tetufez7.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tnt0.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tnt1.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tnt2.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tnt3.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tnt4.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tnt5.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tnt6.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Main\UI\left_arrow.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Main\UI\left_arrow_selected.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Main\UI\right_arrow.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Main\UI\right_arrow_selected.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Main\UI\sword.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Main\UI\trigger_bg.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Main\UI\trigger_bg_selected.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Title\kawaz.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_counter0.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_counter1.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_counter2.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_counter3.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_drum0.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_drum1.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_drum2.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_drum3.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_lskchange0.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_lskcure0.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_lskmagic0.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_lskmagic1.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_lskmagic2.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_lskmagic3.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_lskthunder0.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_lskthunder_charge0.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_miss.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_silent.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_tension0.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_tension1.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_tension2.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_tension3.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_voxattack0.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_voxattack1.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_voxattack2.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_voxattack3.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_voxchange0.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_voxknockback0.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_voxshield0.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\select\select_silent.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\select\select_stage.wav" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\character\character.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\character\lsk.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\character\vox.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\enemies\geek.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\enemies\ginet.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\enemies\ginet1.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\enemies\ginet2.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\enemies\tetufez.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\enemies\tnt.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\hello.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\map\readme.md" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\map\test.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\map\test2a.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\map\test2b.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\setting.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\skills\attack.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\skills\bow.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\skills\change.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\skills\cure.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\skills\knockback.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\skills\levelup.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\skills\magic.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\skills\shield.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\skills\tension.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\skills\thunder.lua" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\SE\decide.caf" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\SE\decide.mp3" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\SE\levelup.caf" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\SE\levelup.mp3" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\win32\Default.png" />
+    <None Include="..\..\..\..\VOXCHRONICLE\Resources\win32\Icon.png" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

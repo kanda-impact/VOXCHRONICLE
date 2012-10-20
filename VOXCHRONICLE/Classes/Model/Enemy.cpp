@@ -7,6 +7,7 @@
 //
 
 #include <sstream>
+#include <cmath>
 #include "Enemy.h"
 #include "LuaObject.h"
 #include "Utils.h"
@@ -97,7 +98,7 @@ void Enemy::moveRow(float r) {
 DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager) {
   const float tensions[] = {1.0, 1.5, 3.0, 4.5, 6};
   // ToDo 属性によるダメージ軽減とかもこの辺に載せてやる
-  int damage = round(skill->getPower() * tensions[characterManager->getTension()]);
+  int damage = floor(0.5 + skill->getPower() * tensions[characterManager->getTension()]);
   DamageType type = DamageTypeHit;
   if (skill->getType() == SkillTypePhysical && this->getType() == SkillTypePhysical) {
     type = DamageTypePhysicalTolerant;
@@ -107,7 +108,7 @@ DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager) {
     damage *= 0.5;
   }
   float levelOffset = characterManager->getLevelOffsetRate(characterManager->getLevel(), this->getLevel());
-  _hp -= round(damage * levelOffset);
+  _hp -= floor(0.5 + damage * levelOffset);
   if (_hp <= 0) {
     type = DamageTypeDeath;
   }
