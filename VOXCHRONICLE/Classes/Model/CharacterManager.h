@@ -39,6 +39,7 @@ class CharacterManager :public CCObject {
   int _hp;
   int _mp;
   int _exp;
+  int _drumLevel;
   Character* _currentCharacter;
   CCArray* _characters;
   Skill* _lastSkill;
@@ -158,12 +159,14 @@ class CharacterManager :public CCObject {
   int getExp();
   int getMaxHP();
   int getMaxMP();
+  int getDrumLevel();
   
   // setter
   void setLastSkill(Skill* skill);
   void setCurrentSkill(Skill* skill);
   void setShield(bool s);
   void setLevel(int l);
+  void setDrumLevel(int l);
   
 };
 

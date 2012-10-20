@@ -81,6 +81,20 @@ static int tolua_VC_CharacterManager_cureHP(lua_State* tolua_S) {
   return 1;
 }
 
+static int tolua_VC_CharacterManager_getDrumLevel(lua_State* tolua_S) {
+  CharacterManager* self = (CharacterManager*)tolua_tousertype(tolua_S, 1, 0);
+  int newHP = self->getDrumLevel();
+  tolua_pushnumber(tolua_S, newHP);
+  return 1;
+}
+
+static int tolua_VC_CharacterManager_setDrumLevel(lua_State* tolua_S) {
+  CharacterManager* self = (CharacterManager*)tolua_tousertype(tolua_S, 1, 0);
+  int level = (int)tolua_tonumber(tolua_S, 2, 0);
+  self->setDrumLevel(level);
+  return 0;
+}
+
 TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_open(tolua_S);
   tolua_reg_types(tolua_S);
@@ -113,6 +127,8 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_function(tolua_S, "setLevel", tolua_VC_CharacterManager_setLevel);
   tolua_function(tolua_S, "getLevel", tolua_VC_CharacterManager_getLevel);
   tolua_function(tolua_S, "cureHP", tolua_VC_CharacterManager_cureHP);
+  tolua_function(tolua_S, "getDrumLevel", tolua_VC_CharacterManager_cureHP);
+  tolua_function(tolua_S, "setDrumLevel", tolua_VC_CharacterManager_cureHP);
   tolua_endmodule(tolua_S);
   tolua_endmodule(tolua_S);
   return 1;

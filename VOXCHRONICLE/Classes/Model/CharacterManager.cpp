@@ -34,6 +34,7 @@ CharacterManager::CharacterManager() {
   this->updateParameters();
   _hp = _maxHP;
   _mp = _maxMP;
+  _drumLevel = 0;
 }
 
 CharacterManager::~CharacterManager() {
@@ -264,4 +265,12 @@ float CharacterManager::getLevelOffsetRate(int attackLevel, int defenseLevel) {
   }
   float offset = lua_tonumber(L, lua_gettop(L));
   return offset;
+}
+
+int CharacterManager::getDrumLevel() {
+  return _drumLevel;
+}
+
+void CharacterManager::setDrumLevel(int l) {
+  _drumLevel = l;
 }

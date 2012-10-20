@@ -123,7 +123,9 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
           enemy->moveRow(-1);
         }
       } else {
-        DamageType result = _characterManager->damage(1);
+        int damage = 1 * _characterManager->getLevelOffsetRate(enemy->getLevel(), _characterManager->getLevel());
+        cout << "damage = " << damage << endl;
+        DamageType result = _characterManager->damage(damage);
         if (result == DamageTypeDeath) {
           std::cout << "game over" << std::endl;
         }
@@ -200,18 +202,9 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         track->setVolume(0);
       }
     } else if (trackNumber == 2) {
-      float hpRate = (float)_characterManager->getHP() / (float)_characterManager->getMaxHP();
-      string filename;
-      if (hpRate > 0.8) {
-        filename = "drum0.wav";
-      } else if (hpRate > 0.6) {
-        filename = "drum1.wav";
-      } else if (hpRate > 0.4) {
-        filename = "drum2.wav";
-      } else {
-        filename = "drum3.wav";
-      }
-      string file(_map->getPrefixedMusicName(filename.c_str()));
+      stringstream drumFileStream;
+      drumFileStream << "drum" << _characterManager->getDrumLevel() << ".wav";
+      string file(_map->getPrefixedMusicName(drumFileStream.str().c_str()));
       Track* t = _music->pushTrack(file.c_str(), 2);
       t->setVolume(0.7);
     }
