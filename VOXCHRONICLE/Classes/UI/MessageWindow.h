@@ -36,7 +36,7 @@ class MessageWindow :public CCNode {
  public:
   MessageWindow(const char* fontName, int size);
   ~MessageWindow();
-  void pushMessage(string message);
+  void pushMessage(const wchar_t* message);
   void setMessageSpeed(int speed);
   void setOnMessageFinishedFunction(function<void (string, MessageWindow*)> finish);
   void setOnMessageUpdatedFunction(function<void (string, MessageWindow*)> update);

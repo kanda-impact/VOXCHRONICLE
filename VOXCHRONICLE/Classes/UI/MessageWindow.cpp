@@ -7,6 +7,7 @@
 //
 
 #include "MessageWindow.h"
+#include <sstream>
 
 MessageWindow::MessageWindow(const char* fontName, int size) {
   _messageQueue = new deque<string>();
@@ -29,8 +30,8 @@ MessageWindow::~MessageWindow() {
   _label->release();
 }
 
-void MessageWindow::pushMessage(string message) {
-  _messageQueue->push_back(message);
+void MessageWindow::pushMessage(const wchar_t* message) {
+  //_messageQueue->push_back("aaaaaaaaaaaa");
 }
 
 void MessageWindow::update(float dt) {

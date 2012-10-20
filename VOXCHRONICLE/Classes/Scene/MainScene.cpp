@@ -82,6 +82,8 @@ bool MainScene::init() {
   _messageWindow = new MessageWindow("Helvetica", 64);
   _messageWindow->retain();
   _messageWindow->setPosition(ccp(100, 100));
+  _messageWindow->pushMessage(L"あああああああああ");
+  _messageWindow->pushMessage(L"ういいいいいいいいい");
   
   this->addChild(_messageWindow);
   
@@ -151,6 +153,24 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       if (skill && performType == SkillPerformTypeSuccess) {
         int preExp = _characterManager->getExp();
         CCDictionary* info = _enemyManager->performSkill(skill, _characterManager); // ここで経験値が貰える
+        CCArray* enemies = (CCArray*)info->objectForKey("enemies");
+        CCArray* damages = (CCArray*)info->objectForKey("damages");
+        for (int i = 0; i < enemies->count(); ++i) {
+          Enemy* enemy = (Enemy*)enemies->objectAtIndex(i);
+          stringstream damageStream;
+          damageStream << ((CCInteger*)damages->objectAtIndex(i))->getValue();
+          CCLabelAtlas* damageLabel = CCLabelAtlas::create(damageStream.str().c_str(), "damage_number.png", 50, 100, '0');
+          damageLabel->setPosition(enemy->getPosition());
+          float scale = enemy->getCurrentScale(enemy->getRow());
+          damageLabel->setScale(scale);
+          this->addChild(damageLabel);
+          damageLabel->runAction(CCSequence::create(
+                                             CCFadeIn::create(0.2),
+                                             CCDelayTime::create(0.5),
+                                             CCFadeOut::create(0.2),
+                                             CCCallFunc::create(damageLabel, callfunc_selector(CCSprite::removeFromParentAndCleanup)),
+                                             NULL));
+        }
         int getExp = ((CCInteger*)info->objectForKey("exp"))->getValue();
         _enemyManager->unshiftEnemiesQueue(_map->getFixedEnemies(preExp, preExp + getExp));
         this->checkLevelUp();

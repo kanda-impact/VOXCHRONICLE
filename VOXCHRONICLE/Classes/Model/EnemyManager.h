@@ -120,6 +120,7 @@ class EnemyManager :public CCLayer {
   
   /**
    モンスターに実際にスキルを使用し、情報を返します
+   damages : CCArray 与えたダメージのリスト
    enemies : CCArray 攻撃を当てた敵のリスト
    exp : 得られた総経験値
    */
