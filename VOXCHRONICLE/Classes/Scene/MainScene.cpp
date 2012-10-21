@@ -17,6 +17,7 @@
 #include "MapSelector.h"
 #include "TrackCache.h"
 #include "LuaObject.h"
+#include "FileUtils.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -31,7 +32,7 @@ bool MainScene::init() {
   _music->setTrackDidFinishFunction(boost::bind(&MainScene::trackDidFinishPlaying, this, _1, _2, _3, _4));
   _music->setTrackWillFinishFunction(boost::bind(&MainScene::trackWillFinishPlaying, this, _1, _2, _3, _4));
   
-  LuaObject* setting = new LuaObject("setting", "Setting");
+  LuaObject* setting = new LuaObject("Script/setting", "Setting");
   setting->autorelease();
   
   _enemyManager = EnemyManager::create();
@@ -71,7 +72,7 @@ bool MainScene::init() {
   this->addChild(_nextExpLabel);
   this->addChild(_mapLabel);
   
-  TrackCache::sharedCache()->addTrack("select_stage.wav");
+  TrackCache::sharedCache()->addTrack(FileUtils::getFilePath("Music/select/select_stage.wav"));
   
   this->pushInitialTracks(_map);
   
@@ -161,7 +162,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
           Enemy* enemy = (Enemy*)enemies->objectAtIndex(i);
           stringstream damageStream;
           damageStream << ((CCInteger*)damages->objectAtIndex(i))->getValue();
-          CCLabelAtlas* damageLabel = CCLabelAtlas::create(damageStream.str().c_str(), "damage_number.png", 50, 100, '0');
+          CCLabelAtlas* damageLabel = CCLabelAtlas::create(damageStream.str().c_str(), FileUtils::getFilePath("Image/Main/UI/damage_number.png"), 50, 100, '0');
           damageLabel->setPosition(enemy->getPosition());
           float scale = enemy->getCurrentScale(enemy->getRow());
           damageLabel->setScale(scale);
@@ -274,7 +275,7 @@ bool MainScene::checkLevelUp() {
     _preLevel = currentLevel;
     cout << "Level Up!" << endl;
     _characterManager->updateParameters();
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("levelup.caf");
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/levelup.caf"));
     _level = _map->createLevel(currentLevel);
     _enemyManager->setLevel(_level);
     this->updateGUI();
@@ -288,9 +289,9 @@ bool MainScene::checkLevelUp() {
           _mapSelector->setPosition(CCPointMake(0, 60));
           this->addChild(_mapSelector);
           _music->removeAllNextTracks();
-          _music->pushTrack("select_stage.wav", 0);
-          _music->pushTrack("select_silent.wav", 1);
-          _music->pushTrack("select_silent.wav", 2);
+          _music->pushTrack(FileUtils::getFilePath("Music/select/select_stage.wav"), 0);
+          _music->pushTrack(FileUtils::getFilePath("Music/select/select_silent.wav"), 1);
+          _music->pushTrack(FileUtils::getFilePath("Music/select/select_silent.wav"), 2);
         }
         _state = VCStateStageSelect;
       }

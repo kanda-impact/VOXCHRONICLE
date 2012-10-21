@@ -10,6 +10,7 @@
 
 #include "Controller.h"
 #include "SkillTrigger.h"
+#include "FileUtils.h"
 
 using namespace cocos2d;
 
@@ -24,7 +25,7 @@ bool Controller::init() {
   const int x[] = {95, 235, 310, 866, 727, 651};
   const int y[] = {298.5, 207, 62, 298.5, 208, 62};
   for (int i = 0; i < 6; ++i) {
-    SkillTrigger* trigger = SkillTrigger::create("trigger_bg.png");
+    SkillTrigger* trigger = SkillTrigger::create(FileUtils::getFilePath("Image/Main/UI/trigger_bg.png"));
     trigger->setPosition(ccp(x[i] / 2.0, y[i] / 2.0));
     trigger->setRotation(rotation[i]);
     if (i < 3) trigger->setScaleX(-1);

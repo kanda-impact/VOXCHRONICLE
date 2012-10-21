@@ -12,7 +12,9 @@
 #include "LuaObject.h"
 
 Skill::Skill(const char* slug) {
-  _lua = new LuaObject(slug, "Skill");
+  stringstream ss;
+  ss << "Script/skills/" << slug;
+  _lua = new LuaObject(ss.str().c_str(), "Skill");
   _lua->retain();
   _name = new std::string(_lua->getString("name"));
   _slug = _lua->getString("slug");

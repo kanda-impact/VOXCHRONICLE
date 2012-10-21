@@ -8,6 +8,8 @@
 
 #include "LogoScene.h"
 #include "MainScene.h"
+#include "FileUtils.h"
+
 using namespace cocos2d;
 
 CCScene* LogoScene::scene() {
@@ -27,7 +29,7 @@ bool LogoScene::init() {
   this->setTouchEnabled(true);
   CCDirector* director = CCDirector::sharedDirector();
   CCSize winSize = director->getWinSize();
-  CCSprite* logo = CCSprite::create("kawaz.png");
+  CCSprite* logo = CCSprite::create(FileUtils::getFilePath("Image/Title/kawaz.png"));
   CCLayerColor* background = CCLayerColor::create(ccc4(255, 255, 255, 255), winSize.width, winSize.height);
   logo->setPosition(ccp(winSize.width / 2, winSize.height / 2));
   logo->setOpacity(0);
