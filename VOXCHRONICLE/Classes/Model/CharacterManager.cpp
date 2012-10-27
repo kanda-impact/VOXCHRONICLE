@@ -122,7 +122,7 @@ int CharacterManager::getTension() {
 
 void CharacterManager::addTension(int t) {
   _tension += t;
-  if (_tension >= 4) _tension = 3;
+  if (_tension > 4) _tension = 4;
 }
 
 void CharacterManager::resetTension() {

@@ -49,8 +49,25 @@ int Skill::getMaxRepeat() {
   return _maxRepeat;
 }
 
-int Skill::getPower() {
-  return _power;
+int Skill::getPowerWithTension(int tension) {
+  lua_State* L = _lua->getLuaEngine()->getLuaState();
+  lua_getglobal(L, "Skill");
+  int table = lua_gettop(L);
+  lua_getfield(L, table, "getTensionRate");
+  float rate;
+  if (lua_isfunction(L, -1)) {
+    // skill.luaにgetTensionRateが実装済みのとき
+    lua_pushinteger(L, tension);
+    if (lua_pcall(L, 1, 1, 0)) {
+      cout << lua_tostring(L, lua_gettop(L)) << endl;
+    }
+    rate = lua_tonumber(L, -1);
+  } else {
+    // されていないとき。デフォルトのテンション上昇値を使う
+    const float tensions[] = {1.0, 1.5, 3.0, 4.5, 6};
+    rate = tensions[tension];
+  }
+  return _power * rate;
 }
 
 int Skill::getMP() {

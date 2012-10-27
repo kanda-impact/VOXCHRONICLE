@@ -51,7 +51,7 @@ class Skill :public CCObject {
   const char* getName();
   const char* getSlug();
   int getTurn();
-  int getPower();
+  int getPowerWithTension(int tension);
   int getMaxRepeat();
   int getMP();
   int getAcquirementLV();
