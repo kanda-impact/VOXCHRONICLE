@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		070E401A163C213E00A76BEA /* start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 070E4019163C213E00A76BEA /* start.mp3 */; };
+		070E401A163C213E00A76BEA /* decide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 070E4019163C213E00A76BEA /* decide.mp3 */; };
 		070E401D163C242500A76BEA /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = 070E401C163C242500A76BEA /* title.png */; };
 		070E4020163C29E600A76BEA /* BlinkLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 070E401E163C29E600A76BEA /* BlinkLayer.cpp */; };
 		070E4023163C2EFB00A76BEA /* damage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 070E4022163C2EFB00A76BEA /* damage.mp3 */; };
@@ -408,7 +408,7 @@
 		07F0D783163BEDA0005592AF /* dub_wait.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D77E163BEDA0005592AF /* dub_wait.wav */; };
 		07F0D785163BF199005592AF /* dub_shield0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D784163BF198005592AF /* dub_shield0.wav */; };
 		07F0D791163C035E005592AF /* death.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D78E163C035E005592AF /* death.mp3 */; };
-		07F0D792163C035E005592AF /* decide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D78F163C035E005592AF /* decide.mp3 */; };
+		07F0D792163C035E005592AF /* cursor.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D78F163C035E005592AF /* cursor.mp3 */; };
 		07F0D793163C035E005592AF /* levelup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D790163C035E005592AF /* levelup.mp3 */; };
 		07F0D799163C1EC1005592AF /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F0D797163C1EC0005592AF /* TitleScene.cpp */; };
 		07FD921E1621099B00E74459 /* vox.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921D1621099B00E74459 /* vox.lua */; };
@@ -416,7 +416,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		070E4019163C213E00A76BEA /* start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = start.mp3; path = Resources/SE/start.mp3; sourceTree = "<group>"; };
+		070E4019163C213E00A76BEA /* decide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = decide.mp3; path = Resources/SE/decide.mp3; sourceTree = "<group>"; };
 		070E401C163C242500A76BEA /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = title.png; path = Resources/Image/Title/title.png; sourceTree = "<group>"; };
 		070E401E163C29E600A76BEA /* BlinkLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BlinkLayer.cpp; path = Classes/UI/BlinkLayer.cpp; sourceTree = "<group>"; };
 		070E4021163C29FB00A76BEA /* BlinkLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlinkLayer.h; path = Classes/includes/BlinkLayer.h; sourceTree = "<group>"; };
@@ -1139,7 +1139,7 @@
 		07F0D77E163BEDA0005592AF /* dub_wait.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_wait.wav; path = Resources/Music/dub/dub_wait.wav; sourceTree = "<group>"; };
 		07F0D784163BF198005592AF /* dub_shield0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_shield0.wav; path = Resources/Music/dub/dub_shield0.wav; sourceTree = "<group>"; };
 		07F0D78E163C035E005592AF /* death.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = death.mp3; path = Resources/SE/death.mp3; sourceTree = "<group>"; };
-		07F0D78F163C035E005592AF /* decide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = decide.mp3; path = Resources/SE/decide.mp3; sourceTree = "<group>"; };
+		07F0D78F163C035E005592AF /* cursor.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = cursor.mp3; path = Resources/SE/cursor.mp3; sourceTree = "<group>"; };
 		07F0D790163C035E005592AF /* levelup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = levelup.mp3; path = Resources/SE/levelup.mp3; sourceTree = "<group>"; };
 		07F0D797163C1EC0005592AF /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleScene.cpp; path = Classes/Scene/TitleScene.cpp; sourceTree = "<group>"; };
 		07F0D79A163C1EFD005592AF /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = Classes/includes/TitleScene.h; sourceTree = "<group>"; };
@@ -2564,9 +2564,9 @@
 			children = (
 				070E4022163C2EFB00A76BEA /* damage.mp3 */,
 				07F0D78E163C035E005592AF /* death.mp3 */,
-				07F0D78F163C035E005592AF /* decide.mp3 */,
+				07F0D78F163C035E005592AF /* cursor.mp3 */,
 				07F0D790163C035E005592AF /* levelup.mp3 */,
-				070E4019163C213E00A76BEA /* start.mp3 */,
+				070E4019163C213E00A76BEA /* decide.mp3 */,
 			);
 			name = SE;
 			sourceTree = "<group>";
@@ -2759,9 +2759,9 @@
 				07F0D783163BEDA0005592AF /* dub_wait.wav in Resources */,
 				07F0D785163BF199005592AF /* dub_shield0.wav in Resources */,
 				07F0D791163C035E005592AF /* death.mp3 in Resources */,
-				07F0D792163C035E005592AF /* decide.mp3 in Resources */,
+				07F0D792163C035E005592AF /* cursor.mp3 in Resources */,
 				07F0D793163C035E005592AF /* levelup.mp3 in Resources */,
-				070E401A163C213E00A76BEA /* start.mp3 in Resources */,
+				070E401A163C213E00A76BEA /* decide.mp3 in Resources */,
 				070E401D163C242500A76BEA /* title.png in Resources */,
 				070E4023163C2EFB00A76BEA /* damage.mp3 in Resources */,
 			);

@@ -66,6 +66,11 @@ class MainScene : public CCLayer {
   void updateGUI();
   void pushInitialTracks(Map* map);
   
+  void addGameOverButtons();
+  void replayButtonPressed();
+  void titleButtonPressed();
+  void onGameOver();
+  
   void update(float dt);
   bool checkLevelUp();
   

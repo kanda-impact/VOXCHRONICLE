@@ -19,6 +19,7 @@
 #include "LuaObject.h"
 #include "FileUtils.h"
 #include "BlinkLayer.h"
+#include "TitleScene.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -57,17 +58,17 @@ bool MainScene::init() {
   _level = _map->createInitialLevel();
   _enemyManager->setLevel(_level);
   
-  _levelLabel = CCLabelTTF::create("", "Helvetica", 16);
+  _levelLabel = CCLabelTTF::create("", FONT_NAME, 16);
   _levelLabel->setPosition(CCPointMake(40, 280));
-  _hpLabel = CCLabelTTF::create("", "Helvetica", 16);
+  _hpLabel = CCLabelTTF::create("", FONT_NAME, 16);
   _hpLabel->setPosition(CCPointMake(400, 290));
-  _mpLabel = CCLabelTTF::create("", "Helvetica", 16);
+  _mpLabel = CCLabelTTF::create("", FONT_NAME, 16);
   _mpLabel->setPosition(CCPointMake(400, 270));
-  _expLabel = CCLabelTTF::create("", "Helvetica", 16);
+  _expLabel = CCLabelTTF::create("", FONT_NAME, 16);
   _expLabel->setPosition(CCPointMake(40, 260));
-  _nextExpLabel = CCLabelTTF::create("", "Helvetica", 16);
+  _nextExpLabel = CCLabelTTF::create("", FONT_NAME, 16);
   _nextExpLabel->setPosition(CCPointMake(40, 240));
-  _mapLabel = CCLabelTTF::create("", "Helvetica", 16);
+  _mapLabel = CCLabelTTF::create("", FONT_NAME, 16);
   _mapLabel->setPosition(CCPointMake(60, 220));
   this->addChild(_levelLabel);
   this->addChild(_hpLabel);
@@ -84,7 +85,7 @@ bool MainScene::init() {
   
   this->updateGUI();
   
-  _messageWindow = new MessageWindow("Helvetica", 64);
+  _messageWindow = new MessageWindow(FONT_NAME, 64);
   _messageWindow->retain();
   _messageWindow->setPosition(ccp(100, 100));
   
@@ -107,7 +108,12 @@ MainScene::~MainScene() {
 }
 
 void MainScene::update(float dt) {
-  _controller->setEnable(!_characterManager->isPerforming());
+  if (_state == VCStateMain) {
+    _controller->setEnable(!_characterManager->isPerforming());
+    if (_characterManager->getHP() <= 0) {
+      this->onGameOver();
+    }
+  }
 }
 
 void MainScene::onEnterTransitionDidFinish() {
@@ -159,19 +165,7 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
         }
         if (result == DamageTypeDeath) {
           // 死んだとき
-          _state = VCStateGameOver;
-          CCLabelTTF* gameOverLabel = CCLabelTTF::create("GAME OVER", "Helvetica", 48);
-          CCDirector* director = CCDirector::sharedDirector();
-          CCPoint center = CCPointMake(director->getWinSize().width / 2, director->getWinSize().height / 2);
-          CCLabelTTF* gameOverShadowLavel = CCLabelTTF::create("GAME OVER", "Helvetica", 48);
-          gameOverShadowLavel->setColor(ccc3(64, 64, 64));
-          gameOverShadowLavel->setPosition(ccpAdd(center, CCPointMake(3, -3)));
-          gameOverLabel->setPosition(center);
-          this->addChild(gameOverShadowLavel);
-          this->addChild(gameOverLabel);
-          _music->stop();
-          _controller->setVisible(false);
-          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/death.mp3").c_str());
+          this->onGameOver();
         }
         _enemyManager->removeEnemy(enemy);
       }
@@ -357,4 +351,52 @@ bool MainScene::checkLevelUp() {
     return true;
   }
   return false;
+}
+
+void MainScene::addGameOverButtons() {
+  CCLabelTTF* replayLabel = CCLabelTTF::create("リプレイ", "", 24);
+  CCLabelTTF* titleLabel = CCLabelTTF::create("タイトル", FONT_NAME, 24);
+  CCMenu* menu = CCMenu::create(CCMenuItemLabel::create(replayLabel, this, menu_selector(MainScene::replayButtonPressed)),
+                                CCMenuItemLabel::create(titleLabel, this, menu_selector(MainScene::titleButtonPressed)),
+                                NULL);
+  CCDirector* director = CCDirector::sharedDirector();
+  menu->setPosition(ccp(director->getWinSize().width / 2, 90));
+  menu->alignItemsVerticallyWithPadding(30);
+  this->addChild(menu);
+}
+
+void MainScene::replayButtonPressed() {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
+  CCScene* scene = CCScene::create();
+  scene->addChild(MainScene::create());
+  CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
+  CCDirector::sharedDirector()->replaceScene(transition);
+}
+
+void MainScene::titleButtonPressed() {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
+  CCScene* scene = CCScene::create();
+  scene->addChild(TitleScene::create());
+  CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
+  CCDirector::sharedDirector()->replaceScene(transition);
+}
+
+void MainScene::onGameOver() {
+  _state = VCStateGameOver;
+  CCLabelTTF* gameOverLabel = CCLabelTTF::create("GAME OVER", FONT_NAME, 48);
+  CCDirector* director = CCDirector::sharedDirector();
+  CCPoint center = CCPointMake(director->getWinSize().width / 2, director->getWinSize().height / 2);
+  CCLabelTTF* gameOverShadowLavel = CCLabelTTF::create("GAME OVER", FONT_NAME, 48);
+  gameOverShadowLavel->setColor(ccc3(64, 64, 64));
+  gameOverShadowLavel->setPosition(center);
+  gameOverLabel->setPosition(ccpAdd(ccp(gameOverShadowLavel->getContentSize().width / 2, gameOverShadowLavel->getContentSize().height / 2), ccp(3, -3)));
+  this->addChild(gameOverShadowLavel);
+  gameOverShadowLavel->addChild(gameOverLabel);
+  gameOverShadowLavel->runAction(CCSequence::create(CCDelayTime::create(2.0),
+                                                    CCMoveTo::create(0.2, ccp(director->getWinSize().width / 2, 200)),
+                                                    CCCallFunc::create(this, callfunc_selector(MainScene::addGameOverButtons)),
+                                                    NULL));
+  _music->stop();
+  _controller->setVisible(false);
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/death.mp3").c_str());
 }
