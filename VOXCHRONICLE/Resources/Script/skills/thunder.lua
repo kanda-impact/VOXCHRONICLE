@@ -5,7 +5,7 @@ Skill = {
   mp = 2,
   common = false,
   maxRepeat = 1,
-  turn = 2,
+  turn = 1,
   skillRange = SkillRangeAll,
   skillType = SkillTypeMagical
 }

@@ -246,7 +246,7 @@ void MainScene::updateGUI() {
 }
 
 void MainScene::pushInitialTracks(Map *map) {
-  string main(_map->getPrefixedMusicName("silent.wav"));
+  string main(_map->getPrefixedMusicName("wait.wav"));
   string counter(_map->getPrefixedMusicName("counter0.wav"));
   string drum(_map->getPrefixedMusicName("drum0.wav"));
   _music->pushTrack(main.c_str(), 0);

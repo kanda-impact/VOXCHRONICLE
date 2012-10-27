@@ -89,7 +89,7 @@ const char* CharacterManager::checkSkillTrackName(Skill* skill, SkillPerformType
     _repeatCount = 0;
     this->setLastSkill(skill);
   }
-  return "silent";
+  return "wait";
 }
 
 bool CharacterManager::isPerforming() {
