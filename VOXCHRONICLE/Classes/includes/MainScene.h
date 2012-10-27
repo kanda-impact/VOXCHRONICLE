@@ -67,8 +67,8 @@ class MainScene : public CCLayer {
   void pushInitialTracks(Map* map);
   
   void addGameOverButtons();
-  void replayButtonPressed();
-  void titleButtonPressed();
+  void replayButtonPressed(CCObject *sender);
+  void titleButtonPressed(CCObject *sender);
   void onGameOver();
   
   void update(float dt);

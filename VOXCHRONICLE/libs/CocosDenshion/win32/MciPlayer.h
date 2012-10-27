@@ -16,7 +16,7 @@ public:
 
     /**
     @brief ²¥·ÅÉùÒôÎÄ¼ş
-    @param pFileName ²¥·ÅµÄÉùÒôÎÄ¼şÃû³Æ£¬ĞèÒª°üº¬ÎÄ¼şµÄÂ·¾¶
+    @param pFileName ²¥·ÅµÄÉùÒôÎÄ¼şÃû³Æ£¬ĞèÒª°E¬ÎÄ¼şµÄÂ·¾¶
     @param nTimes    ²¥·ÅÉùÒôÎÄ¼şµÄÑ­»·´ÎÊı£¬Ä¬ÈÏÖµÎª 1£¬¼´²¥·ÅÒ»´Î
     */
     void Open(const char* pFileName, UINT uId);
@@ -24,17 +24,17 @@ public:
     void Play(UINT uTimes = 1);
 
     /**
-    @brief ÔİÍ£²¥·ÅÉùÒô
+    @brief ÔİÍ£²¥·ÅÉùÒE
     */
     void Pause();
 
     /**
-    @brief ¼ÌĞø²¥·ÅÉùÒô
+    @brief ¼ÌĞø²¥·ÅÉùÒE
     */
     void Resume();
 
     /**
-    @brief Í£Ö¹²¥·ÅÉùÒô
+    @brief Í£Ö¹²¥·ÅÉùÒE
     */
     void Stop();
 

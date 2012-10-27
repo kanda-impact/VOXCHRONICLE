@@ -131,7 +131,7 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
           enemy->moveRow(-1);
         }
       } else {
-        int damage = round(enemy->getAttack() * _characterManager->getLevelOffsetRate(enemy->getLevel(), _characterManager->getLevel()));
+        int damage = floor(0.5 + enemy->getAttack() * _characterManager->getLevelOffsetRate(enemy->getLevel(), _characterManager->getLevel()));
         DamageType result = _characterManager->damage(damage);
         // 被ダメージ表示しちゃう
         CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(damage).c_str(),
@@ -370,7 +370,7 @@ void MainScene::addGameOverButtons() {
   this->addChild(menu);
 }
 
-void MainScene::replayButtonPressed() {
+void MainScene::replayButtonPressed(CCObject *sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   CCScene* scene = CCScene::create();
   scene->addChild(MainScene::create());
@@ -378,7 +378,7 @@ void MainScene::replayButtonPressed() {
   CCDirector::sharedDirector()->replaceScene(transition);
 }
 
-void MainScene::titleButtonPressed() {
+void MainScene::titleButtonPressed(CCObject *sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   CCScene* scene = CCScene::create();
   scene->addChild(TitleScene::create());

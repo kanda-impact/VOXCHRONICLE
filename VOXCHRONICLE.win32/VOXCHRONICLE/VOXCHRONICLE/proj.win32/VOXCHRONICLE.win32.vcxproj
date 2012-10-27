@@ -137,6 +137,7 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\BlinkLayer.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Character.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\CharacterManager.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Controller.h" />
@@ -155,6 +156,7 @@
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Music.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Skill.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\SkillTrigger.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\TitleScene.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Track.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\TrackCache.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Utils.h" />
@@ -177,6 +179,8 @@
     <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Model\Skill.cpp" />
     <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Scene\LogoScene.cpp" />
     <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Scene\MainScene.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Scene\TitleScene.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\UI\BlinkLayer.cpp" />
     <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\UI\Controller.cpp" />
     <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\UI\MessageWindow.cpp" />
     <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\UI\SkillTrigger.cpp" />

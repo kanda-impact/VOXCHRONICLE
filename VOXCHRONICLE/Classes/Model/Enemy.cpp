@@ -100,7 +100,7 @@ void Enemy::moveRow(float r) {
 
 DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager) {
   // ToDo 属性によるダメージ軽減とかもこの辺に載せてやる
-  int damage = round(skill->getPowerWithTension(characterManager->getTension()));
+  int damage = floor(0.5 + skill->getPowerWithTension(characterManager->getTension()));
   DamageType type = DamageTypeHit;
   if (skill->getType() == SkillTypePhysical && this->getType() == SkillTypePhysical) {
     type = DamageTypePhysicalTolerant;
