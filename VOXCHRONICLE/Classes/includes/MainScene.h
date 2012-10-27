@@ -23,6 +23,7 @@
 #include "MessageWindow.h"
 
 typedef enum {
+  VCStateIntro,
   VCStateMain,
   VCStateGameOver,
   VCStateBoss,
@@ -37,6 +38,7 @@ class MainScene : public CCLayer {
  private:
   int _preLevel;
   int _turnCount;
+  int _mapTurnCount;
   Music* _music;
   Controller* _controller;
   EnemyManager* _enemyManager;

@@ -28,6 +28,7 @@ Map::Map(const char* mapName) {
   CCLuaValueArray* nexts = _lua->getArray("nextMaps");
   _initialLevel = _lua->getInt("initialLevel");
   _maxLevel = _lua->getInt("maxLevel");
+  _introCount = _lua->getInt("introCount");
   _nextMaps = new vector<string>();
   _fixedEnemyTable = new list< pair<string, int> >();
   for (CCLuaValueArray::const_iterator it = nexts->begin(); it != nexts->end(); ++it) {
@@ -119,6 +120,10 @@ CCArray* Map::getNextMaps() {
 
 string* Map::getName() {
   return _name;
+}
+
+int Map::getIntroCount() {
+  return _introCount;
 }
 
 CCArray* Map::getFixedEnemies(int preExp, int currentExp) {

@@ -22,6 +22,7 @@ class Map :public CCObject {
   int _endLevel;
   int _initialLevel;
   int _maxLevel;
+  int _introCount;
   const char* _slug;
   vector<string>* _nextMaps;
   string* _name;
@@ -37,6 +38,7 @@ class Map :public CCObject {
   string getPrefixedMusicName(const char* musicName);
   int getMaxLevel();
   int getInitialLevel();
+  int getIntroCount();
   string* getName();
   CCArray* getFixedEnemies(int preExp, int currentExp);
   CCArray* getNextMaps();

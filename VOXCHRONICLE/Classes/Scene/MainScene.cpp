@@ -32,6 +32,9 @@ bool MainScene::init() {
   _music->setTrackDidFinishFunction(boost::bind(&MainScene::trackDidFinishPlaying, this, _1, _2, _3, _4));
   _music->setTrackWillFinishFunction(boost::bind(&MainScene::trackWillFinishPlaying, this, _1, _2, _3, _4));
   
+  _turnCount = 0;
+  _mapTurnCount = 0;
+  
   LuaObject* setting = new LuaObject("Script/setting", "Setting");
   setting->autorelease();
   
@@ -76,7 +79,7 @@ bool MainScene::init() {
   
   this->pushInitialTracks(_map);
   
-  _state = VCStateMain;
+  _state = VCStateIntro;
   
   this->updateGUI();
   
@@ -88,7 +91,6 @@ bool MainScene::init() {
   
   this->scheduleUpdate();
   _preLevel = _level->getLevel();
-  _turnCount = 0;
   return true;
 }
 
@@ -136,7 +138,28 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
 }
 
 void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track *nextTrack, int trackNumber) {
-  if (_state == VCStateMain) {
+  // Stateによらずターンカウントを進める
+  if (trackNumber == 0) {
+    ++_turnCount;
+    ++_mapTurnCount;
+  }
+  if (_state == VCStateIntro) {
+    if (_mapTurnCount < _map->getIntroCount()) {
+      if (trackNumber == 0) {
+        stringstream intro;
+        intro << "intro" << _mapTurnCount << ".wav";
+        _music->pushTrack(_map->getPrefixedMusicName(intro.str().c_str()).c_str(), 0);
+        _music->pushTrack(_map->getPrefixedMusicName("silent.wav").c_str(), 1);
+        _music->pushTrack(_map->getPrefixedMusicName("silent.wav").c_str(), 2);
+      } else {
+        _music->pushTrack(_map->getPrefixedMusicName("wait.wav").c_str(), 0);
+        _music->pushTrack(_map->getPrefixedMusicName("counter0.wav").c_str(), 1);
+        _music->pushTrack(_map->getPrefixedMusicName("drum0.wav").c_str(), 2);
+      }
+    } else {
+      _state = VCStateMain;
+    }
+  } else if (_state == VCStateMain) {
     if (trackNumber == 0) {
       Skill* skill = NULL;
       if (_characterManager->isPerforming()) {
@@ -165,11 +188,11 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
           damageLabel->setScale(scale);
           this->addChild(damageLabel);
           damageLabel->runAction(CCSequence::create(
-                                             CCFadeIn::create(0.2),
-                                             CCDelayTime::create(0.5),
-                                             CCFadeOut::create(0.2),
-                                             CCCallFunc::create(damageLabel, callfunc_selector(CCSprite::removeFromParentAndCleanup)),
-                                             NULL));
+                                                    CCFadeIn::create(0.2),
+                                                    CCDelayTime::create(0.5),
+                                                    CCFadeOut::create(0.2),
+                                                    CCCallFunc::create(damageLabel, callfunc_selector(CCSprite::removeFromParentAndCleanup)),
+                                                    NULL));
         }
         int getExp = ((CCInteger*)info->objectForKey("exp"))->getValue();
         _enemyManager->unshiftEnemiesQueue(_map->getFixedEnemies(preExp, preExp + getExp));
@@ -179,7 +202,6 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         _characterManager->useMP(-1);
       }
       _controller->updateSkills(_characterManager);
-      ++_turnCount;
     } else if (trackNumber == 1) {
       stringstream ss;
       Enemy* nearest = _enemyManager->getNearestEnemy();
@@ -220,6 +242,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       TrackCache::sharedCache()->purgeAllTracks();
       this->pushInitialTracks(_map);
       this->updateGUI();
+      _mapTurnCount = 0; // マップカウント0に戻す
       _state = VCStateMain;
     }
   }
@@ -246,9 +269,18 @@ void MainScene::updateGUI() {
 }
 
 void MainScene::pushInitialTracks(Map *map) {
-  string main(_map->getPrefixedMusicName("wait.wav"));
-  string counter(_map->getPrefixedMusicName("counter0.wav"));
-  string drum(_map->getPrefixedMusicName("drum0.wav"));
+  string main, counter, drum;
+  if (map->getIntroCount() == 0) {
+    // イントロなしのとき、いきなり曲を鳴らします
+    main = map->getPrefixedMusicName("wait.wav");
+    counter= map->getPrefixedMusicName("counter0.wav");
+    drum = map->getPrefixedMusicName("drum0.wav");
+  } else {
+    // イントロありのとき、イントロを鳴らします
+    main = map->getPrefixedMusicName("intro0.wav");
+    counter = map->getPrefixedMusicName("silent.wav");
+    drum = map->getPrefixedMusicName("silent.wav");
+  }
   _music->pushTrack(main.c_str(), 0);
   _music->pushTrack(counter.c_str(), 1);
   _music->pushTrack(drum.c_str(), 2);
@@ -260,7 +292,6 @@ bool MainScene::checkLevelUp() {
   int currentLevel = _characterManager->getLevel();
   if (currentLevel != _preLevel) {
     _preLevel = currentLevel;
-    cout << "Level Up!" << endl;
     _characterManager->updateParameters();
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/levelup.caf").c_str());
     _level = _map->createLevel(currentLevel);

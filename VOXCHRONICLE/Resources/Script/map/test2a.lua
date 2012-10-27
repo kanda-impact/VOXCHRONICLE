@@ -1,6 +1,7 @@
 Map = {
   name = "テストマップ2a",
   prefix = "dub",
+  introCount = 0,
   backgroundImage = "",
   nextMaps = {},
   initialLevel = 10,
