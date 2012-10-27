@@ -38,6 +38,7 @@ class Skill :public CCObject {
   int _turn;
   int _power;
   int _mp;
+  int _tensionLevel;
   bool _common;
   std::string* _name;
   const char* _slug;
@@ -55,6 +56,7 @@ class Skill :public CCObject {
   int getMP();
   int getAcquirementLV();
   void setAcquirementLV(int lv);
+  int getTensionLevel();
   bool isCommon();
   SkillRange getRange();
   SkillType getType();

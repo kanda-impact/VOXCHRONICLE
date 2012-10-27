@@ -120,7 +120,7 @@ void VISS::Music::update(float dt) {
     if (it->size() == 0) continue;
     Track* current = it->front();
     float sub = current->getDuration() - current->getPosition();
-    if (!_willFinish.at(trackNumber) && (sub < 0.20 || !current->isPlaying())) {
+    if (!_willFinish.at(trackNumber) && (sub < 0.15 || !current->isPlaying())) {
       //終わりそうなとき
       if (_trackWillFinishFunction != NULL) {
         _trackWillFinishFunction(this, current, NULL, trackNumber);

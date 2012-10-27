@@ -23,6 +23,7 @@ Skill::Skill(const char* slug) {
   _common = _lua->getBoolean("common");
   _maxRepeat = _lua->getInt("maxRepeat");
   _turn = _lua->getInt("turn");
+  _tensionLevel = _lua->getInt("tensionLevel");
   _range = (SkillRange)_lua->getInt("skillRange");
   _type = (SkillType)_lua->getInt("skillType");
 }
@@ -78,4 +79,8 @@ int Skill::getAcquirementLV() {
 
 void Skill::setAcquirementLV(int lv) {
   _acquirementLV = lv;
+}
+
+int Skill::getTensionLevel() {
+  return _tensionLevel;
 }

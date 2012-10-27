@@ -3,6 +3,7 @@ Skill = {
   slug = "change",
   power = 0,
   mp = 0,
+  tensionLevel = 0,
   common = false,
   maxRepeat = 1,
   turn = 1,

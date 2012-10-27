@@ -13,6 +13,13 @@
 #include "cocos2d.h"
 #include "Skill.h"
 
+typedef enum {
+  SkillButtonStateNormal,    // 使用可能な状態です
+  SkillButtonStateSelected,  // 選択状態です
+  SkillButtonStateDisable,   // テンションレベルが足りなかったり、封印されていて使用できない状態です
+  SkillButtonStateUnknown    // 習得前の状態です
+} SkillButtonState;
+
 using namespace cocos2d;
 
 /**
@@ -21,8 +28,8 @@ using namespace cocos2d;
 class SkillTrigger : public CCSprite, CCTouchDelegate {
  private:
   bool _press;
-  bool _enable;
   Skill* _skill;
+  SkillButtonState _state;
   
  public:
   static SkillTrigger* create(const char* filename);
@@ -32,8 +39,8 @@ class SkillTrigger : public CCSprite, CCTouchDelegate {
   void setSkill(Skill* skill);
   ~SkillTrigger();
   SkillTrigger();
-  bool getEnable();
-  void setEnable(bool e);
+  int getSkillButtonState();
+  void setSkillButtonState(SkillButtonState state);
 };
 
 #endif /* defined(__VOXCHRONICLE__SkillTrigger__) */

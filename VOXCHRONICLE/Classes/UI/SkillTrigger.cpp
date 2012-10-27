@@ -24,7 +24,7 @@ SkillTrigger* SkillTrigger::create(const char *pszFileName) {
 SkillTrigger::SkillTrigger() : CCSprite() {
   _press = false;
   _skill = NULL;
-  _enable = true;
+  _state = SkillButtonStateNormal;
 }
 
 SkillTrigger::~SkillTrigger() {
@@ -36,12 +36,14 @@ bool SkillTrigger::getPress() {
 }
 
 void SkillTrigger::setPress(bool press) {
-  if (!_enable) return;
+  if (_state != SkillButtonStateNormal && _state != SkillButtonStateSelected) return;
   _press = press;
   if (press) {
+    _state = SkillButtonStateSelected;
     CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath("Image/Main/UI/trigger_bg_selected.png").c_str());
     this->setTexture(texture);
   } else {
+    _state = SkillButtonStateNormal;
     CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath("Image/Main/UI/trigger_bg.png").c_str());
     this->setTexture(texture);
   }
@@ -71,20 +73,29 @@ void SkillTrigger::setSkill(Skill* skill) {
     }
     this->addChild(icon, 1000, iconTag);
   }
-  this->setEnable(true);
+  this->setSkillButtonState(SkillButtonStateNormal);
 }
 
-bool SkillTrigger::getEnable() {
-  return _enable;
+int SkillTrigger::getSkillButtonState() {
+  return _state;
 }
 
-void SkillTrigger::setEnable(bool e) {
-  _enable = e;
+void SkillTrigger::setSkillButtonState(SkillButtonState state) {
+  _state = state;
+  if (_state == SkillButtonStateSelected) {
+    this->setPress(true);
+  } else {
+    this->setPress(false);
+  }
   float opacity = 255;
-  if (!_enable) {
+  if (_state == SkillButtonStateUnknown || _state == SkillButtonStateDisable) {
     opacity = 64;
   }
   this->setOpacity(opacity);
   CCSprite* icon = (CCSprite*)this->getChildByTag(1);
-  icon->setOpacity(opacity);
+  if (_state == SkillButtonStateUnknown) {
+    icon->setOpacity(0);
+  } else {
+    icon->setOpacity(opacity);
+  }
 }

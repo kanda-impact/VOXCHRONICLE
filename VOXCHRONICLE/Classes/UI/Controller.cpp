@@ -54,7 +54,7 @@ bool Controller::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
   CCObject* trigger = NULL;
   CCARRAY_FOREACH(_triggers, trigger) {
     CCPoint p = ((SkillTrigger*)trigger)->convertTouchToNodeSpace(pTouch);
-    if (((SkillTrigger*)trigger)->getEnable() && ccpDistance(triggerCenter, p) < triggerRadius) {
+    if (((SkillTrigger*)trigger)->getSkillButtonState() == SkillButtonStateNormal && ccpDistance(triggerCenter, p) < triggerRadius) {
       this->resetAllTriggers();
       CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("cursor.mp3");
       ((SkillTrigger*)trigger)->setPress(true);
@@ -93,7 +93,16 @@ void Controller::updateSkills(CharacterManager* manager) {
     Skill* skill = (Skill*)allSkills->objectAtIndex(i);
     SkillTrigger* trigger = (SkillTrigger*)_triggers->objectAtIndex(i);
     trigger->setSkill(skill);
-    trigger->setEnable(skills->containsObject(skill));
+    if (!skills->containsObject(skill)) {
+      // 習得済みスキルに入ってないとき、未習得状態に
+      trigger->setSkillButtonState(SkillButtonStateUnknown);
+    } else if (skill->getTensionLevel() > manager->getTension()) {
+      // テンションレベルが足りないとき、使用不可状態に
+      trigger->setSkillButtonState(SkillButtonStateDisable);
+    } else {
+      // その他のとき、通常状態に
+      trigger->setSkillButtonState(SkillButtonStateNormal);
+    }
   }
 }
 

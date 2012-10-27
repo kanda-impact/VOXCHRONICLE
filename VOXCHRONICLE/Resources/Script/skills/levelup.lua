@@ -3,6 +3,7 @@ Skill = {
   slug = "tension",
   power = 1,
   mp = 0,
+  tensionLevel = 0,
   common = true,
   maxRepeat = 1,
   turn = 1,

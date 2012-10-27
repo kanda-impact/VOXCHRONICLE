@@ -3,6 +3,7 @@ Skill = {
   slug = "magic",
   power = 1,
   mp = 1,
+  tensionLevel = 0,
   common = false,
   maxRepeat = 4,
   turn = 1,

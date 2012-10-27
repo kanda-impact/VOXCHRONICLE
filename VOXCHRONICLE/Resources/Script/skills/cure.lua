@@ -3,6 +3,7 @@ Skill = {
   slug = "cure",
   power = 0,
   mp = 1,
+  tensionLevel = 0,
   common = false,
   maxRepeat = 1,
   turn = 1,

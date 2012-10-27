@@ -361,7 +361,7 @@ void MainScene::addGameOverButtons() {
                                 NULL);
   CCDirector* director = CCDirector::sharedDirector();
   menu->setPosition(ccp(director->getWinSize().width / 2, 90));
-  menu->alignItemsVerticallyWithPadding(30);
+  menu->alignItemsVerticallyWithPadding(20);
   this->addChild(menu);
 }
 
@@ -389,7 +389,7 @@ void MainScene::onGameOver() {
   CCLabelTTF* gameOverShadowLavel = CCLabelTTF::create("GAME OVER", FONT_NAME, 48);
   gameOverShadowLavel->setColor(ccc3(64, 64, 64));
   gameOverShadowLavel->setPosition(center);
-  gameOverLabel->setPosition(ccpAdd(ccp(gameOverShadowLavel->getContentSize().width / 2, gameOverShadowLavel->getContentSize().height / 2), ccp(3, -3)));
+  gameOverLabel->setPosition(ccpAdd(ccp(gameOverShadowLavel->getContentSize().width / 2, gameOverShadowLavel->getContentSize().height / 2), ccp(-3, 3)));
   this->addChild(gameOverShadowLavel);
   gameOverShadowLavel->addChild(gameOverLabel);
   gameOverShadowLavel->runAction(CCSequence::create(CCDelayTime::create(2.0),
