@@ -7,7 +7,9 @@
 //
 
 #include <vector>
+#include <sstream>
 #include <boost/algorithm/string.hpp>
+#include <boost/algorithm/string/predicate.hpp>
 #include <boost/tokenizer.hpp>
 #include "FileUtils.h"
 #include "macros.h"
@@ -16,9 +18,11 @@ using namespace std;
 using namespace boost;
 
 string FileUtils::getFilePath(const char *filepath) {
-#if IS_IOS
   std::string path(filepath);
-  
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+  return path;
+
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
   typedef boost::char_separator<char> char_separator;
   typedef boost::tokenizer<char_separator> tokenizer;
   
@@ -30,7 +34,5 @@ string FileUtils::getFilePath(const char *filepath) {
     results.push_back(*tok_iter);
   }
   return results.back().c_str();
-#else
-  return filepath;
 #endif
 }

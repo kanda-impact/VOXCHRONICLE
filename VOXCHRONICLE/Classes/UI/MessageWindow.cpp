@@ -20,8 +20,8 @@ MessageWindow::MessageWindow(const char* fontName, int size) {
   _label->retain();
   _label->setColor(ccc3(255, 255, 255));
   this->addChild(_label);
-  _onFinishedFunction = NULL;
-  _onUpdatedFunction = NULL;
+  //_onFinishedFunction = NULL;
+  //_onUpdatedFunction = NULL;
   _ended = false;
 }
 
@@ -43,18 +43,18 @@ void MessageWindow::update(float dt) {
   }
   int updated = floor(_textTimer);
   if (updated >= 1) {
-    if (_onUpdatedFunction) {
+    /*if (_onUpdatedFunction) {
       _onUpdatedFunction(this->getCurrentWholeMessage().substr(_textIndex, updated), this);
-    }
+    }*/
     _textTimer -= updated;
     _textIndex += updated;
   }
   if (!_ended && _textIndex > this->getCurrentWholeMessage().length() - 1) {
     _ended = true;
     _textIndex = this->getCurrentWholeMessage().length() - 1;
-    if (_onFinishedFunction) {
+    /*if (_onFinishedFunction) {
       _onFinishedFunction(this->getCurrentWholeMessage(), this);
-    }
+    }*/
     SEL_SCHEDULE sel = (SEL_SCHEDULE)schedule_selector(MessageWindow::updateNextMessage);
     CCDirector::sharedDirector()->getScheduler()->scheduleSelector(sel, this, _delay, false, 1, 0);
   }
@@ -75,13 +75,15 @@ void MessageWindow::setMessageSpeed(int speed) {
   _messageSpeed = speed;
 }
 
-void MessageWindow::setOnMessageFinishedFunction(function<void (string, MessageWindow *)> finish) {
+/*
+void MessageWindow::setOnMessageFinishedFunction(boost::function<void (string, MessageWindow *)> finish) {
   _onFinishedFunction = finish;
 }
 
-void MessageWindow::setOnMessageUpdatedFunction(function<void (string, MessageWindow *)> update) {
+void MessageWindow::setOnMessageUpdatedFunction(boost::function<void (string, MessageWindow *)> update) {
   _onUpdatedFunction = update;
 }
+*/
 
 bool MessageWindow::isLastMessage() {
   return _messageQueue->size() <= 1;

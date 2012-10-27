@@ -12,7 +12,7 @@
 
 Character::Character(const char* slug) {
   stringstream ss;
-  ss << "Script/skills/" << slug;
+  ss << "Script/character/" << slug;
   _lua = new LuaObject(ss.str().c_str());
   _skills = CCArray::create();
   _skills->retain();

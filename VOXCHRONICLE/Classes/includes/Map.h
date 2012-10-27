@@ -34,7 +34,7 @@ class Map :public CCObject {
   ~Map();
   Level* createLevel(int lebel);
   Level* createInitialLevel();
-  const char* getPrefixedMusicName(const char* musicName);
+  string getPrefixedMusicName(const char* musicName);
   int getMaxLevel();
   int getInitialLevel();
   string* getName();

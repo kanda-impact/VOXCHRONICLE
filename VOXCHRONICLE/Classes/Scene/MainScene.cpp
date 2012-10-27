@@ -83,8 +83,6 @@ bool MainScene::init() {
   _messageWindow = new MessageWindow("Helvetica", 64);
   _messageWindow->retain();
   _messageWindow->setPosition(ccp(100, 100));
-  _messageWindow->pushMessage(L"あああああああああ");
-  _messageWindow->pushMessage(L"ういいいいいいいいい");
   
   this->addChild(_messageWindow);
   

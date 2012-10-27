@@ -151,7 +151,7 @@ int CharacterManager::getExpWithLevel(int level) {
 
 int CharacterManager::executeLuaFunction(const char *methodName, int argument) {
   CCLuaEngine* engine = CCLuaEngine::defaultEngine();
-  std::string path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("character.lua");
+  std::string path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("Script/character/character.lua");
   engine->executeScriptFile(path.c_str());
   lua_State* L = engine->getLuaState();
   lua_getglobal(L, methodName);

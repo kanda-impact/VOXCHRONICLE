@@ -93,10 +93,10 @@ Level* Map::createInitialLevel() {
   return this->createLevel(_initialLevel);
 }
 
-const char* Map::getPrefixedMusicName(const char *musicName) {
+string Map::getPrefixedMusicName(const char *musicName) {
   stringstream ss;
   ss << "Music/" << _prefix->c_str() << "/" << _prefix->c_str() << "_" << musicName;
-  return FileUtils::getFilePath(ss.str().c_str()).c_str();
+  return FileUtils::getFilePath(ss.str().c_str());
 }
 
 int Map::getMaxLevel() {

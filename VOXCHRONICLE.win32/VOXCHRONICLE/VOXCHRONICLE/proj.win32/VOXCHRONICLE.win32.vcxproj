@@ -87,8 +87,13 @@
       </DllDataFileName>
     </Midl>
     <PreBuildEvent>
-      <Command>xcopy /Y /E $(SolutionDir)..\..\VOXCHRONICLE\Resources\*.* $(OutDir)</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -137,6 +142,7 @@
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Controller.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Enemy.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\EnemyManager.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\FileUtils.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Level.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\LogoScene.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\LuaBind.h" />
@@ -145,6 +151,7 @@
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\MainScene.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Map.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\MapSelector.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\MessageWindow.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Music.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Skill.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\SkillTrigger.h" />
@@ -171,7 +178,9 @@
     <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Scene\LogoScene.cpp" />
     <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Scene\MainScene.cpp" />
     <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\UI\Controller.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\UI\MessageWindow.cpp" />
     <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\UI\SkillTrigger.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Util\FileUtils.cpp" />
     <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Util\Utils.cpp" />
     <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\VISS\Music.cpp" />
     <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\VISS\Track.cpp" />
