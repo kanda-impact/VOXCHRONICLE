@@ -403,6 +403,7 @@
 		07F0D781163BEDA0005592AF /* dub_run0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D77C163BEDA0005592AF /* dub_run0.wav */; };
 		07F0D782163BEDA0005592AF /* dub_run1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D77D163BEDA0005592AF /* dub_run1.wav */; };
 		07F0D783163BEDA0005592AF /* dub_wait.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D77E163BEDA0005592AF /* dub_wait.wav */; };
+		07F0D785163BF199005592AF /* dub_shield0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D784163BF198005592AF /* dub_shield0.wav */; };
 		07FA3B2C16107FCC00E9C7DE /* decide.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07FA3B2B16107F0400E9C7DE /* decide.caf */; };
 		07FD921E1621099B00E74459 /* vox.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921D1621099B00E74459 /* vox.lua */; };
 		07FD922016210A2300E74459 /* lsk.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921F16210A2300E74459 /* lsk.lua */; };
@@ -1126,6 +1127,7 @@
 		07F0D77C163BEDA0005592AF /* dub_run0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_run0.wav; path = Resources/Music/dub/dub_run0.wav; sourceTree = "<group>"; };
 		07F0D77D163BEDA0005592AF /* dub_run1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_run1.wav; path = Resources/Music/dub/dub_run1.wav; sourceTree = "<group>"; };
 		07F0D77E163BEDA0005592AF /* dub_wait.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_wait.wav; path = Resources/Music/dub/dub_wait.wav; sourceTree = "<group>"; };
+		07F0D784163BF198005592AF /* dub_shield0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_shield0.wav; path = Resources/Music/dub/dub_shield0.wav; sourceTree = "<group>"; };
 		07FA3B2B16107F0400E9C7DE /* decide.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = decide.caf; path = Resources/SE/decide.caf; sourceTree = "<group>"; };
 		07FD921D1621099B00E74459 /* vox.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vox.lua; path = character/vox.lua; sourceTree = "<group>"; };
 		07FD921F16210A2300E74459 /* lsk.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lsk.lua; path = character/lsk.lua; sourceTree = "<group>"; };
@@ -1435,6 +1437,7 @@
 				07E135461624A7BE00CCF72E /* dub_voxattack3.wav */,
 				07E135471624A7BE00CCF72E /* dub_voxchange0.wav */,
 				07E135481624A7BE00CCF72E /* dub_voxknockback0.wav */,
+				07F0D784163BF198005592AF /* dub_shield0.wav */,
 			);
 			name = dub;
 			sourceTree = "<group>";
@@ -2734,6 +2737,7 @@
 				07F0D781163BEDA0005592AF /* dub_run0.wav in Resources */,
 				07F0D782163BEDA0005592AF /* dub_run1.wav in Resources */,
 				07F0D783163BEDA0005592AF /* dub_wait.wav in Resources */,
+				07F0D785163BF199005592AF /* dub_shield0.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
