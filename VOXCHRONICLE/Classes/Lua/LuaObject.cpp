@@ -7,6 +7,8 @@
 //
 
 #include <sstream>
+#include <boost/lexical_cast.hpp>
+#include <boost/algorithm/string/predicate.hpp>
 #include "LuaObject.h"
 #include "LuaBind.h"
 #include "FileUtils.h"
@@ -33,7 +35,7 @@ void LuaObject::init(const char* scriptName, const char* className) {
   _engine = CCLuaEngine::create();
   string name(scriptName);
   stringstream ss;
-  if (name.size() <= 4 || name.substr(name.size() - 4, 4) != ".lua") {
+  if (!boost::algorithm::iends_with(name, ".lua")) {
     ss << name << ".lua";
     name = ss.str();
   }
@@ -193,9 +195,7 @@ CCLuaValueDict* LuaObject::recursivelyLoadTable(int index) {
       string key = "";
       if (lua_isnumber(state, -2)) {
         int number = (int)lua_tonumber(state, -2);
-        stringstream ss;
-        ss << number;
-        key = ss.str();
+        key = boost::lexical_cast<string>(number);
       } else if (lua_isstring(state, -2)) {
         key = lua_tostring(state, -2);
       } else {
@@ -261,9 +261,7 @@ CCLuaValueDict* LuaObject::loadLuaTableFromFile(const char* scriptName) {
 CCLuaValueArray* LuaObject::luaTableToArray(CCLuaValueDict* dict) {
   CCLuaValueArray* array = new CCLuaValueArray();
   for (int i = 1; i <= dict->size(); ++i) {
-    stringstream ss;
-    ss << i;
-    array->push_back((*dict)[ss.str()]);
+    array->push_back((*dict)[boost::lexical_cast<string>(i)]);
   }
   return array;
 }

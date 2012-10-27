@@ -160,9 +160,8 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         CCArray* damages = (CCArray*)info->objectForKey("damages");
         for (int i = 0; i < enemies->count(); ++i) {
           Enemy* enemy = (Enemy*)enemies->objectAtIndex(i);
-          stringstream damageStream;
-          damageStream << ((CCInteger*)damages->objectAtIndex(i))->getValue();
-          CCLabelAtlas* damageLabel = CCLabelAtlas::create(damageStream.str().c_str(), FileUtils::getFilePath("Image/Main/UI/damage_number.png").c_str(), 50, 100, '0');
+          CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(((CCInteger*)damages->objectAtIndex(i))->getValue()).c_str(),
+                                                           FileUtils::getFilePath("Image/Main/UI/damage_number.png").c_str(), 50, 100, '0');
           damageLabel->setPosition(enemy->getPosition());
           float scale = enemy->getCurrentScale(enemy->getRow());
           damageLabel->setScale(scale);
@@ -238,23 +237,13 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
 }
 
 void MainScene::updateGUI() {
-  stringstream ss;
-  ss <<_characterManager->getHP();
-  _hpLabel->setString(ss.str().c_str());
-  ss.str("");
-  ss <<_characterManager->getMP();
-  _mpLabel->setString(ss.str().c_str());
-  ss.str("");
-  ss << _characterManager->getLevel();
-  _levelLabel->setString(ss.str().c_str());
-  ss.str("");
-  ss << _characterManager->getExp();
-  _expLabel->setString(ss.str().c_str());
-  ss.str("");
+  _hpLabel->setString(boost::lexical_cast<string>(_characterManager->getHP()).c_str());
+  _mpLabel->setString(boost::lexical_cast<string>(_characterManager->getMP()).c_str());
+  _levelLabel->setString(boost::lexical_cast<string>(_characterManager->getLevel()).c_str());
+  _expLabel->setString(boost::lexical_cast<string>(_characterManager->getExp()).c_str());
   int currentLevel = _level->getLevel();
   int nextExp = _characterManager->getExpWithLevel(currentLevel + 1);
-  ss << nextExp;
-  _nextExpLabel->setString(ss.str().c_str());
+  _nextExpLabel->setString(boost::lexical_cast<string>(nextExp).c_str());
   _mapLabel->setString(_map->getName()->c_str());
 }
 

@@ -6,6 +6,7 @@
 //
 //
 
+#include <boost/lexical_cast.hpp>
 #include "Character.h"
 #include "Skill.h"
 
@@ -17,9 +18,7 @@ Character::Character(const char* slug) {
   _skills->retain();
   CCLuaValueDict* sks = _lua->getTable("skills");
   for (int i = 1; i <= sks->size(); ++i) {
-    stringstream ss;
-    ss << i;
-    CCLuaValueDict a = (*sks)[ss.str()].dictValue();
+    CCLuaValueDict a = (*sks)[boost::lexical_cast<string>(i).c_str()].dictValue();
     string skillName;
     int alv = 0;
     for (int i = 1; i <= 2; ++i) {
