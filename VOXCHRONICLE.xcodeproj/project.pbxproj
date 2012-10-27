@@ -422,14 +422,10 @@
 		0731E4E416180A0B006AEF3D /* tnt5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tnt5.png; path = Resources/Image/Enemy/tnt5.png; sourceTree = "<group>"; };
 		0731E4E516180A0B006AEF3D /* tnt6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tnt6.png; path = Resources/Image/Enemy/tnt6.png; sourceTree = "<group>"; };
 		0731E4ED16181024006AEF3D /* Skill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Skill.cpp; path = Classes/Model/Skill.cpp; sourceTree = "<group>"; };
-		0731E4EE16181024006AEF3D /* Skill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Skill.h; path = Classes/Model/Skill.h; sourceTree = "<group>"; };
 		0731E4F416181060006AEF3D /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
-		0731E4F516181060006AEF3D /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		0731E4F716181DD4006AEF3D /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Map.cpp; path = Classes/Model/Map.cpp; sourceTree = "<group>"; };
-		0731E4F816181DD4006AEF3D /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Map.h; path = Classes/Model/Map.h; sourceTree = "<group>"; };
 		0731E4FB16184A87006AEF3D /* test.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = test.lua; path = map/test.lua; sourceTree = "<group>"; };
 		0739C4461615D2FD00CB864D /* CharacterManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CharacterManager.cpp; path = Classes/Model/CharacterManager.cpp; sourceTree = "<group>"; };
-		0739C4471615D2FD00CB864D /* CharacterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharacterManager.h; path = Classes/Model/CharacterManager.h; sourceTree = "<group>"; };
 		0739C4491615D30800CB864D /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Character.cpp; path = Classes/Model/Character.cpp; sourceTree = "<group>"; };
 		073B4C6C162168BA003E0CC8 /* geek.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = geek.lua; sourceTree = "<group>"; };
 		073B4CAA1621C185003E0CC8 /* ginet.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ginet.lua; sourceTree = "<group>"; };
@@ -438,12 +434,9 @@
 		074EFD0215FA8EB5004D8273 /* sword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sword.png; path = Resources/Image/Main/UI/sword.png; sourceTree = "<group>"; };
 		074EFD0315FA8EB5004D8273 /* trigger_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trigger_bg.png; path = Resources/Image/Main/UI/trigger_bg.png; sourceTree = "<group>"; };
 		074EFD0715FA906C004D8273 /* Controller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Controller.cpp; path = Classes/UI/Controller.cpp; sourceTree = "<group>"; };
-		074EFD0815FA906C004D8273 /* Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Controller.h; path = Classes/UI/Controller.h; sourceTree = "<group>"; };
 		074EFD0915FA906D004D8273 /* SkillTrigger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SkillTrigger.cpp; path = Classes/UI/SkillTrigger.cpp; sourceTree = "<group>"; };
-		074EFD0A15FA906D004D8273 /* SkillTrigger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SkillTrigger.h; path = Classes/UI/SkillTrigger.h; sourceTree = "<group>"; };
 		074EFD1115FA9E17004D8273 /* trigger_bg_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trigger_bg_selected.png; path = Resources/Image/Main/UI/trigger_bg_selected.png; sourceTree = "<group>"; };
 		07565376161705B200C69E27 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Level.cpp; path = Classes/Model/Level.cpp; sourceTree = "<group>"; };
-		07565377161705B200C69E27 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Level.h; path = Classes/Model/Level.h; sourceTree = "<group>"; };
 		075653971617131C00C69E27 /* attack_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attack_icon.png; sourceTree = "<group>"; };
 		075653981617131C00C69E27 /* knockback_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knockback_icon.png; sourceTree = "<group>"; };
 		0756539D161713BE00C69E27 /* tension_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tension_icon.png; sourceTree = "<group>"; };
@@ -469,7 +462,6 @@
 		076F1D3A15EB94780013A45E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		076F1D3B15EB94780013A45E /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
 		0791585815EBA8350083D348 /* LogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LogoScene.cpp; path = Classes/Scene/LogoScene.cpp; sourceTree = "<group>"; };
-		0791585915EBA8350083D348 /* LogoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogoScene.h; path = Classes/Scene/LogoScene.h; sourceTree = "<group>"; };
 		0791586915EBB4BB0083D348 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/ios/Default.png; sourceTree = "<group>"; };
 		0791586A15EBB4BB0083D348 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = Resources/ios/fps_images.png; sourceTree = "<group>"; };
 		0791586B15EBB4BB0083D348 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Resources/ios/Icon-72.png"; sourceTree = "<group>"; };
@@ -489,13 +481,9 @@
 		07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageWindow.cpp; path = Classes/UI/MessageWindow.cpp; sourceTree = "<group>"; };
 		07A8E9F216320DBC00E007C9 /* MessageWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageWindow.h; path = Classes/UI/MessageWindow.h; sourceTree = "<group>"; };
 		07A8E9F5163302DF00E007C9 /* damage_number.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = damage_number.png; path = Resources/Image/Main/UI/damage_number.png; sourceTree = "<group>"; };
-		07AE142915F028E50045E8F3 /* macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macros.h; sourceTree = "<group>"; };
 		07B7A674161FF87C00FCE64C /* TrackCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TrackCache.cpp; path = Classes/VISS/TrackCache.cpp; sourceTree = "<group>"; };
-		07B7A675161FF87C00FCE64C /* TrackCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrackCache.h; path = Classes/VISS/TrackCache.h; sourceTree = "<group>"; };
 		07B7A6961620470000FCE64C /* LuaObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaObject.cpp; path = Classes/Lua/LuaObject.cpp; sourceTree = "<group>"; };
-		07B7A6971620470000FCE64C /* LuaObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LuaObject.h; path = Classes/Lua/LuaObject.h; sourceTree = "<group>"; };
 		07B7A69C16204D4D00FCE64C /* LuaBind.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaBind.cpp; path = Classes/Lua/LuaBind.cpp; sourceTree = "<group>"; };
-		07B7A69D16204D4D00FCE64C /* LuaBind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LuaBind.h; path = Classes/Lua/LuaBind.h; sourceTree = "<group>"; };
 		07B7A6B61620775700FCE64C /* geek0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = geek0.png; path = Resources/Image/Enemy/geek0.png; sourceTree = "<group>"; };
 		07B7A6B71620775700FCE64C /* geek1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = geek1.png; path = Resources/Image/Enemy/geek1.png; sourceTree = "<group>"; };
 		07B7A6B81620775700FCE64C /* geek2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = geek2.png; path = Resources/Image/Enemy/geek2.png; sourceTree = "<group>"; };
@@ -512,9 +500,7 @@
 		07B7A6C31620775700FCE64C /* tetufez6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetufez6.png; path = Resources/Image/Enemy/tetufez6.png; sourceTree = "<group>"; };
 		07B7A6C41620775700FCE64C /* tetufez7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetufez7.png; path = Resources/Image/Enemy/tetufez7.png; sourceTree = "<group>"; };
 		07B7A6D61620777800FCE64C /* tetufez.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tetufez.lua; sourceTree = "<group>"; };
-		07B95E1615F303E30024C672 /* Music.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Music.h; path = Classes/VISS/Music.h; sourceTree = "<group>"; };
 		07B95E1715F303E30024C672 /* Music.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = Music.mm; path = Classes/VISS/Music.mm; sourceTree = "<group>"; };
-		07B95E1815F303E30024C672 /* Track.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Track.h; path = Classes/VISS/Track.h; sourceTree = "<group>"; };
 		07B95E1915F303E30024C672 /* Track.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = Track.mm; path = Classes/VISS/Track.mm; sourceTree = "<group>"; };
 		07C6064116164F810084708C /* hello.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hello.lua; sourceTree = "<group>"; };
 		07C6064916164FED0084708C /* CCAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCAction.cpp; sourceTree = "<group>"; };
@@ -997,10 +983,7 @@
 		07C6085716164FEE0084708C /* tolua_to.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tolua_to.c; sourceTree = "<group>"; };
 		07C6093C161674650084708C /* attack.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attack.lua; sourceTree = "<group>"; };
 		07C6F6AB1615D6300084708C /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = Classes/Model/Enemy.cpp; sourceTree = "<group>"; };
-		07C6F6AC1615D6300084708C /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enemy.h; path = Classes/Model/Enemy.h; sourceTree = "<group>"; };
 		07C6F6AF1615D6420084708C /* EnemyManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyManager.cpp; path = Classes/Model/EnemyManager.cpp; sourceTree = "<group>"; };
-		07C6F6B01615D6420084708C /* EnemyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyManager.h; path = Classes/Model/EnemyManager.h; sourceTree = "<group>"; };
-		07D8731515ECEE10009CC446 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = Classes/Scene/MainScene.h; sourceTree = "<group>"; };
 		07D873E415ED1215009CC446 /* attack0.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack0.WAV; path = Resources/Music/VOXQUEST/attack0.WAV; sourceTree = "<group>"; };
 		07D873E515ED1215009CC446 /* attack1.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack1.WAV; path = Resources/Music/VOXQUEST/attack1.WAV; sourceTree = "<group>"; };
 		07D873E615ED1215009CC446 /* attack2.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack2.WAV; path = Resources/Music/VOXQUEST/attack2.WAV; sourceTree = "<group>"; };
@@ -1077,9 +1060,7 @@
 		07D8745515F01500009CC446 /* OpenALManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OpenALManager.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/OpenALManager.h; sourceTree = "<group>"; };
 		07D8745615F01500009CC446 /* OpenALManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OpenALManager.m; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/OpenALManager.m; sourceTree = "<group>"; };
 		07D8745715F01500009CC446 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/Support/SynthesizeSingleton.h; sourceTree = "<group>"; };
-		07E134FC162152E400CCF72E /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Character.h; path = Classes/Model/Character.h; sourceTree = "<group>"; };
 		07E134FD162167CB00CCF72E /* MapSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapSelector.cpp; path = Classes/Model/MapSelector.cpp; sourceTree = "<group>"; };
-		07E134FE162167CB00CCF72E /* MapSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapSelector.h; path = Classes/Model/MapSelector.h; sourceTree = "<group>"; };
 		07E1350016217A1300CCF72E /* left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = left_arrow.png; path = Resources/Image/Main/UI/left_arrow.png; sourceTree = "<group>"; };
 		07E1350116217A1300CCF72E /* right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = right_arrow.png; path = Resources/Image/Main/UI/right_arrow.png; sourceTree = "<group>"; };
 		07E1350816217D1200CCF72E /* left_arrow_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = left_arrow_selected.png; path = Resources/Image/Main/UI/left_arrow_selected.png; sourceTree = "<group>"; };
@@ -1117,6 +1098,25 @@
 		07E135701624A93D00CCF72E /* dub_lskmagic3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_lskmagic3.wav; path = Resources/Music/dub/dub_lskmagic3.wav; sourceTree = "<group>"; };
 		07E135721624AC4700CCF72E /* cure.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cure.lua; sourceTree = "<group>"; };
 		07E135741624AD2000CCF72E /* cure_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cure_icon.png; sourceTree = "<group>"; };
+		07F0D750163BABCD005592AF /* macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = macros.h; path = Classes/includes/macros.h; sourceTree = "<group>"; };
+		07F0D751163BABDF005592AF /* Music.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Music.h; path = Classes/includes/Music.h; sourceTree = "<group>"; };
+		07F0D752163BABDF005592AF /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Track.h; path = Classes/includes/Track.h; sourceTree = "<group>"; };
+		07F0D753163BABDF005592AF /* TrackCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrackCache.h; path = Classes/includes/TrackCache.h; sourceTree = "<group>"; };
+		07F0D754163BABF1005592AF /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Controller.h; path = Classes/includes/Controller.h; sourceTree = "<group>"; };
+		07F0D755163BABF1005592AF /* SkillTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SkillTrigger.h; path = Classes/includes/SkillTrigger.h; sourceTree = "<group>"; };
+		07F0D756163BABFF005592AF /* LogoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogoScene.h; path = Classes/includes/LogoScene.h; sourceTree = "<group>"; };
+		07F0D757163BABFF005592AF /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = Classes/includes/MainScene.h; sourceTree = "<group>"; };
+		07F0D758163BAF51005592AF /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = VOXCHRONICLE/Classes/includes/Utils.h; sourceTree = SOURCE_ROOT; };
+		07F0D759163BAF5E005592AF /* LuaBind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LuaBind.h; path = Classes/includes/LuaBind.h; sourceTree = "<group>"; };
+		07F0D75A163BAF5E005592AF /* LuaObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LuaObject.h; path = Classes/includes/LuaObject.h; sourceTree = "<group>"; };
+		07F0D75B163BAF77005592AF /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Character.h; path = Classes/includes/Character.h; sourceTree = "<group>"; };
+		07F0D75C163BAF77005592AF /* CharacterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharacterManager.h; path = Classes/includes/CharacterManager.h; sourceTree = "<group>"; };
+		07F0D75D163BAF77005592AF /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enemy.h; path = Classes/includes/Enemy.h; sourceTree = "<group>"; };
+		07F0D75E163BAF77005592AF /* EnemyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyManager.h; path = Classes/includes/EnemyManager.h; sourceTree = "<group>"; };
+		07F0D75F163BAF91005592AF /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Level.h; path = Classes/includes/Level.h; sourceTree = "<group>"; };
+		07F0D760163BAF91005592AF /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Map.h; path = Classes/includes/Map.h; sourceTree = "<group>"; };
+		07F0D761163BAF91005592AF /* MapSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapSelector.h; path = Classes/includes/MapSelector.h; sourceTree = "<group>"; };
+		07F0D762163BAF91005592AF /* Skill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Skill.h; path = Classes/includes/Skill.h; sourceTree = "<group>"; };
 		07FA3B2B16107F0400E9C7DE /* decide.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = decide.caf; path = Resources/SE/decide.caf; sourceTree = "<group>"; };
 		07FD921D1621099B00E74459 /* vox.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vox.lua; path = character/vox.lua; sourceTree = "<group>"; };
 		07FD921F16210A2300E74459 /* lsk.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lsk.lua; path = character/lsk.lua; sourceTree = "<group>"; };
@@ -1154,7 +1154,7 @@
 			isa = PBXGroup;
 			children = (
 				0731E4F416181060006AEF3D /* Utils.cpp */,
-				0731E4F516181060006AEF3D /* Utils.h */,
+				07F0D758163BAF51005592AF /* Utils.h */,
 			);
 			name = Util;
 			path = Classes/Util;
@@ -1173,22 +1173,22 @@
 		0739C4451615D2D700CB864D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0739C4471615D2FD00CB864D /* CharacterManager.h */,
+				07F0D75B163BAF77005592AF /* Character.h */,
+				07F0D75C163BAF77005592AF /* CharacterManager.h */,
+				07F0D75D163BAF77005592AF /* Enemy.h */,
+				07F0D75E163BAF77005592AF /* EnemyManager.h */,
+				07F0D75F163BAF91005592AF /* Level.h */,
+				07F0D760163BAF91005592AF /* Map.h */,
+				07F0D761163BAF91005592AF /* MapSelector.h */,
+				07F0D762163BAF91005592AF /* Skill.h */,
 				0739C4461615D2FD00CB864D /* CharacterManager.cpp */,
-				07E134FC162152E400CCF72E /* Character.h */,
 				0739C4491615D30800CB864D /* Character.cpp */,
-				07C6F6AC1615D6300084708C /* Enemy.h */,
 				07C6F6AB1615D6300084708C /* Enemy.cpp */,
-				07C6F6B01615D6420084708C /* EnemyManager.h */,
 				07C6F6AF1615D6420084708C /* EnemyManager.cpp */,
 				0731E4ED16181024006AEF3D /* Skill.cpp */,
-				0731E4EE16181024006AEF3D /* Skill.h */,
-				07565377161705B200C69E27 /* Level.h */,
 				07565376161705B200C69E27 /* Level.cpp */,
-				0731E4F816181DD4006AEF3D /* Map.h */,
 				0731E4F716181DD4006AEF3D /* Map.cpp */,
 				07E134FD162167CB00CCF72E /* MapSelector.cpp */,
-				07E134FE162167CB00CCF72E /* MapSelector.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1196,11 +1196,11 @@
 		074EFCF515FA8B44004D8273 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				074EFD0815FA906C004D8273 /* Controller.h */,
-				074EFD0715FA906C004D8273 /* Controller.cpp */,
-				074EFD0A15FA906D004D8273 /* SkillTrigger.h */,
-				074EFD0915FA906D004D8273 /* SkillTrigger.cpp */,
+				07F0D754163BABF1005592AF /* Controller.h */,
+				07F0D755163BABF1005592AF /* SkillTrigger.h */,
 				07A8E9F216320DBC00E007C9 /* MessageWindow.h */,
+				074EFD0715FA906C004D8273 /* Controller.cpp */,
+				074EFD0915FA906D004D8273 /* SkillTrigger.cpp */,
 				07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */,
 			);
 			name = UI;
@@ -1243,9 +1243,9 @@
 		074EFD0615FA8FF2004D8273 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				0791585915EBA8350083D348 /* LogoScene.h */,
+				07F0D756163BABFF005592AF /* LogoScene.h */,
+				07F0D757163BABFF005592AF /* MainScene.h */,
 				0791585815EBA8350083D348 /* LogoScene.cpp */,
-				07D8731515ECEE10009CC446 /* MainScene.h */,
 				07D8740615ED13CD009CC446 /* MainScene.cpp */,
 			);
 			name = Scene;
@@ -1367,7 +1367,7 @@
 				07D8740815EFFFFC009CC446 /* VISS */,
 				076F1D3A15EB94780013A45E /* AppDelegate.h */,
 				076F1D3B15EB94780013A45E /* AppDelegate.cpp */,
-				07AE142915F028E50045E8F3 /* macros.h */,
+				07F0D750163BABCD005592AF /* macros.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1429,9 +1429,9 @@
 			isa = PBXGroup;
 			children = (
 				07B7A6961620470000FCE64C /* LuaObject.cpp */,
-				07B7A6971620470000FCE64C /* LuaObject.h */,
 				07B7A69C16204D4D00FCE64C /* LuaBind.cpp */,
-				07B7A69D16204D4D00FCE64C /* LuaBind.h */,
+				07F0D759163BAF5E005592AF /* LuaBind.h */,
+				07F0D75A163BAF5E005592AF /* LuaObject.h */,
 			);
 			name = Lua;
 			sourceTree = "<group>";
@@ -2431,12 +2431,12 @@
 		07D8740815EFFFFC009CC446 /* VISS */ = {
 			isa = PBXGroup;
 			children = (
-				07B95E1615F303E30024C672 /* Music.h */,
 				07B95E1715F303E30024C672 /* Music.mm */,
-				07B95E1815F303E30024C672 /* Track.h */,
 				07B95E1915F303E30024C672 /* Track.mm */,
 				07B7A674161FF87C00FCE64C /* TrackCache.cpp */,
-				07B7A675161FF87C00FCE64C /* TrackCache.h */,
+				07F0D751163BABDF005592AF /* Music.h */,
+				07F0D752163BABDF005592AF /* Track.h */,
+				07F0D753163BABDF005592AF /* TrackCache.h */,
 			);
 			name = VISS;
 			sourceTree = "<group>";
