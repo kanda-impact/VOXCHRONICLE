@@ -39,10 +39,10 @@ void SkillTrigger::setPress(bool press) {
   if (!_enable) return;
   _press = press;
   if (press) {
-    CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath("Image/Main/UI/trigger_bg.png"));
+    CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath("Image/Main/UI/trigger_bg_selected.png").c_str());
     this->setTexture(texture);
   } else {
-    CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath("Image/Main/UI/trigger_bg_selected.png"));
+    CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath("Image/Main/UI/trigger_bg.png").c_str());
     this->setTexture(texture);
   }
 }
@@ -62,15 +62,14 @@ void SkillTrigger::setSkill(Skill* skill) {
   if (_skill) {
     std::stringstream ss;
     ss << "Image/Main/UI/command/" << skill->getSlug() << "_icon.png";
-    //CCSprite* icon = CCSprite::create(FileUtils::getFilePath(ss.str().c_str()));
-    cout << FileUtils::getFilePath(ss.str().c_str()) << endl;
-    //icon->setColor(ccc3(255, 0, 0));
-    //icon->setPosition(CCPointMake(40, 40));
+    CCSprite* icon = CCSprite::create(FileUtils::getFilePath(ss.str().c_str()).c_str());
+    icon->setColor(ccc3(255, 0, 0));
+    icon->setPosition(CCPointMake(40, 40));
     const int iconTag = 1;
     if (this->getChildByTag(iconTag)) {
       this->removeChildByTag(iconTag, true);
     }
-    //this->addChild(icon, 1000, iconTag);
+    this->addChild(icon, 1000, iconTag);
   }
   this->setEnable(true);
 }
@@ -87,5 +86,5 @@ void SkillTrigger::setEnable(bool e) {
   }
   this->setOpacity(opacity);
   CCSprite* icon = (CCSprite*)this->getChildByTag(1);
-  //icon->setOpacity(opacity);
+  icon->setOpacity(opacity);
 }

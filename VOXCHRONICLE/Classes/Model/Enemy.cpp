@@ -50,7 +50,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
     for (int i = 0; i < frameCount; ++i) {
       stringstream frameSS;
       frameSS << "Image/Enemy/" << imageName << i << ".png";
-      CCSpriteFrame* frame = CCSpriteFrame::create(FileUtils::getFilePath(frameSS.str().c_str()), CCRectMake(0, 0, size.width, size.height));
+      CCSpriteFrame* frame = CCSpriteFrame::create(FileUtils::getFilePath(frameSS.str().c_str()).c_str(), CCRectMake(0, 0, size.width, size.height));
       animation->addSpriteFrame(frame);
     }
     animation->setLoops(-1);

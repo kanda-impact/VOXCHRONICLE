@@ -38,7 +38,7 @@ void LuaObject::init(const char* scriptName, const char* className) {
     name = ss.str();
   }
   tolua_voxchronicle_open(this->getLuaEngine()->getLuaState());
-  _path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath(FileUtils::getFilePath(name.c_str()));
+  _path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath(FileUtils::getFilePath(name.c_str()).c_str());
   _engine->addSearchPath(_path.substr(0, _path.find_last_of("/")).c_str());
   _scriptName = name.c_str();
   _className = className;

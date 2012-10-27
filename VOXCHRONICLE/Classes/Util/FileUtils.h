@@ -10,10 +10,13 @@
 #define __VOXCHRONICLE__FileUtils__
 
 #include <iostream>
+#include <string>
+
+using namespace std;
 
 class FileUtils {
 public:
-  static const char* getFilePath(const char* filepath);
+  static string getFilePath(const char* filepath);
 };
 
 #endif /* defined(__VOXCHRONICLE__FileUtils__) */

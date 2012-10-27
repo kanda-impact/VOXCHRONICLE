@@ -15,12 +15,12 @@ bool MapSelector::init() {
     return false;
   }
   
-  CCMenuItemImage* leftArrow = CCMenuItemImage::create(FileUtils::getFilePath("Image/Main/UI/left_arrow.png"),
-                                                       FileUtils::getFilePath("Image/Main/UI/left_arrow_selected.png"),
+  CCMenuItemImage* leftArrow = CCMenuItemImage::create(FileUtils::getFilePath("Image/Main/UI/left_arrow.png").c_str(),
+                                                       FileUtils::getFilePath("Image/Main/UI/left_arrow_selected.png").c_str(),
                                                        this,
                                                        menu_selector(MapSelector::leftButtonPressed));
-  CCMenuItemImage* rightArrow = CCMenuItemImage::create(FileUtils::getFilePath("Image/Main/UI/right_arrow.png"),
-                                                        FileUtils::getFilePath("Image/Main/UI/right_arrow_selected.png"),
+  CCMenuItemImage* rightArrow = CCMenuItemImage::create(FileUtils::getFilePath("Image/Main/UI/right_arrow.png").c_str(),
+                                                        FileUtils::getFilePath("Image/Main/UI/right_arrow_selected.png").c_str(),
                                                         this,
                                                         menu_selector(MapSelector::rightButtonPressed));
   CCMenu* menu = CCMenu::create(leftArrow, rightArrow, NULL);
@@ -34,12 +34,12 @@ MapSelector::MapSelector() {
 }
 
 void MapSelector::leftButtonPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.caf"));
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.caf").c_str());
   _selectedMap = (Map*)_nextMaps->objectAtIndex(0);
 }
 
 void MapSelector::rightButtonPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.caf"));
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.caf").c_str());
   _selectedMap = (Map*)_nextMaps->objectAtIndex(1);
 }
 
