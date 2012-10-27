@@ -150,26 +150,20 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
 }
 
 void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track *nextTrack, int trackNumber) {
-  // Stateによらずターンカウントを進める
-  if (trackNumber == 0) {
-    ++_turnCount;
-    ++_mapTurnCount;
-  }
   if (_state == VCStateIntro) {
-    if (_mapTurnCount < _map->getIntroCount()) {
+    if (_mapTurnCount < _map->getIntroCount() - 1) {
       if (trackNumber == 0) {
         stringstream intro;
-        intro << "intro" << _mapTurnCount << ".wav";
+        intro << "intro" << _mapTurnCount + 1 << ".wav";
         _music->pushTrack(_map->getPrefixedMusicName(intro.str().c_str()).c_str(), 0);
         _music->pushTrack(_map->getPrefixedMusicName("silent.wav").c_str(), 1);
         _music->pushTrack(_map->getPrefixedMusicName("silent.wav").c_str(), 2);
-      } else {
-        _music->pushTrack(_map->getPrefixedMusicName("wait.wav").c_str(), 0);
-        _music->pushTrack(_map->getPrefixedMusicName("counter0.wav").c_str(), 1);
-        _music->pushTrack(_map->getPrefixedMusicName("drum0.wav").c_str(), 2);
       }
     } else {
       _state = VCStateMain;
+      _music->pushTrack(_map->getPrefixedMusicName("wait.wav").c_str(), 0);
+      _music->pushTrack(_map->getPrefixedMusicName("counter0.wav").c_str(), 1);
+      _music->pushTrack(_map->getPrefixedMusicName("drum0.wav").c_str(), 2);
     }
   } else if (_state == VCStateMain) {
     if (trackNumber == 0) {
@@ -262,6 +256,9 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
 
 void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track *nextTrack, int trackNumber) {
   if (trackNumber == 0) {
+    // ターンカウントを進める
+    ++_turnCount;
+    ++_mapTurnCount;
     if (!_characterManager->isPerforming()) {
       _controller->resetAllTriggers();
       _enemyManager->purgeAllTrash();
