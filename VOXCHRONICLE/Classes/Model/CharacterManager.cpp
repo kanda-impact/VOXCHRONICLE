@@ -7,6 +7,7 @@
 //
 
 #include <sstream>
+#include "FileUtils.h"
 #include "CharacterManager.h"
 #include "Skill.h"
 #include "CCLuaEngine.h"
@@ -151,7 +152,7 @@ int CharacterManager::getExpWithLevel(int level) {
 
 int CharacterManager::executeLuaFunction(const char *methodName, int argument) {
   CCLuaEngine* engine = CCLuaEngine::defaultEngine();
-  std::string path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("Script/character/character.lua");
+  std::string path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath(FileUtils::getFilePath("Script/character/character.lua").c_str());
   engine->executeScriptFile(path.c_str());
   lua_State* L = engine->getLuaState();
   lua_getglobal(L, methodName);
@@ -255,7 +256,7 @@ void CharacterManager::updateParameters() {
 float CharacterManager::getLevelOffsetRate(int attackLevel, int defenseLevel) {
   CCLuaEngine* engine = CCLuaEngine::defaultEngine();
   lua_State* L = engine->getLuaState();
-  std::string path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath("character.lua");
+  std::string path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath(FileUtils::getFilePath("Script/character/character.lua").c_str());
   engine->executeScriptFile(path.c_str());
   lua_getglobal(L, "getLevelOffsetRate");
   lua_pushinteger(L, attackLevel);

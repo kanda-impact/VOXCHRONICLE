@@ -480,7 +480,6 @@
 		07A8E9C916317F0500E007C9 /* dub_tension2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_tension2.wav; path = Resources/Music/dub/dub_tension2.wav; sourceTree = "<group>"; };
 		07A8E9CA16317F0500E007C9 /* dub_tension3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_tension3.wav; path = Resources/Music/dub/dub_tension3.wav; sourceTree = "<group>"; };
 		07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageWindow.cpp; path = Classes/UI/MessageWindow.cpp; sourceTree = "<group>"; };
-		07A8E9F216320DBC00E007C9 /* MessageWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageWindow.h; path = Classes/UI/MessageWindow.h; sourceTree = "<group>"; };
 		07A8E9F5163302DF00E007C9 /* damage_number.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = damage_number.png; path = Resources/Image/Main/UI/damage_number.png; sourceTree = "<group>"; };
 		07B7A674161FF87C00FCE64C /* TrackCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TrackCache.cpp; path = Classes/VISS/TrackCache.cpp; sourceTree = "<group>"; };
 		07B7A6961620470000FCE64C /* LuaObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaObject.cpp; path = Classes/Lua/LuaObject.cpp; sourceTree = "<group>"; };
@@ -1062,8 +1061,6 @@
 		07D8745615F01500009CC446 /* OpenALManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OpenALManager.m; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/OpenALManager.m; sourceTree = "<group>"; };
 		07D8745715F01500009CC446 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/Support/SynthesizeSingleton.h; sourceTree = "<group>"; };
 		07DCFDA11633461A00341769 /* FileUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileUtils.cpp; sourceTree = "<group>"; };
-		07DCFDA21633461A00341769 /* FileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUtils.h; sourceTree = "<group>"; };
-		07E134FC162152E400CCF72E /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Character.h; path = Classes/Model/Character.h; sourceTree = "<group>"; };
 		07E134FD162167CB00CCF72E /* MapSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapSelector.cpp; path = Classes/Model/MapSelector.cpp; sourceTree = "<group>"; };
 		07E1350016217A1300CCF72E /* left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = left_arrow.png; path = Resources/Image/Main/UI/left_arrow.png; sourceTree = "<group>"; };
 		07E1350116217A1300CCF72E /* right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = right_arrow.png; path = Resources/Image/Main/UI/right_arrow.png; sourceTree = "<group>"; };
@@ -1121,6 +1118,8 @@
 		07F0D760163BAF91005592AF /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Map.h; path = Classes/includes/Map.h; sourceTree = "<group>"; };
 		07F0D761163BAF91005592AF /* MapSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapSelector.h; path = Classes/includes/MapSelector.h; sourceTree = "<group>"; };
 		07F0D762163BAF91005592AF /* Skill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Skill.h; path = Classes/includes/Skill.h; sourceTree = "<group>"; };
+		07F0D778163BE85E005592AF /* FileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileUtils.h; path = VOXCHRONICLE/Classes/includes/FileUtils.h; sourceTree = SOURCE_ROOT; };
+		07F0D779163BE867005592AF /* MessageWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageWindow.h; path = Classes/includes/MessageWindow.h; sourceTree = "<group>"; };
 		07FA3B2B16107F0400E9C7DE /* decide.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = decide.caf; path = Resources/SE/decide.caf; sourceTree = "<group>"; };
 		07FD921D1621099B00E74459 /* vox.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vox.lua; path = character/vox.lua; sourceTree = "<group>"; };
 		07FD921F16210A2300E74459 /* lsk.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lsk.lua; path = character/lsk.lua; sourceTree = "<group>"; };
@@ -1159,9 +1158,8 @@
 			children = (
 				0731E4F416181060006AEF3D /* Utils.cpp */,
 				07F0D758163BAF51005592AF /* Utils.h */,
-				0731E4F516181060006AEF3D /* Utils.h */,
+				07F0D778163BE85E005592AF /* FileUtils.h */,
 				07DCFDA11633461A00341769 /* FileUtils.cpp */,
-				07DCFDA21633461A00341769 /* FileUtils.h */,
 			);
 			name = Util;
 			path = Classes/Util;
@@ -1205,10 +1203,10 @@
 			children = (
 				07F0D754163BABF1005592AF /* Controller.h */,
 				07F0D755163BABF1005592AF /* SkillTrigger.h */,
-				07A8E9F216320DBC00E007C9 /* MessageWindow.h */,
 				074EFD0715FA906C004D8273 /* Controller.cpp */,
 				074EFD0915FA906D004D8273 /* SkillTrigger.cpp */,
 				07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */,
+				07F0D779163BE867005592AF /* MessageWindow.h */,
 			);
 			name = UI;
 			sourceTree = "<group>";

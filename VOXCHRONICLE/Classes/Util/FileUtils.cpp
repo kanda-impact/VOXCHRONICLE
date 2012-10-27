@@ -6,6 +6,7 @@
 //
 //
 
+#include "cocos2d.h"
 #include <vector>
 #include <sstream>
 #include <boost/algorithm/string.hpp>
@@ -19,10 +20,10 @@ using namespace boost;
 
 string FileUtils::getFilePath(const char *filepath) {
   std::string path(filepath);
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+#if IS_WIN32
   return path;
 
-#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+#elif IS_IOS
   typedef boost::char_separator<char> char_separator;
   typedef boost::tokenizer<char_separator> tokenizer;
   
