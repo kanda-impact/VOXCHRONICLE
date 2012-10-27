@@ -18,6 +18,7 @@
 #if IS_WIN32
 #include<windows.h>
 #include <mmsystem.h>
+#include "VIMciPlayer.h"
 #endif
 
 using namespace cocos2d;
@@ -35,19 +36,7 @@ namespace VISS {
     boost::shared_ptr<AudioTrack> _track;
 #elif IS_WIN32
     // for windows
-    friend LRESULT WINAPI _SoundPlayProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
-
-    void _SendGenericCommand(int nCommand);
-
-    HWND        m_hWnd;
-    MCIDEVICEID m_hDev;
-    UINT        m_nSoundID;
-    UINT        m_uTimes;
-    bool        m_bPlaying;
-    unsigned int _hash(const char *key);
-
-    void open(const char* pFileName, UINT uId);
-    void close();
+    VIMciPlayer* _player;
 #endif
   public:
     /**

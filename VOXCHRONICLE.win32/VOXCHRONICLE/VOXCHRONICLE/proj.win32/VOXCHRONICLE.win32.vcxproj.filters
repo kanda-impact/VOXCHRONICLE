@@ -146,6 +146,9 @@
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\BlinkLayer.h">
       <Filter>Classes\include</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\VIMciPlayer.h">
+      <Filter>Classes\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -230,6 +233,9 @@
       <Filter>Classes\source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Scene\TitleScene.cpp">
+      <Filter>Classes\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\VISS\VIMciPlayer.cpp">
       <Filter>Classes\source</Filter>
     </ClCompile>
   </ItemGroup>

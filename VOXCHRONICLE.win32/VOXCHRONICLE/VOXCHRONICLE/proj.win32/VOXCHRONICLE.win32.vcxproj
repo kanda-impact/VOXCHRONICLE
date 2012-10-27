@@ -17,7 +17,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -50,7 +50,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\VOXCHRONICLE\Classes\includes;$(SolutionDir)..\..\VOXCHRONICLE\Classes;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\include;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\script_support;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\kazmath\include;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\platform\win32;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\platform\third_party\win32;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)..\..\VOXCHRONICLE\libs\CocosDenshion\include;$(SolutionDir)..\..\VOXCHRONICLE\libs\lua\cocos2dx_support;$(SolutionDir)..\..\VOXCHRONICLE\libs\lua\tolua;$(SolutionDir)..\..\VOXCHRONICLE\libs\lua\lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Include;%(AdditionalIncludeDirectories);$(SolutionDir)..\..\VOXCHRONICLE\Classes\includes;$(SolutionDir)..\..\VOXCHRONICLE\Classes;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\include;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\script_support;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\kazmath\include;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\platform\win32;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\platform\third_party\win32;$(SolutionDir)..\..\VOXCHRONICLE\libs\cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)..\..\VOXCHRONICLE\libs\CocosDenshion\include;$(SolutionDir)..\..\VOXCHRONICLE\libs\lua\cocos2dx_support;$(SolutionDir)..\..\VOXCHRONICLE\libs\lua\tolua;$(SolutionDir)..\..\VOXCHRONICLE\libs\lua\lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
@@ -67,7 +67,7 @@
       <TargetMachine>MachineX86</TargetMachine>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libcocos2d.lib;libExtensions.lib;opengl32.lib;glew32.lib;libCocosDenshion.lib;liblua.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>winmm.lib;%(AdditionalDependencies);libcocos2d.lib;libExtensions.lib;opengl32.lib;glew32.lib;libCocosDenshion.lib;liblua.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -152,6 +152,7 @@
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\MainScene.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Map.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\MapSelector.h" />
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\VIMciPlayer.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\MessageWindow.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Music.h" />
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\Skill.h" />
@@ -186,6 +187,7 @@
     <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\UI\SkillTrigger.cpp" />
     <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Util\FileUtils.cpp" />
     <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Util\Utils.cpp" />
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\VISS\VIMciPlayer.cpp" />
     <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\VISS\Music.cpp" />
     <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\VISS\Track.cpp" />
     <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\VISS\TrackCache.cpp" />

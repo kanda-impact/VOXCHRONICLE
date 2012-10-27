@@ -33,7 +33,6 @@ bool TitleScene::init() {
   CCSprite* title = CCSprite::create(FileUtils::getFilePath("Image/Title/title.png").c_str());
   title->setPosition(ccp(winSize.width / 2, winSize.height / 2));
   this->addChild(title);
-  
   return true;
 }
 
