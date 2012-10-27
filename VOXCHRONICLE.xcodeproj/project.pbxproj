@@ -371,7 +371,6 @@
 		07E1351716219F9600CCF72E /* test2a.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07E1351516219F9600CCF72E /* test2a.lua */; };
 		07E1351816219F9600CCF72E /* test2b.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07E1351616219F9600CCF72E /* test2b.lua */; };
 		07E1351B1621A04300CCF72E /* setting.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07E1351A1621A04300CCF72E /* setting.lua */; };
-		07E1351D1621ACD900CCF72E /* levelup.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07E1351C1621ACD900CCF72E /* levelup.caf */; };
 		07E1351F1621AF2700CCF72E /* levelup.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07E1351E1621AF2700CCF72E /* levelup.lua */; };
 		07E135261621CABF00CCF72E /* character.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07E135251621CABF00CCF72E /* character.lua */; };
 		07E1354E1624A7BE00CCF72E /* dub_drum0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E135301624A7BE00CCF72E /* dub_drum0.wav */; };
@@ -404,7 +403,9 @@
 		07F0D782163BEDA0005592AF /* dub_run1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D77D163BEDA0005592AF /* dub_run1.wav */; };
 		07F0D783163BEDA0005592AF /* dub_wait.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D77E163BEDA0005592AF /* dub_wait.wav */; };
 		07F0D785163BF199005592AF /* dub_shield0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D784163BF198005592AF /* dub_shield0.wav */; };
-		07FA3B2C16107FCC00E9C7DE /* decide.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07FA3B2B16107F0400E9C7DE /* decide.caf */; };
+		07F0D791163C035E005592AF /* death.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D78E163C035E005592AF /* death.mp3 */; };
+		07F0D792163C035E005592AF /* decide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D78F163C035E005592AF /* decide.mp3 */; };
+		07F0D793163C035E005592AF /* levelup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D790163C035E005592AF /* levelup.mp3 */; };
 		07FD921E1621099B00E74459 /* vox.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921D1621099B00E74459 /* vox.lua */; };
 		07FD922016210A2300E74459 /* lsk.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921F16210A2300E74459 /* lsk.lua */; };
 /* End PBXBuildFile section */
@@ -1074,7 +1075,6 @@
 		07E1351516219F9600CCF72E /* test2a.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = test2a.lua; path = map/test2a.lua; sourceTree = "<group>"; };
 		07E1351616219F9600CCF72E /* test2b.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = test2b.lua; path = map/test2b.lua; sourceTree = "<group>"; };
 		07E1351A1621A04300CCF72E /* setting.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = setting.lua; sourceTree = "<group>"; };
-		07E1351C1621ACD900CCF72E /* levelup.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = levelup.caf; path = Resources/SE/levelup.caf; sourceTree = "<group>"; };
 		07E1351E1621AF2700CCF72E /* levelup.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = levelup.lua; sourceTree = "<group>"; };
 		07E135251621CABF00CCF72E /* character.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = character.lua; path = character/character.lua; sourceTree = "<group>"; };
 		07E135301624A7BE00CCF72E /* dub_drum0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_drum0.wav; path = Resources/Music/dub/dub_drum0.wav; sourceTree = "<group>"; };
@@ -1128,7 +1128,9 @@
 		07F0D77D163BEDA0005592AF /* dub_run1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_run1.wav; path = Resources/Music/dub/dub_run1.wav; sourceTree = "<group>"; };
 		07F0D77E163BEDA0005592AF /* dub_wait.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_wait.wav; path = Resources/Music/dub/dub_wait.wav; sourceTree = "<group>"; };
 		07F0D784163BF198005592AF /* dub_shield0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_shield0.wav; path = Resources/Music/dub/dub_shield0.wav; sourceTree = "<group>"; };
-		07FA3B2B16107F0400E9C7DE /* decide.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = decide.caf; path = Resources/SE/decide.caf; sourceTree = "<group>"; };
+		07F0D78E163C035E005592AF /* death.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = death.mp3; path = Resources/SE/death.mp3; sourceTree = "<group>"; };
+		07F0D78F163C035E005592AF /* decide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = decide.mp3; path = Resources/SE/decide.mp3; sourceTree = "<group>"; };
+		07F0D790163C035E005592AF /* levelup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = levelup.mp3; path = Resources/SE/levelup.mp3; sourceTree = "<group>"; };
 		07FD921D1621099B00E74459 /* vox.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vox.lua; path = character/vox.lua; sourceTree = "<group>"; };
 		07FD921F16210A2300E74459 /* lsk.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lsk.lua; path = character/lsk.lua; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2543,8 +2545,9 @@
 		07FA3B2A16107EE500E9C7DE /* SE */ = {
 			isa = PBXGroup;
 			children = (
-				07FA3B2B16107F0400E9C7DE /* decide.caf */,
-				07E1351C1621ACD900CCF72E /* levelup.caf */,
+				07F0D78E163C035E005592AF /* death.mp3 */,
+				07F0D78F163C035E005592AF /* decide.mp3 */,
+				07F0D790163C035E005592AF /* levelup.mp3 */,
 			);
 			name = SE;
 			sourceTree = "<group>";
@@ -2610,7 +2613,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07FA3B2C16107FCC00E9C7DE /* decide.caf in Resources */,
 				0791587515EBB50E0083D348 /* Default.png in Resources */,
 				0791587615EBB50E0083D348 /* fps_images.png in Resources */,
 				0791587715EBB50E0083D348 /* Icon-72.png in Resources */,
@@ -2697,7 +2699,6 @@
 				07E1351716219F9600CCF72E /* test2a.lua in Resources */,
 				07E1351816219F9600CCF72E /* test2b.lua in Resources */,
 				07E1351B1621A04300CCF72E /* setting.lua in Resources */,
-				07E1351D1621ACD900CCF72E /* levelup.caf in Resources */,
 				07E1351F1621AF2700CCF72E /* levelup.lua in Resources */,
 				073B4CAB1621C185003E0CC8 /* ginet.lua in Resources */,
 				073B4CAD1621C199003E0CC8 /* ginet2.lua in Resources */,
@@ -2738,6 +2739,9 @@
 				07F0D782163BEDA0005592AF /* dub_run1.wav in Resources */,
 				07F0D783163BEDA0005592AF /* dub_wait.wav in Resources */,
 				07F0D785163BF199005592AF /* dub_shield0.wav in Resources */,
+				07F0D791163C035E005592AF /* death.mp3 in Resources */,
+				07F0D792163C035E005592AF /* decide.mp3 in Resources */,
+				07F0D793163C035E005592AF /* levelup.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

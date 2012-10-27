@@ -114,7 +114,7 @@ void MainScene::onEnterTransitionDidFinish() {
 }
 
 void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber) {
-  if (trackNumber == 0) {
+  if (trackNumber == 0 && _state == VCStateMain) {
     _enemyManager->lotPopEnemy();
     CCObject* obj = NULL;
     CCARRAY_FOREACH(_enemyManager->getEnemies(), obj) {
@@ -124,11 +124,23 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
           enemy->moveRow(-1);
         }
       } else {
-        int damage = 1 * _characterManager->getLevelOffsetRate(enemy->getLevel(), _characterManager->getLevel());
-        cout << "damage = " << damage << endl;
+        int damage = 10 * _characterManager->getLevelOffsetRate(enemy->getLevel(), _characterManager->getLevel());
+        cout << damage << endl;
         DamageType result = _characterManager->damage(damage);
         if (result == DamageTypeDeath) {
-          std::cout << "game over" << std::endl;
+          _state = VCStateGameOver;
+          CCLabelTTF* gameOverLabel = CCLabelTTF::create("GAME OVER", "Helvetica", 48);
+          CCDirector* director = CCDirector::sharedDirector();
+          CCPoint center = CCPointMake(director->getWinSize().width / 2, director->getWinSize().height / 2);
+          CCLabelTTF* gameOverShadowLavel = CCLabelTTF::create("GAME OVER", "Helvetica", 48);
+          gameOverShadowLavel->setColor(ccc3(64, 64, 64));
+          gameOverShadowLavel->setPosition(ccpAdd(center, CCPointMake(3, -3)));
+          gameOverLabel->setPosition(center);
+          this->addChild(gameOverShadowLavel);
+          this->addChild(gameOverLabel);
+          _music->stop();
+          _controller->setVisible(false);
+          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/death.mp3").c_str());
         }
         _enemyManager->removeEnemy(enemy);
       }
@@ -293,7 +305,7 @@ bool MainScene::checkLevelUp() {
   if (currentLevel != _preLevel) {
     _preLevel = currentLevel;
     _characterManager->updateParameters();
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/levelup.caf").c_str());
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/levelup.mp3").c_str());
     _level = _map->createLevel(currentLevel);
     _enemyManager->setLevel(_level);
     this->updateGUI();

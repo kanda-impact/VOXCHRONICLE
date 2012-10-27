@@ -86,8 +86,8 @@ bool Music::play() {
     
 void Music::stop() {
   for (std::vector< std::deque< Track* > >::iterator it = _tracks.begin(); it != _tracks.end(); ++it) {
-    if (it->size() > 0) {
-      it->at(0)->stop();
+    for (int j = 0; j < it->size(); ++j) {
+      it->at(j)->stop();
     }
   }
   cocos2d::CCDirector::sharedDirector()->getScheduler()->unscheduleAllSelectorsForTarget(this);

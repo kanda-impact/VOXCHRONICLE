@@ -56,7 +56,7 @@ bool Controller::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
     CCPoint p = ((SkillTrigger*)trigger)->convertTouchToNodeSpace(pTouch);
     if (((SkillTrigger*)trigger)->getEnable() && ccpDistance(triggerCenter, p) < triggerRadius) {
       this->resetAllTriggers();
-      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("decide.caf");
+      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("decide.mp3");
       ((SkillTrigger*)trigger)->setPress(true);
       break;
     }

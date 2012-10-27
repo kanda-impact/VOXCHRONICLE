@@ -34,12 +34,12 @@ MapSelector::MapSelector() {
 }
 
 void MapSelector::leftButtonPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.caf").c_str());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   _selectedMap = (Map*)_nextMaps->objectAtIndex(0);
 }
 
 void MapSelector::rightButtonPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.caf").c_str());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   _selectedMap = (Map*)_nextMaps->objectAtIndex(1);
 }
 
