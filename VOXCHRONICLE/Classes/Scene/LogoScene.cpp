@@ -7,7 +7,7 @@
 //
 
 #include "LogoScene.h"
-#include "MainScene.h"
+#include "TitleScene.h"
 #include "FileUtils.h"
 
 using namespace cocos2d;
@@ -57,7 +57,7 @@ bool LogoScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
 
 void LogoScene::nextScene() {
   CCScene* scene = CCScene::create();
-  scene->addChild(MainScene::create());
+  scene->addChild(TitleScene::create());
   CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
   CCDirector::sharedDirector()->replaceScene(transition);
 }
