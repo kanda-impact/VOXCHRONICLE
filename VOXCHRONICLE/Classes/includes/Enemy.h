@@ -25,7 +25,7 @@ class Enemy : public CCSprite {
   int _maxHP;
   int _mp;
   int _exp;
-  int _power;
+  int _attack;
   int _row;
   int _col;
   int _speed;
@@ -51,6 +51,7 @@ class Enemy : public CCSprite {
   float getCurrentScale(float row);
   bool canMove();
   int getLevel();
+  int getAttack();
   
   /**
    使用したSkillとCharacterManagerを与えてダメージを与えます。

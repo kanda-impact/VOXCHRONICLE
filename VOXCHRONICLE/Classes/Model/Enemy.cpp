@@ -32,7 +32,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   obj->autorelease();
   _hp = obj->getInt("hp");
   _maxHP = _hp;
-  _power = obj->getInt("power");
+  _attack = obj->getInt("attack");
   _exp = obj->getInt("exp");
   _name = new string(obj->getString("name"));
   _counter = obj->getInt("counter");
@@ -179,5 +179,9 @@ SkillType Enemy::getType() {
 
 int Enemy::getLevel() {
   return _level;
+}
+
+int Enemy::getAttack() {
+  return _attack;
 }
 

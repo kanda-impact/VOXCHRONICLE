@@ -124,7 +124,7 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
           enemy->moveRow(-1);
         }
       } else {
-        int damage = 10 * _characterManager->getLevelOffsetRate(enemy->getLevel(), _characterManager->getLevel());
+        int damage = round(enemy->getAttack() * _characterManager->getLevelOffsetRate(enemy->getLevel(), _characterManager->getLevel()));
         cout << damage << endl;
         DamageType result = _characterManager->damage(damage);
         if (result == DamageTypeDeath) {
