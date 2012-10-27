@@ -11,6 +11,7 @@
 #include "Enemy.h"
 #include "LuaObject.h"
 #include "Utils.h"
+#include "FileUtils.h"
 
 using namespace std;
 
@@ -25,7 +26,9 @@ Enemy* Enemy::create(const char *enemyName) {
 }
 
 Enemy* Enemy::initWithScriptName(const char* scriptName) {
-  LuaObject* obj = new LuaObject(scriptName, "Enemy");
+  stringstream file;
+  file << "Script/enemies/" << scriptName;
+  LuaObject* obj = new LuaObject(file.str().c_str(), "Enemy");
   obj->autorelease();
   _hp = obj->getInt("hp");
   _maxHP = _hp;
@@ -47,8 +50,8 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
     CCSize size = this->getTexture()->getContentSize();
     for (int i = 0; i < frameCount; ++i) {
       stringstream frameSS;
-      frameSS << imageName << i << ".png";
-      CCSpriteFrame* frame = CCSpriteFrame::create(frameSS.str().c_str(), CCRectMake(0, 0, size.width, size.height));
+      frameSS << "Image/Enemy/" << imageName << i << ".png";
+      CCSpriteFrame* frame = CCSpriteFrame::create(FileUtils::getFilePath(frameSS.str().c_str()).c_str(), CCRectMake(0, 0, size.width, size.height));
       animation->addSpriteFrame(frame);
     }
     animation->setLoops(-1);

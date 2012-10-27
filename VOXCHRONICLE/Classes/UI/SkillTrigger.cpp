@@ -8,6 +8,7 @@
 
 #include <sstream>
 #include "SkillTrigger.h"
+#include "FileUtils.h"
 
 SkillTrigger* SkillTrigger::create(const char *pszFileName) {
   SkillTrigger *pobSprite = new SkillTrigger();
@@ -38,10 +39,10 @@ void SkillTrigger::setPress(bool press) {
   if (!_enable) return;
   _press = press;
   if (press) {
-    CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage("trigger_bg_selected.png");
+    CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath("Image/Main/UI/trigger_bg_selected.png").c_str());
     this->setTexture(texture);
   } else {
-    CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage("trigger_bg.png");
+    CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath("Image/Main/UI/trigger_bg.png").c_str());
     this->setTexture(texture);
   }
 }
@@ -60,8 +61,8 @@ void SkillTrigger::setSkill(Skill* skill) {
   _skill = skill;
   if (_skill) {
     std::stringstream ss;
-    ss << skill->getSlug() << "_icon.png";
-    CCSprite* icon = CCSprite::create(ss.str().c_str());
+    ss << "Image/Main/UI/command/" << skill->getSlug() << "_icon.png";
+    CCSprite* icon = CCSprite::create(FileUtils::getFilePath(ss.str().c_str()).c_str());
     icon->setColor(ccc3(255, 0, 0));
     icon->setPosition(CCPointMake(40, 40));
     const int iconTag = 1;

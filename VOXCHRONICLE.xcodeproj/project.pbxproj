@@ -361,6 +361,7 @@
 		07D8746E15F01A15009CC446 /* OALTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8744F15F01500009CC446 /* OALTools.m */; };
 		07D8746F15F01A15009CC446 /* OALUtilityActions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8745115F01500009CC446 /* OALUtilityActions.m */; };
 		07D8747015F01A15009CC446 /* OpenALManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8745615F01500009CC446 /* OpenALManager.m */; };
+		07DCFDA31633461A00341769 /* FileUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07DCFDA11633461A00341769 /* FileUtils.cpp */; };
 		07E134FF162167CC00CCF72E /* MapSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E134FD162167CB00CCF72E /* MapSelector.cpp */; };
 		07E1350216217A1300CCF72E /* left_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E1350016217A1300CCF72E /* left_arrow.png */; };
 		07E1350316217A1300CCF72E /* right_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E1350116217A1300CCF72E /* right_arrow.png */; };
@@ -1060,6 +1061,9 @@
 		07D8745515F01500009CC446 /* OpenALManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OpenALManager.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/OpenALManager.h; sourceTree = "<group>"; };
 		07D8745615F01500009CC446 /* OpenALManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OpenALManager.m; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/OpenALManager.m; sourceTree = "<group>"; };
 		07D8745715F01500009CC446 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/Support/SynthesizeSingleton.h; sourceTree = "<group>"; };
+		07DCFDA11633461A00341769 /* FileUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileUtils.cpp; sourceTree = "<group>"; };
+		07DCFDA21633461A00341769 /* FileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUtils.h; sourceTree = "<group>"; };
+		07E134FC162152E400CCF72E /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Character.h; path = Classes/Model/Character.h; sourceTree = "<group>"; };
 		07E134FD162167CB00CCF72E /* MapSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapSelector.cpp; path = Classes/Model/MapSelector.cpp; sourceTree = "<group>"; };
 		07E1350016217A1300CCF72E /* left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = left_arrow.png; path = Resources/Image/Main/UI/left_arrow.png; sourceTree = "<group>"; };
 		07E1350116217A1300CCF72E /* right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = right_arrow.png; path = Resources/Image/Main/UI/right_arrow.png; sourceTree = "<group>"; };
@@ -1155,6 +1159,9 @@
 			children = (
 				0731E4F416181060006AEF3D /* Utils.cpp */,
 				07F0D758163BAF51005592AF /* Utils.h */,
+				0731E4F516181060006AEF3D /* Utils.h */,
+				07DCFDA11633461A00341769 /* FileUtils.cpp */,
+				07DCFDA21633461A00341769 /* FileUtils.h */,
 			);
 			name = Util;
 			path = Classes/Util;
@@ -3005,6 +3012,7 @@
 				07B7A69E16204D4D00FCE64C /* LuaBind.cpp in Sources */,
 				07E134FF162167CC00CCF72E /* MapSelector.cpp in Sources */,
 				07A8E9F316320DBC00E007C9 /* MessageWindow.cpp in Sources */,
+				07DCFDA31633461A00341769 /* FileUtils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

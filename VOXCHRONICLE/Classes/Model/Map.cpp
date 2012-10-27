@@ -11,13 +11,16 @@
 #include "Level.h"
 #include "LuaObject.h"
 #include "Enemy.h"
+#include "FileUtils.h"
 
 using namespace std;
 
 Map::Map(const char* mapName) {
   // ここでスクリプトを読ませる
+  stringstream ss;
+  ss << "Script/map/" << mapName;
   _slug = mapName;
-  _lua = new LuaObject(mapName, "Map");
+  _lua = new LuaObject(ss.str().c_str(), "Map");
   _lua->retain();
   _name = new string(_lua->getString("name"));
   _prefix = new string(_lua->getString("prefix"));
@@ -92,8 +95,8 @@ Level* Map::createInitialLevel() {
 
 const char* Map::getPrefixedMusicName(const char *musicName) {
   stringstream ss;
-  ss << _prefix->c_str() << "_" << musicName;
-  return ss.str().c_str();
+  ss << "Music/" << _prefix->c_str() << "/" << _prefix->c_str() << "_" << musicName;
+  return FileUtils::getFilePath(ss.str().c_str()).c_str();
 }
 
 int Map::getMaxLevel() {

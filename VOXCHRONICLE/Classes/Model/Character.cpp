@@ -10,7 +10,9 @@
 #include "Skill.h"
 
 Character::Character(const char* slug) {
-  _lua = new LuaObject(slug);
+  stringstream ss;
+  ss << "Script/skills/" << slug;
+  _lua = new LuaObject(ss.str().c_str());
   _skills = CCArray::create();
   _skills->retain();
   CCLuaValueDict* sks = _lua->getTable("skills");
