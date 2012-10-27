@@ -18,6 +18,7 @@
 #include "TrackCache.h"
 #include "LuaObject.h"
 #include "FileUtils.h"
+#include "BlinkLayer.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -125,9 +126,39 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
         }
       } else {
         int damage = round(enemy->getAttack() * _characterManager->getLevelOffsetRate(enemy->getLevel(), _characterManager->getLevel()));
-        cout << damage << endl;
         DamageType result = _characterManager->damage(damage);
+        // 被ダメージ表示しちゃう
+        CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(damage).c_str(),
+                                                         FileUtils::getFilePath("Image/Main/UI/damage_number.png").c_str(), 50, 100, '0');
+        CCDirector* director = CCDirector::sharedDirector();
+        damageLabel->setPosition(ccp(director->getWinSize().width / 2, 90));
+        this->addChild(damageLabel);
+        damageLabel->setScale(0);
+        damageLabel->runAction(CCSequence::create(CCScaleTo::create(0.1, 0.8),
+                                                  CCDelayTime::create(0.5),
+                                                  CCScaleTo::create(0.2, 0.0),
+                                                  CCCallFunc::create(damageLabel, callfunc_selector(CCSprite::removeFromParentAndCleanup)),
+                                                  NULL));
+        if (damage > 0) {
+          // 画面点滅させて音を鳴らす
+          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/damage.mp3").c_str());
+          BlinkLayer* bLayer = new BlinkLayer(ccc4(255, 0, 0, 255));
+          bLayer->autorelease();
+          this->addChild(bLayer);
+          // ついでに画面もゆらしちゃう
+          const float FPS = 60.0;
+          const int shakeRange = 15;
+          CCArray* actions = CCArray::create();
+          for (int i = 0; i < FPS / 2; ++i) {
+            CCMoveTo* move = CCMoveTo::create(1.0 / FPS, ccp(damage * (-shakeRange / 2 + rand() % shakeRange), damage * (-shakeRange / 2 + rand() % shakeRange)));
+            actions->addObject(move);
+          }
+          CCMoveTo* reset = CCMoveTo::create(0, ccp(0, 0));
+          actions->addObject(reset);
+          this->runAction(CCSequence::create(actions));
+        }
         if (result == DamageTypeDeath) {
+          // 死んだとき
           _state = VCStateGameOver;
           CCLabelTTF* gameOverLabel = CCLabelTTF::create("GAME OVER", "Helvetica", 48);
           CCDirector* director = CCDirector::sharedDirector();
