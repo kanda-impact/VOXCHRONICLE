@@ -2,7 +2,8 @@
 #include <fstream>
 
 #include <iostream>
-#define WIN_CLASS_NAME        "CocosDenshionCallbackWnd"
+
+#define WIN_CLASS_NAME        "VISSCallbackWnd"
 #define BREAK_IF(cond)      if (cond) break;
 
 namespace VISS {
@@ -18,6 +19,7 @@ namespace VISS {
     , m_nSoundID(0)
     , m_uTimes(0)
     , m_bPlaying(false)
+    , m_next_player(NULL)
   {
     if (! s_hInstance)
     {
@@ -198,6 +200,10 @@ namespace VISS {
     mciSendCommand(m_hDev, MCI_SET_AUDIO, MCI_SET_AUDIO_ALL, (DWORD)(LPVOID)&parms);
   }
 
+  void VIMciPlayer::SetNextPlayer(VIMciPlayer* next) {
+    m_next_player = next;
+  }
+
   //////////////////////////////////////////////////////////////////////////
   // private member
   //////////////////////////////////////////////////////////////////////////
@@ -222,26 +228,15 @@ namespace VISS {
       && MCI_NOTIFY_SUCCESSFUL == wParam
       &&(pPlayer = (VIMciPlayer *)GetWindowLong(hWnd, GWL_USERDATA)))
     {
-      if (pPlayer->m_uTimes)
-      {
-        --pPlayer->m_uTimes;
+      if (pPlayer->m_next_player) {
+        pPlayer->m_next_player->Play(1);
+        pPlayer->m_next_player = NULL;
       }
-
-      if (pPlayer->m_uTimes)
-      {
-        mciSendCommand(lParam, MCI_SEEK, MCI_SEEK_TO_START, 0);
-
-        MCI_PLAY_PARMS mciPlay = {0};
-        mciPlay.dwCallback = (DWORD)hWnd;
-        mciSendCommand(lParam, MCI_PLAY, MCI_NOTIFY,(DWORD)&mciPlay);
-      }
-      else
-      {
-        pPlayer->m_bPlaying = false;
-      }
+      pPlayer->m_bPlaying = false;
       return 0;
     }
     return DefWindowProc(hWnd, Msg, wParam, lParam);
   }
+
 
 } // end of namespace CocosDenshion

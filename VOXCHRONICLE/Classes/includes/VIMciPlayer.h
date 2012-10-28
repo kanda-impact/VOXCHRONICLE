@@ -54,6 +54,8 @@ public:
     */
     UINT GetSoundID();
 
+    void SetNextPlayer(VIMciPlayer* next);
+
     float GetDuration();
     float GetPosition();
     void SetVolume(float volume);
@@ -62,12 +64,14 @@ private:
     friend LRESULT WINAPI _SoundPlayProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
 
     void _SendGenericCommand(int nCommand);
-
+    
     HWND        m_hWnd;
     MCIDEVICEID m_hDev;
     UINT        m_nSoundID;
     UINT        m_uTimes;
     bool        m_bPlaying;
+
+    VIMciPlayer* m_next_player;
 };
 
 } // end of namespace CocosDenshion

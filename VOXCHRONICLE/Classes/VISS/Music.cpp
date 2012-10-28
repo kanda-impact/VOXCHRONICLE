@@ -86,8 +86,9 @@ bool Music::play() {
     
 void Music::stop() {
   for (std::vector< std::deque< Track* > >::iterator it = _tracks.begin(); it != _tracks.end(); ++it) {
-    if (it->size() > 0) {
-      it->at(0)->stop();
+    for (int j = 0; j < it->size(); ++j) {
+      it->at(j)->stop();
+      it->at(j)->setVolume(0);
     }
   }
   cocos2d::CCDirector::sharedDirector()->getScheduler()->unscheduleAllSelectorsForTarget(this);
@@ -120,7 +121,7 @@ void VISS::Music::update(float dt) {
     if (it->size() == 0) continue;
     Track* current = it->front();
     float sub = current->getDuration() - current->getPosition();
-    if (!_willFinish.at(trackNumber) && (sub < 0.20 || !current->isPlaying())) {
+    if (!_willFinish.at(trackNumber) && (sub < 0.15 || !current->isPlaying())) {
       //終わりそうなとき
       if (_trackWillFinishFunction != NULL) {
         _trackWillFinishFunction(this, current, NULL, trackNumber);
@@ -138,11 +139,7 @@ void VISS::Music::update(float dt) {
       _backed.at(trackNumber) = false;
       _willFinish.at(trackNumber) = false;
       if (_trackDidFinishFunction != NULL) {
-        if (it->size() == 0) {
-          _trackDidFinishFunction(this, current, NULL, trackNumber);
-        } else {
-          _trackDidFinishFunction(this, current, it->front(), trackNumber);
-        }
+        _trackDidFinishFunction(this, current, it->front(), trackNumber);
       }
     } else if (!_backed.at(trackNumber) && current->getDuration() / 2 < current->getPosition()) {
       //裏打ちのとき

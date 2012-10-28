@@ -37,6 +37,7 @@ namespace VISS {
 #elif IS_WIN32
     // for windows
     VIMciPlayer* _player;
+    void setNextTrack(Track* next);
 #endif
   public:
     /**

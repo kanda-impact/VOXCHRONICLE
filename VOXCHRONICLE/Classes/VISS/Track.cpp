@@ -103,5 +103,13 @@ void Track::setVolume(float v) {
 }
 
 void Track::playAfterTrack(VISS::Track *track) {
-  this->play();
+  //if (track->isPlaying()) {
+    track->setNextTrack(this);
+  //} else {
+    //this->play();
+  //}
+}
+
+void Track::setNextTrack(Track* nextTrack) {
+  _player->SetNextPlayer(nextTrack->_player);
 }
