@@ -1,5 +1,7 @@
 #include "VIMciPlayer.h"
+#include <fstream>
 
+#include <iostream>
 #define WIN_CLASS_NAME        "CocosDenshionCallbackWnd"
 #define BREAK_IF(cond)      if (cond) break;
 
@@ -160,6 +162,34 @@ bool VIMciPlayer::IsPlaying()
 UINT VIMciPlayer::GetSoundID()
 {
     return m_nSoundID;
+}
+
+float VIMciPlayer::GetDuration() {
+  MCI_SET_PARMS set;
+  MCI_STATUS_PARMS status;
+
+  set.dwTimeFormat = MCI_FORMAT_MILLISECONDS;
+  mciSendCommand(m_hDev, MCI_SET, MCI_SET_TIME_FORMAT, (DWORD)(LPVOID)&set);
+
+  status.dwItem = MCI_STATUS_LENGTH;
+  mciSendCommand(m_hDev, MCI_STATUS, MCI_STATUS_ITEM, (DWORD)(LPVOID)&status);
+
+  DWORD length = status.dwReturn;
+  return length;
+}
+
+float VIMciPlayer::GetPosition() {
+  MCI_SET_PARMS set;
+  MCI_STATUS_PARMS status;
+
+  set.dwTimeFormat = MCI_FORMAT_MILLISECONDS;
+  mciSendCommand(m_hDev, MCI_SET, MCI_SET_TIME_FORMAT, (DWORD)(LPVOID)&set);
+
+  status.dwItem = MCI_STATUS_POSITION;
+  mciSendCommand(m_hDev, MCI_STATUS, MCI_STATUS_ITEM, (DWORD)(LPVOID)&status);
+
+  DWORD position = status.dwReturn;
+  return position;
 }
 
 //////////////////////////////////////////////////////////////////////////

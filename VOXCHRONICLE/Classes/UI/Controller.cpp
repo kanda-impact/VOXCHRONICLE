@@ -56,7 +56,7 @@ bool Controller::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
     CCPoint p = ((SkillTrigger*)trigger)->convertTouchToNodeSpace(pTouch);
     if (((SkillTrigger*)trigger)->getSkillButtonState() == SkillButtonStateNormal && ccpDistance(triggerCenter, p) < triggerRadius) {
       this->resetAllTriggers();
-      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("cursor.mp3");
+      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("SE/cursor.mp3");
       ((SkillTrigger*)trigger)->setPress(true);
       break;
     }

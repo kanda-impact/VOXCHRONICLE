@@ -43,8 +43,8 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   const char* imageName = obj->getString("imageName");
   int frameCount = obj->getInt("animationFrames");
   stringstream ss;
-  ss << imageName << "0.png";
-  bool success = (bool)this->initWithFile(ss.str().c_str());
+  ss << "Image/Enemy/" << imageName << "0.png";
+  bool success = (bool)this->initWithFile(FileUtils::getFilePath(ss.str().c_str()).c_str());
   if (success) {
     CCAnimation* animation = CCAnimation::create();
     CCSize size = this->getTexture()->getContentSize();

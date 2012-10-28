@@ -143,7 +143,7 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
         damageLabel->runAction(CCSequence::create(CCScaleTo::create(0.1, 0.8),
                                                   CCDelayTime::create(0.5),
                                                   CCScaleTo::create(0.2, 0.0),
-                                                  CCCallFunc::create(damageLabel, callfunc_selector(CCSprite::removeFromParentAndCleanup)),
+                                                  CCCallFuncN::create(damageLabel, callfuncN_selector(MainScene::removeNode)),
                                                   NULL));
         if (damage > 0) {
           // 画面点滅させて音を鳴らす
@@ -204,10 +204,10 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       }
       std::stringstream ss;
       SkillPerformType performType = SkillPerformTypeNone;
-      const char* name = _characterManager->checkSkillTrackName(skill, performType);
+      string name = _characterManager->checkSkillTrackName(skill, performType);
       ss << name << ".wav";
       string file(_map->getPrefixedMusicName(ss.str().c_str()));
-      string trackName(name);
+      string trackName(file);
       _music->pushTrack(file.c_str(), 0);
       if (skill && performType == SkillPerformTypeSuccess) {
         int preExp = _characterManager->getExp();
@@ -226,7 +226,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
                                                     CCFadeIn::create(0.2),
                                                     CCDelayTime::create(0.5),
                                                     CCFadeOut::create(0.2),
-                                                    CCCallFunc::create(damageLabel, callfunc_selector(CCSprite::removeFromParentAndCleanup)),
+                                                    CCCallFuncN::create(damageLabel, callfuncN_selector(MainScene::removeNode)),
                                                     NULL));
         }
         int getExp = ((CCInteger*)info->objectForKey("exp"))->getValue();
@@ -289,7 +289,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     ++_turnCount;
     ++_mapTurnCount;
     if (!_characterManager->isPerforming()) {
-      _controller->resetAllTriggers();
+      //_controller->resetAllTriggers();
       _enemyManager->purgeAllTrash();
     }
   }
@@ -404,4 +404,8 @@ void MainScene::onGameOver() {
   _music->stop();
   _controller->setVisible(false);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/death.mp3").c_str());
+}
+
+void MainScene::removeNode(CCNode* node) {
+  this->removeChild(node, true);
 }

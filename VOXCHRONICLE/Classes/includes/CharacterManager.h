@@ -63,9 +63,9 @@ class CharacterManager :public CCObject {
    また、スキル実行状態を渡します。
    @param Skill 実行するSkillを渡します。
    @param SkillPerformType& performType SkillPerformTypeを渡します
-   @return const char* スキルファイル名
+   @return string スキルファイル名
    */
-  const char* checkSkillTrackName(Skill* skill, SkillPerformType& performeType);
+  string checkSkillTrackName(Skill* skill, SkillPerformType& performeType);
   
   /**
    現在のターン、スキルを実行中かどうか返します

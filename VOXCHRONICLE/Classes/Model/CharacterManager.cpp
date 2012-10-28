@@ -48,7 +48,7 @@ Character* CharacterManager::getCurrentCharacter() {
   return _currentCharacter;
 }
 
-const char* CharacterManager::checkSkillTrackName(Skill* skill, SkillPerformType& performeType) {
+string CharacterManager::checkSkillTrackName(Skill* skill, SkillPerformType& performeType) {
   performeType = SkillPerformTypeNone;
   if (skill) {
     _waitTurn += 1;

@@ -73,6 +73,8 @@ class MainScene : public CCLayer {
   
   void update(float dt);
   bool checkLevelUp();
+
+  void removeNode(CCNode *node);
   
  public:
   virtual bool init();

@@ -15,6 +15,8 @@
 using namespace cocos2d;
 
 class BlinkLayer :public CCNode {
+ private:
+   void suicide();
  public:
   BlinkLayer(ccColor4B color);
 };

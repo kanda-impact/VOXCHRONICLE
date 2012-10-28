@@ -13,7 +13,11 @@ BlinkLayer::BlinkLayer(ccColor4B color) {
   layer->runAction(CCSequence::create(CCRepeat::create(CCSequence::create(CCFadeTo::create(0.05, 64),
                                                        CCFadeTo::create(0.05, 128),
                                                        NULL), 3),
-                   CCCallFunc::create(this, callfunc_selector(BlinkLayer::removeFromParentAndCleanup)),
+                   CCCallFunc::create(this, callfunc_selector(BlinkLayer::suicide)),
                    NULL));
   this->addChild(layer);
+}
+
+void BlinkLayer::suicide() {
+  this->removeFromParentAndCleanup(true);
 }

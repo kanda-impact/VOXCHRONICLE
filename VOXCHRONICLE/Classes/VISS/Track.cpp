@@ -87,11 +87,11 @@ bool Track::isPlaying() {
 }
 
 float Track::getDuration() {
-  return 2.0f;
+  return _player->GetPosition();
 }
 
 float Track::getPosition() {
-  return 0.0f;
+  return _player->GetDuration();
 }
 
 float Track::getDeviceCurrentTime() {
@@ -102,4 +102,5 @@ void Track::setVolume(float v) {
 }
 
 void Track::playAfterTrack(VISS::Track *track) {
+  this->play();
 }

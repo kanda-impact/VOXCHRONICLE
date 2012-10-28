@@ -138,7 +138,11 @@ void VISS::Music::update(float dt) {
       _backed.at(trackNumber) = false;
       _willFinish.at(trackNumber) = false;
       if (_trackDidFinishFunction != NULL) {
-        _trackDidFinishFunction(this, current, it->front(), trackNumber);
+        if (it->size() == 0) {
+          _trackDidFinishFunction(this, current, NULL, trackNumber);
+        } else {
+          _trackDidFinishFunction(this, current, it->front(), trackNumber);
+        }
       }
     } else if (!_backed.at(trackNumber) && current->getDuration() / 2 < current->getPosition()) {
       //裏打ちのとき

@@ -54,6 +54,9 @@ public:
     */
     UINT GetSoundID();
 
+    float GetDuration();
+    float GetPosition();
+
 private:
     friend LRESULT WINAPI _SoundPlayProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
 
