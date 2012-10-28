@@ -102,7 +102,6 @@
 		07B7A6D21620775700FCE64C /* tetufez6.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6C31620775700FCE64C /* tetufez6.png */; };
 		07B7A6D31620775700FCE64C /* tetufez7.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6C41620775700FCE64C /* tetufez7.png */; };
 		07B7A6D91620777800FCE64C /* tetufez.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6D61620777800FCE64C /* tetufez.lua */; };
-		07B95E1A15F304120024C672 /* Music.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B95E1715F303E30024C672 /* Music.mm */; };
 		07B95E1B15F304120024C672 /* Track.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B95E1915F303E30024C672 /* Track.mm */; };
 		07C6064216164F810084708C /* hello.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07C6064116164F810084708C /* hello.lua */; };
 		07C6085816164FEE0084708C /* CCAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6064916164FED0084708C /* CCAction.cpp */; };
@@ -413,6 +412,7 @@
 		07F0D792163C035E005592AF /* cursor.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D78F163C035E005592AF /* cursor.mp3 */; };
 		07F0D793163C035E005592AF /* levelup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D790163C035E005592AF /* levelup.mp3 */; };
 		07F0D799163C1EC1005592AF /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F0D797163C1EC0005592AF /* TitleScene.cpp */; };
+		07F40F10163D0FC0009FC104 /* Music.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F40F0F163D0FC0009FC104 /* Music.cpp */; };
 		07FD921E1621099B00E74459 /* vox.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921D1621099B00E74459 /* vox.lua */; };
 		07FD922016210A2300E74459 /* lsk.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921F16210A2300E74459 /* lsk.lua */; };
 /* End PBXBuildFile section */
@@ -520,7 +520,6 @@
 		07B7A6C31620775700FCE64C /* tetufez6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetufez6.png; path = Resources/Image/Enemy/tetufez6.png; sourceTree = "<group>"; };
 		07B7A6C41620775700FCE64C /* tetufez7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetufez7.png; path = Resources/Image/Enemy/tetufez7.png; sourceTree = "<group>"; };
 		07B7A6D61620777800FCE64C /* tetufez.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tetufez.lua; sourceTree = "<group>"; };
-		07B95E1715F303E30024C672 /* Music.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = Music.mm; path = Classes/VISS/Music.mm; sourceTree = "<group>"; };
 		07B95E1915F303E30024C672 /* Track.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = Track.mm; path = Classes/VISS/Track.mm; sourceTree = "<group>"; };
 		07C6064116164F810084708C /* hello.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hello.lua; sourceTree = "<group>"; };
 		07C6064916164FED0084708C /* CCAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCAction.cpp; sourceTree = "<group>"; };
@@ -1147,6 +1146,7 @@
 		07F0D790163C035E005592AF /* levelup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = levelup.mp3; path = Resources/SE/levelup.mp3; sourceTree = "<group>"; };
 		07F0D797163C1EC0005592AF /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleScene.cpp; path = Classes/Scene/TitleScene.cpp; sourceTree = "<group>"; };
 		07F0D79A163C1EFD005592AF /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = Classes/includes/TitleScene.h; sourceTree = "<group>"; };
+		07F40F0F163D0FC0009FC104 /* Music.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Music.cpp; path = Classes/VISS/Music.cpp; sourceTree = "<group>"; };
 		07FD921D1621099B00E74459 /* vox.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vox.lua; path = character/vox.lua; sourceTree = "<group>"; };
 		07FD921F16210A2300E74459 /* lsk.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lsk.lua; path = character/lsk.lua; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2471,7 +2471,7 @@
 		07D8740815EFFFFC009CC446 /* VISS */ = {
 			isa = PBXGroup;
 			children = (
-				07B95E1715F303E30024C672 /* Music.mm */,
+				07F40F0F163D0FC0009FC104 /* Music.cpp */,
 				07B95E1915F303E30024C672 /* Track.mm */,
 				07B7A674161FF87C00FCE64C /* TrackCache.cpp */,
 				07F0D751163BABDF005592AF /* Music.h */,
@@ -2800,7 +2800,6 @@
 			files = (
 				074EFD0C15FA93AA004D8273 /* Controller.cpp in Sources */,
 				074EFD0B15FA926E004D8273 /* SkillTrigger.cpp in Sources */,
-				07B95E1A15F304120024C672 /* Music.mm in Sources */,
 				07B95E1B15F304120024C672 /* Track.mm in Sources */,
 				07D8745815F01A15009CC446 /* ALBuffer.m in Sources */,
 				07D8745915F01A15009CC446 /* ALCaptureDevice.m in Sources */,
@@ -3063,6 +3062,7 @@
 				07DCFDA31633461A00341769 /* FileUtils.cpp in Sources */,
 				07F0D799163C1EC1005592AF /* TitleScene.cpp in Sources */,
 				070E4020163C29E600A76BEA /* BlinkLayer.cpp in Sources */,
+				07F40F10163D0FC0009FC104 /* Music.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

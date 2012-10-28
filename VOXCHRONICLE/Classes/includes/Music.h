@@ -24,8 +24,8 @@ namespace VISS {
    private:
     int _trackCount;
     std::vector< std::deque<Track*> > _tracks;
-    std::vector<bool> _backed;
-    std::vector<bool> _willFinish;
+    std::deque<bool> _backed;
+    std::deque<bool> _willFinish;
     void update(float dt);
     boost::function<void (Music*, Track*, Track*, int)> _trackWillFinishFunction;
     boost::function<void (Music*, Track*, Track*, int)> _trackDidFinishFunction;

@@ -18,7 +18,8 @@ Music::Music() {
 Music::Music(int trackCount) {
   _trackCount = trackCount;
   _tracks = std::vector< std::deque<Track* > >(trackCount);
-  _backed = std::vector<bool>(trackCount);
+  _backed = std::deque<bool>(trackCount);
+  _willFinish = std::deque<bool>(trackCount);
   for (int i = 0; i < trackCount; ++i) {
     _backed.push_back(false);
     _willFinish.push_back(false);
