@@ -56,6 +56,7 @@ public:
 
     float GetDuration();
     float GetPosition();
+    void SetVolume(float volume);
 
 private:
     friend LRESULT WINAPI _SoundPlayProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);

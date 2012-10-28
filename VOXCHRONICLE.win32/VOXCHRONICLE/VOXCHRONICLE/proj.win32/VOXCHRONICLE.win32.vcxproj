@@ -87,8 +87,7 @@
       </DllDataFileName>
     </Midl>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>xcopy /Y /E "$(SolutionDir)..\..\VOXCHRONICLE\Resources\*.*" "$(OutDir)"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>

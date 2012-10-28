@@ -99,6 +99,7 @@ float Track::getDeviceCurrentTime() {
 }
 
 void Track::setVolume(float v) {
+  _player->SetVolume(v * 500);
 }
 
 void Track::playAfterTrack(VISS::Track *track) {
