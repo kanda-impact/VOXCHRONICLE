@@ -51,4 +51,9 @@ void TitleScene::nextScene() {
   scene->addChild(MainScene::create());
   CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
   CCDirector::sharedDirector()->replaceScene(transition);
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
+}
+
+void TitleScene::onEnterTransitionDidFinish() {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(FileUtils::getFilePath("Music/general/title.mp3").c_str(), true);
 }

@@ -21,7 +21,7 @@ private:
 public:
   virtual bool init();
   static cocos2d::CCScene* scene();
-  
+  void onEnterTransitionDidFinish();
   CREATE_FUNC(TitleScene);
 };
 

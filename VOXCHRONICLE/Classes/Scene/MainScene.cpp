@@ -77,7 +77,7 @@ bool MainScene::init() {
   this->addChild(_nextExpLabel);
   this->addChild(_mapLabel);
   
-  TrackCache::sharedCache()->addTrack(FileUtils::getFilePath("Music/select/select_stage.wav"));
+  TrackCache::sharedCache()->addTrack(FileUtils::getFilePath("Music/general/select_stage.wav"));
   
   this->pushInitialTracks(_map);
   
@@ -346,9 +346,9 @@ bool MainScene::checkLevelUp() {
           _mapSelector->setPosition(CCPointMake(0, 60));
           this->addChild(_mapSelector);
           _music->removeAllNextTracks();
-          _music->pushTrack(FileUtils::getFilePath("Music/select/select_stage.wav").c_str(), 0);
-          _music->pushTrack(FileUtils::getFilePath("Music/select/select_silent.wav").c_str(), 1);
-          _music->pushTrack(FileUtils::getFilePath("Music/select/select_silent.wav").c_str(), 2);
+          _music->pushTrack(FileUtils::getFilePath("Music/general/select_stage.wav").c_str(), 0);
+          _music->pushTrack(FileUtils::getFilePath("Music/general/select_silent.wav").c_str(), 1);
+          _music->pushTrack(FileUtils::getFilePath("Music/general/select_silent.wav").c_str(), 2);
         }
         _state = VCStateStageSelect;
       }
@@ -371,6 +371,7 @@ void MainScene::addGameOverButtons() {
 }
 
 void MainScene::replayButtonPressed(CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   CCScene* scene = CCScene::create();
   scene->addChild(MainScene::create());
@@ -379,6 +380,7 @@ void MainScene::replayButtonPressed(CCObject *sender) {
 }
 
 void MainScene::titleButtonPressed(CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   CCScene* scene = CCScene::create();
   scene->addChild(TitleScene::create());
@@ -397,13 +399,13 @@ void MainScene::onGameOver() {
   gameOverLabel->setPosition(ccpAdd(ccp(gameOverShadowLavel->getContentSize().width / 2, gameOverShadowLavel->getContentSize().height / 2), ccp(-3, 3)));
   this->addChild(gameOverShadowLavel);
   gameOverShadowLavel->addChild(gameOverLabel);
-  gameOverShadowLavel->runAction(CCSequence::create(CCDelayTime::create(2.0),
-                                                    CCMoveTo::create(0.2, ccp(director->getWinSize().width / 2, 200)),
+  gameOverShadowLavel->runAction(CCSequence::create(CCDelayTime::create(3.0),
+                                                    CCMoveTo::create(0.1, ccp(director->getWinSize().width / 2, 200)),
                                                     CCCallFunc::create(this, callfunc_selector(MainScene::addGameOverButtons)),
                                                     NULL));
   _music->stop();
   _controller->setVisible(false);
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/death.mp3").c_str());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("Music/general/gameover.mp3").c_str());
 }
 
 void MainScene::removeNode(CCNode* node) {
