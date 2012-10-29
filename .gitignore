@@ -2,4 +2,8 @@ Debug.win32
 Release.win32
 VOXCHRONICLE.win32/VOXCHRONICLE/enc_temp_folder/*
 VOXCHRONICLE.win32/VOXCHRONICLE/ipch/*
-Thumbs.db
+[Tt]humbs.db
+enc_temp_folder
+*.opensdf
+*.sdf
+*.suo
