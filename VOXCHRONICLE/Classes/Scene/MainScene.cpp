@@ -88,6 +88,8 @@ bool MainScene::init() {
   _messageWindow = new MessageWindow(FONT_NAME, 64);
   _messageWindow->retain();
   _messageWindow->setPosition(ccp(100, 100));
+
+  _mapSelector = NULL;
   
   this->addChild(_messageWindow);
   
@@ -102,7 +104,7 @@ MainScene::~MainScene() {
   _controller->release();
   _enemyManager->release();
   _characterManager->release();
-  if (_mapSelector) {
+  if (_mapSelector != NULL) {
     _mapSelector->release();
   }
 }
@@ -181,17 +183,17 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         
         stringstream intro;
         intro << "intro" << _mapTurnCount + 1 << ".wav";
-        _music->pushTrack(_map->getPrefixedMusicName(intro.str().c_str()).c_str(), 0);
-        _music->pushTrack(_map->getPrefixedMusicName("silent.wav").c_str(), 1);
-        _music->pushTrack(_map->getPrefixedMusicName("silent.wav").c_str(), 2);
+        music->pushTrack(_map->getPrefixedMusicName(intro.str().c_str()).c_str(), 0);
+        music->pushTrack(_map->getPrefixedMusicName("silent.wav").c_str(), 1);
+        music->pushTrack(_map->getPrefixedMusicName("silent.wav").c_str(), 2);
         
       } else {
         // イントロが終わったとき
         _controller->setEnable(true);
         _state = VCStateMain;
-        _music->pushTrack(_map->getPrefixedMusicName("wait.wav").c_str(), 0);
-        _music->pushTrack(_map->getPrefixedMusicName("counter0.wav").c_str(), 1);
-        _music->pushTrack(_map->getPrefixedMusicName("drum0.wav").c_str(), 2);
+        music->pushTrack(_map->getPrefixedMusicName("wait.wav").c_str(), 0);
+        music->pushTrack(_map->getPrefixedMusicName("counter0.wav").c_str(), 1);
+        music->pushTrack(_map->getPrefixedMusicName("drum0.wav").c_str(), 2);
       }
     }
   } else if (_state == VCStateMain) {
@@ -208,7 +210,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       ss << name << ".wav";
       string file(_map->getPrefixedMusicName(ss.str().c_str()));
       string trackName(file);
-      _music->pushTrack(file.c_str(), 0);
+      music->pushTrack(file.c_str(), 0);
       if (skill && performType == SkillPerformTypeSuccess) {
         int preExp = _characterManager->getExp();
         CCDictionary* info = _enemyManager->performSkill(skill, _characterManager); // ここで経験値が貰える
@@ -244,7 +246,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         stringstream ss;
         ss << "counter" << nearest->getCounter() << ".wav";
         string file(_map->getPrefixedMusicName(ss.str().c_str()));
-        Track* track = _music->pushTrack(file.c_str(), 1);
+        Track* track = music->pushTrack(file.c_str(), 1);
         
         int row = nearest->getRow();
         int denominator = (MAX_ROW + 1) * MAX_ROW / 2.0;
@@ -253,14 +255,14 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         track->setVolume(volume);
       } else {
         string file(_map->getPrefixedMusicName("counter0.wav"));
-        Track* track = _music->pushTrack(file.c_str(), 1);
+        Track* track = music->pushTrack(file.c_str(), 1);
         track->setVolume(0);
       }
     } else if (trackNumber == 2) {
       stringstream drumFileStream;
       drumFileStream << "drum" << _characterManager->getDrumLevel() << ".wav";
       string file(_map->getPrefixedMusicName(drumFileStream.str().c_str()));
-      Track* t = _music->pushTrack(file.c_str(), 2);
+      Track* t = music->pushTrack(file.c_str(), 2);
       t->setVolume(0.7);
     }
   } else if (_state == VCStateStageSelect) {
@@ -289,7 +291,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     ++_turnCount;
     ++_mapTurnCount;
     if (!_characterManager->isPerforming()) {
-      //_controller->resetAllTriggers();
+      _controller->resetAllTriggers();
       _enemyManager->purgeAllTrash();
     }
   }

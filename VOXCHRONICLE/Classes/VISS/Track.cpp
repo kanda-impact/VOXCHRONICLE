@@ -58,6 +58,7 @@ const char * _FullPath(const char * szPath)
 
 Track::Track(const char* fileName) {
   _player = new VIMciPlayer();
+  _fileName = string(fileName);
   _player->Open(_FullPath(fileName), _Hash(fileName));
 }
 
@@ -87,11 +88,11 @@ bool Track::isPlaying() {
 }
 
 float Track::getDuration() {
-  return _player->GetPosition();
+  return _player->GetDuration() / 1000.0;
 }
 
 float Track::getPosition() {
-  return _player->GetDuration();
+  return _player->GetPosition() / 1000.0;
 }
 
 float Track::getDeviceCurrentTime() {
@@ -99,17 +100,17 @@ float Track::getDeviceCurrentTime() {
 }
 
 void Track::setVolume(float v) {
-  _player->SetVolume(v * 500);
+  _player->SetVolume(v * 1000);
 }
 
 void Track::playAfterTrack(VISS::Track *track) {
-  //if (track->isPlaying()) {
-    track->setNextTrack(this);
-  //} else {
-    //this->play();
-  //}
+  track->setNextTrack(this);
 }
 
 void Track::setNextTrack(Track* nextTrack) {
   _player->SetNextPlayer(nextTrack->_player);
+}
+
+string Track::getTrackName() {
+  return _fileName;
 }

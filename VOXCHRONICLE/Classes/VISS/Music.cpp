@@ -6,6 +6,9 @@
 //
 //
 
+#include <algorithm>
+#include <sstream>
+#include "macros.h"
 #include "Music.h"
 #include "TrackCache.h"
 
@@ -132,15 +135,21 @@ void VISS::Music::update(float dt) {
         Track* next = this->getNextTrack(trackNumber);
         next->playAfterTrack(current);
       }
-    }
-    if (!current->isPlaying() && _willFinish.at(trackNumber)) {
+    } else if (!current->isPlaying() && _willFinish.at(trackNumber)) {
       //終わったとき
       it->pop_front();
       current->release();
       _backed.at(trackNumber) = false;
       _willFinish.at(trackNumber) = false;
       if (_trackDidFinishFunction != NULL) {
-        _trackDidFinishFunction(this, current, it->front(), trackNumber);
+        if (it->size() == 0) {
+          _trackDidFinishFunction(this, current, NULL, trackNumber);
+        } else {
+          _trackDidFinishFunction(this, current, it->front(), trackNumber);
+          if (!it->front()->isPlaying()) {
+            it->front()->play();
+          }
+        }
       }
     } else if (!_backed.at(trackNumber) && current->getDuration() / 2 < current->getPosition()) {
       //裏打ちのとき
@@ -157,4 +166,8 @@ void Music::removeAllNextTracks() {
     std::deque<Track*>* it = &_tracks.at(trackNumber);
     if (it->size() >= 2) it->erase(it->begin() + 1, it->end());
   }
+}
+
+bool Music::isLastWillFinishedCall() {
+  return static_cast<int>(std::count(_willFinish.begin(), _willFinish.end(), true)) == _trackCount - 1;
 }

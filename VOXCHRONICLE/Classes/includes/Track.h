@@ -22,6 +22,7 @@
 #endif
 
 using namespace cocos2d;
+using namespace std;
 
 namespace VISS {
   class Track :public CCObject {
@@ -29,7 +30,7 @@ namespace VISS {
     struct AudioTrack;
 #endif
   private:
-    char* _fileName;
+    string _fileName;
 #if IS_IOS
     // for iOS
     // OALAudioTrackをラップしたC++のオブジェクトを保持する
@@ -88,6 +89,8 @@ namespace VISS {
     void setVolume(float v);
 
     float getDeviceCurrentTime();
+
+    string getTrackName();
   };
 }
 

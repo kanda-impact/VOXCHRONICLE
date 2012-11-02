@@ -53,7 +53,6 @@ void TitleScene::nextScene() {
   CCDirector::sharedDirector()->replaceScene(transition);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
 }
-
 void TitleScene::onEnterTransitionDidFinish() {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(FileUtils::getFilePath("Music/general/title.mp3").c_str(), true);
 }

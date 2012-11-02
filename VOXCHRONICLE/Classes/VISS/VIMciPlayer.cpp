@@ -61,6 +61,7 @@ namespace VISS {
     if (m_hWnd)
     {
       SetWindowLong(m_hWnd, GWL_USERDATA, (LONG)this);
+      m_CurrentPosition = 0;
     }
   }
 
@@ -94,6 +95,19 @@ namespace VISS {
       m_hDev = mciOpen.wDeviceID;
       m_nSoundID = uId;
       m_bPlaying = false;
+
+        MCI_SET_PARMS set;
+        MCI_STATUS_PARMS status;
+
+        set.dwTimeFormat = MCI_FORMAT_MILLISECONDS;
+        mciSendCommand(this->m_hDev, MCI_SET, MCI_SET_TIME_FORMAT, (DWORD)(LPVOID)&set);
+
+        status.dwItem = MCI_STATUS_LENGTH;
+        mciSendCommand(this->m_hDev, MCI_STATUS, MCI_STATUS_ITEM, (DWORD)(LPVOID)&status);
+
+        m_Duration = status.dwReturn;
+
+        SetTimer(m_hWnd, uId, 1000.0 / 60.0, NULL);
     } while (0);
   }
 
@@ -123,6 +137,7 @@ namespace VISS {
     {
       _SendGenericCommand(MCI_CLOSE);
     }
+    KillTimer(this->m_hWnd, this->GetSoundID());
     m_hDev = 0;
     m_bPlaying = false;
   }
@@ -147,7 +162,7 @@ namespace VISS {
   {
     if (! m_hDev)
     {
-      return;
+        return;
     }
     mciSendCommand(m_hDev, MCI_SEEK, MCI_SEEK_TO_START, 0);
 
@@ -167,37 +182,17 @@ namespace VISS {
   }
 
   float VIMciPlayer::GetDuration() {
-    MCI_SET_PARMS set;
-    MCI_STATUS_PARMS status;
-
-    set.dwTimeFormat = MCI_FORMAT_MILLISECONDS;
-    mciSendCommand(m_hDev, MCI_SET, MCI_SET_TIME_FORMAT, (DWORD)(LPVOID)&set);
-
-    status.dwItem = MCI_STATUS_LENGTH;
-    mciSendCommand(m_hDev, MCI_STATUS, MCI_STATUS_ITEM, (DWORD)(LPVOID)&status);
-
-    DWORD length = status.dwReturn;
-    return length;
+    return m_Duration;
   }
 
   float VIMciPlayer::GetPosition() {
-    MCI_SET_PARMS set;
-    MCI_STATUS_PARMS status;
-
-    set.dwTimeFormat = MCI_FORMAT_MILLISECONDS;
-    mciSendCommand(m_hDev, MCI_SET, MCI_SET_TIME_FORMAT, (DWORD)(LPVOID)&set);
-
-    status.dwItem = MCI_STATUS_POSITION;
-    mciSendCommand(m_hDev, MCI_STATUS, MCI_STATUS_ITEM, (DWORD)(LPVOID)&status);
-
-    DWORD position = status.dwReturn;
-    return position;
+    return m_CurrentPosition;
   }
 
   void VIMciPlayer::SetVolume(float v) {
     MCI_SET_PARMS parms;
     parms.dwAudio = v;
-    mciSendCommand(m_hDev, MCI_SET_AUDIO, MCI_SET_AUDIO_ALL, (DWORD)(LPVOID)&parms);
+    mciSendCommand(m_hDev, MCI_SET_AUDIO, MCI_SET_AUDIO, (DWORD)(LPVOID)&parms);
   }
 
   void VIMciPlayer::SetNextPlayer(VIMciPlayer* next) {
@@ -224,19 +219,32 @@ namespace VISS {
   LRESULT WINAPI _SoundPlayProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
   {
     VIMciPlayer * pPlayer = NULL;
-    if (MM_MCINOTIFY == Msg 
-      && MCI_NOTIFY_SUCCESSFUL == wParam
-      &&(pPlayer = (VIMciPlayer *)GetWindowLong(hWnd, GWL_USERDATA)))
-    {
-      if (pPlayer->m_next_player) {
-        pPlayer->m_next_player->Play(1);
-        pPlayer->m_next_player = NULL;
+    if (pPlayer = (VIMciPlayer *)GetWindowLong(hWnd, GWL_USERDATA)) {
+      if (Msg == MM_MCINOTIFY) {
+        if (wParam == MCI_NOTIFY_SUCCESSFUL ) {
+          if (pPlayer->m_next_player) {
+            pPlayer->m_next_player->Play(1);
+            pPlayer->m_next_player = NULL;
+          }
+          pPlayer->m_bPlaying = false;
+          return 0;
+        }
+      } else if (Msg == WM_TIMER) {
+        MCI_SET_PARMS set;
+        MCI_STATUS_PARMS status;
+
+        set.dwTimeFormat = MCI_FORMAT_MILLISECONDS;
+        mciSendCommand(pPlayer->m_hDev, MCI_SET, MCI_SET_TIME_FORMAT, (DWORD)(LPVOID)&set);
+
+        status.dwItem = MCI_STATUS_POSITION;
+        mciSendCommand(pPlayer->m_hDev, MCI_STATUS, MCI_STATUS_ITEM, (DWORD)(LPVOID)&status);
+
+        pPlayer->m_CurrentPosition = status.dwReturn;
+        return 0;
       }
-      pPlayer->m_bPlaying = false;
-      return 0;
     }
     return DefWindowProc(hWnd, Msg, wParam, lParam);
   }
 
 
-} // end of namespace CocosDenshion
+}
