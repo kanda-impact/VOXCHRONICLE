@@ -40,11 +40,11 @@ void SkillTrigger::setPress(bool press) {
   _press = press;
   if (press) {
     _state = SkillButtonStateSelected;
-    CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath("Image/Main/UI/trigger_bg_selected.png").c_str());
+    CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath("Image/Main/UI/proto/trigger_on.png").c_str());
     this->setTexture(texture);
   } else {
     _state = SkillButtonStateNormal;
-    CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath("Image/Main/UI/trigger_bg.png").c_str());
+    CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath("Image/Main/UI/proto/trigger_vox.png").c_str());
     this->setTexture(texture);
   }
 }
