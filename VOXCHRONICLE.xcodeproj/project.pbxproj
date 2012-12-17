@@ -39,6 +39,13 @@
 		073B4C6D162168BA003E0CC8 /* geek.lua in Resources */ = {isa = PBXBuildFile; fileRef = 073B4C6C162168BA003E0CC8 /* geek.lua */; };
 		073B4CAB1621C185003E0CC8 /* ginet.lua in Resources */ = {isa = PBXBuildFile; fileRef = 073B4CAA1621C185003E0CC8 /* ginet.lua */; };
 		073B4CAD1621C199003E0CC8 /* ginet2.lua in Resources */ = {isa = PBXBuildFile; fileRef = 073B4CAC1621C198003E0CC8 /* ginet2.lua */; };
+		0744B59E167DCA4000730393 /* trigger_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 0744B590167DCA4000730393 /* trigger_off.png */; };
+		0744B59F167DCA4000730393 /* trigger_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0744B591167DCA4000730393 /* trigger_on.png */; };
+		0744B5A5167DCA4000730393 /* trigger_laska.png in Resources */ = {isa = PBXBuildFile; fileRef = 0744B597167DCA4000730393 /* trigger_laska.png */; };
+		0744B5AB167DCA4000730393 /* trigger_vox.png in Resources */ = {isa = PBXBuildFile; fileRef = 0744B59D167DCA4000730393 /* trigger_vox.png */; };
+		0744B5AF167DD9B700730393 /* hp.png in Resources */ = {isa = PBXBuildFile; fileRef = 0744B5AD167DD9B600730393 /* hp.png */; };
+		0744B5B0167DD9B700730393 /* mp.png in Resources */ = {isa = PBXBuildFile; fileRef = 0744B5AE167DD9B600730393 /* mp.png */; };
+		0744B5B3167DD9EA00730393 /* StatusLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0744B5B1167DD9EA00730393 /* StatusLayer.cpp */; };
 		074EFCFF15FA8E2D004D8273 /* kawaz.png in Resources */ = {isa = PBXBuildFile; fileRef = 074EFCFE15FA8E2D004D8273 /* kawaz.png */; };
 		074EFD0415FA8EB5004D8273 /* sword.png in Resources */ = {isa = PBXBuildFile; fileRef = 074EFD0215FA8EB5004D8273 /* sword.png */; };
 		074EFD0515FA8EB5004D8273 /* trigger_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 074EFD0315FA8EB5004D8273 /* trigger_bg.png */; };
@@ -451,6 +458,14 @@
 		073B4C6C162168BA003E0CC8 /* geek.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = geek.lua; sourceTree = "<group>"; };
 		073B4CAA1621C185003E0CC8 /* ginet.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ginet.lua; sourceTree = "<group>"; };
 		073B4CAC1621C198003E0CC8 /* ginet2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ginet2.lua; sourceTree = "<group>"; };
+		0744B590167DCA4000730393 /* trigger_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trigger_off.png; sourceTree = "<group>"; };
+		0744B591167DCA4000730393 /* trigger_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trigger_on.png; sourceTree = "<group>"; };
+		0744B597167DCA4000730393 /* trigger_laska.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trigger_laska.png; sourceTree = "<group>"; };
+		0744B59D167DCA4000730393 /* trigger_vox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trigger_vox.png; sourceTree = "<group>"; };
+		0744B5AD167DD9B600730393 /* hp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp.png; sourceTree = "<group>"; };
+		0744B5AE167DD9B600730393 /* mp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mp.png; sourceTree = "<group>"; };
+		0744B5B1167DD9EA00730393 /* StatusLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StatusLayer.cpp; path = Classes/UI/StatusLayer.cpp; sourceTree = "<group>"; };
+		0744B5B2167DD9EA00730393 /* StatusLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusLayer.h; path = Classes/UI/StatusLayer.h; sourceTree = "<group>"; };
 		074EFCFE15FA8E2D004D8273 /* kawaz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kawaz.png; path = Resources/Image/Title/kawaz.png; sourceTree = "<group>"; };
 		074EFD0215FA8EB5004D8273 /* sword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sword.png; path = Resources/Image/Main/UI/sword.png; sourceTree = "<group>"; };
 		074EFD0315FA8EB5004D8273 /* trigger_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = trigger_bg.png; path = Resources/Image/Main/UI/trigger_bg.png; sourceTree = "<group>"; };
@@ -1225,17 +1240,33 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		0744B58F167DCA4000730393 /* proto */ = {
+			isa = PBXGroup;
+			children = (
+				0744B5AD167DD9B600730393 /* hp.png */,
+				0744B5AE167DD9B600730393 /* mp.png */,
+				0744B590167DCA4000730393 /* trigger_off.png */,
+				0744B591167DCA4000730393 /* trigger_on.png */,
+				0744B597167DCA4000730393 /* trigger_laska.png */,
+				0744B59D167DCA4000730393 /* trigger_vox.png */,
+			);
+			name = proto;
+			path = Resources/Image/Main/UI/proto;
+			sourceTree = "<group>";
+		};
 		074EFCF515FA8B44004D8273 /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				07F0D754163BABF1005592AF /* Controller.h */,
-				07F0D755163BABF1005592AF /* SkillTrigger.h */,
 				074EFD0715FA906C004D8273 /* Controller.cpp */,
+				07F0D755163BABF1005592AF /* SkillTrigger.h */,
 				074EFD0915FA906D004D8273 /* SkillTrigger.cpp */,
 				07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */,
 				07F0D779163BE867005592AF /* MessageWindow.h */,
 				070E401E163C29E600A76BEA /* BlinkLayer.cpp */,
 				070E4021163C29FB00A76BEA /* BlinkLayer.h */,
+				0744B5B1167DD9EA00730393 /* StatusLayer.cpp */,
+				0744B5B2167DD9EA00730393 /* StatusLayer.h */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1261,6 +1292,7 @@
 		074EFD0115FA8EAE004D8273 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0744B58F167DCA4000730393 /* proto */,
 				075653961617131C00C69E27 /* command */,
 				074EFD0215FA8EB5004D8273 /* sword.png */,
 				074EFD0315FA8EB5004D8273 /* trigger_bg.png */,
@@ -2772,6 +2804,12 @@
 				070E4044163CB10400A76BEA /* select_stage.wav in Resources */,
 				070E4045163CB10400A76BEA /* title.mp3 in Resources */,
 				070E4047163CB3BE00A76BEA /* gameover.mp3 in Resources */,
+				0744B59E167DCA4000730393 /* trigger_off.png in Resources */,
+				0744B59F167DCA4000730393 /* trigger_on.png in Resources */,
+				0744B5A5167DCA4000730393 /* trigger_laska.png in Resources */,
+				0744B5AB167DCA4000730393 /* trigger_vox.png in Resources */,
+				0744B5AF167DD9B700730393 /* hp.png in Resources */,
+				0744B5B0167DD9B700730393 /* mp.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3063,6 +3101,7 @@
 				07F0D799163C1EC1005592AF /* TitleScene.cpp in Sources */,
 				070E4020163C29E600A76BEA /* BlinkLayer.cpp in Sources */,
 				07F40F10163D0FC0009FC104 /* Music.cpp in Sources */,
+				0744B5B3167DD9EA00730393 /* StatusLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3160,8 +3199,8 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F2B047D9-C4BC-42AB-A807-BC6368926CA0";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F2B047D9-C4BC-42AB-A807-BC6368926CA0";
+				PROVISIONING_PROFILE = "ECDFC9B4-B064-4451-BDCC-227BB3E90157";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ECDFC9B4-B064-4451-BDCC-227BB3E90157";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3194,8 +3233,8 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F2B047D9-C4BC-42AB-A807-BC6368926CA0";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F2B047D9-C4BC-42AB-A807-BC6368926CA0";
+				PROVISIONING_PROFILE = "ECDFC9B4-B064-4451-BDCC-227BB3E90157";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ECDFC9B4-B064-4451-BDCC-227BB3E90157";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

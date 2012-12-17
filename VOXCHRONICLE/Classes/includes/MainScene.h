@@ -21,6 +21,7 @@
 #include "CharacterManager.h"
 #include "MapSelector.h"
 #include "MessageWindow.h"
+#include "StatusLayer.h"
 
 typedef enum {
   VCStateIntro,
@@ -45,13 +46,7 @@ class MainScene : public CCLayer {
   CharacterManager* _characterManager;
   MapSelector* _mapSelector;
   MessageWindow* _messageWindow;
-  
-  CCLabelTTF* _levelLabel;
-  CCLabelTTF* _hpLabel;
-  CCLabelTTF* _mpLabel;
-  CCLabelTTF* _expLabel;
-  CCLabelTTF* _nextExpLabel;
-  CCLabelTTF* _mapLabel;
+  StatusLayer* _statusLayer;
   
   Level* _level;
   Map* _map;

@@ -20,6 +20,7 @@ struct Track::AudioTrack {
 
 Track::Track(const char* fileName) : _track(new VISS::Track::AudioTrack) {
   NSString* file = [NSString stringWithUTF8String:fileName];
+  _fileName = string(fileName);
   _track->track = [[OALAudioTrack alloc] init];
   [_track->track preloadFile:file];
 }
@@ -69,4 +70,8 @@ void Track::playAfterTrack(VISS::Track *track) {
   NSTimeInterval deviceTime = track->getDeviceCurrentTime();
   NSTimeInterval trackTimeRemaining = track->getDuration() - track->getPosition();
   [_track->track playAtTime:deviceTime + trackTimeRemaining];
+}
+
+string Track::getTrackName() {
+  return string(_fileName);
 }

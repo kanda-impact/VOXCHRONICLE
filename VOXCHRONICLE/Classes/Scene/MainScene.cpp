@@ -58,25 +58,6 @@ bool MainScene::init() {
   _level = _map->createInitialLevel();
   _enemyManager->setLevel(_level);
   
-  _levelLabel = CCLabelTTF::create("", FONT_NAME, 16);
-  _levelLabel->setPosition(CCPointMake(40, 280));
-  _hpLabel = CCLabelTTF::create("", FONT_NAME, 16);
-  _hpLabel->setPosition(CCPointMake(400, 290));
-  _mpLabel = CCLabelTTF::create("", FONT_NAME, 16);
-  _mpLabel->setPosition(CCPointMake(400, 270));
-  _expLabel = CCLabelTTF::create("", FONT_NAME, 16);
-  _expLabel->setPosition(CCPointMake(40, 260));
-  _nextExpLabel = CCLabelTTF::create("", FONT_NAME, 16);
-  _nextExpLabel->setPosition(CCPointMake(40, 240));
-  _mapLabel = CCLabelTTF::create("", FONT_NAME, 16);
-  _mapLabel->setPosition(CCPointMake(60, 220));
-  this->addChild(_levelLabel);
-  this->addChild(_hpLabel);
-  this->addChild(_mpLabel);
-  this->addChild(_expLabel);
-  this->addChild(_nextExpLabel);
-  this->addChild(_mapLabel);
-  
   TrackCache::sharedCache()->addTrack(FileUtils::getFilePath("Music/general/select_stage.wav"));
   
   this->pushInitialTracks(_map);
@@ -95,6 +76,10 @@ bool MainScene::init() {
   
   this->scheduleUpdate();
   _preLevel = _level->getLevel();
+  
+  _statusLayer = new StatusLayer();
+  _statusLayer->retain();
+  this->addChild(_statusLayer);
   return true;
 }
 
@@ -104,6 +89,7 @@ MainScene::~MainScene() {
   _controller->release();
   _enemyManager->release();
   _characterManager->release();
+  _statusLayer->release();
   if (_mapSelector != NULL) {
     _mapSelector->release();
   }
@@ -298,14 +284,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
 }
 
 void MainScene::updateGUI() {
-  _hpLabel->setString(boost::lexical_cast<string>(_characterManager->getHP()).c_str());
-  _mpLabel->setString(boost::lexical_cast<string>(_characterManager->getMP()).c_str());
-  _levelLabel->setString(boost::lexical_cast<string>(_characterManager->getLevel()).c_str());
-  _expLabel->setString(boost::lexical_cast<string>(_characterManager->getExp()).c_str());
-  int currentLevel = _level->getLevel();
-  int nextExp = _characterManager->getExpWithLevel(currentLevel + 1);
-  _nextExpLabel->setString(boost::lexical_cast<string>(nextExp).c_str());
-  _mapLabel->setString(_map->getName()->c_str());
+
 }
 
 void MainScene::pushInitialTracks(Map *map) {
