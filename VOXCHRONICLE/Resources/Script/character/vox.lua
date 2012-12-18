@@ -1,5 +1,6 @@
 Character = {
   name = "オクス",
+  type = CharacterTypeVox,
   skills = {
     {"attack", 1},
     {"knockback", 6},

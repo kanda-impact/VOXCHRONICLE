@@ -33,6 +33,7 @@ Character::Character(const char* slug) {
     _skills->addObject(skill);
   }
   _name = _lua->getString("name");
+  _type = (CharacterType)_lua->getInt("type");
   _slug = slug;
 }
 
@@ -62,4 +63,8 @@ CCArray* Character::getSkills(int level) {
 
 const char* Character::getSlug() {
   return _slug;
+}
+
+CharacterType Character::getCharacterType() {
+  return _type;
 }

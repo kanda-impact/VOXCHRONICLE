@@ -54,7 +54,7 @@ bool Controller::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
     CCSize size = ((SkillTrigger*)trigger)->getContentSize();
     const CCPoint triggerCenter = ccp(size.width / 2.0f, size.height / 2.0f);
     const int triggerRadius = size.width / 2.0;
-    if (((SkillTrigger*)trigger)->getSkillButtonState() == SkillButtonStateNormal && ccpDistance(triggerCenter, p) < triggerRadius) {
+    if (((SkillTrigger*)trigger)->getSkillTriggerState() == SkillTriggerStateNormal && ccpDistance(triggerCenter, p) < triggerRadius) {
       this->resetAllTriggers();
       CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cursor.mp3").c_str());
       ((SkillTrigger*)trigger)->setPress(true);
@@ -95,13 +95,19 @@ void Controller::updateSkills(CharacterManager* manager) {
     trigger->setSkill(skill);
     if (!skills->containsObject(skill)) {
       // 習得済みスキルに入ってないとき、未習得状態に
-      trigger->setSkillButtonState(SkillButtonStateUnknown);
+      trigger->setSkillTriggerState(SkillTriggerStateUnknown);
     } else if (skill->getTensionLevel() > manager->getTension()) {
       // テンションレベルが足りないとき、使用不可状態に
-      trigger->setSkillButtonState(SkillButtonStateDisable);
+      trigger->setSkillTriggerState(SkillTriggerStateDisable);
     } else {
       // その他のとき、通常状態に
-      trigger->setSkillButtonState(SkillButtonStateNormal);
+      trigger->setSkillTriggerState(SkillTriggerStateNormal);
+    }
+    // 現在のキャラに応じて色を変更します
+    if (manager->getCurrentCharacter()->getCharacterType() == CharacterTypeVox) {
+      trigger->setColor(SkillTriggerColorVox);
+    } else {
+      trigger->setColor(SkillTriggerColorLaska);
     }
   }
 }

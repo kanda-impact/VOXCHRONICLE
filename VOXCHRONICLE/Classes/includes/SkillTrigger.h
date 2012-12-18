@@ -14,11 +14,16 @@
 #include "Skill.h"
 
 typedef enum {
-  SkillButtonStateNormal,    // 使用可能な状態です
-  SkillButtonStateSelected,  // 選択状態です
-  SkillButtonStateDisable,   // テンションレベルが足りなかったり、封印されていて使用できない状態です
-  SkillButtonStateUnknown    // 習得前の状態です
-} SkillButtonState;
+  SkillTriggerStateNormal,    // 使用可能な状態です
+  SkillTriggerStateSelected,  // 選択状態です
+  SkillTriggerStateDisable,   // テンションレベルが足りなかったり、封印されていて使用できない状態です
+  SkillTriggerStateUnknown    // 習得前の状態です
+} SkillTriggerState;
+
+typedef enum {
+  SkillTriggerColorVox,       // オクス用ボタンカラー（青）
+  SkillTriggerColorLaska      // ラスカ用ボタンカラー（赤）
+} SkillTriggerColor;
 
 using namespace cocos2d;
 
@@ -27,9 +32,10 @@ using namespace cocos2d;
 */
 class SkillTrigger : public CCSprite, CCTouchDelegate {
  private:
-  bool _press;
-  Skill* _skill;
-  SkillButtonState _state;
+  bool _press; // 押されているかどうかです
+  Skill* _skill; // このトリガーが保持しているSkillです
+  SkillTriggerState _state; // 現在のトリガーの状態です
+  SkillTriggerColor _color; // 現在のトリガーの色です
   
  public:
   static SkillTrigger* create(const char* filename);
@@ -39,8 +45,9 @@ class SkillTrigger : public CCSprite, CCTouchDelegate {
   void setSkill(Skill* skill);
   ~SkillTrigger();
   SkillTrigger();
-  int getSkillButtonState();
-  void setSkillButtonState(SkillButtonState state);
+  int getSkillTriggerState();
+  void setSkillTriggerState(SkillTriggerState state);
+  void setColor(SkillTriggerColor color);
 };
 
 #endif /* defined(__VOXCHRONICLE__SkillTrigger__) */

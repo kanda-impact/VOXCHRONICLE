@@ -109,24 +109,32 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_module(tolua_S, NULL, 0);
   tolua_beginmodule(tolua_S, NULL);
   tolua_constant(tolua_S, "MAX_ROW", MAX_ROW);
+  // 技の使用範囲
   tolua_constant(tolua_S, "SkillRangeSingle", SkillRangeSingle);
   tolua_constant(tolua_S, "SkillRangeAll", SkillRangeAll);
   tolua_constant(tolua_S, "SkillRangeHorizontal", SkillRangeHorizontal);
   tolua_constant(tolua_S, "SkillRangeVertical", SkillRangeVertical);
   tolua_constant(tolua_S, "SkillRangeBack", SkillRangeBack);
   tolua_constant(tolua_S, "SkillRangeSelf", SkillRangeSelf);
+  // 技の属性
   tolua_constant(tolua_S, "SkillTypeNone", SkillTypeNone);
   tolua_constant(tolua_S, "SkillTypeNormal", SkillTypeNormal);
   tolua_constant(tolua_S, "SkillTypePhysical", SkillTypePhysical);
   tolua_constant(tolua_S, "SkillTypeMagical", SkillTypeMagical);
+  // キャラの種別
+  tolua_constant(tolua_S, "CharacterTypeVox", CharacterTypeVox);
+  tolua_constant(tolua_S, "CharacterTypeLaska", CharacterTypeLaska);
+  // Skillクラス
   tolua_beginmodule(tolua_S, "Skill");
   tolua_endmodule(tolua_S);
+  // Enemyクラス
   tolua_cclass(tolua_S, "Enemy", "Enemy", "CCSprite", NULL);
   tolua_beginmodule(tolua_S, "Enemy");
   tolua_function(tolua_S, "getRow", tolua_VC_Enemy_getRow);
   tolua_function(tolua_S, "moveRow", tolua_VC_Enemy_moveRow);
   tolua_function(tolua_S, "setRow", tolua_VC_Enemy_setRow);
   tolua_endmodule(tolua_S);
+  // CharacterManagerクラス
   tolua_cclass(tolua_S, "CharacterManager", "CharacterManager", "CCObject", NULL);
   tolua_beginmodule(tolua_S, "CharacterManager");
   tolua_function(tolua_S, "setShield", tolua_VC_CharacterManager_setShield);
