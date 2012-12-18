@@ -64,8 +64,6 @@ bool MainScene::init() {
   
   _state = VCStateIntro;
   
-  this->updateGUI();
-  
   _messageWindow = new MessageWindow(FONT_NAME, 64);
   _messageWindow->retain();
   _messageWindow->setPosition(ccp(100, 100));
@@ -80,6 +78,9 @@ bool MainScene::init() {
   _statusLayer = new StatusLayer();
   _statusLayer->retain();
   this->addChild(_statusLayer);
+  
+  this->updateGUI();
+  
   return true;
 }
 
@@ -284,7 +285,10 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
 }
 
 void MainScene::updateGUI() {
-
+  _statusLayer->setCurrentHP(_characterManager->getHP());
+  _statusLayer->setMaxHP(_characterManager->getMaxHP());
+  _statusLayer->setCurrentMP(_characterManager->getMP());
+  _statusLayer->setMaxMP(_characterManager->getMaxMP());
 }
 
 void MainScene::pushInitialTracks(Map *map) {

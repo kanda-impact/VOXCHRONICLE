@@ -26,6 +26,11 @@ class StatusLayer :public CCLayer {
   CCLabelTTF* _mapLabel;
  public:
   StatusLayer();
+  ~StatusLayer();
+  void setCurrentHP(int hp);
+  void setMaxHP(int hp);
+  void setCurrentMP(int mp);
+  void setMaxMP(int mp);
 };
 
 #endif /* defined(__VOXCHRONICLE__UILayer__) */

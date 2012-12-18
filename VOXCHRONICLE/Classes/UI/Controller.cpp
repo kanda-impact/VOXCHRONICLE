@@ -22,11 +22,11 @@ bool Controller::init() {
   _triggers->retain();
   _enable = true;
   //const int rotation[] = {0, 30, 60, 0, -30, -60};
-  const int x[] = {78.4, 190.1, 190.6, 766.8, 768.4, 878.5};
-  const int y[] = {177.2, 240.8, 111.0, 240.8, 114.0, 177.2};
+  const int x[] = {34.8, 81.3, 79.8, 397.64, 444.4, 397.1};
+  const int y[] = {85.5, 110.5, 57.82, 110.5, 85.5, 57.73};
   for (int i = 0; i < 6; ++i) {
     SkillTrigger* trigger = SkillTrigger::create(FileUtils::getFilePath("Image/Main/UI/proto/trigger_vox.png").c_str());
-    trigger->setPosition(ccp(x[i] / 2.0, y[i] / 2.0));
+    trigger->setPosition(ccp(x[i], y[i]));
     //trigger->setRotation(rotation[i]);
     this->addChild(trigger);
     _triggers->addObject(trigger);
