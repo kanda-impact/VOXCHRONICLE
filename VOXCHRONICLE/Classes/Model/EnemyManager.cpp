@@ -157,8 +157,9 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
   int exp = 0;
   CCDictionary* info = CCDictionary::create();
   characterManager->setShield(false);
-  CCArray* targets = (CCArray*)CCArray::create();
-  CCArray* damages = (CCArray*)CCArray::create();
+  CCArray* targets = CCArray::create();
+  CCArray* damages = CCArray::create();
+  CCArray* damageTypes = CCArray::create();
   if (skill->getMP() <= characterManager->getMP()) {
     // ターゲットの決定
     SkillRange range = skill->getRange();
@@ -197,8 +198,12 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
     CCARRAY_FOREACH(targets, obj) {
       Enemy* target = (Enemy*)obj;
       int beforeHP = target->getHP();
-      if (!performLuaFunction(skill, target, characterManager)) {
-        target->damage(skill, characterManager);
+      // 追加効果がある場合、関数を呼び出す
+      performLuaFunction(skill, target, characterManager);
+      DamageType damageType = DamageTypeNone;
+      if (skill->getPower() != 0) {
+        // 威力が1以上の場合、ダメージを与える
+        damageType = target->damage(skill, characterManager);
       }
       if (target->getHP() <= 0) {
         exp += target->getExp();
@@ -207,6 +212,7 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
       }
       int damage = beforeHP - target->getHP();
       damages->addObject(CCInteger::create(damage));
+      damageTypes->addObject(CCInteger::create((int)damageType));
     }
     characterManager->addMP(-1 * skill->getMP());
   } else {
@@ -220,6 +226,7 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
   info->setObject(targets, "enemies");
   info->setObject(CCInteger::create(exp), "exp");
   info->setObject(damages, "damages");
+  info->setObject(damageTypes, "damageTypes");
   characterManager->addExp(exp);
   return info;
 }

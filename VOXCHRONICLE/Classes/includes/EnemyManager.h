@@ -124,7 +124,8 @@ class EnemyManager :public CCLayer {
    @param CharacterManager* characterManager 現在のCharacterManager
    @return CCDictionary 以下のキーと値を持つ辞書が返ります
        damages : CCArray 与えたダメージのリスト
-       enemies : CCArray 攻撃を当てた敵のリスト。インデックスdamagesと対応しています
+       damageTypes : CCArray DamageType型のenumをラップしたCCIntegerのリスト。damagesと対応しています
+       enemies : CCArray 攻撃を当てた敵のリスト。damagesと対応しています
        exp : 得られた総経験値
    */
   CCDictionary* performSkill(Skill* skill, CharacterManager* characterManager);

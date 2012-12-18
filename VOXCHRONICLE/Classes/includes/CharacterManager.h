@@ -15,6 +15,7 @@
 
 // ダメージタイプ
 typedef enum {
+  DamageTypeNone, // デフォルト
   DamageTypeHit, // 通常攻撃命中
   DamageTypeShield, // 盾による無効化
   DamageTypeInvisible, // 無敵による無効化
@@ -75,7 +76,7 @@ class CharacterManager :public CCObject {
   
   /**
    テンションを加えます
-   テンションが最大値3を超えたとき、3にします
+   テンションが最大値4を超えたとき、4にします
    @param int t 加えるテンション
    */
   void addTension(int t);

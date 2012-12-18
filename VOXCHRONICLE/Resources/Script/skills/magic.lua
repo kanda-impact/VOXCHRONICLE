@@ -10,7 +10,7 @@ Skill = {
   skillRange = SkillRangeSingle,
   skillType = SkillTypeMagical,
   getTensionRate = function(tension)
-    t = {1.0, 1.5, 3.0, 4.5, 6}
-    return t[tension + 1]
+    t = {0, 0, 1.0, 1.5, 3}
+    return t[tension]
   end
 }
