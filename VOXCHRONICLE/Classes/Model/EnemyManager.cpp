@@ -208,7 +208,7 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
       int damage = beforeHP - target->getHP();
       damages->addObject(CCInteger::create(damage));
     }
-    characterManager->useMP(skill->getMP());
+    characterManager->addMP(-1 * skill->getMP());
   } else {
     cout << "MP is nothing!" << endl;
   }

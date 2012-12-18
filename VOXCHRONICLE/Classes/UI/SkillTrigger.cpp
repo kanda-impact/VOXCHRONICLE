@@ -9,6 +9,7 @@
 #include <sstream>
 #include "SkillTrigger.h"
 #include "FileUtils.h"
+#include "CCDrawingPrimitives.h"
 
 SkillTrigger* SkillTrigger::create(const char *pszFileName) {
   SkillTrigger *pobSprite = new SkillTrigger();

@@ -9,6 +9,7 @@
 #include "StatusLayer.h"
 #include "FileUtils.h"
 #include <boost/lexical_cast.hpp>
+#include <sstream>
 
 StatusLayer::StatusLayer() {
   CCSprite* hpLabel = CCSprite::create(FileUtils::getFilePath("Image/Main/UI/proto/hp.png").c_str());
@@ -39,6 +40,30 @@ StatusLayer::~StatusLayer() {
   _maxHPLabel->release();
   _currentHPLabel->release();
   _mpChips->release();
+  _timeMarker->release();
+}
+
+void StatusLayer::setMarkerDuration(float d) {
+  if (_timeMarker != NULL) {
+    this->removeChild(_timeMarker, true);
+    _timeMarker = NULL;
+  }
+  _timeMarker = CCSprite::create(FileUtils::getFilePath("Image/Main/UI/proto/marker0.png").c_str());
+  CCArray* frames = CCArray::create();
+  for (int i = 0; i < 4; ++i) {
+    stringstream ss;
+    ss << "Image/Main/UI/proto/marker" << i << ".png";
+    CCSpriteFrame* frame = CCSpriteFrame::create(FileUtils::getFilePath(ss.str().c_str()).c_str(), CCRectMake(0, 0, 24, 24));
+    frames->addObject(frame);
+  }
+  CCAnimation* animation = CCAnimation::createWithSpriteFrames(frames);
+  animation->setDelayPerUnit(d);
+  animation->setRestoreOriginalFrame(true);
+  _timeMarker->retain();
+  _timeMarker->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
+  int width = CCDirector::sharedDirector()->getWinSize().width;
+  _timeMarker->setPosition(ccp(width / 2, 20));
+  this->addChild(_timeMarker);
 }
 
 void StatusLayer::setCurrentHP(int hp) {

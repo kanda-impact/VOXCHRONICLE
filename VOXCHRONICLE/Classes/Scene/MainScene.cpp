@@ -78,7 +78,6 @@ bool MainScene::init() {
   _statusLayer = new StatusLayer();
   _statusLayer->retain();
   this->addChild(_statusLayer);
-  
   this->updateGUI();
   
   return true;
@@ -107,6 +106,7 @@ void MainScene::update(float dt) {
 
 void MainScene::onEnterTransitionDidFinish() {
   _music->play();
+  _statusLayer->setMarkerDuration(_music->getTrack(0)->getDuration() / 4.0f);
 }
 
 void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber) {
@@ -223,7 +223,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         this->checkLevelUp();
       } else if (performType == SkillPerformTypeNone) {
         // 何も実行しなかったとき
-        _characterManager->useMP(-1);
+        _characterManager->addMP(1);
       }
       _controller->updateSkills(_characterManager);
     } else if (trackNumber == 1) {

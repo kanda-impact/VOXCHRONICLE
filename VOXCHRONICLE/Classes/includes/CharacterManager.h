@@ -108,14 +108,14 @@ class CharacterManager :public CCObject {
    @param int hp 回復するHP
    @return int 回復後のHPを返します
    */
-  int cureHP(int hp);
+  int addHP(int hp);
   
   /**
    MPを使用します。MPが0を下回った場合は0にします
    @param int mp 使用するMP
    @return int 回復後のMPを返します
    */
-  int useMP(int mp);
+  int addMP(int mp);
   
   /**
    現在のレベルの最高HP, MPを取得し、現在HP, MPを補正します

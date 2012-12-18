@@ -24,6 +24,7 @@ class StatusLayer :public CCLayer {
   CCLabelTTF* _expLabel;
   CCLabelTTF* _nextExpLabel;
   CCLabelTTF* _mapLabel;
+  CCSprite* _timeMarker;
  public:
   StatusLayer();
   ~StatusLayer();
@@ -31,6 +32,7 @@ class StatusLayer :public CCLayer {
   void setMaxHP(int hp);
   void setCurrentMP(int mp);
   void setMaxMP(int mp);
+  void setMarkerDuration(float d);
 };
 
 #endif /* defined(__VOXCHRONICLE__UILayer__) */

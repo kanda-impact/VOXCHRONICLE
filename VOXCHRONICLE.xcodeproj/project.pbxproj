@@ -43,6 +43,11 @@
 		07425E2B167FDF6A001134D0 /* slash.png in Resources */ = {isa = PBXBuildFile; fileRef = 07425E2A167FDF6A001134D0 /* slash.png */; };
 		07425E2E167FEADA001134D0 /* mp_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 07425E2C167FEADA001134D0 /* mp_off.png */; };
 		07425E2F167FEADA001134D0 /* mp_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 07425E2D167FEADA001134D0 /* mp_on.png */; };
+		07425E31168072C4001134D0 /* charge.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07425E30168072C4001134D0 /* charge.lua */; };
+		07425E421680816A001134D0 /* marker0.png in Resources */ = {isa = PBXBuildFile; fileRef = 07425E3E1680816A001134D0 /* marker0.png */; };
+		07425E431680816A001134D0 /* marker1.png in Resources */ = {isa = PBXBuildFile; fileRef = 07425E3F1680816A001134D0 /* marker1.png */; };
+		07425E441680816A001134D0 /* marker2.png in Resources */ = {isa = PBXBuildFile; fileRef = 07425E401680816A001134D0 /* marker2.png */; };
+		07425E451680816A001134D0 /* marker3.png in Resources */ = {isa = PBXBuildFile; fileRef = 07425E411680816A001134D0 /* marker3.png */; };
 		0744B59E167DCA4000730393 /* trigger_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 0744B590167DCA4000730393 /* trigger_off.png */; };
 		0744B59F167DCA4000730393 /* trigger_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0744B591167DCA4000730393 /* trigger_on.png */; };
 		0744B5A5167DCA4000730393 /* trigger_laska.png in Resources */ = {isa = PBXBuildFile; fileRef = 0744B597167DCA4000730393 /* trigger_laska.png */; };
@@ -466,6 +471,11 @@
 		07425E2A167FDF6A001134D0 /* slash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slash.png; sourceTree = "<group>"; };
 		07425E2C167FEADA001134D0 /* mp_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mp_off.png; sourceTree = "<group>"; };
 		07425E2D167FEADA001134D0 /* mp_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mp_on.png; sourceTree = "<group>"; };
+		07425E30168072C4001134D0 /* charge.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = charge.lua; sourceTree = "<group>"; };
+		07425E3E1680816A001134D0 /* marker0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker0.png; sourceTree = "<group>"; };
+		07425E3F1680816A001134D0 /* marker1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker1.png; sourceTree = "<group>"; };
+		07425E401680816A001134D0 /* marker2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker2.png; sourceTree = "<group>"; };
+		07425E411680816A001134D0 /* marker3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker3.png; sourceTree = "<group>"; };
 		0744B590167DCA4000730393 /* trigger_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trigger_off.png; sourceTree = "<group>"; };
 		0744B591167DCA4000730393 /* trigger_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trigger_on.png; sourceTree = "<group>"; };
 		0744B597167DCA4000730393 /* trigger_laska.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trigger_laska.png; sourceTree = "<group>"; };
@@ -1251,6 +1261,10 @@
 		0744B58F167DCA4000730393 /* proto */ = {
 			isa = PBXGroup;
 			children = (
+				07425E3E1680816A001134D0 /* marker0.png */,
+				07425E3F1680816A001134D0 /* marker1.png */,
+				07425E401680816A001134D0 /* marker2.png */,
+				07425E411680816A001134D0 /* marker3.png */,
 				07425E2C167FEADA001134D0 /* mp_off.png */,
 				07425E2D167FEADA001134D0 /* mp_on.png */,
 				07425E27167FDDEB001134D0 /* hp_numbers.png */,
@@ -2445,6 +2459,7 @@
 				0731E4DA16176C95006AEF3D /* thunder.lua */,
 				07E1351E1621AF2700CCF72E /* levelup.lua */,
 				07E135721624AC4700CCF72E /* cure.lua */,
+				07425E30168072C4001134D0 /* charge.lua */,
 			);
 			path = skills;
 			sourceTree = "<group>";
@@ -2826,6 +2841,11 @@
 				07425E2B167FDF6A001134D0 /* slash.png in Resources */,
 				07425E2E167FEADA001134D0 /* mp_off.png in Resources */,
 				07425E2F167FEADA001134D0 /* mp_on.png in Resources */,
+				07425E31168072C4001134D0 /* charge.lua in Resources */,
+				07425E421680816A001134D0 /* marker0.png in Resources */,
+				07425E431680816A001134D0 /* marker1.png in Resources */,
+				07425E441680816A001134D0 /* marker2.png in Resources */,
+				07425E451680816A001134D0 /* marker3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

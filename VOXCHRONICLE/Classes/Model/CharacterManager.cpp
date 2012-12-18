@@ -195,7 +195,7 @@ DamageType CharacterManager::damage(int damage) {
   return DamageTypeHit;
 }
 
-int CharacterManager::cureHP(int hp) {
+int CharacterManager::addHP(int hp) {
   _hp += hp;
   if (_hp > _maxHP) {
     _hp = _maxHP;
@@ -227,8 +227,8 @@ void CharacterManager::setLevel(int l) {
   _isExpDirty = false;
 }
 
-int CharacterManager::useMP(int mp) {
-  _mp -= mp;
+int CharacterManager::addMP(int mp) {
+  _mp += mp;
   if (_mp > _maxMP) {
     _mp = _maxMP;
   } else if (_mp < 0) {

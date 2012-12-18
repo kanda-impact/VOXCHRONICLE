@@ -48,11 +48,12 @@ void Controller::registerWithTouchDispatcher() {
 
 bool Controller::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
   if (!_enable) return false;
-  const CCPoint triggerCenter = ccp(50, 60);
-  const int triggerRadius = 40;
   CCObject* trigger = NULL;
   CCARRAY_FOREACH(_triggers, trigger) {
     CCPoint p = ((SkillTrigger*)trigger)->convertTouchToNodeSpace(pTouch);
+    CCSize size = ((SkillTrigger*)trigger)->getContentSize();
+    const CCPoint triggerCenter = ccp(size.width / 2.0f, size.height / 2.0f);
+    const int triggerRadius = size.width / 2.0;
     if (((SkillTrigger*)trigger)->getSkillButtonState() == SkillButtonStateNormal && ccpDistance(triggerCenter, p) < triggerRadius) {
       this->resetAllTriggers();
       CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cursor.mp3").c_str());
