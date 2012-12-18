@@ -1,6 +1,6 @@
 Skill = {
   name = "レベルアップ",
-  slug = "tension",
+  identifier = "tension",
   power = 1,
   mp = 0,
   tensionLevel = 0,

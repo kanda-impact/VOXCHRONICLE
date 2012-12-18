@@ -54,17 +54,17 @@ string CharacterManager::checkSkillTrackName(Skill* skill, SkillPerformType& per
     _waitTurn += 1;
     if (_waitTurn == skill->getTurn()) {
       std::stringstream ss;
-      if (_lastSkill && strcmp(_lastSkill->getSlug(), skill->getSlug())) {
+      if (_lastSkill && strcmp(_lastSkill->getIdentifier(), skill->getIdentifier())) {
         _repeatCount = 0;
       }
       if (skill->isCommon()) {
         // スキルのcommonがfalseのとき、曲名にキャラ名が付かない
         // tension0.wav
-        ss << skill->getSlug() << _repeatCount;
+        ss << skill->getIdentifier() << _repeatCount;
       } else {
         // commonがtrueのとき、曲名にキャラ名が付く
         // ex: voxattack0.wav
-        ss << _currentCharacter->getSlug() << skill->getSlug() << _repeatCount;
+        ss << _currentCharacter->getIdentifier() << skill->getIdentifier() << _repeatCount;
       }
       _repeatCount = (_repeatCount + 1) % skill->getMaxRepeat();
       this->setLastSkill(skill);
@@ -82,7 +82,7 @@ string CharacterManager::checkSkillTrackName(Skill* skill, SkillPerformType& per
       this->setCurrentSkill(skill);
       performeType = SkillPerformTypeCharge;
       std::stringstream ss;
-      ss << _currentCharacter->getSlug() << skill->getSlug() << "_charge" << (_waitTurn - 1); // チャージ中の時、チャージ音返す
+      ss << _currentCharacter->getIdentifier() << skill->getIdentifier() << "_charge" << (_waitTurn - 1); // チャージ中の時、チャージ音返す
       return ss.str().c_str();
     }
   } else {

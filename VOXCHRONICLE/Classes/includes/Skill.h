@@ -41,15 +41,15 @@ class Skill :public CCObject {
   int _tensionLevel;
   bool _common;
   std::string* _name;
-  const char* _slug;
+  const char* _identifier;
   SkillRange _range;
   SkillType _type;
   LuaObject* _lua;
  public:
-  Skill(const char* slug);
+  Skill(const char* identifier);
   ~Skill();
   const char* getName();
-  const char* getSlug();
+  const char* getIdentifier();
   int getTurn();
   int getPowerWithTension(int tension);
   int getMaxRepeat();

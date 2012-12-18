@@ -1,6 +1,6 @@
 Skill = {
   name = "盾",
-  slug = "shield",
+  identifier = "shield",
   power = 0,
   mp = 0,
   tensionLevel = 0,

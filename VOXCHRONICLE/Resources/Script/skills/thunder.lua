@@ -1,6 +1,6 @@
 Skill = {
   name = "雷",
-  slug = "thunder",
+  identifier = "thunder",
   power = 1,
   mp = 2,
   tensionLevel = 2,

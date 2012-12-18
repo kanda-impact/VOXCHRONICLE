@@ -11,13 +11,13 @@
 #include "Skill.h"
 #include "LuaObject.h"
 
-Skill::Skill(const char* slug) {
+Skill::Skill(const char* identifier) {
   stringstream ss;
-  ss << "Script/skills/" << slug;
+  ss << "Script/skills/" << identifier;
   _lua = new LuaObject(ss.str().c_str(), "Skill");
   _lua->retain();
   _name = new std::string(_lua->getString("name"));
-  _slug = _lua->getString("slug");
+  _identifier = _lua->getString("identifier");
   _power = _lua->getInt("power");
   _mp = _lua->getInt("mp");
   _common = _lua->getBoolean("common");
@@ -37,8 +37,8 @@ const char* Skill::getName() {
   return _name->c_str();
 }
 
-const char* Skill::getSlug() {
-  return _slug;
+const char* Skill::getIdentifier() {
+  return _identifier;
 }
 
 int Skill::getTurn() {

@@ -1,6 +1,6 @@
 Skill = {
   name = "攻撃",
-  slug = "attack",
+  identifier = "attack",
   power = 1,
   mp = 0,
   tensionLevel = 0,

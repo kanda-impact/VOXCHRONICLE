@@ -214,7 +214,7 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
   }
   
   // テンション使ってないときreset
-  if (strcmp(skill->getSlug(), "tension")) {
+  if (strcmp(skill->getIdentifier(), "tension")) {
     characterManager->resetTension();
   }
   info->setObject(targets, "enemies");

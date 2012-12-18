@@ -1,6 +1,6 @@
 Skill = {
   name = "チェンジ",
-  slug = "change",
+  identifier = "change",
   power = 0,
   mp = 0,
   tensionLevel = 0,

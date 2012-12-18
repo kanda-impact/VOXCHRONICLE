@@ -1,6 +1,6 @@
 Skill = {
   name = "魔法",
-  slug = "magic",
+  identifier = "magic",
   power = 1,
   mp = 1,
   tensionLevel = 0,

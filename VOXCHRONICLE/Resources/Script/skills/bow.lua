@@ -1,6 +1,6 @@
 Skill = {
   name = "弓",
-  slug = "bow",
+  identifier = "bow",
   power = 1,
   mp = 0,
   tensionLevel = 0,

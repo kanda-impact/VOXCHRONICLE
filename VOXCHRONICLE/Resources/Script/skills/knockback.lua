@@ -1,6 +1,6 @@
 Skill = {
   name = "ノックバック",
-  slug = "knockback",
+  identifier = "knockback",
   power = 0,
   mp = 0,
   tensionLevel = 0,

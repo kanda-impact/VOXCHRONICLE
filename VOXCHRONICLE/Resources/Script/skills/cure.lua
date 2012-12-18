@@ -1,6 +1,6 @@
 Skill = {
   name = "回復",
-  slug = "cure",
+  identifier = "cure",
   power = 0,
   mp = 1,
   tensionLevel = 0,

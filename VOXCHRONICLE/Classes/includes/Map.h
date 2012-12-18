@@ -23,7 +23,7 @@ class Map :public CCObject {
   int _initialLevel;
   int _maxLevel;
   int _introCount;
-  const char* _slug;
+  const char* _identifier;
   vector<string>* _nextMaps;
   string* _name;
   string* _prefix;

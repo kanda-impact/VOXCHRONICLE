@@ -19,7 +19,7 @@ Map::Map(const char* mapName) {
   // ここでスクリプトを読ませる
   stringstream ss;
   ss << "Script/map/" << mapName;
-  _slug = mapName;
+  _identifier = mapName;
   _lua = new LuaObject(ss.str().c_str(), "Map");
   _lua->retain();
   _name = new string(_lua->getString("name"));

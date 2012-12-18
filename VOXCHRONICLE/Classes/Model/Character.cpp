@@ -10,9 +10,9 @@
 #include "Character.h"
 #include "Skill.h"
 
-Character::Character(const char* slug) {
+Character::Character(const char* identifier) {
   stringstream ss;
-  ss << "Script/character/" << slug;
+  ss << "Script/character/" << identifier;
   _lua = new LuaObject(ss.str().c_str());
   _skills = CCArray::create();
   _skills->retain();
@@ -34,7 +34,7 @@ Character::Character(const char* slug) {
   }
   _name = _lua->getString("name");
   _type = (CharacterType)_lua->getInt("type");
-  _slug = slug;
+  _identifier = identifier;
 }
 
 Character::~Character() {
@@ -61,8 +61,8 @@ CCArray* Character::getSkills(int level) {
   return array;
 }
 
-const char* Character::getSlug() {
-  return _slug;
+const char* Character::getIdentifier() {
+  return _identifier;
 }
 
 CharacterType Character::getCharacterType() {
