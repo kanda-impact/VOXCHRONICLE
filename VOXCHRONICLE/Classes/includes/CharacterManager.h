@@ -19,8 +19,8 @@ typedef enum {
   DamageTypeShield, // 盾による無効化
   DamageTypeInvisible, // 無敵による無効化
   DamageTypeWeak, // 弱点
-  DamageTypePhysicalTolerant, // 物理攻撃態勢
-  DamageTypeMagicalTolerant, // 魔法攻撃態勢
+  DamageTypePhysicalResist, // 物理攻撃耐性
+  DamageTypeMagicalResist, // 魔法攻撃耐性
   DamageTypeDeath, // 死亡
   DamageTypeAbsorption // ダメージ吸収
 } DamageType;

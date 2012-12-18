@@ -39,19 +39,13 @@ class Enemy : public CCSprite {
   static Enemy* create(const char* enemyName);
   Enemy();
   ~Enemy();
-  int getHP();
-  float getRow();
   void setRow(float r);
-  int getCol();
   void setCol(int c);
   float bottomLine();
   void moveRow(float r);
   Enemy* initWithScriptName(const char* scriptName);
   void setColAndRow(int col, float row);
-  float getCurrentScale(float row);
   bool canMove();
-  int getLevel();
-  int getAttack();
   
   /**
    使用したSkillとCharacterManagerを与えてダメージを与えます。
@@ -59,6 +53,12 @@ class Enemy : public CCSprite {
    */
   DamageType damage(Skill* skill, CharacterManager* characterManager);
   
+  int getHP();
+  float getRow();
+  int getCol();
+  int getLevel();
+  int getAttack();
+  float getCurrentScale(float row);
   int getExp();
   int getCounter();
   SkillType getType();

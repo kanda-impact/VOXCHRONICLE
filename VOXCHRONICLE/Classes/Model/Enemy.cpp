@@ -100,19 +100,29 @@ void Enemy::moveRow(float r) {
 
 DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager) {
   // ToDo 属性によるダメージ軽減とかもこの辺に載せてやる
-  int damage = floor(0.5 + skill->getPowerWithTension(characterManager->getTension()));
+  int damage = round(skill->getPowerWithTension(characterManager->getTension()));
   DamageType type = DamageTypeHit;
+  // ダメージ耐性がある場合、威力半減してやる
   if (skill->getType() == SkillTypePhysical && this->getType() == SkillTypePhysical) {
-    type = DamageTypePhysicalTolerant;
+    type = DamageTypePhysicalResist;
     damage *= 0.5;
   } else if (skill->getType() == SkillTypeMagical && this->getType() == SkillTypeMagical) {
-    type = DamageTypeMagicalTolerant;
+    type = DamageTypeMagicalResist;
     damage *= 0.5;
   }
+  // レベル補正を行います
   float levelOffset = characterManager->getLevelOffsetRate(characterManager->getLevel(), this->getLevel());
-  _hp -= floor(0.5 + damage * levelOffset);
+  damage = round(damage * levelOffset);
+  _hp -= damage;
   if (_hp <= 0) {
+    // ダメージが原因で死んだら死亡
     type = DamageTypeDeath;
+  } else if (damage == 0){
+    // ダメージが当たらなかったら無敵
+    type = DamageTypeInvisible;
+  } else if (damage < 0) {
+    // ダメージがマイナス値なら吸収
+    type = DamageTypeAbsorption;
   }
   return type;
 }
