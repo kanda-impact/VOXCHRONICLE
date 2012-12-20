@@ -81,6 +81,9 @@
 		076F1D3515EB94780013A45E /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 076F1D3415EB94780013A45E /* AppController.mm */; };
 		076F1D3815EB94780013A45E /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 076F1D3715EB94780013A45E /* RootViewController.mm */; };
 		076F1D3C15EB94780013A45E /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 076F1D3B15EB94780013A45E /* AppDelegate.cpp */; };
+		077EDDCA1683CB74009B9F6B /* stage_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDC91683CB74009B9F6B /* stage_background.png */; };
+		077EDDCD1683D64A009B9F6B /* gauge_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDCB1683D64A009B9F6B /* gauge_bg.png */; };
+		077EDDCE1683D64A009B9F6B /* gauge.png in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDCC1683D64A009B9F6B /* gauge.png */; };
 		0791585A15EBA8350083D348 /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0791585815EBA8350083D348 /* LogoScene.cpp */; };
 		0791587515EBB50E0083D348 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586915EBB4BB0083D348 /* Default.png */; };
 		0791587615EBB50E0083D348 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586A15EBB4BB0083D348 /* fps_images.png */; };
@@ -418,6 +421,8 @@
 		07E135711624A93E00CCF72E /* dub_lskmagic3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07E135701624A93D00CCF72E /* dub_lskmagic3.wav */; };
 		07E135731624AC4700CCF72E /* cure.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07E135721624AC4700CCF72E /* cure.lua */; };
 		07E135751624AD2000CCF72E /* cure_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E135741624AD2000CCF72E /* cure_icon.png */; };
+		07E20FED1683C995002D3B4E /* stage_numbers.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E20FEB1683C995002D3B4E /* stage_numbers.png */; };
+		07E20FEE1683C995002D3B4E /* stage.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E20FEC1683C995002D3B4E /* stage.png */; };
 		07F0D77F163BEDA0005592AF /* dub_intro0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D77A163BEDA0005592AF /* dub_intro0.wav */; };
 		07F0D780163BEDA0005592AF /* dub_intro1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D77B163BEDA0005592AF /* dub_intro1.wav */; };
 		07F0D781163BEDA0005592AF /* dub_run0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D77C163BEDA0005592AF /* dub_run0.wav */; };
@@ -516,6 +521,9 @@
 		076F1D3715EB94780013A45E /* RootViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = RootViewController.mm; path = ios/RootViewController.mm; sourceTree = "<group>"; };
 		076F1D3A15EB94780013A45E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		076F1D3B15EB94780013A45E /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
+		077EDDC91683CB74009B9F6B /* stage_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stage_background.png; sourceTree = "<group>"; };
+		077EDDCB1683D64A009B9F6B /* gauge_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gauge_bg.png; sourceTree = "<group>"; };
+		077EDDCC1683D64A009B9F6B /* gauge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gauge.png; sourceTree = "<group>"; };
 		0791585815EBA8350083D348 /* LogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LogoScene.cpp; path = Classes/Scene/LogoScene.cpp; sourceTree = "<group>"; };
 		0791586915EBB4BB0083D348 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/ios/Default.png; sourceTree = "<group>"; };
 		0791586A15EBB4BB0083D348 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = Resources/ios/fps_images.png; sourceTree = "<group>"; };
@@ -1148,6 +1156,8 @@
 		07E135701624A93D00CCF72E /* dub_lskmagic3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_lskmagic3.wav; path = Resources/Music/dub/dub_lskmagic3.wav; sourceTree = "<group>"; };
 		07E135721624AC4700CCF72E /* cure.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cure.lua; sourceTree = "<group>"; };
 		07E135741624AD2000CCF72E /* cure_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cure_icon.png; sourceTree = "<group>"; };
+		07E20FEB1683C995002D3B4E /* stage_numbers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stage_numbers.png; sourceTree = "<group>"; };
+		07E20FEC1683C995002D3B4E /* stage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stage.png; sourceTree = "<group>"; };
 		07F0D750163BABCD005592AF /* macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = macros.h; path = Classes/includes/macros.h; sourceTree = "<group>"; };
 		07F0D751163BABDF005592AF /* Music.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Music.h; path = Classes/includes/Music.h; sourceTree = "<group>"; };
 		07F0D752163BABDF005592AF /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Track.h; path = Classes/includes/Track.h; sourceTree = "<group>"; };
@@ -1263,6 +1273,11 @@
 		0744B58F167DCA4000730393 /* proto */ = {
 			isa = PBXGroup;
 			children = (
+				077EDDCB1683D64A009B9F6B /* gauge_bg.png */,
+				077EDDCC1683D64A009B9F6B /* gauge.png */,
+				077EDDC91683CB74009B9F6B /* stage_background.png */,
+				07E20FEB1683C995002D3B4E /* stage_numbers.png */,
+				07E20FEC1683C995002D3B4E /* stage.png */,
 				07425E3E1680816A001134D0 /* marker0.png */,
 				07425E3F1680816A001134D0 /* marker1.png */,
 				07425E401680816A001134D0 /* marker2.png */,
@@ -2850,6 +2865,11 @@
 				07425E441680816A001134D0 /* marker2.png in Resources */,
 				07425E451680816A001134D0 /* marker3.png in Resources */,
 				07F9D9E116812C9D00E984AB /* spear.lua in Resources */,
+				07E20FED1683C995002D3B4E /* stage_numbers.png in Resources */,
+				07E20FEE1683C995002D3B4E /* stage.png in Resources */,
+				077EDDCA1683CB74009B9F6B /* stage_background.png in Resources */,
+				077EDDCD1683D64A009B9F6B /* gauge_bg.png in Resources */,
+				077EDDCE1683D64A009B9F6B /* gauge.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

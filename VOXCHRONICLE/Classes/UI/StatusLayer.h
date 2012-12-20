@@ -16,11 +16,14 @@ using namespace cocos2d;
 
 class StatusLayer :public CCLayer {
  private:
-  CCLabelTTF* _levelLabel;
   CCLabelAtlas* _maxHPLabel;
   CCLabelAtlas* _currentHPLabel;
+  CCLabelAtlas* _levelLabel;
   CCArray* _mpChips;
+  CCSprite* _lifeGaugeBackground;
+  CCSprite* _lifeGauge;
   
+  // デバッグ用表示
   CCLabelTTF* _expLabel;
   CCLabelTTF* _nextExpLabel;
   CCLabelTTF* _mapLabel;
@@ -33,6 +36,7 @@ class StatusLayer :public CCLayer {
   void setCurrentMP(int mp);
   void setMaxMP(int mp);
   void setMarkerDuration(float d);
+  void setLevel(int level);
 };
 
 #endif /* defined(__VOXCHRONICLE__UILayer__) */

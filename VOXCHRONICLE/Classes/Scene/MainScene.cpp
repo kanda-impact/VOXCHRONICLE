@@ -40,11 +40,19 @@ bool MainScene::init() {
   LuaObject* setting = new LuaObject("Script/setting", "Setting");
   setting->autorelease();
   
+  CCDirector* director = CCDirector::sharedDirector();
+  // 背景の追加
+  // 将来的にはSkinクラスを実装して、スキンによって背景を変更するようにしたいが
+  // 今はとりあえずここにSpriteをおいておきます
+  CCSprite* background = CCSprite::create(FileUtils::getFilePath("Image/Main/UI/proto/stage_background.png").c_str());
+  CCPoint center = ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f);
+  background->setPosition(center);
+  this->addChild(background);
+  
   _enemyManager = EnemyManager::create();
   _enemyManager->retain();
   this->addChild(_enemyManager);
   
-  CCDirector* director = CCDirector::sharedDirector();
   _controller = Controller::create();
   _controller->retain();
   _characterManager = new CharacterManager();
@@ -77,6 +85,7 @@ bool MainScene::init() {
   
   _statusLayer = new StatusLayer();
   _statusLayer->retain();
+  
   this->addChild(_statusLayer);
   this->updateGUI();
   
@@ -289,6 +298,7 @@ void MainScene::updateGUI() {
   _statusLayer->setMaxHP(_characterManager->getMaxHP());
   _statusLayer->setCurrentMP(_characterManager->getMP());
   _statusLayer->setMaxMP(_characterManager->getMaxMP());
+  _statusLayer->setLevel(_characterManager->getLevel());
 }
 
 void MainScene::pushInitialTracks(Map *map) {
