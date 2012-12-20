@@ -266,6 +266,9 @@ float CharacterManager::getLevelOffsetRate(int attackLevel, int defenseLevel) {
     cout << lua_tostring(L, lua_gettop(L)) << endl;
   }
   float offset = lua_tonumber(L, lua_gettop(L));
+  if (offset < 0) {
+    return 0;
+  }
   return offset;
 }
 

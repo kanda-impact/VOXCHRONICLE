@@ -220,8 +220,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
           float scale = enemy->getCurrentScale(enemy->getRow());
           damageLabel->setScale(scale);
           this->addChild(damageLabel);
-          damageLabel->runAction(CCSequence::create(
-                                                    CCFadeIn::create(0.2),
+          damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
                                                     CCDelayTime::create(0.5),
                                                     CCFadeOut::create(0.2),
                                                     CCCallFuncN::create(damageLabel, callfuncN_selector(MainScene::removeNode)),
