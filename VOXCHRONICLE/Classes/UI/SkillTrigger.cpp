@@ -65,8 +65,7 @@ void SkillTrigger::setSkill(Skill* skill) {
     std::stringstream ss;
     ss << "Image/Main/UI/command/" << skill->getIdentifier() << "_icon.png";
     CCSprite* icon = CCSprite::create(FileUtils::getFilePath(ss.str().c_str()).c_str());
-    icon->setColor(ccc3(255, 0, 0));
-    icon->setPosition(CCPointMake(40, 40));
+    icon->setPosition(CCPointMake(30, 30));
     const int iconTag = 1;
     if (this->getChildByTag(iconTag)) {
       this->removeChildByTag(iconTag, true);

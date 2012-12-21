@@ -11,6 +11,7 @@
 #include "Controller.h"
 #include "SkillTrigger.h"
 #include "FileUtils.h"
+#define COMMAND_COUNT 8
 
 using namespace cocos2d;
 
@@ -22,9 +23,9 @@ bool Controller::init() {
   _triggers->retain();
   _enable = true;
   //const int rotation[] = {0, 30, 60, 0, -30, -60};
-  const int x[] = {34.8, 81.3, 79.8, 397.64, 444.4, 397.1};
-  const int y[] = {85.5, 110.5, 57.82, 110.5, 85.5, 57.73};
-  for (int i = 0; i < 6; ++i) {
+  const int x[] = {34.8, 81.3, 81.3, 130, 349.4, 397.64, 397.64, 444.4};
+  const int y[] = {85.5, 110.5, 57.82, 85.5, 85.5, 110.5, 57.73, 85.5};
+  for (int i = 0; i < COMMAND_COUNT; ++i) {
     SkillTrigger* trigger = SkillTrigger::create(FileUtils::getFilePath("Image/Main/UI/proto/trigger_vox.png").c_str());
     trigger->setPosition(ccp(x[i], y[i]));
     //trigger->setRotation(rotation[i]);

@@ -116,6 +116,7 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_constant(tolua_S, "SkillRangeVertical", SkillRangeVertical);
   tolua_constant(tolua_S, "SkillRangeBack", SkillRangeBack);
   tolua_constant(tolua_S, "SkillRangeSelf", SkillRangeSelf);
+  tolua_constant(tolua_S, "SkillRangeFront", SkillRangeFront);
   // 技の属性
   tolua_constant(tolua_S, "SkillTypeNone", SkillTypeNone);
   tolua_constant(tolua_S, "SkillTypeNormal", SkillTypeNormal);

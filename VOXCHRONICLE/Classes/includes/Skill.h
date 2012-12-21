@@ -28,7 +28,8 @@ typedef enum {
   SkillRangeHorizontal = 2, // 横攻撃
   SkillRangeVertical = 3,   // 縦攻撃
   SkillRangeBack = 4,       // 一番奥の敵攻撃
-  SkillRangeSelf = 5        // 自分が対象
+  SkillRangeSelf = 5,       // 自分が対象
+  SkillRangeFront = 6,      // 最前列の敵全てが対象
 } SkillRange;
 
 class Skill :public CCObject {

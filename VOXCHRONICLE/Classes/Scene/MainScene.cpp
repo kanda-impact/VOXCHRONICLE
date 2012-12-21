@@ -231,7 +231,8 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         this->checkLevelUp();
       } else if (performType == SkillPerformTypeNone) {
         // 何も実行しなかったとき
-        _characterManager->addMP(1);
+        // MP回復 コマンド化したのでコメントアウトしておきます
+        //_characterManager->addMP(1);
       }
       _controller->updateSkills(_characterManager);
     } else if (trackNumber == 1) {

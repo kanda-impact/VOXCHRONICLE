@@ -84,6 +84,11 @@
 		077EDDCA1683CB74009B9F6B /* stage_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDC91683CB74009B9F6B /* stage_background.png */; };
 		077EDDCD1683D64A009B9F6B /* gauge_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDCB1683D64A009B9F6B /* gauge_bg.png */; };
 		077EDDCE1683D64A009B9F6B /* gauge.png in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDCC1683D64A009B9F6B /* gauge.png */; };
+		077EDDD11683DF21009B9F6B /* charge_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDCF1683DF20009B9F6B /* charge_icon.png */; };
+		077EDDD21683DF21009B9F6B /* slash_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDD01683DF20009B9F6B /* slash_icon.png */; };
+		077EDDD41683E0A4009B9F6B /* dub_lskbow0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDD31683E0A4009B9F6B /* dub_lskbow0.wav */; };
+		077EDDD71683E247009B9F6B /* dub_voxcharge0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDD51683E247009B9F6B /* dub_voxcharge0.wav */; };
+		077EDDD81683E247009B9F6B /* dub_voxslash0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDD61683E247009B9F6B /* dub_voxslash0.wav */; };
 		0791585A15EBA8350083D348 /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0791585815EBA8350083D348 /* LogoScene.cpp */; };
 		0791587515EBB50E0083D348 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586915EBB4BB0083D348 /* Default.png */; };
 		0791587615EBB50E0083D348 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586A15EBB4BB0083D348 /* fps_images.png */; };
@@ -434,7 +439,7 @@
 		07F0D793163C035E005592AF /* levelup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D790163C035E005592AF /* levelup.mp3 */; };
 		07F0D799163C1EC1005592AF /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F0D797163C1EC0005592AF /* TitleScene.cpp */; };
 		07F40F10163D0FC0009FC104 /* Music.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F40F0F163D0FC0009FC104 /* Music.cpp */; };
-		07F9D9E116812C9D00E984AB /* spear.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F9D9E016812C9D00E984AB /* spear.lua */; };
+		07F9D9E116812C9D00E984AB /* slash.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F9D9E016812C9D00E984AB /* slash.lua */; };
 		07FD921E1621099B00E74459 /* vox.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921D1621099B00E74459 /* vox.lua */; };
 		07FD922016210A2300E74459 /* lsk.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921F16210A2300E74459 /* lsk.lua */; };
 /* End PBXBuildFile section */
@@ -524,6 +529,11 @@
 		077EDDC91683CB74009B9F6B /* stage_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stage_background.png; sourceTree = "<group>"; };
 		077EDDCB1683D64A009B9F6B /* gauge_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gauge_bg.png; sourceTree = "<group>"; };
 		077EDDCC1683D64A009B9F6B /* gauge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gauge.png; sourceTree = "<group>"; };
+		077EDDCF1683DF20009B9F6B /* charge_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = charge_icon.png; path = VOXCHRONICLE/Resources/Image/Main/UI/command/charge_icon.png; sourceTree = SOURCE_ROOT; };
+		077EDDD01683DF20009B9F6B /* slash_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = slash_icon.png; path = VOXCHRONICLE/Resources/Image/Main/UI/command/slash_icon.png; sourceTree = SOURCE_ROOT; };
+		077EDDD31683E0A4009B9F6B /* dub_lskbow0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_lskbow0.wav; path = Resources/Music/dub/dub_lskbow0.wav; sourceTree = "<group>"; };
+		077EDDD51683E247009B9F6B /* dub_voxcharge0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxcharge0.wav; path = Resources/Music/dub/dub_voxcharge0.wav; sourceTree = "<group>"; };
+		077EDDD61683E247009B9F6B /* dub_voxslash0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxslash0.wav; path = Resources/Music/dub/dub_voxslash0.wav; sourceTree = "<group>"; };
 		0791585815EBA8350083D348 /* LogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LogoScene.cpp; path = Classes/Scene/LogoScene.cpp; sourceTree = "<group>"; };
 		0791586915EBB4BB0083D348 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/ios/Default.png; sourceTree = "<group>"; };
 		0791586A15EBB4BB0083D348 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = Resources/ios/fps_images.png; sourceTree = "<group>"; };
@@ -1191,7 +1201,7 @@
 		07F0D797163C1EC0005592AF /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleScene.cpp; path = Classes/Scene/TitleScene.cpp; sourceTree = "<group>"; };
 		07F0D79A163C1EFD005592AF /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = Classes/includes/TitleScene.h; sourceTree = "<group>"; };
 		07F40F0F163D0FC0009FC104 /* Music.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Music.cpp; path = Classes/VISS/Music.cpp; sourceTree = "<group>"; };
-		07F9D9E016812C9D00E984AB /* spear.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spear.lua; sourceTree = "<group>"; };
+		07F9D9E016812C9D00E984AB /* slash.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = slash.lua; sourceTree = "<group>"; };
 		07FD921D1621099B00E74459 /* vox.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vox.lua; path = character/vox.lua; sourceTree = "<group>"; };
 		07FD921F16210A2300E74459 /* lsk.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lsk.lua; path = character/lsk.lua; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1365,6 +1375,8 @@
 		075653961617131C00C69E27 /* command */ = {
 			isa = PBXGroup;
 			children = (
+				077EDDCF1683DF20009B9F6B /* charge_icon.png */,
+				077EDDD01683DF20009B9F6B /* slash_icon.png */,
 				07E135741624AD2000CCF72E /* cure_icon.png */,
 				075653971617131C00C69E27 /* attack_icon.png */,
 				075653981617131C00C69E27 /* knockback_icon.png */,
@@ -1503,6 +1515,8 @@
 		07AE143015F043520045E8F3 /* dub */ = {
 			isa = PBXGroup;
 			children = (
+				077EDDD51683E247009B9F6B /* dub_voxcharge0.wav */,
+				077EDDD61683E247009B9F6B /* dub_voxslash0.wav */,
 				07F0D77A163BEDA0005592AF /* dub_intro0.wav */,
 				07F0D77B163BEDA0005592AF /* dub_intro1.wav */,
 				07F0D77C163BEDA0005592AF /* dub_run0.wav */,
@@ -1522,6 +1536,7 @@
 				07E135701624A93D00CCF72E /* dub_lskmagic3.wav */,
 				07E135381624A7BE00CCF72E /* dub_lskchange0.wav */,
 				07E135391624A7BE00CCF72E /* dub_lskcure0.wav */,
+				077EDDD31683E0A4009B9F6B /* dub_lskbow0.wav */,
 				07E1353A1624A7BE00CCF72E /* dub_lskthunder0.wav */,
 				072D188D1625A93A00745275 /* dub_miss.wav */,
 				07E1353E1624A7BE00CCF72E /* dub_silent.wav */,
@@ -2471,7 +2486,7 @@
 				079487941616D8C5004ABCF5 /* knockback.lua */,
 				0794879B1616EC7E004ABCF5 /* tension.lua */,
 				0756539F16171A5500C69E27 /* magic.lua */,
-				07F9D9E016812C9D00E984AB /* spear.lua */,
+				07F9D9E016812C9D00E984AB /* slash.lua */,
 				075653A516171F2400C69E27 /* change.lua */,
 				0731E4CA16176787006AEF3D /* shield.lua */,
 				0731E4DA16176C95006AEF3D /* thunder.lua */,
@@ -2864,12 +2879,17 @@
 				07425E431680816A001134D0 /* marker1.png in Resources */,
 				07425E441680816A001134D0 /* marker2.png in Resources */,
 				07425E451680816A001134D0 /* marker3.png in Resources */,
-				07F9D9E116812C9D00E984AB /* spear.lua in Resources */,
+				07F9D9E116812C9D00E984AB /* slash.lua in Resources */,
 				07E20FED1683C995002D3B4E /* stage_numbers.png in Resources */,
 				07E20FEE1683C995002D3B4E /* stage.png in Resources */,
 				077EDDCA1683CB74009B9F6B /* stage_background.png in Resources */,
 				077EDDCD1683D64A009B9F6B /* gauge_bg.png in Resources */,
 				077EDDCE1683D64A009B9F6B /* gauge.png in Resources */,
+				077EDDD11683DF21009B9F6B /* charge_icon.png in Resources */,
+				077EDDD21683DF21009B9F6B /* slash_icon.png in Resources */,
+				077EDDD41683E0A4009B9F6B /* dub_lskbow0.wav in Resources */,
+				077EDDD71683E247009B9F6B /* dub_voxcharge0.wav in Resources */,
+				077EDDD81683E247009B9F6B /* dub_voxslash0.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

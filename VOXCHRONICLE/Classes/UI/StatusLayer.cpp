@@ -36,7 +36,7 @@ StatusLayer::StatusLayer() {
   _mpChips->retain();
   
   CCSprite* stageLabel = CCSprite::create(FileUtils::getFilePath("Image/Main/UI/proto/stage.png").c_str());
-  stageLabel->setPosition(ccp(42, 260));
+  stageLabel->setPosition(ccp(38, 260));
   this->addChild(stageLabel);
   
   _levelLabel = CCLabelAtlas::create("10", FileUtils::getFilePath("Image/Main/UI/proto/stage_numbers.png").c_str(), 35, 45, '0');

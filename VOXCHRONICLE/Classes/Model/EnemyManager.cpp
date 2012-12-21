@@ -188,6 +188,26 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
       targets->addObject(target);
       boost::function<bool (int, float)> predicate = _1 == target->getCol();
       targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
+    } else if (range == SkillRangeFront) {
+      // 最前列攻撃
+      // 各行の一番前の敵を探してきてtargetsに格納します
+      for (int col = 0; col < 3; ++col) {
+        boost::function<bool (int, float)> predicate = _1 == col;
+        CCArray* enemies = this->getFilteredEnemies(predicate);
+        Enemy* front = NULL;
+        CCObject* obj = NULL;
+        CCARRAY_FOREACH(enemies, obj) {
+          if (front == NULL) {
+            front = (Enemy*)obj;
+          }
+          if ( ((Enemy*)obj)->getRow() < front->getRow() ) {
+            front = (Enemy*)obj;
+          }
+        }
+        if (front != NULL) {
+          targets->addObject(front);
+        }
+      }
     }
     
     // ターゲットに技の効果を与える
