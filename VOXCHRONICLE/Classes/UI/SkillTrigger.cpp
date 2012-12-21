@@ -11,6 +11,8 @@
 #include "FileUtils.h"
 #include "CCDrawingPrimitives.h"
 
+const int iconTag = 1;
+
 SkillTrigger* SkillTrigger::create(const char *pszFileName) {
   SkillTrigger *pobSprite = new SkillTrigger();
   if (pobSprite && pobSprite->initWithFile(pszFileName))
@@ -66,7 +68,6 @@ void SkillTrigger::setSkill(Skill* skill) {
     ss << "Image/Main/UI/command/" << skill->getIdentifier() << "_icon.png";
     CCSprite* icon = CCSprite::create(FileUtils::getFilePath(ss.str().c_str()).c_str());
     icon->setPosition(CCPointMake(30, 30));
-    const int iconTag = 1;
     if (this->getChildByTag(iconTag)) {
       this->removeChildByTag(iconTag, true);
     }
@@ -102,10 +103,13 @@ void SkillTrigger::setSkillTriggerState(SkillTriggerState state) {
 void SkillTrigger::setColor(SkillTriggerColor color) {
   _color = color;
   string filename;
+  CCSprite* icon = (CCSprite*)this->getChildByTag(iconTag);
   if (_color == SkillTriggerColorVox) {
     filename = FileUtils::getFilePath("Image/Main/UI/proto/trigger_vox.png");
+    icon->setColor(ccc3(255, 0, 0));
   } else if (_color == SkillTriggerColorLaska) {
     filename = FileUtils::getFilePath("Image/Main/UI/proto/trigger_laska.png");
+    icon->setColor(ccc3(0, 0, 255));
   }
   CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(filename.c_str());
   this->setTexture(texture);
