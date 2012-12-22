@@ -89,6 +89,9 @@
 		077EDDD41683E0A4009B9F6B /* dub_lskbow0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDD31683E0A4009B9F6B /* dub_lskbow0.wav */; };
 		077EDDD71683E247009B9F6B /* dub_voxcharge0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDD51683E247009B9F6B /* dub_voxcharge0.wav */; };
 		077EDDD81683E247009B9F6B /* dub_voxslash0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDD61683E247009B9F6B /* dub_voxslash0.wav */; };
+		077EDDDC16857B55009B9F6B /* dub_impact0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDD916857B55009B9F6B /* dub_impact0.wav */; };
+		077EDDDD16857B55009B9F6B /* dub_impact1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDDA16857B55009B9F6B /* dub_impact1.wav */; };
+		077EDDDE16857B55009B9F6B /* dub_impact2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDDB16857B55009B9F6B /* dub_impact2.wav */; };
 		0791585A15EBA8350083D348 /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0791585815EBA8350083D348 /* LogoScene.cpp */; };
 		0791587515EBB50E0083D348 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586915EBB4BB0083D348 /* Default.png */; };
 		0791587615EBB50E0083D348 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586A15EBB4BB0083D348 /* fps_images.png */; };
@@ -534,6 +537,9 @@
 		077EDDD31683E0A4009B9F6B /* dub_lskbow0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_lskbow0.wav; path = Resources/Music/dub/dub_lskbow0.wav; sourceTree = "<group>"; };
 		077EDDD51683E247009B9F6B /* dub_voxcharge0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxcharge0.wav; path = Resources/Music/dub/dub_voxcharge0.wav; sourceTree = "<group>"; };
 		077EDDD61683E247009B9F6B /* dub_voxslash0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_voxslash0.wav; path = Resources/Music/dub/dub_voxslash0.wav; sourceTree = "<group>"; };
+		077EDDD916857B55009B9F6B /* dub_impact0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_impact0.wav; path = Resources/Music/dub/dub_impact0.wav; sourceTree = "<group>"; };
+		077EDDDA16857B55009B9F6B /* dub_impact1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_impact1.wav; path = Resources/Music/dub/dub_impact1.wav; sourceTree = "<group>"; };
+		077EDDDB16857B55009B9F6B /* dub_impact2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_impact2.wav; path = Resources/Music/dub/dub_impact2.wav; sourceTree = "<group>"; };
 		0791585815EBA8350083D348 /* LogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LogoScene.cpp; path = Classes/Scene/LogoScene.cpp; sourceTree = "<group>"; };
 		0791586915EBB4BB0083D348 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/ios/Default.png; sourceTree = "<group>"; };
 		0791586A15EBB4BB0083D348 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = Resources/ios/fps_images.png; sourceTree = "<group>"; };
@@ -1515,6 +1521,9 @@
 		07AE143015F043520045E8F3 /* dub */ = {
 			isa = PBXGroup;
 			children = (
+				077EDDD916857B55009B9F6B /* dub_impact0.wav */,
+				077EDDDA16857B55009B9F6B /* dub_impact1.wav */,
+				077EDDDB16857B55009B9F6B /* dub_impact2.wav */,
 				077EDDD51683E247009B9F6B /* dub_voxcharge0.wav */,
 				077EDDD61683E247009B9F6B /* dub_voxslash0.wav */,
 				07F0D77A163BEDA0005592AF /* dub_intro0.wav */,
@@ -2890,6 +2899,9 @@
 				077EDDD41683E0A4009B9F6B /* dub_lskbow0.wav in Resources */,
 				077EDDD71683E247009B9F6B /* dub_voxcharge0.wav in Resources */,
 				077EDDD81683E247009B9F6B /* dub_voxslash0.wav in Resources */,
+				077EDDDC16857B55009B9F6B /* dub_impact0.wav in Resources */,
+				077EDDDD16857B55009B9F6B /* dub_impact1.wav in Resources */,
+				077EDDDE16857B55009B9F6B /* dub_impact2.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3279,8 +3291,8 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ECDFC9B4-B064-4451-BDCC-227BB3E90157";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ECDFC9B4-B064-4451-BDCC-227BB3E90157";
+				PROVISIONING_PROFILE = "D2E0C07A-728C-4267-9F4E-0F8A87304341";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D2E0C07A-728C-4267-9F4E-0F8A87304341";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3313,8 +3325,8 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ECDFC9B4-B064-4451-BDCC-227BB3E90157";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ECDFC9B4-B064-4451-BDCC-227BB3E90157";
+				PROVISIONING_PROFILE = "D2E0C07A-728C-4267-9F4E-0F8A87304341";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D2E0C07A-728C-4267-9F4E-0F8A87304341";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
