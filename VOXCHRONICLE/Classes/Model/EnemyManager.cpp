@@ -234,6 +234,9 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
       if (skill->getPower() != 0) {
         // 威力が1以上の場合、ダメージを与える
         damageType = target->damage(skill, characterManager);
+      } else {
+        // 威力が0の場合、NoDamageを設定する
+        damageType = DamageTypeNoDamage;
       }
       if (target->getHP() <= 0) {
         exp += target->getExp();

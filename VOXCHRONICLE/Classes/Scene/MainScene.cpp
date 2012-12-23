@@ -213,10 +213,10 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
           Enemy* enemy = (Enemy*)enemies->objectAtIndex(i);
           CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(((CCInteger*)damages->objectAtIndex(i))->getValue()).c_str(),
                                                            FileUtils::getFilePath("Image/Main/UI/damage_number.png").c_str(), 50, 100, '0');
-          // ダメージが0かつ、アイテムも破壊していないとき、強制的にミス音にしてやる
+          // ダメージが0かつ、元々ダメージのない技じゃないかつ、アイテムも破壊していないとき、強制的にミス音にしてやる
           int damage = ((CCInteger*)damages->objectAtIndex(i))->getValue();
           DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(i))->getValue();
-          if (damage == 0 && damageType != DamageTypeBarrierBreak && damageType != DamageTypeShieldBreak) {
+          if (damage == 0 && damageType != DamageTypeBarrierBreak && damageType != DamageTypeShieldBreak && damageType != DamageTypeNoDamage) {
             name = "miss";
           }
           damageLabel->setPosition(enemy->getPosition());

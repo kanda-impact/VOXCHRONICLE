@@ -104,6 +104,7 @@ void Enemy::moveRow(float r) {
 DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager) {
   // ToDo 属性によるダメージ軽減とかもこの辺に載せてやる
   int damage = round(skill->getPowerWithTension(characterManager->getTension()));
+  
   // アイテムの処理
   if ((_item == EnemyItemShield && skill->getType() == SkillTypePhysical) ||
       (_item == EnemyItemBarrier && skill->getType() == SkillTypeMagical)) {

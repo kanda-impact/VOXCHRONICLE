@@ -17,6 +17,7 @@
 typedef enum {
   DamageTypeNone, // デフォルト
   DamageTypeHit, // 通常攻撃命中
+  DamageTypeNoDamage, // 元々威力のない攻撃命中
   DamageTypeShield, // 盾による無効化
   DamageTypeInvincible, // 無敵による無効化
   DamageTypeWeak, // 弱点
