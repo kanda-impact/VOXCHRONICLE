@@ -53,6 +53,13 @@ bool MainScene::init() {
   _enemyManager->retain();
   this->addChild(_enemyManager);
   
+  _focus = CCSprite::create(FileUtils::getFilePath("Image/Main/UI/proto/focus.png").c_str());
+  _focus->retain();
+  _focus->setVisible(false);
+  _focus->setColor(ccc3(255, 0, 0));
+  _focus->runAction(CCRepeatForever::create(CCRotateBy::create(5.0f, 360)));
+  this->addChild(_focus);
+  
   _controller = Controller::create();
   _controller->retain();
   _characterManager = new CharacterManager();
@@ -99,6 +106,7 @@ MainScene::~MainScene() {
   _enemyManager->release();
   _characterManager->release();
   _statusLayer->release();
+  _focus->release();
   if (_mapSelector != NULL) {
     _mapSelector->release();
   }
@@ -168,6 +176,7 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
         _enemyManager->removeEnemy(enemy);
       }
     }
+    this->updateFocus();
     this->updateGUI();
   }
 }
@@ -257,6 +266,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       string trackName(file);
       music->pushTrack(file.c_str(), 0);
       _controller->updateSkills(_characterManager);
+      this->updateFocus();
     } else if (trackNumber == 1) {
       stringstream ss;
       Enemy* nearest = _enemyManager->getNearestEnemy();
@@ -455,4 +465,15 @@ void MainScene::onGameOver() {
 
 void MainScene::removeNode(CCNode* node) {
   this->removeChild(node, true);
+}
+
+void MainScene::updateFocus() {
+  Enemy* nearest = _enemyManager->getNearestEnemy();
+  if (nearest) {
+    _focus->setVisible(true);
+    _focus->setPosition(nearest->getPosition());
+    _focus->setScale(nearest->getScale());
+  } else {
+    _focus->setVisible(false);
+  }
 }

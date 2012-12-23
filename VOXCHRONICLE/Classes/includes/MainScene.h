@@ -48,6 +48,7 @@ class MainScene : public CCLayer {
   MapSelector* _mapSelector;
   MessageWindow* _messageWindow;
   StatusLayer* _statusLayer;
+  CCSprite* _focus;
   
   Level* _level;
   Map* _map;
@@ -71,6 +72,8 @@ class MainScene : public CCLayer {
   bool checkLevelUp();
 
   void removeNode(CCNode *node);
+  
+  void updateFocus();
   
  public:
   virtual bool init();
