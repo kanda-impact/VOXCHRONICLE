@@ -1,9 +1,10 @@
 Map = {
   name = "テストマップ",
   prefix = "dub",
+  boss_prefix = "dub_boss",
   introCount = 2,
   backgroundImage = "",
-  nextMaps = {"test2a", "test2b"},
+  nextMaps = {},
   initialLevel = 1,
   maxLevel = 10,
   getEnemyTable = function(level)

@@ -28,6 +28,7 @@ class Map :public CCObject {
   string* _name;
   string* _prefix;
   string* _backgroundImageName;
+  string* _bossPrefix;
   LuaObject* _lua;
   list< pair<string, int> >* _fixedEnemyTable; // 固定モンスターテーブル
  public:
@@ -42,6 +43,7 @@ class Map :public CCObject {
   string* getName();
   CCArray* getFixedEnemies(int preExp, int currentExp);
   CCArray* getNextMaps();
+  bool isBossStage();
 };
 
 #endif /* defined(__VOXCHRONICLE__Map__) */

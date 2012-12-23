@@ -29,6 +29,7 @@ Map::Map(const char* mapName) {
   _initialLevel = _lua->getInt("initialLevel");
   _maxLevel = _lua->getInt("maxLevel");
   _introCount = _lua->getInt("introCount");
+  _bossPrefix = new string(_lua->getString("bossPrefix"));
   _nextMaps = new vector<string>();
   _fixedEnemyTable = new list< pair<string, int> >();
   for (CCLuaValueArray::const_iterator it = nexts->begin(); it != nexts->end(); ++it) {
@@ -53,6 +54,8 @@ Map::Map(const char* mapName) {
 Map::~Map() {
   delete _name;
   delete _fixedEnemyTable;
+  delete _bossPrefix;
+  delete _prefix;
   _lua->release();
 }
 
@@ -136,4 +139,8 @@ CCArray* Map::getFixedEnemies(int preExp, int currentExp) {
     }
   }
   return enemies;
+}
+
+bool Map::isBossStage() {
+  return _bossPrefix->length() > 0;
 }
