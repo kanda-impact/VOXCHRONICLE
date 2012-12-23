@@ -232,7 +232,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         }
         // ヒットしたとき、SEがあればSEをならしてやる
         if (skill->hasSE() && isHit) {
-          if (skill->getType() == SkillRangeSelf || enemies->count() > 0) {
+          if (skill->getRange() == SkillRangeSelf || enemies->count() > 0) {
             // 対象が自分、もしくは対象が1体以上いたとき、ダメージ効果音をならします
             stringstream seStream;
             seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
