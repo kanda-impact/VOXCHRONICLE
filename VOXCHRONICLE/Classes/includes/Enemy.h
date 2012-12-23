@@ -18,6 +18,12 @@
 using namespace std;
 using namespace cocos2d;
 
+typedef enum {
+  EnemyItemNone,
+  EnemyItemShield,
+  EnemyItemBarrier
+} EnemyItem;
+
 class Enemy : public CCSprite {
  private:
   string* _name;
@@ -33,6 +39,7 @@ class Enemy : public CCSprite {
   int _counter;
   int _level;
   SkillType _type;
+  EnemyItem _item;
   void update(float dt);
   void setLifeColor();
  public:
@@ -62,6 +69,9 @@ class Enemy : public CCSprite {
   int getExp();
   int getCounter();
   SkillType getType();
+  EnemyItem getItem();
+  
+  void setItem(EnemyItem item);
 };
 
 #endif /* defined(__VOXCHRONICLE__Enemy__) */

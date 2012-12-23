@@ -7,6 +7,7 @@ Enemy = {
   attack = 3,
   counter = 3,
   speed = 1,
+  item = EnemyItemNone,
   animationFrames = 8,
   type = SkillTypeNormal,
   choiceSkill = function(self)

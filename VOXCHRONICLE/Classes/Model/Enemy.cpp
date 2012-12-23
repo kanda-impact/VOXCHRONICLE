@@ -15,6 +15,8 @@
 
 using namespace std;
 
+const int itemTag = 1;
+
 Enemy* Enemy::create(const char *enemyName) {
   Enemy *pobSprite = new Enemy();
   if (pobSprite && pobSprite->initWithScriptName(enemyName)) {
@@ -45,6 +47,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   stringstream ss;
   ss << "Image/Enemy/" << imageName << "0.png";
   bool success = (bool)this->initWithFile(FileUtils::getFilePath(ss.str().c_str()).c_str());
+  this->setItem((EnemyItem)obj->getInt("item"));
   if (success) {
     CCAnimation* animation = CCAnimation::create();
     CCSize size = this->getTexture()->getContentSize();
@@ -192,5 +195,27 @@ int Enemy::getLevel() {
 
 int Enemy::getAttack() {
   return _attack;
+}
+
+EnemyItem Enemy::getItem() {
+  return _item;
+}
+
+void Enemy::setItem(EnemyItem item) {
+  if (item == _item) return;
+  if (_item != EnemyItemNone) {
+    this->removeChildByTag(itemTag, true);
+  }
+  _item = item;
+  if (item != EnemyItemNone) {
+    const char* filename;
+    if (item == EnemyItemShield) {
+      filename = "Image/Main/Item/shield.png";
+    } else if (item == EnemyItemBarrier) {
+      filename = "Image/Main/Item/barrier.png";
+    }
+    CCSprite* sprite = CCSprite::create(FileUtils::getFilePath(filename).c_str());
+    this->addChild(sprite, 1000, itemTag);
+  }
 }
 

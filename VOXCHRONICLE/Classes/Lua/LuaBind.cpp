@@ -125,6 +125,10 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   // キャラの種別
   tolua_constant(tolua_S, "CharacterTypeVox", CharacterTypeVox);
   tolua_constant(tolua_S, "CharacterTypeLaska", CharacterTypeLaska);
+  // 敵キャラのアイテム
+  tolua_constant(tolua_S, "EnemyItemNone", EnemyItemNone);
+  tolua_constant(tolua_S, "EnemyItemShield", EnemyItemShield);
+  tolua_constant(tolua_S, "EnemyItemBarrier", EnemyItemBarrier);
   // Skillクラス
   tolua_beginmodule(tolua_S, "Skill");
   tolua_endmodule(tolua_S);
