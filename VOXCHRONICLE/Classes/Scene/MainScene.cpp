@@ -254,7 +254,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         int row = nearest->getRow();
         int denominator = (MAX_ROW + 1) * MAX_ROW / 2.0;
         int numerator = ((MAX_ROW - row) + 1) * (MAX_ROW - row) / 2.0;
-        float volume = 1.0 * numerator / denominator;
+        float volume = 0.5 + 1.0 * numerator / denominator;
         track->setVolume(volume);
       } else {
         string file(_map->getPrefixedMusicName("counter0.wav"));

@@ -7,6 +7,6 @@ Skill = {
   common = false,
   maxRepeat = 1,
   turn = 1,
-  skillRange = SkillRangeVertical,
+  skillRange = SkillRangeBack,
   skillType = SkillTypeNone
 }
