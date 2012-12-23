@@ -203,19 +203,22 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       std::stringstream ss;
       SkillPerformType performType = SkillPerformTypeNone;
       string name = _characterManager->checkSkillTrackName(skill, performType);
-      ss << name << ".wav";
-      string file(_map->getPrefixedMusicName(ss.str().c_str()));
-      string trackName(file);
-      music->pushTrack(file.c_str(), 0);
       if (skill && performType == SkillPerformTypeSuccess) {
         int preExp = _characterManager->getExp();
         CCDictionary* info = _enemyManager->performSkill(skill, _characterManager); // ここで経験値が貰える
         CCArray* enemies = (CCArray*)info->objectForKey("enemies");
         CCArray* damages = (CCArray*)info->objectForKey("damages");
+        CCArray* damageTypes = (CCArray*)info->objectForKey("damageTypes");
         for (int i = 0; i < enemies->count(); ++i) {
           Enemy* enemy = (Enemy*)enemies->objectAtIndex(i);
           CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(((CCInteger*)damages->objectAtIndex(i))->getValue()).c_str(),
                                                            FileUtils::getFilePath("Image/Main/UI/damage_number.png").c_str(), 50, 100, '0');
+          // ダメージが0かつ、アイテムも破壊していないとき、強制的にミス音にしてやる
+          int damage = ((CCInteger*)damages->objectAtIndex(i))->getValue();
+          DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(i))->getValue();
+          if (damage == 0 && damageType != DamageTypeBarrierBreak && damageType != DamageTypeShieldBreak) {
+            name = "miss";
+          }
           damageLabel->setPosition(enemy->getPosition());
           float scale = enemy->getCurrentScale(enemy->getRow());
           damageLabel->setScale(scale);
@@ -234,6 +237,10 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         // MP回復 コマンド化したのでコメントアウトしておきます
         //_characterManager->addMP(1);
       }
+      ss << name << ".wav";
+      string file(_map->getPrefixedMusicName(ss.str().c_str()));
+      string trackName(file);
+      music->pushTrack(file.c_str(), 0);
       _controller->updateSkills(_characterManager);
     } else if (trackNumber == 1) {
       stringstream ss;
