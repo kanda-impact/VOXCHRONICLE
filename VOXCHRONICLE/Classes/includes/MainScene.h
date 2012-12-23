@@ -40,6 +40,7 @@ class MainScene : public CCLayer {
   int _preLevel;
   int _turnCount;
   int _mapTurnCount;
+  bool _isImpact;
   Music* _music;
   Controller* _controller;
   EnemyManager* _enemyManager;

@@ -132,16 +132,6 @@ class CharacterManager :public CCObject {
    */
   float getLevelOffsetRate(int attackLevel, int defenseLevel);
   
-  
-  // getter
-  // getterです。意味は察してください
-  Character* getCurrentCharacter();
-  int getTension();
-  bool getShield();
-  Skill* getCurrentSkill();
-  int getHP();
-  int getMP();
-  
   /**
    現在のレベルを経験値から計算して返します
    現在呼んだときから経験値が変化していた場合は、character.luaのgetLevelが実行され返されます
@@ -157,6 +147,16 @@ class CharacterManager :public CCObject {
    @return そのレベルになるのに最低限必要な経験値
    */
   int getExpWithLevel(int level);
+  
+  // getter
+  // getterです。意味は察してください
+  Character* getCurrentCharacter();
+  int getTension();
+  bool getShield();
+  Skill* getCurrentSkill();
+  Skill* getLastSkill();
+  int getHP();
+  int getMP();
   int getExp();
   int getMaxHP();
   int getMaxMP();

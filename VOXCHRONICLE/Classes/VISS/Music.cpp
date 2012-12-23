@@ -40,18 +40,18 @@ Track* Music::getNextTrack(int trackNumber) {
   return _tracks.at(trackNumber).at(1);
 }
   
-bool Music::setTrack(const char* fileName, int trackNumber, int index) {
+Track* Music::setTrack(const char* fileName, int trackNumber, int index) {
   //Track* next = new Track(fileName);
   Track* next = TrackCache::sharedCache()->addTrack(fileName);
   return setTrack(next, trackNumber, index);
 }
 
-bool Music::setTrack(Track* track, int trackNumber, int index) {
+Track* Music::setTrack(Track* track, int trackNumber, int index) {
   if (trackNumber >= _trackCount) {
-    return false;
+    return NULL;
   }
   _tracks.at(trackNumber).at(index) = track;
-  return true;
+  return track;
 }
 
 Track* Music::pushTrack(const char* fileName, int trackNumber) {

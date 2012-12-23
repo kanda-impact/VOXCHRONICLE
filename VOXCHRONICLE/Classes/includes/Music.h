@@ -39,8 +39,8 @@ namespace VISS {
     Track* pushTrack(const char* fileName, int trackNumber);
     Track* pushTrack(const char* fileName, int trackNumber, int repeat);
     Track* pushTrack(Track* track, int trackNumber);
-    bool setTrack(const char* fileName, int trackNumber, int index);
-    bool setTrack(Track* track, int trackNumber, int index);
+    Track* setTrack(const char* fileName, int trackNumber, int index);
+    Track* setTrack(Track* track, int trackNumber, int index);
     bool play();
     void stop();
     void pause();

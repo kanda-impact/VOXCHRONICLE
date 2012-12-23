@@ -279,3 +279,7 @@ int CharacterManager::getDrumLevel() {
 void CharacterManager::setDrumLevel(int l) {
   _drumLevel = l;
 }
+
+Skill* CharacterManager::getLastSkill() {
+  return _lastSkill;
+}

@@ -239,10 +239,6 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
     cout << "MP is nothing!" << endl;
   }
   
-  // テンション使ってないときreset
-  if (strcmp(skill->getIdentifier(), "tension")) {
-    characterManager->resetTension();
-  }
   info->setObject(targets, "enemies");
   info->setObject(CCInteger::create(exp), "exp");
   info->setObject(damages, "damages");
