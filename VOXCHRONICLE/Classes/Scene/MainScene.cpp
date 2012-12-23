@@ -56,7 +56,6 @@ bool MainScene::init() {
   _focus = CCSprite::create(FileUtils::getFilePath("Image/Main/UI/proto/focus.png").c_str());
   _focus->retain();
   _focus->setVisible(false);
-  _focus->setColor(ccc3(255, 0, 0));
   _focus->runAction(CCRepeatForever::create(CCRotateBy::create(5.0f, 360)));
   this->addChild(_focus);
   
