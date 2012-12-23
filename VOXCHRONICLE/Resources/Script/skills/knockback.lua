@@ -7,7 +7,7 @@ Skill = {
   common = false,
   maxRepeat = 1,
   turn = 1,
-  performSkill = function(target, characterManager)
+  performSkill = function(self, target, characterManager, enemyManager)
     target:setRow(MAX_ROW - 1)
   end,
   skillRange = SkillRangeSingle,

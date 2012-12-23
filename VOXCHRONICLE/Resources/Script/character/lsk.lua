@@ -9,7 +9,7 @@ Character = {
     {"tension", 1},
     {"change", 1},
     {"shield", 5},
-    {"levelup", 1}
+    {"run", 1}
   }
 }
 return Character

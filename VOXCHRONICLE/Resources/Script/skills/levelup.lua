@@ -7,7 +7,7 @@ Skill = {
   common = true,
   maxRepeat = 1,
   turn = 1,
-  performSkill = function(target, characterManager)
+  performSkill = function(self, target, characterManager, enemyManager)
     characterManager:setLevel(characterManager:getLevel() + 1)
   end,
   skillRange = SkillRangeSelf,

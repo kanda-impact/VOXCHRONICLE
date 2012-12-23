@@ -139,6 +139,8 @@ class EnemyManager :public CCLayer {
    */
   void unshiftEnemiesQueue(CCArray* enemies);
   
+  void nextTurn();
+  
   CREATE_FUNC(EnemyManager)
 };
 

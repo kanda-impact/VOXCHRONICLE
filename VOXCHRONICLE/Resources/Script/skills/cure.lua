@@ -8,7 +8,7 @@ Skill = {
   maxRepeat = 1,
   se = true,
   turn = 1,
-  performSkill = function(target, characterManager)
+  performSkill = function(self, target, characterManager, enemyManager)
     characterManager:addHP(1)
   end,
   skillRange = SkillRangeSelf,

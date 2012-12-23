@@ -1,16 +1,15 @@
 Skill = {
-  name = "チャージ",
-  identifier = "charge",
+  name = "走る",
+  identifier = "run",
   power = 0,
   mp = 0,
   tensionLevel = 0,
-  common = false,
-  maxRepeat = 1,
-  se = true,
+  common = true,
+  maxRepeat = 2,
   turn = 1,
   performSkill = function(self, target, characterManager, enemyManager)
-    characterManager:addMP(1)
+    enemyManager:nextTurn()
   end,
   skillRange = SkillRangeSelf,
-  skillType = SkillTypeNone
+  skillType = SkillTypePhysical
 }

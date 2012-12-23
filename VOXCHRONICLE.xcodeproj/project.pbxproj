@@ -104,6 +104,8 @@
 		077EDE0116870767009B9F6B /* thunder_effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDF716870767009B9F6B /* thunder_effect.mp3 */; };
 		077EDE0B1687128C009B9F6B /* focus.png in Resources */ = {isa = PBXBuildFile; fileRef = 077EDE0A1687128C009B9F6B /* focus.png */; };
 		077EDE0E16871906009B9F6B /* geek_shield.lua in Resources */ = {isa = PBXBuildFile; fileRef = 077EDE0D16871906009B9F6B /* geek_shield.lua */; };
+		077EDE1816872BDF009B9F6B /* run.lua in Resources */ = {isa = PBXBuildFile; fileRef = 077EDE1716872BDF009B9F6B /* run.lua */; };
+		077EDE1B16872CBE009B9F6B /* run_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 077EDE1A16872CBE009B9F6B /* run_icon.png */; };
 		0791585A15EBA8350083D348 /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0791585815EBA8350083D348 /* LogoScene.cpp */; };
 		0791587515EBB50E0083D348 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586915EBB4BB0083D348 /* Default.png */; };
 		0791587615EBB50E0083D348 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586A15EBB4BB0083D348 /* fps_images.png */; };
@@ -561,6 +563,8 @@
 		077EDDF716870767009B9F6B /* thunder_effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = thunder_effect.mp3; path = Resources/SE/thunder_effect.mp3; sourceTree = "<group>"; };
 		077EDE0A1687128C009B9F6B /* focus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = focus.png; sourceTree = "<group>"; };
 		077EDE0D16871906009B9F6B /* geek_shield.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = geek_shield.lua; sourceTree = "<group>"; };
+		077EDE1716872BDF009B9F6B /* run.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = run.lua; sourceTree = "<group>"; };
+		077EDE1A16872CBE009B9F6B /* run_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = run_icon.png; sourceTree = "<group>"; };
 		0791585815EBA8350083D348 /* LogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LogoScene.cpp; path = Classes/Scene/LogoScene.cpp; sourceTree = "<group>"; };
 		0791586915EBB4BB0083D348 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/ios/Default.png; sourceTree = "<group>"; };
 		0791586A15EBB4BB0083D348 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = Resources/ios/fps_images.png; sourceTree = "<group>"; };
@@ -1401,6 +1405,7 @@
 		075653961617131C00C69E27 /* command */ = {
 			isa = PBXGroup;
 			children = (
+				077EDE1A16872CBE009B9F6B /* run_icon.png */,
 				077EDDCF1683DF20009B9F6B /* charge_icon.png */,
 				077EDDD01683DF20009B9F6B /* slash_icon.png */,
 				07E135741624AD2000CCF72E /* cure_icon.png */,
@@ -2528,6 +2533,7 @@
 				0756539F16171A5500C69E27 /* magic.lua */,
 				07F9D9E016812C9D00E984AB /* slash.lua */,
 				075653A516171F2400C69E27 /* change.lua */,
+				077EDE1716872BDF009B9F6B /* run.lua */,
 				0731E4CA16176787006AEF3D /* shield.lua */,
 				0731E4DA16176C95006AEF3D /* thunder.lua */,
 				07E1351E1621AF2700CCF72E /* levelup.lua */,
@@ -2947,6 +2953,8 @@
 				077EDE0116870767009B9F6B /* thunder_effect.mp3 in Resources */,
 				077EDE0B1687128C009B9F6B /* focus.png in Resources */,
 				077EDE0E16871906009B9F6B /* geek_shield.lua in Resources */,
+				077EDE1816872BDF009B9F6B /* run.lua in Resources */,
+				077EDE1B16872CBE009B9F6B /* run_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

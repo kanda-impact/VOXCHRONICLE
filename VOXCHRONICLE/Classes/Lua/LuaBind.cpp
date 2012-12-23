@@ -11,11 +11,13 @@
 #include "Skill.h"
 #include "Enemy.h"
 #include "CharacterManager.h"
+#include "EnemyManager.h"
 
 static void tolua_reg_types (lua_State* tolua_S) {
   tolua_usertype(tolua_S, "Skill");
   tolua_usertype(tolua_S, "Enemy");
   tolua_usertype(tolua_S, "CharacterManager");
+  tolua_usertype(tolua_S, "EnemyManager");
 }
 
 static int tolua_VC_Enemy_getRow(lua_State* tolua_S) {
@@ -103,6 +105,12 @@ static int tolua_VC_CharacterManager_setDrumLevel(lua_State* tolua_S) {
   return 0;
 }
 
+static int tolua_VC_EnemyManager_nextTurn(lua_State* tolua_S) {
+  EnemyManager* self = (EnemyManager*)tolua_tousertype(tolua_S, 1, 0);
+  self->nextTurn();
+  return 0;
+}
+
 TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_open(tolua_S);
   tolua_reg_types(tolua_S);
@@ -152,6 +160,10 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_function(tolua_S, "getDrumLevel", tolua_VC_CharacterManager_getDrumLevel);
   tolua_function(tolua_S, "setDrumLevel", tolua_VC_CharacterManager_setDrumLevel);
   tolua_endmodule(tolua_S);
+  // EnemyManagerクラス
+  tolua_cclass(tolua_S, "EnemyManager", "EnemyManager", "CCObject", NULL);
+  tolua_beginmodule(tolua_S, "EnemyManager");
+  tolua_function(tolua_S, "nextTurn", tolua_VC_EnemyManager_nextTurn);
   tolua_endmodule(tolua_S);
   return 1;
 }

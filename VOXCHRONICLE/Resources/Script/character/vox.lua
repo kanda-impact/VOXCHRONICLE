@@ -5,11 +5,11 @@ Character = {
     {"attack", 1},
     {"knockback", 6},
     {"slash", 10},
-    {"charge", 2},
+    {"charge", 3},
     {"tension", 1},
-    {"change", 3},
+    {"change", 1},
     {"shield", 5},
-    {"levelup", 1}
+    {"run", 1}
   }
 }
 return Character

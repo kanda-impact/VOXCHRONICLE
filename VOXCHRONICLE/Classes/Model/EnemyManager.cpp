@@ -131,6 +131,7 @@ bool EnemyManager::performLuaFunction(Skill* skill, Enemy* target, CharacterMana
   int table = lua_gettop(L);
   lua_getfield(L, table, "performSkill");
   if (lua_isfunction(L, lua_gettop(L))) {
+    lua->getLuaEngine()->pushCCObject(skill, "Skill");
     if (target) {
       lua->getLuaEngine()->pushCCObject(target, "Enemy");
       target->retain();
@@ -138,8 +139,9 @@ bool EnemyManager::performLuaFunction(Skill* skill, Enemy* target, CharacterMana
       lua->getLuaEngine()->pushNil();
     }
     lua->getLuaEngine()->pushCCObject(characterManager, "CharacterManager");
+    lua->getLuaEngine()->pushCCObject(this, "EnemyManager");
     characterManager->retain();
-    if (lua_pcall(L, 2, 1, 0)) {
+    if (lua_pcall(L, 4, 1, 0)) {
       cout << lua_tostring(L, lua_gettop(L)) << endl;
       return false;
     }
@@ -186,7 +188,7 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
       // HPの一番高い敵を狙う
       Enemy* target = NULL;
       CCObject* obj = NULL;
-      CCARRAY_FOREACH(_enemies, obj) {
+      CCARRAY_FOREACH(this->getEnemies(), obj) {
         Enemy* enemy = (Enemy*)obj;
         if (target == NULL) {
           target = enemy;
@@ -327,5 +329,18 @@ void EnemyManager::unshiftEnemiesQueue(cocos2d::CCArray *enemies) {
   CCObject* obj = NULL;
   CCARRAY_FOREACH(enemies, obj) {
     _enemiesQueue->insertObject(obj, 0);
+  }
+}
+
+void EnemyManager::nextTurn () {
+  this->lotPopEnemy();
+  CCObject* obj = NULL;
+  CCARRAY_FOREACH(this->getEnemies(), obj) {
+    Enemy* enemy = (Enemy*)obj;
+    if (enemy->getRow() > 0) {
+      if (enemy->canMove()) {
+        enemy->moveRow(-1);
+      }
+    }
   }
 }

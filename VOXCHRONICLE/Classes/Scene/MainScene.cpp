@@ -127,15 +127,11 @@ void MainScene::onEnterTransitionDidFinish() {
 
 void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber) {
   if (trackNumber == 0 && _state == VCStateMain) {
-    _enemyManager->lotPopEnemy();
+    _enemyManager->nextTurn();
     CCObject* obj = NULL;
     CCARRAY_FOREACH(_enemyManager->getEnemies(), obj) {
       Enemy* enemy = (Enemy*)obj;
-      if (enemy->getRow() > 0) {
-        if (enemy->canMove()) {
-          enemy->moveRow(-1);
-        }
-      } else {
+      if (enemy->getRow() == 0) {
         int damage = floor(0.5 + enemy->getAttack() * _characterManager->getLevelOffsetRate(enemy->getLevel(), _characterManager->getLevel()));
         DamageType result = _characterManager->damage(damage);
         // 被ダメージ表示しちゃう
