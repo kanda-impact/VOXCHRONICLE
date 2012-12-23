@@ -287,7 +287,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       if (drumLevel == 0) {
         drumFileStream << "silent.wav";
       } else {
-        drumFileStream << "drum" << this->calcDrumScore() << ".wav";
+        drumFileStream << "drum" << drumLevel - 1 << ".wav";
       }
       string file(_map->getPrefixedMusicName(drumFileStream.str().c_str()));
       Track* track = music->pushTrack(file.c_str(), 2);

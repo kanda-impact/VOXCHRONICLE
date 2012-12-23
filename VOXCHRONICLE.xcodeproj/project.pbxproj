@@ -106,6 +106,9 @@
 		077EDE0E16871906009B9F6B /* geek_shield.lua in Resources */ = {isa = PBXBuildFile; fileRef = 077EDE0D16871906009B9F6B /* geek_shield.lua */; };
 		077EDE1816872BDF009B9F6B /* run.lua in Resources */ = {isa = PBXBuildFile; fileRef = 077EDE1716872BDF009B9F6B /* run.lua */; };
 		077EDE1B16872CBE009B9F6B /* run_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 077EDE1A16872CBE009B9F6B /* run_icon.png */; };
+		077EDE1F16874935009B9F6B /* touch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDE1E16874935009B9F6B /* touch.mp3 */; };
+		077EDE2116874ADB009B9F6B /* Level10.lua in Resources */ = {isa = PBXBuildFile; fileRef = 077EDE2016874ADB009B9F6B /* Level10.lua */; };
+		077EDE2516874B20009B9F6B /* test_hak.lua in Resources */ = {isa = PBXBuildFile; fileRef = 077EDE2416874B1F009B9F6B /* test_hak.lua */; };
 		0791585A15EBA8350083D348 /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0791585815EBA8350083D348 /* LogoScene.cpp */; };
 		0791587515EBB50E0083D348 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586915EBB4BB0083D348 /* Default.png */; };
 		0791587615EBB50E0083D348 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586A15EBB4BB0083D348 /* fps_images.png */; };
@@ -565,6 +568,9 @@
 		077EDE0D16871906009B9F6B /* geek_shield.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = geek_shield.lua; sourceTree = "<group>"; };
 		077EDE1716872BDF009B9F6B /* run.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = run.lua; sourceTree = "<group>"; };
 		077EDE1A16872CBE009B9F6B /* run_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = run_icon.png; sourceTree = "<group>"; };
+		077EDE1E16874935009B9F6B /* touch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = touch.mp3; path = Resources/SE/touch.mp3; sourceTree = "<group>"; };
+		077EDE2016874ADB009B9F6B /* Level10.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Level10.lua; sourceTree = "<group>"; };
+		077EDE2416874B1F009B9F6B /* test_hak.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = test_hak.lua; path = map/test_hak.lua; sourceTree = "<group>"; };
 		0791585815EBA8350083D348 /* LogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LogoScene.cpp; path = Classes/Scene/LogoScene.cpp; sourceTree = "<group>"; };
 		0791586915EBB4BB0083D348 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/ios/Default.png; sourceTree = "<group>"; };
 		0791586A15EBB4BB0083D348 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = Resources/ios/fps_images.png; sourceTree = "<group>"; };
@@ -1278,6 +1284,7 @@
 		0731E4FA16184A59006AEF3D /* map */ = {
 			isa = PBXGroup;
 			children = (
+				077EDE2416874B1F009B9F6B /* test_hak.lua */,
 				0731E4FB16184A87006AEF3D /* test.lua */,
 				07E1351516219F9600CCF72E /* test2a.lua */,
 				07E1351616219F9600CCF72E /* test2b.lua */,
@@ -2513,6 +2520,7 @@
 		07C6093A161674650084708C /* enemies */ = {
 			isa = PBXGroup;
 			children = (
+				077EDE2016874ADB009B9F6B /* Level10.lua */,
 				0731E4DD161804C0006AEF3D /* tnt.lua */,
 				073B4C6C162168BA003E0CC8 /* geek.lua */,
 				077EDE0D16871906009B9F6B /* geek_shield.lua */,
@@ -2706,6 +2714,7 @@
 		07FA3B2A16107EE500E9C7DE /* SE */ = {
 			isa = PBXGroup;
 			children = (
+				077EDE1E16874935009B9F6B /* touch.mp3 */,
 				077EDDEE16870767009B9F6B /* attack_effect.mp3 */,
 				077EDDEF16870767009B9F6B /* charge_effect.mp3 */,
 				077EDDF016870767009B9F6B /* cure_effect.mp3 */,
@@ -2955,6 +2964,9 @@
 				077EDE0E16871906009B9F6B /* geek_shield.lua in Resources */,
 				077EDE1816872BDF009B9F6B /* run.lua in Resources */,
 				077EDE1B16872CBE009B9F6B /* run_icon.png in Resources */,
+				077EDE1F16874935009B9F6B /* touch.mp3 in Resources */,
+				077EDE2116874ADB009B9F6B /* Level10.lua in Resources */,
+				077EDE2516874B20009B9F6B /* test_hak.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

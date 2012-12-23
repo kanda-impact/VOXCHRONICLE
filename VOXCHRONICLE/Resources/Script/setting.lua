@@ -1,4 +1,4 @@
 Setting = {
-  initialMap = "test",
+  initialMap = "test_hak",
   initialLevel = 1
 }
