@@ -104,6 +104,19 @@ void Enemy::moveRow(float r) {
 DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager) {
   // ToDo 属性によるダメージ軽減とかもこの辺に載せてやる
   int damage = round(skill->getPowerWithTension(characterManager->getTension()));
+  // アイテムの処理
+  if ((_item == EnemyItemShield && skill->getType() == SkillTypePhysical) ||
+      (_item == EnemyItemBarrier && skill->getType() == SkillTypeMagical)) {
+    // 盾によって完全に無効化されている状態
+    damage = 0;
+    return _item == EnemyItemShield ? DamageTypePhysicalInvalid : DamageTypeMagicalInvalid;
+  } else if ((_item == EnemyItemShield && skill->getType() == SkillTypeMagical) ||
+             (_item == EnemyItemBarrier && skill->getType() == SkillTypePhysical)) {
+    damage = 0;
+    this->setItem(EnemyItemNone);
+    return _item == EnemyItemShield ? DamageTypeShieldBreak : DamageTypeBarrierBreak;
+  }
+  
   DamageType type = DamageTypeHit;
   // ダメージ耐性がある場合、威力半減してやる
   if (skill->getType() == SkillTypePhysical && this->getType() == SkillTypePhysical) {
@@ -122,7 +135,7 @@ DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager) {
     type = DamageTypeDeath;
   } else if (damage == 0){
     // ダメージが当たらなかったら無敵
-    type = DamageTypeInvisible;
+    type = DamageTypeInvincible;
   } else if (damage < 0) {
     // ダメージがマイナス値なら吸収
     type = DamageTypeAbsorption;

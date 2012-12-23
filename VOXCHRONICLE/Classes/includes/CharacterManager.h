@@ -18,10 +18,14 @@ typedef enum {
   DamageTypeNone, // デフォルト
   DamageTypeHit, // 通常攻撃命中
   DamageTypeShield, // 盾による無効化
-  DamageTypeInvisible, // 無敵による無効化
+  DamageTypeInvincible, // 無敵による無効化
   DamageTypeWeak, // 弱点
   DamageTypePhysicalResist, // 物理攻撃耐性
   DamageTypeMagicalResist, // 魔法攻撃耐性
+  DamageTypePhysicalInvalid, // 物理攻撃無効
+  DamageTypeMagicalInvalid, // 魔法攻撃無効
+  DamageTypeShieldBreak, // 盾破壊
+  DamageTypeBarrierBreak, // バリアー破壊
   DamageTypeDeath, // 死亡
   DamageTypeAbsorption // ダメージ吸収
 } DamageType;

@@ -276,8 +276,9 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
           // 何らかの技を使ったとき、impactをはさむ
           drumFileStream << "impact" << min(_characterManager->getTension() - 1, 2) << ".wav";
           string file(_map->getPrefixedMusicName(drumFileStream.str().c_str()));
-          track = music->setTrack(file.c_str(), 2, 0);
-          track->play();
+          track = music->pushTrack(file.c_str(), 2);
+          //track = music->pushTrack(file.c_str(), 2, 0);
+          //track->play();
         }
       }
       if (track) {
