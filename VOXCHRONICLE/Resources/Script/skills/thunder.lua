@@ -5,6 +5,7 @@ Skill = {
   mp = 2,
   tensionLevel = 2,
   common = false,
+  se = true,
   maxRepeat = 1,
   turn = 1,
   skillRange = SkillRangeAll,

@@ -26,6 +26,7 @@ Skill::Skill(const char* identifier) {
   _tensionLevel = _lua->getInt("tensionLevel");
   _range = (SkillRange)_lua->getInt("skillRange");
   _type = (SkillType)_lua->getInt("skillType");
+  _se = _lua->getBoolean("se");
 }
 
 Skill::~Skill() {
@@ -104,4 +105,8 @@ void Skill::setAcquirementLV(int lv) {
 
 int Skill::getTensionLevel() {
   return _tensionLevel;
+}
+
+bool Skill::hasSE() {
+  return _se;
 }

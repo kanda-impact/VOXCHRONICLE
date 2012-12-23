@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		070E401A163C213E00A76BEA /* decide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 070E4019163C213E00A76BEA /* decide.mp3 */; };
 		070E401D163C242500A76BEA /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = 070E401C163C242500A76BEA /* title.png */; };
 		070E4020163C29E600A76BEA /* BlinkLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 070E401E163C29E600A76BEA /* BlinkLayer.cpp */; };
-		070E4023163C2EFB00A76BEA /* damage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 070E4022163C2EFB00A76BEA /* damage.mp3 */; };
 		070E4043163CB10400A76BEA /* select_silent.wav in Resources */ = {isa = PBXBuildFile; fileRef = 070E403F163CB10400A76BEA /* select_silent.wav */; };
 		070E4044163CB10400A76BEA /* select_stage.wav in Resources */ = {isa = PBXBuildFile; fileRef = 070E4040163CB10400A76BEA /* select_stage.wav */; };
 		070E4045163CB10400A76BEA /* title.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 070E4041163CB10400A76BEA /* title.mp3 */; };
@@ -94,6 +92,16 @@
 		077EDDDE16857B55009B9F6B /* dub_impact2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDDB16857B55009B9F6B /* dub_impact2.wav */; };
 		077EDDEA1686D45B009B9F6B /* barrier.png in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDE81686D45B009B9F6B /* barrier.png */; };
 		077EDDEB1686D45B009B9F6B /* shield.png in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDE91686D45B009B9F6B /* shield.png */; };
+		077EDDF816870767009B9F6B /* attack_effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDEE16870767009B9F6B /* attack_effect.mp3 */; };
+		077EDDF916870767009B9F6B /* charge_effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDEF16870767009B9F6B /* charge_effect.mp3 */; };
+		077EDDFA16870767009B9F6B /* cure_effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDF016870767009B9F6B /* cure_effect.mp3 */; };
+		077EDDFB16870767009B9F6B /* cursor.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDF116870767009B9F6B /* cursor.mp3 */; };
+		077EDDFC16870767009B9F6B /* damage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDF216870767009B9F6B /* damage.mp3 */; };
+		077EDDFD16870767009B9F6B /* death.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDF316870767009B9F6B /* death.mp3 */; };
+		077EDDFE16870767009B9F6B /* decide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDF416870767009B9F6B /* decide.mp3 */; };
+		077EDDFF16870767009B9F6B /* levelup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDF516870767009B9F6B /* levelup.mp3 */; };
+		077EDE0016870767009B9F6B /* shield_effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDF616870767009B9F6B /* shield_effect.mp3 */; };
+		077EDE0116870767009B9F6B /* thunder_effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDF716870767009B9F6B /* thunder_effect.mp3 */; };
 		0791585A15EBA8350083D348 /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0791585815EBA8350083D348 /* LogoScene.cpp */; };
 		0791587515EBB50E0083D348 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586915EBB4BB0083D348 /* Default.png */; };
 		0791587615EBB50E0083D348 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586A15EBB4BB0083D348 /* fps_images.png */; };
@@ -439,9 +447,6 @@
 		07F0D782163BEDA0005592AF /* dub_run1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D77D163BEDA0005592AF /* dub_run1.wav */; };
 		07F0D783163BEDA0005592AF /* dub_wait.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D77E163BEDA0005592AF /* dub_wait.wav */; };
 		07F0D785163BF199005592AF /* dub_shield0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D784163BF198005592AF /* dub_shield0.wav */; };
-		07F0D791163C035E005592AF /* death.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D78E163C035E005592AF /* death.mp3 */; };
-		07F0D792163C035E005592AF /* cursor.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D78F163C035E005592AF /* cursor.mp3 */; };
-		07F0D793163C035E005592AF /* levelup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F0D790163C035E005592AF /* levelup.mp3 */; };
 		07F0D799163C1EC1005592AF /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F0D797163C1EC0005592AF /* TitleScene.cpp */; };
 		07F40F10163D0FC0009FC104 /* Music.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F40F0F163D0FC0009FC104 /* Music.cpp */; };
 		07F9D9E116812C9D00E984AB /* slash.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F9D9E016812C9D00E984AB /* slash.lua */; };
@@ -450,11 +455,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		070E4019163C213E00A76BEA /* decide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = decide.mp3; path = Resources/SE/decide.mp3; sourceTree = "<group>"; };
 		070E401C163C242500A76BEA /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = title.png; path = Resources/Image/Title/title.png; sourceTree = "<group>"; };
 		070E401E163C29E600A76BEA /* BlinkLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BlinkLayer.cpp; path = Classes/UI/BlinkLayer.cpp; sourceTree = "<group>"; };
 		070E4021163C29FB00A76BEA /* BlinkLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlinkLayer.h; path = Classes/includes/BlinkLayer.h; sourceTree = "<group>"; };
-		070E4022163C2EFB00A76BEA /* damage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = damage.mp3; path = Resources/SE/damage.mp3; sourceTree = "<group>"; };
 		070E403F163CB10400A76BEA /* select_silent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = select_silent.wav; path = Resources/Music/general/select_silent.wav; sourceTree = "<group>"; };
 		070E4040163CB10400A76BEA /* select_stage.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = select_stage.wav; path = Resources/Music/general/select_stage.wav; sourceTree = "<group>"; };
 		070E4041163CB10400A76BEA /* title.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = title.mp3; path = Resources/Music/general/title.mp3; sourceTree = "<group>"; };
@@ -544,6 +547,16 @@
 		077EDDDB16857B55009B9F6B /* dub_impact2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_impact2.wav; path = Resources/Music/dub/dub_impact2.wav; sourceTree = "<group>"; };
 		077EDDE81686D45B009B9F6B /* barrier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barrier.png; sourceTree = "<group>"; };
 		077EDDE91686D45B009B9F6B /* shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield.png; sourceTree = "<group>"; };
+		077EDDEE16870767009B9F6B /* attack_effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = attack_effect.mp3; path = Resources/SE/attack_effect.mp3; sourceTree = "<group>"; };
+		077EDDEF16870767009B9F6B /* charge_effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = charge_effect.mp3; path = Resources/SE/charge_effect.mp3; sourceTree = "<group>"; };
+		077EDDF016870767009B9F6B /* cure_effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = cure_effect.mp3; path = Resources/SE/cure_effect.mp3; sourceTree = "<group>"; };
+		077EDDF116870767009B9F6B /* cursor.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = cursor.mp3; path = Resources/SE/cursor.mp3; sourceTree = "<group>"; };
+		077EDDF216870767009B9F6B /* damage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = damage.mp3; path = Resources/SE/damage.mp3; sourceTree = "<group>"; };
+		077EDDF316870767009B9F6B /* death.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = death.mp3; path = Resources/SE/death.mp3; sourceTree = "<group>"; };
+		077EDDF416870767009B9F6B /* decide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = decide.mp3; path = Resources/SE/decide.mp3; sourceTree = "<group>"; };
+		077EDDF516870767009B9F6B /* levelup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = levelup.mp3; path = Resources/SE/levelup.mp3; sourceTree = "<group>"; };
+		077EDDF616870767009B9F6B /* shield_effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = shield_effect.mp3; path = Resources/SE/shield_effect.mp3; sourceTree = "<group>"; };
+		077EDDF716870767009B9F6B /* thunder_effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = thunder_effect.mp3; path = Resources/SE/thunder_effect.mp3; sourceTree = "<group>"; };
 		0791585815EBA8350083D348 /* LogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LogoScene.cpp; path = Classes/Scene/LogoScene.cpp; sourceTree = "<group>"; };
 		0791586915EBB4BB0083D348 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/ios/Default.png; sourceTree = "<group>"; };
 		0791586A15EBB4BB0083D348 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = Resources/ios/fps_images.png; sourceTree = "<group>"; };
@@ -1205,9 +1218,6 @@
 		07F0D77D163BEDA0005592AF /* dub_run1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_run1.wav; path = Resources/Music/dub/dub_run1.wav; sourceTree = "<group>"; };
 		07F0D77E163BEDA0005592AF /* dub_wait.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_wait.wav; path = Resources/Music/dub/dub_wait.wav; sourceTree = "<group>"; };
 		07F0D784163BF198005592AF /* dub_shield0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_shield0.wav; path = Resources/Music/dub/dub_shield0.wav; sourceTree = "<group>"; };
-		07F0D78E163C035E005592AF /* death.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = death.mp3; path = Resources/SE/death.mp3; sourceTree = "<group>"; };
-		07F0D78F163C035E005592AF /* cursor.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = cursor.mp3; path = Resources/SE/cursor.mp3; sourceTree = "<group>"; };
-		07F0D790163C035E005592AF /* levelup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = levelup.mp3; path = Resources/SE/levelup.mp3; sourceTree = "<group>"; };
 		07F0D797163C1EC0005592AF /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleScene.cpp; path = Classes/Scene/TitleScene.cpp; sourceTree = "<group>"; };
 		07F0D79A163C1EFD005592AF /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = Classes/includes/TitleScene.h; sourceTree = "<group>"; };
 		07F40F0F163D0FC0009FC104 /* Music.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Music.cpp; path = Classes/VISS/Music.cpp; sourceTree = "<group>"; };
@@ -2684,11 +2694,16 @@
 		07FA3B2A16107EE500E9C7DE /* SE */ = {
 			isa = PBXGroup;
 			children = (
-				070E4022163C2EFB00A76BEA /* damage.mp3 */,
-				07F0D78E163C035E005592AF /* death.mp3 */,
-				07F0D78F163C035E005592AF /* cursor.mp3 */,
-				07F0D790163C035E005592AF /* levelup.mp3 */,
-				070E4019163C213E00A76BEA /* decide.mp3 */,
+				077EDDEE16870767009B9F6B /* attack_effect.mp3 */,
+				077EDDEF16870767009B9F6B /* charge_effect.mp3 */,
+				077EDDF016870767009B9F6B /* cure_effect.mp3 */,
+				077EDDF116870767009B9F6B /* cursor.mp3 */,
+				077EDDF216870767009B9F6B /* damage.mp3 */,
+				077EDDF316870767009B9F6B /* death.mp3 */,
+				077EDDF416870767009B9F6B /* decide.mp3 */,
+				077EDDF516870767009B9F6B /* levelup.mp3 */,
+				077EDDF616870767009B9F6B /* shield_effect.mp3 */,
+				077EDDF716870767009B9F6B /* thunder_effect.mp3 */,
 			);
 			name = SE;
 			sourceTree = "<group>";
@@ -2878,12 +2893,7 @@
 				07F0D782163BEDA0005592AF /* dub_run1.wav in Resources */,
 				07F0D783163BEDA0005592AF /* dub_wait.wav in Resources */,
 				07F0D785163BF199005592AF /* dub_shield0.wav in Resources */,
-				07F0D791163C035E005592AF /* death.mp3 in Resources */,
-				07F0D792163C035E005592AF /* cursor.mp3 in Resources */,
-				07F0D793163C035E005592AF /* levelup.mp3 in Resources */,
-				070E401A163C213E00A76BEA /* decide.mp3 in Resources */,
 				070E401D163C242500A76BEA /* title.png in Resources */,
-				070E4023163C2EFB00A76BEA /* damage.mp3 in Resources */,
 				070E4043163CB10400A76BEA /* select_silent.wav in Resources */,
 				070E4044163CB10400A76BEA /* select_stage.wav in Resources */,
 				070E4045163CB10400A76BEA /* title.mp3 in Resources */,
@@ -2919,6 +2929,16 @@
 				077EDDDE16857B55009B9F6B /* dub_impact2.wav in Resources */,
 				077EDDEA1686D45B009B9F6B /* barrier.png in Resources */,
 				077EDDEB1686D45B009B9F6B /* shield.png in Resources */,
+				077EDDF816870767009B9F6B /* attack_effect.mp3 in Resources */,
+				077EDDF916870767009B9F6B /* charge_effect.mp3 in Resources */,
+				077EDDFA16870767009B9F6B /* cure_effect.mp3 in Resources */,
+				077EDDFB16870767009B9F6B /* cursor.mp3 in Resources */,
+				077EDDFC16870767009B9F6B /* damage.mp3 in Resources */,
+				077EDDFD16870767009B9F6B /* death.mp3 in Resources */,
+				077EDDFE16870767009B9F6B /* decide.mp3 in Resources */,
+				077EDDFF16870767009B9F6B /* levelup.mp3 in Resources */,
+				077EDE0016870767009B9F6B /* shield_effect.mp3 in Resources */,
+				077EDE0116870767009B9F6B /* thunder_effect.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

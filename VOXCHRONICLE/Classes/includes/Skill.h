@@ -41,6 +41,7 @@ class Skill :public CCObject {
   int _mp;
   int _tensionLevel;
   bool _common;
+  bool _se;
   std::string* _name;
   const char* _identifier;
   SkillRange _range;
@@ -60,6 +61,7 @@ class Skill :public CCObject {
   void setAcquirementLV(int lv);
   int getTensionLevel();
   bool isCommon();
+  bool hasSE();
   SkillRange getRange();
   SkillType getType();
   LuaObject* getLuaObject();

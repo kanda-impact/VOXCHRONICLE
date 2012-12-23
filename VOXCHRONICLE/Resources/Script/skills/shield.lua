@@ -5,6 +5,7 @@ Skill = {
   mp = 0,
   tensionLevel = 0,
   common = true,
+  se = true,
   maxRepeat = 1,
   turn = 1,
   performSkill = function(target, characterManager)

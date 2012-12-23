@@ -203,6 +203,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       std::stringstream ss;
       SkillPerformType performType = SkillPerformTypeNone;
       string name = _characterManager->checkSkillTrackName(skill, performType);
+      bool isHit = true; // ヒットしたかどうか
       if (skill && performType == SkillPerformTypeSuccess) {
         int preExp = _characterManager->getExp();
         CCDictionary* info = _enemyManager->performSkill(skill, _characterManager); // ここで経験値が貰える
@@ -213,11 +214,11 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
           Enemy* enemy = (Enemy*)enemies->objectAtIndex(i);
           CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(((CCInteger*)damages->objectAtIndex(i))->getValue()).c_str(),
                                                            FileUtils::getFilePath("Image/Main/UI/damage_number.png").c_str(), 50, 100, '0');
-          // ダメージが0かつ、元々ダメージのない技じゃないかつ、アイテムも破壊していないとき、強制的にミス音にしてやる
+          // ダメージが0かつ、元々ダメージのない技じゃないかつ、アイテムも破壊していないとき、ヒットしていない状態にしてやる
           int damage = ((CCInteger*)damages->objectAtIndex(i))->getValue();
           DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(i))->getValue();
           if (damage == 0 && damageType != DamageTypeBarrierBreak && damageType != DamageTypeShieldBreak && damageType != DamageTypeNoDamage) {
-            name = "miss";
+            isHit = false;
           }
           damageLabel->setPosition(enemy->getPosition());
           float scale = enemy->getCurrentScale(enemy->getRow());
@@ -229,6 +230,19 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
                                                     CCCallFuncN::create(damageLabel, callfuncN_selector(MainScene::removeNode)),
                                                     NULL));
         }
+        // ヒットしたとき、SEがあればSEをならしてやる
+        if (skill->hasSE() && isHit) {
+          if (skill->getType() == SkillRangeSelf || enemies->count() > 0) {
+            // 対象が自分、もしくは対象が1体以上いたとき、ダメージ効果音をならします
+            stringstream seStream;
+            seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
+            CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
+          }
+        }
+        // ヒットしていないとき、強制的にミス音にする
+        if (!isHit) {
+          name = "miss";
+        }
         int getExp = ((CCInteger*)info->objectForKey("exp"))->getValue();
         _enemyManager->unshiftEnemiesQueue(_map->getFixedEnemies(preExp, preExp + getExp));
         this->checkLevelUp();
@@ -237,6 +251,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         // MP回復 コマンド化したのでコメントアウトしておきます
         //_characterManager->addMP(1);
       }
+      
       ss << name << ".wav";
       string file(_map->getPrefixedMusicName(ss.str().c_str()));
       string trackName(file);

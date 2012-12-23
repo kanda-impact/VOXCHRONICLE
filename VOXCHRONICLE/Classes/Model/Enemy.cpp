@@ -217,7 +217,7 @@ EnemyItem Enemy::getItem() {
 
 void Enemy::setItem(EnemyItem item) {
   if (item == _item) return;
-  if (_item != EnemyItemNone) {
+  if (_item != EnemyItemNone && this->getChildByTag(itemTag)) {
     this->removeChildByTag(itemTag, true);
   }
   _item = item;
