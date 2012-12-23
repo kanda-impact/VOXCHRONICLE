@@ -70,6 +70,7 @@ class MainScene : public CCLayer {
   
   void update(float dt);
   bool checkLevelUp();
+  int calcDrumScore();
 
   void removeNode(CCNode *node);
   

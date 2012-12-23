@@ -283,34 +283,15 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       }
     } else if (trackNumber == 2) {
       stringstream drumFileStream;
-      Track* track = NULL;
-      if (_characterManager->getTension() == 0) {
-        // そもそもテンションを溜めていないとき
-        drumFileStream << "drum" << _characterManager->getDrumLevel() << ".wav";
-        string file(_map->getPrefixedMusicName(drumFileStream.str().c_str()));
-        track = music->pushTrack(file.c_str(), 2);
+      int drumLevel = this->calcDrumScore();
+      if (drumLevel == 0) {
+        drumFileStream << "silent.wav";
       } else {
-        // テンションを溜めているとき
-        if (_characterManager->getLastSkill() == NULL ||
-            ((_characterManager->getLastSkill() &&
-            strcmp(_characterManager->getLastSkill()->getIdentifier(), "tension") == 0))) {
-              // 技を使わなかった、もしくは今の技がテンションのとき
-          int drumLevel = min(_characterManager->getTension() + _characterManager->getDrumLevel(), 3);
-          drumFileStream << "drum" << drumLevel << ".wav";
-          string file(_map->getPrefixedMusicName(drumFileStream.str().c_str()));
-          track = music->pushTrack(file.c_str(), 2);
-        } else {
-          // 何らかの技を使ったとき、impactをはさむ
-          drumFileStream << "impact" << min(_characterManager->getTension() - 1, 2) << ".wav";
-          string file(_map->getPrefixedMusicName(drumFileStream.str().c_str()));
-          track = music->pushTrack(file.c_str(), 2);
-          //track = music->pushTrack(file.c_str(), 2, 0);
-          //track->play();
-        }
+        drumFileStream << "drum" << this->calcDrumScore() << ".wav";
       }
-      if (track) {
-        track->setVolume(0.7);
-      }
+      string file(_map->getPrefixedMusicName(drumFileStream.str().c_str()));
+      Track* track = music->pushTrack(file.c_str(), 2);
+      track->setVolume(0.7);
     }
   } else if (_state == VCStateStageSelect) {
     if (trackNumber == 0) {
@@ -471,4 +452,34 @@ void MainScene::updateFocus() {
   } else {
     _focus->setVisible(false);
   }
+}
+
+int MainScene::calcDrumScore () {
+  // KYDS
+  int score = 0;
+  // 敵の数によって分岐
+  if (_enemyManager->getEnemies()) {
+    int count = _enemyManager->getEnemies()->count();
+    if (count == 2 || count == 3) {
+      score += 1;
+    } else if (count == 4 || count == 5) {
+      score += 2;
+    } else if (count >= 6) {
+      score += 3;
+    }
+  }
+  Enemy* nearest = _enemyManager->getNearestEnemy();
+  if (nearest) {
+    int row = nearest->getRow();
+    if (row <= 1) {
+      score += 2;
+    } else if (row <= 4) {
+      score += 1;
+    } else {
+      score += 0;
+    }
+  }
+  int tension = _characterManager->getTension();
+  score += tension;
+  return min(score, 4);
 }
