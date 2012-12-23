@@ -183,11 +183,21 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
       boost::function<bool (int, float)> predicate = _1 == target->getCol();
       targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
     } else if (range == SkillRangeBack) {
-      // 実装途中。後で考える
-      Enemy* target = this->getNearestEnemy();
-      targets->addObject(target);
-      boost::function<bool (int, float)> predicate = _1 == target->getCol();
-      targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
+      // HPの一番高い敵を狙う
+      Enemy* target = NULL;
+      CCObject* obj = NULL;
+      CCARRAY_FOREACH(_enemies, obj) {
+        Enemy* enemy = (Enemy*)obj;
+        if (target == NULL) {
+          target = enemy;
+        }
+        if (target->getHP() < enemy->getHP()) {
+          target = enemy;
+        }
+      }
+      if (target != NULL) {
+        targets->addObject(target);
+      }
     } else if (range == SkillRangeFront) {
       // 最前列攻撃
       // 各行の一番前の敵を探してきてtargetsに格納します
