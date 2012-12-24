@@ -214,7 +214,9 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         CCArray* enemies = (CCArray*)info->objectForKey("enemies");
         CCArray* damages = (CCArray*)info->objectForKey("damages");
         CCArray* damageTypes = (CCArray*)info->objectForKey("damageTypes");
-        for (int i = 0; i < enemies->count(); ++i) {
+        int enemyCount = enemies->count();
+        for (int i = 0; i < enemyCount; ++i) {
+          isHit = true;
           Enemy* enemy = (Enemy*)enemies->objectAtIndex(i);
           CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(((CCInteger*)damages->objectAtIndex(i))->getValue()).c_str(),
                                                            FileUtils::getFilePath("Image/Main/UI/damage_number.png").c_str(), 50, 100, '0');
@@ -243,9 +245,24 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
             CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
           }
         }
-        // ヒットしていないとき、強制的にミス音にする
+        // 効果音を鳴らす
         if (!isHit) {
+          // ヒットしていないとき、強制的にミス音にする
           name = "miss";
+          if (enemyCount == 0) {
+            // 誰もいないときピロリ音
+            CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("miss.mp3").c_str());
+          } else {
+            DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(0))->getValue();
+            if (damageType == DamageTypePhysicalInvalid) {
+              // 1体だけ敵がいるのに当たらず、盾持ちだったとき
+              CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("shield_invalid.mp3").c_str());
+            } else if (damageType == DamageTypeMagicalInvalid) {
+              // バリア持ちだったとき
+              CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("barrier_invalid.mp3").c_str());
+            }
+          }
+          
         }
         int getExp = ((CCInteger*)info->objectForKey("exp"))->getValue();
         _enemyManager->unshiftEnemiesQueue(_map->getFixedEnemies(preExp, preExp + getExp));
@@ -448,7 +465,7 @@ void MainScene::updateFocus() {
   if (nearest) {
     _focus->setVisible(true);
     _focus->setPosition(nearest->getPosition());
-    _focus->setScale(nearest->getScale());
+    _focus->setScale(nearest->getCurrentScale(nearest->getRow()));
   } else {
     _focus->setVisible(false);
   }
