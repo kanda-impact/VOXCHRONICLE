@@ -137,6 +137,16 @@
 		07A8E9CE16317F0500E007C9 /* dub_tension3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07A8E9CA16317F0500E007C9 /* dub_tension3.wav */; };
 		07A8E9F316320DBC00E007C9 /* MessageWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */; };
 		07A8E9F6163302DF00E007C9 /* damage_number.png in Resources */ = {isa = PBXBuildFile; fileRef = 07A8E9F5163302DF00E007C9 /* damage_number.png */; };
+		07B4C39A168EC0D60074A905 /* leaf0.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C392168EC0D60074A905 /* leaf0.png */; };
+		07B4C39B168EC0D60074A905 /* leaf1.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C393168EC0D60074A905 /* leaf1.png */; };
+		07B4C39C168EC0D60074A905 /* leaf2.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C394168EC0D60074A905 /* leaf2.png */; };
+		07B4C39D168EC0D60074A905 /* leaf3.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C395168EC0D60074A905 /* leaf3.png */; };
+		07B4C39E168EC0D60074A905 /* typhoon0.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C396168EC0D60074A905 /* typhoon0.png */; };
+		07B4C39F168EC0D60074A905 /* typhoon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C397168EC0D60074A905 /* typhoon1.png */; };
+		07B4C3A0168EC0D60074A905 /* typhoon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C398168EC0D60074A905 /* typhoon2.png */; };
+		07B4C3A1168EC0D60074A905 /* typhoon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C399168EC0D60074A905 /* typhoon3.png */; };
+		07B4C3A5168EC34C0074A905 /* leaf.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C3A3168EC34C0074A905 /* leaf.lua */; };
+		07B4C3A6168EC34C0074A905 /* typhoon.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C3A4168EC34C0074A905 /* typhoon.lua */; };
 		07B7A676161FF87C00FCE64C /* TrackCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A674161FF87C00FCE64C /* TrackCache.cpp */; };
 		07B7A6981620470000FCE64C /* LuaObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A6961620470000FCE64C /* LuaObject.cpp */; };
 		07B7A69E16204D4D00FCE64C /* LuaBind.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A69C16204D4D00FCE64C /* LuaBind.cpp */; };
@@ -610,6 +620,16 @@
 		07A8E9CA16317F0500E007C9 /* dub_tension3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dub_tension3.wav; path = Resources/Music/dub/dub_tension3.wav; sourceTree = "<group>"; };
 		07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageWindow.cpp; path = Classes/UI/MessageWindow.cpp; sourceTree = "<group>"; };
 		07A8E9F5163302DF00E007C9 /* damage_number.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = damage_number.png; path = Resources/Image/Main/UI/damage_number.png; sourceTree = "<group>"; };
+		07B4C392168EC0D60074A905 /* leaf0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leaf0.png; path = Resources/Image/Enemy/leaf0.png; sourceTree = "<group>"; };
+		07B4C393168EC0D60074A905 /* leaf1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leaf1.png; path = Resources/Image/Enemy/leaf1.png; sourceTree = "<group>"; };
+		07B4C394168EC0D60074A905 /* leaf2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leaf2.png; path = Resources/Image/Enemy/leaf2.png; sourceTree = "<group>"; };
+		07B4C395168EC0D60074A905 /* leaf3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leaf3.png; path = Resources/Image/Enemy/leaf3.png; sourceTree = "<group>"; };
+		07B4C396168EC0D60074A905 /* typhoon0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = typhoon0.png; path = Resources/Image/Enemy/typhoon0.png; sourceTree = "<group>"; };
+		07B4C397168EC0D60074A905 /* typhoon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = typhoon1.png; path = Resources/Image/Enemy/typhoon1.png; sourceTree = "<group>"; };
+		07B4C398168EC0D60074A905 /* typhoon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = typhoon2.png; path = Resources/Image/Enemy/typhoon2.png; sourceTree = "<group>"; };
+		07B4C399168EC0D60074A905 /* typhoon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = typhoon3.png; path = Resources/Image/Enemy/typhoon3.png; sourceTree = "<group>"; };
+		07B4C3A3168EC34C0074A905 /* leaf.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = leaf.lua; sourceTree = "<group>"; };
+		07B4C3A4168EC34C0074A905 /* typhoon.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = typhoon.lua; sourceTree = "<group>"; };
 		07B7A674161FF87C00FCE64C /* TrackCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TrackCache.cpp; path = Classes/VISS/TrackCache.cpp; sourceTree = "<group>"; };
 		07B7A6961620470000FCE64C /* LuaObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaObject.cpp; path = Classes/Lua/LuaObject.cpp; sourceTree = "<group>"; };
 		07B7A69C16204D4D00FCE64C /* LuaBind.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaBind.cpp; path = Classes/Lua/LuaBind.cpp; sourceTree = "<group>"; };
@@ -2540,6 +2560,8 @@
 		07C6093A161674650084708C /* enemies */ = {
 			isa = PBXGroup;
 			children = (
+				07B4C3A3168EC34C0074A905 /* leaf.lua */,
+				07B4C3A4168EC34C0074A905 /* typhoon.lua */,
 				077EDE2016874ADB009B9F6B /* Level10.lua */,
 				0731E4DD161804C0006AEF3D /* tnt.lua */,
 				073B4C6C162168BA003E0CC8 /* geek.lua */,
@@ -2575,6 +2597,14 @@
 		07C6F6D01615DE280084708C /* Enemy */ = {
 			isa = PBXGroup;
 			children = (
+				07B4C392168EC0D60074A905 /* leaf0.png */,
+				07B4C393168EC0D60074A905 /* leaf1.png */,
+				07B4C394168EC0D60074A905 /* leaf2.png */,
+				07B4C395168EC0D60074A905 /* leaf3.png */,
+				07B4C396168EC0D60074A905 /* typhoon0.png */,
+				07B4C397168EC0D60074A905 /* typhoon1.png */,
+				07B4C398168EC0D60074A905 /* typhoon2.png */,
+				07B4C399168EC0D60074A905 /* typhoon3.png */,
 				077EDE2816875997009B9F6B /* slime0.png */,
 				077EDE2916875997009B9F6B /* slime1.png */,
 				077EDE2A16875997009B9F6B /* slime2.png */,
@@ -3007,6 +3037,16 @@
 				077EDE361687E492009B9F6B /* miss.mp3 in Resources */,
 				077EDE371687E492009B9F6B /* shield_invalid.mp3 in Resources */,
 				077EDE391687E909009B9F6B /* magic_effect.mp3 in Resources */,
+				07B4C39A168EC0D60074A905 /* leaf0.png in Resources */,
+				07B4C39B168EC0D60074A905 /* leaf1.png in Resources */,
+				07B4C39C168EC0D60074A905 /* leaf2.png in Resources */,
+				07B4C39D168EC0D60074A905 /* leaf3.png in Resources */,
+				07B4C39E168EC0D60074A905 /* typhoon0.png in Resources */,
+				07B4C39F168EC0D60074A905 /* typhoon1.png in Resources */,
+				07B4C3A0168EC0D60074A905 /* typhoon2.png in Resources */,
+				07B4C3A1168EC0D60074A905 /* typhoon3.png in Resources */,
+				07B4C3A5168EC34C0074A905 /* leaf.lua in Resources */,
+				07B4C3A6168EC34C0074A905 /* typhoon.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
