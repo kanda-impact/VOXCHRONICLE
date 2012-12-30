@@ -3,6 +3,7 @@ Skill = {
   identifier = "slash",
   power = 1,
   mp = 0,
+  se = true,
   tensionLevel = 2,
   common = false,
   maxRepeat = 1,

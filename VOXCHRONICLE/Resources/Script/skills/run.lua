@@ -3,6 +3,7 @@ Skill = {
   identifier = "run",
   power = 0,
   mp = 0,
+  se = true,
   tensionLevel = 0,
   common = true,
   maxRepeat = 2,

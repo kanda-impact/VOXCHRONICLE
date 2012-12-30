@@ -3,6 +3,7 @@ Skill = {
   identifier = "knockback",
   power = 0,
   mp = 0,
+  se = true,
   tensionLevel = 0,
   common = false,
   maxRepeat = 1,

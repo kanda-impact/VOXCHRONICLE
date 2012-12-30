@@ -147,6 +147,13 @@
 		07B4C3A1168EC0D60074A905 /* typhoon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C399168EC0D60074A905 /* typhoon3.png */; };
 		07B4C3A5168EC34C0074A905 /* leaf.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C3A3168EC34C0074A905 /* leaf.lua */; };
 		07B4C3A6168EC34C0074A905 /* typhoon.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C3A4168EC34C0074A905 /* typhoon.lua */; };
+		07B4C3AE168ECAF60074A905 /* run_effect.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C3A7168ECAF60074A905 /* run_effect.wav */; };
+		07B4C3AF168ECAF60074A905 /* slash_effect.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C3A8168ECAF60074A905 /* slash_effect.wav */; };
+		07B4C3B0168ECAF60074A905 /* thunder_effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C3A9168ECAF60074A905 /* thunder_effect.mp3 */; };
+		07B4C3B1168ECAF60074A905 /* tension_effect.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C3AA168ECAF60074A905 /* tension_effect.wav */; };
+		07B4C3B2168ECAF60074A905 /* knockback_effect.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C3AB168ECAF60074A905 /* knockback_effect.wav */; };
+		07B4C3B3168ECAF60074A905 /* bow_effect.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C3AC168ECAF60074A905 /* bow_effect.wav */; };
+		07B4C3B4168ECAF60074A905 /* change_effect.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C3AD168ECAF60074A905 /* change_effect.wav */; };
 		07B7A676161FF87C00FCE64C /* TrackCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A674161FF87C00FCE64C /* TrackCache.cpp */; };
 		07B7A6981620470000FCE64C /* LuaObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A6961620470000FCE64C /* LuaObject.cpp */; };
 		07B7A69E16204D4D00FCE64C /* LuaBind.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A69C16204D4D00FCE64C /* LuaBind.cpp */; };
@@ -630,6 +637,13 @@
 		07B4C399168EC0D60074A905 /* typhoon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = typhoon3.png; path = Resources/Image/Enemy/typhoon3.png; sourceTree = "<group>"; };
 		07B4C3A3168EC34C0074A905 /* leaf.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = leaf.lua; sourceTree = "<group>"; };
 		07B4C3A4168EC34C0074A905 /* typhoon.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = typhoon.lua; sourceTree = "<group>"; };
+		07B4C3A7168ECAF60074A905 /* run_effect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = run_effect.wav; path = Resources/SE/run_effect.wav; sourceTree = "<group>"; };
+		07B4C3A8168ECAF60074A905 /* slash_effect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = slash_effect.wav; path = Resources/SE/slash_effect.wav; sourceTree = "<group>"; };
+		07B4C3A9168ECAF60074A905 /* thunder_effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = thunder_effect.mp3; path = Resources/SE/thunder_effect.mp3; sourceTree = "<group>"; };
+		07B4C3AA168ECAF60074A905 /* tension_effect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = tension_effect.wav; path = Resources/SE/tension_effect.wav; sourceTree = "<group>"; };
+		07B4C3AB168ECAF60074A905 /* knockback_effect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = knockback_effect.wav; path = Resources/SE/knockback_effect.wav; sourceTree = "<group>"; };
+		07B4C3AC168ECAF60074A905 /* bow_effect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bow_effect.wav; path = Resources/SE/bow_effect.wav; sourceTree = "<group>"; };
+		07B4C3AD168ECAF60074A905 /* change_effect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = change_effect.wav; path = Resources/SE/change_effect.wav; sourceTree = "<group>"; };
 		07B7A674161FF87C00FCE64C /* TrackCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TrackCache.cpp; path = Classes/VISS/TrackCache.cpp; sourceTree = "<group>"; };
 		07B7A6961620470000FCE64C /* LuaObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaObject.cpp; path = Classes/Lua/LuaObject.cpp; sourceTree = "<group>"; };
 		07B7A69C16204D4D00FCE64C /* LuaBind.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaBind.cpp; path = Classes/Lua/LuaBind.cpp; sourceTree = "<group>"; };
@@ -2769,6 +2783,13 @@
 		07FA3B2A16107EE500E9C7DE /* SE */ = {
 			isa = PBXGroup;
 			children = (
+				07B4C3A7168ECAF60074A905 /* run_effect.wav */,
+				07B4C3A8168ECAF60074A905 /* slash_effect.wav */,
+				07B4C3A9168ECAF60074A905 /* thunder_effect.mp3 */,
+				07B4C3AA168ECAF60074A905 /* tension_effect.wav */,
+				07B4C3AB168ECAF60074A905 /* knockback_effect.wav */,
+				07B4C3AC168ECAF60074A905 /* bow_effect.wav */,
+				07B4C3AD168ECAF60074A905 /* change_effect.wav */,
 				077EDE381687E908009B9F6B /* magic_effect.mp3 */,
 				077EDE1E16874935009B9F6B /* touch.mp3 */,
 				077EDDEE16870767009B9F6B /* attack_effect.mp3 */,
@@ -3047,6 +3068,13 @@
 				07B4C3A1168EC0D60074A905 /* typhoon3.png in Resources */,
 				07B4C3A5168EC34C0074A905 /* leaf.lua in Resources */,
 				07B4C3A6168EC34C0074A905 /* typhoon.lua in Resources */,
+				07B4C3AE168ECAF60074A905 /* run_effect.wav in Resources */,
+				07B4C3AF168ECAF60074A905 /* slash_effect.wav in Resources */,
+				07B4C3B0168ECAF60074A905 /* thunder_effect.mp3 in Resources */,
+				07B4C3B1168ECAF60074A905 /* tension_effect.wav in Resources */,
+				07B4C3B2168ECAF60074A905 /* knockback_effect.wav in Resources */,
+				07B4C3B3168ECAF60074A905 /* bow_effect.wav in Resources */,
+				07B4C3B4168ECAF60074A905 /* change_effect.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

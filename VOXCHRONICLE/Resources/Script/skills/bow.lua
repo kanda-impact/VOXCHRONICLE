@@ -3,6 +3,7 @@ Skill = {
   identifier = "bow",
   power = 1,
   mp = 1,
+  se = true,
   tensionLevel = 0,
   common = false,
   maxRepeat = 1,
