@@ -35,7 +35,10 @@ Track* Music::getTrack(int trackNumber) {
 }
 
 Track* Music::getNextTrack(int trackNumber) {
-  return (Track*)_tracks.at(trackNumber)->objectAtIndex(1);
+  if (_tracks.at(trackNumber)->count() > 1) {
+    return (Track*)_tracks.at(trackNumber)->objectAtIndex(1);
+  }
+  return NULL;
 }
   
 Track* Music::setTrack(const char* fileName, int trackNumber, int index) {

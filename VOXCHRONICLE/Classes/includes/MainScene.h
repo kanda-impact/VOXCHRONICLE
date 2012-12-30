@@ -22,11 +22,13 @@
 #include "MapSelector.h"
 #include "MessageWindow.h"
 #include "StatusLayer.h"
+#include "MusicSet.h"
 
 typedef enum {
   VCStateIntro,
   VCStateMain,
   VCStateGameOver,
+  VCStateFinish,
   VCStateBoss,
   VCStateStageSelect,
   VCStateEnding
@@ -39,6 +41,8 @@ class MainScene : public CCLayer {
  private:
   int _preLevel;
   int _turnCount;
+  int _introCount;
+  int _finishCount;
   int _mapTurnCount;
   bool _isImpact;
   Music* _music;
@@ -54,6 +58,8 @@ class MainScene : public CCLayer {
   Map* _map;
   VCState _state;
   
+  MusicSet* _musicSet;
+  
   void onEnterTransitionDidFinish();
   
   void trackDidBack(Music* music, Track* currentTrack, int trackNumber);
@@ -61,7 +67,7 @@ class MainScene : public CCLayer {
   void trackDidFinishPlaying(Music* music, Track* finishedTrack, Track* nextTrack, int trackNumber);
   
   void updateGUI();
-  void pushInitialTracks(Map* map);
+  void pushIntroTracks();
   
   void addGameOverButtons();
   void replayButtonPressed(CCObject *sender);
