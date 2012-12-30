@@ -47,7 +47,8 @@ Enemy* EnemyManager::popEnemy() {
     _enemiesQueue->addObjectsFromArray(this->createEnemyQueue());
   }
   if (_enemiesQueue->count() > 0) {
-    Enemy* enemy = (Enemy*)_enemiesQueue->lastObject();
+    const char* enemyName = ((CCString*)_enemiesQueue->lastObject())->getCString();
+    Enemy* enemy = Enemy::create(enemyName);
     _enemiesQueue->removeLastObject();
     int col = rand() % 3;
     enemy->setCol(col);
@@ -285,8 +286,8 @@ CCArray* EnemyManager::createEnemyQueue() {
     string enemyName = it->first;
     int count = it->second;
     for (int i = 0; i < count; ++i) {
-      Enemy* enemy = Enemy::create(enemyName.c_str());
-      queue->addObject(enemy);
+      CCString* str = CCString::create(enemyName);
+      queue->addObject(str);
     }
   }
   int size = queue->count();

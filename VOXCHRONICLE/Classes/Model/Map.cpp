@@ -139,8 +139,8 @@ CCArray* Map::getFixedEnemies(int preExp, int currentExp) {
   for (list< pair<string, int> >::iterator it = _fixedEnemyTable->begin(); it != _fixedEnemyTable->end(); ++it) {
     int exp = it->second;
     if (exp <= currentExp ) {
-      Enemy* enemy = Enemy::create(it->first.c_str());
-      enemies->addObject(enemy);
+      CCString* str = CCString::create(it->first);
+      enemies->addObject(str);
       poped.push_back(*it);
     }
   }
