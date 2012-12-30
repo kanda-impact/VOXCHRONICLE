@@ -13,6 +13,8 @@
 		070E4044163CB10400A76BEA /* select_stage.wav in Resources */ = {isa = PBXBuildFile; fileRef = 070E4040163CB10400A76BEA /* select_stage.wav */; };
 		070E4045163CB10400A76BEA /* title.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 070E4041163CB10400A76BEA /* title.mp3 */; };
 		070E4047163CB3BE00A76BEA /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 070E4046163CB3BE00A76BEA /* gameover.mp3 */; };
+		0715C2331690E8F600009479 /* ironball.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0715C2321690E8F600009479 /* ironball.lua */; };
+		0715C2371690EB3000009479 /* EnemySkill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0715C2351690EB3000009479 /* EnemySkill.cpp */; };
 		0731E4C9161766EB006AEF3D /* shield_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4C8161766EB006AEF3D /* shield_icon.png */; };
 		0731E4CB16176787006AEF3D /* shield.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4CA16176787006AEF3D /* shield.lua */; };
 		0731E4CF16176A91006AEF3D /* bow.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4CE16176A91006AEF3D /* bow.lua */; };
@@ -573,6 +575,9 @@
 		070E4040163CB10400A76BEA /* select_stage.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = select_stage.wav; path = Resources/Music/general/select_stage.wav; sourceTree = "<group>"; };
 		070E4041163CB10400A76BEA /* title.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = title.mp3; path = Resources/Music/general/title.mp3; sourceTree = "<group>"; };
 		070E4046163CB3BE00A76BEA /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gameover.mp3; path = Resources/Music/general/gameover.mp3; sourceTree = "<group>"; };
+		0715C2321690E8F600009479 /* ironball.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ironball.lua; path = enemySkills/ironball.lua; sourceTree = "<group>"; };
+		0715C2351690EB3000009479 /* EnemySkill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemySkill.cpp; path = Classes/Model/EnemySkill.cpp; sourceTree = "<group>"; };
+		0715C2381690EB4200009479 /* EnemySkill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemySkill.h; path = Classes/includes/EnemySkill.h; sourceTree = "<group>"; };
 		0731E4C8161766EB006AEF3D /* shield_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield_icon.png; sourceTree = "<group>"; };
 		0731E4CA16176787006AEF3D /* shield.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shield.lua; sourceTree = "<group>"; };
 		0731E4CE16176A91006AEF3D /* bow.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bow.lua; sourceTree = "<group>"; };
@@ -1506,6 +1511,7 @@
 		0739C4451615D2D700CB864D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0715C2381690EB4200009479 /* EnemySkill.h */,
 				07F0D75B163BAF77005592AF /* Character.h */,
 				07F0D75C163BAF77005592AF /* CharacterManager.h */,
 				07F0D75D163BAF77005592AF /* Enemy.h */,
@@ -1524,6 +1530,7 @@
 				0731E4F716181DD4006AEF3D /* Map.cpp */,
 				07E134FD162167CB00CCF72E /* MapSelector.cpp */,
 				07660C5116909BF10092104F /* MusicSet.cpp */,
+				0715C2351690EB3000009479 /* EnemySkill.cpp */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1701,6 +1708,14 @@
 				07660C891690AA1B0092104F /* boss_intro3.mp3 */,
 			);
 			name = boss;
+			sourceTree = "<group>";
+		};
+		07660CCC1690E8BD0092104F /* enemySkills */ = {
+			isa = PBXGroup;
+			children = (
+				0715C2321690E8F600009479 /* ironball.lua */,
+			);
+			name = enemySkills;
 			sourceTree = "<group>";
 		};
 		076F1A4115EB94750013A45E = {
@@ -1898,6 +1913,7 @@
 		07C6064016164F810084708C /* Script */ = {
 			isa = PBXGroup;
 			children = (
+				07660CCC1690E8BD0092104F /* enemySkills */,
 				07660C4B169097F00092104F /* musics */,
 				07FD921C1621097700E74459 /* character */,
 				0731E4FA16184A59006AEF3D /* map */,
@@ -3411,6 +3427,7 @@
 				07660CC71690D96D0092104F /* w_knight1.png in Resources */,
 				07660CC81690D96D0092104F /* w_knight2.png in Resources */,
 				07660CC91690D96D0092104F /* w_knight3.png in Resources */,
+				0715C2331690E8F600009479 /* ironball.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3705,6 +3722,7 @@
 				0744B5B3167DD9EA00730393 /* StatusLayer.cpp in Sources */,
 				07C61F59169040E60010B6ED /* TrackManager.cpp in Sources */,
 				07660C5316909BF10092104F /* MusicSet.cpp in Sources */,
+				0715C2371690EB3000009479 /* EnemySkill.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

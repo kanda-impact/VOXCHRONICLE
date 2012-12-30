@@ -12,6 +12,7 @@
 #include "Enemy.h"
 #include "CharacterManager.h"
 #include "EnemyManager.h"
+#include "EnemySkill.h"
 #include "MusicSet.h"
 
 static void tolua_reg_types (lua_State* tolua_S) {
@@ -19,7 +20,10 @@ static void tolua_reg_types (lua_State* tolua_S) {
   tolua_usertype(tolua_S, "Enemy");
   tolua_usertype(tolua_S, "CharacterManager");
   tolua_usertype(tolua_S, "EnemyManager");
+  tolua_usertype(tolua_S, "EnemySkill");
 }
+
+// Enemy
 
 static int tolua_VC_Enemy_getRow(lua_State* tolua_S) {
   Enemy* self = (Enemy*)  tolua_tousertype(tolua_S, 1, 0);
@@ -41,6 +45,15 @@ static int tolua_VC_Enemy_setRow(lua_State* tolua_S) {
   self->setRow(row);
   return 0;
 }
+
+static int tolua_VC_Enemy_getCol(lua_State* tolua_S) {
+  Enemy* self = (Enemy*)  tolua_tousertype(tolua_S, 1, 0);
+  float tolua_ret = (float)  self->getCol();
+  tolua_pushnumber(tolua_S, (float)tolua_ret);
+  return 1;
+}
+
+// CharacterManager
 
 static int tolua_VC_CharacterManager_setShield(lua_State* tolua_S) {
   CharacterManager* self = (CharacterManager*)tolua_tousertype(tolua_S, 1, 0);
@@ -106,6 +119,8 @@ static int tolua_VC_CharacterManager_setDrumLevel(lua_State* tolua_S) {
   return 0;
 }
 
+// EnemyManager
+
 static int tolua_VC_EnemyManager_nextTurn(lua_State* tolua_S) {
   EnemyManager* self = (EnemyManager*)tolua_tousertype(tolua_S, 1, 0);
   self->nextTurn();
@@ -151,6 +166,7 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_constant(tolua_S, "MusicSetTypeWay", MusicSetTypeWay);
   tolua_constant(tolua_S, "MusicSetTypeBoss", MusicSetTypeBoss);
   // Skillクラス
+  tolua_cclass(tolua_S, "Skill", "Skill", "CCSprite", NULL);
   tolua_beginmodule(tolua_S, "Skill");
   tolua_endmodule(tolua_S);
   // Enemyクラス
@@ -159,6 +175,7 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_function(tolua_S, "getRow", tolua_VC_Enemy_getRow);
   tolua_function(tolua_S, "moveRow", tolua_VC_Enemy_moveRow);
   tolua_function(tolua_S, "setRow", tolua_VC_Enemy_setRow);
+  tolua_function(tolua_S, "getCol", tolua_VC_Enemy_getCol);
   tolua_endmodule(tolua_S);
   // CharacterManagerクラス
   tolua_cclass(tolua_S, "CharacterManager", "CharacterManager", "CCObject", NULL);
@@ -178,6 +195,10 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_beginmodule(tolua_S, "EnemyManager");
   tolua_function(tolua_S, "nextTurn", tolua_VC_EnemyManager_nextTurn);
   tolua_function(tolua_S, "popEnemyAt", tolua_VC_EnemyManager_popEnemyAt);
+  tolua_endmodule(tolua_S);
+  // EnemySkillクラス
+  tolua_cclass(tolua_S, "EnemySkill", "EnemySkill", "CCObject", NULL);
+  tolua_beginmodule(tolua_S, "EnemySkill");
   tolua_endmodule(tolua_S);
   return 1;
 }

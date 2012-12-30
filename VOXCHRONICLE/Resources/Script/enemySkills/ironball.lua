@@ -1,0 +1,11 @@
+EnemySkill = {
+  name = "鉄球投げ",
+  performSkill = function(self, user, characterManager, enemyManager) {
+    row = user:getRow()
+    col = user:getCol()
+    math.randomseed(os.time) -- 種の初期化
+    i = 1 - ((math.random(2) - 1) * 2) -- iは-1か1になるはず
+    enemyManager:popEnemyAt("iron", row, col + i) -- 自分の左か右に鉄球を生成
+  }
+}
+return EnemySkill
