@@ -5,6 +5,7 @@ Enemy = {
   hp = 1,
   exp = 5,
   attack = 1,
+  hasFrame = true,
   counter = 1,
   speed = 2,
   item = EnemyItemNone,

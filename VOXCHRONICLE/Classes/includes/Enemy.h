@@ -38,6 +38,9 @@ class Enemy : public CCSprite {
   int _speedCount;
   int _counter;
   int _level;
+  int _frameCount;
+  bool _hasFrame;
+  const char* _imageName;
   SkillType _type;
   EnemyItem _item;
   void update(float dt);
@@ -53,6 +56,7 @@ class Enemy : public CCSprite {
   Enemy* initWithScriptName(const char* scriptName);
   void setColAndRow(int col, float row);
   bool canMove();
+  CCSprite* createFrameSprite();
   
   /**
    使用したSkillとCharacterManagerを与えてダメージを与えます。

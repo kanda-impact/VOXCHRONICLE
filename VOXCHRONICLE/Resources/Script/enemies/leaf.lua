@@ -4,6 +4,7 @@ Enemy = {
   level = 1,
   hp = 1,
   exp = 5,
+  hasFrame = true,
   attack = 1,
   counter = 1,
   speed = 2,

@@ -27,4 +27,7 @@
 #define LOG(__str) (cout << __str << endl)
 #endif
 
+#define VOX_COLOR ccc3(1, 255, 255)
+#define LSK_COLOR ccc3(205, 43, 121)
+
 #endif

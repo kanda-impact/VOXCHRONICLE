@@ -10,6 +10,7 @@
 #include "SkillTrigger.h"
 #include "FileUtils.h"
 #include "CCDrawingPrimitives.h"
+#include "macros.h"
 
 const int iconTag = 1;
 
@@ -109,10 +110,10 @@ void SkillTrigger::setColor(SkillTriggerColor color) {
   CCSprite* icon = (CCSprite*)this->getChildByTag(iconTag);
   if (_color == SkillTriggerColorVox) {
     filename = FileUtils::getFilePath("Image/Main/UI/proto/trigger_vox.png");
-    icon->setColor(ccc3(205, 43, 121));
+    icon->setColor(LSK_COLOR);
   } else if (_color == SkillTriggerColorLaska) {
     filename = FileUtils::getFilePath("Image/Main/UI/proto/trigger_laska.png");
-    icon->setColor(ccc3(1, 255, 255));
+    icon->setColor(VOX_COLOR);
   }
   CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(filename.c_str());
   this->setTexture(texture);
