@@ -182,18 +182,18 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       if (_mapTurnCount < _map->getIntroCount() - 1) {
         
         stringstream intro;
-        intro << "intro" << _mapTurnCount + 1 << ".wav";
+        intro << "intro" << _mapTurnCount + 1 << ".mp3";
         music->pushTrack(_map->getPrefixedMusicName(intro.str().c_str()).c_str(), 0);
-        music->pushTrack(_map->getPrefixedMusicName("silent.wav").c_str(), 1);
-        music->pushTrack(_map->getPrefixedMusicName("silent.wav").c_str(), 2);
+        music->pushTrack(_map->getPrefixedMusicName("silent.mp3").c_str(), 1);
+        music->pushTrack(_map->getPrefixedMusicName("silent.mp3").c_str(), 2);
         
       } else {
         // イントロが終わったとき
         _controller->setEnable(true);
         _state = VCStateMain;
-        music->pushTrack(_map->getPrefixedMusicName("wait.wav").c_str(), 0);
-        music->pushTrack(_map->getPrefixedMusicName("counter0.wav").c_str(), 1);
-        music->pushTrack(_map->getPrefixedMusicName("drum0.wav").c_str(), 2);
+        music->pushTrack(_map->getPrefixedMusicName("wait.mp3").c_str(), 0);
+        music->pushTrack(_map->getPrefixedMusicName("counter0.mp3").c_str(), 1);
+        music->pushTrack(_map->getPrefixedMusicName("drum0.mp3").c_str(), 2);
       }
     }
   } else if (_state == VCStateMain) {
@@ -293,7 +293,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         //_characterManager->addMP(1);
       }
       
-      ss << name << ".wav";
+      ss << name << ".mp3";
       string file(_map->getPrefixedMusicName(ss.str().c_str()));
       string trackName(file);
       music->pushTrack(file.c_str(), 0);
@@ -304,7 +304,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       Enemy* nearest = _enemyManager->getNearestEnemy();
       if (nearest) {
         stringstream ss;
-        ss << "counter" << nearest->getCounter() << ".wav";
+        ss << "counter" << nearest->getCounter() << ".mp3";
         string file(_map->getPrefixedMusicName(ss.str().c_str()));
         Track* track = music->pushTrack(file.c_str(), 1);
         
@@ -314,7 +314,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         float volume = 0.5 + 1.0 * numerator / denominator;
         track->setVolume(volume);
       } else {
-        string file(_map->getPrefixedMusicName("counter0.wav"));
+        string file(_map->getPrefixedMusicName("counter0.mp3"));
         Track* track = music->pushTrack(file.c_str(), 1);
         track->setVolume(0);
       }
@@ -322,9 +322,9 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       stringstream drumFileStream;
       int drumLevel = this->calcDrumScore();
       if (drumLevel == 0) {
-        drumFileStream << "silent.wav";
+        drumFileStream << "silent.mp3";
       } else {
-        drumFileStream << "drum" << drumLevel - 1 << ".wav";
+        drumFileStream << "drum" << drumLevel - 1 << ".mp3";
       }
       string file(_map->getPrefixedMusicName(drumFileStream.str().c_str()));
       Track* track = music->pushTrack(file.c_str(), 2);
@@ -378,15 +378,15 @@ void MainScene::pushInitialTracks(Map *map) {
   string main, counter, drum;
   if (map->getIntroCount() == 0) {
     // イントロなしのとき、いきなり曲を鳴らします
-    main = map->getPrefixedMusicName("wait.wav");
-    counter= map->getPrefixedMusicName("counter0.wav");
-    drum = map->getPrefixedMusicName("drum0.wav");
+    main = map->getPrefixedMusicName("wait.mp3");
+    counter= map->getPrefixedMusicName("counter0.mp3");
+    drum = map->getPrefixedMusicName("drum0.mp3");
   } else {
     // イントロありのとき、イントロを鳴らします
     _controller->setEnable(false);
-    main = map->getPrefixedMusicName("intro0.wav");
-    counter = map->getPrefixedMusicName("silent.wav");
-    drum = map->getPrefixedMusicName("silent.wav");
+    main = map->getPrefixedMusicName("intro0.mp3");
+    counter = map->getPrefixedMusicName("silent.mp3");
+    drum = map->getPrefixedMusicName("silent.mp3");
   }
   _music->pushTrack(main.c_str(), 0);
   _music->pushTrack(counter.c_str(), 1);
