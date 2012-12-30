@@ -66,7 +66,6 @@ bool MainScene::init() {
   CCSize size = director->getWinSize();
   this->addChild(_controller);
   _characterManager->setLevel(setting->getInt("initialLevel"));
-  _controller->updateSkills(_characterManager);
   
   _map = new Map(setting->getString("initialMap"));
   _level = _map->createInitialLevel();
@@ -94,6 +93,7 @@ bool MainScene::init() {
   
   this->addChild(_statusLayer);
   this->updateGUI();
+  _controller->updateSkills(_characterManager);
   
   return true;
 }
@@ -208,6 +208,14 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       SkillPerformType performType = SkillPerformTypeNone;
       string name = _characterManager->checkSkillTrackName(skill, performType);
       bool isHit = true; // ヒットしたかどうか
+      /* 以下のとき、ヒットしていない
+           1. 対象が自分以外の技を使用し、対象の全てについて
+               ・盾やバリアに弾かれた
+       　　　　　　 ・盾やバリアを破壊した場合、与ダメージが0でもヒットした扱いにする
+               ・本来、ダメージを与えられる技を使ったはずなのに被ダメージが0である
+       　　　　　   ・例えばノックバックはダメージが0でも、本来与えるダメージが0なのでヒットしている
+                  ・本来ダメージが与えられるはずなのに、耐性やレベル補正でダメージが0だった場合、ヒットしていない
+       */
       if (skill && performType == SkillPerformTypeSuccess) {
         int preExp = _characterManager->getExp();
         CCDictionary* info = _enemyManager->performSkill(skill, _characterManager); // ここで経験値が貰える
@@ -236,18 +244,30 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
                                                     CCCallFuncN::create(damageLabel, callfuncN_selector(MainScene::removeNode)),
                                                     NULL));
         }
-        // ヒットしたとき、SEがあればSEをならしてやる
-        if (skill->hasSE() && isHit) {
-          if (skill->getRange() == SkillRangeSelf || enemies->count() > 0) {
-            // 対象が自分、もしくは対象が1体以上いたとき、ダメージ効果音をならします
+        
+        if (isHit) {
+          // ヒットしたとき、SEがあればSEをならしてやる
+          if (enemies->count() > 0) { // 対象が1体以上いるとき
+            DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(0))->getValue();
             stringstream seStream;
+            // 今は当たった敵1体目のダメージタイプをとってきてならしているが、
+            // 複数体に同時に当たったときは遅延して順番にならしても良さそう
+            if (damageType == DamageTypeShieldBreak) {
+              seStream << "shield_break.mp3";
+            } else if (damageType == DamageTypeBarrierBreak) {
+              seStream << "barrier_break.mp3";
+            } else if (skill->hasSE()) {
+            // 対象が自分、もしくは対象が1体以上いたとき、ダメージ効果音をならします
+              seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
+            }
+            CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
+          }  else if (skill->getRange() == SkillRangeSelf && skill->hasSE()) { // 対象が自分だけ、かつSEを持っているとき
+            stringstream seStream;
+            // 効果音をならします
             seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
             CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
           }
-        }
-        // 効果音を鳴らす
-        if (!isHit) {
-          // ヒットしていないとき、強制的にミス音にする
+        } else if (!isHit) { // ヒットしていないとき、強制的にミス音にする
           name = "miss";
           if (enemyCount == 0) {
             // 誰もいないときピロリ音
