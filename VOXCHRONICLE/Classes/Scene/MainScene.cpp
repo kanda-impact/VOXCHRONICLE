@@ -424,9 +424,10 @@ void MainScene::pushIntroTracks() {
 
 bool MainScene::checkLevelUp() {
   int currentLevel = _characterManager->getLevel();
-  if (currentLevel != _preLevel) {
+  if (currentLevel != _preLevel) { // レベルが上がったとき
     _introCount = 0;
     _preLevel = currentLevel;
+    _map->performOnLevel(currentLevel, _characterManager, _enemyManager); // スクリプトを呼んでやる
     _characterManager->updateParameters();
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/levelup.mp3").c_str());
     _level = _map->createLevel(currentLevel);

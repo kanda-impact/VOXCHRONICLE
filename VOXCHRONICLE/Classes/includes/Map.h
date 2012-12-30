@@ -14,6 +14,8 @@
 #include "Level.h"
 #include "LuaObject.h"
 #include "MusicSet.h"
+#include "CharacterManager.h"
+#include "EnemyManager.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -43,6 +45,7 @@ class Map :public CCObject {
   CCArray* getNextMaps();
   bool isBossStage();
   MusicSet* getCurrentMusic(Level* level);
+  void performOnLevel(int level, CharacterManager* characterManager, EnemyManager* enemyManager);
 };
 
 #endif /* defined(__VOXCHRONICLE__Map__) */

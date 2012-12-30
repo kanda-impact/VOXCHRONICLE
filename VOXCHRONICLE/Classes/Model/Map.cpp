@@ -160,3 +160,18 @@ MusicSet* Map::getCurrentMusic(Level *level) {
   }
   return _wayMusic;
 }
+
+void Map::performOnLevel(int level, CharacterManager* characterManager, EnemyManager *enemyManager) {
+  lua_State* L = _lua->getLuaEngine()->getLuaState();
+  lua_getglobal(L, "Map");
+  int table = lua_gettop(L);
+  lua_getfield(L, table, "onLevel");
+  if (lua_isfunction(L,  lua_gettop(L))) {
+    lua_pushinteger(L, level);
+    _lua->getLuaEngine()->pushCCObject(characterManager, "CharacterManager");
+    _lua->getLuaEngine()->pushCCObject(enemyManager, "EnemyManager");
+    if (lua_pcall(L, 3, 0, 0)) {
+      cout << lua_tostring(L, lua_gettop(L)) << endl;
+    }
+  }
+}

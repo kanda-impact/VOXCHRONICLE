@@ -14,6 +14,12 @@ Map = {
     end
     return {}
   end,
+  onLevel = function(level, characterManager, enemyManager)
+    print(level)
+    if level == 10 then
+      enemyManager:popEnemyAt("knight", 1)
+    end
+  end,
   getEnemyPopRate = function(level)
     if level <=5 then
       return 0.3

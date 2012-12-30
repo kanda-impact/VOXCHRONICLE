@@ -112,6 +112,14 @@ static int tolua_VC_EnemyManager_nextTurn(lua_State* tolua_S) {
   return 0;
 }
 
+static int tolua_VC_EnemyManager_popEnemyAt(lua_State* tolua_S) {
+  EnemyManager* self = (EnemyManager*)tolua_tousertype(tolua_S, 1, 0);
+  string enemyName = (string)tolua_tostring(tolua_S, 2, 0);
+  int col = (int)tolua_tonumber(tolua_S, 2, 0);
+  self->popEnemyAt(enemyName, col);
+  return 0;
+}
+
 TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_open(tolua_S);
   tolua_reg_types(tolua_S);
@@ -168,6 +176,7 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_cclass(tolua_S, "EnemyManager", "EnemyManager", "CCObject", NULL);
   tolua_beginmodule(tolua_S, "EnemyManager");
   tolua_function(tolua_S, "nextTurn", tolua_VC_EnemyManager_nextTurn);
+  tolua_function(tolua_S, "popEnemyAt", tolua_VC_EnemyManager_popEnemyAt);
   tolua_endmodule(tolua_S);
   return 1;
 }
