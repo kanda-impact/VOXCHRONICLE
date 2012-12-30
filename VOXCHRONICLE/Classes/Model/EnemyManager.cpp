@@ -117,7 +117,7 @@ CCArray* EnemyManager::getFilteredEnemies(boost::function<bool (int, float)>filt
   CCObject* obj = NULL;
   CCARRAY_FOREACH(this->getChildren(), obj) {
     Enemy* enemy = (Enemy*)obj;
-    if (filter(enemy->getRow(), enemy->getCol())) {
+    if (filter((int)enemy->getRow(), (int)enemy->getCol())) {
       enemies->addObject(enemy);
     }
   }
@@ -171,8 +171,8 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
         targets->addObject(target);
       }
     } else if (range == SkillRangeAll) {
-      if (this->getChildrenCount() > 0) {
-        targets->addObjectsFromArray(this->getChildren());
+      if (this->getEnemies()->count() > 0) {
+        targets->addObjectsFromArray(this->getEnemies());
       }
     } else if (range == SkillRangeHorizontal) {
       Enemy* target = this->getNearestEnemy();
@@ -202,24 +202,15 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
       }
     } else if (range == SkillRangeFront) {
       // 最前列攻撃
-      // 各行の一番前の敵を探してきてtargetsに格納します
-      for (int col = 0; col < 3; ++col) {
-        boost::function<bool (int, float)> predicate = _1 == col;
-        CCArray* enemies = this->getFilteredEnemies(predicate);
-        Enemy* front = NULL;
-        CCObject* obj = NULL;
-        CCARRAY_FOREACH(enemies, obj) {
-          if (front == NULL) {
-            front = (Enemy*)obj;
-          }
-          if ( ((Enemy*)obj)->getRow() < front->getRow() ) {
-            front = (Enemy*)obj;
-          }
-        }
-        if (front != NULL) {
-          targets->addObject(front);
-        }
-      }
+      // スラッシュ
+      // 一番前の敵がいる列と、その後ろの列を攻撃します
+      Enemy* nearest = this->getNearestEnemy();
+      boost::function<bool (int, float)> predicate = _1 == nearest->getRow();
+      boost::function<bool (int, float)> predicateBack = _1 == nearest->getRow() + 1;
+      CCArray* targets0 = this->getFilteredEnemies(predicate);
+      CCArray* targets1 = this->getFilteredEnemies(predicateBack);
+      targets->addObjectsFromArray(targets0);
+      targets->addObjectsFromArray(targets1);
     }
     
     // ターゲットに技の効果を与える

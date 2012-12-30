@@ -5,8 +5,8 @@ Character = {
     {"magic", 1},
     {"bow", 3},
     {"thunder", 10},
-    {"cure", 5},
-    {"tension", 1},
+    {"cure", 2},
+    {"tension", 2},
     {"change", 1},
     {"shield", 5},
     {"run", 1}
