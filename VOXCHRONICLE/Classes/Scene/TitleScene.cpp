@@ -41,7 +41,7 @@ void TitleScene::registerWithTouchDispatcher() {
 }
 
 bool TitleScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/start.mp3").c_str());
   nextScene();
   return true;
 }

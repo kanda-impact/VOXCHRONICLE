@@ -436,6 +436,7 @@
 		07C61F711690483D0010B6ED /* w_typhoon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C61F651690483D0010B6ED /* w_typhoon1.png */; };
 		07C61F721690483D0010B6ED /* w_typhoon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C61F661690483D0010B6ED /* w_typhoon2.png */; };
 		07C61F731690483D0010B6ED /* w_typhoon3.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C61F671690483D0010B6ED /* w_typhoon3.png */; };
+		07C61F75169055090010B6ED /* start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07C61F74169055090010B6ED /* start.mp3 */; };
 		07C6F6AD1615D6300084708C /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AB1615D6300084708C /* Enemy.cpp */; };
 		07C6F6B11615D6420084708C /* EnemyManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AF1615D6420084708C /* EnemyManager.cpp */; };
 		07D873F515ED1215009CC446 /* attack0.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E415ED1215009CC446 /* attack0.WAV */; };
@@ -1204,6 +1205,7 @@
 		07C61F651690483D0010B6ED /* w_typhoon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = w_typhoon1.png; path = Resources/Image/Enemy/frames/w_typhoon1.png; sourceTree = "<group>"; };
 		07C61F661690483D0010B6ED /* w_typhoon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = w_typhoon2.png; path = Resources/Image/Enemy/frames/w_typhoon2.png; sourceTree = "<group>"; };
 		07C61F671690483D0010B6ED /* w_typhoon3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = w_typhoon3.png; path = Resources/Image/Enemy/frames/w_typhoon3.png; sourceTree = "<group>"; };
+		07C61F74169055090010B6ED /* start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = start.mp3; path = Resources/SE/start.mp3; sourceTree = "<group>"; };
 		07C6F6AB1615D6300084708C /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = Classes/Model/Enemy.cpp; sourceTree = "<group>"; };
 		07C6F6AF1615D6420084708C /* EnemyManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyManager.cpp; path = Classes/Model/EnemyManager.cpp; sourceTree = "<group>"; };
 		07D873E415ED1215009CC446 /* attack0.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack0.WAV; path = Resources/Music/VOXQUEST/attack0.WAV; sourceTree = "<group>"; };
@@ -2837,6 +2839,7 @@
 		07FA3B2A16107EE500E9C7DE /* SE */ = {
 			isa = PBXGroup;
 			children = (
+				07C61F74169055090010B6ED /* start.mp3 */,
 				07C61EAA169033630010B6ED /* knockback_effect.mp3 */,
 				07C61EAB169033630010B6ED /* run_effect.mp3 */,
 				07C61EAC169033630010B6ED /* shield_break.mp3 */,
@@ -3146,6 +3149,7 @@
 				07C61F711690483D0010B6ED /* w_typhoon1.png in Resources */,
 				07C61F721690483D0010B6ED /* w_typhoon2.png in Resources */,
 				07C61F731690483D0010B6ED /* w_typhoon3.png in Resources */,
+				07C61F75169055090010B6ED /* start.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
