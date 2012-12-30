@@ -80,7 +80,7 @@ bool MainScene::init() {
   _messageWindow = new MessageWindow(FONT_NAME, 64);
   _messageWindow->retain();
   _messageWindow->setPosition(ccp(100, 100));
-
+  
   _mapSelector = NULL;
   
   this->addChild(_messageWindow);
@@ -126,7 +126,7 @@ void MainScene::onEnterTransitionDidFinish() {
 }
 
 void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber) {
-  if (trackNumber == 0 && _state == VCStateMain) {
+  if (_state == VCStateMain) {
     _enemyManager->nextTurn();
     CCObject* obj = NULL;
     CCARRAY_FOREACH(_enemyManager->getEnemies(), obj) {
@@ -178,192 +178,190 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
 
 void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track *nextTrack, int trackNumber) {
   if (_state == VCStateIntro) {
-    if (trackNumber == 0) {
-      if (_mapTurnCount < _map->getIntroCount() - 1) {
-        
+    if (_mapTurnCount == 0) {
+      for (int i = 1 ; i < _map->getIntroCount(); ++i) {
         stringstream intro;
-        intro << "intro" << _mapTurnCount + 1 << ".mp3";
+        intro << "intro" << i << ".mp3";
+        cout << i << endl;
         music->pushTrack(_map->getPrefixedMusicName(intro.str().c_str()).c_str(), 0);
         music->pushTrack(_map->getPrefixedMusicName("silent.mp3").c_str(), 1);
         music->pushTrack(_map->getPrefixedMusicName("silent.mp3").c_str(), 2);
-        
-      } else {
-        // イントロが終わったとき
-        _controller->setEnable(true);
-        _state = VCStateMain;
-        music->pushTrack(_map->getPrefixedMusicName("wait.mp3").c_str(), 0);
-        music->pushTrack(_map->getPrefixedMusicName("counter0.mp3").c_str(), 1);
-        music->pushTrack(_map->getPrefixedMusicName("drum0.mp3").c_str(), 2);
       }
+    } else if (_mapTurnCount == _map->getIntroCount() - 1) {
+      // イントロが終わったとき
+      _controller->setEnable(true);
+      _state = VCStateMain;
+      music->pushTrack(_map->getPrefixedMusicName("wait.mp3").c_str(), 0);
+      music->pushTrack(_map->getPrefixedMusicName("counter0.mp3").c_str(), 1);
+      music->pushTrack(_map->getPrefixedMusicName("drum0.mp3").c_str(), 2);
     }
   } else if (_state == VCStateMain) {
-    if (trackNumber == 0) {
-      Skill* skill = NULL;
-      if (_characterManager->isPerforming()) {
-        skill = _characterManager->getCurrentSkill();
-      } else {
-        skill = _controller->currentTriggerSkill();
-      }
-      std::stringstream ss;
-      SkillPerformType performType = SkillPerformTypeNone;
-      string name = _characterManager->checkSkillTrackName(skill, performType);
-      bool isHit = true; // ヒットしたかどうか
-      /* 以下のとき、ヒットしていない
-           1. 対象が自分以外の技を使用し、対象の全てについて
-               ・盾やバリアに弾かれた
-       　　　　　　 ・盾やバリアを破壊した場合、与ダメージが0でもヒットした扱いにする
-               ・本来、ダメージを与えられる技を使ったはずなのに被ダメージが0である
-       　　　　　   ・例えばノックバックはダメージが0でも、本来与えるダメージが0なのでヒットしている
-                  ・本来ダメージが与えられるはずなのに、耐性やレベル補正でダメージが0だった場合、ヒットしていない
-       */
-      if (skill && performType == SkillPerformTypeSuccess) {
-        int preExp = _characterManager->getExp();
-        CCDictionary* info = _enemyManager->performSkill(skill, _characterManager); // ここで経験値が貰える
-        CCArray* enemies = (CCArray*)info->objectForKey("enemies");
-        CCArray* damages = (CCArray*)info->objectForKey("damages");
-        CCArray* damageTypes = (CCArray*)info->objectForKey("damageTypes");
-        int enemyCount = enemies->count();
-        for (int i = 0; i < enemyCount; ++i) {
-          isHit = true;
-          Enemy* enemy = (Enemy*)enemies->objectAtIndex(i);
-          CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(((CCInteger*)damages->objectAtIndex(i))->getValue()).c_str(),
-                                                           FileUtils::getFilePath("Image/Main/UI/damage_number.png").c_str(), 50, 100, '0');
-          // ダメージが0かつ、元々ダメージのない技じゃないかつ、アイテムも破壊していないとき、ヒットしていない状態にしてやる
-          int damage = ((CCInteger*)damages->objectAtIndex(i))->getValue();
-          DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(i))->getValue();
-          if (damage == 0 && damageType != DamageTypeBarrierBreak && damageType != DamageTypeShieldBreak && damageType != DamageTypeNoDamage) {
-            isHit = false;
-          }
-          damageLabel->setPosition(enemy->getPosition());
-          float scale = enemy->getCurrentScale(enemy->getRow());
-          damageLabel->setScale(scale);
-          this->addChild(damageLabel);
-          damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
-                                                    CCDelayTime::create(0.5),
-                                                    CCFadeOut::create(0.2),
-                                                    CCCallFuncN::create(damageLabel, callfuncN_selector(MainScene::removeNode)),
-                                                    NULL));
+    Skill* skill = NULL;
+    if (_characterManager->isPerforming()) {
+      skill = _characterManager->getCurrentSkill();
+    } else {
+      skill = _controller->currentTriggerSkill();
+    }
+    std::stringstream ss;
+    SkillPerformType performType = SkillPerformTypeNone;
+    string name = _characterManager->checkSkillTrackName(skill, performType);
+    bool isHit = true; // ヒットしたかどうか
+    /* 以下のとき、ヒットしていない
+     1. 対象が自分以外の技を使用し、対象の全てについて
+     ・盾やバリアに弾かれた
+     　　　　　　 ・盾やバリアを破壊した場合、与ダメージが0でもヒットした扱いにする
+     ・本来、ダメージを与えられる技を使ったはずなのに被ダメージが0である
+     　　　　　   ・例えばノックバックはダメージが0でも、本来与えるダメージが0なのでヒットしている
+     ・本来ダメージが与えられるはずなのに、耐性やレベル補正でダメージが0だった場合、ヒットしていない
+     */
+    if (skill && performType == SkillPerformTypeSuccess) {
+      int preExp = _characterManager->getExp();
+      CCDictionary* info = _enemyManager->performSkill(skill, _characterManager); // ここで経験値が貰える
+      CCArray* enemies = (CCArray*)info->objectForKey("enemies");
+      CCArray* damages = (CCArray*)info->objectForKey("damages");
+      CCArray* damageTypes = (CCArray*)info->objectForKey("damageTypes");
+      int enemyCount = enemies->count();
+      for (int i = 0; i < enemyCount; ++i) {
+        isHit = true;
+        Enemy* enemy = (Enemy*)enemies->objectAtIndex(i);
+        CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(((CCInteger*)damages->objectAtIndex(i))->getValue()).c_str(),
+                                                         FileUtils::getFilePath("Image/Main/UI/damage_number.png").c_str(), 50, 100, '0');
+        // ダメージが0かつ、元々ダメージのない技じゃないかつ、アイテムも破壊していないとき、ヒットしていない状態にしてやる
+        int damage = ((CCInteger*)damages->objectAtIndex(i))->getValue();
+        DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(i))->getValue();
+        if (damage == 0 && damageType != DamageTypeBarrierBreak && damageType != DamageTypeShieldBreak && damageType != DamageTypeNoDamage) {
+          isHit = false;
         }
-        
-        if (isHit) {
-          // ヒットしたとき、SEがあればSEをならしてやる
-          if (enemies->count() > 0) { // 対象が1体以上いるとき
-            DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(0))->getValue();
-            stringstream seStream;
-            // 今は当たった敵1体目のダメージタイプをとってきてならしているが、
-            // 複数体に同時に当たったときは遅延して順番にならしても良さそう
-            if (damageType == DamageTypeShieldBreak) {
-              seStream << "shield_break.mp3";
-            } else if (damageType == DamageTypeBarrierBreak) {
-              seStream << "barrier_break.mp3";
-            } else if (skill->hasSE()) {
-            // 対象が自分、もしくは対象が1体以上いたとき、ダメージ効果音をならします
-              seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
-            }
-            CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
-          }  else if (skill->getRange() == SkillRangeSelf && skill->hasSE()) { // 対象が自分だけ、かつSEを持っているとき
-            stringstream seStream;
-            // 効果音をならします
-            seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
-            CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
-          }
-        } else if (!isHit) { // ヒットしていないとき、強制的にミス音にする
-          name = "miss";
-          if (enemyCount == 0) {
-            // 誰もいないときピロリ音
-            CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("miss.mp3").c_str());
-          } else {
-            DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(0))->getValue();
-            if (damageType == DamageTypePhysicalInvalid) {
-              // 1体だけ敵がいるのに当たらず、盾持ちだったとき
-              CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("shield_invalid.mp3").c_str());
-            } else if (damageType == DamageTypeMagicalInvalid) {
-              // バリア持ちだったとき
-              CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("barrier_invalid.mp3").c_str());
-            }
-          }
-          
-        }
-        int getExp = ((CCInteger*)info->objectForKey("exp"))->getValue();
-        _enemyManager->unshiftEnemiesQueue(_map->getFixedEnemies(preExp, preExp + getExp));
-        this->checkLevelUp();
-      } else if (performType == SkillPerformTypeNone) {
-        // 何も実行しなかったとき
-        // MP回復 コマンド化したのでコメントアウトしておきます
-        //_characterManager->addMP(1);
+        damageLabel->setPosition(enemy->getPosition());
+        float scale = enemy->getCurrentScale(enemy->getRow());
+        damageLabel->setScale(scale);
+        this->addChild(damageLabel);
+        damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
+                                                  CCDelayTime::create(0.5),
+                                                  CCFadeOut::create(0.2),
+                                                  CCCallFuncN::create(damageLabel, callfuncN_selector(MainScene::removeNode)),
+                                                  NULL));
       }
       
-      ss << name << ".mp3";
-      string file(_map->getPrefixedMusicName(ss.str().c_str()));
-      string trackName(file);
-      music->pushTrack(file.c_str(), 0);
-      _controller->updateSkills(_characterManager);
-      this->updateFocus();
-    } else if (trackNumber == 1) {
-      stringstream ss;
-      Enemy* nearest = _enemyManager->getNearestEnemy();
-      if (nearest) {
-        stringstream ss;
-        ss << "counter" << nearest->getCounter() << ".mp3";
-        string file(_map->getPrefixedMusicName(ss.str().c_str()));
-        Track* track = music->pushTrack(file.c_str(), 1);
+      if (isHit) {
+        // ヒットしたとき、SEがあればSEをならしてやる
+        if (enemies->count() > 0) { // 対象が1体以上いるとき
+          DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(0))->getValue();
+          stringstream seStream;
+          // 今は当たった敵1体目のダメージタイプをとってきてならしているが、
+          // 複数体に同時に当たったときは遅延して順番にならしても良さそう
+          if (damageType == DamageTypeShieldBreak) {
+            seStream << "shield_break.mp3";
+          } else if (damageType == DamageTypeBarrierBreak) {
+            seStream << "barrier_break.mp3";
+          } else if (skill->hasSE()) {
+            // 対象が自分、もしくは対象が1体以上いたとき、ダメージ効果音をならします
+            seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
+          }
+          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
+        }  else if (skill->getRange() == SkillRangeSelf && skill->hasSE()) { // 対象が自分だけ、かつSEを持っているとき
+          stringstream seStream;
+          // 効果音をならします
+          seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
+          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
+        }
+      } else if (!isHit) { // ヒットしていないとき、強制的にミス音にする
+        name = "miss";
+        if (enemyCount == 0) {
+          // 誰もいないときピロリ音
+          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("miss.mp3").c_str());
+        } else {
+          DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(0))->getValue();
+          if (damageType == DamageTypePhysicalInvalid) {
+            // 1体だけ敵がいるのに当たらず、盾持ちだったとき
+            CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("shield_invalid.mp3").c_str());
+          } else if (damageType == DamageTypeMagicalInvalid) {
+            // バリア持ちだったとき
+            CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("barrier_invalid.mp3").c_str());
+          }
+        }
         
-        int row = nearest->getRow();
-        int denominator = (MAX_ROW + 1) * MAX_ROW / 2.0;
-        int numerator = ((MAX_ROW - row) + 1) * (MAX_ROW - row) / 2.0;
-        float volume = 0.5 + 1.0 * numerator / denominator;
-        track->setVolume(volume);
-      } else {
-        string file(_map->getPrefixedMusicName("counter0.mp3"));
-        Track* track = music->pushTrack(file.c_str(), 1);
-        track->setVolume(0);
       }
-    } else if (trackNumber == 2) {
-      stringstream drumFileStream;
-      int drumLevel = this->calcDrumScore();
-      if (drumLevel == 0) {
-        drumFileStream << "silent.mp3";
-      } else {
-        drumFileStream << "drum" << drumLevel - 1 << ".mp3";
-      }
-      string file(_map->getPrefixedMusicName(drumFileStream.str().c_str()));
-      Track* track = music->pushTrack(file.c_str(), 2);
-      track->setVolume(0.7);
+      int getExp = ((CCInteger*)info->objectForKey("exp"))->getValue();
+      _enemyManager->unshiftEnemiesQueue(_map->getFixedEnemies(preExp, preExp + getExp));
+      this->checkLevelUp();
+    } else if (performType == SkillPerformTypeNone) {
+      // 何も実行しなかったとき
+      // MP回復 コマンド化したのでコメントアウトしておきます
+      //_characterManager->addMP(1);
     }
+    
+    ss << name << ".mp3";
+    string file(_map->getPrefixedMusicName(ss.str().c_str()));
+    string trackName(file);
+    music->pushTrack(file.c_str(), 0);
+    _controller->updateSkills(_characterManager);
+    this->updateFocus();
+    
+    // リフの設定
+    Enemy* nearest = _enemyManager->getNearestEnemy();
+    if (nearest) {
+      stringstream ss;
+      ss << "counter" << nearest->getCounter() << ".mp3";
+      string file(_map->getPrefixedMusicName(ss.str().c_str()));
+      Track* track = music->pushTrack(file.c_str(), 1);
+      
+      int row = nearest->getRow();
+      int denominator = (MAX_ROW + 1) * MAX_ROW / 2.0;
+      int numerator = ((MAX_ROW - row) + 1) * (MAX_ROW - row) / 2.0;
+      float volume = 0.5 + 1.0 * numerator / denominator;
+      track->setVolume(volume);
+    } else {
+      string file(_map->getPrefixedMusicName("counter0.mp3"));
+      Track* track = music->pushTrack(file.c_str(), 1);
+      track->setVolume(0);
+    }
+    
+    // ドラムの設定
+    stringstream drumFileStream;
+    int drumLevel = this->calcDrumScore();
+    if (drumLevel == 0) {
+      drumFileStream << "silent.mp3";
+    } else {
+      drumFileStream << "drum" << drumLevel - 1 << ".mp3";
+    }
+    Track* track = music->pushTrack(_map->getPrefixedMusicName(drumFileStream.str().c_str()).c_str(), 2);
+    track->setVolume(0.7);
+    
   } else if (_state == VCStateStageSelect) {
-    if (trackNumber == 0) {
-      // ステージ移行処理
-      Map* nextMap = _mapSelector->getSelectedMap();
-      _map->release();
-      nextMap->retain();
-      _map = nextMap;
-      _level = nextMap->createInitialLevel();
-      this->removeChild(_mapSelector, true);
-      _mapSelector->release();
-      _mapSelector = NULL;
-      TrackCache::sharedCache()->purgeAllTracks();
-      this->pushInitialTracks(_map);
-      this->updateGUI();
-      _mapTurnCount = 0; // マップカウント0に戻す
-      _state = VCStateMain;
-    }
+    
+    // ステージ移行処理
+    Map* nextMap = _mapSelector->getSelectedMap();
+    _map->release();
+    nextMap->retain();
+    _map = nextMap;
+    _level = nextMap->createInitialLevel();
+    this->removeChild(_mapSelector, true);
+    _mapSelector->release();
+    _mapSelector = NULL;
+    TrackCache::sharedCache()->purgeAllTracks();
+    this->pushInitialTracks(_map);
+    this->updateGUI();
+    _mapTurnCount = 0; // マップカウント0に戻す
+    _state = VCStateMain;
   }
+  
 }
 
 void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track *nextTrack, int trackNumber) {
-  if (trackNumber == 0) {
-    // ターンカウントを進める
-    ++_turnCount;
-    ++_mapTurnCount;
-    // このターンにテンション使ってないときreset
-    if (_characterManager->getLastSkill() != NULL && strcmp(_characterManager->getLastSkill()->getIdentifier(), "tension")) {
-      _characterManager->resetTension();
-    }
-    if (!_characterManager->isPerforming()) {
-      _controller->resetAllTriggers();
-      _enemyManager->purgeAllTrash();
-    }
+  
+  // ターンカウントを進める
+  ++_turnCount;
+  ++_mapTurnCount;
+  // このターンにテンション使ってないときreset
+  if (_characterManager->getLastSkill() != NULL && strcmp(_characterManager->getLastSkill()->getIdentifier(), "tension")) {
+    _characterManager->resetTension();
   }
+  if (!_characterManager->isPerforming()) {
+    _controller->resetAllTriggers();
+    _enemyManager->purgeAllTrash();
+  }
+  
 }
 
 void MainScene::updateGUI() {

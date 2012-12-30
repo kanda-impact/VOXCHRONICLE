@@ -44,7 +44,7 @@ bool TitleScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/start.mp3").c_str());
   nextScene();
   return true;
-}
+} 
 
 void TitleScene::nextScene() {
   CCScene* scene = CCScene::create();
