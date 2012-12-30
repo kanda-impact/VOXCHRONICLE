@@ -115,8 +115,9 @@ static int tolua_VC_EnemyManager_nextTurn(lua_State* tolua_S) {
 static int tolua_VC_EnemyManager_popEnemyAt(lua_State* tolua_S) {
   EnemyManager* self = (EnemyManager*)tolua_tousertype(tolua_S, 1, 0);
   string enemyName = (string)tolua_tostring(tolua_S, 2, 0);
-  int col = (int)tolua_tonumber(tolua_S, 3, 0);
-  self->popEnemyAt(enemyName, col);
+  int row = (int)tolua_tonumber(tolua_S, 3, 0);
+  int col = (int)tolua_tonumber(tolua_S, 4, 0);
+  self->popEnemyAt(enemyName, row, col);
   return 0;
 }
 

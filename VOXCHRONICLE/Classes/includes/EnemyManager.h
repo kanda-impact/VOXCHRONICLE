@@ -143,7 +143,7 @@ class EnemyManager :public CCLayer {
   
   void nextTurn();
   
-  void popEnemyAt(string enemyName, int col);
+  void popEnemyAt(string enemyName, int row, int col);
   
   CREATE_FUNC(EnemyManager)
 };
