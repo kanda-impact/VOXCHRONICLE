@@ -114,7 +114,6 @@
 		077EDE391687E909009B9F6B /* magic_effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDE381687E908009B9F6B /* magic_effect.mp3 */; };
 		077EDE3C1687EEBF009B9F6B /* barrier_break.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDE3A1687EEBD009B9F6B /* barrier_break.mp3 */; };
 		0791585A15EBA8350083D348 /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0791585815EBA8350083D348 /* LogoScene.cpp */; };
-		0791587515EBB50E0083D348 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586915EBB4BB0083D348 /* Default.png */; };
 		0791587615EBB50E0083D348 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586A15EBB4BB0083D348 /* fps_images.png */; };
 		0791587715EBB50E0083D348 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586B15EBB4BB0083D348 /* Icon-72.png */; };
 		0791587815EBB50E0083D348 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586C15EBB4BB0083D348 /* Icon-Small-50.png */; };
@@ -2929,7 +2928,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0791587515EBB50E0083D348 /* Default.png in Resources */,
 				0791587615EBB50E0083D348 /* fps_images.png in Resources */,
 				0791587715EBB50E0083D348 /* Icon-72.png in Resources */,
 				0791587815EBB50E0083D348 /* Icon-Small-50.png in Resources */,
