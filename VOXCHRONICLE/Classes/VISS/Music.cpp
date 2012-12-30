@@ -61,9 +61,8 @@ Track* Music::pushTrack(const char* fileName, int trackNumber) {
 }
 
 Track* Music::pushTrack(const char* fileName, int trackNumber, int repeat) {
-  Track* next;
+  Track* next = TrackCache::sharedCache()->addTrack(fileName, _measureCount % 2);
   for (int i = 0; i < repeat; ++i) {
-    next = TrackCache::sharedCache()->addTrack(fileName, _measureCount % 2);
     bool result = pushTrack(next, trackNumber);
     if (!result) {
       return NULL;
@@ -144,7 +143,7 @@ void Music::onTrackWillFinish() {
   for (int trackNumber = 0; trackNumber < _trackCount; ++trackNumber) {
     Track* next = this->getNextTrack(trackNumber);
     if (next) {
-      next->playAfterTime(this->getCurrentMainTrack()->getDuration() * 0.1f);
+      next->playAfterTime(this->getCurrentMainTrack()->getDuration() * 0.2f);
     }
   }
   

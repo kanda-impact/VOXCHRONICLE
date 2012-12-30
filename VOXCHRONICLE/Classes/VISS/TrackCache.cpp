@@ -38,6 +38,7 @@ Track* TrackCache::addTrack(string trackName, int mod) {
     return track;
   }
   Track* track = new Track(trackName.c_str());
+  track->autorelease();
   _cache->setObject(track, key);
   return track;
 }

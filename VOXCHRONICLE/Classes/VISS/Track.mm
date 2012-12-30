@@ -27,7 +27,6 @@ Track::Track(const char* fileName) : _track(new VISS::Track::AudioTrack) {
 
 Track::~Track() {
   [_track->track release];
-  NSLog(@"destruct");
 }
 
 bool Track::play() {
