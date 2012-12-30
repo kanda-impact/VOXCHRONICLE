@@ -39,6 +39,9 @@ public:
   ~MusicSet();
   string getPrefixedMusicName(const char* musicName);
   bool isCommon(const char* skillName);
+  int getIntroCount();
+  int getFinishCount();
+  MusicSetType getType();
 };
 
 #endif /* defined(__VOXCHRONICLE__MusicSet__) */

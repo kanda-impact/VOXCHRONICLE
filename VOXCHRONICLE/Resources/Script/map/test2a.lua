@@ -1,7 +1,7 @@
 Map = {
   name = "テストマップ2a",
-  prefix = "dub",
-  boss_prefix = "",
+  wayMusic = "dub",
+  bossMusic = "boss",
   introCount = 0,
   backgroundImage = "",
   nextMaps = {},

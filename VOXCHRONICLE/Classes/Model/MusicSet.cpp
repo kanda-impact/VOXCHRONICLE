@@ -8,9 +8,12 @@
 
 #include "MusicSet.h"
 #include "FileUtils.h"
+#include <sstream>
 
 MusicSet::MusicSet(const char* identifier) {
-  _lua = new LuaObject(identifier);
+  stringstream ss;
+  ss << "Script/musics/" << identifier << ".lua";
+  _lua = new LuaObject(FileUtils::getFilePath(ss.str().c_str()).c_str());
   _lua->retain();
   _introCount = _lua->getInt("introCount");
   _finishCount = _lua->getInt("finishCount");
@@ -37,4 +40,16 @@ string MusicSet::getPrefixedMusicName(const char *musicName) {
 bool MusicSet::isCommon(const char *skillName) {
   // 未実装。今は恒久的にtrueを返し続けます
   return true;
+}
+
+int MusicSet::getIntroCount() {
+  return _introCount;
+}
+
+int MusicSet::getFinishCount() {
+  return _finishCount;
+}
+
+MusicSetType MusicSet::getType() {
+  return _type;
 }

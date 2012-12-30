@@ -12,6 +12,7 @@
 #include "Enemy.h"
 #include "CharacterManager.h"
 #include "EnemyManager.h"
+#include "MusicSet.h"
 
 static void tolua_reg_types (lua_State* tolua_S) {
   tolua_usertype(tolua_S, "Skill");
@@ -137,6 +138,9 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_constant(tolua_S, "EnemyItemNone", EnemyItemNone);
   tolua_constant(tolua_S, "EnemyItemShield", EnemyItemShield);
   tolua_constant(tolua_S, "EnemyItemBarrier", EnemyItemBarrier);
+  // 音楽セットのタイプ
+  tolua_constant(tolua_S, "MusicSetTypeWay", MusicSetTypeWay);
+  tolua_constant(tolua_S, "MusicSetTypeBoss", MusicSetTypeBoss);
   // Skillクラス
   tolua_beginmodule(tolua_S, "Skill");
   tolua_endmodule(tolua_S);

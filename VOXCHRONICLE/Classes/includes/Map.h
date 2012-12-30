@@ -13,6 +13,7 @@
 #include "cocos2d.h"
 #include "Level.h"
 #include "LuaObject.h"
+#include "MusicSet.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -22,28 +23,26 @@ class Map :public CCObject {
   int _endLevel;
   int _initialLevel;
   int _maxLevel;
-  int _introCount;
   const char* _identifier;
   vector<string>* _nextMaps;
   string* _name;
-  string* _prefix;
   string* _backgroundImageName;
-  string* _bossPrefix;
   LuaObject* _lua;
   list< pair<string, int> >* _fixedEnemyTable; // 固定モンスターテーブル
+  MusicSet* _wayMusic;
+  MusicSet* _bossMusic;
  public:
   Map(const char* mapName);
   ~Map();
   Level* createLevel(int lebel);
   Level* createInitialLevel();
-  string getPrefixedMusicName(const char* musicName);
   int getMaxLevel();
   int getInitialLevel();
-  int getIntroCount();
   string* getName();
   CCArray* getFixedEnemies(int preExp, int currentExp);
   CCArray* getNextMaps();
   bool isBossStage();
+  MusicSet* getCurrentMusic(Level* level);
 };
 
 #endif /* defined(__VOXCHRONICLE__Map__) */

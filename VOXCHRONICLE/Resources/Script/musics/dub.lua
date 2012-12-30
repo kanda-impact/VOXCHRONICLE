@@ -19,12 +19,12 @@ Music = {
   prefix = "dub",
   type = MusicSetTypeWay,
   introCount = 2,
-  finishCount = 0,
+  finishCount = 4,
   common = {
     wait = true,
     shield = true,
     run = true,
-    tension
+    tension = true
   },
   ignoreDrums = {
   }

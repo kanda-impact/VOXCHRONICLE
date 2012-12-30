@@ -22,14 +22,24 @@ Map::Map(const char* mapName) {
   _identifier = mapName;
   _lua = new LuaObject(ss.str().c_str(), "Map");
   _lua->retain();
+  
+  // MusicSetの生成
+  string wayMusicName = _lua->getString("wayMusic");
+  string bossMusicName = _lua->getString("bossMusic");
+  _wayMusic = new MusicSet(wayMusicName.c_str());
+  _wayMusic->retain();
+  _bossMusic = NULL;
+  if (bossMusicName.length() > 0) {
+    _bossMusic = new MusicSet(bossMusicName.c_str());
+    _bossMusic->retain();
+  }
+  
+  // スクリプトから各種データ読み込み
   _name = new string(_lua->getString("name"));
-  _prefix = new string(_lua->getString("prefix"));
   _backgroundImageName = new string(_lua->getString("backgroundImage"));
   CCLuaValueArray* nexts = _lua->getArray("nextMaps");
   _initialLevel = _lua->getInt("initialLevel");
   _maxLevel = _lua->getInt("maxLevel");
-  _introCount = _lua->getInt("introCount");
-  _bossPrefix = new string(_lua->getString("bossPrefix"));
   _nextMaps = new vector<string>();
   _fixedEnemyTable = new list< pair<string, int> >();
   for (CCLuaValueArray::const_iterator it = nexts->begin(); it != nexts->end(); ++it) {
@@ -54,8 +64,12 @@ Map::Map(const char* mapName) {
 Map::~Map() {
   delete _name;
   delete _fixedEnemyTable;
-  delete _bossPrefix;
-  delete _prefix;
+  if (_wayMusic != NULL) {
+    _wayMusic->release();
+  }
+  if (_bossMusic != NULL) {
+    _bossMusic->release();
+  }
   _lua->release();
 }
 
@@ -97,12 +111,6 @@ Level* Map::createInitialLevel() {
   return this->createLevel(_initialLevel);
 }
 
-string Map::getPrefixedMusicName(const char *musicName) {
-  stringstream ss;
-  ss << "Music/" << _prefix->c_str() << "/" << _prefix->c_str() << "_" << musicName;
-  return FileUtils::getFilePath(ss.str().c_str());
-}
-
 int Map::getMaxLevel() {
   return _maxLevel;
 }
@@ -125,10 +133,6 @@ string* Map::getName() {
   return _name;
 }
 
-int Map::getIntroCount() {
-  return _introCount;
-}
-
 CCArray* Map::getFixedEnemies(int preExp, int currentExp) {
   CCArray* enemies = CCArray::create();
   list< pair<string, int> > poped;
@@ -147,5 +151,13 @@ CCArray* Map::getFixedEnemies(int preExp, int currentExp) {
 }
 
 bool Map::isBossStage() {
-  return _bossPrefix->length() > 0;
+  return _bossMusic != NULL;
+}
+
+MusicSet* Map::getCurrentMusic(Level *level) {
+  if (level->getLevel() >= _maxLevel) {
+    cout << "boss" << endl;
+    return _bossMusic;
+  }
+  return _wayMusic;
 }

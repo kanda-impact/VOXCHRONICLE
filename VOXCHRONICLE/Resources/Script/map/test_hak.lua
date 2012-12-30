@@ -1,8 +1,7 @@
 Map = {
   name = "スクリプトテスト",
-  prefix = "dub",
-  bossPrefix = "dub_boss",
-  introCount = 2,
+  wayMusic = "dub",
+  bossMusic = "boss",
   backgroundImage = "",
   nextMaps = {"test"},
   initialLevel = 1,
@@ -26,6 +25,6 @@ Map = {
   fixedEnemies = {
     {"ginet", 100},
     {"tnt", 20},
-    {"Level10", 0}
+    {"Level10", 10}
   }
 }
