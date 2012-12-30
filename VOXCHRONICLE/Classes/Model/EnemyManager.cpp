@@ -223,6 +223,7 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
     if (skill->getRange() == SkillRangeSelf) {
       this->performLuaFunction(skill, NULL, characterManager);
     }
+    bool nextLvExp = false; // もし、expが-1の敵が1体でもいたらtrueに
     CCObject* obj = NULL;
     CCARRAY_FOREACH(targets, obj) {
       Enemy* target = (Enemy*)obj;
@@ -238,7 +239,12 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
         damageType = DamageTypeNoDamage;
       }
       if (target->getHP() <= 0) {
-        exp += target->getExp();
+        if (target->getExp() == -1) nextLvExp = true;
+        if (nextLvExp) {
+          exp = -1; // 強制的に経験値を-1にする
+        } else {
+          exp += target->getExp();
+        }
         _trash->addObject(target);
         this->removeEnemy(target);
       }
@@ -255,7 +261,13 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
   info->setObject(CCInteger::create(exp), "exp");
   info->setObject(damages, "damages");
   info->setObject(damageTypes, "damageTypes");
-  characterManager->addExp(exp);
+  if (exp == -1) { // 経験値が-1のとき、強制的に次のレベルになるだけの経験値を与える
+    int currentLv = characterManager->getLevel();
+    int requireExp = characterManager->getExpWithLevel(currentLv + 1);
+    characterManager->addExp(requireExp - characterManager->getExp());
+  } else {
+    characterManager->addExp(exp);
+  }
   return info;
 }
 
