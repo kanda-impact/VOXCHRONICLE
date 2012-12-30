@@ -22,7 +22,7 @@ Track::Track(const char* fileName) : _track(new VISS::Track::AudioTrack) {
   NSString* file = [NSString stringWithUTF8String:fileName];
   _fileName = string(fileName);
   _track->track = [[OALAudioTrack alloc] init];
-  [_track->track preloadFile:file];
+  [_track->track preloadFileAsync:file target:NULL selector:NULL];
 }
 
 Track::~Track() {
@@ -30,7 +30,8 @@ Track::~Track() {
 }
 
 bool Track::play() {
-  return [_track->track play];
+  [_track->track play];
+  return true;
 }
 
 void Track::playAfterTime(float time) {

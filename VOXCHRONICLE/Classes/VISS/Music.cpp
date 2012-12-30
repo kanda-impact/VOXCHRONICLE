@@ -20,9 +20,10 @@ Music::Music() {
 
 Music::Music(int trackCount) {
   _trackCount = trackCount;
-  _tracks = std::vector< std::deque<Track* >* >(trackCount);
+  _tracks = std::vector< CCArray* >(trackCount);
   for (int i = 0; i < _trackCount; ++i) {
-    _tracks[i] = new std::deque<Track*>();
+    _tracks[i] = CCArray::create();
+    _tracks[i]->retain();
   }
 }
 
@@ -30,11 +31,11 @@ Music::~Music() {
 }
 
 Track* Music::getTrack(int trackNumber) {
-  return _tracks.at(trackNumber)->front();
+  return (Track*)_tracks.at(trackNumber)->objectAtIndex(0);
 }
 
 Track* Music::getNextTrack(int trackNumber) {
-  return _tracks.at(trackNumber)->at(1);
+  return (Track*)_tracks.at(trackNumber)->objectAtIndex(1);
 }
   
 Track* Music::setTrack(const char* fileName, int trackNumber, int index) {
@@ -47,7 +48,7 @@ Track* Music::setTrack(Track* track, int trackNumber, int index) {
   if (trackNumber >= _trackCount) {
     return NULL;
   }
-  _tracks.at(trackNumber)->at(index) = track;
+  _tracks.at(trackNumber)->replaceObjectAtIndex(index, track);
   return track;
 }
 
@@ -58,7 +59,7 @@ Track* Music::pushTrack(const char* fileName, int trackNumber) {
 Track* Music::pushTrack(const char* fileName, int trackNumber, int repeat) {
   Track* next;
   for (int i = 0; i < repeat; ++i) {
-    next = new Track(fileName);
+    next = TrackCache::sharedCache()->addTrack(fileName);
     bool result = pushTrack(next, trackNumber);
     if (!result) {
       return NULL;
@@ -71,14 +72,14 @@ Track* Music::pushTrack(Track* track, int trackNumber) {
   if (trackNumber >= _trackCount) {
     return NULL;
   }
-  _tracks.at(trackNumber)->push_back(track);
+  _tracks.at(trackNumber)->addObject(track);
   return track;
 }
     
 bool Music::play() {
   cocos2d::CCDirector::sharedDirector()->getScheduler()->scheduleUpdateForTarget(this, -127, false);
-  for (std::vector< std::deque< Track* >* >::iterator it = _tracks.begin(); it != _tracks.end(); ++it) {
-    if ((*it)->size() > 0 && !(*it)->at(0)->play()) {
+  for (std::vector< CCArray* >::iterator it = _tracks.begin(); it != _tracks.end(); ++it) {
+    if ((*it)->count() > 0 && !((Track*)(*it)->objectAtIndex(0))->play()) {
       return false;
     }
   }
@@ -87,19 +88,19 @@ bool Music::play() {
 }
     
 void Music::stop() {
-  for (std::vector< std::deque< Track* >* >::iterator it = _tracks.begin(); it != _tracks.end(); ++it) {
-    for (int j = 0; j < (*it)->size(); ++j) {
-      (*it)->at(j)->stop();
-      (*it)->at(j)->setVolume(0);
+  for (std::vector< CCArray* >::iterator it = _tracks.begin(); it != _tracks.end(); ++it) {
+    for (int j = 0; j < (*it)->count(); ++j) {
+      ((Track*)(*it)->objectAtIndex(j))->stop();
+      ((Track*)(*it)->objectAtIndex(j))->setVolume(0);
     }
   }
   cocos2d::CCDirector::sharedDirector()->getScheduler()->unscheduleAllSelectorsForTarget(this);
 }
 
 void Music::pause() {
-  for (std::vector< std::deque< Track* >* >::iterator it = _tracks.begin(); it != _tracks.end(); ++it) {
-    if ((*it)->size() > 0) {
-      (*it)->at(0)->pause();
+  for (std::vector< CCArray* >::iterator it = _tracks.begin(); it != _tracks.end(); ++it) {
+    if ((*it)->count() > 0) {
+      ((Track*)(*it)->objectAtIndex(0))->pause();
     }
   }
   cocos2d::CCDirector::sharedDirector()->getScheduler()->unscheduleAllSelectorsForTarget(this);
@@ -122,8 +123,12 @@ void VISS::Music::update(float dt) {
 
 void Music::removeAllNextTracks() {
   for (int trackNumber = 0; trackNumber < _trackCount; ++trackNumber) {
-    std::deque<Track*>* it = _tracks.at(trackNumber);
-    if (it->size() >= 2) it->erase(it->begin() + 1, it->end());
+    CCArray* it = _tracks.at(trackNumber);
+    if (it->count() >= 2) {
+      for (int i = 1; i < it->count(); ++i) {
+        it->removeObjectAtIndex(i);
+      }
+    }
   }
 }
 
@@ -146,8 +151,10 @@ void Music::onTrackDidFinish() {
     _trackDidFinishFunction(this, this->getCurrentMainTrack(), NULL, 0);
   }
   for (int trackNumber = 0; trackNumber < _trackCount; ++trackNumber) {
-    std::deque<Track*>* channel = _tracks[trackNumber];
-    channel->pop_front();
+    CCArray* channel = _tracks[trackNumber];
+    Track* current = (Track*)channel->objectAtIndex(0);
+    channel->removeObjectAtIndex(0);
+    current->release();
   }
   this->setScheduleDelay(0.0f);
 }
@@ -159,8 +166,8 @@ void Music::onTrackDidBack() {
 }
 
 Track* Music::getCurrentMainTrack() {
-  std::deque<Track*>* channel = _tracks[0];
-  return channel->at(0);
+  CCArray* channel = _tracks[0];
+  return (Track*)channel->objectAtIndex(0);
 }
 
 void Music::setScheduleForMain() {
@@ -170,8 +177,8 @@ void Music::setScheduleForMain() {
 void Music::setSchedule(VISS::Track *track) {
   CCScheduler* scheduler = CCDirector::sharedDirector()->getScheduler();
   scheduler->scheduleSelector((SEL_SCHEDULE)&Music::onTrackDidBack, this, track->getDuration() / 2.0f, false, 0, 0);
-  scheduler->scheduleSelector((SEL_SCHEDULE)&Music::onTrackWillFinish, this, track->getDuration() * 0.9f, false, 0, 0);
-  scheduler->scheduleSelector((SEL_SCHEDULE)&Music::onTrackDidFinish, this, track->getDuration(), false, 0, 0);
+  scheduler->scheduleSelector((SEL_SCHEDULE)&Music::onTrackWillFinish, this, track->getDuration() * 0.8f, false, 0, 0);
+  scheduler->scheduleSelector((SEL_SCHEDULE)&Music::onTrackDidFinish, this, track->getDuration() * 0.98f, false, 0, 0);
 }
 
 void Music::setScheduleDelay(float delay) {

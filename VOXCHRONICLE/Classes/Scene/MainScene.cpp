@@ -182,7 +182,6 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       for (int i = 1 ; i < _map->getIntroCount(); ++i) {
         stringstream intro;
         intro << "intro" << i << ".mp3";
-        cout << i << endl;
         music->pushTrack(_map->getPrefixedMusicName(intro.str().c_str()).c_str(), 0);
         music->pushTrack(_map->getPrefixedMusicName("silent.mp3").c_str(), 1);
         music->pushTrack(_map->getPrefixedMusicName("silent.mp3").c_str(), 2);

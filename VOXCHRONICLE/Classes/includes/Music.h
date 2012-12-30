@@ -23,7 +23,7 @@ namespace VISS {
   class Music : public cocos2d::CCObject {
    private:
     int _trackCount;
-    std::vector< std::deque<Track*>* > _tracks;
+    std::vector< CCArray* > _tracks;
     void update(float dt);
     boost::function<void (Music*, Track*, Track*, int)> _trackWillFinishFunction;
     boost::function<void (Music*, Track*, Track*, int)> _trackDidFinishFunction;

@@ -32,11 +32,17 @@ TrackCache::~TrackCache() {
 
 Track* TrackCache::addTrack(string trackName) {
   if (_cache->objectForKey(trackName) ) {
-    return (Track*)_cache->objectForKey(trackName);
+    Track* track = (Track*)_cache->objectForKey(trackName);
+    Track* newTrack = new Track(trackName.c_str());
+    _cache->removeObjectForKey(trackName);
+    _cache->setObject(newTrack, trackName);
+    return track;
+  } else {
+    Track* track = new Track(trackName.c_str());
+    Track* newTrack = new Track(trackName.c_str());
+    _cache->setObject(newTrack, trackName);
+    return track;
   }
-  Track* track = new Track(trackName.c_str());
-  _cache->setObject(track, trackName);
-  return track;
 }
 
 void TrackCache::purgeAllTracks() {

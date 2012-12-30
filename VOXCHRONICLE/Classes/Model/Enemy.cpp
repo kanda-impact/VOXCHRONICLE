@@ -76,6 +76,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
       }
       this->addChild(frameSprite);
     }
+    this->setScale(0.0f);
     return this;
   }
   return NULL;
