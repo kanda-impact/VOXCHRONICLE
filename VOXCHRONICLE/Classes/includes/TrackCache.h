@@ -26,7 +26,7 @@ namespace VISS {
     static void deleteCache();
     TrackCache();
     ~TrackCache();
-    Track* addTrack(string trackName);
+    Track* addTrack(string trackName, int mod);
     void purgeAllTracks();
     
     //TrackCache(const TrackCache& r);

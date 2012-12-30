@@ -75,7 +75,7 @@ bool MainScene::init() {
   
   _musicSet = _map->getCurrentMusic(_level);
   
-  TrackCache::sharedCache()->addTrack(FileUtils::getFilePath("Music/general/select_stage.wav"));
+  TrackCache::sharedCache()->addTrack(FileUtils::getFilePath("Music/general/select_stage.wav"), 0);
   
   for (int i = 0; i < 3; ++i) {
     _music->pushTrack(FileUtils::getFilePath(_musicSet->getPrefixedMusicName("silent.mp3").c_str()).c_str(), i);
@@ -203,6 +203,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       _controller->setEnable(false);
       _state = VCStateIntro; // イントロに以降
       _musicSet = _map->getCurrentMusic(_level); // 音楽セットを切り替える
+      TrackCache::sharedCache()->purgeAllTracks(); // キャッシュを削除する
       this->pushIntroTracks();
     }
   } else if (_state == VCStateMain) {

@@ -20,6 +20,7 @@ Music::Music() {
 
 Music::Music(int trackCount) {
   _trackCount = trackCount;
+  _measureCount = 0;
   _tracks = std::vector< CCArray* >(trackCount);
   for (int i = 0; i < _trackCount; ++i) {
     _tracks[i] = CCArray::create();
@@ -43,7 +44,7 @@ Track* Music::getNextTrack(int trackNumber) {
   
 Track* Music::setTrack(const char* fileName, int trackNumber, int index) {
   //Track* next = new Track(fileName);
-  Track* next = TrackCache::sharedCache()->addTrack(fileName);
+  Track* next = TrackCache::sharedCache()->addTrack(fileName, _measureCount % 2);
   return setTrack(next, trackNumber, index);
 }
 
@@ -62,7 +63,7 @@ Track* Music::pushTrack(const char* fileName, int trackNumber) {
 Track* Music::pushTrack(const char* fileName, int trackNumber, int repeat) {
   Track* next;
   for (int i = 0; i < repeat; ++i) {
-    next = TrackCache::sharedCache()->addTrack(fileName);
+    next = TrackCache::sharedCache()->addTrack(fileName, _measureCount % 2);
     bool result = pushTrack(next, trackNumber);
     if (!result) {
       return NULL;
@@ -155,9 +156,8 @@ void Music::onTrackDidFinish() {
   }
   for (int trackNumber = 0; trackNumber < _trackCount; ++trackNumber) {
     CCArray* channel = _tracks[trackNumber];
-    Track* current = (Track*)channel->objectAtIndex(0);
     channel->removeObjectAtIndex(0);
-    current->release();
+    ++_measureCount;
   }
   this->setScheduleDelay(0.0f);
 }

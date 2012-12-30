@@ -8,7 +8,7 @@ Map = {
   maxLevel = 10,
   getEnemyTable = function(level)
     if level <=9 then
-      return {geek_shield = 1, slime = 1, leaf = 1, typhoon = 1}
+      return {geek_shield = 1, slime = 2, leaf = 5, typhoon = 2}
     elseif level == 10 then
       return {}
     end

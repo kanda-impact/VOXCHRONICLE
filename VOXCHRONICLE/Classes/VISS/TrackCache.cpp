@@ -7,6 +7,7 @@
 //
 
 #include "TrackCache.h"
+#include <boost/lexical_cast.hpp>
 
 using namespace VISS;
 
@@ -30,19 +31,15 @@ TrackCache::~TrackCache() {
   _cache->release();
 }
 
-Track* TrackCache::addTrack(string trackName) {
-  if (_cache->objectForKey(trackName) ) {
-    Track* track = (Track*)_cache->objectForKey(trackName);
-    Track* newTrack = new Track(trackName.c_str());
-    _cache->removeObjectForKey(trackName);
-    _cache->setObject(newTrack, trackName);
-    return track;
-  } else {
-    Track* track = new Track(trackName.c_str());
-    Track* newTrack = new Track(trackName.c_str());
-    _cache->setObject(newTrack, trackName);
+Track* TrackCache::addTrack(string trackName, int mod) {
+  string key = trackName + boost::lexical_cast<string>(mod);
+  if (_cache->objectForKey(key) ) {
+    Track* track = (Track*)_cache->objectForKey(key);
     return track;
   }
+  Track* track = new Track(trackName.c_str());
+  _cache->setObject(track, key);
+  return track;
 }
 
 void TrackCache::purgeAllTracks() {
