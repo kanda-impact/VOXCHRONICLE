@@ -45,9 +45,11 @@ void SkillTrigger::setPress(bool press) {
     _state = SkillTriggerStateSelected;
     CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath("Image/Main/UI/proto/trigger_on.png").c_str());
     this->setTexture(texture);
+    this->setScale(1.2f);
   } else {
     _state = SkillTriggerStateNormal;
     this->setColor(_color);
+    this->setScale(1.0f);
   }
 }
 
@@ -72,6 +74,7 @@ void SkillTrigger::setSkill(Skill* skill) {
       this->removeChildByTag(iconTag, true);
     }
     this->addChild(icon, 1000, iconTag);
+    icon->setScale(0.8f);
   }
   this->setSkillTriggerState(SkillTriggerStateNormal);
 }
@@ -106,10 +109,10 @@ void SkillTrigger::setColor(SkillTriggerColor color) {
   CCSprite* icon = (CCSprite*)this->getChildByTag(iconTag);
   if (_color == SkillTriggerColorVox) {
     filename = FileUtils::getFilePath("Image/Main/UI/proto/trigger_vox.png");
-    icon->setColor(ccc3(255, 0, 0));
+    icon->setColor(ccc3(205, 43, 121));
   } else if (_color == SkillTriggerColorLaska) {
     filename = FileUtils::getFilePath("Image/Main/UI/proto/trigger_laska.png");
-    icon->setColor(ccc3(0, 0, 255));
+    icon->setColor(ccc3(1, 255, 255));
   }
   CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(filename.c_str());
   this->setTexture(texture);
