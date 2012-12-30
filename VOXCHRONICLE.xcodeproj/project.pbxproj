@@ -66,6 +66,9 @@
 		075653A216171AE800C69E27 /* magic_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 075653A116171AE800C69E27 /* magic_icon.png */; };
 		075653A416171B0E00C69E27 /* change_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 075653A316171B0E00C69E27 /* change_icon.png */; };
 		075653A616171F2400C69E27 /* change.lua in Resources */ = {isa = PBXBuildFile; fileRef = 075653A516171F2400C69E27 /* change.lua */; };
+		07660C4E1690980B0092104F /* dub.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07660C4D1690980B0092104F /* dub.lua */; };
+		07660C50169098180092104F /* boss.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07660C4F169098170092104F /* boss.lua */; };
+		07660C5316909BF10092104F /* MusicSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07660C5116909BF10092104F /* MusicSet.cpp */; };
 		076F1A5115EB94750013A45E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F1A5015EB94750013A45E /* QuartzCore.framework */; };
 		076F1A5315EB94750013A45E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F1A5215EB94750013A45E /* OpenGLES.framework */; };
 		076F1A5515EB94750013A45E /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076F1A5415EB94750013A45E /* OpenAL.framework */; };
@@ -566,6 +569,10 @@
 		075653A116171AE800C69E27 /* magic_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magic_icon.png; sourceTree = "<group>"; };
 		075653A316171B0E00C69E27 /* change_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = change_icon.png; sourceTree = "<group>"; };
 		075653A516171F2400C69E27 /* change.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = change.lua; sourceTree = "<group>"; };
+		07660C4D1690980B0092104F /* dub.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dub.lua; path = musics/dub.lua; sourceTree = "<group>"; };
+		07660C4F169098170092104F /* boss.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = boss.lua; path = musics/boss.lua; sourceTree = "<group>"; };
+		07660C5116909BF10092104F /* MusicSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MusicSet.cpp; path = Classes/Model/MusicSet.cpp; sourceTree = "<group>"; };
+		07660C5416909C020092104F /* MusicSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicSet.h; path = Classes/includes/MusicSet.h; sourceTree = "<group>"; };
 		076F1A4C15EB94750013A45E /* VOXCHRONICLE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VOXCHRONICLE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		076F1A5015EB94750013A45E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		076F1A5215EB94750013A45E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1391,6 +1398,7 @@
 				07F0D760163BAF91005592AF /* Map.h */,
 				07F0D761163BAF91005592AF /* MapSelector.h */,
 				07F0D762163BAF91005592AF /* Skill.h */,
+				07660C5416909C020092104F /* MusicSet.h */,
 				0739C4461615D2FD00CB864D /* CharacterManager.cpp */,
 				0739C4491615D30800CB864D /* Character.cpp */,
 				07C6F6AB1615D6300084708C /* Enemy.cpp */,
@@ -1399,6 +1407,7 @@
 				07565376161705B200C69E27 /* Level.cpp */,
 				0731E4F716181DD4006AEF3D /* Map.cpp */,
 				07E134FD162167CB00CCF72E /* MapSelector.cpp */,
+				07660C5116909BF10092104F /* MusicSet.cpp */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1515,6 +1524,15 @@
 			);
 			name = command;
 			path = Resources/Image/Main/UI/command;
+			sourceTree = "<group>";
+		};
+		07660C4B169097F00092104F /* musics */ = {
+			isa = PBXGroup;
+			children = (
+				07660C4D1690980B0092104F /* dub.lua */,
+				07660C4F169098170092104F /* boss.lua */,
+			);
+			name = musics;
 			sourceTree = "<group>";
 		};
 		076F1A4115EB94750013A45E = {
@@ -1708,6 +1726,7 @@
 		07C6064016164F810084708C /* Script */ = {
 			isa = PBXGroup;
 			children = (
+				07660C4B169097F00092104F /* musics */,
 				07FD921C1621097700E74459 /* character */,
 				0731E4FA16184A59006AEF3D /* map */,
 				07C6093A161674650084708C /* enemies */,
@@ -3150,6 +3169,8 @@
 				07C61F721690483D0010B6ED /* w_typhoon2.png in Resources */,
 				07C61F731690483D0010B6ED /* w_typhoon3.png in Resources */,
 				07C61F75169055090010B6ED /* start.mp3 in Resources */,
+				07660C4E1690980B0092104F /* dub.lua in Resources */,
+				07660C50169098180092104F /* boss.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3443,6 +3464,7 @@
 				07F40F10163D0FC0009FC104 /* Music.cpp in Sources */,
 				0744B5B3167DD9EA00730393 /* StatusLayer.cpp in Sources */,
 				07C61F59169040E60010B6ED /* TrackManager.cpp in Sources */,
+				07660C5316909BF10092104F /* MusicSet.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
