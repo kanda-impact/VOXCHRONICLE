@@ -26,6 +26,5 @@ Map = {
   fixedEnemies = {
     {"ginet", 100},
     {"tnt", 20},
-    {"Level10",0}
   }
 }

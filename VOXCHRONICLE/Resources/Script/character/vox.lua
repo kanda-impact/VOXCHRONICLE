@@ -6,8 +6,8 @@ Character = {
     {"knockback", 6},
     {"slash", 10},
     {"charge", 2},
-    {"tension", 1},
-    {"change", 3},
+    {"tension", 2},
+    {"change", 1},
     {"shield", 5},
     {"run", 1}
   }

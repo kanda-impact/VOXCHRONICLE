@@ -10,7 +10,7 @@ Enemy = {
   speed = 2,
   item = EnemyItemNone,
   animationFrames = 4,
-  type = SkillTypeNormal,
+  type = SkillTypeMagical,
   choiceSkill = function(self)
     return nil
   end
