@@ -46,12 +46,15 @@ Enemy* EnemyManager::popEnemy() {
   if (_enemiesQueue->count() == 0) {
     _enemiesQueue->addObjectsFromArray(this->createEnemyQueue());
   }
-  Enemy* enemy = (Enemy*)_enemiesQueue->lastObject();
-  _enemiesQueue->removeLastObject();
-  int col = rand() % 3;
-  enemy->setCol(col);
-  this->addChild(enemy, (MAX_ROW - enemy->getRow()));
-  return enemy;
+  if (_enemiesQueue->count() > 0) {
+    Enemy* enemy = (Enemy*)_enemiesQueue->lastObject();
+    _enemiesQueue->removeLastObject();
+    int col = rand() % 3;
+    enemy->setCol(col);
+    this->addChild(enemy, (MAX_ROW - enemy->getRow()));
+    return enemy;
+  }
+  return NULL;
 }
 
 Enemy* EnemyManager::lotPopEnemy() {
@@ -205,12 +208,14 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
       // スラッシュ
       // 一番前の敵がいる列と、その後ろの列を攻撃します
       Enemy* nearest = this->getNearestEnemy();
-      boost::function<bool (int, float)> predicate = _1 == nearest->getRow();
-      boost::function<bool (int, float)> predicateBack = _1 == nearest->getRow() + 1;
-      CCArray* targets0 = this->getFilteredEnemies(predicate);
-      CCArray* targets1 = this->getFilteredEnemies(predicateBack);
-      targets->addObjectsFromArray(targets0);
-      targets->addObjectsFromArray(targets1);
+      if (nearest != NULL) {
+        boost::function<bool (int, float)> predicate = _1 == nearest->getRow();
+        boost::function<bool (int, float)> predicateBack = _1 == nearest->getRow() + 1;
+        CCArray* targets0 = this->getFilteredEnemies(predicate);
+        CCArray* targets1 = this->getFilteredEnemies(predicateBack);
+        targets->addObjectsFromArray(targets0);
+        targets->addObjectsFromArray(targets1);
+      }
     }
     
     // ターゲットに技の効果を与える
@@ -316,10 +321,10 @@ void EnemyManager::purgeAllTrash() {
   _trash->removeAllObjects();
 }
 
-void EnemyManager::unshiftEnemiesQueue(cocos2d::CCArray *enemies) {
+void EnemyManager::pushEnemiesQueue(cocos2d::CCArray *enemies) {
   CCObject* obj = NULL;
   CCARRAY_FOREACH(enemies, obj) {
-    _enemiesQueue->insertObject(obj, 0);
+    _enemiesQueue->addObject(obj);
   }
 }
 
@@ -334,4 +339,8 @@ void EnemyManager::nextTurn () {
       }
     }
   }
+}
+
+void EnemyManager::removeAllEnemiesQueue() {
+  _enemiesQueue->removeAllObjects();
 }

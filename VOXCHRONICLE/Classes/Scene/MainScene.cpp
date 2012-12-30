@@ -285,7 +285,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       int getExp = ((CCInteger*)info->objectForKey("exp"))->getValue();
       CCArray* fixed = _map->getFixedEnemies(preExp, preExp + getExp);
       if (fixed->count() > 0) {
-        _enemyManager->unshiftEnemiesQueue(fixed);
+        _enemyManager->pushEnemiesQueue(fixed);
       }
       this->checkLevelUp();
     } else if (performType == SkillPerformTypeNone) {
@@ -332,7 +332,6 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     track->setVolume(0.7);
     
   } else if (_state == VCStateStageSelect) {
-    
     // ステージ移行処理
     Map* nextMap = _mapSelector->getSelectedMap();
     _map->release();
@@ -405,8 +404,9 @@ bool MainScene::checkLevelUp() {
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/levelup.mp3").c_str());
     _level = _map->createLevel(currentLevel);
     _enemyManager->setLevel(_level);
+    _enemyManager->removeAllEnemiesQueue();
     this->updateGUI();
-    if (_level->getLevel() >= _map->getMaxLevel()) {
+    if (_level->getLevel() >= _map->getMaxLevel() + 1) {
       CCArray* maps = _map->getNextMaps();
       if (maps->count() >= 1) {
         _mapSelector = MapSelector::create();

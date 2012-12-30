@@ -133,11 +133,13 @@ class EnemyManager :public CCLayer {
   void draw();
   
   /**
-   EnemyQueueの先頭にモンスターを追加します。
+   EnemyQueueの末尾にモンスターを追加します。
    要は次の出現モンスターを割り込ませます。
    @param CCArray* 割り込ませるEnemy*を含んだCCArray
    */
-  void unshiftEnemiesQueue(CCArray* enemies);
+  void pushEnemiesQueue(CCArray* enemies);
+  
+  void removeAllEnemiesQueue();
   
   void nextTurn();
   

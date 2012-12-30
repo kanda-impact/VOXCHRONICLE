@@ -91,7 +91,7 @@
 		07660C991690AA1B0092104F /* boss_lskmagic2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07660C6D1690AA1B0092104F /* boss_lskmagic2.mp3 */; };
 		07660C9A1690AA1B0092104F /* boss_lskmagic3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07660C6E1690AA1B0092104F /* boss_lskmagic3.mp3 */; };
 		07660C9B1690AA1B0092104F /* boss_lskthunder0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07660C6F1690AA1B0092104F /* boss_lskthunder0.mp3 */; };
-		07660C9C1690AA1B0092104F /* boss_miss0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07660C701690AA1B0092104F /* boss_miss0.mp3 */; };
+		07660C9C1690AA1B0092104F /* boss_miss.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07660C701690AA1B0092104F /* boss_miss.mp3 */; };
 		07660C9D1690AA1B0092104F /* boss_run0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07660C711690AA1B0092104F /* boss_run0.mp3 */; };
 		07660C9E1690AA1B0092104F /* boss_run1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07660C721690AA1B0092104F /* boss_run1.mp3 */; };
 		07660C9F1690AA1B0092104F /* boss_shield0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07660C731690AA1B0092104F /* boss_shield0.mp3 */; };
@@ -108,7 +108,7 @@
 		07660CAA1690AA1B0092104F /* boss_voxcharge0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07660C7E1690AA1B0092104F /* boss_voxcharge0.mp3 */; };
 		07660CAB1690AA1B0092104F /* boss_voxknockback0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07660C7F1690AA1B0092104F /* boss_voxknockback0.mp3 */; };
 		07660CAC1690AA1B0092104F /* boss_voxslash0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07660C801690AA1B0092104F /* boss_voxslash0.mp3 */; };
-		07660CAD1690AA1B0092104F /* boss_wait0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07660C811690AA1B0092104F /* boss_wait0.mp3 */; };
+		07660CAD1690AA1B0092104F /* boss_wait.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07660C811690AA1B0092104F /* boss_wait.mp3 */; };
 		07660CAE1690AA1B0092104F /* bossfinish0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07660C821690AA1B0092104F /* bossfinish0.mp3 */; };
 		07660CAF1690AA1B0092104F /* bossfinish1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07660C831690AA1B0092104F /* bossfinish1.mp3 */; };
 		07660CB01690AA1B0092104F /* bossfinish2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07660C841690AA1B0092104F /* bossfinish2.mp3 */; };
@@ -644,7 +644,7 @@
 		07660C6D1690AA1B0092104F /* boss_lskmagic2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = boss_lskmagic2.mp3; path = Resources/Music/boss/boss_lskmagic2.mp3; sourceTree = "<group>"; };
 		07660C6E1690AA1B0092104F /* boss_lskmagic3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = boss_lskmagic3.mp3; path = Resources/Music/boss/boss_lskmagic3.mp3; sourceTree = "<group>"; };
 		07660C6F1690AA1B0092104F /* boss_lskthunder0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = boss_lskthunder0.mp3; path = Resources/Music/boss/boss_lskthunder0.mp3; sourceTree = "<group>"; };
-		07660C701690AA1B0092104F /* boss_miss0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = boss_miss0.mp3; path = Resources/Music/boss/boss_miss0.mp3; sourceTree = "<group>"; };
+		07660C701690AA1B0092104F /* boss_miss.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = boss_miss.mp3; path = Resources/Music/boss/boss_miss.mp3; sourceTree = "<group>"; };
 		07660C711690AA1B0092104F /* boss_run0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = boss_run0.mp3; path = Resources/Music/boss/boss_run0.mp3; sourceTree = "<group>"; };
 		07660C721690AA1B0092104F /* boss_run1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = boss_run1.mp3; path = Resources/Music/boss/boss_run1.mp3; sourceTree = "<group>"; };
 		07660C731690AA1B0092104F /* boss_shield0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = boss_shield0.mp3; path = Resources/Music/boss/boss_shield0.mp3; sourceTree = "<group>"; };
@@ -661,7 +661,7 @@
 		07660C7E1690AA1B0092104F /* boss_voxcharge0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = boss_voxcharge0.mp3; path = Resources/Music/boss/boss_voxcharge0.mp3; sourceTree = "<group>"; };
 		07660C7F1690AA1B0092104F /* boss_voxknockback0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = boss_voxknockback0.mp3; path = Resources/Music/boss/boss_voxknockback0.mp3; sourceTree = "<group>"; };
 		07660C801690AA1B0092104F /* boss_voxslash0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = boss_voxslash0.mp3; path = Resources/Music/boss/boss_voxslash0.mp3; sourceTree = "<group>"; };
-		07660C811690AA1B0092104F /* boss_wait0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = boss_wait0.mp3; path = Resources/Music/boss/boss_wait0.mp3; sourceTree = "<group>"; };
+		07660C811690AA1B0092104F /* boss_wait.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = boss_wait.mp3; path = Resources/Music/boss/boss_wait.mp3; sourceTree = "<group>"; };
 		07660C821690AA1B0092104F /* bossfinish0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bossfinish0.mp3; path = Resources/Music/boss/bossfinish0.mp3; sourceTree = "<group>"; };
 		07660C831690AA1B0092104F /* bossfinish1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bossfinish1.mp3; path = Resources/Music/boss/bossfinish1.mp3; sourceTree = "<group>"; };
 		07660C841690AA1B0092104F /* bossfinish2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bossfinish2.mp3; path = Resources/Music/boss/bossfinish2.mp3; sourceTree = "<group>"; };
@@ -1655,7 +1655,7 @@
 				07660C6D1690AA1B0092104F /* boss_lskmagic2.mp3 */,
 				07660C6E1690AA1B0092104F /* boss_lskmagic3.mp3 */,
 				07660C6F1690AA1B0092104F /* boss_lskthunder0.mp3 */,
-				07660C701690AA1B0092104F /* boss_miss0.mp3 */,
+				07660C701690AA1B0092104F /* boss_miss.mp3 */,
 				07660C711690AA1B0092104F /* boss_run0.mp3 */,
 				07660C721690AA1B0092104F /* boss_run1.mp3 */,
 				07660C731690AA1B0092104F /* boss_shield0.mp3 */,
@@ -1672,7 +1672,7 @@
 				07660C7E1690AA1B0092104F /* boss_voxcharge0.mp3 */,
 				07660C7F1690AA1B0092104F /* boss_voxknockback0.mp3 */,
 				07660C801690AA1B0092104F /* boss_voxslash0.mp3 */,
-				07660C811690AA1B0092104F /* boss_wait0.mp3 */,
+				07660C811690AA1B0092104F /* boss_wait.mp3 */,
 				07660C821690AA1B0092104F /* bossfinish0.mp3 */,
 				07660C831690AA1B0092104F /* bossfinish1.mp3 */,
 				07660C841690AA1B0092104F /* bossfinish2.mp3 */,
@@ -3348,7 +3348,7 @@
 				07660C991690AA1B0092104F /* boss_lskmagic2.mp3 in Resources */,
 				07660C9A1690AA1B0092104F /* boss_lskmagic3.mp3 in Resources */,
 				07660C9B1690AA1B0092104F /* boss_lskthunder0.mp3 in Resources */,
-				07660C9C1690AA1B0092104F /* boss_miss0.mp3 in Resources */,
+				07660C9C1690AA1B0092104F /* boss_miss.mp3 in Resources */,
 				07660C9D1690AA1B0092104F /* boss_run0.mp3 in Resources */,
 				07660C9E1690AA1B0092104F /* boss_run1.mp3 in Resources */,
 				07660C9F1690AA1B0092104F /* boss_shield0.mp3 in Resources */,
@@ -3365,7 +3365,7 @@
 				07660CAA1690AA1B0092104F /* boss_voxcharge0.mp3 in Resources */,
 				07660CAB1690AA1B0092104F /* boss_voxknockback0.mp3 in Resources */,
 				07660CAC1690AA1B0092104F /* boss_voxslash0.mp3 in Resources */,
-				07660CAD1690AA1B0092104F /* boss_wait0.mp3 in Resources */,
+				07660CAD1690AA1B0092104F /* boss_wait.mp3 in Resources */,
 				07660CAE1690AA1B0092104F /* bossfinish0.mp3 in Resources */,
 				07660CAF1690AA1B0092104F /* bossfinish1.mp3 in Resources */,
 				07660CB01690AA1B0092104F /* bossfinish2.mp3 in Resources */,

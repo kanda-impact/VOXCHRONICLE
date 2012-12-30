@@ -31,6 +31,8 @@ bool AppDelegate::applicationDidFinishLaunching()
   // enable High Resource Mode(2x, such as iphone4) and maintains low resource on other devices.
   // pDirector->enableRetinaDisplay(true);
   
+  srand((unsigned int)time(NULL));
+  
   // turn on display FPS
   pDirector->setDisplayStats(true);
   

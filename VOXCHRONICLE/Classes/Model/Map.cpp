@@ -156,7 +156,6 @@ bool Map::isBossStage() {
 
 MusicSet* Map::getCurrentMusic(Level *level) {
   if (level->getLevel() >= _maxLevel) {
-    cout << "boss" << endl;
     return _bossMusic;
   }
   return _wayMusic;
