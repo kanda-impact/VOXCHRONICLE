@@ -42,6 +42,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _speed = obj->getInt("speed");
   _type = (SkillType)obj->getInt("type");
   _level = obj->getInt("level");
+  _minRow = obj->getInt("minRow");
   _hasFrame = obj->getBoolean("hasFrame");
   _speedCount = 0;
   _imageName = obj->getString("imageName");
@@ -213,7 +214,7 @@ int Enemy::getHP() {
 
 bool Enemy::canMove() {
   _speedCount = (_speedCount + 1) % _speed;
-  return _speedCount == 0;
+  return _speedCount == 0 && this->getRow() >= _minRow;
 }
 
 SkillType Enemy::getType() {

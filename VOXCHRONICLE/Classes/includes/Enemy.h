@@ -39,6 +39,7 @@ class Enemy : public CCSprite {
   int _counter;
   int _level;
   int _frameCount;
+  int _minRow;
   bool _hasFrame;
   const char* _imageName;
   SkillType _type;
