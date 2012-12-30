@@ -424,6 +424,7 @@
 		07C61F54169038800010B6ED /* dub_voxknockback0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07C61F2D169038800010B6ED /* dub_voxknockback0.mp3 */; };
 		07C61F55169038800010B6ED /* dub_voxslash0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07C61F2E169038800010B6ED /* dub_voxslash0.mp3 */; };
 		07C61F56169038800010B6ED /* dub_wait.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07C61F2F169038800010B6ED /* dub_wait.mp3 */; };
+		07C61F59169040E60010B6ED /* TrackManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C61F57169040E60010B6ED /* TrackManager.cpp */; };
 		07C6F6AD1615D6300084708C /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AB1615D6300084708C /* Enemy.cpp */; };
 		07C6F6B11615D6420084708C /* EnemyManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AF1615D6420084708C /* EnemyManager.cpp */; };
 		07D873F515ED1215009CC446 /* attack0.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E415ED1215009CC446 /* attack0.WAV */; };
@@ -1178,6 +1179,8 @@
 		07C61F2D169038800010B6ED /* dub_voxknockback0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = dub_voxknockback0.mp3; path = Resources/Music/dub/dub_voxknockback0.mp3; sourceTree = "<group>"; };
 		07C61F2E169038800010B6ED /* dub_voxslash0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = dub_voxslash0.mp3; path = Resources/Music/dub/dub_voxslash0.mp3; sourceTree = "<group>"; };
 		07C61F2F169038800010B6ED /* dub_wait.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = dub_wait.mp3; path = Resources/Music/dub/dub_wait.mp3; sourceTree = "<group>"; };
+		07C61F57169040E60010B6ED /* TrackManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TrackManager.cpp; path = Classes/VISS/TrackManager.cpp; sourceTree = "<group>"; };
+		07C61F5A169041E40010B6ED /* TrackManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrackManager.h; path = Classes/includes/TrackManager.h; sourceTree = "<group>"; };
 		07C6F6AB1615D6300084708C /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = Classes/Model/Enemy.cpp; sourceTree = "<group>"; };
 		07C6F6AF1615D6420084708C /* EnemyManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyManager.cpp; path = Classes/Model/EnemyManager.cpp; sourceTree = "<group>"; };
 		07D873E415ED1215009CC446 /* attack0.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack0.WAV; path = Resources/Music/VOXQUEST/attack0.WAV; sourceTree = "<group>"; };
@@ -2698,6 +2701,8 @@
 				07F0D751163BABDF005592AF /* Music.h */,
 				07F0D752163BABDF005592AF /* Track.h */,
 				07F0D753163BABDF005592AF /* TrackCache.h */,
+				07C61F57169040E60010B6ED /* TrackManager.cpp */,
+				07C61F5A169041E40010B6ED /* TrackManager.h */,
 			);
 			name = VISS;
 			sourceTree = "<group>";
@@ -3379,6 +3384,7 @@
 				070E4020163C29E600A76BEA /* BlinkLayer.cpp in Sources */,
 				07F40F10163D0FC0009FC104 /* Music.cpp in Sources */,
 				0744B5B3167DD9EA00730393 /* StatusLayer.cpp in Sources */,
+				07C61F59169040E60010B6ED /* TrackManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
