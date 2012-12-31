@@ -65,6 +65,12 @@ class Enemy : public CCSprite {
    */
   DamageType damage(Skill* skill, CharacterManager* characterManager);
   
+  /**
+   
+   */
+  bool performSkill();
+  
+  
   int getHP();
   float getRow();
   int getCol();
