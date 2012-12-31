@@ -577,7 +577,6 @@
 		070E4046163CB3BE00A76BEA /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gameover.mp3; path = Resources/Music/general/gameover.mp3; sourceTree = "<group>"; };
 		0715C2321690E8F600009479 /* ironball.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ironball.lua; path = enemySkills/ironball.lua; sourceTree = "<group>"; };
 		0715C2351690EB3000009479 /* EnemySkill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemySkill.cpp; path = Classes/Model/EnemySkill.cpp; sourceTree = "<group>"; };
-		0715C2381690EB4200009479 /* EnemySkill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemySkill.h; path = Classes/includes/EnemySkill.h; sourceTree = "<group>"; };
 		0731E4C8161766EB006AEF3D /* shield_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield_icon.png; sourceTree = "<group>"; };
 		0731E4CA16176787006AEF3D /* shield.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shield.lua; sourceTree = "<group>"; };
 		0731E4CE16176A91006AEF3D /* bow.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bow.lua; sourceTree = "<group>"; };
@@ -635,7 +634,6 @@
 		07660C4D1690980B0092104F /* dub.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dub.lua; path = musics/dub.lua; sourceTree = "<group>"; };
 		07660C4F169098170092104F /* boss.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = boss.lua; path = musics/boss.lua; sourceTree = "<group>"; };
 		07660C5116909BF10092104F /* MusicSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MusicSet.cpp; path = Classes/Model/MusicSet.cpp; sourceTree = "<group>"; };
-		07660C5416909C020092104F /* MusicSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicSet.h; path = Classes/includes/MusicSet.h; sourceTree = "<group>"; };
 		07660C561690A9CD0092104F /* dub_finish0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = dub_finish0.mp3; path = Resources/Music/dub/dub_finish0.mp3; sourceTree = "<group>"; };
 		07660C571690A9CD0092104F /* dub_finish1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = dub_finish1.mp3; path = Resources/Music/dub/dub_finish1.mp3; sourceTree = "<group>"; };
 		07660C581690A9CD0092104F /* dub_finish2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = dub_finish2.mp3; path = Resources/Music/dub/dub_finish2.mp3; sourceTree = "<group>"; };
@@ -1451,6 +1449,8 @@
 		07F0D797163C1EC0005592AF /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleScene.cpp; path = Classes/Scene/TitleScene.cpp; sourceTree = "<group>"; };
 		07F0D79A163C1EFD005592AF /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = Classes/includes/TitleScene.h; sourceTree = "<group>"; };
 		07F40F0F163D0FC0009FC104 /* Music.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Music.cpp; path = Classes/VISS/Music.cpp; sourceTree = "<group>"; };
+		07F470721691AD340062975F /* EnemySkill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemySkill.h; path = Classes/includes/EnemySkill.h; sourceTree = "<group>"; };
+		07F470731691AD340062975F /* MusicSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicSet.h; path = Classes/includes/MusicSet.h; sourceTree = "<group>"; };
 		07F9D9E016812C9D00E984AB /* slash.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = slash.lua; sourceTree = "<group>"; };
 		07FD921D1621099B00E74459 /* vox.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vox.lua; path = character/vox.lua; sourceTree = "<group>"; };
 		07FD921F16210A2300E74459 /* lsk.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lsk.lua; path = character/lsk.lua; sourceTree = "<group>"; };
@@ -1511,7 +1511,8 @@
 		0739C4451615D2D700CB864D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0715C2381690EB4200009479 /* EnemySkill.h */,
+				07F470721691AD340062975F /* EnemySkill.h */,
+				07F470731691AD340062975F /* MusicSet.h */,
 				07F0D75B163BAF77005592AF /* Character.h */,
 				07F0D75C163BAF77005592AF /* CharacterManager.h */,
 				07F0D75D163BAF77005592AF /* Enemy.h */,
@@ -1520,7 +1521,6 @@
 				07F0D760163BAF91005592AF /* Map.h */,
 				07F0D761163BAF91005592AF /* MapSelector.h */,
 				07F0D762163BAF91005592AF /* Skill.h */,
-				07660C5416909C020092104F /* MusicSet.h */,
 				0739C4461615D2FD00CB864D /* CharacterManager.cpp */,
 				0739C4491615D30800CB864D /* Character.cpp */,
 				07C6F6AB1615D6300084708C /* Enemy.cpp */,
