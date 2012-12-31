@@ -136,7 +136,7 @@ void MainScene::onEnterTransitionDidFinish() {
 
 void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber) {
   if (_state == VCStateMain) {
-    _enemyManager->nextTurn();
+    _enemyManager->nextTurn(_characterManager);
     CCObject* obj = NULL;
     CCARRAY_FOREACH(_enemyManager->getEnemies(), obj) {
       Enemy* enemy = (Enemy*)obj;

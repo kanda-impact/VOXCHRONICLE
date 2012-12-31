@@ -123,7 +123,8 @@ static int tolua_VC_CharacterManager_setDrumLevel(lua_State* tolua_S) {
 
 static int tolua_VC_EnemyManager_nextTurn(lua_State* tolua_S) {
   EnemyManager* self = (EnemyManager*)tolua_tousertype(tolua_S, 1, 0);
-  self->nextTurn();
+  CharacterManager* characterManager = (CharacterManager*)tolua_tousertype(tolua_S, 2, 0);
+  self->nextTurn(characterManager);
   return 0;
 }
 

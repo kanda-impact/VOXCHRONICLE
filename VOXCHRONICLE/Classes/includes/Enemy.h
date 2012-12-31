@@ -24,6 +24,8 @@ typedef enum {
   EnemyItemBarrier
 } EnemyItem;
 
+class EnemyManager;
+
 class Enemy : public CCSprite {
  private:
   string* _name;
@@ -46,6 +48,8 @@ class Enemy : public CCSprite {
   EnemyItem _item;
   void update(float dt);
   void setLifeColor();
+  LuaObject* _lua;
+  string _scriptPath;
  public:
   static Enemy* create(const char* enemyName);
   Enemy();
@@ -66,9 +70,10 @@ class Enemy : public CCSprite {
   DamageType damage(Skill* skill, CharacterManager* characterManager);
   
   /**
-   
+   Luaに定義された敵の技を使う関数を実行します
+   技が発動した場合はtrue、しなかった場合はfalseを返します
    */
-  bool performSkill();
+  bool performSkill(CharacterManager* characterManager, EnemyManager* enemyManager);
   
   
   int getHP();

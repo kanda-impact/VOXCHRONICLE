@@ -314,20 +314,20 @@ void EnemyManager::draw() {
   // 面倒なので他の人に計算してもらう
   CCLayer::draw();
   /*CCDirector* director = CCDirector::sharedDirector();
-  float sum = (1 + MAX_ROW) * MAX_ROW / 2;
-  for (int i = 0; i < MAX_ROW; ++i) {
-    int sy = 80 + 25 * 0;
-    int ey = 80 + 25 * (MAX_ROW - 1);
-    float tempSum = (1 + (MAX_ROW - i)) * (MAX_ROW - i) / 2;
-    float scale = 1.0 * tempSum / sum;
-    float y = ey + (sy - ey) * tempSum / sum - 125 * scale;
-    CCPoint origin = CCPointMake(0, y);
-    CCSize size = director->getWinSize();
-    CCPoint dest = CCPointMake(size.width, y);
-    float opacity = 0.25 + 0.75 * ((float)(MAX_ROW - i) / MAX_ROW);
-    ccDrawColor4F(1.0 * opacity, 1.0 * opacity, 1.0 * opacity, 1);
-    ccDrawLine(origin, dest);
-  }*/
+   float sum = (1 + MAX_ROW) * MAX_ROW / 2;
+   for (int i = 0; i < MAX_ROW; ++i) {
+   int sy = 80 + 25 * 0;
+   int ey = 80 + 25 * (MAX_ROW - 1);
+   float tempSum = (1 + (MAX_ROW - i)) * (MAX_ROW - i) / 2;
+   float scale = 1.0 * tempSum / sum;
+   float y = ey + (sy - ey) * tempSum / sum - 125 * scale;
+   CCPoint origin = CCPointMake(0, y);
+   CCSize size = director->getWinSize();
+   CCPoint dest = CCPointMake(size.width, y);
+   float opacity = 0.25 + 0.75 * ((float)(MAX_ROW - i) / MAX_ROW);
+   ccDrawColor4F(1.0 * opacity, 1.0 * opacity, 1.0 * opacity, 1);
+   ccDrawLine(origin, dest);
+   }*/
 }
 
 void EnemyManager::purgeAllTrash() {
@@ -341,14 +341,16 @@ void EnemyManager::pushEnemiesQueue(cocos2d::CCArray *enemies) {
   }
 }
 
-void EnemyManager::nextTurn () {
+void EnemyManager::nextTurn (CharacterManager* characterManager) {
   this->lotPopEnemy();
   CCObject* obj = NULL;
   CCARRAY_FOREACH(this->getEnemies(), obj) {
     Enemy* enemy = (Enemy*)obj;
     if (enemy->getRow() > 0) {
-      if (enemy->canMove()) {
-        enemy->moveRow(-1);
+      if (!enemy->performSkill(characterManager, this)) { // 敵の技を実行する
+        if (enemy->canMove()) { // 何も実行されなかったら、移動できるか調べる
+          enemy->moveRow(-1); // 移動できたら1歩移動する
+        }
       }
     }
   }

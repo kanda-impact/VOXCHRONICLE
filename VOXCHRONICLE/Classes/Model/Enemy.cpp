@@ -13,6 +13,7 @@
 #include "Utils.h"
 #include "FileUtils.h"
 #include "macros.h"
+#include "EnemySkill.h"
 
 using namespace std;
 
@@ -31,26 +32,27 @@ Enemy* Enemy::create(const char *enemyName) {
 Enemy* Enemy::initWithScriptName(const char* scriptName) {
   stringstream file;
   file << "Script/enemies/" << scriptName;
-  LuaObject* obj = new LuaObject(file.str().c_str(), "Enemy");
-  obj->autorelease();
-  _hp = obj->getInt("hp");
+  _scriptPath = file.str();
+  _lua = new LuaObject(file.str().c_str());
+  _lua->retain();
+  _hp = _lua->getInt("hp");
   _maxHP = _hp;
-  _attack = obj->getInt("attack");
-  _exp = obj->getInt("exp");
-  _name = new string(obj->getString("name"));
-  _counter = obj->getInt("counter");
-  _speed = obj->getInt("speed");
-  _type = (SkillType)obj->getInt("type");
-  _level = obj->getInt("level");
-  _minRow = obj->getInt("minRow");
-  _hasFrame = obj->getBoolean("hasFrame");
+  _attack = _lua->getInt("attack");
+  _exp = _lua->getInt("exp");
+  _name = new string(_lua->getString("name"));
+  _counter = _lua->getInt("counter");
+  _speed = _lua->getInt("speed");
+  _type = (SkillType)_lua->getInt("type");
+  _level = _lua->getInt("level");
+  _minRow = _lua->getInt("minRow");
+  _hasFrame = _lua->getBoolean("hasFrame");
   _speedCount = 0;
-  _imageName = obj->getString("imageName");
-  _frameCount = obj->getInt("animationFrames");
+  _imageName = _lua->getString("imageName");
+  _frameCount = _lua->getInt("animationFrames");
   stringstream ss;
   ss << "Image/Enemy/" << _imageName << "0.png";
   bool success = (bool)this->initWithFile(FileUtils::getFilePath(ss.str().c_str()).c_str());
-  this->setItem((EnemyItem)obj->getInt("item"));
+  this->setItem((EnemyItem)_lua->getInt("item"));
   if (success) {
     CCAnimation* animation = CCAnimation::create();
     CCSize size = this->getTexture()->getContentSize();
@@ -93,6 +95,7 @@ Enemy::Enemy() {
 }
 
 Enemy::~Enemy() {
+  _lua->release();
   delete _name;
 }
 
@@ -271,4 +274,25 @@ CCSprite* Enemy::createFrameSprite() {
   animation->setDelayPerUnit(10.0 / 60.0);
   frame->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
   return frame;
+}
+
+bool Enemy::performSkill(CharacterManager* characterManager, EnemyManager* enemyManager) {
+  LuaObject* lua = new LuaObject(_scriptPath.c_str(), "Enemy");
+  lua_State* L = lua->getLuaEngine()->getLuaState();
+  lua_getfield(L, lua_gettop(L), "performSkill");
+  if (lua_isfunction(L, lua_gettop(L))) {
+    _lua->getLuaEngine()->pushCCObject(this, "Enemy");
+    if (lua_pcall(L, 1, 1, 0)) {
+      cout << lua_tostring(L, lua_gettop(L)) << endl;
+      return false;
+    }
+    string skillName = lua_tostring(L, lua_gettop(L));
+    _lua->release();
+    if (skillName.size() == 0) return false;
+    // 技の名前が何か帰ってきたとき、その技を生成して実行してやる
+    EnemySkill* skill = new EnemySkill(skillName.c_str());
+    skill->performSkill(this, characterManager, enemyManager);
+    return true;
+  }
+  return false;
 }

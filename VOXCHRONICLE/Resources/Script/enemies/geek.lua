@@ -10,7 +10,9 @@ Enemy = {
   item = EnemyItemNone,
   animationFrames = 4,
   type = SkillTypeNormal,
-  choiceSkill = function(self)
-    return nil
+  performSkill = function(self)
+    return ""
   end
 }
+
+return Enemy

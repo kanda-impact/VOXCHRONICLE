@@ -20,3 +20,5 @@ Enemy = {
     return ""
   end
 }
+
+return Enemy

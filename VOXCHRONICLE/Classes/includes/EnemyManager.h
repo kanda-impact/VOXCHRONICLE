@@ -141,7 +141,7 @@ class EnemyManager :public CCLayer {
   
   void removeAllEnemiesQueue();
   
-  void nextTurn();
+  void nextTurn(CharacterManager* characterManager);
   
   void popEnemyAt(string enemyName, int row, int col);
   

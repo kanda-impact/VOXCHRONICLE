@@ -11,7 +11,9 @@ Enemy = {
   item = EnemyItemNone,
   animationFrames = 4,
   type = SkillTypePhysical,
-  choiceSkill = function(self)
-    return nil
+  performSkill = function(self)
+    return ""
   end
 }
+
+return Enemy

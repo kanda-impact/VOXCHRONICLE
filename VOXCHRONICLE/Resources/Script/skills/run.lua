@@ -9,7 +9,7 @@ Skill = {
   maxRepeat = 2,
   turn = 1,
   performSkill = function(self, target, characterManager, enemyManager)
-    enemyManager:nextTurn()
+    enemyManager:nextTurn(characterManager)
   end,
   skillRange = SkillRangeSelf,
   skillType = SkillTypePhysical

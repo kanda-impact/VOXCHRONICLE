@@ -1,16 +1,16 @@
 Enemy = {
-  name = "taihuu",
-  imageName = "typhoon",
-  level = 1,
+  name = "鉄球",
+  imageName = "iron",
+  level = 10,
   hp = 1,
-  exp = 5,
+  exp = 0,
   hasFrame = true,
-  attack = 1,
+  attack = 3,
   counter = 1,
   speed = 2,
   item = EnemyItemNone,
-  animationFrames = 4,
-  type = SkillTypeMagical,
+  animationFrames = 1,
+  type = SkillTypeNormal,
   performSkill = function(self)
     return ""
   end
