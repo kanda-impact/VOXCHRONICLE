@@ -79,6 +79,23 @@ static int tolua_VC_Enemy_hasRegister(lua_State* tolua_S) {
   return 1;
 }
 
+static int tolua_VC_Enemy_setAnimationClip(lua_State* tolua_S) {
+  Enemy* self = (Enemy*)tolua_tousertype(tolua_S, 1, 0);
+  string clipName = (string)tolua_tostring(tolua_S, 2, 0);
+  int frames = (int)tolua_tonumber(tolua_S, 3, 0);
+  bool hasFrame = (bool)tolua_toboolean(tolua_S, 4, 0);
+  bool tolua_ret = (bool)self->setAnimationClip(clipName.c_str(), frames, hasFrame);
+  tolua_pushnumber(tolua_S, (bool)tolua_ret);
+  return 1;
+}
+
+static int tolua_VC_Enemy_setDefaultAnimationClip(lua_State* tolua_S) {
+  Enemy* self = (Enemy*)  tolua_tousertype(tolua_S, 1, 0);
+  bool tolua_ret = (bool)self->setDefaultAnimationClip();
+  tolua_pushnumber(tolua_S, (bool)tolua_ret);
+  return 1;
+}
+
 // CharacterManager
 #pragma mark CharacterManager
 
@@ -216,6 +233,8 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_function(tolua_S, "getRegister", tolua_VC_Enemy_getRegister);
   tolua_function(tolua_S, "setRegister", tolua_VC_Enemy_setRegister);
   tolua_function(tolua_S, "hasRegister", tolua_VC_Enemy_hasRegister);
+  tolua_function(tolua_S, "setAnimationClip", tolua_VC_Enemy_setAnimationClip);
+  tolua_function(tolua_S, "setDefaultAnimationClip", tolua_VC_Enemy_setDefaultAnimationClip);
   tolua_endmodule(tolua_S);
   // CharacterManagerクラス
   tolua_cclass(tolua_S, "CharacterManager", "CharacterManager", "CCObject", NULL);

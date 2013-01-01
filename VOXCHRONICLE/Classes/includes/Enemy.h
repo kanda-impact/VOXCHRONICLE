@@ -54,6 +54,8 @@ class Enemy : public CCSprite {
   LuaObject* _lua;
   string _scriptPath;
   std::map<string, int>* _register;
+  bool setAnimatonAndFrame(const char* filePrefix, int frames, bool hasFrame);
+  CCSprite* createFrameSprite(const char* filePrefix, int frames);
  public:
   static Enemy* create(const char* enemyName);
   Enemy();
@@ -65,7 +67,6 @@ class Enemy : public CCSprite {
   Enemy* initWithScriptName(const char* scriptName);
   void setRowAndCol(int row, float col);
   bool canMove();
-  CCSprite* createFrameSprite();
   
   /**
    使用したSkillとCharacterManagerを与えてダメージを与えます。
@@ -110,6 +111,22 @@ class Enemy : public CCSprite {
    @return bool 登録済みかどうか
    */
   bool hasRegister(const char* key);
+  
+  /**
+   現在の表示グラと枠を変えます
+   <imageName>_<clipName>0.pngを利用します
+   @param const char* imageName クリップ名
+   @param int frames アニメーションフレーム数
+   @param bool hasFrame 枠を持っているかどうか
+   @return bool 成功したかどうか
+   */
+  bool setAnimationClip(const char* clipName, int frames, bool hasFrame);
+  
+  /**
+   デフォルトのアニメーションクリップに変更します
+   @return bool 成功したかどうか
+   */
+  bool setDefaultAnimationClip();
   
   int getHP();
   float getRow();

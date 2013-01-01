@@ -17,7 +17,15 @@
 
 using namespace std;
 
-const int itemTag = 1;
+enum { // 深度
+  EnemyLayerFrame = 1,
+  EnemyLayerItem = 2
+};
+
+enum { // タグ
+  EnemyTagFrame = 1,
+  EnemyTagItem = 2
+};
 
 Enemy* Enemy::create(const char *enemyName) {
   Enemy *pobSprite = new Enemy();
@@ -55,31 +63,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   bool success = (bool)this->initWithFile(FileUtils::getFilePath(ss.str().c_str()).c_str());
   this->setItem((EnemyItem)_lua->getInt("item"));
   if (success) {
-    CCAnimation* animation = CCAnimation::create();
-    CCSize size = this->getTexture()->getContentSize();
-    for (int i = 0; i < _frameCount; ++i) {
-      stringstream frameSS;
-      frameSS << "Image/Enemy/" << _imageName << i << ".png";
-      CCSpriteFrame* frame = CCSpriteFrame::create(FileUtils::getFilePath(frameSS.str().c_str()).c_str(), CCRectMake(0, 0, size.width, size.height));
-      animation->addSpriteFrame(frame);
-    }
-    animation->setLoops(-1);
-    animation->setDelayPerUnit(10.0 / 60.0);
-    this->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
-    
-    // もし、フレームを持っているなら、フレームを追加してやる
-    if (_hasFrame) {
-      CCSprite* frameSprite = this->createFrameSprite();
-      frameSprite->setAnchorPoint(ccp(0, 0));
-      if (_type == SkillTypePhysical) {
-        frameSprite->setColor(VOX_COLOR);
-      } else if (_type == SkillTypeMagical) {
-        frameSprite->setColor(LSK_COLOR);
-      } else {
-        frameSprite->setColor(ccc3(0, 0, 0));
-      }
-      this->addChild(frameSprite);
-    }
+    setDefaultAnimationClip();
     this->setScale(0.0f);
     return this;
   }
@@ -240,8 +224,8 @@ EnemyItem Enemy::getItem() {
 
 void Enemy::setItem(EnemyItem item) {
   if (item == _item) return;
-  if (_item != EnemyItemNone && this->getChildByTag(itemTag)) {
-    this->removeChildByTag(itemTag, true);
+  if (_item != EnemyItemNone && this->getChildByTag(EnemyTagItem)) {
+    this->removeChildByTag(EnemyTagItem, true);
   }
   _item = item;
   if (item != EnemyItemNone) {
@@ -256,26 +240,8 @@ void Enemy::setItem(EnemyItem item) {
       sprite = CCSprite::create(FileUtils::getFilePath(filename).c_str());
       sprite->setColor(LSK_COLOR);
     }
-    this->addChild(sprite, 1000, itemTag);
+    this->addChild(sprite, 1000, EnemyTagItem);
   }
-}
-
-CCSprite* Enemy::createFrameSprite() {
-  stringstream ss;
-  ss << "Image/Enemy/frames/w_" << _imageName << 0 << ".png";
-  CCSprite* frame = CCSprite::create(FileUtils::getFilePath(ss.str().c_str()).c_str());
-  CCAnimation* animation = CCAnimation::create();
-  CCSize size = this->getTexture()->getContentSize();
-  for (int i = 0; i < _frameCount; ++i) {
-    stringstream frameSS;
-    frameSS << "Image/Enemy/frames/w_" << _imageName << i << ".png";
-    CCSpriteFrame* frame = CCSpriteFrame::create(FileUtils::getFilePath(frameSS.str().c_str()).c_str(), CCRectMake(0, 0, size.width, size.height));
-    animation->addSpriteFrame(frame);
-  }
-  animation->setLoops(-1);
-  animation->setDelayPerUnit(10.0 / 60.0);
-  frame->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
-  return frame;
 }
 
 bool Enemy::performSkill(CharacterManager* characterManager, EnemyManager* enemyManager) {
@@ -315,4 +281,73 @@ void Enemy::setRegister(const char *key, int value) {
 
 bool Enemy::hasRegister(const char *key) {
   return _register->count(key) == 1;
+}
+
+bool Enemy::setAnimationClip(const char *clipName, int frames, bool hasFrame) {
+  stringstream ss;
+  ss << _imageName << "_" << clipName;
+  return this->setAnimatonAndFrame(ss.str().c_str(), frames, hasFrame);
+}
+
+bool Enemy::setDefaultAnimationClip() {
+  return this->setAnimatonAndFrame(_imageName, _frameCount, _hasFrame);
+}
+
+bool Enemy::setAnimatonAndFrame(const char *filePrefix, int frames, bool hasFrame) {
+  this->stopAllActions(); // 全てのアニメーションを停止
+  if (this->getChildByTag(EnemyTagFrame) != NULL) {
+    this->removeChildByTag(EnemyTagFrame, true); // フレームを取る
+  }
+  stringstream ss;
+  ss << "Image/Enemy/" << filePrefix << "0.png";
+  CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath(ss.str().c_str()).c_str());
+  bool success = texture != NULL;
+  this->setTexture(texture);
+  if (success) {
+    CCAnimation* animation = CCAnimation::create();
+    CCSize size = this->getTexture()->getContentSize();
+    for (int i = 0; i < frames; ++i) {
+      stringstream frameSS;
+      frameSS << "Image/Enemy/" << filePrefix << i << ".png";
+      CCSpriteFrame* frame = CCSpriteFrame::create(FileUtils::getFilePath(frameSS.str().c_str()).c_str(), CCRectMake(0, 0, size.width, size.height));
+      animation->addSpriteFrame(frame);
+    }
+    animation->setLoops(-1);
+    animation->setDelayPerUnit(10.0 / 60.0);
+    this->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
+    
+    // もし、フレームを持っているなら、フレームを追加してやる
+    if (hasFrame) {
+      CCSprite* frameSprite = this->createFrameSprite(filePrefix, frames);
+      frameSprite->setAnchorPoint(ccp(0, 0));
+      if (_type == SkillTypePhysical) {
+        frameSprite->setColor(VOX_COLOR);
+      } else if (_type == SkillTypeMagical) {
+        frameSprite->setColor(LSK_COLOR);
+      } else {
+        frameSprite->setColor(ccc3(0, 0, 0));
+      }
+      this->addChild(frameSprite, EnemyLayerFrame);
+    }
+    return true;
+  }
+  return false;
+}
+
+CCSprite* Enemy::createFrameSprite(const char* filePrefix, int frames) {
+  stringstream ss;
+  ss << "Image/Enemy/frames/w_" << filePrefix << 0 << ".png";
+  CCSprite* frame = CCSprite::create(FileUtils::getFilePath(ss.str().c_str()).c_str());
+  CCAnimation* animation = CCAnimation::create();
+  CCSize size = this->getTexture()->getContentSize();
+  for (int i = 0; i < frames; ++i) {
+    stringstream frameSS;
+    frameSS << "Image/Enemy/frames/w_" << filePrefix << i << ".png";
+    CCSpriteFrame* frame = CCSpriteFrame::create(FileUtils::getFilePath(frameSS.str().c_str()).c_str(), CCRectMake(0, 0, size.width, size.height));
+    animation->addSpriteFrame(frame);
+  }
+  animation->setLoops(-1);
+  animation->setDelayPerUnit(10.0 / 60.0);
+  frame->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
+  return frame;
 }

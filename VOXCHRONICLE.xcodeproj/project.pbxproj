@@ -38,6 +38,8 @@
 		073B4C6D162168BA003E0CC8 /* geek.lua in Resources */ = {isa = PBXBuildFile; fileRef = 073B4C6C162168BA003E0CC8 /* geek.lua */; };
 		073B4CAB1621C185003E0CC8 /* ginet.lua in Resources */ = {isa = PBXBuildFile; fileRef = 073B4CAA1621C185003E0CC8 /* ginet.lua */; };
 		073B4CAD1621C199003E0CC8 /* ginet2.lua in Resources */ = {isa = PBXBuildFile; fileRef = 073B4CAC1621C198003E0CC8 /* ginet2.lua */; };
+		0741FAF41692C27E00543674 /* knight_sword0.png in Resources */ = {isa = PBXBuildFile; fileRef = 0741FAF31692C27E00543674 /* knight_sword0.png */; };
+		0741FAF61692C29100543674 /* w_knight_sword0.png in Resources */ = {isa = PBXBuildFile; fileRef = 0741FAF51692C29100543674 /* w_knight_sword0.png */; };
 		07425E28167FDDEB001134D0 /* hp_numbers.png in Resources */ = {isa = PBXBuildFile; fileRef = 07425E27167FDDEB001134D0 /* hp_numbers.png */; };
 		07425E2B167FDF6A001134D0 /* slash.png in Resources */ = {isa = PBXBuildFile; fileRef = 07425E2A167FDF6A001134D0 /* slash.png */; };
 		07425E2E167FEADA001134D0 /* mp_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 07425E2C167FEADA001134D0 /* mp_off.png */; };
@@ -604,6 +606,8 @@
 		073B4C6C162168BA003E0CC8 /* geek.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = geek.lua; sourceTree = "<group>"; };
 		073B4CAA1621C185003E0CC8 /* ginet.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ginet.lua; sourceTree = "<group>"; };
 		073B4CAC1621C198003E0CC8 /* ginet2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ginet2.lua; sourceTree = "<group>"; };
+		0741FAF31692C27E00543674 /* knight_sword0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = knight_sword0.png; path = Resources/Image/Enemy/knight_sword0.png; sourceTree = "<group>"; };
+		0741FAF51692C29100543674 /* w_knight_sword0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = w_knight_sword0.png; path = Resources/Image/Enemy/frames/w_knight_sword0.png; sourceTree = "<group>"; };
 		07425E27167FDDEB001134D0 /* hp_numbers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hp_numbers.png; sourceTree = "<group>"; };
 		07425E2A167FDF6A001134D0 /* slash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slash.png; sourceTree = "<group>"; };
 		07425E2C167FEADA001134D0 /* mp_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mp_off.png; sourceTree = "<group>"; };
@@ -2868,6 +2872,7 @@
 				07660CC31690D96D0092104F /* w_knight1.png */,
 				07660CC41690D96D0092104F /* w_knight2.png */,
 				07660CC51690D96D0092104F /* w_knight3.png */,
+				0741FAF51692C29100543674 /* w_knight_sword0.png */,
 				07C61F5C1690483D0010B6ED /* w_leaf0.png */,
 				07C61F5D1690483D0010B6ED /* w_leaf1.png */,
 				07C61F5E1690483D0010B6ED /* w_leaf2.png */,
@@ -2897,6 +2902,7 @@
 				07660CB91690D90F0092104F /* knight1.png */,
 				07660CBA1690D90F0092104F /* knight2.png */,
 				07660CBB1690D90F0092104F /* knight3.png */,
+				0741FAF31692C27E00543674 /* knight_sword0.png */,
 				07B4C396168EC0D60074A905 /* typhoon0.png */,
 				07B4C397168EC0D60074A905 /* typhoon1.png */,
 				07B4C398168EC0D60074A905 /* typhoon2.png */,
@@ -3444,6 +3450,8 @@
 				07F470811691B4DF0062975F /* iron0.png in Resources */,
 				07F470831691B4FD0062975F /* iron.lua in Resources */,
 				07DCD6871692953500FBBC3A /* sword.lua in Resources */,
+				0741FAF41692C27E00543674 /* knight_sword0.png in Resources */,
+				0741FAF61692C29100543674 /* w_knight_sword0.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

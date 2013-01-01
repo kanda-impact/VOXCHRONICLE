@@ -6,13 +6,13 @@ EnemySkill = {
     local turn = user:getRegister(key, 0) -- 溜めているターンを取得
     if turn == 0 then
       -- 溜め初回ターンの時
-      -- user:setAnimationClip("sword") -- グラを変更する
+      user:setAnimationClip("sword", 1, true) -- グラを変更する
       user:setRegister(key, turn + 1)
     elseif turn == 2 then
       -- 溜めターンが2ターンに到達したら溜め攻撃発動
       characterManager:damage(5) -- ダメージを与える
       user:setRegister(key, 0) -- 溜めターンをリセット
-      -- user:setAnimationClip("walk") -- グラを元に戻す
+      user:setDefaultAnimationClip() -- グラを元に戻す
     else
       user:setRegister(key, turn + 1) -- ターンを+1する
     end
