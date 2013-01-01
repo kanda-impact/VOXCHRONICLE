@@ -162,12 +162,9 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
   }
   if (_state == VCStateIntro) {
     int maxIntroCount = _musicSet->getIntroCount();
-    if (_introCount == maxIntroCount) { // イントロが終わったとき
+    if (_introCount == maxIntroCount - 1) { // イントロが終わったとき
       _controller->setEnable(true);
       _state = VCStateMain;
-      music->pushTrack(_musicSet->getPrefixedMusicName("wait.mp3").c_str(), 0);
-      music->pushTrack(_musicSet->getPrefixedMusicName("counter0.mp3").c_str(), 1);
-      music->pushTrack(_musicSet->getPrefixedMusicName("drum0.mp3").c_str(), 2);
     }
   } else if (_state == VCStateFinish) {
     int maxFinishCount = _musicSet->getFinishCount();
