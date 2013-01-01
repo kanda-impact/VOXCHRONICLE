@@ -194,7 +194,7 @@ DamageType CharacterManager::damage(int damage) {
     _hp -= damage;
     if (_hp <= 0) { // 死亡時
       _hp = 0;
-      return DamageTypeDeath;
+      damageType = DamageTypeDeath;
     }
   }
   DamageInfo info;

@@ -61,7 +61,6 @@ void MusicSet::preloadAllTracks() {
     string("counter0.mp3"),
     string("counter1.mp3"),
     string("counter2.mp3"),
-    string("counter3.mp3"),
     string("drum0.mp3"),
     string("drum1.mp3"),
     string("drum2.mp3"),
@@ -75,8 +74,6 @@ void MusicSet::preloadAllTracks() {
     string("impact2.mp3"),
     string("intro0.mp3"),
     string("intro1.mp3"),
-    string("intro2.mp3"),
-    string("intro3.mp3"),
     string("lskbow0.mp3"),
     string("lskchange0.mp3"),
     string("lskcure0.mp3"),
@@ -104,7 +101,7 @@ void MusicSet::preloadAllTracks() {
     string("voxslash0.mp3"),
     string("wait.mp3")
   };
-  for (int i = 0; i < 43; ++i) {
+  for (int i = 0; i < 41; ++i) {
     string path = this->getPrefixedMusicName(musics[i].c_str());
     TrackCache::sharedCache()->addTrack(path.c_str(), 0);
     TrackCache::sharedCache()->addTrack(path.c_str(), 1);
