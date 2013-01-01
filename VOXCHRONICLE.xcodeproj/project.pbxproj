@@ -192,6 +192,53 @@
 		079487951616D8C5004ABCF5 /* knockback.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079487941616D8C5004ABCF5 /* knockback.lua */; };
 		0794879C1616EC7E004ABCF5 /* tension.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0794879B1616EC7E004ABCF5 /* tension.lua */; };
 		07A1F4D51693161600C4329F /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A1F4D41693161600C4329F /* libTestFlight.a */; };
+		07A1F506169318DA00C4329F /* volca_counter0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4D8169318DA00C4329F /* volca_counter0.mp3 */; };
+		07A1F507169318DA00C4329F /* volca_counter1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4D9169318DA00C4329F /* volca_counter1.mp3 */; };
+		07A1F508169318DA00C4329F /* volca_counter2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4DA169318DA00C4329F /* volca_counter2.mp3 */; };
+		07A1F509169318DA00C4329F /* volca_counter3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4DB169318DA00C4329F /* volca_counter3.mp3 */; };
+		07A1F50A169318DA00C4329F /* volca_drum0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4DC169318DA00C4329F /* volca_drum0.mp3 */; };
+		07A1F50B169318DA00C4329F /* volca_drum1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4DD169318DA00C4329F /* volca_drum1.mp3 */; };
+		07A1F50C169318DA00C4329F /* volca_drum2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4DE169318DA00C4329F /* volca_drum2.mp3 */; };
+		07A1F50D169318DA00C4329F /* volca_drum3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4DF169318DA00C4329F /* volca_drum3.mp3 */; };
+		07A1F50E169318DA00C4329F /* volca_impact0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4E0169318DA00C4329F /* volca_impact0.mp3 */; };
+		07A1F50F169318DA00C4329F /* volca_impact1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4E1169318DA00C4329F /* volca_impact1.mp3 */; };
+		07A1F510169318DA00C4329F /* volca_impact2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4E2169318DA00C4329F /* volca_impact2.mp3 */; };
+		07A1F511169318DA00C4329F /* volca_impact3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4E3169318DA00C4329F /* volca_impact3.mp3 */; };
+		07A1F512169318DA00C4329F /* volca_intro0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4E4169318DA00C4329F /* volca_intro0.mp3 */; };
+		07A1F513169318DA00C4329F /* volca_intro1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4E5169318DA00C4329F /* volca_intro1.mp3 */; };
+		07A1F514169318DA00C4329F /* volca_lskbow0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4E6169318DA00C4329F /* volca_lskbow0.mp3 */; };
+		07A1F515169318DA00C4329F /* volca_lskchange0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4E7169318DA00C4329F /* volca_lskchange0.mp3 */; };
+		07A1F516169318DA00C4329F /* volca_lskcure0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4E8169318DA00C4329F /* volca_lskcure0.mp3 */; };
+		07A1F517169318DA00C4329F /* volca_lskmagic0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4E9169318DA00C4329F /* volca_lskmagic0.mp3 */; };
+		07A1F518169318DA00C4329F /* volca_lskmagic1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4EA169318DA00C4329F /* volca_lskmagic1.mp3 */; };
+		07A1F519169318DA00C4329F /* volca_lskmagic2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4EB169318DA00C4329F /* volca_lskmagic2.mp3 */; };
+		07A1F51A169318DA00C4329F /* volca_lskmagic3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4EC169318DA00C4329F /* volca_lskmagic3.mp3 */; };
+		07A1F51B169318DA00C4329F /* volca_lskrun0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4ED169318DA00C4329F /* volca_lskrun0.mp3 */; };
+		07A1F51C169318DA00C4329F /* volca_lskshield0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4EE169318DA00C4329F /* volca_lskshield0.mp3 */; };
+		07A1F51D169318DA00C4329F /* volca_lsktension0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4EF169318DA00C4329F /* volca_lsktension0.mp3 */; };
+		07A1F51E169318DA00C4329F /* volca_lsktension1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4F0169318DA00C4329F /* volca_lsktension1.mp3 */; };
+		07A1F51F169318DA00C4329F /* volca_lsktension2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4F1169318DA00C4329F /* volca_lsktension2.mp3 */; };
+		07A1F520169318DA00C4329F /* volca_lsktension3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4F2169318DA00C4329F /* volca_lsktension3.mp3 */; };
+		07A1F521169318DA00C4329F /* volca_lskthunder0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4F3169318DA00C4329F /* volca_lskthunder0.mp3 */; };
+		07A1F522169318DA00C4329F /* volca_lskwait0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4F4169318DA00C4329F /* volca_lskwait0.mp3 */; };
+		07A1F523169318DA00C4329F /* volca_miss0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4F5169318DA00C4329F /* volca_miss0.mp3 */; };
+		07A1F524169318DA00C4329F /* volca_silent.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4F6169318DA00C4329F /* volca_silent.mp3 */; };
+		07A1F525169318DA00C4329F /* volca_voxattack0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4F7169318DA00C4329F /* volca_voxattack0.mp3 */; };
+		07A1F526169318DA00C4329F /* volca_voxattack1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4F8169318DA00C4329F /* volca_voxattack1.mp3 */; };
+		07A1F527169318DA00C4329F /* volca_voxattack2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4F9169318DA00C4329F /* volca_voxattack2.mp3 */; };
+		07A1F528169318DA00C4329F /* volca_voxattack3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4FA169318DA00C4329F /* volca_voxattack3.mp3 */; };
+		07A1F529169318DA00C4329F /* volca_voxchange0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4FB169318DA00C4329F /* volca_voxchange0.mp3 */; };
+		07A1F52A169318DA00C4329F /* volca_voxcharge0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4FC169318DA00C4329F /* volca_voxcharge0.mp3 */; };
+		07A1F52B169318DA00C4329F /* volca_voxknockback0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4FD169318DA00C4329F /* volca_voxknockback0.mp3 */; };
+		07A1F52C169318DA00C4329F /* volca_voxrun0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4FE169318DA00C4329F /* volca_voxrun0.mp3 */; };
+		07A1F52D169318DA00C4329F /* volca_voxshield0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4FF169318DA00C4329F /* volca_voxshield0.mp3 */; };
+		07A1F52E169318DA00C4329F /* volca_voxslash0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F500169318DA00C4329F /* volca_voxslash0.mp3 */; };
+		07A1F52F169318DA00C4329F /* volca_voxtension0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F501169318DA00C4329F /* volca_voxtension0.mp3 */; };
+		07A1F530169318DA00C4329F /* volca_voxtension1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F502169318DA00C4329F /* volca_voxtension1.mp3 */; };
+		07A1F531169318DA00C4329F /* volca_voxtension2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F503169318DA00C4329F /* volca_voxtension2.mp3 */; };
+		07A1F532169318DA00C4329F /* volca_voxtension3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F504169318DA00C4329F /* volca_voxtension3.mp3 */; };
+		07A1F533169318DA00C4329F /* volca_voxwait0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F505169318DA00C4329F /* volca_voxwait0.mp3 */; };
+		07A1F535169319B300C4329F /* volca.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F534169319B300C4329F /* volca.lua */; };
 		07A8E9F316320DBC00E007C9 /* MessageWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */; };
 		07A8E9F6163302DF00E007C9 /* damage_number.png in Resources */ = {isa = PBXBuildFile; fileRef = 07A8E9F5163302DF00E007C9 /* damage_number.png */; };
 		07B4C39A168EC0D60074A905 /* leaf0.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C392168EC0D60074A905 /* leaf0.png */; };
@@ -772,6 +819,53 @@
 		0794879B1616EC7E004ABCF5 /* tension.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tension.lua; sourceTree = "<group>"; };
 		07A1F4D41693161600C4329F /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTestFlight.a; path = VOXCHRONICLE/ios/libTestFlight.a; sourceTree = "<group>"; };
 		07A1F4D61693162500C4329F /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestFlight.h; path = ios/TestFlight.h; sourceTree = "<group>"; };
+		07A1F4D8169318DA00C4329F /* volca_counter0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_counter0.mp3; sourceTree = "<group>"; };
+		07A1F4D9169318DA00C4329F /* volca_counter1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_counter1.mp3; sourceTree = "<group>"; };
+		07A1F4DA169318DA00C4329F /* volca_counter2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_counter2.mp3; sourceTree = "<group>"; };
+		07A1F4DB169318DA00C4329F /* volca_counter3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_counter3.mp3; sourceTree = "<group>"; };
+		07A1F4DC169318DA00C4329F /* volca_drum0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_drum0.mp3; sourceTree = "<group>"; };
+		07A1F4DD169318DA00C4329F /* volca_drum1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_drum1.mp3; sourceTree = "<group>"; };
+		07A1F4DE169318DA00C4329F /* volca_drum2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_drum2.mp3; sourceTree = "<group>"; };
+		07A1F4DF169318DA00C4329F /* volca_drum3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_drum3.mp3; sourceTree = "<group>"; };
+		07A1F4E0169318DA00C4329F /* volca_impact0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_impact0.mp3; sourceTree = "<group>"; };
+		07A1F4E1169318DA00C4329F /* volca_impact1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_impact1.mp3; sourceTree = "<group>"; };
+		07A1F4E2169318DA00C4329F /* volca_impact2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_impact2.mp3; sourceTree = "<group>"; };
+		07A1F4E3169318DA00C4329F /* volca_impact3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_impact3.mp3; sourceTree = "<group>"; };
+		07A1F4E4169318DA00C4329F /* volca_intro0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_intro0.mp3; sourceTree = "<group>"; };
+		07A1F4E5169318DA00C4329F /* volca_intro1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_intro1.mp3; sourceTree = "<group>"; };
+		07A1F4E6169318DA00C4329F /* volca_lskbow0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_lskbow0.mp3; sourceTree = "<group>"; };
+		07A1F4E7169318DA00C4329F /* volca_lskchange0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_lskchange0.mp3; sourceTree = "<group>"; };
+		07A1F4E8169318DA00C4329F /* volca_lskcure0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_lskcure0.mp3; sourceTree = "<group>"; };
+		07A1F4E9169318DA00C4329F /* volca_lskmagic0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_lskmagic0.mp3; sourceTree = "<group>"; };
+		07A1F4EA169318DA00C4329F /* volca_lskmagic1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_lskmagic1.mp3; sourceTree = "<group>"; };
+		07A1F4EB169318DA00C4329F /* volca_lskmagic2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_lskmagic2.mp3; sourceTree = "<group>"; };
+		07A1F4EC169318DA00C4329F /* volca_lskmagic3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_lskmagic3.mp3; sourceTree = "<group>"; };
+		07A1F4ED169318DA00C4329F /* volca_lskrun0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_lskrun0.mp3; sourceTree = "<group>"; };
+		07A1F4EE169318DA00C4329F /* volca_lskshield0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_lskshield0.mp3; sourceTree = "<group>"; };
+		07A1F4EF169318DA00C4329F /* volca_lsktension0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_lsktension0.mp3; sourceTree = "<group>"; };
+		07A1F4F0169318DA00C4329F /* volca_lsktension1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_lsktension1.mp3; sourceTree = "<group>"; };
+		07A1F4F1169318DA00C4329F /* volca_lsktension2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_lsktension2.mp3; sourceTree = "<group>"; };
+		07A1F4F2169318DA00C4329F /* volca_lsktension3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_lsktension3.mp3; sourceTree = "<group>"; };
+		07A1F4F3169318DA00C4329F /* volca_lskthunder0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_lskthunder0.mp3; sourceTree = "<group>"; };
+		07A1F4F4169318DA00C4329F /* volca_lskwait0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_lskwait0.mp3; sourceTree = "<group>"; };
+		07A1F4F5169318DA00C4329F /* volca_miss0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_miss0.mp3; sourceTree = "<group>"; };
+		07A1F4F6169318DA00C4329F /* volca_silent.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_silent.mp3; sourceTree = "<group>"; };
+		07A1F4F7169318DA00C4329F /* volca_voxattack0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxattack0.mp3; sourceTree = "<group>"; };
+		07A1F4F8169318DA00C4329F /* volca_voxattack1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxattack1.mp3; sourceTree = "<group>"; };
+		07A1F4F9169318DA00C4329F /* volca_voxattack2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxattack2.mp3; sourceTree = "<group>"; };
+		07A1F4FA169318DA00C4329F /* volca_voxattack3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxattack3.mp3; sourceTree = "<group>"; };
+		07A1F4FB169318DA00C4329F /* volca_voxchange0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxchange0.mp3; sourceTree = "<group>"; };
+		07A1F4FC169318DA00C4329F /* volca_voxcharge0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxcharge0.mp3; sourceTree = "<group>"; };
+		07A1F4FD169318DA00C4329F /* volca_voxknockback0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxknockback0.mp3; sourceTree = "<group>"; };
+		07A1F4FE169318DA00C4329F /* volca_voxrun0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxrun0.mp3; sourceTree = "<group>"; };
+		07A1F4FF169318DA00C4329F /* volca_voxshield0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxshield0.mp3; sourceTree = "<group>"; };
+		07A1F500169318DA00C4329F /* volca_voxslash0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxslash0.mp3; sourceTree = "<group>"; };
+		07A1F501169318DA00C4329F /* volca_voxtension0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxtension0.mp3; sourceTree = "<group>"; };
+		07A1F502169318DA00C4329F /* volca_voxtension1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxtension1.mp3; sourceTree = "<group>"; };
+		07A1F503169318DA00C4329F /* volca_voxtension2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxtension2.mp3; sourceTree = "<group>"; };
+		07A1F504169318DA00C4329F /* volca_voxtension3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxtension3.mp3; sourceTree = "<group>"; };
+		07A1F505169318DA00C4329F /* volca_voxwait0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxwait0.mp3; sourceTree = "<group>"; };
+		07A1F534169319B300C4329F /* volca.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = volca.lua; path = musics/volca.lua; sourceTree = "<group>"; };
 		07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageWindow.cpp; path = Classes/UI/MessageWindow.cpp; sourceTree = "<group>"; };
 		07A8E9F5163302DF00E007C9 /* damage_number.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = damage_number.png; path = Resources/Image/Main/UI/damage_number.png; sourceTree = "<group>"; };
 		07B4C392168EC0D60074A905 /* leaf0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leaf0.png; path = Resources/Image/Enemy/leaf0.png; sourceTree = "<group>"; };
@@ -1676,6 +1770,7 @@
 			children = (
 				07660C4D1690980B0092104F /* dub.lua */,
 				07660C4F169098170092104F /* boss.lua */,
+				07A1F534169319B300C4329F /* volca.lua */,
 			);
 			name = musics;
 			sourceTree = "<group>";
@@ -1872,6 +1967,60 @@
 				0791587215EBB4BB0083D348 /* iTunesArtwork */,
 			);
 			name = ios;
+			sourceTree = "<group>";
+		};
+		07A1F4D7169318DA00C4329F /* volca */ = {
+			isa = PBXGroup;
+			children = (
+				07A1F4D8169318DA00C4329F /* volca_counter0.mp3 */,
+				07A1F4D9169318DA00C4329F /* volca_counter1.mp3 */,
+				07A1F4DA169318DA00C4329F /* volca_counter2.mp3 */,
+				07A1F4DB169318DA00C4329F /* volca_counter3.mp3 */,
+				07A1F4DC169318DA00C4329F /* volca_drum0.mp3 */,
+				07A1F4DD169318DA00C4329F /* volca_drum1.mp3 */,
+				07A1F4DE169318DA00C4329F /* volca_drum2.mp3 */,
+				07A1F4DF169318DA00C4329F /* volca_drum3.mp3 */,
+				07A1F4E0169318DA00C4329F /* volca_impact0.mp3 */,
+				07A1F4E1169318DA00C4329F /* volca_impact1.mp3 */,
+				07A1F4E2169318DA00C4329F /* volca_impact2.mp3 */,
+				07A1F4E3169318DA00C4329F /* volca_impact3.mp3 */,
+				07A1F4E4169318DA00C4329F /* volca_intro0.mp3 */,
+				07A1F4E5169318DA00C4329F /* volca_intro1.mp3 */,
+				07A1F4E6169318DA00C4329F /* volca_lskbow0.mp3 */,
+				07A1F4E7169318DA00C4329F /* volca_lskchange0.mp3 */,
+				07A1F4E8169318DA00C4329F /* volca_lskcure0.mp3 */,
+				07A1F4E9169318DA00C4329F /* volca_lskmagic0.mp3 */,
+				07A1F4EA169318DA00C4329F /* volca_lskmagic1.mp3 */,
+				07A1F4EB169318DA00C4329F /* volca_lskmagic2.mp3 */,
+				07A1F4EC169318DA00C4329F /* volca_lskmagic3.mp3 */,
+				07A1F4ED169318DA00C4329F /* volca_lskrun0.mp3 */,
+				07A1F4EE169318DA00C4329F /* volca_lskshield0.mp3 */,
+				07A1F4EF169318DA00C4329F /* volca_lsktension0.mp3 */,
+				07A1F4F0169318DA00C4329F /* volca_lsktension1.mp3 */,
+				07A1F4F1169318DA00C4329F /* volca_lsktension2.mp3 */,
+				07A1F4F2169318DA00C4329F /* volca_lsktension3.mp3 */,
+				07A1F4F3169318DA00C4329F /* volca_lskthunder0.mp3 */,
+				07A1F4F4169318DA00C4329F /* volca_lskwait0.mp3 */,
+				07A1F4F5169318DA00C4329F /* volca_miss0.mp3 */,
+				07A1F4F6169318DA00C4329F /* volca_silent.mp3 */,
+				07A1F4F7169318DA00C4329F /* volca_voxattack0.mp3 */,
+				07A1F4F8169318DA00C4329F /* volca_voxattack1.mp3 */,
+				07A1F4F9169318DA00C4329F /* volca_voxattack2.mp3 */,
+				07A1F4FA169318DA00C4329F /* volca_voxattack3.mp3 */,
+				07A1F4FB169318DA00C4329F /* volca_voxchange0.mp3 */,
+				07A1F4FC169318DA00C4329F /* volca_voxcharge0.mp3 */,
+				07A1F4FD169318DA00C4329F /* volca_voxknockback0.mp3 */,
+				07A1F4FE169318DA00C4329F /* volca_voxrun0.mp3 */,
+				07A1F4FF169318DA00C4329F /* volca_voxshield0.mp3 */,
+				07A1F500169318DA00C4329F /* volca_voxslash0.mp3 */,
+				07A1F501169318DA00C4329F /* volca_voxtension0.mp3 */,
+				07A1F502169318DA00C4329F /* volca_voxtension1.mp3 */,
+				07A1F503169318DA00C4329F /* volca_voxtension2.mp3 */,
+				07A1F504169318DA00C4329F /* volca_voxtension3.mp3 */,
+				07A1F505169318DA00C4329F /* volca_voxwait0.mp3 */,
+			);
+			name = volca;
+			path = Resources/Music/volca;
 			sourceTree = "<group>";
 		};
 		07AE143015F043520045E8F3 /* dub */ = {
@@ -2952,6 +3101,7 @@
 		07D873E215ED1200009CC446 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				07A1F4D7169318DA00C4329F /* volca */,
 				07660C551690A9660092104F /* boss */,
 				07E1350C1621812F00CCF72E /* general */,
 				07AE143015F043520045E8F3 /* dub */,
@@ -3466,6 +3616,53 @@
 				0741FB0A1692FDFE00543674 /* logo.png in Resources */,
 				0741FB0B1692FDFE00543674 /* title_background.png in Resources */,
 				0741FB0C1692FDFE00543674 /* title_start.png in Resources */,
+				07A1F506169318DA00C4329F /* volca_counter0.mp3 in Resources */,
+				07A1F507169318DA00C4329F /* volca_counter1.mp3 in Resources */,
+				07A1F508169318DA00C4329F /* volca_counter2.mp3 in Resources */,
+				07A1F509169318DA00C4329F /* volca_counter3.mp3 in Resources */,
+				07A1F50A169318DA00C4329F /* volca_drum0.mp3 in Resources */,
+				07A1F50B169318DA00C4329F /* volca_drum1.mp3 in Resources */,
+				07A1F50C169318DA00C4329F /* volca_drum2.mp3 in Resources */,
+				07A1F50D169318DA00C4329F /* volca_drum3.mp3 in Resources */,
+				07A1F50E169318DA00C4329F /* volca_impact0.mp3 in Resources */,
+				07A1F50F169318DA00C4329F /* volca_impact1.mp3 in Resources */,
+				07A1F510169318DA00C4329F /* volca_impact2.mp3 in Resources */,
+				07A1F511169318DA00C4329F /* volca_impact3.mp3 in Resources */,
+				07A1F512169318DA00C4329F /* volca_intro0.mp3 in Resources */,
+				07A1F513169318DA00C4329F /* volca_intro1.mp3 in Resources */,
+				07A1F514169318DA00C4329F /* volca_lskbow0.mp3 in Resources */,
+				07A1F515169318DA00C4329F /* volca_lskchange0.mp3 in Resources */,
+				07A1F516169318DA00C4329F /* volca_lskcure0.mp3 in Resources */,
+				07A1F517169318DA00C4329F /* volca_lskmagic0.mp3 in Resources */,
+				07A1F518169318DA00C4329F /* volca_lskmagic1.mp3 in Resources */,
+				07A1F519169318DA00C4329F /* volca_lskmagic2.mp3 in Resources */,
+				07A1F51A169318DA00C4329F /* volca_lskmagic3.mp3 in Resources */,
+				07A1F51B169318DA00C4329F /* volca_lskrun0.mp3 in Resources */,
+				07A1F51C169318DA00C4329F /* volca_lskshield0.mp3 in Resources */,
+				07A1F51D169318DA00C4329F /* volca_lsktension0.mp3 in Resources */,
+				07A1F51E169318DA00C4329F /* volca_lsktension1.mp3 in Resources */,
+				07A1F51F169318DA00C4329F /* volca_lsktension2.mp3 in Resources */,
+				07A1F520169318DA00C4329F /* volca_lsktension3.mp3 in Resources */,
+				07A1F521169318DA00C4329F /* volca_lskthunder0.mp3 in Resources */,
+				07A1F522169318DA00C4329F /* volca_lskwait0.mp3 in Resources */,
+				07A1F523169318DA00C4329F /* volca_miss0.mp3 in Resources */,
+				07A1F524169318DA00C4329F /* volca_silent.mp3 in Resources */,
+				07A1F525169318DA00C4329F /* volca_voxattack0.mp3 in Resources */,
+				07A1F526169318DA00C4329F /* volca_voxattack1.mp3 in Resources */,
+				07A1F527169318DA00C4329F /* volca_voxattack2.mp3 in Resources */,
+				07A1F528169318DA00C4329F /* volca_voxattack3.mp3 in Resources */,
+				07A1F529169318DA00C4329F /* volca_voxchange0.mp3 in Resources */,
+				07A1F52A169318DA00C4329F /* volca_voxcharge0.mp3 in Resources */,
+				07A1F52B169318DA00C4329F /* volca_voxknockback0.mp3 in Resources */,
+				07A1F52C169318DA00C4329F /* volca_voxrun0.mp3 in Resources */,
+				07A1F52D169318DA00C4329F /* volca_voxshield0.mp3 in Resources */,
+				07A1F52E169318DA00C4329F /* volca_voxslash0.mp3 in Resources */,
+				07A1F52F169318DA00C4329F /* volca_voxtension0.mp3 in Resources */,
+				07A1F530169318DA00C4329F /* volca_voxtension1.mp3 in Resources */,
+				07A1F531169318DA00C4329F /* volca_voxtension2.mp3 in Resources */,
+				07A1F532169318DA00C4329F /* volca_voxtension3.mp3 in Resources */,
+				07A1F533169318DA00C4329F /* volca_voxwait0.mp3 in Resources */,
+				07A1F535169319B300C4329F /* volca.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

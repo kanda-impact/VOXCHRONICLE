@@ -24,7 +24,8 @@ Music = {
     wait = true,
     shield = true,
     run = true,
-    tension = true
+    tension = true,
+    miss = true
   },
   ignoreDrums = {
   }
