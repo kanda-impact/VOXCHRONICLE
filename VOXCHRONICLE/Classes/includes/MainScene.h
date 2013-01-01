@@ -85,6 +85,10 @@ class MainScene : public CCLayer {
   void pushIntroTracks();
   void pushFinishTracks();
   
+  void startBossBattle();
+  void gotoNextStage();
+  void onFinishTracksCompleted();
+  
  public:
   virtual bool init();
   ~MainScene();

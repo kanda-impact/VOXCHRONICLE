@@ -1,20 +1,13 @@
 Map = {
   name = "テストマップ",
-  wayMusic = "dub",
+  wayMusic = "volca",
   bossMusic = "",
   backgroundImage = "",
   nextMaps = {},
   initialLevel = 11,
   maxLevel = 99,
   getEnemyTable = function(level)
-    if level <=11 then
-      return {slime = 1, leaf = 1, typhoon = 1}
-    elseif level <= 7 then
-      return {geek = 4, ginet = 6, tnt = 2, geek_shield = 1}
-    else
-      return {geek = 2, ginet = 6, tnt = 4, tetufez = 1, geek_shield = 1}
-    end
-    return {}
+    return {slime = 5, leaf = 5, typhoon = 5, geek_shield = 2, tnt = 3, ginet = 2}
   end,
   getEnemyPopRate = function(level)
     if level <=5 then

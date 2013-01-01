@@ -1,6 +1,6 @@
 Map = {
   name = "スクリプトテスト",
-  wayMusic = "dub",
+  wayMusic = "dub"",
   bossMusic = "boss",
   backgroundImage = "",
   nextMaps = {"test"},
