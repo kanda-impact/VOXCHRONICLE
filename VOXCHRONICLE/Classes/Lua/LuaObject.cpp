@@ -32,7 +32,7 @@ LuaObject::LuaObject(const char* scriptName, const char* className) {
 }
 
 void LuaObject::init(const char* scriptName, const char* className) {
-  _engine = CCLuaEngine::create();
+  _engine = boost::shared_ptr<CCLuaEngine>(CCLuaEngine::create());
   string name(scriptName);
   stringstream ss;
   if (!boost::algorithm::iends_with(name, ".lua")) {
@@ -44,10 +44,12 @@ void LuaObject::init(const char* scriptName, const char* className) {
   _engine->addSearchPath(_path.substr(0, _path.find_last_of("/")).c_str());
   _scriptName = name.c_str();
   _className = className;
+  _ccObjectPool = CCArray::create();
+  _ccObjectPool->retain();
 }
 
 LuaObject::~LuaObject() {
-  delete _engine;
+  _ccObjectPool->release();
 }
 
 int LuaObject::getInt(const char *key) {
@@ -125,7 +127,7 @@ CCLuaValueArray* LuaObject::getArray(const char *key) {
 }
 
 CCLuaEngine* LuaObject::getLuaEngine() {
-  return _engine;
+  return _engine.get();
 }
 
 float LuaObject::getFloatFromTable(lua_State* state, int index) {
@@ -272,4 +274,15 @@ void LuaObject::loadTable() {
   if (_className != NULL) {
     lua_getglobal(L, _className);
   }
+}
+
+void LuaObject::pushCCObject(cocos2d::CCObject *object, const char* typeName) {
+  /* 
+   Luaの実行ステートに直接CCObjectを投げ込むと、
+   自分自身を投げ込んだときに巡回参照が起きて泣けるので
+   一度、_ccObjectPoolでretainして
+   実行ステートを消してから、投げ込んだモノをreleaseすれば解決する気がする
+  */
+  _ccObjectPool->addObject(object);
+  _engine->pushCCObject(object, typeName);
 }

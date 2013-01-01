@@ -12,6 +12,7 @@
 #include <iostream>
 #include <string>
 #include "LuaCocos2d.h"
+#include <boost/shared_ptr.hpp>
 
 using namespace std;
 using namespace cocos2d;
@@ -19,13 +20,14 @@ using namespace cocos2d;
 class LuaObject :public CCObject {
  private:
   void init(const char* scriptName, const char* className);
-  CCLuaEngine* _engine;
+  boost::shared_ptr<CCLuaEngine> _engine;
   const char* _className;
   const char* _scriptName;
   std::string _path;
   float getFloatFromTable(lua_State* state, int index);
   void internalLoadSubTableWithKey(string key, lua_State* state, CCLuaValueDict* dict);
   void loadTable();
+  CCArray* _ccObjectPool;
  public:
   LuaObject(const char* scriptName);
   LuaObject(const char* scriptName, const char* className);
@@ -39,6 +41,7 @@ class LuaObject :public CCObject {
   CCLuaValueArray* getArray(const char* key);
   const void* getObject(const char* key);
   CCLuaEngine* getLuaEngine();
+  void pushCCObject(CCObject* object, const char* typeName);
   static CCLuaValueDict* loadLuaTableFromFile(const char* scriptName);
   CCLuaValueDict* recursivelyLoadTable(int index);
   static CCLuaValueArray* luaTableToArray(CCLuaValueDict* dict);

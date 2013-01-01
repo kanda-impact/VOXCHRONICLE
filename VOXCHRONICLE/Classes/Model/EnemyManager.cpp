@@ -98,6 +98,7 @@ CCArray* EnemyManager::getEnemies() {
 
 bool EnemyManager::removeEnemy(Enemy* enemy) {
   if (this->getChildren()->containsObject(enemy)) {
+    _trash->addObject(enemy); // 遅延解法のため、ゴミ箱に追加してpoolさせておく
     this->removeChild(enemy, true);
     return true;
   }
@@ -135,15 +136,15 @@ bool EnemyManager::performLuaFunction(Skill* skill, Enemy* target, CharacterMana
   int table = lua_gettop(L);
   lua_getfield(L, table, "performSkill");
   if (lua_isfunction(L, lua_gettop(L))) {
-    lua->getLuaEngine()->pushCCObject(skill, "Skill");
+    lua->pushCCObject(skill, "Skill");
     if (target) {
-      lua->getLuaEngine()->pushCCObject(target, "Enemy");
+      lua->pushCCObject(target, "Enemy");
       target->retain();
     } else {
       lua->getLuaEngine()->pushNil();
     }
-    lua->getLuaEngine()->pushCCObject(characterManager, "CharacterManager");
-    lua->getLuaEngine()->pushCCObject(this, "EnemyManager");
+    lua->pushCCObject(characterManager, "CharacterManager");
+    lua->pushCCObject(this, "EnemyManager");
     characterManager->retain();
     if (lua_pcall(L, 4, 1, 0)) {
       cout << lua_tostring(L, lua_gettop(L)) << endl;
@@ -245,7 +246,6 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
         } else {
           exp += target->getExp();
         }
-        _trash->addObject(target);
         this->removeEnemy(target);
       }
       int damage = beforeHP - target->getHP();
@@ -346,6 +346,7 @@ void EnemyManager::nextTurn (CharacterManager* characterManager) {
   CCObject* obj = NULL;
   CCARRAY_FOREACH(this->getEnemies(), obj) {
     Enemy* enemy = (Enemy*)obj;
+    if (enemy == NULL) continue;
     if (enemy->getRow() > 0) {
       if (!enemy->performSkill(characterManager, this)) { // 敵の技を実行する
         if (enemy->canMove()) { // 何も実行されなかったら、移動できるか調べる

@@ -168,8 +168,8 @@ void Map::performOnLevel(int level, CharacterManager* characterManager, EnemyMan
   lua_getfield(L, table, "onLevel");
   if (lua_isfunction(L,  lua_gettop(L))) {
     lua_pushinteger(L, level);
-    _lua->getLuaEngine()->pushCCObject(characterManager, "CharacterManager");
-    _lua->getLuaEngine()->pushCCObject(enemyManager, "EnemyManager");
+    _lua->pushCCObject(characterManager, "CharacterManager");
+    _lua->pushCCObject(enemyManager, "EnemyManager");
     if (lua_pcall(L, 3, 0, 0)) {
       cout << lua_tostring(L, lua_gettop(L)) << endl;
     }

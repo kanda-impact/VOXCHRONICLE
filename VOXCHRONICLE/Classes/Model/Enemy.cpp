@@ -281,8 +281,7 @@ bool Enemy::performSkill(CharacterManager* characterManager, EnemyManager* enemy
   lua_getglobal(L, "Enemy");
   lua_getfield(L, lua_gettop(L), "performSkill");
   if (lua_isfunction(L, lua_gettop(L))) {
-    _lua->getLuaEngine()->pushCCObject(this, "Enemy");
-    this->retain();
+    _lua->pushCCObject(this, "Enemy");
     if (lua_pcall(L, 1, 1, 0)) {
       cout << lua_tostring(L, lua_gettop(L)) << endl;
       return false;

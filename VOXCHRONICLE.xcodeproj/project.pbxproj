@@ -2884,8 +2884,8 @@
 		07C6F6D01615DE280084708C /* Enemy */ = {
 			isa = PBXGroup;
 			children = (
-				07F470801691B4DF0062975F /* iron0.png */,
 				07C61F5B169048350010B6ED /* frames */,
+				07F470801691B4DF0062975F /* iron0.png */,
 				07B4C392168EC0D60074A905 /* leaf0.png */,
 				07B4C393168EC0D60074A905 /* leaf1.png */,
 				07B4C394168EC0D60074A905 /* leaf2.png */,
