@@ -36,10 +36,12 @@ CharacterManager::CharacterManager() {
   _hp = _maxHP;
   _mp = _maxMP;
   _drumLevel = 0;
+  _damageInfoQueue = new std::queue<DamageInfo>();
 }
 
 CharacterManager::~CharacterManager() {
   _characters->release();
+  delete _damageInfoQueue;
   if (_lastSkill) _lastSkill->release();
   if (_currentSkill) _currentSkill->release();
 }
@@ -184,15 +186,21 @@ void CharacterManager::setShield(bool s) {
 
 DamageType CharacterManager::damage(int damage) {
   // 属性とか後で考える
-  if (_shield) {
-    return DamageTypeShield;
+  DamageType damageType = DamageTypeHit;
+  if (_shield) { // 盾装備中
+    damageType = DamageTypeShield;
+  } else {
+    _hp -= damage;
+    if (_hp <= 0) { // 死亡時
+      _hp = 0;
+      return DamageTypeDeath;
+    }
   }
-  _hp -= damage;
-  if (_hp <= 0) {
-    _hp = 0;
-    return DamageTypeDeath;
-  }
-  return DamageTypeHit;
+  DamageInfo info;
+  info.damage = damage;
+  info.damageType = damageType;
+  _damageInfoQueue->push(info);
+  return damageType;
 }
 
 int CharacterManager::addHP(int hp) {
@@ -282,4 +290,8 @@ void CharacterManager::setDrumLevel(int l) {
 
 Skill* CharacterManager::getLastSkill() {
   return _lastSkill;
+}
+
+std::queue<DamageInfo>* CharacterManager::getDamageInfoQueue() {
+  return _damageInfoQueue;
 }

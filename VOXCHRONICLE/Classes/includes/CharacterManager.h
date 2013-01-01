@@ -10,6 +10,8 @@
 #define __VOXCHRONICLE__CharacterManager__
 
 #include <iostream>
+#include <queue>
+
 #include "Character.h"
 #include "Skill.h"
 
@@ -38,6 +40,11 @@ typedef enum {
   SkillPerformTypeFailure // スキル失敗
 } SkillPerformType;
 
+typedef struct {
+  int damage;
+  DamageType damageType;
+} DamageInfo;
+
 class CharacterManager :public CCObject {
  private:
   int _maxHP;
@@ -46,16 +53,17 @@ class CharacterManager :public CCObject {
   int _mp;
   int _exp;
   int _drumLevel;
+  int _repeatCount;
+  int _waitTurn;
+  int _tension;
+  int _levelCache;
+  bool _shield;
+  bool _isExpDirty;
+  std::queue<DamageInfo>* _damageInfoQueue;
   Character* _currentCharacter;
   CCArray* _characters;
   Skill* _lastSkill;
   Skill* _currentSkill;
-  int _repeatCount;
-  int _waitTurn;
-  int _tension;
-  bool _shield;
-  int _levelCache;
-  bool _isExpDirty;
   int executeLuaFunction(const char* methodName, int argument);
   int getLevel(int exp);
   int getCurrentCharacterIndex();
@@ -166,6 +174,7 @@ class CharacterManager :public CCObject {
   int getMaxHP();
   int getMaxMP();
   int getDrumLevel();
+  std::queue<DamageInfo>* getDamageInfoQueue();
   
   // setter
   void setLastSkill(Skill* skill);

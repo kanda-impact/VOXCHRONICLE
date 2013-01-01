@@ -142,44 +142,12 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
       Enemy* enemy = (Enemy*)obj;
       if (enemy->getRow() == 0) {
         int damage = floor(0.5 + enemy->getAttack() * _characterManager->getLevelOffsetRate(enemy->getLevel(), _characterManager->getLevel()));
-        DamageType result = _characterManager->damage(damage);
-        // 被ダメージ表示しちゃう
-        CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(damage).c_str(),
-                                                         FileUtils::getFilePath("Image/Main/UI/damage_number.png").c_str(), 50, 100, '0');
-        CCDirector* director = CCDirector::sharedDirector();
-        damageLabel->setPosition(ccp(director->getWinSize().width / 2, 90));
-        this->addChild(damageLabel);
-        damageLabel->setScale(0);
-        damageLabel->runAction(CCSequence::create(CCScaleTo::create(0.1, 0.8),
-                                                  CCDelayTime::create(0.5),
-                                                  CCScaleTo::create(0.2, 0.0),
-                                                  CCCallFuncN::create(damageLabel, callfuncN_selector(MainScene::removeNode)),
-                                                  NULL));
-        if (damage > 0) {
-          // 画面点滅させて音を鳴らす
-          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/damage.mp3").c_str());
-          BlinkLayer* bLayer = new BlinkLayer(ccc4(255, 0, 0, 255));
-          bLayer->autorelease();
-          this->addChild(bLayer);
-          // ついでに画面もゆらしちゃう
-          const float FPS = 60.0;
-          const int shakeRange = 15;
-          CCArray* actions = CCArray::create();
-          for (int i = 0; i < FPS / 2; ++i) {
-            CCMoveTo* move = CCMoveTo::create(1.0 / FPS, ccp(damage * (-shakeRange / 2 + rand() % shakeRange), damage * (-shakeRange / 2 + rand() % shakeRange)));
-            actions->addObject(move);
-          }
-          CCMoveTo* reset = CCMoveTo::create(0, ccp(0, 0));
-          actions->addObject(reset);
-          this->runAction(CCSequence::create(actions));
-        }
-        if (result == DamageTypeDeath) {
-          // 死んだとき
-          this->onGameOver();
-        }
+        _characterManager->damage(damage);
         _enemyManager->removeEnemy(enemy);
       }
     }
+    
+    this->addDamageEffect();
     this->updateFocus();
     this->updateGUI();
   }
@@ -566,4 +534,53 @@ int MainScene::calcDrumScore () {
   int tension = _characterManager->getTension();
   score += tension;
   return min(score, 4);
+}
+
+void MainScene::addDamageEffect() {
+  // 被ダメージに応じてラベルなど表示
+  bool isDead = false;
+  int sumDamage = 0;
+  std::queue<DamageInfo>* queue = _characterManager->getDamageInfoQueue();
+  while (!queue->empty()) { // キューが空になるまで取り出す
+    DamageInfo info = queue->front();
+    queue->pop();
+    int damage = info.damage;
+    DamageType damageType = info.damageType;
+    // 被ダメージ表示しちゃう
+    CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(damage).c_str(),
+                                                     FileUtils::getFilePath("Image/Main/UI/damage_number.png").c_str(), 50, 100, '0');
+    CCDirector* director = CCDirector::sharedDirector();
+    damageLabel->setPosition(ccp(director->getWinSize().width / 2, 90));
+    this->addChild(damageLabel);
+    damageLabel->setScale(0);
+    damageLabel->runAction(CCSequence::create(CCScaleTo::create(0.1, 0.8),
+                                              CCDelayTime::create(0.5),
+                                              CCScaleTo::create(0.2, 0.0),
+                                              CCCallFuncN::create(damageLabel, callfuncN_selector(MainScene::removeNode)),
+                                              NULL));
+    if (damageType == DamageTypeDeath) isDead = true;
+    sumDamage += damage;
+  }
+  // 総ダメージに応じて画面を揺らしてやる
+  if (sumDamage > 0) {
+    // 画面点滅させて音を鳴らす
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/damage.mp3").c_str());
+    BlinkLayer* bLayer = new BlinkLayer(ccc4(255, 0, 0, 255));
+    bLayer->autorelease();
+    this->addChild(bLayer);
+    // ついでに画面もゆらしちゃう
+    const float FPS = 60.0;
+    const int shakeRange = 15;
+    CCArray* actions = CCArray::create();
+    for (int i = 0; i < FPS / 2; ++i) {
+      CCMoveTo* move = CCMoveTo::create(1.0 / FPS, ccp(sumDamage * (-shakeRange / 2 + rand() % shakeRange), sumDamage * (-shakeRange / 2 + rand() % shakeRange)));
+      actions->addObject(move);
+    }
+    CCMoveTo* reset = CCMoveTo::create(0, ccp(0, 0));
+    actions->addObject(reset);
+    this->runAction(CCSequence::create(actions));
+  }
+  if (isDead) { // 死んだとき
+    this->onGameOver();
+  }
 }

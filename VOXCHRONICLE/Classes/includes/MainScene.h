@@ -81,6 +81,7 @@ class MainScene : public CCLayer {
   void removeNode(CCNode *node);
   
   void updateFocus();
+  void addDamageEffect();
   
  public:
   virtual bool init();
