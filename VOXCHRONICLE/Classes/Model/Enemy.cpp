@@ -306,7 +306,11 @@ int Enemy::getRegister(const char *key, int defaultValue) {
 }
 
 void Enemy::setRegister(const char *key, int value) {
-  _register->at(key) = value;
+  if (this->hasRegister(key)) {
+    (*_register)[string(key)] = value;
+  } else {
+    _register->insert(std::pair<string, int>(string(key), value));
+  }
 }
 
 bool Enemy::hasRegister(const char *key) {

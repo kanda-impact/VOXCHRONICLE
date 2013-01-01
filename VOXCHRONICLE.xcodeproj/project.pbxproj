@@ -579,7 +579,7 @@
 		070E4040163CB10400A76BEA /* select_stage.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = select_stage.wav; path = Resources/Music/general/select_stage.wav; sourceTree = "<group>"; };
 		070E4041163CB10400A76BEA /* title.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = title.mp3; path = Resources/Music/general/title.mp3; sourceTree = "<group>"; };
 		070E4046163CB3BE00A76BEA /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gameover.mp3; path = Resources/Music/general/gameover.mp3; sourceTree = "<group>"; };
-		0715C2321690E8F600009479 /* ironball.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ironball.lua; path = enemySkills/ironball.lua; sourceTree = "<group>"; };
+		0715C2321690E8F600009479 /* ironball.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ironball.lua; path = enemySkills/ironball.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		0715C2351690EB3000009479 /* EnemySkill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemySkill.cpp; path = Classes/Model/EnemySkill.cpp; sourceTree = "<group>"; };
 		0731E4C8161766EB006AEF3D /* shield_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield_icon.png; sourceTree = "<group>"; };
 		0731E4CA16176787006AEF3D /* shield.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shield.lua; sourceTree = "<group>"; };
@@ -635,8 +635,8 @@
 		075653A116171AE800C69E27 /* magic_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magic_icon.png; sourceTree = "<group>"; };
 		075653A316171B0E00C69E27 /* change_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = change_icon.png; sourceTree = "<group>"; };
 		075653A516171F2400C69E27 /* change.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = change.lua; sourceTree = "<group>"; };
-		07660C4D1690980B0092104F /* dub.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dub.lua; path = musics/dub.lua; sourceTree = "<group>"; };
-		07660C4F169098170092104F /* boss.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = boss.lua; path = musics/boss.lua; sourceTree = "<group>"; };
+		07660C4D1690980B0092104F /* dub.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dub.lua; path = musics/dub.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		07660C4F169098170092104F /* boss.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = boss.lua; path = musics/boss.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		07660C5116909BF10092104F /* MusicSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MusicSet.cpp; path = Classes/Model/MusicSet.cpp; sourceTree = "<group>"; };
 		07660C561690A9CD0092104F /* dub_finish0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = dub_finish0.mp3; path = Resources/Music/dub/dub_finish0.mp3; sourceTree = "<group>"; };
 		07660C571690A9CD0092104F /* dub_finish1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = dub_finish1.mp3; path = Resources/Music/dub/dub_finish1.mp3; sourceTree = "<group>"; };
@@ -691,7 +691,7 @@
 		07660CB91690D90F0092104F /* knight1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = knight1.png; path = Resources/Image/Enemy/knight1.png; sourceTree = "<group>"; };
 		07660CBA1690D90F0092104F /* knight2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = knight2.png; path = Resources/Image/Enemy/knight2.png; sourceTree = "<group>"; };
 		07660CBB1690D90F0092104F /* knight3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = knight3.png; path = Resources/Image/Enemy/knight3.png; sourceTree = "<group>"; };
-		07660CC01690D9570092104F /* knight.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knight.lua; sourceTree = "<group>"; };
+		07660CC01690D9570092104F /* knight.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knight.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		07660CC21690D96D0092104F /* w_knight0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = w_knight0.png; path = Resources/Image/Enemy/frames/w_knight0.png; sourceTree = "<group>"; };
 		07660CC31690D96D0092104F /* w_knight1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = w_knight1.png; path = Resources/Image/Enemy/frames/w_knight1.png; sourceTree = "<group>"; };
 		07660CC41690D96D0092104F /* w_knight2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = w_knight2.png; path = Resources/Image/Enemy/frames/w_knight2.png; sourceTree = "<group>"; };
@@ -736,7 +736,7 @@
 		077EDE1A16872CBE009B9F6B /* run_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = run_icon.png; sourceTree = "<group>"; };
 		077EDE1E16874935009B9F6B /* touch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = touch.mp3; path = Resources/SE/touch.mp3; sourceTree = "<group>"; };
 		077EDE2016874ADB009B9F6B /* Level10.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Level10.lua; sourceTree = "<group>"; };
-		077EDE2416874B1F009B9F6B /* test_hak.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = test_hak.lua; path = map/test_hak.lua; sourceTree = "<group>"; };
+		077EDE2416874B1F009B9F6B /* test_hak.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = test_hak.lua; path = map/test_hak.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		077EDE2616875914009B9F6B /* slime.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = slime.lua; sourceTree = "<group>"; };
 		077EDE2816875997009B9F6B /* slime0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = slime0.png; path = Resources/Image/Enemy/slime0.png; sourceTree = "<group>"; };
 		077EDE2916875997009B9F6B /* slime1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = slime1.png; path = Resources/Image/Enemy/slime1.png; sourceTree = "<group>"; };
@@ -1414,7 +1414,7 @@
 		07D8745515F01500009CC446 /* OpenALManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OpenALManager.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/OpenALManager.h; sourceTree = "<group>"; };
 		07D8745615F01500009CC446 /* OpenALManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OpenALManager.m; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/OpenALManager.m; sourceTree = "<group>"; };
 		07D8745715F01500009CC446 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/Support/SynthesizeSingleton.h; sourceTree = "<group>"; };
-		07DCD6861692953500FBBC3A /* sword.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sword.lua; path = enemySkills/sword.lua; sourceTree = "<group>"; };
+		07DCD6861692953500FBBC3A /* sword.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sword.lua; path = enemySkills/sword.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		07DCFDA11633461A00341769 /* FileUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileUtils.cpp; sourceTree = "<group>"; };
 		07E134FD162167CB00CCF72E /* MapSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapSelector.cpp; path = Classes/Model/MapSelector.cpp; sourceTree = "<group>"; };
 		07E1350016217A1300CCF72E /* left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = left_arrow.png; path = Resources/Image/Main/UI/left_arrow.png; sourceTree = "<group>"; };
