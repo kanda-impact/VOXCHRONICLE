@@ -50,7 +50,7 @@ Character* CharacterManager::getCurrentCharacter() {
   return _currentCharacter;
 }
 
-string CharacterManager::checkSkillTrackName(Skill* skill, SkillPerformType& performeType) {
+string CharacterManager::checkSkillTrackName(Skill* skill, SkillPerformType& performeType, MusicSet* _musicSet) {
   performeType = SkillPerformTypeNone;
   if (skill) {
     _waitTurn += 1;
@@ -59,7 +59,7 @@ string CharacterManager::checkSkillTrackName(Skill* skill, SkillPerformType& per
       if (_lastSkill && strcmp(_lastSkill->getIdentifier(), skill->getIdentifier())) {
         _repeatCount = 0;
       }
-      if (skill->isCommon()) {
+      if (skill->isCommon() && _musicSet->isCommon(skill->getIdentifier())) {
         // スキルのcommonがfalseのとき、曲名にキャラ名が付かない
         // tension0.wav
         ss << skill->getIdentifier() << _repeatCount;
@@ -78,7 +78,13 @@ string CharacterManager::checkSkillTrackName(Skill* skill, SkillPerformType& per
         return ss.str().c_str();
       } else {
         performeType = SkillPerformTypeFailure;
-        return "miss"; // MP足りてないとき、ミス音を返す
+        if (_musicSet->isCommon("miss")) {
+          return "miss";
+        } else {
+          stringstream ss;
+          ss << _currentCharacter->getIdentifier() << "miss";
+          return ss.str().c_str(); // MP足りてないとき、ミス音を返す
+        }
       }
     } else {
       this->setCurrentSkill(skill);
@@ -91,7 +97,12 @@ string CharacterManager::checkSkillTrackName(Skill* skill, SkillPerformType& per
     _repeatCount = 0;
     this->setLastSkill(skill);
   }
-  return "wait";
+  if (_musicSet->isCommon("wait")) {
+    return "wait";
+  }
+  stringstream ss;
+  ss << _currentCharacter->getIdentifier() << "wait";
+  return ss.str().c_str();
 }
 
 bool CharacterManager::isPerforming() {

@@ -14,6 +14,7 @@
 
 #include "Character.h"
 #include "Skill.h"
+#include "MusicSet.h"
 
 // ダメージタイプ
 typedef enum {
@@ -79,7 +80,7 @@ class CharacterManager :public CCObject {
    @param SkillPerformType& performType SkillPerformTypeを渡します
    @return string スキルファイル名
    */
-  string checkSkillTrackName(Skill* skill, SkillPerformType& performeType);
+  string checkSkillTrackName(Skill* skill, SkillPerformType& performeType, MusicSet* _musicSet);
   
   /**
    現在のターン、スキルを実行中かどうか返します

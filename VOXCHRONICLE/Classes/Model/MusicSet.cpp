@@ -23,12 +23,21 @@ MusicSet::MusicSet(const char* identifier) {
   _composer = new string(_lua->getString("composer"));
   _prefix = new string(_lua->getString("prefix"));
   // ToDo 今は使わないのであとで載せます _common, _ignoreDrums;
+  lua_State* L = _lua->getLuaEngine()->getLuaState();
+  lua_getglobal(L, "Music");
+  lua_getfield(L, lua_gettop(L), "common");
+  _common = _lua->recursivelyLoadTable(lua_gettop(L));
+  lua_getglobal(L, "Music");
+  lua_getfield(L, lua_gettop(L), "ignoreDrums");
+  _ignoreDrums = _lua->recursivelyLoadTable(lua_gettop(L));
 }
 
 MusicSet::~MusicSet() {
   delete _name;
   delete _composer;
   delete _prefix;
+  delete _common;
+  delete _ignoreDrums;
   _lua->release();
 }
 
@@ -40,6 +49,9 @@ string MusicSet::getPrefixedMusicName(const char *musicName) {
 
 bool MusicSet::isCommon(const char *skillName) {
   // 未実装。今は恒久的にtrueを返し続けます
+  if (_common->count(string(skillName)) == 1) {
+    return _common->at(skillName).booleanValue();
+  }
   return true;
 }
 

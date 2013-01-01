@@ -191,7 +191,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     }
     std::stringstream ss;
     SkillPerformType performType = SkillPerformTypeNone;
-    string name = _characterManager->checkSkillTrackName(skill, performType);
+    string name = _characterManager->checkSkillTrackName(skill, performType, _musicSet);
     bool isHit = true; // ヒットしたかどうか
     /* 以下のとき、ヒットしていない
      1. 対象が自分以外の技を使用し、対象の全てについて

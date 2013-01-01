@@ -27,8 +27,8 @@ class MusicSet :public CCObject {
 private:
   int _introCount; // イントロの小節数
   int _finishCount; // フィニッシュの小節数
-  map<const char*, bool> _common; // skillの曲が共通かどうか
-  vector<const char*> _ignoreDrums; // ドラムを無視するトラックのリスト
+  CCLuaValueDict* _common; // skillの曲が共通かどうか
+  CCLuaValueDict* _ignoreDrums; // ドラムを無視するトラックのリスト
   MusicSetType _type; // 曲の種類 道中曲orボス曲
   string* _name; // 曲名
   string* _composer; // 作曲者
