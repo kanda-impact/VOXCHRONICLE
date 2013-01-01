@@ -332,9 +332,11 @@ void MainScene::updateGUI() {
 }
 
 void MainScene::pushIntroTracks() {
+  _controller->setEnable(false);
   string main, counter, drum;
   _music->removeAllNextTracks(); // 次以降の曲を強制的に削除
   int introCount = _musicSet->getIntroCount();
+  _introCount = 0;
   if (introCount == 0) {
     // イントロなしのとき、いきなり曲を鳴らします
     main = _musicSet->getPrefixedMusicName("wait.mp3");
@@ -359,6 +361,7 @@ void MainScene::pushIntroTracks() {
 }
 
 void MainScene::pushFinishTracks() {
+  _controller->setEnable(false);
   int maxFinishCount = _musicSet->getFinishCount();
   
   _music->removeAllNextTracks(); // 次以降の曲を強制的に削除
@@ -566,13 +569,13 @@ void MainScene::changeMap(Map* nextMap) {
   //this->removeChild(_mapSelector, true);
   //_mapSelector->release();
   //_mapSelector = NULL;
-  TrackCache::sharedCache()->purgeAllTracks();
   this->updateGUI();
   _mapTurnCount = 0; // マップカウント0に戻す
   _state = VCStateMain;
   _musicSet = _map->getCurrentMusic(_level); // 音楽セットを切り替える
   TrackCache::sharedCache()->purgeAllTracks(); // キャッシュを削除する
   _musicSet->preloadAllTracks();
+  this->pushIntroTracks();
 }
 
 void MainScene::startBossBattle() {

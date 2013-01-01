@@ -15,7 +15,7 @@ Enemy = {
   type = SkillTypeNormal,
   performSkill = function(self)
     local isCharge = self:getRegister("swordTurn", 0) > 0 -- チャージ中かどうか
-    if self:getRow() <= 4 then -- 最前列にいるとき
+    if self:getRow() < 4 then -- 最前列にいるとき
       if isCharge then -- チャージ中だったら常にswordを返してやる
         return "sword"
       else -- それ以外は乱数によって行動を振り分ける
@@ -28,7 +28,10 @@ Enemy = {
       end
     else -- 最前列にいなかったら
       -- チャージをリセットしてやる（ノックバックなどで飛ばされたとき）
-      self:setRegister("swordTurn", 0)
+      if isCharge then
+        self:setRegister("swordTurn", 0)
+        self:setDefaultAnimationClip()
+      end
     end
     return ""
   end
