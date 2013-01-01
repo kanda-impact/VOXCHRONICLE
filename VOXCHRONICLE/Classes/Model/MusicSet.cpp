@@ -75,6 +75,8 @@ void MusicSet::preloadAllTracks() {
     string("impact2.mp3"),
     string("intro0.mp3"),
     string("intro1.mp3"),
+    string("intro2.mp3"),
+    string("intro3.mp3"),
     string("lskbow0.mp3"),
     string("lskchange0.mp3"),
     string("lskcure0.mp3"),

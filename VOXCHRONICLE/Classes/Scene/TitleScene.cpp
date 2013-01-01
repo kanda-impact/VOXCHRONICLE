@@ -6,6 +6,7 @@
 //
 //
 
+#include <sstream>
 #include "SimpleAudioEngine.h"
 #include "TitleScene.h"
 #include "MainScene.h"
@@ -30,9 +31,14 @@ bool TitleScene::init() {
   this->setTouchEnabled(true);
   CCDirector* director = CCDirector::sharedDirector();
   CCSize winSize = director->getWinSize();
-  CCSprite* title = CCSprite::create(FileUtils::getFilePath("Image/Title/title.png").c_str());
-  title->setPosition(ccp(winSize.width / 2, winSize.height / 2));
-  this->addChild(title);
+  string images[] = {"title_background.png", "logo.png", "title_start.png"};
+  for (int i = 0; i < 3; ++i) {
+    stringstream ss;
+    ss << "Image/Title/" << images[i];
+    CCSprite* sprite = CCSprite::create(FileUtils::getFilePath(ss.str().c_str()).c_str());
+    sprite->setPosition(ccp(winSize.width / 2, winSize.height / 2));
+    this->addChild(sprite);
+  }
   return true;
 }
 
