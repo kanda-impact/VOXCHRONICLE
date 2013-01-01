@@ -363,5 +363,5 @@ void EnemyManager::removeAllEnemiesQueue() {
 void EnemyManager::popEnemyAt(string enemyName, int row, int col) {
   _enemiesQueue->addObject(CCString::create(enemyName));
   Enemy* enemy = this->popEnemy();
-  enemy->setCol(col);
+  enemy->setRowAndCol(row, col);
 }

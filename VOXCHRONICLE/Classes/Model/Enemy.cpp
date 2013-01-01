@@ -177,7 +177,7 @@ int Enemy::getExp() {
   return _exp;
 }
 
-void Enemy::setColAndRow(int col, float row) {
+void Enemy::setRowAndCol(int row, float col) {
   int sx = 200 + 40 * col;
   int sy = 80 + 25 * (MAX_ROW - 1);
   int ex = 30 + 210 * col;
@@ -200,11 +200,11 @@ float Enemy::getCurrentScale(float row) {
 }
 
 void Enemy::setRow(float r) {
-  this->setColAndRow(this->getCol(), r);
+  this->setRowAndCol(r, this->getCol());
 }
 
 void Enemy::setCol(int c) {
-  this->setColAndRow(c, this->getRow());
+  this->setRowAndCol(this->getRow(), c);
 }
 
 int Enemy::getCounter() {
@@ -277,17 +277,17 @@ CCSprite* Enemy::createFrameSprite() {
 }
 
 bool Enemy::performSkill(CharacterManager* characterManager, EnemyManager* enemyManager) {
-  LuaObject* lua = new LuaObject(_scriptPath.c_str(), "Enemy");
-  lua_State* L = lua->getLuaEngine()->getLuaState();
+  lua_State* L = _lua->getLuaEngine()->getLuaState();
+  lua_getglobal(L, "Enemy");
   lua_getfield(L, lua_gettop(L), "performSkill");
   if (lua_isfunction(L, lua_gettop(L))) {
     _lua->getLuaEngine()->pushCCObject(this, "Enemy");
+    this->retain();
     if (lua_pcall(L, 1, 1, 0)) {
       cout << lua_tostring(L, lua_gettop(L)) << endl;
       return false;
     }
     string skillName = lua_tostring(L, lua_gettop(L));
-    _lua->release();
     if (skillName.size() == 0) return false;
     // 技の名前が何か帰ってきたとき、その技を生成して実行してやる
     EnemySkill* skill = new EnemySkill(skillName.c_str());
