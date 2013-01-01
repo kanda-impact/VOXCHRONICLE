@@ -188,6 +188,7 @@ DamageType CharacterManager::damage(int damage) {
   // 属性とか後で考える
   DamageType damageType = DamageTypeHit;
   if (_shield) { // 盾装備中
+    damage = 0;
     damageType = DamageTypeShield;
   } else {
     _hp -= damage;

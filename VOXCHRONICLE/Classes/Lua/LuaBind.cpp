@@ -101,7 +101,7 @@ static int tolua_VC_Enemy_setDefaultAnimationClip(lua_State* tolua_S) {
 
 static int tolua_VC_CharacterManager_setShield(lua_State* tolua_S) {
   CharacterManager* self = (CharacterManager*)tolua_tousertype(tolua_S, 1, 0);
-  bool shield = (bool)tolua_tonumber(tolua_S, 2, 0);
+  bool shield = (bool)tolua_toboolean(tolua_S, 2, 0);
   self->setShield(shield);
   return 0;
 }

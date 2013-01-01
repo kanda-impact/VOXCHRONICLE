@@ -539,6 +539,7 @@ int MainScene::calcDrumScore () {
 void MainScene::addDamageEffect() {
   // 被ダメージに応じてラベルなど表示
   bool isDead = false;
+  bool isShield = false;
   int sumDamage = 0;
   std::queue<DamageInfo>* queue = _characterManager->getDamageInfoQueue();
   while (!queue->empty()) { // キューが空になるまで取り出す
@@ -558,10 +559,17 @@ void MainScene::addDamageEffect() {
                                               CCScaleTo::create(0.2, 0.0),
                                               CCCallFuncN::create(damageLabel, callfuncN_selector(MainScene::removeNode)),
                                               NULL));
-    if (damageType == DamageTypeDeath) isDead = true;
     sumDamage += damage;
+    if (damageType == DamageTypeDeath) {
+      isDead = true;
+      break;
+    } else if (damageType == DamageTypeShield) {
+      isShield = true;
+      break;
+    }
   }
   // 総ダメージに応じて画面を揺らしてやる
+  
   if (sumDamage > 0) {
     // 画面点滅させて音を鳴らす
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/damage.mp3").c_str());
@@ -582,5 +590,7 @@ void MainScene::addDamageEffect() {
   }
   if (isDead) { // 死んだとき
     this->onGameOver();
+  } else if (isShield) { // 盾装備してたとき
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/guard.mp3").c_str());
   }
 }

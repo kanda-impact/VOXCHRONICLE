@@ -9,7 +9,7 @@ EnemySkill = {
       user:setAnimationClip("sword", 1, true) -- グラを変更する
       user:setRegister(key, turn + 1)
     elseif turn == 2 then
-      -- 溜めターンが2ターンに到達したら溜め攻撃発動
+      -- 溜めターンが1ターンに到達したら溜め攻撃発動
       characterManager:damage(5) -- ダメージを与える
       user:setRegister(key, 0) -- 溜めターンをリセット
       user:setDefaultAnimationClip() -- グラを元に戻す
