@@ -1,13 +1,13 @@
 Map = {
   name = "テストマップ",
   wayMusic = "dub",
-  bossMusic = "boss",
+  bossMusic = "",
   backgroundImage = "",
   nextMaps = {},
-  initialLevel = 1,
-  maxLevel = 10,
+  initialLevel = 11,
+  maxLevel = 99,
   getEnemyTable = function(level)
-    if level <=3 then
+    if level <=11 then
       return {slime = 1, leaf = 1, typhoon = 1}
     elseif level <= 7 then
       return {geek = 4, ginet = 6, tnt = 2, geek_shield = 1}

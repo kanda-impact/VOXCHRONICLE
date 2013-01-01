@@ -67,8 +67,6 @@ class MainScene : public CCLayer {
   void trackDidFinishPlaying(Music* music, Track* finishedTrack, Track* nextTrack, int trackNumber);
   
   void updateGUI();
-  void pushIntroTracks();
-  
   void addGameOverButtons();
   void replayButtonPressed(CCObject *sender);
   void titleButtonPressed(CCObject *sender);
@@ -82,6 +80,10 @@ class MainScene : public CCLayer {
   
   void updateFocus();
   void addDamageEffect();
+  void changeMap(Map* nextMap);
+  
+  void pushIntroTracks();
+  void pushFinishTracks();
   
  public:
   virtual bool init();

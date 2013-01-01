@@ -77,12 +77,6 @@ bool MainScene::init() {
   
   TrackCache::sharedCache()->addTrack(FileUtils::getFilePath("Music/general/select_stage.wav"), 0);
   
-  for (int i = 0; i < 3; ++i) {
-    _music->pushTrack(FileUtils::getFilePath(_musicSet->getPrefixedMusicName("silent.mp3").c_str()).c_str(), i);
-  }
-  
-  this->pushIntroTracks();
-  
   _state = VCStateIntro;
   
   _messageWindow = new MessageWindow(FONT_NAME, 64);
@@ -130,6 +124,7 @@ void MainScene::update(float dt) {
 }
 
 void MainScene::onEnterTransitionDidFinish() {
+  this->pushIntroTracks();
   _music->play();
   _statusLayer->setMarkerDuration(_music->getTrack(0)->getDuration() / 4.0f);
 }
@@ -155,9 +150,18 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
 
 void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track *nextTrack, int trackNumber) {
   if (_state == VCStateIntro) {
+    ++_introCount;
+  } else {
+    _introCount = 0;
+  }
+  if (_state == VCStateFinish) {
+    ++_finishCount;
+  } else {
+    _finishCount = 0;
+  }
+  if (_state == VCStateIntro) {
     int maxIntroCount = _musicSet->getIntroCount();
-    if (_introCount == maxIntroCount) {
-      // イントロが終わったとき
+    if (_introCount == maxIntroCount) { // イントロが終わったとき
       _controller->setEnable(true);
       _state = VCStateMain;
       music->pushTrack(_musicSet->getPrefixedMusicName("wait.mp3").c_str(), 0);
@@ -166,13 +170,18 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     }
   } else if (_state == VCStateFinish) {
     int maxFinishCount = _musicSet->getFinishCount();
-    if (_finishCount == maxFinishCount) {
-      // フィニッシュ曲が終わったとき
-      _controller->setEnable(false);
-      _state = VCStateIntro; // イントロに以降
-      _musicSet = _map->getCurrentMusic(_level); // 音楽セットを切り替える
-      TrackCache::sharedCache()->purgeAllTracks(); // キャッシュを削除する
-      this->pushIntroTracks();
+    if (_finishCount == maxFinishCount) { // フィニッシュ曲が終わったとき
+      if (_map->isBossStage() && _level->getLevel() == _map->getMaxLevel()) { // ボスステージで、現在が最高レベルの時
+        _controller->setEnable(false);
+        _state = VCStateIntro; // イントロに以降
+        _musicSet = _map->getCurrentMusic(_level); // 音楽セットを切り替える
+        TrackCache::sharedCache()->purgeAllTracks(); // キャッシュを削除する
+        this->pushIntroTracks();
+      } else if (_level->getLevel() == _map->getMaxLevel() + 1 && _map->getNextMaps() > 0) { // 最高レベルの次の時で、次のマップが存在するとき
+        // マップセレクターは後で実装します
+        CCArray* maps = _map->getNextMaps();
+        this->changeMap((Map*)maps->lastObject()); // マップを強制的に切り替える
+      }
     }
   } else if (_state == VCStateMain) {
     Skill* skill = NULL;
@@ -310,23 +319,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     Track* track = music->pushTrack(_musicSet->getPrefixedMusicName(drumFileStream.str().c_str()).c_str(), 2);
     track->setVolume(0.7);
     
-  } else if (_state == VCStateStageSelect) {
-    // ステージ移行処理
-    Map* nextMap = _mapSelector->getSelectedMap();
-    _map->release();
-    nextMap->retain();
-    _map = nextMap;
-    _level = nextMap->createInitialLevel();
-    this->removeChild(_mapSelector, true);
-    _mapSelector->release();
-    _mapSelector = NULL;
-    TrackCache::sharedCache()->purgeAllTracks();
-    this->pushIntroTracks();
-    this->updateGUI();
-    _mapTurnCount = 0; // マップカウント0に戻す
-    _state = VCStateMain;
   }
-  
 }
 
 void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track *nextTrack, int trackNumber) {
@@ -334,16 +327,6 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
   // ターンカウントを進める
   ++_turnCount;
   ++_mapTurnCount;
-  if (_state == VCStateIntro) {
-    ++_introCount;
-  } else {
-    _introCount = 0;
-  }
-  if (_state == VCStateFinish) {
-    ++_finishCount;
-  } else {
-    _finishCount = 0;
-  }
   // このターンにテンション使ってないときreset
   if (_characterManager->getLastSkill() != NULL && strcmp(_characterManager->getLastSkill()->getIdentifier(), "tension")) {
     _characterManager->resetTension();
@@ -390,6 +373,21 @@ void MainScene::pushIntroTracks() {
   _music->getTrack(2)->setVolume(0.7);
 }
 
+void MainScene::pushFinishTracks() {
+  int maxFinishCount = _musicSet->getFinishCount();
+  
+  _music->removeAllNextTracks(); // 次以降の曲を強制的に削除
+  _finishCount = 0;
+  // フィニッシュ曲をpushしまくる
+  for (int i = 0 ; i < maxFinishCount; ++i) {
+    stringstream finish;
+    finish << "finish" << i << ".mp3";
+    _music->pushTrack(_musicSet->getPrefixedMusicName(finish.str().c_str()).c_str(), 0);
+    _music->pushTrack(_musicSet->getPrefixedMusicName("silent.mp3").c_str(), 1);
+    _music->pushTrack(_musicSet->getPrefixedMusicName("silent.mp3").c_str(), 2);
+  }
+}
+
 bool MainScene::checkLevelUp() {
   int currentLevel = _characterManager->getLevel();
   if (currentLevel != _preLevel) { // レベルが上がったとき
@@ -407,34 +405,11 @@ bool MainScene::checkLevelUp() {
       // 道中フィニッシュ曲を流す。フィニッシュ曲が終わったらボス面に切り替えてイントロ曲を流す
       _state = VCStateFinish;
       _controller->setEnable(false);
-      int maxFinishCount = _musicSet->getFinishCount();
-      
-      _music->removeAllNextTracks(); // 次以降の曲を強制的に削除
-      _finishCount = 0;
-      // フィニッシュ曲をpushしまくる
-      for (int i = 0 ; i < maxFinishCount; ++i) {
-        stringstream finish;
-        finish << "finish" << i << ".mp3";
-        _music->pushTrack(_musicSet->getPrefixedMusicName(finish.str().c_str()).c_str(), 0);
-        _music->pushTrack(_musicSet->getPrefixedMusicName("silent.mp3").c_str(), 1);
-        _music->pushTrack(_musicSet->getPrefixedMusicName("silent.mp3").c_str(), 2);
-      }
+      this->pushFinishTracks();
     } else if (_level->getLevel() >= _map->getMaxLevel() + 1) {
-      CCArray* maps = _map->getNextMaps();
-      if (maps->count() >= 1) {
-        _mapSelector = MapSelector::create();
-        _mapSelector->retain();
-        _mapSelector->setNextMaps(maps);
-        if (maps->count() >= 2) {
-          _mapSelector->setPosition(CCPointMake(0, 60));
-          this->addChild(_mapSelector);
-          _music->removeAllNextTracks();
-          _music->pushTrack(FileUtils::getFilePath("Music/general/select_stage.wav").c_str(), 0);
-          _music->pushTrack(FileUtils::getFilePath("Music/general/select_silent.wav").c_str(), 1);
-          _music->pushTrack(FileUtils::getFilePath("Music/general/select_silent.wav").c_str(), 2);
-        }
-        _state = VCStateStageSelect;
-      }
+      _state = VCStateFinish;
+      _controller->setEnable(false);
+      this->pushFinishTracks();
     }
     return true;
   }
@@ -593,4 +568,20 @@ void MainScene::addDamageEffect() {
   } else if (isShield) { // 盾装備してたとき
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/guard.mp3").c_str());
   }
+}
+
+void MainScene::changeMap(Map* nextMap) {
+  _map->release();
+  nextMap->retain();
+  _map = nextMap;
+  _level = nextMap->createInitialLevel();
+  //this->removeChild(_mapSelector, true);
+  //_mapSelector->release();
+  //_mapSelector = NULL;
+  TrackCache::sharedCache()->purgeAllTracks();
+  this->updateGUI();
+  _mapTurnCount = 0; // マップカウント0に戻す
+  _state = VCStateMain;
+  _musicSet = _map->getCurrentMusic(_level); // 音楽セットを切り替える
+  TrackCache::sharedCache()->purgeAllTracks(); // キャッシュを削除する
 }
