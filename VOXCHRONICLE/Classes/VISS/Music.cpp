@@ -143,7 +143,7 @@ void Music::onTrackWillFinish() {
   for (int trackNumber = 0; trackNumber < _trackCount; ++trackNumber) {
     Track* next = this->getNextTrack(trackNumber);
     if (next) {
-      next->playAfterTime(this->getCurrentMainTrack()->getDuration() * 0.2f);
+      next->playAfterTime(this->getCurrentMainTrack()->getDuration() * 0.15f);
     }
   }
   
@@ -179,8 +179,8 @@ void Music::setScheduleForMain() {
 void Music::setSchedule(VISS::Track *track) {
   CCScheduler* scheduler = CCDirector::sharedDirector()->getScheduler();
   scheduler->scheduleSelector((SEL_SCHEDULE)&Music::onTrackDidBack, this, track->getDuration() / 2.0f, false, 0, 0);
-  scheduler->scheduleSelector((SEL_SCHEDULE)&Music::onTrackWillFinish, this, track->getDuration() * 0.8f, false, 0, 0);
-  scheduler->scheduleSelector((SEL_SCHEDULE)&Music::onTrackDidFinish, this, track->getDuration() * 0.98f, false, 0, 0);
+  scheduler->scheduleSelector((SEL_SCHEDULE)&Music::onTrackWillFinish, this, track->getDuration() * 0.85f, false, 0, 0);
+  scheduler->scheduleSelector((SEL_SCHEDULE)&Music::onTrackDidFinish, this, track->getDuration(), false, 0, 0);
 }
 
 void Music::setScheduleDelay(float delay) {

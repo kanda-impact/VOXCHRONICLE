@@ -74,7 +74,7 @@ bool MainScene::init() {
   _enemyManager->setLevel(_level);
   
   _musicSet = _map->getCurrentMusic(_level);
-  _musicSet->preloadAllTracks();
+  //_musicSet->preloadAllTracks();
   
   TrackCache::sharedCache()->addTrack(FileUtils::getFilePath("Music/general/select_stage.wav"), 0);
   
@@ -571,10 +571,12 @@ void MainScene::changeMap(Map* nextMap) {
   //_mapSelector = NULL;
   this->updateGUI();
   _mapTurnCount = 0; // マップカウント0に戻す
-  _state = VCStateMain;
+  _state = VCStateIntro;
   _musicSet = _map->getCurrentMusic(_level); // 音楽セットを切り替える
   TrackCache::sharedCache()->purgeAllTracks(); // キャッシュを削除する
-  _musicSet->preloadAllTracks();
+  //_musicSet->preloadAllTracks();
+  _introCount = 0;
+  _finishCount = 0;
   this->pushIntroTracks();
 }
 
@@ -583,7 +585,7 @@ void MainScene::startBossBattle() {
   _state = VCStateIntro; // イントロに以降
   _musicSet = _map->getCurrentMusic(_level); // 音楽セットを切り替える
   TrackCache::sharedCache()->purgeAllTracks(); // キャッシュを削除する
-  _musicSet->preloadAllTracks();
+  //_musicSet->preloadAllTracks();
   this->pushIntroTracks();
 }
 
