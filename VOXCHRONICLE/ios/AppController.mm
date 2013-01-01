@@ -28,8 +28,11 @@
 #import "AppDelegate.h"
 
 #import "RootViewController.h"
+#import "TestFlight.h"
 
 @implementation AppController
+
+#define TEAM_TOKEN @"bc5125eaeaeb391c196c7a3ac8a311a5_MTMxMDg4MjAxMi0wOS0xMSAyMTowMzo0Mi41NTY3Njg"
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -40,6 +43,8 @@ static AppDelegate s_sharedApplication;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   
   // Override point for customization after application launch.
+  
+  [TestFlight takeOff:TEAM_TOKEN]; // TestFlight SDK
   
   // Add the view controller's view to the window and display.
   window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];

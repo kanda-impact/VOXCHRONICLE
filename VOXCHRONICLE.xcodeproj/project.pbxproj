@@ -191,6 +191,7 @@
 		0791587E15EBB50E0083D348 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 0791587215EBB4BB0083D348 /* iTunesArtwork */; };
 		079487951616D8C5004ABCF5 /* knockback.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079487941616D8C5004ABCF5 /* knockback.lua */; };
 		0794879C1616EC7E004ABCF5 /* tension.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0794879B1616EC7E004ABCF5 /* tension.lua */; };
+		07A1F4D51693161600C4329F /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A1F4D41693161600C4329F /* libTestFlight.a */; };
 		07A8E9F316320DBC00E007C9 /* MessageWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */; };
 		07A8E9F6163302DF00E007C9 /* damage_number.png in Resources */ = {isa = PBXBuildFile; fileRef = 07A8E9F5163302DF00E007C9 /* damage_number.png */; };
 		07B4C39A168EC0D60074A905 /* leaf0.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C392168EC0D60074A905 /* leaf0.png */; };
@@ -769,6 +770,8 @@
 		0791587215EBB4BB0083D348 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Resources/ios/iTunesArtwork; sourceTree = "<group>"; };
 		079487941616D8C5004ABCF5 /* knockback.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knockback.lua; sourceTree = "<group>"; };
 		0794879B1616EC7E004ABCF5 /* tension.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tension.lua; sourceTree = "<group>"; };
+		07A1F4D41693161600C4329F /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTestFlight.a; path = VOXCHRONICLE/ios/libTestFlight.a; sourceTree = "<group>"; };
+		07A1F4D61693162500C4329F /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestFlight.h; path = ios/TestFlight.h; sourceTree = "<group>"; };
 		07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageWindow.cpp; path = Classes/UI/MessageWindow.cpp; sourceTree = "<group>"; };
 		07A8E9F5163302DF00E007C9 /* damage_number.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = damage_number.png; path = Resources/Image/Main/UI/damage_number.png; sourceTree = "<group>"; };
 		07B4C392168EC0D60074A905 /* leaf0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leaf0.png; path = Resources/Image/Enemy/leaf0.png; sourceTree = "<group>"; };
@@ -1486,6 +1489,7 @@
 				076F1A5D15EB94750013A45E /* Foundation.framework in Frameworks */,
 				076F1A5F15EB94750013A45E /* CoreGraphics.framework in Frameworks */,
 				07C608B016164FEE0084708C /* libcurl.a in Frameworks */,
+				07A1F4D51693161600C4329F /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1757,6 +1761,7 @@
 		076F1A4F15EB94750013A45E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07A1F4D41693161600C4329F /* libTestFlight.a */,
 				076F1A5015EB94750013A45E /* QuartzCore.framework */,
 				076F1A5215EB94750013A45E /* OpenGLES.framework */,
 				076F1A5415EB94750013A45E /* OpenAL.framework */,
@@ -1816,6 +1821,7 @@
 		076F1D3015EB94780013A45E /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				07A1F4D61693162500C4329F /* TestFlight.h */,
 				076F1D3115EB94780013A45E /* main.m */,
 				076F1D3315EB94780013A45E /* AppController.h */,
 				076F1D3415EB94780013A45E /* AppController.mm */,
@@ -3846,6 +3852,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/VOXCHRONICLE/libs/cocos2dx/platform/third_party/ios/libraries\"",
+					"\"$(SRCROOT)/../../Downloads/TestFlightSDK1\"",
+					"\"$(SRCROOT)/VOXCHRONICLE/ios\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
@@ -3880,6 +3888,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/VOXCHRONICLE/libs/cocos2dx/platform/third_party/ios/libraries\"",
+					"\"$(SRCROOT)/../../Downloads/TestFlightSDK1\"",
+					"\"$(SRCROOT)/VOXCHRONICLE/ios\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
