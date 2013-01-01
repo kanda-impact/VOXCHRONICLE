@@ -33,6 +33,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   stringstream file;
   file << "Script/enemies/" << scriptName;
   _scriptPath = file.str();
+  _register = new map<string, int>();
   _lua = new LuaObject(file.str().c_str());
   _lua->retain();
   _hp = _lua->getInt("hp");
@@ -97,6 +98,7 @@ Enemy::Enemy() {
 Enemy::~Enemy() {
   _lua->release();
   delete _name;
+  delete _register;
 }
 
 void Enemy::update(float dt) {
@@ -294,4 +296,19 @@ bool Enemy::performSkill(CharacterManager* characterManager, EnemyManager* enemy
     return true;
   }
   return false;
+}
+
+int Enemy::getRegister(const char *key, int defaultValue) {
+  if (this->hasRegister(key)) {
+    return _register->at(key);
+  }
+  return defaultValue;
+}
+
+void Enemy::setRegister(const char *key, int value) {
+  _register->at(key) = value;
+}
+
+bool Enemy::hasRegister(const char *key) {
+  return _register->count(key) == 1;
 }

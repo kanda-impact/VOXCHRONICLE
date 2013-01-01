@@ -545,6 +545,7 @@
 		07D8746E15F01A15009CC446 /* OALTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8744F15F01500009CC446 /* OALTools.m */; };
 		07D8746F15F01A15009CC446 /* OALUtilityActions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8745115F01500009CC446 /* OALUtilityActions.m */; };
 		07D8747015F01A15009CC446 /* OpenALManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8745615F01500009CC446 /* OpenALManager.m */; };
+		07DCD6871692953500FBBC3A /* sword.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07DCD6861692953500FBBC3A /* sword.lua */; };
 		07DCFDA31633461A00341769 /* FileUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07DCFDA11633461A00341769 /* FileUtils.cpp */; };
 		07E134FF162167CC00CCF72E /* MapSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E134FD162167CB00CCF72E /* MapSelector.cpp */; };
 		07E1350216217A1300CCF72E /* left_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E1350016217A1300CCF72E /* left_arrow.png */; };
@@ -1413,6 +1414,7 @@
 		07D8745515F01500009CC446 /* OpenALManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OpenALManager.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/OpenALManager.h; sourceTree = "<group>"; };
 		07D8745615F01500009CC446 /* OpenALManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OpenALManager.m; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/OpenALManager.m; sourceTree = "<group>"; };
 		07D8745715F01500009CC446 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/Support/SynthesizeSingleton.h; sourceTree = "<group>"; };
+		07DCD6861692953500FBBC3A /* sword.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sword.lua; path = enemySkills/sword.lua; sourceTree = "<group>"; };
 		07DCFDA11633461A00341769 /* FileUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileUtils.cpp; sourceTree = "<group>"; };
 		07E134FD162167CB00CCF72E /* MapSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapSelector.cpp; path = Classes/Model/MapSelector.cpp; sourceTree = "<group>"; };
 		07E1350016217A1300CCF72E /* left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = left_arrow.png; path = Resources/Image/Main/UI/left_arrow.png; sourceTree = "<group>"; };
@@ -1720,6 +1722,7 @@
 			isa = PBXGroup;
 			children = (
 				0715C2321690E8F600009479 /* ironball.lua */,
+				07DCD6861692953500FBBC3A /* sword.lua */,
 			);
 			name = enemySkills;
 			sourceTree = "<group>";
@@ -3440,6 +3443,7 @@
 				07F4707E1691B4B60062975F /* w_iron0.png in Resources */,
 				07F470811691B4DF0062975F /* iron0.png in Resources */,
 				07F470831691B4FD0062975F /* iron.lua in Resources */,
+				07DCD6871692953500FBBC3A /* sword.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

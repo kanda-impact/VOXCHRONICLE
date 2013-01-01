@@ -49,7 +49,32 @@ static int tolua_VC_Enemy_setRow(lua_State* tolua_S) {
 static int tolua_VC_Enemy_getCol(lua_State* tolua_S) {
   Enemy* self = (Enemy*)  tolua_tousertype(tolua_S, 1, 0);
   float tolua_ret = (float)  self->getCol();
-  tolua_pushnumber(tolua_S, (float)tolua_ret);
+  tolua_pushnumber(tolua_S, (int)tolua_ret);
+  return 1;
+}
+
+static int tolua_VC_Enemy_getRegister(lua_State* tolua_S) {
+  Enemy* self = (Enemy*)  tolua_tousertype(tolua_S, 1, 0);
+  string key = (string)tolua_tostring(tolua_S, 2, 0);
+  int defaultValue = (int)tolua_tonumber(tolua_S, 3, 0);
+  float tolua_ret = (int)self->getRegister(key.c_str(), defaultValue);
+  tolua_pushnumber(tolua_S, (int)tolua_ret);
+  return 1;
+}
+
+static int tolua_VC_Enemy_setRegister(lua_State* tolua_S) {
+  Enemy* self = (Enemy*)  tolua_tousertype(tolua_S, 1, 0);
+  string key = (string)tolua_tostring(tolua_S, 2, 0);
+  int value = (int)tolua_tonumber(tolua_S, 3, 0);
+  self->setRegister(key.c_str(), value);
+  return 0;
+}
+
+static int tolua_VC_Enemy_hasRegister(lua_State* tolua_S) {
+  Enemy* self = (Enemy*)  tolua_tousertype(tolua_S, 1, 0);
+  string key = (string)tolua_tostring(tolua_S, 2, 0);
+  bool tolua_ret = (bool)self->hasRegister(key.c_str());
+  tolua_pushnumber(tolua_S, (bool)tolua_ret);
   return 1;
 }
 
@@ -177,6 +202,9 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_function(tolua_S, "moveRow", tolua_VC_Enemy_moveRow);
   tolua_function(tolua_S, "setRow", tolua_VC_Enemy_setRow);
   tolua_function(tolua_S, "getCol", tolua_VC_Enemy_getCol);
+  tolua_function(tolua_S, "getRegister", tolua_VC_Enemy_getRegister);
+  tolua_function(tolua_S, "setRegister", tolua_VC_Enemy_setRegister);
+  tolua_function(tolua_S, "hasRegister", tolua_VC_Enemy_hasRegister);
   tolua_endmodule(tolua_S);
   // CharacterManagerクラス
   tolua_cclass(tolua_S, "CharacterManager", "CharacterManager", "CCObject", NULL);
