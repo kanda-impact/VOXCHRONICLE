@@ -303,8 +303,8 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     }
     Track* track = music->pushTrack(_musicSet->getPrefixedMusicName(drumFileStream.str().c_str()).c_str(), 2);
     track->setVolume(0.7);
-    
   }
+  this->updateGUI(); // GUI更新
 }
 
 void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track *nextTrack, int trackNumber) {
@@ -565,11 +565,12 @@ void MainScene::changeMap(Map* nextMap) {
   _map->release();
   nextMap->retain();
   _map = nextMap;
-  _level = nextMap->createInitialLevel();
+  _level = nextMap->createInitialLevel(); // レベルを生成する
+  _enemyManager->setLevel(_level); // レベルをセット
+  _enemyManager->removeAllEnemiesQueue(); // キューを初期化
   //this->removeChild(_mapSelector, true);
   //_mapSelector->release();
   //_mapSelector = NULL;
-  this->updateGUI();
   _mapTurnCount = 0; // マップカウント0に戻す
   _state = VCStateIntro;
   _musicSet = _map->getCurrentMusic(_level); // 音楽セットを切り替える
@@ -578,6 +579,7 @@ void MainScene::changeMap(Map* nextMap) {
   _introCount = 0;
   _finishCount = 0;
   this->pushIntroTracks();
+  this->updateGUI();
 }
 
 void MainScene::startBossBattle() {
