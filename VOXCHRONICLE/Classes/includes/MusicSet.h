@@ -42,6 +42,7 @@ public:
   int getIntroCount();
   int getFinishCount();
   MusicSetType getType();
+  void preloadAllTracks();
 };
 
 #endif /* defined(__VOXCHRONICLE__MusicSet__) */

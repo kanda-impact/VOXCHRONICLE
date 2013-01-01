@@ -74,6 +74,7 @@ bool MainScene::init() {
   _enemyManager->setLevel(_level);
   
   _musicSet = _map->getCurrentMusic(_level);
+  _musicSet->preloadAllTracks();
   
   TrackCache::sharedCache()->addTrack(FileUtils::getFilePath("Music/general/select_stage.wav"), 0);
   
@@ -176,6 +177,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         _state = VCStateIntro; // イントロに以降
         _musicSet = _map->getCurrentMusic(_level); // 音楽セットを切り替える
         TrackCache::sharedCache()->purgeAllTracks(); // キャッシュを削除する
+        _musicSet->preloadAllTracks();
         this->pushIntroTracks();
       } else if (_level->getLevel() == _map->getMaxLevel() + 1 && _map->getNextMaps() > 0) { // 最高レベルの次の時で、次のマップが存在するとき
         // マップセレクターは後で実装します
@@ -537,7 +539,6 @@ void MainScene::addDamageEffect() {
     sumDamage += damage;
     if (damageType == DamageTypeDeath) {
       isDead = true;
-      break;
     } else if (damageType == DamageTypeShield) {
       isShield = true;
       break;
@@ -584,4 +585,5 @@ void MainScene::changeMap(Map* nextMap) {
   _state = VCStateMain;
   _musicSet = _map->getCurrentMusic(_level); // 音楽セットを切り替える
   TrackCache::sharedCache()->purgeAllTracks(); // キャッシュを削除する
+  _musicSet->preloadAllTracks();
 }
