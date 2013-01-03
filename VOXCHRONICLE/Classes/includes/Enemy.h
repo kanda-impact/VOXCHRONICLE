@@ -45,6 +45,7 @@ class Enemy : public CCSprite {
   int _level;
   int _frameCount;
   int _minRow;
+  bool _enable;
   bool _hasFrame;
   const char* _imageName;
   SkillType _type;
@@ -136,10 +137,12 @@ class Enemy : public CCSprite {
   float getCurrentScale(float row);
   int getExp();
   int getCounter();
+  bool getEnable();
   SkillType getType();
   EnemyItem getItem();
   
   void setItem(EnemyItem item);
+  void setEnable(bool enable);
 };
 
 #endif /* defined(__VOXCHRONICLE__Enemy__) */

@@ -350,7 +350,7 @@ void EnemyManager::nextTurn (CharacterManager* characterManager) {
   CCARRAY_FOREACH(this->getEnemies(), obj) {
     Enemy* enemy = (Enemy*)obj;
     if (enemy == NULL) continue;
-    if (enemy->getRow() > 0) {
+    if (enemy->getEnable() && enemy->getRow() > 0) {
       if (!enemy->performSkill(characterManager, this)) { // 敵の技を実行する
         if (enemy->canMove()) { // 何も実行されなかったら、移動できるか調べる
           enemy->moveRow(-1); // 移動できたら1歩移動する

@@ -58,6 +58,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _speedCount = 0;
   _imageName = _lua->getString("imageName");
   _frameCount = _lua->getInt("animationFrames");
+  _enable = true;
   stringstream ss;
   ss << "Image/Enemy/" << _imageName << "0.png";
   bool success = (bool)this->initWithFile(FileUtils::getFilePath(ss.str().c_str()).c_str());
@@ -351,3 +352,12 @@ CCSprite* Enemy::createFrameSprite(const char* filePrefix, int frames) {
   frame->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
   return frame;
 }
+
+bool Enemy::getEnable() {
+  return _enable;
+}
+
+void Enemy::setEnable(bool enable) {
+  _enable = enable;
+}
+
