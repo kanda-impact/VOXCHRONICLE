@@ -42,10 +42,11 @@ void SkillTrigger::setPress(bool press) {
     _state = SkillTriggerStateSelected;
     CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath("Image/Main/UI/proto/trigger_on.png").c_str());
     _background->setTexture(texture);
+    _icon->setColor(ccc3(44, 44, 44));
     this->setScale(1.2f);
   } else {
     _state = SkillTriggerStateNormal;
-    //_background->setColor(_color);
+    this->setColor(_color);
     this->setScale(1.0f);
   }
 }
