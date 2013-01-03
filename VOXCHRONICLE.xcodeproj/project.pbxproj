@@ -14,6 +14,7 @@
 		070E4047163CB3BE00A76BEA /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 070E4046163CB3BE00A76BEA /* gameover.mp3 */; };
 		0715C2331690E8F600009479 /* ironball.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0715C2321690E8F600009479 /* ironball.lua */; };
 		0715C2371690EB3000009479 /* EnemySkill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0715C2351690EB3000009479 /* EnemySkill.cpp */; };
+		07244C2C1695665400C5A442 /* qte.png in Resources */ = {isa = PBXBuildFile; fileRef = 07244C2B1695665400C5A442 /* qte.png */; };
 		0731E4C9161766EB006AEF3D /* shield_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4C8161766EB006AEF3D /* shield_icon.png */; };
 		0731E4CB16176787006AEF3D /* shield.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4CA16176787006AEF3D /* shield.lua */; };
 		0731E4CF16176A91006AEF3D /* bow.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4CE16176A91006AEF3D /* bow.lua */; };
@@ -632,6 +633,7 @@
 		070E4046163CB3BE00A76BEA /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gameover.mp3; path = Resources/Music/general/gameover.mp3; sourceTree = "<group>"; };
 		0715C2321690E8F600009479 /* ironball.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ironball.lua; path = enemySkills/ironball.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		0715C2351690EB3000009479 /* EnemySkill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemySkill.cpp; path = Classes/Model/EnemySkill.cpp; sourceTree = "<group>"; };
+		07244C2B1695665400C5A442 /* qte.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = qte.png; path = Resources/Image/Main/UI/qte.png; sourceTree = "<group>"; };
 		0731E4C8161766EB006AEF3D /* shield_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield_icon.png; sourceTree = "<group>"; };
 		0731E4CA16176787006AEF3D /* shield.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shield.lua; sourceTree = "<group>"; };
 		0731E4CE16176A91006AEF3D /* bow.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bow.lua; sourceTree = "<group>"; };
@@ -1728,6 +1730,7 @@
 				07E1350816217D1200CCF72E /* left_arrow_selected.png */,
 				07E1350916217D1200CCF72E /* right_arrow_selected.png */,
 				07A8E9F5163302DF00E007C9 /* damage_number.png */,
+				07244C2B1695665400C5A442 /* qte.png */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -3663,6 +3666,7 @@
 				07A1F533169318DA00C4329F /* volca_voxwait.mp3 in Resources */,
 				07A1F535169319B300C4329F /* volca.lua in Resources */,
 				07F7307416952EB600962F0D /* volca_lskwait.mp3 in Resources */,
+				07244C2C1695665400C5A442 /* qte.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

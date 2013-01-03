@@ -37,6 +37,7 @@ class EnemyManager :public CCLayer {
    Luaの実行ステートが終了した毎ターン終了時辺りにTrashが空にされる
    */
   CCArray* _trash;
+  Enemy* _boss;
   bool performLuaFunction(Skill* skill, Enemy* target, CharacterManager* characterManager);
  public:
   virtual bool init();
@@ -143,7 +144,10 @@ class EnemyManager :public CCLayer {
   
   void nextTurn(CharacterManager* characterManager);
   
-  void popEnemyAt(string enemyName, int row, int col);
+  Enemy* popEnemyAt(string enemyName, int row, int col);
+  
+  Enemy* getBoss();
+  void setBoss(Enemy* boss);
   
   CREATE_FUNC(EnemyManager)
 };

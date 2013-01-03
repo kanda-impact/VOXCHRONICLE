@@ -186,7 +186,24 @@ static int tolua_VC_EnemyManager_popEnemyAt(lua_State* tolua_S) {
   string enemyName = (string)tolua_tostring(tolua_S, 2, 0);
   int row = (int)tolua_tonumber(tolua_S, 3, 0);
   int col = (int)tolua_tonumber(tolua_S, 4, 0);
-  self->popEnemyAt(enemyName, row, col);
+  Enemy* enemy = self->popEnemyAt(enemyName, row, col);
+  tolua_pushusertype(tolua_S, (void*)enemy, "Enemy");
+  tolua_register_gc(tolua_S, lua_gettop(tolua_S));
+  return 1;
+}
+
+static int tolua_VC_EnemyManager_getBoss(lua_State* tolua_S) {
+  EnemyManager* self = (EnemyManager*)tolua_tousertype(tolua_S, 1, 0);
+  Enemy* boss = self->getBoss();
+  tolua_pushusertype(tolua_S, (void*)boss, "Enemy");
+  tolua_register_gc(tolua_S, lua_gettop(tolua_S));
+  return 1;
+}
+
+static int tolua_VC_EnemyManager_setBoss(lua_State* tolua_S) {
+  EnemyManager* self = (EnemyManager*)tolua_tousertype(tolua_S, 1, 0);
+  Enemy* boss = (Enemy*)tolua_tousertype(tolua_S, 2, 0);
+  self->setBoss(boss);
   return 0;
 }
 

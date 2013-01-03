@@ -28,6 +28,7 @@ bool EnemyManager::init() {
   mt19937&, uniform_smallint<>
   > rand( gen, dst );
   _enemyPopLots = new vector<bool>();
+  _boss = NULL;
   return true;
 }
 
@@ -246,7 +247,9 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
         } else {
           exp += target->getExp();
         }
-        this->removeEnemy(target);
+        if (_boss != target) { // ターゲットがボスなら殺さない
+          this->removeEnemy(target);
+        }
       }
       int damage = beforeHP - target->getHP();
       damages->addObject(CCInteger::create(damage));
@@ -361,8 +364,17 @@ void EnemyManager::removeAllEnemiesQueue() {
   _enemiesQueue->removeAllObjects();
 }
 
-void EnemyManager::popEnemyAt(string enemyName, int row, int col) {
+Enemy* EnemyManager::popEnemyAt(string enemyName, int row, int col) {
   _enemiesQueue->addObject(CCString::create(enemyName));
   Enemy* enemy = this->popEnemy();
   enemy->setRowAndCol(row, col);
+  return enemy;
+}
+
+Enemy* EnemyManager::getBoss() {
+  return _boss;
+}
+
+void EnemyManager::setBoss(Enemy* boss) {
+  _boss = boss;
 }
