@@ -183,13 +183,10 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     _qteTrigger = new QTETrigger(_enemyManager);
     _state = VCStateQTE;
     this->addChild(_qteTrigger);
-    _music->pushTrack(_musicSet->getPrefixedMusicName("silent.mp3").c_str(), 0);
-    _music->pushTrack(_musicSet->getPrefixedMusicName("silent.mp3").c_str(), 1);
-    _music->pushTrack(_musicSet->getPrefixedMusicName("silent.mp3").c_str(), 2);
   } else if (_state == VCStateQTE) {
     if (_qteTrigger != NULL && _qteTrigger->isButtonPressed()) {
       _state = VCStateQTEFinish;
-      _finishCount = 0;
+      _finishCount = _musicSet->getFinishCount() - 3;
       for (int i = 2; i < _musicSet->getFinishCount(); ++i) {
         stringstream finish;
         finish << "finish" << i << ".mp3";
