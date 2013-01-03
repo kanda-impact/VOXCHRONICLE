@@ -272,7 +272,9 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_beginmodule(tolua_S, "EnemyManager");
   tolua_function(tolua_S, "nextTurn", tolua_VC_EnemyManager_nextTurn);
   tolua_function(tolua_S, "popEnemyAt", tolua_VC_EnemyManager_popEnemyAt);
-  tolua_endmodule(tolua_S);
+  tolua_function(tolua_S, "getBoss", tolua_VC_EnemyManager_getBoss);
+  tolua_function(tolua_S, "setBoss", tolua_VC_EnemyManager_setBoss);
+tolua_endmodule(tolua_S);
   // EnemySkillクラス
   tolua_cclass(tolua_S, "EnemySkill", "EnemySkill", "CCObject", NULL);
   tolua_beginmodule(tolua_S, "EnemySkill");
