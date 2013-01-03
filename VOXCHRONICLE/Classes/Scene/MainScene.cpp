@@ -67,7 +67,7 @@ bool MainScene::init() {
   _focus = CCSprite::create(FileUtils::getFilePath("Image/Main/UI/proto/focus.png").c_str());
   _focus->retain();
   _focus->setVisible(false);
-  _focus->runAction(CCRepeatForever::create(CCRotateBy::create(5.0f, 360)));
+  _focus->setAnchorPoint(ccp(0.5f, 0.0f));
   this->addChild(_focus);
   
   _controller = Controller::create();
@@ -486,7 +486,7 @@ void MainScene::updateFocus() {
   Enemy* nearest = _enemyManager->getNearestEnemy();
   if (nearest) {
     _focus->setVisible(true);
-    _focus->setPosition(nearest->getPosition());
+    _focus->setPosition(ccpAdd(nearest->getPosition(), ccp(0, nearest->getContentSize().height * nearest->getCurrentScale(nearest->getRow()) * 0.8)));
     _focus->setScale(nearest->getCurrentScale(nearest->getRow()));
   } else {
     _focus->setVisible(false);
