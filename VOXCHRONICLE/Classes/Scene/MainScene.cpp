@@ -98,6 +98,8 @@ bool MainScene::init() {
   this->updateGUI();
   _controller->updateSkills(_characterManager);
   
+  _qteTrigger = NULL;
+  
   return true;
 }
 
@@ -320,7 +322,16 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     _controller->resetAllTriggers();
     _enemyManager->purgeAllTrash();
   }
-  
+  if (_state == VCStateMain) {
+    if (_enemyManager->getBoss() != NULL && _enemyManager->getBoss()->getHP() == 0) {
+      _controller->setEnable(false);
+      _qteTrigger = new QTETrigger(_enemyManager);
+      _qteTrigger->retain();
+      this->addChild(_qteTrigger);
+      _state = VCStateBoss;
+      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/qte.mp3").c_str());
+    }
+  }
 }
 
 void MainScene::updateGUI() {

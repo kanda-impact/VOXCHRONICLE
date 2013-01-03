@@ -23,6 +23,7 @@
 #include "MessageWindow.h"
 #include "StatusLayer.h"
 #include "MusicSet.h"
+#include "QTETrigger.h"
 
 typedef enum {
   VCStateIntro,
@@ -30,6 +31,7 @@ typedef enum {
   VCStateGameOver,
   VCStateFinish,
   VCStateBoss,
+  VCStateQTE,
   VCStateStageSelect,
   VCStateEnding
 } VCState;
@@ -53,6 +55,8 @@ class MainScene : public CCLayer {
   MessageWindow* _messageWindow;
   StatusLayer* _statusLayer;
   CCSprite* _focus;
+  QTETrigger* _qteTrigger;
+  
   
   Level* _level;
   Map* _map;
