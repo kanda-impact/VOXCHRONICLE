@@ -247,9 +247,7 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
         } else {
           exp += target->getExp();
         }
-        if (_boss != target) { // ターゲットがボスなら殺さない
-          this->removeEnemy(target);
-        }
+        this->removeEnemy(target);
       }
       int damage = beforeHP - target->getHP();
       damages->addObject(CCInteger::create(damage));

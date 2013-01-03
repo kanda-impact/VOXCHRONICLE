@@ -43,11 +43,20 @@ bool MainScene::init() {
   setting->autorelease();
   
   CCDirector* director = CCDirector::sharedDirector();
+  
   // 背景の追加
   // 将来的にはSkinクラスを実装して、スキンによって背景を変更するようにしたいが
   // 今はとりあえずここにSpriteをおいておきます
-  CCSprite* background = CCSprite::create(FileUtils::getFilePath("Image/Main/UI/proto/stage_background.png").c_str());
-  CCPoint center = ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f);
+  CCSprite* background = CCSprite::create(FileUtils::getFilePath("Image/Main/UI/proto/floor0.png").c_str());
+  CCAnimation* animation = CCAnimation::create();
+  animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("Image/Main/UI/proto/floor0.png").c_str(), CCRectMake(0, 0, 480, 160)));
+  animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("Image/Main/UI/proto/floor1.png").c_str(), CCRectMake(0, 0, 480, 160)));
+  animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("Image/Main/UI/proto/floor2.png").c_str(), CCRectMake(0, 0, 480, 160)));
+  animation->setLoops(-1);
+  animation->setDelayPerUnit(10.0 / 60.0);
+  background->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
+  
+  CCPoint center = ccp(director->getWinSize().width / 2.0f, 80);
   background->setPosition(center);
   this->addChild(background);
   
@@ -322,7 +331,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     _controller->resetAllTriggers();
     _enemyManager->purgeAllTrash();
   }
-  if (_state == VCStateMain) {
+  /*if (_state == VCStateMain) {
     if (_enemyManager->getBoss() != NULL && _enemyManager->getBoss()->getHP() == 0) {
       _controller->setEnable(false);
       _qteTrigger = new QTETrigger(_enemyManager);
@@ -331,7 +340,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _state = VCStateBoss;
       CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/qte.mp3").c_str());
     }
-  }
+  }*/
 }
 
 void MainScene::updateGUI() {

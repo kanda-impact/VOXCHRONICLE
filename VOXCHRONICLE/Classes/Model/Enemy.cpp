@@ -165,25 +165,28 @@ int Enemy::getExp() {
 }
 
 void Enemy::setRowAndCol(int row, float col) {
-  int sx = 200 + 40 * col;
-  int sy = 80 + 25 * (MAX_ROW - 1);
-  int ex = 30 + 210 * col;
-  int ey = 80;
-  CCPoint sp = CCPointMake(sx, sy);
-  CCPoint ep = CCPointMake(ex, ey);
-  CCPoint sub = ccpSub(sp, ep);
-  float scale = this->getCurrentScale(row);
-  CCPoint p = ccpAdd(ep, ccpMult(sub, 1.0 - scale));
+  CCPoint root = CCPointZero;
+  CCPoint end = CCPointZero;
+  if (col == 0) {
+    root = ccp(50, 0);
+    end = ccp(193.45, 160);
+  } else if (col == 1) {
+    root = ccp(240, 0);
+    end = ccp(240, 160);
+  } else if (col == 2) {
+    root = ccp(430, 0);
+    end = ccp(286.55, 160);
+  }
+  CCPoint sub = ccpSub(end, root);
+  CCPoint p = ccpAdd(root, ccpMult(sub, (row + 1) / (float)MAX_ROW));
   this->setPosition(p);
+  this->setAnchorPoint(ccp(0.5f, 0.0f));
   _row = row;
   _col = col;
 }
 
 float Enemy::getCurrentScale(float row) {
-  int nr = (MAX_ROW - row);
-  float sum = (float)(1 + MAX_ROW) * (float)MAX_ROW / 2.0;
-  float tempSum = (float)(1 + nr) * (float)nr / 2.0;
-  return 1.0 * tempSum / sum;
+  return (0.108f * MAX_ROW) - (0.108f * row);
 }
 
 void Enemy::setRow(float r) {
