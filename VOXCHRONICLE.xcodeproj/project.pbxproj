@@ -220,7 +220,6 @@
 		07A1F51F169318DA00C4329F /* volca_lsktension2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4F1169318DA00C4329F /* volca_lsktension2.mp3 */; };
 		07A1F520169318DA00C4329F /* volca_lsktension3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4F2169318DA00C4329F /* volca_lsktension3.mp3 */; };
 		07A1F521169318DA00C4329F /* volca_lskthunder0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4F3169318DA00C4329F /* volca_lskthunder0.mp3 */; };
-		07A1F522169318DA00C4329F /* volca_lskwait0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4F4169318DA00C4329F /* volca_lskwait0.mp3 */; };
 		07A1F523169318DA00C4329F /* volca_miss0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4F5169318DA00C4329F /* volca_miss0.mp3 */; };
 		07A1F524169318DA00C4329F /* volca_silent.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4F6169318DA00C4329F /* volca_silent.mp3 */; };
 		07A1F525169318DA00C4329F /* volca_voxattack0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4F7169318DA00C4329F /* volca_voxattack0.mp3 */; };
@@ -237,7 +236,7 @@
 		07A1F530169318DA00C4329F /* volca_voxtension1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F502169318DA00C4329F /* volca_voxtension1.mp3 */; };
 		07A1F531169318DA00C4329F /* volca_voxtension2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F503169318DA00C4329F /* volca_voxtension2.mp3 */; };
 		07A1F532169318DA00C4329F /* volca_voxtension3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F504169318DA00C4329F /* volca_voxtension3.mp3 */; };
-		07A1F533169318DA00C4329F /* volca_voxwait0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F505169318DA00C4329F /* volca_voxwait0.mp3 */; };
+		07A1F533169318DA00C4329F /* volca_voxwait.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F505169318DA00C4329F /* volca_voxwait.mp3 */; };
 		07A1F535169319B300C4329F /* volca.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F534169319B300C4329F /* volca.lua */; };
 		07A8E9F316320DBC00E007C9 /* MessageWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */; };
 		07A8E9F6163302DF00E007C9 /* damage_number.png in Resources */ = {isa = PBXBuildFile; fileRef = 07A8E9F5163302DF00E007C9 /* damage_number.png */; };
@@ -618,6 +617,7 @@
 		07F4707E1691B4B60062975F /* w_iron0.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F4707D1691B4B60062975F /* w_iron0.png */; };
 		07F470811691B4DF0062975F /* iron0.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F470801691B4DF0062975F /* iron0.png */; };
 		07F470831691B4FD0062975F /* iron.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F470821691B4FD0062975F /* iron.lua */; };
+		07F7307416952EB600962F0D /* volca_lskwait.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F7307316952EB600962F0D /* volca_lskwait.mp3 */; };
 		07F9D9E116812C9D00E984AB /* slash.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F9D9E016812C9D00E984AB /* slash.lua */; };
 		07FD921E1621099B00E74459 /* vox.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921D1621099B00E74459 /* vox.lua */; };
 		07FD922016210A2300E74459 /* lsk.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921F16210A2300E74459 /* lsk.lua */; };
@@ -847,7 +847,6 @@
 		07A1F4F1169318DA00C4329F /* volca_lsktension2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_lsktension2.mp3; sourceTree = "<group>"; };
 		07A1F4F2169318DA00C4329F /* volca_lsktension3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_lsktension3.mp3; sourceTree = "<group>"; };
 		07A1F4F3169318DA00C4329F /* volca_lskthunder0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_lskthunder0.mp3; sourceTree = "<group>"; };
-		07A1F4F4169318DA00C4329F /* volca_lskwait0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_lskwait0.mp3; sourceTree = "<group>"; };
 		07A1F4F5169318DA00C4329F /* volca_miss0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_miss0.mp3; sourceTree = "<group>"; };
 		07A1F4F6169318DA00C4329F /* volca_silent.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_silent.mp3; sourceTree = "<group>"; };
 		07A1F4F7169318DA00C4329F /* volca_voxattack0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxattack0.mp3; sourceTree = "<group>"; };
@@ -864,7 +863,7 @@
 		07A1F502169318DA00C4329F /* volca_voxtension1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxtension1.mp3; sourceTree = "<group>"; };
 		07A1F503169318DA00C4329F /* volca_voxtension2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxtension2.mp3; sourceTree = "<group>"; };
 		07A1F504169318DA00C4329F /* volca_voxtension3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxtension3.mp3; sourceTree = "<group>"; };
-		07A1F505169318DA00C4329F /* volca_voxwait0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxwait0.mp3; sourceTree = "<group>"; };
+		07A1F505169318DA00C4329F /* volca_voxwait.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxwait.mp3; sourceTree = "<group>"; };
 		07A1F534169319B300C4329F /* volca.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = volca.lua; path = musics/volca.lua; sourceTree = "<group>"; };
 		07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageWindow.cpp; path = Classes/UI/MessageWindow.cpp; sourceTree = "<group>"; };
 		07A8E9F5163302DF00E007C9 /* damage_number.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = damage_number.png; path = Resources/Image/Main/UI/damage_number.png; sourceTree = "<group>"; };
@@ -1564,6 +1563,7 @@
 		07F4707D1691B4B60062975F /* w_iron0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = w_iron0.png; path = Resources/Image/Enemy/frames/w_iron0.png; sourceTree = "<group>"; };
 		07F470801691B4DF0062975F /* iron0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iron0.png; path = Resources/Image/Enemy/iron0.png; sourceTree = "<group>"; };
 		07F470821691B4FD0062975F /* iron.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iron.lua; sourceTree = "<group>"; };
+		07F7307316952EB600962F0D /* volca_lskwait.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_lskwait.mp3; sourceTree = "<group>"; };
 		07F9D9E016812C9D00E984AB /* slash.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = slash.lua; sourceTree = "<group>"; };
 		07FD921D1621099B00E74459 /* vox.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vox.lua; path = character/vox.lua; sourceTree = "<group>"; };
 		07FD921F16210A2300E74459 /* lsk.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lsk.lua; path = character/lsk.lua; sourceTree = "<group>"; };
@@ -2000,7 +2000,7 @@
 				07A1F4F1169318DA00C4329F /* volca_lsktension2.mp3 */,
 				07A1F4F2169318DA00C4329F /* volca_lsktension3.mp3 */,
 				07A1F4F3169318DA00C4329F /* volca_lskthunder0.mp3 */,
-				07A1F4F4169318DA00C4329F /* volca_lskwait0.mp3 */,
+				07F7307316952EB600962F0D /* volca_lskwait.mp3 */,
 				07A1F4F5169318DA00C4329F /* volca_miss0.mp3 */,
 				07A1F4F6169318DA00C4329F /* volca_silent.mp3 */,
 				07A1F4F7169318DA00C4329F /* volca_voxattack0.mp3 */,
@@ -2017,7 +2017,7 @@
 				07A1F502169318DA00C4329F /* volca_voxtension1.mp3 */,
 				07A1F503169318DA00C4329F /* volca_voxtension2.mp3 */,
 				07A1F504169318DA00C4329F /* volca_voxtension3.mp3 */,
-				07A1F505169318DA00C4329F /* volca_voxwait0.mp3 */,
+				07A1F505169318DA00C4329F /* volca_voxwait.mp3 */,
 			);
 			name = volca;
 			path = Resources/Music/volca;
@@ -3644,7 +3644,6 @@
 				07A1F51F169318DA00C4329F /* volca_lsktension2.mp3 in Resources */,
 				07A1F520169318DA00C4329F /* volca_lsktension3.mp3 in Resources */,
 				07A1F521169318DA00C4329F /* volca_lskthunder0.mp3 in Resources */,
-				07A1F522169318DA00C4329F /* volca_lskwait0.mp3 in Resources */,
 				07A1F523169318DA00C4329F /* volca_miss0.mp3 in Resources */,
 				07A1F524169318DA00C4329F /* volca_silent.mp3 in Resources */,
 				07A1F525169318DA00C4329F /* volca_voxattack0.mp3 in Resources */,
@@ -3661,8 +3660,9 @@
 				07A1F530169318DA00C4329F /* volca_voxtension1.mp3 in Resources */,
 				07A1F531169318DA00C4329F /* volca_voxtension2.mp3 in Resources */,
 				07A1F532169318DA00C4329F /* volca_voxtension3.mp3 in Resources */,
-				07A1F533169318DA00C4329F /* volca_voxwait0.mp3 in Resources */,
+				07A1F533169318DA00C4329F /* volca_voxwait.mp3 in Resources */,
 				07A1F535169319B300C4329F /* volca.lua in Resources */,
+				07F7307416952EB600962F0D /* volca_lskwait.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
