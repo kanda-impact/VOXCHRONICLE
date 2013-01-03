@@ -118,12 +118,12 @@ Enemy* EnemyManager::getNearestEnemy() {
   return minEnemy;
 }
 
-CCArray* EnemyManager::getFilteredEnemies(boost::function<bool (int, float)>filter) {
+CCArray* EnemyManager::getFilteredEnemies(boost::function<bool (float, int)>filter) {
   CCArray* enemies = (CCArray*)CCArray::create();
   CCObject* obj = NULL;
   CCARRAY_FOREACH(this->getChildren(), obj) {
     Enemy* enemy = (Enemy*)obj;
-    if (filter((int)enemy->getRow(), (int)enemy->getCol())) {
+    if (filter((float)enemy->getRow(), (int)enemy->getCol())) {
       enemies->addObject(enemy);
     }
   }
@@ -174,7 +174,9 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
     if (range == SkillRangeSingle) {
       Enemy* target = this->getNearestEnemy();
       if (target) {
-        targets->addObject(target);
+        boost::function<bool (int, float)> predicate = _1 == target->getRow() && _2 == target->getCol();
+        CCArray* array = this->getFilteredEnemies(predicate);
+        targets->addObjectsFromArray(array);
       }
     } else if (range == SkillRangeAll) {
       if (this->getEnemies()->count() > 0) {
@@ -183,12 +185,12 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
     } else if (range == SkillRangeHorizontal) {
       Enemy* target = this->getNearestEnemy();
       targets->addObject(target);
-      boost::function<bool (int, float)> predicate = _2 == target->getRow();
+      boost::function<bool (int, float)> predicate = _1 == target->getRow();
       targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
     } else if (range == SkillRangeVertical) {
       Enemy* target = this->getNearestEnemy();
       targets->addObject(target);
-      boost::function<bool (int, float)> predicate = _1 == target->getCol();
+      boost::function<bool (int, float)> predicate = _2 == target->getCol();
       targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
     } else if (range == SkillRangeBack) {
       // HPの一番高い敵を狙う

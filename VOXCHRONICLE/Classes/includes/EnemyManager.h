@@ -112,7 +112,7 @@ class EnemyManager :public CCLayer {
    @param boost::function<bool (int, float)> filter 条件式を定義する関数（第1引数は行、第2引数は列）
    @return CCArray* 条件を満たすモンスターの配列 Enemy*
    */
-  CCArray* getFilteredEnemies(boost::function<bool (int, float)>filter);
+  CCArray* getFilteredEnemies(boost::function<bool (float, int)>filter);
   
   /**
    Trashを空にします
