@@ -166,7 +166,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
   } else {
     _introCount = 0;
   }
-  if (_state == VCStateFinish) {
+  if (_state == VCStateFinish || _state == VCStateQTEFinishStart || _state == VCStateQTEFinish) {
     ++_finishCount;
   } else {
     _finishCount = 0;
@@ -177,8 +177,31 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       _controller->setEnable(true);
       _state = VCStateMain;
     }
-  } else if (_state == VCStateFinish) {
+  } else if (_state == VCStateFinish || _state == VCStateQTEFinish) {
     this->onFinishTracksCompleted();
+  } else if (_state == VCStateQTEFinishStart) { // 寸止めQTE UI追加
+    _qteTrigger = new QTETrigger(_enemyManager);
+    _state = VCStateQTE;
+    this->addChild(_qteTrigger);
+    _music->pushTrack(_musicSet->getPrefixedMusicName("silent.mp3").c_str(), 0);
+    _music->pushTrack(_musicSet->getPrefixedMusicName("silent.mp3").c_str(), 1);
+    _music->pushTrack(_musicSet->getPrefixedMusicName("silent.mp3").c_str(), 2);
+  } else if (_state == VCStateQTE) {
+    if (_qteTrigger != NULL && _qteTrigger->isButtonPressed()) {
+      _state = VCStateQTEFinish;
+      _finishCount = 0;
+      for (int i = 2; i < _musicSet->getFinishCount(); ++i) {
+        stringstream finish;
+        finish << "finish" << i << ".mp3";
+        _music->pushTrack(_musicSet->getPrefixedMusicName(finish.str().c_str()).c_str(), 0);
+        _music->pushTrack(_musicSet->getPrefixedMusicName("silent.mp3").c_str(), 1);
+        _music->pushTrack(_musicSet->getPrefixedMusicName("silent.mp3").c_str(), 2);
+      }
+    } else {
+      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.mp3").c_str(), 0);
+      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.mp3").c_str(), 1);
+      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.mp3").c_str(), 2);
+    }
   } else if (_state == VCStateMain) {
     Skill* skill = NULL;
     if (_characterManager->isPerforming()) {
@@ -314,6 +337,17 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     }
     Track* track = music->pushTrack(_musicSet->getPrefixedMusicName(drumFileStream.str().c_str()).c_str(), 2);
     track->setVolume(0.7);
+    
+    if (_enemyManager->getBoss() != NULL && _enemyManager->getBoss()->getHP() <= 0) { // 寸止めQTE開始
+      _state = VCStateQTEFinishStart;
+      for (int i = 0; i < _musicSet->getFinishCount() - 2; ++i) {
+        stringstream finish;
+        finish << "finish" << i << ".mp3";
+        _music->pushTrack(_musicSet->getPrefixedMusicName(finish.str().c_str()).c_str(), 0);
+        _music->pushTrack(_musicSet->getPrefixedMusicName("silent.mp3").c_str(), 1);
+        _music->pushTrack(_musicSet->getPrefixedMusicName("silent.mp3").c_str(), 2);
+      }
+    }
   }
   this->updateGUI(); // GUI更新
 }
@@ -620,7 +654,13 @@ void MainScene::gotoNextStage() {
 void MainScene::onFinishTracksCompleted() {
   int maxFinishCount = _musicSet->getFinishCount();
   if (_finishCount == maxFinishCount) { // フィニッシュ曲が終わったとき
-    if (_map->isBossStage() && _level->getLevel() == _map->getMaxLevel()) { // ボスステージで、現在が最高レベルの時
+    if (_state == VCStateQTEFinish) { // QTEフィニッシュ後
+      _enemyManager->removeEnemy(_enemyManager->getBoss());
+      _enemyManager->setBoss(NULL);
+      _characterManager->setLevel(_characterManager->getLevel() + 1);
+      _state = VCStateMain;
+      this->gotoNextStage();
+    } else if (_map->isBossStage() && _level->getLevel() == _map->getMaxLevel()) { // ボスステージで、現在が最高レベルの時
       this->startBossBattle();
     } else if (_level->getLevel() == _map->getMaxLevel() + 1 && _map->getNextMaps() > 0) { // 最高レベルの次の時で、次のマップが存在するとき
       this->gotoNextStage();

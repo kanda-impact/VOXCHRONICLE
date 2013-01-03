@@ -242,7 +242,11 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
         // 威力が0の場合、NoDamageを設定する
         damageType = DamageTypeNoDamage;
       }
+      int damage = beforeHP - target->getHP();
+      damages->addObject(CCInteger::create(damage));
+      damageTypes->addObject(CCInteger::create((int)damageType));
       if (target->getHP() <= 0) {
+        if (_boss == target) continue; // 敵がボスなら殺さない
         if (target->getExp() == -1) nextLvExp = true;
         if (nextLvExp) {
           exp = -1; // 強制的に経験値を-1にする
@@ -251,9 +255,6 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
         }
         this->removeEnemy(target);
       }
-      int damage = beforeHP - target->getHP();
-      damages->addObject(CCInteger::create(damage));
-      damageTypes->addObject(CCInteger::create((int)damageType));
     }
     characterManager->addMP(-1 * skill->getMP());
   } else {

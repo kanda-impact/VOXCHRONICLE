@@ -19,6 +19,7 @@ QTETrigger::QTETrigger(EnemyManager* manager) {
   CCPoint center = CCPointMake(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f);
   menu->setPosition(center);
   this->addChild(menu);
+  _pressed = false;
 }
 
 QTETrigger::~QTETrigger() {

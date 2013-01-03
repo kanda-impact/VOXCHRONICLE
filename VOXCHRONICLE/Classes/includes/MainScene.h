@@ -32,6 +32,8 @@ typedef enum {
   VCStateFinish,
   VCStateBoss,
   VCStateQTE,
+  VCStateQTEFinishStart,
+  VCStateQTEFinish,  // QTE寸止め用
   VCStateStageSelect,
   VCStateEnding
 } VCState;
