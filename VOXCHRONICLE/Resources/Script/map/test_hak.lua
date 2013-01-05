@@ -17,7 +17,6 @@ Map = {
   onLevel = function(level, characterManager, enemyManager)
     if level == 10 then
       knight = enemyManager:popEnemyAt("knight", MAX_ROW - 1, 1)
-      enemyManager:setBoss(knight)
     end
   end,
   getEnemyPopRate = function(level)
