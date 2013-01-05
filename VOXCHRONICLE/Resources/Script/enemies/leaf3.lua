@@ -1,9 +1,9 @@
 Enemy = {
   name = "はっぱ",
   imageName = "leaf",
-  level = 3,
-  hp = 2,
-  exp = 8,
+  level = 1,
+  hp = 1,
+  exp = 5,
   hasFrame = true,
   attack = 1,
   counter = 1,

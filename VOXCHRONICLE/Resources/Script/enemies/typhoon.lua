@@ -10,7 +10,7 @@ Enemy = {
   speed = 2,
   item = EnemyItemNone,
   animationFrames = 4,
-  type = SkillTypeMagical,
+  type = SkillTypeNormal,
   performSkill = function(self)
     return ""
   end

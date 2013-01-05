@@ -1,16 +1,16 @@
 Enemy = {
-  name = "はっぱ",
-  imageName = "leaf",
-  level = 3,
-  hp = 2,
-  exp = 8,
-  hasFrame = true,
+  name = "スライム",
+  imageName = "slime",
+  level = 5,
+  hp = 3,
+  exp = 10,
   attack = 1,
+  hasFrame = true,
   counter = 1,
   speed = 2,
   item = EnemyItemNone,
   animationFrames = 4,
-  type = SkillTypeNormal,
+  type = SkillTypePhysical,
   performSkill = function(self)
     return ""
   end

@@ -237,6 +237,8 @@
 		07A1F532169318DA00C4329F /* volca_voxtension3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F504169318DA00C4329F /* volca_voxtension3.mp3 */; };
 		07A1F533169318DA00C4329F /* volca_voxwait.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F505169318DA00C4329F /* volca_voxwait.mp3 */; };
 		07A1F535169319B300C4329F /* volca.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F534169319B300C4329F /* volca.lua */; };
+		07A4579C1697E7910060DC34 /* slime_physical.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07A4579A1697E7900060DC34 /* slime_physical.lua */; };
+		07A4579D1697E7910060DC34 /* typhoon_magical.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07A4579B1697E7910060DC34 /* typhoon_magical.lua */; };
 		07A8E9F316320DBC00E007C9 /* MessageWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */; };
 		07A8E9F6163302DF00E007C9 /* damage_number.png in Resources */ = {isa = PBXBuildFile; fileRef = 07A8E9F5163302DF00E007C9 /* damage_number.png */; };
 		07B4C39A168EC0D60074A905 /* leaf0.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C392168EC0D60074A905 /* leaf0.png */; };
@@ -864,6 +866,8 @@
 		07A1F504169318DA00C4329F /* volca_voxtension3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxtension3.mp3; sourceTree = "<group>"; };
 		07A1F505169318DA00C4329F /* volca_voxwait.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxwait.mp3; sourceTree = "<group>"; };
 		07A1F534169319B300C4329F /* volca.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = volca.lua; path = musics/volca.lua; sourceTree = "<group>"; };
+		07A4579A1697E7900060DC34 /* slime_physical.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = slime_physical.lua; sourceTree = "<group>"; };
+		07A4579B1697E7910060DC34 /* typhoon_magical.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = typhoon_magical.lua; sourceTree = "<group>"; };
 		07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageWindow.cpp; path = Classes/UI/MessageWindow.cpp; sourceTree = "<group>"; };
 		07A8E9F5163302DF00E007C9 /* damage_number.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = damage_number.png; path = Resources/Image/Main/UI/damage_number.png; sourceTree = "<group>"; };
 		07B4C392168EC0D60074A905 /* leaf0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leaf0.png; path = Resources/Image/Enemy/leaf0.png; sourceTree = "<group>"; };
@@ -2987,6 +2991,8 @@
 		07C6093A161674650084708C /* enemies */ = {
 			isa = PBXGroup;
 			children = (
+				07A4579A1697E7900060DC34 /* slime_physical.lua */,
+				07A4579B1697E7910060DC34 /* typhoon_magical.lua */,
 				07F470821691B4FD0062975F /* iron.lua */,
 				07B4C3A3168EC34C0074A905 /* leaf.lua */,
 				07B4C3A4168EC34C0074A905 /* typhoon.lua */,
@@ -3660,6 +3666,8 @@
 				07244C361695870400C5A442 /* floor0.png in Resources */,
 				07244C371695870400C5A442 /* floor1.png in Resources */,
 				07244C381695870400C5A442 /* floor2.png in Resources */,
+				07A4579C1697E7910060DC34 /* slime_physical.lua in Resources */,
+				07A4579D1697E7910060DC34 /* typhoon_magical.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
