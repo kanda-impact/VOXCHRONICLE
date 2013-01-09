@@ -116,7 +116,7 @@ void MusicSet::preloadAllTracks() {
     string("voxcharge0.mp3"),
     string("voxknockback0.mp3"),
     string("voxslash0.mp3"),
-    string("wait.mp3")
+    string("wait0.mp3")
   };
   for (int i = 0; i < 41; ++i) {
     string path = this->getPrefixedMusicName(musics[i].c_str());

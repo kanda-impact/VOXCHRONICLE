@@ -94,15 +94,21 @@ string CharacterManager::checkSkillTrackName(Skill* skill, SkillPerformType& per
       return ss.str().c_str();
     }
   } else {
-    _repeatCount = 0;
+    if (_lastSkill == NULL) {
+      _repeatCount = (_repeatCount + 1) % _musicSet->getWaitCount();
+    } else {
+      _repeatCount = 0;
+    }
     this->setLastSkill(skill);
   }
-  if (_musicSet->isCommon("wait")) {
-    return "wait";
-  }
   stringstream ss;
-  ss << _currentCharacter->getIdentifier() << "wait";
-  return ss.str().c_str();
+  if (_musicSet->isCommon("wait")) {
+    ss << "wait" << _repeatCount;
+    return ss.str().c_str();
+  } else {
+    ss << _currentCharacter->getIdentifier() << "wait" << _repeatCount;
+    return ss.str().c_str();
+  }
 }
 
 bool CharacterManager::isPerforming() {

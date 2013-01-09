@@ -403,7 +403,7 @@ void MainScene::pushIntroTracks() {
   _introCount = 0;
   if (introCount == 0) {
     // イントロなしのとき、いきなり曲を鳴らします
-    main = _musicSet->getPrefixedMusicName("wait.mp3");
+    main = _musicSet->getPrefixedMusicName("wait0.mp3");
     counter= _musicSet->getPrefixedMusicName("counter0.mp3");
     drum = _musicSet->getPrefixedMusicName("drum0.mp3");
     _music->pushTrack(main.c_str(), 0);
