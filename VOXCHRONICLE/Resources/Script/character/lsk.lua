@@ -3,12 +3,12 @@ Character = {
   type = CharacterTypeLaska,
   skills = {
     {"magic", 1},
-    {"bow", 3},
-    {"thunder", 7},
-    {"cure", 2},
-    {"tension", 2},
+    {"bow", 1},
+    {"thunder", 1},
+    {"cure", 1},
+    {"tension", 1},
     {"change", 1},
-    {"shield", 5},
+    {"shield", 1},
     {"run", 1}
   }
 }

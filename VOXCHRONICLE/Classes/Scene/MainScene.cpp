@@ -210,6 +210,38 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       _music->pushTrack(_musicSet->getPrefixedMusicName("silent.mp3").c_str(), 2);
     }
   } else if (_state == VCStateMain) {
+    
+    // リフの設定
+    Enemy* nearest = _enemyManager->getNearestEnemy();
+    if (nearest) {
+      stringstream ss;
+      ss << "counter" << nearest->getCounter() << ".mp3";
+      string file(_musicSet->getPrefixedMusicName(ss.str().c_str()));
+      Track* track = music->pushTrack(file.c_str(), 1);
+      
+      int row = nearest->getRow();
+      int denominator = (MAX_ROW + 1) * MAX_ROW / 2.0;
+      int numerator = ((MAX_ROW - row) + 1) * (MAX_ROW - row) / 2.0;
+      float volume = 0.5 + 1.0 * numerator / denominator;
+      track->setVolume(volume);
+    } else {
+      string file(_musicSet->getPrefixedMusicName("counter0.mp3"));
+      Track* track = music->pushTrack(file.c_str(), 1);
+      track->setVolume(0);
+    }
+    
+    // ドラムの設定
+    stringstream drumFileStream;
+    int drumLevel = this->calcDrumScore();
+    if (drumLevel == 0) {
+      drumFileStream << "silent.mp3";
+    } else {
+      drumFileStream << "drum" << drumLevel - 1 << ".mp3";
+    }
+    Track* track = music->pushTrack(_musicSet->getPrefixedMusicName(drumFileStream.str().c_str()).c_str(), 2);
+    track->setVolume(0.7);
+    
+    // メロディの設定
     Skill* skill = NULL;
     if (_characterManager->isPerforming()) {
       skill = _characterManager->getCurrentSkill();
@@ -315,36 +347,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     _controller->updateSkills(_characterManager);
     this->updateFocus();
     
-    // リフの設定
-    Enemy* nearest = _enemyManager->getNearestEnemy();
-    if (nearest) {
-      stringstream ss;
-      ss << "counter" << nearest->getCounter() << ".mp3";
-      string file(_musicSet->getPrefixedMusicName(ss.str().c_str()));
-      Track* track = music->pushTrack(file.c_str(), 1);
-      
-      int row = nearest->getRow();
-      int denominator = (MAX_ROW + 1) * MAX_ROW / 2.0;
-      int numerator = ((MAX_ROW - row) + 1) * (MAX_ROW - row) / 2.0;
-      float volume = 0.5 + 1.0 * numerator / denominator;
-      track->setVolume(volume);
-    } else {
-      string file(_musicSet->getPrefixedMusicName("counter0.mp3"));
-      Track* track = music->pushTrack(file.c_str(), 1);
-      track->setVolume(0);
-    }
-    
-    // ドラムの設定
-    stringstream drumFileStream;
-    int drumLevel = this->calcDrumScore();
-    if (drumLevel == 0) {
-      drumFileStream << "silent.mp3";
-    } else {
-      drumFileStream << "drum" << drumLevel - 1 << ".mp3";
-    }
-    Track* track = music->pushTrack(_musicSet->getPrefixedMusicName(drumFileStream.str().c_str()).c_str(), 2);
-    track->setVolume(0.7);
-    
+    // QTE開始
     if (_enemyManager->getBoss() != NULL && _enemyManager->getBoss()->getHP() <= 0) { // 寸止めQTE開始
       _state = VCStateQTEFinishStart;
       for (int i = 0; i < _musicSet->getFinishCount() - 2; ++i) {

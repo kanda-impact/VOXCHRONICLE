@@ -3,12 +3,12 @@ Character = {
   type = CharacterTypeVox,
   skills = {
     {"attack", 1},
-    {"knockback", 3},
-    {"slash", 7},
-    {"charge", 2},
-    {"tension", 2},
+    {"knockback", 1},
+    {"slash", 1},
+    {"charge", 1},
+    {"tension", 1},
     {"change", 1},
-    {"shield", 5},
+    {"shield", 1},
     {"run", 1}
   }
 }
