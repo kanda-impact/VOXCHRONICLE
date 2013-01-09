@@ -22,6 +22,7 @@ MusicSet::MusicSet(const char* identifier) {
   _name = new string(_lua->getString("name"));
   _composer = new string(_lua->getString("composer"));
   _prefix = new string(_lua->getString("prefix"));
+  _waitCount = _lua->getInt("waitCount");
   // ToDo 今は使わないのであとで載せます _common, _ignoreDrums;
   lua_State* L = _lua->getLuaEngine()->getLuaState();
   lua_getglobal(L, "Music");
@@ -61,6 +62,10 @@ int MusicSet::getIntroCount() {
 
 int MusicSet::getFinishCount() {
   return _finishCount;
+}
+
+int MusicSet::getWaitCount() {
+  return _waitCount;
 }
 
 MusicSetType MusicSet::getType() {

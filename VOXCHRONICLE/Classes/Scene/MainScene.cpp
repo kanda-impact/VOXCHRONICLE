@@ -92,7 +92,7 @@ bool MainScene::init(Map* map) {
   _enemyManager->setLevel(_level);
   
   _musicSet = _map->getCurrentMusic(_level);
-  //_musicSet->preloadAllTracks();
+  _musicSet->preloadAllTracks();
   
   TrackCache::sharedCache()->addTrack(FileUtils::getFilePath("Music/general/select_stage.wav"), 0);
   

@@ -27,6 +27,7 @@ class MusicSet :public CCObject {
 private:
   int _introCount; // イントロの小節数
   int _finishCount; // フィニッシュの小節数
+  int _waitCount; // waitの小節数
   CCLuaValueDict* _common; // skillの曲が共通かどうか
   CCLuaValueDict* _ignoreDrums; // ドラムを無視するトラックのリスト
   MusicSetType _type; // 曲の種類 道中曲orボス曲
@@ -41,6 +42,7 @@ public:
   bool isCommon(const char* skillName);
   int getIntroCount();
   int getFinishCount();
+  int getWaitCount();
   MusicSetType getType();
   void preloadAllTracks();
 };
