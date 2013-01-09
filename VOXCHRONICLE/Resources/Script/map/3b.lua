@@ -3,14 +3,15 @@ Map = {
   wayMusic = "dub",
   bossMusic = "boss",
   backgroundImage = "",
-  nextMaps = {"test"},
+  nextMaps = {},
   initialLevel = 1,
   maxLevel = 10,
   getEnemyTable = function(level)
     if level <= 2 then
       return {slime = 2, typhoon = 2}
     elseif level <= 5 then
-      return {slime = 2, typhoon = 2, leaf = 2}
+      return {slime =
+        2, typhoon = 2, leaf = 2}
     elseif level <= 7 then
       return {slime_physical = 3, leaf = 5, typhoon = 1}
     elseif level <= 9 then

@@ -11,6 +11,8 @@
 #include "TitleScene.h"
 #include "MainScene.h"
 #include "FileUtils.h"
+#include "DebugScene.h"
+#include "macros.h"
 
 using namespace cocos2d;
 
@@ -39,6 +41,16 @@ bool TitleScene::init() {
     sprite->setPosition(ccp(winSize.width / 2, winSize.height / 2));
     this->addChild(sprite);
   }
+  
+  CCLabelTTF* startLabel = CCLabelTTF::create("Start", FONT_NAME, 16);
+  CCLabelTTF* debugLabel = CCLabelTTF::create("Debug", FONT_NAME, 16);
+  
+  CCMenu* menu = CCMenu::create(CCMenuItemLabel::create(startLabel, this, menu_selector(TitleScene::onStartButtonPressed)),
+                                CCMenuItemLabel::create(debugLabel, this, menu_selector(TitleScene::onDebugButtonPressed)),
+                                NULL);
+  menu->alignItemsHorizontally();
+  menu->setPosition(ccp(winSize.width / 2, 100));
+  this->addChild(menu);
   return true;
 }
 
@@ -47,18 +59,28 @@ void TitleScene::registerWithTouchDispatcher() {
 }
 
 bool TitleScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/start.mp3").c_str());
-  nextScene();
   return true;
 } 
 
-void TitleScene::nextScene() {
+void TitleScene::nextScene(CCLayer* layer) {
   CCScene* scene = CCScene::create();
-  scene->addChild(MainScene::create());
+  scene->addChild(layer);
   CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
   CCDirector::sharedDirector()->replaceScene(transition);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
 }
+
 void TitleScene::onEnterTransitionDidFinish() {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(FileUtils::getFilePath("Music/general/title.mp3").c_str(), true);
+}
+
+void TitleScene::onStartButtonPressed(CCObject* sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/start.mp3").c_str());
+  MainScene* scene = MainScene::create();
+  nextScene(scene);
+}
+
+void TitleScene::onDebugButtonPressed(CCObject* sender) {
+  DebugScene* scene = DebugScene::create();
+  nextScene(scene);
 }
