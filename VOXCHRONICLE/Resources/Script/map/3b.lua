@@ -1,5 +1,5 @@
 Map = {
-  name = "スクリプトテスト",
+  name = "てつ面(3-B)",
   wayMusic = "dub",
   bossMusic = "boss",
   backgroundImage = "",

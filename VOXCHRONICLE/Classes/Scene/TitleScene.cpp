@@ -42,14 +42,14 @@ bool TitleScene::init() {
     this->addChild(sprite);
   }
   
-  CCLabelTTF* startLabel = CCLabelTTF::create("Start", FONT_NAME, 16);
-  CCLabelTTF* debugLabel = CCLabelTTF::create("Debug", FONT_NAME, 16);
+  CCLabelTTF* startLabel = CCLabelTTF::create("Start", FONT_NAME, 32);
+  CCLabelTTF* debugLabel = CCLabelTTF::create("Debug", FONT_NAME, 32);
   
   CCMenu* menu = CCMenu::create(CCMenuItemLabel::create(startLabel, this, menu_selector(TitleScene::onStartButtonPressed)),
                                 CCMenuItemLabel::create(debugLabel, this, menu_selector(TitleScene::onDebugButtonPressed)),
                                 NULL);
-  menu->alignItemsHorizontally();
-  menu->setPosition(ccp(winSize.width / 2, 100));
+  menu->alignItemsHorizontallyWithPadding(50);
+  menu->setPosition(ccp(winSize.width / 2, 80));
   this->addChild(menu);
   return true;
 }

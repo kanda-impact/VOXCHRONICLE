@@ -9,6 +9,8 @@
 #include "DebugScene.h"
 #include "LuaObject.h"
 #include "macros.h"
+#include "Map.h"
+#include "MainScene.h"
 
 static const char* DEBUG_SCRIPT = "Script/debug.lua";
 
@@ -33,17 +35,29 @@ bool DebugScene::init() {
   CCLuaValueArray* array = lua->getArray("stages");
   for (CCLuaValueArrayIterator it = array->begin(); it != array->end(); ++it) {
     string name = it->stringValue();
-    CCLabelTTF* label = CCLabelTTF::create(name.c_str(), FONT_NAME, 16);
+    Map* map = new Map(name.c_str());
+    map->autorelease();
+    CCLabelTTF* label = CCLabelTTF::create(map->getName()->c_str(), FONT_NAME, 20);
     CCMenuItemLabel* item = CCMenuItemLabel::create(label, this, menu_selector(DebugScene::onMenuItemPressed));
     items->addObject(item);
+    item->setUserObject(map);
   }
   CCMenu* menu = CCMenu::createWithArray(items);
   menu->setPosition(ccp(240, 160));
-  menu->alignItemsVertically();
+  menu->alignItemsVerticallyWithPadding(20);
   this->addChild(menu);
   
   return true;
 }
 
 void DebugScene::onMenuItemPressed(cocos2d::CCObject *sender) {
+  Map* map = (Map*)((CCNode*)sender)->getUserObject();
+  MainScene* layer = new MainScene();
+  layer->autorelease();
+  layer->init(map);
+  CCScene* scene = CCScene::create();
+  scene->addChild(layer);
+  CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
+  CCDirector::sharedDirector()->replaceScene(transition);
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
 }

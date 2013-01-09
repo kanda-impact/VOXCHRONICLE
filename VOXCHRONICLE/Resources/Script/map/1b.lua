@@ -1,5 +1,5 @@
 Map = {
-  name = "テストマップ",
+  name = "ジーク面(1-B)",
   wayMusic = "volca",
   bossMusic = "",
   backgroundImage = "",

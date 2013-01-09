@@ -26,6 +26,14 @@ using namespace cocos2d;
 using namespace VISS;
 
 bool MainScene::init() {
+  LuaObject* setting = new LuaObject("Script/setting", "Setting");
+  setting->autorelease();
+  Map* map = new Map(setting->getString("initialMap"));
+  map->autorelease();
+  return this->init(map);
+}
+
+bool MainScene::init(Map* map) {
   if ( !CCLayer::init() ) {
     return false;
   }
@@ -78,7 +86,8 @@ bool MainScene::init() {
   this->addChild(_controller);
   _characterManager->setLevel(setting->getInt("initialLevel"));
   
-  _map = new Map(setting->getString("initialMap"));
+  map->retain();
+  _map = map;
   _level = _map->createInitialLevel();
   _enemyManager->setLevel(_level);
   
@@ -114,6 +123,7 @@ bool MainScene::init() {
 
 MainScene::~MainScene() {
   delete _music;
+  _map->release();
   _messageWindow->release();
   _controller->release();
   _enemyManager->release();

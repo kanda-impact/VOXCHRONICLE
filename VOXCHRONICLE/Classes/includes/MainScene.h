@@ -59,7 +59,6 @@ class MainScene : public CCLayer {
   CCSprite* _focus;
   QTETrigger* _qteTrigger;
   
-  
   Level* _level;
   Map* _map;
   VCState _state;
@@ -96,6 +95,7 @@ class MainScene : public CCLayer {
   void onFinishTracksCompleted();
   
  public:
+  virtual bool init(Map* map);
   virtual bool init();
   ~MainScene();
   
