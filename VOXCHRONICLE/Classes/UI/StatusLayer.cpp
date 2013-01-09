@@ -126,7 +126,7 @@ void StatusLayer::setMaxMP(int mp) {
   } else if (count < mp) {
     for (int i = count; i < mp; ++i) {
       CCSprite* chip = CCSprite::create(FileUtils::getFilePath("Image/Main/UI/proto/mp_on.png").c_str());
-      chip->setPosition(ccp(110 + 20 * i, 270));
+      chip->setPosition(ccp(115 + 25 * i, 270));
       _mpChips->addObject(chip);
       this->addChild(chip);
     }

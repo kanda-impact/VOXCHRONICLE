@@ -348,9 +348,13 @@ void EnemyManager::pushEnemiesQueue(cocos2d::CCArray *enemies) {
 void EnemyManager::nextTurn (CharacterManager* characterManager) {
   this->lotPopEnemy();
   CCObject* obj = NULL;
+  int id = 0;
   CCARRAY_FOREACH(this->getEnemies(), obj) {
     Enemy* enemy = (Enemy*)obj;
     if (enemy == NULL) continue;
+    this->removeChild(enemy, false);
+    this->addChild(enemy, (MAX_ROW - enemy->getRow()) * 10 + id);
+    ++id;
     if (enemy->getEnable() && enemy->getRow() > 0) {
       if (!enemy->performSkill(characterManager, this)) { // 敵の技を実行する
         if (enemy->canMove()) { // 何も実行されなかったら、移動できるか調べる

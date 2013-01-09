@@ -14,25 +14,21 @@
 
 const int iconTag = 1;
 
-SkillTrigger* SkillTrigger::create(const char *pszFileName) {
-  SkillTrigger *pobSprite = new SkillTrigger();
-  if (pobSprite && pobSprite->initWithFile(pszFileName))
-    {
-    pobSprite->autorelease();
-    return pobSprite;
-    }
-  CC_SAFE_DELETE(pobSprite);
-  return NULL;
-}
-
-SkillTrigger::SkillTrigger() : CCSprite() {
+SkillTrigger::SkillTrigger() : CCNode() {
   _press = false;
   _skill = NULL;
   _state = SkillTriggerStateNormal;
+  _background = CCSprite::create(FileUtils::getFilePath("Image/Main/UI/proto/trigger_on.png").c_str());
+  _background->retain();
+  _icon = NULL;
+  _defaultScale = 1.0f;
+  this->addChild(_background);
 }
 
 SkillTrigger::~SkillTrigger() {
   _skill->release();
+  if (_icon != NULL) _icon->release();
+  _background->release();
 }
 
 bool SkillTrigger::getPress() {
@@ -45,7 +41,8 @@ void SkillTrigger::setPress(bool press) {
   if (press) {
     _state = SkillTriggerStateSelected;
     CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath("Image/Main/UI/proto/trigger_on.png").c_str());
-    this->setTexture(texture);
+    _background->setTexture(texture);
+    _icon->setColor(ccc3(44, 44, 44));
     this->setScale(1.2f);
   } else {
     _state = SkillTriggerStateNormal;
@@ -69,13 +66,13 @@ void SkillTrigger::setSkill(Skill* skill) {
   if (_skill) {
     std::stringstream ss;
     ss << "Image/Main/UI/command/" << skill->getIdentifier() << "_icon.png";
-    CCSprite* icon = CCSprite::create(FileUtils::getFilePath(ss.str().c_str()).c_str());
-    icon->setPosition(CCPointMake(30, 30));
-    if (this->getChildByTag(iconTag)) {
-      this->removeChildByTag(iconTag, true);
+    if (_icon != NULL) {
+      _icon->getParent()->removeChild(_icon, true);
     }
-    this->addChild(icon, 1000, iconTag);
-    icon->setScale(0.8f);
+    _icon = CCSprite::create(FileUtils::getFilePath(ss.str().c_str()).c_str());
+    _icon->retain();
+    this->addChild(_icon);
+    _icon->setScale(0.6f);
   }
   this->setSkillTriggerState(SkillTriggerStateNormal);
 }
@@ -95,27 +92,30 @@ void SkillTrigger::setSkillTriggerState(SkillTriggerState state) {
   if (_state == SkillTriggerStateUnknown || _state == SkillTriggerStateDisable) {
     opacity = 64;
   }
-  this->setOpacity(opacity);
-  CCSprite* icon = (CCSprite*)this->getChildByTag(1);
+  _background->setOpacity(opacity);
   if (_state == SkillTriggerStateUnknown) {
-    icon->setOpacity(0);
+    _icon->setOpacity(0);
   } else {
-    icon->setOpacity(opacity);
+    _icon->setOpacity(opacity);
   }
 }
 
 void SkillTrigger::setColor(SkillTriggerColor color) {
   _color = color;
   string filename;
-  CCSprite* icon = (CCSprite*)this->getChildByTag(iconTag);
+  if (_icon == NULL) return;
   if (_color == SkillTriggerColorVox) {
     filename = FileUtils::getFilePath("Image/Main/UI/proto/trigger_vox.png");
-    icon->setColor(LSK_COLOR);
+    _icon->setColor(ccc3(189, 217, 252));
   } else if (_color == SkillTriggerColorLaska) {
     filename = FileUtils::getFilePath("Image/Main/UI/proto/trigger_laska.png");
-    icon->setColor(VOX_COLOR);
+    _icon->setColor(ccc3(255, 232, 202));
   }
   CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(filename.c_str());
-  this->setTexture(texture);
+  _background->setTexture(texture);
   
+}
+
+CCSprite* SkillTrigger::getBackground() {
+  return _background;
 }

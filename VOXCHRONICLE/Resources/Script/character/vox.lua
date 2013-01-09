@@ -4,7 +4,7 @@ Character = {
   skills = {
     {"attack", 1},
     {"knockback", 3},
-    {"slash", 10},
+    {"slash", 7},
     {"charge", 2},
     {"tension", 2},
     {"change", 1},

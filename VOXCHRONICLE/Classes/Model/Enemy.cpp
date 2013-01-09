@@ -331,7 +331,7 @@ bool Enemy::setAnimatonAndFrame(const char *filePrefix, int frames, bool hasFram
       } else {
         frameSprite->setColor(ccc3(0, 0, 0));
       }
-      this->addChild(frameSprite, EnemyLayerFrame);
+      this->addChild(frameSprite, EnemyLayerFrame, EnemyTagFrame);
     }
     return true;
   }

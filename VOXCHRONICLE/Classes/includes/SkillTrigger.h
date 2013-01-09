@@ -30,24 +30,27 @@ using namespace cocos2d;
 /**
  コントローラー上に配置されるボタンクラスです
 */
-class SkillTrigger : public CCSprite, CCTouchDelegate {
+class SkillTrigger : public CCNode, CCTouchDelegate {
  private:
+  float _defaultScale;
   bool _press; // 押されているかどうかです
   Skill* _skill; // このトリガーが保持しているSkillです
   SkillTriggerState _state; // 現在のトリガーの状態です
   SkillTriggerColor _color; // 現在のトリガーの色です
+  CCSprite* _background;
+  CCSprite* _icon;
   
  public:
-  static SkillTrigger* create(const char* filename);
+  SkillTrigger();
+  ~SkillTrigger();
   bool getPress();
   void setPress(bool press);
   Skill* getSkill();
   void setSkill(Skill* skill);
-  ~SkillTrigger();
-  SkillTrigger();
   int getSkillTriggerState();
   void setSkillTriggerState(SkillTriggerState state);
   void setColor(SkillTriggerColor color);
+  CCSprite* getBackground();
 };
 
 #endif /* defined(__VOXCHRONICLE__SkillTrigger__) */

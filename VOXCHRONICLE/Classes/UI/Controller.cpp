@@ -23,12 +23,15 @@ bool Controller::init() {
   _triggers->retain();
   _enable = true;
   //const int rotation[] = {0, 30, 60, 0, -30, -60};
-  const int x[] = {34.8, 81.3, 81.3, 130, 349.4, 397.64, 397.64, 444.4};
-  const int y[] = {85.5, 110.5, 57.82, 85.5, 85.5, 110.5, 57.73, 85.5};
+  const int x[] = {51.0, 38.0, 110.2, 130.5, 341.8, 375.2, 443.2, 410.2};
+  const int y[] = {52.2, 129.2, 107.8, 38.2, 50.8, 111.2, 111.2, 52.0};
+  const float scale[] = {0.492, 0.376, 0.376, 0.376, 0.376, 0.376, 0.376, 0.376};
+  const float rotation[] = {45.0, 45.0, 45.0, 45.0, 90, 90, 90, 90};
   for (int i = 0; i < COMMAND_COUNT; ++i) {
-    SkillTrigger* trigger = SkillTrigger::create(FileUtils::getFilePath("Image/Main/UI/proto/trigger_vox.png").c_str());
+    SkillTrigger* trigger = new SkillTrigger();
     trigger->setPosition(ccp(x[i], y[i]));
-    //trigger->setRotation(rotation[i]);
+    trigger->getBackground()->setRotation(rotation[i]);
+    trigger->getBackground()->setScale(scale[i]);
     this->addChild(trigger);
     _triggers->addObject(trigger);
     this->setTouchEnabled(true);
@@ -52,8 +55,8 @@ bool Controller::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
   if (_enable) {
     CCObject* trigger = NULL;
     CCARRAY_FOREACH(_triggers, trigger) {
-      CCPoint p = ((SkillTrigger*)trigger)->convertTouchToNodeSpace(pTouch);
-      CCSize size = ((SkillTrigger*)trigger)->getContentSize();
+      CCPoint p = ((SkillTrigger*)trigger)->getBackground()->convertTouchToNodeSpace(pTouch);
+      CCSize size = ((SkillTrigger*)trigger)->getBackground()->getContentSize();
       const CCPoint triggerCenter = ccp(size.width / 2.0f, size.height / 2.0f);
       const int triggerRadius = size.width / 2.0;
       if (((SkillTrigger*)trigger)->getSkillTriggerState() == SkillTriggerStateNormal && ccpDistance(triggerCenter, p) < triggerRadius) {

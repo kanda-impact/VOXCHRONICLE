@@ -9,7 +9,8 @@ Skill = {
   maxRepeat = 1,
   turn = 1,
   performSkill = function(self, target, characterManager, enemyManager)
-    target:setRow(MAX_ROW - 1)
+    row = target:getRow()
+    target:setRow(row + 2)
   end,
   skillRange = SkillRangeSingle,
   skillType = SkillTypePhysical
