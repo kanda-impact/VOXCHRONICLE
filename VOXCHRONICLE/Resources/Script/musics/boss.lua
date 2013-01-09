@@ -5,6 +5,7 @@ Music = {
   type = MusicSetTypeBoss,
   introCount = 2,
   finishCount = 4,
+  waitTrun = 1,
   common = {
     wait = true,
     shield = true,

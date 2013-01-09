@@ -5,6 +5,7 @@ Music = {
   type = MusicSetTypeWay,
   introCount = 2,
   finishCount = 0,
+  waitTrun = 1,
   common = {
     wait = false,
     shield = false,

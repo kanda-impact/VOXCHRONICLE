@@ -6,7 +6,7 @@ Skill = {
   se = true,
   tensionLevel = 0,
   common = true,
-  maxRepeat = 1,
+  maxRepeat = 2,
   turn = 1,
   performSkill = function(self, target, characterManager, enemyManager)
     enemyManager:nextTurn(characterManager)

@@ -237,6 +237,9 @@
 		079F8987169D9D3C001357B5 /* nmb_counter1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 079F8983169D9D3C001357B5 /* nmb_counter1.mp3 */; };
 		079F8988169D9D3C001357B5 /* nmb_counter2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 079F8984169D9D3C001357B5 /* nmb_counter2.mp3 */; };
 		079F8989169D9D3C001357B5 /* nmb_counter3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 079F8985169D9D3C001357B5 /* nmb_counter3.mp3 */; };
+		079F898C169D9FBD001357B5 /* volca_lskrun1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 079F898A169D9FBD001357B5 /* volca_lskrun1.mp3 */; };
+		079F898D169D9FBD001357B5 /* volca_voxrun1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 079F898B169D9FBD001357B5 /* volca_voxrun1.mp3 */; };
+		079F898F169D9FDD001357B5 /* nmb_run1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 079F898E169D9FDD001357B5 /* nmb_run1.mp3 */; };
 		07A1F4D51693161600C4329F /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A1F4D41693161600C4329F /* libTestFlight.a */; };
 		07A1F506169318DA00C4329F /* volca_counter0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4D8169318DA00C4329F /* volca_counter0.mp3 */; };
 		07A1F507169318DA00C4329F /* volca_counter1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F4D9169318DA00C4329F /* volca_counter1.mp3 */; };
@@ -909,6 +912,9 @@
 		079F8983169D9D3C001357B5 /* nmb_counter1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nmb_counter1.mp3; sourceTree = "<group>"; };
 		079F8984169D9D3C001357B5 /* nmb_counter2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nmb_counter2.mp3; sourceTree = "<group>"; };
 		079F8985169D9D3C001357B5 /* nmb_counter3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nmb_counter3.mp3; sourceTree = "<group>"; };
+		079F898A169D9FBD001357B5 /* volca_lskrun1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_lskrun1.mp3; sourceTree = "<group>"; };
+		079F898B169D9FBD001357B5 /* volca_voxrun1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_voxrun1.mp3; sourceTree = "<group>"; };
+		079F898E169D9FDD001357B5 /* nmb_run1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nmb_run1.mp3; sourceTree = "<group>"; };
 		07A1F4D41693161600C4329F /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTestFlight.a; path = VOXCHRONICLE/ios/libTestFlight.a; sourceTree = "<group>"; };
 		07A1F4D61693162500C4329F /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestFlight.h; path = ios/TestFlight.h; sourceTree = "<group>"; };
 		07A1F4D8169318DA00C4329F /* volca_counter0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = volca_counter0.mp3; sourceTree = "<group>"; };
@@ -2092,6 +2098,7 @@
 				079F8948169D9C31001357B5 /* nmb_lskthunder0.mp3 */,
 				079F8949169D9C31001357B5 /* nmb_miss.mp3 */,
 				079F894A169D9C31001357B5 /* nmb_run0.mp3 */,
+				079F898E169D9FDD001357B5 /* nmb_run1.mp3 */,
 				079F894B169D9C31001357B5 /* nmb_shield0.mp3 */,
 				079F894C169D9C31001357B5 /* nmb_silent.mp3 */,
 				079F894D169D9C31001357B5 /* nmb_tension0.mp3 */,
@@ -2116,6 +2123,8 @@
 		07A1F4D7169318DA00C4329F /* volca */ = {
 			isa = PBXGroup;
 			children = (
+				079F898A169D9FBD001357B5 /* volca_lskrun1.mp3 */,
+				079F898B169D9FBD001357B5 /* volca_voxrun1.mp3 */,
 				07A1F4D8169318DA00C4329F /* volca_counter0.mp3 */,
 				07A1F4D9169318DA00C4329F /* volca_counter1.mp3 */,
 				07A1F4DA169318DA00C4329F /* volca_counter2.mp3 */,
@@ -3850,6 +3859,9 @@
 				079F8987169D9D3C001357B5 /* nmb_counter1.mp3 in Resources */,
 				079F8988169D9D3C001357B5 /* nmb_counter2.mp3 in Resources */,
 				079F8989169D9D3C001357B5 /* nmb_counter3.mp3 in Resources */,
+				079F898C169D9FBD001357B5 /* volca_lskrun1.mp3 in Resources */,
+				079F898D169D9FBD001357B5 /* volca_voxrun1.mp3 in Resources */,
+				079F898F169D9FDD001357B5 /* nmb_run1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
