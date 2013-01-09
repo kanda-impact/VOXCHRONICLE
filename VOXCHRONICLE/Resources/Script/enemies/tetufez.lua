@@ -8,7 +8,7 @@ Enemy = {
   counter = 3,
   speed = 1,
   item = EnemyItemNone,
-  animationFrames = 8,
+  animationFrames = 6,
   type = SkillTypeNormal,
   performSkill = function(self)
     return ""

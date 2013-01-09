@@ -268,8 +268,6 @@
 		07B7A6CF1620775700FCE64C /* tetufez3.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6C01620775700FCE64C /* tetufez3.png */; };
 		07B7A6D01620775700FCE64C /* tetufez4.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6C11620775700FCE64C /* tetufez4.png */; };
 		07B7A6D11620775700FCE64C /* tetufez5.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6C21620775700FCE64C /* tetufez5.png */; };
-		07B7A6D21620775700FCE64C /* tetufez6.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6C31620775700FCE64C /* tetufez6.png */; };
-		07B7A6D31620775700FCE64C /* tetufez7.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6C41620775700FCE64C /* tetufez7.png */; };
 		07B7A6D91620777800FCE64C /* tetufez.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6D61620777800FCE64C /* tetufez.lua */; };
 		07B95E1B15F304120024C672 /* Track.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B95E1915F303E30024C672 /* Track.mm */; };
 		07C6064216164F810084708C /* hello.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07C6064116164F810084708C /* hello.lua */; };
@@ -897,8 +895,6 @@
 		07B7A6C01620775700FCE64C /* tetufez3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetufez3.png; path = Resources/Image/Enemy/tetufez3.png; sourceTree = "<group>"; };
 		07B7A6C11620775700FCE64C /* tetufez4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetufez4.png; path = Resources/Image/Enemy/tetufez4.png; sourceTree = "<group>"; };
 		07B7A6C21620775700FCE64C /* tetufez5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetufez5.png; path = Resources/Image/Enemy/tetufez5.png; sourceTree = "<group>"; };
-		07B7A6C31620775700FCE64C /* tetufez6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetufez6.png; path = Resources/Image/Enemy/tetufez6.png; sourceTree = "<group>"; };
-		07B7A6C41620775700FCE64C /* tetufez7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tetufez7.png; path = Resources/Image/Enemy/tetufez7.png; sourceTree = "<group>"; };
 		07B7A6D61620777800FCE64C /* tetufez.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tetufez.lua; sourceTree = "<group>"; };
 		07B95E1915F303E30024C672 /* Track.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = Track.mm; path = Classes/VISS/Track.mm; sourceTree = "<group>"; };
 		07C6064116164F810084708C /* hello.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hello.lua; sourceTree = "<group>"; };
@@ -3089,8 +3085,6 @@
 				07B7A6C01620775700FCE64C /* tetufez3.png */,
 				07B7A6C11620775700FCE64C /* tetufez4.png */,
 				07B7A6C21620775700FCE64C /* tetufez5.png */,
-				07B7A6C31620775700FCE64C /* tetufez6.png */,
-				07B7A6C41620775700FCE64C /* tetufez7.png */,
 				0731E4DF16180A0B006AEF3D /* tnt0.png */,
 				0731E4E016180A0B006AEF3D /* tnt1.png */,
 				0731E4E116180A0B006AEF3D /* tnt2.png */,
@@ -3400,8 +3394,6 @@
 				07B7A6CF1620775700FCE64C /* tetufez3.png in Resources */,
 				07B7A6D01620775700FCE64C /* tetufez4.png in Resources */,
 				07B7A6D11620775700FCE64C /* tetufez5.png in Resources */,
-				07B7A6D21620775700FCE64C /* tetufez6.png in Resources */,
-				07B7A6D31620775700FCE64C /* tetufez7.png in Resources */,
 				07B7A6D91620777800FCE64C /* tetufez.lua in Resources */,
 				07FD921E1621099B00E74459 /* vox.lua in Resources */,
 				07FD922016210A2300E74459 /* lsk.lua in Resources */,
