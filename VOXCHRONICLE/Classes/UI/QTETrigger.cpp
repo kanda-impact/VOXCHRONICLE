@@ -26,7 +26,7 @@ QTETrigger::~QTETrigger() {
   _enemyManager->release();
 }
 
-void QTETrigger::onButtonPressed() {
+void QTETrigger::onButtonPressed(CCObject* sender) {
   _pressed = true;
   this->getParent()->removeChild(this, true);
 }

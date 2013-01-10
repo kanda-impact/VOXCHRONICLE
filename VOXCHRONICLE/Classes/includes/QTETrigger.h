@@ -18,7 +18,7 @@ using namespace cocos2d;
 class QTETrigger :public CCLayer {
  private:
   EnemyManager* _enemyManager;
-  void onButtonPressed();
+  void onButtonPressed(CCObject* sender);
   bool _pressed;
  public:
   QTETrigger(EnemyManager* manager);

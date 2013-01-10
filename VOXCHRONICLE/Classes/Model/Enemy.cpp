@@ -111,7 +111,7 @@ void Enemy::moveRow(float r) {
 
 DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager) {
   // ToDo 属性によるダメージ軽減とかもこの辺に載せてやる
-  float damage = round(skill->getPowerWithTension(characterManager->getTension()));
+  float damage = floor(0.5 + skill->getPowerWithTension(characterManager->getTension()));
   
   // アイテムの処理
   if ((_item == EnemyItemShield && skill->getType() == SkillTypePhysical) ||
@@ -137,7 +137,7 @@ DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager) {
   }
   // レベル補正を行います
   float levelOffset = characterManager->getLevelOffsetRate(characterManager->getLevel(), this->getLevel());
-  damage = round(damage * levelOffset);
+  damage = floor(0.5 + damage * levelOffset);
   _hp -= damage;
   if (_hp <= 0) {
     // ダメージが原因で死んだら死亡
