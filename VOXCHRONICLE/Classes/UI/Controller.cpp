@@ -7,10 +7,12 @@
 //
 
 #include "SimpleAudioEngine.h"
+#include <boost/lexical_cast.hpp>
 
 #include "Controller.h"
 #include "SkillTrigger.h"
 #include "FileUtils.h"
+#include "LuaObject.h"
 #define COMMAND_COUNT 8
 
 using namespace cocos2d;
@@ -22,19 +24,32 @@ bool Controller::init() {
   _triggers = CCArray::create();
   _triggers->retain();
   _enable = true;
-  //const int rotation[] = {0, 30, 60, 0, -30, -60};
-  const int x[] = {51.0, 38.0, 110.2, 130.5, 341.8, 375.2, 443.2, 410.2};
-  const int y[] = {52.2, 129.2, 107.8, 38.2, 50.8, 111.2, 111.2, 52.0};
-  const float scale[] = {0.492, 0.376, 0.376, 0.376, 0.376, 0.376, 0.376, 0.376};
-  const float rotation[] = {45.0, 45.0, 45.0, 45.0, 90, 90, 90, 90};
+  
+  // controller.luaから配置データを読みます
+  LuaObject* lua = new LuaObject(FileUtils::getFilePath("Script/controller.lua").c_str());
+  lua->autorelease();
+  CCLuaValueArray* xs = lua->getArray("x");
+  CCLuaValueArray* ys = lua->getArray("y");
+  CCLuaValueArray* scales = lua->getArray("scale");
+  CCLuaValueArray* rotations = lua->getArray("rotation");
+  CCLuaValueArrayIterator xsit = xs->begin();
+  CCLuaValueArrayIterator ysit = ys->begin();
+  CCLuaValueArrayIterator scalesit = scales->begin();
+  CCLuaValueArrayIterator rotationsit = rotations->begin();
+  
   for (int i = 0; i < COMMAND_COUNT; ++i) {
+    string index = boost::lexical_cast<string>(i + 1);
     SkillTrigger* trigger = new SkillTrigger();
-    trigger->setPosition(ccp(x[i], y[i]));
-    trigger->getBackground()->setRotation(rotation[i]);
-    trigger->getBackground()->setScale(scale[i]);
+    trigger->setPosition(ccp(xsit->floatValue(), ysit->floatValue()));
+    trigger->getBackground()->setRotation(rotationsit->floatValue());
+    trigger->getBackground()->setScale(scalesit->floatValue());
     this->addChild(trigger);
     _triggers->addObject(trigger);
     this->setTouchEnabled(true);
+    ++xsit;
+    ++ysit;
+    ++scalesit;
+    ++rotationsit;
   }
   return true;
 }

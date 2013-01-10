@@ -549,6 +549,7 @@
 		07D8D63F169F1A9E00B646E5 /* boss_voxslash0.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 07D8D613169F1A9E00B646E5 /* boss_voxslash0.m4a */; };
 		07D8D640169F1A9E00B646E5 /* boss_wait0.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 07D8D614169F1A9E00B646E5 /* boss_wait0.m4a */; };
 		07D8D642169F1B2000B646E5 /* boss_silent.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 07D8D641169F1B2000B646E5 /* boss_silent.m4a */; };
+		07D8D64A169F3BD900B646E5 /* controller.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07D8D649169F3BD900B646E5 /* controller.lua */; };
 		07DCD6871692953500FBBC3A /* sword.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07DCD6861692953500FBBC3A /* sword.lua */; };
 		07DCFDA31633461A00341769 /* FileUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07DCFDA11633461A00341769 /* FileUtils.cpp */; };
 		07E134FF162167CC00CCF72E /* MapSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E134FD162167CB00CCF72E /* MapSelector.cpp */; };
@@ -1414,6 +1415,7 @@
 		07D8D613169F1A9E00B646E5 /* boss_voxslash0.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = boss_voxslash0.m4a; path = Resources/Music/boss/boss_voxslash0.m4a; sourceTree = "<group>"; };
 		07D8D614169F1A9E00B646E5 /* boss_wait0.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = boss_wait0.m4a; path = Resources/Music/boss/boss_wait0.m4a; sourceTree = "<group>"; };
 		07D8D641169F1B2000B646E5 /* boss_silent.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = boss_silent.m4a; path = Resources/Music/boss/boss_silent.m4a; sourceTree = "<group>"; };
+		07D8D649169F3BD900B646E5 /* controller.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = controller.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		07DCD6861692953500FBBC3A /* sword.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sword.lua; path = enemySkills/sword.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		07DCFDA11633461A00341769 /* FileUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileUtils.cpp; sourceTree = "<group>"; };
 		07E134FD162167CB00CCF72E /* MapSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapSelector.cpp; path = Classes/Model/MapSelector.cpp; sourceTree = "<group>"; };
@@ -1927,6 +1929,7 @@
 				07C6064116164F810084708C /* hello.lua */,
 				07E1351A1621A04300CCF72E /* setting.lua */,
 				079F89A6169EE596001357B5 /* debug.lua */,
+				07D8D649169F3BD900B646E5 /* controller.lua */,
 			);
 			name = Script;
 			path = Resources/Script;
@@ -3363,6 +3366,7 @@
 				07D8D63F169F1A9E00B646E5 /* boss_voxslash0.m4a in Resources */,
 				07D8D640169F1A9E00B646E5 /* boss_wait0.m4a in Resources */,
 				07D8D642169F1B2000B646E5 /* boss_silent.m4a in Resources */,
+				07D8D64A169F3BD900B646E5 /* controller.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
