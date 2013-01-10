@@ -11,6 +11,7 @@
 #include "macros.h"
 #include "Map.h"
 #include "MainScene.h"
+#include "FileUtils.h"
 
 static const char* DEBUG_SCRIPT = "Script/debug.lua";
 
@@ -51,6 +52,7 @@ bool DebugScene::init() {
 }
 
 void DebugScene::onMenuItemPressed(cocos2d::CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/start.mp3").c_str());
   Map* map = (Map*)((CCNode*)sender)->getUserObject();
   MainScene* layer = new MainScene();
   layer->autorelease();

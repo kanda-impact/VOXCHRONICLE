@@ -81,6 +81,7 @@ void TitleScene::onStartButtonPressed(CCObject* sender) {
 }
 
 void TitleScene::onDebugButtonPressed(CCObject* sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   DebugScene* scene = DebugScene::create();
   nextScene(scene);
 }

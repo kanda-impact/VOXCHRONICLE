@@ -72,10 +72,12 @@ bool PauseLayer::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent
 }
 
 void PauseLayer::onReplayPressed(CCObject* sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   this->changeState(PauseLayerStateConfirmReplay);
 }
 
 void PauseLayer::onTitlePressed(CCObject* sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   this->changeState(PauseLayerStateConfirmTitle);
 }
 
@@ -86,7 +88,6 @@ void PauseLayer::onCancelPressed(CCObject* sender) {
 }
 
 void PauseLayer::onYesPressed(CCObject* sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   MainScene* scene = (MainScene*)this->getParent();
   scene->setPause(false);
   this->removeFromParentAndCleanup(true);
