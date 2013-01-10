@@ -293,6 +293,22 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
    ・本来ダメージが与えられるはずなのに、耐性やレベル補正でダメージが0だった場合、ヒットしていない
    */
   if (skill && performType == SkillPerformTypeSuccess) {
+    // カットインを追加する
+    string cutinFile = string("Image/Main/UI/command/") + skill->getIdentifier() + "_icon.png";
+    CCSprite* cutin = CCSprite::create(cutinFile.c_str());
+    if (cutin != NULL) {
+      const int height = 100;
+      cutin->setPosition(ccp(0, height));
+      float duration = _music->getCurrentMainTrack()->getDuration();
+      CCSize size = CCDirector::sharedDirector()->getWinSize();
+      cutin->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)),
+                                          CCDelayTime::create(duration * 0.25),
+                                          CCMoveTo::create(duration * 0.125, ccp(size.width, height)),
+                                          CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
+                                          NULL));
+      this->addChild(cutin);
+    }
+
     int preExp = _characterManager->getExp();
     CCDictionary* info = _enemyManager->performSkill(skill, _characterManager); // ここで経験値が貰える
     CCArray* enemies = (CCArray*)info->objectForKey("enemies");
@@ -344,7 +360,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
       }
     } else if (!isHit) { // ヒットしていないとき、強制的にミス音にする
-      name = "miss";
+      name = "miss"; // 差し替えたので今は強制的にミス音にできない。後で考える
       if (enemyCount == 0) {
         // 誰もいないときピロリ音
         CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("miss.m4a").c_str());
