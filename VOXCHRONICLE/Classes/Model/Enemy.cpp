@@ -167,15 +167,21 @@ int Enemy::getExp() {
 void Enemy::setRowAndCol(int row, float col) {
   CCPoint root = CCPointZero;
   CCPoint end = CCPointZero;
+  const int width = 480;
+  const int horizonWidth = 120;
+  const int horizonDistance = 122.5;
+  const int marginLeft = (width - horizonWidth) / 2.0f;
+  const int padding = 50;
+  const float scale = horizonWidth / width;
   if (col == 0) {
-    root = ccp(50, 0);
-    end = ccp(193.45, 160);
+    root = ccp(padding, 0);
+    end = ccp(marginLeft + padding * scale, horizonDistance);
   } else if (col == 1) {
-    root = ccp(240, 0);
-    end = ccp(240, 160);
+    root = ccp(width / 2.0, 0);
+    end = ccp(width / 2.0, horizonDistance);
   } else if (col == 2) {
-    root = ccp(430, 0);
-    end = ccp(286.55, 160);
+    root = ccp(width - padding, 0);
+    end = ccp(marginLeft + horizonWidth - padding * scale, horizonDistance);
   }
   CCPoint sub = ccpSub(end, root);
   CCPoint p = ccpAdd(root, ccpMult(sub, (row + 1) / (float)MAX_ROW));

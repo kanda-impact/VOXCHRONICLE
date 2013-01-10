@@ -61,14 +61,14 @@ bool MainScene::init(Map* map) {
   // 今はとりあえずここにSpriteをおいておきます
   CCSprite* background = CCSprite::create(FileUtils::getFilePath("floor0.png").c_str());
   CCAnimation* animation = CCAnimation::create();
-  animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("floor0.png").c_str(), CCRectMake(0, 0, 480, 160)));
-  animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("floor1.png").c_str(), CCRectMake(0, 0, 480, 160)));
-  animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("floor2.png").c_str(), CCRectMake(0, 0, 480, 160)));
+  animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("floor0.png").c_str(), CCRectMake(0, 0, 480, 122.5)));
+  animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("floor1.png").c_str(), CCRectMake(0, 0, 480, 122.5)));
+  animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("floor2.png").c_str(), CCRectMake(0, 0, 480, 122.5)));
   animation->setLoops(-1);
   animation->setDelayPerUnit(10.0 / 60.0);
   background->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
   
-  CCPoint center = ccp(director->getWinSize().width / 2.0f, 80);
+  CCPoint center = ccp(director->getWinSize().width / 2.0f, 122.5 / 2.0f);
   background->setPosition(center);
   this->addChild(background);
   
