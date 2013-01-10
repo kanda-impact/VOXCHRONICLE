@@ -12,7 +12,7 @@
 QTETrigger::QTETrigger(EnemyManager* manager) {
   _enemyManager = manager;
   _enemyManager->retain();
-  string fileName = FileUtils::getFilePath("Image/Main/UI/qte.png");
+  string fileName = FileUtils::getFilePath("qte.png");
   CCMenuItemImage* button = CCMenuItemImage::create(fileName.c_str(), fileName.c_str(), this, menu_selector(QTETrigger::onButtonPressed));
   CCMenu* menu = CCMenu::create(button, NULL);
   CCDirector* director = CCDirector::sharedDirector();
