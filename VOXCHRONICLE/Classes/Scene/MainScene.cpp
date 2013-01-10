@@ -293,21 +293,6 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
    ・本来ダメージが与えられるはずなのに、耐性やレベル補正でダメージが0だった場合、ヒットしていない
    */
   if (skill && performType == SkillPerformTypeSuccess) {
-    // カットインを追加する
-    string cutinFile = string("Image/Main/UI/command/") + skill->getIdentifier() + "_icon.png";
-    CCSprite* cutin = CCSprite::create(cutinFile.c_str());
-    if (cutin != NULL) {
-      const int height = 100;
-      cutin->setPosition(ccp(0, height));
-      float duration = _music->getCurrentMainTrack()->getDuration();
-      CCSize size = CCDirector::sharedDirector()->getWinSize();
-      cutin->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)),
-                                          CCDelayTime::create(duration * 0.25),
-                                          CCMoveTo::create(duration * 0.125, ccp(size.width, height)),
-                                          CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
-                                          NULL));
-      this->addChild(cutin);
-    }
 
     int preExp = _characterManager->getExp();
     CCDictionary* info = _enemyManager->performSkill(skill, _characterManager); // ここで経験値が貰える
@@ -335,6 +320,34 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
                                                 CCFadeOut::create(0.2),
                                                 CCCallFuncN::create(damageLabel, callfuncN_selector(MainScene::removeNode)),
                                                 NULL));
+    }
+    
+    // カットインを追加する
+    string cutinFile = string("Image/Main/UI/command/") + skill->getIdentifier() + "_icon.png";
+    CCSprite* cutin = CCSprite::create(cutinFile.c_str());
+    if (cutin != NULL) {
+      const int height = 100;
+      cutin->setPosition(ccp(0, height));
+      float duration = _music->getCurrentMainTrack()->getDuration();
+      CCSize size = CCDirector::sharedDirector()->getWinSize();
+      if (isHit) {
+        // 成功したとき、カットインを挿入
+        cutin->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)),
+                                            CCDelayTime::create(duration * 0.25),
+                                            CCMoveTo::create(duration * 0.125, ccp(size.width, height)),
+                                            CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
+                                            NULL));
+      } else {
+        // ミスったとき、コマンドを落とす
+        cutin->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)),
+                                            CCRotateBy::create(duration * 0.125, 45),
+                                            CCDelayTime::create(duration * 0.125),
+                                            CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, -100)),
+                                            CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
+                                            NULL));
+      }
+      this->addChild(cutin);
+      
     }
     
     if (isHit) {
