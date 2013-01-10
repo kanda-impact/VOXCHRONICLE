@@ -80,13 +80,25 @@ Track* Music::pushTrack(Track* track, int trackNumber) {
 }
     
 bool Music::play() {
-  cocos2d::CCDirector::sharedDirector()->getScheduler()->scheduleUpdateForTarget(this, -127, false);
-  for (std::vector< CCArray* >::iterator it = _tracks.begin(); it != _tracks.end(); ++it) {
-    if ((*it)->count() > 0 && !((Track*)(*it)->objectAtIndex(0))->play()) {
-      return false;
+  CCScheduler* scheduler = cocos2d::CCDirector::sharedDirector()->getScheduler();
+  if (scheduler->isTargetPaused(this)) {
+    // 再生再開
+    for (std::vector< CCArray* >::iterator it = _tracks.begin(); it != _tracks.end(); ++it) {
+      if ((*it)->count() > 0) {
+        ((Track*)(*it)->objectAtIndex(0))->resume();
+      }
     }
+    scheduler->resumeTarget(this);
+  } else {
+    // 初再生
+    for (std::vector< CCArray* >::iterator it = _tracks.begin(); it != _tracks.end(); ++it) {
+      if ((*it)->count() > 0 && !((Track*)(*it)->objectAtIndex(0))->play()) {
+        return false;
+      }
+    }
+    cocos2d::CCDirector::sharedDirector()->getScheduler()->scheduleUpdateForTarget(this, -127, false);
+    this->setScheduleForMain();
   }
-  this->setScheduleForMain();
   return true;
 }
     
@@ -106,7 +118,7 @@ void Music::pause() {
       ((Track*)(*it)->objectAtIndex(0))->pause();
     }
   }
-  cocos2d::CCDirector::sharedDirector()->getScheduler()->unscheduleAllSelectorsForTarget(this);
+  cocos2d::CCDirector::sharedDirector()->getScheduler()->pauseTarget(this);
 }
 
 void Music::setTrackDidBackFunction(boost::function<void (Music *, Track *, int)> f) {

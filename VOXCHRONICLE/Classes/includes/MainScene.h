@@ -72,6 +72,8 @@ class MainScene : public CCLayer {
   
   MusicSet* _musicSet;
   
+  CCSet* _pausedTargets;
+  
   void onEnterTransitionDidFinish();
   
   void trackDidBack(Music* music, Track* currentTrack, int trackNumber);
@@ -105,6 +107,7 @@ class MainScene : public CCLayer {
   virtual bool init(Map* map);
   virtual bool init();
   ~MainScene();
+  void setPause(bool pause);
   
   CREATE_FUNC(MainScene);
 };

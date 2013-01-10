@@ -550,6 +550,7 @@
 		07D8D640169F1A9E00B646E5 /* boss_wait0.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 07D8D614169F1A9E00B646E5 /* boss_wait0.m4a */; };
 		07D8D642169F1B2000B646E5 /* boss_silent.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 07D8D641169F1B2000B646E5 /* boss_silent.m4a */; };
 		07D8D64A169F3BD900B646E5 /* controller.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07D8D649169F3BD900B646E5 /* controller.lua */; };
+		07D8D64D169F4D9300B646E5 /* PauseLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07D8D64B169F4D9100B646E5 /* PauseLayer.cpp */; };
 		07DCD6871692953500FBBC3A /* sword.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07DCD6861692953500FBBC3A /* sword.lua */; };
 		07DCFDA31633461A00341769 /* FileUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07DCFDA11633461A00341769 /* FileUtils.cpp */; };
 		07E134FF162167CC00CCF72E /* MapSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E134FD162167CB00CCF72E /* MapSelector.cpp */; };
@@ -1416,6 +1417,8 @@
 		07D8D614169F1A9E00B646E5 /* boss_wait0.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = boss_wait0.m4a; path = Resources/Music/boss/boss_wait0.m4a; sourceTree = "<group>"; };
 		07D8D641169F1B2000B646E5 /* boss_silent.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = boss_silent.m4a; path = Resources/Music/boss/boss_silent.m4a; sourceTree = "<group>"; };
 		07D8D649169F3BD900B646E5 /* controller.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = controller.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		07D8D64B169F4D9100B646E5 /* PauseLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PauseLayer.cpp; path = Classes/UI/PauseLayer.cpp; sourceTree = "<group>"; };
+		07D8D64E169F4DA800B646E5 /* PauseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PauseLayer.h; path = Classes/includes/PauseLayer.h; sourceTree = "<group>"; };
 		07DCD6861692953500FBBC3A /* sword.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sword.lua; path = enemySkills/sword.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		07DCFDA11633461A00341769 /* FileUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileUtils.cpp; sourceTree = "<group>"; };
 		07E134FD162167CB00CCF72E /* MapSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapSelector.cpp; path = Classes/Model/MapSelector.cpp; sourceTree = "<group>"; };
@@ -1540,6 +1543,8 @@
 				079F89A3169EE580001357B5 /* QTETrigger.h */,
 				079F89A4169EE580001357B5 /* StatusLayer.h */,
 				07244C2E16956CAD00C5A442 /* QTETrigger.cpp */,
+				07D8D64B169F4D9100B646E5 /* PauseLayer.cpp */,
+				07D8D64E169F4DA800B646E5 /* PauseLayer.h */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -3664,6 +3669,7 @@
 				0715C2371690EB3000009479 /* EnemySkill.cpp in Sources */,
 				07244C3016956CAD00C5A442 /* QTETrigger.cpp in Sources */,
 				079331A3169D85D300AE4F93 /* DebugScene.cpp in Sources */,
+				07D8D64D169F4D9300B646E5 /* PauseLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

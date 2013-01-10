@@ -23,11 +23,12 @@ class StatusLayer :public CCLayer {
   CCSprite* _lifeGaugeBackground;
   CCSprite* _lifeGauge;
   
-  // デバッグ用表示
   CCLabelTTF* _expLabel;
   CCLabelTTF* _nextExpLabel;
   CCLabelTTF* _mapLabel;
   CCSprite* _timeMarker;
+  
+  void onPauseButtonPressed(CCObject* sender);
  public:
   StatusLayer();
   ~StatusLayer();

@@ -47,6 +47,10 @@ void Track::pause() {
   _track->track.paused = YES;
 }
 
+void Track::resume() {
+  _track->track.paused = NO;
+}
+
 bool Track::isPlaying() {
   return _track->track.playing;
 }

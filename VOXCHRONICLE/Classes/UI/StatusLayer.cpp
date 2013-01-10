@@ -10,6 +10,7 @@
 #include "FileUtils.h"
 #include <boost/lexical_cast.hpp>
 #include <sstream>
+#include "MainScene.h"
 
 StatusLayer::StatusLayer() {
   CCSprite* hpLabel = CCSprite::create(FileUtils::getFilePath("hp.png").c_str());
@@ -54,6 +55,13 @@ StatusLayer::StatusLayer() {
   _lifeGauge->setAnchorPoint(ccp(0.0f, 0.5f));
   _lifeGauge->setPosition(ccp(130, 293));
   this->addChild(_lifeGauge);
+  
+  CCMenu* pause = CCMenu::create(CCMenuItemImage::create(FileUtils::getFilePath("pause_button.png").c_str(),
+                                                         FileUtils::getFilePath("pause_button_disable.png").c_str(),
+                                                         this,
+                                                         menu_selector(StatusLayer::onPauseButtonPressed)), NULL);
+  pause->setPosition(ccp(440, 300));
+  this->addChild(pause);
 }
 
 StatusLayer::~StatusLayer() {
@@ -139,4 +147,9 @@ void StatusLayer::setLevel(int level) {
   char str[2];
   sprintf(str, "%02d", level);
   _levelLabel->setString(str);
+}
+
+void StatusLayer::onPauseButtonPressed(CCObject* sender) {
+  MainScene* scene = (MainScene*)this->getParent();
+  scene->setPause(true);
 }

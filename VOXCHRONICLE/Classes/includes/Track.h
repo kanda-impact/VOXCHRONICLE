@@ -67,6 +67,8 @@ namespace VISS {
     @brief トラックを一時停止します。再生位置は保持されます
     */
     void pause();
+    
+    void resume();
 
     /**
     @brief 再生中かどうかを返します

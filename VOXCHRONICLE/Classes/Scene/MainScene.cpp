@@ -20,10 +20,13 @@
 #include "FileUtils.h"
 #include "BlinkLayer.h"
 #include "TitleScene.h"
+#include "PauseLayer.h"
 
 using namespace std;
 using namespace cocos2d;
 using namespace VISS;
+
+const int PAUSE_LAYER_TAG = 10;
 
 bool MainScene::init() {
   LuaObject* setting = new LuaObject("Script/setting", "Setting");
@@ -41,6 +44,7 @@ bool MainScene::init(Map* map) {
   _music->setTrackDidBackFunction(boost::bind(&MainScene::trackDidBack, this, _1, _2, _3));
   _music->setTrackDidFinishFunction(boost::bind(&MainScene::trackDidFinishPlaying, this, _1, _2, _3, _4));
   _music->setTrackWillFinishFunction(boost::bind(&MainScene::trackWillFinishPlaying, this, _1, _2, _3, _4));
+  _pausedTargets = NULL;
   
   _currentSkillInfo.skillTrackName = "";
   _currentSkillInfo.type = SkillPerformTypeNone;
@@ -137,6 +141,9 @@ MainScene::~MainScene() {
   _musicSet->release();
   if (_mapSelector != NULL) {
     _mapSelector->release();
+  }
+  if (_pausedTargets != NULL) {
+    _pausedTargets->release();
   }
 }
 
@@ -718,5 +725,22 @@ void MainScene::onFinishTracksCompleted() {
     } else if (_level->getLevel() == _map->getMaxLevel() + 1 && _map->getNextMaps() > 0) { // 最高レベルの次の時で、次のマップが存在するとき
       this->gotoNextStage();
     }
+  }
+}
+
+void MainScene::setPause(bool pause) {
+  CCScheduler* scheduler = CCDirector::sharedDirector()->getScheduler();
+  PauseLayer* layer = new PauseLayer();
+  layer->autorelease();
+  if (pause && _pausedTargets == NULL) {
+    _pausedTargets = scheduler->pauseAllTargets();
+    _pausedTargets->retain();
+    _music->pause();
+    this->addChild(layer, 1000, PAUSE_LAYER_TAG);
+  } else {
+    _music->play();
+    scheduler->resumeTargets(_pausedTargets);
+    _pausedTargets = NULL;
+    this->removeChildByTag(PAUSE_LAYER_TAG, true);
   }
 }
