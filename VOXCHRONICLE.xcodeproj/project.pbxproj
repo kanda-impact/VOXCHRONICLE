@@ -553,6 +553,7 @@
 		07D8D64D169F4D9300B646E5 /* PauseLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07D8D64B169F4D9100B646E5 /* PauseLayer.cpp */; };
 		07D8D651169F656F00B646E5 /* cancel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07D8D64F169F656F00B646E5 /* cancel.mp3 */; };
 		07D8D652169F656F00B646E5 /* pause.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07D8D650169F656F00B646E5 /* pause.mp3 */; };
+		07D8D654169F6D9100B646E5 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D8D653169F6D9100B646E5 /* Default@2x.png */; };
 		07DCD6871692953500FBBC3A /* sword.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07DCD6861692953500FBBC3A /* sword.lua */; };
 		07DCFDA31633461A00341769 /* FileUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07DCFDA11633461A00341769 /* FileUtils.cpp */; };
 		07E134FF162167CC00CCF72E /* MapSelector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07E134FD162167CB00CCF72E /* MapSelector.cpp */; };
@@ -1423,6 +1424,7 @@
 		07D8D64E169F4DA800B646E5 /* PauseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PauseLayer.h; path = Classes/includes/PauseLayer.h; sourceTree = "<group>"; };
 		07D8D64F169F656F00B646E5 /* cancel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = cancel.mp3; path = Resources/SE/cancel.mp3; sourceTree = "<group>"; };
 		07D8D650169F656F00B646E5 /* pause.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = pause.mp3; path = Resources/SE/pause.mp3; sourceTree = "<group>"; };
+		07D8D653169F6D9100B646E5 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/ios/Default@2x.png"; sourceTree = "<group>"; };
 		07DCD6861692953500FBBC3A /* sword.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sword.lua; path = enemySkills/sword.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		07DCFDA11633461A00341769 /* FileUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileUtils.cpp; sourceTree = "<group>"; };
 		07E134FD162167CB00CCF72E /* MapSelector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapSelector.cpp; path = Classes/Model/MapSelector.cpp; sourceTree = "<group>"; };
@@ -1751,6 +1753,7 @@
 			isa = PBXGroup;
 			children = (
 				0791586915EBB4BB0083D348 /* Default.png */,
+				07D8D653169F6D9100B646E5 /* Default@2x.png */,
 				0791586A15EBB4BB0083D348 /* fps_images.png */,
 				0791586B15EBB4BB0083D348 /* Icon-72.png */,
 				0791586C15EBB4BB0083D348 /* Icon-Small-50.png */,
@@ -3380,6 +3383,7 @@
 				07D8D64A169F3BD900B646E5 /* controller.lua in Resources */,
 				07D8D651169F656F00B646E5 /* cancel.mp3 in Resources */,
 				07D8D652169F656F00B646E5 /* pause.mp3 in Resources */,
+				07D8D654169F6D9100B646E5 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
