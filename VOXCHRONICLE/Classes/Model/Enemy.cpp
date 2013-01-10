@@ -27,6 +27,10 @@ enum { // タグ
   EnemyTagItem = 2
 };
 
+enum { // アニメーションタグ
+  EnemyAnimationTagBlink = 1
+};
+
 Enemy* Enemy::create(const char *enemyName) {
   Enemy *pobSprite = new Enemy();
   if (pobSprite && pobSprite->initWithScriptName(enemyName)) {
@@ -68,6 +72,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
     this->setScale(0.0f);
     return this;
   }
+  
   return NULL;
 }
 
@@ -194,6 +199,7 @@ void Enemy::setRowAndCol(int row, float col) {
     int order = (MAX_ROW - row) * 10;
     parent->addChild(this, order);
   }
+  this->toggleBlink(row <= 1);
   _row = row;
   _col = col;
 }
@@ -375,5 +381,15 @@ bool Enemy::getEnable() {
 
 void Enemy::setEnable(bool enable) {
   _enable = enable;
+}
+
+void Enemy::toggleBlink(bool toggle) {
+  if (toggle) {
+    CCRepeatForever* blink = CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.2, 127), CCFadeTo::create(0.2, 255)));
+    blink->setTag(EnemyAnimationTagBlink);
+    this->runAction(blink);
+  } else {
+    this->stopActionByTag(EnemyAnimationTagBlink);
+  }
 }
 

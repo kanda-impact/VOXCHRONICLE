@@ -129,6 +129,8 @@ class Enemy : public CCSprite {
    */
   bool setDefaultAnimationClip();
   
+  void toggleBlink(bool toggle);
+  
   int getHP();
   float getRow();
   int getCol();
