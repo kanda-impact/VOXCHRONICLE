@@ -535,6 +535,7 @@ void MainScene::addGameOverButtons() {
 }
 
 void MainScene::replayButtonPressed(CCObject *sender) {
+  _music->stop();
   CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   CCScene* scene = CCScene::create();
@@ -544,6 +545,7 @@ void MainScene::replayButtonPressed(CCObject *sender) {
 }
 
 void MainScene::titleButtonPressed(CCObject *sender) {
+  _music->stop();
   CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   CCScene* scene = CCScene::create();
@@ -737,10 +739,12 @@ void MainScene::setPause(bool pause) {
     _pausedTargets->retain();
     _music->pause();
     this->addChild(layer, 1000, PAUSE_LAYER_TAG);
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/pause.mp3").c_str());
   } else {
     _music->play();
     scheduler->resumeTargets(_pausedTargets);
     _pausedTargets = NULL;
     this->removeChildByTag(PAUSE_LAYER_TAG, true);
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cancel.mp3").c_str());
   }
 }

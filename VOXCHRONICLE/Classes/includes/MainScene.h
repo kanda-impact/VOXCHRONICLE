@@ -82,8 +82,6 @@ class MainScene : public CCLayer {
   
   void updateGUI();
   void addGameOverButtons();
-  void replayButtonPressed(CCObject *sender);
-  void titleButtonPressed(CCObject *sender);
   void onGameOver();
   
   void update(float dt);
@@ -108,6 +106,8 @@ class MainScene : public CCLayer {
   virtual bool init();
   ~MainScene();
   void setPause(bool pause);
+  void replayButtonPressed(CCObject *sender);
+  void titleButtonPressed(CCObject *sender);
   
   CREATE_FUNC(MainScene);
 };
