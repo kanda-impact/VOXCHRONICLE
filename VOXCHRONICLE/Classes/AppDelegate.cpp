@@ -31,6 +31,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     // iphone hd
     CCFileUtils::sharedFileUtils()->setResourceDirectory("Retina");
   } else {
+    cout << "image" << endl;
     CCFileUtils::sharedFileUtils()->setResourceDirectory("Image");
   }
   // enable High Resource Mode(2x, such as iphone4) and maintains low resource on other devices.

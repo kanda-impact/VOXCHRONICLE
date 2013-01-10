@@ -24,12 +24,12 @@ if __name__ == '__main__':
         remove_all(DST)
     shutil.copytree(SRC, DST)
     files = os.listdir(DST)
+    base = os.getcwd()
     for file in files:
         filename, ext = os.path.splitext(file)
         if ext == '.png':
-            original = Image.open(file)
+            original = Image.open(os.path.join(base, DST, file))
             tmb = original.copy()
             width, height = original.size
             tmb.thumbnail((width / 2, height / 2))
-            os.remove(file)
-            tmb.save('%s%s' % (filename, ext))
+            tmb.save(os.path.join(base, DST, '%s%s' % (filename, ext)))
