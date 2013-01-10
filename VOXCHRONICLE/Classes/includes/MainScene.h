@@ -38,6 +38,12 @@ typedef enum {
   VCStateEnding
 } VCState;
 
+typedef struct {
+  Skill* skill;
+  string skillTrackName;
+  SkillPerformType type;
+} SkillPerformInfo;
+
 using namespace VISS;
 using namespace cocos2d;
 
@@ -49,6 +55,7 @@ class MainScene : public CCLayer {
   int _finishCount;
   int _mapTurnCount;
   bool _isImpact;
+  SkillPerformInfo _currentSkillInfo;
   Music* _music;
   Controller* _controller;
   EnemyManager* _enemyManager;

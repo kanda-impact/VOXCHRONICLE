@@ -42,6 +42,10 @@ bool MainScene::init(Map* map) {
   _music->setTrackDidFinishFunction(boost::bind(&MainScene::trackDidFinishPlaying, this, _1, _2, _3, _4));
   _music->setTrackWillFinishFunction(boost::bind(&MainScene::trackWillFinishPlaying, this, _1, _2, _3, _4));
   
+  _currentSkillInfo.skillTrackName = "";
+  _currentSkillInfo.type = SkillPerformTypeNone;
+  _currentSkillInfo.skill = NULL;
+  
   _turnCount = 0;
   _mapTurnCount = 0;
   _introCount = 0;
@@ -248,104 +252,14 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     } else {
       skill = _controller->currentTriggerSkill();
     }
-    std::stringstream ss;
     SkillPerformType performType = SkillPerformTypeNone;
     string name = _characterManager->checkSkillTrackName(skill, performType, _musicSet);
-    bool isHit = true; // ヒットしたかどうか
-    /* 以下のとき、ヒットしていない
-     1. 対象が自分以外の技を使用し、対象の全てについて
-     ・盾やバリアに弾かれた
-     　　　　　　 ・盾やバリアを破壊した場合、与ダメージが0でもヒットした扱いにする
-     ・本来、ダメージを与えられる技を使ったはずなのに被ダメージが0である
-     　　　　　   ・例えばノックバックはダメージが0でも、本来与えるダメージが0なのでヒットしている
-     ・本来ダメージが与えられるはずなのに、耐性やレベル補正でダメージが0だった場合、ヒットしていない
-     */
-    if (skill && performType == SkillPerformTypeSuccess) {
-      int preExp = _characterManager->getExp();
-      CCDictionary* info = _enemyManager->performSkill(skill, _characterManager); // ここで経験値が貰える
-      CCArray* enemies = (CCArray*)info->objectForKey("enemies");
-      CCArray* damages = (CCArray*)info->objectForKey("damages");
-      CCArray* damageTypes = (CCArray*)info->objectForKey("damageTypes");
-      int enemyCount = enemies->count();
-      for (int i = 0; i < enemyCount; ++i) {
-        isHit = true;
-        Enemy* enemy = (Enemy*)enemies->objectAtIndex(i);
-        CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(((CCInteger*)damages->objectAtIndex(i))->getValue()).c_str(),
-                                                         FileUtils::getFilePath("Image/Main/UI/damage_number.png").c_str(), 50, 100, '0');
-        // ダメージが0かつ、元々ダメージのない技じゃないかつ、アイテムも破壊していないとき、ヒットしていない状態にしてやる
-        int damage = ((CCInteger*)damages->objectAtIndex(i))->getValue();
-        DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(i))->getValue();
-        if (damage == 0 && damageType != DamageTypeBarrierBreak && damageType != DamageTypeShieldBreak && damageType != DamageTypeNoDamage) {
-          isHit = false;
-        }
-        damageLabel->setPosition(enemy->getPosition());
-        float scale = enemy->getCurrentScale(enemy->getRow());
-        damageLabel->setScale(scale);
-        this->addChild(damageLabel);
-        damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
-                                                  CCDelayTime::create(0.5),
-                                                  CCFadeOut::create(0.2),
-                                                  CCCallFuncN::create(damageLabel, callfuncN_selector(MainScene::removeNode)),
-                                                  NULL));
-      }
-      
-      if (isHit) {
-        // ヒットしたとき、SEがあればSEをならしてやる
-        if (enemies->count() > 0) { // 対象が1体以上いるとき
-          DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(0))->getValue();
-          stringstream seStream;
-          // 今は当たった敵1体目のダメージタイプをとってきてならしているが、
-          // 複数体に同時に当たったときは遅延して順番にならしても良さそう
-          if (damageType == DamageTypeShieldBreak) {
-            seStream << "shield_break.mp3";
-          } else if (damageType == DamageTypeBarrierBreak) {
-            seStream << "barrier_break.mp3";
-          } else if (skill->hasSE()) {
-            // 対象が自分、もしくは対象が1体以上いたとき、ダメージ効果音をならします
-            seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
-          }
-          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
-        }  else if (skill->getRange() == SkillRangeSelf && skill->hasSE()) { // 対象が自分だけ、かつSEを持っているとき
-          stringstream seStream;
-          // 効果音をならします
-          seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
-          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
-        }
-      } else if (!isHit) { // ヒットしていないとき、強制的にミス音にする
-        name = "miss";
-        if (enemyCount == 0) {
-          // 誰もいないときピロリ音
-          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("miss.m4a").c_str());
-        } else {
-          DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(0))->getValue();
-          if (damageType == DamageTypePhysicalInvalid) {
-            // 1体だけ敵がいるのに当たらず、盾持ちだったとき
-            CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("shield_invalid.mp3").c_str());
-          } else if (damageType == DamageTypeMagicalInvalid) {
-            // バリア持ちだったとき
-            CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("barrier_invalid.mp3").c_str());
-          }
-        }
-        
-      }
-      int getExp = ((CCInteger*)info->objectForKey("exp"))->getValue();
-      CCArray* fixed = _map->getFixedEnemies(preExp, preExp + getExp);
-      if (fixed->count() > 0) {
-        _enemyManager->pushEnemiesQueue(fixed);
-      }
-      this->checkLevelUp();
-    } else if (performType == SkillPerformTypeNone) {
-      // 何も実行しなかったとき
-      // MP回復 コマンド化したのでコメントアウトしておきます
-      //_characterManager->addMP(1);
-    }
-    
-    ss << name << ".m4a";
-    string file(_musicSet->getPrefixedMusicName(ss.str().c_str()));
+    _currentSkillInfo.skillTrackName = name;
+    _currentSkillInfo.type = performType;
+    _currentSkillInfo.skill = skill;
+    string file(_musicSet->getPrefixedMusicName((name + ".m4a").c_str()));
     string trackName(file);
     music->pushTrack(file.c_str(), 0);
-    _controller->updateSkills(_characterManager);
-    this->updateFocus();
     
     // QTE開始
     if (_enemyManager->getBoss() != NULL && _enemyManager->getBoss()->getHP() <= 0) { // 寸止めQTE開始
@@ -364,6 +278,106 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
 
 void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track *nextTrack, int trackNumber) {
   
+  // メインの動きを実行
+  Skill* skill = _currentSkillInfo.skill;
+  SkillPerformType performType = _currentSkillInfo.type;
+  string name = _currentSkillInfo.skillTrackName;
+  
+  bool isHit = true; // ヒットしたかどうか
+  /* 以下のとき、ヒットしていない
+   1. 対象が自分以外の技を使用し、対象の全てについて
+   ・盾やバリアに弾かれた
+   　　　　　　 ・盾やバリアを破壊した場合、与ダメージが0でもヒットした扱いにする
+   ・本来、ダメージを与えられる技を使ったはずなのに被ダメージが0である
+   　　　　　   ・例えばノックバックはダメージが0でも、本来与えるダメージが0なのでヒットしている
+   ・本来ダメージが与えられるはずなのに、耐性やレベル補正でダメージが0だった場合、ヒットしていない
+   */
+  if (skill && performType == SkillPerformTypeSuccess) {
+    int preExp = _characterManager->getExp();
+    CCDictionary* info = _enemyManager->performSkill(skill, _characterManager); // ここで経験値が貰える
+    CCArray* enemies = (CCArray*)info->objectForKey("enemies");
+    CCArray* damages = (CCArray*)info->objectForKey("damages");
+    CCArray* damageTypes = (CCArray*)info->objectForKey("damageTypes");
+    int enemyCount = enemies->count();
+    for (int i = 0; i < enemyCount; ++i) {
+      isHit = true;
+      Enemy* enemy = (Enemy*)enemies->objectAtIndex(i);
+      CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(((CCInteger*)damages->objectAtIndex(i))->getValue()).c_str(),
+                                                       FileUtils::getFilePath("Image/Main/UI/damage_number.png").c_str(), 50, 100, '0');
+      // ダメージが0かつ、元々ダメージのない技じゃないかつ、アイテムも破壊していないとき、ヒットしていない状態にしてやる
+      int damage = ((CCInteger*)damages->objectAtIndex(i))->getValue();
+      DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(i))->getValue();
+      if (damage == 0 && damageType != DamageTypeBarrierBreak && damageType != DamageTypeShieldBreak && damageType != DamageTypeNoDamage) {
+        isHit = false;
+      }
+      damageLabel->setPosition(enemy->getPosition());
+      float scale = enemy->getCurrentScale(enemy->getRow());
+      damageLabel->setScale(scale);
+      this->addChild(damageLabel);
+      damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
+                                                CCDelayTime::create(0.5),
+                                                CCFadeOut::create(0.2),
+                                                CCCallFuncN::create(damageLabel, callfuncN_selector(MainScene::removeNode)),
+                                                NULL));
+    }
+    
+    if (isHit) {
+      // ヒットしたとき、SEがあればSEをならしてやる
+      if (enemies->count() > 0) { // 対象が1体以上いるとき
+        DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(0))->getValue();
+        stringstream seStream;
+        // 今は当たった敵1体目のダメージタイプをとってきてならしているが、
+        // 複数体に同時に当たったときは遅延して順番にならしても良さそう
+        if (damageType == DamageTypeShieldBreak) {
+          seStream << "shield_break.mp3";
+        } else if (damageType == DamageTypeBarrierBreak) {
+          seStream << "barrier_break.mp3";
+        } else if (skill->hasSE()) {
+          // 対象が自分、もしくは対象が1体以上いたとき、ダメージ効果音をならします
+          seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
+        }
+        CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
+      }  else if (skill->getRange() == SkillRangeSelf && skill->hasSE()) { // 対象が自分だけ、かつSEを持っているとき
+        stringstream seStream;
+        // 効果音をならします
+        seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
+        CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
+      }
+    } else if (!isHit) { // ヒットしていないとき、強制的にミス音にする
+      name = "miss";
+      if (enemyCount == 0) {
+        // 誰もいないときピロリ音
+        CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("miss.m4a").c_str());
+      } else {
+        DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(0))->getValue();
+        if (damageType == DamageTypePhysicalInvalid) {
+          // 1体だけ敵がいるのに当たらず、盾持ちだったとき
+          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("shield_invalid.mp3").c_str());
+        } else if (damageType == DamageTypeMagicalInvalid) {
+          // バリア持ちだったとき
+          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("barrier_invalid.mp3").c_str());
+        }
+      }
+      
+    }
+    int getExp = ((CCInteger*)info->objectForKey("exp"))->getValue();
+    CCArray* fixed = _map->getFixedEnemies(preExp, preExp + getExp);
+    if (fixed->count() > 0) {
+      _enemyManager->pushEnemiesQueue(fixed);
+    }
+    this->checkLevelUp();
+  } else if (performType == SkillPerformTypeNone) {
+    // 何も実行しなかったとき
+    // MP回復 コマンド化したのでコメントアウトしておきます
+    //_characterManager->addMP(1);
+  }
+  
+  _controller->updateSkills(_characterManager);
+  this->updateFocus();
+  _currentSkillInfo.skillTrackName = "";
+  _currentSkillInfo.type = SkillPerformTypeNone;
+  _currentSkillInfo.skill = NULL;
+  
   // ターンカウントを進める
   ++_turnCount;
   ++_mapTurnCount;
@@ -376,15 +390,15 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     _enemyManager->purgeAllTrash();
   }
   /*if (_state == VCStateMain) {
-    if (_enemyManager->getBoss() != NULL && _enemyManager->getBoss()->getHP() == 0) {
-      _controller->setEnable(false);
-      _qteTrigger = new QTETrigger(_enemyManager);
-      _qteTrigger->retain();
-      this->addChild(_qteTrigger);
-      _state = VCStateBoss;
-      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/qte.mp3").c_str());
-    }
-  }*/
+   if (_enemyManager->getBoss() != NULL && _enemyManager->getBoss()->getHP() == 0) {
+   _controller->setEnable(false);
+   _qteTrigger = new QTETrigger(_enemyManager);
+   _qteTrigger->retain();
+   this->addChild(_qteTrigger);
+   _state = VCStateBoss;
+   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/qte.mp3").c_str());
+   }
+   }*/
 }
 
 void MainScene::updateGUI() {
