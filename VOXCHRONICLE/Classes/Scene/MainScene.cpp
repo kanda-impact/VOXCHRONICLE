@@ -272,7 +272,6 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       }
     }
     Track* track = music->pushTrack(_musicSet->getPrefixedMusicName(drumFileStream.str().c_str()).c_str(), 2);
-    track->setVolume(0.7);
     
     // QTE開始
     if (_enemyManager->getBoss() != NULL && _enemyManager->getBoss()->getHP() <= 0) { // 寸止めQTE開始
