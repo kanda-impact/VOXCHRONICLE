@@ -317,6 +317,9 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(i))->getValue();
       if (damage == 0 && damageType != DamageTypeBarrierBreak && damageType != DamageTypeShieldBreak && damageType != DamageTypeNoDamage) {
         isHit = false;
+      } else {
+        // ヒットしたとき、敵キャラを点滅させる
+        enemy->runAction(CCRepeat::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.05, 64), CCFadeTo::create(0.05, 255)), 3));
       }
       damageLabel->setPosition(enemy->getPosition());
       float scale = enemy->getCurrentScale(enemy->getRow());
