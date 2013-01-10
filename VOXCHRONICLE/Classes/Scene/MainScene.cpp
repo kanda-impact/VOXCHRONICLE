@@ -297,9 +297,9 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
           // 今は当たった敵1体目のダメージタイプをとってきてならしているが、
           // 複数体に同時に当たったときは遅延して順番にならしても良さそう
           if (damageType == DamageTypeShieldBreak) {
-            seStream << "shield_break.m4a";
+            seStream << "shield_break.mp3";
           } else if (damageType == DamageTypeBarrierBreak) {
-            seStream << "barrier_break.m4a";
+            seStream << "barrier_break.mp3";
           } else if (skill->hasSE()) {
             // 対象が自分、もしくは対象が1体以上いたとき、ダメージ効果音をならします
             seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
