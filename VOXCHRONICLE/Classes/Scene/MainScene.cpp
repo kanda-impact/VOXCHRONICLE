@@ -241,17 +241,6 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       track->setVolume(0);
     }
     
-    // ドラムの設定
-    stringstream drumFileStream;
-    int drumLevel = this->calcDrumScore();
-    if (drumLevel == 0) {
-      drumFileStream << "silent.m4a";
-    } else {
-      drumFileStream << "drum" << drumLevel - 1 << ".m4a";
-    }
-    Track* track = music->pushTrack(_musicSet->getPrefixedMusicName(drumFileStream.str().c_str()).c_str(), 2);
-    track->setVolume(0.7);
-    
     // メロディの設定
     Skill* skill = NULL;
     if (_characterManager->isPerforming()) {
@@ -267,6 +256,23 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     string file(_musicSet->getPrefixedMusicName((name + ".m4a").c_str()));
     string trackName(file);
     music->pushTrack(file.c_str(), 0);
+    
+    // ドラムの設定
+    stringstream drumFileStream;
+    
+    if (_characterManager->getTension() > 0 && skill != NULL && string(skill->getIdentifier()) != "tension") {
+      // テンションが1以上で、skillがあるとき、かつテンションじゃないとき、インパクトをならしてやる
+      drumFileStream << "impact" << _characterManager->getTension() - 1 << ".m4a";
+    } else {
+      int drumLevel = this->calcDrumScore();
+      if (drumLevel == 0) {
+        drumFileStream << "silent.m4a";
+      } else {
+        drumFileStream << "drum" << drumLevel - 1 << ".m4a";
+      }
+    }
+    Track* track = music->pushTrack(_musicSet->getPrefixedMusicName(drumFileStream.str().c_str()).c_str(), 2);
+    track->setVolume(0.7);
     
     // QTE開始
     if (_enemyManager->getBoss() != NULL && _enemyManager->getBoss()->getHP() <= 0) { // 寸止めQTE開始
