@@ -50,11 +50,13 @@ Enemy* EnemyManager::popEnemy() {
   if (_enemiesQueue->count() > 0) {
     const char* enemyName = ((CCString*)_enemiesQueue->lastObject())->getCString();
     Enemy* enemy = Enemy::create(enemyName);
-    _enemiesQueue->removeLastObject();
-    int col = rand() % 3;
-    enemy->setCol(col);
-    this->addChild(enemy, (MAX_ROW - enemy->getRow()));
-    return enemy;
+    if (enemy != NULL) {
+      _enemiesQueue->removeLastObject();
+      int col = rand() % 3;
+      enemy->setCol(col);
+      this->addChild(enemy, (MAX_ROW - enemy->getRow()));
+      return enemy;
+    }
   }
   return NULL;
 }
