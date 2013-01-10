@@ -13,44 +13,46 @@
 
 StatusLayer::StatusLayer() {
   CCSprite* hpLabel = CCSprite::create(FileUtils::getFilePath("hp.png").c_str());
-  hpLabel->setPosition(ccp(88, 300));
+  hpLabel->setPosition(ccp(139, 308));
   this->addChild(hpLabel);
   CCSprite* mpLabel = CCSprite::create(FileUtils::getFilePath("mp.png").c_str());
-  mpLabel->setPosition(ccp(88, 270));
+  mpLabel->setPosition(ccp(282, 308));
   this->addChild(mpLabel);
   
   _currentHPLabel = CCLabelAtlas::create("0", FileUtils::getFilePath("hp_numbers.png").c_str(), 17, 18, '0');
   _currentHPLabel->retain();
-  _currentHPLabel->setPosition(ccp(134, 300));
+  _currentHPLabel->setScale(0.6f);
+  _currentHPLabel->setPosition(ccp(164, 308));
   _currentHPLabel->setAnchorPoint(ccp(0.5f, 0.5f));
   _maxHPLabel = CCLabelAtlas::create("0", FileUtils::getFilePath("hp_numbers.png").c_str(), 17, 18, '0');
   _maxHPLabel->retain();
-  _maxHPLabel->setPosition(ccp(198, 300));
+  _maxHPLabel->setScale(0.4f);
+  _maxHPLabel->setPosition(ccp(200, 305));
   _maxHPLabel->setAnchorPoint(ccp(0.5f, 0.5f));
   this->addChild(_currentHPLabel);
   this->addChild(_maxHPLabel);
   CCSprite* slash = CCSprite::create(FileUtils::getFilePath("slash.png").c_str());
-  slash->setPosition(ccp(168, 300));
+  slash->setPosition(ccp(186, 308));
   this->addChild(slash);
   _mpChips = CCArray::create();
   _mpChips->retain();
   
   CCSprite* stageLabel = CCSprite::create(FileUtils::getFilePath("stage.png").c_str());
-  stageLabel->setPosition(ccp(38, 260));
+  stageLabel->setPosition(ccp(18, 283));
   this->addChild(stageLabel);
   
-  _levelLabel = CCLabelAtlas::create("10", FileUtils::getFilePath("stage_numbers.png").c_str(), 35, 45, '0');
-  _levelLabel->setPosition(ccp(0, 270));
+  _levelLabel = CCLabelAtlas::create("10", FileUtils::getFilePath("stage_numbers.png").c_str(), 18, 23, '0');
+  _levelLabel->setPosition(ccp(0, 290));
   this->addChild(_levelLabel);
   
   _lifeGaugeBackground = CCSprite::create(FileUtils::getFilePath("gauge_bg.png").c_str());
   _lifeGaugeBackground->setAnchorPoint(ccp(0.0f, 0.5f));
-  _lifeGaugeBackground->setPosition(ccp(230, 301));
+  _lifeGaugeBackground->setPosition(ccp(130, 293));
   this->addChild(_lifeGaugeBackground);
   
   _lifeGauge = CCSprite::create(FileUtils::getFilePath("gauge.png").c_str());
   _lifeGauge->setAnchorPoint(ccp(0.0f, 0.5f));
-  _lifeGauge->setPosition(ccp(230, 301));
+  _lifeGauge->setPosition(ccp(130, 293));
   this->addChild(_lifeGauge);
 }
 
@@ -126,7 +128,7 @@ void StatusLayer::setMaxMP(int mp) {
   } else if (count < mp) {
     for (int i = count; i < mp; ++i) {
       CCSprite* chip = CCSprite::create(FileUtils::getFilePath("mp_on.png").c_str());
-      chip->setPosition(ccp(115 + 25 * i, 270));
+      chip->setPosition(ccp(300 + 15 * i, 308));
       _mpChips->addObject(chip);
       this->addChild(chip);
     }
