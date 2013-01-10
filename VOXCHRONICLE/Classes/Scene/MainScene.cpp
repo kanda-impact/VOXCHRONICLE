@@ -748,3 +748,7 @@ void MainScene::setPause(bool pause) {
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cancel.mp3").c_str());
   }
 }
+
+VCState MainScene::getState () {
+  return _state;
+}

@@ -108,6 +108,7 @@ class MainScene : public CCLayer {
   void setPause(bool pause);
   void replayButtonPressed(CCObject *sender);
   void titleButtonPressed(CCObject *sender);
+  VCState getState();
   
   CREATE_FUNC(MainScene);
 };

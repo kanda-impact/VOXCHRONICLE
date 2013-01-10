@@ -151,5 +151,7 @@ void StatusLayer::setLevel(int level) {
 
 void StatusLayer::onPauseButtonPressed(CCObject* sender) {
   MainScene* scene = (MainScene*)this->getParent();
-  scene->setPause(true);
+  if (scene->getState() != VCStateGameOver) {
+    scene->setPause(true);
+  }
 }
