@@ -181,6 +181,13 @@ void Enemy::setRowAndCol(int row, float col) {
   CCPoint p = ccpAdd(root, ccpMult(sub, (row + 1) / (float)MAX_ROW));
   this->setPosition(p);
   this->setAnchorPoint(ccp(0.5f, 0.0f));
+  // 並び順の変更
+  CCNode* parent = this->getParent();
+  if (parent != NULL) {
+    parent->removeChild(this, false);
+    int order = (MAX_ROW - row) * 10;
+    parent->addChild(this, order);
+  }
   _row = row;
   _col = col;
 }
