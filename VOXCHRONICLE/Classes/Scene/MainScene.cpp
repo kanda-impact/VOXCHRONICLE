@@ -210,15 +210,15 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       _finishCount = _musicSet->getFinishCount() - 3;
       for (int i = 2; i < _musicSet->getFinishCount(); ++i) {
         stringstream finish;
-        finish << "finish" << i << ".m4a";
+        finish << "finish" << i << ".caf";
         _music->pushTrack(_musicSet->getPrefixedMusicName(finish.str().c_str()).c_str(), 0);
-        _music->pushTrack(_musicSet->getPrefixedMusicName("silent.m4a").c_str(), 1);
-        _music->pushTrack(_musicSet->getPrefixedMusicName("silent.m4a").c_str(), 2);
+        _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 1);
+        _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 2);
       }
     } else {
-      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.m4a").c_str(), 0);
-      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.m4a").c_str(), 1);
-      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.m4a").c_str(), 2);
+      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 0);
+      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 1);
+      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 2);
     }
   } else if (_state == VCStateMain) {
     
@@ -226,7 +226,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     Enemy* nearest = _enemyManager->getNearestEnemy();
     if (nearest) {
       stringstream ss;
-      ss << "counter" << nearest->getCounter() << ".m4a";
+      ss << "counter" << nearest->getCounter() << ".caf";
       string file(_musicSet->getPrefixedMusicName(ss.str().c_str()));
       Track* track = music->pushTrack(file.c_str(), 1);
       
@@ -236,7 +236,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       float volume = 0.5 + 1.0 * numerator / denominator;
       track->setVolume(volume);
     } else {
-      string file(_musicSet->getPrefixedMusicName("counter0.m4a"));
+      string file(_musicSet->getPrefixedMusicName("counter0.caf"));
       Track* track = music->pushTrack(file.c_str(), 1);
       track->setVolume(0);
     }
@@ -253,7 +253,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     _currentSkillInfo.skillTrackName = name;
     _currentSkillInfo.type = performType;
     _currentSkillInfo.skill = skill;
-    string file(_musicSet->getPrefixedMusicName((name + ".m4a").c_str()));
+    string file(_musicSet->getPrefixedMusicName((name + ".caf").c_str()));
     string trackName(file);
     music->pushTrack(file.c_str(), 0);
     
@@ -262,13 +262,13 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     
     if (_characterManager->getTension() > 0 && skill != NULL && string(skill->getIdentifier()) != "tension") {
       // テンションが1以上で、skillがあるとき、かつテンションじゃないとき、インパクトをならしてやる
-      drumFileStream << "impact" << _characterManager->getTension() - 1 << ".m4a";
+      drumFileStream << "impact" << _characterManager->getTension() - 1 << ".caf";
     } else {
       int drumLevel = this->calcDrumScore();
       if (drumLevel == 0) {
-        drumFileStream << "silent.m4a";
+        drumFileStream << "silent.caf";
       } else {
-        drumFileStream << "drum" << drumLevel - 1 << ".m4a";
+        drumFileStream << "drum" << drumLevel - 1 << ".caf";
       }
     }
     Track* track = music->pushTrack(_musicSet->getPrefixedMusicName(drumFileStream.str().c_str()).c_str(), 2);
@@ -278,10 +278,10 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       _state = VCStateQTEFinishStart;
       for (int i = 0; i < _musicSet->getFinishCount() - 2; ++i) {
         stringstream finish;
-        finish << "finish" << i << ".m4a";
+        finish << "finish" << i << ".caf";
         _music->pushTrack(_musicSet->getPrefixedMusicName(finish.str().c_str()).c_str(), 0);
-        _music->pushTrack(_musicSet->getPrefixedMusicName("silent.m4a").c_str(), 1);
-        _music->pushTrack(_musicSet->getPrefixedMusicName("silent.m4a").c_str(), 2);
+        _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 1);
+        _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 2);
       }
     }
   }
@@ -391,7 +391,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       name = "miss"; // 差し替えたので今は強制的にミス音にできない。後で考える
       if (enemyCount == 0) {
         // 誰もいないときピロリ音
-        CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("miss.m4a").c_str());
+        CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("miss.caf").c_str());
       } else {
         DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(0))->getValue();
         if (damageType == DamageTypePhysicalInvalid) {
@@ -461,9 +461,9 @@ void MainScene::pushIntroTracks() {
   _introCount = 0;
   if (introCount == 0) {
     // イントロなしのとき、いきなり曲を鳴らします
-    main = _musicSet->getPrefixedMusicName("wait0.m4a");
-    counter= _musicSet->getPrefixedMusicName("counter0.m4a");
-    drum = _musicSet->getPrefixedMusicName("drum0.m4a");
+    main = _musicSet->getPrefixedMusicName("wait0.caf");
+    counter= _musicSet->getPrefixedMusicName("counter0.caf");
+    drum = _musicSet->getPrefixedMusicName("drum0.caf");
     _music->pushTrack(main.c_str(), 0);
     _music->pushTrack(counter.c_str(), 1);
     _music->pushTrack(drum.c_str(), 2);
@@ -472,10 +472,10 @@ void MainScene::pushIntroTracks() {
     int maxIntroCount = _musicSet->getIntroCount();
     for (int i = 0 ; i < maxIntroCount; ++i) {
       stringstream intro;
-      intro << "intro" << i << ".m4a";
+      intro << "intro" << i << ".caf";
       _music->pushTrack(_musicSet->getPrefixedMusicName(intro.str().c_str()).c_str(), 0);
-      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.m4a").c_str(), 1);
-      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.m4a").c_str(), 2);
+      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 1);
+      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 2);
     }
   }
   _music->getTrack(1)->setVolume(0);
@@ -494,10 +494,10 @@ void MainScene::pushFinishTracks() {
     // フィニッシュ曲をpushしまくる
     for (int i = 0 ; i < maxFinishCount; ++i) {
       stringstream finish;
-      finish << "finish" << i << ".m4a";
+      finish << "finish" << i << ".caf";
       _music->pushTrack(_musicSet->getPrefixedMusicName(finish.str().c_str()).c_str(), 0);
-      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.m4a").c_str(), 1);
-      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.m4a").c_str(), 2);
+      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 1);
+      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 2);
     }
   }
 }
