@@ -25,12 +25,12 @@ PauseLayer::PauseLayer() {
   CCLabelTTF* pause = CCLabelTTF::create("Pause", FONT_NAME, 48);
   pause->setPosition(ccp(director->getWinSize().width / 2.0, 280));
   this->addChild(pause);
-  
+
   CCLabelTTF* replayLabel = CCLabelTTF::create("リプレイ", FONT_NAME, 24);
   CCLabelTTF* titleLabel = CCLabelTTF::create("タイトル", FONT_NAME, 24);
   CCLabelTTF* cancelLabel = CCLabelTTF::create("再開", FONT_NAME, 24);
-  CCLabelTTF* yesLabel = CCLabelTTF::create("はい", FONT_NAME, 24);
-  CCLabelTTF* noLabel = CCLabelTTF::create("いいえ", FONT_NAME, 24);
+  CCLabelTTF* yesLabel = CCLabelTTF::create("yes", FONT_NAME, 24);
+  CCLabelTTF* noLabel = CCLabelTTF::create("no", FONT_NAME, 24);
   
   _topMenu = CCMenu::create(CCMenuItemLabel::create(replayLabel, this, menu_selector(PauseLayer::onReplayPressed)),
                             CCMenuItemLabel::create(titleLabel, this, menu_selector(PauseLayer::onTitlePressed)),
@@ -44,7 +44,7 @@ PauseLayer::PauseLayer() {
   _topMenu->alignItemsVerticallyWithPadding(20);
   _confirmMenu->alignItemsVerticallyWithPadding(20);
   
-  _descriptionLabel = CCLabelTTF::create("現在の進行は失われます。よろしいですか？", FONT_NAME, 16);
+  _descriptionLabel = CCLabelTTF::create("Are you sure to quit from current game?", FONT_NAME, 16);
   _descriptionLabel->setPosition(ccp(director->getWinSize().width / 2.0, 230));
   _descriptionLabel->setVisible(false);
   this->addChild(_descriptionLabel);

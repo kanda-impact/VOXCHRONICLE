@@ -15,54 +15,6 @@
       <UniqueIdentifier>{2ccb517a-8273-46a6-9aff-e875685d507d}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc</Extensions>
     </Filter>
-    <Filter Include="Resources">
-      <UniqueIdentifier>{5cb160fd-476a-423c-ac0f-915dc60de26f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources\Music">
-      <UniqueIdentifier>{4d63e31a-cf4a-4b5f-be31-5b9899c9e81d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources\SE">
-      <UniqueIdentifier>{5c8f3b20-c7e2-4065-b54b-13e6a00dfe8f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources\win32">
-      <UniqueIdentifier>{9a277d1a-9fe0-4280-af75-6e783cbb049b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources\Image">
-      <UniqueIdentifier>{cb0c8715-9945-4955-ae7b-f2199158311b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources\Script">
-      <UniqueIdentifier>{65b50c74-e1af-4c7e-af8c-a4d6ce299012}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources\Music\dub">
-      <UniqueIdentifier>{bf3d877c-8aba-4dc8-8d74-919b2b91deb8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources\Music\select">
-      <UniqueIdentifier>{c2cb6d01-4f07-44df-95f5-6341d45ce018}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources\Script\character">
-      <UniqueIdentifier>{08f04829-4f95-4025-a4be-04a15901bda9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources\Script\map">
-      <UniqueIdentifier>{501de0b1-ebc0-45c5-b43c-de439467fda6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources\Script\skills">
-      <UniqueIdentifier>{8b59aeb2-a164-40c4-b663-0e7af5941ddd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources\Script\enemies">
-      <UniqueIdentifier>{a1048204-6fed-4d72-b3b9-28d3c048fd15}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources\Image\Enemy">
-      <UniqueIdentifier>{5c85f34a-6f00-4a76-8f3f-7c69c14d8a21}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources\Image\Main">
-      <UniqueIdentifier>{ecf8580c-27a6-41fc-812a-a863ec4dcf57}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources\Image\Title">
-      <UniqueIdentifier>{5cc476db-97a2-49b8-b5a2-7883d9ee8072}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resources\Image\Main\UI">
-      <UniqueIdentifier>{f6f8b6a1-0a46-4175-8d1b-459ddc4ee31d}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\libs\lua\cocos2dx_support\CCLuaEngine.h">
@@ -147,6 +99,27 @@
       <Filter>Classes\include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\VIMciPlayer.h">
+      <Filter>Classes\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\DebugScene.h">
+      <Filter>Classes\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\MusicSet.h">
+      <Filter>Classes\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\StatusLayer.h">
+      <Filter>Classes\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\QTETrigger.h">
+      <Filter>Classes\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\EnemySkill.h">
+      <Filter>Classes\include</Filter>
+    </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>Classes\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\VOXCHRONICLE\Classes\includes\PauseLayer.h">
       <Filter>Classes\include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -238,283 +211,26 @@
     <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\VISS\VIMciPlayer.cpp">
       <Filter>Classes\source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Scene\DebugScene.cpp">
+      <Filter>Classes\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\UI\QTETrigger.cpp">
+      <Filter>Classes\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\UI\StatusLayer.cpp">
+      <Filter>Classes\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Model\EnemySkill.cpp">
+      <Filter>Classes\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\Model\MusicSet.cpp">
+      <Filter>Classes\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\VOXCHRONICLE\Classes\UI\PauseLayer.cpp">
+      <Filter>Classes\source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\win32\Default.png">
-      <Filter>Resources\win32</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\win32\Icon.png">
-      <Filter>Resources\win32</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_counter0.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_counter1.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_counter2.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_counter3.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_drum0.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_drum1.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_drum2.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_drum3.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_lskchange0.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_lskcure0.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_lskmagic0.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_lskmagic1.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_lskmagic2.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_lskmagic3.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_lskthunder0.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_lskthunder_charge0.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_miss.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_silent.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_tension0.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_tension1.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_tension2.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_tension3.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_voxattack0.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_voxattack1.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_voxattack2.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_voxattack3.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_voxchange0.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_voxknockback0.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\dub\dub_voxshield0.wav">
-      <Filter>Resources\Music\dub</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\select\select_silent.wav">
-      <Filter>Resources\Music\select</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Music\select\select_stage.wav">
-      <Filter>Resources\Music\select</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\hello.lua">
-      <Filter>Resources\Script</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\setting.lua">
-      <Filter>Resources\Script</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\character\character.lua">
-      <Filter>Resources\Script\character</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\character\lsk.lua">
-      <Filter>Resources\Script\character</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\character\vox.lua">
-      <Filter>Resources\Script\character</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\enemies\tetufez.lua">
-      <Filter>Resources\Script\enemies</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\enemies\tnt.lua">
-      <Filter>Resources\Script\enemies</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\enemies\geek.lua">
-      <Filter>Resources\Script\enemies</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\enemies\ginet1.lua">
-      <Filter>Resources\Script\enemies</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\enemies\ginet2.lua">
-      <Filter>Resources\Script\enemies</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\enemies\ginet.lua">
-      <Filter>Resources\Script\enemies</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\map\test2b.lua">
-      <Filter>Resources\Script\map</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\map\test.lua">
-      <Filter>Resources\Script\map</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\map\readme.md">
-      <Filter>Resources\Script\map</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\map\test2a.lua">
-      <Filter>Resources\Script\map</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\skills\attack.lua">
-      <Filter>Resources\Script\skills</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\skills\bow.lua">
-      <Filter>Resources\Script\skills</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\skills\change.lua">
-      <Filter>Resources\Script\skills</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\skills\cure.lua">
-      <Filter>Resources\Script\skills</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\skills\knockback.lua">
-      <Filter>Resources\Script\skills</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\skills\levelup.lua">
-      <Filter>Resources\Script\skills</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\skills\magic.lua">
-      <Filter>Resources\Script\skills</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\skills\shield.lua">
-      <Filter>Resources\Script\skills</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\skills\tension.lua">
-      <Filter>Resources\Script\skills</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Script\skills\thunder.lua">
-      <Filter>Resources\Script\skills</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\SE\decide.caf">
-      <Filter>Resources\SE</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\SE\decide.mp3">
-      <Filter>Resources\SE</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\SE\levelup.caf">
-      <Filter>Resources\SE</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\SE\levelup.mp3">
-      <Filter>Resources\SE</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\geek0.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\geek1.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\geek2.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\geek3.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\ginet0.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\ginet1.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\ginet2.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tetufez0.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tetufez1.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tetufez2.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tetufez3.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tetufez4.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tetufez5.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tetufez6.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tetufez7.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tnt0.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tnt1.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tnt2.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tnt3.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tnt4.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tnt5.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Enemy\tnt6.png">
-      <Filter>Resources\Image\Enemy</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Main\UI\left_arrow.png">
-      <Filter>Resources\Image\Main\UI</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Main\UI\left_arrow_selected.png">
-      <Filter>Resources\Image\Main\UI</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Main\UI\right_arrow.png">
-      <Filter>Resources\Image\Main\UI</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Main\UI\right_arrow_selected.png">
-      <Filter>Resources\Image\Main\UI</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Main\UI\sword.png">
-      <Filter>Resources\Image\Main\UI</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Main\UI\trigger_bg.png">
-      <Filter>Resources\Image\Main\UI</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Main\UI\trigger_bg_selected.png">
-      <Filter>Resources\Image\Main\UI</Filter>
-    </None>
-    <None Include="..\..\..\..\VOXCHRONICLE\Resources\Image\Title\kawaz.png">
-      <Filter>Resources\Image\Title</Filter>
-    </None>
+    <ResourceCompile Include="VOXCHRONICLE.win32.rc" />
   </ItemGroup>
 </Project>
