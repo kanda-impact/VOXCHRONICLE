@@ -22,7 +22,7 @@ string FileUtils::getFilePath(const char *filepath) {
   std::string path(filepath);
 #if IS_WIN32
   if (algorithm:iends_with(path, ".caf")) {
-    boost::algorithm::replace_all(path, ".caf", ".ogg");
+    boost::algorithm::replace_all(path, ".caf", ".wav");
   }
   return path;
 #elif IS_IOS
