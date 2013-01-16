@@ -71,6 +71,10 @@ bool Track::play() {
   return true;
 }
 
+void Track::resume() {
+  _player->Play(1);
+}
+
 void Track::playAfterTime(float time) {
   play();
 }
