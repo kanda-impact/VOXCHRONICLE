@@ -18,10 +18,11 @@ SkillTrigger::SkillTrigger() : CCNode() {
   _press = false;
   _skill = NULL;
   _state = SkillTriggerStateNormal;
-  _background = CCSprite::create(FileUtils::getFilePath("trigger_on.png").c_str());
+  _background = CCSprite::create(FileUtils::getFilePath("Image/trigger_on.png").c_str());
   _background->retain();
   _icon = NULL;
   _defaultScale = 1.0f;
+  this->setColor(SkillTriggerColorVox);
   this->addChild(_background);
 }
 
@@ -40,7 +41,7 @@ void SkillTrigger::setPress(bool press) {
   _press = press;
   if (press) {
     _state = SkillTriggerStateSelected;
-    CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath("trigger_on.png").c_str());
+    CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath("Image/trigger_on.png").c_str());
     _background->setTexture(texture);
     _icon->setColor(ccc3(44, 44, 44));
     this->setScale(1.2f);
@@ -65,7 +66,7 @@ void SkillTrigger::setSkill(Skill* skill) {
   _skill = skill;
   if (_skill) {
     std::stringstream ss;
-    ss << "Image/Main/UI/command/" << skill->getIdentifier() << "_icon.png";
+    ss << "Image/" << skill->getIdentifier() << "_icon.png";
     if (_icon != NULL) {
       _icon->getParent()->removeChild(_icon, true);
     }
@@ -105,10 +106,10 @@ void SkillTrigger::setColor(SkillTriggerColor color) {
   string filename;
   if (_icon == NULL) return;
   if (_color == SkillTriggerColorVox) {
-    filename = FileUtils::getFilePath("trigger_vox.png");
+    filename = FileUtils::getFilePath("Image/trigger_vox.png");
     _icon->setColor(ccc3(189, 217, 252));
   } else if (_color == SkillTriggerColorLaska) {
-    filename = FileUtils::getFilePath("trigger_laska.png");
+    filename = FileUtils::getFilePath("Image/trigger_laska.png");
     _icon->setColor(ccc3(255, 232, 202));
   }
   CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(filename.c_str());

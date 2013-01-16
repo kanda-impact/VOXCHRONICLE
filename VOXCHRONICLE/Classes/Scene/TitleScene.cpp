@@ -36,7 +36,7 @@ bool TitleScene::init() {
   string images[] = {"logo.png", "title_start.png"};
   for (int i = 0; i < 2; ++i) {
     stringstream ss;
-    ss << images[i];
+    ss << "Image/" << images[i];
     CCSprite* sprite = CCSprite::create(FileUtils::getFilePath(ss.str().c_str()).c_str());
     sprite->setPosition(ccp(winSize.width / 2, winSize.height / 2));
     this->addChild(sprite);
@@ -59,6 +59,7 @@ void TitleScene::registerWithTouchDispatcher() {
 }
 
 bool TitleScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
+  this->onStartButtonPressed(NULL);
   return true;
 } 
 

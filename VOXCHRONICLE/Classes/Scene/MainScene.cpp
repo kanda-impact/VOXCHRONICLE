@@ -63,11 +63,11 @@ bool MainScene::init(Map* map) {
   // 背景の追加
   // 将来的にはSkinクラスを実装して、スキンによって背景を変更するようにしたいが
   // 今はとりあえずここにSpriteをおいておきます
-  CCSprite* background = CCSprite::create(FileUtils::getFilePath("floor0.png").c_str());
+  CCSprite* background = CCSprite::create(FileUtils::getFilePath("Image/floor0.png").c_str());
   CCAnimation* animation = CCAnimation::create();
-  animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("floor0.png").c_str(), CCRectMake(0, 0, 480, 122.5)));
-  animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("floor1.png").c_str(), CCRectMake(0, 0, 480, 122.5)));
-  animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("floor2.png").c_str(), CCRectMake(0, 0, 480, 122.5)));
+  animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("Image/floor0.png").c_str(), CCRectMake(0, 0, 480, 122.5)));
+  animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("Image/floor1.png").c_str(), CCRectMake(0, 0, 480, 122.5)));
+  animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("Image/floor2.png").c_str(), CCRectMake(0, 0, 480, 122.5)));
   animation->setLoops(-1);
   animation->setDelayPerUnit(10.0 / 60.0);
   background->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
@@ -80,7 +80,7 @@ bool MainScene::init(Map* map) {
   _enemyManager->retain();
   this->addChild(_enemyManager);
   
-  _focus = CCSprite::create(FileUtils::getFilePath("focus.png").c_str());
+  _focus = CCSprite::create(FileUtils::getFilePath("Image/focus.png").c_str());
   _focus->retain();
   _focus->setVisible(false);
   _focus->setAnchorPoint(ccp(0.5f, 0.0f));
@@ -101,8 +101,6 @@ bool MainScene::init(Map* map) {
   
   _musicSet = _map->getCurrentMusic(_level);
   _musicSet->preloadAllTracks();
-  
-  TrackCache::sharedCache()->addTrack(FileUtils::getFilePath("Music/general/select_stage.wav"), 0);
   
   _state = VCStateIntro;
   
@@ -316,7 +314,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       isHit = true;
       Enemy* enemy = (Enemy*)enemies->objectAtIndex(i);
       CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(((CCInteger*)damages->objectAtIndex(i))->getValue()).c_str(),
-                                                       FileUtils::getFilePath("damage_number.png").c_str(), 50, 100, '0');
+                                                       FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 100, '0');
       // ダメージが0かつ、元々ダメージのない技じゃないかつ、アイテムも破壊していないとき、ヒットしていない状態にしてやる
       int damage = ((CCInteger*)damages->objectAtIndex(i))->getValue();
       DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(i))->getValue();
@@ -338,7 +336,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     }
     
     // カットインを追加する
-    string cutinFile = string(skill->getIdentifier()) + "_icon.png";
+    string cutinFile = "Image/" + string(skill->getIdentifier()) + "_icon.png";
     CCSprite* cutin = CCSprite::create(cutinFile.c_str());
     if (cutin != NULL) {
       const int height = 100;
@@ -640,7 +638,7 @@ void MainScene::addDamageEffect() {
     DamageType damageType = info.damageType;
     // 被ダメージ表示しちゃう
     CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(damage).c_str(),
-                                                     FileUtils::getFilePath("damage_number.png").c_str(), 50, 100, '0');
+                                                     FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 100, '0');
     CCDirector* director = CCDirector::sharedDirector();
     damageLabel->setPosition(ccp(director->getWinSize().width / 2, 90));
     this->addChild(damageLabel);
