@@ -4,6 +4,7 @@
 #include "CCScriptSupport.h"
 #include "CCLuaEngine.h"
 #include "LogoScene.h"
+#include "macros.h"
 
 USING_NS_CC;
 using namespace std;
@@ -27,13 +28,18 @@ bool AppDelegate::applicationDidFinishLaunching()
   // initialize director
   CCDirector *pDirector = CCDirector::sharedDirector();
   pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
+  
+#if IS_IOS
   if (pDirector->enableRetinaDisplay(true)) {
     // iphone hd
     CCFileUtils::sharedFileUtils()->setResourceDirectory("Retina");
   } else {
-    cout << "image" << endl;
     CCFileUtils::sharedFileUtils()->setResourceDirectory("Image");
   }
+#elif IS_WIN32
+  //pDirector->enableRetinaDisplay(true);
+  CCFileUtils::sharedFileUtils()->setResourceDirectory("Resources");
+#endif
   // enable High Resource Mode(2x, such as iphone4) and maintains low resource on other devices.
   
   srand((unsigned int)time(NULL));

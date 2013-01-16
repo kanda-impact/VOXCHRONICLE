@@ -64,7 +64,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _frameCount = _lua->getInt("animationFrames");
   _enable = true;
   stringstream ss;
-  ss << "Image/Enemy/" << _imageName << "0.png";
+  ss << "Image/" << _imageName << "0.png";
   bool success = (bool)this->initWithFile(FileUtils::getFilePath(ss.str().c_str()).c_str());
   this->setItem((EnemyItem)_lua->getInt("item"));
   if (success) {
@@ -255,11 +255,11 @@ void Enemy::setItem(EnemyItem item) {
     const char* filename;
     CCSprite* sprite = NULL;
     if (item == EnemyItemShield) {
-      filename = "shield.png";
+      filename = "Image/shield.png";
       sprite = CCSprite::create(FileUtils::getFilePath(filename).c_str());
       sprite->setColor(VOX_COLOR);
     } else if (item == EnemyItemBarrier) {
-      filename = "barrier.png";
+      filename = "Image/barrier.png";
       sprite = CCSprite::create(FileUtils::getFilePath(filename).c_str());
       sprite->setColor(LSK_COLOR);
     }
@@ -322,7 +322,7 @@ bool Enemy::setAnimatonAndFrame(const char *filePrefix, int frames, bool hasFram
     this->removeChildByTag(EnemyTagFrame, true); // フレームを取る
   }
   stringstream ss;
-  ss << filePrefix << "0.png";
+  ss << "Image/" << filePrefix << "0.png";
   CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath(ss.str().c_str()).c_str());
   bool success = texture != NULL;
   this->setTexture(texture);
@@ -331,7 +331,7 @@ bool Enemy::setAnimatonAndFrame(const char *filePrefix, int frames, bool hasFram
     CCSize size = this->getTexture()->getContentSize();
     for (int i = 0; i < frames; ++i) {
       stringstream frameSS;
-      frameSS << filePrefix << i << ".png";
+      frameSS << "Image/" << filePrefix << i << ".png";
       CCSpriteFrame* frame = CCSpriteFrame::create(FileUtils::getFilePath(frameSS.str().c_str()).c_str(), CCRectMake(0, 0, size.width, size.height));
       animation->addSpriteFrame(frame);
     }
@@ -359,13 +359,13 @@ bool Enemy::setAnimatonAndFrame(const char *filePrefix, int frames, bool hasFram
 
 CCSprite* Enemy::createFrameSprite(const char* filePrefix, int frames) {
   stringstream ss;
-  ss << "w_" << filePrefix << 0 << ".png";
+  ss << "Image/" << "w_" << filePrefix << 0 << ".png";
   CCSprite* frame = CCSprite::create(FileUtils::getFilePath(ss.str().c_str()).c_str());
   CCAnimation* animation = CCAnimation::create();
   CCSize size = this->getTexture()->getContentSize();
   for (int i = 0; i < frames; ++i) {
     stringstream frameSS;
-    frameSS << "w_" << filePrefix << i << ".png";
+    frameSS << "Image/" << "w_" << filePrefix << i << ".png";
     CCSpriteFrame* frame = CCSpriteFrame::create(FileUtils::getFilePath(frameSS.str().c_str()).c_str(), CCRectMake(0, 0, size.width, size.height));
     animation->addSpriteFrame(frame);
   }
