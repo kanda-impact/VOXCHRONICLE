@@ -73,7 +73,7 @@ void SkillTrigger::setSkill(Skill* skill) {
     _icon = CCSprite::create(FileUtils::getFilePath(ss.str().c_str()).c_str());
     _icon->retain();
     this->addChild(_icon);
-    _icon->setScale(0.6f);
+    _icon->setScale(0.3f);
   }
   this->setSkillTriggerState(SkillTriggerStateNormal);
 }

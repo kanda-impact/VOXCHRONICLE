@@ -117,7 +117,7 @@ void Controller::updateSkills(CharacterManager* manager) {
     Skill* skill = (Skill*)allSkills->objectAtIndex(i);
     SkillTrigger* trigger = (SkillTrigger*)_triggers->objectAtIndex(i);
     trigger->setSkill(skill);
-    /*if (!skills->containsObject(skill)) {
+    if (!skills->containsObject(skill)) {
       // 習得済みスキルに入ってないとき、未習得状態に
       trigger->setSkillTriggerState(SkillTriggerStateUnknown);
     } else if (skill->getTensionLevel() > manager->getTension()) {
@@ -132,7 +132,7 @@ void Controller::updateSkills(CharacterManager* manager) {
       trigger->setColor(SkillTriggerColorVox);
     } else {
       trigger->setColor(SkillTriggerColorLaska);
-    }*/
+    }
   }
 }
 
