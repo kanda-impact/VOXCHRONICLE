@@ -17,6 +17,7 @@ using namespace std;
 class FileUtils {
 public:
   static string getFilePath(const char* filepath);
+  static string getMusicExt();
 };
 
 #endif /* defined(__VOXCHRONICLE__FileUtils__) */

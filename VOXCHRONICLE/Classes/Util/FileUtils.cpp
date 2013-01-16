@@ -21,8 +21,10 @@ using namespace boost;
 string FileUtils::getFilePath(const char *filepath) {
   std::string path(filepath);
 #if IS_WIN32
+  if (algorithm:iends_with(path, ".caf")) {
+    boost::algorithm::replace_all(path, ".caf", ".ogg");
+  }
   return path;
-
 #elif IS_IOS
   typedef boost::char_separator<char> char_separator;
   typedef boost::tokenizer<char_separator> tokenizer;
@@ -35,5 +37,13 @@ string FileUtils::getFilePath(const char *filepath) {
     results.push_back(*tok_iter);
   }
   return results.back().c_str();
+#endif
+}
+
+string FileUtils::getMusicExt() {
+#if IS_WIN32
+  return ".ogg";
+#elif IS_IOS
+  return ".caf";
 #endif
 }
