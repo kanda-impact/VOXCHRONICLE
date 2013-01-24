@@ -8,6 +8,7 @@
 
 #include "Track.h"
 #include "ObjectAL.h"
+#include "BufferCache.h"
 
 // It is wrapper class for ObjectAL::OALAudioTrack.
 
@@ -20,14 +21,12 @@ struct Track::AudioTrack {
 };
 
 Track::Track(const char* fileName) : _track(new VISS::Track::AudioTrack) {
-  NSString* file = [NSString stringWithUTF8String:fileName];
   _fileName = string(fileName);
   
   _track->source = [[ALSource source] retain];
   
   // Preload the buffers so we don't have to load and play them later.
-  _track->buffer = [[[OpenALManager sharedInstance]
-                  bufferFromFile:file] retain];
+  _track->buffer = BufferCache::sharedCache()->addBuffer(fileName);
 }
 
 Track::~Track() {

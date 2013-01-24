@@ -1,5 +1,5 @@
 //
-//  TrackCache.h
+//  BufferCache.h
 //  VOXCHRONICLE
 //
 //  Created by giginet on 2012/10/6.
@@ -11,26 +11,26 @@
 
 #include <iostream>
 #include <map>
+#include <boost/shared_ptr.hpp>
+#include "ALBuffer.h"
 #include "Track.h"
 
 using namespace VISS;
 using namespace std;
 
 namespace VISS {
-  class TrackCache {
+  class BufferCache {
+    struct Dictionary;
    private:
-    CCDictionary* _cache;
-    static TrackCache* _instance;
+    boost::shared_ptr<Dictionary> _cache;
+    static BufferCache* _instance;
    public:
-    static TrackCache* sharedCache();
+    static BufferCache* sharedCache();
     static void deleteCache();
-    TrackCache();
-    ~TrackCache();
-    Track* addTrack(string trackName, int mod);
-    void purgeAllTracks();
-    
-    //TrackCache(const TrackCache& r);
-    //TrackCache& operator=(const TrackCache& r);
+    BufferCache();
+    ~BufferCache();
+    ALBuffer* addBuffer(string trackName);
+    void purgeAllBuffers();
   };
 }
 #endif /* defined(__VOXCHRONICLE__TrackCache__) */

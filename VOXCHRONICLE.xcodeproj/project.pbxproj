@@ -16,6 +16,7 @@
 		0715C2371690EB3000009479 /* EnemySkill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0715C2351690EB3000009479 /* EnemySkill.cpp */; };
 		07244C3016956CAD00C5A442 /* QTETrigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07244C2E16956CAD00C5A442 /* QTETrigger.cpp */; };
 		07244C321695712400C5A442 /* qte.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07244C311695712400C5A442 /* qte.mp3 */; };
+		0725180D16B141FB004361B7 /* BufferCache.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0725180C16B141FB004361B7 /* BufferCache.mm */; };
 		0731E4CB16176787006AEF3D /* shield.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4CA16176787006AEF3D /* shield.lua */; };
 		0731E4CF16176A91006AEF3D /* bow.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4CE16176A91006AEF3D /* bow.lua */; };
 		0731E4DB16176C96006AEF3D /* thunder.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4DA16176C95006AEF3D /* thunder.lua */; };
@@ -275,7 +276,6 @@
 		07A8E9F316320DBC00E007C9 /* MessageWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */; };
 		07B4C3A5168EC34C0074A905 /* leaf.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C3A3168EC34C0074A905 /* leaf.lua */; };
 		07B4C3A6168EC34C0074A905 /* typhoon.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B4C3A4168EC34C0074A905 /* typhoon.lua */; };
-		07B7A676161FF87C00FCE64C /* TrackCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A674161FF87C00FCE64C /* TrackCache.cpp */; };
 		07B7A6981620470000FCE64C /* LuaObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A6961620470000FCE64C /* LuaObject.cpp */; };
 		07B7A69E16204D4D00FCE64C /* LuaBind.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A69C16204D4D00FCE64C /* LuaBind.cpp */; };
 		07B7A6D91620777800FCE64C /* tetufez.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B7A6D61620777800FCE64C /* tetufez.lua */; };
@@ -506,7 +506,6 @@
 		07C61EB6169033630010B6ED /* tension_effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07C61EAE169033630010B6ED /* tension_effect.mp3 */; };
 		07C61EB7169033630010B6ED /* bow_effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07C61EAF169033630010B6ED /* bow_effect.mp3 */; };
 		07C61EB8169033630010B6ED /* change_effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07C61EB0169033630010B6ED /* change_effect.mp3 */; };
-		07C61F59169040E60010B6ED /* TrackManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C61F57169040E60010B6ED /* TrackManager.cpp */; };
 		07C61F75169055090010B6ED /* start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07C61F74169055090010B6ED /* start.mp3 */; };
 		07C6F6AD1615D6300084708C /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AB1615D6300084708C /* Enemy.cpp */; };
 		07C6F6B11615D6420084708C /* EnemyManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AF1615D6420084708C /* EnemyManager.cpp */; };
@@ -584,6 +583,8 @@
 		0715C2351690EB3000009479 /* EnemySkill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemySkill.cpp; path = Classes/Model/EnemySkill.cpp; sourceTree = "<group>"; };
 		07244C2E16956CAD00C5A442 /* QTETrigger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = QTETrigger.cpp; path = Classes/UI/QTETrigger.cpp; sourceTree = "<group>"; };
 		07244C311695712400C5A442 /* qte.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = qte.mp3; path = Resources/SE/qte.mp3; sourceTree = "<group>"; };
+		0725180916B140A0004361B7 /* BufferCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BufferCache.h; path = Classes/includes/BufferCache.h; sourceTree = "<group>"; };
+		0725180C16B141FB004361B7 /* BufferCache.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BufferCache.mm; path = Classes/VISS/BufferCache.mm; sourceTree = "<group>"; };
 		0731E4CA16176787006AEF3D /* shield.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shield.lua; sourceTree = "<group>"; };
 		0731E4CE16176A91006AEF3D /* bow.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bow.lua; sourceTree = "<group>"; };
 		0731E4DA16176C95006AEF3D /* thunder.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = thunder.lua; sourceTree = "<group>"; };
@@ -854,7 +855,6 @@
 		07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageWindow.cpp; path = Classes/UI/MessageWindow.cpp; sourceTree = "<group>"; };
 		07B4C3A3168EC34C0074A905 /* leaf.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = leaf.lua; sourceTree = "<group>"; };
 		07B4C3A4168EC34C0074A905 /* typhoon.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = typhoon.lua; sourceTree = "<group>"; };
-		07B7A674161FF87C00FCE64C /* TrackCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TrackCache.cpp; path = Classes/VISS/TrackCache.cpp; sourceTree = "<group>"; };
 		07B7A6961620470000FCE64C /* LuaObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaObject.cpp; path = Classes/Lua/LuaObject.cpp; sourceTree = "<group>"; };
 		07B7A69C16204D4D00FCE64C /* LuaBind.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaBind.cpp; path = Classes/Lua/LuaBind.cpp; sourceTree = "<group>"; };
 		07B7A6D61620777800FCE64C /* tetufez.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tetufez.lua; sourceTree = "<group>"; };
@@ -1346,8 +1346,6 @@
 		07C61EAE169033630010B6ED /* tension_effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = tension_effect.mp3; path = Resources/SE/tension_effect.mp3; sourceTree = "<group>"; };
 		07C61EAF169033630010B6ED /* bow_effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bow_effect.mp3; path = Resources/SE/bow_effect.mp3; sourceTree = "<group>"; };
 		07C61EB0169033630010B6ED /* change_effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = change_effect.mp3; path = Resources/SE/change_effect.mp3; sourceTree = "<group>"; };
-		07C61F57169040E60010B6ED /* TrackManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TrackManager.cpp; path = Classes/VISS/TrackManager.cpp; sourceTree = "<group>"; };
-		07C61F5A169041E40010B6ED /* TrackManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrackManager.h; path = Classes/includes/TrackManager.h; sourceTree = "<group>"; };
 		07C61F74169055090010B6ED /* start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = start.mp3; path = Resources/SE/start.mp3; sourceTree = "<group>"; };
 		07C6F6AB1615D6300084708C /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = Classes/Model/Enemy.cpp; sourceTree = "<group>"; };
 		07C6F6AF1615D6420084708C /* EnemyManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyManager.cpp; path = Classes/Model/EnemyManager.cpp; sourceTree = "<group>"; };
@@ -1443,7 +1441,6 @@
 		07F0D750163BABCD005592AF /* macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = macros.h; path = Classes/includes/macros.h; sourceTree = "<group>"; };
 		07F0D751163BABDF005592AF /* Music.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Music.h; path = Classes/includes/Music.h; sourceTree = "<group>"; };
 		07F0D752163BABDF005592AF /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Track.h; path = Classes/includes/Track.h; sourceTree = "<group>"; };
-		07F0D753163BABDF005592AF /* TrackCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrackCache.h; path = Classes/includes/TrackCache.h; sourceTree = "<group>"; };
 		07F0D754163BABF1005592AF /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Controller.h; path = Classes/includes/Controller.h; sourceTree = "<group>"; };
 		07F0D755163BABF1005592AF /* SkillTrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SkillTrigger.h; path = Classes/includes/SkillTrigger.h; sourceTree = "<group>"; };
 		07F0D756163BABFF005592AF /* LogoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogoScene.h; path = Classes/includes/LogoScene.h; sourceTree = "<group>"; };
@@ -2926,14 +2923,12 @@
 		07D8740815EFFFFC009CC446 /* VISS */ = {
 			isa = PBXGroup;
 			children = (
+				0725180916B140A0004361B7 /* BufferCache.h */,
+				0725180C16B141FB004361B7 /* BufferCache.mm */,
 				07F40F0F163D0FC0009FC104 /* Music.cpp */,
 				07B95E1915F303E30024C672 /* Track.mm */,
-				07B7A674161FF87C00FCE64C /* TrackCache.cpp */,
 				07F0D751163BABDF005592AF /* Music.h */,
 				07F0D752163BABDF005592AF /* Track.h */,
-				07F0D753163BABDF005592AF /* TrackCache.h */,
-				07C61F57169040E60010B6ED /* TrackManager.cpp */,
-				07C61F5A169041E40010B6ED /* TrackManager.h */,
 			);
 			name = VISS;
 			sourceTree = "<group>";
@@ -3682,7 +3677,6 @@
 				0731E4EF16181025006AEF3D /* Skill.cpp in Sources */,
 				0731E4F616181060006AEF3D /* Utils.cpp in Sources */,
 				0731E4F916181DD5006AEF3D /* Map.cpp in Sources */,
-				07B7A676161FF87C00FCE64C /* TrackCache.cpp in Sources */,
 				07B7A6981620470000FCE64C /* LuaObject.cpp in Sources */,
 				07B7A69E16204D4D00FCE64C /* LuaBind.cpp in Sources */,
 				07E134FF162167CC00CCF72E /* MapSelector.cpp in Sources */,
@@ -3692,12 +3686,12 @@
 				070E4020163C29E600A76BEA /* BlinkLayer.cpp in Sources */,
 				07F40F10163D0FC0009FC104 /* Music.cpp in Sources */,
 				0744B5B3167DD9EA00730393 /* StatusLayer.cpp in Sources */,
-				07C61F59169040E60010B6ED /* TrackManager.cpp in Sources */,
 				07660C5316909BF10092104F /* MusicSet.cpp in Sources */,
 				0715C2371690EB3000009479 /* EnemySkill.cpp in Sources */,
 				07244C3016956CAD00C5A442 /* QTETrigger.cpp in Sources */,
 				079331A3169D85D300AE4F93 /* DebugScene.cpp in Sources */,
 				07D8D64D169F4D9300B646E5 /* PauseLayer.cpp in Sources */,
+				0725180D16B141FB004361B7 /* BufferCache.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

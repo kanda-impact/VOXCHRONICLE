@@ -10,7 +10,6 @@
 #include <sstream>
 #include "macros.h"
 #include "Music.h"
-#include "TrackCache.h"
 
 using namespace VISS;
 
@@ -44,7 +43,7 @@ Track* Music::getNextTrack(int trackNumber) {
   
 Track* Music::setTrack(const char* fileName, int trackNumber, int index) {
   //Track* next = new Track(fileName);
-  Track* next = TrackCache::sharedCache()->addTrack(fileName, _measureCount % 2);
+  Track* next = new Track(fileName);
   return setTrack(next, trackNumber, index);
 }
 
@@ -61,7 +60,7 @@ Track* Music::pushTrack(const char* fileName, int trackNumber) {
 }
 
 Track* Music::pushTrack(const char* fileName, int trackNumber, int repeat) {
-  Track* next = TrackCache::sharedCache()->addTrack(fileName, _measureCount % 2);
+  Track* next = new Track(fileName);
   for (int i = 0; i < repeat; ++i) {
     bool result = pushTrack(next, trackNumber);
     if (!result) {

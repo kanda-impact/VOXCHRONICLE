@@ -15,7 +15,6 @@
 #include "MainScene.h"
 #include "Enemy.h"
 #include "MapSelector.h"
-#include "TrackCache.h"
 #include "LuaObject.h"
 #include "FileUtils.h"
 #include "BlinkLayer.h"
@@ -696,7 +695,6 @@ void MainScene::changeMap(Map* nextMap) {
   _mapTurnCount = 0; // マップカウント0に戻す
   _state = VCStateIntro;
   _musicSet = _map->getCurrentMusic(_level); // 音楽セットを切り替える
-  TrackCache::sharedCache()->purgeAllTracks(); // キャッシュを削除する
   //_musicSet->preloadAllTracks();
   _introCount = 0;
   _finishCount = 0;
@@ -708,7 +706,6 @@ void MainScene::startBossBattle() {
   _controller->setEnable(false);
   _state = VCStateIntro; // イントロに以降
   _musicSet = _map->getCurrentMusic(_level); // 音楽セットを切り替える
-  TrackCache::sharedCache()->purgeAllTracks(); // キャッシュを削除する
   //_musicSet->preloadAllTracks();
   this->pushIntroTracks();
 }
