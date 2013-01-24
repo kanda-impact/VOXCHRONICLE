@@ -30,6 +30,8 @@
 #import "RootViewController.h"
 #import "TestFlight.h"
 
+#import "OALSimpleAudio.h"
+
 @implementation AppController
 
 #define TEAM_TOKEN @"bc5125eaeaeb391c196c7a3ac8a311a5_MTMxMDg4MjAxMi0wOS0xMSAyMTowMzo0Mi41NTY3Njg"
@@ -104,6 +106,7 @@ void SignalHandler(int sig) {
   [window makeKeyAndVisible];
   
   [[UIApplication sharedApplication] setStatusBarHidden: YES];
+  [OALSimpleAudio sharedInstance].reservedSources = 0;
   
   cocos2d::CCApplication::sharedApplication()->run();
   return YES;

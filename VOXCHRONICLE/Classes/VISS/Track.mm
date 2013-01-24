@@ -17,24 +17,13 @@ using namespace VISS;
 struct Track::AudioTrack {
   ALBuffer* buffer;
   ALSource* source;
-  ALDevice* device;
-  ALContext* context;
 };
 
 Track::Track(const char* fileName) : _track(new VISS::Track::AudioTrack) {
   NSString* file = [NSString stringWithUTF8String:fileName];
   _fileName = string(fileName);
   
-  _track->device = [[ALDevice deviceWithDeviceSpecifier:nil] retain];
-  _track->context = [[ALContext contextOnDevice:_track->device attributes:nil] retain];
-  [OpenALManager sharedInstance].currentContext = _track->context;
-  [OALAudioSession sharedInstance].handleInterruptions = YES;
-  [OALAudioSession sharedInstance].allowIpod = NO;
-  [OALAudioSession sharedInstance].honorSilentSwitch = YES;
-  
-  // Take all 32 sources for this channel.
-  // (we probably won't use that many but what the heck!)
-  _track->source = [[ALChannelSource channelWithSources:32] retain];
+  _track->source = [[ALSource source] retain];
   
   // Preload the buffers so we don't have to load and play them later.
   _track->buffer = [[[OpenALManager sharedInstance]
@@ -44,8 +33,6 @@ Track::Track(const char* fileName) : _track(new VISS::Track::AudioTrack) {
 Track::~Track() {
   [_track->buffer release];
   [_track->source release];
-  [_track->device release];
-  [_track->context release];
 }
 
 bool Track::play() {
