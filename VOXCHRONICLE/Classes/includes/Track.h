@@ -90,7 +90,7 @@ namespace VISS {
 
     void setVolume(float v);
 
-    float getDeviceCurrentTime();
+    //float getDeviceCurrentTime();
 
     string getTrackName();
   };
