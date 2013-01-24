@@ -17,6 +17,7 @@
 		07244C3016956CAD00C5A442 /* QTETrigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07244C2E16956CAD00C5A442 /* QTETrigger.cpp */; };
 		07244C321695712400C5A442 /* qte.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07244C311695712400C5A442 /* qte.mp3 */; };
 		0725180D16B141FB004361B7 /* BufferCache.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0725180C16B141FB004361B7 /* BufferCache.mm */; };
+		0725180F16B15BB8004361B7 /* nmb_impact3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0725180E16B15BB8004361B7 /* nmb_impact3.caf */; };
 		0731E4CB16176787006AEF3D /* shield.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4CA16176787006AEF3D /* shield.lua */; };
 		0731E4CF16176A91006AEF3D /* bow.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4CE16176A91006AEF3D /* bow.lua */; };
 		0731E4DB16176C96006AEF3D /* thunder.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4DA16176C95006AEF3D /* thunder.lua */; };
@@ -585,6 +586,7 @@
 		07244C311695712400C5A442 /* qte.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = qte.mp3; path = Resources/SE/qte.mp3; sourceTree = "<group>"; };
 		0725180916B140A0004361B7 /* BufferCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BufferCache.h; path = Classes/includes/BufferCache.h; sourceTree = "<group>"; };
 		0725180C16B141FB004361B7 /* BufferCache.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BufferCache.mm; path = Classes/VISS/BufferCache.mm; sourceTree = "<group>"; };
+		0725180E16B15BB8004361B7 /* nmb_impact3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = nmb_impact3.caf; sourceTree = "<group>"; };
 		0731E4CA16176787006AEF3D /* shield.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shield.lua; sourceTree = "<group>"; };
 		0731E4CE16176A91006AEF3D /* bow.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bow.lua; sourceTree = "<group>"; };
 		0731E4DA16176C95006AEF3D /* thunder.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = thunder.lua; sourceTree = "<group>"; };
@@ -1787,6 +1789,7 @@
 				07970B34169F9B660000B905 /* nmb_impact0.caf */,
 				07970B35169F9B660000B905 /* nmb_impact1.caf */,
 				07970B36169F9B660000B905 /* nmb_impact2.caf */,
+				0725180E16B15BB8004361B7 /* nmb_impact3.caf */,
 				07970B37169F9B660000B905 /* nmb_intro0.caf */,
 				07970B38169F9B660000B905 /* nmb_intro1.caf */,
 				07970B39169F9B660000B905 /* nmb_intro2.caf */,
@@ -3395,6 +3398,7 @@
 				07970C89169F9B820000B905 /* dub_voxknockback0.caf in Resources */,
 				07970C8A169F9B820000B905 /* dub_voxslash0.caf in Resources */,
 				07970C8B169F9B820000B905 /* dub_wait0.caf in Resources */,
+				0725180F16B15BB8004361B7 /* nmb_impact3.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
