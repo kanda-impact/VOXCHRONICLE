@@ -25,7 +25,7 @@ class Map :public CCObject {
   int _endLevel;
   int _initialLevel;
   int _maxLevel;
-  const char* _identifier;
+  string _identifier;
   vector<string>* _nextMaps;
   string* _name;
   string* _backgroundImageName;

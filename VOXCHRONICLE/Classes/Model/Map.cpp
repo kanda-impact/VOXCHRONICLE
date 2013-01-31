@@ -134,7 +134,7 @@ string* Map::getName() {
 }
 
 string Map::getIdentifier() {
-  return string(_identifier);
+  return _identifier;
 }
 
 CCArray* Map::getFixedEnemies(int preExp, int currentExp) {

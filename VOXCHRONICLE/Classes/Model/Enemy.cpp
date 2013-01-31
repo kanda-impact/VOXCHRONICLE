@@ -189,7 +189,7 @@ void Enemy::setRowAndCol(int row, float col) {
     end = ccp(marginLeft + horizonWidth - padding * scale, horizonDistance);
   }
   CCPoint sub = ccpSub(end, root);
-  CCPoint p = ccpAdd(root, ccpMult(sub, (row + 1) / (float)MAX_ROW));
+  CCPoint p = ccpAdd(root, ccpMult(sub, row / (float)MAX_ROW));
   this->setPosition(p);
   this->setAnchorPoint(ccp(0.5f, 0.0f));
   // 並び順の変更
