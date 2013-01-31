@@ -33,5 +33,6 @@ function getMaxMP(level)
 end
 
 function getLevelOffsetRate(attackLevel, defenseLevel)
-  return 1.0 + 0.1 * (attackLevel - defenseLevel)
+  -- return 1.0 + 0.1 * (attackLevel - defenseLevel)
+  return 1.0
 end
