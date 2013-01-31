@@ -20,6 +20,7 @@ class DebugScene :public CCLayer {
   void onMenuItemPressed(CCObject* sender);
  public:
   virtual bool init();
+  virtual void onEnterTransitionDidFinish();
   static cocos2d::CCScene* scene();
   CREATE_FUNC(DebugScene);
 };

@@ -51,6 +51,10 @@ bool DebugScene::init() {
   return true;
 }
 
+void DebugScene::onEnterTransitionDidFinish() {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(FileUtils::getFilePath("Music/general/menu.mp3").c_str(), true);
+}
+
 void DebugScene::onMenuItemPressed(cocos2d::CCObject *sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/start.mp3").c_str());
   Map* map = (Map*)((CCNode*)sender)->getUserObject();

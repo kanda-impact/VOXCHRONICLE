@@ -25,7 +25,7 @@ function getLevel(exp)
 end
 
 function getMaxHP(level)
-  return 10
+  return 1
 end
 
 function getMaxMP(level)
