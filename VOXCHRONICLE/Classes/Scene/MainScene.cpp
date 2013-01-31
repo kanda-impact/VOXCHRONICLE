@@ -20,6 +20,7 @@
 #include "BlinkLayer.h"
 #include "TitleScene.h"
 #include "PauseLayer.h"
+#include "GameOverLayer.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -127,6 +128,7 @@ bool MainScene::init(Map* map) {
 }
 
 MainScene::~MainScene() {
+  _music->stop();
   delete _music;
   _map->release();
   _messageWindow->release();
@@ -151,6 +153,10 @@ void MainScene::update(float dt) {
       this->onGameOver();
     }
   }
+}
+
+Music* MainScene::getMusic() {
+  return _music;
 }
 
 void MainScene::onEnterTransitionDidFinish() {
@@ -527,54 +533,12 @@ bool MainScene::checkLevelUp() {
   return false;
 }
 
-void MainScene::addGameOverButtons() {
-  CCLabelTTF* replayLabel = CCLabelTTF::create("リプレイ", "", 24);
-  CCLabelTTF* titleLabel = CCLabelTTF::create("タイトル", FONT_NAME, 24);
-  CCMenu* menu = CCMenu::create(CCMenuItemLabel::create(replayLabel, this, menu_selector(MainScene::replayButtonPressed)),
-                                CCMenuItemLabel::create(titleLabel, this, menu_selector(MainScene::titleButtonPressed)),
-                                NULL);
-  CCDirector* director = CCDirector::sharedDirector();
-  menu->setPosition(ccp(director->getWinSize().width / 2, 90));
-  menu->alignItemsVerticallyWithPadding(20);
-  this->addChild(menu);
-}
-
-void MainScene::replayButtonPressed(CCObject *sender) {
-  _music->stop();
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
-  CCScene* scene = CCScene::create();
-  scene->addChild(MainScene::create());
-  CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
-  CCDirector::sharedDirector()->replaceScene(transition);
-}
-
-void MainScene::titleButtonPressed(CCObject *sender) {
-  _music->stop();
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
-  CCScene* scene = CCScene::create();
-  scene->addChild(TitleScene::create());
-  CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
-  CCDirector::sharedDirector()->replaceScene(transition);
-}
-
 void MainScene::onGameOver() {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("Music/general/gameover.mp3").c_str());
   _state = VCStateGameOver;
-  CCLabelTTF* gameOverLabel = CCLabelTTF::create("GAME OVER", FONT_NAME, 48);
-  CCDirector* director = CCDirector::sharedDirector();
-  CCPoint center = CCPointMake(director->getWinSize().width / 2, director->getWinSize().height / 2);
-  CCLabelTTF* gameOverShadowLavel = CCLabelTTF::create("GAME OVER", FONT_NAME, 48);
-  gameOverShadowLavel->setColor(ccc3(64, 64, 64));
-  gameOverShadowLavel->setPosition(center);
-  gameOverLabel->setPosition(ccpAdd(ccp(gameOverShadowLavel->getContentSize().width / 2, gameOverShadowLavel->getContentSize().height / 2), ccp(-3, 3)));
-  this->addChild(gameOverShadowLavel);
-  gameOverShadowLavel->addChild(gameOverLabel);
-  gameOverShadowLavel->runAction(CCSequence::create(CCDelayTime::create(3.0),
-                                                    CCMoveTo::create(0.1, ccp(director->getWinSize().width / 2, 200)),
-                                                    CCCallFunc::create(this, callfunc_selector(MainScene::addGameOverButtons)),
-                                                    NULL));
+  GameOverLayer* gameover = new GameOverLayer();
+  this->addChild(gameover);
+  gameover->autorelease();
   _music->pause();
   _controller->setVisible(false);
 }

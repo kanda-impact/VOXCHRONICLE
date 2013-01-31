@@ -10,6 +10,7 @@
 #define __VOXCHRONICLE__PauseLayer__
 
 #include <iostream>
+#include "GameOverLayer.h"
 #include "cocos2d.h"
 
 using namespace cocos2d;
@@ -20,7 +21,7 @@ typedef enum {
   PauseLayerStateConfirmTitle
 } PauseLayerState;
 
-class PauseLayer :public CCLayer {
+class PauseLayer :public GameOverLayer {
  private:
   CCMenu* _topMenu;
   CCMenu* _confirmMenu;
@@ -35,6 +36,8 @@ class PauseLayer :public CCLayer {
   void onPlayPressed();
   virtual void registerWithTouchDispatcher();
   virtual bool ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent);
+ protected:
+  void buildUI();
  public:
   PauseLayer();
   ~PauseLayer();

@@ -21,6 +21,7 @@
 		072A5C9716BAA72500A64AD6 /* volca_voxrun1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 072A5C9616BAA72500A64AD6 /* volca_voxrun1.caf */; };
 		072A5C9916BAA72E00A64AD6 /* volca_lskrun1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 072A5C9816BAA72E00A64AD6 /* volca_lskrun1.caf */; };
 		072A5C9B16BAAA1E00A64AD6 /* menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 072A5C9A16BAAA1E00A64AD6 /* menu.mp3 */; };
+		072A5C9E16BAAE5D00A64AD6 /* GameOverLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 072A5C9C16BAAE5D00A64AD6 /* GameOverLayer.cpp */; };
 		0731E4CB16176787006AEF3D /* shield.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4CA16176787006AEF3D /* shield.lua */; };
 		0731E4CF16176A91006AEF3D /* bow.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4CE16176A91006AEF3D /* bow.lua */; };
 		0731E4DB16176C96006AEF3D /* thunder.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4DA16176C95006AEF3D /* thunder.lua */; };
@@ -593,6 +594,8 @@
 		072A5C9616BAA72500A64AD6 /* volca_voxrun1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = volca_voxrun1.caf; sourceTree = "<group>"; };
 		072A5C9816BAA72E00A64AD6 /* volca_lskrun1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = volca_lskrun1.caf; sourceTree = "<group>"; };
 		072A5C9A16BAAA1E00A64AD6 /* menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = menu.mp3; path = Resources/Music/general/menu.mp3; sourceTree = "<group>"; };
+		072A5C9C16BAAE5D00A64AD6 /* GameOverLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameOverLayer.cpp; path = Classes/UI/GameOverLayer.cpp; sourceTree = "<group>"; };
+		072A5C9F16BAAF5900A64AD6 /* GameOverLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameOverLayer.h; path = Classes/includes/GameOverLayer.h; sourceTree = "<group>"; };
 		0731E4CA16176787006AEF3D /* shield.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shield.lua; sourceTree = "<group>"; };
 		0731E4CE16176A91006AEF3D /* bow.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bow.lua; sourceTree = "<group>"; };
 		0731E4DA16176C95006AEF3D /* thunder.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = thunder.lua; sourceTree = "<group>"; };
@@ -1562,8 +1565,10 @@
 				079F89A3169EE580001357B5 /* QTETrigger.h */,
 				079F89A4169EE580001357B5 /* StatusLayer.h */,
 				07244C2E16956CAD00C5A442 /* QTETrigger.cpp */,
-				07D8D64B169F4D9100B646E5 /* PauseLayer.cpp */,
 				07D8D64E169F4DA800B646E5 /* PauseLayer.h */,
+				07D8D64B169F4D9100B646E5 /* PauseLayer.cpp */,
+				072A5C9F16BAAF5900A64AD6 /* GameOverLayer.h */,
+				072A5C9C16BAAE5D00A64AD6 /* GameOverLayer.cpp */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -3708,6 +3713,7 @@
 				079331A3169D85D300AE4F93 /* DebugScene.cpp in Sources */,
 				07D8D64D169F4D9300B646E5 /* PauseLayer.cpp in Sources */,
 				0725180D16B141FB004361B7 /* BufferCache.mm in Sources */,
+				072A5C9E16BAAE5D00A64AD6 /* GameOverLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

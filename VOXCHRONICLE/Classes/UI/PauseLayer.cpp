@@ -13,6 +13,11 @@
 #include "FileUtils.h"
 
 PauseLayer::PauseLayer() {
+  PauseLayer::buildUI();
+}
+
+void PauseLayer::buildUI() {
+  this->removeAllChildrenWithCleanup(true);
   _state = PauseLayerStateTop;
   
   this->setTouchEnabled(true);
@@ -25,7 +30,7 @@ PauseLayer::PauseLayer() {
   CCLabelTTF* pause = CCLabelTTF::create("Pause", FONT_NAME, 48);
   pause->setPosition(ccp(director->getWinSize().width / 2.0, 280));
   this->addChild(pause);
-
+  
   CCLabelTTF* replayLabel = CCLabelTTF::create("リプレイ", FONT_NAME, 24);
   CCLabelTTF* titleLabel = CCLabelTTF::create("タイトル", FONT_NAME, 24);
   CCLabelTTF* cancelLabel = CCLabelTTF::create("再開", FONT_NAME, 24);
@@ -38,8 +43,8 @@ PauseLayer::PauseLayer() {
                             NULL);
   
   _confirmMenu = CCMenu::create(CCMenuItemLabel::create(yesLabel, this, menu_selector(PauseLayer::onYesPressed)),
-                            CCMenuItemLabel::create(noLabel, this, menu_selector(PauseLayer::onNoPressed)),
-                            NULL);
+                                CCMenuItemLabel::create(noLabel, this, menu_selector(PauseLayer::onNoPressed)),
+                                NULL);
   _topMenu->setPosition(ccp(director->getWinSize().width / 2.0, 120));
   _topMenu->alignItemsVerticallyWithPadding(20);
   _confirmMenu->alignItemsVerticallyWithPadding(20);
@@ -54,7 +59,6 @@ PauseLayer::PauseLayer() {
   _descriptionLabel->retain();
   
   this->addChild(_topMenu);
-  
 }
 
 PauseLayer::~PauseLayer() {
@@ -92,10 +96,10 @@ void PauseLayer::onYesPressed(CCObject* sender) {
   scene->setPause(false);
   this->removeFromParentAndCleanup(true);
   if (_state == PauseLayerStateConfirmReplay) {
-    scene->replayButtonPressed(this);
+    this->replayButtonPressed(NULL);
     scene->release();
   } else if (_state == PauseLayerStateConfirmTitle) {
-    scene->titleButtonPressed(this);
+    this->titleButtonPressed(NULL);
     scene->release();
   }
 }

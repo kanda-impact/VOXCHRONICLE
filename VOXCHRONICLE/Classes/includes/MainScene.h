@@ -81,7 +81,6 @@ class MainScene : public CCLayer {
   void trackDidFinishPlaying(Music* music, Track* finishedTrack, Track* nextTrack, int trackNumber);
   
   void updateGUI();
-  void addGameOverButtons();
   void onGameOver();
   
   void update(float dt);
@@ -106,8 +105,7 @@ class MainScene : public CCLayer {
   virtual bool init();
   ~MainScene();
   void setPause(bool pause);
-  void replayButtonPressed(CCObject *sender);
-  void titleButtonPressed(CCObject *sender);
+  Music* getMusic();
   VCState getState();
   
   CREATE_FUNC(MainScene);
