@@ -41,6 +41,7 @@ class Map :public CCObject {
   int getMaxLevel();
   int getInitialLevel();
   string* getName();
+  string getIdentifier();
   CCArray* getFixedEnemies(int preExp, int currentExp);
   CCArray* getNextMaps();
   bool isBossStage();

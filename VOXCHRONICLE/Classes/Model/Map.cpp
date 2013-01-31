@@ -133,6 +133,10 @@ string* Map::getName() {
   return _name;
 }
 
+string Map::getIdentifier() {
+  return string(_identifier);
+}
+
 CCArray* Map::getFixedEnemies(int preExp, int currentExp) {
   CCArray* enemies = CCArray::create();
   list< pair<string, int> > poped;

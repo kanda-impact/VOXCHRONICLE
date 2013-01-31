@@ -57,7 +57,12 @@ void GameOverLayer::replayButtonPressed(CCObject *sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   CCScene* scene = CCScene::create();
-  scene->addChild(MainScene::create());
+  MainScene* newScene = new MainScene();
+  Map* newMap = new Map(_main->getMap()->getIdentifier().c_str());
+  newScene->autorelease();
+  newScene->init(newMap);
+  scene->addChild(newScene);
+  newMap->release();
   CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
   CCDirector::sharedDirector()->replaceScene(transition);
 }

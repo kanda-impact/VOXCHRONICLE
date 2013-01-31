@@ -159,6 +159,10 @@ Music* MainScene::getMusic() {
   return _music;
 }
 
+Map* MainScene::getMap() {
+  return _map;
+}
+
 void MainScene::onEnterTransitionDidFinish() {
   this->pushIntroTracks();
   _music->play();

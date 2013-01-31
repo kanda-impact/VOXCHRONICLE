@@ -106,6 +106,7 @@ class MainScene : public CCLayer {
   ~MainScene();
   void setPause(bool pause);
   Music* getMusic();
+  Map* getMap();
   VCState getState();
   
   CREATE_FUNC(MainScene);
