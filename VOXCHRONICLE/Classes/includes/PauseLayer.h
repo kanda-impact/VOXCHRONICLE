@@ -39,7 +39,7 @@ class PauseLayer :public GameOverLayer {
  protected:
   void buildUI();
  public:
-  PauseLayer();
+  PauseLayer(MainScene* main);
   ~PauseLayer();
 };
 

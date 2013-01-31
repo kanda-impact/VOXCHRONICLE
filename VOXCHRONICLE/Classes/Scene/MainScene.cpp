@@ -536,7 +536,7 @@ bool MainScene::checkLevelUp() {
 void MainScene::onGameOver() {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("Music/general/gameover.mp3").c_str());
   _state = VCStateGameOver;
-  GameOverLayer* gameover = new GameOverLayer();
+  GameOverLayer* gameover = new GameOverLayer(this);
   this->addChild(gameover);
   gameover->autorelease();
   _music->pause();
@@ -699,7 +699,7 @@ void MainScene::onFinishTracksCompleted() {
 
 void MainScene::setPause(bool pause) {
   CCScheduler* scheduler = CCDirector::sharedDirector()->getScheduler();
-  PauseLayer* layer = new PauseLayer();
+  PauseLayer* layer = new PauseLayer(this);
   layer->autorelease();
   if (pause && _pausedTargets == NULL) {
     _pausedTargets = scheduler->pauseAllTargets();

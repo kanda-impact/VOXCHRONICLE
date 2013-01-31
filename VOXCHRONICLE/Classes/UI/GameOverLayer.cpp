@@ -9,15 +9,19 @@
 #include "GameOverLayer.h"
 #include "SimpleAudioEngine.h"
 #include "FileUtils.h"
-#include "MainScene.h"
 #include "TitleScene.h"
 #include "macros.h"
 
-GameOverLayer::GameOverLayer() {
-  GameOverLayer::buildUI();
+GameOverLayer::GameOverLayer(MainScene* main) {
+  _main = main;
+  main->retain();
+  this->buildUI();
 }
 
 GameOverLayer::~GameOverLayer() {
+  if (_main) {
+    _main->release();
+  }
 }
 
 void GameOverLayer::buildUI() {
@@ -49,6 +53,7 @@ void GameOverLayer::addGameOverButtons() {
 }
 
 void GameOverLayer::replayButtonPressed(CCObject *sender) {
+  _main->getMusic()->stop();
   CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   CCScene* scene = CCScene::create();

@@ -12,8 +12,8 @@
 #include "TitleScene.h"
 #include "FileUtils.h"
 
-PauseLayer::PauseLayer() {
-  PauseLayer::buildUI();
+PauseLayer::PauseLayer(MainScene* main) : GameOverLayer(main) {
+  this->buildUI();
 }
 
 void PauseLayer::buildUI() {

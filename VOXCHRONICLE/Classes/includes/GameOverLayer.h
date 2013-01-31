@@ -10,19 +10,21 @@
 #define __VOXCHRONICLE__GameOverLayer__
 
 #include <iostream>
+#include "MainScene.h"
 #include "cocos2d.h"
 
 using namespace cocos2d;
 
 class GameOverLayer :public CCLayer {
  private:
+  MainScene* _main;
   void addGameOverButtons();
  protected:
   virtual void buildUI();
   void replayButtonPressed(CCObject *sender);
   void titleButtonPressed(CCObject *sender);
  public:
-  GameOverLayer();
+  GameOverLayer(MainScene* main);
   ~GameOverLayer();
 };
 
