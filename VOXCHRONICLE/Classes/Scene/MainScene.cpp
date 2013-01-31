@@ -560,6 +560,7 @@ void MainScene::titleButtonPressed(CCObject *sender) {
 }
 
 void MainScene::onGameOver() {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("Music/general/gameover.mp3").c_str());
   _state = VCStateGameOver;
   CCLabelTTF* gameOverLabel = CCLabelTTF::create("GAME OVER", FONT_NAME, 48);
   CCDirector* director = CCDirector::sharedDirector();
@@ -574,9 +575,8 @@ void MainScene::onGameOver() {
                                                     CCMoveTo::create(0.1, ccp(director->getWinSize().width / 2, 200)),
                                                     CCCallFunc::create(this, callfunc_selector(MainScene::addGameOverButtons)),
                                                     NULL));
-  _music->stop();
+  _music->pause();
   _controller->setVisible(false);
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("Music/general/gameover.mp3").c_str());
 }
 
 void MainScene::removeNode(CCNode* node) {

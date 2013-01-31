@@ -106,7 +106,7 @@ void SignalHandler(int sig) {
   [window makeKeyAndVisible];
   
   [[UIApplication sharedApplication] setStatusBarHidden: YES];
-  [OALSimpleAudio sharedInstance].reservedSources = 1;
+  [OALSimpleAudio sharedInstance].reservedSources = 4;
   
   cocos2d::CCApplication::sharedApplication()->run();
   return YES;
