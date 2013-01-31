@@ -93,8 +93,10 @@ void PauseLayer::onYesPressed(CCObject* sender) {
   this->removeFromParentAndCleanup(true);
   if (_state == PauseLayerStateConfirmReplay) {
     scene->replayButtonPressed(this);
+    scene->release();
   } else if (_state == PauseLayerStateConfirmTitle) {
     scene->titleButtonPressed(this);
+    scene->release();
   }
 }
 

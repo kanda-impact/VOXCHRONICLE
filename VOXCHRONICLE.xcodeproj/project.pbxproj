@@ -18,6 +18,8 @@
 		07244C321695712400C5A442 /* qte.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07244C311695712400C5A442 /* qte.mp3 */; };
 		0725180D16B141FB004361B7 /* BufferCache.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0725180C16B141FB004361B7 /* BufferCache.mm */; };
 		0725180F16B15BB8004361B7 /* nmb_impact3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0725180E16B15BB8004361B7 /* nmb_impact3.caf */; };
+		072A5C9716BAA72500A64AD6 /* volca_voxrun1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 072A5C9616BAA72500A64AD6 /* volca_voxrun1.caf */; };
+		072A5C9916BAA72E00A64AD6 /* volca_lskrun1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 072A5C9816BAA72E00A64AD6 /* volca_lskrun1.caf */; };
 		0731E4CB16176787006AEF3D /* shield.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4CA16176787006AEF3D /* shield.lua */; };
 		0731E4CF16176A91006AEF3D /* bow.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4CE16176A91006AEF3D /* bow.lua */; };
 		0731E4DB16176C96006AEF3D /* thunder.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0731E4DA16176C95006AEF3D /* thunder.lua */; };
@@ -587,6 +589,8 @@
 		0725180916B140A0004361B7 /* BufferCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BufferCache.h; path = Classes/includes/BufferCache.h; sourceTree = "<group>"; };
 		0725180C16B141FB004361B7 /* BufferCache.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BufferCache.mm; path = Classes/VISS/BufferCache.mm; sourceTree = "<group>"; };
 		0725180E16B15BB8004361B7 /* nmb_impact3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = nmb_impact3.caf; sourceTree = "<group>"; };
+		072A5C9616BAA72500A64AD6 /* volca_voxrun1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = volca_voxrun1.caf; sourceTree = "<group>"; };
+		072A5C9816BAA72E00A64AD6 /* volca_lskrun1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = volca_lskrun1.caf; sourceTree = "<group>"; };
 		0731E4CA16176787006AEF3D /* shield.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shield.lua; sourceTree = "<group>"; };
 		0731E4CE16176A91006AEF3D /* bow.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bow.lua; sourceTree = "<group>"; };
 		0731E4DA16176C95006AEF3D /* thunder.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = thunder.lua; sourceTree = "<group>"; };
@@ -1829,6 +1833,8 @@
 		07A1F4D7169318DA00C4329F /* volca */ = {
 			isa = PBXGroup;
 			children = (
+				072A5C9616BAA72500A64AD6 /* volca_voxrun1.caf */,
+				072A5C9816BAA72E00A64AD6 /* volca_lskrun1.caf */,
 				07970BDA169F9B760000B905 /* volca_counter0.caf */,
 				07970BDB169F9B760000B905 /* volca_counter1.caf */,
 				07970BDC169F9B760000B905 /* volca_counter2.caf */,
@@ -3399,6 +3405,8 @@
 				07970C8A169F9B820000B905 /* dub_voxslash0.caf in Resources */,
 				07970C8B169F9B820000B905 /* dub_wait0.caf in Resources */,
 				0725180F16B15BB8004361B7 /* nmb_impact3.caf in Resources */,
+				072A5C9716BAA72500A64AD6 /* volca_voxrun1.caf in Resources */,
+				072A5C9916BAA72E00A64AD6 /* volca_lskrun1.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
