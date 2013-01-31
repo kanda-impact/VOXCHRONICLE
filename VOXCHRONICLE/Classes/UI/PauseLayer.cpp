@@ -88,7 +88,7 @@ void PauseLayer::onTitlePressed(CCObject* sender) {
 void PauseLayer::onCancelPressed(CCObject* sender) {
   MainScene* scene = (MainScene*)this->getParent();
   scene->setPause(false);
-  this->removeFromParentAndCleanup(true);
+  scene->release();
 }
 
 void PauseLayer::onYesPressed(CCObject* sender) {

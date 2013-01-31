@@ -68,6 +68,7 @@ void GameOverLayer::replayButtonPressed(CCObject *sender) {
 }
 
 void GameOverLayer::titleButtonPressed(CCObject *sender) {
+  _main->getMusic()->stop();
   CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   CCScene* scene = CCScene::create();

@@ -703,9 +703,9 @@ void MainScene::onFinishTracksCompleted() {
 
 void MainScene::setPause(bool pause) {
   CCScheduler* scheduler = CCDirector::sharedDirector()->getScheduler();
-  PauseLayer* layer = new PauseLayer(this);
-  layer->autorelease();
   if (pause && _pausedTargets == NULL) {
+    PauseLayer* layer = new PauseLayer(this);
+    layer->autorelease();
     _pausedTargets = scheduler->pauseAllTargets();
     _pausedTargets->retain();
     _music->pause();
