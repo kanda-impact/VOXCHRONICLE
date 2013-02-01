@@ -16,7 +16,9 @@ using namespace cocos2d;
 
 class Ground :public CCNode {
  private:
+  std::string _prefix;
   CCSprite* _background;
+  void setAnimaton();
  public:
   Ground(const char* prefix);
   void play();

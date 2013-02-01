@@ -64,11 +64,9 @@ bool MainScene::init(Map* map) {
   // 背景の追加
   // 将来的にはSkinクラスを実装して、スキンによって背景を変更するようにしたいが
   // 今はとりあえずここにSpriteをおいておきます
-  
-  
-  Ground* ground = new Ground("cyber");
-  ground->stop();
-  this->addChild(ground);
+  _ground = new Ground("cyber");
+  _ground->stop();
+  this->addChild(_ground);
   
   _enemyManager = EnemyManager::create();
   _enemyManager->retain();
@@ -198,6 +196,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     if (_introCount == maxIntroCount - 1) { // イントロが終わったとき
       _controller->setEnable(true);
       _state = VCStateMain;
+      _ground->play();
     }
   } else if (_state == VCStateFinish || _state == VCStateQTEFinish) {
     this->onFinishTracksCompleted();
@@ -533,6 +532,7 @@ bool MainScene::checkLevelUp() {
 
 void MainScene::onGameOver() {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("Music/general/gameover.mp3").c_str());
+  _ground->stop();
   _state = VCStateGameOver;
   GameOverLayer* gameover = new GameOverLayer(this);
   this->addChild(gameover);

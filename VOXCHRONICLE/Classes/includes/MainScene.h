@@ -24,6 +24,7 @@
 #include "StatusLayer.h"
 #include "MusicSet.h"
 #include "QTETrigger.h"
+#include "Ground.h"
 
 typedef enum {
   VCStateIntro,
@@ -66,6 +67,7 @@ class MainScene : public CCLayer {
   CCSprite* _focus;
   QTETrigger* _qteTrigger;
   
+  Ground* _ground;
   Level* _level;
   Map* _map;
   VCState _state;
