@@ -21,6 +21,7 @@
 #include "TitleScene.h"
 #include "PauseLayer.h"
 #include "GameOverLayer.h"
+#include "Ground.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -63,18 +64,11 @@ bool MainScene::init(Map* map) {
   // 背景の追加
   // 将来的にはSkinクラスを実装して、スキンによって背景を変更するようにしたいが
   // 今はとりあえずここにSpriteをおいておきます
-  CCSprite* background = CCSprite::create(FileUtils::getFilePath("Image/floor0.png").c_str());
-  CCAnimation* animation = CCAnimation::create();
-  animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("Image/floor0.png").c_str(), CCRectMake(0, 0, 480, 320)));
-  animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("Image/floor1.png").c_str(), CCRectMake(0, 0, 480, 320)));
-  animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("Image/floor2.png").c_str(), CCRectMake(0, 0, 480, 320)));
-  animation->setLoops(-1);
-  animation->setDelayPerUnit(10.0 / 60.0);
-  background->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
   
-  CCPoint center = ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f);
-  background->setPosition(center);
-  this->addChild(background);
+  
+  Ground* ground = new Ground("cyber");
+  ground->stop();
+  this->addChild(ground);
   
   _enemyManager = EnemyManager::create();
   _enemyManager->retain();
