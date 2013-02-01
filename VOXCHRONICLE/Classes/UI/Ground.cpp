@@ -38,6 +38,7 @@ void Ground::setAnimaton() {
   animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath((p + string("_floor0.png")).c_str()).c_str(), CCRectMake(0, 0, 480, 320)));
   animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath((p + string("_floor1.png")).c_str()).c_str(), CCRectMake(0, 0, 480, 320)));
   animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath((p + string("_floor2.png")).c_str()).c_str(), CCRectMake(0, 0, 480, 320)));
+  animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath((p + string("_floor3.png")).c_str()).c_str(), CCRectMake(0, 0, 480, 320)));
   animation->setLoops(-1);
   animation->setDelayPerUnit(10.0 / 60.0);
   _background->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
