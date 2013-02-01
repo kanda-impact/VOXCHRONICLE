@@ -582,6 +582,7 @@
 		07F9D9E116812C9D00E984AB /* slash.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F9D9E016812C9D00E984AB /* slash.lua */; };
 		07FADBC216BBF75000200F83 /* volca_drum4.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07FADBC116BBF75000200F83 /* volca_drum4.caf */; };
 		07FADBC516BBFA3600200F83 /* Ground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07FADBC316BBFA3500200F83 /* Ground.cpp */; };
+		07FADBC716BC140100200F83 /* mask.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FADBC616BC140100200F83 /* mask.lua */; };
 		07FD921E1621099B00E74459 /* vox.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921D1621099B00E74459 /* vox.lua */; };
 		07FD922016210A2300E74459 /* lsk.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921F16210A2300E74459 /* lsk.lua */; };
 /* End PBXBuildFile section */
@@ -1495,6 +1496,7 @@
 		07FADBC116BBF75000200F83 /* volca_drum4.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = volca_drum4.caf; sourceTree = "<group>"; };
 		07FADBC316BBFA3500200F83 /* Ground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ground.cpp; path = Classes/UI/Ground.cpp; sourceTree = "<group>"; };
 		07FADBC416BBFA3600200F83 /* Ground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ground.h; path = Classes/UI/Ground.h; sourceTree = "<group>"; };
+		07FADBC616BC140100200F83 /* mask.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mask.lua; sourceTree = "<group>"; };
 		07FD921D1621099B00E74459 /* vox.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vox.lua; path = character/vox.lua; sourceTree = "<group>"; };
 		07FD921F16210A2300E74459 /* lsk.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lsk.lua; path = character/lsk.lua; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2904,6 +2906,7 @@
 				072A5CA416BADEFC00A64AD6 /* moth.lua */,
 				072A5CA516BADEFE00A64AD6 /* toadstool.lua */,
 				072A5CA616BADF0000A64AD6 /* wisp.lua */,
+				07FADBC616BC140100200F83 /* mask.lua */,
 			);
 			path = enemies;
 			sourceTree = "<group>";
@@ -3453,6 +3456,7 @@
 				072A5CAC16BADF0100A64AD6 /* toadstool.lua in Resources */,
 				072A5CAD16BADF0100A64AD6 /* wisp.lua in Resources */,
 				07FADBC216BBF75000200F83 /* volca_drum4.caf in Resources */,
+				07FADBC716BC140100200F83 /* mask.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

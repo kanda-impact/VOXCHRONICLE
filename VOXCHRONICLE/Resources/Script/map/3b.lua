@@ -8,9 +8,9 @@ Map = {
   maxLevel = 10,
   getEnemyTable = function(level)
     if level <= 2 then
-      return {slime = 2, wisp = 2}
+      return {slime = 2, wisp = 2, mask = 2}
     elseif level <= 5 then
-      return {slime =
+      return {mask =
         2, mimic = 2, wisp = 2}
     elseif level <= 7 then
       return {slime_physical = 3, mimic = 5, wisp = 1}
