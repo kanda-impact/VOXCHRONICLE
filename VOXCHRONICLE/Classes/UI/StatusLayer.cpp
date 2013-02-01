@@ -14,7 +14,7 @@
 
 StatusLayer::StatusLayer() {
   CCSprite* hpLabel = CCSprite::create(FileUtils::getFilePath("Image/hp.png").c_str());
-  hpLabel->setPosition(ccp(139, 308));
+  hpLabel->setPosition(ccp(20, 308));
   this->addChild(hpLabel);
   CCSprite* mpLabel = CCSprite::create(FileUtils::getFilePath("Image/mp.png").c_str());
   mpLabel->setPosition(ccp(282, 308));
@@ -23,37 +23,37 @@ StatusLayer::StatusLayer() {
   _currentHPLabel = CCLabelAtlas::create("0", FileUtils::getFilePath("Image/hp_numbers.png").c_str(), 17, 18, '0');
   _currentHPLabel->retain();
   _currentHPLabel->setScale(0.6f);
-  _currentHPLabel->setPosition(ccp(164, 308));
+  _currentHPLabel->setPosition(ccp(149, 308));
   _currentHPLabel->setAnchorPoint(ccp(0.5f, 0.5f));
   _maxHPLabel = CCLabelAtlas::create("0", FileUtils::getFilePath("Image/hp_numbers.png").c_str(), 17, 18, '0');
   _maxHPLabel->retain();
   _maxHPLabel->setScale(0.4f);
-  _maxHPLabel->setPosition(ccp(200, 305));
+  _maxHPLabel->setPosition(ccp(185, 305));
   _maxHPLabel->setAnchorPoint(ccp(0.5f, 0.5f));
   this->addChild(_currentHPLabel);
   this->addChild(_maxHPLabel);
   CCSprite* slash = CCSprite::create(FileUtils::getFilePath("Image/slash.png").c_str());
-  slash->setPosition(ccp(186, 308));
+  slash->setPosition(ccp(171, 308));
   this->addChild(slash);
   _mpChips = CCArray::create();
   _mpChips->retain();
   
   CCSprite* stageLabel = CCSprite::create(FileUtils::getFilePath("Image/stage.png").c_str());
-  stageLabel->setPosition(ccp(18, 283));
+  stageLabel->setPosition(ccp(240, 282));
   this->addChild(stageLabel);
   
   _levelLabel = CCLabelAtlas::create("10", FileUtils::getFilePath("Image/stage_numbers.png").c_str(), 18, 23, '0');
-  _levelLabel->setPosition(ccp(0, 290));
+  _levelLabel->setPosition(ccp(222, 290));
   this->addChild(_levelLabel);
   
   _lifeGaugeBackground = CCSprite::create(FileUtils::getFilePath("Image/gauge_bg.png").c_str());
   _lifeGaugeBackground->setAnchorPoint(ccp(0.0f, 0.5f));
-  _lifeGaugeBackground->setPosition(ccp(130, 293));
+  _lifeGaugeBackground->setPosition(ccp(35, 307));
   this->addChild(_lifeGaugeBackground);
   
   _lifeGauge = CCSprite::create(FileUtils::getFilePath("Image/gauge.png").c_str());
   _lifeGauge->setAnchorPoint(ccp(0.0f, 0.5f));
-  _lifeGauge->setPosition(ccp(130, 293));
+  _lifeGauge->setPosition(ccp(35, 307));
   this->addChild(_lifeGauge);
   
   CCMenu* pause = CCMenu::create(CCMenuItemImage::create(FileUtils::getFilePath("Image/pause_button.png").c_str(),
