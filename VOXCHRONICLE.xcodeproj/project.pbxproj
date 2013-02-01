@@ -581,6 +581,7 @@
 		07F470831691B4FD0062975F /* iron.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F470821691B4FD0062975F /* iron.lua */; };
 		07F9D9E116812C9D00E984AB /* slash.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F9D9E016812C9D00E984AB /* slash.lua */; };
 		07FADBC216BBF75000200F83 /* volca_drum4.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07FADBC116BBF75000200F83 /* volca_drum4.caf */; };
+		07FADBC516BBFA3600200F83 /* Ground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07FADBC316BBFA3500200F83 /* Ground.cpp */; };
 		07FD921E1621099B00E74459 /* vox.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921D1621099B00E74459 /* vox.lua */; };
 		07FD922016210A2300E74459 /* lsk.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921F16210A2300E74459 /* lsk.lua */; };
 /* End PBXBuildFile section */
@@ -1492,6 +1493,8 @@
 		07F470821691B4FD0062975F /* iron.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iron.lua; sourceTree = "<group>"; };
 		07F9D9E016812C9D00E984AB /* slash.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = slash.lua; sourceTree = "<group>"; };
 		07FADBC116BBF75000200F83 /* volca_drum4.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = volca_drum4.caf; sourceTree = "<group>"; };
+		07FADBC316BBFA3500200F83 /* Ground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ground.cpp; path = Classes/UI/Ground.cpp; sourceTree = "<group>"; };
+		07FADBC416BBFA3600200F83 /* Ground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ground.h; path = Classes/UI/Ground.h; sourceTree = "<group>"; };
 		07FD921D1621099B00E74459 /* vox.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vox.lua; path = character/vox.lua; sourceTree = "<group>"; };
 		07FD921F16210A2300E74459 /* lsk.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lsk.lua; path = character/lsk.lua; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1585,6 +1588,8 @@
 				07D8D64B169F4D9100B646E5 /* PauseLayer.cpp */,
 				072A5C9F16BAAF5900A64AD6 /* GameOverLayer.h */,
 				072A5C9C16BAAE5D00A64AD6 /* GameOverLayer.cpp */,
+				07FADBC416BBFA3600200F83 /* Ground.h */,
+				07FADBC316BBFA3500200F83 /* Ground.cpp */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -3746,6 +3751,7 @@
 				07D8D64D169F4D9300B646E5 /* PauseLayer.cpp in Sources */,
 				0725180D16B141FB004361B7 /* BufferCache.mm in Sources */,
 				072A5C9E16BAAE5D00A64AD6 /* GameOverLayer.cpp in Sources */,
+				07FADBC516BBFA3600200F83 /* Ground.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

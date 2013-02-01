@@ -176,7 +176,7 @@ void Enemy::setRowAndCol(int row, float col) {
   const int horizonWidth = 120;
   const int horizonDistance = 122.5;
   const int marginLeft = (width - horizonWidth) / 2.0f;
-  const int padding = 50;
+  const int padding = 80;
   const float scale = horizonWidth / width;
   if (col == 0) {
     root = ccp(padding, 0);
