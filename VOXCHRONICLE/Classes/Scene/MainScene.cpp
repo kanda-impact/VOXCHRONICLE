@@ -265,11 +265,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       drumFileStream << "impact" << _characterManager->getTension() - 1 << ".caf";
     } else {
       int drumLevel = this->calcDrumScore();
-      if (drumLevel == 0) {
-        drumFileStream << "silent.caf";
-      } else {
-        drumFileStream << "drum" << drumLevel - 1 << ".caf";
-      }
+      drumFileStream << "drum" << drumLevel << ".caf";
     }
     Track* track = music->pushTrack(_musicSet->getPrefixedMusicName(drumFileStream.str().c_str()).c_str(), 2);
     
