@@ -32,6 +32,13 @@ typedef enum {
   SkillRangeFront = 6,      // 最前列の敵全てが対象
 } SkillRange;
 
+typedef enum {
+  SkillPerformTypeNone,
+  SkillPerformTypeSuccess, // スキル成功
+  SkillPerformTypeCharge, // スキルチャージ中
+  SkillPerformTypeFailure // スキル失敗
+} SkillPerformType;
+
 class Skill :public CCObject {
  private:
   int _acquirementLV;
@@ -66,5 +73,11 @@ class Skill :public CCObject {
   SkillType getType();
   LuaObject* getLuaObject();
 };
+
+typedef struct {
+  Skill* skill;
+  string skillTrackName;
+  SkillPerformType type;
+} SkillPerformInfo;
 
 #endif /* defined(__VOXCHRONICLE__Skill__) */

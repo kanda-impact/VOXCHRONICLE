@@ -25,6 +25,7 @@
 #include "MusicSet.h"
 #include "QTETrigger.h"
 #include "Ground.h"
+#include "MusicManager.h"
 
 typedef enum {
   VCStateIntro,
@@ -39,12 +40,6 @@ typedef enum {
   VCStateEnding
 } VCState;
 
-typedef struct {
-  Skill* skill;
-  string skillTrackName;
-  SkillPerformType type;
-} SkillPerformInfo;
-
 using namespace VISS;
 using namespace cocos2d;
 
@@ -52,12 +47,8 @@ class MainScene : public CCLayer {
  private:
   int _preLevel;
   int _turnCount;
-  int _introCount;
-  int _finishCount;
   int _mapTurnCount;
-  bool _isImpact;
   SkillPerformInfo _currentSkillInfo;
-  Music* _music;
   Controller* _controller;
   EnemyManager* _enemyManager;
   CharacterManager* _characterManager;
@@ -72,7 +63,9 @@ class MainScene : public CCLayer {
   Map* _map;
   VCState _state;
   
+  Music* _music;
   MusicSet* _musicSet;
+  MusicManager* _musicManager;
   
   CCSet* _pausedTargets;
   
@@ -87,16 +80,15 @@ class MainScene : public CCLayer {
   
   void update(float dt);
   bool checkLevelUp();
-  int calcDrumScore();
-
+  
   void removeNode(CCNode *node);
   
   void updateFocus();
   void addDamageEffect();
   void changeMap(Map* nextMap);
   
-  void pushIntroTracks();
-  void pushFinishTracks();
+  //void pushIntroTracks();
+  //void pushFinishTracks();
   
   void startBossBattle();
   void gotoNextStage();

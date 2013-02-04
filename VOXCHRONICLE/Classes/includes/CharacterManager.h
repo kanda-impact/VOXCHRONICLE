@@ -34,13 +34,6 @@ typedef enum {
   DamageTypeAbsorption // ダメージ吸収
 } DamageType;
 
-typedef enum {
-  SkillPerformTypeNone,
-  SkillPerformTypeSuccess, // スキル成功
-  SkillPerformTypeCharge, // スキルチャージ中
-  SkillPerformTypeFailure // スキル失敗
-} SkillPerformType;
-
 typedef struct {
   int damage;
   DamageType damageType;

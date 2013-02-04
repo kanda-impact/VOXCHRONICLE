@@ -53,8 +53,6 @@ bool MainScene::init(Map* map) {
   
   _turnCount = 0;
   _mapTurnCount = 0;
-  _introCount = 0;
-  _finishCount = 0;
   
   LuaObject* setting = new LuaObject("Script/setting", "Setting");
   setting->autorelease();
@@ -94,6 +92,9 @@ bool MainScene::init(Map* map) {
   _musicSet = _map->getCurrentMusic(_level);
   _musicSet->preloadAllTracks();
   
+  _musicManager = new MusicManager(_music, _musicSet, _enemyManager, _characterManager);
+  _musicManager->retain();
+  
   _state = VCStateIntro;
   
   _messageWindow = new MessageWindow(FONT_NAME, 64);
@@ -124,6 +125,7 @@ MainScene::~MainScene() {
   delete _music;
   _map->release();
   _messageWindow->release();
+  _musicManager->release();
   _controller->release();
   _enemyManager->release();
   _characterManager->release();
@@ -156,7 +158,8 @@ Map* MainScene::getMap() {
 }
 
 void MainScene::onEnterTransitionDidFinish() {
-  this->pushIntroTracks();
+  _controller->setEnable(false);
+  _musicManager->pushIntroTracks();
   _music->play();
   _statusLayer->setMarkerDuration(_music->getTrack(0)->getDuration() / 4.0f);
 }
@@ -182,18 +185,18 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
 
 void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track *nextTrack, int trackNumber) {
   if (_state == VCStateIntro) {
-    ++_introCount;
+    _musicManager->setIntroCount(_musicManager->getIntroCount() + 1);
   } else {
-    _introCount = 0;
+    _musicManager->setIntroCount(0);
   }
   if (_state == VCStateFinish || _state == VCStateQTEFinishStart || _state == VCStateQTEFinish) {
-    ++_finishCount;
+    _musicManager->setFinishCount(_musicManager->getFinishCount() + 1);
   } else {
-    _finishCount = 0;
+    _musicManager->setFinishCount(0);
   }
   if (_state == VCStateIntro) {
     int maxIntroCount = _musicSet->getIntroCount();
-    if (_introCount == maxIntroCount - 1) { // イントロが終わったとき
+    if (_musicManager->getIntroCount() == maxIntroCount - 1) { // イントロが終わったとき
       _controller->setEnable(true);
       _state = VCStateMain;
       _ground->play();
@@ -206,68 +209,28 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     this->addChild(_qteTrigger);
   } else if (_state == VCStateQTE) {
     if (_qteTrigger != NULL && _qteTrigger->isButtonPressed()) {
-      _state = VCStateQTEFinish;
-      _finishCount = _musicSet->getFinishCount() - 3;
+      /*_state = VCStateQTEFinish;
+      //_finishCount = _musicSet->getFinishCount() - 3;
       for (int i = 2; i < _musicSet->getFinishCount(); ++i) {
         stringstream finish;
         finish << "finish" << i << ".caf";
         _music->pushTrack(_musicSet->getPrefixedMusicName(finish.str().c_str()).c_str(), 0);
         _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 1);
         _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 2);
-      }
+      }*/
     } else {
       _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 0);
       _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 1);
       _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 2);
     }
   } else if (_state == VCStateMain) {
-    
-    // リフの設定
-    Enemy* nearest = _enemyManager->getNearestEnemy();
-    if (nearest) {
-      stringstream ss;
-      ss << "counter" << nearest->getCounter() << ".caf";
-      string file(_musicSet->getPrefixedMusicName(ss.str().c_str()));
-      Track* track = music->pushTrack(file.c_str(), 1);
-      
-      int row = nearest->getRow();
-      int denominator = (MAX_ROW + 1) * MAX_ROW / 2.0;
-      int numerator = ((MAX_ROW - row) + 1) * (MAX_ROW - row) / 2.0;
-      float volume = 0.5 + 1.0 * numerator / denominator;
-      track->setVolume(volume);
-    } else {
-      string file(_musicSet->getPrefixedMusicName("counter0.caf"));
-      Track* track = music->pushTrack(file.c_str(), 1);
-      track->setVolume(0);
-    }
-    
-    // メロディの設定
     Skill* skill = NULL;
     if (_characterManager->isPerforming()) {
       skill = _characterManager->getCurrentSkill();
     } else {
       skill = _controller->currentTriggerSkill();
     }
-    SkillPerformType performType = SkillPerformTypeNone;
-    string name = _characterManager->checkSkillTrackName(skill, performType, _musicSet);
-    _currentSkillInfo.skillTrackName = name;
-    _currentSkillInfo.type = performType;
-    _currentSkillInfo.skill = skill;
-    string file(_musicSet->getPrefixedMusicName((name + ".caf").c_str()));
-    string trackName(file);
-    music->pushTrack(file.c_str(), 0);
-    
-    // ドラムの設定
-    stringstream drumFileStream;
-    
-    if (_characterManager->getTension() > 0 && skill != NULL && string(skill->getIdentifier()) != "tension") {
-      // テンションが1以上で、skillがあるとき、かつテンションじゃないとき、インパクトをならしてやる
-      drumFileStream << "impact" << _characterManager->getTension() - 1 << ".caf";
-    } else {
-      int drumLevel = this->calcDrumScore();
-      drumFileStream << "drum" << drumLevel << ".caf";
-    }
-    Track* track = music->pushTrack(_musicSet->getPrefixedMusicName(drumFileStream.str().c_str()).c_str(), 2);
+    _musicManager->pushNextTracks(skill, _currentSkillInfo);
     
     // QTE開始
     if (_enemyManager->getBoss() != NULL && _enemyManager->getBoss()->getHP() <= 0) { // 寸止めQTE開始
@@ -449,59 +412,10 @@ void MainScene::updateGUI() {
   _statusLayer->setLevel(_characterManager->getLevel());
 }
 
-void MainScene::pushIntroTracks() {
-  _controller->setEnable(false);
-  string main, counter, drum;
-  _music->removeAllNextTracks(); // 次以降の曲を強制的に削除
-  int introCount = _musicSet->getIntroCount();
-  _introCount = 0;
-  if (introCount == 0) {
-    // イントロなしのとき、いきなり曲を鳴らします
-    main = _musicSet->getPrefixedMusicName("wait0.caf");
-    counter= _musicSet->getPrefixedMusicName("counter0.caf");
-    drum = _musicSet->getPrefixedMusicName("drum0.caf");
-    _music->pushTrack(main.c_str(), 0);
-    _music->pushTrack(counter.c_str(), 1);
-    _music->pushTrack(drum.c_str(), 2);
-  } else {
-    // イントロありのとき、イントロの数だけpushします
-    int maxIntroCount = _musicSet->getIntroCount();
-    for (int i = 0 ; i < maxIntroCount; ++i) {
-      stringstream intro;
-      intro << "intro" << i << ".caf";
-      _music->pushTrack(_musicSet->getPrefixedMusicName(intro.str().c_str()).c_str(), 0);
-      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 1);
-      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 2);
-    }
-  }
-  _music->getTrack(1)->setVolume(0);
-  _music->getTrack(2)->setVolume(0.7);
-}
-
-void MainScene::pushFinishTracks() {
-  _controller->setEnable(false);
-  int maxFinishCount = _musicSet->getFinishCount();
-  
-  _music->removeAllNextTracks(); // 次以降の曲を強制的に削除
-  _finishCount = 0;
-  if (maxFinishCount == 0) {
-    this->onFinishTracksCompleted();
-  } else {
-    // フィニッシュ曲をpushしまくる
-    for (int i = 0 ; i < maxFinishCount; ++i) {
-      stringstream finish;
-      finish << "finish" << i << ".caf";
-      _music->pushTrack(_musicSet->getPrefixedMusicName(finish.str().c_str()).c_str(), 0);
-      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 1);
-      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 2);
-    }
-  }
-}
-
 bool MainScene::checkLevelUp() {
   int currentLevel = _characterManager->getLevel();
   if (currentLevel != _preLevel) { // レベルが上がったとき
-    _introCount = 0;
+    _musicManager->setIntroCount(0);
     _preLevel = currentLevel;
     _map->performOnLevel(currentLevel, _characterManager, _enemyManager); // スクリプトを呼んでやる
     _characterManager->updateParameters();
@@ -515,11 +429,11 @@ bool MainScene::checkLevelUp() {
       // 道中フィニッシュ曲を流す。フィニッシュ曲が終わったらボス面に切り替えてイントロ曲を流す
       _state = VCStateFinish;
       _controller->setEnable(false);
-      this->pushFinishTracks();
+      _musicManager->pushFinishTracks();
     } else if (_level->getLevel() >= _map->getMaxLevel() + 1) {
       _state = VCStateFinish;
       _controller->setEnable(false);
-      this->pushFinishTracks();
+      _musicManager->pushFinishTracks();
     }
     return true;
   }
@@ -550,36 +464,6 @@ void MainScene::updateFocus() {
   } else {
     _focus->setVisible(false);
   }
-}
-
-int MainScene::calcDrumScore () {
-  // KYDS
-  int score = 0;
-  // 敵の数によって分岐
-  if (_enemyManager->getEnemies()) {
-    int count = _enemyManager->getEnemies()->count();
-    if (count == 2 || count == 3) {
-      score += 1;
-    } else if (count == 4 || count == 5) {
-      score += 2;
-    } else if (count >= 6) {
-      score += 3;
-    }
-  }
-  Enemy* nearest = _enemyManager->getNearestEnemy();
-  if (nearest) {
-    int row = nearest->getRow();
-    if (row <= 1) {
-      score += 2;
-    } else if (row <= 4) {
-      score += 1;
-    } else {
-      score += 0;
-    }
-  }
-  int tension = _characterManager->getTension();
-  score += tension;
-  return min(score, 4);
 }
 
 void MainScene::addDamageEffect() {
@@ -654,9 +538,10 @@ void MainScene::changeMap(Map* nextMap) {
   _state = VCStateIntro;
   _musicSet = _map->getCurrentMusic(_level); // 音楽セットを切り替える
   //_musicSet->preloadAllTracks();
-  _introCount = 0;
-  _finishCount = 0;
-  this->pushIntroTracks();
+  _musicManager->setIntroCount(0);
+  _musicManager->setFinishCount(0);
+  _controller->setEnable(false);
+  _musicManager->pushIntroTracks();
   this->updateGUI();
 }
 
@@ -664,8 +549,8 @@ void MainScene::startBossBattle() {
   _controller->setEnable(false);
   _state = VCStateIntro; // イントロに以降
   _musicSet = _map->getCurrentMusic(_level); // 音楽セットを切り替える
-  //_musicSet->preloadAllTracks();
-  this->pushIntroTracks();
+  _controller->setEnable(false);
+  _musicManager->pushIntroTracks();
 }
 
 void MainScene::gotoNextStage() {
@@ -676,7 +561,7 @@ void MainScene::gotoNextStage() {
 
 void MainScene::onFinishTracksCompleted() {
   int maxFinishCount = _musicSet->getFinishCount();
-  if (_finishCount == maxFinishCount) { // フィニッシュ曲が終わったとき
+  if (_musicManager->getFinishCount() == maxFinishCount) { // フィニッシュ曲が終わったとき
     if (_state == VCStateQTEFinish) { // QTEフィニッシュ後
       _enemyManager->removeEnemy(_enemyManager->getBoss());
       _enemyManager->setBoss(NULL);
