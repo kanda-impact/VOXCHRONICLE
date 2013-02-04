@@ -51,6 +51,20 @@ bool TitleScene::init() {
   menu->alignItemsHorizontallyWithPadding(50);
   menu->setPosition(ccp(winSize.width / 2, 80));
   this->addChild(menu);
+  
+  int r = rand() % 128;
+  if (r == 0) {
+    CCSprite* mask = CCSprite::create("easter0.png");
+    CCAnimation* animation = CCAnimation::create();
+    animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("easter0.png").c_str(), CCRectMake(0, 0, 480, 320)));
+    animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("easter1.png").c_str(), CCRectMake(0, 0, 480, 320)));
+    animation->setLoops(-1);
+    animation->setDelayPerUnit(10.0 / 60.0);
+    mask->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
+    this->addChild(mask);
+    mask->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
+  }
+  
   return true;
 }
 
