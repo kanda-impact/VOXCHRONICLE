@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0704344416BFEEC600339F8A /* nmb_drum4.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0704344316BFEEC600339F8A /* nmb_drum4.caf */; };
+		0704344716BFF3CB00339F8A /* MusicManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0704344516BFF3CB00339F8A /* MusicManager.cpp */; };
 		070E4020163C29E600A76BEA /* BlinkLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 070E401E163C29E600A76BEA /* BlinkLayer.cpp */; };
 		070E4043163CB10400A76BEA /* select_silent.wav in Resources */ = {isa = PBXBuildFile; fileRef = 070E403F163CB10400A76BEA /* select_silent.wav */; };
 		070E4044163CB10400A76BEA /* select_stage.wav in Resources */ = {isa = PBXBuildFile; fileRef = 070E4040163CB10400A76BEA /* select_stage.wav */; };
@@ -588,6 +590,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0704344316BFEEC600339F8A /* nmb_drum4.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = nmb_drum4.caf; sourceTree = "<group>"; };
+		0704344516BFF3CB00339F8A /* MusicManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MusicManager.cpp; path = Classes/Model/MusicManager.cpp; sourceTree = "<group>"; };
+		0704344616BFF3CB00339F8A /* MusicManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicManager.h; path = Classes/Model/MusicManager.h; sourceTree = "<group>"; };
 		070E401E163C29E600A76BEA /* BlinkLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BlinkLayer.cpp; path = Classes/UI/BlinkLayer.cpp; sourceTree = "<group>"; };
 		070E4021163C29FB00A76BEA /* BlinkLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlinkLayer.h; path = Classes/includes/BlinkLayer.h; sourceTree = "<group>"; };
 		070E403F163CB10400A76BEA /* select_silent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = select_silent.wav; path = Resources/Music/general/select_silent.wav; sourceTree = "<group>"; };
@@ -1567,6 +1572,8 @@
 				07E134FD162167CB00CCF72E /* MapSelector.cpp */,
 				07660C5116909BF10092104F /* MusicSet.cpp */,
 				0715C2351690EB3000009479 /* EnemySkill.cpp */,
+				0704344616BFF3CB00339F8A /* MusicManager.h */,
+				0704344516BFF3CB00339F8A /* MusicManager.cpp */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1818,6 +1825,7 @@
 				07970B2F169F9B660000B905 /* nmb_drum1.caf */,
 				07970B30169F9B660000B905 /* nmb_drum2.caf */,
 				07970B31169F9B660000B905 /* nmb_drum3.caf */,
+				0704344316BFEEC600339F8A /* nmb_drum4.caf */,
 				07970B32169F9B660000B905 /* nmb_finish0.caf */,
 				07970B33169F9B660000B905 /* nmb_finish1.caf */,
 				07970B34169F9B660000B905 /* nmb_impact0.caf */,
@@ -3457,6 +3465,7 @@
 				072A5CAD16BADF0100A64AD6 /* wisp.lua in Resources */,
 				07FADBC216BBF75000200F83 /* volca_drum4.caf in Resources */,
 				07FADBC716BC140100200F83 /* mask.lua in Resources */,
+				0704344416BFEEC600339F8A /* nmb_drum4.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3756,6 +3765,7 @@
 				0725180D16B141FB004361B7 /* BufferCache.mm in Sources */,
 				072A5C9E16BAAE5D00A64AD6 /* GameOverLayer.cpp in Sources */,
 				07FADBC516BBFA3600200F83 /* Ground.cpp in Sources */,
+				0704344716BFF3CB00339F8A /* MusicManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

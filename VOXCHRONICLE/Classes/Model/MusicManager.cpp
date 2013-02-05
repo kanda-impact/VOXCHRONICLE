@@ -82,16 +82,16 @@ void MusicManager::pushIntroTracks() {
   _introCount = 0;
   if (introCount == 0) {
     // イントロなしのとき、いきなり曲を鳴らします
-    _music->pushTrack(this->getTrackFileName("wait0").c_str(), MusicTrackMain);
-    _music->pushTrack(this->getTrackFileName("counter0").c_str(), MusicTrackCounter);
-    _music->pushTrack(this->getTrackFileName("drum0").c_str(), MusicTrackDrum);
+    _music->pushTrack(this->getTrackFileName("wait0").c_str(), MusicChannelMain);
+    _music->pushTrack(this->getTrackFileName("counter0").c_str(), MusicChannelCounter);
+    _music->pushTrack(this->getTrackFileName("drum0").c_str(), MusicChannelDrum);
   } else {
     // イントロありのとき、イントロの数だけpushします
     int maxIntroCount = _musicSet->getIntroCount();
     for (int i = 0 ; i < maxIntroCount; ++i) {
-      _music->pushTrack(this->getTrackFileName((string("intro") + lexical_cast<string>(i)).c_str()).c_str(), MusicTrackMain);
-      _music->pushTrack(this->getTrackFileName("silent").c_str(), MusicTrackCounter);
-      _music->pushTrack(this->getTrackFileName("silent").c_str(), MusicTrackDrum);
+      _music->pushTrack(this->getTrackFileName((string("intro") + lexical_cast<string>(i)).c_str()).c_str(), MusicChannelMain);
+      _music->pushTrack(this->getTrackFileName("silent").c_str(), MusicChannelCounter);
+      _music->pushTrack(this->getTrackFileName("silent").c_str(), MusicChannelDrum);
     }
   }
   _music->getTrack(1)->setVolume(0);
@@ -104,14 +104,14 @@ void MusicManager::pushFinishTracks() {
   _finishCount = 0;
   // フィニッシュ曲をpushしまくる
   for (int i = 0 ; i < maxFinishCount; ++i) {
-    _music->pushTrack(this->getTrackFileName((string("finish") + lexical_cast<string>(i)).c_str()).c_str(), MusicTrackMain);
-    _music->pushTrack(this->getTrackFileName("silent").c_str(), MusicTrackCounter);
-    _music->pushTrack(this->getTrackFileName("silent").c_str(), MusicTrackDrum);
+    _music->pushTrack(this->getTrackFileName((string("finish") + lexical_cast<string>(i)).c_str()).c_str(), MusicChannelMain);
+    _music->pushTrack(this->getTrackFileName("silent").c_str(), MusicChannelCounter);
+    _music->pushTrack(this->getTrackFileName("silent").c_str(), MusicChannelDrum);
   }
 }
 
 void MusicManager::pushSilentTracks() {
-  for (int i = 0; i < MusicTrackNum; ++i) {
+  for (int i = 0; i < MusicChannelNum; ++i) {
     _music->pushTrack(this->getTrackFileName("silent").c_str(), i);
   }
 }
@@ -128,7 +128,7 @@ void MusicManager::pushNextTracks(Skill* skill, SkillPerformInfo& performInfo) {
     float volume = 0.5 + 1.0 * numerator / denominator;
     track->setVolume(volume);
   } else {
-    Track* track = _music->pushTrack(this->getTrackFileName("silent").c_str(), MusicTrackCounter);
+    Track* track = _music->pushTrack(this->getTrackFileName("silent").c_str(), MusicChannelCounter);
     track->setVolume(0);
   }
   
@@ -138,7 +138,7 @@ void MusicManager::pushNextTracks(Skill* skill, SkillPerformInfo& performInfo) {
   performInfo.skillTrackName = name;
   performInfo.type = performType;
   performInfo.skill = skill;
-  _music->pushTrack(this->getTrackFileName(name.c_str()).c_str(), MusicTrackMain);
+  _music->pushTrack(this->getTrackFileName(name.c_str()).c_str(), MusicChannelMain);
   
   // ドラムの設定
   stringstream drumFileStream;
@@ -149,7 +149,7 @@ void MusicManager::pushNextTracks(Skill* skill, SkillPerformInfo& performInfo) {
     int drumLevel = this->calcDrumScore();
     drumFileStream << "drum" << drumLevel;
   }
-  _music->pushTrack(this->getTrackFileName(drumFileStream.str().c_str()).c_str(), MusicTrackDrum);
+  _music->pushTrack(this->getTrackFileName(drumFileStream.str().c_str()).c_str(), MusicChannelDrum);
 }
 
 int MusicManager::getIntroCount() {
