@@ -581,6 +581,8 @@
 		07F0D799163C1EC1005592AF /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F0D797163C1EC0005592AF /* TitleScene.cpp */; };
 		07F40F10163D0FC0009FC104 /* Music.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F40F0F163D0FC0009FC104 /* Music.cpp */; };
 		07F470831691B4FD0062975F /* iron.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F470821691B4FD0062975F /* iron.lua */; };
+		07F933DD16C151DC00A2F1CA /* acorn.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F933DB16C151DC00A2F1CA /* acorn.lua */; };
+		07F933DE16C151DC00A2F1CA /* hornet.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F933DC16C151DC00A2F1CA /* hornet.lua */; };
 		07F9D9E116812C9D00E984AB /* slash.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F9D9E016812C9D00E984AB /* slash.lua */; };
 		07FADBC216BBF75000200F83 /* volca_drum4.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07FADBC116BBF75000200F83 /* volca_drum4.caf */; };
 		07FADBC516BBFA3600200F83 /* Ground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07FADBC316BBFA3500200F83 /* Ground.cpp */; };
@@ -1497,6 +1499,8 @@
 		07F470721691AD340062975F /* EnemySkill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemySkill.h; path = Classes/includes/EnemySkill.h; sourceTree = "<group>"; };
 		07F470731691AD340062975F /* MusicSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicSet.h; path = Classes/includes/MusicSet.h; sourceTree = "<group>"; };
 		07F470821691B4FD0062975F /* iron.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iron.lua; sourceTree = "<group>"; };
+		07F933DB16C151DC00A2F1CA /* acorn.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = acorn.lua; sourceTree = "<group>"; };
+		07F933DC16C151DC00A2F1CA /* hornet.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hornet.lua; sourceTree = "<group>"; };
 		07F9D9E016812C9D00E984AB /* slash.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = slash.lua; sourceTree = "<group>"; };
 		07FADBC116BBF75000200F83 /* volca_drum4.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = volca_drum4.caf; sourceTree = "<group>"; };
 		07FADBC316BBFA3500200F83 /* Ground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ground.cpp; path = Classes/UI/Ground.cpp; sourceTree = "<group>"; };
@@ -2915,6 +2919,8 @@
 				072A5CA516BADEFE00A64AD6 /* toadstool.lua */,
 				072A5CA616BADF0000A64AD6 /* wisp.lua */,
 				07FADBC616BC140100200F83 /* mask.lua */,
+				07F933DB16C151DC00A2F1CA /* acorn.lua */,
+				07F933DC16C151DC00A2F1CA /* hornet.lua */,
 			);
 			path = enemies;
 			sourceTree = "<group>";
@@ -3466,6 +3472,8 @@
 				07FADBC216BBF75000200F83 /* volca_drum4.caf in Resources */,
 				07FADBC716BC140100200F83 /* mask.lua in Resources */,
 				0704344416BFEEC600339F8A /* nmb_drum4.caf in Resources */,
+				07F933DD16C151DC00A2F1CA /* acorn.lua in Resources */,
+				07F933DE16C151DC00A2F1CA /* hornet.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

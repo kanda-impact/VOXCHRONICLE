@@ -21,7 +21,7 @@ private:
   virtual void registerWithTouchDispatcher();
   void onStartButtonPressed(CCObject* sender);
   void onDebugButtonPressed(CCObject* sender);
-  
+  void onSETogglePressed(CCObject* sender);
 public:
   virtual bool init();
   static cocos2d::CCScene* scene();

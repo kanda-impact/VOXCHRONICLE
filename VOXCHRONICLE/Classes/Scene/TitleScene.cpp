@@ -65,6 +65,15 @@ bool TitleScene::init() {
     mask->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
   }
   
+  CCMenuItemLabel* seOff = CCMenuItemLabel::create(CCLabelTTF::create("SE OFF", FONT_NAME, 24));
+  seOff->setTag(0);
+  CCMenuItemLabel* seOn = CCMenuItemLabel::create(CCLabelTTF::create("SE ON", FONT_NAME, 24));
+  seOn->setTag(1);
+  CCMenuItemToggle* item = CCMenuItemToggle::createWithTarget(this, menu_selector(TitleScene::onSETogglePressed), seOn, seOff, NULL);
+  item->setSelectedIndex(SimpleAudioEngine::sharedEngine()->getEffectsVolume() == 0 ? 0 : 1);
+  CCMenu* seMenu = CCMenu::create(item, NULL);
+  seMenu->setPosition(ccp(280, 20));
+  //this->addChild(seMenu);
   return true;
 }
 
@@ -99,4 +108,9 @@ void TitleScene::onDebugButtonPressed(CCObject* sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   DebugScene* scene = DebugScene::create();
   nextScene(scene);
+}
+
+void TitleScene::onSETogglePressed(cocos2d::CCObject *sender) {
+  CCMenuItemToggle* item = (CCMenuItemToggle*)sender;
+  SimpleAudioEngine::sharedEngine()->setEffectsVolume(item->getSelectedIndex());
 }
