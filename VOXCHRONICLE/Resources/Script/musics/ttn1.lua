@@ -1,7 +1,7 @@
 Music = {
-  name = "じーく曲",
-  composer = "geekdrums",
-  prefix = "volca",
+  name = "たわし曲",
+  composer = "ttntawasi",
+  prefix = "ttn1",
   type = MusicSetTypeWay,
   introCount = 2,
   finishCount = 0,

@@ -330,7 +330,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
       }
     } else if (!isHit) { // ヒットしていないとき、強制的にミス音にする
-      name = "miss"; // 差し替えたので今は強制的にミス音にできない。後で考える
+      //name = "miss"; // 差し替えたので今は強制的にミス音にできない。後で考える
       if (enemyCount == 0) {
         // 誰もいないときピロリ音
         CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("miss.caf").c_str());
