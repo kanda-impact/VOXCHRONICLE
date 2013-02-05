@@ -18,6 +18,7 @@
 #include "Skill.h"
 
 using namespace cocos2d;
+using namespace VISS;
 
 typedef enum {
   MusicChannelMain = 0,
@@ -32,7 +33,7 @@ class MusicManager :public CCObject {
   int _finishCount;
   bool _isImpact;
   string _extension;
-  VISS::Music* _music;
+  Music* _music;
   MusicSet* _musicSet;
   EnemyManager* _enemyManager;
   CharacterManager* _characterManager;
@@ -111,6 +112,30 @@ class MusicManager :public CCObject {
    @param int count アウトロ小節数
    */
   void setFinishCount(int count);
+  
+  /**
+   Musicを取得します
+   @return Music* Music
+   */
+  Music* getMusic();
+  
+  /**
+   MusicSetを取得します
+   @return MusicSet* MusicSet
+   */
+  MusicSet* getMusicSet();
+  
+  /**
+   Musicを設定します
+   @param Music* music
+   */
+  void setMusic(Music* music);
+  
+  /**
+   MusicSetを設定します
+   @param MusicSet* set
+   */
+  void setMusicSet(MusicSet* set);
 };
 
 #endif /* defined(__VOXCHRONICLE__MusicManager__) */

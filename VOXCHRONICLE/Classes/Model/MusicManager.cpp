@@ -77,9 +77,7 @@ string MusicManager::getTrackFileName(const char *trackName) {
 
 void MusicManager::pushIntroTracks() {
   string main, counter, drum;
-  _music->removeAllNextTracks(); // 次以降の曲を強制的に削除
   int introCount = _musicSet->getIntroCount();
-  _introCount = 0;
   if (introCount == 0) {
     // イントロなしのとき、いきなり曲を鳴らします
     _music->pushTrack(this->getTrackFileName("wait0").c_str(), MusicChannelMain);
@@ -100,8 +98,6 @@ void MusicManager::pushIntroTracks() {
 
 void MusicManager::pushFinishTracks() {
   int maxFinishCount = _musicSet->getFinishCount();
-  _music->removeAllNextTracks(); // 次以降の曲を強制的に削除
-  _finishCount = 0;
   // フィニッシュ曲をpushしまくる
   for (int i = 0 ; i < maxFinishCount; ++i) {
     _music->pushTrack(this->getTrackFileName((string("finish") + lexical_cast<string>(i)).c_str()).c_str(), MusicChannelMain);
@@ -166,4 +162,32 @@ int MusicManager::getFinishCount() {
 
 void MusicManager::setFinishCount(int count) {
   _finishCount = count;
+}
+
+Music* MusicManager::getMusic() {
+  return _music;
+}
+
+MusicSet* MusicManager::getMusicSet() {
+  return _musicSet;
+}
+
+void MusicManager::setMusic(Music *music) {
+  if (_music) {
+    _music->release();
+  }
+  _music = music;
+  if (music) {
+    music->retain();
+  }
+}
+
+void MusicManager::setMusicSet(MusicSet *set) {
+  if (_musicSet) {
+    _musicSet->release();
+  }
+  _musicSet = set;
+  if (set) {
+    set->retain();
+  }
 }

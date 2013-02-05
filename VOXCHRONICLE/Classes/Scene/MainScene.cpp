@@ -41,10 +41,11 @@ bool MainScene::init(Map* map) {
   if ( !CCLayer::init() ) {
     return false;
   }
-  _music = new Music(3);
-  _music->setTrackDidBackFunction(boost::bind(&MainScene::trackDidBack, this, _1, _2, _3));
-  _music->setTrackDidFinishFunction(boost::bind(&MainScene::trackDidFinishPlaying, this, _1, _2, _3, _4));
-  _music->setTrackWillFinishFunction(boost::bind(&MainScene::trackWillFinishPlaying, this, _1, _2, _3, _4));
+  Music* music = new Music(3);
+  music->autorelease();
+  music->setTrackDidBackFunction(boost::bind(&MainScene::trackDidBack, this, _1, _2, _3));
+  music->setTrackDidFinishFunction(boost::bind(&MainScene::trackDidFinishPlaying, this, _1, _2, _3, _4));
+  music->setTrackWillFinishFunction(boost::bind(&MainScene::trackWillFinishPlaying, this, _1, _2, _3, _4));
   _pausedTargets = NULL;
   
   _currentSkillInfo.skillTrackName = "";
@@ -60,16 +61,16 @@ bool MainScene::init(Map* map) {
   CCDirector* director = CCDirector::sharedDirector();
   
   // 背景の追加
-  // 将来的にはSkinクラスを実装して、スキンによって背景を変更するようにしたいが
-  // 今はとりあえずここにSpriteをおいておきます
   _ground = new Ground("cyber");
   _ground->stop();
   this->addChild(_ground);
   
+  // EnemyManager
   _enemyManager = EnemyManager::create();
   _enemyManager->retain();
   this->addChild(_enemyManager);
   
+  // フォーカスの追加
   _focus = CCSprite::create(FileUtils::getFilePath("Image/focus.png").c_str());
   _focus->retain();
   _focus->setVisible(false);
@@ -89,10 +90,11 @@ bool MainScene::init(Map* map) {
   _level = _map->createInitialLevel();
   _enemyManager->setLevel(_level);
   
-  _musicSet = _map->getCurrentMusic(_level);
-  _musicSet->preloadAllTracks();
+  MusicSet* musicSet = _map->getCurrentMusic(_level);
+  musicSet->autorelease();
+  musicSet->preloadAllTracks();
   
-  _musicManager = new MusicManager(_music, _musicSet, _enemyManager, _characterManager);
+  _musicManager = new MusicManager(music, musicSet, _enemyManager, _characterManager);
   _musicManager->retain();
   
   _state = VCStateIntro;
@@ -116,13 +118,13 @@ bool MainScene::init(Map* map) {
   _controller->updateSkills(_characterManager);
   
   _qteTrigger = NULL;
+  _isLevelUped = false;
   
   return true;
 }
 
 MainScene::~MainScene() {
-  _music->stop();
-  delete _music;
+  _musicManager->getMusic()->stop();
   _map->release();
   _messageWindow->release();
   _musicManager->release();
@@ -131,7 +133,6 @@ MainScene::~MainScene() {
   _characterManager->release();
   _statusLayer->release();
   _focus->release();
-  _musicSet->release();
   if (_mapSelector != NULL) {
     _mapSelector->release();
   }
@@ -150,7 +151,7 @@ void MainScene::update(float dt) {
 }
 
 Music* MainScene::getMusic() {
-  return _music;
+  return _musicManager->getMusic();
 }
 
 Map* MainScene::getMap() {
@@ -160,8 +161,8 @@ Map* MainScene::getMap() {
 void MainScene::onEnterTransitionDidFinish() {
   _controller->setEnable(false);
   _musicManager->pushIntroTracks();
-  _music->play();
-  _statusLayer->setMarkerDuration(_music->getTrack(0)->getDuration() / 4.0f);
+  _musicManager->getMusic()->play();
+  _statusLayer->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
 }
 
 void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber) {
@@ -186,44 +187,23 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
 void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track *nextTrack, int trackNumber) {
   if (_state == VCStateIntro) {
     _musicManager->setIntroCount(_musicManager->getIntroCount() + 1);
-  } else {
-    _musicManager->setIntroCount(0);
-  }
-  if (_state == VCStateFinish || _state == VCStateQTEFinishStart || _state == VCStateQTEFinish) {
-    _musicManager->setFinishCount(_musicManager->getFinishCount() + 1);
-  } else {
-    _musicManager->setFinishCount(0);
-  }
-  if (_state == VCStateIntro) {
-    int maxIntroCount = _musicSet->getIntroCount();
-    if (_musicManager->getIntroCount() == maxIntroCount - 1) { // イントロが終わったとき
+    int maxIntroCount = _musicManager->getMusicSet()->getIntroCount();
+    if (_musicManager->getIntroCount() == maxIntroCount) { // イントロが終わったとき
+      _musicManager->setIntroCount(0);
       _controller->setEnable(true);
       _state = VCStateMain;
       _ground->play();
     }
-  } else if (_state == VCStateFinish || _state == VCStateQTEFinish) {
-    this->onFinishTracksCompleted();
-  } else if (_state == VCStateQTEFinishStart) { // 寸止めQTE UI追加
-    _qteTrigger = new QTETrigger(_enemyManager);
-    _state = VCStateQTE;
-    this->addChild(_qteTrigger);
-  } else if (_state == VCStateQTE) {
-    if (_qteTrigger != NULL && _qteTrigger->isButtonPressed()) {
-      /*_state = VCStateQTEFinish;
-      //_finishCount = _musicSet->getFinishCount() - 3;
-      for (int i = 2; i < _musicSet->getFinishCount(); ++i) {
-        stringstream finish;
-        finish << "finish" << i << ".caf";
-        _music->pushTrack(_musicSet->getPrefixedMusicName(finish.str().c_str()).c_str(), 0);
-        _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 1);
-        _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 2);
-      }*/
-    } else {
-      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 0);
-      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 1);
-      _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 2);
+  }
+  if (_state == VCStateFinish) {
+    _musicManager->setFinishCount(_musicManager->getFinishCount() + 1);
+    int maxFinishCount = _musicManager->getMusicSet()->getFinishCount();
+    if (_musicManager->getFinishCount() == maxFinishCount) { // フィニッシュ曲が終わったとき
+      _musicManager->setFinishCount(0);
+      this->onFinishTracksCompleted();
     }
-  } else if (_state == VCStateMain) {
+  }
+  if (_state == VCStateMain) {
     Skill* skill = NULL;
     if (_characterManager->isPerforming()) {
       skill = _characterManager->getCurrentSkill();
@@ -231,16 +211,19 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       skill = _controller->currentTriggerSkill();
     }
     _musicManager->pushNextTracks(skill, _currentSkillInfo);
-    
-    // QTE開始
-    if (_enemyManager->getBoss() != NULL && _enemyManager->getBoss()->getHP() <= 0) { // 寸止めQTE開始
-      _state = VCStateQTEFinishStart;
-      for (int i = 0; i < _musicSet->getFinishCount() - 2; ++i) {
-        stringstream finish;
-        finish << "finish" << i << ".caf";
-        _music->pushTrack(_musicSet->getPrefixedMusicName(finish.str().c_str()).c_str(), 0);
-        _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 1);
-        _music->pushTrack(_musicSet->getPrefixedMusicName("silent.caf").c_str(), 2);
+    if (_isLevelUped) { // 前のターンでレベルが上がっていたら
+      _isLevelUped = false;
+      if (_level->getLevel() == _map->getMaxLevel() && _map->isBossStage()) { // 最高レベルのとき、かつボス面のとき
+        // 道中フィニッシュ曲を流す。フィニッシュ曲が終わったらボス面に切り替えてイントロ曲を流す
+        _state = VCStateFinish;
+        _controller->setEnable(false);
+        _musicManager->getMusic()->removeAllNextTracks();
+        _musicManager->pushFinishTracks();
+      } else if (_level->getLevel() >= _map->getMaxLevel() + 1) {
+        _state = VCStateFinish;
+        _controller->setEnable(false);
+        _musicManager->getMusic()->removeAllNextTracks();
+        _musicManager->pushFinishTracks();
       }
     }
   }
@@ -264,7 +247,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
    ・本来ダメージが与えられるはずなのに、耐性やレベル補正でダメージが0だった場合、ヒットしていない
    */
   if (skill && performType == SkillPerformTypeSuccess) {
-
+    
     int preExp = _characterManager->getExp();
     CCDictionary* info = _enemyManager->performSkill(skill, _characterManager); // ここで経験値が貰える
     CCArray* enemies = (CCArray*)info->objectForKey("enemies");
@@ -302,7 +285,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     if (cutin != NULL) {
       const int height = 100;
       cutin->setPosition(ccp(0, height));
-      float duration = _music->getCurrentMainTrack()->getDuration();
+      float duration = _musicManager->getMusic()->getCurrentMainTrack()->getDuration();
       CCSize size = CCDirector::sharedDirector()->getWinSize();
       if (isHit) {
         // 成功したとき、カットインを挿入
@@ -392,16 +375,6 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     _controller->resetAllTriggers();
     _enemyManager->purgeAllTrash();
   }
-  /*if (_state == VCStateMain) {
-   if (_enemyManager->getBoss() != NULL && _enemyManager->getBoss()->getHP() == 0) {
-   _controller->setEnable(false);
-   _qteTrigger = new QTETrigger(_enemyManager);
-   _qteTrigger->retain();
-   this->addChild(_qteTrigger);
-   _state = VCStateBoss;
-   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/qte.mp3").c_str());
-   }
-   }*/
 }
 
 void MainScene::updateGUI() {
@@ -425,16 +398,7 @@ bool MainScene::checkLevelUp() {
     _enemyManager->setLevel(_level);
     _enemyManager->removeAllEnemiesQueue();
     this->updateGUI();
-    if (_level->getLevel() == _map->getMaxLevel() && _map->isBossStage()) { // 最高レベルのとき、かつボス面のとき
-      // 道中フィニッシュ曲を流す。フィニッシュ曲が終わったらボス面に切り替えてイントロ曲を流す
-      _state = VCStateFinish;
-      _controller->setEnable(false);
-      _musicManager->pushFinishTracks();
-    } else if (_level->getLevel() >= _map->getMaxLevel() + 1) {
-      _state = VCStateFinish;
-      _controller->setEnable(false);
-      _musicManager->pushFinishTracks();
-    }
+    _isLevelUped = true;
     return true;
   }
   return false;
@@ -447,7 +411,7 @@ void MainScene::onGameOver() {
   GameOverLayer* gameover = new GameOverLayer(this);
   this->addChild(gameover);
   gameover->autorelease();
-  _music->pause();
+  _musicManager->getMusic()->pause();
   _controller->setVisible(false);
 }
 
@@ -531,13 +495,10 @@ void MainScene::changeMap(Map* nextMap) {
   _level = nextMap->createInitialLevel(); // レベルを生成する
   _enemyManager->setLevel(_level); // レベルをセット
   _enemyManager->removeAllEnemiesQueue(); // キューを初期化
-  //this->removeChild(_mapSelector, true);
-  //_mapSelector->release();
-  //_mapSelector = NULL;
   _mapTurnCount = 0; // マップカウント0に戻す
   _state = VCStateIntro;
-  _musicSet = _map->getCurrentMusic(_level); // 音楽セットを切り替える
-  //_musicSet->preloadAllTracks();
+  _musicManager->setMusicSet(_map->getCurrentMusic(_level)); // 音楽セットを切り替える
+  
   _musicManager->setIntroCount(0);
   _musicManager->setFinishCount(0);
   _controller->setEnable(false);
@@ -547,8 +508,8 @@ void MainScene::changeMap(Map* nextMap) {
 
 void MainScene::startBossBattle() {
   _controller->setEnable(false);
-  _state = VCStateIntro; // イントロに以降
-  _musicSet = _map->getCurrentMusic(_level); // 音楽セットを切り替える
+  _state = VCStateIntro; // イントロに移行
+  _musicManager->setMusicSet(_map->getCurrentMusic(_level)); // 音楽セットを切り替える
   _controller->setEnable(false);
   _musicManager->pushIntroTracks();
 }
@@ -560,20 +521,22 @@ void MainScene::gotoNextStage() {
 }
 
 void MainScene::onFinishTracksCompleted() {
-  int maxFinishCount = _musicSet->getFinishCount();
-  if (_musicManager->getFinishCount() == maxFinishCount) { // フィニッシュ曲が終わったとき
-    if (_state == VCStateQTEFinish) { // QTEフィニッシュ後
-      _enemyManager->removeEnemy(_enemyManager->getBoss());
-      _enemyManager->setBoss(NULL);
-      _characterManager->setLevel(_characterManager->getLevel() + 1);
-      _state = VCStateMain;
-      this->gotoNextStage();
-    } else if (_map->isBossStage() && _level->getLevel() == _map->getMaxLevel()) { // ボスステージで、現在が最高レベルの時
-      this->startBossBattle();
-    } else if (_level->getLevel() == _map->getMaxLevel() + 1 && _map->getNextMaps() > 0) { // 最高レベルの次の時で、次のマップが存在するとき
-      this->gotoNextStage();
-    }
+  
+  if (_map->isBossStage() && _level->getLevel() == _map->getMaxLevel() + 1) { // ボスステージで、現在が最高レベル+1の時
+    // おそらくボス撃破後なので、ボス戦を終了させます
+    _enemyManager->removeEnemy(_enemyManager->getBoss());
+    _enemyManager->setBoss(NULL);
+    //_characterManager->setLevel(_characterManager->getLevel() + 1);
+    _state = VCStateMain;
+    this->gotoNextStage();
+  } else if (_map->isBossStage() && _level->getLevel() == _map->getMaxLevel()) { // ボスステージで、現在が最高レベルの時
+    // ボス戦を開始します
+    this->startBossBattle();
+  } else if (_level->getLevel() == _map->getMaxLevel() + 1 && _map->getNextMaps()->count() > 0) { // 最高レベルの次の時で、次のマップが存在するとき
+    // 次のステージに移動します
+    this->gotoNextStage();
   }
+  
 }
 
 void MainScene::setPause(bool pause) {
@@ -583,11 +546,11 @@ void MainScene::setPause(bool pause) {
     layer->autorelease();
     _pausedTargets = scheduler->pauseAllTargets();
     _pausedTargets->retain();
-    _music->pause();
+    _musicManager->getMusic()->pause();
     this->addChild(layer, 1000, PAUSE_LAYER_TAG);
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/pause.mp3").c_str());
   } else {
-    _music->play();
+    _musicManager->getMusic()->play();
     scheduler->resumeTargets(_pausedTargets);
     _pausedTargets = NULL;
     this->removeChildByTag(PAUSE_LAYER_TAG, true);

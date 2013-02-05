@@ -33,9 +33,9 @@ typedef enum {
   VCStateGameOver,
   VCStateFinish,
   VCStateBoss,
-  VCStateQTE,
-  VCStateQTEFinishStart,
-  VCStateQTEFinish,  // QTE寸止め用
+  //VCStateQTE,
+  //VCStateQTEFinishStart,
+  //VCStateQTEFinish,  // QTE寸止め用
   VCStateStageSelect,
   VCStateEnding
 } VCState;
@@ -48,6 +48,7 @@ class MainScene : public CCLayer {
   int _preLevel;
   int _turnCount;
   int _mapTurnCount;
+  bool _isLevelUped;
   SkillPerformInfo _currentSkillInfo;
   Controller* _controller;
   EnemyManager* _enemyManager;
@@ -63,8 +64,6 @@ class MainScene : public CCLayer {
   Map* _map;
   VCState _state;
   
-  Music* _music;
-  MusicSet* _musicSet;
   MusicManager* _musicManager;
   
   CCSet* _pausedTargets;
