@@ -9,7 +9,7 @@
 #include "MessageWindow.h"
 #include <sstream>
 
-const int kDefaultMessageWindowDelay = 3.0f;
+const int kDefaultMessageWindowDelay = 2.0f;
 const int kDefaultMessageWindowSpeed = 0.3f;
 
 MessageWindow::MessageWindow(const char* fontName, float size, CCSize dimensions) {
