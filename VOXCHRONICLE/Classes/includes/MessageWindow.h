@@ -31,6 +31,7 @@ class MessageWindow :public CCNode {
   void onMessageUpdated();
   void update(float dt);
   float _delay;
+  float _lastDelay;
   void updateNextMessage(CCObject* sender);
   void updateNextText(CCObject* sender);
   bool _ended;
@@ -47,6 +48,7 @@ class MessageWindow :public CCNode {
   bool isLastMessage();
   bool isEndMessage();
   void setDelay(float d);
+  void setLastDelay(float d);
 };
 
 #endif /* defined(__VOXCHRONICLE__MessageWindow__) */

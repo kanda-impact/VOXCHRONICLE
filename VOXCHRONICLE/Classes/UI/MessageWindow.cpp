@@ -9,7 +9,8 @@
 #include "MessageWindow.h"
 #include <sstream>
 
-const int kDefaultMessageWindowDelay = 2.0f;
+const int kDefaultMessageWindowDelay = 1.5f;
+const int kDefalutMessageWindowLastDelay = 3.0f;
 const int kDefaultMessageWindowSpeed = 0.3f;
 
 MessageWindow::MessageWindow(const char* fontName, float size, CCSize dimensions) {
@@ -17,6 +18,7 @@ MessageWindow::MessageWindow(const char* fontName, float size, CCSize dimensions
   _messageQueue->retain();
   _textIndex = 0;
   _delay = kDefaultMessageWindowDelay;
+  _lastDelay = kDefalutMessageWindowLastDelay;
   _messageSpeed = kDefaultMessageWindowSpeed;
   _label = CCLabelTTF::create("", fontName, size, dimensions, kCCTextAlignmentLeft);
   _label->retain();
@@ -35,7 +37,13 @@ MessageWindow::~MessageWindow() {
 
 void MessageWindow::pushMessage(const char* message) {
   VQString* str = VQString::create(message);
-  _messageQueue->addObject(str);
+  if (this->isLastMessage() && this->isEndMessage()) { // 最後のメッセージで終わってたら
+    this->unschedule(schedule_selector(MessageWindow::updateNextMessage));
+    _messageQueue->addObject(str);
+    this->updateNextMessage(NULL); // 強制的に次のメッセージに送ってやる
+  } else {
+    _messageQueue->addObject(str);
+  }
 }
 
 void MessageWindow::update(float dt) {
@@ -69,7 +77,7 @@ void MessageWindow::setOnMessageUpdatedFunction(boost::function<void (VQString*,
 }
 
 bool MessageWindow::isLastMessage() {
-  return _messageQueue->count() <= 1;
+  return _messageQueue->count() == 1;
 }
 
 bool MessageWindow::isEndMessage() {
@@ -78,6 +86,10 @@ bool MessageWindow::isEndMessage() {
 
 void MessageWindow::setDelay(float d) {
   _delay = d;
+}
+
+void MessageWindow::setLastDelay(float d) {
+  _lastDelay = d;
 }
 
 void MessageWindow::updateNextText(CCObject* sender) {
@@ -97,7 +109,7 @@ void MessageWindow::updateNextText(CCObject* sender) {
         _onFinishedFunction(this->getCurrentWholeMessage(), this);
       }
       SEL_SCHEDULE sel = (SEL_SCHEDULE)schedule_selector(MessageWindow::updateNextMessage);
-      this->scheduleOnce(sel, _delay);
+      this->scheduleOnce(sel, this->isLastMessage() ? _lastDelay : _delay);
     }
   }
 }

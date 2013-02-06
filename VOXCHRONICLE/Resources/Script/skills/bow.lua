@@ -9,5 +9,5 @@ Skill = {
   maxRepeat = 1,
   turn = 1,
   skillRange = SkillRangeBack,
-  skillType = SkillTypeNone
+  skillType = SkillTypeNone,
 }
