@@ -14,6 +14,7 @@
 #include "EnemyManager.h"
 #include "EnemySkill.h"
 #include "MusicSet.h"
+#include "MessageManager.h"
 
 static void tolua_reg_types (lua_State* tolua_S) {
   tolua_usertype(tolua_S, "Skill");
@@ -21,6 +22,7 @@ static void tolua_reg_types (lua_State* tolua_S) {
   tolua_usertype(tolua_S, "CharacterManager");
   tolua_usertype(tolua_S, "EnemyManager");
   tolua_usertype(tolua_S, "EnemySkill");
+  tolua_usertype(tolua_S, "MessageManager");
 }
 
 // Enemy
@@ -207,6 +209,29 @@ static int tolua_VC_EnemyManager_setBoss(lua_State* tolua_S) {
   return 0;
 }
 
+// MessageManager
+#pragma mark MessageManager
+
+static int tolua_VC_MessageManager_sharedManager(lua_State* tolua_S) {
+  tolua_pushusertype(tolua_S, (void*)MessageManager::sharedManager(), "MessageManager");
+  tolua_register_gc(tolua_S, lua_gettop(tolua_S));
+  return 1;
+}
+
+static int tolua_VC_MessageManager_pushMessage(lua_State* tolua_S) {
+  MessageManager* self = (MessageManager*)tolua_tousertype(tolua_S, 1, 0);
+  const char* string = tolua_tostring(tolua_S, 2, 0);
+  self->pushMessage(string);
+  return 0;
+}
+
+static int tolua_VC_MessageManager_pushRandomMessageFromLua(lua_State* tolua_S) {
+  MessageManager* self = (MessageManager*)tolua_tousertype(tolua_S, 1, 0);
+  const char* string = tolua_tostring(tolua_S, 2, 0);
+  self->pushRandomMessageFromLua(string);
+  return 0;
+}
+
 TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_open(tolua_S);
   tolua_reg_types(tolua_S);
@@ -274,10 +299,17 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_function(tolua_S, "popEnemyAt", tolua_VC_EnemyManager_popEnemyAt);
   tolua_function(tolua_S, "getBoss", tolua_VC_EnemyManager_getBoss);
   tolua_function(tolua_S, "setBoss", tolua_VC_EnemyManager_setBoss);
-tolua_endmodule(tolua_S);
+  tolua_endmodule(tolua_S);
   // EnemySkillクラス
   tolua_cclass(tolua_S, "EnemySkill", "EnemySkill", "CCObject", NULL);
   tolua_beginmodule(tolua_S, "EnemySkill");
+  tolua_endmodule(tolua_S);
+  // MessageManagerクラス
+  tolua_cclass(tolua_S, "MessageManager", "MessageManager", "CCObject", NULL);
+  tolua_beginmodule(tolua_S, "MessageManager");
+  tolua_function(tolua_S, "sharedManager", tolua_VC_MessageManager_sharedManager);
+  tolua_function(tolua_S, "pushMessage", tolua_VC_MessageManager_pushMessage);
+  tolua_function(tolua_S, "pushRandomMessageFromLua", tolua_VC_MessageManager_pushRandomMessageFromLua);
   tolua_endmodule(tolua_S);
   return 1;
 }

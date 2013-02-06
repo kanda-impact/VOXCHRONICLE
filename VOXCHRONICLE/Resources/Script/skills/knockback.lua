@@ -11,6 +11,8 @@ Skill = {
   performSkill = function(self, target, characterManager, enemyManager)
     row = target:getRow()
     target:setRow(row + 2)
+    manager = MessageManager:sharedManager()
+    manager:pushMessage("オクスはノックバックを放った！")
   end,
   skillRange = SkillRangeSingle,
   skillType = SkillTypePhysical

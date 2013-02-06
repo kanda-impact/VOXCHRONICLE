@@ -26,6 +26,16 @@ MessageManager::~MessageManager() {
   }
 }
 
+void MessageManager::setDefaultMessageWindow(MessageWindow *window) {
+  if (_defaultWindow) {
+    _defaultWindow->release();
+  }
+  _defaultWindow = window;
+  if (window) {
+    window->retain();
+  }
+}
+
 void MessageManager::pushMessage(const char *message) {
   if (_defaultWindow) {
     _defaultWindow->pushMessage(message);

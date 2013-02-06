@@ -23,6 +23,7 @@
 #include "GameOverLayer.h"
 #include "Ground.h"
 #include "VQString.h"
+#include "MessageManager.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -103,6 +104,7 @@ bool MainScene::init(Map* map) {
   _messageWindow = new MessageWindow(FONT_NAME, 16, CCSizeMake(300, 17.5));
   _messageWindow->retain();
   _messageWindow->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height - 55));
+  MessageManager::sharedManager()->setDefaultMessageWindow(_messageWindow);
   this->addChild(_messageWindow);
   
   _mapSelector = NULL;

@@ -21,10 +21,10 @@ using namespace cocos2d;
  */
 
 class MessageManager :public CCObject {
-  static MessageManager* sharedManager();
   MessageWindow* _defaultWindow;
   static MessageManager* _instance;
  public:
+  static MessageManager* sharedManager();
   MessageManager();
   ~MessageManager();
   void setDefaultMessageWindow(MessageWindow* window);
