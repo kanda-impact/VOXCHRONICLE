@@ -37,7 +37,9 @@ class LuaObject :public CCObject {
   bool getBoolean(const char* key);
   const char* getString(const char* key);
   lua_CFunction getFunction(const char* key);
+  CCLuaValueDict* getTable();
   CCLuaValueDict* getTable(const char* key);
+  CCLuaValueArray* getArray();
   CCLuaValueArray* getArray(const char* key);
   const void* getObject(const char* key);
   CCLuaEngine* getLuaEngine();

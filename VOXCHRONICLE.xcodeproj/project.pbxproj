@@ -44,6 +44,7 @@
 		073B4CAB1621C185003E0CC8 /* ginet.lua in Resources */ = {isa = PBXBuildFile; fileRef = 073B4CAA1621C185003E0CC8 /* ginet.lua */; };
 		073B4CAD1621C199003E0CC8 /* ginet2.lua in Resources */ = {isa = PBXBuildFile; fileRef = 073B4CAC1621C198003E0CC8 /* ginet2.lua */; };
 		07425E31168072C4001134D0 /* charge.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07425E30168072C4001134D0 /* charge.lua */; };
+		07448CBD16C289B800F005C6 /* welcome.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07448CBC16C289B800F005C6 /* welcome.lua */; };
 		0744B5B3167DD9EA00730393 /* StatusLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0744B5B1167DD9EA00730393 /* StatusLayer.cpp */; };
 		074EFD0B15FA926E004D8273 /* SkillTrigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 074EFD0915FA906D004D8273 /* SkillTrigger.cpp */; };
 		074EFD0C15FA93AA004D8273 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 074EFD0715FA906C004D8273 /* Controller.cpp */; };
@@ -688,6 +689,7 @@
 		073B4CAA1621C185003E0CC8 /* ginet.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ginet.lua; sourceTree = "<group>"; };
 		073B4CAC1621C198003E0CC8 /* ginet2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ginet2.lua; sourceTree = "<group>"; };
 		07425E30168072C4001134D0 /* charge.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = charge.lua; sourceTree = "<group>"; };
+		07448CBC16C289B800F005C6 /* welcome.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = welcome.lua; path = messages/welcome.lua; sourceTree = "<group>"; };
 		0744B5B1167DD9EA00730393 /* StatusLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StatusLayer.cpp; path = Classes/UI/StatusLayer.cpp; sourceTree = "<group>"; };
 		074EFD0715FA906C004D8273 /* Controller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Controller.cpp; path = Classes/UI/Controller.cpp; sourceTree = "<group>"; };
 		074EFD0915FA906D004D8273 /* SkillTrigger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SkillTrigger.cpp; path = Classes/UI/SkillTrigger.cpp; sourceTree = "<group>"; };
@@ -1699,6 +1701,14 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		07448CBB16C2899C00F005C6 /* messages */ = {
+			isa = PBXGroup;
+			children = (
+				07448CBC16C289B800F005C6 /* welcome.lua */,
+			);
+			name = messages;
+			sourceTree = "<group>";
+		};
 		074EFCF515FA8B44004D8273 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -2112,6 +2122,7 @@
 		07C6064016164F810084708C /* Script */ = {
 			isa = PBXGroup;
 			children = (
+				07448CBB16C2899C00F005C6 /* messages */,
 				07660CCC1690E8BD0092104F /* enemySkills */,
 				07660C4B169097F00092104F /* musics */,
 				07FD921C1621097700E74459 /* character */,
@@ -3704,6 +3715,7 @@
 				07F9344B16C16C9800A2F1CA /* ttn1_counter3.caf in Resources */,
 				07F9344F16C16DE200A2F1CA /* volca_lskmiss.caf in Resources */,
 				07F9345116C16DEB00A2F1CA /* volca_voxmiss.caf in Resources */,
+				07448CBD16C289B800F005C6 /* welcome.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

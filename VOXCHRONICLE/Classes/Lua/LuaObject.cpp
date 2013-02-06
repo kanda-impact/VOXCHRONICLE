@@ -112,6 +112,14 @@ const void* LuaObject::getObject(const char *key) {
   return result;
 }
 
+CCLuaValueDict* LuaObject::getTable() {
+  lua_State* L = _engine->getLuaState();
+  this->loadTable();
+  CCLuaValueDict* dict = recursivelyLoadTable(lua_gettop(L));
+  lua_pop(L, 1);
+  return dict;
+}
+
 CCLuaValueDict* LuaObject::getTable(const char* key) {
   this->loadTable();
   lua_State* L = _engine->getLuaState();
@@ -120,6 +128,10 @@ CCLuaValueDict* LuaObject::getTable(const char* key) {
   CCLuaValueDict* dict = recursivelyLoadTable(lua_gettop(L));
   lua_pop(L, 1);
   return dict;
+}
+
+CCLuaValueArray* LuaObject::getArray() {
+  return LuaObject::luaTableToArray(this->getTable());
 }
 
 CCLuaValueArray* LuaObject::getArray(const char *key) {

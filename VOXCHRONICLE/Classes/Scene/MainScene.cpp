@@ -166,7 +166,7 @@ void MainScene::onEnterTransitionDidFinish() {
   _musicManager->pushIntroTracks();
   _musicManager->getMusic()->play();
   _statusLayer->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
-  _messageWindow->pushMessage("オクスの世界へようこそ！！！");
+  MessageManager::sharedManager()->pushRandomMessageFromLua("welcome");
 }
 
 void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber) {

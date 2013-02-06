@@ -44,7 +44,7 @@ void MessageManager::pushMessage(const char *message) {
 
 void MessageManager::pushRandomMessageFromLua(const char *luaName) {
   LuaObject* obj = new LuaObject(luaName);
-  CCLuaValueArray* array = obj->getArray("Messages");
+  CCLuaValueArray* array = obj->getArray();
   CCArray* messages = CCArray::create();
   for (CCLuaValueArrayIterator it = array->begin(); it != array->end(); ++it) {
     CCString* str = CCString::create(it->stringValue());
