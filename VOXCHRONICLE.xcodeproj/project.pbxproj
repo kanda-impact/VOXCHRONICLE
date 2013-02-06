@@ -66,6 +66,7 @@
 		076F1D3515EB94780013A45E /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 076F1D3415EB94780013A45E /* AppController.mm */; };
 		076F1D3815EB94780013A45E /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 076F1D3715EB94780013A45E /* RootViewController.mm */; };
 		076F1D3C15EB94780013A45E /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 076F1D3B15EB94780013A45E /* AppDelegate.cpp */; };
+		0772FEB616C260BA00A50931 /* VQString.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0772FEB416C260BA00A50931 /* VQString.mm */; };
 		077DCFC3169EE872007A7003 /* Image in Resources */ = {isa = PBXBuildFile; fileRef = 077DCFC1169EE872007A7003 /* Image */; };
 		077DCFC6169EE89B007A7003 /* Retina in Resources */ = {isa = PBXBuildFile; fileRef = 077DCFC5169EE89B007A7003 /* Retina */; };
 		077EDDF816870767009B9F6B /* attack_effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDEE16870767009B9F6B /* attack_effect.mp3 */; };
@@ -713,6 +714,8 @@
 		076F1D3715EB94780013A45E /* RootViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = RootViewController.mm; path = ios/RootViewController.mm; sourceTree = "<group>"; };
 		076F1D3A15EB94780013A45E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		076F1D3B15EB94780013A45E /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
+		0772FEB416C260BA00A50931 /* VQString.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VQString.mm; sourceTree = "<group>"; };
+		0772FEB716C260D300A50931 /* VQString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VQString.h; path = VOXCHRONICLE/Classes/includes/VQString.h; sourceTree = SOURCE_ROOT; };
 		077DCFC1169EE872007A7003 /* Image */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Image; path = Resources/Image; sourceTree = "<group>"; };
 		077DCFC5169EE89B007A7003 /* Retina */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Retina; path = Resources/Retina; sourceTree = "<group>"; };
 		077EDDEE16870767009B9F6B /* attack_effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = attack_effect.mp3; path = Resources/SE/attack_effect.mp3; sourceTree = "<group>"; };
@@ -1644,6 +1647,8 @@
 				07F0D758163BAF51005592AF /* Utils.h */,
 				07F0D778163BE85E005592AF /* FileUtils.h */,
 				07DCFDA11633461A00341769 /* FileUtils.cpp */,
+				0772FEB416C260BA00A50931 /* VQString.mm */,
+				0772FEB716C260D300A50931 /* VQString.h */,
 			);
 			name = Util;
 			path = Classes/Util;
@@ -3994,6 +3999,7 @@
 				072A5C9E16BAAE5D00A64AD6 /* GameOverLayer.cpp in Sources */,
 				07FADBC516BBFA3600200F83 /* Ground.cpp in Sources */,
 				0704344716BFF3CB00339F8A /* MusicManager.cpp in Sources */,
+				0772FEB616C260BA00A50931 /* VQString.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

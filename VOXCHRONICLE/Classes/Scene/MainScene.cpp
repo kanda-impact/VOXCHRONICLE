@@ -22,6 +22,7 @@
 #include "PauseLayer.h"
 #include "GameOverLayer.h"
 #include "Ground.h"
+#include "VQString.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -159,6 +160,10 @@ Map* MainScene::getMap() {
 }
 
 void MainScene::onEnterTransitionDidFinish() {
+  VQString* string = new VQString("こんにちは！オクス！クロニクル！");
+  string->autorelease();
+  cout << string->length() << endl;
+  cout << string->substringWithRange(0, 5) << endl;
   _controller->setEnable(false);
   _musicManager->pushIntroTracks();
   _musicManager->getMusic()->play();
