@@ -14,15 +14,17 @@
 #include <deque>
 #include <boost/function.hpp>
 
+#include "VQString.h"
+
 using namespace std;
 using namespace cocos2d;
 using namespace boost;
 
 class MessageWindow :public CCNode {
  private:
-  deque<string>* _messageQueue;
-  //boost::function<void (string, MessageWindow*)> _onFinishedFunction;
-  //boost::function<void (string, MessageWindow*)> _onUpdatedFunction;
+  CCArray* _messageQueue;
+  boost::function<void (VQString*, MessageWindow*)> _onFinishedFunction;
+  boost::function<void (VQString*, MessageWindow*)> _onUpdatedFunction;
   int _textIndex;
   float _textTimer;
   float _messageSpeed;
@@ -34,14 +36,14 @@ class MessageWindow :public CCNode {
   bool _ended;
   CCLabelTTF* _label;
  public:
-  MessageWindow(const char* fontName, int size);
+  MessageWindow(const char* fontName, float size, CCSize dimensions);
   ~MessageWindow();
-  void pushMessage(const wchar_t* message);
+  void pushMessage(const char* message);
   void setMessageSpeed(int speed);
-  //void setOnMessageFinishedFunction(function<void (string, MessageWindow*)> finish);
-  //void setOnMessageUpdatedFunction(function<void (string, MessageWindow*)> update);
-  string getCurrentMessage();
-  string getCurrentWholeMessage();
+  void setOnMessageFinishedFunction(function<void (VQString*, MessageWindow*)> finish);
+  void setOnMessageUpdatedFunction(function<void (VQString*, MessageWindow*)> update);
+  VQString* getCurrentMessage();
+  VQString* getCurrentWholeMessage();
   bool isLastMessage();
   bool isEndMessage();
   void setDelay(float d);

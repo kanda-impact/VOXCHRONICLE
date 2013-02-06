@@ -29,11 +29,13 @@ class VQString :public CCObject {
  private:
   shared_ptr<NSStringWrapper> _string;
  public:
+  static VQString* create();
+  static VQString* create(const char* str);
   VQString(const char* str);
   ~VQString();
   string getString();
   const char* getCString();
-  string substringWithRange(unsigned int loc, unsigned int len);
+  VQString* substringWithRange(unsigned int loc, unsigned int len);
   unsigned int length();
 };
 

@@ -100,13 +100,12 @@ bool MainScene::init(Map* map) {
   
   _state = VCStateIntro;
   
-  _messageWindow = new MessageWindow(FONT_NAME, 64);
+  _messageWindow = new MessageWindow(FONT_NAME, 16, CCSizeMake(300, 17.5));
   _messageWindow->retain();
-  _messageWindow->setPosition(ccp(100, 100));
+  _messageWindow->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height - 45));
+  this->addChild(_messageWindow);
   
   _mapSelector = NULL;
-  
-  this->addChild(_messageWindow);
   
   this->scheduleUpdate();
   _preLevel = _level->getLevel();
@@ -160,14 +159,11 @@ Map* MainScene::getMap() {
 }
 
 void MainScene::onEnterTransitionDidFinish() {
-  VQString* string = new VQString("こんにちは！オクス！クロニクル！");
-  string->autorelease();
-  cout << string->length() << endl;
-  cout << string->substringWithRange(0, 5) << endl;
   _controller->setEnable(false);
   _musicManager->pushIntroTracks();
   _musicManager->getMusic()->play();
   _statusLayer->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
+  _messageWindow->pushMessage("オクスの世界へようこそ！！！");
 }
 
 void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber) {
