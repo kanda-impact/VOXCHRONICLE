@@ -102,7 +102,7 @@ bool MainScene::init(Map* map) {
   
   _messageWindow = new MessageWindow(FONT_NAME, 16, CCSizeMake(300, 17.5));
   _messageWindow->retain();
-  _messageWindow->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height - 45));
+  _messageWindow->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height - 55));
   this->addChild(_messageWindow);
   
   _mapSelector = NULL;

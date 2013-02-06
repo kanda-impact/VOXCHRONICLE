@@ -26,13 +26,13 @@ class MessageWindow :public CCNode {
   boost::function<void (VQString*, MessageWindow*)> _onFinishedFunction;
   boost::function<void (VQString*, MessageWindow*)> _onUpdatedFunction;
   int _textIndex;
-  float _textTimer;
   float _messageSpeed;
   void onMessageFinished();
   void onMessageUpdated();
   void update(float dt);
   float _delay;
-  void updateNextMessage();
+  void updateNextMessage(CCObject* sender);
+  void updateNextText(CCObject* sender);
   bool _ended;
   CCLabelTTF* _label;
  public:

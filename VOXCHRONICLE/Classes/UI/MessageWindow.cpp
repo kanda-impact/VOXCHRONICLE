@@ -10,16 +10,14 @@
 #include <sstream>
 
 const int kDefaultMessageWindowDelay = 3.0f;
-const int kDefaultMessageWindowSpeed = 1.0f;
+const int kDefaultMessageWindowSpeed = 0.3f;
 
 MessageWindow::MessageWindow(const char* fontName, float size, CCSize dimensions) {
   _messageQueue = CCArray::create();
   _messageQueue->retain();
   _textIndex = 0;
-  _textTimer = 0;
   _delay = kDefaultMessageWindowDelay;
   _messageSpeed = kDefaultMessageWindowSpeed;
-  this->scheduleUpdate();
   _label = CCLabelTTF::create("", fontName, size, dimensions, kCCTextAlignmentLeft);
   _label->retain();
   _label->setColor(ccc3(255, 255, 255));
@@ -27,6 +25,7 @@ MessageWindow::MessageWindow(const char* fontName, float size, CCSize dimensions
   _onFinishedFunction = NULL;
   _onUpdatedFunction = NULL;
   _ended = false;
+  this->schedule(schedule_selector(MessageWindow::updateNextText), _messageSpeed);
 }
 
 MessageWindow::~MessageWindow() {
@@ -40,29 +39,7 @@ void MessageWindow::pushMessage(const char* message) {
 }
 
 void MessageWindow::update(float dt) {
-  _label->setString(this->getCurrentMessage()->getCString());
-  if (_messageQueue->count() == 0) return;
-  if (this->isEndMessage()) return;
-  if (_textIndex <= this->getCurrentWholeMessage()->length() - 1) {
-    _textTimer += _messageSpeed;
-  }
-  int updated = floor(_textTimer);
-  if (updated >= 1) {
-    if (_onUpdatedFunction) {
-      _onUpdatedFunction(this->getCurrentWholeMessage()->substringWithRange(_textIndex, updated), this);
-    }
-    _textTimer -= updated;
-    _textIndex += updated;
-  }
-  if (!_ended && _textIndex > this->getCurrentWholeMessage()->length() - 1) {
-    _ended = true;
-    _textIndex = this->getCurrentWholeMessage()->length() - 1;
-    if (_onFinishedFunction) {
-      _onFinishedFunction(this->getCurrentWholeMessage(), this);
-    }
-    SEL_SCHEDULE sel = (SEL_SCHEDULE)schedule_selector(MessageWindow::updateNextMessage);
-    this->schedule(sel, _delay);
-  }
+
 }
 
 VQString* MessageWindow::getCurrentWholeMessage() {
@@ -79,6 +56,8 @@ VQString* MessageWindow::getCurrentMessage() {
 
 void MessageWindow::setMessageSpeed(int speed) {
   _messageSpeed = speed;
+  this->unschedule(schedule_selector(MessageWindow::updateNextText));
+  this->schedule(schedule_selector(MessageWindow::updateNextText), _messageSpeed);
 }
 
 void MessageWindow::setOnMessageFinishedFunction(boost::function<void (VQString*, MessageWindow *)> finish) {
@@ -101,10 +80,31 @@ void MessageWindow::setDelay(float d) {
   _delay = d;
 }
 
-void MessageWindow::updateNextMessage() {
+void MessageWindow::updateNextText(CCObject* sender) {
+  _label->setString(this->getCurrentMessage()->getCString());
+  if (_messageQueue->count() == 0) return;
+  if (this->isEndMessage()) return;
+  if (_messageQueue->count() > 0 && _textIndex < this->getCurrentWholeMessage()->length()) {
+    if (_onUpdatedFunction) {
+      _onUpdatedFunction(this->getCurrentWholeMessage()->substringWithRange(_textIndex, 1), this);
+    }
+    _textIndex += 1;
+    // メッセージが終わったら、次のメッセージに
+    if (!_ended && _textIndex > this->getCurrentWholeMessage()->length() - 1) {
+      _ended = true;
+      _textIndex = this->getCurrentWholeMessage()->length() - 1;
+      if (_onFinishedFunction) {
+        _onFinishedFunction(this->getCurrentWholeMessage(), this);
+      }
+      SEL_SCHEDULE sel = (SEL_SCHEDULE)schedule_selector(MessageWindow::updateNextMessage);
+      this->scheduleOnce(sel, _delay);
+    }
+  }
+}
+
+void MessageWindow::updateNextMessage(CCObject* sender) {
   _ended = false;
   _textIndex = 0;
-  _textTimer = 0;
   _messageQueue->removeObjectAtIndex(0);
   this->unschedule(schedule_selector(MessageWindow::updateNextMessage));
 }
