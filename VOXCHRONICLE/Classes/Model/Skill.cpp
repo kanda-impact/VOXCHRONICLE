@@ -27,11 +27,23 @@ Skill::Skill(const char* identifier) {
   _range = (SkillRange)_lua->getInt("skillRange");
   _type = (SkillType)_lua->getInt("skillType");
   _se = _lua->getBoolean("se");
+  CCLuaValueArray* mes = _lua->getArray("messages");
+  
+  // メッセージ一覧を生成します
+  _messages = CCArray::create();
+  _messages->retain();
+  if (mes) {
+    for (CCLuaValueArrayIterator it = mes->begin(); it != mes->end(); ++it) {
+      CCString* str = CCString::create(it->stringValue());
+      _messages->addObject(str);
+    }
+  }
 }
 
 Skill::~Skill() {
   delete _name;
   _lua->release();
+  _messages->release();
 }
 
 const char* Skill::getName() {
@@ -109,4 +121,8 @@ int Skill::getTensionLevel() {
 
 bool Skill::hasSE() {
   return _se;
+}
+
+CCArray* Skill::getMessages() {
+  return _messages;
 }

@@ -9,5 +9,8 @@ Skill = {
   maxRepeat = 4,
   turn = 1,
   skillRange = SkillRangeSingle,
-  skillType = SkillTypePhysical
+  skillType = SkillTypePhysical,
+  messages = {
+    ""
+  }
 }

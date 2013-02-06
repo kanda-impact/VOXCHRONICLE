@@ -7,6 +7,7 @@
 //
 
 #include <sstream>
+#include <cstdio>
 #include <cstdlib>
 #include <boost/random.hpp>
 #include <boost/function.hpp>
@@ -280,6 +281,17 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
                                                 CCFadeOut::create(0.2),
                                                 CCCallFuncN::create(damageLabel, callfuncN_selector(MainScene::removeNode)),
                                                 NULL));
+    }
+    
+    // メッセージを追加する
+    CCArray* messages = skill->getMessages();
+    if (messages->count() > 0) {
+      CCString* str = (CCString*)messages->randomObject();
+      char* dst;
+      const char* chr = str->getCString();
+      const char* name = _characterManager->getCurrentCharacter()->getName();
+      sprintf(dst, chr, name);
+      _messageWindow->pushMessage(dst);
     }
     
     // カットインを追加する

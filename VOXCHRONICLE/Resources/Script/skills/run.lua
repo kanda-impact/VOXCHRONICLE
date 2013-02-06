@@ -12,5 +12,8 @@ Skill = {
     enemyManager:nextTurn(characterManager)
   end,
   skillRange = SkillRangeSelf,
-  skillType = SkillTypePhysical
+  skillType = SkillTypePhysical,
+  messages = {
+    ""
+  }
 }

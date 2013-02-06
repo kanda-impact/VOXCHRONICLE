@@ -12,5 +12,8 @@ Skill = {
     characterManager:setShield(true)
   end,
   skillRange = SkillRangeSelf,
-  skillType = SkillTypeNone
+  skillType = SkillTypeNone,
+  messages = {
+    ""
+  }
 }

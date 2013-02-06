@@ -13,5 +13,8 @@ Skill = {
   getTensionRate = function(tension)
     t = {0, 1.0, 1.5, 2.1, 3}
     return t[tension + 1]
-  end
+  end,
+  messages = {
+    ""
+  }
 }

@@ -10,4 +10,7 @@ Skill = {
   turn = 1,
   skillRange = SkillRangeSingle,
   skillType = SkillTypeMagical,
+  messages = {
+    ""
+  }
 }

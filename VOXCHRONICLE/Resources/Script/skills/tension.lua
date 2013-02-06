@@ -12,5 +12,8 @@ Skill = {
     characterManager:addTension(1)
   end,
   skillRange = SkillRangeSelf,
-  skillType = SkillTypeNone
+  skillType = SkillTypeNone,
+  messages = {
+    ""
+  }
 }

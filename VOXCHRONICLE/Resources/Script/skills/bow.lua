@@ -10,4 +10,7 @@ Skill = {
   turn = 1,
   skillRange = SkillRangeBack,
   skillType = SkillTypeNone,
+  messages = {
+    "%sは弓を放った"
+  }
 }
