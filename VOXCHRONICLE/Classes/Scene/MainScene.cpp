@@ -287,11 +287,16 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     CCArray* messages = skill->getMessages();
     if (messages->count() > 0) {
       CCString* str = (CCString*)messages->randomObject();
-      char* dst;
+      // この辺の実装酷いからなんとかする
+      char* dst = (char*)malloc(sizeof(char) * 256);
       const char* chr = str->getCString();
       const char* name = _characterManager->getCurrentCharacter()->getName();
       sprintf(dst, chr, name);
       _messageWindow->pushMessage(dst);
+      free(dst);
+    }
+    if (_currentSkillInfo.type == SkillPerformTypeFailure) {
+      MessageManager::sharedManager()->pushRandomMessageFromLua("empty"); // MP切れメッセージ
     }
     
     // カットインを追加する

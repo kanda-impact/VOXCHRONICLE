@@ -11,6 +11,5 @@ Skill = {
   skillRange = SkillRangeSingle,
   skillType = SkillTypeMagical,
   messages = {
-    ""
   }
 }
