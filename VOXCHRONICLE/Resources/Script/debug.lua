@@ -5,6 +5,7 @@ DebugData = {
     "3b",
     "2a",
     "ttn",
+    "2b"
   }
 }
 
