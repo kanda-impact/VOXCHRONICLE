@@ -212,6 +212,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       skill = _characterManager->getCurrentSkill();
     } else {
       skill = _controller->currentTriggerSkill();
+      _controller->resetAllTriggers(); // このタイミングでトリガーをOFFにしてやる
     }
     _musicManager->pushNextTracks(skill, _currentSkillInfo);
     if (_isLevelUped) { // 前のターンでレベルが上がっていたら
@@ -374,8 +375,6 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     //_characterManager->addMP(1);
   }
   
-  _controller->updateSkills(_characterManager);
-  this->updateFocus();
   _currentSkillInfo.skillTrackName = "";
   _currentSkillInfo.type = SkillPerformTypeNone;
   _currentSkillInfo.skill = NULL;
@@ -387,10 +386,13 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
   if (_characterManager->getLastSkill() != NULL && strcmp(_characterManager->getLastSkill()->getIdentifier(), "tension")) {
     _characterManager->resetTension();
   }
+
+  _controller->updateSkills(_characterManager);
+  this->updateFocus();
+  
   if (!_characterManager->isPerforming()) {
-    _controller->resetAllTriggers();
     _enemyManager->purgeAllTrash();
-  }
+  }  
 }
 
 void MainScene::updateGUI() {
