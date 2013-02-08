@@ -287,12 +287,9 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     if (messages->count() > 0) {
       CCString* str = (CCString*)messages->randomObject();
       // この辺の実装酷いからなんとかする
-      char* dst = (char*)malloc(sizeof(char) * 256);
-      const char* chr = str->getCString();
-      const char* name = _characterManager->getCurrentCharacter()->getName();
-      sprintf(dst, chr, name);
-      _messageWindow->pushMessage(dst);
-      free(dst);
+      CCDictionary* dict = CCDictionary::create();
+      dict->setObject(CCString::create(_characterManager->getCurrentCharacter()->getName()), "chara");
+      MessageManager::sharedManager()->pushMessage(str->getCString(), dict);
     }
     if (_currentSkillInfo.type == SkillPerformTypeFailure) {
       MessageManager::sharedManager()->pushRandomMessageFromLua("empty"); // MP切れメッセージ

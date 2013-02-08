@@ -11,6 +11,6 @@ Skill = {
   skillRange = SkillRangeBack,
   skillType = SkillTypeNone,
   messages = {
-    "%sは弓を放った"
+    "{chara}は弓を放った"
   }
 }
