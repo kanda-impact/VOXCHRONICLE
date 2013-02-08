@@ -44,7 +44,6 @@ class Skill :public CCObject {
   int _acquirementLV;
   int _maxRepeat;
   int _turn;
-  int _power;
   int _mp;
   int _tensionLevel;
   bool _common;
@@ -61,7 +60,6 @@ class Skill :public CCObject {
   const char* getName();
   const char* getIdentifier();
   int getTurn();
-  int getPower();
   int getPowerWithTension(int tension);
   int getMaxRepeat();
   int getMP();

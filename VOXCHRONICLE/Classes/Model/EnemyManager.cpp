@@ -237,7 +237,7 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
       // 追加効果がある場合、関数を呼び出す
       performLuaFunction(skill, target, characterManager);
       DamageType damageType = DamageTypeNone;
-      if (skill->getPower() != 0) {
+      if (skill->getPowerWithTension(characterManager->getTension()) != 0) {
         // 威力が1以上の場合、ダメージを与える
         damageType = target->damage(skill, characterManager);
       } else {

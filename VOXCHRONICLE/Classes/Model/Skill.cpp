@@ -18,7 +18,6 @@ Skill::Skill(const char* identifier) {
   _lua->retain();
   _name = new std::string(_lua->getString("name"));
   _identifier = _lua->getString("identifier");
-  _power = _lua->getInt("power");
   _mp = _lua->getInt("mp");
   _common = _lua->getBoolean("common");
   _maxRepeat = _lua->getInt("maxRepeat");
@@ -62,29 +61,21 @@ int Skill::getMaxRepeat() {
   return _maxRepeat;
 }
 
-int Skill::getPower() {
-  return _power;
-}
-
 int Skill::getPowerWithTension(int tension) {
   lua_State* L = _lua->getLuaEngine()->getLuaState();
   lua_getglobal(L, "Skill");
   int table = lua_gettop(L);
-  lua_getfield(L, table, "getTensionRate");
-  float rate;
+  lua_getfield(L, table, "getPower");
   if (lua_isfunction(L, -1)) {
     // skill.luaにgetTensionRateが実装済みのとき
     lua_pushinteger(L, tension);
     if (lua_pcall(L, 1, 1, 0)) {
       cout << lua_tostring(L, lua_gettop(L)) << endl;
     }
-    rate = lua_tonumber(L, -1);
-  } else {
-    // されていないとき。デフォルトのテンション上昇値を使う
-    const float tensions[] = {1.0, 1.5, 3.0, 4.5, 6};
-    rate = tensions[tension];
+    int power = lua_tonumber(L, -1);
+    return power;
   }
-  return _power * rate;
+  return 0;
 }
 
 int Skill::getMP() {
