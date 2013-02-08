@@ -236,6 +236,9 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
 
 void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track *nextTrack, int trackNumber) {
   
+  // マーカーを再同期
+  _statusLayer->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
+  
   // メインの動きを実行
   Skill* skill = _currentSkillInfo.skill;
   SkillPerformType performType = _currentSkillInfo.type;
