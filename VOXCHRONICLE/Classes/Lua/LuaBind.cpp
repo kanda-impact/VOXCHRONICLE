@@ -25,6 +25,16 @@ static void tolua_reg_types (lua_State* tolua_S) {
   tolua_usertype(tolua_S, "MessageManager");
 }
 
+// Skill
+#pragma mark Skill
+static int tolua_VC_Skill_getPowerWithTension(lua_State* tolua_S) {
+  Skill* self = (Skill*)  tolua_tousertype(tolua_S, 1, 0);
+  int tension = (int)tolua_tonumber(tolua_S, 2, 0);
+  int power = self->getPowerWithTension(tension);
+  lua_pushnumber(tolua_S, power);
+  return 1;
+}
+
 // Enemy
 #pragma mark Enemy
 
@@ -121,6 +131,13 @@ static int tolua_VC_CharacterManager_addTension(lua_State* tolua_S) {
   return 0;
 }
 
+static int tolua_VC_CharacterManager_getTension(lua_State* tolua_S) {
+  CharacterManager* self = (CharacterManager*)tolua_tousertype(tolua_S, 1, 0);
+  int tension = self->getTension();
+  tolua_pushnumber(tolua_S, tension);
+  return 1;
+}
+
 static int tolua_VC_CharacterManager_getLevel(lua_State* tolua_S) {
   CharacterManager* self = (CharacterManager*)tolua_tousertype(tolua_S, 1, 0);
   int level = (int)self->getLevel();
@@ -170,6 +187,34 @@ static int tolua_VC_CharacterManager_damage(lua_State* tolua_S) {
   int damage = (int)tolua_tonumber(tolua_S, 2, 0);
   DamageType damageType = (DamageType)self->damage(damage);
   tolua_pushnumber(tolua_S, (int)damageType);
+  return 1;
+}
+
+static int tolua_VC_CharacterManager_getHP(lua_State* tolua_S) {
+  CharacterManager* self = (CharacterManager*)tolua_tousertype(tolua_S, 1, 0);
+  int hp = self->getHP();
+  tolua_pushnumber(tolua_S, hp);
+  return 1;
+}
+
+static int tolua_VC_CharacterManager_getMP(lua_State* tolua_S) {
+  CharacterManager* self = (CharacterManager*)tolua_tousertype(tolua_S, 1, 0);
+  int mp = self->getMP();
+  tolua_pushnumber(tolua_S, mp);
+  return 1;
+}
+
+static int tolua_VC_CharacterManager_getMaxHP(lua_State* tolua_S) {
+  CharacterManager* self = (CharacterManager*)tolua_tousertype(tolua_S, 1, 0);
+  int maxhp = self->getMaxHP();
+  tolua_pushnumber(tolua_S, maxhp);
+  return 1;
+}
+
+static int tolua_VC_CharacterManager_getMaxMP(lua_State* tolua_S) {
+  CharacterManager* self = (CharacterManager*)tolua_tousertype(tolua_S, 1, 0);
+  int maxmp = self->getMaxMP();
+  tolua_pushnumber(tolua_S, maxmp);
   return 1;
 }
 
@@ -264,6 +309,7 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   // Skillクラス
   tolua_cclass(tolua_S, "Skill", "Skill", "CCObject", NULL);
   tolua_beginmodule(tolua_S, "Skill");
+  tolua_function(tolua_S, "getPowerWithTension", tolua_VC_Skill_getPowerWithTension);
   tolua_endmodule(tolua_S);
   // Enemyクラス
   tolua_cclass(tolua_S, "Enemy", "Enemy", "CCSprite", NULL);
@@ -283,6 +329,7 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_beginmodule(tolua_S, "CharacterManager");
   tolua_function(tolua_S, "setShield", tolua_VC_CharacterManager_setShield);
   tolua_function(tolua_S, "addTension", tolua_VC_CharacterManager_addTension);
+  tolua_function(tolua_S, "getTension", tolua_VC_CharacterManager_getTension);
   tolua_function(tolua_S, "changeCharacter", tolua_VC_CharacterManager_changeCharacter);
   tolua_function(tolua_S, "setLevel", tolua_VC_CharacterManager_setLevel);
   tolua_function(tolua_S, "getLevel", tolua_VC_CharacterManager_getLevel);
@@ -291,6 +338,10 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_function(tolua_S, "getDrumLevel", tolua_VC_CharacterManager_getDrumLevel);
   tolua_function(tolua_S, "setDrumLevel", tolua_VC_CharacterManager_setDrumLevel);
   tolua_function(tolua_S, "damage", tolua_VC_CharacterManager_damage);
+  tolua_function(tolua_S, "getHP", tolua_VC_CharacterManager_getHP);
+  tolua_function(tolua_S, "getMP", tolua_VC_CharacterManager_getMP);
+  tolua_function(tolua_S, "getMaxHP", tolua_VC_CharacterManager_getMaxHP);
+  tolua_function(tolua_S, "getMaxMP", tolua_VC_CharacterManager_getMaxMP);
   tolua_endmodule(tolua_S);
   // EnemyManagerクラス
   tolua_cclass(tolua_S, "EnemyManager", "EnemyManager", "CCLayer", NULL);

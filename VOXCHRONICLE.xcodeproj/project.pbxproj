@@ -799,7 +799,7 @@
 		073B4C6C162168BA003E0CC8 /* geek.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = geek.lua; sourceTree = "<group>"; };
 		073B4CAA1621C185003E0CC8 /* ginet.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ginet.lua; sourceTree = "<group>"; };
 		073B4CAC1621C198003E0CC8 /* ginet2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ginet2.lua; sourceTree = "<group>"; };
-		07425E30168072C4001134D0 /* charge.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = charge.lua; sourceTree = "<group>"; };
+		07425E30168072C4001134D0 /* charge.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = charge.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		07448CBC16C289B800F005C6 /* welcome.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = welcome.lua; path = messages/welcome.lua; sourceTree = "<group>"; };
 		07448CBE16C28E0D00F005C6 /* empty.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = empty.lua; path = messages/empty.lua; sourceTree = "<group>"; };
 		0744B5B1167DD9EA00730393 /* StatusLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StatusLayer.cpp; path = Classes/UI/StatusLayer.cpp; sourceTree = "<group>"; };
@@ -1643,7 +1643,7 @@
 		07E1351A1621A04300CCF72E /* setting.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = setting.lua; sourceTree = "<group>"; };
 		07E1351E1621AF2700CCF72E /* levelup.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = levelup.lua; sourceTree = "<group>"; };
 		07E135251621CABF00CCF72E /* character.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = character.lua; path = character/character.lua; sourceTree = "<group>"; };
-		07E135721624AC4700CCF72E /* cure.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cure.lua; sourceTree = "<group>"; };
+		07E135721624AC4700CCF72E /* cure.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cure.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		07F0D750163BABCD005592AF /* macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = macros.h; path = Classes/includes/macros.h; sourceTree = "<group>"; };
 		07F0D751163BABDF005592AF /* Music.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Music.h; path = Classes/includes/Music.h; sourceTree = "<group>"; };
 		07F0D752163BABDF005592AF /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Track.h; path = Classes/includes/Track.h; sourceTree = "<group>"; };
