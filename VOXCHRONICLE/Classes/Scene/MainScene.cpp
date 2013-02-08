@@ -425,6 +425,9 @@ bool MainScene::checkLevelUp() {
 
 void MainScene::onGameOver() {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("Music/general/gameover.mp3").c_str());
+  CCDictionary* dict = CCDictionary::create();
+  dict->setObject(CCString::create(_characterManager->getCurrentCharacter()->getName()), "chara");
+  MessageManager::sharedManager()->pushRandomMessageFromLua("death", dict);
   _ground->stop();
   _state = VCStateGameOver;
   GameOverLayer* gameover = new GameOverLayer(this);
