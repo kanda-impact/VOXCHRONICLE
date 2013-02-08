@@ -92,6 +92,7 @@
 		0738FBAE16C5320300FE2816 /* 2b_voxtension3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0738FB7A16C5320300FE2816 /* 2b_voxtension3.caf */; };
 		0738FBAF16C5320300FE2816 /* 2b_voxwait0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0738FB7B16C5320300FE2816 /* 2b_voxwait0.caf */; };
 		0738FBB016C5320300FE2816 /* 2b_voxwait1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0738FB7C16C5320300FE2816 /* 2b_voxwait1.caf */; };
+		0738FBB216C534D800FE2816 /* death.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0738FBB116C534D800FE2816 /* death.lua */; };
 		0739C4481615D2FD00CB864D /* CharacterManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0739C4461615D2FD00CB864D /* CharacterManager.cpp */; };
 		0739C44B1615D30800CB864D /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0739C4491615D30800CB864D /* Character.cpp */; };
 		073B4C6D162168BA003E0CC8 /* geek.lua in Resources */ = {isa = PBXBuildFile; fileRef = 073B4C6C162168BA003E0CC8 /* geek.lua */; };
@@ -792,6 +793,7 @@
 		0738FB7A16C5320300FE2816 /* 2b_voxtension3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2b_voxtension3.caf; path = Resources/Music/2b/2b_voxtension3.caf; sourceTree = "<group>"; };
 		0738FB7B16C5320300FE2816 /* 2b_voxwait0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2b_voxwait0.caf; path = Resources/Music/2b/2b_voxwait0.caf; sourceTree = "<group>"; };
 		0738FB7C16C5320300FE2816 /* 2b_voxwait1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2b_voxwait1.caf; path = Resources/Music/2b/2b_voxwait1.caf; sourceTree = "<group>"; };
+		0738FBB116C534D800FE2816 /* death.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = death.lua; path = messages/death.lua; sourceTree = "<group>"; };
 		0739C4461615D2FD00CB864D /* CharacterManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CharacterManager.cpp; path = Classes/Model/CharacterManager.cpp; sourceTree = "<group>"; };
 		0739C4491615D30800CB864D /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Character.cpp; path = Classes/Model/Character.cpp; sourceTree = "<group>"; };
 		073B4C6C162168BA003E0CC8 /* geek.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = geek.lua; sourceTree = "<group>"; };
@@ -1876,6 +1878,7 @@
 			children = (
 				07448CBC16C289B800F005C6 /* welcome.lua */,
 				07448CBE16C28E0D00F005C6 /* empty.lua */,
+				0738FBB116C534D800FE2816 /* death.lua */,
 			);
 			name = messages;
 			sourceTree = "<group>";
@@ -3944,6 +3947,7 @@
 				0738FBAE16C5320300FE2816 /* 2b_voxtension3.caf in Resources */,
 				0738FBAF16C5320300FE2816 /* 2b_voxwait0.caf in Resources */,
 				0738FBB016C5320300FE2816 /* 2b_voxwait1.caf in Resources */,
+				0738FBB216C534D800FE2816 /* death.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

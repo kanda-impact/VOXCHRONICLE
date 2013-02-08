@@ -34,6 +34,17 @@ class MessageManager :public CCObject {
    @param const char* message 渡すメッセージ
    */
   void pushMessage(const char* message);
+  
+  /**
+   渡した文字列のタグをdictの中身で差し替えてMessageWindowに追加します
+   例えば#{word}みたいな文字列がmessageの中に含まれているとき
+   dict["word"]をCCStringとして扱って、それに置換します。
+   dictの中に含まれないときはそのまま表示します。
+   これによって、メッセージにキャラ名やモンスター名を入れたり、わりと好き勝手できます
+   @param const char* message 渡すメッセージ
+   @param CCDictionary* dict CCStringが含まれる置換されるメッセージ
+   */
+  void pushMessage(const char* message, CCDictionary* dict);
 
   /**
    Luaファイル名を渡すと、そのスクリプトに定義されたテーブルの
@@ -41,6 +52,13 @@ class MessageManager :public CCObject {
    @param const char* luaName 読み込むLuaスクリプト名
    */
   void pushRandomMessageFromLua(const char* luaName);
+  
+  /**
+   上の3つのドキュメントを読んだあなたには使い方がわかるはずだ！
+   @param const char* luaName 読み込むLuaスクリプト名
+   @param CCDictionary* dict CCStringが含まれる置換されるメッセージ
+   */
+  void pushRandomMessageFromLua(const char* luaName, CCDictionary* dict);
 };
 
 #endif /* defined(__VOXCHRONICLE__MessageManager__) */

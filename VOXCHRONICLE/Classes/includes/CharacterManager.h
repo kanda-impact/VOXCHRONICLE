@@ -15,6 +15,7 @@
 #include "Character.h"
 #include "Skill.h"
 #include "MusicSet.h"
+#include "Enemy.h"
 
 // ダメージタイプ
 typedef enum {
@@ -37,6 +38,7 @@ typedef enum {
 typedef struct {
   int damage;
   DamageType damageType;
+  Enemy* attacker;
 } DamageInfo;
 
 class CharacterManager :public CCObject {

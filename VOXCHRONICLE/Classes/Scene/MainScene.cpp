@@ -147,9 +147,6 @@ MainScene::~MainScene() {
 void MainScene::update(float dt) {
   if (_state == VCStateMain) {
     _controller->setEnable(!_characterManager->isPerforming());
-    if (_characterManager->getHP() <= 0) {
-      this->onGameOver();
-    }
   }
 }
 
@@ -166,7 +163,9 @@ void MainScene::onEnterTransitionDidFinish() {
   _musicManager->pushIntroTracks();
   _musicManager->getMusic()->play();
   _statusLayer->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
-  MessageManager::sharedManager()->pushRandomMessageFromLua("welcome");
+  CCDictionary* dict = CCDictionary::create();
+  dict->setObject(CCString::create(_characterManager->getCurrentCharacter()->getName()), "chara");
+  MessageManager::sharedManager()->pushRandomMessageFromLua("welcome", dict);
 }
 
 void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber) {

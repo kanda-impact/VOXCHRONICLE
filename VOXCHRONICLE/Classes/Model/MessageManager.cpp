@@ -6,8 +6,11 @@
 //
 //
 
+#include <boost/xpressive/xpressive.hpp>
 #include "MessageManager.h"
 #include "LuaObject.h"
+
+using namespace boost::xpressive;
 
 MessageManager* MessageManager::_instance = NULL;
 
@@ -42,7 +45,32 @@ void MessageManager::pushMessage(const char *message) {
   }
 }
 
+void MessageManager::pushMessage(const char *message, cocos2d::CCDictionary *dict) {
+  // <で始まって>で終わる文字列にマッチする正規表現で検索
+  sregex regex = sregex::compile("{(.+)}"); // #{name}みたいなタグを取得する
+  smatch m;
+  string str = string(message);
+  string::const_iterator begin = str.begin();
+  string::const_iterator end = str.end();
+  
+  while (regex_search(begin, end, m, regex)) {
+    string key = m.str(1); // 後方参照で name が取れてるはず
+    string after = "";
+    if ( dict->objectForKey(key) ) {
+      CCString* value = (CCString*)dict->objectForKey(key);
+      after = value->getCString();
+    }
+    str = regex_replace(str, regex, after);
+  }
+  this->pushMessage(str.c_str());
+}
+
 void MessageManager::pushRandomMessageFromLua(const char *luaName) {
+  CCDictionary* dict = CCDictionary::create();
+  this->pushMessage(luaName, dict);
+}
+
+void MessageManager::pushRandomMessageFromLua(const char *luaName, cocos2d::CCDictionary *dict) {
   LuaObject* obj = new LuaObject(luaName);
   CCLuaValueArray* array = obj->getArray();
   CCArray* messages = CCArray::create();
@@ -51,5 +79,5 @@ void MessageManager::pushRandomMessageFromLua(const char *luaName) {
     messages->addObject(str);
   }
   CCString* random = (CCString*)messages->randomObject();
-  this->pushMessage(random->getCString());
+  this->pushMessage(random->getCString(), dict);
 }
