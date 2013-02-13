@@ -1,6 +1,7 @@
 Skill = {
   name = "スラッシュ",
   identifier = "slash",
+  effectFrames = 6,
   mp = 0,
   se = true,
   tensionLevel = 1,

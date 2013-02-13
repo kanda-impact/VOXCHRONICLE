@@ -1,6 +1,7 @@
 Skill = {
   name = "盾",
   identifier = "shield",
+  effectFrames = 0,
   mp = 0,
   tensionLevel = 0,
   common = true,

@@ -3,6 +3,7 @@ Skill = {
   identifier = "cure",
   mp = 1,
   tensionLevel = 0,
+  effectFrames = 7,
   common = false,
   maxRepeat = 1,
   se = true,

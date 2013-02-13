@@ -286,116 +286,149 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
                                                 NULL));
     }
     
-    // メッセージを追加する
-    CCArray* messages = skill->getMessages();
-    if (messages->count() > 0) {
-      CCString* str = (CCString*)messages->randomObject();
-      // この辺の実装酷いからなんとかする
-      CCDictionary* dict = CCDictionary::create();
-      dict->setObject(CCString::create(_characterManager->getCurrentCharacter()->getName()), "chara");
-      MessageManager::sharedManager()->pushMessage(str->getCString(), dict);
-    }
-    if (_currentSkillInfo.type == SkillPerformTypeFailure) {
-      MessageManager::sharedManager()->pushRandomMessageFromLua("empty"); // MP切れメッセージ
-    }
-    
-    // カットインを追加する
-    string cutinFile = "Image/" + string(skill->getIdentifier()) + "_icon.png";
-    CCSprite* cutin = CCSprite::create(cutinFile.c_str());
-    if (cutin != NULL) {
-      const int height = 100;
-      cutin->setPosition(ccp(0, height));
-      float duration = _musicManager->getMusic()->getCurrentMainTrack()->getDuration();
-      CCSize size = CCDirector::sharedDirector()->getWinSize();
-      if (isHit) {
-        // 成功したとき、カットインを挿入
-        cutin->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)),
-                                            CCDelayTime::create(duration * 0.25),
-                                            CCMoveTo::create(duration * 0.125, ccp(size.width, height)),
-                                            CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
-                                            NULL));
-      } else {
-        // ミスったとき、コマンドを落とす
-        cutin->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)),
-                                            CCRotateBy::create(duration * 0.125, 45),
-                                            CCDelayTime::create(duration * 0.125),
-                                            CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, -100)),
-                                            CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
-                                            NULL));
+    // エフェクトを追加する
+    CCDirector* director = CCDirector::sharedDirector();
+    SkillEffectType effectType = skill->getEffectType();
+    if (effectType == SkillEffectTypeAll || (effectType == SkillEffectTypeTarget && enemyCount > 0)) {
+      int frames = skill->getEffectFrames();
+      CCSprite* effect = CCSprite::create((string(skill->getIdentifier()) + string("0.png")).c_str());
+      CCAnimation* animation = CCAnimation::create();
+      CCRect rect;
+      if (effectType == SkillEffectTypeTarget) { // 1体のみにアニメーションを表示させるとき
+        Enemy* target = (Enemy*)enemies->objectAtIndex(0);
+        CCPoint position = target->getPosition();
+        rect = CCRectMake(0, 0, 400, 400);
+        effect->setPosition(position);
+        effect->setScale(target->getScale());
+      } else { // 全体にアニメーションを表示させるとき
+        CCPoint position = ccp(director->getWinSize().width / 2.0, director->getWinSize().height / 2.0);
+        rect = CCRectMake(0, 0, director->getWinSize().width, director->getWinSize().height);
+        effect->setPosition(position);
       }
-      this->addChild(cutin);
-      
+      for (int i = 0; i < frames; ++i) {
+        const char* frameName = (string(skill->getIdentifier()) + lexical_cast<string>(i) + string(".png")).c_str();
+        animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath(frameName).c_str(), rect));
+      }
+      animation->setDelayPerUnit(1.0 / 60.0);
+      effect->runAction(CCSequence::create(CCAnimate::create(animation),
+                                           CCFadeOut::create(0.5f),
+                                           CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
+                                           NULL));
+      _enemyManager->addChild(effect);
     }
-    
+  
+  
+  
+  // メッセージを追加する
+  CCArray* messages = skill->getMessages();
+  if (messages->count() > 0) {
+    CCString* str = (CCString*)messages->randomObject();
+    // この辺の実装酷いからなんとかする
+    CCDictionary* dict = CCDictionary::create();
+    dict->setObject(CCString::create(_characterManager->getCurrentCharacter()->getName()), "chara");
+    MessageManager::sharedManager()->pushMessage(str->getCString(), dict);
+  }
+  if (_currentSkillInfo.type == SkillPerformTypeFailure) {
+    MessageManager::sharedManager()->pushRandomMessageFromLua("empty"); // MP切れメッセージ
+  }
+  
+  // カットインを追加する
+  string cutinFile = "Image/" + string(skill->getIdentifier()) + "_icon.png";
+  CCSprite* cutin = CCSprite::create(cutinFile.c_str());
+  if (cutin != NULL) {
+    const int height = 100;
+    cutin->setPosition(ccp(0, height));
+    float duration = _musicManager->getMusic()->getCurrentMainTrack()->getDuration();
+    CCSize size = CCDirector::sharedDirector()->getWinSize();
     if (isHit) {
-      // ヒットしたとき、SEがあればSEをならしてやる
-      if (enemies->count() > 0) { // 対象が1体以上いるとき
-        DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(0))->getValue();
-        stringstream seStream;
-        // 今は当たった敵1体目のダメージタイプをとってきてならしているが、
-        // 複数体に同時に当たったときは遅延して順番にならしても良さそう
-        if (damageType == DamageTypeShieldBreak) {
-          seStream << "shield_break.mp3";
-        } else if (damageType == DamageTypeBarrierBreak) {
-          seStream << "barrier_break.mp3";
-        } else if (skill->hasSE()) {
-          // 対象が自分、もしくは対象が1体以上いたとき、ダメージ効果音をならします
-          seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
-        }
-        CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
-      }  else if (skill->getRange() == SkillRangeSelf && skill->hasSE()) { // 対象が自分だけ、かつSEを持っているとき
-        stringstream seStream;
-        // 効果音をならします
+      // 成功したとき、カットインを挿入
+      cutin->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)),
+                                          CCDelayTime::create(duration * 0.25),
+                                          CCMoveTo::create(duration * 0.125, ccp(size.width, height)),
+                                          CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
+                                          NULL));
+    } else {
+      // ミスったとき、コマンドを落とす
+      cutin->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)),
+                                          CCRotateBy::create(duration * 0.125, 45),
+                                          CCDelayTime::create(duration * 0.125),
+                                          CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, -100)),
+                                          CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
+                                          NULL));
+    }
+    this->addChild(cutin);
+    
+  }
+  
+  if (isHit) {
+    // ヒットしたとき、SEがあればSEをならしてやる
+    if (enemies->count() > 0) { // 対象が1体以上いるとき
+      DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(0))->getValue();
+      stringstream seStream;
+      // 今は当たった敵1体目のダメージタイプをとってきてならしているが、
+      // 複数体に同時に当たったときは遅延して順番にならしても良さそう
+      if (damageType == DamageTypeShieldBreak) {
+        seStream << "shield_break.mp3";
+      } else if (damageType == DamageTypeBarrierBreak) {
+        seStream << "barrier_break.mp3";
+      } else if (skill->hasSE()) {
+        // 対象が自分、もしくは対象が1体以上いたとき、ダメージ効果音をならします
         seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
-        CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
       }
-    } else if (!isHit) { // ヒットしていないとき、強制的にミス音にする
-      //name = "miss"; // 差し替えたので今は強制的にミス音にできない。後で考える
-      if (enemyCount == 0) {
-        // 誰もいないときピロリ音
-        CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("miss.caf").c_str());
-      } else {
-        DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(0))->getValue();
-        if (damageType == DamageTypePhysicalInvalid) {
-          // 1体だけ敵がいるのに当たらず、盾持ちだったとき
-          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("shield_invalid.mp3").c_str());
-        } else if (damageType == DamageTypeMagicalInvalid) {
-          // バリア持ちだったとき
-          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("barrier_invalid.mp3").c_str());
-        }
+      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
+    }  else if (skill->getRange() == SkillRangeSelf && skill->hasSE()) { // 対象が自分だけ、かつSEを持っているとき
+      stringstream seStream;
+      // 効果音をならします
+      seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
+      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
+    }
+  } else if (!isHit) { // ヒットしていないとき、強制的にミス音にする
+    //name = "miss"; // 差し替えたので今は強制的にミス音にできない。後で考える
+    if (enemyCount == 0) {
+      // 誰もいないときピロリ音
+      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("miss.caf").c_str());
+    } else {
+      DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(0))->getValue();
+      if (damageType == DamageTypePhysicalInvalid) {
+        // 1体だけ敵がいるのに当たらず、盾持ちだったとき
+        CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("shield_invalid.mp3").c_str());
+      } else if (damageType == DamageTypeMagicalInvalid) {
+        // バリア持ちだったとき
+        CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("barrier_invalid.mp3").c_str());
       }
-      
     }
-    int getExp = ((CCInteger*)info->objectForKey("exp"))->getValue();
-    CCArray* fixed = _map->getFixedEnemies(preExp, preExp + getExp);
-    if (fixed->count() > 0) {
-      _enemyManager->pushEnemiesQueue(fixed);
-    }
-    this->checkLevelUp();
-  } else if (performType == SkillPerformTypeNone) {
-    // 何も実行しなかったとき
-    // MP回復 コマンド化したのでコメントアウトしておきます
-    //_characterManager->addMP(1);
+    
   }
-  
-  _currentSkillInfo.skillTrackName = "";
-  _currentSkillInfo.type = SkillPerformTypeNone;
-  _currentSkillInfo.skill = NULL;
-  
-  // ターンカウントを進める
-  ++_turnCount;
-  ++_mapTurnCount;
-  // このターンにテンション使ってないときreset
-  if (_characterManager->getLastSkill() != NULL && strcmp(_characterManager->getLastSkill()->getIdentifier(), "tension")) {
-    _characterManager->resetTension();
+  int getExp = ((CCInteger*)info->objectForKey("exp"))->getValue();
+  CCArray* fixed = _map->getFixedEnemies(preExp, preExp + getExp);
+  if (fixed->count() > 0) {
+    _enemyManager->pushEnemiesQueue(fixed);
   }
+  this->checkLevelUp();
+} else if (performType == SkillPerformTypeNone) {
+  // 何も実行しなかったとき
+  // MP回復 コマンド化したのでコメントアウトしておきます
+  //_characterManager->addMP(1);
+}
 
-  _controller->updateSkills(_characterManager);
-  this->updateFocus();
-  
-  if (!_characterManager->isPerforming()) {
-    _enemyManager->purgeAllTrash();
-  }  
+_currentSkillInfo.skillTrackName = "";
+_currentSkillInfo.type = SkillPerformTypeNone;
+_currentSkillInfo.skill = NULL;
+
+// ターンカウントを進める
+++_turnCount;
+++_mapTurnCount;
+// このターンにテンション使ってないときreset
+if (_characterManager->getLastSkill() != NULL && strcmp(_characterManager->getLastSkill()->getIdentifier(), "tension")) {
+  _characterManager->resetTension();
+}
+
+_controller->updateSkills(_characterManager);
+this->updateFocus();
+
+if (!_characterManager->isPerforming()) {
+  _enemyManager->purgeAllTrash();
+}
 }
 
 void MainScene::updateGUI() {
@@ -440,7 +473,7 @@ void MainScene::onGameOver() {
 }
 
 void MainScene::removeNode(CCNode* node) {
-  this->removeChild(node, true);
+  node->getParent()->removeChild(node, true);
 }
 
 void MainScene::updateFocus() {

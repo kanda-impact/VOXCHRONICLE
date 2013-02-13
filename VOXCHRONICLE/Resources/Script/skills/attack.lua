@@ -1,6 +1,7 @@
 Skill = {
   name = "攻撃",
   identifier = "attack",
+  effectFrames = 6,
   mp = 0,
   se = true,
   tensionLevel = 0,

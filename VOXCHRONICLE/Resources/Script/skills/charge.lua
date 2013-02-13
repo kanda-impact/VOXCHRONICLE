@@ -3,6 +3,7 @@ Skill = {
   identifier = "charge",
   mp = 0,
   tensionLevel = 0,
+  effectFrames = 0,
   common = false,
   maxRepeat = 1,
   se = true,

@@ -39,12 +39,19 @@ typedef enum {
   SkillPerformTypeFailure // スキル失敗
 } SkillPerformType;
 
+typedef enum {
+  SkillEffectTypeNone,   // エフェクトを表示させません
+  SkillEffectTypeTarget, // 対象の敵1体にのみ表示させます
+  SkillEffectTypeAll     // 画面全体に表示させます
+} SkillEffectType;
+
 class Skill :public CCObject {
  private:
   int _acquirementLV;
   int _maxRepeat;
   int _turn;
   int _mp;
+  int _effectFrames;
   int _tensionLevel;
   bool _common;
   bool _se;
@@ -65,9 +72,11 @@ class Skill :public CCObject {
   int getMP();
   int getAcquirementLV();
   void setAcquirementLV(int lv);
+  int getEffectFrames();
   int getTensionLevel();
   bool isCommon();
   bool hasSE();
+  SkillEffectType getEffectType();
   SkillRange getRange();
   SkillType getType();
   LuaObject* getLuaObject();

@@ -22,6 +22,7 @@ Skill::Skill(const char* identifier) {
   _common = _lua->getBoolean("common");
   _maxRepeat = _lua->getInt("maxRepeat");
   _turn = _lua->getInt("turn");
+  _effectFrames = _lua->getInt("effectFrames");
   _tensionLevel = _lua->getInt("tensionLevel");
   _range = (SkillRange)_lua->getInt("skillRange");
   _type = (SkillType)_lua->getInt("skillType");
@@ -106,12 +107,29 @@ void Skill::setAcquirementLV(int lv) {
   _acquirementLV = lv;
 }
 
+int Skill::getEffectFrames() {
+  return _effectFrames;
+}
+
 int Skill::getTensionLevel() {
   return _tensionLevel;
 }
 
 bool Skill::hasSE() {
   return _se;
+}
+
+SkillEffectType Skill::getEffectType() {
+  if (_effectFrames == 0) return SkillEffectTypeNone;
+  switch (_range) {
+    case SkillRangeSingle:
+    case SkillRangeBack:
+      return SkillEffectTypeTarget;
+      break;
+    default:
+      return SkillEffectTypeAll;
+      break;
+  }
 }
 
 CCArray* Skill::getMessages() {

@@ -1,6 +1,7 @@
 Skill = {
   name = "雷",
   identifier = "thunder",
+  effectFrames = 6,
   mp = 2,
   se = true,
   tensionLevel = 1,

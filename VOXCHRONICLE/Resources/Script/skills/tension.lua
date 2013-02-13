@@ -1,6 +1,7 @@
 Skill = {
   name = "溜める",
   identifier = "tension",
+  effectFrames = 0,
   mp = 0,
   se = true,
   tensionLevel = 0,

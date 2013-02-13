@@ -1,6 +1,7 @@
 Skill = {
   name = "走る",
   identifier = "run",
+  effectFrames = 3,
   mp = 0,
   se = true,
   tensionLevel = 0,
