@@ -77,6 +77,8 @@ class CharacterManager :public CCObject {
   
   /**
    現在のターン、スキルを実行中かどうか返します
+   前作の溜め攻撃のような2ターン以上かかる技向けのメソッドですが
+   現行では、レベルデザイン的に廃止になったのでオワコン
    @return bool スキル実行中かどうか
    */
   bool isPerforming();

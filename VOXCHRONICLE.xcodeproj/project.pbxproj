@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0701703A16C813500000E632 /* shaba.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701703916C813500000E632 /* shaba.lua */; };
+		0701703C16C813830000E632 /* shaba_map.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701703B16C813830000E632 /* shaba_map.lua */; };
 		0704344416BFEEC600339F8A /* nmb_drum4.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0704344316BFEEC600339F8A /* nmb_drum4.caf */; };
 		0704344716BFF3CB00339F8A /* MusicManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0704344516BFF3CB00339F8A /* MusicManager.cpp */; };
 		070E4020163C29E600A76BEA /* BlinkLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 070E401E163C29E600A76BEA /* BlinkLayer.cpp */; };
@@ -125,6 +127,47 @@
 		076F1D3C15EB94780013A45E /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 076F1D3B15EB94780013A45E /* AppDelegate.cpp */; };
 		0772FEB616C260BA00A50931 /* VQString.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0772FEB416C260BA00A50931 /* VQString.mm */; };
 		0772FEBA16C2786D00A50931 /* MessageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0772FEB816C2786B00A50931 /* MessageManager.cpp */; };
+		077538A216C8143100DA66B3 /* shaba_counter0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775387916C8143100DA66B3 /* shaba_counter0.caf */; };
+		077538A316C8143100DA66B3 /* shaba_counter1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775387A16C8143100DA66B3 /* shaba_counter1.caf */; };
+		077538A416C8143100DA66B3 /* shaba_counter2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775387B16C8143100DA66B3 /* shaba_counter2.caf */; };
+		077538A516C8143100DA66B3 /* shaba_counter3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775387C16C8143100DA66B3 /* shaba_counter3.caf */; };
+		077538A616C8143100DA66B3 /* shaba_drum0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775387D16C8143100DA66B3 /* shaba_drum0.caf */; };
+		077538A716C8143100DA66B3 /* shaba_drum1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775387E16C8143100DA66B3 /* shaba_drum1.caf */; };
+		077538A816C8143100DA66B3 /* shaba_drum2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775387F16C8143100DA66B3 /* shaba_drum2.caf */; };
+		077538A916C8143100DA66B3 /* shaba_drum3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775388016C8143100DA66B3 /* shaba_drum3.caf */; };
+		077538AA16C8143100DA66B3 /* shaba_drum4.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775388116C8143100DA66B3 /* shaba_drum4.caf */; };
+		077538AB16C8143100DA66B3 /* shaba_impact0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775388216C8143100DA66B3 /* shaba_impact0.caf */; };
+		077538AC16C8143100DA66B3 /* shaba_impact1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775388316C8143100DA66B3 /* shaba_impact1.caf */; };
+		077538AD16C8143100DA66B3 /* shaba_impact2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775388416C8143100DA66B3 /* shaba_impact2.caf */; };
+		077538AE16C8143100DA66B3 /* shaba_impact3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775388516C8143100DA66B3 /* shaba_impact3.caf */; };
+		077538AF16C8143100DA66B3 /* shaba_intro0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775388616C8143100DA66B3 /* shaba_intro0.caf */; };
+		077538B016C8143100DA66B3 /* shaba_intro1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775388716C8143100DA66B3 /* shaba_intro1.caf */; };
+		077538B116C8143100DA66B3 /* shaba_lskbow0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775388816C8143100DA66B3 /* shaba_lskbow0.caf */; };
+		077538B216C8143100DA66B3 /* shaba_lskchange0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775388916C8143100DA66B3 /* shaba_lskchange0.caf */; };
+		077538B316C8143100DA66B3 /* shaba_lskcure0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775388A16C8143100DA66B3 /* shaba_lskcure0.caf */; };
+		077538B416C8143100DA66B3 /* shaba_lskmagic0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775388B16C8143100DA66B3 /* shaba_lskmagic0.caf */; };
+		077538B516C8143100DA66B3 /* shaba_lskmagic1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775388C16C8143100DA66B3 /* shaba_lskmagic1.caf */; };
+		077538B616C8143100DA66B3 /* shaba_lskmagic2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775388D16C8143100DA66B3 /* shaba_lskmagic2.caf */; };
+		077538B716C8143100DA66B3 /* shaba_lskmagic3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775388E16C8143100DA66B3 /* shaba_lskmagic3.caf */; };
+		077538B816C8143100DA66B3 /* shaba_lskthunder0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775388F16C8143100DA66B3 /* shaba_lskthunder0.caf */; };
+		077538B916C8143100DA66B3 /* shaba_miss.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775389016C8143100DA66B3 /* shaba_miss.caf */; };
+		077538BA16C8143100DA66B3 /* shaba_run0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775389116C8143100DA66B3 /* shaba_run0.caf */; };
+		077538BB16C8143100DA66B3 /* shaba_run1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775389216C8143100DA66B3 /* shaba_run1.caf */; };
+		077538BC16C8143100DA66B3 /* shaba_shield0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775389316C8143100DA66B3 /* shaba_shield0.caf */; };
+		077538BD16C8143100DA66B3 /* shaba_silent.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775389416C8143100DA66B3 /* shaba_silent.caf */; };
+		077538BE16C8143100DA66B3 /* shaba_tension0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775389516C8143100DA66B3 /* shaba_tension0.caf */; };
+		077538BF16C8143100DA66B3 /* shaba_tension1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775389616C8143100DA66B3 /* shaba_tension1.caf */; };
+		077538C016C8143100DA66B3 /* shaba_tension2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775389716C8143100DA66B3 /* shaba_tension2.caf */; };
+		077538C116C8143100DA66B3 /* shaba_tension3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775389816C8143100DA66B3 /* shaba_tension3.caf */; };
+		077538C216C8143100DA66B3 /* shaba_voxattack0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775389916C8143100DA66B3 /* shaba_voxattack0.caf */; };
+		077538C316C8143100DA66B3 /* shaba_voxattack1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775389A16C8143100DA66B3 /* shaba_voxattack1.caf */; };
+		077538C416C8143100DA66B3 /* shaba_voxattack2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775389B16C8143100DA66B3 /* shaba_voxattack2.caf */; };
+		077538C516C8143100DA66B3 /* shaba_voxattack3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775389C16C8143100DA66B3 /* shaba_voxattack3.caf */; };
+		077538C616C8143100DA66B3 /* shaba_voxchange0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775389D16C8143100DA66B3 /* shaba_voxchange0.caf */; };
+		077538C716C8143100DA66B3 /* shaba_voxcharge0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775389E16C8143100DA66B3 /* shaba_voxcharge0.caf */; };
+		077538C816C8143100DA66B3 /* shaba_voxknockback0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0775389F16C8143100DA66B3 /* shaba_voxknockback0.caf */; };
+		077538C916C8143100DA66B3 /* shaba_voxslash0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 077538A016C8143100DA66B3 /* shaba_voxslash0.caf */; };
+		077538CA16C8143100DA66B3 /* shaba_wait0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 077538A116C8143100DA66B3 /* shaba_wait0.caf */; };
 		077DCFC3169EE872007A7003 /* Image in Resources */ = {isa = PBXBuildFile; fileRef = 077DCFC1169EE872007A7003 /* Image */; };
 		077DCFC6169EE89B007A7003 /* Retina in Resources */ = {isa = PBXBuildFile; fileRef = 077DCFC5169EE89B007A7003 /* Retina */; };
 		077EDDF816870767009B9F6B /* attack_effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDEE16870767009B9F6B /* attack_effect.mp3 */; };
@@ -704,6 +747,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0701703916C813500000E632 /* shaba.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = shaba.lua; path = musics/shaba.lua; sourceTree = "<group>"; };
+		0701703B16C813830000E632 /* shaba_map.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = shaba_map.lua; path = map/shaba_map.lua; sourceTree = "<group>"; };
 		0704344316BFEEC600339F8A /* nmb_drum4.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = nmb_drum4.caf; sourceTree = "<group>"; };
 		0704344516BFF3CB00339F8A /* MusicManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MusicManager.cpp; path = Classes/Model/MusicManager.cpp; sourceTree = "<group>"; };
 		0704344616BFF3CB00339F8A /* MusicManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicManager.h; path = Classes/Model/MusicManager.h; sourceTree = "<group>"; };
@@ -833,6 +878,47 @@
 		0772FEB716C260D300A50931 /* VQString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VQString.h; path = VOXCHRONICLE/Classes/includes/VQString.h; sourceTree = SOURCE_ROOT; };
 		0772FEB816C2786B00A50931 /* MessageManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageManager.cpp; path = Classes/Model/MessageManager.cpp; sourceTree = "<group>"; };
 		0772FEBB16C2788F00A50931 /* MessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageManager.h; path = Classes/includes/MessageManager.h; sourceTree = "<group>"; };
+		0775387916C8143100DA66B3 /* shaba_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_counter0.caf; path = Resources/Music/shaba/shaba_counter0.caf; sourceTree = "<group>"; };
+		0775387A16C8143100DA66B3 /* shaba_counter1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_counter1.caf; path = Resources/Music/shaba/shaba_counter1.caf; sourceTree = "<group>"; };
+		0775387B16C8143100DA66B3 /* shaba_counter2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_counter2.caf; path = Resources/Music/shaba/shaba_counter2.caf; sourceTree = "<group>"; };
+		0775387C16C8143100DA66B3 /* shaba_counter3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_counter3.caf; path = Resources/Music/shaba/shaba_counter3.caf; sourceTree = "<group>"; };
+		0775387D16C8143100DA66B3 /* shaba_drum0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_drum0.caf; path = Resources/Music/shaba/shaba_drum0.caf; sourceTree = "<group>"; };
+		0775387E16C8143100DA66B3 /* shaba_drum1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_drum1.caf; path = Resources/Music/shaba/shaba_drum1.caf; sourceTree = "<group>"; };
+		0775387F16C8143100DA66B3 /* shaba_drum2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_drum2.caf; path = Resources/Music/shaba/shaba_drum2.caf; sourceTree = "<group>"; };
+		0775388016C8143100DA66B3 /* shaba_drum3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_drum3.caf; path = Resources/Music/shaba/shaba_drum3.caf; sourceTree = "<group>"; };
+		0775388116C8143100DA66B3 /* shaba_drum4.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_drum4.caf; path = Resources/Music/shaba/shaba_drum4.caf; sourceTree = "<group>"; };
+		0775388216C8143100DA66B3 /* shaba_impact0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_impact0.caf; path = Resources/Music/shaba/shaba_impact0.caf; sourceTree = "<group>"; };
+		0775388316C8143100DA66B3 /* shaba_impact1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_impact1.caf; path = Resources/Music/shaba/shaba_impact1.caf; sourceTree = "<group>"; };
+		0775388416C8143100DA66B3 /* shaba_impact2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_impact2.caf; path = Resources/Music/shaba/shaba_impact2.caf; sourceTree = "<group>"; };
+		0775388516C8143100DA66B3 /* shaba_impact3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_impact3.caf; path = Resources/Music/shaba/shaba_impact3.caf; sourceTree = "<group>"; };
+		0775388616C8143100DA66B3 /* shaba_intro0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_intro0.caf; path = Resources/Music/shaba/shaba_intro0.caf; sourceTree = "<group>"; };
+		0775388716C8143100DA66B3 /* shaba_intro1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_intro1.caf; path = Resources/Music/shaba/shaba_intro1.caf; sourceTree = "<group>"; };
+		0775388816C8143100DA66B3 /* shaba_lskbow0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_lskbow0.caf; path = Resources/Music/shaba/shaba_lskbow0.caf; sourceTree = "<group>"; };
+		0775388916C8143100DA66B3 /* shaba_lskchange0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_lskchange0.caf; path = Resources/Music/shaba/shaba_lskchange0.caf; sourceTree = "<group>"; };
+		0775388A16C8143100DA66B3 /* shaba_lskcure0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_lskcure0.caf; path = Resources/Music/shaba/shaba_lskcure0.caf; sourceTree = "<group>"; };
+		0775388B16C8143100DA66B3 /* shaba_lskmagic0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_lskmagic0.caf; path = Resources/Music/shaba/shaba_lskmagic0.caf; sourceTree = "<group>"; };
+		0775388C16C8143100DA66B3 /* shaba_lskmagic1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_lskmagic1.caf; path = Resources/Music/shaba/shaba_lskmagic1.caf; sourceTree = "<group>"; };
+		0775388D16C8143100DA66B3 /* shaba_lskmagic2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_lskmagic2.caf; path = Resources/Music/shaba/shaba_lskmagic2.caf; sourceTree = "<group>"; };
+		0775388E16C8143100DA66B3 /* shaba_lskmagic3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_lskmagic3.caf; path = Resources/Music/shaba/shaba_lskmagic3.caf; sourceTree = "<group>"; };
+		0775388F16C8143100DA66B3 /* shaba_lskthunder0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_lskthunder0.caf; path = Resources/Music/shaba/shaba_lskthunder0.caf; sourceTree = "<group>"; };
+		0775389016C8143100DA66B3 /* shaba_miss.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_miss.caf; path = Resources/Music/shaba/shaba_miss.caf; sourceTree = "<group>"; };
+		0775389116C8143100DA66B3 /* shaba_run0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_run0.caf; path = Resources/Music/shaba/shaba_run0.caf; sourceTree = "<group>"; };
+		0775389216C8143100DA66B3 /* shaba_run1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_run1.caf; path = Resources/Music/shaba/shaba_run1.caf; sourceTree = "<group>"; };
+		0775389316C8143100DA66B3 /* shaba_shield0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_shield0.caf; path = Resources/Music/shaba/shaba_shield0.caf; sourceTree = "<group>"; };
+		0775389416C8143100DA66B3 /* shaba_silent.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_silent.caf; path = Resources/Music/shaba/shaba_silent.caf; sourceTree = "<group>"; };
+		0775389516C8143100DA66B3 /* shaba_tension0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_tension0.caf; path = Resources/Music/shaba/shaba_tension0.caf; sourceTree = "<group>"; };
+		0775389616C8143100DA66B3 /* shaba_tension1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_tension1.caf; path = Resources/Music/shaba/shaba_tension1.caf; sourceTree = "<group>"; };
+		0775389716C8143100DA66B3 /* shaba_tension2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_tension2.caf; path = Resources/Music/shaba/shaba_tension2.caf; sourceTree = "<group>"; };
+		0775389816C8143100DA66B3 /* shaba_tension3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_tension3.caf; path = Resources/Music/shaba/shaba_tension3.caf; sourceTree = "<group>"; };
+		0775389916C8143100DA66B3 /* shaba_voxattack0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_voxattack0.caf; path = Resources/Music/shaba/shaba_voxattack0.caf; sourceTree = "<group>"; };
+		0775389A16C8143100DA66B3 /* shaba_voxattack1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_voxattack1.caf; path = Resources/Music/shaba/shaba_voxattack1.caf; sourceTree = "<group>"; };
+		0775389B16C8143100DA66B3 /* shaba_voxattack2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_voxattack2.caf; path = Resources/Music/shaba/shaba_voxattack2.caf; sourceTree = "<group>"; };
+		0775389C16C8143100DA66B3 /* shaba_voxattack3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_voxattack3.caf; path = Resources/Music/shaba/shaba_voxattack3.caf; sourceTree = "<group>"; };
+		0775389D16C8143100DA66B3 /* shaba_voxchange0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_voxchange0.caf; path = Resources/Music/shaba/shaba_voxchange0.caf; sourceTree = "<group>"; };
+		0775389E16C8143100DA66B3 /* shaba_voxcharge0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_voxcharge0.caf; path = Resources/Music/shaba/shaba_voxcharge0.caf; sourceTree = "<group>"; };
+		0775389F16C8143100DA66B3 /* shaba_voxknockback0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_voxknockback0.caf; path = Resources/Music/shaba/shaba_voxknockback0.caf; sourceTree = "<group>"; };
+		077538A016C8143100DA66B3 /* shaba_voxslash0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_voxslash0.caf; path = Resources/Music/shaba/shaba_voxslash0.caf; sourceTree = "<group>"; };
+		077538A116C8143100DA66B3 /* shaba_wait0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = shaba_wait0.caf; path = Resources/Music/shaba/shaba_wait0.caf; sourceTree = "<group>"; };
 		077DCFC1169EE872007A7003 /* Image */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Image; path = Resources/Image; sourceTree = "<group>"; };
 		077DCFC5169EE89B007A7003 /* Retina */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Retina; path = Resources/Retina; sourceTree = "<group>"; };
 		077EDDEE16870767009B9F6B /* attack_effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = attack_effect.mp3; path = Resources/SE/attack_effect.mp3; sourceTree = "<group>"; };
@@ -1757,6 +1843,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07016FE616C813330000E632 /* shaba */ = {
+			isa = PBXGroup;
+			children = (
+				0775387916C8143100DA66B3 /* shaba_counter0.caf */,
+				0775387A16C8143100DA66B3 /* shaba_counter1.caf */,
+				0775387B16C8143100DA66B3 /* shaba_counter2.caf */,
+				0775387C16C8143100DA66B3 /* shaba_counter3.caf */,
+				0775387D16C8143100DA66B3 /* shaba_drum0.caf */,
+				0775387E16C8143100DA66B3 /* shaba_drum1.caf */,
+				0775387F16C8143100DA66B3 /* shaba_drum2.caf */,
+				0775388016C8143100DA66B3 /* shaba_drum3.caf */,
+				0775388116C8143100DA66B3 /* shaba_drum4.caf */,
+				0775388216C8143100DA66B3 /* shaba_impact0.caf */,
+				0775388316C8143100DA66B3 /* shaba_impact1.caf */,
+				0775388416C8143100DA66B3 /* shaba_impact2.caf */,
+				0775388516C8143100DA66B3 /* shaba_impact3.caf */,
+				0775388616C8143100DA66B3 /* shaba_intro0.caf */,
+				0775388716C8143100DA66B3 /* shaba_intro1.caf */,
+				0775388816C8143100DA66B3 /* shaba_lskbow0.caf */,
+				0775388916C8143100DA66B3 /* shaba_lskchange0.caf */,
+				0775388A16C8143100DA66B3 /* shaba_lskcure0.caf */,
+				0775388B16C8143100DA66B3 /* shaba_lskmagic0.caf */,
+				0775388C16C8143100DA66B3 /* shaba_lskmagic1.caf */,
+				0775388D16C8143100DA66B3 /* shaba_lskmagic2.caf */,
+				0775388E16C8143100DA66B3 /* shaba_lskmagic3.caf */,
+				0775388F16C8143100DA66B3 /* shaba_lskthunder0.caf */,
+				0775389016C8143100DA66B3 /* shaba_miss.caf */,
+				0775389116C8143100DA66B3 /* shaba_run0.caf */,
+				0775389216C8143100DA66B3 /* shaba_run1.caf */,
+				0775389316C8143100DA66B3 /* shaba_shield0.caf */,
+				0775389416C8143100DA66B3 /* shaba_silent.caf */,
+				0775389516C8143100DA66B3 /* shaba_tension0.caf */,
+				0775389616C8143100DA66B3 /* shaba_tension1.caf */,
+				0775389716C8143100DA66B3 /* shaba_tension2.caf */,
+				0775389816C8143100DA66B3 /* shaba_tension3.caf */,
+				0775389916C8143100DA66B3 /* shaba_voxattack0.caf */,
+				0775389A16C8143100DA66B3 /* shaba_voxattack1.caf */,
+				0775389B16C8143100DA66B3 /* shaba_voxattack2.caf */,
+				0775389C16C8143100DA66B3 /* shaba_voxattack3.caf */,
+				0775389D16C8143100DA66B3 /* shaba_voxchange0.caf */,
+				0775389E16C8143100DA66B3 /* shaba_voxcharge0.caf */,
+				0775389F16C8143100DA66B3 /* shaba_voxknockback0.caf */,
+				077538A016C8143100DA66B3 /* shaba_voxslash0.caf */,
+				077538A116C8143100DA66B3 /* shaba_wait0.caf */,
+			);
+			name = shaba;
+			sourceTree = "<group>";
+		};
 		0731E4F016181051006AEF3D /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -1779,6 +1913,7 @@
 				07F9344216C16BCF00A2F1CA /* ttn.lua */,
 				07864BEF169D881500AAAF15 /* 2a.lua */,
 				0738FB4516C530DD00FE2816 /* 2b.lua */,
+				0701703B16C813830000E632 /* shaba_map.lua */,
 			);
 			name = map;
 			sourceTree = "<group>";
@@ -1932,6 +2067,7 @@
 				079F88E3169D9AD4001357B5 /* nmb.lua */,
 				07F9343E16C16B1400A2F1CA /* ttn1.lua */,
 				0738FB4716C530E800FE2816 /* yuki.lua */,
+				0701703916C813500000E632 /* shaba.lua */,
 			);
 			name = musics;
 			sourceTree = "<group>";
@@ -3253,6 +3389,7 @@
 		07D873E215ED1200009CC446 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				07016FE616C813330000E632 /* shaba */,
 				0738FADC16C530A800FE2816 /* 2b */,
 				07F933DF16C16AFA00A2F1CA /* ttn1 */,
 				079F88E5169D9B47001357B5 /* nmb */,
@@ -3948,6 +4085,49 @@
 				0738FBAF16C5320300FE2816 /* 2b_voxwait0.caf in Resources */,
 				0738FBB016C5320300FE2816 /* 2b_voxwait1.caf in Resources */,
 				0738FBB216C534D800FE2816 /* death.lua in Resources */,
+				0701703A16C813500000E632 /* shaba.lua in Resources */,
+				0701703C16C813830000E632 /* shaba_map.lua in Resources */,
+				077538A216C8143100DA66B3 /* shaba_counter0.caf in Resources */,
+				077538A316C8143100DA66B3 /* shaba_counter1.caf in Resources */,
+				077538A416C8143100DA66B3 /* shaba_counter2.caf in Resources */,
+				077538A516C8143100DA66B3 /* shaba_counter3.caf in Resources */,
+				077538A616C8143100DA66B3 /* shaba_drum0.caf in Resources */,
+				077538A716C8143100DA66B3 /* shaba_drum1.caf in Resources */,
+				077538A816C8143100DA66B3 /* shaba_drum2.caf in Resources */,
+				077538A916C8143100DA66B3 /* shaba_drum3.caf in Resources */,
+				077538AA16C8143100DA66B3 /* shaba_drum4.caf in Resources */,
+				077538AB16C8143100DA66B3 /* shaba_impact0.caf in Resources */,
+				077538AC16C8143100DA66B3 /* shaba_impact1.caf in Resources */,
+				077538AD16C8143100DA66B3 /* shaba_impact2.caf in Resources */,
+				077538AE16C8143100DA66B3 /* shaba_impact3.caf in Resources */,
+				077538AF16C8143100DA66B3 /* shaba_intro0.caf in Resources */,
+				077538B016C8143100DA66B3 /* shaba_intro1.caf in Resources */,
+				077538B116C8143100DA66B3 /* shaba_lskbow0.caf in Resources */,
+				077538B216C8143100DA66B3 /* shaba_lskchange0.caf in Resources */,
+				077538B316C8143100DA66B3 /* shaba_lskcure0.caf in Resources */,
+				077538B416C8143100DA66B3 /* shaba_lskmagic0.caf in Resources */,
+				077538B516C8143100DA66B3 /* shaba_lskmagic1.caf in Resources */,
+				077538B616C8143100DA66B3 /* shaba_lskmagic2.caf in Resources */,
+				077538B716C8143100DA66B3 /* shaba_lskmagic3.caf in Resources */,
+				077538B816C8143100DA66B3 /* shaba_lskthunder0.caf in Resources */,
+				077538B916C8143100DA66B3 /* shaba_miss.caf in Resources */,
+				077538BA16C8143100DA66B3 /* shaba_run0.caf in Resources */,
+				077538BB16C8143100DA66B3 /* shaba_run1.caf in Resources */,
+				077538BC16C8143100DA66B3 /* shaba_shield0.caf in Resources */,
+				077538BD16C8143100DA66B3 /* shaba_silent.caf in Resources */,
+				077538BE16C8143100DA66B3 /* shaba_tension0.caf in Resources */,
+				077538BF16C8143100DA66B3 /* shaba_tension1.caf in Resources */,
+				077538C016C8143100DA66B3 /* shaba_tension2.caf in Resources */,
+				077538C116C8143100DA66B3 /* shaba_tension3.caf in Resources */,
+				077538C216C8143100DA66B3 /* shaba_voxattack0.caf in Resources */,
+				077538C316C8143100DA66B3 /* shaba_voxattack1.caf in Resources */,
+				077538C416C8143100DA66B3 /* shaba_voxattack2.caf in Resources */,
+				077538C516C8143100DA66B3 /* shaba_voxattack3.caf in Resources */,
+				077538C616C8143100DA66B3 /* shaba_voxchange0.caf in Resources */,
+				077538C716C8143100DA66B3 /* shaba_voxcharge0.caf in Resources */,
+				077538C816C8143100DA66B3 /* shaba_voxknockback0.caf in Resources */,
+				077538C916C8143100DA66B3 /* shaba_voxslash0.caf in Resources */,
+				077538CA16C8143100DA66B3 /* shaba_wait0.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
