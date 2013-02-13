@@ -174,7 +174,7 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
     CCObject* obj = NULL;
     CCARRAY_FOREACH(_enemyManager->getEnemies(), obj) {
       Enemy* enemy = (Enemy*)obj;
-      if (enemy->getRow() == 0) {
+      if (enemy->getRow() < 0) {
         int damage = floor(0.5 + enemy->getAttack() * _characterManager->getLevelOffsetRate(enemy->getLevel(), _characterManager->getLevel()));
         _characterManager->damage(damage);
         _enemyManager->removeEnemy(enemy);
@@ -311,7 +311,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       }
       animation->setDelayPerUnit(1.0 / 60.0);
       effect->runAction(CCSequence::create(CCAnimate::create(animation),
-                                           CCFadeOut::create(0.5f),
+                                           CCFadeOut::create(0.1f),
                                            CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
                                            NULL));
       _enemyManager->addChild(effect);
