@@ -9,11 +9,16 @@
 #include "Track.h"
 #include "ObjectAL.h"
 #include "BufferCache.h"
+#include "Buffer.h"
 
 // It is wrapper class for ObjectAL::OALAudioTrack.
 
 using namespace std;
 using namespace VISS;
+
+struct Buffer::BufferWrapper {
+  ALBuffer* buffer;
+};
 
 struct Track::AudioTrack {
   ALBuffer* buffer;
@@ -26,7 +31,9 @@ Track::Track(const char* fileName) : _track(new VISS::Track::AudioTrack) {
   _track->source = [[ALSource source] retain];
   
   // Preload the buffers so we don't have to load and play them later.
-  _track->buffer = BufferCache::sharedCache()->addBuffer(fileName);
+  Buffer* buffer = BufferCache::sharedCache()->addBuffer(fileName);
+  Buffer::BufferWrapper* wrapper = buffer->getBuffer();
+  _track->buffer = wrapper->buffer;
 }
 
 Track::~Track() {

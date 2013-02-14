@@ -20,7 +20,7 @@
 		0715C2371690EB3000009479 /* EnemySkill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0715C2351690EB3000009479 /* EnemySkill.cpp */; };
 		07244C3016956CAD00C5A442 /* QTETrigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07244C2E16956CAD00C5A442 /* QTETrigger.cpp */; };
 		07244C321695712400C5A442 /* qte.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07244C311695712400C5A442 /* qte.mp3 */; };
-		0725180D16B141FB004361B7 /* BufferCache.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0725180C16B141FB004361B7 /* BufferCache.mm */; };
+		0725180D16B141FB004361B7 /* BufferCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0725180C16B141FB004361B7 /* BufferCache.cpp */; };
 		0725180F16B15BB8004361B7 /* nmb_impact3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0725180E16B15BB8004361B7 /* nmb_impact3.caf */; };
 		072A5C9716BAA72500A64AD6 /* volca_voxrun1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 072A5C9616BAA72500A64AD6 /* volca_voxrun1.caf */; };
 		072A5C9916BAA72E00A64AD6 /* volca_lskrun1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 072A5C9816BAA72E00A64AD6 /* volca_lskrun1.caf */; };
@@ -383,6 +383,7 @@
 		07970C8B169F9B820000B905 /* dub_wait0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07970C60169F9B820000B905 /* dub_wait0.caf */; };
 		079F88E4169D9AD4001357B5 /* nmb.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079F88E3169D9AD4001357B5 /* nmb.lua */; };
 		079F89A7169EE596001357B5 /* debug.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079F89A6169EE596001357B5 /* debug.lua */; };
+		07A1B98E16CCC2D80092AF8C /* Buffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07A1B98C16CCC2D80092AF8C /* Buffer.mm */; };
 		07A1F4D51693161600C4329F /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A1F4D41693161600C4329F /* libTestFlight.a */; };
 		07A1F535169319B300C4329F /* volca.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F534169319B300C4329F /* volca.lua */; };
 		07A4579C1697E7910060DC34 /* slime_physical.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07A4579A1697E7900060DC34 /* slime_physical.lua */; };
@@ -763,7 +764,7 @@
 		07244C2E16956CAD00C5A442 /* QTETrigger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = QTETrigger.cpp; path = Classes/UI/QTETrigger.cpp; sourceTree = "<group>"; };
 		07244C311695712400C5A442 /* qte.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = qte.mp3; path = Resources/SE/qte.mp3; sourceTree = "<group>"; };
 		0725180916B140A0004361B7 /* BufferCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BufferCache.h; path = Classes/includes/BufferCache.h; sourceTree = "<group>"; };
-		0725180C16B141FB004361B7 /* BufferCache.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BufferCache.mm; path = Classes/VISS/BufferCache.mm; sourceTree = "<group>"; };
+		0725180C16B141FB004361B7 /* BufferCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BufferCache.cpp; path = Classes/VISS/BufferCache.cpp; sourceTree = "<group>"; };
 		0725180E16B15BB8004361B7 /* nmb_impact3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = nmb_impact3.caf; sourceTree = "<group>"; };
 		072A5C9616BAA72500A64AD6 /* volca_voxrun1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = volca_voxrun1.caf; sourceTree = "<group>"; };
 		072A5C9816BAA72E00A64AD6 /* volca_lskrun1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = volca_lskrun1.caf; sourceTree = "<group>"; };
@@ -1139,6 +1140,8 @@
 		079F89A3169EE580001357B5 /* QTETrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QTETrigger.h; path = Classes/includes/QTETrigger.h; sourceTree = "<group>"; };
 		079F89A4169EE580001357B5 /* StatusLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusLayer.h; path = Classes/includes/StatusLayer.h; sourceTree = "<group>"; };
 		079F89A6169EE596001357B5 /* debug.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = debug.lua; sourceTree = "<group>"; };
+		07A1B98C16CCC2D80092AF8C /* Buffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Buffer.mm; path = Classes/VISS/Buffer.mm; sourceTree = "<group>"; };
+		07A1B98F16CCC2F30092AF8C /* Buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Buffer.h; path = Classes/includes/Buffer.h; sourceTree = "<group>"; };
 		07A1F4D41693161600C4329F /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTestFlight.a; path = VOXCHRONICLE/ios/libTestFlight.a; sourceTree = "<group>"; };
 		07A1F4D61693162500C4329F /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestFlight.h; path = ios/TestFlight.h; sourceTree = "<group>"; };
 		07A1F534169319B300C4329F /* volca.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = volca.lua; path = musics/volca.lua; sourceTree = "<group>"; };
@@ -3430,11 +3433,13 @@
 			isa = PBXGroup;
 			children = (
 				0725180916B140A0004361B7 /* BufferCache.h */,
-				0725180C16B141FB004361B7 /* BufferCache.mm */,
+				0725180C16B141FB004361B7 /* BufferCache.cpp */,
 				07F40F0F163D0FC0009FC104 /* Music.cpp */,
 				07B95E1915F303E30024C672 /* Track.mm */,
 				07F0D751163BABDF005592AF /* Music.h */,
 				07F0D752163BABDF005592AF /* Track.h */,
+				07A1B98C16CCC2D80092AF8C /* Buffer.mm */,
+				07A1B98F16CCC2F30092AF8C /* Buffer.h */,
 			);
 			name = VISS;
 			sourceTree = "<group>";
@@ -4424,12 +4429,13 @@
 				07244C3016956CAD00C5A442 /* QTETrigger.cpp in Sources */,
 				079331A3169D85D300AE4F93 /* DebugScene.cpp in Sources */,
 				07D8D64D169F4D9300B646E5 /* PauseLayer.cpp in Sources */,
-				0725180D16B141FB004361B7 /* BufferCache.mm in Sources */,
+				0725180D16B141FB004361B7 /* BufferCache.cpp in Sources */,
 				072A5C9E16BAAE5D00A64AD6 /* GameOverLayer.cpp in Sources */,
 				07FADBC516BBFA3600200F83 /* Ground.cpp in Sources */,
 				0704344716BFF3CB00339F8A /* MusicManager.cpp in Sources */,
 				0772FEB616C260BA00A50931 /* VQString.mm in Sources */,
 				0772FEBA16C2786D00A50931 /* MessageManager.cpp in Sources */,
+				07A1B98E16CCC2D80092AF8C /* Buffer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

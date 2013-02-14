@@ -25,6 +25,7 @@
 #include "Ground.h"
 #include "VQString.h"
 #include "MessageManager.h"
+#include "BufferCache.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -142,6 +143,7 @@ MainScene::~MainScene() {
   if (_pausedTargets != NULL) {
     _pausedTargets->release();
   }
+  VISS::BufferCache::sharedCache()->purgeAllBuffers();
 }
 
 void MainScene::update(float dt) {

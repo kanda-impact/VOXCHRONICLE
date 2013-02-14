@@ -12,24 +12,23 @@
 #include <iostream>
 #include <map>
 #include <boost/shared_ptr.hpp>
-#include "ALBuffer.h"
 #include "Track.h"
+#include "Buffer.h"
 
 using namespace VISS;
 using namespace std;
 
 namespace VISS {
   class BufferCache {
-    struct Dictionary;
    private:
-    boost::shared_ptr<Dictionary> _cache;
+    CCDictionary* _cache;
     static BufferCache* _instance;
    public:
     static BufferCache* sharedCache();
     static void deleteCache();
     BufferCache();
     ~BufferCache();
-    ALBuffer* addBuffer(string trackName);
+    Buffer* addBuffer(const char* trackName);
     void purgeAllBuffers();
   };
 }

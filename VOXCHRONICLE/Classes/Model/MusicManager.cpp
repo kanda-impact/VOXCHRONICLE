@@ -8,6 +8,7 @@
 
 #include "MusicManager.h"
 #include <boost/lexical_cast.hpp>
+#include "BufferCache.h"
 
 #define DEFAULT_EXT ".caf"
 
@@ -269,4 +270,5 @@ void MusicManager::setMusicSet(MusicSet *set) {
   if (set) {
     set->retain();
   }
+  BufferCache::sharedCache()->purgeAllBuffers();
 }
