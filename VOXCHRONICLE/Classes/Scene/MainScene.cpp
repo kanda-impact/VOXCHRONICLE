@@ -256,7 +256,8 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
   if (skill && performType == SkillPerformTypeSuccess) {
     
     int preExp = _characterManager->getExp();
-    CCDictionary* info = _enemyManager->performSkill(skill, _characterManager); // ここで経験値が貰える
+    CCArray* targets = _enemyManager->getTargets(skill);
+    CCDictionary* info = _enemyManager->performSkill(skill, targets, _characterManager); // ここで経験値が貰える
     CCArray* enemies = (CCArray*)info->objectForKey("enemies");
     CCArray* damages = (CCArray*)info->objectForKey("damages");
     CCArray* damageTypes = (CCArray*)info->objectForKey("damageTypes");

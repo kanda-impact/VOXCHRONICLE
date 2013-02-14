@@ -74,9 +74,10 @@ class Enemy : public CCSprite {
    ダメージの状態をDamageTypeとして返します
    @param Skill* 使用したスキルを渡します
    @param CharacterManager* CharacterManagerを渡します
+   @param bool simulate trueのとき、実際にはダメージを与えません。結果だけ返します
    @return ダメージを与えた結果をダメージタイプとして返却します
    */
-  DamageType damage(Skill* skill, CharacterManager* characterManager);
+  DamageType damage(Skill* skill, CharacterManager* characterManager, bool simulate);
   
   /**
    Luaに定義された敵の技を使う関数を実行します

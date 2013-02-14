@@ -114,7 +114,7 @@ void Enemy::moveRow(float r) {
   this->getParent()->reorderChild(this, (MAX_ROW - _row));
 }
 
-DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager) {
+DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager, bool simulate) {
   // ToDo 属性によるダメージ軽減とかもこの辺に載せてやる
   float damage = floor(0.5 + skill->getPowerWithTension(characterManager->getTension()));
   
@@ -143,8 +143,9 @@ DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager) {
   // レベル補正を行います
   float levelOffset = characterManager->getLevelOffsetRate(characterManager->getLevel(), this->getLevel());
   damage = floor(0.5 + damage * levelOffset);
-  _hp -= damage;
-  if (_hp <= 0) {
+  int hp = this->getHP();
+  hp -= damage;
+  if (hp <= 0) {
     // ダメージが原因で死んだら死亡
     type = DamageTypeDeath;
   } else if (damage == 0){
@@ -153,6 +154,9 @@ DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager) {
   } else if (damage < 0) {
     // ダメージがマイナス値なら吸収
     type = DamageTypeAbsorption;
+  }
+  if (!simulate) { // simulateがfalseのとき、実際にダメージを与えます
+    _hp = hp;
   }
   return type;
 }

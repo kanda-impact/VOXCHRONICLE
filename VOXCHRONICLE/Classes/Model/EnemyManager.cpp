@@ -163,61 +163,13 @@ bool EnemyManager::performLuaFunction(Skill* skill, Enemy* target, CharacterMana
   return false;
 }
 
-CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* characterManager) {
+CCDictionary* EnemyManager::performSkill(Skill* skill, CCArray* targets, CharacterManager* characterManager) {
   int exp = 0;
   CCDictionary* info = CCDictionary::create();
   characterManager->setShield(false);
-  CCArray* targets = CCArray::create();
   CCArray* damages = CCArray::create();
   CCArray* damageTypes = CCArray::create();
   if (skill->getMP() <= characterManager->getMP()) {
-    // ターゲットの決定
-    SkillRange range = skill->getRange();
-    if (range == SkillRangeSingle) {
-      Enemy* target = this->getNearestEnemy();
-      if (target) {
-        boost::function<bool (int, float)> predicate = _1 == target->getRow() && _2 == target->getCol();
-        CCArray* array = this->getFilteredEnemies(predicate);
-        targets->addObjectsFromArray(array);
-      }
-    } else if (range == SkillRangeAll) {
-      if (this->getEnemies()->count() > 0) {
-        targets->addObjectsFromArray(this->getEnemies());
-      }
-    } else if (range == SkillRangeHorizontal) {
-      Enemy* target = this->getNearestEnemy();
-      targets->addObject(target);
-      boost::function<bool (int, float)> predicate = _1 == target->getRow();
-      targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
-    } else if (range == SkillRangeVertical) {
-      Enemy* target = this->getNearestEnemy();
-      targets->addObject(target);
-      boost::function<bool (int, float)> predicate = _2 == target->getCol();
-      targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
-    } else if (range == SkillRangeBack) {
-      // HPの一番高い敵を狙う
-      Enemy* target = NULL;
-      CCObject* obj = NULL;
-      CCARRAY_FOREACH(this->getEnemies(), obj) {
-        Enemy* enemy = (Enemy*)obj;
-        if (target == NULL) {
-          target = enemy;
-        }
-        if (target->getHP() < enemy->getHP()) {
-          target = enemy;
-        }
-      }
-      if (target != NULL) {
-        targets->addObject(target);
-      }
-    } else if (range == SkillRangeFront) {
-      // 最前列攻撃
-      // スラッシュ
-      // 仕様が変わって前4列にいる敵をターゲットにするようにしました
-      boost::function<bool (int, float)> predicate = _1 < MAX_ROW / 2;
-      targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
-    }
-    
     // ターゲットに技の効果を与える
     if (skill->getRange() == SkillRangeSelf) {
       this->performLuaFunction(skill, NULL, characterManager);
@@ -232,7 +184,7 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
       DamageType damageType = DamageTypeNone;
       if (skill->getPowerWithTension(characterManager->getTension()) != 0) {
         // 威力が1以上の場合、ダメージを与える
-        damageType = target->damage(skill, characterManager);
+        damageType = target->damage(skill, characterManager, false);
       } else {
         // 威力が0の場合、NoDamageを設定する
         damageType = DamageTypeNoDamage;
@@ -268,6 +220,57 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
     characterManager->addExp(exp);
   }
   return info;
+}
+
+CCArray* EnemyManager::getTargets(Skill *skill) {
+  // ターゲットの決定
+  CCArray* targets = CCArray::create();
+  SkillRange range = skill->getRange();
+  if (range == SkillRangeSingle) {
+    Enemy* target = this->getNearestEnemy();
+    if (target) {
+      boost::function<bool (int, float)> predicate = _1 == target->getRow() && _2 == target->getCol();
+      CCArray* array = this->getFilteredEnemies(predicate);
+      targets->addObjectsFromArray(array);
+    }
+  } else if (range == SkillRangeAll) {
+    if (this->getEnemies()->count() > 0) {
+      targets->addObjectsFromArray(this->getEnemies());
+    }
+  } else if (range == SkillRangeHorizontal) {
+    Enemy* target = this->getNearestEnemy();
+    targets->addObject(target);
+    boost::function<bool (int, float)> predicate = _1 == target->getRow();
+    targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
+  } else if (range == SkillRangeVertical) {
+    Enemy* target = this->getNearestEnemy();
+    targets->addObject(target);
+    boost::function<bool (int, float)> predicate = _2 == target->getCol();
+    targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
+  } else if (range == SkillRangeBack) {
+    // HPの一番高い敵を狙う
+    Enemy* target = NULL;
+    CCObject* obj = NULL;
+    CCARRAY_FOREACH(this->getEnemies(), obj) {
+      Enemy* enemy = (Enemy*)obj;
+      if (target == NULL) {
+        target = enemy;
+      }
+      if (target->getHP() < enemy->getHP()) {
+        target = enemy;
+      }
+    }
+    if (target != NULL) {
+      targets->addObject(target);
+    }
+  } else if (range == SkillRangeFront) {
+    // 最前列攻撃
+    // スラッシュ
+    // 仕様が変わって前4列にいる敵をターゲットにするようにしました
+    boost::function<bool (int, float)> predicate = _1 < MAX_ROW / 2;
+    targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
+  }
+  return targets;
 }
 
 Level* EnemyManager::getLevel() {

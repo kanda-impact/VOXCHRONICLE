@@ -131,6 +131,29 @@ void MusicManager::pushNextTracks(Skill* skill, SkillPerformInfo& performInfo) {
   // メロディの設定
   SkillPerformType performType = SkillPerformTypeNone;
   string name = _characterManager->checkSkillTrackName(skill, performType, _musicSet);
+  if (skill) {
+    CCArray* targets = _enemyManager->getTargets(skill);
+    if (targets->count() > 0) {
+      bool isMiss = true;
+      for (int i = 0; i < targets->count(); ++i) {
+        Enemy* enemy = (Enemy*)targets->objectAtIndex(i);
+        DamageType type = enemy->damage(skill, _characterManager, true); // ダメージは与えずに結果だけ取り出す
+        if (type != DamageTypePhysicalInvalid && type != DamageTypeMagicalInvalid && type != DamageTypeNoDamage) {
+          isMiss = false; // ミスじゃなくする
+        }
+      }
+      // あとで書き直す
+      if (isMiss) {
+        if (_musicSet->isCommon("miss")) {
+          name = "miss";
+        } else {
+          stringstream ss;
+          ss << _characterManager->getCurrentCharacter()->getIdentifier() << "miss";
+          name = ss.str(); // MP足りてないとき、ミス音を返す
+        }
+      }
+    }
+  }
   performInfo.skillTrackName = name;
   performInfo.type = performType;
   performInfo.skill = skill;

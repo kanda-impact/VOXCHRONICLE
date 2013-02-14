@@ -122,6 +122,7 @@ class EnemyManager :public CCLayer {
   /**
    モンスターに実際にスキルを使用し、情報を返します
    @param Skill* skill 使用するスキル
+   @param CCArray* Skillを適用するターゲット
    @param CharacterManager* characterManager 現在のCharacterManager
    @return CCDictionary 以下のキーと値を持つ辞書が返ります
        damages : CCArray 与えたダメージのリスト
@@ -129,7 +130,14 @@ class EnemyManager :public CCLayer {
        enemies : CCArray 攻撃を当てた敵のリスト。damagesと対応しています
        exp : 得られた総経験値
    */
-  CCDictionary* performSkill(Skill* skill, CharacterManager* characterManager);
+  CCDictionary* performSkill(Skill* skill, CCArray* targets, CharacterManager* characterManager);
+  
+  /**
+   スキルを渡したとき、その対象モンスターを含むCCArrayを返します
+   @param Skill* skill 使用するスキル
+   @return CCArray* ターゲットの一覧
+   */
+  CCArray* getTargets(Skill* skill);
   
   void draw();
   
