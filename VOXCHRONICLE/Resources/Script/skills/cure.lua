@@ -14,7 +14,7 @@ Skill = {
     local rate = power / 10.0 -- 割合出して
     local max = characterManager:getMaxHP() -- 最大値出して
     local cure = math.ceil(max * rate)
-    characterManager:addMP(cure) -- 回復させる
+    characterManager:addHP(cure) -- 回復させる
   end,
   getPower = function(tension)
     t = {1, 3, 5, 8, 10}
