@@ -153,57 +153,39 @@ string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& perform
   if (skill) {
     _characterManager->setWaitTurn(_characterManager->getWaitTurn() + 1);
     if (_characterManager->getWaitTurn() == skill->getTurn()) {
-      std::stringstream ss;
+      string trackName = "";
       if (_characterManager->getLastSkill() &&
           string(_characterManager->getLastSkill()->getIdentifier()) != string(skill->getIdentifier())) {
         _characterManager->setRepeatCount(0);
       }
-      if (skill->isCommon() && _musicSet->isCommon(skill->getIdentifier())) {
-        // スキルのcommonがfalseのとき、曲名にキャラ名が付かない
-        // tension0.wav
-        ss << skill->getIdentifier() << _characterManager->getRepeatCount();
-      } else {
-        // commonがtrueのとき、曲名にキャラ名が付く
-        // ex: voxattack0.wav
-        ss << _characterManager->getCurrentCharacter()->getIdentifier() << skill->getIdentifier() << _characterManager->getRepeatCount();
-      }
+      trackName = this->buildTrackName(skill->getIdentifier(), skill, _characterManager->getRepeatCount());
       _characterManager->setRepeatCount((_characterManager->getRepeatCount() + 1) % skill->getMaxRepeat());
       _characterManager->setLastSkill(skill);
       _characterManager->setCurrentSkill(NULL);
       _characterManager->setWaitTurn(0);
       
-      bool isMiss = true;
-      // 攻撃ミスってたらmiss音を返す
+      performeType = SkillPerformTypeFailure;
+      // 攻撃ミスってたら失敗扱いに
       CCArray* targets = _enemyManager->getTargets(skill);
       if (targets->count() > 0) {
         for (int i = 0; i < targets->count(); ++i) {
           Enemy* enemy = (Enemy*)targets->objectAtIndex(i);
           DamageType type = enemy->damage(skill, _characterManager, true); // ダメージは与えずに結果だけ取り出す
           if (type != DamageTypePhysicalInvalid && type != DamageTypeMagicalInvalid && type != DamageTypeNoDamage) {
-            isMiss = false; // ミスじゃなくする
+            performeType = SkillPerformTypeSuccess;
           }
         }
       } else {
-        isMiss = false;
-      }
-      // MP足りてなかったらミス音を返す
-      if (skill->getMP() <= _characterManager->getMP()) {
-        // MP足りてるとき、技名を返してやる
         performeType = SkillPerformTypeSuccess;
-      } else {
-        performeType = SkillPerformTypeFailure;
-        isMiss = true;
       }
-      if (isMiss) { // ミスったとき、miss音を返す
-        if (_musicSet->isCommon("miss")) {
-          return "miss";
-        } else {
-          stringstream ss;
-          ss << _characterManager->getCurrentCharacter()->getIdentifier() << "miss";
-          return ss.str(); // MP足りてないとき、ミス音を返す
-        }
+      if (skill->getMP() > _characterManager->getMP()) { // MP足りてないとき、失敗に
+        performeType = SkillPerformTypeFailure;
+      }
+      
+      if (performeType == SkillPerformTypeFailure) { // 失敗したとき、miss音を返す
+        return this->buildTrackName("miss", NULL, -1);
       } else {
-        return ss.str().c_str();
+        return trackName;
       }
     } else {
       _characterManager->setCurrentSkill(skill);
@@ -220,14 +202,27 @@ string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& perform
     }
     _characterManager->setLastSkill(skill);
   }
+  return this->buildTrackName("wait", NULL, _characterManager->getRepeatCount());
+}
+
+string MusicManager::buildTrackName(const char* skillIdentifier, Skill *skill, int repeatCount) {
   stringstream ss;
-  if (_musicSet->isCommon("wait")) {
-    ss << "wait" << _characterManager->getRepeatCount();
-    return ss.str().c_str();
+  if ((skill == NULL || skill->isCommon()) && _musicSet->isCommon(skillIdentifier)) {
+    // スキルのcommonがfalseのとき、曲名にキャラ名が付かない
+    // tension0.wav
+    ss << skillIdentifier;
+    if (repeatCount >= 0) {
+      ss << repeatCount;
+    }
   } else {
-    ss << _characterManager->getCurrentCharacter()->getIdentifier() << "wait" << _characterManager->getRepeatCount();
-    return ss.str().c_str();
+    // commonがtrueのとき、曲名にキャラ名が付く
+    // ex: voxattack0.wav
+    ss << _characterManager->getCurrentCharacter()->getIdentifier() << skillIdentifier;
+    if (repeatCount >= 0) {
+       ss << repeatCount;
+    }
   }
+  return ss.str();
 }
 
 int MusicManager::getIntroCount() {

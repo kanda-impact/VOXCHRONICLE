@@ -56,6 +56,17 @@ class MusicManager :public CCObject {
    @return string 拡張子の付いたトラック名
    */
   string getTrackFileName(const char* trackName);
+  
+  /**
+   スキル名とrepeatCountからトラック名を取り出します
+   repeatCountにマイナス値が渡されたときは、トラック名の後ろに数字を付けません
+   共通スキルかどうかの吸収もここで行います。すごい！
+   @param const char* skillIdentifier スキル名
+   @param Skill* skill スキル（あれば）
+   @param repeatCount 何連続目か、またはマイナス値
+   @return string トラック名
+  */
+  string buildTrackName(const char* skillIdentifier, Skill* skill, int repeatCount);
  public:
   MusicManager(VISS::Music* music, MusicSet* musicSet, EnemyManager* enemyManager, CharacterManager* characterManager);
   ~MusicManager();
