@@ -90,6 +90,15 @@ class MusicManager :public CCObject {
   void pushNextTracks(Skill* skill, SkillPerformInfo& performInfo);
   
   /**
+   現在の状況から、次のターンに鳴らす音楽のファイル名を取得します。
+   また、スキル実行状態を渡します。
+   @param Skill 実行するSkillを渡します。
+   @param SkillPerformType& performType SkillPerformTypeを渡します
+   @return string スキルファイル名
+   */
+  string checkSkillTrackName(Skill* skill, SkillPerformType& performeType);
+  
+  /**
    現在のイントロ小節数を取得します
    @return int イントロ小節数
    */

@@ -130,30 +130,7 @@ void MusicManager::pushNextTracks(Skill* skill, SkillPerformInfo& performInfo) {
   
   // メロディの設定
   SkillPerformType performType = SkillPerformTypeNone;
-  string name = _characterManager->checkSkillTrackName(skill, performType, _musicSet);
-  if (skill) {
-    CCArray* targets = _enemyManager->getTargets(skill);
-    if (targets->count() > 0) {
-      bool isMiss = true;
-      for (int i = 0; i < targets->count(); ++i) {
-        Enemy* enemy = (Enemy*)targets->objectAtIndex(i);
-        DamageType type = enemy->damage(skill, _characterManager, true); // ダメージは与えずに結果だけ取り出す
-        if (type != DamageTypePhysicalInvalid && type != DamageTypeMagicalInvalid && type != DamageTypeNoDamage) {
-          isMiss = false; // ミスじゃなくする
-        }
-      }
-      // あとで書き直す
-      if (isMiss) {
-        if (_musicSet->isCommon("miss")) {
-          name = "miss";
-        } else {
-          stringstream ss;
-          ss << _characterManager->getCurrentCharacter()->getIdentifier() << "miss";
-          name = ss.str(); // MP足りてないとき、ミス音を返す
-        }
-      }
-    }
-  }
+  string name = this->checkSkillTrackName(skill, performType);
   performInfo.skillTrackName = name;
   performInfo.type = performType;
   performInfo.skill = skill;
@@ -169,6 +146,88 @@ void MusicManager::pushNextTracks(Skill* skill, SkillPerformInfo& performInfo) {
     drumFileStream << "drum" << drumLevel;
   }
   _music->pushTrack(this->getTrackFileName(drumFileStream.str().c_str()).c_str(), MusicChannelDrum);
+}
+
+string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& performeType) {
+  performeType = SkillPerformTypeNone;
+  if (skill) {
+    _characterManager->setWaitTurn(_characterManager->getWaitTurn() + 1);
+    if (_characterManager->getWaitTurn() == skill->getTurn()) {
+      std::stringstream ss;
+      if (_characterManager->getLastSkill() &&
+          string(_characterManager->getLastSkill()->getIdentifier()) != string(skill->getIdentifier())) {
+        _characterManager->setRepeatCount(0);
+      }
+      if (skill->isCommon() && _musicSet->isCommon(skill->getIdentifier())) {
+        // スキルのcommonがfalseのとき、曲名にキャラ名が付かない
+        // tension0.wav
+        ss << skill->getIdentifier() << _characterManager->getRepeatCount();
+      } else {
+        // commonがtrueのとき、曲名にキャラ名が付く
+        // ex: voxattack0.wav
+        ss << _characterManager->getCurrentCharacter()->getIdentifier() << skill->getIdentifier() << _characterManager->getRepeatCount();
+      }
+      _characterManager->setRepeatCount((_characterManager->getRepeatCount() + 1) % skill->getMaxRepeat());
+      _characterManager->setLastSkill(skill);
+      _characterManager->setCurrentSkill(NULL);
+      _characterManager->setWaitTurn(0);
+      
+      bool isMiss = true;
+      // 攻撃ミスってたらmiss音を返す
+      CCArray* targets = _enemyManager->getTargets(skill);
+      if (targets->count() > 0) {
+        for (int i = 0; i < targets->count(); ++i) {
+          Enemy* enemy = (Enemy*)targets->objectAtIndex(i);
+          DamageType type = enemy->damage(skill, _characterManager, true); // ダメージは与えずに結果だけ取り出す
+          if (type != DamageTypePhysicalInvalid && type != DamageTypeMagicalInvalid && type != DamageTypeNoDamage) {
+            isMiss = false; // ミスじゃなくする
+          }
+        }
+      } else {
+        isMiss = false;
+      }
+      // MP足りてなかったらミス音を返す
+      if (skill->getMP() <= _characterManager->getMP()) {
+        // MP足りてるとき、技名を返してやる
+        performeType = SkillPerformTypeSuccess;
+      } else {
+        performeType = SkillPerformTypeFailure;
+        isMiss = true;
+      }
+      if (isMiss) { // ミスったとき、miss音を返す
+        if (_musicSet->isCommon("miss")) {
+          return "miss";
+        } else {
+          stringstream ss;
+          ss << _characterManager->getCurrentCharacter()->getIdentifier() << "miss";
+          return ss.str(); // MP足りてないとき、ミス音を返す
+        }
+      } else {
+        return ss.str().c_str();
+      }
+    } else {
+      _characterManager->setCurrentSkill(skill);
+      performeType = SkillPerformTypeCharge;
+      std::stringstream ss;
+      ss << _characterManager->getCurrentCharacter()->getIdentifier() << skill->getIdentifier() << "_charge" << (_characterManager->getWaitTurn() - 1); // チャージ中の時、チャージ音返す
+      return ss.str().c_str();
+    }
+  } else {
+    if (_characterManager->getLastSkill() == NULL) {
+      _characterManager->setRepeatCount((_characterManager->getRepeatCount() + 1) % _musicSet->getWaitCount());
+    } else {
+      _characterManager->setRepeatCount(0);
+    }
+    _characterManager->setLastSkill(skill);
+  }
+  stringstream ss;
+  if (_musicSet->isCommon("wait")) {
+    ss << "wait" << _characterManager->getRepeatCount();
+    return ss.str().c_str();
+  } else {
+    ss << _characterManager->getCurrentCharacter()->getIdentifier() << "wait" << _characterManager->getRepeatCount();
+    return ss.str().c_str();
+  }
 }
 
 int MusicManager::getIntroCount() {

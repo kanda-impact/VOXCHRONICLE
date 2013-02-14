@@ -50,67 +50,6 @@ Character* CharacterManager::getCurrentCharacter() {
   return _currentCharacter;
 }
 
-string CharacterManager::checkSkillTrackName(Skill* skill, SkillPerformType& performeType, MusicSet* _musicSet) {
-  performeType = SkillPerformTypeNone;
-  if (skill) {
-    _waitTurn += 1;
-    if (_waitTurn == skill->getTurn()) {
-      std::stringstream ss;
-      if (_lastSkill && strcmp(_lastSkill->getIdentifier(), skill->getIdentifier())) {
-        _repeatCount = 0;
-      }
-      if (skill->isCommon() && _musicSet->isCommon(skill->getIdentifier())) {
-        // スキルのcommonがfalseのとき、曲名にキャラ名が付かない
-        // tension0.wav
-        ss << skill->getIdentifier() << _repeatCount;
-      } else {
-        // commonがtrueのとき、曲名にキャラ名が付く
-        // ex: voxattack0.wav
-        ss << _currentCharacter->getIdentifier() << skill->getIdentifier() << _repeatCount;
-      }
-      _repeatCount = (_repeatCount + 1) % skill->getMaxRepeat();
-      this->setLastSkill(skill);
-      this->setCurrentSkill(NULL);
-      _waitTurn = 0;
-      if (skill->getMP() <= this->getMP()) {
-        // MP足りてるときだけ
-        performeType = SkillPerformTypeSuccess;
-        return ss.str().c_str();
-      } else {
-        performeType = SkillPerformTypeFailure;
-        if (_musicSet->isCommon("miss")) {
-          return "miss";
-        } else {
-          stringstream ss;
-          ss << _currentCharacter->getIdentifier() << "miss";
-          return ss.str().c_str(); // MP足りてないとき、ミス音を返す
-        }
-      }
-    } else {
-      this->setCurrentSkill(skill);
-      performeType = SkillPerformTypeCharge;
-      std::stringstream ss;
-      ss << _currentCharacter->getIdentifier() << skill->getIdentifier() << "_charge" << (_waitTurn - 1); // チャージ中の時、チャージ音返す
-      return ss.str().c_str();
-    }
-  } else {
-    if (_lastSkill == NULL) {
-      _repeatCount = (_repeatCount + 1) % _musicSet->getWaitCount();
-    } else {
-      _repeatCount = 0;
-    }
-    this->setLastSkill(skill);
-  }
-  stringstream ss;
-  if (_musicSet->isCommon("wait")) {
-    ss << "wait" << _repeatCount;
-    return ss.str().c_str();
-  } else {
-    ss << _currentCharacter->getIdentifier() << "wait" << _repeatCount;
-    return ss.str().c_str();
-  }
-}
-
 bool CharacterManager::isPerforming() {
   return (_currentSkill && _waitTurn < _currentSkill->getTurn());
 }
@@ -312,4 +251,20 @@ Skill* CharacterManager::getLastSkill() {
 
 std::queue<DamageInfo>* CharacterManager::getDamageInfoQueue() {
   return _damageInfoQueue;
+}
+
+int CharacterManager::getWaitTurn() {
+  return _waitTurn;
+}
+
+int CharacterManager::getRepeatCount() {
+  return _repeatCount;
+}
+
+void CharacterManager::setWaitTurn(int waitTurn) {
+  _waitTurn = waitTurn;
+}
+
+void CharacterManager::setRepeatCount(int repeatCount) {
+  _repeatCount = repeatCount;
 }

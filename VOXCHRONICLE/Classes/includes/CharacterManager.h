@@ -67,15 +67,6 @@ class CharacterManager :public CCObject {
   ~CharacterManager();
   
   /**
-   現在の状況から、次のターンに鳴らす音楽のファイル名を取得します。
-   また、スキル実行状態を渡します。
-   @param Skill 実行するSkillを渡します。
-   @param SkillPerformType& performType SkillPerformTypeを渡します
-   @return string スキルファイル名
-   */
-  string checkSkillTrackName(Skill* skill, SkillPerformType& performeType, MusicSet* _musicSet);
-  
-  /**
    現在のターン、スキルを実行中かどうか返します
    前作の溜め攻撃のような2ターン以上かかる技向けのメソッドですが
    現行では、レベルデザイン的に廃止になったのでオワコン
@@ -170,6 +161,8 @@ class CharacterManager :public CCObject {
   int getMaxHP();
   int getMaxMP();
   int getDrumLevel();
+  int getWaitTurn();
+  int getRepeatCount();
   std::queue<DamageInfo>* getDamageInfoQueue();
   
   // setter
@@ -178,6 +171,8 @@ class CharacterManager :public CCObject {
   void setShield(bool s);
   void setLevel(int l);
   void setDrumLevel(int l);
+  void setWaitTurn(int waitTurn);
+  void setRepeatCount(int repeatCount);
   
 };
 
