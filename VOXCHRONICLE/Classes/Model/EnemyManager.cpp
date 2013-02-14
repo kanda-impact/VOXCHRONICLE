@@ -312,21 +312,15 @@ void EnemyManager::draw() {
   // とりあえずVOX1を移植
   // 面倒なので他の人に計算してもらう
   CCLayer::draw();
-  /*CCDirector* director = CCDirector::sharedDirector();
-  float sum = (1 + MAX_ROW) * MAX_ROW / 2;
-  for (int i = 0; i < MAX_ROW; ++i) {
-    int sy = 80 + 25 * 0;
-    int ey = 80 + 25 * (MAX_ROW - 1);
-    float tempSum = (1 + (MAX_ROW - i)) * (MAX_ROW - i) / 2;
-    float scale = 1.0 * tempSum / sum;
-    float y = ey + (sy - ey) * tempSum / sum - 125 * scale;
-    CCPoint origin = CCPointMake(0, y);
-    CCSize size = director->getWinSize();
-    CCPoint dest = CCPointMake(size.width, y);
-    float opacity = 0.25 + 0.75 * ((float)(MAX_ROW - i) / MAX_ROW);
+  CCDirector* director = CCDirector::sharedDirector();
+  for (int row = 0; row < MAX_ROW; ++row) {
+    CCPoint line = EnemyManager::calcLinePosition(row, 1);
+    CCPoint origin = ccp(0, line.y);
+    CCPoint end = ccp(director->getWinSize().width, line.y);
+    float opacity = 0.25 + 0.75 * ((float)(MAX_ROW - row) / MAX_ROW);
     ccDrawColor4F(1.0 * opacity, 1.0 * opacity, 1.0 * opacity, 1);
-    ccDrawLine(origin, dest);
-  }*/
+    ccDrawLine(origin, end);
+  }
 }
 
 void EnemyManager::purgeAllTrash() {
@@ -373,4 +367,28 @@ Enemy* EnemyManager::getBoss() {
 
 void EnemyManager::setBoss(Enemy* boss) {
   _boss = boss;
+}
+
+CCPoint& EnemyManager::calcLinePosition(int row, int col) {
+  CCPoint root = CCPointZero;
+  CCPoint end = CCPointZero;
+  const int width = 480;
+  const int horizonWidth = 120;
+  const int horizonDistance = 122.5;
+  const int marginLeft = (width - horizonWidth) / 2.0f;
+  const int padding = 80;
+  const float scale = horizonWidth / width;
+  if (col == 0) {
+    root = ccp(padding, 0);
+    end = ccp(marginLeft + padding * scale, horizonDistance);
+  } else if (col == 1) {
+    root = ccp(width / 2.0, 0);
+    end = ccp(width / 2.0, horizonDistance);
+  } else if (col == 2) {
+    root = ccp(width - padding, 0);
+    end = ccp(marginLeft + horizonWidth - padding * scale, horizonDistance);
+  }
+  CCPoint sub = ccpSub(end, root);
+  CCPoint p = ccpAdd(root, ccpMult(sub, row / (float)MAX_ROW));
+  return p;
 }

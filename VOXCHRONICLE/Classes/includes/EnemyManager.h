@@ -149,6 +149,8 @@ class EnemyManager :public CCLayer {
   Enemy* getBoss();
   void setBoss(Enemy* boss);
   
+  static CCPoint& calcLinePosition(int row, int col);
+  
   CREATE_FUNC(EnemyManager)
 };
 

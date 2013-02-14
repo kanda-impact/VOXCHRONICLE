@@ -170,27 +170,8 @@ int Enemy::getExp() {
 }
 
 void Enemy::setRowAndCol(int row, float col) {
-  CCPoint root = CCPointZero;
-  CCPoint end = CCPointZero;
-  const int width = 480;
-  const int horizonWidth = 120;
-  const int horizonDistance = 122.5;
-  const int marginLeft = (width - horizonWidth) / 2.0f;
-  const int padding = 80;
-  const float scale = horizonWidth / width;
-  if (col == 0) {
-    root = ccp(padding, 0);
-    end = ccp(marginLeft + padding * scale, horizonDistance);
-  } else if (col == 1) {
-    root = ccp(width / 2.0, 0);
-    end = ccp(width / 2.0, horizonDistance);
-  } else if (col == 2) {
-    root = ccp(width - padding, 0);
-    end = ccp(marginLeft + horizonWidth - padding * scale, horizonDistance);
-  }
-  CCPoint sub = ccpSub(end, root);
-  CCPoint p = ccpAdd(root, ccpMult(sub, row / (float)MAX_ROW));
-  this->setPosition(p);
+  CCPoint p = EnemyManager::calcLinePosition(row, col);
+  this->setPosition(ccp(p.x, p.y));
   this->setAnchorPoint(ccp(0.5f, 0.0f));
   // 並び順の変更
   CCNode* parent = this->getParent();
