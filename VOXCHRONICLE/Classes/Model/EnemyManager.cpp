@@ -213,16 +213,9 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CharacterManager* charact
     } else if (range == SkillRangeFront) {
       // 最前列攻撃
       // スラッシュ
-      // 一番前の敵がいる列と、その後ろの列を攻撃します
-      Enemy* nearest = this->getNearestEnemy();
-      if (nearest != NULL) {
-        boost::function<bool (int, float)> predicate = _1 == nearest->getRow();
-        boost::function<bool (int, float)> predicateBack = _1 == nearest->getRow() + 1;
-        CCArray* targets0 = this->getFilteredEnemies(predicate);
-        CCArray* targets1 = this->getFilteredEnemies(predicateBack);
-        targets->addObjectsFromArray(targets0);
-        targets->addObjectsFromArray(targets1);
-      }
+      // 仕様が変わって前4列にいる敵をターゲットにするようにしました
+      boost::function<bool (int, float)> predicate = _1 < MAX_ROW / 2;
+      targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
     }
     
     // ターゲットに技の効果を与える
