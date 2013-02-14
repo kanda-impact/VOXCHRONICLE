@@ -127,7 +127,9 @@ DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager, bool 
   } else if ((_item == EnemyItemShield && skill->getType() == SkillTypeMagical) ||
              (_item == EnemyItemBarrier && skill->getType() == SkillTypePhysical)) {
     damage = 0;
-    this->setItem(EnemyItemNone);
+    if (!simulate) { // simulateがfalseのときだけ、アイテムを消去してやる
+      this->setItem(EnemyItemNone);
+    }
     return _item == EnemyItemShield ? DamageTypeShieldBreak : DamageTypeBarrierBreak;
   }
   
