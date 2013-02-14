@@ -138,8 +138,8 @@ void MusicManager::pushNextTracks(Skill* skill, SkillPerformInfo& performInfo) {
   
   // ドラムの設定
   stringstream drumFileStream;
-  if (_characterManager->getTension() > 0 && skill != NULL && string(skill->getIdentifier()) != "tension") {
-    // テンションが1以上で、skillがあるとき、かつテンションじゃないとき、インパクトをならしてやる
+  if (_characterManager->getTension() > 0 && skill != NULL && string(skill->getIdentifier()) != "tension" && performInfo.type == SkillPerformTypeSuccess) {
+    // テンションが1以上で、skillがあるとき、かつテンションじゃないとき、かつ攻撃ピロってないときインパクトをならしてやる
     drumFileStream << "impact" << _characterManager->getTension() - 1;
   } else {
     int drumLevel = this->calcDrumScore();
