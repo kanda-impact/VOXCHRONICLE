@@ -8,8 +8,12 @@
 
 #include <sstream>
 #include <string>
+#include <boost/lexical_cast.hpp>
 #include "Skill.h"
 #include "LuaObject.h"
+#include "FileUtils.h"
+
+using namespace boost;
 
 Skill::Skill(const char* identifier) {
   stringstream ss;
@@ -29,6 +33,12 @@ Skill::Skill(const char* identifier) {
   _se = _lua->getBoolean("se");
   CCLuaValueArray* mes = _lua->getArray("messages");
   
+  // エフェクトを先読みしておきます
+  for (int i = 0; i < _effectFrames; ++i) {
+    const char* frameName = (string(this->getIdentifier()) + lexical_cast<string>(i) + string(".png")).c_str();
+    CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath(frameName).c_str());
+  }
+
   // メッセージ一覧を生成します
   _messages = CCArray::create();
   _messages->retain();
