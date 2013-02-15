@@ -134,7 +134,7 @@ CCArray* EnemyManager::getFilteredEnemies(boost::function<bool (float, int)>filt
 
 bool EnemyManager::performLuaFunction(Skill* skill, Enemy* target, CharacterManager* characterManager) {
   LuaObject* lua = skill->getLuaObject();
-  lua_State* L = lua->getLuaEngine()->getLuaState();
+  lua_State* L = lua->getLuaEngineWithLoad()->getLuaState();
   lua_getglobal(L, "Skill");
   int table = lua_gettop(L);
   lua_getfield(L, table, "performSkill");
@@ -142,21 +142,15 @@ bool EnemyManager::performLuaFunction(Skill* skill, Enemy* target, CharacterMana
     lua->pushCCObject(skill, "Skill");
     if (target) {
       lua->pushCCObject(target, "Enemy");
-      target->retain();
     } else {
       lua->getLuaEngine()->pushNil();
     }
     lua->pushCCObject(characterManager, "CharacterManager");
     lua->pushCCObject(this, "EnemyManager");
-    characterManager->retain();
     if (lua_pcall(L, 4, 1, 0)) {
       cout << lua_tostring(L, lua_gettop(L)) << endl;
       return false;
     }
-    if (target) {
-      lua->getLuaEngine()->removeScriptObjectByCCObject(target);
-    }
-    lua->getLuaEngine()->removeScriptObjectByCCObject(characterManager);
     return true;
   }
   lua->getLuaEngine()->cleanStack();
@@ -344,7 +338,7 @@ void EnemyManager::nextTurn (CharacterManager* characterManager) {
     Enemy* enemy = (Enemy*)obj;
     if (enemy == NULL) continue;
     if (enemy->getEnable() && enemy->getRow() >= 0) {
-      if (false) { // 敵の技を実行する
+      if (!enemy->performSkill(characterManager, this)) { // 敵の技を実行する
         if (enemy->canMove()) { // 何も実行されなかったら、移動できるか調べる
           enemy->moveRow(-1); // 移動できたら1歩移動する
         }

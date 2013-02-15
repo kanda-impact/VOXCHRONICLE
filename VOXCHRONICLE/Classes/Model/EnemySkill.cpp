@@ -22,7 +22,7 @@ EnemySkill::~EnemySkill() {
 }
 
 void EnemySkill::performSkill(Enemy *user, CharacterManager *characterManager, EnemyManager *enemyManager) {
-  lua_State* L = _lua->getLuaEngine()->getLuaState();
+  lua_State* L = _lua->getLuaEngineWithLoad()->getLuaState();
   lua_getfield(L, lua_gettop(L), "performSkill");
   if (lua_isfunction(L, lua_gettop(L))) {
     _lua->pushCCObject(this, "EnemySkill");

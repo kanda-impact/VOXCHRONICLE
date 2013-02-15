@@ -53,6 +53,8 @@ bool AppDelegate::applicationDidFinishLaunching()
   // create a scene. it's an autorelease object
   CCScene *pScene = LogoScene::scene();
   
+  CCScriptEngineManager::sharedManager()->setScriptEngine(CCLuaEngine::defaultEngine());
+  
   // run
   pDirector->runWithScene(pScene);
   

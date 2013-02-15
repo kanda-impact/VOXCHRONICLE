@@ -76,7 +76,7 @@ Map::~Map() {
 Level* Map::createLevel(int level) {
   Level* lv = new Level(level);
   // モンスターテーブルを設定
-  lua_State* L = _lua->getLuaEngine()->getLuaState();
+  lua_State* L = _lua->getLuaEngineWithLoad()->getLuaState();
   lua_getglobal(L, "Map");
   int table = lua_gettop(L);
   lua_getfield(L, table, "getEnemyTable");
@@ -166,7 +166,7 @@ MusicSet* Map::getCurrentMusic(Level *level) {
 }
 
 void Map::performOnLevel(int level, CharacterManager* characterManager, EnemyManager *enemyManager) {
-  lua_State* L = _lua->getLuaEngine()->getLuaState();
+  lua_State* L = _lua->getLuaEngineWithLoad()->getLuaState();
   lua_getglobal(L, "Map");
   int table = lua_gettop(L);
   lua_getfield(L, table, "onLevel");

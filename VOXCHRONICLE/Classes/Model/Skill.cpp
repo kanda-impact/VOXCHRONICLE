@@ -63,7 +63,7 @@ int Skill::getMaxRepeat() {
 }
 
 int Skill::getPowerWithTension(int tension) {
-  lua_State* L = _lua->getLuaEngine()->getLuaState();
+  lua_State* L = _lua->getLuaEngineWithLoad()->getLuaState();
   lua_getglobal(L, "Skill");
   int table = lua_gettop(L);
   lua_getfield(L, table, "getPower");

@@ -32,20 +32,20 @@ LuaObject::LuaObject(const char* scriptName, const char* className) {
 }
 
 void LuaObject::init(const char* scriptName, const char* className) {
-  _engine = boost::shared_ptr<CCLuaEngine>(CCLuaEngine::create());
+  _engine = CCLuaEngine::defaultEngine();
   string name(scriptName);
   stringstream ss;
   if (!boost::algorithm::iends_with(name, ".lua")) {
     ss << name << ".lua";
     name = ss.str();
   }
-  tolua_voxchronicle_open(this->getLuaEngine()->getLuaState());
   _path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath(FileUtils::getFilePath(name.c_str()).c_str());
   _engine->addSearchPath(_path.substr(0, _path.find_last_of("/")).c_str());
   _scriptName = name.c_str();
   _className = className;
   _ccObjectPool = CCArray::create();
   _ccObjectPool->retain();
+  tolua_voxchronicle_open(_engine->getLuaState());
 }
 
 LuaObject::~LuaObject() {
@@ -139,7 +139,16 @@ CCLuaValueArray* LuaObject::getArray(const char *key) {
 }
 
 CCLuaEngine* LuaObject::getLuaEngine() {
-  return _engine.get();
+  return _engine;
+}
+
+CCLuaEngine* LuaObject::getLuaEngineWithLoad() {
+  _engine->executeScriptFile(_path.c_str());
+  lua_State* L = _engine->getLuaState();
+  if (_className != NULL) {
+    lua_getglobal(L, _className);
+  }
+  return _engine;
 }
 
 float LuaObject::getFloatFromTable(lua_State* state, int index) {
@@ -295,6 +304,6 @@ void LuaObject::pushCCObject(cocos2d::CCObject *object, const char* typeName) {
    一度、_ccObjectPoolでretainして
    実行ステートを消してから、投げ込んだモノをreleaseすれば解決する気がする
   */
-  _ccObjectPool->addObject(object);
+  //_ccObjectPool->addObject(object);
   _engine->pushCCObject(object, typeName);
 }

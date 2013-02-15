@@ -20,7 +20,7 @@ using namespace cocos2d;
 class LuaObject :public CCObject {
  private:
   void init(const char* scriptName, const char* className);
-  boost::shared_ptr<CCLuaEngine> _engine;
+  CCLuaEngine* _engine;
   const char* _className;
   const char* _scriptName;
   std::string _path;
@@ -43,6 +43,7 @@ class LuaObject :public CCObject {
   CCLuaValueArray* getArray(const char* key);
   const void* getObject(const char* key);
   CCLuaEngine* getLuaEngine();
+  CCLuaEngine* getLuaEngineWithLoad();
   void pushCCObject(CCObject* object, const char* typeName);
   static CCLuaValueDict* loadLuaTableFromFile(const char* scriptName);
   CCLuaValueDict* recursivelyLoadTable(int index);
