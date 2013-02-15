@@ -49,9 +49,9 @@ void MessageManager::pushMessage(const char *message, cocos2d::CCDictionary *dic
   // <で始まって>で終わる文字列にマッチする正規表現で検索
   sregex regex = sregex::compile("{(.+)}"); // #{name}みたいなタグを取得する
   smatch m;
-  string str = string(message);
-  string::const_iterator begin = str.begin();
-  string::const_iterator end = str.end();
+  string origin = string(message);
+  string::const_iterator begin = origin.begin();
+  string::const_iterator end = origin.end();
   
   while (regex_search(begin, end, m, regex)) {
     string key = m.str(1); // 後方参照で name が取れてるはず
@@ -60,9 +60,11 @@ void MessageManager::pushMessage(const char *message, cocos2d::CCDictionary *dic
       CCString* value = (CCString*)dict->objectForKey(key);
       after = value->getCString();
     }
-    str = regex_replace(str, regex, after);
+    origin = regex_replace(origin, regex, after);
+    begin = origin.begin();
+    end = origin.end();
   }
-  this->pushMessage(str.c_str());
+  this->pushMessage(origin.c_str());
 }
 
 void MessageManager::pushRandomMessageFromLua(const char *luaName) {
