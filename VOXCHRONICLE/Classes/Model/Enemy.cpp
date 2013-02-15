@@ -66,6 +66,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   stringstream ss;
   ss << "Image/" << _imageName << "0.png";
   bool success = (bool)this->initWithFile(FileUtils::getFilePath(ss.str().c_str()).c_str());
+  
   this->setItem((EnemyItem)_lua->getInt("item"));
   if (success) {
     setDefaultAnimationClip();
@@ -89,6 +90,7 @@ Enemy::~Enemy() {
   _lua->release();
   delete _name;
   delete _register;
+  cout << "Enemy was released." << endl;
 }
 
 void Enemy::update(float dt) {
@@ -296,14 +298,14 @@ bool Enemy::hasRegister(const char *key) {
 bool Enemy::setAnimationClip(const char *clipName, int frames, bool hasFrame) {
   stringstream ss;
   ss << _imageName << "_" << clipName;
-  return this->setAnimatonAndFrame(ss.str().c_str(), frames, hasFrame);
+  return this->setAnimationAndFrame(ss.str().c_str(), frames, hasFrame);
 }
 
 bool Enemy::setDefaultAnimationClip() {
-  return this->setAnimatonAndFrame(_imageName, _frameCount, _hasFrame);
+  return this->setAnimationAndFrame(_imageName, _frameCount, _hasFrame);
 }
 
-bool Enemy::setAnimatonAndFrame(const char *filePrefix, int frames, bool hasFrame) {
+bool Enemy::setAnimationAndFrame(const char *filePrefix, int frames, bool hasFrame) {
   this->stopAllActions(); // 全てのアニメーションを停止
   if (this->getChildByTag(EnemyTagFrame) != NULL) {
     this->removeChildByTag(EnemyTagFrame, true); // フレームを取る
@@ -313,6 +315,7 @@ bool Enemy::setAnimatonAndFrame(const char *filePrefix, int frames, bool hasFram
   CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath(ss.str().c_str()).c_str());
   bool success = texture != NULL;
   this->setTexture(texture);
+  
   if (success) {
     CCAnimation* animation = CCAnimation::create();
     CCSize size = this->getTexture()->getContentSize();
@@ -325,7 +328,6 @@ bool Enemy::setAnimatonAndFrame(const char *filePrefix, int frames, bool hasFram
     animation->setLoops(-1);
     animation->setDelayPerUnit(10.0 / 60.0);
     this->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
-    
     // もし、フレームを持っているなら、フレームを追加してやる
     if (hasFrame) {
       CCSprite* frameSprite = this->createFrameSprite(filePrefix, frames);

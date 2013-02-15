@@ -19,8 +19,8 @@ bool EnemyManager::init() {
   if (!CCLayer::init()) {
     return false;
   }
-  _enemiesQueue = CCArray::create();
-  _enemiesQueue->retain();
+  _enemyNamesQueue = CCArray::create();
+  _enemyNamesQueue->retain();
   _level = NULL;
   mt19937 gen( static_cast<unsigned long>(time(0)) );
   uniform_smallint<> dst( 0, 2 );
@@ -39,19 +39,19 @@ EnemyManager::EnemyManager() {
 
 EnemyManager::~EnemyManager() {
   _trash->release();
-  _enemiesQueue->release();
+  _enemyNamesQueue->release();
   delete _enemyPopLots;
 }
 
 Enemy* EnemyManager::popEnemy() {
-  if (_enemiesQueue->count() == 0) {
-    _enemiesQueue->addObjectsFromArray(this->createEnemyQueue());
+  if (_enemyNamesQueue->count() == 0) {
+    _enemyNamesQueue->addObjectsFromArray(this->createEnemyQueue());
   }
-  if (_enemiesQueue->count() > 0) {
-    const char* enemyName = ((CCString*)_enemiesQueue->lastObject())->getCString();
+  if (_enemyNamesQueue->count() > 0) {
+    const char* enemyName = ((CCString*)_enemyNamesQueue->lastObject())->getCString();
     Enemy* enemy = Enemy::create(enemyName);
     if (enemy != NULL) {
-      _enemiesQueue->removeLastObject();
+      _enemyNamesQueue->removeLastObject();
       int col = rand() % 3;
       enemy->setCol(col);
       this->addChild(enemy, (MAX_ROW - enemy->getRow()));
@@ -121,7 +121,7 @@ Enemy* EnemyManager::getNearestEnemy() {
 }
 
 CCArray* EnemyManager::getFilteredEnemies(boost::function<bool (float, int)>filter) {
-  CCArray* enemies = (CCArray*)CCArray::create();
+  CCArray* enemies = CCArray::create();
   CCObject* obj = NULL;
   CCARRAY_FOREACH(this->getChildren(), obj) {
     Enemy* enemy = (Enemy*)obj;
@@ -333,7 +333,7 @@ void EnemyManager::purgeAllTrash() {
 void EnemyManager::pushEnemiesQueue(cocos2d::CCArray *enemies) {
   CCObject* obj = NULL;
   CCARRAY_FOREACH(enemies, obj) {
-    _enemiesQueue->addObject(obj);
+    _enemyNamesQueue->addObject(obj);
   }
 }
 
@@ -344,7 +344,7 @@ void EnemyManager::nextTurn (CharacterManager* characterManager) {
     Enemy* enemy = (Enemy*)obj;
     if (enemy == NULL) continue;
     if (enemy->getEnable() && enemy->getRow() >= 0) {
-      if (!enemy->performSkill(characterManager, this)) { // 敵の技を実行する
+      if (false) { // 敵の技を実行する
         if (enemy->canMove()) { // 何も実行されなかったら、移動できるか調べる
           enemy->moveRow(-1); // 移動できたら1歩移動する
         }
@@ -354,11 +354,11 @@ void EnemyManager::nextTurn (CharacterManager* characterManager) {
 }
 
 void EnemyManager::removeAllEnemiesQueue() {
-  _enemiesQueue->removeAllObjects();
+  _enemyNamesQueue->removeAllObjects();
 }
 
 Enemy* EnemyManager::popEnemyAt(string enemyName, int row, int col) {
-  _enemiesQueue->addObject(CCString::create(enemyName));
+  _enemyNamesQueue->addObject(CCString::create(enemyName));
   Enemy* enemy = this->popEnemy();
   enemy->setRowAndCol(row, col);
   return enemy;

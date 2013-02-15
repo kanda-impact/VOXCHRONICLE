@@ -55,7 +55,7 @@ class Enemy : public CCSprite {
   LuaObject* _lua;
   string _scriptPath;
   std::map<string, int>* _register;
-  bool setAnimatonAndFrame(const char* filePrefix, int frames, bool hasFrame);
+  bool setAnimationAndFrame(const char* filePrefix, int frames, bool hasFrame);
   CCSprite* createFrameSprite(const char* filePrefix, int frames);
  public:
   static Enemy* create(const char* enemyName);

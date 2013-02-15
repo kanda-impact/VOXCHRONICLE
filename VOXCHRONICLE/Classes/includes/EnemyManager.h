@@ -26,7 +26,7 @@ class EnemyManager :public CCLayer {
   CCArray* _enemies;
   vector<bool>* _enemyPopLots;
   Level* _level;
-  CCArray* _enemiesQueue;
+  CCArray* _enemyNamesQueue;
   CCArray* createEnemyQueue();
   
   /**
@@ -158,7 +158,7 @@ class EnemyManager :public CCLayer {
   void setBoss(Enemy* boss);
   
   static CCPoint& calcLinePosition(int row, int col);
-  
+
   CREATE_FUNC(EnemyManager)
 };
 
