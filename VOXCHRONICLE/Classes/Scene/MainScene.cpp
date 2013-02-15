@@ -377,8 +377,8 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         } else if (skill->hasSE()) {
           // 対象が自分、もしくは対象が1体以上いたとき、ダメージ効果音をならします
           seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
+          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
         }
-        CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
       }  else if (skill->getRange() == SkillRangeSelf && skill->hasSE()) { // 対象が自分だけ、かつSEを持っているとき
         stringstream seStream;
         // 効果音をならします
