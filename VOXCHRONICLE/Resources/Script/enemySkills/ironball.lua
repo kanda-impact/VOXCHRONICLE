@@ -6,7 +6,7 @@ EnemySkill = {
     col = user:getCol()
     math.random(100)
     i = 1 - ((math.random(2) - 1) * 2) -- iは-1か1になるはず
-    enemyManager:popEnemyAt("iron", row, col + i) -- 自分の左か右に鉄球を生成
+    enemyManager:popEnemyAt("iron_boss", row, col + i) -- 自分の左か右に鉄球を生成
   end
 }
 return EnemySkill

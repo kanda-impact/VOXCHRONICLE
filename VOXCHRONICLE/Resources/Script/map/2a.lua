@@ -7,7 +7,7 @@ Map = {
   initialLevel = 1,
   maxLevel = 99,
   getEnemyTable = function(level)
-    return {slime = 5, leaf = 5, typhoon = 5, toadstool = 2, dragon = 3, tnt = 3, ginet = 2, moth = 1}
+  return {slime0 = 1}
   end,
   getEnemyPopRate = function(level)
     return 0.7

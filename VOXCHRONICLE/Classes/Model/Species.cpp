@@ -57,12 +57,12 @@ bool Species::hasFrame() {
   return _hasFrame;
 }
 
-string Species::choiceEnemySkill() {
+string Species::choiceEnemySkill(CCObject* enemy) {
   lua_State* L = _lua->getLuaEngineWithLoad()->getLuaState();
   lua_getglobal(L, "Enemy");
   lua_getfield(L, lua_gettop(L), "performSkill");
   if (lua_isfunction(L, lua_gettop(L))) {
-    _lua->pushCCObject(this, "Enemy");
+    _lua->pushCCObject(enemy, "Enemy");
     if (lua_pcall(L, 1, 1, 0)) {
       cout << lua_tostring(L, lua_gettop(L)) << endl;
       return "";

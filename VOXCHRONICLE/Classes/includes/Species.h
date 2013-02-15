@@ -41,7 +41,7 @@ class Species :public CCObject {
   int getMinRow();
   int getAnimationFrames();
   bool hasFrame();
-  string choiceEnemySkill();
+  string choiceEnemySkill(CCObject* enemy);
 };
 
 #endif /* defined(__VOXCHRONICLE__Species__) */
