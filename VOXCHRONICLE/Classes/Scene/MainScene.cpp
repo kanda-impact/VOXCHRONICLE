@@ -371,9 +371,9 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         // 今は当たった敵1体目のダメージタイプをとってきてならしているが、
         // 複数体に同時に当たったときは遅延して順番にならしても良さそう
         if (damageType == DamageTypeShieldBreak) {
-          seStream << "shield_break.mp3";
+          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("shield_break.mp3").c_str());
         } else if (damageType == DamageTypeBarrierBreak) {
-          seStream << "barrier_break.mp3";
+          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("barrier_break.mp3").c_str());
         } else if (skill->hasSE()) {
           // 対象が自分、もしくは対象が1体以上いたとき、ダメージ効果音をならします
           seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
@@ -422,7 +422,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
   ++_turnCount;
   ++_mapTurnCount;
   // このターンにテンション使ってないときreset
-  if (_characterManager->getLastSkill() != NULL && strcmp(_characterManager->getLastSkill()->getIdentifier(), "tension")) {
+  if (_characterManager->getLastSkill() != NULL && _characterManager->getLastSkill()->getIdentifier() != "tension") {
     _characterManager->resetTension();
   }
   

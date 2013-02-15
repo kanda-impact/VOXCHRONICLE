@@ -74,6 +74,7 @@ void SkillTrigger::setSkill(Skill* skill) {
     _icon->retain();
     this->addChild(_icon);
     _icon->setScale(0.3f);
+    
   }
   this->setSkillTriggerState(SkillTriggerStateNormal);
 }

@@ -9,6 +9,7 @@ Skill = {
   maxRepeat = 1,
   turn = 1,
   performSkill = function(self, target, characterManager, enemyManager)
+    print("change!")
     characterManager:changeCharacter()
   end,
   getPower = function(tension)

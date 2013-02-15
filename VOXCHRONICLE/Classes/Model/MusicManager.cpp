@@ -159,7 +159,7 @@ string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& perform
           string(_characterManager->getLastSkill()->getIdentifier()) != string(skill->getIdentifier())) {
         _characterManager->setRepeatCount(0);
       }
-      trackName = this->buildTrackName(skill->getIdentifier(), skill, _characterManager->getRepeatCount());
+      trackName = this->buildTrackName(skill->getIdentifier().c_str(), skill, _characterManager->getRepeatCount());
       _characterManager->setRepeatCount((_characterManager->getRepeatCount() + 1) % skill->getMaxRepeat());
       _characterManager->setLastSkill(skill);
       _characterManager->setCurrentSkill(NULL);

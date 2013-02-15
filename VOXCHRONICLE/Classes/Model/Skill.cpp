@@ -16,8 +16,8 @@ Skill::Skill(const char* identifier) {
   ss << "Script/skills/" << identifier;
   _lua = new LuaObject(ss.str().c_str(), "Skill");
   _lua->retain();
-  _name = new std::string(_lua->getString("name"));
-  _identifier = _lua->getString("identifier");
+  _name = string(_lua->getString("name"));
+  _identifier = string(_lua->getString("identifier"));
   _mp = _lua->getInt("mp");
   _common = _lua->getBoolean("common");
   _maxRepeat = _lua->getInt("maxRepeat");
@@ -41,16 +41,15 @@ Skill::Skill(const char* identifier) {
 }
 
 Skill::~Skill() {
-  delete _name;
   _lua->release();
   _messages->release();
 }
 
-const char* Skill::getName() {
-  return _name->c_str();
+string Skill::getName() {
+  return _name;
 }
 
-const char* Skill::getIdentifier() {
+string Skill::getIdentifier() {
   return _identifier;
 }
 
