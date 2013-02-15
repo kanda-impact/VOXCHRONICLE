@@ -113,7 +113,7 @@ float Enemy::bottomLine() {
 
 void Enemy::moveRow(float r) {
   this->setRow(this->getRow()  + r);
-  this->getParent()->reorderChild(this, (MAX_ROW - _row));
+  //this->getParent()->reorderChild(this, (MAX_ROW - _row));
 }
 
 DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager, bool simulate) {
@@ -185,7 +185,7 @@ void Enemy::setRowAndCol(int row, float col) {
   CCNode* parent = this->getParent();
   if (parent != NULL) {
     parent->removeChild(this, false);
-    int order = (MAX_ROW - row) * 10;
+    int order = (MAX_ROW - row) * 10 + (3 - col);
     parent->addChild(this, order);
   }
   this->toggleBlink(row <= 1);
