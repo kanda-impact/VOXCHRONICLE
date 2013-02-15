@@ -29,6 +29,7 @@ class LuaObject :public CCObject {
   void loadTable();
   CCArray* _ccObjectPool;
  public:
+  static LuaObject* create(const char* scriptName);
   LuaObject(const char* scriptName);
   LuaObject(const char* scriptName, const char* className);
   ~LuaObject();

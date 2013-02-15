@@ -49,22 +49,17 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _lua = new LuaObject(file.str().c_str());
   _lua->retain();
   _hp = _lua->getInt("hp");
+  _species = new Species(_lua->getString("species"));
+  _species->retain();
   _maxHP = _hp;
-  _attack = _lua->getInt("attack");
   _exp = _lua->getInt("exp");
-  _counter = _lua->getInt("counter");
-  _speed = _lua->getInt("speed");
   _type = (SkillType)_lua->getInt("type");
   _level = _lua->getInt("level");
-  _minRow = _lua->getInt("minRow");
   _hasFrame = _lua->getBoolean("hasFrame");
   _speedCount = 0;
-  _imageName = string(_lua->getString("imageName"));
-  _frameCount = _lua->getInt("animationFrames");
-  _name = string(_lua->getString("name"));
   _enable = true;
   stringstream ss;
-  ss << "Image/" << _imageName << "0.png";
+  ss << "Image/" << _species->getImageName().c_str() << "0.png";
   bool success = (bool)this->initWithFile(FileUtils::getFilePath(ss.str().c_str()).c_str());
   
   this->setItem((EnemyItem)_lua->getInt("item"));
@@ -88,6 +83,7 @@ Enemy::Enemy() {
 
 Enemy::~Enemy() {
   _lua->release();
+  _species->release();
   delete _register;
   cout << "Enemy was released." << endl;
 }
@@ -205,7 +201,7 @@ void Enemy::setCol(int c) {
 }
 
 int Enemy::getCounter() {
-  return _counter;
+  return _species->getCounter();
 }
 
 int Enemy::getHP() {
@@ -213,8 +209,8 @@ int Enemy::getHP() {
 }
 
 bool Enemy::canMove() {
-  _speedCount = (_speedCount + 1) % _speed;
-  return _speedCount == 0 && this->getRow() >= _minRow;
+  _speedCount = (_speedCount + 1) % _species->getSpeed();
+  return _speedCount == 0 && this->getRow() >= _species->getMinRow();
 }
 
 SkillType Enemy::getType() {
@@ -226,7 +222,7 @@ int Enemy::getLevel() {
 }
 
 int Enemy::getAttack() {
-  return _attack;
+  return _species->getAttack();
 }
 
 EnemyItem Enemy::getItem() {
@@ -296,12 +292,12 @@ bool Enemy::hasRegister(const char *key) {
 
 bool Enemy::setAnimationClip(const char *clipName, int frames, bool hasFrame) {
   stringstream ss;
-  ss << _imageName << "_" << clipName;
+  ss << _species->getImageName() << "_" << clipName;
   return this->setAnimationAndFrame(ss.str().c_str(), frames, hasFrame);
 }
 
 bool Enemy::setDefaultAnimationClip() {
-  return this->setAnimationAndFrame(_imageName.c_str(), _frameCount, _hasFrame);
+  return this->setAnimationAndFrame(_species->getImageName().c_str(), _species->getFrameCount(), _hasFrame);
 }
 
 bool Enemy::setAnimationAndFrame(const char *filePrefix, int frames, bool hasFrame) {
@@ -382,5 +378,5 @@ void Enemy::toggleBlink(bool toggle) {
 }
 
 string Enemy::getName() {
-  return _name;
+  return _species->getName();
 }

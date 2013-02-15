@@ -23,6 +23,12 @@ typedef enum {
   kStructTypeRect,
 } EStructTypes;
 
+LuaObject* LuaObject::create(const char *scriptName) {
+  LuaObject* obj = new LuaObject(scriptName);
+  obj->autorelease();
+  return obj;
+}
+
 LuaObject::LuaObject(const char* scriptName) {
   this->init(scriptName, NULL);
 }

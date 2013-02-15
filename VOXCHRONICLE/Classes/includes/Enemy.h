@@ -17,6 +17,7 @@
 
 #include "Skill.h"
 #include "CharacterManager.h"
+#include "Species.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -35,19 +36,13 @@ class Enemy : public CCSprite {
   int _maxHP;
   int _mp;
   int _exp;
-  int _attack;
   int _row;
   int _col;
-  int _speed;
   int _speedCount;
-  int _counter;
   int _level;
-  int _frameCount;
-  int _minRow;
   bool _enable;
   bool _hasFrame;
-  string _imageName;
-  string _name;
+  Species* _species;
   SkillType _type;
   EnemyItem _item;
   void update(float dt);
