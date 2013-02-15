@@ -9,7 +9,7 @@ Skill = {
   maxRepeat = 4,
   turn = 1,
   getPower = function(tension)
-    t = {1, 3, 5, 7, 9}
+    t = {3, 6, 9, 12, 15}
     return t[tension + 1]
   end,
   skillRange = SkillRangeSingle,

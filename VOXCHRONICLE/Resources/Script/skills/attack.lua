@@ -18,7 +18,7 @@ Skill = {
     SimpleAudioEngine:sharedEngine():playEffect(filename)
   end,
   getPower = function(tension)
-    t = {1, 3, 5, 7, 10}
+    t = {3, 6, 10, 14, 18}
     return t[tension + 1]
   end,
   messages = {

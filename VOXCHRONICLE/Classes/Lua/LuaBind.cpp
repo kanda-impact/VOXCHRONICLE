@@ -250,7 +250,7 @@ static int tolua_VC_EnemyManager_getBoss(lua_State* tolua_S) {
   EnemyManager* self = (EnemyManager*)tolua_tousertype(tolua_S, 1, 0);
   Enemy* boss = self->getBoss();
   tolua_pushusertype(tolua_S, (void*)boss, "Enemy");
-  tolua_register_gc(tolua_S, lua_gettop(tolua_S));
+  //tolua_register_gc(tolua_S, lua_gettop(tolua_S));
   return 1;
 }
 
