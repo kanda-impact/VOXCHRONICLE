@@ -19,7 +19,6 @@ Skill::Skill(const char* identifier) {
   stringstream ss;
   ss << "Script/skills/" << identifier;
   _lua = new LuaObject(ss.str().c_str(), "Skill");
-  _lua->retain();
   _name = string(_lua->getString("name"));
   _identifier = string(_lua->getString("identifier"));
   _mp = _lua->getInt("mp");

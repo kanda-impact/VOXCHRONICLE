@@ -41,7 +41,6 @@ class Enemy : public CCSprite {
   int _speedCount;
   int _level;
   bool _enable;
-  bool _hasFrame;
   Species* _species;
   SkillType _type;
   EnemyItem _item;

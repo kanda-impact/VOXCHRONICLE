@@ -2,17 +2,12 @@ math.randomseed(os.time())
 Enemy = {
   name = "ナイト",
   imageName = "knight",
-  level = 10,
-  hp = 20,
-  exp = -1,
   attack = 1,
   minRow = 4,
   hasFrame = true,
   counter = 1,
   speed = 2,
-  item = EnemyItemNone,
   animationFrames = 4,
-  type = SkillTypeNormal,
   performSkill = function(self)
     local isCharge = self:getRegister("swordTurn", 0) > 0 -- チャージ中かどうか
     if self:getRow() < 4 then -- 最前列にいるとき

@@ -21,7 +21,6 @@ Map::Map(const char* mapName) {
   ss << "Script/map/" << mapName;
   _identifier = mapName;
   _lua = new LuaObject(ss.str().c_str(), "Map");
-  _lua->retain();
   
   // MusicSetの生成
   string wayMusicName = _lua->getString("wayMusic");

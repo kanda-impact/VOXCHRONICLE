@@ -10,17 +10,19 @@
 #include "LuaObject.h"
 
 Species::Species(const char* identifier) {
-  LuaObject* lua = LuaObject::create(identifier);
-  _name = string(lua->getString("name"));
-  _attack = lua->getInt("attack");
-  _counter = lua->getInt("counter");
-  _speed = lua->getInt("speed");
-  _minRow = lua->getInt("minRow");
-  _imageName = string(lua->getString("imageName"));
-  _frameCount = lua->getInt("animationFrames");
+  _lua = new LuaObject(identifier);
+  _name = string(_lua->getString("name"));
+  _attack = _lua->getInt("attack");
+  _counter = _lua->getInt("counter");
+  _speed = _lua->getInt("speed");
+  _minRow = _lua->getInt("minRow");
+  _imageName = string(_lua->getString("imageName"));
+  _animationFrames = _lua->getInt("animationFrames");
+  _hasFrame = _lua->getInt("hasFrame");
 }
 
 Species::~Species() {
+  _lua->release();
 }
 
 string Species::getImageName() {
@@ -47,6 +49,26 @@ int Species::getMinRow() {
   return _minRow;
 }
 
-int Species::getFrameCount() {
-  return _frameCount;
+int Species::getAnimationFrames() {
+  return _animationFrames;
+}
+
+bool Species::hasFrame() {
+  return _hasFrame;
+}
+
+string Species::choiceEnemySkill() {
+  lua_State* L = _lua->getLuaEngineWithLoad()->getLuaState();
+  lua_getglobal(L, "Enemy");
+  lua_getfield(L, lua_gettop(L), "performSkill");
+  if (lua_isfunction(L, lua_gettop(L))) {
+    _lua->pushCCObject(this, "Enemy");
+    if (lua_pcall(L, 1, 1, 0)) {
+      cout << lua_tostring(L, lua_gettop(L)) << endl;
+      return "";
+    }
+    string skillName = lua_tostring(L, lua_gettop(L));
+    return skillName;
+  }
+  return "";
 }

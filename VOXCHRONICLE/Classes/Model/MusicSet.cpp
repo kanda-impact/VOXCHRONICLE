@@ -14,7 +14,6 @@ MusicSet::MusicSet(const char* identifier) {
   stringstream ss;
   ss << "Script/musics/" << identifier << ".lua";
   _lua = new LuaObject(FileUtils::getFilePath(ss.str().c_str()).c_str());
-  _lua->retain();
   _introCount = _lua->getInt("introCount");
   _finishCount = _lua->getInt("finishCount");
   _type = (MusicSetType)_lua->getInt("type");

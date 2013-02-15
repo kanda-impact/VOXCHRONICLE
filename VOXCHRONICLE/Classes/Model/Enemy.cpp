@@ -47,7 +47,6 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _scriptPath = file.str();
   _register = new map<string, int>();
   _lua = new LuaObject(file.str().c_str());
-  _lua->retain();
   _hp = _lua->getInt("hp");
   _species = new Species(_lua->getString("species"));
   _species->retain();
@@ -55,7 +54,6 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _exp = _lua->getInt("exp");
   _type = (SkillType)_lua->getInt("type");
   _level = _lua->getInt("level");
-  _hasFrame = _lua->getBoolean("hasFrame");
   _speedCount = 0;
   _enable = true;
   stringstream ss;
@@ -252,23 +250,11 @@ void Enemy::setItem(EnemyItem item) {
 }
 
 bool Enemy::performSkill(CharacterManager* characterManager, EnemyManager* enemyManager) {
-  lua_State* L = _lua->getLuaEngineWithLoad()->getLuaState();
-  lua_getglobal(L, "Enemy");
-  lua_getfield(L, lua_gettop(L), "performSkill");
-  if (lua_isfunction(L, lua_gettop(L))) {
-    _lua->pushCCObject(this, "Enemy");
-    if (lua_pcall(L, 1, 1, 0)) {
-      cout << lua_tostring(L, lua_gettop(L)) << endl;
-      return false;
-    }
-    string skillName = lua_tostring(L, lua_gettop(L));
-    if (skillName.size() == 0) return false;
-    // 技の名前が何か帰ってきたとき、その技を生成して実行してやる
-    EnemySkill* skill = new EnemySkill(skillName.c_str());
-    skill->performSkill(this, characterManager, enemyManager);
-    return true;
-  }
-  return false;
+  string skillName = _species->choiceEnemySkill();
+  if (skillName.size() == 0) return false; // 技の名前が何か返ってきたとき、その技を生成して実行してやる
+  EnemySkill* skill = new EnemySkill(skillName.c_str());
+  skill->performSkill(this, characterManager, enemyManager);
+  return true;
 }
 
 int Enemy::getRegister(const char *key, int defaultValue) {
@@ -297,7 +283,7 @@ bool Enemy::setAnimationClip(const char *clipName, int frames, bool hasFrame) {
 }
 
 bool Enemy::setDefaultAnimationClip() {
-  return this->setAnimationAndFrame(_species->getImageName().c_str(), _species->getFrameCount(), _hasFrame);
+  return this->setAnimationAndFrame(_species->getImageName().c_str(), _species->getAnimationFrames(), _species->hasFrame());
 }
 
 bool Enemy::setAnimationAndFrame(const char *filePrefix, int frames, bool hasFrame) {

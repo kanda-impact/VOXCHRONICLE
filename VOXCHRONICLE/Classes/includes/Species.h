@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include "cocos2d.h"
+#include "LuaObject.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -26,7 +27,9 @@ class Species :public CCObject {
   int _speed;
   int _counter;
   int _minRow;
-  int _frameCount;
+  int _animationFrames;
+  bool _hasFrame;
+  LuaObject* _lua;
  public:
   Species(const char* identifier);
   ~Species();
@@ -36,7 +39,9 @@ class Species :public CCObject {
   int getSpeed();
   int getCounter();
   int getMinRow();
-  int getFrameCount();
+  int getAnimationFrames();
+  bool hasFrame();
+  string choiceEnemySkill();
 };
 
 #endif /* defined(__VOXCHRONICLE__Species__) */

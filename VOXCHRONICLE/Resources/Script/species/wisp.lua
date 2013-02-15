@@ -1,18 +1,13 @@
 Enemy = {
-  name = "フラワー",
-  imageName = "flower",
-  level = 1,
-  hp = 1,
-  exp = 5,
+  name = "ウィスプ",
+  imageName = "wisp",
   attack = 1,
   hasFrame = true,
   counter = 1,
   speed = 2,
-  item = EnemyItemNone,
   animationFrames = 4,
-  type = SkillTypeNormal,
   performSkill = function(self)
-    return ""
+  return ""
   end
 }
 
