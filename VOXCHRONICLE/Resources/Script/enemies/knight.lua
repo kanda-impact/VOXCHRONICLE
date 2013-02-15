@@ -19,10 +19,11 @@ Enemy = {
       if isCharge then -- チャージ中だったら常にswordを返してやる
         return "sword"
       else -- それ以外は乱数によって行動を振り分ける
+        math.random(100)
         rand = math.random(100)
         if rand <= 70 then -- 70%で鉄球投げ
           return "ironball"
-        elseif rand <= 80 then -- 残り10%で溜め攻撃
+        elseif rand <= 90 then -- 残り10%で溜め攻撃
           return "sword"
         end
       end

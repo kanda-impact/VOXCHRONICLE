@@ -52,7 +52,6 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _maxHP = _hp;
   _attack = _lua->getInt("attack");
   _exp = _lua->getInt("exp");
-  _name = new string(_lua->getString("name"));
   _counter = _lua->getInt("counter");
   _speed = _lua->getInt("speed");
   _type = (SkillType)_lua->getInt("type");
@@ -60,8 +59,9 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _minRow = _lua->getInt("minRow");
   _hasFrame = _lua->getBoolean("hasFrame");
   _speedCount = 0;
-  _imageName = _lua->getString("imageName");
+  _imageName = string(_lua->getString("imageName"));
   _frameCount = _lua->getInt("animationFrames");
+  _name = string(_lua->getString("name"));
   _enable = true;
   stringstream ss;
   ss << "Image/" << _imageName << "0.png";
@@ -88,7 +88,6 @@ Enemy::Enemy() {
 
 Enemy::~Enemy() {
   _lua->release();
-  delete _name;
   delete _register;
   cout << "Enemy was released." << endl;
 }
@@ -302,7 +301,7 @@ bool Enemy::setAnimationClip(const char *clipName, int frames, bool hasFrame) {
 }
 
 bool Enemy::setDefaultAnimationClip() {
-  return this->setAnimationAndFrame(_imageName, _frameCount, _hasFrame);
+  return this->setAnimationAndFrame(_imageName.c_str(), _frameCount, _hasFrame);
 }
 
 bool Enemy::setAnimationAndFrame(const char *filePrefix, int frames, bool hasFrame) {
@@ -382,3 +381,6 @@ void Enemy::toggleBlink(bool toggle) {
   }
 }
 
+string Enemy::getName() {
+  return _name;
+}

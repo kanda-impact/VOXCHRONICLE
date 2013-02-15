@@ -108,6 +108,13 @@ static int tolua_VC_Enemy_setDefaultAnimationClip(lua_State* tolua_S) {
   return 1;
 }
 
+static int tolua_VC_Enemy_getName(lua_State* tolua_S) {
+  Enemy* self = (Enemy*)  tolua_tousertype(tolua_S, 1, 0);
+  const char* name = self->getName().c_str();
+  tolua_pushstring(tolua_S, name);
+  return 1;
+}
+
 // CharacterManager
 #pragma mark CharacterManager
 
@@ -235,7 +242,7 @@ static int tolua_VC_EnemyManager_popEnemyAt(lua_State* tolua_S) {
   int col = (int)tolua_tonumber(tolua_S, 4, 0);
   Enemy* enemy = self->popEnemyAt(enemyName, row, col);
   tolua_pushusertype(tolua_S, (void*)enemy, "Enemy");
-  tolua_register_gc(tolua_S, lua_gettop(tolua_S));
+  //tolua_register_gc(tolua_S, lua_gettop(tolua_S));
   return 1;
 }
 
@@ -259,7 +266,6 @@ static int tolua_VC_EnemyManager_setBoss(lua_State* tolua_S) {
 
 static int tolua_VC_MessageManager_sharedManager(lua_State* tolua_S) {
   tolua_pushusertype(tolua_S, (void*)MessageManager::sharedManager(), "MessageManager");
-  tolua_register_gc(tolua_S, lua_gettop(tolua_S));
   return 1;
 }
 
@@ -323,6 +329,7 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_function(tolua_S, "hasRegister", tolua_VC_Enemy_hasRegister);
   tolua_function(tolua_S, "setAnimationClip", tolua_VC_Enemy_setAnimationClip);
   tolua_function(tolua_S, "setDefaultAnimationClip", tolua_VC_Enemy_setDefaultAnimationClip);
+  tolua_function(tolua_S, "getName", tolua_VC_Enemy_getName);
   tolua_endmodule(tolua_S);
   // CharacterManagerクラス
   tolua_cclass(tolua_S, "CharacterManager", "CharacterManager", "CCObject", NULL);

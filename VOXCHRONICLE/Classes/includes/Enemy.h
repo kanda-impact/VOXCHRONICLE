@@ -31,7 +31,6 @@ class EnemyManager;
 
 class Enemy : public CCSprite {
  private:
-  string* _name;
   int _hp;
   int _maxHP;
   int _mp;
@@ -47,7 +46,8 @@ class Enemy : public CCSprite {
   int _minRow;
   bool _enable;
   bool _hasFrame;
-  const char* _imageName;
+  string _imageName;
+  string _name;
   SkillType _type;
   EnemyItem _item;
   void update(float dt);
@@ -141,6 +141,7 @@ class Enemy : public CCSprite {
   int getExp();
   int getCounter();
   bool getEnable();
+  string getName();
   SkillType getType();
   EnemyItem getItem();
   
