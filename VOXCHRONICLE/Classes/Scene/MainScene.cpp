@@ -337,10 +337,11 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     
     // カットインを追加する
     string cutinFile = "Image/" + string(skill->getIdentifier()) + "_icon.png";
-    CCSprite* cutin = CCSprite::create(cutinFile.c_str());
+    CCSprite* cutin = CCSprite::create(FileUtils::getFilePath(cutinFile.c_str()).c_str());
     if (cutin != NULL) {
       const int height = 100;
       cutin->setPosition(ccp(0, height));
+      cutin->setScale(0.5);
       float duration = _musicManager->getMusic()->getCurrentMainTrack()->getDuration();
       CCSize size = CCDirector::sharedDirector()->getWinSize();
       if (isHit) {
