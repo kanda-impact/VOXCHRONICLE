@@ -292,6 +292,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     if (count == 2) { // 3小節目
       _enemyManager->removeEnemy(_enemyManager->getBoss());
       _enemyManager->setBoss(NULL);
+      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("explosion.mp3").c_str());
     }
   }
   this->updateGUI(); // GUI更新
@@ -503,6 +504,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _controller->setEnable(false);
       _qteTrigger = new QTETrigger(_enemyManager);
       this->addChild(_qteTrigger);
+      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("qte.mp3").c_str());
     }
     }
       break;
