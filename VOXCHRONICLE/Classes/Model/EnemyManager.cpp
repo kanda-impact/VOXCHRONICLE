@@ -187,14 +187,18 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CCArray* targets, Charact
       damages->addObject(CCInteger::create(damage));
       damageTypes->addObject(CCInteger::create((int)damageType));
       if (target->getHP() <= 0) {
-        if (_boss == target) continue; // 敵がボスなら殺さない
-        if (target->getExp() == -1) nextLvExp = true;
-        if (nextLvExp) {
-          exp = -1; // 強制的に経験値を-1にする
+        if (_boss == target) {
+          _boss->setAnimationClip("death", 1, true); // 敵がボスなら殺さない
+          _boss->setMovable(false);
         } else {
-          exp += target->getExp();
+          if (target->getExp() == -1) nextLvExp = true;
+          if (nextLvExp) {
+            exp = -1; // 強制的に経験値を-1にする
+          } else {
+            exp += target->getExp();
+          }
+          this->removeEnemy(target);
         }
-        this->removeEnemy(target);
       }
     }
     characterManager->addMP(-1 * skill->getMP());

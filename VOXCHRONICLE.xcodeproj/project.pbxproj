@@ -1005,7 +1005,7 @@
 		078D452C16CE87F500E21DC5 /* ginet.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ginet.lua; path = species/ginet.lua; sourceTree = "<group>"; };
 		078D452F16CE87F500E21DC5 /* hornet.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hornet.lua; path = species/hornet.lua; sourceTree = "<group>"; };
 		078D453016CE87F500E21DC5 /* iron.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = iron.lua; path = species/iron.lua; sourceTree = "<group>"; };
-		078D453116CE87F500E21DC5 /* knight.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = knight.lua; path = species/knight.lua; sourceTree = "<group>"; };
+		078D453116CE87F500E21DC5 /* knight.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = knight.lua; path = species/knight.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		078D453216CE87F500E21DC5 /* leaf.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = leaf.lua; path = species/leaf.lua; sourceTree = "<group>"; };
 		078D453516CE87F500E21DC5 /* mask.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mask.lua; path = species/mask.lua; sourceTree = "<group>"; };
 		078D453616CE87F500E21DC5 /* mimic.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mimic.lua; path = species/mimic.lua; sourceTree = "<group>"; };

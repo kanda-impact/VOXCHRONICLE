@@ -115,6 +115,13 @@ static int tolua_VC_Enemy_getName(lua_State* tolua_S) {
   return 1;
 }
 
+static int tolua_VC_Enemy_getHP(lua_State* tolua_S) {
+  Enemy* self = (Enemy*)  tolua_tousertype(tolua_S, 1, 0);
+  int hp = self->getHP();
+  tolua_pushnumber(tolua_S, hp);
+  return 1;
+}
+
 // CharacterManager
 #pragma mark CharacterManager
 
@@ -330,6 +337,7 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_function(tolua_S, "setAnimationClip", tolua_VC_Enemy_setAnimationClip);
   tolua_function(tolua_S, "setDefaultAnimationClip", tolua_VC_Enemy_setDefaultAnimationClip);
   tolua_function(tolua_S, "getName", tolua_VC_Enemy_getName);
+  tolua_function(tolua_S, "getHP", tolua_VC_Enemy_getHP);
   tolua_endmodule(tolua_S);
   // CharacterManagerクラス
   tolua_cclass(tolua_S, "CharacterManager", "CharacterManager", "CCObject", NULL);

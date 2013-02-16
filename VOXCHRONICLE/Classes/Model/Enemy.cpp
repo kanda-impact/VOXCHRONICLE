@@ -56,6 +56,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _level = _lua->getInt("level");
   _speedCount = 0;
   _enable = true;
+  _movable = true;
   stringstream ss;
   ss << "Image/" << _species->getImageName().c_str() << "0.png";
   bool success = (bool)this->initWithFile(FileUtils::getFilePath(ss.str().c_str()).c_str());
@@ -145,6 +146,7 @@ DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager, bool 
   if (hp <= 0) {
     // ダメージが原因で死んだら死亡
     type = DamageTypeDeath;
+    hp = 0;
   } else if (damage == 0){
     // ダメージが当たらなかったら無敵
     type = DamageTypeInvincible;
@@ -208,7 +210,7 @@ int Enemy::getHP() {
 
 bool Enemy::canMove() {
   _speedCount = (_speedCount + 1) % _species->getSpeed();
-  return _speedCount == 0 && this->getRow() >= _species->getMinRow();
+  return _speedCount == 0 && this->getRow() >= _species->getMinRow() && this->isMovable();
 }
 
 SkillType Enemy::getType() {
@@ -365,4 +367,12 @@ void Enemy::toggleBlink(bool toggle) {
 
 string Enemy::getName() {
   return _species->getName();
+}
+
+bool Enemy::isMovable() {
+  return _movable;
+}
+
+void Enemy::setMovable(bool m) {
+  _movable = m;
 }

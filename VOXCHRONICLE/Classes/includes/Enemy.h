@@ -31,7 +31,7 @@ typedef enum {
 class EnemyManager;
 
 class Enemy : public CCSprite {
- private:
+private:
   int _hp;
   int _maxHP;
   int _mp;
@@ -41,6 +41,7 @@ class Enemy : public CCSprite {
   int _speedCount;
   int _level;
   bool _enable;
+  bool _movable;
   Species* _species;
   SkillType _type;
   EnemyItem _item;
@@ -51,7 +52,7 @@ class Enemy : public CCSprite {
   std::map<string, int>* _register;
   bool setAnimationAndFrame(const char* filePrefix, int frames, bool hasFrame);
   CCSprite* createFrameSprite(const char* filePrefix, int frames);
- public:
+public:
   static Enemy* create(const char* enemyName);
   Enemy();
   ~Enemy();
@@ -141,6 +142,9 @@ class Enemy : public CCSprite {
   
   void setItem(EnemyItem item);
   void setEnable(bool enable);
+  
+  bool isMovable();
+  void setMovable(bool m);
 };
 
 #endif /* defined(__VOXCHRONICLE__Enemy__) */

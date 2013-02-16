@@ -1,7 +1,7 @@
 Enemy = {
   species = "knight",
   level = 1,
-  hp = 100,
+  hp = 5,
   exp = -1,
   item = EnemyItemNone,
   type = SkillTypeNormal,
