@@ -28,7 +28,7 @@ QTETrigger::~QTETrigger() {
 
 void QTETrigger::onButtonPressed(CCObject* sender) {
   _pressed = true;
-  this->getParent()->removeChild(this, true);
+  //this->getParent()->removeChild(this, true);
 }
 
 bool QTETrigger::isButtonPressed() {

@@ -98,9 +98,12 @@ void MusicManager::pushIntroTracks() {
 }
 
 void MusicManager::pushFinishTracks() {
-  int maxFinishCount = _musicSet->getFinishCount();
+  this->pushFinishTracks(0, _musicSet->getFinishCount());
+}
+
+void MusicManager::pushFinishTracks(int from, int to) {
   // フィニッシュ曲をpushしまくる
-  for (int i = 0 ; i < maxFinishCount; ++i) {
+  for (int i = from ; i < to; ++i) {
     _music->pushTrack(this->getTrackFileName((string("finish") + lexical_cast<string>(i)).c_str()).c_str(), MusicChannelMain);
     _music->pushTrack(this->getTrackFileName("silent").c_str(), MusicChannelCounter);
     _music->pushTrack(this->getTrackFileName("silent").c_str(), MusicChannelDrum);

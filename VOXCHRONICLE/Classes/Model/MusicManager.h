@@ -89,6 +89,14 @@ class MusicManager :public CCObject {
   void pushFinishTracks();
   
   /**
+   アウトロトラックを指定小節目までセットします
+   最大値よりデカイ値を指定すると死ぬので、よしなに使ってください
+   @param int from 開始小節
+   @param int to 終了小節（含まない）
+   */
+  void pushFinishTracks(int from, int to);
+  
+  /**
    無音トラックを1小節分まとめてセットします
    */
   void pushSilentTracks();

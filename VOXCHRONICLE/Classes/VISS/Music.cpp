@@ -20,6 +20,8 @@ Music::Music() {
 Music::Music(int trackCount) {
   _trackCount = trackCount;
   _measureCount = 0;
+  _playing = false;
+  _played = false;
   _tracks = std::vector< CCArray* >(trackCount);
   for (int i = 0; i < _trackCount; ++i) {
     _tracks[i] = CCArray::create();
@@ -80,7 +82,7 @@ Track* Music::pushTrack(Track* track, int trackNumber) {
     
 bool Music::play() {
   CCScheduler* scheduler = cocos2d::CCDirector::sharedDirector()->getScheduler();
-  if (scheduler->isTargetPaused(this)) {
+  if (_played) {
     // 再生再開
     for (std::vector< CCArray* >::iterator it = _tracks.begin(); it != _tracks.end(); ++it) {
       if ((*it)->count() > 0) {
@@ -95,20 +97,25 @@ bool Music::play() {
         return false;
       }
     }
+    _played = true;
     cocos2d::CCDirector::sharedDirector()->getScheduler()->scheduleUpdateForTarget(this, -127, false);
     this->setScheduleForMain();
   }
+  _playing = true;
   return true;
 }
     
 void Music::stop() {
+  _playing = false;
   for (std::vector< CCArray* >::iterator it = _tracks.begin(); it != _tracks.end(); ++it) {
     for (int j = 0; j < (*it)->count(); ++j) {
-      ((Track*)(*it)->objectAtIndex(j))->stop();
+      ((Track*)(*it)->objectAtIndex(j))->pause();
       ((Track*)(*it)->objectAtIndex(j))->setVolume(0);
     }
   }
-  cocos2d::CCDirector::sharedDirector()->getScheduler()->unscheduleAllSelectorsForTarget(this);
+  //cocos2d::CCDirector::sharedDirector()->getScheduler()->unscheduleAllSelectorsForTarget(this);
+  CCScheduler* scheduler = cocos2d::CCDirector::sharedDirector()->getScheduler();
+  scheduler->pauseTarget(this);
 }
 
 void Music::pause() {
@@ -169,7 +176,9 @@ void Music::onTrackDidFinish() {
     channel->removeObjectAtIndex(0);
     ++_measureCount;
   }
-  this->setScheduleDelay(0.0f);
+  if (_playing) {
+    this->setScheduleDelay(0.0f);
+  }
 }
 
 void Music::onTrackDidBack() {

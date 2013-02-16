@@ -1,7 +1,7 @@
 Map = {
   name = "てつ面(3-B)",
   wayMusic = "dub",
-  bossMusic = "3Bb",
+  bossMusic = "boss",
   backgroundImage = "",
   nextMaps = {"2a"},
   initialLevel = 1,
