@@ -258,10 +258,10 @@ CCArray* EnemyManager::getTargets(Skill *skill) {
       targets->addObject(target);
     }
   } else if (range == SkillRangeFront) {
-    // 最前列攻撃
     // スラッシュ
-    // 仕様が変わって前4列にいる敵をターゲットにするようにしました
-    boost::function<bool (int, float)> predicate = _1 < MAX_ROW / 2;
+    // 一番前の敵の後ろ4列
+    Enemy* nearest = this->getNearestEnemy();
+    boost::function<bool (int, float)> predicate = nearest->getRow() <= _1 && _1 <= nearest->getRow() + 4;
     targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
   }
   return targets;
