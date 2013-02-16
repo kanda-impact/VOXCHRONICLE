@@ -261,6 +261,9 @@
 		078D45DE16CF1FB100E21DC5 /* 3Bb_voxwait0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078D45A016CF1FB100E21DC5 /* 3Bb_voxwait0.caf */; };
 		078D45E016CF1FD200E21DC5 /* 3Bb.lua in Resources */ = {isa = PBXBuildFile; fileRef = 078D45DF16CF1FD200E21DC5 /* 3Bb.lua */; };
 		078D45E216CF22C400E21DC5 /* 3Bb_silent.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078D45E116CF22C400E21DC5 /* 3Bb_silent.caf */; };
+		078D45E616CF2E7000E21DC5 /* bat.lua in Resources */ = {isa = PBXBuildFile; fileRef = 078D45E316CF2E7000E21DC5 /* bat.lua */; };
+		078D45E716CF2E7000E21DC5 /* cryst.lua in Resources */ = {isa = PBXBuildFile; fileRef = 078D45E416CF2E7000E21DC5 /* cryst.lua */; };
+		078D45E816CF2E7000E21DC5 /* fortress.lua in Resources */ = {isa = PBXBuildFile; fileRef = 078D45E516CF2E7000E21DC5 /* fortress.lua */; };
 		0791585A15EBA8350083D348 /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0791585815EBA8350083D348 /* LogoScene.cpp */; };
 		0791587615EBB50E0083D348 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586A15EBB4BB0083D348 /* fps_images.png */; };
 		0791587715EBB50E0083D348 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586B15EBB4BB0083D348 /* Icon-72.png */; };
@@ -1079,6 +1082,9 @@
 		078D45A016CF1FB100E21DC5 /* 3Bb_voxwait0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 3Bb_voxwait0.caf; path = Resources/Music/3Bb/3Bb_voxwait0.caf; sourceTree = "<group>"; };
 		078D45DF16CF1FD200E21DC5 /* 3Bb.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 3Bb.lua; path = musics/3Bb.lua; sourceTree = "<group>"; };
 		078D45E116CF22C400E21DC5 /* 3Bb_silent.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 3Bb_silent.caf; path = Resources/Music/3Bb/3Bb_silent.caf; sourceTree = "<group>"; };
+		078D45E316CF2E7000E21DC5 /* bat.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = bat.lua; path = species/bat.lua; sourceTree = "<group>"; };
+		078D45E416CF2E7000E21DC5 /* cryst.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cryst.lua; path = species/cryst.lua; sourceTree = "<group>"; };
+		078D45E516CF2E7000E21DC5 /* fortress.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fortress.lua; path = species/fortress.lua; sourceTree = "<group>"; };
 		0791585815EBA8350083D348 /* LogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LogoScene.cpp; path = Classes/Scene/LogoScene.cpp; sourceTree = "<group>"; };
 		0791586915EBB4BB0083D348 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/ios/Default.png; sourceTree = "<group>"; };
 		0791586A15EBB4BB0083D348 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = Resources/ios/fps_images.png; sourceTree = "<group>"; };
@@ -2379,6 +2385,9 @@
 		078D452516CE87D900E21DC5 /* species */ = {
 			isa = PBXGroup;
 			children = (
+				078D45E316CF2E7000E21DC5 /* bat.lua */,
+				078D45E416CF2E7000E21DC5 /* cryst.lua */,
+				078D45E516CF2E7000E21DC5 /* fortress.lua */,
 				078D452616CE87F500E21DC5 /* acorn.lua */,
 				078D452716CE87F500E21DC5 /* dragon.lua */,
 				078D452816CE87F500E21DC5 /* flower.lua */,
@@ -4410,6 +4419,9 @@
 				078D45DE16CF1FB100E21DC5 /* 3Bb_voxwait0.caf in Resources */,
 				078D45E016CF1FD200E21DC5 /* 3Bb.lua in Resources */,
 				078D45E216CF22C400E21DC5 /* 3Bb_silent.caf in Resources */,
+				078D45E616CF2E7000E21DC5 /* bat.lua in Resources */,
+				078D45E716CF2E7000E21DC5 /* cryst.lua in Resources */,
+				078D45E816CF2E7000E21DC5 /* fortress.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

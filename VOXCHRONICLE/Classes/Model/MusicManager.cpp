@@ -91,7 +91,6 @@ void MusicManager::pushIntroTracks() {
       _music->pushTrack(this->getTrackFileName((string("intro") + lexical_cast<string>(i)).c_str()).c_str(), MusicChannelMain);
       _music->pushTrack(this->getTrackFileName("silent").c_str(), MusicChannelCounter);
       _music->pushTrack(this->getTrackFileName("silent").c_str(), MusicChannelDrum);
-      cout << this->getTrackFileName((string("intro") + lexical_cast<string>(i)).c_str()).c_str() << endl;
     }
   }
   _music->getTrack(1)->setVolume(0);
