@@ -244,8 +244,46 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       _qteTrigger = NULL;
       _musicManager->setMinDrumScore(0);
       _state = VCStateQTEFinish;
+      Enemy* boss = _enemyManager->getBoss();
+      // 攻撃エフェクト
+      CCSprite* effect = CCSprite::create((string("attack") + string("0.png")).c_str());
+      CCAnimation* animation = CCAnimation::create();
+      CCRect rect;
+      CCPoint position = ccpAdd(boss->getPosition(), ccp(0, boss->getContentSize().height * boss->getCurrentScale(boss->getRow()) * 0.5f));
+      rect = CCRectMake(0, 0, 400, 400);
+      effect->setPosition(position);
+      effect->setScale(boss->getScale());
+      for (int i = 0; i < 6; ++i) {
+        const char* frameName = (string("attack") + lexical_cast<string>(i) + string(".png")).c_str();
+        animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath(frameName).c_str(), rect));
+      }
+      animation->setDelayPerUnit(2.0 / 60.0);
+      effect->runAction(CCSequence::create(CCAnimate::create(animation),
+                                           CCFadeOut::create(0.1f),
+                                           CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
+                                           NULL));
+      _enemyManager->addChild(effect);
+      // ぷるぷるさせる
+      CCArray* actions = CCArray::create();
+      float duration = _musicManager->getMusic()->getCurrentMainTrack()->getDuration();
+      const int length = 50;
+      CCPoint origin = boss->getPosition();
+      for (int i = 0; i < length; ++i) {
+        float x = -4 + rand() % 8;
+        float y = -10 + rand() % 20;
+        CCPlace* move = CCPlace::create(ccpAdd(origin, ccp(x, y)));
+        CCDelayTime* delay = CCDelayTime::create(duration * 2 / length);
+        actions->addObject(CCSequence::create(move, delay, NULL));
+      }
+      boss->runAction(CCSequence::create(actions));
     } else {
       _musicManager->pushNextTracks(NULL, _currentSkillInfo); // wait入れる
+    }
+  } else if (_state == VCStateQTEFinish) {
+    int count = _musicManager->getFinishCount();
+    if (count == 2) { // 3小節目
+      _enemyManager->removeEnemy(_enemyManager->getBoss());
+      _enemyManager->setBoss(NULL);
     }
   }
   this->updateGUI(); // GUI更新
@@ -460,7 +498,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     }
     }
       break;
-      default:
+    default:
       break;
   }
   
@@ -617,8 +655,6 @@ void MainScene::gotoNextStage() {
 void MainScene::onFinishTracksCompleted() {
   if (_state == VCStateQTEFinish) { // QTEFinishのとき
     // おそらくボス撃破後なので、ボス戦を終了させます
-    _enemyManager->removeEnemy(_enemyManager->getBoss());
-    _enemyManager->setBoss(NULL);
     //_characterManager->setLevel(_characterManager->getLevel() + 1);
     _state = VCStateMain;
     this->gotoNextStage();
