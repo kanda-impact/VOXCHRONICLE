@@ -51,6 +51,7 @@ bool Controller::init() {
     ++scalesit;
     ++rotationsit;
   }
+  this->setEnable(false);
   return true;
 }
 
@@ -146,4 +147,9 @@ Skill* Controller::currentTriggerSkill() {
 
 void Controller::setEnable(bool enable) {
   _enable = enable;
+  if (enable) {
+    this->setVisible(true);
+  } else {
+    this->setVisible(false);
+  }
 }

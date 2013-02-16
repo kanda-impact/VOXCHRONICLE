@@ -99,7 +99,6 @@ bool MainScene::init(Map* map) {
   musicSet->preloadAllTracks();
   
   _musicManager = new MusicManager(music, musicSet, _enemyManager, _characterManager);
-  _musicManager->retain();
   
   _state = VCStateIntro;
   
@@ -142,6 +141,9 @@ MainScene::~MainScene() {
   }
   if (_pausedTargets != NULL) {
     _pausedTargets->release();
+  }
+  if (_qteTrigger != NULL) {
+    _qteTrigger->release();
   }
   VISS::BufferCache::sharedCache()->purgeAllBuffers();
 }
