@@ -299,7 +299,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       CCRect rect;
       if (effectType == SkillEffectTypeTarget) { // 1体のみにアニメーションを表示させるとき
         Enemy* target = (Enemy*)enemies->objectAtIndex(0);
-        CCPoint position = target->getPosition();
+        CCPoint position = ccpAdd(target->getPosition(), ccp(0, target->getContentSize().height * target->getCurrentScale(target->getRow()) * 0.5f));
         rect = CCRectMake(0, 0, 400, 400);
         effect->setPosition(position);
         effect->setScale(target->getScale());
@@ -312,7 +312,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         const char* frameName = (string(skill->getIdentifier()) + lexical_cast<string>(i) + string(".png")).c_str();
         animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath(frameName).c_str(), rect));
       }
-      animation->setDelayPerUnit(1.0 / 60.0);
+      animation->setDelayPerUnit(2.0 / 60.0);
       effect->runAction(CCSequence::create(CCAnimate::create(animation),
                                            CCFadeOut::create(0.1f),
                                            CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
