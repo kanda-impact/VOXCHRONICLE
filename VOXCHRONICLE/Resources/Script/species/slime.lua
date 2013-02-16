@@ -2,6 +2,7 @@ Enemy = {
   name = "スライム",
   imageName = "slime",
   attack = 1,
+  baseExp = 1,
   hasFrame = true,
   counter = 1,
   speed = 2,

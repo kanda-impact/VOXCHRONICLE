@@ -11,6 +11,7 @@
 
 Species::Species(const char* identifier) {
   _lua = new LuaObject(identifier);
+  _baseExp = _lua->getInt("baseExp");
   _name = string(_lua->getString("name"));
   _attack = _lua->getInt("attack");
   _counter = _lua->getInt("counter");
@@ -71,4 +72,23 @@ string Species::choiceEnemySkill(CCObject* enemy) {
     return skillName;
   }
   return "";
+}
+
+int Species::getDefaultExp(int level, int maxHP, EnemyItem item, SkillType type) {
+  LuaObject* obj = LuaObject::create("character");
+  lua_State* L = obj->getLuaEngineWithLoad()->getLuaState();
+  lua_getglobal(L, "getDefaultExp");
+  if (lua_isfunction(L, lua_gettop(L))) {
+    lua_pushinteger(L, _baseExp);
+    lua_pushinteger(L, level);
+    lua_pushinteger(L, maxHP);
+    lua_pushinteger(L, item);
+    lua_pushinteger(L, type);
+    if (lua_pcall(L, 5, 1, 0)) {
+      cout << lua_tostring(L, lua_gettop(L)) << endl;
+    }
+    float exp = lua_tonumber(L, lua_gettop(L));
+    return ceil(exp);
+  }
+  return 0;
 }

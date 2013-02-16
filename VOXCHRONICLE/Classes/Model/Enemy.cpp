@@ -51,7 +51,6 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _species = new Species(_lua->getString("species"));
   _species->retain();
   _maxHP = _hp;
-  _exp = _lua->getInt("exp");
   _type = (SkillType)_lua->getInt("type");
   _level = _lua->getInt("level");
   _speedCount = 0;
@@ -76,7 +75,6 @@ Enemy::Enemy() {
   _col = 0;
   _hp = 1;
   _maxHP = _hp;
-  _exp = 0;
   this->scheduleUpdate();
 }
 
@@ -169,7 +167,19 @@ void Enemy::setLifeColor() {
 }
 
 int Enemy::getExp() {
-  return _exp;
+  int defaultExp = _species->getDefaultExp(_level, _maxHP, _item, _type);
+  lua_State* L = _lua->getLuaEngineWithLoad()->getLuaState();
+  lua_getfield(L, lua_gettop(L), "getExp");
+  if (lua_isfunction(L, lua_gettop(L))) {
+    lua_pushinteger(L, defaultExp);
+    if (lua_pcall(L, 1, 1, 0)) {
+      cout << lua_tostring(L, lua_gettop(L)) << endl;
+    }
+    int exp = lua_tonumber(L, lua_gettop(L));
+    return exp;
+  }
+  return 0;
+ 
 }
 
 void Enemy::setRowAndCol(int row, float col) {

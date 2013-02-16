@@ -22,12 +22,6 @@
 using namespace std;
 using namespace cocos2d;
 
-typedef enum {
-  EnemyItemNone,
-  EnemyItemShield,
-  EnemyItemBarrier
-} EnemyItem;
-
 class EnemyManager;
 
 class Enemy : public CCSprite {
@@ -35,7 +29,6 @@ private:
   int _hp;
   int _maxHP;
   int _mp;
-  int _exp;
   int _row;
   int _col;
   int _speedCount;

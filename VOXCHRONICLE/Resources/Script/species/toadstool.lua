@@ -2,6 +2,7 @@ Enemy = {
   name = "毒キノコ",
   imageName = "toadstool",
   attack = 1,
+  baseExp = 1,
   hasFrame = true,
   counter = 1,
   speed = 2,

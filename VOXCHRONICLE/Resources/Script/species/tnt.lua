@@ -2,6 +2,7 @@ Enemy = {
   name = "ガーゴイル",
   imageName = "gargoyle",
   attack = 1,
+  baseExp = 1,
   hasFrame = false,
   counter = 1,
   speed = 2,

@@ -2,7 +2,9 @@ Enemy = {
   species = "knight",
   level = 1,
   hp = 5,
-  exp = -1,
+  getExp = function(default)
+      return default
+  end,
   item = EnemyItemNone,
   type = SkillTypeNormal,
 }

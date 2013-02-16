@@ -3,6 +3,7 @@ Enemy = {
   name = "ナイト",
   imageName = "knight",
   attack = 1,
+  baseExp = 1,
   minRow = 4,
   hasFrame = true,
   counter = 1,

@@ -36,3 +36,15 @@ function getLevelOffsetRate(attackLevel, defenseLevel)
   -- return 1.0 + 0.1 * (attackLevel - defenseLevel)
   return 1.0
 end
+
+function getDefaultExp(base, level, maxHP, item, type)
+  local i = 1.0
+  local t = 1.0
+  if item ~= EnemyItemNone then
+    i = 2.0
+  end
+  if type ~= SkillTypeNormal then
+    t = 1.5
+  end
+  return base * level / 5 * maxHP * i * t
+end

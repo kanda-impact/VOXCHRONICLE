@@ -2,6 +2,7 @@ Enemy = {
   name = "クリスタル",
   imageName = "cryst",
   attack = 1,
+  baseExp = 1,
   hasFrame = true,
   counter = 1,
   speed = 2,

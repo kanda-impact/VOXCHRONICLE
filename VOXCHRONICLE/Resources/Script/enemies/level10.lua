@@ -2,7 +2,9 @@ Enemy = {
   species = "ginet",
   level = 1,
   hp = 1,
-  exp = 340,
+  getExp = function(default)
+      return default
+  end,
   item = EnemyItemNone,
   type = SkillTypeNormal,
 }
