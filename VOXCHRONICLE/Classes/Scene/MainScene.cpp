@@ -228,12 +228,20 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         _state = VCStateFinish;
         _controller->setEnable(false);
         _musicManager->getMusic()->removeAllNextTracks();
-        _musicManager->pushFinishTracks();
+        if (_musicManager->getMusicSet()->getFinishCount() == 0) {
+          this->gotoNextStage();
+        } else {
+          _musicManager->pushFinishTracks();
+        }
       } else if (_level->getLevel() >= _map->getMaxLevel() + 1) {
         _state = VCStateFinish;
         _controller->setEnable(false);
         _musicManager->getMusic()->removeAllNextTracks();
-        _musicManager->pushFinishTracks();
+        if (_musicManager->getMusicSet()->getFinishCount() == 0) {
+          this->gotoNextStage();
+        } else {
+          _musicManager->pushFinishTracks();
+        }
       }
     }
   } else if (_state == VCStateQTEWait) {

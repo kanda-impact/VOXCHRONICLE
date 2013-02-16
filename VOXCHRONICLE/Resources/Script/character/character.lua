@@ -46,5 +46,5 @@ function getDefaultExp(base, level, maxHP, item, type)
   if type ~= SkillTypeNormal then
     t = 1.5
   end
-  return base * level / 5 * maxHP * i * t
+  return base * level * maxHP * i * t
 end
