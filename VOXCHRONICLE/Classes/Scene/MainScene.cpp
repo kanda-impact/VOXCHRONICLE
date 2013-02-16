@@ -151,13 +151,6 @@ void MainScene::update(float dt) {
     case VCStateMain:
       _controller->setEnable(!_characterManager->isPerforming());
       break;
-    case VCStateQTEWait:
-      if (_qteTrigger->isButtonPressed()) {
-        this->removeChild(_qteTrigger, true);
-        _state = VCStateQTEFinish;
-        _musicManager->getMusic()->play();
-        cout << "pressed" << endl;
-      }
     default:
       break;
   }
@@ -211,7 +204,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       _ground->play();
     }
   }
-  if (_state == VCStateFinish) {
+  if (_state == VCStateFinish || _state == VCStateQTEFinish) {
     _musicManager->setFinishCount(_musicManager->getFinishCount() + 1);
     int maxFinishCount = _musicManager->getMusicSet()->getFinishCount();
     if (_musicManager->getFinishCount() == maxFinishCount) { // フィニッシュ曲が終わったとき
@@ -242,6 +235,17 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         _musicManager->getMusic()->removeAllNextTracks();
         _musicManager->pushFinishTracks();
       }
+    }
+  } else if (_state == VCStateQTEWait) {
+    if (_qteTrigger && _qteTrigger->isButtonPressed()) {
+      _musicManager->pushFinishTracks(); // finishTrack入れる
+      this->removeChild(_qteTrigger, true);
+      _qteTrigger->release();
+      _qteTrigger = NULL;
+      _musicManager->setMinDrumScore(0);
+      _state = VCStateQTEFinish;
+    } else {
+      _musicManager->pushNextTracks(NULL, _currentSkillInfo); // wait入れる
     }
   }
   this->updateGUI(); // GUI更新
@@ -448,37 +452,15 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _enemyManager->purgeAllTrash();
     }
     if (_enemyManager->getBoss() && _enemyManager->getBoss()->getHP() <= 0) { // ボスが死んでたらQTEに移行する
-      cout << "QTE" << endl;
-      _state = VCStateQTE;
-      _musicManager->pushFinishTracks(); // とりあえず2小節目までハードコーディング
-    }
-    }
-      break;
-    case VCStateQTE:
-    {
-    _musicManager->setFinishCount(_musicManager->getFinishCount() + 1);
-    if (_musicManager->getFinishCount() == 3) {
-      _musicManager->getMusic()->stop();
-      _state = VCStateQTEWait; // QTE待機中に！！！
+      _state = VCStateQTEWait;
+      _musicManager->setMinDrumScore(4);
       _controller->setEnable(false);
       _qteTrigger = new QTETrigger(_enemyManager);
       this->addChild(_qteTrigger);
-      cout << "wait" << endl;
     }
     }
       break;
-    case VCStateQTEFinish:
-    {
-    _musicManager->setFinishCount(_musicManager->getFinishCount() + 1);
-    if (_musicManager->getFinishCount() == _musicManager->getMusicSet()->getFinishCount() + 1) {
-      // 敵が死ぬところ
-      Enemy* boss = _enemyManager->getBoss();
-      _enemyManager->removeEnemy(boss);
-      _enemyManager->setBoss(NULL);
-      _state = VCStateMain;
-      this->gotoNextStage();
-    }
-    }
+      default:
       break;
   }
   
@@ -633,7 +615,7 @@ void MainScene::gotoNextStage() {
 }
 
 void MainScene::onFinishTracksCompleted() {
-  if (_map->isBossStage() && _level->getLevel() == _map->getMaxLevel() + 1) { // ボスステージで、現在が最高レベル+1の時
+  if (_state == VCStateQTEFinish) { // QTEFinishのとき
     // おそらくボス撃破後なので、ボス戦を終了させます
     _enemyManager->removeEnemy(_enemyManager->getBoss());
     _enemyManager->setBoss(NULL);

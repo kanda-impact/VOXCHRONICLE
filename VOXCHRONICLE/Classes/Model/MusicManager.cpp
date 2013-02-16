@@ -25,7 +25,7 @@ MusicManager::MusicManager(Music* music, MusicSet* musicSet, EnemyManager* enemy
   _characterManager = characterManager;
   characterManager->retain();
   _extension = DEFAULT_EXT;
-  
+  _minDrumScore = 0;
   _introCount = 0;
   _finishCount = 0;
   _isImpact = false;
@@ -69,7 +69,7 @@ int MusicManager::calcDrumScore () {
   }
   int tension = _characterManager->getTension();
   score += tension;
-  return min(score, 4);
+  return max(_minDrumScore, min(score, 4));
 }
 
 string MusicManager::getTrackFileName(const char *trackName) {
@@ -274,4 +274,8 @@ void MusicManager::setMusicSet(MusicSet *set) {
     set->retain();
   }
   BufferCache::sharedCache()->purgeAllBuffers();
+}
+
+void MusicManager::setMinDrumScore(int min) {
+  _minDrumScore = min;
 }

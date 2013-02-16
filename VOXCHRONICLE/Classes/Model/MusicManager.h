@@ -31,6 +31,7 @@ class MusicManager :public CCObject {
  private:
   int _introCount;
   int _finishCount;
+  int _minDrumScore;
   bool _isImpact;
   string _extension;
   Music* _music;
@@ -95,6 +96,13 @@ class MusicManager :public CCObject {
    @param int to 終了小節（含まない）
    */
   void pushFinishTracks(int from, int to);
+  
+  /**
+   ドラムスコアの最低値を設定します。
+   これを下回るドラムスコアにはなりません。強制的に補正されます。
+   @param int min 最低値
+   */
+  void setMinDrumScore(int min);
   
   /**
    無音トラックを1小節分まとめてセットします

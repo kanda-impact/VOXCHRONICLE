@@ -33,9 +33,8 @@ typedef enum {
   VCStateGameOver,
   VCStateFinish,
   VCStateBoss,
-  VCStateQTE, // QTE前奏用
-  VCStateQTEWait, // QTEウェイト用
-  VCStateQTEFinish,  // QTE寸止め用
+  VCStateQTEWait,
+  VCStateQTEFinish,
   VCStateStageSelect,
   VCStateEnding
 } VCState;
