@@ -178,7 +178,7 @@ int Enemy::getExp() {
     int exp = lua_tonumber(L, lua_gettop(L));
     return exp;
   }
-  return 0;
+  return defaultExp;
  
 }
 
