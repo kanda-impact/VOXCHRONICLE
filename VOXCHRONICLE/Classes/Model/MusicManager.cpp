@@ -83,7 +83,7 @@ void MusicManager::pushIntroTracks() {
     // イントロなしのとき、いきなり曲を鳴らします
     _music->pushTrack(this->getTrackFileName("wait0").c_str(), MusicChannelMain);
     _music->pushTrack(this->getTrackFileName("counter0").c_str(), MusicChannelCounter);
-    _music->pushTrack(this->getTrackFileName("drum0").c_str(), MusicChannelDrum);
+    _music->pushTrack(this->buildTrackName("drum", NULL, 0).c_str(), MusicChannelDrum);
   } else {
     // イントロありのとき、イントロの数だけpushします
     int maxIntroCount = _musicSet->getIntroCount();
@@ -91,6 +91,7 @@ void MusicManager::pushIntroTracks() {
       _music->pushTrack(this->getTrackFileName((string("intro") + lexical_cast<string>(i)).c_str()).c_str(), MusicChannelMain);
       _music->pushTrack(this->getTrackFileName("silent").c_str(), MusicChannelCounter);
       _music->pushTrack(this->getTrackFileName("silent").c_str(), MusicChannelDrum);
+      cout << this->getTrackFileName((string("intro") + lexical_cast<string>(i)).c_str()).c_str() << endl;
     }
   }
   _music->getTrack(1)->setVolume(0);
@@ -141,10 +142,10 @@ void MusicManager::pushNextTracks(Skill* skill, SkillPerformInfo& performInfo) {
   stringstream drumFileStream;
   if (_characterManager->getTension() > 0 && skill != NULL && string(skill->getIdentifier()) != "tension" && performInfo.type == SkillPerformTypeSuccess) {
     // テンションが1以上で、skillがあるとき、かつテンションじゃないとき、かつ攻撃ピロってないときインパクトをならしてやる
-    drumFileStream << "impact" << _characterManager->getTension() - 1;
+    drumFileStream << this->buildTrackName("impact", NULL, _characterManager->getTension() - 1);
   } else {
     int drumLevel = this->calcDrumScore();
-    drumFileStream << "drum" << drumLevel;
+    drumFileStream << this->buildTrackName("drum", NULL, drumLevel);
   }
   _music->pushTrack(this->getTrackFileName(drumFileStream.str().c_str()).c_str(), MusicChannelDrum);
 }

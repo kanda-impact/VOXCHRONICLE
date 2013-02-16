@@ -11,7 +11,9 @@ Music = {
     shield = false,
     run = false,
     tension = false,
-    miss = false
+    miss = false,
+    drum = true,
+    impact = true
   },
   ignoreDrums = {
   }

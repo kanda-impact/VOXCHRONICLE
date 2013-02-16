@@ -47,11 +47,10 @@ string MusicSet::getPrefixedMusicName(const char *musicName) {
 }
 
 bool MusicSet::isCommon(const char *skillName) {
-  // 未実装。今は恒久的にtrueを返し続けます
   if (_common->count(string(skillName)) == 1) {
     return _common->at(skillName).booleanValue();
   }
-  return true;
+  return false;
 }
 
 int MusicSet::getIntroCount() {
