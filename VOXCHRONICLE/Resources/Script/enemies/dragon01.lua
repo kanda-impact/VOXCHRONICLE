@@ -1,7 +1,7 @@
 Enemy = {
   species = "dragon",
   level = 24,
-  hp = 12,
+  hp = 8,
   getExp = function(default)
       return default
   end,

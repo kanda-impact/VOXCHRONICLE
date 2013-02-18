@@ -10,7 +10,7 @@ Skill = {
   turn = 1,
   performSkill = function(self, target, characterManager, enemyManager)
     row = target:getRow()
-    local newRow = row + 2
+    local newRow = row + 4
     if newRow >= MAX_ROW then
       newRow = MAX_ROW - 1
     end

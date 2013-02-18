@@ -43,10 +43,10 @@ function getDefaultExp(base, level, maxHP, item, type)
   local i = 1.0
   local t = 1.0
   if item ~= EnemyItemNone then
-    i = 2.0
+    i = 1.5
   end
   if type ~= SkillTypeNormal then
-    t = 1.5
+    t = 1.2
   end
-  return base * level * maxHP * i * t
+  return math.ceil(base * math.max(level / 2, 1) * maxHP / 3, 1 * i * t)
 end

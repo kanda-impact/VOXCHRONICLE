@@ -1,7 +1,7 @@
 Enemy = {
   species = "gargoyle",
   level = 24,
-  hp = 30,
+  hp = 8,
   getExp = function(default)
       return default
   end,

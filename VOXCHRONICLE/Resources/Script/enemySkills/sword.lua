@@ -11,7 +11,7 @@ EnemySkill = {
       MessageManager:sharedManager():pushMessage(user:getName().."は　ちからを　ためている")
     elseif turn == 2 then
       -- 溜めターンが1ターンに到達したら溜め攻撃発動
-      characterManager:¥damage(5) -- ダメージを与える
+      characterManager:damage(5) -- ダメージを与える
       user:setRegister(key, 0) -- 溜めターンをリセット
       user:setDefaultAnimationClip() -- グラを元に戻す
       MessageManager:sharedManager():pushMessage(user:getName().."は　きょうりょくな　いちげきを　はなった！")

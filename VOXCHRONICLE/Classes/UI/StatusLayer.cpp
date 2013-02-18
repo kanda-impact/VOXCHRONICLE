@@ -126,7 +126,6 @@ void StatusLayer::setCurrentMP(int mp) {
 
 void StatusLayer::setMaxMP(int mp) {
   int count = _mpChips->count();
-  cout << count << endl;
   if (count > mp) {
     for (int i = mp; i < count; ++i) {
       CCSprite* chip = (CCSprite*)_mpChips->objectAtIndex(i);
