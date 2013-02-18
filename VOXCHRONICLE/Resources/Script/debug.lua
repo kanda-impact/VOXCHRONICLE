@@ -6,7 +6,8 @@ DebugData = {
     "2a",
     "ttn",
     "2b",
-    "shaba_map"
+    "shaba_map",
+    "bossdebug"
   }
 }
 

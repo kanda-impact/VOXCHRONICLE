@@ -449,6 +449,8 @@
 		07970C89169F9B820000B905 /* dub_voxknockback0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07970C5E169F9B820000B905 /* dub_voxknockback0.caf */; };
 		07970C8A169F9B820000B905 /* dub_voxslash0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07970C5F169F9B820000B905 /* dub_voxslash0.caf */; };
 		07970C8B169F9B820000B905 /* dub_wait0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07970C60169F9B820000B905 /* dub_wait0.caf */; };
+		079D274516D21B83006D6A8F /* bossdebug.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079D274416D21B83006D6A8F /* bossdebug.lua */; };
+		079D274716D21BBE006D6A8F /* knight_debug.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079D274616D21BBE006D6A8F /* knight_debug.lua */; };
 		079F88E4169D9AD4001357B5 /* nmb.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079F88E3169D9AD4001357B5 /* nmb.lua */; };
 		079F89A7169EE596001357B5 /* debug.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079F89A6169EE596001357B5 /* debug.lua */; };
 		07A1B98E16CCC2D80092AF8C /* Buffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07A1B98C16CCC2D80092AF8C /* Buffer.mm */; };
@@ -1308,6 +1310,8 @@
 		07970C5E169F9B820000B905 /* dub_voxknockback0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dub_voxknockback0.caf; path = Resources/Music/dub/dub_voxknockback0.caf; sourceTree = "<group>"; };
 		07970C5F169F9B820000B905 /* dub_voxslash0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dub_voxslash0.caf; path = Resources/Music/dub/dub_voxslash0.caf; sourceTree = "<group>"; };
 		07970C60169F9B820000B905 /* dub_wait0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dub_wait0.caf; path = Resources/Music/dub/dub_wait0.caf; sourceTree = "<group>"; };
+		079D274416D21B83006D6A8F /* bossdebug.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = bossdebug.lua; path = map/bossdebug.lua; sourceTree = "<group>"; };
+		079D274616D21BBE006D6A8F /* knight_debug.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knight_debug.lua; sourceTree = "<group>"; };
 		079F88E3169D9AD4001357B5 /* nmb.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nmb.lua; path = musics/nmb.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		079F89A3169EE580001357B5 /* QTETrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QTETrigger.h; path = Classes/includes/QTETrigger.h; sourceTree = "<group>"; };
 		079F89A4169EE580001357B5 /* StatusLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusLayer.h; path = Classes/includes/StatusLayer.h; sourceTree = "<group>"; };
@@ -2119,6 +2123,7 @@
 			isa = PBXGroup;
 			children = (
 				077EDE2416874B1F009B9F6B /* 3b.lua */,
+				079D274416D21B83006D6A8F /* bossdebug.lua */,
 				07F9344016C16BBE00A2F1CA /* 1b.lua */,
 				07F9344216C16BCF00A2F1CA /* ttn.lua */,
 				07864BEF169D881500AAAF15 /* 2a.lua */,
@@ -3678,6 +3683,7 @@
 				07B21FF716CFCB820083B865 /* hornet02.lua */,
 				07B21FF816CFCB820083B865 /* iron_boss.lua */,
 				07B21FF916CFCB820083B865 /* knight_boss.lua */,
+				079D274616D21BBE006D6A8F /* knight_debug.lua */,
 				07B21FFA16CFCB820083B865 /* leaf01.lua */,
 				07B21FFB16CFCB820083B865 /* leaf02.lua */,
 				07B21FFC16CFCB820083B865 /* level10.lua */,
@@ -4562,6 +4568,8 @@
 				07B2202B16CFD4200083B865 /* 002.lua in Resources */,
 				07B2202D16CFD4270083B865 /* 003.lua in Resources */,
 				078D45EA16CFA02C00E21DC5 /* explosion.mp3 in Resources */,
+				079D274516D21B83006D6A8F /* bossdebug.lua in Resources */,
+				079D274716D21BBE006D6A8F /* knight_debug.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
