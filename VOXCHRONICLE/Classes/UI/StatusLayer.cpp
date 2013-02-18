@@ -23,17 +23,17 @@ StatusLayer::StatusLayer() {
   _currentHPLabel = CCLabelAtlas::create("0", FileUtils::getFilePath("Image/hp_numbers.png").c_str(), 17, 18, '0');
   _currentHPLabel->retain();
   _currentHPLabel->setScale(0.6f);
-  _currentHPLabel->setPosition(ccp(149, 308));
+  _currentHPLabel->setPosition(ccp(169, 308));
   _currentHPLabel->setAnchorPoint(ccp(0.5f, 0.5f));
   _maxHPLabel = CCLabelAtlas::create("0", FileUtils::getFilePath("Image/hp_numbers.png").c_str(), 17, 18, '0');
   _maxHPLabel->retain();
   _maxHPLabel->setScale(0.4f);
-  _maxHPLabel->setPosition(ccp(185, 305));
+  _maxHPLabel->setPosition(ccp(205, 305));
   _maxHPLabel->setAnchorPoint(ccp(0.5f, 0.5f));
   this->addChild(_currentHPLabel);
   this->addChild(_maxHPLabel);
   CCSprite* slash = CCSprite::create(FileUtils::getFilePath("Image/slash.png").c_str());
-  slash->setPosition(ccp(171, 308));
+  slash->setPosition(ccp(191, 308));
   this->addChild(slash);
   _mpChips = CCArray::create();
   _mpChips->retain();
@@ -98,14 +98,14 @@ void StatusLayer::setCurrentHP(int hp) {
   char str[4];
   sprintf(str, "%03d", hp);
   _currentHPLabel->setString(str);
-  _lifeGauge->setScaleX(1.0f * hp);
+  _lifeGauge->setScaleX(1.0f * hp * 0.5);
 }
 
 void StatusLayer::setMaxHP(int hp) {
   char str[4];
   sprintf(str, "%03d", hp);
   _maxHPLabel->setString(str);
-  _lifeGaugeBackground->setScaleX(1.0f * hp);
+  _lifeGaugeBackground->setScaleX(1.0f * hp * 0.5);
 }
 
 void StatusLayer::setCurrentMP(int mp) {
