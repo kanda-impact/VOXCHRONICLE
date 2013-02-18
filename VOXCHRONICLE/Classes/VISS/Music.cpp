@@ -20,8 +20,6 @@ Music::Music() {
 Music::Music(int trackCount) {
   _trackCount = trackCount;
   _measureCount = 0;
-  _playing = false;
-  _played = false;
   _tracks = std::vector< CCArray* >(trackCount);
   for (int i = 0; i < _trackCount; ++i) {
     _tracks[i] = CCArray::create();
@@ -42,7 +40,7 @@ Track* Music::getNextTrack(int trackNumber) {
   }
   return NULL;
 }
-  
+
 Track* Music::setTrack(const char* fileName, int trackNumber, int index) {
   //Track* next = new Track(fileName);
   Track* next = new Track(fileName);
@@ -79,10 +77,10 @@ Track* Music::pushTrack(Track* track, int trackNumber) {
   _tracks.at(trackNumber)->addObject(track);
   return track;
 }
-    
+
 bool Music::play() {
   CCScheduler* scheduler = cocos2d::CCDirector::sharedDirector()->getScheduler();
-  if (_played) {
+  if (scheduler->isTargetPaused(this)) {
     // 再生再開
     for (std::vector< CCArray* >::iterator it = _tracks.begin(); it != _tracks.end(); ++it) {
       if ((*it)->count() > 0) {
@@ -97,25 +95,20 @@ bool Music::play() {
         return false;
       }
     }
-    _played = true;
     cocos2d::CCDirector::sharedDirector()->getScheduler()->scheduleUpdateForTarget(this, -127, false);
     this->setScheduleForMain();
   }
-  _playing = true;
   return true;
 }
-    
+
 void Music::stop() {
-  _playing = false;
   for (std::vector< CCArray* >::iterator it = _tracks.begin(); it != _tracks.end(); ++it) {
     for (int j = 0; j < (*it)->count(); ++j) {
-      ((Track*)(*it)->objectAtIndex(j))->pause();
+      ((Track*)(*it)->objectAtIndex(j))->stop();
       ((Track*)(*it)->objectAtIndex(j))->setVolume(0);
     }
   }
-  //cocos2d::CCDirector::sharedDirector()->getScheduler()->unscheduleAllSelectorsForTarget(this);
-  CCScheduler* scheduler = cocos2d::CCDirector::sharedDirector()->getScheduler();
-  scheduler->pauseTarget(this);
+  cocos2d::CCDirector::sharedDirector()->getScheduler()->unscheduleAllSelectorsForTarget(this);
 }
 
 void Music::pause() {
@@ -176,9 +169,7 @@ void Music::onTrackDidFinish() {
     channel->removeObjectAtIndex(0);
     ++_measureCount;
   }
-  if (_playing) {
-    this->setScheduleDelay(0.0f);
-  }
+  this->setScheduleDelay(0.0f);
 }
 
 void Music::onTrackDidBack() {

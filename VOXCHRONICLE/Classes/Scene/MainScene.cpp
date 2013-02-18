@@ -84,27 +84,25 @@ bool MainScene::init(Map* map) {
   _controller = Controller::create();
   _controller->retain();
   _characterManager = new CharacterManager();
-  _characterManager->retain();
   CCSize size = director->getWinSize();
   this->addChild(_controller);
-  _characterManager->setLevel(setting->getInt("initialLevel"));
   
   map->retain();
   _map = map;
   _level = _map->createInitialLevel();
+  _characterManager->setLevel(_map->getInitialLevel());
   _enemyManager->setLevel(_level);
   
   MusicSet* musicSet = _map->getCurrentMusic(_level);
   musicSet->autorelease();
   musicSet->preloadAllTracks();
   
+  
   _musicManager = new MusicManager(music, musicSet, _enemyManager, _characterManager);
-  _musicManager->retain();
   
   _state = VCStateIntro;
   
   _messageWindow = new MessageWindow(FONT_NAME, 16, CCSizeMake(300, 40));
-  _messageWindow->retain();
   _messageWindow->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height - 70));
   MessageManager::sharedManager()->setDefaultMessageWindow(_messageWindow);
   this->addChild(_messageWindow);
@@ -115,7 +113,6 @@ bool MainScene::init(Map* map) {
   _preLevel = _level->getLevel();
   
   _statusLayer = new StatusLayer();
-  _statusLayer->retain();
   
   this->addChild(_statusLayer);
   this->updateGUI();
@@ -142,6 +139,9 @@ MainScene::~MainScene() {
   }
   if (_pausedTargets != NULL) {
     _pausedTargets->release();
+  }
+  if (_qteTrigger != NULL) {
+    _qteTrigger->release();
   }
   VISS::BufferCache::sharedCache()->purgeAllBuffers();
 }
@@ -228,12 +228,20 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         _state = VCStateFinish;
         _controller->setEnable(false);
         _musicManager->getMusic()->removeAllNextTracks();
-        _musicManager->pushFinishTracks();
+        if (_musicManager->getMusicSet()->getFinishCount() == 0) {
+          this->gotoNextStage();
+        } else {
+          _musicManager->pushFinishTracks();
+        }
       } else if (_level->getLevel() >= _map->getMaxLevel() + 1) {
         _state = VCStateFinish;
         _controller->setEnable(false);
         _musicManager->getMusic()->removeAllNextTracks();
-        _musicManager->pushFinishTracks();
+        if (_musicManager->getMusicSet()->getFinishCount() == 0) {
+          this->gotoNextStage();
+        } else {
+          _musicManager->pushFinishTracks();
+        }
       }
     }
   } else if (_state == VCStateQTEWait) {
@@ -284,6 +292,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     if (count == 2) { // 3小節目
       _enemyManager->removeEnemy(_enemyManager->getBoss());
       _enemyManager->setBoss(NULL);
+      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("explosion.mp3").c_str());
     }
   }
   this->updateGUI(); // GUI更新
@@ -495,6 +504,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _controller->setEnable(false);
       _qteTrigger = new QTETrigger(_enemyManager);
       this->addChild(_qteTrigger);
+      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("qte.mp3").c_str());
     }
     }
       break;

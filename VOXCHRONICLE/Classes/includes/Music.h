@@ -24,8 +24,6 @@ namespace VISS {
    private:
     int _trackCount;
     int _measureCount;
-    bool _playing;
-    bool _played;
     std::vector< CCArray* > _tracks;
     void update(float dt);
     boost::function<void (Music*, Track*, Track*, int)> _trackWillFinishFunction;
