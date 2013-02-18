@@ -134,9 +134,12 @@ void StatusLayer::setMaxMP(int mp) {
       
     }
   } else {
+    const int colLength = 8;
     for (int i = count; i < mp; ++i) {
+      int col = i % colLength;
+      int row = floor(i / colLength);
       CCSprite* chip = CCSprite::create(FileUtils::getFilePath("Image/mp_on.png").c_str());
-      chip->setPosition(ccp(300 + 15 * i, 308));
+      chip->setPosition(ccp(300 + 15 * col, 308 - 15 * row));
       _mpChips->addObject(chip);
       this->addChild(chip);
     }
