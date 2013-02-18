@@ -58,9 +58,12 @@ bool TitleScene::init() {
     CCAnimation* animation = CCAnimation::create();
     animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("easter0.png").c_str(), CCRectMake(0, 0, 480, 320)));
     animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("easter1.png").c_str(), CCRectMake(0, 0, 480, 320)));
-    animation->setLoops(-1);
+    animation->setLoops(10);
     animation->setDelayPerUnit(10.0 / 60.0);
-    mask->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
+    mask->runAction(CCSequence::create(CCAnimate::create(animation),
+                                       CCFadeOut::create(1.0f),
+                                       CCPlace::create(ccp(1000, 1000)),
+                                       NULL));
     this->addChild(mask);
     mask->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
   }
