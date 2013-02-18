@@ -1,3 +1,5 @@
+max_level = 30
+
 function getExp(level)
   --[[
     経験値テーブルを実装できます
@@ -16,12 +18,12 @@ function getLevel(exp)
     経験値に対応したレベルを返します。
     ここは変えない方がよさげです
   ]]
-  for level = 1, 30 do
+  for level = 1, max_level do
     if math.floor(getExp(level)) > exp then
       return level - 1
     end
   end
-  return 1
+  return max_level
 end
 
 function getMaxHP(level)

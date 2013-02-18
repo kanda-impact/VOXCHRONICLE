@@ -9,7 +9,7 @@ Map = {
   getEnemyTable = function(level)
     if level <= 15 then
       return {slime01 = 3, bat01 = 2, hornet01 = 1 }
-    elseif level <= 20 then
+    else
       return {slime02 = 3, bat02 = 2, hornet02 = 2, moth01 = 1}
     end
   end,

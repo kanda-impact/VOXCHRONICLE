@@ -11,7 +11,7 @@ Map = {
       return {leaf01 = 3, acorn01 = 2 }
     elseif level <= 5 then
       return {leaf01 = 3, acorn01 = 2, flower01 = 2 }
-    elseif level <= 10 then
+    else
       return {leaf02 = 3, acorn02 = 2, flower02 = 2, doku01 = 1}
     end
   end,

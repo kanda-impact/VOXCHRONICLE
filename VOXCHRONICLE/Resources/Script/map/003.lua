@@ -1,11 +1,11 @@
 Map = {
   name = "テストステージ3",
   wayMusic = "dub",
-  bossMusic = "boss",
+  bossMusic = "3Bb",
   introCount = 0,
   backgroundImage = "",
   nextMaps = {},
-  initialLevel = 20,
+  initialLevel = 21,
   maxLevel = 30,
   getEnemyTable = function(level)
     if level < 30 then
@@ -18,8 +18,6 @@ Map = {
       knight = enemyManager:popEnemyAt("knight_boss", MAX_ROW - 1, 1)
       enemyManager:setBoss(knight)
     end
-  end,
-    return {}
   end,
   getEnemyPopRate = function(level)
     if level <= 15 then

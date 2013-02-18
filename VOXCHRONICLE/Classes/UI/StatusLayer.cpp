@@ -126,6 +126,7 @@ void StatusLayer::setCurrentMP(int mp) {
 
 void StatusLayer::setMaxMP(int mp) {
   int count = _mpChips->count();
+  cout << count << endl;
   if (count > mp) {
     for (int i = mp; i < count; ++i) {
       CCSprite* chip = (CCSprite*)_mpChips->objectAtIndex(i);
@@ -133,7 +134,7 @@ void StatusLayer::setMaxMP(int mp) {
       _mpChips->removeObjectAtIndex(i);
       
     }
-  } else if (count < mp) {
+  } else {
     for (int i = count; i < mp; ++i) {
       CCSprite* chip = CCSprite::create(FileUtils::getFilePath("Image/mp_on.png").c_str());
       chip->setPosition(ccp(300 + 15 * i, 308));

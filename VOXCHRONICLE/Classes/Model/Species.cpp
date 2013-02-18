@@ -19,7 +19,7 @@ Species::Species(const char* identifier) {
   _minRow = _lua->getInt("minRow");
   _imageName = string(_lua->getString("imageName"));
   _animationFrames = _lua->getInt("animationFrames");
-  _hasFrame = _lua->getInt("hasFrame");
+  _hasFrame = _lua->getBoolean("hasFrame");
 }
 
 Species::~Species() {
