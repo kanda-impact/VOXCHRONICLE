@@ -202,7 +202,9 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       _musicManager->setIntroCount(0);
       _controller->setEnable(true);
       _state = VCStateMain;
-      _ground->play();
+      if (!_map->isBossStage() || _map->getMaxLevel() != _characterManager->getLevel()) {
+        _ground->play();
+      }
     }
   }
   if (_state == VCStateFinish || _state == VCStateQTEFinish) {
