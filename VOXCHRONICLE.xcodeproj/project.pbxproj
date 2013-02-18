@@ -453,6 +453,7 @@
 		079D274716D21BBE006D6A8F /* knight_debug.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079D274616D21BBE006D6A8F /* knight_debug.lua */; };
 		079D274A16D2210C006D6A8F /* EndingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 079D274816D2210C006D6A8F /* EndingScene.cpp */; };
 		079D274D16D223C1006D6A8F /* endingB.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079D274C16D223C1006D6A8F /* endingB.lua */; };
+		079D274F16D23871006D6A8F /* mukade.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079D274E16D23871006D6A8F /* mukade.lua */; };
 		079F88E4169D9AD4001357B5 /* nmb.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079F88E3169D9AD4001357B5 /* nmb.lua */; };
 		079F89A7169EE596001357B5 /* debug.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079F89A6169EE596001357B5 /* debug.lua */; };
 		07A1B98E16CCC2D80092AF8C /* Buffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07A1B98C16CCC2D80092AF8C /* Buffer.mm */; };
@@ -1317,6 +1318,7 @@
 		079D274816D2210C006D6A8F /* EndingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EndingScene.cpp; path = Classes/Scene/EndingScene.cpp; sourceTree = "<group>"; };
 		079D274916D2210C006D6A8F /* EndingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EndingScene.h; path = Classes/Scene/EndingScene.h; sourceTree = "<group>"; };
 		079D274C16D223C1006D6A8F /* endingB.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = endingB.lua; path = endings/endingB.lua; sourceTree = "<group>"; };
+		079D274E16D23871006D6A8F /* mukade.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mukade.lua; path = species/mukade.lua; sourceTree = "<group>"; };
 		079F88E3169D9AD4001357B5 /* nmb.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nmb.lua; path = musics/nmb.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		079F89A3169EE580001357B5 /* QTETrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QTETrigger.h; path = Classes/includes/QTETrigger.h; sourceTree = "<group>"; };
 		079F89A4169EE580001357B5 /* StatusLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusLayer.h; path = Classes/includes/StatusLayer.h; sourceTree = "<group>"; };
@@ -2492,6 +2494,7 @@
 				078D453C16CE87F500E21DC5 /* toadstool.lua */,
 				078D453E16CE87F600E21DC5 /* typhoon.lua */,
 				078D453F16CE87F600E21DC5 /* wisp.lua */,
+				079D274E16D23871006D6A8F /* mukade.lua */,
 			);
 			name = species;
 			sourceTree = "<group>";
@@ -4587,6 +4590,7 @@
 				079D274516D21B83006D6A8F /* bossdebug.lua in Resources */,
 				079D274716D21BBE006D6A8F /* knight_debug.lua in Resources */,
 				079D274D16D223C1006D6A8F /* endingB.lua in Resources */,
+				079D274F16D23871006D6A8F /* mukade.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
