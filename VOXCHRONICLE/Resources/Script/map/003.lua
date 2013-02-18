@@ -5,7 +5,6 @@ Map = {
   ending = "endingB",
   introCount = 0,
   backgroundImage = "",
-  ending = "",
   nextMaps = {},
   initialLevel = 21,
   maxLevel = 30,

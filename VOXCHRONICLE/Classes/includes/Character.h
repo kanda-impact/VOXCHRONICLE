@@ -23,16 +23,16 @@ typedef enum {
 
 class Character :public CCObject {
  private:
-  const char* _name;
-  const char* _identifier;
+  string _name;
+  string _identifier;
   LuaObject* _lua;
   CCArray* _skills;
   CharacterType _type;
  public:
   Character(const char* identifier);
   ~Character();
-  const char* getName();
-  const char* getIdentifier();
+  string getName();
+  string getIdentifier();
   CCArray* getSkills();
   CCArray* getSkills(int level);
   CharacterType getCharacterType();

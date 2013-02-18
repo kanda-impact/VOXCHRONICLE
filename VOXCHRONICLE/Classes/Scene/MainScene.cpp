@@ -671,7 +671,7 @@ void MainScene::onFinishTracksCompleted() {
   if (_state == VCStateQTEFinish) { // QTEFinishのとき
     // おそらくボス撃破後なので、エンディングに移行します
     string endingScript = _map->getEndingName();
-    CCAssert(endingScript.length() != 0, "Ending Script is not difined.");
+    CCAssert(endingScript.length() != 0, "Ending Script is not defined.");
     _musicManager->getMusic()->stop();
     EndingScene* endingLayer = new EndingScene(endingScript.c_str());
     endingLayer->autorelease();

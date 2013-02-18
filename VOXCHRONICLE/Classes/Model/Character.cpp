@@ -32,16 +32,16 @@ Character::Character(const char* identifier) {
     skill->setAcquirementLV(alv);
     _skills->addObject(skill);
   }
-  _name = _lua->getString("name");
+  _name = string(_lua->getString("name"));
   _type = (CharacterType)_lua->getInt("type");
-  _identifier = identifier;
+  _identifier = string(identifier);
 }
 
 Character::~Character() {
   _skills->release();
 }
 
-const char* Character::getName() {
+string Character::getName() {
   return _name;
 }
 
@@ -61,7 +61,7 @@ CCArray* Character::getSkills(int level) {
   return array;
 }
 
-const char* Character::getIdentifier() {
+string Character::getIdentifier() {
   return _identifier;
 }
 
