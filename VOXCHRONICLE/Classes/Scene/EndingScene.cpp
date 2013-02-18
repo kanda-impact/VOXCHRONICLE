@@ -17,10 +17,11 @@ EndingScene::EndingScene(const char* endingScript) {
   string text = obj->getString("text");
   CCLabelTTF* label = CCLabelTTF::create(text.c_str(),
                                          "Helvetica",
-                                         16,
+                                         24,
                                          CCSizeMake(director->getWinSize().width, director->getWinSize().height * 2),
                                          kCCTextAlignmentLeft,
-                                         kCCVerticalTextAlignmentTop);
+                                         kCCVerticalTextAlignmentCenter);
+  label->setColor(ccc3(255, 255, 255));
   string backgroundImage = obj->getString("background");
   if (backgroundImage.length() > 0) {
     CCSprite* sprite = CCSprite::create(backgroundImage.c_str());
@@ -28,20 +29,19 @@ EndingScene::EndingScene(const char* endingScript) {
     this->addChild(sprite);
   }
   label->setPosition(ccp(director->getWinSize().width / 2.0f, - director->getWinSize().height));
-  label->runAction(CCMoveBy::create(10.0f, ccp(0, director->getWinSize().height)));
+  this->addChild(label);
+  label->runAction(CCSequence::create(CCMoveTo::create(15.0f, ccp(director->getWinSize().width / 2.0f, director->getWinSize().height /2.0f)),
+                                      CCDelayTime::create(6.0f),
+                                      CCCallFunc::create(this, callfunc_selector(EndingScene::goToNextScene)),
+                                      NULL));
 }
 
 EndingScene::~EndingScene() {
 }
 
-void EndingScene::registerWithTouchDispatcher() {
-  CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-}
-
-bool EndingScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
+void EndingScene::goToNextScene(cocos2d::CCObject *sender) {
   CCScene* scene = CCScene::create();
   scene->addChild(TitleScene::create());
-  CCTransitionCrossFade* fade = CCTransitionCrossFade::create(1.0f, scene);
+  CCTransitionFade* fade = CCTransitionFade::create(2.0f, scene);
   CCDirector::sharedDirector()->replaceScene(fade);
-  return true;
 }

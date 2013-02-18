@@ -308,6 +308,8 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     Skill* skill = _currentSkillInfo.skill;
     SkillPerformType performType = _currentSkillInfo.type;
     string name = _currentSkillInfo.skillTrackName;
+    int preExp = _characterManager->getExp();
+    int getExp = 0;
     
     bool isHit = true; // ヒットしたかどうか
     /* 以下のとき、ヒットしていない
@@ -319,8 +321,6 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
      ・本来ダメージが与えられるはずなのに、耐性やレベル補正でダメージが0だった場合、ヒットしていない
      */
     if (skill && performType == SkillPerformTypeSuccess) {
-      
-      int preExp = _characterManager->getExp();
       CCArray* targets = _enemyManager->getTargets(skill);
       CCDictionary* info = _enemyManager->performSkill(skill, targets, _characterManager); // ここで経験値が貰える
       CCArray* enemies = (CCArray*)info->objectForKey("enemies");
@@ -466,15 +466,16 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         }
         
       }
-      int getExp = ((CCInteger*)info->objectForKey("exp"))->getValue();
-      CCArray* fixed = _map->getFixedEnemies(preExp, preExp + getExp);
-      if (fixed->count() > 0) {
-        _enemyManager->pushEnemiesQueue(fixed);
-      }
+      getExp = ((CCInteger*)info->objectForKey("exp"))->getValue();
     } else if (performType == SkillPerformTypeNone) {
       // 何も実行しなかったとき
       // MP回復 コマンド化したのでコメントアウトしておきます
       //_characterManager->addMP(1);
+    }
+    // 固定モンスターテーブルを見て、モンスターを出現させます
+    CCArray* fixed = _map->getFixedEnemies(preExp, preExp + getExp);
+    if (fixed->count() > 0) {
+      _enemyManager->pushEnemiesQueue(fixed);
     }
     this->checkLevelUp();
     

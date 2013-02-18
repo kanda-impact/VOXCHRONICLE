@@ -16,8 +16,7 @@ using namespace cocos2d;
 
 class EndingScene :public CCLayer {
  private:
-  virtual bool ccTouchBegan(cocos2d::CCTouch* pTouch, cocos2d::CCEvent* pEvent);
-  virtual void registerWithTouchDispatcher();
+  void goToNextScene(CCObject* sender);
  public:
   EndingScene(const char* endingScript);
   ~EndingScene();
