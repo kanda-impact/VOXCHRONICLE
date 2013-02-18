@@ -653,6 +653,7 @@ void MainScene::changeMap(Map* nextMap) {
 void MainScene::startBossBattle() {
   _controller->setEnable(false);
   _state = VCStateIntro; // イントロに移行
+  _ground->stop(); // 床を停止
   _musicManager->setMusicSet(_map->getCurrentMusic(_level)); // 音楽セットを切り替える
   _controller->setEnable(false);
   _musicManager->pushIntroTracks();
