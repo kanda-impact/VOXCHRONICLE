@@ -190,6 +190,7 @@ void CharacterManager::setLevel(int l) {
   _exp = this->getExpWithLevel(l);
   _levelCache = l;
   _isExpDirty = false;
+  this->updateParameters();
 }
 
 int CharacterManager::addMP(int mp) {
