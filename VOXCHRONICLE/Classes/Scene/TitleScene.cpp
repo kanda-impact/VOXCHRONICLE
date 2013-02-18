@@ -77,15 +77,6 @@ bool TitleScene::init() {
   return true;
 }
 
-void TitleScene::registerWithTouchDispatcher() {
-  CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
-}
-
-bool TitleScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
-  this->onStartButtonPressed(NULL);
-  return true;
-} 
-
 void TitleScene::nextScene(CCLayer* layer) {
   CCScene* scene = CCScene::create();
   scene->addChild(layer);

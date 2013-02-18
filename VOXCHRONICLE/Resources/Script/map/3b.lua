@@ -4,6 +4,7 @@ Map = {
   bossMusic = "boss",
   backgroundImage = "",
   nextMaps = {"2a"},
+  ending = "endingB",
   initialLevel = 1,
   maxLevel = 10,
   getEnemyTable = function(level)

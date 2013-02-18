@@ -38,7 +38,7 @@ bool DebugScene::init() {
     string name = it->stringValue();
     Map* map = new Map(name.c_str());
     map->autorelease();
-    CCLabelTTF* label = CCLabelTTF::create(map->getName()->c_str(), FONT_NAME, 20);
+    CCLabelTTF* label = CCLabelTTF::create(map->getName().c_str(), FONT_NAME, 20);
     CCMenuItemLabel* item = CCMenuItemLabel::create(label, this, menu_selector(DebugScene::onMenuItemPressed));
     items->addObject(item);
     item->setUserObject(map);

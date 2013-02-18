@@ -34,8 +34,9 @@ Map::Map(const char* mapName) {
   }
   
   // スクリプトから各種データ読み込み
-  _name = new string(_lua->getString("name"));
-  _backgroundImageName = new string(_lua->getString("backgroundImage"));
+  _name = _lua->getString("name");
+  _backgroundImageName = _lua->getString("backgroundImage");
+  _ending = _lua->getString("ending");
   CCLuaValueArray* nexts = _lua->getArray("nextMaps");
   _initialLevel = _lua->getInt("initialLevel");
   _maxLevel = _lua->getInt("maxLevel");
@@ -61,7 +62,6 @@ Map::Map(const char* mapName) {
 }
 
 Map::~Map() {
-  delete _name;
   delete _fixedEnemyTable;
   if (_wayMusic != NULL) {
     _wayMusic->release();
@@ -128,7 +128,7 @@ CCArray* Map::getNextMaps() {
   return maps;
 }
 
-string* Map::getName() {
+string Map::getName() {
   return _name;
 }
 
@@ -177,4 +177,8 @@ void Map::performOnLevel(int level, CharacterManager* characterManager, EnemyMan
       cout << lua_tostring(L, lua_gettop(L)) << endl;
     }
   }
+}
+
+string Map::getEndingName() {
+  return _ending;
 }

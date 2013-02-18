@@ -27,8 +27,9 @@ class Map :public CCObject {
   int _maxLevel;
   string _identifier;
   vector<string>* _nextMaps;
-  string* _name;
-  string* _backgroundImageName;
+  string _name;
+  string _backgroundImageName;
+  string _ending;
   LuaObject* _lua;
   list< pair<string, int> >* _fixedEnemyTable; // 固定モンスターテーブル
   MusicSet* _wayMusic;
@@ -40,8 +41,9 @@ class Map :public CCObject {
   Level* createInitialLevel();
   int getMaxLevel();
   int getInitialLevel();
-  string* getName();
+  string getName();
   string getIdentifier();
+  string getEndingName();
   CCArray* getFixedEnemies(int preExp, int currentExp);
   CCArray* getNextMaps();
   bool isBossStage();

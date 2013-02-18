@@ -2,6 +2,7 @@ Map = {
   name = "QTEテスト面",
   wayMusic = "dub",
   bossMusic = "3Bb",
+  ending = "endingB",
   backgroundImage = "",
   nextMaps = {},
   initialLevel = 29,

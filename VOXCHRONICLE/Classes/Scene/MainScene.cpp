@@ -26,6 +26,7 @@
 #include "VQString.h"
 #include "MessageManager.h"
 #include "BufferCache.h"
+#include "EndingScene.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -470,12 +471,12 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       if (fixed->count() > 0) {
         _enemyManager->pushEnemiesQueue(fixed);
       }
-      this->checkLevelUp();
     } else if (performType == SkillPerformTypeNone) {
       // 何も実行しなかったとき
       // MP回復 コマンド化したのでコメントアウトしておきます
       //_characterManager->addMP(1);
     }
+    this->checkLevelUp();
     
     _currentSkillInfo.skillTrackName = "";
     _currentSkillInfo.type = SkillPerformTypeNone;
@@ -664,10 +665,16 @@ void MainScene::gotoNextStage() {
 
 void MainScene::onFinishTracksCompleted() {
   if (_state == VCStateQTEFinish) { // QTEFinishのとき
-    // おそらくボス撃破後なので、ボス戦を終了させます
-    //_characterManager->setLevel(_characterManager->getLevel() + 1);
-    _state = VCStateMain;
-    this->gotoNextStage();
+    // おそらくボス撃破後なので、エンディングに移行します
+    string endingScript = _map->getEndingName();
+    CCAssert(endingScript.length() != 0, "Ending Script is not difined.");
+    _musicManager->getMusic()->stop();
+    EndingScene* endingLayer = new EndingScene(endingScript.c_str());
+    endingLayer->autorelease();
+    CCScene* ending = CCScene::create();
+    ending->addChild(endingLayer);
+    CCTransitionFade* fade = CCTransitionFade::create(5.0f, ending, ccc3(255, 255, 255));
+    CCDirector::sharedDirector()->replaceScene(fade);
   } else if (_map->isBossStage() && _level->getLevel() == _map->getMaxLevel()) { // ボスステージで、現在が最高レベルの時
     // ボス戦を開始します
     this->startBossBattle();
@@ -675,7 +682,6 @@ void MainScene::onFinishTracksCompleted() {
     // 次のステージに移動します
     this->gotoNextStage();
   }
-  
 }
 
 void MainScene::setPause(bool pause) {

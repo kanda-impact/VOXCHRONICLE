@@ -16,9 +16,7 @@ using namespace cocos2d;
 
 class TitleScene : public cocos2d::CCLayer {
 private:
-  virtual bool ccTouchBegan(cocos2d::CCTouch* pTouch, cocos2d::CCEvent* pEvent);
   virtual void nextScene(CCLayer* layer);
-  virtual void registerWithTouchDispatcher();
   void onStartButtonPressed(CCObject* sender);
   void onDebugButtonPressed(CCObject* sender);
   void onSETogglePressed(CCObject* sender);
