@@ -76,7 +76,7 @@ void SignalHandler(int sig) {
   sigaction(SIGBUS, &newSignalAction, NULL);
   // Call takeOff after install your own unhandled exception and signal handlers
   [TestFlight takeOff:TEAM_TOKEN]; // TestFlight SDK
-  [TestFlight setDeviceIdentifier:[[[UIDevice currentDevice] identifierForVendor] UUIDString]];
+  [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
 #endif
   
   // Add the view controller's view to the window and display.
