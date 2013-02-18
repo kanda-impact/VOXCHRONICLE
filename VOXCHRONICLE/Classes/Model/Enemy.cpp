@@ -245,6 +245,7 @@ void Enemy::setItem(EnemyItem item) {
     this->removeChildByTag(EnemyTagItem, true);
   }
   _item = item;
+  CCPoint point = CCPointZero;
   if (item != EnemyItemNone) {
     const char* filename;
     CCSprite* sprite = NULL;
@@ -252,12 +253,17 @@ void Enemy::setItem(EnemyItem item) {
       filename = "Image/shield.png";
       sprite = CCSprite::create(FileUtils::getFilePath(filename).c_str());
       sprite->setColor(VOX_COLOR);
+      point = ccp(0, this->getContentSize().height / 2.0f);
     } else if (item == EnemyItemBarrier) {
       filename = "Image/barrier.png";
       sprite = CCSprite::create(FileUtils::getFilePath(filename).c_str());
       sprite->setColor(LSK_COLOR);
+      point = ccp(this->getContentSize().width / 2.0f, this->getContentSize().height / 2.0f);
+      sprite->setOpacity(100);
+      sprite->setScale(2.0f);
     }
     this->addChild(sprite, 1000, EnemyTagItem);
+    sprite->setPosition(point);
   }
 }
 
