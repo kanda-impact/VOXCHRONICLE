@@ -11,7 +11,7 @@ Skill = {
   skillRange = SkillRangeFront,
   skillType = SkillTypePhysical,
   getPower = function(tension)
-    t = {0, 5, 15, 25, 30}
+    t = {0, 6, 12, 18, 24}
     return t[tension + 1]
   end,
   messages = {

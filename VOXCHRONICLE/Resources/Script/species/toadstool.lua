@@ -1,10 +1,10 @@
 Enemy = {
   name = "毒キノコ",
   imageName = "toadstool",
-  attack = 1,
-  baseExp = 1,
+  attack = 3,
+  baseExp = 5,
   hasFrame = true,
-  counter = 1,
+  counter = 4,
   speed = 2,
   animationFrames = 4,
   performSkill = function(self)

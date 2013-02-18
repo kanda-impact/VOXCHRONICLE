@@ -1,11 +1,11 @@
 Enemy = {
   name = "マスク",
   imageName = "mask",
-  attack = 1,
-  baseExp = 1,
+  attack = 5,
+  baseExp = 4,
   hasFrame = true,
-  counter = 1,
-  speed = 2,
+  counter = 4,
+  speed = 1,
   animationFrames = 4,
   performSkill = function(self)
   return ""

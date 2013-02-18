@@ -1,8 +1,8 @@
 Enemy = {
   name = "ミミック",
   imageName = "mimic",
-  attack = 1,
-  baseExp = 1,
+  attack = 4,
+  baseExp = 5,
   hasFrame = true,
   counter = 1,
   speed = 2,

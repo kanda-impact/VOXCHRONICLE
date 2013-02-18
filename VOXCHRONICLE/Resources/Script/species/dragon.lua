@@ -1,10 +1,10 @@
 Enemy = {
   name = "ドラゴンキッズ",
   imageName = "dragon",
-  attack = 1,
-  baseExp = 1,
+  attack = 6,
+  baseExp = 6,
   hasFrame = true,
-  counter = 1,
+  counter = 2,
   speed = 2,
   animationFrames = 4,
   performSkill = function(self)

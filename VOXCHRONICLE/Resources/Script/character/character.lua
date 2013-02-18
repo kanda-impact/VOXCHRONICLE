@@ -25,11 +25,11 @@ function getLevel(exp)
 end
 
 function getMaxHP(level)
-  return 5
+  return 5 + 10 * math.floor(level / 10)
 end
 
 function getMaxMP(level)
-  return 5
+  return 3 + 2 * math.floor(level / 10)
 end
 
 function getLevelOffsetRate(attackLevel, defenseLevel)
