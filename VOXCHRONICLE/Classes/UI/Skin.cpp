@@ -14,7 +14,7 @@ Skin::Skin(const char* scriptName) {
   int frameCount = lua->getInt("groundFrameCount");
   string prefix = lua->getString("prefix");
   _ground = new Ground(prefix.c_str(), frameCount);
-  _statusLayer = new StatusLayer();
+  _statusLayer = new StatusLayer(scriptName);
 }
 
 Skin::~Skin() {

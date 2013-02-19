@@ -14,23 +14,22 @@
 
 using namespace cocos2d;
 
+typedef enum {
+  MaxHPLabelTag,
+  CurrentHPLabelTag,
+  LevelLabelTag,
+  LifeGaugeBackgroundTag,
+  LifeGaugeTag
+} StatusLayerPartsTag;
+
 class StatusLayer :public CCLayer {
  private:
-  CCLabelAtlas* _maxHPLabel;
-  CCLabelAtlas* _currentHPLabel;
-  CCLabelAtlas* _levelLabel;
   CCArray* _mpChips;
-  CCSprite* _lifeGaugeBackground;
-  CCSprite* _lifeGauge;
-  
-  CCLabelTTF* _expLabel;
-  CCLabelTTF* _nextExpLabel;
-  CCLabelTTF* _mapLabel;
   CCSprite* _timeMarker;
   
   void onPauseButtonPressed(CCObject* sender);
  public:
-  StatusLayer();
+  StatusLayer(const char* scriptName);
   ~StatusLayer();
   void setCurrentHP(int hp);
   void setMaxHP(int hp);
