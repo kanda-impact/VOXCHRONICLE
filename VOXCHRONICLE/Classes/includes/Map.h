@@ -16,6 +16,7 @@
 #include "MusicSet.h"
 #include "CharacterManager.h"
 #include "EnemyManager.h"
+#include "Skin.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -34,6 +35,7 @@ class Map :public CCObject {
   list< pair<string, int> >* _fixedEnemyTable; // 固定モンスターテーブル
   MusicSet* _wayMusic;
   MusicSet* _bossMusic;
+  Skin* _skin;
  public:
   Map(const char* mapName);
   ~Map();
@@ -49,6 +51,7 @@ class Map :public CCObject {
   bool isBossStage();
   MusicSet* getCurrentMusic(Level* level);
   void performOnLevel(int level, CharacterManager* characterManager, EnemyManager* enemyManager);
+  Skin* getSkin();
 };
 
 #endif /* defined(__VOXCHRONICLE__Map__) */

@@ -51,6 +51,13 @@ bool MainScene::init(Map* map) {
   music->setTrackDidBackFunction(boost::bind(&MainScene::trackDidBack, this, _1, _2, _3));
   music->setTrackDidFinishFunction(boost::bind(&MainScene::trackDidFinishPlaying, this, _1, _2, _3, _4));
   music->setTrackWillFinishFunction(boost::bind(&MainScene::trackWillFinishPlaying, this, _1, _2, _3, _4));
+  
+  // マップの追加
+  _map = map;
+  _map->retain();
+  _skin = _map->getSkin();
+  _skin->retain();
+  
   _pausedTargets = NULL;
   
   _currentSkillInfo.skillTrackName = "";
@@ -59,8 +66,6 @@ bool MainScene::init(Map* map) {
   
   _turnCount = 0;
   _mapTurnCount = 0;
-  
-  _skin = new Skin("skinA");
   
   LuaObject* setting = new LuaObject("Script/setting", "Setting");
   setting->autorelease();
@@ -88,8 +93,6 @@ bool MainScene::init(Map* map) {
   CCSize size = director->getWinSize();
   this->addChild(_controller);
   
-  map->retain();
-  _map = map;
   _level = _map->createInitialLevel();
   _characterManager->setLevel(_map->getInitialLevel());
   _enemyManager->setLevel(_level);

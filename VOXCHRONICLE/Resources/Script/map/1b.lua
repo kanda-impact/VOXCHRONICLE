@@ -3,6 +3,7 @@ Map = {
   wayMusic = "volca",
   bossMusic = "",
   backgroundImage = "",
+  skin = "skinA",
   ending = "",
   nextMaps = {"2a"},
   initialLevel = 1,

@@ -22,6 +22,9 @@ Map::Map(const char* mapName) {
   _identifier = mapName;
   _lua = new LuaObject(ss.str().c_str(), "Map");
   
+  // スキンの生成
+  _skin = new Skin(_lua->getString("skin"));
+  
   // MusicSetの生成
   string wayMusicName = _lua->getString("wayMusic");
   string bossMusicName = _lua->getString("bossMusic");
@@ -70,6 +73,7 @@ Map::~Map() {
     _bossMusic->release();
   }
   _lua->release();
+  _skin->release();
 }
 
 Level* Map::createLevel(int level) {
@@ -181,4 +185,8 @@ void Map::performOnLevel(int level, CharacterManager* characterManager, EnemyMan
 
 string Map::getEndingName() {
   return _ending;
+}
+
+Skin* Map::getSkin() {
+  return _skin;
 }
