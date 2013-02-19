@@ -21,11 +21,10 @@
 #include "CharacterManager.h"
 #include "MapSelector.h"
 #include "MessageWindow.h"
-#include "StatusLayer.h"
 #include "MusicSet.h"
 #include "QTETrigger.h"
-#include "Ground.h"
 #include "MusicManager.h"
+#include "Skin.h"
 
 typedef enum {
   VCStateIntro,
@@ -54,11 +53,10 @@ class MainScene : public CCLayer {
   CharacterManager* _characterManager;
   MapSelector* _mapSelector;
   MessageWindow* _messageWindow;
-  StatusLayer* _statusLayer;
   CCSprite* _focus;
   QTETrigger* _qteTrigger;
+  Skin* _skin;
   
-  Ground* _ground;
   Level* _level;
   Map* _map;
   VCState _state;

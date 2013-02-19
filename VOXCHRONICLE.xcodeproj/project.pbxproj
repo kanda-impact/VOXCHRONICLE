@@ -456,6 +456,7 @@
 		079D274F16D23871006D6A8F /* mukade.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079D274E16D23871006D6A8F /* mukade.lua */; };
 		079D275216D34680006D6A8F /* Skin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 079D275016D3467F006D6A8F /* Skin.cpp */; };
 		079D275816D38B7F006D6A8F /* enemy.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079D275716D38B7E006D6A8F /* enemy.lua */; };
+		079D275B16D3BA04006D6A8F /* skinA.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079D275A16D3BA04006D6A8F /* skinA.lua */; };
 		079F88E4169D9AD4001357B5 /* nmb.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079F88E3169D9AD4001357B5 /* nmb.lua */; };
 		079F89A7169EE596001357B5 /* debug.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079F89A6169EE596001357B5 /* debug.lua */; };
 		07A1B98E16CCC2D80092AF8C /* Buffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07A1B98C16CCC2D80092AF8C /* Buffer.mm */; };
@@ -1324,6 +1325,7 @@
 		079D275516D34B46006D6A8F /* MusicManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicManager.h; path = Classes/includes/MusicManager.h; sourceTree = "<group>"; };
 		079D275616D34B67006D6A8F /* MessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageManager.h; path = Classes/includes/MessageManager.h; sourceTree = "<group>"; };
 		079D275716D38B7E006D6A8F /* enemy.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = enemy.lua; sourceTree = "<group>"; };
+		079D275A16D3BA04006D6A8F /* skinA.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = skinA.lua; path = skins/skinA.lua; sourceTree = "<group>"; };
 		079F88E3169D9AD4001357B5 /* nmb.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nmb.lua; path = musics/nmb.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		079F89A3169EE580001357B5 /* QTETrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QTETrigger.h; path = Classes/includes/QTETrigger.h; sourceTree = "<group>"; };
 		079F89A4169EE580001357B5 /* StatusLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusLayer.h; path = Classes/includes/StatusLayer.h; sourceTree = "<group>"; };
@@ -2600,6 +2602,14 @@
 			name = endings;
 			sourceTree = "<group>";
 		};
+		079D275916D3B9F6006D6A8F /* skins */ = {
+			isa = PBXGroup;
+			children = (
+				079D275A16D3BA04006D6A8F /* skinA.lua */,
+			);
+			name = skins;
+			sourceTree = "<group>";
+		};
 		079F88E5169D9B47001357B5 /* nmb */ = {
 			isa = PBXGroup;
 			children = (
@@ -2776,6 +2786,7 @@
 		07C6064016164F810084708C /* Script */ = {
 			isa = PBXGroup;
 			children = (
+				079D275916D3B9F6006D6A8F /* skins */,
 				079D274B16D223A2006D6A8F /* endings */,
 				078D452516CE87D900E21DC5 /* species */,
 				07448CBB16C2899C00F005C6 /* messages */,
@@ -4600,6 +4611,7 @@
 				079D274D16D223C1006D6A8F /* endingB.lua in Resources */,
 				079D274F16D23871006D6A8F /* mukade.lua in Resources */,
 				079D275816D38B7F006D6A8F /* enemy.lua in Resources */,
+				079D275B16D3BA04006D6A8F /* skinA.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

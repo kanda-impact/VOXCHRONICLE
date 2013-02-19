@@ -60,15 +60,15 @@ bool MainScene::init(Map* map) {
   _turnCount = 0;
   _mapTurnCount = 0;
   
+  _skin = new Skin("skinA");
+  
   LuaObject* setting = new LuaObject("Script/setting", "Setting");
   setting->autorelease();
   
   CCDirector* director = CCDirector::sharedDirector();
   
   // 背景の追加
-  _ground = new Ground("cyber");
-  _ground->stop();
-  this->addChild(_ground);
+  this->addChild(_skin->getGround());
   
   // EnemyManager
   _enemyManager = EnemyManager::create();
@@ -113,9 +113,7 @@ bool MainScene::init(Map* map) {
   this->scheduleUpdate();
   _preLevel = _level->getLevel();
   
-  _statusLayer = new StatusLayer();
-  
-  this->addChild(_statusLayer);
+  this->addChild(_skin->getStatusLayer());
   this->updateGUI();
   _controller->updateSkills(_characterManager);
   
@@ -133,7 +131,7 @@ MainScene::~MainScene() {
   _controller->release();
   _enemyManager->release();
   _characterManager->release();
-  _statusLayer->release();
+  _skin->release();
   _focus->release();
   if (_mapSelector != NULL) {
     _mapSelector->release();
@@ -169,7 +167,7 @@ void MainScene::onEnterTransitionDidFinish() {
   _controller->setEnable(false);
   _musicManager->pushIntroTracks();
   _musicManager->getMusic()->play();
-  _statusLayer->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
+  _skin->getStatusLayer()->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
   CCDictionary* dict = CCDictionary::create();
   dict->setObject(CCString::create(_characterManager->getCurrentCharacter()->getName()), "chara");
   MessageManager::sharedManager()->pushRandomMessageFromLua("welcome", dict);
@@ -203,7 +201,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       _controller->setEnable(true);
       _state = VCStateMain;
       if (!_map->isBossStage() || _map->getMaxLevel() != _characterManager->getLevel()) {
-        _ground->play();
+        _skin->getGround()->play();
       }
     }
   }
@@ -517,15 +515,16 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
   }
   
   // マーカーを再同期
-  _statusLayer->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
+  _skin->getStatusLayer()->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
 }
 
 void MainScene::updateGUI() {
-  _statusLayer->setCurrentHP(_characterManager->getHP());
-  _statusLayer->setMaxHP(_characterManager->getMaxHP());
-  _statusLayer->setCurrentMP(_characterManager->getMP());
-  _statusLayer->setMaxMP(_characterManager->getMaxMP());
-  _statusLayer->setLevel(_characterManager->getLevel());
+  StatusLayer* statusLayer = _skin->getStatusLayer();
+  statusLayer->setCurrentHP(_characterManager->getHP());
+  statusLayer->setMaxHP(_characterManager->getMaxHP());
+  statusLayer->setCurrentMP(_characterManager->getMP());
+  statusLayer->setMaxMP(_characterManager->getMaxMP());
+  statusLayer->setLevel(_characterManager->getLevel());
 }
 
 bool MainScene::checkLevelUp() {
@@ -552,7 +551,7 @@ void MainScene::onGameOver() {
   CCDictionary* dict = CCDictionary::create();
   dict->setObject(CCString::create(_characterManager->getCurrentCharacter()->getName()), "chara");
   MessageManager::sharedManager()->pushRandomMessageFromLua("death", dict);
-  _ground->stop();
+  _skin->getGround()->stop();
   _state = VCStateGameOver;
   GameOverLayer* gameover = new GameOverLayer(this);
   this->addChild(gameover);
@@ -655,7 +654,7 @@ void MainScene::changeMap(Map* nextMap) {
 void MainScene::startBossBattle() {
   _controller->setEnable(false);
   _state = VCStateIntro; // イントロに移行
-  _ground->stop(); // 床を停止
+  _skin->getGround()->stop(); // 床を停止
   _musicManager->setMusicSet(_map->getCurrentMusic(_level)); // 音楽セットを切り替える
   _controller->setEnable(false);
   _musicManager->pushIntroTracks();
