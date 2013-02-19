@@ -5,11 +5,14 @@ function getExp(level)
     経験値テーブルを実装できます
     レベルlevelを引数としたときに、そのレベルになるために最低限必要な経験値をreturnしてください
   ]]
+  --[[ 
   local exp = 0
   for l = 2, level do
     exp = exp + math.pow(l / 2 + 3 , 2)
   end
   return exp
+  ]]
+  return (level - 1) * 60
 end
 
 
@@ -48,5 +51,5 @@ function getDefaultExp(base, level, maxHP, item, type)
   if type ~= SkillTypeNormal then
     t = 1.2
   end
-  return math.ceil(base * math.max(level / 2, 1) * maxHP / 3, 1 * i * t)
+  return base
 end
