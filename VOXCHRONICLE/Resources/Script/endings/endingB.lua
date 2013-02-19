@@ -1,5 +1,5 @@
 Ending = {
-  background = "",
+  background = "ending_kawaz.png",
   text = [[
     「わぁい！やったよラスカ！やったよラスカ！やったよラスカ！」
     「そうね。でもこれはデバックバージョンだから、だから、だから」
