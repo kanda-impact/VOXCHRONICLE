@@ -8,6 +8,7 @@ Skill = {
   se = true,
   maxRepeat = 1,
   turn = 1,
+  loop = true,
   performSkill = function(self, target, characterManager, enemyManager)
     characterManager:setShield(true)
   end,

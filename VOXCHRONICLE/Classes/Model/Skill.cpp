@@ -30,6 +30,7 @@ Skill::Skill(const char* identifier) {
   _range = (SkillRange)_lua->getInt("skillRange");
   _type = (SkillType)_lua->getInt("skillType");
   _se = _lua->getBoolean("se");
+  _loop = _lua->getBoolean("loop");
   CCLuaValueArray* mes = _lua->getArray("messages");
   
   // エフェクトを先読みしておきます
@@ -125,6 +126,10 @@ int Skill::getTensionLevel() {
 
 bool Skill::hasSE() {
   return _se;
+}
+
+bool Skill::isLoop() {
+  return _loop;
 }
 
 SkillEffectType Skill::getEffectType() {

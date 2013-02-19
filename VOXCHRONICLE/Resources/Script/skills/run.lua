@@ -8,6 +8,7 @@ Skill = {
   common = true,
   maxRepeat = 2,
   turn = 1,
+  loop = true,
   performSkill = function(self, target, characterManager, enemyManager)
     enemyManager:nextTurn(characterManager)
   end,

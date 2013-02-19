@@ -8,6 +8,7 @@ Skill = {
   common = false,
   maxRepeat = 4,
   turn = 1,
+  loop = true,
   skillRange = SkillRangeSingle,
   skillType = SkillTypePhysical,
   performSkill = function(self, target, characterManager, enemyManager)

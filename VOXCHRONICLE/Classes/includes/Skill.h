@@ -55,6 +55,7 @@ class Skill :public CCObject {
   int _tensionLevel;
   bool _common;
   bool _se;
+  bool _loop;
   string _name;
   string _identifier;
   SkillRange _range;
@@ -76,6 +77,7 @@ class Skill :public CCObject {
   int getTensionLevel();
   bool isCommon();
   bool hasSE();
+  bool isLoop();
   SkillEffectType getEffectType();
   SkillRange getRange();
   SkillType getType();

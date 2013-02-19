@@ -8,6 +8,7 @@ Skill = {
   common = false,
   maxRepeat = 1,
   turn = 1,
+  loop = true,
   skillRange = SkillRangeFront,
   skillType = SkillTypePhysical,
   getPower = function(tension)

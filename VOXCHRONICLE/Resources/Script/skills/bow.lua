@@ -6,6 +6,7 @@ Skill = {
   se = true,
   tensionLevel = 0,
   common = false,
+  loop = true,
   maxRepeat = 1,
   turn = 1,
   getPower = function(tension)

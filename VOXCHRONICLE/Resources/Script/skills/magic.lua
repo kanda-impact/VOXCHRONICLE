@@ -8,6 +8,7 @@ Skill = {
   common = false,
   maxRepeat = 4,
   turn = 1,
+  loop = true,
   getPower = function(tension)
     t = {3, 6, 9, 12, 15}
     return t[tension + 1]
