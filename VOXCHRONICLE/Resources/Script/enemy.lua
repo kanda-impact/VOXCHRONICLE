@@ -32,11 +32,11 @@ function getColor(hp)
     {87,  0, 159  },
     {140, 0, 87   },
   }
-  if hp == 0 then
-    return 255, 255, 255
+  if hp == 0 then -- HPが0のとき
+    return 255, 255, 255 -- 強制的に白を返します
   end
-  local key = math.ceil(hp / 3)
-  local length = #colors
-  key = math.min(length, key)
-  return colors[key][1], colors[key][2], colors[key][3]
+  local key = math.ceil(hp / 3) -- 3で割って切り上げます
+  local length = #colors -- 長さをとります
+  key = math.min(length, key) -- keyが長さ以上の時、バグるのでkeyを最大値にします
+  return colors[key][1], colors[key][2], colors[key][3] -- key番目のr, g, bを1こずつ返します
 end
