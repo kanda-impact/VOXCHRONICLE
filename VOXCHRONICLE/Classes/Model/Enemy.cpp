@@ -159,11 +159,21 @@ DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager, bool 
 }
 
 void Enemy::setLifeColor() {
-  const float minColor = (0 * 255 + 244);
-  //const float maxColor = (5 * 255 + 247);
-  const float cast = 360.0 / (float)(255 * 6);
-  ccColor3B color = HSVToColor3B((minColor + 200 * (_hp - 1)) * cast, 1, 1);
-  this->cocos2d::CCSprite::setColor(color);
+  // Luaスクリプトを呼びます
+  LuaObject* obj = LuaObject::create("enemy.lua");
+  lua_State* L = obj->getLuaEngineWithLoad()->getLuaState();
+  lua_getglobal(L, "getColor");
+  if ( lua_isfunction(L, lua_gettop(L))) {
+    lua_pushinteger(L, this->getHP());
+    if (lua_pcall(L, 1, 3, 0)) {
+      cout << lua_tostring(L, lua_gettop(L)) << endl;
+    }
+    int r = lua_tointeger(L, -1);
+    int g = lua_tointeger(L, -2);
+    int b = lua_tointeger(L, -3);
+    ccColor3B color = ccc3(r, g, b);
+    this->setColor(color);
+  }
 }
 
 int Enemy::getExp() {
