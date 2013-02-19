@@ -22,6 +22,7 @@ class Skin :public CCObject {
   StatusLayer* _statusLayer;
  public:
   Skin(const char* scriptName);
+  ~Skin();
 };
 
 #endif /* defined(__VOXCHRONICLE__Skin__) */
