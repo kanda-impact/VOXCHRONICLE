@@ -8,3 +8,5 @@ enc_temp_folder
 *.opensdf
 *.sdf
 *.suo
+.project
+.buildpath
