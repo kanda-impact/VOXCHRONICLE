@@ -1,7 +1,7 @@
 Skill = {
   name = "魔法",
   identifier = "magic",
-  effectFrames = 0,
+  effectFrames = 8,
   mp = 0,
   se = true,
   tensionLevel = 0,

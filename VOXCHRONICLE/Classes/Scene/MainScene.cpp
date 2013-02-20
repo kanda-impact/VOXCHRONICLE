@@ -387,7 +387,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         if (effectType == SkillEffectTypeTarget) { // 1体のみにアニメーションを表示させるとき
           Enemy* target = (Enemy*)enemies->objectAtIndex(0);
           CCPoint position = ccpAdd(target->getPosition(), ccp(0, target->getContentSize().height * target->getCurrentScale(target->getRow()) * 0.5f));
-          rect = CCRectMake(0, 0, 400, 400);
+          rect = CCRectMake(0, 0, 200, 200);
           effect->setPosition(position);
           effect->setScale(target->getScale());
         } else { // 全体にアニメーションを表示させるとき
