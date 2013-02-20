@@ -101,7 +101,7 @@ bool MainScene::init(Map* map) {
   _controller->retain();
   _characterManager = new CharacterManager();
   CCSize size = director->getWinSize();
-
+  
   _level = _map->createInitialLevel();
   _characterManager->setLevel(_map->getInitialLevel());
   _enemyManager->setLevel(_level);
@@ -128,7 +128,7 @@ bool MainScene::init(Map* map) {
   // 画面の描画
   this->addChild(_enemyManager, MainSceneZOrderEnemyManager);
   this->addChild(_controller, MainSceneZOrderController);
-  this->changeSkin(_map->getSkin());
+  this->changeSkin(_map->getSkin(), false);
   this->updateGUI();
   _controller->updateSkills(_characterManager);
   
@@ -659,7 +659,7 @@ void MainScene::changeMap(Map* nextMap) {
   _state = VCStateIntro;
   _musicManager->setMusicSet(_map->getCurrentMusic(_level)); // 音楽セットを切り替える
   
-  this->changeSkin(_map->getSkin());
+  this->changeSkin(_map->getSkin(), true);
   
   _musicManager->setIntroCount(0);
   _musicManager->setFinishCount(0);
@@ -668,25 +668,51 @@ void MainScene::changeMap(Map* nextMap) {
   this->updateGUI();
 }
 
-void MainScene::changeSkin(Skin *newSkin) {
+void MainScene::changeSkin(Skin *newSkin, bool crossFade) {
   // スキンの切り替え
   // 後始末
+  const float kCrossFadeSpeed = 1.0f;
   if (_skin != NULL) {
-    this->removeChild(_skin->getBackground(), true);
-    this->removeChild(_skin->getGround(), true);
-    this->removeChild(_skin->getStatusLayer(), true);
+    if (crossFade) {
+      CCArray* nodes = CCArray::create();
+      if (_skin->getBackground()) nodes->addObject(_skin->getBackground());
+      nodes->addObject(_skin->getGround());
+      nodes->addObject(_skin->getStatusLayer());
+      CCObject* obj = NULL;
+      // まとめてフェードアウトを設定
+      CCARRAY_FOREACH(nodes, obj) {
+        CCNode* node = (CCNode*)obj;
+        node->runAction(CCSequence::create(CCFadeOut::create(kCrossFadeSpeed),
+                                           CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
+                                           NULL));
+      }
+    } else {
+      this->removeChild(_skin->getBackground(), true);
+      this->removeChild(_skin->getGround(), true);
+      this->removeChild(_skin->getStatusLayer(), true);
+    }
     _skin->release(); // 今のスキンをReleaseします
   }
   _skin = newSkin; // 新しいマップのスキンを格納します
   _skin->retain();
+  CCArray* nodes = CCArray::create();
   CCSprite* background = _skin->getBackground();
   if (background) {
     CCDirector* director = CCDirector::sharedDirector();
     background->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
     this->addChild(background, MainSceneZOrderBackground);
+    nodes->addObject(background);
   }
+  nodes->addObject(_skin->getGround());
+  nodes->addObject(_skin->getStatusLayer());
   this->addChild(_skin->getGround(), MainSceneZOrderGround);
   this->addChild(_skin->getStatusLayer(), MainSceneZOrderStatus);
+  if (crossFade) {
+    if (background) {
+      background->setOpacity(0.0f);
+      background->runAction(CCFadeIn::create(kCrossFadeSpeed));
+    }
+  }
 }
 
 void MainScene::startBossBattle() {
