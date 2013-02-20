@@ -45,7 +45,7 @@ bool DebugScene::init() {
   }
   CCMenu* menu = CCMenu::createWithArray(items);
   menu->setPosition(ccp(240, 160));
-  menu->alignItemsVerticallyWithPadding(20);
+  menu->alignItemsVerticallyWithPadding(15);
   this->addChild(menu);
   
   return true;

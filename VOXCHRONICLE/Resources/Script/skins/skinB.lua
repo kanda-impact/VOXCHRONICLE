@@ -25,7 +25,7 @@ Skin = {
     self:addChild(currentHPLabel, 0, CurrentHPLabelTag)
     self:addChild(maxHPLabel, 0, MaxHPLabelTag)
   
-    local slash = CCSprite:create("cave_slash.png")
+    local slash = CCSprite:create("grass_slash.png")
     slash:setPosition(ccp(191, 308))
     self:addChild(slash)
   
