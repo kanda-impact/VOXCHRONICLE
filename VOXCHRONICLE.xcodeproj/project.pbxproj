@@ -459,6 +459,9 @@
 		079D275B16D3BA04006D6A8F /* skinA.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079D275A16D3BA04006D6A8F /* skinA.lua */; };
 		079D276216D4BAC2006D6A8F /* skinB.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079D276016D4BAC2006D6A8F /* skinB.lua */; };
 		079D276316D4BAC2006D6A8F /* skinC.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079D276116D4BAC2006D6A8F /* skinC.lua */; };
+		079D276516D4E6A6006D6A8F /* map_select.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079D276416D4E6A6006D6A8F /* map_select.lua */; };
+		079D276816D4E81E006D6A8F /* map_selectL.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079D276616D4E819006D6A8F /* map_selectL.lua */; };
+		079D276916D4E81E006D6A8F /* map_selectR.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079D276716D4E81C006D6A8F /* map_selectR.lua */; };
 		079F88E4169D9AD4001357B5 /* nmb.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079F88E3169D9AD4001357B5 /* nmb.lua */; };
 		079F89A7169EE596001357B5 /* debug.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079F89A6169EE596001357B5 /* debug.lua */; };
 		07A1B98E16CCC2D80092AF8C /* Buffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07A1B98C16CCC2D80092AF8C /* Buffer.mm */; };
@@ -1330,6 +1333,9 @@
 		079D275A16D3BA04006D6A8F /* skinA.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = skinA.lua; path = skins/skinA.lua; sourceTree = "<group>"; };
 		079D276016D4BAC2006D6A8F /* skinB.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = skinB.lua; path = skins/skinB.lua; sourceTree = "<group>"; };
 		079D276116D4BAC2006D6A8F /* skinC.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = skinC.lua; path = skins/skinC.lua; sourceTree = "<group>"; };
+		079D276416D4E6A6006D6A8F /* map_select.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = map_select.lua; path = map/map_select.lua; sourceTree = "<group>"; };
+		079D276616D4E819006D6A8F /* map_selectL.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = map_selectL.lua; path = map/map_selectL.lua; sourceTree = "<group>"; };
+		079D276716D4E81C006D6A8F /* map_selectR.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = map_selectR.lua; path = map/map_selectR.lua; sourceTree = "<group>"; };
 		079F88E3169D9AD4001357B5 /* nmb.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nmb.lua; path = musics/nmb.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		079F89A3169EE580001357B5 /* QTETrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QTETrigger.h; path = Classes/includes/QTETrigger.h; sourceTree = "<group>"; };
 		079F89A4169EE580001357B5 /* StatusLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusLayer.h; path = Classes/includes/StatusLayer.h; sourceTree = "<group>"; };
@@ -2150,6 +2156,9 @@
 				07B2202816CFD4200083B865 /* 001.lua */,
 				07B2202916CFD4200083B865 /* 002.lua */,
 				07B2202C16CFD4270083B865 /* 003.lua */,
+				079D276416D4E6A6006D6A8F /* map_select.lua */,
+				079D276616D4E819006D6A8F /* map_selectL.lua */,
+				079D276716D4E81C006D6A8F /* map_selectR.lua */,
 			);
 			name = map;
 			sourceTree = "<group>";
@@ -4620,6 +4629,9 @@
 				079D275B16D3BA04006D6A8F /* skinA.lua in Resources */,
 				079D276216D4BAC2006D6A8F /* skinB.lua in Resources */,
 				079D276316D4BAC2006D6A8F /* skinC.lua in Resources */,
+				079D276516D4E6A6006D6A8F /* map_select.lua in Resources */,
+				079D276816D4E81E006D6A8F /* map_selectL.lua in Resources */,
+				079D276916D4E81E006D6A8F /* map_selectR.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

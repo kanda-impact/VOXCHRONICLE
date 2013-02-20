@@ -32,9 +32,9 @@ typedef enum {
   VCStateGameOver,
   VCStateFinish,
   VCStateBoss,
+  VCStateMapSelect,
   VCStateQTEWait,
   VCStateQTEFinish,
-  VCStateStageSelect,
   VCStateEnding
 } VCState;
 

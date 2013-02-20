@@ -249,7 +249,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         } else {
           _musicManager->pushFinishTracks();
         }
-      } else if (_level->getLevel() >= _map->getMaxLevel() + 1) {
+      } else if (_level->getLevel() >= _map->getMaxLevel() + 1) { // 最大レベル + 1のとき
         _state = VCStateFinish;
         _controller->setEnable(false);
         _musicManager->getMusic()->removeAllNextTracks();
@@ -260,7 +260,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         }
       }
     }
-  } else if (_state == VCStateQTEWait) {
+  } else if (_state == VCStateQTEWait) { // QTE待機中の時
     if (_qteTrigger && _qteTrigger->isButtonPressed()) {
       _musicManager->pushFinishTracks(); // finishTrack入れる
       this->removeChild(_qteTrigger, true);
@@ -303,12 +303,24 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     } else {
       _musicManager->pushNextTracks(NULL, _currentSkillInfo); // wait入れる
     }
-  } else if (_state == VCStateQTEFinish) {
+  } else if (_state == VCStateQTEFinish) { // QTE終了時
     int count = _musicManager->getFinishCount();
     if (count == 2) { // 3小節目
       _enemyManager->removeEnemy(_enemyManager->getBoss());
       _enemyManager->setBoss(NULL);
       CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("explosion.mp3").c_str());
+    }
+  } else if (_state == VCStateMapSelect) {
+    Map* nextMap = _mapSelector->getSelectedMap();
+    if (nextMap) {
+      _state = VCStateMain;
+      _controller->setEnable(true);
+      this->removeChild(_mapSelector, true);
+      _mapSelector->release();
+      _mapSelector = NULL;
+      this->changeMap(nextMap);
+    } else {
+      _musicManager->pushSilentTracks(); // 選択されてなかったら、次の小節も無音
     }
   }
   this->updateGUI(); // GUI更新
@@ -725,9 +737,21 @@ void MainScene::startBossBattle() {
 }
 
 void MainScene::gotoNextStage() {
-  // マップセレクターは後で実装します
-  CCArray* maps = _map->getNextMaps();
-  this->changeMap((Map*)maps->lastObject()); // マップを強制的に切り替える
+  if (_state == VCStateFinish) {
+    CCArray* maps = _map->getNextMaps();
+    CCAssert(maps->count() > 0, "Next Map must be larger than 0.");
+    if (maps->count() == 1) {
+      this->changeMap((Map*)maps->objectAtIndex(0));
+    } else if (maps->count() >= 2) {
+      _musicManager->pushSilentTracks();
+      _mapSelector = MapSelector::create();
+      _mapSelector->retain();
+      _mapSelector->setNextMaps(maps);
+      _controller->setEnable(false);
+      this->addChild(_mapSelector, MainSceneZOrderUI);
+      _state = VCStateMapSelect;
+    }
+  }
 }
 
 void MainScene::onFinishTracksCompleted() {
