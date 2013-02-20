@@ -89,6 +89,7 @@ class MainScene : public CCLayer {
   void startBossBattle();
   void gotoNextStage();
   void onFinishTracksCompleted();
+  void changeSkin(Skin* newSkin, bool crossFade);
   
  public:
   virtual bool init(Map* map);
