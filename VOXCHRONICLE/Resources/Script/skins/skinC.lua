@@ -42,12 +42,12 @@ Skin = {
     levelLabel:setPosition(ccp(225, 290))
     self:addChild(levelLabel, 0, LevelLabelTag)
   
-    local lifeGaugeBackground = CCSprite:create("gauge_bg.png")
+    local lifeGaugeBackground = CCSprite:create("cyber_gauge_bg.png")
     lifeGaugeBackground:setAnchorPoint(ccp(0.0, 0.5))
     lifeGaugeBackground:setPosition(ccp(35, 307))
     self:addChild(lifeGaugeBackground, 0, LifeGaugeBackgroundTag)
 
-    local lifeGauge = CCSprite:create("gauge.png")
+    local lifeGauge = CCSprite:create("cyber_gauge.png")
     lifeGauge:setAnchorPoint(ccp(0.0, 0.5))
     lifeGauge:setPosition(ccp(35, 307))
     self:addChild(lifeGauge, 0, LifeGaugeTag)
