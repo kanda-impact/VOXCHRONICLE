@@ -47,10 +47,10 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _scriptPath = file.str();
   _register = new map<string, int>();
   _lua = new LuaObject(file.str().c_str());
-  _hp = _lua->getInt("hp");
+  _maxHP = _lua->getInt("hp");
+  _hp = _maxHP;
   _species = new Species(_lua->getString("species"));
   _species->retain();
-  _maxHP = _hp;
   _type = (SkillType)_lua->getInt("type");
   _level = _lua->getInt("level");
   _speedCount = 0;
@@ -60,13 +60,13 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   ss << "Image/" << _species->getImageName().c_str() << "0.png";
   bool success = (bool)this->initWithFile(FileUtils::getFilePath(ss.str().c_str()).c_str());
   
+  this->setLifeColor();
   this->setItem((EnemyItem)_lua->getInt("item"));
   if (success) {
     setDefaultAnimationClip();
     this->setScale(0.0f);
     return this;
   }
-  
   return NULL;
 }
 
@@ -86,7 +86,6 @@ Enemy::~Enemy() {
 }
 
 void Enemy::update(float dt) {
-  this->setLifeColor();
   this->setScale(this->getCurrentScale(_row));
   //this->setPosition(CCPointMake(60 + _col * 120, 40 + 35 * _row));
 }
@@ -154,6 +153,9 @@ DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager, bool 
   }
   if (!simulate) { // simulateがfalseのとき、実際にダメージを与えます
     _hp = hp;
+    if (damage != 0) {
+      this->setLifeColor(); // モンスターの色を更新
+    }
   }
   return type;
 }

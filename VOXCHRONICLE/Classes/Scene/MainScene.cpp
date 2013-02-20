@@ -671,13 +671,11 @@ void MainScene::changeMap(Map* nextMap) {
 void MainScene::changeSkin(Skin *newSkin) {
   // スキンの切り替え
   // 後始末
-  cout << "changeSkin" << endl;
   if (_skin != NULL) {
     this->removeChild(_skin->getBackground(), true);
     this->removeChild(_skin->getGround(), true);
     this->removeChild(_skin->getStatusLayer(), true);
     _skin->release(); // 今のスキンをReleaseします
-    cout << "skin = " << _skin->retainCount() << endl;
   }
   _skin = newSkin; // 新しいマップのスキンを格納します
   _skin->retain();
