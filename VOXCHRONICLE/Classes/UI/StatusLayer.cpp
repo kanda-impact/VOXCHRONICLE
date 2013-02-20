@@ -17,6 +17,7 @@ StatusLayer::StatusLayer(const char* scriptName) {
   LuaObject* obj = LuaObject::create(scriptName);
   CCLuaEngine* engine = obj->getLuaEngineWithLoad();
   lua_State* L = engine->getLuaState();
+  _prefix = obj->getString("prefix");
   lua_getfield(L, lua_gettop(L), "buildSkin");
   if (lua_isfunction(L, lua_gettop(L))) {
     engine->pushCCObject(this, "CCLayer");
@@ -33,19 +34,24 @@ StatusLayer::StatusLayer(const char* scriptName) {
                                                          menu_selector(StatusLayer::onPauseButtonPressed)), NULL);
   pause->setPosition(ccp(440, 300));
   this->addChild(pause);
+  _timeMarker = NULL;
 }
 
 StatusLayer::~StatusLayer() {
   _mpChips->release();
-  _timeMarker->release();
+  if (_timeMarker) {
+    _timeMarker->release();
+  }
 }
 
 void StatusLayer::setMarkerDuration(float d) {
   if (_timeMarker != NULL) {
+    _timeMarker->release();
     this->removeChild(_timeMarker, true);
     _timeMarker = NULL;
   }
   _timeMarker = CCSprite::create(FileUtils::getFilePath("Image/marker0.png").c_str());
+  _timeMarker->retain();
   CCArray* frames = CCArray::create();
   for (int i = 0; i < 4; ++i) {
     stringstream ss;
@@ -56,7 +62,6 @@ void StatusLayer::setMarkerDuration(float d) {
   CCAnimation* animation = CCAnimation::createWithSpriteFrames(frames);
   animation->setDelayPerUnit(d);
   animation->setRestoreOriginalFrame(true);
-  _timeMarker->retain();
   _timeMarker->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
   int width = CCDirector::sharedDirector()->getWinSize().width;
   _timeMarker->setPosition(ccp(width / 2, 20));
@@ -87,9 +92,9 @@ void StatusLayer::setCurrentMP(int mp) {
   for (int i = 0; i < count; ++i) {
     CCSprite* chip = (CCSprite*)_mpChips->objectAtIndex(i);
     if (i < mp) {
-      filepath = FileUtils::getFilePath("Image/mp_on.png");
+      filepath = _prefix + "_mp_on.png";
     } else {
-      filepath = FileUtils::getFilePath("Image/mp_off.png");
+      filepath = _prefix + "_mp_off.png";
     }
     chip->setTexture(CCTextureCache::sharedTextureCache()->addImage(filepath.c_str()));
     
@@ -111,7 +116,7 @@ void StatusLayer::setMaxMP(int mp) {
     for (int i = count; i < mp; ++i) {
       int col = i % colLength;
       int row = floor(i / colLength);
-      CCSprite* chip = CCSprite::create(FileUtils::getFilePath("Image/mp_on.png").c_str());
+      CCSprite* chip = CCSprite::create((_prefix + "_mp_on.png").c_str());
       chip->setPosition(ccp(300 + 15 * col, 308 - 15 * row));
       _mpChips->addObject(chip);
       this->addChild(chip);

@@ -29,6 +29,11 @@ Skin = {
     slash:setPosition(ccp(191, 308))
     self:addChild(slash)
   
+    -- レベル
+    local levelBack = CCSprite:create("cave_level_back.png")
+    levelBack:setPosition(ccp(240, 295))
+    self:addChild(levelBack)
+    
     local stageLabel = CCSprite:create("cave_level.png")
     stageLabel:setPosition(ccp(240, 282))
     self:addChild(stageLabel)

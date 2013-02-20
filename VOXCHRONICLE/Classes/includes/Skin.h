@@ -18,11 +18,13 @@ using namespace cocos2d;
 
 class Skin :public CCObject {
  private:
+  CCSprite* _background;
   Ground* _ground;
   StatusLayer* _statusLayer;
  public:
   Skin(const char* scriptName);
   ~Skin();
+  CCSprite* getBackground();
   Ground* getGround();
   StatusLayer* getStatusLayer();
 };

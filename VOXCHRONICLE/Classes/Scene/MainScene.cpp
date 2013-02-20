@@ -72,13 +72,9 @@ bool MainScene::init(Map* map) {
   
   CCDirector* director = CCDirector::sharedDirector();
   
-  // 背景の追加
-  this->addChild(_skin->getGround());
-  
   // EnemyManager
   _enemyManager = EnemyManager::create();
   _enemyManager->retain();
-  this->addChild(_enemyManager);
   
   // フォーカスの追加
   _focus = CCSprite::create(FileUtils::getFilePath("Image/focus.png").c_str());
@@ -91,8 +87,7 @@ bool MainScene::init(Map* map) {
   _controller->retain();
   _characterManager = new CharacterManager();
   CCSize size = director->getWinSize();
-  this->addChild(_controller);
-  
+
   _level = _map->createInitialLevel();
   _characterManager->setLevel(_map->getInitialLevel());
   _enemyManager->setLevel(_level);
@@ -116,7 +111,17 @@ bool MainScene::init(Map* map) {
   this->scheduleUpdate();
   _preLevel = _level->getLevel();
   
+  // 画面の描画
+  CCSprite* background = _skin->getBackground();
+  if (background) {
+    background->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
+    this->addChild(background);
+  }
+  this->addChild(_skin->getGround());
   this->addChild(_skin->getStatusLayer());
+  this->addChild(_enemyManager);
+  this->addChild(_controller);
+  
   this->updateGUI();
   _controller->updateSkills(_characterManager);
   

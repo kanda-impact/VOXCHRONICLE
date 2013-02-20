@@ -12,6 +12,7 @@
 #include <iostream>
 #include "cocos2d.h"
 
+using namespace std;
 using namespace cocos2d;
 
 typedef enum {
@@ -26,6 +27,7 @@ class StatusLayer :public CCLayer {
  private:
   CCArray* _mpChips;
   CCSprite* _timeMarker;
+  string _prefix;
   
   void onPauseButtonPressed(CCObject* sender);
  public:

@@ -12,15 +12,17 @@
 
 using namespace boost;
 
+const int GROUND_HEIGHT = 123;
+
 Ground::Ground(const char* prefix, int frameCount) {
   CCDirector* director = CCDirector::sharedDirector();
   _prefix = prefix;
   string p(prefix);
   _frameCount = frameCount;
-  _background = CCSprite::create(FileUtils::getFilePath((p + string("_floor0.png")).c_str()).c_str());
+  _background = CCSprite::create(FileUtils::getFilePath((p + string("_ground0.png")).c_str()).c_str());
   _background->retain();
   this->setAnimaton(frameCount);
-  CCPoint center = ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f);
+  CCPoint center = ccp(director->getWinSize().width / 2.0f, GROUND_HEIGHT / 2.0f);
   _background->setPosition(center);
   this->addChild(_background);
   this->stop();
@@ -39,7 +41,7 @@ void Ground::setAnimaton(int frameCount) {
   string p(_prefix);
   CCAnimation* animation = CCAnimation::create();
   for (int i = 0; i < frameCount; ++i) {
-    animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath((p + string("_floor") + lexical_cast<string>(i) + string(".png")).c_str()).c_str(), CCRectMake(0, 0, 480, 320)));
+    animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath((p + string("_ground") + lexical_cast<string>(i) + string(".png")).c_str()).c_str(), CCRectMake(0, 0, 480, GROUND_HEIGHT)));
   }
   animation->setLoops(-1);
   animation->setDelayPerUnit(10.0 / 60.0);
