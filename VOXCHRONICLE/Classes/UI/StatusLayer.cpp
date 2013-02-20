@@ -11,50 +11,22 @@
 #include <boost/lexical_cast.hpp>
 #include <sstream>
 #include "MainScene.h"
+#include "LuaObject.h"
 
-StatusLayer::StatusLayer() {
-  CCSprite* hpLabel = CCSprite::create(FileUtils::getFilePath("Image/hp.png").c_str());
-  hpLabel->setPosition(ccp(20, 308));
-  this->addChild(hpLabel);
-  CCSprite* mpLabel = CCSprite::create(FileUtils::getFilePath("Image/mp.png").c_str());
-  mpLabel->setPosition(ccp(282, 308));
-  this->addChild(mpLabel);
-  
-  _currentHPLabel = CCLabelAtlas::create("0", FileUtils::getFilePath("Image/hp_numbers.png").c_str(), 17, 18, '0');
-  _currentHPLabel->retain();
-  _currentHPLabel->setScale(0.6f);
-  _currentHPLabel->setPosition(ccp(169, 308));
-  _currentHPLabel->setAnchorPoint(ccp(0.5f, 0.5f));
-  _maxHPLabel = CCLabelAtlas::create("0", FileUtils::getFilePath("Image/hp_numbers.png").c_str(), 17, 18, '0');
-  _maxHPLabel->retain();
-  _maxHPLabel->setScale(0.4f);
-  _maxHPLabel->setPosition(ccp(205, 305));
-  _maxHPLabel->setAnchorPoint(ccp(0.5f, 0.5f));
-  this->addChild(_currentHPLabel);
-  this->addChild(_maxHPLabel);
-  CCSprite* slash = CCSprite::create(FileUtils::getFilePath("Image/slash.png").c_str());
-  slash->setPosition(ccp(191, 308));
-  this->addChild(slash);
+StatusLayer::StatusLayer(const char* scriptName) {
+  LuaObject* obj = LuaObject::create(scriptName);
+  CCLuaEngine* engine = obj->getLuaEngineWithLoad();
+  lua_State* L = engine->getLuaState();
+  _prefix = obj->getString("prefix");
+  lua_getfield(L, lua_gettop(L), "buildSkin");
+  if (lua_isfunction(L, lua_gettop(L))) {
+    engine->pushCCObject(this, "CCLayer");
+    if (lua_pcall(L, 1, 0, 0)) {
+      cout << lua_tostring(L, lua_gettop(L)) << endl;
+    }
+  }
   _mpChips = CCArray::create();
   _mpChips->retain();
-  
-  CCSprite* stageLabel = CCSprite::create(FileUtils::getFilePath("Image/stage.png").c_str());
-  stageLabel->setPosition(ccp(240, 282));
-  this->addChild(stageLabel);
-  
-  _levelLabel = CCLabelAtlas::create("10", FileUtils::getFilePath("Image/stage_numbers.png").c_str(), 18, 23, '0');
-  _levelLabel->setPosition(ccp(222, 290));
-  this->addChild(_levelLabel);
-  
-  _lifeGaugeBackground = CCSprite::create(FileUtils::getFilePath("Image/gauge_bg.png").c_str());
-  _lifeGaugeBackground->setAnchorPoint(ccp(0.0f, 0.5f));
-  _lifeGaugeBackground->setPosition(ccp(35, 307));
-  this->addChild(_lifeGaugeBackground);
-  
-  _lifeGauge = CCSprite::create(FileUtils::getFilePath("Image/gauge.png").c_str());
-  _lifeGauge->setAnchorPoint(ccp(0.0f, 0.5f));
-  _lifeGauge->setPosition(ccp(35, 307));
-  this->addChild(_lifeGauge);
   
   CCMenu* pause = CCMenu::create(CCMenuItemImage::create(FileUtils::getFilePath("Image/pause_button.png").c_str(),
                                                          FileUtils::getFilePath("Image/pause_button_disable.png").c_str(),
@@ -62,21 +34,24 @@ StatusLayer::StatusLayer() {
                                                          menu_selector(StatusLayer::onPauseButtonPressed)), NULL);
   pause->setPosition(ccp(440, 300));
   this->addChild(pause);
+  _timeMarker = NULL;
 }
 
 StatusLayer::~StatusLayer() {
-  _maxHPLabel->release();
-  _currentHPLabel->release();
   _mpChips->release();
-  _timeMarker->release();
+  if (_timeMarker) {
+    _timeMarker->release();
+  }
 }
 
 void StatusLayer::setMarkerDuration(float d) {
   if (_timeMarker != NULL) {
+    _timeMarker->release();
     this->removeChild(_timeMarker, true);
     _timeMarker = NULL;
   }
   _timeMarker = CCSprite::create(FileUtils::getFilePath("Image/marker0.png").c_str());
+  _timeMarker->retain();
   CCArray* frames = CCArray::create();
   for (int i = 0; i < 4; ++i) {
     stringstream ss;
@@ -87,7 +62,6 @@ void StatusLayer::setMarkerDuration(float d) {
   CCAnimation* animation = CCAnimation::createWithSpriteFrames(frames);
   animation->setDelayPerUnit(d);
   animation->setRestoreOriginalFrame(true);
-  _timeMarker->retain();
   _timeMarker->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
   int width = CCDirector::sharedDirector()->getWinSize().width;
   _timeMarker->setPosition(ccp(width / 2, 20));
@@ -97,15 +71,19 @@ void StatusLayer::setMarkerDuration(float d) {
 void StatusLayer::setCurrentHP(int hp) {
   char str[4];
   sprintf(str, "%03d", hp);
-  _currentHPLabel->setString(str);
-  _lifeGauge->setScaleX(1.0f * hp * 0.5);
+  CCLabelAtlas* currentHPLabel = (CCLabelAtlas*)this->getChildByTag(CurrentHPLabelTag);
+  currentHPLabel->setString(str);
+  CCSprite* lifeGauge = (CCSprite*)this->getChildByTag(LifeGaugeTag);
+  lifeGauge->setScaleX(1.0f * hp * 0.5);
 }
 
 void StatusLayer::setMaxHP(int hp) {
   char str[4];
   sprintf(str, "%03d", hp);
-  _maxHPLabel->setString(str);
-  _lifeGaugeBackground->setScaleX(1.0f * hp * 0.5);
+  CCLabelAtlas* maxHPLabel = (CCLabelAtlas*)this->getChildByTag(MaxHPLabelTag);
+  maxHPLabel->setString(str);
+  CCSprite* lifeGaugeBackground = (CCSprite*)this->getChildByTag(LifeGaugeBackgroundTag);
+  lifeGaugeBackground->setScaleX(1.0f * hp * 0.5);
 }
 
 void StatusLayer::setCurrentMP(int mp) {
@@ -114,9 +92,9 @@ void StatusLayer::setCurrentMP(int mp) {
   for (int i = 0; i < count; ++i) {
     CCSprite* chip = (CCSprite*)_mpChips->objectAtIndex(i);
     if (i < mp) {
-      filepath = FileUtils::getFilePath("Image/mp_on.png");
+      filepath = _prefix + "_mp_on.png";
     } else {
-      filepath = FileUtils::getFilePath("Image/mp_off.png");
+      filepath = _prefix + "_mp_off.png";
     }
     chip->setTexture(CCTextureCache::sharedTextureCache()->addImage(filepath.c_str()));
     
@@ -138,7 +116,7 @@ void StatusLayer::setMaxMP(int mp) {
     for (int i = count; i < mp; ++i) {
       int col = i % colLength;
       int row = floor(i / colLength);
-      CCSprite* chip = CCSprite::create(FileUtils::getFilePath("Image/mp_on.png").c_str());
+      CCSprite* chip = CCSprite::create((_prefix + "_mp_on.png").c_str());
       chip->setPosition(ccp(300 + 15 * col, 308 - 15 * row));
       _mpChips->addObject(chip);
       this->addChild(chip);
@@ -149,7 +127,8 @@ void StatusLayer::setMaxMP(int mp) {
 void StatusLayer::setLevel(int level) {
   char str[2];
   sprintf(str, "%02d", level);
-  _levelLabel->setString(str);
+  CCLabelAtlas* levelLabel = (CCLabelAtlas*)this->getChildByTag(LevelLabelTag);
+  levelLabel->setString(str);
 }
 
 void StatusLayer::onPauseButtonPressed(CCObject* sender) {

@@ -51,6 +51,13 @@ bool MainScene::init(Map* map) {
   music->setTrackDidBackFunction(boost::bind(&MainScene::trackDidBack, this, _1, _2, _3));
   music->setTrackDidFinishFunction(boost::bind(&MainScene::trackDidFinishPlaying, this, _1, _2, _3, _4));
   music->setTrackWillFinishFunction(boost::bind(&MainScene::trackWillFinishPlaying, this, _1, _2, _3, _4));
+  
+  // マップの追加
+  _map = map;
+  _map->retain();
+  _skin = _map->getSkin();
+  _skin->retain();
+  
   _pausedTargets = NULL;
   
   _currentSkillInfo.skillTrackName = "";
@@ -65,15 +72,9 @@ bool MainScene::init(Map* map) {
   
   CCDirector* director = CCDirector::sharedDirector();
   
-  // 背景の追加
-  _ground = new Ground("cyber");
-  _ground->stop();
-  this->addChild(_ground);
-  
   // EnemyManager
   _enemyManager = EnemyManager::create();
   _enemyManager->retain();
-  this->addChild(_enemyManager);
   
   // フォーカスの追加
   _focus = CCSprite::create(FileUtils::getFilePath("Image/focus.png").c_str());
@@ -86,10 +87,7 @@ bool MainScene::init(Map* map) {
   _controller->retain();
   _characterManager = new CharacterManager();
   CCSize size = director->getWinSize();
-  this->addChild(_controller);
-  
-  map->retain();
-  _map = map;
+
   _level = _map->createInitialLevel();
   _characterManager->setLevel(_map->getInitialLevel());
   _enemyManager->setLevel(_level);
@@ -113,9 +111,17 @@ bool MainScene::init(Map* map) {
   this->scheduleUpdate();
   _preLevel = _level->getLevel();
   
-  _statusLayer = new StatusLayer();
+  // 画面の描画
+  CCSprite* background = _skin->getBackground();
+  if (background) {
+    background->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
+    this->addChild(background);
+  }
+  this->addChild(_skin->getGround());
+  this->addChild(_skin->getStatusLayer());
+  this->addChild(_enemyManager);
+  this->addChild(_controller);
   
-  this->addChild(_statusLayer);
   this->updateGUI();
   _controller->updateSkills(_characterManager);
   
@@ -133,7 +139,7 @@ MainScene::~MainScene() {
   _controller->release();
   _enemyManager->release();
   _characterManager->release();
-  _statusLayer->release();
+  _skin->release();
   _focus->release();
   if (_mapSelector != NULL) {
     _mapSelector->release();
@@ -169,7 +175,7 @@ void MainScene::onEnterTransitionDidFinish() {
   _controller->setEnable(false);
   _musicManager->pushIntroTracks();
   _musicManager->getMusic()->play();
-  _statusLayer->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
+  _skin->getStatusLayer()->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
   CCDictionary* dict = CCDictionary::create();
   dict->setObject(CCString::create(_characterManager->getCurrentCharacter()->getName()), "chara");
   MessageManager::sharedManager()->pushRandomMessageFromLua("welcome", dict);
@@ -203,7 +209,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       _controller->setEnable(true);
       _state = VCStateMain;
       if (!_map->isBossStage() || _map->getMaxLevel() != _characterManager->getLevel()) {
-        _ground->play();
+        _skin->getGround()->play();
       }
     }
   }
@@ -517,15 +523,16 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
   }
   
   // マーカーを再同期
-  _statusLayer->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
+  _skin->getStatusLayer()->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
 }
 
 void MainScene::updateGUI() {
-  _statusLayer->setCurrentHP(_characterManager->getHP());
-  _statusLayer->setMaxHP(_characterManager->getMaxHP());
-  _statusLayer->setCurrentMP(_characterManager->getMP());
-  _statusLayer->setMaxMP(_characterManager->getMaxMP());
-  _statusLayer->setLevel(_characterManager->getLevel());
+  StatusLayer* statusLayer = _skin->getStatusLayer();
+  statusLayer->setCurrentHP(_characterManager->getHP());
+  statusLayer->setMaxHP(_characterManager->getMaxHP());
+  statusLayer->setCurrentMP(_characterManager->getMP());
+  statusLayer->setMaxMP(_characterManager->getMaxMP());
+  statusLayer->setLevel(_characterManager->getLevel());
 }
 
 bool MainScene::checkLevelUp() {
@@ -552,7 +559,7 @@ void MainScene::onGameOver() {
   CCDictionary* dict = CCDictionary::create();
   dict->setObject(CCString::create(_characterManager->getCurrentCharacter()->getName()), "chara");
   MessageManager::sharedManager()->pushRandomMessageFromLua("death", dict);
-  _ground->stop();
+  _skin->getGround()->stop();
   _state = VCStateGameOver;
   GameOverLayer* gameover = new GameOverLayer(this);
   this->addChild(gameover);
@@ -655,7 +662,7 @@ void MainScene::changeMap(Map* nextMap) {
 void MainScene::startBossBattle() {
   _controller->setEnable(false);
   _state = VCStateIntro; // イントロに移行
-  _ground->stop(); // 床を停止
+  _skin->getGround()->stop(); // 床を停止
   _musicManager->setMusicSet(_map->getCurrentMusic(_level)); // 音楽セットを切り替える
   _controller->setEnable(false);
   _musicManager->pushIntroTracks();

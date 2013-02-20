@@ -48,18 +48,18 @@ int MusicManager::calcDrumScore () {
   // 敵の数によって分岐
   if (_enemyManager->getEnemies()) {
     int count = _enemyManager->getEnemies()->count();
-    if (count == 2 || count == 3) {
+    if (count == 1 || count == 2) {
       score += 1;
-    } else if (count == 4 || count == 5) {
+    } else if (count == 3 || count == 4) {
       score += 2;
-    } else if (count >= 6) {
+    } else if (count >= 5) {
       score += 3;
     }
   }
   Enemy* nearest = _enemyManager->getNearestEnemy();
   if (nearest) {
     int row = nearest->getRow();
-    if (row <= 1) {
+    if (row <= 3) {
       score += 2;
     } else if (row <= 4) {
       score += 1;

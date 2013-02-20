@@ -4,6 +4,7 @@ Map = {
   bossMusic = "3Bb",
   ending = "endingB",
   backgroundImage = "",
+  skin = "skinA",
   nextMaps = {},
   initialLevel = 29,
   maxLevel = 30,

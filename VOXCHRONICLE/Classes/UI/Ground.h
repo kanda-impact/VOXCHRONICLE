@@ -16,11 +16,12 @@ using namespace cocos2d;
 
 class Ground :public CCNode {
  private:
+  int _frameCount;
   std::string _prefix;
   CCSprite* _background;
-  void setAnimaton();
+  void setAnimaton(int frameCount);
  public:
-  Ground(const char* prefix);
+  Ground(const char* prefix, int frameCount);
   void play();
   void stop();
 };
