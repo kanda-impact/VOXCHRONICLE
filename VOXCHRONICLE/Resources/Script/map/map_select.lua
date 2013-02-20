@@ -1,8 +1,8 @@
 Map = {
   name = "マップセレクトテスト面",
-  wayMusic = "shaba",
+  wayMusic = "dub",
   bossMusic = "",
-  ending = "endingB",
+  ending = "",
   backgroundImage = "",
   skin = "skinA",
   nextMaps = {"map_selectL", "map_selectR"}, -- マップセレクトのテスト面です。左右のどっちかに飛びます

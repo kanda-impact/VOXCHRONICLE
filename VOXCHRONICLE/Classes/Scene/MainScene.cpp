@@ -244,16 +244,13 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         _state = VCStateFinish;
         _controller->setEnable(false);
         _musicManager->getMusic()->removeAllNextTracks();
-        if (_musicManager->getMusicSet()->getFinishCount() == 0) {
-          this->gotoNextStage();
-        } else {
-          _musicManager->pushFinishTracks();
-        }
+        _musicManager->pushFinishTracks();
       } else if (_level->getLevel() >= _map->getMaxLevel() + 1) { // 最大レベル + 1のとき
         _state = VCStateFinish;
         _controller->setEnable(false);
         _musicManager->getMusic()->removeAllNextTracks();
         if (_musicManager->getMusicSet()->getFinishCount() == 0) {
+          _musicManager->pushSilentTracks();
           this->gotoNextStage();
         } else {
           _musicManager->pushFinishTracks();
@@ -743,7 +740,6 @@ void MainScene::gotoNextStage() {
     if (maps->count() == 1) {
       this->changeMap((Map*)maps->objectAtIndex(0));
     } else if (maps->count() >= 2) {
-      _musicManager->pushSilentTracks();
       _mapSelector = MapSelector::create();
       _mapSelector->retain();
       _mapSelector->setNextMaps(maps);
@@ -769,7 +765,7 @@ void MainScene::onFinishTracksCompleted() {
   } else if (_map->isBossStage() && _level->getLevel() == _map->getMaxLevel()) { // ボスステージで、現在が最高レベルの時
     // ボス戦を開始します
     this->startBossBattle();
-  } else if (_level->getLevel() == _map->getMaxLevel() + 1 && _map->getNextMaps()->count() > 0) { // 最高レベルの次の時で、次のマップが存在するとき
+  } else if (_level->getLevel() >= _map->getMaxLevel() + 1 && _map->getNextMaps()->count() > 0) { // 最高レベルの次の時で、次のマップが存在するとき
     // 次のステージに移動します
     this->gotoNextStage();
   }
