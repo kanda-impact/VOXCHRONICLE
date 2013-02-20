@@ -674,6 +674,7 @@ void MainScene::changeMap(Map* nextMap) {
   _musicManager->setFinishCount(0);
   _controller->setEnable(false);
   _musicManager->pushIntroTracks();
+  _characterManager->setRepeatCount(0); // repeatCountをリセット
   this->updateGUI();
 }
 
@@ -729,6 +730,7 @@ void MainScene::startBossBattle() {
   _state = VCStateIntro; // イントロに移行
   _skin->getGround()->stop(); // 床を停止
   _musicManager->setMusicSet(_map->getCurrentMusic(_level)); // 音楽セットを切り替える
+  _characterManager->setRepeatCount(0);
   _controller->setEnable(false);
   _musicManager->pushIntroTracks();
 }
