@@ -265,8 +265,10 @@ CCArray* EnemyManager::getTargets(Skill *skill) {
     // スラッシュ
     // 一番前の敵の後ろ4列
     Enemy* nearest = this->getNearestEnemy();
-    boost::function<bool (int, float)> predicate = nearest->getRow() <= _1 && _1 <= nearest->getRow() + 4;
-    targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
+    if (nearest != NULL) {
+      boost::function<bool (int, float)> predicate = nearest->getRow() <= _1 && _1 <= nearest->getRow() + 4;
+      targets->addObjectsFromArray(this->getFilteredEnemies(predicate));
+    }
   }
   return targets;
 }
