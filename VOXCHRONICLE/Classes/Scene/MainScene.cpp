@@ -34,6 +34,21 @@ using namespace VISS;
 
 const int PAUSE_LAYER_TAG = 10;
 
+// MainSceneに置いてあるモノの深度
+typedef enum {
+  MainSceneZOrderBackground,
+  MainSceneZOrderGround,
+  MainSceneZOrderEnemyManager,
+  MainSceneZOrderStatus,
+  MainSceneZOrderController,
+  MainSceneZOrderEffect,
+  MainSceneZOrderFocus,
+  MainSceneZOrderDamageLabel,
+  MainSceneZOrderCutIn,
+  MainSceneZOrderMessageWindow,
+  MainSceneZOrderUI
+} MainSceneZOrder;
+
 bool MainScene::init() {
   LuaObject* setting = new LuaObject("Script/setting", "Setting");
   setting->autorelease();
@@ -55,8 +70,7 @@ bool MainScene::init(Map* map) {
   // マップの追加
   _map = map;
   _map->retain();
-  _skin = _map->getSkin();
-  _skin->retain();
+  _skin = NULL;
   
   _pausedTargets = NULL;
   
@@ -81,7 +95,7 @@ bool MainScene::init(Map* map) {
   _focus->retain();
   _focus->setVisible(false);
   _focus->setAnchorPoint(ccp(0.5f, 0.0f));
-  this->addChild(_focus);
+  this->addChild(_focus, MainSceneZOrderFocus);
   
   _controller = Controller::create();
   _controller->retain();
@@ -104,7 +118,7 @@ bool MainScene::init(Map* map) {
   _messageWindow = new MessageWindow(FONT_NAME, 16, CCSizeMake(300, 40));
   _messageWindow->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height - 70));
   MessageManager::sharedManager()->setDefaultMessageWindow(_messageWindow);
-  this->addChild(_messageWindow);
+  this->addChild(_messageWindow, MainSceneZOrderMessageWindow);
   
   _mapSelector = NULL;
   
@@ -112,16 +126,9 @@ bool MainScene::init(Map* map) {
   _preLevel = _level->getLevel();
   
   // 画面の描画
-  CCSprite* background = _skin->getBackground();
-  if (background) {
-    background->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
-    this->addChild(background);
-  }
-  this->addChild(_skin->getGround());
-  this->addChild(_skin->getStatusLayer());
-  this->addChild(_enemyManager);
-  this->addChild(_controller);
-  
+  this->addChild(_enemyManager, MainSceneZOrderEnemyManager);
+  this->addChild(_controller, MainSceneZOrderController);
+  this->changeSkin(_map->getSkin());
   this->updateGUI();
   _controller->updateSkills(_characterManager);
   
@@ -279,7 +286,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
                                            CCFadeOut::create(0.1f),
                                            CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
                                            NULL));
-      _enemyManager->addChild(effect);
+      _enemyManager->addChild(effect, MainSceneZOrderEffect);
       // ぷるぷるさせる
       CCArray* actions = CCArray::create();
       float duration = _musicManager->getMusic()->getCurrentMainTrack()->getDuration();
@@ -352,7 +359,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         damageLabel->setPosition(enemy->getPosition());
         float scale = enemy->getCurrentScale(enemy->getRow());
         damageLabel->setScale(scale);
-        this->addChild(damageLabel);
+        this->addChild(damageLabel, MainSceneZOrderDamageLabel);
         damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
                                                   CCDelayTime::create(0.5),
                                                   CCFadeOut::create(0.2),
@@ -388,7 +395,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
                                              CCFadeOut::create(0.1f),
                                              CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
                                              NULL));
-        _enemyManager->addChild(effect);
+        _enemyManager->addChild(effect, MainSceneZOrderEffect);
       }
       
       
@@ -431,7 +438,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
                                               CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
                                               NULL));
         }
-        this->addChild(cutin);
+        this->addChild(cutin, MainSceneZOrderCutIn);
         
       }
       
@@ -513,7 +520,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _musicManager->setMinDrumScore(4);
       _controller->setEnable(false);
       _qteTrigger = new QTETrigger(_enemyManager);
-      this->addChild(_qteTrigger);
+      this->addChild(_qteTrigger, MainSceneZOrderUI);
       CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("qte.mp3").c_str());
     }
     }
@@ -562,7 +569,7 @@ void MainScene::onGameOver() {
   _skin->getGround()->stop();
   _state = VCStateGameOver;
   GameOverLayer* gameover = new GameOverLayer(this);
-  this->addChild(gameover);
+  this->addChild(gameover, MainSceneZOrderUI);
   gameover->autorelease();
   _musicManager->getMusic()->pause();
   _controller->setVisible(false);
@@ -621,7 +628,7 @@ void MainScene::addDamageEffect() {
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/damage.mp3").c_str());
     BlinkLayer* bLayer = new BlinkLayer(ccc4(255, 0, 0, 255));
     bLayer->autorelease();
-    this->addChild(bLayer);
+    this->addChild(bLayer, MainSceneZOrderUI);
     // ついでに画面もゆらしちゃう
     const float FPS = 60.0;
     const int shakeRange = 15;
@@ -652,11 +659,36 @@ void MainScene::changeMap(Map* nextMap) {
   _state = VCStateIntro;
   _musicManager->setMusicSet(_map->getCurrentMusic(_level)); // 音楽セットを切り替える
   
+  this->changeSkin(_map->getSkin());
+  
   _musicManager->setIntroCount(0);
   _musicManager->setFinishCount(0);
   _controller->setEnable(false);
   _musicManager->pushIntroTracks();
   this->updateGUI();
+}
+
+void MainScene::changeSkin(Skin *newSkin) {
+  // スキンの切り替え
+  // 後始末
+  cout << "changeSkin" << endl;
+  if (_skin != NULL) {
+    this->removeChild(_skin->getBackground(), true);
+    this->removeChild(_skin->getGround(), true);
+    this->removeChild(_skin->getStatusLayer(), true);
+    _skin->release(); // 今のスキンをReleaseします
+    cout << "skin = " << _skin->retainCount() << endl;
+  }
+  _skin = newSkin; // 新しいマップのスキンを格納します
+  _skin->retain();
+  CCSprite* background = _skin->getBackground();
+  if (background) {
+    CCDirector* director = CCDirector::sharedDirector();
+    background->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
+    this->addChild(background, MainSceneZOrderBackground);
+  }
+  this->addChild(_skin->getGround(), MainSceneZOrderGround);
+  this->addChild(_skin->getStatusLayer(), MainSceneZOrderStatus);
 }
 
 void MainScene::startBossBattle() {
