@@ -108,7 +108,6 @@ bool MainScene::init(Map* map) {
   musicSet->autorelease();
   musicSet->preloadAllTracks();
   
-  
   _musicManager = new MusicManager(music, musicSet, _enemyManager, _characterManager);
   
   _state = VCStateIntro;
@@ -124,7 +123,11 @@ bool MainScene::init(Map* map) {
   _preLevel = _level->getLevel();
   
   // 画面の描画
-  this->changeSkin(_map->getSkin(), false);
+  Skin* skin = _map->getSkin();
+  Controller* controller = new Controller(skin->getPrefix().c_str());
+  controller->autorelease();
+  skin->setController(controller);
+  this->changeSkin(skin, false);
   
   this->addChild(_enemyManager, MainSceneZOrderEnemyManager);
   this->addChild(_skin->getController(), MainSceneZOrderController);
@@ -681,6 +684,8 @@ void MainScene::changeSkin(Skin *newSkin, bool crossFade) {
   // 後始末
   const float kCrossFadeSpeed = 1.0f;
   if (_skin != NULL) {
+    newSkin->setController(_skin->getController()); // 古いコントローラーを受け渡す
+    _skin->getController()->updateSkills(_characterManager); // スキン更新
     if (crossFade) {
       CCArray* nodes = CCArray::create();
       if (_skin->getBackground()) nodes->addObject(_skin->getBackground());

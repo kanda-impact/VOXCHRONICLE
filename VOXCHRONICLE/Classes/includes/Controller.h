@@ -39,8 +39,8 @@ public:
   Skill* currentTriggerSkill();
   void updateSkills(CharacterManager* manager);
   void setEnable(bool enable);
-  void setSkinPrefix(string prefix);
   void setFrameType(ControllerFrameType type);
+  void setSkinPrefix(const char* skinPrefix);
 };
 
 #endif /* defined(__VOXCHRONICLE__Controller__) */

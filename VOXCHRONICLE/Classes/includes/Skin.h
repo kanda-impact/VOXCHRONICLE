@@ -23,6 +23,8 @@ class Skin :public CCObject {
   CCSprite* _background;
   Ground* _ground;
   StatusLayer* _statusLayer;
+  ControllerFrameType _frameType;
+  string _prefix;
  public:
   Skin(const char* scriptName);
   ~Skin();
@@ -30,6 +32,8 @@ class Skin :public CCObject {
   Ground* getGround();
   StatusLayer* getStatusLayer();
   Controller* getController();
+  string getPrefix();
+  void setController(Controller* controller);
 };
 
 #endif /* defined(__VOXCHRONICLE__Skin__) */

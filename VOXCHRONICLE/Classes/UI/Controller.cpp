@@ -64,6 +64,10 @@ Controller::~Controller() {
   _triggers->release();
 }
 
+void Controller::setSkinPrefix(const char* prefix) {
+  _skinPrefix = string(prefix);
+}
+
 void Controller::registerWithTouchDispatcher() {
   CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 }
@@ -157,10 +161,6 @@ void Controller::setEnable(bool enable) {
   } else {
     this->setVisible(false);
   }
-}
-
-void Controller::setSkinPrefix(string prefix) {
-  _skinPrefix = prefix;
 }
 
 void Controller::setFrameType(ControllerFrameType type) {
