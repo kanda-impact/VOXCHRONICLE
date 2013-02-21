@@ -174,6 +174,7 @@ void Controller::setFrameType(ControllerFrameType type) {
 
 void Controller::setFrame(CharacterManager *manager) {
   // 超汚いけどいいや
+  // 毎ターン消してるのキモイからどうにかしたい
   const int controllerFrameTag = 0;
   const CCPoint leftFramePosition = ccp(75.5, 78);
   const CCPoint rightFramePosition = ccp(397, 75.5);
