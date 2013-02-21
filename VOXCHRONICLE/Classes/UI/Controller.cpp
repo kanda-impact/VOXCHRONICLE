@@ -130,8 +130,8 @@ void Controller::updateSkills(CharacterManager* manager) {
     } else {
       trigger->setColor(SkillTriggerColorLaska);
     }
-    this->setFrame(manager);
   }
+  this->setFrame(manager);
 }
 
 Skill* Controller::currentTriggerSkill() {
@@ -161,7 +161,6 @@ void Controller::setFrameType(ControllerFrameType type) {
 
 void Controller::setFrame(CharacterManager *manager) {
   // 超汚いけどいいや
-  cout << "fuga_" << _skinPrefix << endl;
   const int controllerFrameTag = 0;
   const CCPoint leftFramePosition = ccp(75.5, 78);
   const CCPoint rightFramePosition = ccp(397, 75.5);
