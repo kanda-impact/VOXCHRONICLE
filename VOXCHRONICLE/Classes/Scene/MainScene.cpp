@@ -251,7 +251,6 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         _skin->getController()->setEnable(false);
         _musicManager->getMusic()->removeAllNextTracks();
         if (_musicManager->getMusicSet()->getFinishCount() == 0) {
-          _musicManager->pushSilentTracks();
           this->gotoNextStage();
         } else {
           _musicManager->pushFinishTracks();
