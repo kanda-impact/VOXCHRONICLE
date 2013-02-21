@@ -13,11 +13,13 @@
 #include "cocos2d.h"
 #include "Ground.h"
 #include "StatusLayer.h"
+#include "Controller.h"
 
 using namespace cocos2d;
 
 class Skin :public CCObject {
  private:
+  Controller* _controller;
   CCSprite* _background;
   Ground* _ground;
   StatusLayer* _statusLayer;
@@ -27,6 +29,7 @@ class Skin :public CCObject {
   CCSprite* getBackground();
   Ground* getGround();
   StatusLayer* getStatusLayer();
+  Controller* getController();
 };
 
 #endif /* defined(__VOXCHRONICLE__Skin__) */

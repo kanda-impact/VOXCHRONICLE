@@ -97,8 +97,6 @@ bool MainScene::init(Map* map) {
   _focus->setAnchorPoint(ccp(0.5f, 0.0f));
   this->addChild(_focus, MainSceneZOrderFocus);
   
-  _controller = Controller::create();
-  _controller->retain();
   _characterManager = new CharacterManager();
   CCSize size = director->getWinSize();
   
@@ -126,11 +124,12 @@ bool MainScene::init(Map* map) {
   _preLevel = _level->getLevel();
   
   // 画面の描画
-  this->addChild(_enemyManager, MainSceneZOrderEnemyManager);
-  this->addChild(_controller, MainSceneZOrderController);
   this->changeSkin(_map->getSkin(), false);
+  
+  this->addChild(_enemyManager, MainSceneZOrderEnemyManager);
+  this->addChild(_skin->getController(), MainSceneZOrderController);
   this->updateGUI();
-  _controller->updateSkills(_characterManager);
+  _skin->getController()->updateSkills(_characterManager);
   
   _qteTrigger = NULL;
   _isLevelUped = false;
@@ -143,7 +142,6 @@ MainScene::~MainScene() {
   _map->release();
   _messageWindow->release();
   _musicManager->release();
-  _controller->release();
   _enemyManager->release();
   _characterManager->release();
   _skin->release();
@@ -163,7 +161,7 @@ MainScene::~MainScene() {
 void MainScene::update(float dt) {
   switch (_state) {
     case VCStateMain:
-      _controller->setEnable(!_characterManager->isPerforming());
+      _skin->getController()->setEnable(!_characterManager->isPerforming());
       break;
     default:
       break;
@@ -179,7 +177,7 @@ Map* MainScene::getMap() {
 }
 
 void MainScene::onEnterTransitionDidFinish() {
-  _controller->setEnable(false);
+  _skin->getController()->setEnable(false);
   _musicManager->pushIntroTracks();
   _musicManager->getMusic()->play();
   _skin->getStatusLayer()->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
@@ -213,7 +211,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     int maxIntroCount = _musicManager->getMusicSet()->getIntroCount();
     if (_musicManager->getIntroCount() == maxIntroCount) { // イントロが終わったとき
       _musicManager->setIntroCount(0);
-      _controller->setEnable(true);
+      _skin->getController()->setEnable(true);
       _state = VCStateMain;
       if (!_map->isBossStage() || _map->getMaxLevel() != _characterManager->getLevel()) {
         _skin->getGround()->play();
@@ -233,7 +231,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     if (_characterManager->isPerforming()) {
       skill = _characterManager->getCurrentSkill();
     } else {
-      skill = _controller->currentTriggerSkill();
+      skill = _skin->getController()->currentTriggerSkill();
       //_controller->resetAllTriggers(); // このタイミングでトリガーをOFFにしてやる
     }
     _musicManager->pushNextTracks(skill, _currentSkillInfo);
@@ -242,12 +240,12 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       if (_level->getLevel() == _map->getMaxLevel() && _map->isBossStage()) { // 最高レベルのとき、かつボス面のとき
         // 道中フィニッシュ曲を流す。フィニッシュ曲が終わったらボス面に切り替えてイントロ曲を流す
         _state = VCStateFinish;
-        _controller->setEnable(false);
+        _skin->getController()->setEnable(false);
         _musicManager->getMusic()->removeAllNextTracks();
         _musicManager->pushFinishTracks();
       } else if (_level->getLevel() >= _map->getMaxLevel() + 1) { // 最大レベル + 1のとき
         _state = VCStateFinish;
-        _controller->setEnable(false);
+        _skin->getController()->setEnable(false);
         _musicManager->getMusic()->removeAllNextTracks();
         if (_musicManager->getMusicSet()->getFinishCount() == 0) {
           _musicManager->pushSilentTracks();
@@ -311,7 +309,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     Map* nextMap = _mapSelector->getSelectedMap();
     if (nextMap) {
       _state = VCStateMain;
-      _controller->setEnable(true);
+      _skin->getController()->setEnable(true);
       this->removeChild(_mapSelector, true);
       _mapSelector->release();
       _mapSelector = NULL;
@@ -516,7 +514,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     }
     
     if (skill) {
-      _controller->updateSkills(_characterManager);
+      _skin->getController()->updateSkills(_characterManager);
     }
     
     this->updateFocus();
@@ -527,7 +525,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     if (_enemyManager->getBoss() && _enemyManager->getBoss()->getHP() <= 0) { // ボスが死んでたらQTEに移行する
       _state = VCStateQTEWait;
       _musicManager->setMinDrumScore(4);
-      _controller->setEnable(false);
+      _skin->getController()->setEnable(false);
       _qteTrigger = new QTETrigger(_enemyManager);
       this->addChild(_qteTrigger, MainSceneZOrderUI);
       CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("qte.mp3").c_str());
@@ -581,7 +579,7 @@ void MainScene::onGameOver() {
   this->addChild(gameover, MainSceneZOrderUI);
   gameover->autorelease();
   _musicManager->getMusic()->pause();
-  _controller->setVisible(false);
+  _skin->getController()->setVisible(false);
 }
 
 void MainScene::removeNode(CCNode* node) {
@@ -672,7 +670,7 @@ void MainScene::changeMap(Map* nextMap) {
   
   _musicManager->setIntroCount(0);
   _musicManager->setFinishCount(0);
-  _controller->setEnable(false);
+  _skin->getController()->setEnable(false);
   _musicManager->pushIntroTracks();
   _characterManager->setRepeatCount(0); // repeatCountをリセット
   this->updateGUI();
@@ -726,12 +724,12 @@ void MainScene::changeSkin(Skin *newSkin, bool crossFade) {
 }
 
 void MainScene::startBossBattle() {
-  _controller->setEnable(false);
+  _skin->getController()->setEnable(false);
   _state = VCStateIntro; // イントロに移行
   _skin->getGround()->stop(); // 床を停止
   _musicManager->setMusicSet(_map->getCurrentMusic(_level)); // 音楽セットを切り替える
   _characterManager->setRepeatCount(0);
-  _controller->setEnable(false);
+  _skin->getController()->setEnable(false);
   _musicManager->pushIntroTracks();
 }
 
@@ -745,7 +743,7 @@ void MainScene::gotoNextStage() {
       _mapSelector = MapSelector::create();
       _mapSelector->retain();
       _mapSelector->setNextMaps(maps);
-      _controller->setEnable(false);
+      _skin->getController()->setEnable(false);
       this->addChild(_mapSelector, MainSceneZOrderUI);
       _state = VCStateMapSelect;
     }

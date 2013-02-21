@@ -16,7 +16,6 @@
 #include "Map.h"
 #include "Level.h"
 
-#include "Controller.h"
 #include "EnemyManager.h"
 #include "CharacterManager.h"
 #include "MapSelector.h"
@@ -48,7 +47,6 @@ class MainScene : public CCLayer {
   int _mapTurnCount;
   bool _isLevelUped;
   SkillPerformInfo _currentSkillInfo;
-  Controller* _controller;
   EnemyManager* _enemyManager;
   CharacterManager* _characterManager;
   MapSelector* _mapSelector;
