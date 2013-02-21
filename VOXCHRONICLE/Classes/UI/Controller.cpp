@@ -17,7 +17,8 @@
 
 typedef enum {
   ControllerZOrderFrame,
-  ControllerZOrderTrigger
+  ControllerZOrderTrigger,
+  ControllerZOrderTriggerPressed
 } ControllerZOrder;
 
 using namespace cocos2d;
@@ -81,6 +82,7 @@ bool Controller::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
         this->resetAllTriggers();
         CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cursor.mp3").c_str());
         ((SkillTrigger*)trigger)->setPress(true);
+        this->reorderChild((SkillTrigger*)trigger, ControllerZOrderTriggerPressed);
         break;
       }
     }
@@ -95,6 +97,7 @@ void Controller::resetAllTriggers() {
   CCObject* trigger = NULL;
   CCARRAY_FOREACH(_triggers, trigger) {
     ((SkillTrigger*)trigger)->setPress(false);
+    this->reorderChild((SkillTrigger*)trigger, ControllerZOrderTrigger);
   }
 }
 
