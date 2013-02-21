@@ -96,11 +96,11 @@ void SkillTrigger::setSkillTriggerState(SkillTriggerState state) {
   } else {
     this->setPress(false);
   }
-  float opacity = 200;
+  float opacity = 255;
   if (_state == SkillTriggerStateUnknown || _state == SkillTriggerStateDisable) {
     opacity = 64;
   }
-  _background->setOpacity(opacity);
+  //_background->setOpacity(opacity);
   if (_state == SkillTriggerStateUnknown) {
     _icon->setOpacity(0);
   } else {
