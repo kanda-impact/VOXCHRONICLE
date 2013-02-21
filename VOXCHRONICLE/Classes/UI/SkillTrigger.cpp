@@ -104,7 +104,7 @@ void SkillTrigger::setSkillTriggerState(SkillTriggerState state) {
   if (_state == SkillTriggerStateUnknown) {
     _icon->setOpacity(0);
   } else {
-    _icon->setOpacity(opacity);
+    //_icon->setOpacity(opacity);
   }
 }
 

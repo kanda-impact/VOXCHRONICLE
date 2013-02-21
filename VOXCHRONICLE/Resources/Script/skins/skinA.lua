@@ -3,6 +3,7 @@ Skin = {
   prefix = "cyber",
   hasBackground = false,
   groundFrameCount = 4,
+  frameType = ControllerFrameTypeNone,
   buildSkin = function(self)
     -- ここでスキンの定義をｇｄｇｄ書きます
     local hpLabel = CCSprite:create("cyber_hp.png")

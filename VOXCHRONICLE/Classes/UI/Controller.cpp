@@ -21,7 +21,7 @@ Controller::Controller(const char* skinPrefix) {
   _triggers = CCArray::create();
   _triggers->retain();
   _enable = true;
-  _skinPrefix = skinPrefix;
+  _skinPrefix = string(skinPrefix);
   
   // controller.luaから配置データを読みます
   LuaObject* lua = new LuaObject(FileUtils::getFilePath("Script/controller.lua").c_str());
@@ -50,8 +50,8 @@ Controller::Controller(const char* skinPrefix) {
     ++rotationsit;
   }
   
-  _skinPrefix = "";
   this->setEnable(false);
+  _frameType = ControllerFrameTypeNone;
 }
 
 Controller::~Controller() {
@@ -130,6 +130,7 @@ void Controller::updateSkills(CharacterManager* manager) {
     } else {
       trigger->setColor(SkillTriggerColorLaska);
     }
+    this->setFrame(manager);
   }
 }
 
@@ -152,4 +153,51 @@ void Controller::setEnable(bool enable) {
 
 void Controller::setSkinPrefix(string prefix) {
   _skinPrefix = prefix;
+}
+
+void Controller::setFrameType(ControllerFrameType type) {
+  _frameType = type;
+}
+
+void Controller::setFrame(CharacterManager *manager) {
+  // 超汚いけどいいや
+  cout << "fuga_" << _skinPrefix << endl;
+  const int controllerFrameTag = 0;
+  const CCPoint leftFramePosition = ccp(75.5, 78);
+  const CCPoint rightFramePosition = ccp(397, 75.5);
+  CCNode* frame = this->getChildByTag(controllerFrameTag);
+  if (frame) {
+    this->removeChild(frame, true);
+  }
+  if (_frameType != ControllerFrameTypeNone) {
+    string filepathL, filepathR;
+    if (_frameType == ControllerFrameTypeCommon) {
+      filepathL = string("Image/") + _skinPrefix + string("_frame_left.png");
+    } else {
+      if (manager->getCurrentCharacter()->getCharacterType() == CharacterTypeVox) {
+        filepathL = string("Image/") + _skinPrefix + string("_frame_vox_left.png");
+      } else {
+        filepathL = string("Image/") + _skinPrefix + string("_frame_lsk_left.png");
+      }
+    }
+    CCSprite* leftFrame = CCSprite::create(FileUtils::getFilePath(filepathL.c_str()).c_str());
+    leftFrame->setPosition(leftFramePosition);
+    
+    if (_frameType == ControllerFrameTypeCommon) {
+      filepathR = string("Image/") + _skinPrefix + string("_frame_right.png");
+    } else {
+      if (manager->getCurrentCharacter()->getCharacterType() == CharacterTypeVox) {
+        filepathR = string("Image/") + _skinPrefix + string("_frame_vox_right.png");
+      } else {
+        filepathR = string("Image/") + _skinPrefix + string("_frame_lsk_right.png");
+      }
+    }
+    CCSprite* rightFrame = CCSprite::create(FileUtils::getFilePath(filepathR.c_str()).c_str());
+    rightFrame->setPosition(rightFramePosition);
+    
+    CCNode* newFrame = CCNode::create();
+    newFrame->addChild(leftFrame);
+    newFrame->addChild(rightFrame);
+    this->addChild(newFrame);
+  }
 }

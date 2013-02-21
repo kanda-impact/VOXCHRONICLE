@@ -3,6 +3,7 @@ Skin = {
   prefix = "cave",
   hasBackground = false,
   groundFrameCount = 4,
+  frameType = ControllerFrameTypeFull,
   buildSkin = function(self)
     -- ここでスキンの定義をｇｄｇｄ書きます
     local hpLabel = CCSprite:create("cave_hp.png")

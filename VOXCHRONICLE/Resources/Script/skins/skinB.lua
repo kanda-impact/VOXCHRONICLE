@@ -3,6 +3,7 @@ Skin = {
   prefix = "grass",
   hasBackground = true,
   groundFrameCount = 5,
+  frameType = ControllerFrameTypeCommon,
   buildSkin = function(self)
     -- ここでスキンの定義をｇｄｇｄ書きます
     local hpLabel = CCSprite:create("grass_hp.png")
