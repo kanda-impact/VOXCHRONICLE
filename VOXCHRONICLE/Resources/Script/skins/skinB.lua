@@ -27,7 +27,7 @@ Skin = {
     self:addChild(maxHPLabel, 0, MaxHPLabelTag)
   
     local slash = CCSprite:create("grass_slash.png")
-    slash:setPosition(ccp(74, 290))
+    slash:setPosition(ccp(77, 290))
     self:addChild(slash)
   
     local stageLabel = CCSprite:create("grass_level.png")
