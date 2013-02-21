@@ -16,8 +16,7 @@ Skin::Skin(const char* scriptName) {
   _ground = new Ground(prefix.c_str(), frameCount);
   _statusLayer = new StatusLayer(scriptName);
   _background = NULL;
-  _controller = Controller::create();
-  _controller->retain();
+  _controller = new Controller(prefix.c_str());
   if (lua->getBoolean("hasBackground")) {
     string filename = prefix + "_background.png";
     _background = CCSprite::create(filename.c_str());

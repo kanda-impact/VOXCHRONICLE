@@ -17,13 +17,11 @@
 
 using namespace cocos2d;
 
-bool Controller::init() {
-  if (!CCLayer::init()) {
-    return false;
-  }
+Controller::Controller(const char* skinPrefix) {
   _triggers = CCArray::create();
   _triggers->retain();
   _enable = true;
+  _skinPrefix = skinPrefix;
   
   // controller.luaから配置データを読みます
   LuaObject* lua = new LuaObject(FileUtils::getFilePath("Script/controller.lua").c_str());
@@ -39,7 +37,7 @@ bool Controller::init() {
   
   for (int i = 0; i < COMMAND_COUNT; ++i) {
     string index = boost::lexical_cast<string>(i + 1);
-    SkillTrigger* trigger = new SkillTrigger();
+    SkillTrigger* trigger = new SkillTrigger(_skinPrefix.c_str());
     trigger->setPosition(ccp(xsit->floatValue(), ysit->floatValue()));
     trigger->getBackground()->setRotation(rotationsit->floatValue());
     trigger->getBackground()->setScale(scalesit->floatValue());
@@ -51,11 +49,9 @@ bool Controller::init() {
     ++scalesit;
     ++rotationsit;
   }
+  
+  _skinPrefix = "";
   this->setEnable(false);
-  return true;
-}
-
-Controller::Controller() {
 }
 
 Controller::~Controller() {
@@ -152,4 +148,8 @@ void Controller::setEnable(bool enable) {
   } else {
     this->setVisible(false);
   }
+}
+
+void Controller::setSkinPrefix(string prefix) {
+  _skinPrefix = prefix;
 }

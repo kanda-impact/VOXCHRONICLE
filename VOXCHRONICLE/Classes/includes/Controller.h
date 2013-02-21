@@ -19,20 +19,19 @@ using namespace cocos2d;
 class Controller : public CCLayer {
  private:
   CCArray* _triggers;
+  string _skinPrefix;
   virtual bool ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent);
   virtual void registerWithTouchDispatcher();
   bool _enable;
-
 public:
-  virtual bool init();
   ~Controller();
-  Controller();
+  Controller(const char* skinPrefix);
   void resetAllTriggers();
   int currentTriggerIndex();
   Skill* currentTriggerSkill();
   void updateSkills(CharacterManager* manager);
   void setEnable(bool enable);
-  CREATE_FUNC(Controller);
+  void setSkinPrefix(string prefix);
 };
 
 #endif /* defined(__VOXCHRONICLE__Controller__) */
