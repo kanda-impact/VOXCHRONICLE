@@ -15,6 +15,11 @@
 #include "LuaObject.h"
 #define COMMAND_COUNT 8
 
+typedef enum {
+  ControllerZOrderFrame,
+  ControllerZOrderTrigger
+} ControllerZOrder;
+
 using namespace cocos2d;
 
 Controller::Controller(const char* skinPrefix) {
@@ -41,7 +46,7 @@ Controller::Controller(const char* skinPrefix) {
     trigger->setPosition(ccp(xsit->floatValue(), ysit->floatValue()));
     trigger->getBackground()->setRotation(rotationsit->floatValue());
     trigger->getBackground()->setScale(scalesit->floatValue());
-    this->addChild(trigger);
+    this->addChild(trigger, ControllerZOrderTrigger);
     _triggers->addObject(trigger);
     this->setTouchEnabled(true);
     ++xsit;
@@ -197,6 +202,6 @@ void Controller::setFrame(CharacterManager *manager) {
     CCNode* newFrame = CCNode::create();
     newFrame->addChild(leftFrame);
     newFrame->addChild(rightFrame);
-    this->addChild(newFrame);
+    this->addChild(newFrame, ControllerZOrderFrame);
   }
 }
