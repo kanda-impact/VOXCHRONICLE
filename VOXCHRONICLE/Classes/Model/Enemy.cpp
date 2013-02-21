@@ -107,7 +107,7 @@ void Enemy::moveRow(float r) {
   //this->getParent()->reorderChild(this, (MAX_ROW - _row));
 }
 
-DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager, bool simulate) {
+int Enemy::damage(Skill* skill, CharacterManager* characterManager, DamageType& damageType, bool simulate) {
   // ToDo 属性によるダメージ軽減とかもこの辺に載せてやる
   float damage = floor(0.5 + skill->getPowerWithTension(characterManager->getTension()));
   
@@ -116,23 +116,25 @@ DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager, bool 
       (_item == EnemyItemBarrier && skill->getType() == SkillTypeMagical)) {
     // 盾によって完全に無効化されている状態
     damage = 0;
-    return _item == EnemyItemShield ? DamageTypePhysicalInvalid : DamageTypeMagicalInvalid;
+    damageType = _item == EnemyItemShield ? DamageTypePhysicalInvalid : DamageTypeMagicalInvalid;
+    return damage;
   } else if ((_item == EnemyItemShield && skill->getType() == SkillTypeMagical) ||
              (_item == EnemyItemBarrier && skill->getType() == SkillTypePhysical)) {
     damage = 0;
     if (!simulate) { // simulateがfalseのときだけ、アイテムを消去してやる
       this->setItem(EnemyItemNone);
     }
-    return _item == EnemyItemShield ? DamageTypeShieldBreak : DamageTypeBarrierBreak;
+    damageType = _item == EnemyItemShield ? DamageTypeShieldBreak : DamageTypeBarrierBreak;
+    return damage;
   }
   
-  DamageType type = DamageTypeHit;
+  damageType = DamageTypeHit;
   // ダメージ耐性がある場合、威力半減してやる
   if (skill->getType() == SkillTypePhysical && this->getType() == SkillTypePhysical) {
-    type = DamageTypePhysicalResist;
+    damageType = DamageTypePhysicalResist;
     damage *= 0.5;
   } else if (skill->getType() == SkillTypeMagical && this->getType() == SkillTypeMagical) {
-    type = DamageTypeMagicalResist;
+    damageType = DamageTypeMagicalResist;
     damage *= 0.5;
   }
   // レベル補正を行います
@@ -142,14 +144,14 @@ DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager, bool 
   hp -= damage;
   if (hp <= 0) {
     // ダメージが原因で死んだら死亡
-    type = DamageTypeDeath;
+    damageType = DamageTypeDeath;
     hp = 0;
   } else if (damage == 0){
     // ダメージが当たらなかったら無敵
-    type = DamageTypeInvincible;
+    damageType = DamageTypeInvincible;
   } else if (damage < 0) {
     // ダメージがマイナス値なら吸収
-    type = DamageTypeAbsorption;
+    damageType = DamageTypeAbsorption;
   }
   if (!simulate) { // simulateがfalseのとき、実際にダメージを与えます
     _hp = hp;
@@ -157,7 +159,7 @@ DamageType Enemy::damage(Skill* skill, CharacterManager* characterManager, bool 
       this->setLifeColor(); // モンスターの色を更新
     }
   }
-  return type;
+  return damage;
 }
 
 void Enemy::setLifeColor() {

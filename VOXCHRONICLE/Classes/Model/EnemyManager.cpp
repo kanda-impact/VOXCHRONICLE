@@ -172,18 +172,17 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CCArray* targets, Charact
     CCObject* obj = NULL;
     CCARRAY_FOREACH(targets, obj) {
       Enemy* target = (Enemy*)obj;
-      int beforeHP = target->getHP();
       // 追加効果がある場合、関数を呼び出す
+      int damage = 0;
       performLuaFunction(skill, target, characterManager);
       DamageType damageType = DamageTypeNone;
       if (skill->getPowerWithTension(characterManager->getTension()) != 0) {
         // 威力が1以上の場合、ダメージを与える
-        damageType = target->damage(skill, characterManager, false);
+        damage = target->damage(skill, characterManager, damageType, false);
       } else {
         // 威力が0の場合、NoDamageを設定する
         damageType = DamageTypeNoDamage;
       }
-      int damage = beforeHP - target->getHP();
       damages->addObject(CCInteger::create(damage));
       damageTypes->addObject(CCInteger::create((int)damageType));
       if (target->getHP() <= 0) {

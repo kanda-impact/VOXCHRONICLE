@@ -179,8 +179,9 @@ string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& perform
       if (targets->count() > 0) {
         for (int i = 0; i < targets->count(); ++i) {
           Enemy* enemy = (Enemy*)targets->objectAtIndex(i);
-          DamageType type = enemy->damage(skill, _characterManager, true); // ダメージは与えずに結果だけ取り出す
-          if (type != DamageTypePhysicalInvalid && type != DamageTypeMagicalInvalid && type != DamageTypeNoDamage) {
+          DamageType damageType = DamageTypeNone;
+          enemy->damage(skill, _characterManager, damageType, true); // ダメージは与えずに結果だけ取り出す
+          if (damageType != DamageTypePhysicalInvalid && damageType != DamageTypeMagicalInvalid && damageType != DamageTypeNoDamage) {
             isMiss = false;
           }
         }
