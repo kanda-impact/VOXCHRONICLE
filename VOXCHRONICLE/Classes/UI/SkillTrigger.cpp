@@ -127,3 +127,7 @@ void SkillTrigger::setColor(SkillTriggerColor color) {
 CCSprite* SkillTrigger::getBackground() {
   return _background;
 }
+
+void SkillTrigger::setSkinPrefix(const char *prefix) {
+  _skinPrefix = prefix;
+}

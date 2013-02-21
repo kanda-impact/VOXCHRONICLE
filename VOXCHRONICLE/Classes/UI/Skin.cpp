@@ -59,9 +59,9 @@ void Skin::setController(Controller *controller) {
   _controller = controller;
   if (controller) {
     controller->retain();
+    _controller->setSkinPrefix(_prefix.c_str());
+    _controller->setFrameType(_frameType);
   }
-  _controller->setSkinPrefix(_prefix.c_str());
-  _controller->setFrameType(_frameType);
 }
 
 string Skin::getPrefix() {

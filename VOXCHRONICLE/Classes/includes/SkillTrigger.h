@@ -53,6 +53,7 @@ class SkillTrigger : public CCNode, CCTouchDelegate {
   void setSkillTriggerState(SkillTriggerState state);
   void setColor(SkillTriggerColor color);
   CCSprite* getBackground();
+  void setSkinPrefix(const char* prefix);
 };
 
 #endif /* defined(__VOXCHRONICLE__SkillTrigger__) */

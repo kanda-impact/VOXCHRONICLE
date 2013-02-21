@@ -66,6 +66,11 @@ Controller::~Controller() {
 
 void Controller::setSkinPrefix(const char* prefix) {
   _skinPrefix = string(prefix);
+  CCObject* obj = NULL;
+  CCARRAY_FOREACH(_triggers, obj) {
+    SkillTrigger* trigger = (SkillTrigger*)obj;
+    trigger->setSkinPrefix(_skinPrefix.c_str());
+  }
 }
 
 void Controller::registerWithTouchDispatcher() {
@@ -205,6 +210,6 @@ void Controller::setFrame(CharacterManager *manager) {
     CCNode* newFrame = CCNode::create();
     newFrame->addChild(leftFrame);
     newFrame->addChild(rightFrame);
-    this->addChild(newFrame, ControllerZOrderFrame);
+    this->addChild(newFrame, ControllerZOrderFrame, controllerFrameTag);
   }
 }
