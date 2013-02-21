@@ -269,3 +269,7 @@ void CharacterManager::setWaitTurn(int waitTurn) {
 void CharacterManager::setRepeatCount(int repeatCount) {
   _repeatCount = repeatCount;
 }
+
+CCArray* CharacterManager::getCharacters() {
+  return _characters;
+}

@@ -68,6 +68,9 @@ class MusicManager :public CCObject {
    @return string トラック名
   */
   string buildTrackName(const char* skillIdentifier, Skill* skill, int repeatCount);
+  string buildTrackName(const char* skillIdentifier, Skill* skill, int repeatCount, Character* currentCharacter);
+  
+  void preloadMusic(const char* trackName, int maxCount);
  public:
   MusicManager(VISS::Music* music, MusicSet* musicSet, EnemyManager* enemyManager, CharacterManager* characterManager);
   ~MusicManager();
@@ -172,6 +175,8 @@ class MusicManager :public CCObject {
    @param MusicSet* set
    */
   void setMusicSet(MusicSet* set);
+  
+  void preloadAllTracks(CharacterManager* manager);
 };
 
 #endif /* defined(__VOXCHRONICLE__MusicManager__) */

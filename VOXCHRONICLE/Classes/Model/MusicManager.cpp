@@ -215,7 +215,7 @@ string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& perform
   return this->buildTrackName("wait", NULL, _characterManager->getRepeatCount());
 }
 
-string MusicManager::buildTrackName(const char* skillIdentifier, Skill *skill, int repeatCount) {
+string MusicManager::buildTrackName(const char* skillIdentifier, Skill *skill, int repeatCount, Character* currentCharacter) {
   stringstream ss;
   if ((skill == NULL || skill->isCommon()) && _musicSet->isCommon(skillIdentifier)) {
     // スキルのcommonがfalseのとき、曲名にキャラ名が付かない
@@ -227,12 +227,16 @@ string MusicManager::buildTrackName(const char* skillIdentifier, Skill *skill, i
   } else {
     // commonがtrueのとき、曲名にキャラ名が付く
     // ex: voxattack0.wav
-    ss << _characterManager->getCurrentCharacter()->getIdentifier() << skillIdentifier;
+    ss << currentCharacter->getIdentifier() << skillIdentifier;
     if (repeatCount >= 0) {
-       ss << repeatCount;
+      ss << repeatCount;
     }
   }
   return ss.str();
+}
+
+string MusicManager::buildTrackName(const char *skillIdentifier, Skill *skill, int repeatCount) {
+  return this->buildTrackName(skillIdentifier, skill, repeatCount, _characterManager->getCurrentCharacter());
 }
 
 int MusicManager::getIntroCount() {
@@ -273,13 +277,45 @@ void MusicManager::setMusicSet(MusicSet *set) {
   if (_musicSet) {
     _musicSet->release();
   }
-  _musicSet = set;
-  if (set) {
-    set->retain();
+  if (_musicSet != set) {
+    _musicSet = set;
+    if (set) {
+      set->retain();
+    }
+    BufferCache::sharedCache()->purgeAllBuffers();
   }
-  BufferCache::sharedCache()->purgeAllBuffers();
 }
 
 void MusicManager::setMinDrumScore(int min) {
   _minDrumScore = min;
+}
+
+void MusicManager::preloadAllTracks(CharacterManager* manager) {
+  CCArray* characters = manager->getCharacters();
+  CCObject* obj0 = NULL;
+  CCARRAY_FOREACH(characters, obj0) {
+    Character* chara = (Character*)obj0;
+    CCArray* skills = chara->getSkills();
+    CCObject* obj1 = NULL;
+    CCARRAY_FOREACH(skills, obj1) {
+      Skill* skill = (Skill*)obj1;
+      int repeat = skill->getMaxRepeat();
+      for (int i = 0; i < repeat; ++i) {
+        string file = buildTrackName(skill->getIdentifier().c_str(), skill, i, chara);
+        BufferCache::sharedCache()->addBuffer(this->getTrackFileName(file.c_str()).c_str());
+      }
+    }
+  }
+  this->preloadMusic("wait", _musicSet->getWaitCount());
+  this->preloadMusic("drum", 5);
+  this->preloadMusic("impact", 4);
+  this->preloadMusic("intro", _musicSet->getIntroCount());
+  this->preloadMusic("finish", _musicSet->getFinishCount());
+}
+
+void MusicManager::preloadMusic(const char *trackName, int maxCount) {
+  for (int i = 0; i < maxCount; ++i) {
+    string file = buildTrackName(trackName, NULL, i);
+    BufferCache::sharedCache()->addBuffer(this->getTrackFileName(file.c_str()).c_str());
+  }
 }

@@ -50,7 +50,7 @@ bool MusicSet::isCommon(const char *skillName) {
   if (_common->count(string(skillName)) == 1) {
     return _common->at(skillName).booleanValue();
   }
-  return false;
+  return true;
 }
 
 int MusicSet::getIntroCount() {

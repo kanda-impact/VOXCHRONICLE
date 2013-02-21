@@ -106,9 +106,9 @@ bool MainScene::init(Map* map) {
   
   MusicSet* musicSet = _map->getCurrentMusic(_level);
   musicSet->autorelease();
-  musicSet->preloadAllTracks();
   
   _musicManager = new MusicManager(music, musicSet, _enemyManager, _characterManager);
+  _musicManager->preloadAllTracks(_characterManager);
   
   _state = VCStateIntro;
   
@@ -668,7 +668,7 @@ void MainScene::changeMap(Map* nextMap) {
   _mapTurnCount = 0; // マップカウント0に戻す
   _state = VCStateIntro;
   _musicManager->setMusicSet(_map->getCurrentMusic(_level)); // 音楽セットを切り替える
-  
+  _musicManager->preloadAllTracks(_characterManager); // 曲データを読む
   this->changeSkin(_map->getSkin(), true);
   
   _musicManager->setIntroCount(0);
@@ -733,6 +733,7 @@ void MainScene::startBossBattle() {
   _state = VCStateIntro; // イントロに移行
   _skin->getGround()->stop(); // 床を停止
   _musicManager->setMusicSet(_map->getCurrentMusic(_level)); // 音楽セットを切り替える
+  _musicManager->preloadAllTracks(_characterManager);
   _characterManager->setRepeatCount(0);
   _skin->getController()->setEnable(false);
   _musicManager->pushIntroTracks();
