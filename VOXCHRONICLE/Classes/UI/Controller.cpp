@@ -15,15 +15,19 @@
 #include "LuaObject.h"
 #define COMMAND_COUNT 8
 
+typedef enum {
+  ControllerZOrderFrame,
+  ControllerZOrderTrigger,
+  ControllerZOrderTriggerPressed
+} ControllerZOrder;
+
 using namespace cocos2d;
 
-bool Controller::init() {
-  if (!CCLayer::init()) {
-    return false;
-  }
+Controller::Controller(const char* skinPrefix) {
   _triggers = CCArray::create();
   _triggers->retain();
   _enable = true;
+  _skinPrefix = string(skinPrefix);
   
   // controller.luaから配置データを読みます
   LuaObject* lua = new LuaObject(FileUtils::getFilePath("Script/controller.lua").c_str());
@@ -39,11 +43,11 @@ bool Controller::init() {
   
   for (int i = 0; i < COMMAND_COUNT; ++i) {
     string index = boost::lexical_cast<string>(i + 1);
-    SkillTrigger* trigger = new SkillTrigger();
+    SkillTrigger* trigger = new SkillTrigger(_skinPrefix.c_str());
     trigger->setPosition(ccp(xsit->floatValue(), ysit->floatValue()));
     trigger->getBackground()->setRotation(rotationsit->floatValue());
     trigger->getBackground()->setScale(scalesit->floatValue());
-    this->addChild(trigger);
+    this->addChild(trigger, ControllerZOrderTrigger);
     _triggers->addObject(trigger);
     this->setTouchEnabled(true);
     ++xsit;
@@ -51,15 +55,22 @@ bool Controller::init() {
     ++scalesit;
     ++rotationsit;
   }
+  
   this->setEnable(false);
-  return true;
-}
-
-Controller::Controller() {
+  _frameType = ControllerFrameTypeNone;
 }
 
 Controller::~Controller() {
   _triggers->release();
+}
+
+void Controller::setSkinPrefix(const char* prefix) {
+  _skinPrefix = string(prefix);
+  CCObject* obj = NULL;
+  CCARRAY_FOREACH(_triggers, obj) {
+    SkillTrigger* trigger = (SkillTrigger*)obj;
+    trigger->setSkinPrefix(_skinPrefix.c_str());
+  }
 }
 
 void Controller::registerWithTouchDispatcher() {
@@ -80,6 +91,7 @@ bool Controller::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
         this->resetAllTriggers();
         CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cursor.mp3").c_str());
         ((SkillTrigger*)trigger)->setPress(true);
+        this->reorderChild((SkillTrigger*)trigger, ControllerZOrderTriggerPressed);
         break;
       }
     }
@@ -94,6 +106,7 @@ void Controller::resetAllTriggers() {
   CCObject* trigger = NULL;
   CCARRAY_FOREACH(_triggers, trigger) {
     ((SkillTrigger*)trigger)->setPress(false);
+    this->reorderChild((SkillTrigger*)trigger, ControllerZOrderTrigger);
   }
 }
 
@@ -135,6 +148,7 @@ void Controller::updateSkills(CharacterManager* manager) {
       trigger->setColor(SkillTriggerColorLaska);
     }
   }
+  this->setFrame(manager);
 }
 
 Skill* Controller::currentTriggerSkill() {
@@ -151,5 +165,52 @@ void Controller::setEnable(bool enable) {
     this->setVisible(true);
   } else {
     this->setVisible(false);
+  }
+}
+
+void Controller::setFrameType(ControllerFrameType type) {
+  _frameType = type;
+}
+
+void Controller::setFrame(CharacterManager *manager) {
+  // 超汚いけどいいや
+  // 毎ターン消してるのキモイからどうにかしたい
+  const int controllerFrameTag = 0;
+  const CCPoint leftFramePosition = ccp(75.5, 78);
+  const CCPoint rightFramePosition = ccp(397, 75.5);
+  CCNode* frame = this->getChildByTag(controllerFrameTag);
+  if (frame) {
+    this->removeChild(frame, true);
+  }
+  if (_frameType != ControllerFrameTypeNone) {
+    string filepathL, filepathR;
+    if (_frameType == ControllerFrameTypeCommon) {
+      filepathL = string("Image/") + _skinPrefix + string("_frame_left.png");
+    } else {
+      if (manager->getCurrentCharacter()->getCharacterType() == CharacterTypeVox) {
+        filepathL = string("Image/") + _skinPrefix + string("_frame_vox_left.png");
+      } else {
+        filepathL = string("Image/") + _skinPrefix + string("_frame_lsk_left.png");
+      }
+    }
+    CCSprite* leftFrame = CCSprite::create(FileUtils::getFilePath(filepathL.c_str()).c_str());
+    leftFrame->setPosition(leftFramePosition);
+    
+    if (_frameType == ControllerFrameTypeCommon) {
+      filepathR = string("Image/") + _skinPrefix + string("_frame_right.png");
+    } else {
+      if (manager->getCurrentCharacter()->getCharacterType() == CharacterTypeVox) {
+        filepathR = string("Image/") + _skinPrefix + string("_frame_vox_right.png");
+      } else {
+        filepathR = string("Image/") + _skinPrefix + string("_frame_lsk_right.png");
+      }
+    }
+    CCSprite* rightFrame = CCSprite::create(FileUtils::getFilePath(filepathR.c_str()).c_str());
+    rightFrame->setPosition(rightFramePosition);
+    
+    CCNode* newFrame = CCNode::create();
+    newFrame->addChild(leftFrame);
+    newFrame->addChild(rightFrame);
+    this->addChild(newFrame, ControllerZOrderFrame, controllerFrameTag);
   }
 }

@@ -62,10 +62,11 @@ public:
    ダメージの状態をDamageTypeとして返します
    @param Skill* 使用したスキルを渡します
    @param CharacterManager* CharacterManagerを渡します
+   @param DamageType& damageTypeの参照を戻します
    @param bool simulate trueのとき、実際にはダメージを与えません。結果だけ返します
-   @return ダメージを与えた結果をダメージタイプとして返却します
+   @return int 与えたダメージを返却します
    */
-  DamageType damage(Skill* skill, CharacterManager* characterManager, bool simulate);
+  int damage(Skill* skill, CharacterManager* characterManager, DamageType& damageType, bool simulate);
   
   /**
    Luaに定義された敵の技を使う関数を実行します

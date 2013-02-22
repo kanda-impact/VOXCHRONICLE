@@ -16,7 +16,6 @@
 #include "Map.h"
 #include "Level.h"
 
-#include "Controller.h"
 #include "EnemyManager.h"
 #include "CharacterManager.h"
 #include "MapSelector.h"
@@ -32,9 +31,9 @@ typedef enum {
   VCStateGameOver,
   VCStateFinish,
   VCStateBoss,
+  VCStateMapSelect,
   VCStateQTEWait,
   VCStateQTEFinish,
-  VCStateStageSelect,
   VCStateEnding
 } VCState;
 
@@ -48,7 +47,6 @@ class MainScene : public CCLayer {
   int _mapTurnCount;
   bool _isLevelUped;
   SkillPerformInfo _currentSkillInfo;
-  Controller* _controller;
   EnemyManager* _enemyManager;
   CharacterManager* _characterManager;
   MapSelector* _mapSelector;
@@ -89,6 +87,7 @@ class MainScene : public CCLayer {
   void startBossBattle();
   void gotoNextStage();
   void onFinishTracksCompleted();
+  void changeSkin(Skin* newSkin, bool crossFade);
   
  public:
   virtual bool init(Map* map);

@@ -15,18 +15,19 @@ bool MapSelector::init() {
     return false;
   }
   
-  CCMenuItemImage* leftArrow = CCMenuItemImage::create(FileUtils::getFilePath("left_arrow.png").c_str(),
-                                                       FileUtils::getFilePath("left_arrow_selected.png").c_str(),
+  CCMenuItemImage* leftArrow = CCMenuItemImage::create(FileUtils::getFilePath("selector_no.png").c_str(),
+                                                       FileUtils::getFilePath("selector_no_selected.png").c_str(),
                                                        this,
                                                        menu_selector(MapSelector::leftButtonPressed));
-  CCMenuItemImage* rightArrow = CCMenuItemImage::create(FileUtils::getFilePath("right_arrow.png").c_str(),
-                                                        FileUtils::getFilePath("right_arrow_selected.png").c_str(),
+  CCMenuItemImage* rightArrow = CCMenuItemImage::create(FileUtils::getFilePath("selector_yes.png").c_str(),
+                                                        FileUtils::getFilePath("selector_yes_selected.png").c_str(),
                                                         this,
                                                         menu_selector(MapSelector::rightButtonPressed));
   CCMenu* menu = CCMenu::create(leftArrow, rightArrow, NULL);
   menu->alignItemsHorizontallyWithPadding(180);
   this->addChild(menu);
   _nextMaps = NULL;
+  _selectedMap = NULL;
   return true;
 }
 
@@ -51,9 +52,6 @@ void MapSelector::setNextMaps(cocos2d::CCArray *maps) {
     maps->retain();
   }
   _nextMaps = maps;
-  if (maps && maps->count() > 0) {
-    _selectedMap = (Map*)maps->objectAtIndex(0);
-  }
 }
 
 Map* MapSelector::getSelectedMap() {

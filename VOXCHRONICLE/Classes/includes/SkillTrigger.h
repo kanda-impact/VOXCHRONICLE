@@ -39,9 +39,11 @@ class SkillTrigger : public CCNode, CCTouchDelegate {
   SkillTriggerColor _color; // 現在のトリガーの色です
   CCSprite* _background;
   CCSprite* _icon;
+  string _skinPrefix;
+  string buildFilePath(const char* file);
   
  public:
-  SkillTrigger();
+  SkillTrigger(const char* skillTrigger);
   ~SkillTrigger();
   bool getPress();
   void setPress(bool press);
@@ -51,6 +53,7 @@ class SkillTrigger : public CCNode, CCTouchDelegate {
   void setSkillTriggerState(SkillTriggerState state);
   void setColor(SkillTriggerColor color);
   CCSprite* getBackground();
+  void setSkinPrefix(const char* prefix);
 };
 
 #endif /* defined(__VOXCHRONICLE__SkillTrigger__) */

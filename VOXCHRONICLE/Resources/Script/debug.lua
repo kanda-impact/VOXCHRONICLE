@@ -7,7 +7,9 @@ DebugData = {
     "ttn",
     "2b",
     "shaba_map",
-    "bossdebug"
+    "bossdebug",
+    "map_select",
+    "attaq"
   }
 }
 

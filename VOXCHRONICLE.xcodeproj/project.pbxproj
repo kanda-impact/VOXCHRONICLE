@@ -98,6 +98,60 @@
 		07565378161705B200C69E27 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07565376161705B200C69E27 /* Level.cpp */; };
 		075653A016171A5500C69E27 /* magic.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0756539F16171A5500C69E27 /* magic.lua */; };
 		075653A616171F2400C69E27 /* change.lua in Resources */ = {isa = PBXBuildFile; fileRef = 075653A516171F2400C69E27 /* change.lua */; };
+		075B92AD16D51EFC00DBB2D1 /* AttaQ3-D_counter0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B927916D51EFC00DBB2D1 /* AttaQ3-D_counter0.caf */; };
+		075B92AE16D51EFC00DBB2D1 /* AttaQ3-D_counter1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B927A16D51EFC00DBB2D1 /* AttaQ3-D_counter1.caf */; };
+		075B92AF16D51EFC00DBB2D1 /* AttaQ3-D_counter2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B927B16D51EFC00DBB2D1 /* AttaQ3-D_counter2.caf */; };
+		075B92B016D51EFC00DBB2D1 /* AttaQ3-D_counter3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B927C16D51EFC00DBB2D1 /* AttaQ3-D_counter3.caf */; };
+		075B92B116D51EFC00DBB2D1 /* AttaQ3-D_drum0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B927D16D51EFC00DBB2D1 /* AttaQ3-D_drum0.caf */; };
+		075B92B216D51EFC00DBB2D1 /* AttaQ3-D_drum1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B927E16D51EFC00DBB2D1 /* AttaQ3-D_drum1.caf */; };
+		075B92B316D51EFC00DBB2D1 /* AttaQ3-D_drum2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B927F16D51EFC00DBB2D1 /* AttaQ3-D_drum2.caf */; };
+		075B92B416D51EFC00DBB2D1 /* AttaQ3-D_drum3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B928016D51EFC00DBB2D1 /* AttaQ3-D_drum3.caf */; };
+		075B92B516D51EFC00DBB2D1 /* AttaQ3-D_drum4.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B928116D51EFC00DBB2D1 /* AttaQ3-D_drum4.caf */; };
+		075B92B616D51EFC00DBB2D1 /* AttaQ3-D_impact0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B928216D51EFC00DBB2D1 /* AttaQ3-D_impact0.caf */; };
+		075B92B716D51EFC00DBB2D1 /* AttaQ3-D_impact1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B928316D51EFC00DBB2D1 /* AttaQ3-D_impact1.caf */; };
+		075B92B816D51EFC00DBB2D1 /* AttaQ3-D_impact2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B928416D51EFC00DBB2D1 /* AttaQ3-D_impact2.caf */; };
+		075B92B916D51EFC00DBB2D1 /* AttaQ3-D_impact3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B928516D51EFC00DBB2D1 /* AttaQ3-D_impact3.caf */; };
+		075B92BA16D51EFC00DBB2D1 /* AttaQ3-D_intro0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B928616D51EFC00DBB2D1 /* AttaQ3-D_intro0.caf */; };
+		075B92BB16D51EFC00DBB2D1 /* AttaQ3-D_intro1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B928716D51EFC00DBB2D1 /* AttaQ3-D_intro1.caf */; };
+		075B92BC16D51EFC00DBB2D1 /* AttaQ3-D_intro2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B928816D51EFC00DBB2D1 /* AttaQ3-D_intro2.caf */; };
+		075B92BD16D51EFC00DBB2D1 /* AttaQ3-D_intro3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B928916D51EFC00DBB2D1 /* AttaQ3-D_intro3.caf */; };
+		075B92BE16D51EFC00DBB2D1 /* AttaQ3-D_lskbow0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B928A16D51EFC00DBB2D1 /* AttaQ3-D_lskbow0.caf */; };
+		075B92BF16D51EFC00DBB2D1 /* AttaQ3-D_lskchange0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B928B16D51EFC00DBB2D1 /* AttaQ3-D_lskchange0.caf */; };
+		075B92C016D51EFC00DBB2D1 /* AttaQ3-D_lskcure0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B928C16D51EFC00DBB2D1 /* AttaQ3-D_lskcure0.caf */; };
+		075B92C116D51EFC00DBB2D1 /* AttaQ3-D_lskmagic0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B928D16D51EFC00DBB2D1 /* AttaQ3-D_lskmagic0.caf */; };
+		075B92C216D51EFC00DBB2D1 /* AttaQ3-D_lskmagic1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B928E16D51EFC00DBB2D1 /* AttaQ3-D_lskmagic1.caf */; };
+		075B92C316D51EFC00DBB2D1 /* AttaQ3-D_lskmagic2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B928F16D51EFC00DBB2D1 /* AttaQ3-D_lskmagic2.caf */; };
+		075B92C416D51EFC00DBB2D1 /* AttaQ3-D_lskmagic3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B929016D51EFC00DBB2D1 /* AttaQ3-D_lskmagic3.caf */; };
+		075B92C516D51EFC00DBB2D1 /* AttaQ3-D_lskmiss.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B929116D51EFC00DBB2D1 /* AttaQ3-D_lskmiss.caf */; };
+		075B92C616D51EFC00DBB2D1 /* AttaQ3-D_lskshield0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B929216D51EFC00DBB2D1 /* AttaQ3-D_lskshield0.caf */; };
+		075B92C716D51EFC00DBB2D1 /* AttaQ3-D_lsktension0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B929316D51EFC00DBB2D1 /* AttaQ3-D_lsktension0.caf */; };
+		075B92C816D51EFC00DBB2D1 /* AttaQ3-D_lsktension1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B929416D51EFC00DBB2D1 /* AttaQ3-D_lsktension1.caf */; };
+		075B92C916D51EFC00DBB2D1 /* AttaQ3-D_lsktension2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B929516D51EFC00DBB2D1 /* AttaQ3-D_lsktension2.caf */; };
+		075B92CA16D51EFC00DBB2D1 /* AttaQ3-D_lsktension3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B929616D51EFC00DBB2D1 /* AttaQ3-D_lsktension3.caf */; };
+		075B92CB16D51EFC00DBB2D1 /* AttaQ3-D_lskthunder0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B929716D51EFC00DBB2D1 /* AttaQ3-D_lskthunder0.caf */; };
+		075B92CC16D51EFC00DBB2D1 /* AttaQ3-D_lskwait0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B929816D51EFC00DBB2D1 /* AttaQ3-D_lskwait0.caf */; };
+		075B92CD16D51EFC00DBB2D1 /* AttaQ3-D_silent.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B929916D51EFC00DBB2D1 /* AttaQ3-D_silent.caf */; };
+		075B92CE16D51EFC00DBB2D1 /* AttaQ3-D_voxattack0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B929A16D51EFC00DBB2D1 /* AttaQ3-D_voxattack0.caf */; };
+		075B92CF16D51EFC00DBB2D1 /* AttaQ3-D_voxattack1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B929B16D51EFC00DBB2D1 /* AttaQ3-D_voxattack1.caf */; };
+		075B92D016D51EFC00DBB2D1 /* AttaQ3-D_voxattack2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B929C16D51EFC00DBB2D1 /* AttaQ3-D_voxattack2.caf */; };
+		075B92D116D51EFC00DBB2D1 /* AttaQ3-D_voxattack3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B929D16D51EFC00DBB2D1 /* AttaQ3-D_voxattack3.caf */; };
+		075B92D216D51EFC00DBB2D1 /* AttaQ3-D_voxchange0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B929E16D51EFC00DBB2D1 /* AttaQ3-D_voxchange0.caf */; };
+		075B92D316D51EFC00DBB2D1 /* AttaQ3-D_voxcharge0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B929F16D51EFC00DBB2D1 /* AttaQ3-D_voxcharge0.caf */; };
+		075B92D416D51EFC00DBB2D1 /* AttaQ3-D_voxknockback0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B92A016D51EFC00DBB2D1 /* AttaQ3-D_voxknockback0.caf */; };
+		075B92D516D51EFC00DBB2D1 /* AttaQ3-D_voxmiss.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B92A116D51EFC00DBB2D1 /* AttaQ3-D_voxmiss.caf */; };
+		075B92D616D51EFC00DBB2D1 /* AttaQ3-D_voxrun0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B92A216D51EFC00DBB2D1 /* AttaQ3-D_voxrun0.caf */; };
+		075B92D716D51EFC00DBB2D1 /* AttaQ3-D_voxrun1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B92A316D51EFC00DBB2D1 /* AttaQ3-D_voxrun1.caf */; };
+		075B92D816D51EFC00DBB2D1 /* AttaQ3-D_voxshield0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B92A416D51EFC00DBB2D1 /* AttaQ3-D_voxshield0.caf */; };
+		075B92D916D51EFC00DBB2D1 /* AttaQ3-D_voxslash0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B92A516D51EFC00DBB2D1 /* AttaQ3-D_voxslash0.caf */; };
+		075B92DA16D51EFC00DBB2D1 /* AttaQ3-D_voxtension0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B92A616D51EFC00DBB2D1 /* AttaQ3-D_voxtension0.caf */; };
+		075B92DB16D51EFC00DBB2D1 /* AttaQ3-D_voxtension1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B92A716D51EFC00DBB2D1 /* AttaQ3-D_voxtension1.caf */; };
+		075B92DC16D51EFC00DBB2D1 /* AttaQ3-D_voxtension2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B92A816D51EFC00DBB2D1 /* AttaQ3-D_voxtension2.caf */; };
+		075B92DD16D51EFC00DBB2D1 /* AttaQ3-D_voxtension3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B92A916D51EFC00DBB2D1 /* AttaQ3-D_voxtension3.caf */; };
+		075B92DE16D51EFC00DBB2D1 /* AttaQ3-D_voxwait0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B92AA16D51EFC00DBB2D1 /* AttaQ3-D_voxwait0.caf */; };
+		075B92E016D51F1E00DBB2D1 /* AttaQ3-D.lua in Resources */ = {isa = PBXBuildFile; fileRef = 075B92DF16D51F1E00DBB2D1 /* AttaQ3-D.lua */; };
+		075B92E216D51FFA00DBB2D1 /* attaq.lua in Resources */ = {isa = PBXBuildFile; fileRef = 075B92E116D51FFA00DBB2D1 /* attaq.lua */; };
+		075B92E516D5245900DBB2D1 /* AttaQ3-D_lskrun0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B92E316D5245900DBB2D1 /* AttaQ3-D_lskrun0.caf */; };
+		075B92E616D5245900DBB2D1 /* AttaQ3-D_lskrun1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 075B92E416D5245900DBB2D1 /* AttaQ3-D_lskrun1.caf */; };
 		07660C4E1690980B0092104F /* dub.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07660C4D1690980B0092104F /* dub.lua */; };
 		07660C50169098180092104F /* boss.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07660C4F169098170092104F /* boss.lua */; };
 		07660C5316909BF10092104F /* MusicSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07660C5116909BF10092104F /* MusicSet.cpp */; };
@@ -457,6 +511,11 @@
 		079D275216D34680006D6A8F /* Skin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 079D275016D3467F006D6A8F /* Skin.cpp */; };
 		079D275816D38B7F006D6A8F /* enemy.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079D275716D38B7E006D6A8F /* enemy.lua */; };
 		079D275B16D3BA04006D6A8F /* skinA.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079D275A16D3BA04006D6A8F /* skinA.lua */; };
+		079D276216D4BAC2006D6A8F /* skinB.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079D276016D4BAC2006D6A8F /* skinB.lua */; };
+		079D276316D4BAC2006D6A8F /* skinC.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079D276116D4BAC2006D6A8F /* skinC.lua */; };
+		079D276516D4E6A6006D6A8F /* map_select.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079D276416D4E6A6006D6A8F /* map_select.lua */; };
+		079D276816D4E81E006D6A8F /* map_selectL.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079D276616D4E819006D6A8F /* map_selectL.lua */; };
+		079D276916D4E81E006D6A8F /* map_selectR.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079D276716D4E81C006D6A8F /* map_selectR.lua */; };
 		079F88E4169D9AD4001357B5 /* nmb.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079F88E3169D9AD4001357B5 /* nmb.lua */; };
 		079F89A7169EE596001357B5 /* debug.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079F89A6169EE596001357B5 /* debug.lua */; };
 		07A1B98E16CCC2D80092AF8C /* Buffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07A1B98C16CCC2D80092AF8C /* Buffer.mm */; };
@@ -953,6 +1012,60 @@
 		07565376161705B200C69E27 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Level.cpp; path = Classes/Model/Level.cpp; sourceTree = "<group>"; };
 		0756539F16171A5500C69E27 /* magic.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = magic.lua; sourceTree = "<group>"; };
 		075653A516171F2400C69E27 /* change.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = change.lua; sourceTree = "<group>"; };
+		075B927916D51EFC00DBB2D1 /* AttaQ3-D_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_counter0.caf"; sourceTree = "<group>"; };
+		075B927A16D51EFC00DBB2D1 /* AttaQ3-D_counter1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_counter1.caf"; sourceTree = "<group>"; };
+		075B927B16D51EFC00DBB2D1 /* AttaQ3-D_counter2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_counter2.caf"; sourceTree = "<group>"; };
+		075B927C16D51EFC00DBB2D1 /* AttaQ3-D_counter3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_counter3.caf"; sourceTree = "<group>"; };
+		075B927D16D51EFC00DBB2D1 /* AttaQ3-D_drum0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_drum0.caf"; sourceTree = "<group>"; };
+		075B927E16D51EFC00DBB2D1 /* AttaQ3-D_drum1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_drum1.caf"; sourceTree = "<group>"; };
+		075B927F16D51EFC00DBB2D1 /* AttaQ3-D_drum2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_drum2.caf"; sourceTree = "<group>"; };
+		075B928016D51EFC00DBB2D1 /* AttaQ3-D_drum3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_drum3.caf"; sourceTree = "<group>"; };
+		075B928116D51EFC00DBB2D1 /* AttaQ3-D_drum4.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_drum4.caf"; sourceTree = "<group>"; };
+		075B928216D51EFC00DBB2D1 /* AttaQ3-D_impact0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_impact0.caf"; sourceTree = "<group>"; };
+		075B928316D51EFC00DBB2D1 /* AttaQ3-D_impact1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_impact1.caf"; sourceTree = "<group>"; };
+		075B928416D51EFC00DBB2D1 /* AttaQ3-D_impact2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_impact2.caf"; sourceTree = "<group>"; };
+		075B928516D51EFC00DBB2D1 /* AttaQ3-D_impact3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_impact3.caf"; sourceTree = "<group>"; };
+		075B928616D51EFC00DBB2D1 /* AttaQ3-D_intro0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_intro0.caf"; sourceTree = "<group>"; };
+		075B928716D51EFC00DBB2D1 /* AttaQ3-D_intro1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_intro1.caf"; sourceTree = "<group>"; };
+		075B928816D51EFC00DBB2D1 /* AttaQ3-D_intro2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_intro2.caf"; sourceTree = "<group>"; };
+		075B928916D51EFC00DBB2D1 /* AttaQ3-D_intro3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_intro3.caf"; sourceTree = "<group>"; };
+		075B928A16D51EFC00DBB2D1 /* AttaQ3-D_lskbow0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_lskbow0.caf"; sourceTree = "<group>"; };
+		075B928B16D51EFC00DBB2D1 /* AttaQ3-D_lskchange0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_lskchange0.caf"; sourceTree = "<group>"; };
+		075B928C16D51EFC00DBB2D1 /* AttaQ3-D_lskcure0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_lskcure0.caf"; sourceTree = "<group>"; };
+		075B928D16D51EFC00DBB2D1 /* AttaQ3-D_lskmagic0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_lskmagic0.caf"; sourceTree = "<group>"; };
+		075B928E16D51EFC00DBB2D1 /* AttaQ3-D_lskmagic1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_lskmagic1.caf"; sourceTree = "<group>"; };
+		075B928F16D51EFC00DBB2D1 /* AttaQ3-D_lskmagic2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_lskmagic2.caf"; sourceTree = "<group>"; };
+		075B929016D51EFC00DBB2D1 /* AttaQ3-D_lskmagic3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_lskmagic3.caf"; sourceTree = "<group>"; };
+		075B929116D51EFC00DBB2D1 /* AttaQ3-D_lskmiss.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_lskmiss.caf"; sourceTree = "<group>"; };
+		075B929216D51EFC00DBB2D1 /* AttaQ3-D_lskshield0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_lskshield0.caf"; sourceTree = "<group>"; };
+		075B929316D51EFC00DBB2D1 /* AttaQ3-D_lsktension0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_lsktension0.caf"; sourceTree = "<group>"; };
+		075B929416D51EFC00DBB2D1 /* AttaQ3-D_lsktension1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_lsktension1.caf"; sourceTree = "<group>"; };
+		075B929516D51EFC00DBB2D1 /* AttaQ3-D_lsktension2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_lsktension2.caf"; sourceTree = "<group>"; };
+		075B929616D51EFC00DBB2D1 /* AttaQ3-D_lsktension3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_lsktension3.caf"; sourceTree = "<group>"; };
+		075B929716D51EFC00DBB2D1 /* AttaQ3-D_lskthunder0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_lskthunder0.caf"; sourceTree = "<group>"; };
+		075B929816D51EFC00DBB2D1 /* AttaQ3-D_lskwait0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_lskwait0.caf"; sourceTree = "<group>"; };
+		075B929916D51EFC00DBB2D1 /* AttaQ3-D_silent.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_silent.caf"; sourceTree = "<group>"; };
+		075B929A16D51EFC00DBB2D1 /* AttaQ3-D_voxattack0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_voxattack0.caf"; sourceTree = "<group>"; };
+		075B929B16D51EFC00DBB2D1 /* AttaQ3-D_voxattack1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_voxattack1.caf"; sourceTree = "<group>"; };
+		075B929C16D51EFC00DBB2D1 /* AttaQ3-D_voxattack2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_voxattack2.caf"; sourceTree = "<group>"; };
+		075B929D16D51EFC00DBB2D1 /* AttaQ3-D_voxattack3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_voxattack3.caf"; sourceTree = "<group>"; };
+		075B929E16D51EFC00DBB2D1 /* AttaQ3-D_voxchange0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_voxchange0.caf"; sourceTree = "<group>"; };
+		075B929F16D51EFC00DBB2D1 /* AttaQ3-D_voxcharge0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_voxcharge0.caf"; sourceTree = "<group>"; };
+		075B92A016D51EFC00DBB2D1 /* AttaQ3-D_voxknockback0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_voxknockback0.caf"; sourceTree = "<group>"; };
+		075B92A116D51EFC00DBB2D1 /* AttaQ3-D_voxmiss.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_voxmiss.caf"; sourceTree = "<group>"; };
+		075B92A216D51EFC00DBB2D1 /* AttaQ3-D_voxrun0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_voxrun0.caf"; sourceTree = "<group>"; };
+		075B92A316D51EFC00DBB2D1 /* AttaQ3-D_voxrun1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_voxrun1.caf"; sourceTree = "<group>"; };
+		075B92A416D51EFC00DBB2D1 /* AttaQ3-D_voxshield0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_voxshield0.caf"; sourceTree = "<group>"; };
+		075B92A516D51EFC00DBB2D1 /* AttaQ3-D_voxslash0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_voxslash0.caf"; sourceTree = "<group>"; };
+		075B92A616D51EFC00DBB2D1 /* AttaQ3-D_voxtension0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_voxtension0.caf"; sourceTree = "<group>"; };
+		075B92A716D51EFC00DBB2D1 /* AttaQ3-D_voxtension1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_voxtension1.caf"; sourceTree = "<group>"; };
+		075B92A816D51EFC00DBB2D1 /* AttaQ3-D_voxtension2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_voxtension2.caf"; sourceTree = "<group>"; };
+		075B92A916D51EFC00DBB2D1 /* AttaQ3-D_voxtension3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_voxtension3.caf"; sourceTree = "<group>"; };
+		075B92AA16D51EFC00DBB2D1 /* AttaQ3-D_voxwait0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_voxwait0.caf"; sourceTree = "<group>"; };
+		075B92DF16D51F1E00DBB2D1 /* AttaQ3-D.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "AttaQ3-D.lua"; path = "musics/AttaQ3-D.lua"; sourceTree = "<group>"; };
+		075B92E116D51FFA00DBB2D1 /* attaq.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = attaq.lua; path = map/attaq.lua; sourceTree = "<group>"; };
+		075B92E316D5245900DBB2D1 /* AttaQ3-D_lskrun0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_lskrun0.caf"; sourceTree = "<group>"; };
+		075B92E416D5245900DBB2D1 /* AttaQ3-D_lskrun1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_lskrun1.caf"; sourceTree = "<group>"; };
 		07660C4D1690980B0092104F /* dub.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dub.lua; path = musics/dub.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		07660C4F169098170092104F /* boss.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = boss.lua; path = musics/boss.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		07660C5116909BF10092104F /* MusicSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MusicSet.cpp; path = Classes/Model/MusicSet.cpp; sourceTree = "<group>"; };
@@ -1326,6 +1439,11 @@
 		079D275616D34B67006D6A8F /* MessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageManager.h; path = Classes/includes/MessageManager.h; sourceTree = "<group>"; };
 		079D275716D38B7E006D6A8F /* enemy.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = enemy.lua; sourceTree = "<group>"; };
 		079D275A16D3BA04006D6A8F /* skinA.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = skinA.lua; path = skins/skinA.lua; sourceTree = "<group>"; };
+		079D276016D4BAC2006D6A8F /* skinB.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = skinB.lua; path = skins/skinB.lua; sourceTree = "<group>"; };
+		079D276116D4BAC2006D6A8F /* skinC.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = skinC.lua; path = skins/skinC.lua; sourceTree = "<group>"; };
+		079D276416D4E6A6006D6A8F /* map_select.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = map_select.lua; path = map/map_select.lua; sourceTree = "<group>"; };
+		079D276616D4E819006D6A8F /* map_selectL.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = map_selectL.lua; path = map/map_selectL.lua; sourceTree = "<group>"; };
+		079D276716D4E81C006D6A8F /* map_selectR.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = map_selectR.lua; path = map/map_selectR.lua; sourceTree = "<group>"; };
 		079F88E3169D9AD4001357B5 /* nmb.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nmb.lua; path = musics/nmb.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		079F89A3169EE580001357B5 /* QTETrigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QTETrigger.h; path = Classes/includes/QTETrigger.h; sourceTree = "<group>"; };
 		079F89A4169EE580001357B5 /* StatusLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusLayer.h; path = Classes/includes/StatusLayer.h; sourceTree = "<group>"; };
@@ -2136,6 +2254,7 @@
 		0731E4FA16184A59006AEF3D /* map */ = {
 			isa = PBXGroup;
 			children = (
+				075B92E116D51FFA00DBB2D1 /* attaq.lua */,
 				077EDE2416874B1F009B9F6B /* 3b.lua */,
 				079D274416D21B83006D6A8F /* bossdebug.lua */,
 				07F9344016C16BBE00A2F1CA /* 1b.lua */,
@@ -2146,6 +2265,9 @@
 				07B2202816CFD4200083B865 /* 001.lua */,
 				07B2202916CFD4200083B865 /* 002.lua */,
 				07B2202C16CFD4270083B865 /* 003.lua */,
+				079D276416D4E6A6006D6A8F /* map_select.lua */,
+				079D276616D4E819006D6A8F /* map_selectL.lua */,
+				079D276716D4E81C006D6A8F /* map_selectR.lua */,
 			);
 			name = map;
 			sourceTree = "<group>";
@@ -2296,9 +2418,70 @@
 			name = Scene;
 			sourceTree = "<group>";
 		};
+		075B927616D51EFC00DBB2D1 /* AttaQ3-D */ = {
+			isa = PBXGroup;
+			children = (
+				075B92E316D5245900DBB2D1 /* AttaQ3-D_lskrun0.caf */,
+				075B92E416D5245900DBB2D1 /* AttaQ3-D_lskrun1.caf */,
+				075B927916D51EFC00DBB2D1 /* AttaQ3-D_counter0.caf */,
+				075B927A16D51EFC00DBB2D1 /* AttaQ3-D_counter1.caf */,
+				075B927B16D51EFC00DBB2D1 /* AttaQ3-D_counter2.caf */,
+				075B927C16D51EFC00DBB2D1 /* AttaQ3-D_counter3.caf */,
+				075B927D16D51EFC00DBB2D1 /* AttaQ3-D_drum0.caf */,
+				075B927E16D51EFC00DBB2D1 /* AttaQ3-D_drum1.caf */,
+				075B927F16D51EFC00DBB2D1 /* AttaQ3-D_drum2.caf */,
+				075B928016D51EFC00DBB2D1 /* AttaQ3-D_drum3.caf */,
+				075B928116D51EFC00DBB2D1 /* AttaQ3-D_drum4.caf */,
+				075B928216D51EFC00DBB2D1 /* AttaQ3-D_impact0.caf */,
+				075B928316D51EFC00DBB2D1 /* AttaQ3-D_impact1.caf */,
+				075B928416D51EFC00DBB2D1 /* AttaQ3-D_impact2.caf */,
+				075B928516D51EFC00DBB2D1 /* AttaQ3-D_impact3.caf */,
+				075B928616D51EFC00DBB2D1 /* AttaQ3-D_intro0.caf */,
+				075B928716D51EFC00DBB2D1 /* AttaQ3-D_intro1.caf */,
+				075B928816D51EFC00DBB2D1 /* AttaQ3-D_intro2.caf */,
+				075B928916D51EFC00DBB2D1 /* AttaQ3-D_intro3.caf */,
+				075B928A16D51EFC00DBB2D1 /* AttaQ3-D_lskbow0.caf */,
+				075B928B16D51EFC00DBB2D1 /* AttaQ3-D_lskchange0.caf */,
+				075B928C16D51EFC00DBB2D1 /* AttaQ3-D_lskcure0.caf */,
+				075B928D16D51EFC00DBB2D1 /* AttaQ3-D_lskmagic0.caf */,
+				075B928E16D51EFC00DBB2D1 /* AttaQ3-D_lskmagic1.caf */,
+				075B928F16D51EFC00DBB2D1 /* AttaQ3-D_lskmagic2.caf */,
+				075B929016D51EFC00DBB2D1 /* AttaQ3-D_lskmagic3.caf */,
+				075B929116D51EFC00DBB2D1 /* AttaQ3-D_lskmiss.caf */,
+				075B929216D51EFC00DBB2D1 /* AttaQ3-D_lskshield0.caf */,
+				075B929316D51EFC00DBB2D1 /* AttaQ3-D_lsktension0.caf */,
+				075B929416D51EFC00DBB2D1 /* AttaQ3-D_lsktension1.caf */,
+				075B929516D51EFC00DBB2D1 /* AttaQ3-D_lsktension2.caf */,
+				075B929616D51EFC00DBB2D1 /* AttaQ3-D_lsktension3.caf */,
+				075B929716D51EFC00DBB2D1 /* AttaQ3-D_lskthunder0.caf */,
+				075B929816D51EFC00DBB2D1 /* AttaQ3-D_lskwait0.caf */,
+				075B929916D51EFC00DBB2D1 /* AttaQ3-D_silent.caf */,
+				075B929A16D51EFC00DBB2D1 /* AttaQ3-D_voxattack0.caf */,
+				075B929B16D51EFC00DBB2D1 /* AttaQ3-D_voxattack1.caf */,
+				075B929C16D51EFC00DBB2D1 /* AttaQ3-D_voxattack2.caf */,
+				075B929D16D51EFC00DBB2D1 /* AttaQ3-D_voxattack3.caf */,
+				075B929E16D51EFC00DBB2D1 /* AttaQ3-D_voxchange0.caf */,
+				075B929F16D51EFC00DBB2D1 /* AttaQ3-D_voxcharge0.caf */,
+				075B92A016D51EFC00DBB2D1 /* AttaQ3-D_voxknockback0.caf */,
+				075B92A116D51EFC00DBB2D1 /* AttaQ3-D_voxmiss.caf */,
+				075B92A216D51EFC00DBB2D1 /* AttaQ3-D_voxrun0.caf */,
+				075B92A316D51EFC00DBB2D1 /* AttaQ3-D_voxrun1.caf */,
+				075B92A416D51EFC00DBB2D1 /* AttaQ3-D_voxshield0.caf */,
+				075B92A516D51EFC00DBB2D1 /* AttaQ3-D_voxslash0.caf */,
+				075B92A616D51EFC00DBB2D1 /* AttaQ3-D_voxtension0.caf */,
+				075B92A716D51EFC00DBB2D1 /* AttaQ3-D_voxtension1.caf */,
+				075B92A816D51EFC00DBB2D1 /* AttaQ3-D_voxtension2.caf */,
+				075B92A916D51EFC00DBB2D1 /* AttaQ3-D_voxtension3.caf */,
+				075B92AA16D51EFC00DBB2D1 /* AttaQ3-D_voxwait0.caf */,
+			);
+			name = "AttaQ3-D";
+			path = "Resources/Music/AttaQ3-D";
+			sourceTree = "<group>";
+		};
 		07660C4B169097F00092104F /* musics */ = {
 			isa = PBXGroup;
 			children = (
+				075B92DF16D51F1E00DBB2D1 /* AttaQ3-D.lua */,
 				07660C4D1690980B0092104F /* dub.lua */,
 				07660C4F169098170092104F /* boss.lua */,
 				07A1F534169319B300C4329F /* volca.lua */,
@@ -2606,6 +2789,8 @@
 			isa = PBXGroup;
 			children = (
 				079D275A16D3BA04006D6A8F /* skinA.lua */,
+				079D276016D4BAC2006D6A8F /* skinB.lua */,
+				079D276116D4BAC2006D6A8F /* skinC.lua */,
 			);
 			name = skins;
 			sourceTree = "<group>";
@@ -3758,6 +3943,7 @@
 		07D873E215ED1200009CC446 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				075B927616D51EFC00DBB2D1 /* AttaQ3-D */,
 				078D456216CF1FA400E21DC5 /* 3Bb */,
 				07016FE616C813330000E632 /* shaba */,
 				0738FADC16C530A800FE2816 /* 2b */,
@@ -4612,6 +4798,65 @@
 				079D274F16D23871006D6A8F /* mukade.lua in Resources */,
 				079D275816D38B7F006D6A8F /* enemy.lua in Resources */,
 				079D275B16D3BA04006D6A8F /* skinA.lua in Resources */,
+				079D276216D4BAC2006D6A8F /* skinB.lua in Resources */,
+				079D276316D4BAC2006D6A8F /* skinC.lua in Resources */,
+				079D276516D4E6A6006D6A8F /* map_select.lua in Resources */,
+				079D276816D4E81E006D6A8F /* map_selectL.lua in Resources */,
+				079D276916D4E81E006D6A8F /* map_selectR.lua in Resources */,
+				075B92AD16D51EFC00DBB2D1 /* AttaQ3-D_counter0.caf in Resources */,
+				075B92AE16D51EFC00DBB2D1 /* AttaQ3-D_counter1.caf in Resources */,
+				075B92AF16D51EFC00DBB2D1 /* AttaQ3-D_counter2.caf in Resources */,
+				075B92B016D51EFC00DBB2D1 /* AttaQ3-D_counter3.caf in Resources */,
+				075B92B116D51EFC00DBB2D1 /* AttaQ3-D_drum0.caf in Resources */,
+				075B92B216D51EFC00DBB2D1 /* AttaQ3-D_drum1.caf in Resources */,
+				075B92B316D51EFC00DBB2D1 /* AttaQ3-D_drum2.caf in Resources */,
+				075B92B416D51EFC00DBB2D1 /* AttaQ3-D_drum3.caf in Resources */,
+				075B92B516D51EFC00DBB2D1 /* AttaQ3-D_drum4.caf in Resources */,
+				075B92B616D51EFC00DBB2D1 /* AttaQ3-D_impact0.caf in Resources */,
+				075B92B716D51EFC00DBB2D1 /* AttaQ3-D_impact1.caf in Resources */,
+				075B92B816D51EFC00DBB2D1 /* AttaQ3-D_impact2.caf in Resources */,
+				075B92B916D51EFC00DBB2D1 /* AttaQ3-D_impact3.caf in Resources */,
+				075B92BA16D51EFC00DBB2D1 /* AttaQ3-D_intro0.caf in Resources */,
+				075B92BB16D51EFC00DBB2D1 /* AttaQ3-D_intro1.caf in Resources */,
+				075B92BC16D51EFC00DBB2D1 /* AttaQ3-D_intro2.caf in Resources */,
+				075B92BD16D51EFC00DBB2D1 /* AttaQ3-D_intro3.caf in Resources */,
+				075B92BE16D51EFC00DBB2D1 /* AttaQ3-D_lskbow0.caf in Resources */,
+				075B92BF16D51EFC00DBB2D1 /* AttaQ3-D_lskchange0.caf in Resources */,
+				075B92C016D51EFC00DBB2D1 /* AttaQ3-D_lskcure0.caf in Resources */,
+				075B92C116D51EFC00DBB2D1 /* AttaQ3-D_lskmagic0.caf in Resources */,
+				075B92C216D51EFC00DBB2D1 /* AttaQ3-D_lskmagic1.caf in Resources */,
+				075B92C316D51EFC00DBB2D1 /* AttaQ3-D_lskmagic2.caf in Resources */,
+				075B92C416D51EFC00DBB2D1 /* AttaQ3-D_lskmagic3.caf in Resources */,
+				075B92C516D51EFC00DBB2D1 /* AttaQ3-D_lskmiss.caf in Resources */,
+				075B92C616D51EFC00DBB2D1 /* AttaQ3-D_lskshield0.caf in Resources */,
+				075B92C716D51EFC00DBB2D1 /* AttaQ3-D_lsktension0.caf in Resources */,
+				075B92C816D51EFC00DBB2D1 /* AttaQ3-D_lsktension1.caf in Resources */,
+				075B92C916D51EFC00DBB2D1 /* AttaQ3-D_lsktension2.caf in Resources */,
+				075B92CA16D51EFC00DBB2D1 /* AttaQ3-D_lsktension3.caf in Resources */,
+				075B92CB16D51EFC00DBB2D1 /* AttaQ3-D_lskthunder0.caf in Resources */,
+				075B92CC16D51EFC00DBB2D1 /* AttaQ3-D_lskwait0.caf in Resources */,
+				075B92CD16D51EFC00DBB2D1 /* AttaQ3-D_silent.caf in Resources */,
+				075B92CE16D51EFC00DBB2D1 /* AttaQ3-D_voxattack0.caf in Resources */,
+				075B92CF16D51EFC00DBB2D1 /* AttaQ3-D_voxattack1.caf in Resources */,
+				075B92D016D51EFC00DBB2D1 /* AttaQ3-D_voxattack2.caf in Resources */,
+				075B92D116D51EFC00DBB2D1 /* AttaQ3-D_voxattack3.caf in Resources */,
+				075B92D216D51EFC00DBB2D1 /* AttaQ3-D_voxchange0.caf in Resources */,
+				075B92D316D51EFC00DBB2D1 /* AttaQ3-D_voxcharge0.caf in Resources */,
+				075B92D416D51EFC00DBB2D1 /* AttaQ3-D_voxknockback0.caf in Resources */,
+				075B92D516D51EFC00DBB2D1 /* AttaQ3-D_voxmiss.caf in Resources */,
+				075B92D616D51EFC00DBB2D1 /* AttaQ3-D_voxrun0.caf in Resources */,
+				075B92D716D51EFC00DBB2D1 /* AttaQ3-D_voxrun1.caf in Resources */,
+				075B92D816D51EFC00DBB2D1 /* AttaQ3-D_voxshield0.caf in Resources */,
+				075B92D916D51EFC00DBB2D1 /* AttaQ3-D_voxslash0.caf in Resources */,
+				075B92DA16D51EFC00DBB2D1 /* AttaQ3-D_voxtension0.caf in Resources */,
+				075B92DB16D51EFC00DBB2D1 /* AttaQ3-D_voxtension1.caf in Resources */,
+				075B92DC16D51EFC00DBB2D1 /* AttaQ3-D_voxtension2.caf in Resources */,
+				075B92DD16D51EFC00DBB2D1 /* AttaQ3-D_voxtension3.caf in Resources */,
+				075B92DE16D51EFC00DBB2D1 /* AttaQ3-D_voxwait0.caf in Resources */,
+				075B92E016D51F1E00DBB2D1 /* AttaQ3-D.lua in Resources */,
+				075B92E216D51FFA00DBB2D1 /* attaq.lua in Resources */,
+				075B92E516D5245900DBB2D1 /* AttaQ3-D_lskrun0.caf in Resources */,
+				075B92E616D5245900DBB2D1 /* AttaQ3-D_lskrun1.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

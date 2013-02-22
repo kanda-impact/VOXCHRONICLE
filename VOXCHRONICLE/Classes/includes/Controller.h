@@ -16,23 +16,31 @@
 
 using namespace cocos2d;
 
+typedef enum {
+  ControllerFrameTypeNone,   // フレームなし
+  ControllerFrameTypeCommon, // フレーム共有
+  ControllerFrameTypeFull    // オクス、ラスカのフレーム別々
+} ControllerFrameType;
+
 class Controller : public CCLayer {
  private:
   CCArray* _triggers;
+  string _skinPrefix;
   virtual bool ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent);
   virtual void registerWithTouchDispatcher();
   bool _enable;
-
+  ControllerFrameType _frameType;
+  void setFrame(CharacterManager* manager);
 public:
-  virtual bool init();
   ~Controller();
-  Controller();
+  Controller(const char* skinPrefix);
   void resetAllTriggers();
   int currentTriggerIndex();
   Skill* currentTriggerSkill();
   void updateSkills(CharacterManager* manager);
   void setEnable(bool enable);
-  CREATE_FUNC(Controller);
+  void setFrameType(ControllerFrameType type);
+  void setSkinPrefix(const char* skinPrefix);
 };
 
 #endif /* defined(__VOXCHRONICLE__Controller__) */

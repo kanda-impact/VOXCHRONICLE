@@ -38,14 +38,14 @@ bool DebugScene::init() {
     string name = it->stringValue();
     Map* map = new Map(name.c_str());
     map->autorelease();
-    CCLabelTTF* label = CCLabelTTF::create(map->getName().c_str(), FONT_NAME, 20);
+    CCLabelTTF* label = CCLabelTTF::create(map->getName().c_str(), FONT_NAME, 16);
     CCMenuItemLabel* item = CCMenuItemLabel::create(label, this, menu_selector(DebugScene::onMenuItemPressed));
     items->addObject(item);
     item->setUserObject(map);
   }
   CCMenu* menu = CCMenu::createWithArray(items);
   menu->setPosition(ccp(240, 160));
-  menu->alignItemsVerticallyWithPadding(20);
+  menu->alignItemsVerticallyWithPadding(15);
   this->addChild(menu);
   
   return true;

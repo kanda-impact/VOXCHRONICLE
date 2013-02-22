@@ -16,6 +16,7 @@
 #include "MusicSet.h"
 #include "MessageManager.h"
 #include "StatusLayer.h"
+#include "Controller.h"
 
 static void tolua_reg_types (lua_State* tolua_S) {
   tolua_usertype(tolua_S, "Skill");
@@ -326,6 +327,11 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_constant(tolua_S, "LevelLabelTag", LevelLabelTag);
   tolua_constant(tolua_S, "LifeGaugeBackgroundTag", LifeGaugeBackgroundTag);
   tolua_constant(tolua_S, "LifeGaugeTag", LifeGaugeTag);
+  tolua_constant(tolua_S, "MPMarkerTag", MPMarkerTag);
+  // ControllerFrameType
+  tolua_constant(tolua_S, "ControllerFrameTypeNone", ControllerFrameTypeNone);
+  tolua_constant(tolua_S, "ControllerFrameTypeCommon", ControllerFrameTypeCommon);
+  tolua_constant(tolua_S, "ControllerFrameTypeFull", ControllerFrameTypeFull);
   // Skillクラス
   tolua_cclass(tolua_S, "Skill", "Skill", "CCObject", NULL);
   tolua_beginmodule(tolua_S, "Skill");

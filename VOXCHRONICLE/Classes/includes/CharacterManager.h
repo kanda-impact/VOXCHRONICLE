@@ -163,6 +163,7 @@ class CharacterManager :public CCObject {
   int getDrumLevel();
   int getWaitTurn();
   int getRepeatCount();
+  CCArray* getCharacters();
   std::queue<DamageInfo>* getDamageInfoQueue();
   
   // setter

@@ -14,11 +14,12 @@
 
 const int iconTag = 1;
 
-SkillTrigger::SkillTrigger() : CCNode() {
+SkillTrigger::SkillTrigger(const char* skinPrefix) : CCNode() {
   _press = false;
   _skill = NULL;
   _state = SkillTriggerStateNormal;
-  _background = CCSprite::create(FileUtils::getFilePath("Image/trigger_on.png").c_str());
+  _skinPrefix = skinPrefix;
+  _background = CCSprite::create(this->buildFilePath("trigger_on.png").c_str());
   _background->retain();
   _icon = NULL;
   _defaultScale = 1.0f;
@@ -32,6 +33,11 @@ SkillTrigger::~SkillTrigger() {
   _background->release();
 }
 
+string SkillTrigger::buildFilePath(const char *file) {
+  string path = string("Image/") + _skinPrefix + string("_") + string(file);
+  return FileUtils::getFilePath(path.c_str());
+}
+
 bool SkillTrigger::getPress() {
   return _press;
 }
@@ -41,7 +47,7 @@ void SkillTrigger::setPress(bool press) {
   _press = press;
   if (press) {
     _state = SkillTriggerStateSelected;
-    CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath("Image/trigger_on.png").c_str());
+    CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(this->buildFilePath("trigger_on.png").c_str());
     _background->setTexture(texture);
     _icon->setColor(ccc3(44, 44, 44));
     this->setScale(1.2f);
@@ -66,14 +72,14 @@ void SkillTrigger::setSkill(Skill* skill) {
   _skill = skill;
   if (_skill) {
     std::stringstream ss;
-    ss << "Image/" << skill->getIdentifier() << "_icon.png";
+    ss << "Images/" + skill->getIdentifier() << "_icon.png";
     if (_icon != NULL) {
       _icon->getParent()->removeChild(_icon, true);
     }
     _icon = CCSprite::create(FileUtils::getFilePath(ss.str().c_str()).c_str());
     _icon->retain();
     this->addChild(_icon);
-    _icon->setScale(0.3f);
+    _icon->setScale(0.25f);
     
   }
   this->setSkillTriggerState(SkillTriggerStateNormal);
@@ -90,7 +96,7 @@ void SkillTrigger::setSkillTriggerState(SkillTriggerState state) {
   } else {
     this->setPress(false);
   }
-  float opacity = 200;
+  float opacity = 255;
   if (_state == SkillTriggerStateUnknown || _state == SkillTriggerStateDisable) {
     opacity = 64;
   }
@@ -107,10 +113,10 @@ void SkillTrigger::setColor(SkillTriggerColor color) {
   string filename;
   if (_icon == NULL) return;
   if (_color == SkillTriggerColorVox) {
-    filename = FileUtils::getFilePath("Image/trigger_vox.png");
+    filename = this->buildFilePath("trigger_vox.png").c_str();
     _icon->setColor(ccc3(189, 217, 252));
   } else if (_color == SkillTriggerColorLaska) {
-    filename = FileUtils::getFilePath("Image/trigger_laska.png");
+    filename = this->buildFilePath("trigger_lsk.png").c_str();
     _icon->setColor(ccc3(255, 232, 202));
   }
   CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(filename.c_str());
@@ -120,4 +126,8 @@ void SkillTrigger::setColor(SkillTriggerColor color) {
 
 CCSprite* SkillTrigger::getBackground() {
   return _background;
+}
+
+void SkillTrigger::setSkinPrefix(const char *prefix) {
+  _skinPrefix = prefix;
 }
