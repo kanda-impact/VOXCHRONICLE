@@ -29,6 +29,11 @@ Skin = {
     local slash = CCSprite:create("cave_slash.png")
     slash:setPosition(ccp(191, 308))
     self:addChild(slash)
+    
+    -- MPMarker
+    local mpMarker = CCNode:create()
+    mpMarker:setPosition(ccp(305, 308))
+    self:addChild(mpMarker, 0, MPMarkerTag)
   
     -- レベル
     local levelBack = CCSprite:create("cave_level_back.png")

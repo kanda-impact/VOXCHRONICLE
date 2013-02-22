@@ -103,13 +103,13 @@ void StatusLayer::setCurrentMP(int mp) {
 
 
 void StatusLayer::setMaxMP(int mp) {
+  CCNode* mpMarkerNode = this->getChildByTag(MPMarkerTag);
   int count = _mpChips->count();
   if (count > mp) {
     for (int i = mp; i < count; ++i) {
       CCSprite* chip = (CCSprite*)_mpChips->objectAtIndex(i);
-      this->removeChild(chip, true);
+      mpMarkerNode->removeChild(chip, true);
       _mpChips->removeObjectAtIndex(i);
-      
     }
   } else {
     const int colLength = 8;
@@ -117,9 +117,9 @@ void StatusLayer::setMaxMP(int mp) {
       int col = i % colLength;
       int row = floor(i / colLength);
       CCSprite* chip = CCSprite::create((_prefix + "_mp_on.png").c_str());
-      chip->setPosition(ccp(300 + 15 * col, 308 - 15 * row));
+      chip->setPosition(ccp(16 * col, - 16 * row));
       _mpChips->addObject(chip);
-      this->addChild(chip);
+      mpMarkerNode->addChild(chip);
     }
   }
 }

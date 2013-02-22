@@ -327,6 +327,7 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_constant(tolua_S, "LevelLabelTag", LevelLabelTag);
   tolua_constant(tolua_S, "LifeGaugeBackgroundTag", LifeGaugeBackgroundTag);
   tolua_constant(tolua_S, "LifeGaugeTag", LifeGaugeTag);
+  tolua_constant(tolua_S, "MPMarkerTag", MPMarkerTag);
   // ControllerFrameType
   tolua_constant(tolua_S, "ControllerFrameTypeNone", ControllerFrameTypeNone);
   tolua_constant(tolua_S, "ControllerFrameTypeCommon", ControllerFrameTypeCommon);

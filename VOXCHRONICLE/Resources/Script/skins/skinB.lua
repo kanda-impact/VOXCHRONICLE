@@ -25,6 +25,11 @@ Skin = {
     maxHPLabel:setAnchorPoint(ccp(0.5, 0.5))
     self:addChild(currentHPLabel, 0, CurrentHPLabelTag)
     self:addChild(maxHPLabel, 0, MaxHPLabelTag)
+    
+    -- MPMarker
+    local mpMarker = CCNode:create()
+    mpMarker:setPosition(ccp(305, 308))
+    self:addChild(mpMarker, 0, MPMarkerTag)
   
     local slash = CCSprite:create("grass_slash.png")
     slash:setPosition(ccp(191, 308))

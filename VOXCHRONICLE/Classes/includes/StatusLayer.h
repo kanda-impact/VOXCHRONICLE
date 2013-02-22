@@ -20,7 +20,8 @@ typedef enum {
   CurrentHPLabelTag,
   LevelLabelTag,
   LifeGaugeBackgroundTag,
-  LifeGaugeTag
+  LifeGaugeTag,
+  MPMarkerTag
 } StatusLayerPartsTag;
 
 class StatusLayer :public CCLayer {
