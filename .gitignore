@@ -3,6 +3,8 @@ Release.win32
 VOXCHRONICLE.win32/VOXCHRONICLE/enc_temp_folder/*
 VOXCHRONICLE.win32/VOXCHRONICLE/ipch/*
 VOXCHRONICLE.win32/VOXCHRONICLE/VOXCHRONICLE/proj.win32/VOXCHRONICLE.netmodule/*
+VOXCHRONICLE.xcodeproj/xcuserdata/*
+VOXCHRONICLE.xcodeproj/project.xcworkspace/xcuserdata/*
 [Tt]humbs.db
 enc_temp_folder
 *.opensdf
