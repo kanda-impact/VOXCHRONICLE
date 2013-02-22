@@ -23,6 +23,7 @@ SkillTrigger::SkillTrigger(const char* skinPrefix) : CCNode() {
   _background->retain();
   _icon = NULL;
   _defaultScale = 1.0f;
+  _currentOpacity = 255;
   this->setColor(SkillTriggerColorVox);
   this->addChild(_background);
 }
@@ -96,15 +97,15 @@ void SkillTrigger::setSkillTriggerState(SkillTriggerState state) {
   } else {
     this->setPress(false);
   }
-  float opacity = 255;
+  _currentOpacity = 255;
   if (_state == SkillTriggerStateUnknown || _state == SkillTriggerStateDisable) {
-    opacity = 64;
+    _currentOpacity = 64;
   }
-  _background->setOpacity(opacity);
+  _background->setOpacity(_currentOpacity);
   if (_state == SkillTriggerStateUnknown) {
     _icon->setOpacity(0);
   } else {
-    _icon->setOpacity(opacity);
+    _icon->setOpacity(_currentOpacity);
   }
 }
 
@@ -130,4 +131,21 @@ CCSprite* SkillTrigger::getBackground() {
 
 void SkillTrigger::setSkinPrefix(const char *prefix) {
   _skinPrefix = prefix;
+}
+
+void SkillTrigger::runBlinkAction(float duration) {
+  const int times = 3;
+  float d = duration / times;
+  _background->runAction(CCSequence::create(CCTintTo::create(0.1, 255, 0, 255),
+                                            CCRepeat::create(CCSequence::create(CCFadeTo::create(d, 128),
+                                                                                CCFadeTo::create(d, 255),
+                                                                                NULL), times),
+                                            CCCallFuncN::create(this, callfuncN_selector(SkillTrigger::setOpacityDelay)),
+                                            CCTintTo::create(0.1, 255, 255, 255),
+                                            NULL));
+}
+
+void SkillTrigger::setOpacityDelay(cocos2d::CCNode *node) {
+  CCSprite* sp = (CCSprite*)node;
+  sp->setOpacity(_currentOpacity);
 }

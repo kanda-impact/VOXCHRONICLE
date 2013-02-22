@@ -13,6 +13,7 @@
 #include "cocos2d.h"
 #include "Skill.h"
 #include "CharacterManager.h"
+#include "SkillTrigger.h"
 
 using namespace cocos2d;
 
@@ -37,6 +38,7 @@ public:
   void resetAllTriggers();
   int currentTriggerIndex();
   Skill* currentTriggerSkill();
+  SkillTrigger* getSkillTriggerFor(Skill* skill);
   void updateSkills(CharacterManager* manager);
   void setEnable(bool enable);
   void setFrameType(ControllerFrameType type);

@@ -214,3 +214,14 @@ void Controller::setFrame(CharacterManager *manager) {
     this->addChild(newFrame, ControllerZOrderFrame, controllerFrameTag);
   }
 }
+
+SkillTrigger* Controller::getSkillTriggerFor(Skill *skill) {
+  CCObject* obj = NULL;
+  CCARRAY_FOREACH(_triggers, obj) {
+    SkillTrigger* trigger = (SkillTrigger*)obj;
+    if (trigger->getSkill()->getIdentifier() == skill->getIdentifier()) {
+      return trigger;
+    }
+  }
+  return NULL;
+}

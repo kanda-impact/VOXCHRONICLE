@@ -507,6 +507,14 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     _currentSkillInfo.type = SkillPerformTypeNone;
     _currentSkillInfo.skill = NULL;
     
+    // 技の発動タイミングで、コマンドをかっこよく光らせる
+    if (skill) {
+      SkillTrigger* trigger = _skin->getController()->getSkillTriggerFor(skill);
+      if (trigger) {
+        trigger->runBlinkAction(0.2f);
+      }
+    }
+    
     // ターンカウントを進める
     ++_turnCount;
     ++_mapTurnCount;
