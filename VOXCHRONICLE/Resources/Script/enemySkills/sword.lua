@@ -9,14 +9,20 @@ EnemySkill = {
       user:setAnimationClip("sword", 1, true) -- グラを変更する
       user:setRegister(key, turn + 1)
       MessageManager:sharedManager():pushMessage(user:getName().."は　ちからを　ためている")
+    elseif turn == 1 then
+      user:setRegister(key, turn + 1) -- ターンを+1する
+      -- 点滅させる処理を入れる
+      local actions = CCArray:create()
+      actions:addObject(CCFadeTo:create(0.05, 128))
+      actions:addObject(CCFadeTo:create(0.05, 255))
+      local sequence = CCSequence:create(actions)
+      user:runAction(CCRepeat:create(sequence, 10))
     elseif turn == 2 then
       -- 溜めターンが1ターンに到達したら溜め攻撃発動
       characterManager:damage(20) -- ダメージを与える
       user:setRegister(key, 0) -- 溜めターンをリセット
       user:setDefaultAnimationClip() -- グラを元に戻す
       MessageManager:sharedManager():pushMessage(user:getName().."は　きょうりょくな　いちげきを　はなった！")
-    else
-      user:setRegister(key, turn + 1) -- ターンを+1する
     end
   end
 }

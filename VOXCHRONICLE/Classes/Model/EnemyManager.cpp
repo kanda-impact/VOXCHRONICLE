@@ -339,6 +339,7 @@ void EnemyManager::pushEnemiesQueue(cocos2d::CCArray *enemies) {
 void EnemyManager::nextTurn (CharacterManager* characterManager) {
   this->lotPopEnemy();
   CCObject* obj = NULL;
+  // コピーしないとだめじゃね
   CCARRAY_FOREACH(this->getEnemies(), obj) {
     Enemy* enemy = (Enemy*)obj;
     if (enemy == NULL) continue;
