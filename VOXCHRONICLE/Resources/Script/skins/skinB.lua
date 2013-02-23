@@ -28,7 +28,7 @@ Skin = {
     
     -- MPMarker
     local mpMarker = CCNode:create()
-    mpMarker:setPosition(ccp(305, 308))
+    mpMarker:setPosition(ccp(305, 301))
     self:addChild(mpMarker, 0, MPMarkerTag)
   
     local slash = CCSprite:create("grass_slash.png")

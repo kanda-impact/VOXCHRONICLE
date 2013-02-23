@@ -11,7 +11,7 @@ Skin = {
     self:addChild(hpLabel)
     
     local mpLabel = CCSprite:create("cyber_mp.png");
-    mpLabel:setPosition(ccp(282, 308))
+    mpLabel:setPosition(ccp(282, 300))
     self:addChild(mpLabel)
   
     local currentHPLabel = CCLabelAtlas:create("0", "cyber_hp_numbers.png", 17, 18, string.byte("0"))
@@ -28,7 +28,7 @@ Skin = {
     
     -- MPMarker
     local mpMarker = CCNode:create()
-    mpMarker:setPosition(ccp(305, 308))
+    mpMarker:setPosition(ccp(305, 300))
     self:addChild(mpMarker, 0, MPMarkerTag)
   
     local slash = CCSprite:create("cyber_slash.png")
