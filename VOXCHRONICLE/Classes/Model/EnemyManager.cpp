@@ -340,7 +340,11 @@ void EnemyManager::nextTurn (CharacterManager* characterManager) {
   this->lotPopEnemy();
   CCObject* obj = NULL;
   // コピーしないとだめじゃね
-  CCArray* enemies = CCArray::createWithArray(this->getEnemies());
+  if (!this->getEnemies()) return;
+  CCArray* enemies = CCArray::create();
+  CCARRAY_FOREACH(this->getEnemies(), obj) {
+    enemies->addObject(obj);
+  }
   CCARRAY_FOREACH(enemies, obj) {
     Enemy* enemy = (Enemy*)obj;
     if (enemy == NULL) continue;

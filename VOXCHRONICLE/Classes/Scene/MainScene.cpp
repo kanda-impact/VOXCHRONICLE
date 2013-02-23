@@ -674,8 +674,7 @@ void MainScene::changeMap(Map* nextMap) {
   _enemyManager->removeAllEnemiesQueue(); // キューを初期化
   _mapTurnCount = 0; // マップカウント0に戻す
   _state = VCStateIntro;
-  _musicManager->setMusicSet(_map->getCurrentMusic(_level)); // 音楽セットを切り替える
-  _musicManager->preloadAllTracks(_characterManager); // 曲データを読む
+  this->changeMusic(_map->getCurrentMusic(_level), true);
   this->changeSkin(_map->getSkin(), true);
   
   _musicManager->setIntroCount(0);
@@ -739,8 +738,7 @@ void MainScene::startBossBattle() {
   _skin->getController()->setEnable(false);
   _state = VCStateIntro; // イントロに移行
   _skin->getGround()->stop(); // 床を停止
-  _musicManager->setMusicSet(_map->getCurrentMusic(_level)); // 音楽セットを切り替える
-  _musicManager->preloadAllTracks(_characterManager);
+  this->changeMusic(_map->getCurrentMusic(_level), false);
   _characterManager->setRepeatCount(0);
   _skin->getController()->setEnable(false);
   _musicManager->pushIntroTracks();
@@ -801,6 +799,14 @@ void MainScene::setPause(bool pause) {
     this->removeChildByTag(PAUSE_LAYER_TAG, true);
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cancel.mp3").c_str());
   }
+}
+
+void MainScene::changeMusic(MusicSet* mSet, bool enablePreload) {
+  _musicManager->setMusicSet(mSet); // 音楽セットを切り替える
+  if (enablePreload) {
+    _musicManager->preloadAllTracks(_characterManager); // 曲データを読む
+  }
+  // 作曲者情報と曲名を表示する
 }
 
 VCState MainScene::getState () {
