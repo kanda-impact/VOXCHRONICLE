@@ -80,6 +80,7 @@ class MainScene : public CCLayer {
   void updateFocus();
   void addDamageEffect();
   void changeMap(Map* nextMap);
+  void changeMusic(MusicSet* mSet, bool enablePreload);
   
   //void pushIntroTracks();
   //void pushFinishTracks();

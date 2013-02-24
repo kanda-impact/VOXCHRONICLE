@@ -104,11 +104,9 @@ bool MainScene::init(Map* map) {
   _characterManager->setLevel(_map->getInitialLevel());
   _enemyManager->setLevel(_level);
   
-  MusicSet* musicSet = _map->getCurrentMusic(_level);
-  musicSet->autorelease();
+  MusicSet* musicSet = NULL;
   
   _musicManager = new MusicManager(music, musicSet, _enemyManager, _characterManager);
-  _musicManager->preloadAllTracks(_characterManager);
   
   _state = VCStateIntro;
   
@@ -181,6 +179,7 @@ Map* MainScene::getMap() {
 
 void MainScene::onEnterTransitionDidFinish() {
   _skin->getController()->setEnable(false);
+  this->changeMusic(_map->getCurrentMusic(_level), true);
   _musicManager->pushIntroTracks();
   _musicManager->getMusic()->play();
   _skin->getStatusLayer()->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
@@ -298,7 +297,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       }
       boss->runAction(CCSequence::create(actions));
     } else {
-      _musicManager->pushNextTracks(NULL, _currentSkillInfo); // wait入れる
+      _musicManager->pushQTETracks();
     }
   } else if (_state == VCStateQTEFinish) { // QTE終了時
     int count = _musicManager->getFinishCount();
@@ -674,8 +673,7 @@ void MainScene::changeMap(Map* nextMap) {
   _enemyManager->removeAllEnemiesQueue(); // キューを初期化
   _mapTurnCount = 0; // マップカウント0に戻す
   _state = VCStateIntro;
-  _musicManager->setMusicSet(_map->getCurrentMusic(_level)); // 音楽セットを切り替える
-  _musicManager->preloadAllTracks(_characterManager); // 曲データを読む
+  this->changeMusic(_map->getCurrentMusic(_level), true);
   this->changeSkin(_map->getSkin(), true);
   
   _musicManager->setIntroCount(0);
@@ -739,8 +737,7 @@ void MainScene::startBossBattle() {
   _skin->getController()->setEnable(false);
   _state = VCStateIntro; // イントロに移行
   _skin->getGround()->stop(); // 床を停止
-  _musicManager->setMusicSet(_map->getCurrentMusic(_level)); // 音楽セットを切り替える
-  _musicManager->preloadAllTracks(_characterManager);
+  this->changeMusic(_map->getCurrentMusic(_level), false);
   _characterManager->setRepeatCount(0);
   _skin->getController()->setEnable(false);
   _musicManager->pushIntroTracks();
@@ -801,6 +798,35 @@ void MainScene::setPause(bool pause) {
     this->removeChildByTag(PAUSE_LAYER_TAG, true);
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cancel.mp3").c_str());
   }
+}
+
+void MainScene::changeMusic(MusicSet* mSet, bool enablePreload) {
+  _musicManager->setMusicSet(mSet); // 音楽セットを切り替える
+  if (enablePreload) {
+    _musicManager->preloadAllTracks(_characterManager); // 曲データを読む
+  }
+  // 作曲者情報と曲名を表示する
+  CCNode* musicInfo = CCNode::create();
+  CCLabelTTF* nameLabel = CCLabelTTF::create(mSet->getName().c_str(),
+                                             "Helvetica",
+                                             16,
+                                             CCSizeMake(120, 20),
+                                             kCCTextAlignmentRight);
+  musicInfo->addChild(nameLabel);
+  CCLabelTTF* composerLabel = CCLabelTTF::create(mSet->getComposer().c_str(),
+                                                 "Helvetica",
+                                                 12,
+                                                 CCSizeMake(120, 16),
+                                                 kCCTextAlignmentRight);
+  composerLabel->setPosition(ccp(0, -20));
+  musicInfo->addChild(composerLabel);
+  this->addChild(musicInfo, MainSceneZOrderUI);
+  musicInfo->setPosition(ccp(600, 40));
+  musicInfo->runAction(CCSequence::create(CCMoveTo::create(0.3f, ccp(390, 40)),
+                                          CCDelayTime::create(2.0f),
+                                          CCMoveTo::create(0.3f, ccp(600, 40)),
+                                          CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
+                                          NULL));
 }
 
 VCState MainScene::getState () {

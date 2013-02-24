@@ -24,7 +24,7 @@ using namespace cocos2d;
 class EnemyManager :public CCLayer {
  private:
   CCArray* _enemies;
-  vector<bool>* _enemyPopLots;
+  deque<bool>* _enemyPopLots;
   Level* _level;
   CCArray* _enemyNamesQueue;
   CCArray* createEnemyQueue();

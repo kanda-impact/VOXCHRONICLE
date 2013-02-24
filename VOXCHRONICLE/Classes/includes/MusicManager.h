@@ -176,6 +176,10 @@ class MusicManager :public CCObject {
    */
   void setMusicSet(MusicSet* set);
   
+  /**
+   */
+  void pushQTETracks();
+  
   void preloadAllTracks(CharacterManager* manager);
 };
 
