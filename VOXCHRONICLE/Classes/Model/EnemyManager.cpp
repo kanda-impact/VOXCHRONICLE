@@ -27,7 +27,7 @@ bool EnemyManager::init() {
   variate_generator<
   mt19937&, uniform_smallint<>
   > rand( gen, dst );
-  _enemyPopLots = new vector<bool>();
+  _enemyPopLots = new deque<bool>();
   _boss = NULL;
   return true;
 }
@@ -333,6 +333,7 @@ void EnemyManager::pushEnemiesQueue(cocos2d::CCArray *enemies) {
   CCObject* obj = NULL;
   CCARRAY_FOREACH(enemies, obj) {
     _enemyNamesQueue->addObject(obj);
+    _enemyPopLots->push_front(true);
   }
 }
 
