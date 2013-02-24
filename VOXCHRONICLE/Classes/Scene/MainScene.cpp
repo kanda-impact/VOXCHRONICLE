@@ -104,11 +104,9 @@ bool MainScene::init(Map* map) {
   _characterManager->setLevel(_map->getInitialLevel());
   _enemyManager->setLevel(_level);
   
-  MusicSet* musicSet = _map->getCurrentMusic(_level);
-  musicSet->autorelease();
+  MusicSet* musicSet = NULL;
   
   _musicManager = new MusicManager(music, musicSet, _enemyManager, _characterManager);
-  _musicManager->preloadAllTracks(_characterManager);
   
   _state = VCStateIntro;
   
@@ -181,6 +179,7 @@ Map* MainScene::getMap() {
 
 void MainScene::onEnterTransitionDidFinish() {
   _skin->getController()->setEnable(false);
+  this->changeMusic(_map->getCurrentMusic(_level), true);
   _musicManager->pushIntroTracks();
   _musicManager->getMusic()->play();
   _skin->getStatusLayer()->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
@@ -808,16 +807,24 @@ void MainScene::changeMusic(MusicSet* mSet, bool enablePreload) {
   }
   // 作曲者情報と曲名を表示する
   CCNode* musicInfo = CCNode::create();
-  CCLabelTTF* nameLabel = CCLabelTTF::create(mSet->getName().c_str(), "Helvetica", 16);
+  CCLabelTTF* nameLabel = CCLabelTTF::create(mSet->getName().c_str(),
+                                             "Helvetica",
+                                             16,
+                                             CCSizeMake(120, 20),
+                                             kCCTextAlignmentRight);
   musicInfo->addChild(nameLabel);
-  CCLabelTTF* composerLabel = CCLabelTTF::create(mSet->getComposer().c_str(), "Helvetica", 12);
-  composerLabel->setPosition(ccp(10, 20));
+  CCLabelTTF* composerLabel = CCLabelTTF::create(mSet->getComposer().c_str(),
+                                                 "Helvetica",
+                                                 12,
+                                                 CCSizeMake(120, 16),
+                                                 kCCTextAlignmentRight);
+  composerLabel->setPosition(ccp(0, -20));
   musicInfo->addChild(composerLabel);
-  this->addChild(musicInfo);
-  musicInfo->setPosition(ccp(420, 240));
-  musicInfo->runAction(CCSequence::create(CCMoveTo::create(1.0f, ccp(270, 240)),
+  this->addChild(musicInfo, MainSceneZOrderUI);
+  musicInfo->setPosition(ccp(600, 40));
+  musicInfo->runAction(CCSequence::create(CCMoveTo::create(0.3f, ccp(390, 40)),
                                           CCDelayTime::create(2.0f),
-                                          CCMoveTo::create(1.0f, ccp(420, 240)),
+                                          CCMoveTo::create(0.3f, ccp(600, 40)),
                                           CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
                                           NULL));
 }

@@ -18,12 +18,15 @@ using namespace boost;
 MusicManager::MusicManager(Music* music, MusicSet* musicSet, EnemyManager* enemyManager, CharacterManager* characterManager) {
   _music = music;
   music->retain();
-  _musicSet = musicSet;
-  musicSet->retain();
+  if (musicSet) {
+    _musicSet = musicSet;
+    musicSet->retain();
+  }
   _enemyManager = enemyManager;
   enemyManager->retain();
   _characterManager = characterManager;
   characterManager->retain();
+  _musicSet = NULL;
   _extension = DEFAULT_EXT;
   _minDrumScore = 0;
   _introCount = 0;
@@ -33,7 +36,9 @@ MusicManager::MusicManager(Music* music, MusicSet* musicSet, EnemyManager* enemy
 
 MusicManager::~MusicManager() {
   _music->release();
-  _musicSet->release();
+  if (_musicSet) {
+    _musicSet->release();
+  }
   _enemyManager->release();
   _characterManager->release();
 }
