@@ -915,6 +915,10 @@
 		07FADBC516BBFA3600200F83 /* Ground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07FADBC316BBFA3500200F83 /* Ground.cpp */; };
 		07FD921E1621099B00E74459 /* vox.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921D1621099B00E74459 /* vox.lua */; };
 		07FD922016210A2300E74459 /* lsk.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921F16210A2300E74459 /* lsk.lua */; };
+		B00634D516D876FB008D8E25 /* testMap.lua in Resources */ = {isa = PBXBuildFile; fileRef = B00634D416D876FA008D8E25 /* testMap.lua */; };
+		B0E29E2416DA26830058DBF7 /* tut_slime0.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0E29E2316DA26830058DBF7 /* tut_slime0.lua */; };
+		B0E29E2616DA26DC0058DBF7 /* tut_slime1.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0E29E2516DA26DC0058DBF7 /* tut_slime1.lua */; };
+		B0E29E2816DA28360058DBF7 /* tut_flower.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0E29E2716DA28350058DBF7 /* tut_flower.lua */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -2166,6 +2170,10 @@
 		07FADBC416BBFA3600200F83 /* Ground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ground.h; path = Classes/UI/Ground.h; sourceTree = "<group>"; };
 		07FD921D1621099B00E74459 /* vox.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vox.lua; path = character/vox.lua; sourceTree = "<group>"; };
 		07FD921F16210A2300E74459 /* lsk.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lsk.lua; path = character/lsk.lua; sourceTree = "<group>"; };
+		B00634D416D876FA008D8E25 /* testMap.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = testMap.lua; path = map/testMap.lua; sourceTree = "<group>"; };
+		B0E29E2316DA26830058DBF7 /* tut_slime0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tut_slime0.lua; sourceTree = "<group>"; };
+		B0E29E2516DA26DC0058DBF7 /* tut_slime1.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tut_slime1.lua; sourceTree = "<group>"; };
+		B0E29E2716DA28350058DBF7 /* tut_flower.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tut_flower.lua; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2268,6 +2276,7 @@
 				079D276416D4E6A6006D6A8F /* map_select.lua */,
 				079D276616D4E819006D6A8F /* map_selectL.lua */,
 				079D276716D4E81C006D6A8F /* map_selectR.lua */,
+				B00634D416D876FA008D8E25 /* testMap.lua */,
 			);
 			name = map;
 			sourceTree = "<group>";
@@ -3900,6 +3909,7 @@
 				07B21FF116CFCB820083B865 /* enemy0 copy 29.lua */,
 				07B21FF216CFCB820083B865 /* enemy0 copy 30.lua */,
 				07B21FF316CFCB820083B865 /* flower01.lua */,
+				B0E29E2716DA28350058DBF7 /* tut_flower.lua */,
 				07B21FF416CFCB820083B865 /* flower02.lua */,
 				07B21FF516CFCB820083B865 /* gago01.lua */,
 				07B21FF616CFCB820083B865 /* hornet01.lua */,
@@ -3914,6 +3924,8 @@
 				07B21FFE16CFCB820083B865 /* mimic01.lua */,
 				07B21FFF16CFCB820083B865 /* moth01.lua */,
 				07B2200016CFCB820083B865 /* slime0.lua */,
+				B0E29E2316DA26830058DBF7 /* tut_slime0.lua */,
+				B0E29E2516DA26DC0058DBF7 /* tut_slime1.lua */,
 				07B2200116CFCB820083B865 /* slime01.lua */,
 				07B2200216CFCB820083B865 /* slime02.lua */,
 			);
@@ -4857,6 +4869,10 @@
 				075B92E216D51FFA00DBB2D1 /* attaq.lua in Resources */,
 				075B92E516D5245900DBB2D1 /* AttaQ3-D_lskrun0.caf in Resources */,
 				075B92E616D5245900DBB2D1 /* AttaQ3-D_lskrun1.caf in Resources */,
+				B00634D516D876FB008D8E25 /* testMap.lua in Resources */,
+				B0E29E2416DA26830058DBF7 /* tut_slime0.lua in Resources */,
+				B0E29E2616DA26DC0058DBF7 /* tut_slime1.lua in Resources */,
+				B0E29E2816DA28360058DBF7 /* tut_flower.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
