@@ -9,8 +9,8 @@ function getExp(level)
   for l = 2, level do
     exp = exp + math.pow(l / 2 + 3 , 2)
   end
-  return exp
-  -- return (level - 1) * 60
+  -- return exp
+   return (level - 1) * 60
 end
 
 
