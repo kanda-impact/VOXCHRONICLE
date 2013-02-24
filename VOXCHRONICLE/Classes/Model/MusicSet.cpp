@@ -17,9 +17,9 @@ MusicSet::MusicSet(const char* identifier) {
   _introCount = _lua->getInt("introCount");
   _finishCount = _lua->getInt("finishCount");
   _type = (MusicSetType)_lua->getInt("type");
-  _name = new string(_lua->getString("name"));
-  _composer = new string(_lua->getString("composer"));
-  _prefix = new string(_lua->getString("prefix"));
+  _name = string(_lua->getString("name"));
+  _composer = string(_lua->getString("composer"));
+  _prefix = string(_lua->getString("prefix"));
   _waitCount = _lua->getInt("waitCount");
   // ToDo 今は使わないのであとで載せます _common, _ignoreDrums;
   lua_State* L = _lua->getLuaEngine()->getLuaState();
@@ -32,9 +32,6 @@ MusicSet::MusicSet(const char* identifier) {
 }
 
 MusicSet::~MusicSet() {
-  delete _name;
-  delete _composer;
-  delete _prefix;
   delete _common;
   delete _ignoreDrums;
   _lua->release();
@@ -42,7 +39,7 @@ MusicSet::~MusicSet() {
 
 string MusicSet::getPrefixedMusicName(const char *musicName) {
   stringstream ss;
-  ss << "Music/" << _prefix->c_str() << "/" << _prefix->c_str() << "_" << musicName;
+  ss << "Music/" << _prefix.c_str() << "/" << _prefix.c_str() << "_" << musicName;
   return FileUtils::getFilePath(ss.str().c_str());
 }
 
@@ -71,4 +68,12 @@ MusicSetType MusicSet::getType() {
 
 void MusicSet::preloadAllTracks() {
   // とりあえずテスト用にハードコードします
+}
+
+string MusicSet::getName() {
+  return _name;
+}
+
+string MusicSet::getComposer() {
+  return _composer;
 }

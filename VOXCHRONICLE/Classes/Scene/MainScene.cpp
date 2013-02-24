@@ -807,6 +807,19 @@ void MainScene::changeMusic(MusicSet* mSet, bool enablePreload) {
     _musicManager->preloadAllTracks(_characterManager); // 曲データを読む
   }
   // 作曲者情報と曲名を表示する
+  CCNode* musicInfo = CCNode::create();
+  CCLabelTTF* nameLabel = CCLabelTTF::create(mSet->getName().c_str(), "Helvetica", 16);
+  musicInfo->addChild(nameLabel);
+  CCLabelTTF* composerLabel = CCLabelTTF::create(mSet->getComposer().c_str(), "Helvetica", 12);
+  composerLabel->setPosition(ccp(10, 20));
+  musicInfo->addChild(composerLabel);
+  this->addChild(musicInfo);
+  musicInfo->setPosition(ccp(420, 240));
+  musicInfo->runAction(CCSequence::create(CCMoveTo::create(1.0f, ccp(270, 240)),
+                                          CCDelayTime::create(2.0f),
+                                          CCMoveTo::create(1.0f, ccp(420, 240)),
+                                          CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
+                                          NULL));
 }
 
 VCState MainScene::getState () {
