@@ -298,7 +298,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       }
       boss->runAction(CCSequence::create(actions));
     } else {
-      _musicManager->pushNextTracks(NULL, _currentSkillInfo); // wait入れる
+      _musicManager->pushQTETracks();
     }
   } else if (_state == VCStateQTEFinish) { // QTE終了時
     int count = _musicManager->getFinishCount();

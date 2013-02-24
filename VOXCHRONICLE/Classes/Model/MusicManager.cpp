@@ -110,6 +110,13 @@ void MusicManager::pushFinishTracks(int from, int to) {
   }
 }
 
+void MusicManager::pushQTETracks() {
+  // QTE曲をpushする
+  _music->pushTrack(this->getTrackFileName("qte").c_str(), MusicChannelMain);
+  _music->pushTrack(this->getTrackFileName("silent").c_str(), MusicChannelCounter);
+  _music->pushTrack(this->getTrackFileName("silent").c_str(), MusicChannelDrum);
+}
+
 void MusicManager::pushSilentTracks() {
   for (int i = 0; i < MusicChannelNum; ++i) {
     _music->pushTrack(this->getTrackFileName("silent").c_str(), i);
