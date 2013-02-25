@@ -31,7 +31,7 @@ Enemy = {
         if rand <= 70 then -- 70%で鉄球投げ
           self:setCounter(1)
           return "ironball"
-        elseif rand <= 90 then -- 残り10%で溜め攻撃
+        elseif rand <= 80 then -- 残り10%で溜め攻撃
           self:setCounter(2)
           return "sword"
         end

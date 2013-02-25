@@ -21,6 +21,7 @@
 static void tolua_reg_types (lua_State* tolua_S) {
   tolua_usertype(tolua_S, "Skill");
   tolua_usertype(tolua_S, "Enemy");
+  tolua_usertype(tolua_S, "Character");
   tolua_usertype(tolua_S, "CharacterManager");
   tolua_usertype(tolua_S, "EnemyManager");
   tolua_usertype(tolua_S, "EnemySkill");
@@ -131,6 +132,15 @@ static int tolua_VC_Enemy_setCounter(lua_State* tolua_S) {
   return 0;
 }
 
+// Character
+#pragma mark Character
+static int tolua_VC_Character_getName(lua_State* tolua_S) {
+  Character* self = (Character*)tolua_tousertype(tolua_S, 1, 0);
+  string name = self->getName();
+  tolua_pushstring(tolua_S, name.c_str());
+  return 1;
+}
+
 // CharacterManager
 #pragma mark CharacterManager
 
@@ -238,6 +248,19 @@ static int tolua_VC_CharacterManager_getMaxMP(lua_State* tolua_S) {
   CharacterManager* self = (CharacterManager*)tolua_tousertype(tolua_S, 1, 0);
   int maxmp = self->getMaxMP();
   tolua_pushnumber(tolua_S, maxmp);
+  return 1;
+}
+
+static int tolua_VC_CharacterManager_resetTension(lua_State* tolua_S) {
+  CharacterManager* self = (CharacterManager*)tolua_tousertype(tolua_S, 1, 0);
+  self->resetTension();
+  return 0;
+}
+
+static int tolua_VC_CharacterManager_getCurrentCharacter(lua_State* tolua_S) {
+  CharacterManager* self = (CharacterManager*)tolua_tousertype(tolua_S, 1, 0);
+  Character* chara = self->getCurrentCharacter();
+  tolua_pushusertype(tolua_S, chara, "Character");
   return 1;
 }
 
@@ -360,6 +383,10 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_function(tolua_S, "getHP", tolua_VC_Enemy_getHP);
   tolua_function(tolua_S, "setCounter", tolua_VC_Enemy_setCounter);
   tolua_endmodule(tolua_S);
+  tolua_cclass(tolua_S, "Character", "Character", "CCObject", NULL);
+  tolua_beginmodule(tolua_S, "Character");
+  tolua_function(tolua_S, "getName", tolua_VC_Character_getName);
+  tolua_endmodule(tolua_S);
   // CharacterManagerクラス
   tolua_cclass(tolua_S, "CharacterManager", "CharacterManager", "CCObject", NULL);
   tolua_beginmodule(tolua_S, "CharacterManager");
@@ -378,6 +405,8 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_function(tolua_S, "getMP", tolua_VC_CharacterManager_getMP);
   tolua_function(tolua_S, "getMaxHP", tolua_VC_CharacterManager_getMaxHP);
   tolua_function(tolua_S, "getMaxMP", tolua_VC_CharacterManager_getMaxMP);
+  tolua_function(tolua_S, "resetTension", tolua_VC_CharacterManager_resetTension);
+  tolua_function(tolua_S, "getCurrentCharacter", tolua_VC_CharacterManager_getCurrentCharacter);
   tolua_endmodule(tolua_S);
   // EnemyManagerクラス
   tolua_cclass(tolua_S, "EnemyManager", "EnemyManager", "CCLayer", NULL);

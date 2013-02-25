@@ -7,8 +7,9 @@ EnemySkill = {
     local col = user:getCol()
     local newCol = (col + math.random(0, 1)) % 3
     local enemy = enemyManager:popEnemyAt(species, row, newCol)
-    MessageManager:pushMessage(user:getName().."は　なかまを　よんだ")
-    MessageManager:pushMessage(enemy:getName().."が　あらわれた！")
+    local mManager = MessageManager:shaderManager()
+    mManager:pushMessage(user:getName().."は　なかまを　よんだ")
+    mManager:pushMessage(enemy:getName().."が　あらわれた！")
   end
 }
 return EnemySkill
