@@ -12,7 +12,7 @@ Skill = {
   performSkill = function(self, target, characterManager, enemyManager)
     characterManager:changeCharacter()
   end,
-  getPower = function(tension)
+  getPower = function(characterManager)
     return 0
   end,
   skillRange = SkillRangeSelf,

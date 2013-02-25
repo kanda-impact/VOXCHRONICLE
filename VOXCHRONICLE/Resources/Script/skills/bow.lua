@@ -9,7 +9,7 @@ Skill = {
   loop = true,
   maxRepeat = 1,
   turn = 1,
-  getPower = function(tension)
+  getPower = function(characterManager)
     t = {3, 5, 7, 9, 12}
     return t[tension + 1]
   end,

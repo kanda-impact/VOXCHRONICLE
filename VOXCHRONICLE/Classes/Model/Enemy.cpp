@@ -109,7 +109,7 @@ void Enemy::moveRow(float r) {
 
 int Enemy::damage(Skill* skill, CharacterManager* characterManager, DamageType& damageType, bool simulate) {
   // ToDo 属性によるダメージ軽減とかもこの辺に載せてやる
-  float damage = floor(0.5 + skill->getPowerWithTension(characterManager->getTension()));
+  float damage = floor(0.5 + skill->getPower(characterManager));
   
   // アイテムの処理
   if ((_item == EnemyItemShield && skill->getType() == SkillTypePhysical) ||

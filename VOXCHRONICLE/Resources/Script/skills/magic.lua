@@ -9,7 +9,8 @@ Skill = {
   maxRepeat = 4,
   turn = 1,
   loop = true,
-  getPower = function(tension)
+  getPower = function(characterManager)
+    local tension = characterManager:getTension()
     t = {3, 6, 9, 12, 15}
     return t[tension + 1]
   end,

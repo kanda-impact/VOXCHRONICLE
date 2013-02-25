@@ -29,10 +29,10 @@ static void tolua_reg_types (lua_State* tolua_S) {
 
 // Skill
 #pragma mark Skill
-static int tolua_VC_Skill_getPowerWithTension(lua_State* tolua_S) {
+static int tolua_VC_Skill_getPower(lua_State* tolua_S) {
   Skill* self = (Skill*)  tolua_tousertype(tolua_S, 1, 0);
-  int tension = (int)tolua_tonumber(tolua_S, 2, 0);
-  int power = self->getPowerWithTension(tension);
+  CharacterManager* manager = (CharacterManager*)tolua_tousertype(tolua_S, 2, 0);
+  int power = self->getPower(manager);
   lua_pushnumber(tolua_S, power);
   return 1;
 }
@@ -335,7 +335,7 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   // Skillクラス
   tolua_cclass(tolua_S, "Skill", "Skill", "CCObject", NULL);
   tolua_beginmodule(tolua_S, "Skill");
-  tolua_function(tolua_S, "getPowerWithTension", tolua_VC_Skill_getPowerWithTension);
+  tolua_function(tolua_S, "getPower", tolua_VC_Skill_getPower);
   tolua_endmodule(tolua_S);
   // Enemyクラス
   tolua_cclass(tolua_S, "Enemy", "Enemy", "CCSprite", NULL);

@@ -68,7 +68,7 @@ class Skill :public CCObject {
   string getName();
   string getIdentifier();
   int getTurn();
-  int getPowerWithTension(int tension);
+  int getPower(CCObject* characterManager);
   int getMaxRepeat();
   int getMP();
   int getAcquirementLV();

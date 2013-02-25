@@ -12,6 +12,7 @@
 #include "Skill.h"
 #include "LuaObject.h"
 #include "FileUtils.h"
+#include "CharacterManager.h"
 
 using namespace boost;
 
@@ -71,14 +72,14 @@ int Skill::getMaxRepeat() {
   return _maxRepeat;
 }
 
-int Skill::getPowerWithTension(int tension) {
+int Skill::getPower(CCObject* manager) {
   lua_State* L = _lua->getLuaEngineWithLoad()->getLuaState();
   lua_getglobal(L, "Skill");
   int table = lua_gettop(L);
   lua_getfield(L, table, "getPower");
   if (lua_isfunction(L, -1)) {
     // skill.luaにgetTensionRateが実装済みのとき
-    lua_pushinteger(L, tension);
+    _lua->pushCCObject(manager, "CharacterManager");
     if (lua_pcall(L, 1, 1, 0)) {
       cout << lua_tostring(L, lua_gettop(L)) << endl;
     }

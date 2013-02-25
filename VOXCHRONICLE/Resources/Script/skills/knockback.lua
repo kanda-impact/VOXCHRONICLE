@@ -17,7 +17,8 @@ Skill = {
     end
     target:setRow(newRow)
   end,
-  getPower = function(tension)
+  getPower = function(characterManager)
+    local tension = characterManager:getTension()
     t = {0, 2, 4, 6, 9}
     return t[tension + 1]
   end,

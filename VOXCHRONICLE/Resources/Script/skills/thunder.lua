@@ -11,7 +11,8 @@ Skill = {
   loop = true,
   skillRange = SkillRangeAll,
   skillType = SkillTypeMagical,
-  getPower = function(tension)
+  getPower = function(characterManager)
+    local tension = characterManager:getTension()
     t = {0, 3, 7, 11, 15}
     return t[tension + 1]
   end,
