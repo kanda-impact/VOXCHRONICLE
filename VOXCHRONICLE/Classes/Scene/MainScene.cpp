@@ -498,12 +498,13 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       // MP回復 コマンド化したのでコメントアウトしておきます
       //_characterManager->addMP(1);
     }
+    this->checkLevelUp();
+    
     // 固定モンスターテーブルを見て、モンスターを出現させます
     CCArray* fixed = _map->getFixedEnemies(preExp, preExp + getExp);
     if (fixed->count() > 0) {
       _enemyManager->pushEnemiesQueue(fixed);
     }
-    this->checkLevelUp();
     
     _currentSkillInfo.skillTrackName = "";
     _currentSkillInfo.type = SkillPerformTypeNone;
