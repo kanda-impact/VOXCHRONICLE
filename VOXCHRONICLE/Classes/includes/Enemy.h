@@ -33,6 +33,7 @@ private:
   int _col;
   int _frequencyCount;
   int _level;
+  int _counter;
   bool _enable;
   bool _movable;
   Species* _species;
@@ -138,6 +139,7 @@ public:
   int getFrequency(CharacterManager* manager);
   
   Species* getSpecies();
+  void setCounter(int counter);
   
   void setItem(EnemyItem item);
   void setEnable(bool enable);

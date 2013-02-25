@@ -56,6 +56,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _frequencyCount = 0;
   _enable = true;
   _movable = true;
+  _counter = -1;
   stringstream ss;
   ss << "Image/" << _species->getImageName().c_str() << "0.png";
   bool success = (bool)this->initWithFile(FileUtils::getFilePath(ss.str().c_str()).c_str());
@@ -225,7 +226,17 @@ void Enemy::setCol(int c) {
 }
 
 int Enemy::getCounter() {
-  return _species->getCounter();
+  // スクリプト側でリフを自由に変えられるように
+  // _counterが-の時は種族の持つデフォのリフ番号を返し、
+  // そうじゃない場合は登録されたリフ番号が返ります
+  if (_counter < 0) {
+    return _species->getCounter();
+  }
+  return _counter;
+}
+
+void Enemy::setCounter(int counter) {
+  _counter = counter;
 }
 
 int Enemy::getHP() {
