@@ -7,10 +7,14 @@ Enemy = {
   hasFrame = true,
   counter = 1,
   getSpeed = function(enemy, characterManager)
+    local row = enemy:getRow()
+    if row < 4 then -- 4列目より前に行ったとき、速度を0にします
+      return 0
+    end
     return 1
   end,
   getFrequency = function(enemy, characterManager)
-    return 2
+    return 1
   end,
   disableSkills = {},
   animationFrames = 4,
