@@ -130,7 +130,8 @@ void MusicManager::pushSilentTracks() {
 
 void MusicManager::pushNextTracks(Skill* skill, SkillPerformInfo& performInfo) {
   // リフの設定
-  Enemy* nearest = _enemyManager->getNearestEnemy();
+  Enemy* boss = _enemyManager->getBoss();
+  Enemy* nearest = boss ? boss : _enemyManager->getNearestEnemy(); // ボスがいたらボスの、いなかったら一番近くの敵のリフを返す
   if (nearest) {
     int counterNum = nearest->getCounter();
     Track* track = _music->pushTrack(this->getTrackFileName((string("counter") + lexical_cast<string>(counterNum)).c_str()).c_str(), 1);
