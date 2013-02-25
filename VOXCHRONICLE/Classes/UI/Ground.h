@@ -14,16 +14,14 @@
 
 using namespace cocos2d;
 
-class Ground :public CCNode {
+class Ground :public CCSprite {
  private:
   int _frameCount;
+  int _currentFrame;
   std::string _prefix;
-  CCSprite* _background;
-  void setAnimaton(int frameCount);
  public:
   Ground(const char* prefix, int frameCount);
-  void play();
-  void stop();
+  void nextFrame();
 };
 
 #endif /* defined(__VOXCHRONICLE__Ground__) */

@@ -215,9 +215,6 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       _musicManager->setIntroCount(0);
       _skin->getController()->setEnable(true);
       _state = VCStateMain;
-      if (!_map->isBossStage() || _map->getMaxLevel() != _characterManager->getLevel()) {
-        _skin->getGround()->play();
-      }
     }
   }
   if (_state == VCStateFinish || _state == VCStateQTEFinish) {
@@ -518,6 +515,9 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       }
     }
     
+    // 床を更新する
+    _skin->getGround()->nextFrame();
+    
     // ターンカウントを進める
     ++_turnCount;
     ++_mapTurnCount;
@@ -588,7 +588,6 @@ void MainScene::onGameOver() {
   CCDictionary* dict = CCDictionary::create();
   dict->setObject(CCString::create(_characterManager->getCurrentCharacter()->getName()), "chara");
   MessageManager::sharedManager()->pushRandomMessageFromLua("death", dict);
-  _skin->getGround()->stop();
   _state = VCStateGameOver;
   GameOverLayer* gameover = new GameOverLayer(this);
   this->addChild(gameover, MainSceneZOrderUI);
@@ -742,7 +741,6 @@ void MainScene::changeSkin(Skin *newSkin, bool crossFade) {
 void MainScene::startBossBattle() {
   _skin->getController()->setEnable(false);
   _state = VCStateIntro; // イントロに移行
-  _skin->getGround()->stop(); // 床を停止
   this->changeMusic(_map->getCurrentMusic(_level), false);
   _characterManager->setRepeatCount(0);
   _skin->getController()->setEnable(false);
