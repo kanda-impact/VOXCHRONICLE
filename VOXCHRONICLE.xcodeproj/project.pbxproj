@@ -858,6 +858,8 @@
 		07F0D799163C1EC1005592AF /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F0D797163C1EC0005592AF /* TitleScene.cpp */; };
 		07F40F10163D0FC0009FC104 /* Music.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F40F0F163D0FC0009FC104 /* Music.cpp */; };
 		07F88F1816DB842100FE6B2B /* endingC.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F88F1716DB842100FE6B2B /* endingC.mp3 */; };
+		07F88F1B16DB8FF600FE6B2B /* jfish.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F88F1916DB8FF600FE6B2B /* jfish.lua */; };
+		07F88F1C16DB8FF600FE6B2B /* whale.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F88F1A16DB8FF600FE6B2B /* whale.lua */; };
 		07F9340F16C16B0300A2F1CA /* ttn1_drum0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07F933E016C16B0300A2F1CA /* ttn1_drum0.caf */; };
 		07F9341016C16B0300A2F1CA /* ttn1_drum1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07F933E116C16B0300A2F1CA /* ttn1_drum1.caf */; };
 		07F9341116C16B0300A2F1CA /* ttn1_drum2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07F933E216C16B0300A2F1CA /* ttn1_drum2.caf */; };
@@ -2115,6 +2117,8 @@
 		07F470721691AD340062975F /* EnemySkill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemySkill.h; path = Classes/includes/EnemySkill.h; sourceTree = "<group>"; };
 		07F470731691AD340062975F /* MusicSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicSet.h; path = Classes/includes/MusicSet.h; sourceTree = "<group>"; };
 		07F88F1716DB842100FE6B2B /* endingC.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = endingC.mp3; path = Resources/Music/general/endingC.mp3; sourceTree = "<group>"; };
+		07F88F1916DB8FF600FE6B2B /* jfish.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = jfish.lua; path = species/jfish.lua; sourceTree = "<group>"; };
+		07F88F1A16DB8FF600FE6B2B /* whale.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = whale.lua; path = species/whale.lua; sourceTree = "<group>"; };
 		07F933E016C16B0300A2F1CA /* ttn1_drum0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ttn1_drum0.caf; path = Resources/Music/ttn1/ttn1_drum0.caf; sourceTree = "<group>"; };
 		07F933E116C16B0300A2F1CA /* ttn1_drum1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ttn1_drum1.caf; path = Resources/Music/ttn1/ttn1_drum1.caf; sourceTree = "<group>"; };
 		07F933E216C16B0300A2F1CA /* ttn1_drum2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ttn1_drum2.caf; path = Resources/Music/ttn1/ttn1_drum2.caf; sourceTree = "<group>"; };
@@ -2680,6 +2684,8 @@
 		078D452516CE87D900E21DC5 /* species */ = {
 			isa = PBXGroup;
 			children = (
+				07F88F1916DB8FF600FE6B2B /* jfish.lua */,
+				07F88F1A16DB8FF600FE6B2B /* whale.lua */,
 				078D45E316CF2E7000E21DC5 /* bat.lua */,
 				078D45E416CF2E7000E21DC5 /* cryst.lua */,
 				078D45E516CF2E7000E21DC5 /* fortress.lua */,
@@ -4885,6 +4891,8 @@
 				079D031C16DA1C4C003D214D /* 3Bb_qte.caf in Resources */,
 				072AB85E16DB7A12005385A5 /* reset_tension.lua in Resources */,
 				07F88F1816DB842100FE6B2B /* endingC.mp3 in Resources */,
+				07F88F1B16DB8FF600FE6B2B /* jfish.lua in Resources */,
+				07F88F1C16DB8FF600FE6B2B /* whale.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
