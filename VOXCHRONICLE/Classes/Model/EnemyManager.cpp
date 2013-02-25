@@ -172,32 +172,37 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CCArray* targets, Charact
     CCObject* obj = NULL;
     CCARRAY_FOREACH(targets, obj) {
       Enemy* target = (Enemy*)obj;
-      // 追加効果がある場合、関数を呼び出す
-      int damage = 0;
-      performLuaFunction(skill, target, characterManager);
-      DamageType damageType = DamageTypeNone;
-      if (skill->getPower(characterManager) != 0) {
-        // 威力が1以上の場合、ダメージを与える
-        damage = target->damage(skill, characterManager, damageType, false);
-      } else {
-        // 威力が0の場合、NoDamageを設定する
-        damageType = DamageTypeNoDamage;
-      }
-      damages->addObject(CCInteger::create(damage));
-      damageTypes->addObject(CCInteger::create((int)damageType));
-      if (target->getHP() <= 0) {
-        if (_boss == target) {
-          _boss->setAnimationClip("death", 1, true); // 敵がボスなら殺さない
-          _boss->setMovable(false);
+      if (target->getSpecies()->isEnableSkill(skill)) { // その敵に技が有効かどうか
+        // 追加効果がある場合、関数を呼び出す
+        int damage = 0;
+        performLuaFunction(skill, target, characterManager);
+        DamageType damageType = DamageTypeNone;
+        if (skill->getPower(characterManager) != 0) {
+          // 威力が1以上の場合、ダメージを与える
+          damage = target->damage(skill, characterManager, damageType, false);
         } else {
-          if (target->getExp() == -1) nextLvExp = true;
-          if (nextLvExp) {
-            exp = -1; // 強制的に経験値を-1にする
-          } else {
-            exp += target->getExp();
-          }
-          this->removeEnemy(target);
+          // 威力が0の場合、NoDamageを設定する
+          damageType = DamageTypeNoDamage;
         }
+        damages->addObject(CCInteger::create(damage));
+        damageTypes->addObject(CCInteger::create((int)damageType));
+        if (target->getHP() <= 0) {
+          if (_boss == target) {
+            _boss->setAnimationClip("death", 1, true); // 敵がボスなら殺さない
+            _boss->setMovable(false);
+          } else {
+            if (target->getExp() == -1) nextLvExp = true;
+            if (nextLvExp) {
+              exp = -1; // 強制的に経験値を-1にする
+            } else {
+              exp += target->getExp();
+            }
+            this->removeEnemy(target);
+          }
+        }
+      } else { // 無効だったら
+        damages->addObject(CCInteger::create(0));
+        damageTypes->addObject(CCInteger::create((int)DamageTypeDisable)); // 無効化を返す
       }
     }
     characterManager->addMP(-1 * skill->getMP());

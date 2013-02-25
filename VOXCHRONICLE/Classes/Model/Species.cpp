@@ -18,10 +18,12 @@ Species::Species(const char* identifier) {
   _imageName = string(_lua->getString("imageName"));
   _animationFrames = _lua->getInt("animationFrames");
   _hasFrame = _lua->getBoolean("hasFrame");
+  _disableSkills = _lua->getArray("disableSkills");
 }
 
 Species::~Species() {
   _lua->release();
+  delete _disableSkills;
 }
 
 string Species::getImageName() {
@@ -85,4 +87,13 @@ int Species::getDefaultExp(int level, int maxHP, EnemyItem item, SkillType type)
 
 LuaObject* Species::getLuaObject() {
   return _lua;
+}
+
+bool Species::isEnableSkill(Skill *skill) {
+  for (CCLuaValueArrayIterator it = _disableSkills->begin(); it != _disableSkills->end(); ++it) {
+    if (skill->getIdentifier() == it->stringValue()) {
+      return false;
+    }
+  }
+  return true;
 }

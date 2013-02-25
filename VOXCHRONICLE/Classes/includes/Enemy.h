@@ -137,6 +137,8 @@ public:
   int getSpeed(CharacterManager* manager);
   int getFrequency(CharacterManager* manager);
   
+  Species* getSpecies();
+  
   void setItem(EnemyItem item);
   void setEnable(bool enable);
   

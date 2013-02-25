@@ -37,6 +37,7 @@ class Species :public CCObject {
   int _baseExp;
   bool _hasFrame;
   LuaObject* _lua;
+  CCLuaValueArray* _disableSkills;
  public:
   Species(const char* identifier);
   ~Species();
@@ -49,6 +50,7 @@ class Species :public CCObject {
   int getDefaultExp(int level, int maxHP, EnemyItem item, SkillType type);
   string choiceEnemySkill(CCObject* enemy);
   LuaObject* getLuaObject();
+  bool isEnableSkill(Skill* skill);
 };
 
 #endif /* defined(__VOXCHRONICLE__Species__) */

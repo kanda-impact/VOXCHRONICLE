@@ -436,3 +436,7 @@ int Enemy::getFrequency(CharacterManager* manager) {
   }
   return 1;
 }
+
+Species* Enemy::getSpecies() {
+  return _species;
+}

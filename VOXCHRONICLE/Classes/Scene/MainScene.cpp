@@ -328,6 +328,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     case VCStateMain:
     {
     // メインの動きを実行
+    // この辺をリファクタリングする
     Skill* skill = _currentSkillInfo.skill;
     SkillPerformType performType = _currentSkillInfo.type;
     string name = _currentSkillInfo.skillTrackName;
@@ -342,6 +343,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
      ・本来、ダメージを与えられる技を使ったはずなのに被ダメージが0である
      　　　　　   ・例えばノックバックはダメージが0でも、本来与えるダメージが0なのでヒットしている
      ・本来ダメージが与えられるはずなのに、耐性やレベル補正でダメージが0だった場合、ヒットしていない
+     ・その技がその種族によって無効化されている
      */
     if (skill && performType == SkillPerformTypeSuccess) {
       CCArray* targets = _enemyManager->getTargets(skill);
@@ -359,6 +361,8 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         int damage = ((CCInteger*)damages->objectAtIndex(i))->getValue();
         DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(i))->getValue();
         if (damage == 0 && damageType != DamageTypeBarrierBreak && damageType != DamageTypeShieldBreak && damageType != DamageTypeNoDamage) {
+          isHit = false;
+        } else if (damageType == DamageTypeDisable) {
           isHit = false;
         } else if (damageType != DamageTypeDeath) {
           // ヒットしたとき、敵キャラを点滅させる
@@ -473,7 +477,6 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
           CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
         }
       } else if (!isHit) { // ヒットしていないとき、強制的にミス音にする
-        //name = "miss"; // 差し替えたので今は強制的にミス音にできない。後で考える
         if (enemyCount == 0) {
           // 誰もいないときピロリ音
           CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("miss.caf").c_str());
