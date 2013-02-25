@@ -15,6 +15,8 @@ EndingScene::EndingScene(const char* endingScript) {
 
   CCDirector* director = CCDirector::sharedDirector();
   string text = obj->getString("text");
+  _musicDuration = obj->getInt("duration");
+  _music = obj->getString("music");
   CCLabelTTF* label = CCLabelTTF::create(text.c_str(),
                                          "Helvetica",
                                          24,
@@ -32,7 +34,6 @@ EndingScene::EndingScene(const char* endingScript) {
   this->addChild(label);
   label->runAction(CCSequence::create(CCMoveTo::create(15.0f, ccp(director->getWinSize().width / 2.0f, director->getWinSize().height /2.0f)),
                                       CCDelayTime::create(6.0f),
-                                      CCCallFunc::create(this, callfunc_selector(EndingScene::goToNextScene)),
                                       NULL));
 }
 
@@ -44,4 +45,9 @@ void EndingScene::goToNextScene(cocos2d::CCObject *sender) {
   scene->addChild(TitleScene::create());
   CCTransitionFade* fade = CCTransitionFade::create(2.0f, scene);
   CCDirector::sharedDirector()->replaceScene(fade);
+}
+
+void EndingScene::onEnterTransitionDidFinish() {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(_music.c_str(), false);
+  this->getScheduler()->scheduleSelector(schedule_selector(EndingScene::goToNextScene), this, 0, false, 0, _musicDuration);
 }
