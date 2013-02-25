@@ -4,10 +4,15 @@ Enemy = {
   imageName = "knight",
   attack = 1,
   baseExp = 1,
-  minRow = 4,
   hasFrame = true,
   counter = 1,
-  speed = 2,
+  getSpeed = function(enemy, characterManager)
+    return 1
+  end,
+  getFrequency = function(enemy, characterManager)
+    return 2
+  end,
+  disableSkills = {},
   animationFrames = 4,
   performSkill = function(self)
     local isCharge = self:getRegister("swordTurn", 0) > 0 -- チャージ中かどうか

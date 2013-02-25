@@ -53,7 +53,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _species->retain();
   _type = (SkillType)_lua->getInt("type");
   _level = _lua->getInt("level");
-  _speedCount = 0;
+  _frequencyCount = 0;
   _enable = true;
   _movable = true;
   stringstream ss;
@@ -232,9 +232,9 @@ int Enemy::getHP() {
   return _hp;
 }
 
-bool Enemy::canMove() {
-  _speedCount = (_speedCount + 1) % _species->getSpeed();
-  return _speedCount == 0 && this->getRow() >= _species->getMinRow() && this->isMovable();
+bool Enemy::canMove(CharacterManager* manager) {
+  _frequencyCount = (_frequencyCount + 1) % this->getFrequency(manager);
+  return _frequencyCount == 0;
 }
 
 SkillType Enemy::getType() {
@@ -405,4 +405,34 @@ bool Enemy::isMovable() {
 
 void Enemy::setMovable(bool m) {
   _movable = m;
+}
+
+int Enemy::getSpeed(CharacterManager* manager) {
+  LuaObject* lua = _species->getLuaObject();
+  lua_State* L = lua->getLuaEngineWithLoad()->getLuaState();
+  lua_getfield(L, lua_gettop(L), "getSpeed");
+  if (lua_isfunction(L, lua_gettop(L))) {
+    _lua->pushCCObject(this, "Enemy");
+    _lua->pushCCObject(manager, "CharacterManager");
+    if (lua_pcall(L, 2, 1, 0)) {
+      cout << lua_tostring(L, lua_gettop(L)) << endl;
+    }
+    return lua_tointeger(L, lua_gettop(L));
+  }
+  return 0;
+}
+
+int Enemy::getFrequency(CharacterManager* manager) {
+  LuaObject* lua = _species->getLuaObject();
+  lua_State* L = lua->getLuaEngineWithLoad()->getLuaState();
+  lua_getfield(L, lua_gettop(L), "getFrequency");
+  if (lua_isfunction(L, lua_gettop(L))) {
+    _lua->pushCCObject(this, "Enemy");
+    _lua->pushCCObject(manager, "CharacterManager");
+    if (lua_pcall(L, 2, 1, 0)) {
+      cout << lua_tostring(L, lua_gettop(L)) << endl;
+    }
+    return lua_tointeger(L, lua_gettop(L));
+  }
+  return 1;
 }

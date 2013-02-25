@@ -15,8 +15,6 @@ Species::Species(const char* identifier) {
   _name = string(_lua->getString("name"));
   _attack = _lua->getInt("attack");
   _counter = _lua->getInt("counter");
-  _speed = _lua->getInt("speed");
-  _minRow = _lua->getInt("minRow");
   _imageName = string(_lua->getString("imageName"));
   _animationFrames = _lua->getInt("animationFrames");
   _hasFrame = _lua->getBoolean("hasFrame");
@@ -38,16 +36,8 @@ int Species::getAttack() {
   return _attack;
 }
 
-int Species::getSpeed() {
-  return _speed;
-}
-
 int Species::getCounter() {
   return _counter;
-}
-
-int Species::getMinRow() {
-  return _minRow;
 }
 
 int Species::getAnimationFrames() {
@@ -91,4 +81,8 @@ int Species::getDefaultExp(int level, int maxHP, EnemyItem item, SkillType type)
     return ceil(exp);
   }
   return 0;
+}
+
+LuaObject* Species::getLuaObject() {
+  return _lua;
 }

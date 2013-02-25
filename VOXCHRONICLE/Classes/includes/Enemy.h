@@ -31,7 +31,7 @@ private:
   int _mp;
   int _row;
   int _col;
-  int _speedCount;
+  int _frequencyCount;
   int _level;
   bool _enable;
   bool _movable;
@@ -55,7 +55,7 @@ public:
   void moveRow(float r);
   Enemy* initWithScriptName(const char* scriptName);
   void setRowAndCol(int row, float col);
-  bool canMove();
+  bool canMove(CharacterManager* manager);
   
   /**
    使用したSkillとCharacterManagerを与えてダメージを与えます。
@@ -133,6 +133,9 @@ public:
   string getName();
   SkillType getType();
   EnemyItem getItem();
+  
+  int getSpeed(CharacterManager* manager);
+  int getFrequency(CharacterManager* manager);
   
   void setItem(EnemyItem item);
   void setEnable(bool enable);
