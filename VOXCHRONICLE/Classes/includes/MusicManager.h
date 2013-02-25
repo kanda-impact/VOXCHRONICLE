@@ -180,7 +180,7 @@ class MusicManager :public CCObject {
    */
   void pushQTETracks();
   
-  void preloadAllTracks(CharacterManager* manager);
+  void preloadAllTracks(CharacterManager* manager, Level* level);
 };
 
 #endif /* defined(__VOXCHRONICLE__MusicManager__) */

@@ -12,6 +12,9 @@
 #include <iostream>
 #include <list>
 #include "cocos2d.h"
+#include "Character.h"
+
+class Map;
 
 using namespace std;
 using namespace cocos2d;
@@ -21,13 +24,19 @@ class Level :public CCObject {
   int _level;
   list<pair<string, int> > _enemyTable;
   float _enemyPopRate;
+  CCDictionary* _skillDictionary;
+  Map* _map;
  public:
-  Level(int level);
+  Level(int level, Map* map);
+  ~Level();
   int getLevel();
   float getEnemyPopRate();
   void setEnemyPopRate(float rate);
   list<pair<string, int> > getEnemyTable();
   void setEnemyTable(list<pair<string, int> > table);
+  CCArray* getAllSkills(Character* character);
+  CCArray* getSkills(Character* character);
+  void loadSkills(Character* character);
 };
 
 #endif /* defined(__VOXCHRONICLE__Level__) */

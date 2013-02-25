@@ -303,12 +303,12 @@ void MusicManager::setMinDrumScore(int min) {
   _minDrumScore = min;
 }
 
-void MusicManager::preloadAllTracks(CharacterManager* manager) {
+void MusicManager::preloadAllTracks(CharacterManager* manager, Level* level) {
   CCArray* characters = manager->getCharacters();
   CCObject* obj0 = NULL;
   CCARRAY_FOREACH(characters, obj0) {
     Character* chara = (Character*)obj0;
-    CCArray* skills = chara->getSkills();
+    CCArray* skills = level->getAllSkills(chara);
     CCObject* obj1 = NULL;
     CCARRAY_FOREACH(skills, obj1) {
       Skill* skill = (Skill*)obj1;

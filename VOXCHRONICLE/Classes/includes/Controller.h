@@ -14,6 +14,7 @@
 #include "Skill.h"
 #include "CharacterManager.h"
 #include "SkillTrigger.h"
+#include "Level.h"
 
 using namespace cocos2d;
 
@@ -39,7 +40,7 @@ public:
   int currentTriggerIndex();
   Skill* currentTriggerSkill();
   SkillTrigger* getSkillTriggerFor(Skill* skill);
-  void updateSkills(CharacterManager* manager);
+  void updateSkills(CharacterManager* manager, Level* level);
   void setEnable(bool enable);
   void setFrameType(ControllerFrameType type);
   void setSkinPrefix(const char* skinPrefix);

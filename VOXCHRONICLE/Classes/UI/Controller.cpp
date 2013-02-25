@@ -122,10 +122,9 @@ int Controller::currentTriggerIndex() {
   return -1;
 }
 
-void Controller::updateSkills(CharacterManager* manager) {
-  CCArray* allSkills = manager->getCurrentCharacter()->getSkills();
-  int level = manager->getLevel();
-  CCArray* skills = manager->getCurrentCharacter()->getSkills(level);
+void Controller::updateSkills(CharacterManager* manager, Level* level) {
+  CCArray* allSkills = level->getAllSkills(manager->getCurrentCharacter());
+  CCArray* skills = level->getSkills(manager->getCurrentCharacter());
   for (int i = 0; i < _triggers->count(); ++i) {
     if (i >= allSkills->count()) break;
     Skill* skill = (Skill*)allSkills->objectAtIndex(i);

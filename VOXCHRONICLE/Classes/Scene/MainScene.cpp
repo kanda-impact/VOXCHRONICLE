@@ -100,7 +100,7 @@ bool MainScene::init(Map* map) {
   _characterManager = new CharacterManager();
   CCSize size = director->getWinSize();
   
-  _level = _map->createInitialLevel();
+  _level = _map->createInitialLevel(_characterManager);
   _characterManager->setLevel(_map->getInitialLevel());
   _enemyManager->setLevel(_level);
   
@@ -130,7 +130,7 @@ bool MainScene::init(Map* map) {
   this->addChild(_enemyManager, MainSceneZOrderEnemyManager);
   this->addChild(_skin->getController(), MainSceneZOrderController);
   this->updateGUI();
-  _skin->getController()->updateSkills(_characterManager);
+  _skin->getController()->updateSkills(_characterManager, _level);
   
   _qteTrigger = NULL;
   _isLevelUped = false;
@@ -523,7 +523,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     }
     
     if (skill) {
-      _skin->getController()->updateSkills(_characterManager);
+      _skin->getController()->updateSkills(_characterManager, _level);
     }
     
     this->updateFocus();
@@ -566,7 +566,7 @@ bool MainScene::checkLevelUp() {
     _map->performOnLevel(currentLevel, _characterManager, _enemyManager); // スクリプトを呼んでやる
     _characterManager->updateParameters();
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/levelup.mp3").c_str());
-    _level = _map->createLevel(currentLevel);
+    _level = _map->createLevel(currentLevel, _characterManager);
     
     _enemyManager->setLevel(_level);
     _enemyManager->removeAllEnemiesQueue();
@@ -668,7 +668,7 @@ void MainScene::changeMap(Map* nextMap) {
   _map->release();
   nextMap->retain();
   _map = nextMap;
-  _level = nextMap->createInitialLevel(); // レベルを生成する
+  _level = nextMap->createInitialLevel(_characterManager); // レベルを生成する
   _enemyManager->setLevel(_level); // レベルをセット
   _enemyManager->removeAllEnemiesQueue(); // キューを初期化
   _mapTurnCount = 0; // マップカウント0に戻す
@@ -690,7 +690,7 @@ void MainScene::changeSkin(Skin *newSkin, bool crossFade) {
   const float kCrossFadeSpeed = 1.0f;
   if (_skin != NULL) {
     newSkin->setController(_skin->getController()); // 古いコントローラーを受け渡す
-    _skin->getController()->updateSkills(_characterManager); // スキン更新
+    _skin->getController()->updateSkills(_characterManager, _level); // スキン更新
     if (crossFade) {
       CCArray* nodes = CCArray::create();
       if (_skin->getBackground()) nodes->addObject(_skin->getBackground());
@@ -803,7 +803,7 @@ void MainScene::setPause(bool pause) {
 void MainScene::changeMusic(MusicSet* mSet, bool enablePreload) {
   _musicManager->setMusicSet(mSet); // 音楽セットを切り替える
   if (enablePreload) {
-    _musicManager->preloadAllTracks(_characterManager); // 曲データを読む
+    _musicManager->preloadAllTracks(_characterManager, _level); // 曲データを読む
   }
   // 作曲者情報と曲名を表示する
   CCNode* musicInfo = CCNode::create();

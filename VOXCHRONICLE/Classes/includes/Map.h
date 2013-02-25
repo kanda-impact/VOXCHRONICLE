@@ -39,8 +39,8 @@ class Map :public CCObject {
  public:
   Map(const char* mapName);
   ~Map();
-  Level* createLevel(int lebel);
-  Level* createInitialLevel();
+  Level* createLevel(int level, CharacterManager* manager);
+  Level* createInitialLevel(CharacterManager* manager);
   int getMaxLevel();
   int getInitialLevel();
   string getName();

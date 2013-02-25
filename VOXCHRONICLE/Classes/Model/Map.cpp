@@ -76,8 +76,8 @@ Map::~Map() {
   _skin->release();
 }
 
-Level* Map::createLevel(int level) {
-  Level* lv = new Level(level);
+Level* Map::createLevel(int level, CharacterManager* manager) {
+  Level* lv = new Level(level, this);
   // モンスターテーブルを設定
   lua_State* L = _lua->getLuaEngineWithLoad()->getLuaState();
   lua_getglobal(L, "Map");
@@ -107,11 +107,18 @@ Level* Map::createLevel(int level) {
   float enemyPopRate = lua_tonumber(L, lua_gettop(L));
   lv->setEnemyPopRate(enemyPopRate);
   
+  // 技の読み込み
+  CCObject* obj = NULL;
+  CCARRAY_FOREACH(manager->getCharacters(), obj) {
+    Character* chara = (Character*)obj;
+    lv->loadSkills(chara);
+  }
+  
   return lv;
 }
 
-Level* Map::createInitialLevel() {
-  return this->createLevel(_initialLevel);
+Level* Map::createInitialLevel(CharacterManager* manager) {
+  return this->createLevel(_initialLevel, manager);
 }
 
 int Map::getMaxLevel() {

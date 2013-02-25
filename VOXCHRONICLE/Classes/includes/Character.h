@@ -25,16 +25,14 @@ class Character :public CCObject {
  private:
   string _name;
   string _identifier;
+  string _mapIdentifierCache;
   LuaObject* _lua;
-  CCArray* _skills;
   CharacterType _type;
  public:
   Character(const char* identifier);
   ~Character();
   string getName();
   string getIdentifier();
-  CCArray* getSkills();
-  CCArray* getSkills(int level);
   CharacterType getCharacterType();
 };
 
