@@ -21,7 +21,9 @@ typedef enum {
   LevelLabelTag,
   LifeGaugeBackgroundTag,
   LifeGaugeTag,
-  MPMarkerTag
+  MPMarkerTag,
+  NextExpLabelTag,
+  CurrentExpLabelTag
 } StatusLayerPartsTag;
 
 class StatusLayer :public CCLayer {
@@ -40,6 +42,7 @@ class StatusLayer :public CCLayer {
   void setMaxMP(int mp);
   void setMarkerDuration(float d);
   void setLevel(int level);
+  void setExp(int current, int next);
 };
 
 #endif /* defined(__VOXCHRONICLE__UILayer__) */

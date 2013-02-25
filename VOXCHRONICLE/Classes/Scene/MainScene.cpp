@@ -560,6 +560,8 @@ void MainScene::updateGUI() {
   statusLayer->setCurrentMP(_characterManager->getMP());
   statusLayer->setMaxMP(_characterManager->getMaxMP());
   statusLayer->setLevel(_characterManager->getLevel());
+  int next = _characterManager->getExpWithLevel(_level->getLevel() + 1);
+  statusLayer->setExp(_characterManager->getExp(), next);
 }
 
 bool MainScene::checkLevelUp() {
