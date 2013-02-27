@@ -632,6 +632,7 @@ void MainScene::addDamageEffect() {
       isDead = true;
     } else if (damageType == DamageTypeShield) {
       isShield = true;
+      _characterManager->setShield(false);
       break;
     }
   }
