@@ -37,6 +37,7 @@ const int PAUSE_LAYER_TAG = 10;
 // MainSceneに置いてあるモノの深度
 typedef enum {
   MainSceneZOrderBackground,
+  MainSceneZOrderMapBackground,
   MainSceneZOrderGround,
   MainSceneZOrderEnemyManager,
   MainSceneZOrderStatus,
@@ -67,9 +68,6 @@ bool MainScene::init(Map* map) {
   music->setTrackDidFinishFunction(boost::bind(&MainScene::trackDidFinishPlaying, this, _1, _2, _3, _4));
   music->setTrackWillFinishFunction(boost::bind(&MainScene::trackWillFinishPlaying, this, _1, _2, _3, _4));
   
-  // マップの追加
-  _map = map;
-  _map->retain();
   _skin = NULL;
   
   _pausedTargets = NULL;
@@ -81,8 +79,7 @@ bool MainScene::init(Map* map) {
   _turnCount = 0;
   _mapTurnCount = 0;
   
-  LuaObject* setting = new LuaObject("Script/setting", "Setting");
-  setting->autorelease();
+  //LuaObject* setting = LuaObject::create("Script/setting");
   
   CCDirector* director = CCDirector::sharedDirector();
   
@@ -90,23 +87,15 @@ bool MainScene::init(Map* map) {
   _enemyManager = EnemyManager::create();
   _enemyManager->retain();
   
-  // フォーカスの追加
   _focus = CCSprite::create(FileUtils::getFilePath("Image/focus.png").c_str());
   _focus->retain();
   _focus->setVisible(false);
   _focus->setAnchorPoint(ccp(0.5f, 0.0f));
   this->addChild(_focus, MainSceneZOrderFocus);
-  
+
   _characterManager = new CharacterManager();
   CCSize size = director->getWinSize();
-  
-  _level = _map->createInitialLevel(_characterManager);
-  _characterManager->setLevel(_map->getInitialLevel());
-  _enemyManager->setLevel(_level);
-  
-  MusicSet* musicSet = NULL;
-  
-  _musicManager = new MusicManager(music, musicSet, _enemyManager, _characterManager);
+  _musicManager = new MusicManager(music, NULL, _enemyManager, _characterManager);
   
   _state = VCStateIntro;
   
@@ -118,14 +107,14 @@ bool MainScene::init(Map* map) {
   _mapSelector = NULL;
   
   this->scheduleUpdate();
-  _preLevel = _level->getLevel();
   
-  // 画面の描画
-  Skin* skin = _map->getSkin();
+  Skin* skin = map->getSkin();
   Controller* controller = new Controller(skin->getPrefix().c_str());
   controller->autorelease();
   skin->setController(controller);
-  this->changeSkin(skin, false);
+  
+  this->changeMap(map); // マップの設定
+  _characterManager->setLevel(_level->getLevel()); // 初期レベル設定
   
   this->addChild(_enemyManager, MainSceneZOrderEnemyManager);
   this->addChild(_skin->getController(), MainSceneZOrderController);
@@ -134,6 +123,7 @@ bool MainScene::init(Map* map) {
   
   _qteTrigger = NULL;
   _isLevelUped = false;
+  _preLevel = _level->getLevel();
   
   return true;
 }
@@ -179,8 +169,6 @@ Map* MainScene::getMap() {
 
 void MainScene::onEnterTransitionDidFinish() {
   _skin->getController()->setEnable(false);
-  this->changeMusic(_map->getCurrentMusic(_level), true);
-  _musicManager->pushIntroTracks();
   _musicManager->getMusic()->play();
   _skin->getStatusLayer()->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
   CCDictionary* dict = CCDictionary::create();
@@ -566,6 +554,11 @@ void MainScene::updateGUI() {
 
 bool MainScene::checkLevelUp() {
   int currentLevel = _characterManager->getLevel();
+  if (currentLevel > _map->getMaxLevel() + 1) {
+    int maxExp = _characterManager->getExpWithLevel(_map->getMaxLevel() + 2) - 1;
+    int sub = maxExp - _characterManager->getExp(); // オーバー
+    _characterManager->addExp(sub); // オーバーした分だけ引く
+  }
   if (currentLevel != _preLevel) { // レベルが上がったとき
     _musicManager->setIntroCount(0);
     _preLevel = currentLevel;
@@ -670,13 +663,26 @@ void MainScene::addDamageEffect() {
 }
 
 void MainScene::changeMap(Map* nextMap) {
-  _map->release();
+  if (_map) {
+    // 前の背景画像削除
+    _map->release();
+    if (_map->getBackground()) {
+      this->removeNode(_map->getBackground());
+    }
+  }
   nextMap->retain();
   _map = nextMap;
   _level = nextMap->createInitialLevel(_characterManager); // レベルを生成する
   _enemyManager->setLevel(_level); // レベルをセット
   _enemyManager->removeAllEnemiesQueue(); // キューを初期化
   _mapTurnCount = 0; // マップカウント0に戻す
+  // 背景画像を設置
+  CCDirector* director = CCDirector::sharedDirector();
+  CCSprite* background = _map->getBackground();
+  if (background) {
+    background->setPosition(ccp(director->getWinSize().width / 2.0, 221.5));
+    this->addChild(background, MainSceneZOrderMapBackground);
+  }
   _state = VCStateIntro;
   this->changeMusic(_map->getCurrentMusic(_level), true);
   this->changeSkin(_map->getSkin(), true);

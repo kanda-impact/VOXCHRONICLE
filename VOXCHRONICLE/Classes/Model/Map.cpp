@@ -20,6 +20,7 @@ Map::Map(const char* mapName) {
   stringstream ss;
   ss << "Script/map/" << mapName;
   _identifier = mapName;
+  _background = NULL;
   _lua = new LuaObject(ss.str().c_str(), "Map");
   
   // スキンの生成
@@ -71,6 +72,9 @@ Map::~Map() {
   }
   if (_bossMusic != NULL) {
     _bossMusic->release();
+  }
+  if (_background != NULL) {
+    _background->release();
   }
   _lua->release();
   _skin->release();
@@ -196,4 +200,14 @@ string Map::getEndingName() {
 
 Skin* Map::getSkin() {
   return _skin;
+}
+
+CCSprite* Map::getBackground() {
+  if (_backgroundImageName.length() == 0) {
+    return NULL;
+  }
+  if (_background == NULL) {
+    _background = CCSprite::create(_backgroundImageName.c_str());
+  }
+  return _background;
 }
