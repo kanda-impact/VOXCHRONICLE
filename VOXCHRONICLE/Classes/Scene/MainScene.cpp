@@ -554,6 +554,11 @@ void MainScene::updateGUI() {
 
 bool MainScene::checkLevelUp() {
   int currentLevel = _characterManager->getLevel();
+  if (currentLevel > _map->getMaxLevel() + 1) {
+    int maxExp = _characterManager->getExpWithLevel(_map->getMaxLevel() + 2) - 1;
+    int sub = maxExp - _characterManager->getExp(); // オーバー
+    _characterManager->addExp(sub); // オーバーした分だけ引く
+  }
   if (currentLevel != _preLevel) { // レベルが上がったとき
     _musicManager->setIntroCount(0);
     _preLevel = currentLevel;
