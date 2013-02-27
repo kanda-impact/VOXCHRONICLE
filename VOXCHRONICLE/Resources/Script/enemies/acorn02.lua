@@ -3,7 +3,7 @@ Enemy = {
   level = 3,
   hp = 6,
   getExp = function(default)
-      return default
+      return 9
   end,
   item = EnemyItemNone,
   type = SkillTypeNormal,

@@ -5,21 +5,21 @@ Character = {
     if mapName == "testMap" then
       return {
        {"magic", 1},
-       {"bow", 10},
+       {"bow", 11},
        {"thunder", 6},
        {"cure", 8},
        {"tension", 4},
        {"change", 3},
-       {"shield", 10},
+       {"shield", 11},
        {"run", 1}
       }
     end
     return {
       {"magic", 1},
-      {"bow", 10},
-      {"thunder", 6},
+      {"bow", 7},
+      {"thunder", 5},
       {"cure", 8},
-      {"tension", 4},
+      {"tension", 3},
       {"change", 2},
       {"shield", 10},
       {"run", 1}

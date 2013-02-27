@@ -1,9 +1,9 @@
 Enemy = {
   species = "slime",
   level = 10,
-  hp = 6,
+  hp = 9,
   getExp = function(default)
-      return default
+      return 5
   end,
   item = EnemyItemNone,
   type = SkillTypePhysical,

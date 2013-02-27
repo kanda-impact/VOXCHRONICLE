@@ -550,7 +550,6 @@
 		07B2201416CFCB820083B865 /* enemy0 copy 29.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FF116CFCB820083B865 /* enemy0 copy 29.lua */; };
 		07B2201516CFCB820083B865 /* enemy0 copy 30.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FF216CFCB820083B865 /* enemy0 copy 30.lua */; };
 		07B2201616CFCB820083B865 /* flower01.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FF316CFCB820083B865 /* flower01.lua */; };
-		07B2201716CFCB820083B865 /* flower02.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FF416CFCB820083B865 /* flower02.lua */; };
 		07B2201816CFCB820083B865 /* gago01.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FF516CFCB820083B865 /* gago01.lua */; };
 		07B2201916CFCB820083B865 /* hornet01.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FF616CFCB820083B865 /* hornet01.lua */; };
 		07B2201A16CFCB820083B865 /* hornet02.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FF716CFCB820083B865 /* hornet02.lua */; };
@@ -1491,7 +1490,6 @@
 		07B21FF116CFCB820083B865 /* enemy0 copy 29.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "enemy0 copy 29.lua"; sourceTree = "<group>"; };
 		07B21FF216CFCB820083B865 /* enemy0 copy 30.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "enemy0 copy 30.lua"; sourceTree = "<group>"; };
 		07B21FF316CFCB820083B865 /* flower01.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = flower01.lua; sourceTree = "<group>"; };
-		07B21FF416CFCB820083B865 /* flower02.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = flower02.lua; sourceTree = "<group>"; };
 		07B21FF516CFCB820083B865 /* gago01.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gago01.lua; sourceTree = "<group>"; };
 		07B21FF616CFCB820083B865 /* hornet01.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hornet01.lua; sourceTree = "<group>"; };
 		07B21FF716CFCB820083B865 /* hornet02.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hornet02.lua; sourceTree = "<group>"; };
@@ -3924,7 +3922,6 @@
 				07B21FF216CFCB820083B865 /* enemy0 copy 30.lua */,
 				07B21FF316CFCB820083B865 /* flower01.lua */,
 				B0E29E2716DA28350058DBF7 /* tut_flower.lua */,
-				07B21FF416CFCB820083B865 /* flower02.lua */,
 				07B21FF516CFCB820083B865 /* gago01.lua */,
 				07B21FF616CFCB820083B865 /* hornet01.lua */,
 				07B21FF716CFCB820083B865 /* hornet02.lua */,
@@ -4800,7 +4797,6 @@
 				07B2201416CFCB820083B865 /* enemy0 copy 29.lua in Resources */,
 				07B2201516CFCB820083B865 /* enemy0 copy 30.lua in Resources */,
 				07B2201616CFCB820083B865 /* flower01.lua in Resources */,
-				07B2201716CFCB820083B865 /* flower02.lua in Resources */,
 				07B2201816CFCB820083B865 /* gago01.lua in Resources */,
 				07B2201916CFCB820083B865 /* hornet01.lua in Resources */,
 				07B2201A16CFCB820083B865 /* hornet02.lua in Resources */,

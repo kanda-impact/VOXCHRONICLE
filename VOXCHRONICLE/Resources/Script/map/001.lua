@@ -14,7 +14,7 @@ Map = {
     elseif level <= 5 then
       return {leaf01 = 3, acorn01 = 2, flower01 = 2 }
     else
-      return {leaf02 = 3, acorn02 = 2, flower02 = 2, doku01 = 1}
+      return {acorn02 = 2, flower02 = 2, doku01 = 1}
     end
   end,
   getEnemyPopRate = function(level)

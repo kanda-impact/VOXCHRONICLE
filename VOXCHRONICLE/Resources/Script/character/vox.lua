@@ -8,21 +8,21 @@ Character = {
     elseif mapName == "testMap" then
       return {
         {"attack", 1},
-        {"knockback", 10},
+        {"knockback", 11},
         {"slash", 8},
         {"charge", 6},
         {"tension", 4},
         {"change", 3},
-        {"shield", 10},
+        {"shield", 11},
         {"run", 1}
       }
     end
     return {
       {"attack", 1},
-      {"knockback", 10},
+      {"knockback", 6},
       {"slash", 8},
-      {"charge", 6},
-      {"tension", 4},
+      {"charge", 5},
+      {"tension", 3},
       {"change", 2},
       {"shield", 10},
       {"run", 1}
