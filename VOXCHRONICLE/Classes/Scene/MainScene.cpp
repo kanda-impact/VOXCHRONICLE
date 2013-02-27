@@ -96,7 +96,6 @@ bool MainScene::init(Map* map) {
   _characterManager = new CharacterManager();
   CCSize size = director->getWinSize();
   _musicManager = new MusicManager(music, NULL, _enemyManager, _characterManager);
-  
   _state = VCStateIntro;
   
   _messageWindow = new MessageWindow(FONT_NAME, 16, CCSizeMake(300, 40));
@@ -146,7 +145,6 @@ MainScene::~MainScene() {
   if (_qteTrigger != NULL) {
     _qteTrigger->release();
   }
-  VISS::BufferCache::sharedCache()->purgeAllBuffers();
 }
 
 void MainScene::update(float dt) {
@@ -308,7 +306,6 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
 }
 
 void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track *nextTrack, int trackNumber) {
-  
   switch (_state) {
     case VCStateMain:
     {
@@ -666,10 +663,10 @@ void MainScene::addDamageEffect() {
 void MainScene::changeMap(Map* nextMap) {
   if (_map) {
     // 前の背景画像削除
-    _map->release();
     if (_map->getBackground()) {
       this->removeNode(_map->getBackground());
     }
+    _map->release();
   }
   nextMap->retain();
   _map = nextMap;

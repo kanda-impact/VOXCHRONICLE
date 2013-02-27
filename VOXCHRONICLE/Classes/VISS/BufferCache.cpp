@@ -35,6 +35,7 @@ Buffer* BufferCache::addBuffer(const char* trackName) {
   if (_cache->objectForKey(trackName)) {
     return (Buffer*)_cache->objectForKey(trackName);
   }
+  cout << "load " << trackName << endl;
   Buffer* buffer = new Buffer(trackName);
   buffer->autorelease();
   _cache->setObject(buffer, trackName);

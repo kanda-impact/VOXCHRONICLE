@@ -20,10 +20,10 @@ Music::Music() {
 Music::Music(int trackCount) {
   _trackCount = trackCount;
   _measureCount = 0;
-  _tracks = std::vector< CCArray* >(trackCount);
+  _tracks = CCArray::create();
+  _tracks->retain();
   for (int i = 0; i < _trackCount; ++i) {
-    _tracks[i] = CCArray::create();
-    _tracks[i]->retain();
+    _tracks->addObject(CCArray::create());
   }
 }
 
@@ -31,12 +31,12 @@ Music::~Music() {
 }
 
 Track* Music::getTrack(int trackNumber) {
-  return (Track*)_tracks.at(trackNumber)->objectAtIndex(0);
+  return (Track*)((CCArray*)_tracks->objectAtIndex(trackNumber))->objectAtIndex(0);
 }
 
 Track* Music::getNextTrack(int trackNumber) {
-  if (_tracks.at(trackNumber)->count() > 1) {
-    return (Track*)_tracks.at(trackNumber)->objectAtIndex(1);
+  if (((CCArray*)_tracks->objectAtIndex(trackNumber))->count() > 1) {
+    return (Track*)((CCArray*)_tracks->objectAtIndex(trackNumber))->objectAtIndex(1);
   }
   return NULL;
 }
@@ -44,6 +44,7 @@ Track* Music::getNextTrack(int trackNumber) {
 Track* Music::setTrack(const char* fileName, int trackNumber, int index) {
   //Track* next = new Track(fileName);
   Track* next = new Track(fileName);
+  next->autorelease();
   return setTrack(next, trackNumber, index);
 }
 
@@ -51,7 +52,7 @@ Track* Music::setTrack(Track* track, int trackNumber, int index) {
   if (trackNumber >= _trackCount) {
     return NULL;
   }
-  _tracks.at(trackNumber)->replaceObjectAtIndex(index, track);
+  ((CCArray*)_tracks->objectAtIndex(trackNumber))->replaceObjectAtIndex(index, track);
   return track;
 }
 
@@ -61,6 +62,7 @@ Track* Music::pushTrack(const char* fileName, int trackNumber) {
 
 Track* Music::pushTrack(const char* fileName, int trackNumber, int repeat) {
   Track* next = new Track(fileName);
+  next->autorelease();
   for (int i = 0; i < repeat; ++i) {
     bool result = pushTrack(next, trackNumber);
     if (!result) {
@@ -74,7 +76,7 @@ Track* Music::pushTrack(Track* track, int trackNumber) {
   if (trackNumber >= _trackCount) {
     return NULL;
   }
-  _tracks.at(trackNumber)->addObject(track);
+  ((CCArray*)_tracks->objectAtIndex(trackNumber))->addObject(track);
   return track;
 }
 
@@ -82,16 +84,21 @@ bool Music::play() {
   CCScheduler* scheduler = cocos2d::CCDirector::sharedDirector()->getScheduler();
   if (scheduler->isTargetPaused(this)) {
     // 再生再開
-    for (std::vector< CCArray* >::iterator it = _tracks.begin(); it != _tracks.end(); ++it) {
-      if ((*it)->count() > 0) {
-        ((Track*)(*it)->objectAtIndex(0))->resume();
+    CCObject* obj = NULL;
+    CCARRAY_FOREACH(_tracks, obj) {
+      CCArray* track = (CCArray*)obj;
+      if (track->count() > 0) {
+        Track* t = (Track*)((CCArray*)track->objectAtIndex(0));
+        t->resume();
       }
     }
     scheduler->resumeTarget(this);
   } else {
     // 初再生
-    for (std::vector< CCArray* >::iterator it = _tracks.begin(); it != _tracks.end(); ++it) {
-      if ((*it)->count() > 0 && !((Track*)(*it)->objectAtIndex(0))->play()) {
+    CCObject* obj = NULL;
+    CCARRAY_FOREACH(_tracks, obj) {
+      CCArray* track = (CCArray*)obj;
+      if (track->count() > 0 && !((Track*)((CCArray*)track->objectAtIndex(0)))->play()) {
         return false;
       }
     }
@@ -102,19 +109,25 @@ bool Music::play() {
 }
 
 void Music::stop() {
-  for (std::vector< CCArray* >::iterator it = _tracks.begin(); it != _tracks.end(); ++it) {
-    for (int j = 0; j < (*it)->count(); ++j) {
-      ((Track*)(*it)->objectAtIndex(j))->stop();
-      ((Track*)(*it)->objectAtIndex(j))->setVolume(0);
+  CCObject* obj = NULL;
+  CCARRAY_FOREACH(_tracks, obj) {
+    CCArray* track = (CCArray*)obj;
+    if (track->count() > 0) {
+      Track* t = (Track*)((CCArray*)track->objectAtIndex(0));
+      t->stop();
+      t->setVolume(0);
     }
   }
   cocos2d::CCDirector::sharedDirector()->getScheduler()->unscheduleAllSelectorsForTarget(this);
 }
 
 void Music::pause() {
-  for (std::vector< CCArray* >::iterator it = _tracks.begin(); it != _tracks.end(); ++it) {
-    if ((*it)->count() > 0) {
-      ((Track*)(*it)->objectAtIndex(0))->pause();
+  CCObject* obj = NULL;
+  CCARRAY_FOREACH(_tracks, obj) {
+    CCArray* track = (CCArray*)obj;
+    if (track->count() > 0) {
+      Track* t = (Track*)((CCArray*)track->objectAtIndex(0));
+      t->pause();
     }
   }
   cocos2d::CCDirector::sharedDirector()->getScheduler()->pauseTarget(this);
@@ -137,10 +150,10 @@ void VISS::Music::update(float dt) {
 
 void Music::removeAllNextTracks() {
   for (int trackNumber = 0; trackNumber < _trackCount; ++trackNumber) {
-    CCArray* it = _tracks.at(trackNumber);
-    if (it->count() >= 2) {
-      for (int i = 1; i < it->count(); ++i) {
-        it->removeObjectAtIndex(i);
+    CCArray* track = (CCArray*)_tracks->objectAtIndex(trackNumber);
+    if (track->count() >= 2) {
+      for (int i = 1; i < track->count(); ++i) {
+        track->removeObjectAtIndex(i);
       }
     }
   }
@@ -165,7 +178,7 @@ void Music::onTrackDidFinish() {
     _trackDidFinishFunction(this, this->getCurrentMainTrack(), NULL, 0);
   }
   for (int trackNumber = 0; trackNumber < _trackCount; ++trackNumber) {
-    CCArray* channel = _tracks[trackNumber];
+    CCArray* channel = (CCArray*)_tracks->objectAtIndex(trackNumber);
     channel->removeObjectAtIndex(0);
     ++_measureCount;
   }
@@ -179,7 +192,7 @@ void Music::onTrackDidBack() {
 }
 
 Track* Music::getCurrentMainTrack() {
-  CCArray* channel = _tracks[0];
+  CCArray* channel = (CCArray*)_tracks->objectAtIndex(0);
   return (Track*)channel->objectAtIndex(0);
 }
 
@@ -189,9 +202,9 @@ void Music::setScheduleForMain() {
 
 void Music::setSchedule(VISS::Track *track) {
   CCScheduler* scheduler = CCDirector::sharedDirector()->getScheduler();
-  scheduler->scheduleSelector((SEL_SCHEDULE)&Music::onTrackDidBack, this, track->getDuration() / 2.0f, false, 0, 0);
-  scheduler->scheduleSelector((SEL_SCHEDULE)&Music::onTrackWillFinish, this, track->getDuration() * 0.85f, false, 0, 0);
-  scheduler->scheduleSelector((SEL_SCHEDULE)&Music::onTrackDidFinish, this, track->getDuration(), false, 0, 0);
+  scheduler->scheduleSelector(schedule_selector(Music::onTrackDidBack), this, track->getDuration() / 2.0f, false, 0, 0);
+  scheduler->scheduleSelector(schedule_selector(Music::onTrackWillFinish), this, track->getDuration() * 0.85f, false, 0, 0);
+  scheduler->scheduleSelector(schedule_selector(Music::onTrackDidFinish), this, track->getDuration(), false, 0, 0);
 }
 
 void Music::setScheduleDelay(float delay) {

@@ -37,7 +37,7 @@ Track::Track(const char* fileName) : _track(new VISS::Track::AudioTrack) {
 }
 
 Track::~Track() {
-  [_track->buffer release];
+  //[_track->buffer release];
   [_track->source release];
 }
 

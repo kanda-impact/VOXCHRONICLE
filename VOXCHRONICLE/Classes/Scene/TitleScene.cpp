@@ -14,6 +14,7 @@
 #include "FileUtils.h"
 #include "DebugScene.h"
 #include "macros.h"
+#include "BufferCache.h"
 
 using namespace cocos2d;
 
@@ -31,6 +32,7 @@ bool TitleScene::init() {
   if ( !CCLayer::init() ) {
     return false;
   }
+  VISS::BufferCache::sharedCache()->purgeAllBuffers();
   this->setTouchEnabled(true);
   CCDirector* director = CCDirector::sharedDirector();
   CCSize winSize = director->getWinSize();

@@ -208,6 +208,7 @@ CCSprite* Map::getBackground() {
   }
   if (_background == NULL) {
     _background = CCSprite::create(_backgroundImageName.c_str());
+    _background->retain();
   }
   return _background;
 }

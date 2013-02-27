@@ -35,6 +35,7 @@ MusicManager::MusicManager(Music* music, MusicSet* musicSet, EnemyManager* enemy
 }
 
 MusicManager::~MusicManager() {
+  _music->stop();
   _music->release();
   if (_musicSet) {
     _musicSet->release();
