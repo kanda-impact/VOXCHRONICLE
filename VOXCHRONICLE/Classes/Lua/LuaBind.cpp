@@ -17,6 +17,7 @@
 #include "MessageManager.h"
 #include "StatusLayer.h"
 #include "Controller.h"
+#include "EffectLayer.h"
 
 static void tolua_reg_types (lua_State* tolua_S) {
   tolua_usertype(tolua_S, "Skill");
@@ -26,6 +27,7 @@ static void tolua_reg_types (lua_State* tolua_S) {
   tolua_usertype(tolua_S, "EnemyManager");
   tolua_usertype(tolua_S, "EnemySkill");
   tolua_usertype(tolua_S, "MessageManager");
+  tolua_usertype(tolua_S, "EffectLayer");
 }
 
 // Skill
@@ -322,6 +324,12 @@ static int tolua_VC_MessageManager_pushRandomMessageFromLua(lua_State* tolua_S) 
   return 0;
 }
 
+// EffectLayer
+static int tolua_VC_EffectLayer_sharedLayer(lua_State* tolua_S) {
+  tolua_pushusertype(tolua_S, (void*)EffectLayer::sharedLayer(), "EffectLayer");
+  return 1;
+}
+
 TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_open(tolua_S);
   tolua_reg_types(tolua_S);
@@ -426,6 +434,11 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_function(tolua_S, "sharedManager", tolua_VC_MessageManager_sharedManager);
   tolua_function(tolua_S, "pushMessage", tolua_VC_MessageManager_pushMessage);
   tolua_function(tolua_S, "pushRandomMessageFromLua", tolua_VC_MessageManager_pushRandomMessageFromLua);
+  tolua_endmodule(tolua_S);
+  // EffectLayer
+  tolua_cclass(tolua_S, "EffectLayer", "EffectLayer", "CCLayer", NULL);
+  tolua_beginmodule(tolua_S, "EffectLayer");
+  tolua_function(tolua_S, "sharedLayer", tolua_VC_EffectLayer_sharedLayer);
   tolua_endmodule(tolua_S);
   return 1;
 }
