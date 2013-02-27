@@ -798,6 +798,7 @@
 		07C61EB8169033630010B6ED /* change_effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07C61EB0169033630010B6ED /* change_effect.mp3 */; };
 		07C61F75169055090010B6ED /* start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07C61F74169055090010B6ED /* start.mp3 */; };
 		07C6467116DE119200B29842 /* SEManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6466F16DE119100B29842 /* SEManager.cpp */; };
+		07C6467516DE3FB200B29842 /* EffectLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6467316DE3FB200B29842 /* EffectLayer.cpp */; };
 		07C6F6AD1615D6300084708C /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AB1615D6300084708C /* Enemy.cpp */; };
 		07C6F6B11615D6420084708C /* EnemyManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AF1615D6420084708C /* EnemyManager.cpp */; };
 		07D873F515ED1215009CC446 /* attack0.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E415ED1215009CC446 /* attack0.WAV */; };
@@ -2002,6 +2003,8 @@
 		07C61F74169055090010B6ED /* start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = start.mp3; path = Resources/SE/start.mp3; sourceTree = "<group>"; };
 		07C6466F16DE119100B29842 /* SEManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SEManager.cpp; path = Classes/Model/SEManager.cpp; sourceTree = "<group>"; };
 		07C6467216DE11E400B29842 /* SEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEManager.h; path = Classes/includes/SEManager.h; sourceTree = "<group>"; };
+		07C6467316DE3FB200B29842 /* EffectLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EffectLayer.cpp; path = Classes/UI/EffectLayer.cpp; sourceTree = "<group>"; };
+		07C6467616DE406F00B29842 /* EffectLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EffectLayer.h; path = Classes/includes/EffectLayer.h; sourceTree = "<group>"; };
 		07C6F6AB1615D6300084708C /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = Classes/Model/Enemy.cpp; sourceTree = "<group>"; };
 		07C6F6AF1615D6420084708C /* EnemyManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyManager.cpp; path = Classes/Model/EnemyManager.cpp; sourceTree = "<group>"; };
 		07D873E415ED1215009CC446 /* attack0.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack0.WAV; path = Resources/Music/VOXQUEST/attack0.WAV; sourceTree = "<group>"; };
@@ -2438,12 +2441,14 @@
 				079331A4169D85EA00AE4F93 /* DebugScene.h */,
 				07F88F2016DBC7A900FE6B2B /* EndingScene.h */,
 				07F88F2116DBC7AA00FE6B2B /* SelectScene.h */,
+				07C6467616DE406F00B29842 /* EffectLayer.h */,
 				0791585815EBA8350083D348 /* LogoScene.cpp */,
 				07D8740615ED13CD009CC446 /* MainScene.cpp */,
 				07F0D797163C1EC0005592AF /* TitleScene.cpp */,
 				079331A1169D85D300AE4F93 /* DebugScene.cpp */,
 				079D274816D2210C006D6A8F /* EndingScene.cpp */,
 				07F88F1D16DBC66800FE6B2B /* SelectScene.cpp */,
+				07C6467316DE3FB200B29842 /* EffectLayer.cpp */,
 			);
 			name = Scene;
 			sourceTree = "<group>";
@@ -5211,6 +5216,7 @@
 				079D275216D34680006D6A8F /* Skin.cpp in Sources */,
 				07F88F1F16DBC66800FE6B2B /* SelectScene.cpp in Sources */,
 				07C6467116DE119200B29842 /* SEManager.cpp in Sources */,
+				07C6467516DE3FB200B29842 /* EffectLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

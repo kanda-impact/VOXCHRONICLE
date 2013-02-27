@@ -362,39 +362,6 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
                                                   NULL));
       }
       
-      // エフェクトを追加する
-      /*CCDirector* director = CCDirector::sharedDirector();
-      SkillEffectType effectType = skill->getEffectType();
-      if (effectType == SkillEffectTypeAll || (effectType == SkillEffectTypeTarget && enemyCount > 0)) {
-        int frames = skill->getEffectFrames();
-        CCSprite* effect = CCSprite::create((string(skill->getIdentifier()) + string("0.png")).c_str());
-        CCAnimation* animation = CCAnimation::create();
-        CCRect rect;
-        if (effectType == SkillEffectTypeTarget) { // 1体のみにアニメーションを表示させるとき
-          Enemy* target = (Enemy*)enemies->objectAtIndex(0);
-          CCPoint position = ccpAdd(target->getPosition(), ccp(0, target->getContentSize().height * target->getCurrentScale(target->getRow()) * 0.5f));
-          rect = CCRectMake(0, 0, 200, 200);
-          effect->setPosition(position);
-          effect->setScale(target->getScale());
-        } else { // 全体にアニメーションを表示させるとき
-          CCPoint position = ccp(director->getWinSize().width / 2.0, director->getWinSize().height / 2.0);
-          rect = CCRectMake(0, 0, director->getWinSize().width, director->getWinSize().height);
-          effect->setPosition(position);
-        }
-        for (int i = 0; i < frames; ++i) {
-          const char* frameName = (string(skill->getIdentifier()) + lexical_cast<string>(i) + string(".png")).c_str();
-          animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath(frameName).c_str(), rect));
-        }
-        animation->setDelayPerUnit(2.0 / 60.0);
-        effect->runAction(CCSequence::create(CCAnimate::create(animation),
-                                             CCFadeOut::create(0.1f),
-                                             CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
-                                             NULL));
-        _enemyManager->addChild(effect, MainSceneZOrderEffect);
-      }*/
-      
-      
-      
       // メッセージを追加する
       CCArray* messages = skill->getMessages();
       if (messages->count() > 0) {
