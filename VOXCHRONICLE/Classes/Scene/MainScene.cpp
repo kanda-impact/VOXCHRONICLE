@@ -29,6 +29,8 @@
 #include "EndingScene.h"
 #include "SEManager.h"
 
+#include "CCRemoveFromParentAction.h"
+
 using namespace std;
 using namespace cocos2d;
 using namespace VISS;
@@ -70,6 +72,7 @@ bool MainScene::init(Map* map) {
   music->setTrackWillFinishFunction(boost::bind(&MainScene::trackWillFinishPlaying, this, _1, _2, _3, _4));
   
   _skin = NULL;
+  _effectLayer = EffectLayer::sharedLayer();
   
   _pausedTargets = NULL;
   
@@ -124,6 +127,8 @@ bool MainScene::init(Map* map) {
   _qteTrigger = NULL;
   _isLevelUped = false;
   _preLevel = _level->getLevel();
+  
+  this->addChild(_effectLayer, MainSceneZOrderEffect);
   
   return true;
 }
@@ -264,7 +269,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       animation->setDelayPerUnit(2.0 / 60.0);
       effect->runAction(CCSequence::create(CCAnimate::create(animation),
                                            CCFadeOut::create(0.1f),
-                                           CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
+                                           CCRemoveFromParentAction::create(),
                                            NULL));
       _enemyManager->addChild(effect, MainSceneZOrderEffect);
       // ぷるぷるさせる
@@ -358,7 +363,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
                                                   CCDelayTime::create(0.5),
                                                   CCFadeOut::create(0.2),
-                                                  CCCallFuncN::create(damageLabel, callfuncN_selector(MainScene::removeNode)),
+                                                  CCRemoveFromParentAction::create(),
                                                   NULL));
       }
       
@@ -375,34 +380,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         MessageManager::sharedManager()->pushRandomMessageFromLua("empty"); // MP切れメッセージ
       }
       
-      // カットインを追加する
-      string cutinFile = "Image/" + string(skill->getIdentifier()) + "_icon.png";
-      CCSprite* cutin = CCSprite::create(FileUtils::getFilePath(cutinFile.c_str()).c_str());
-      if (cutin != NULL) {
-        const int height = 100;
-        cutin->setPosition(ccp(0, height));
-        cutin->setScale(0.5);
-        float duration = _musicManager->getMusic()->getCurrentMainTrack()->getDuration();
-        CCSize size = CCDirector::sharedDirector()->getWinSize();
-        if (isHit) {
-          // 成功したとき、カットインを挿入
-          cutin->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)),
-                                              CCDelayTime::create(duration * 0.25),
-                                              CCMoveTo::create(duration * 0.125, ccp(size.width, height)),
-                                              CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
-                                              NULL));
-        } else {
-          // ミスったとき、コマンドを落とす
-          cutin->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)),
-                                              CCRotateBy::create(duration * 0.125, 45),
-                                              CCDelayTime::create(duration * 0.125),
-                                              CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, -100)),
-                                              CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
-                                              NULL));
-        }
-        this->addChild(cutin, MainSceneZOrderCutIn);
-        
-      }
+      _effectLayer->addCutin(skill, isHit, _musicManager->getMusic()->getCurrentMainTrack()->getDuration());
       
       if (isHit) {
         // ヒットしたとき、SEがあればSEをならしてやる
@@ -554,10 +532,6 @@ void MainScene::onGameOver() {
   _skin->getController()->setVisible(false);
 }
 
-void MainScene::removeNode(CCNode* node) {
-  node->getParent()->removeChild(node, true);
-}
-
 void MainScene::updateFocus() {
   Enemy* nearest = _enemyManager->getNearestEnemy();
   if (nearest) {
@@ -590,7 +564,7 @@ void MainScene::addDamageEffect() {
     damageLabel->runAction(CCSequence::create(CCScaleTo::create(0.1, 0.8),
                                               CCDelayTime::create(0.5),
                                               CCScaleTo::create(0.2, 0.0),
-                                              CCCallFuncN::create(damageLabel, callfuncN_selector(MainScene::removeNode)),
+                                              CCRemoveFromParentAction::create(),
                                               NULL));
     sumDamage += damage;
     if (damageType == DamageTypeDeath) {
@@ -632,7 +606,7 @@ void MainScene::changeMap(Map* nextMap) {
   if (_map) {
     // 前の背景画像削除
     if (_map->getBackground()) {
-      this->removeNode(_map->getBackground());
+      this->removeChild(_map->getBackground(), true);
     }
     _map->release();
   }
@@ -678,7 +652,7 @@ void MainScene::changeSkin(Skin *newSkin, bool crossFade) {
       CCARRAY_FOREACH(nodes, obj) {
         CCNode* node = (CCNode*)obj;
         node->runAction(CCSequence::create(CCFadeOut::create(kCrossFadeSpeed),
-                                           CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
+                                           CCRemoveFromParentAction::create(),
                                            NULL));
       }
     } else {
@@ -817,7 +791,7 @@ void MainScene::changeMusic(MusicSet* mSet, bool enablePreload) {
   musicInfo->runAction(CCSequence::create(CCMoveTo::create(0.5f, ccp(360, 40)),
                                           CCDelayTime::create(2.0f),
                                           CCMoveTo::create(0.5f, ccp(600, 40)),
-                                          CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
+                                          CCRemoveFromParentAction::create(),
                                           NULL));
 }
 

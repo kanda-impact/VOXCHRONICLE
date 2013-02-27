@@ -19,11 +19,12 @@ using namespace cocos2d;
 class EffectLayer :public CCLayer {
  private:
  public:
+  static EffectLayer* sharedLayer();
   EffectLayer();
   ~EffectLayer();
   void addSkillEffect(Skill* skill, CCArray* targets);
   void addTutorialWindow();
-  void addCutin(Skill* skill);
+  void addCutin(Skill *skill, bool succeed, float duration);
 };
 
 #endif /* defined(__VOXCHRONICLE__EffectLayer__) */

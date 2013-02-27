@@ -18,9 +18,10 @@ using namespace cocos2d;
  This class is ported from CCRemoveFromParentAction on Kobold2D.
 */
 
-class CCRemoveFromParentAction :public CCActionInstant {
- public:
-  virtual void startWithTarget(cocos2d::CCNode *pTarget);
+class CC_DLL CCRemoveFromParentAction :public CCActionInstant {
+public:
+  static CCRemoveFromParentAction* create();
+  virtual void update(float time);
 };
 
 #endif /* defined(__VOXCHRONICLE__CCRemoveFromParentAction__) */

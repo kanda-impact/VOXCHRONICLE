@@ -9,8 +9,18 @@
 #include "EffectLayer.h"
 #include "FileUtils.h"
 #include <boost/lexical_cast.hpp>
+#include "CCRemoveFromParentAction.h"
 
 using namespace boost;
+
+static EffectLayer* _shared = NULL;
+
+EffectLayer* EffectLayer::sharedLayer() {
+  if (!_shared) {
+    _shared = new EffectLayer();
+  }
+  return _shared;
+}
 
 EffectLayer::EffectLayer() {
 }
@@ -44,10 +54,10 @@ void EffectLayer::addSkillEffect(Skill *skill, CCArray* targets) {
       animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath(frameName).c_str(), rect));
     }
     animation->setDelayPerUnit(2.0 / 60.0);
-    /*effect->runAction(CCSequence::create(CCAnimate::create(animation),
+    effect->runAction(CCSequence::create(CCAnimate::create(animation),
                                          CCFadeOut::create(0.1f),
-                                         CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
-                                         NULL));*/
+                                         CCRemoveFromParentAction::create(),
+                                         NULL));
     this->addChild(effect);
   }
 }
@@ -55,5 +65,31 @@ void EffectLayer::addSkillEffect(Skill *skill, CCArray* targets) {
 void EffectLayer::addTutorialWindow() {
 }
 
-void EffectLayer::addCutin(Skill *skill) {
+void EffectLayer::addCutin(Skill *skill, bool succeed, float duration) {
+  // カットインを追加する
+  string cutinFile = "Image/" + string(skill->getIdentifier()) + "_icon.png";
+  CCSprite* cutin = CCSprite::create(FileUtils::getFilePath(cutinFile.c_str()).c_str());
+  if (cutin != NULL) {
+    const int height = 100;
+    cutin->setPosition(ccp(0, height));
+    cutin->setScale(0.5);
+    CCSize size = CCDirector::sharedDirector()->getWinSize();
+    if (succeed) {
+      // 成功したとき、カットインを挿入
+      cutin->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)),
+                                          CCDelayTime::create(duration * 0.25),
+                                          CCMoveTo::create(duration * 0.125, ccp(size.width, height)),
+                                          CCRemoveFromParentAction::create(),
+                                          NULL));
+    } else {
+      // ミスったとき、コマンドを落とす
+      cutin->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)),
+                                          CCRotateBy::create(duration * 0.125, 45),
+                                          CCDelayTime::create(duration * 0.125),
+                                          CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, -100)),
+                                          CCRemoveFromParentAction::create(),
+                                          NULL));
+    }
+    this->addChild(cutin);
+  }
 }

@@ -25,6 +25,8 @@
 #include "MusicManager.h"
 #include "Skin.h"
 
+#include "EffectLayer.h"
+
 typedef enum {
   VCStateIntro,
   VCStateMain,
@@ -54,6 +56,7 @@ class MainScene : public CCLayer {
   CCSprite* _focus;
   QTETrigger* _qteTrigger;
   Skin* _skin;
+  EffectLayer* _effectLayer;
   
   Level* _level;
   Map* _map;
@@ -74,8 +77,6 @@ class MainScene : public CCLayer {
   
   void update(float dt);
   bool checkLevelUp();
-  
-  void removeNode(CCNode *node);
   
   void updateFocus();
   void addDamageEffect();
