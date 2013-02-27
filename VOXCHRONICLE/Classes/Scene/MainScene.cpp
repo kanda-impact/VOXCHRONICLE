@@ -27,6 +27,7 @@
 #include "MessageManager.h"
 #include "BufferCache.h"
 #include "EndingScene.h"
+#include "SEManager.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -362,7 +363,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       }
       
       // エフェクトを追加する
-      CCDirector* director = CCDirector::sharedDirector();
+      /*CCDirector* director = CCDirector::sharedDirector();
       SkillEffectType effectType = skill->getEffectType();
       if (effectType == SkillEffectTypeAll || (effectType == SkillEffectTypeTarget && enemyCount > 0)) {
         int frames = skill->getEffectFrames();
@@ -390,7 +391,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
                                              CCCallFuncN::create(this, callfuncN_selector(MainScene::removeNode)),
                                              NULL));
         _enemyManager->addChild(effect, MainSceneZOrderEffect);
-      }
+      }*/
       
       
       
@@ -444,32 +445,32 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
           // 今は当たった敵1体目のダメージタイプをとってきてならしているが、
           // 複数体に同時に当たったときは遅延して順番にならしても良さそう
           if (damageType == DamageTypeShieldBreak) {
-            CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("shield_break.mp3").c_str());
+            SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("shield_break.mp3").c_str());
           } else if (damageType == DamageTypeBarrierBreak) {
-            CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("barrier_break.mp3").c_str());
+            SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("barrier_break.mp3").c_str());
           } else if (skill->hasSE()) {
             // 対象が自分、もしくは対象が1体以上いたとき、ダメージ効果音をならします
             seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
-            CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
+            SEManager::sharedManager()->registerEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
           }
         }  else if (skill->getRange() == SkillRangeSelf && skill->hasSE()) { // 対象が自分だけ、かつSEを持っているとき
           stringstream seStream;
           // 効果音をならします
           seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
-          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
+          SEManager::sharedManager()->registerEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
         }
       } else if (!isHit) { // ヒットしていないとき、強制的にミス音にする
         if (enemyCount == 0) {
           // 誰もいないときピロリ音
-          CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("miss.caf").c_str());
+          SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("miss.caf").c_str());
         } else {
           DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(0))->getValue();
           if (damageType == DamageTypePhysicalInvalid) {
             // 1体だけ敵がいるのに当たらず、盾持ちだったとき
-            CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("shield_invalid.mp3").c_str());
+            SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("shield_invalid.mp3").c_str());
           } else if (damageType == DamageTypeMagicalInvalid) {
             // バリア持ちだったとき
-            CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("barrier_invalid.mp3").c_str());
+            SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("barrier_invalid.mp3").c_str());
           }
         }
         
@@ -526,7 +527,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _skin->getController()->setEnable(false);
       _qteTrigger = new QTETrigger(_enemyManager);
       this->addChild(_qteTrigger, MainSceneZOrderUI);
-      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("qte.mp3").c_str());
+      SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("qte.mp3").c_str());
     }
     }
       break;
@@ -561,7 +562,7 @@ bool MainScene::checkLevelUp() {
     _preLevel = currentLevel;
     _map->performOnLevel(currentLevel, _characterManager, _enemyManager); // スクリプトを呼んでやる
     _characterManager->updateParameters();
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/levelup.mp3").c_str());
+    SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/levelup.mp3").c_str());
     _level = _map->createLevel(currentLevel, _characterManager);
     
     _enemyManager->setLevel(_level);
@@ -637,7 +638,7 @@ void MainScene::addDamageEffect() {
   
   if (sumDamage > 0) {
     // 画面点滅させて音を鳴らす
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/damage.mp3").c_str());
+    SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/damage.mp3").c_str());
     BlinkLayer* bLayer = new BlinkLayer(ccc4(255, 0, 0, 255));
     bLayer->autorelease();
     this->addChild(bLayer, MainSceneZOrderUI);
@@ -656,7 +657,7 @@ void MainScene::addDamageEffect() {
   if (isDead) { // 死んだとき
     this->onGameOver();
   } else if (isShield) { // 盾装備してたとき
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/guard.mp3").c_str());
+    SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/guard.mp3").c_str());
   }
 }
 

@@ -204,7 +204,7 @@ void Music::setSchedule(VISS::Track *track) {
   CCScheduler* scheduler = CCDirector::sharedDirector()->getScheduler();
   scheduler->scheduleSelector(schedule_selector(Music::onTrackDidBack), this, track->getDuration() / 2.0f, false, 0, 0);
   scheduler->scheduleSelector(schedule_selector(Music::onTrackWillFinish), this, track->getDuration() * 0.85f, false, 0, 0);
-  scheduler->scheduleSelector(schedule_selector(Music::onTrackDidFinish), this, track->getDuration(), false, 0, 0);
+  scheduler->scheduleSelector(schedule_selector(Music::onTrackDidFinish), this, track->getDuration() - 0.02f, false, 0, 0);
 }
 
 void Music::setScheduleDelay(float delay) {
