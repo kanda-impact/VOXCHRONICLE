@@ -19,7 +19,7 @@ Skill = {
   end,
   getPower = function(characterManager)
     local tension = characterManager:getTension()
-    t = {1, 3, 5, 8, 10}
+    t = {1, 2, 4, 6, 8}
     return t[tension + 1]
   end,
   skillRange = SkillRangeSelf,
