@@ -799,6 +799,7 @@
 		07C61F75169055090010B6ED /* start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07C61F74169055090010B6ED /* start.mp3 */; };
 		07C6467116DE119200B29842 /* SEManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6466F16DE119100B29842 /* SEManager.cpp */; };
 		07C6467516DE3FB200B29842 /* EffectLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6467316DE3FB200B29842 /* EffectLayer.cpp */; };
+		07C6467916DE48D000B29842 /* CCRemoveFromParentAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6467716DE48D000B29842 /* CCRemoveFromParentAction.cpp */; };
 		07C6F6AD1615D6300084708C /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AB1615D6300084708C /* Enemy.cpp */; };
 		07C6F6B11615D6420084708C /* EnemyManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AF1615D6420084708C /* EnemyManager.cpp */; };
 		07D873F515ED1215009CC446 /* attack0.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E415ED1215009CC446 /* attack0.WAV */; };
@@ -2005,6 +2006,8 @@
 		07C6467216DE11E400B29842 /* SEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEManager.h; path = Classes/includes/SEManager.h; sourceTree = "<group>"; };
 		07C6467316DE3FB200B29842 /* EffectLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EffectLayer.cpp; path = Classes/UI/EffectLayer.cpp; sourceTree = "<group>"; };
 		07C6467616DE406F00B29842 /* EffectLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EffectLayer.h; path = Classes/includes/EffectLayer.h; sourceTree = "<group>"; };
+		07C6467716DE48D000B29842 /* CCRemoveFromParentAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCRemoveFromParentAction.cpp; sourceTree = "<group>"; };
+		07C6467A16DE4BB800B29842 /* CCRemoveFromParentAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCRemoveFromParentAction.h; path = VOXCHRONICLE/Classes/includes/CCRemoveFromParentAction.h; sourceTree = SOURCE_ROOT; };
 		07C6F6AB1615D6300084708C /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = Classes/Model/Enemy.cpp; sourceTree = "<group>"; };
 		07C6F6AF1615D6420084708C /* EnemyManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyManager.cpp; path = Classes/Model/EnemyManager.cpp; sourceTree = "<group>"; };
 		07D873E415ED1215009CC446 /* attack0.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack0.WAV; path = Resources/Music/VOXQUEST/attack0.WAV; sourceTree = "<group>"; };
@@ -2268,10 +2271,12 @@
 			isa = PBXGroup;
 			children = (
 				0731E4F416181060006AEF3D /* Utils.cpp */,
-				07F0D758163BAF51005592AF /* Utils.h */,
-				07F0D778163BE85E005592AF /* FileUtils.h */,
+				07C6467716DE48D000B29842 /* CCRemoveFromParentAction.cpp */,
 				07DCFDA11633461A00341769 /* FileUtils.cpp */,
 				0772FEB416C260BA00A50931 /* VQString.mm */,
+				07C6467A16DE4BB800B29842 /* CCRemoveFromParentAction.h */,
+				07F0D758163BAF51005592AF /* Utils.h */,
+				07F0D778163BE85E005592AF /* FileUtils.h */,
 				0772FEB716C260D300A50931 /* VQString.h */,
 			);
 			name = Util;
@@ -5217,6 +5222,7 @@
 				07F88F1F16DBC66800FE6B2B /* SelectScene.cpp in Sources */,
 				07C6467116DE119200B29842 /* SEManager.cpp in Sources */,
 				07C6467516DE3FB200B29842 /* EffectLayer.cpp in Sources */,
+				07C6467916DE48D000B29842 /* CCRemoveFromParentAction.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
