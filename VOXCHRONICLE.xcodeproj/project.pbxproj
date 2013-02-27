@@ -856,6 +856,7 @@
 		07E135261621CABF00CCF72E /* character.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07E135251621CABF00CCF72E /* character.lua */; };
 		07E135731624AC4700CCF72E /* cure.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07E135721624AC4700CCF72E /* cure.lua */; };
 		07F0D799163C1EC1005592AF /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F0D797163C1EC0005592AF /* TitleScene.cpp */; };
+		07F166FE16DDD8D8007DCB3F /* space_test.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F166FD16DDD8D8007DCB3F /* space_test.lua */; };
 		07F40F10163D0FC0009FC104 /* Music.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F40F0F163D0FC0009FC104 /* Music.cpp */; };
 		07F88F1816DB842100FE6B2B /* endingC.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F88F1716DB842100FE6B2B /* endingC.mp3 */; };
 		07F88F1B16DB8FF600FE6B2B /* jfish.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F88F1916DB8FF600FE6B2B /* jfish.lua */; };
@@ -2113,6 +2114,7 @@
 		07F0D779163BE867005592AF /* MessageWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageWindow.h; path = Classes/includes/MessageWindow.h; sourceTree = "<group>"; };
 		07F0D797163C1EC0005592AF /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleScene.cpp; path = Classes/Scene/TitleScene.cpp; sourceTree = "<group>"; };
 		07F0D79A163C1EFD005592AF /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = Classes/includes/TitleScene.h; sourceTree = "<group>"; };
+		07F166FD16DDD8D8007DCB3F /* space_test.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = space_test.lua; path = map/space_test.lua; sourceTree = "<group>"; };
 		07F40F0F163D0FC0009FC104 /* Music.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Music.cpp; path = Classes/VISS/Music.cpp; sourceTree = "<group>"; };
 		07F470721691AD340062975F /* EnemySkill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemySkill.h; path = Classes/includes/EnemySkill.h; sourceTree = "<group>"; };
 		07F470731691AD340062975F /* MusicSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicSet.h; path = Classes/includes/MusicSet.h; sourceTree = "<group>"; };
@@ -2275,6 +2277,7 @@
 		0731E4FA16184A59006AEF3D /* map */ = {
 			isa = PBXGroup;
 			children = (
+				07F166FD16DDD8D8007DCB3F /* space_test.lua */,
 				075B92E116D51FFA00DBB2D1 /* attaq.lua */,
 				077EDE2416874B1F009B9F6B /* 3b.lua */,
 				079D274416D21B83006D6A8F /* bossdebug.lua */,
@@ -4898,6 +4901,7 @@
 				07F88F1816DB842100FE6B2B /* endingC.mp3 in Resources */,
 				07F88F1B16DB8FF600FE6B2B /* jfish.lua in Resources */,
 				07F88F1C16DB8FF600FE6B2B /* whale.lua in Resources */,
+				07F166FE16DDD8D8007DCB3F /* space_test.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

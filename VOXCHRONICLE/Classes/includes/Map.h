@@ -31,6 +31,7 @@ class Map :public CCObject {
   string _name;
   string _backgroundImageName;
   string _ending;
+  CCSprite* _background;
   LuaObject* _lua;
   list< pair<string, int> >* _fixedEnemyTable; // 固定モンスターテーブル
   MusicSet* _wayMusic;
@@ -46,6 +47,7 @@ class Map :public CCObject {
   string getName();
   string getIdentifier();
   string getEndingName();
+  CCSprite* getBackground();
   CCArray* getFixedEnemies(int preExp, int currentExp);
   CCArray* getNextMaps();
   bool isBossStage();

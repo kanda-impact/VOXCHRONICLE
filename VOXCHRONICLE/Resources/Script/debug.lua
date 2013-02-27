@@ -5,7 +5,7 @@ DebugData = {
     "3b",
     "2a",
     "ttn",
-    "2b",
+    "space_test",
     "shaba_map",
     "bossdebug",
     "map_select",
