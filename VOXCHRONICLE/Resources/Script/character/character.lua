@@ -28,7 +28,7 @@ function getLevel(exp)
 end
 
 function getMaxHP(level)
-  return 5 + 10 * math.floor(level / 10)
+  return 5 +  math.floor(level)
 end
 
 function getMaxMP(level)
