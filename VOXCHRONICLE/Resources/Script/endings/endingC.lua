@@ -1,6 +1,6 @@
 Ending = {
-  background = "endingB.png",
-  music = "endingB.mp3",
+  background = "endingC.png",
+  music = "endingC.mp3",
   duration = 21,
   text = [[
     「わぁい！やったよラスカ！ついにクリアしたよ！すごいね！」

@@ -802,6 +802,7 @@
 		07C6467916DE48D000B29842 /* CCRemoveFromParentAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6467716DE48D000B29842 /* CCRemoveFromParentAction.cpp */; };
 		07C6467D16E0D5DF00B29842 /* volca_finish0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07C6467B16E0D5DF00B29842 /* volca_finish0.caf */; };
 		07C6467E16E0D5DF00B29842 /* volca_finish1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07C6467C16E0D5DF00B29842 /* volca_finish1.caf */; };
+		07C6468016E0DB2500B29842 /* endingC.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07C6467F16E0DB2500B29842 /* endingC.lua */; };
 		07C6F6AD1615D6300084708C /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AB1615D6300084708C /* Enemy.cpp */; };
 		07C6F6B11615D6420084708C /* EnemyManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AF1615D6420084708C /* EnemyManager.cpp */; };
 		07D873F515ED1215009CC446 /* attack0.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E415ED1215009CC446 /* attack0.WAV */; };
@@ -2012,6 +2013,7 @@
 		07C6467A16DE4BB800B29842 /* CCRemoveFromParentAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCRemoveFromParentAction.h; path = VOXCHRONICLE/Classes/includes/CCRemoveFromParentAction.h; sourceTree = SOURCE_ROOT; };
 		07C6467B16E0D5DF00B29842 /* volca_finish0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = volca_finish0.caf; sourceTree = "<group>"; };
 		07C6467C16E0D5DF00B29842 /* volca_finish1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = volca_finish1.caf; sourceTree = "<group>"; };
+		07C6467F16E0DB2500B29842 /* endingC.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = endingC.lua; path = endings/endingC.lua; sourceTree = "<group>"; };
 		07C6F6AB1615D6300084708C /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = Classes/Model/Enemy.cpp; sourceTree = "<group>"; };
 		07C6F6AF1615D6420084708C /* EnemyManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyManager.cpp; path = Classes/Model/EnemyManager.cpp; sourceTree = "<group>"; };
 		07D873E415ED1215009CC446 /* attack0.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack0.WAV; path = Resources/Music/VOXQUEST/attack0.WAV; sourceTree = "<group>"; };
@@ -2829,6 +2831,7 @@
 			isa = PBXGroup;
 			children = (
 				079D274C16D223C1006D6A8F /* endingB.lua */,
+				07C6467F16E0DB2500B29842 /* endingC.lua */,
 			);
 			name = endings;
 			sourceTree = "<group>";
@@ -4921,6 +4924,7 @@
 				07F166FE16DDD8D8007DCB3F /* space_test.lua in Resources */,
 				07C6467D16E0D5DF00B29842 /* volca_finish0.caf in Resources */,
 				07C6467E16E0D5DF00B29842 /* volca_finish1.caf in Resources */,
+				07C6468016E0DB2500B29842 /* endingC.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
