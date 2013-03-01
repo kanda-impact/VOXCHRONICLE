@@ -23,7 +23,7 @@ class EffectLayer :public CCLayer {
   EffectLayer();
   ~EffectLayer();
   void addSkillEffect(Skill* skill, CCArray* targets);
-  void addTutorialWindow();
+  CCSprite* addTutorialWindow();
   void addCutin(Skill *skill, bool succeed, float duration);
 };
 

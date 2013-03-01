@@ -206,6 +206,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     if (_musicManager->getIntroCount() == maxIntroCount) { // イントロが終わったとき
       _musicManager->setIntroCount(0);
       _skin->getController()->setEnable(true);
+      _map->performOnLevel(_level->getLevel(), _characterManager, _enemyManager); // スクリプトを呼んでやる
       _state = VCStateMain;
     }
   }

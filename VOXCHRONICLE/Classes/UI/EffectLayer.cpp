@@ -62,7 +62,14 @@ void EffectLayer::addSkillEffect(Skill *skill, CCArray* targets) {
   }
 }
 
-void EffectLayer::addTutorialWindow() {
+CCSprite* EffectLayer::addTutorialWindow() {
+  CCSprite* window = CCSprite::create("tutorial_window.png");
+  CCDirector* director = CCDirector::sharedDirector();
+  window->setPosition(ccp(director->getWinSize().width / 2.0, director->getWinSize().height / 2.0f));
+  window->setScale(0);
+  window->runAction(CCScaleTo::create(0.3f, 1.0));
+  this->addChild(window);
+  return window;
 }
 
 void EffectLayer::addCutin(Skill *skill, bool succeed, float duration) {

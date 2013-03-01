@@ -330,6 +330,13 @@ static int tolua_VC_EffectLayer_sharedLayer(lua_State* tolua_S) {
   return 1;
 }
 
+static int tolua_VC_EffectLayer_addTutorialWindow(lua_State* tolua_S) {
+  EffectLayer* self = (EffectLayer*)tolua_tousertype(tolua_S, 1, 0);
+  CCSprite* window = self->addTutorialWindow();
+  tolua_pushusertype(tolua_S, window, "CCSprite");
+  return 1;
+}
+
 TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_open(tolua_S);
   tolua_reg_types(tolua_S);
@@ -439,6 +446,7 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_cclass(tolua_S, "EffectLayer", "EffectLayer", "CCLayer", NULL);
   tolua_beginmodule(tolua_S, "EffectLayer");
   tolua_function(tolua_S, "sharedLayer", tolua_VC_EffectLayer_sharedLayer);
+  tolua_function(tolua_S, "addTutorialWindow", tolua_VC_EffectLayer_addTutorialWindow);
   tolua_endmodule(tolua_S);
   return 1;
 }
