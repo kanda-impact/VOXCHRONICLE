@@ -45,9 +45,9 @@ typedef enum {
   MainSceneZOrderEnemyManager,
   MainSceneZOrderStatus,
   MainSceneZOrderController,
-  MainSceneZOrderEffect,
   MainSceneZOrderFocus,
   MainSceneZOrderDamageLabel,
+  MainSceneZOrderEffect,
   MainSceneZOrderCutIn,
   MainSceneZOrderMessageWindow,
   MainSceneZOrderUI
@@ -130,6 +130,8 @@ bool MainScene::init(Map* map) {
   
   this->addChild(_effectLayer, MainSceneZOrderEffect);
   
+  this->setTouchEnabled(true);
+  
   return true;
 }
 
@@ -151,6 +153,7 @@ MainScene::~MainScene() {
   if (_qteTrigger != NULL) {
     _qteTrigger->release();
   }
+  _effectLayer->removeAllChildrenWithCleanup(true);
 }
 
 void MainScene::update(float dt) {
@@ -222,7 +225,10 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     Skill* skill = NULL;
     if (_characterManager->isPerforming()) {
       skill = _characterManager->getCurrentSkill();
-    } else {
+    } else if (_effectLayer->getTutorialWindow()) { // チュートリアルウィンドウが出ているとき
+      _state = VCStateWindow;
+      _skin->getController()->setEnable(false); // コントローラーを無効に
+    }else {
       skill = _skin->getController()->currentTriggerSkill();
       //_controller->resetAllTriggers(); // このタイミングでトリガーをOFFにしてやる
     }
@@ -308,7 +314,13 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     } else {
       _musicManager->pushSilentTracks(); // 選択されてなかったら、次の小節も無音
     }
+  } else if (_state == VCStateWindow) { // ウィンドウが出てたら
+    _musicManager->pushNextTracks(NULL, _currentSkillInfo); // 常にwait
+    if (!_effectLayer->getTutorialWindow()) {
+      _state = VCStateMain;
+    }
   }
+  
   this->updateGUI(); // GUI更新
 }
 
@@ -483,6 +495,18 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
   
   // マーカーを再同期
   _skin->getStatusLayer()->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
+}
+
+void MainScene::registerWithTouchDispatcher() {
+  CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+}
+
+bool MainScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
+  if (_state == VCStateWindow) {
+    _effectLayer->removeChild(_effectLayer->getTutorialWindow(), true);
+    _state = VCStateMain;
+  }
+  return true;
 }
 
 void MainScene::updateGUI() {

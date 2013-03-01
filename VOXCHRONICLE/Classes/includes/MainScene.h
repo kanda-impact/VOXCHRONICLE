@@ -33,6 +33,7 @@ typedef enum {
   VCStateGameOver,
   VCStateFinish,
   VCStateBoss,
+  VCStateWindow,
   VCStateMapSelect,
   VCStateQTEWait,
   VCStateQTEFinish,
@@ -83,13 +84,13 @@ class MainScene : public CCLayer {
   void changeMap(Map* nextMap);
   void changeMusic(MusicSet* mSet, bool enablePreload);
   
-  //void pushIntroTracks();
-  //void pushFinishTracks();
-  
   void startBossBattle();
   void gotoNextStage();
   void onFinishTracksCompleted();
   void changeSkin(Skin* newSkin, bool crossFade);
+  
+  virtual bool ccTouchBegan(cocos2d::CCTouch* pTouch, cocos2d::CCEvent* pEvent);
+  virtual void registerWithTouchDispatcher();
   
  public:
   virtual bool init(Map* map);

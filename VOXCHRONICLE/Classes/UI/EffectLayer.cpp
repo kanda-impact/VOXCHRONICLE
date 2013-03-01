@@ -13,6 +13,10 @@
 
 using namespace boost;
 
+typedef enum {
+  EffectLayerTagTutorial
+} EffectLayerTag;
+
 static EffectLayer* _shared = NULL;
 
 EffectLayer* EffectLayer::sharedLayer() {
@@ -68,7 +72,7 @@ CCSprite* EffectLayer::addTutorialWindow() {
   window->setPosition(ccp(director->getWinSize().width / 2.0, director->getWinSize().height / 2.0f));
   window->setScale(0);
   window->runAction(CCScaleTo::create(0.3f, 1.0));
-  this->addChild(window);
+  this->addChild(window, 0, EffectLayerTagTutorial);
   return window;
 }
 
@@ -99,4 +103,8 @@ void EffectLayer::addCutin(Skill *skill, bool succeed, float duration) {
     }
     this->addChild(cutin);
   }
+}
+
+CCSprite* EffectLayer::getTutorialWindow() {
+  return (CCSprite*)this->getChildByTag(EffectLayerTagTutorial);
 }

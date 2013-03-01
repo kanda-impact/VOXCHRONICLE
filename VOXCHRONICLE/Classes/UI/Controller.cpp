@@ -98,6 +98,7 @@ bool Controller::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
   }
   if (!_enable || !isTouched) {
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/touch.mp3").c_str());
+    return false;
   }
   return true;
 }

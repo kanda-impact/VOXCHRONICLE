@@ -14,7 +14,7 @@ Map = {
   onLevel = function(level, characterManager, enemyManager)
     if level == 1 then
       local layer = EffectLayer:sharedLayer()
-      -- layer:addTutorialWindow()
+      layer:addTutorialWindow()
     end
   end,
   getEnemyPopRate = function(level)
