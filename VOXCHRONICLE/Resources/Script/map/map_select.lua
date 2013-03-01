@@ -1,6 +1,6 @@
 Map = {
   name = "マップセレクトテスト面",
-  wayMusic = "dub",
+  wayMusic = "volca",
   bossMusic = "",
   ending = "",
   backgroundImage = "",

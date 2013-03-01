@@ -803,6 +803,7 @@
 		07C6467D16E0D5DF00B29842 /* volca_finish0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07C6467B16E0D5DF00B29842 /* volca_finish0.caf */; };
 		07C6467E16E0D5DF00B29842 /* volca_finish1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07C6467C16E0D5DF00B29842 /* volca_finish1.caf */; };
 		07C6468016E0DB2500B29842 /* endingC.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07C6467F16E0DB2500B29842 /* endingC.lua */; };
+		07C6468216E0DCFF00B29842 /* endingB.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07C6468116E0DCFF00B29842 /* endingB.mp3 */; };
 		07C6F6AD1615D6300084708C /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AB1615D6300084708C /* Enemy.cpp */; };
 		07C6F6B11615D6420084708C /* EnemyManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AF1615D6420084708C /* EnemyManager.cpp */; };
 		07D873F515ED1215009CC446 /* attack0.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E415ED1215009CC446 /* attack0.WAV */; };
@@ -2014,6 +2015,7 @@
 		07C6467B16E0D5DF00B29842 /* volca_finish0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = volca_finish0.caf; sourceTree = "<group>"; };
 		07C6467C16E0D5DF00B29842 /* volca_finish1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = volca_finish1.caf; sourceTree = "<group>"; };
 		07C6467F16E0DB2500B29842 /* endingC.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = endingC.lua; path = endings/endingC.lua; sourceTree = "<group>"; };
+		07C6468116E0DCFF00B29842 /* endingB.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = endingB.mp3; path = Resources/Music/general/endingB.mp3; sourceTree = "<group>"; };
 		07C6F6AB1615D6300084708C /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = Classes/Model/Enemy.cpp; sourceTree = "<group>"; };
 		07C6F6AF1615D6420084708C /* EnemyManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyManager.cpp; path = Classes/Model/EnemyManager.cpp; sourceTree = "<group>"; };
 		07D873E415ED1215009CC446 /* attack0.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack0.WAV; path = Resources/Music/VOXQUEST/attack0.WAV; sourceTree = "<group>"; };
@@ -4128,6 +4130,7 @@
 		07E1350C1621812F00CCF72E /* general */ = {
 			isa = PBXGroup;
 			children = (
+				07C6468116E0DCFF00B29842 /* endingB.mp3 */,
 				07F88F1716DB842100FE6B2B /* endingC.mp3 */,
 				070E4046163CB3BE00A76BEA /* gameover.mp3 */,
 				070E403F163CB10400A76BEA /* select_silent.wav */,
@@ -4925,6 +4928,7 @@
 				07C6467D16E0D5DF00B29842 /* volca_finish0.caf in Resources */,
 				07C6467E16E0D5DF00B29842 /* volca_finish1.caf in Resources */,
 				07C6468016E0DB2500B29842 /* endingC.lua in Resources */,
+				07C6468216E0DCFF00B29842 /* endingB.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

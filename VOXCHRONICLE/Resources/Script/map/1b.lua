@@ -1,9 +1,9 @@
 Map = {
-  name = "ジーク面(1-B)",
+  name = "ジーク面(1-A)",
   wayMusic = "volca",
   bossMusic = "",
-  backgroundImage = "",
-  skin = "skinB",
+  backgroundImage = "simple_background.png",
+  skin = "skinA",
   ending = "",
   nextMaps = {"2a"},
   initialLevel = 1,
