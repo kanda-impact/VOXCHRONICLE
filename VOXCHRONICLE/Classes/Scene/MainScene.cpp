@@ -486,6 +486,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     if (_characterManager->getLastSkill() != NULL && _characterManager->getLastSkill()->getIdentifier() != "tension") {
       _characterManager->resetTension();
     }
+    _effectLayer->setTensionEffect(_characterManager->getTension());
     
     if (skill) {
       _skin->getController()->updateSkills(_characterManager, _level);

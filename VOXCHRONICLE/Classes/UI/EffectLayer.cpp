@@ -28,9 +28,16 @@ EffectLayer* EffectLayer::sharedLayer() {
 }
 
 EffectLayer::EffectLayer() {
+  _tensionEffectLayer = CCSprite::create("tension_effect.png");
+  _tensionEffectLayer->retain();
+  CCDirector* director = CCDirector::sharedDirector();
+  _tensionEffectLayer->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
+  this->addChild(_tensionEffectLayer);
+  _tensionEffectLayer->setVisible(false);
 }
 
 EffectLayer::~EffectLayer() {
+  _tensionEffectLayer->release();
 }
 
 void EffectLayer::addSkillEffect(Skill *skill, CCArray* targets) {
@@ -64,6 +71,20 @@ void EffectLayer::addSkillEffect(Skill *skill, CCArray* targets) {
                                          CCRemoveFromParentAction::create(),
                                          NULL));
     this->addChild(effect);
+  }
+}
+
+void EffectLayer::setTensionEffect(int tension) {
+  _tensionEffectLayer->stopAllActions();
+  if (tension == 0) {
+    _tensionEffectLayer->setVisible(false);
+  } else {
+    _tensionEffectLayer->setVisible(true);
+    float delay = (5 - tension) * 0.05;
+    _tensionEffectLayer->setOpacity(100);
+    CCSequence* blink = CCSequence::createWithTwoActions(CCFadeTo::create(delay, 100),
+                                                         CCFadeTo::create(delay, 20));
+    _tensionEffectLayer->runAction(CCRepeatForever::create(blink));
   }
 }
 

@@ -24,11 +24,13 @@ using namespace cocos2d;
 
 class EffectLayer :public CCLayer {
  private:
+  CCSprite* _tensionEffectLayer;
  public:
   static EffectLayer* sharedLayer();
   EffectLayer();
   ~EffectLayer();
   void addSkillEffect(Skill* skill, CCArray* targets);
+  void setTensionEffect(int tension);
   PopupWindow* addPopupWindow(int pages);
   PopupWindow* getPopupWindow();
   void addCutin(Skill *skill, bool succeed, float duration);
