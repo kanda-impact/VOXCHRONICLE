@@ -36,6 +36,7 @@ EffectLayer::EffectLayer() {
   this->addChild(_tensionEffectLayer);
   _tensionEffectLayer->setVisible(false);
   _characterEffectLayer = CCSprite::create("mode_vox.png");
+  _characterEffectLayer->retain();
   CCTextureCache::sharedTextureCache()->addImage("mode_lsk.png"); // テクスチャーを読んでおく
   _characterEffectLayer->setPosition(center);
   this->addChild(_characterEffectLayer);
