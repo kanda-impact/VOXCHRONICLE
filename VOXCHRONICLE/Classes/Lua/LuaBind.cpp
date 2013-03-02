@@ -339,6 +339,15 @@ static int tolua_VC_EffectLayer_addPopupWindow(lua_State* tolua_S) {
   return 1;
 }
 
+// Popup Window
+static int tolua_VC_PopupWindow_getPage(lua_State* tolua_S) {
+  PopupWindow* self = (PopupWindow*)tolua_tousertype(tolua_S, 1, 0);
+  int pages = (int)tolua_tonumber(tolua_S, 2, 0);
+  CCNode* node = self->getPage(pages);
+  tolua_pushusertype(tolua_S, node, "CCNode");
+  return 1;
+}
+
 TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_open(tolua_S);
   tolua_reg_types(tolua_S);
@@ -453,6 +462,7 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   // PopupWindow
   tolua_cclass(tolua_S, "PopupWindow", "PopupWindow", "CCSprite", NULL);
   tolua_beginmodule(tolua_S, "PopupWindow");
+  tolua_function(tolua_S, "getPage", tolua_VC_PopupWindow_getPage);
   tolua_endmodule(tolua_S);
   
   return 1;
