@@ -1,11 +1,11 @@
 Map = {
-  name = "草原",
+  name = "シンプル",
   wayMusic = "",
   bossMusic = "",
   backgroundImage = "",
-  skin = "skinB",
+  skin = "skinA",
   ending = "",
-  nextMaps = {"2a","2b"},
+  nextMaps = {"2a_forest","2b_cave"},
   initialLevel = 1,
   maxLevel = 10,
   getEnemyTable = function(level)
