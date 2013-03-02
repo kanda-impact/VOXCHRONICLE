@@ -12,6 +12,8 @@
 #include "EnemyManager.h"
 #include "LuaObject.h"
 
+#include "EffectLayer.h"
+
 using namespace boost;
 using namespace boost::lambda;
 
@@ -102,6 +104,8 @@ CCArray* EnemyManager::getEnemies() {
 bool EnemyManager::removeEnemy(Enemy* enemy) {
   if (this->getChildren()->containsObject(enemy)) {
     _trash->addObject(enemy); // 遅延解法のため、ゴミ箱に追加してpoolさせておく
+    EffectLayer* layer = EffectLayer::sharedLayer();
+    layer->addEffectOnEnemy(enemy, "defeat", 3, CCRectMake(0, 0, 200, 200));
     this->removeChild(enemy, true);
     return true;
   }
@@ -410,5 +414,9 @@ CCPoint& EnemyManager::calcLinePosition(int row, int col) {
 }
 
 void EnemyManager::removeAllEnemies() {
-  this->removeAllChildrenWithCleanup(true); // 本来は消去エフェクト追加するけど、ただ消しておく
+  CCObject* obj = NULL;
+  CCARRAY_FOREACH(this->getEnemies(), obj) {
+    Enemy* enemy = (Enemy*)obj;
+    this->removeEnemy(enemy);
+  }
 }
