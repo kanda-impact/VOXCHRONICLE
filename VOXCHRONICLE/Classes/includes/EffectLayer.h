@@ -37,6 +37,7 @@ class EffectLayer :public CCLayer {
   PopupWindow* addPopupWindow(int pages);
   PopupWindow* getPopupWindow();
   void addCutin(Skill *skill, bool succeed, float duration);
+  void reloadEffects();
 };
 
 #endif /* defined(__VOXCHRONICLE__EffectLayer__) */
