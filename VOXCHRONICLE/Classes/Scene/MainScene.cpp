@@ -439,7 +439,20 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       // MP回復 コマンド化したのでコメントアウトしておきます
       //_characterManager->addMP(1);
     }
-    this->checkLevelUp();
+    if (this->checkLevelUp() ) {
+      int currentLevel = _characterManager->getLevel();
+      SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/levelup.mp3").c_str());
+      _musicManager->setIntroCount(0);
+      _preLevel = currentLevel;
+      _map->performOnLevel(currentLevel, _characterManager, _enemyManager); // スクリプトを呼んでやる
+      //_characterManager->updateParameters();
+      _level = _map->createLevel(currentLevel, _characterManager);
+      _enemyManager->setLevel(_level);
+      //this->updateGUI();
+      
+      _enemyManager->removeAllEnemiesQueue();
+      _isLevelUped = true;
+    }
     
     // 固定モンスターテーブルを見て、モンスターを出現させます
     CCArray* fixed = _map->getFixedEnemies(preExp, preExp + getExp);
@@ -535,21 +548,7 @@ bool MainScene::checkLevelUp() {
     int sub = maxExp - _characterManager->getExp(); // オーバー
     _characterManager->addExp(sub); // オーバーした分だけ引く
   }
-  if (currentLevel != _preLevel) { // レベルが上がったとき
-    _musicManager->setIntroCount(0);
-    _preLevel = currentLevel;
-    _map->performOnLevel(currentLevel, _characterManager, _enemyManager); // スクリプトを呼んでやる
-    _characterManager->updateParameters();
-    SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/levelup.mp3").c_str());
-    _level = _map->createLevel(currentLevel, _characterManager);
-    
-    _enemyManager->setLevel(_level);
-    _enemyManager->removeAllEnemiesQueue();
-    this->updateGUI();
-    _isLevelUped = true;
-    return true;
-  }
-  return false;
+  return (currentLevel != _preLevel); // レベルが上がったとき
 }
 
 void MainScene::onGameOver() {

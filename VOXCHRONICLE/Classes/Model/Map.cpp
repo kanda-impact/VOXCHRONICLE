@@ -84,32 +84,33 @@ Level* Map::createLevel(int level, CharacterManager* manager) {
   Level* lv = new Level(level, this);
   // モンスターテーブルを設定
   lua_State* L = _lua->getLuaEngineWithLoad()->getLuaState();
-  lua_getglobal(L, "Map");
-  int table = lua_gettop(L);
-  lua_getfield(L, table, "getEnemyTable");
-  lua_pushinteger(L, level);
-  if (lua_pcall(L, 1, 1, 0)) {
-    cout << lua_tostring(L, lua_gettop(L)) << endl;
+  lua_getfield(L, lua_gettop(L), "getEnemyTable");
+  if (lua_isfunction(L, lua_gettop(L))) {
+    lua_pushinteger(L, level);
+    if (lua_pcall(L, 1, 1, 0)) {
+      cout << lua_tostring(L, lua_gettop(L)) << endl;
+    }
+    list< pair<string, int> > enemyTable;
+    CCLuaValueDict* dict = _lua->recursivelyLoadTable(lua_gettop(L));
+    for (CCLuaValueDictIterator it = dict->begin(); it != dict->end(); ++it) {
+      string key = it->first;
+      CCLuaValue value = it->second;
+      enemyTable.push_back( pair<string, int>(key, (int)value.floatValue()) );
+    }
+    lv->setEnemyTable(enemyTable);
   }
-  list< pair<string, int> > enemyTable;
-  CCLuaValueDict* dict = _lua->recursivelyLoadTable(lua_gettop(L));
-  for (CCLuaValueDict::iterator it = dict->begin(); it != dict->end(); ++it) {
-    string key = it->first;
-    CCLuaValue value = it->second;
-    enemyTable.push_back( pair<string, int>(key, (int)value.floatValue()) );
-  }
-  lv->setEnemyTable(enemyTable);
-
+  
   // モンスター出現率を設定
   lua_getglobal(L, "Map");
-  table = lua_gettop(L);
-  lua_getfield(L, table, "getEnemyPopRate");
-  lua_pushinteger(L, level);
-  if (lua_pcall(L, 1, 1, 0)) {
-    cout << lua_tostring(L, lua_gettop(L)) << endl;
+  lua_getfield(L, lua_gettop(L), "getEnemyPopRate");
+  if (lua_isfunction(L, lua_gettop(L))) {
+    lua_pushinteger(L, level);
+    if (lua_pcall(L, 1, 1, 0)) {
+      cout << lua_tostring(L, lua_gettop(L)) << endl;
+    }
+    float enemyPopRate = lua_tonumber(L, lua_gettop(L));
+    lv->setEnemyPopRate(enemyPopRate);
   }
-  float enemyPopRate = lua_tonumber(L, lua_gettop(L));
-  lv->setEnemyPopRate(enemyPopRate);
   
   // 技の読み込み
   CCObject* obj = NULL;
