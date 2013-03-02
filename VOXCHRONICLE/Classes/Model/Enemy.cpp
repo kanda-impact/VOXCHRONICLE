@@ -293,7 +293,7 @@ void Enemy::setItem(EnemyItem item) {
 }
 
 bool Enemy::performSkill(CharacterManager* characterManager, EnemyManager* enemyManager) {
-  string skillName = _species->choiceEnemySkill(this);
+  string skillName = _species->choiceEnemySkill(this, characterManager, enemyManager);
   if (skillName.size() == 0) return false; // 技の名前が何か返ってきたとき、その技を生成して実行してやる
   EnemySkill* skill = new EnemySkill(skillName.c_str());
   skill->performSkill(this, characterManager, enemyManager);

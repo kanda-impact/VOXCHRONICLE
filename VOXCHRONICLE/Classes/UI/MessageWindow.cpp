@@ -37,6 +37,7 @@ MessageWindow::~MessageWindow() {
 
 void MessageWindow::pushMessage(const char* message) {
   VQString* str = VQString::create(message);
+  if (str->length() == 0) return;
   if (this->isLastMessage() && this->isEndMessage()) { // 最後のメッセージで終わってたら
     this->unschedule(schedule_selector(MessageWindow::updateNextMessage));
     _messageQueue->addObject(str);

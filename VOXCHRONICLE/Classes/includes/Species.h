@@ -48,7 +48,7 @@ class Species :public CCObject {
   int getAnimationFrames();
   bool hasFrame();
   int getDefaultExp(int level, int maxHP, EnemyItem item, SkillType type);
-  string choiceEnemySkill(CCObject* enemy);
+  string choiceEnemySkill(CCObject* enemy, CCObject* characterManager, CCObject* enemyManager);
   LuaObject* getLuaObject();
   bool isEnableSkill(Skill* skill);
 };
