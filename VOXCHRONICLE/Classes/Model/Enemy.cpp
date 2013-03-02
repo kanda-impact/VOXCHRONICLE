@@ -356,10 +356,14 @@ bool Enemy::setAnimationAndFrame(const char *filePrefix, int frames, bool hasFra
     if (hasFrame) {
       CCSprite* frameSprite = this->createFrameSprite(filePrefix, frames);
       frameSprite->setAnchorPoint(ccp(0, 0));
+      CCRepeatForever* blink = CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.1f, 128),
+                                                                          CCFadeTo::create(0.1f, 200)));
       if (_type == SkillTypePhysical) {
         frameSprite->setColor(VOX_COLOR);
+        frameSprite->runAction(blink);
       } else if (_type == SkillTypeMagical) {
         frameSprite->setColor(LSK_COLOR);
+        frameSprite->runAction(blink);
       } else {
         frameSprite->setColor(ccc3(0, 0, 0));
       }
