@@ -169,6 +169,7 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CCArray* targets, Charact
       this->performLuaFunction(skill, NULL, characterManager);
     }
     bool nextLvExp = false; // もし、expが-1の敵が1体でもいたらtrueに
+    int power = skill->getPower(characterManager); // 威力を取っておく
     CCObject* obj = NULL;
     CCARRAY_FOREACH(targets, obj) {
       Enemy* target = (Enemy*)obj;
@@ -177,7 +178,7 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CCArray* targets, Charact
         int damage = 0;
         performLuaFunction(skill, target, characterManager);
         DamageType damageType = DamageTypeNone;
-        if (skill->getPower(characterManager) != 0) {
+        if (power != 0) {
           // 威力が1以上の場合、ダメージを与える
           damage = target->damage(skill, characterManager, damageType, false);
         } else {
