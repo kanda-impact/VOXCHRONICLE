@@ -6,7 +6,7 @@ Enemy = {
       return 0
   end,
   item = EnemyItemNone,
-  type = SkillTypeNormal,
+  type = SkillTypePhysical,
 }
 
 return Enemy

@@ -16,11 +16,11 @@ Map = {
       local kraken = enemyManager:popEnemyAt("kraken3C0", 4, 1) -- 頭
       enemyManager:setBoss(kraken)
       -- 足
-      enemyManager:popEnemyAt("clawfoot3C0", 5, 0)
-      enemyManager:popEnemyAt("clawfoot3C0", 5, 1)
-      enemyManager:popEnemyAt("clawfoot3C0", 5, 2)
-      enemyManager:popEnemyAt("clawfoot3C0", 4, 0)
-      enemyManager:popEnemyAt("clawfoot3C0", 4, 2)
+      enemyManager:popEnemyAt("clawfoot3C2", 5, 0)
+      enemyManager:popEnemyAt("clawfoot3C1", 5, 1)
+      enemyManager:popEnemyAt("clawfoot3C2", 5, 2)
+      enemyManager:popEnemyAt("clawfoot3C1", 4, 0)
+      enemyManager:popEnemyAt("clawfoot3C2", 4, 2)
       enemyManager:popEnemyAt("clawfoot3C0", 3, 0)
       enemyManager:popEnemyAt("clawfoot3C0", 3, 2)
     end

@@ -1,12 +1,12 @@
 Enemy = {
-  species = "kraken",
-  level = 30,
-  hp = 300,
+  species = "clawfoot",
+  level = 1,
+  hp = 100,
   getExp = function(default)
       return 0
   end,
   item = EnemyItemNone,
-  type = SkillTypeNormal,
+  type = SkillTypeMagical,
 }
 
 return Enemy

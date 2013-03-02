@@ -73,6 +73,8 @@
 		0701425A16E2476D00B00887 /* wave3C0.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701425716E2476D00B00887 /* wave3C0.lua */; };
 		0701425D16E24A2800B00887 /* foot.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701425B16E24A2800B00887 /* foot.lua */; };
 		0701425E16E24A2800B00887 /* wave_skill.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701425C16E24A2800B00887 /* wave_skill.lua */; };
+		0701426116E25BD700B00887 /* clawfoot3C1.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701425F16E25BD700B00887 /* clawfoot3C1.lua */; };
+		0701426216E25BD700B00887 /* clawfoot3C2.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701426016E25BD700B00887 /* clawfoot3C2.lua */; };
 		0701703A16C813500000E632 /* shaba.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701703916C813500000E632 /* shaba.lua */; };
 		0701703C16C813830000E632 /* shaba_map.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701703B16C813830000E632 /* shaba_map.lua */; };
 		0704344416BFEEC600339F8A /* nmb_drum4.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0704344316BFEEC600339F8A /* nmb_drum4.caf */; };
@@ -1080,6 +1082,8 @@
 		0701425716E2476D00B00887 /* wave3C0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wave3C0.lua; sourceTree = "<group>"; };
 		0701425B16E24A2800B00887 /* foot.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = foot.lua; path = enemySkills/foot.lua; sourceTree = "<group>"; };
 		0701425C16E24A2800B00887 /* wave_skill.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = wave_skill.lua; path = enemySkills/wave_skill.lua; sourceTree = "<group>"; };
+		0701425F16E25BD700B00887 /* clawfoot3C1.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = clawfoot3C1.lua; sourceTree = "<group>"; };
+		0701426016E25BD700B00887 /* clawfoot3C2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = clawfoot3C2.lua; sourceTree = "<group>"; };
 		0701703916C813500000E632 /* shaba.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = shaba.lua; path = musics/shaba.lua; sourceTree = "<group>"; };
 		0701703B16C813830000E632 /* shaba_map.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = shaba_map.lua; path = map/shaba_map.lua; sourceTree = "<group>"; };
 		0704344316BFEEC600339F8A /* nmb_drum4.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = nmb_drum4.caf; sourceTree = "<group>"; };
@@ -4171,6 +4175,8 @@
 		07C6093A161674650084708C /* enemies */ = {
 			isa = PBXGroup;
 			children = (
+				0701425F16E25BD700B00887 /* clawfoot3C1.lua */,
+				0701426016E25BD700B00887 /* clawfoot3C2.lua */,
 				0701425516E2476D00B00887 /* clawfoot3C0.lua */,
 				0701425616E2476D00B00887 /* kraken3C0.lua */,
 				0701425716E2476D00B00887 /* wave3C0.lua */,
@@ -5258,6 +5264,8 @@
 				0701425A16E2476D00B00887 /* wave3C0.lua in Resources */,
 				0701425D16E24A2800B00887 /* foot.lua in Resources */,
 				0701425E16E24A2800B00887 /* wave_skill.lua in Resources */,
+				0701426116E25BD700B00887 /* clawfoot3C1.lua in Resources */,
+				0701426216E25BD700B00887 /* clawfoot3C2.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
