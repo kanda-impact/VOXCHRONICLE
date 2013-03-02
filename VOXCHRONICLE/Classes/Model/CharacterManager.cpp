@@ -212,12 +212,12 @@ int CharacterManager::getMaxMP() {
 }
 
 void CharacterManager::updateParameters() {
-  float rateHP = (float)_hp / (float)_maxHP;
-  float rateMP = (float)_mp / (float)_maxMP;
+  int currentMaxHP = _maxHP;
+  int currentMaxMP = _maxMP;
   _maxHP = this->getMaxHP();
   _maxMP = this->getMaxMP();
-  _hp = _maxHP * rateHP;
-  _mp = _maxMP * rateMP;
+  _hp = min(_maxHP, _hp + _maxHP - currentMaxHP);
+  _mp = min(_maxMP, _mp + _maxMP - currentMaxMP);
 }
 
 float CharacterManager::getLevelOffsetRate(int attackLevel, int defenseLevel) {
