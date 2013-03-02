@@ -452,7 +452,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       //_characterManager->updateParameters();
       _level = _map->createLevel(currentLevel, _characterManager);
       _enemyManager->setLevel(_level);
-      //this->updateGUI();
+      this->updateGUI();
       
       _enemyManager->removeAllEnemiesQueue();
       _isLevelUped = true;
