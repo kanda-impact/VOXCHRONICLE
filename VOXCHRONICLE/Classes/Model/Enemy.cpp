@@ -208,7 +208,7 @@ void Enemy::setRowAndCol(int row, float col) {
     int order = (MAX_ROW - row) * 10 + (3 - col);
     parent->addChild(this, order);
   }
-  this->toggleBlink(row <= 1);
+  this->toggleBlink(row == 0);
   _row = row;
   _col = col;
 }
