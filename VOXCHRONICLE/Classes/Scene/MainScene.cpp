@@ -74,6 +74,7 @@ bool MainScene::init(Map* map) {
   _skin = NULL;
   _effectLayer = EffectLayer::sharedLayer();
   _effectLayer->retain();
+  _effectLayer->reloadEffects();
   
   _pausedTargets = NULL;
   

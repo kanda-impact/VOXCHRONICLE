@@ -371,6 +371,9 @@ void EnemyManager::nextTurn (CharacterManager* characterManager) {
         }
       }
     }
+    if (enemy->getEnable() && enemy->getRow() >= MAX_ROW) { // MAX_ROWより大きいとき、敵を消す
+      this->removeEnemy(enemy);
+    }
   }
 }
 
