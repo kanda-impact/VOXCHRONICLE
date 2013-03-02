@@ -408,3 +408,7 @@ CCPoint& EnemyManager::calcLinePosition(int row, int col) {
   CCPoint p = ccpAdd(root, ccpMult(sub, row / (float)MAX_ROW));
   return p;
 }
+
+void EnemyManager::removeAllEnemies() {
+  this->removeAllChildrenWithCleanup(true); // 本来は消去エフェクト追加するけど、ただ消しておく
+}

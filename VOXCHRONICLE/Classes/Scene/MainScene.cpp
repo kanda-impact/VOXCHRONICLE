@@ -210,7 +210,9 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     if (_musicManager->getIntroCount() == maxIntroCount) { // イントロが終わったとき
       _musicManager->setIntroCount(0);
       _skin->getController()->setEnable(true);
-      _map->performOnLevel(_level->getLevel(), _characterManager, _enemyManager); // スクリプトを呼んでやる
+      if (_level->getLevel() == _map->getInitialLevel()) {
+        _map->performOnLevel(_level->getLevel(), _characterManager, _enemyManager); // 初期レベルの時、スクリプトを呼んでやる
+      }
       _state = VCStateMain;
     }
   }
@@ -647,6 +649,7 @@ void MainScene::changeMap(Map* nextMap) {
   _map = nextMap;
   _level = nextMap->createInitialLevel(_characterManager); // レベルを生成する
   _enemyManager->setLevel(_level); // レベルをセット
+  _enemyManager->removeAllEnemies();
   _enemyManager->removeAllEnemiesQueue(); // キューを初期化
   _mapTurnCount = 0; // マップカウント0に戻す
   // 背景画像を設置
