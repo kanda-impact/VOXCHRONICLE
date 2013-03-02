@@ -1,24 +1,22 @@
 Map = {
   name = "草原",
-  wayMusic = "",
+  wayMusic = "volca",
   bossMusic = "",
   backgroundImage = "",
   skin = "skinB",
   ending = "",
-  nextMaps = {"2a","2b"},
+  nextMaps = {"2b_cave","2c_cyber"},
   initialLevel = 1,
   maxLevel = 10,
   getEnemyTable = function(level)
-    if level <= 2 then
-      return {leaf01 = 3, acorn01 = 2 }
-    elseif level <= 5 then
-      return {leaf01 = 3, acorn01 = 2, flower01 = 2 }
+    if level <= 5 then
+      return {slime0 = 5}
     else
-      return {acorn02 = 2, flower02 = 2, doku01 = 1}
+      return {slime0 = 1}
     end
   end,
   getEnemyPopRate = function(level)
-    return 0.6
+    return 0.7
   end,
   fixedEnemies = {
   }

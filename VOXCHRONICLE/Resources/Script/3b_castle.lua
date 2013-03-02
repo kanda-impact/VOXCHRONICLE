@@ -1,17 +1,17 @@
 Map = {
-  name = "歪み電脳",
+  name = "城",
   wayMusic = "",
   bossMusic = "",
   backgroundImage = "",
-  skin = "skinA",
+  skin = "skinC",
   ending = "",
-  nextMaps = {"3c","3d"},
-  initialLevel = 11,
-  maxLevel = 20,
+  nextMaps = {""},
+  initialLevel = 21,
+  maxLevel = 30,
   getEnemyTable = function(level)
-    if level <= 20 then
-      return {tetufez1B0 = 1} --歪み電脳の敵はすべて未実装
-    elseif level <= 3 then
+    if level <= 2 then
+      return {mimic3B0 = 3, gargoyle3B0 = 2,slime3B0 = 2 }
+    elseif level <= 5 then
       return {}
     else
       return {}
