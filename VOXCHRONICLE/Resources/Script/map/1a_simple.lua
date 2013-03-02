@@ -10,15 +10,26 @@ Map = {
   maxLevel = 10,
   getEnemyTable = function(level)
     if level <= 2 then
-      return {leaf01 = 3, acorn01 = 2 }
-    elseif level <= 5 then
-      return {leaf01 = 3, acorn01 = 2, flower01 = 2 }
+      return {leaf1A0 = 3, slime1A0 = 2 }
+    elseif level <= 4 then
+      return {leaf1A0 = 1, slime1A0 = 2, acorn1A0 = 1 }
+    elseif level <= 6 then
+      return {leaf1A0 = 3, slime1A0 = 1, acorn1A0 = 2 }
+    elseif level <= 8 then
+      return {leaf1A0 = 3, slime1A0 = 2, acorn1A0 = 2, flower1A0 = 1 }
     else
-      return {acorn02 = 2, flower02 = 2, doku01 = 1}
+      return {slime1A0 = 2, acorn1A0 = 1, flower1A0 = 2}
     end
   end,
   getEnemyPopRate = function(level)
-    return 0.6
+    if level <= 2 then
+        return 0.6
+    elseif level <= 4 then
+        return 0.5
+    else
+    return 0.4
+    end
+    return 0.4
   end,
   fixedEnemies = {
   --{"level10",0}
