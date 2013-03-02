@@ -63,11 +63,6 @@
 		0701423E16E1F7EE00B00887 /* dhun_voxknockback0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0701420E16E1F7EE00B00887 /* dhun_voxknockback0.caf */; };
 		0701423F16E1F7EE00B00887 /* dhun_voxslash0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0701420F16E1F7EE00B00887 /* dhun_voxslash0.caf */; };
 		0701424016E1F7EE00B00887 /* dhun_wait0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0701421016E1F7EE00B00887 /* dhun_wait0.caf */; };
-		0701424616E1F92300B00887 /* dhun_drum0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0701424116E1F92300B00887 /* dhun_drum0.caf */; };
-		0701424716E1F92300B00887 /* dhun_drum1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0701424216E1F92300B00887 /* dhun_drum1.caf */; };
-		0701424816E1F92300B00887 /* dhun_drum2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0701424316E1F92300B00887 /* dhun_drum2.caf */; };
-		0701424916E1F92300B00887 /* dhun_drum3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0701424416E1F92300B00887 /* dhun_drum3.caf */; };
-		0701424A16E1F92300B00887 /* dhun_drum4.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0701424516E1F92300B00887 /* dhun_drum4.caf */; };
 		0701703A16C813500000E632 /* shaba.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701703916C813500000E632 /* shaba.lua */; };
 		0701703C16C813830000E632 /* shaba_map.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701703B16C813830000E632 /* shaba_map.lua */; };
 		0704344416BFEEC600339F8A /* nmb_drum4.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0704344316BFEEC600339F8A /* nmb_drum4.caf */; };
@@ -1065,11 +1060,6 @@
 		0701420E16E1F7EE00B00887 /* dhun_voxknockback0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dhun_voxknockback0.caf; path = Resources/Music/dhun/dhun_voxknockback0.caf; sourceTree = "<group>"; };
 		0701420F16E1F7EE00B00887 /* dhun_voxslash0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dhun_voxslash0.caf; path = Resources/Music/dhun/dhun_voxslash0.caf; sourceTree = "<group>"; };
 		0701421016E1F7EE00B00887 /* dhun_wait0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dhun_wait0.caf; path = Resources/Music/dhun/dhun_wait0.caf; sourceTree = "<group>"; };
-		0701424116E1F92300B00887 /* dhun_drum0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dhun_drum0.caf; path = Resources/Music/dhun/dhun_drum0.caf; sourceTree = "<group>"; };
-		0701424216E1F92300B00887 /* dhun_drum1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dhun_drum1.caf; path = Resources/Music/dhun/dhun_drum1.caf; sourceTree = "<group>"; };
-		0701424316E1F92300B00887 /* dhun_drum2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dhun_drum2.caf; path = Resources/Music/dhun/dhun_drum2.caf; sourceTree = "<group>"; };
-		0701424416E1F92300B00887 /* dhun_drum3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dhun_drum3.caf; path = Resources/Music/dhun/dhun_drum3.caf; sourceTree = "<group>"; };
-		0701424516E1F92300B00887 /* dhun_drum4.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dhun_drum4.caf; path = Resources/Music/dhun/dhun_drum4.caf; sourceTree = "<group>"; };
 		0701703916C813500000E632 /* shaba.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = shaba.lua; path = musics/shaba.lua; sourceTree = "<group>"; };
 		0701703B16C813830000E632 /* shaba_map.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = shaba_map.lua; path = map/shaba_map.lua; sourceTree = "<group>"; };
 		0704344316BFEEC600339F8A /* nmb_drum4.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = nmb_drum4.caf; sourceTree = "<group>"; };
@@ -2380,11 +2370,6 @@
 		070141E016E1F7E400B00887 /* dhun */ = {
 			isa = PBXGroup;
 			children = (
-				0701424116E1F92300B00887 /* dhun_drum0.caf */,
-				0701424216E1F92300B00887 /* dhun_drum1.caf */,
-				0701424316E1F92300B00887 /* dhun_drum2.caf */,
-				0701424416E1F92300B00887 /* dhun_drum3.caf */,
-				0701424516E1F92300B00887 /* dhun_drum4.caf */,
 				070141E116E1F7EE00B00887 /* dhun_counter0.caf */,
 				070141E216E1F7EE00B00887 /* dhun_counter1.caf */,
 				070141E316E1F7EE00B00887 /* dhun_counter2.caf */,
@@ -5233,11 +5218,6 @@
 				0701423E16E1F7EE00B00887 /* dhun_voxknockback0.caf in Resources */,
 				0701423F16E1F7EE00B00887 /* dhun_voxslash0.caf in Resources */,
 				0701424016E1F7EE00B00887 /* dhun_wait0.caf in Resources */,
-				0701424616E1F92300B00887 /* dhun_drum0.caf in Resources */,
-				0701424716E1F92300B00887 /* dhun_drum1.caf in Resources */,
-				0701424816E1F92300B00887 /* dhun_drum2.caf in Resources */,
-				0701424916E1F92300B00887 /* dhun_drum3.caf in Resources */,
-				0701424A16E1F92300B00887 /* dhun_drum4.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

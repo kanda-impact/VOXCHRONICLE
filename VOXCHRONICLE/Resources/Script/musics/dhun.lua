@@ -12,7 +12,7 @@ Music = {
     run = true,
     tension = true,
     miss = true,
-    drum = true,
+    drum = false,
     impact = true
   },
   ignoreDrums = {
