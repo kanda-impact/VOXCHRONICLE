@@ -604,7 +604,7 @@ void MainScene::addDamageEffect() {
                                                      FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 100, '0');
     CCDirector* director = CCDirector::sharedDirector();
     damageLabel->setPosition(ccp(director->getWinSize().width / 2, 90));
-    this->addChild(damageLabel);
+    this->addChild(damageLabel, MainSceneZOrderDamageLabel);
     damageLabel->setScale(0);
     damageLabel->runAction(CCSequence::create(CCScaleTo::create(0.1, 0.8),
                                               CCDelayTime::create(0.5),
