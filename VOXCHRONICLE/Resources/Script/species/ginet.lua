@@ -1,7 +1,7 @@
 Enemy = {
   name = "ギネット",
   imageName = "ginet",
-  attack = 1,
+  attack = 0,
   baseExp = 1,
   hasFrame = false,
   counter = 1,
