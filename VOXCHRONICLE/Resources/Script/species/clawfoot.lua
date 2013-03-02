@@ -6,15 +6,19 @@ Enemy = {
   hasFrame = true,
   counter = 2,
   getSpeed = function(enemy, characterManager)
-    return 1
+    return 0
   end,
   getFrequency = function(enemy, characterManager)
-    return 2
+    return 1
   end,
-  disableSkills = {},
   disableSkills = {},
   animationFrames = 4,
   performSkill = function(self)
+    math.random(100)
+    local rand = math.random(100)
+    if rand <= 10 then
+      return "foot"
+    end
     return ""
   end
 }

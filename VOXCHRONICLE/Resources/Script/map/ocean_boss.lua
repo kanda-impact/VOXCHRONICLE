@@ -1,18 +1,28 @@
 Map = {
-  name = "深海",
+  name = "イカテスト",
   wayMusic = "dub",
   bossMusic = "3Bb",
   backgroundImage = "",
   skin = "skinA",
   ending = "endingC",
-  nextMaps = {""},
-  initialLevel = 21,
+  nextMaps = {},
+  initialLevel = 30,
   maxLevel = 30,
   getEnemyTable = function(level)
-    if level < 30 then
-      return {whale3C0 = 3, jfish3C0 = 2, } --naut 未実装
-    elseif level == 30 then
-      return {}
+    return {}
+  end,
+  onLevel = function(level, characterManager, enemyManager)
+    if level == 30 then
+      local kraken = enemyManager:popEnemyAt("kraken3C0", 4, 1) -- 頭
+      enemyManager:setBoss(kraken)
+      -- 足
+      enemyManager:popEnemyAt("clawfoot3C0", 5, 0)
+      enemyManager:popEnemyAt("clawfoot3C0", 5, 1)
+      enemyManager:popEnemyAt("clawfoot3C0", 5, 2)
+      enemyManager:popEnemyAt("clawfoot3C0", 4, 0)
+      enemyManager:popEnemyAt("clawfoot3C0", 4, 2)
+      enemyManager:popEnemyAt("clawfoot3C0", 3, 0)
+      enemyManager:popEnemyAt("clawfoot3C0", 3, 2)
     end
   end,
   getEnemyPopRate = function(level)

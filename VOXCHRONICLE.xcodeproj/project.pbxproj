@@ -64,6 +64,15 @@
 		0701423F16E1F7EE00B00887 /* dhun_voxslash0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0701420F16E1F7EE00B00887 /* dhun_voxslash0.caf */; };
 		0701424016E1F7EE00B00887 /* dhun_wait0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0701421016E1F7EE00B00887 /* dhun_wait0.caf */; };
 		0701424C16E2319900B00887 /* 3c_ocean.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701424B16E2319900B00887 /* 3c_ocean.lua */; };
+		0701424E16E243BC00B00887 /* ocean_boss.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701424D16E243BC00B00887 /* ocean_boss.lua */; };
+		0701425216E245A800B00887 /* clawfoot.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701424F16E245A800B00887 /* clawfoot.lua */; };
+		0701425316E245A800B00887 /* kraken.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701425016E245A800B00887 /* kraken.lua */; };
+		0701425416E245A800B00887 /* wave.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701425116E245A800B00887 /* wave.lua */; };
+		0701425816E2476D00B00887 /* clawfoot3C0.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701425516E2476D00B00887 /* clawfoot3C0.lua */; };
+		0701425916E2476D00B00887 /* kraken3C0.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701425616E2476D00B00887 /* kraken3C0.lua */; };
+		0701425A16E2476D00B00887 /* wave3C0.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701425716E2476D00B00887 /* wave3C0.lua */; };
+		0701425D16E24A2800B00887 /* foot.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701425B16E24A2800B00887 /* foot.lua */; };
+		0701425E16E24A2800B00887 /* wave_skill.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701425C16E24A2800B00887 /* wave_skill.lua */; };
 		0701703A16C813500000E632 /* shaba.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701703916C813500000E632 /* shaba.lua */; };
 		0701703C16C813830000E632 /* shaba_map.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0701703B16C813830000E632 /* shaba_map.lua */; };
 		0704344416BFEEC600339F8A /* nmb_drum4.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0704344316BFEEC600339F8A /* nmb_drum4.caf */; };
@@ -1062,6 +1071,15 @@
 		0701420F16E1F7EE00B00887 /* dhun_voxslash0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dhun_voxslash0.caf; path = Resources/Music/dhun/dhun_voxslash0.caf; sourceTree = "<group>"; };
 		0701421016E1F7EE00B00887 /* dhun_wait0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = dhun_wait0.caf; path = Resources/Music/dhun/dhun_wait0.caf; sourceTree = "<group>"; };
 		0701424B16E2319900B00887 /* 3c_ocean.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 3c_ocean.lua; path = map/3c_ocean.lua; sourceTree = "<group>"; };
+		0701424D16E243BC00B00887 /* ocean_boss.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ocean_boss.lua; path = map/ocean_boss.lua; sourceTree = "<group>"; };
+		0701424F16E245A800B00887 /* clawfoot.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = clawfoot.lua; path = species/clawfoot.lua; sourceTree = "<group>"; };
+		0701425016E245A800B00887 /* kraken.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = kraken.lua; path = species/kraken.lua; sourceTree = "<group>"; };
+		0701425116E245A800B00887 /* wave.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = wave.lua; path = species/wave.lua; sourceTree = "<group>"; };
+		0701425516E2476D00B00887 /* clawfoot3C0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = clawfoot3C0.lua; sourceTree = "<group>"; };
+		0701425616E2476D00B00887 /* kraken3C0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kraken3C0.lua; sourceTree = "<group>"; };
+		0701425716E2476D00B00887 /* wave3C0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wave3C0.lua; sourceTree = "<group>"; };
+		0701425B16E24A2800B00887 /* foot.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = foot.lua; path = enemySkills/foot.lua; sourceTree = "<group>"; };
+		0701425C16E24A2800B00887 /* wave_skill.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = wave_skill.lua; path = enemySkills/wave_skill.lua; sourceTree = "<group>"; };
 		0701703916C813500000E632 /* shaba.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = shaba.lua; path = musics/shaba.lua; sourceTree = "<group>"; };
 		0701703B16C813830000E632 /* shaba_map.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = shaba_map.lua; path = map/shaba_map.lua; sourceTree = "<group>"; };
 		0704344316BFEEC600339F8A /* nmb_drum4.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = nmb_drum4.caf; sourceTree = "<group>"; };
@@ -2517,6 +2535,7 @@
 				070141D816E1F34E00B00887 /* 3c_ocean.lua */,
 				B07E38CB16E10ACF00473629 /* 3d_space.lua */,
 				0701424B16E2319900B00887 /* 3c_ocean.lua */,
+				0701424D16E243BC00B00887 /* ocean_boss.lua */,
 			);
 			name = map;
 			sourceTree = "<group>";
@@ -2808,6 +2827,8 @@
 		07660CCC1690E8BD0092104F /* enemySkills */ = {
 			isa = PBXGroup;
 			children = (
+				0701425B16E24A2800B00887 /* foot.lua */,
+				0701425C16E24A2800B00887 /* wave_skill.lua */,
 				0715C2321690E8F600009479 /* ironball.lua */,
 				07DCD6861692953500FBBC3A /* sword.lua */,
 				072AB85D16DB7A12005385A5 /* reset_tension.lua */,
@@ -2925,6 +2946,9 @@
 		078D452516CE87D900E21DC5 /* species */ = {
 			isa = PBXGroup;
 			children = (
+				0701424F16E245A800B00887 /* clawfoot.lua */,
+				0701425016E245A800B00887 /* kraken.lua */,
+				0701425116E245A800B00887 /* wave.lua */,
 				07F88F1916DB8FF600FE6B2B /* jfish.lua */,
 				07F88F1A16DB8FF600FE6B2B /* whale.lua */,
 				078D45E316CF2E7000E21DC5 /* bat.lua */,
@@ -4147,6 +4171,9 @@
 		07C6093A161674650084708C /* enemies */ = {
 			isa = PBXGroup;
 			children = (
+				0701425516E2476D00B00887 /* clawfoot3C0.lua */,
+				0701425616E2476D00B00887 /* kraken3C0.lua */,
+				0701425716E2476D00B00887 /* wave3C0.lua */,
 				07B21FE016CFCB820083B865 /* acorn01.lua */,
 				07B21FE116CFCB820083B865 /* acorn02.lua */,
 				07B21FE216CFCB820083B865 /* bat01.lua */,
@@ -5222,6 +5249,15 @@
 				0701423F16E1F7EE00B00887 /* dhun_voxslash0.caf in Resources */,
 				0701424016E1F7EE00B00887 /* dhun_wait0.caf in Resources */,
 				0701424C16E2319900B00887 /* 3c_ocean.lua in Resources */,
+				0701424E16E243BC00B00887 /* ocean_boss.lua in Resources */,
+				0701425216E245A800B00887 /* clawfoot.lua in Resources */,
+				0701425316E245A800B00887 /* kraken.lua in Resources */,
+				0701425416E245A800B00887 /* wave.lua in Resources */,
+				0701425816E2476D00B00887 /* clawfoot3C0.lua in Resources */,
+				0701425916E2476D00B00887 /* kraken3C0.lua in Resources */,
+				0701425A16E2476D00B00887 /* wave3C0.lua in Resources */,
+				0701425D16E24A2800B00887 /* foot.lua in Resources */,
+				0701425E16E24A2800B00887 /* wave_skill.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

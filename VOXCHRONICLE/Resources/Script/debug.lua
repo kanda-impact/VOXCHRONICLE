@@ -5,7 +5,7 @@ DebugData = {
     "1b_field",
     "2a_forest",
     "2c_cyber",
-    "space_test",
+    "ocean_boss",
     "shaba_map",
     "bossdebug",
     "map_select",
