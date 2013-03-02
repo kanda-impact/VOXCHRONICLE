@@ -105,7 +105,11 @@ bool EnemyManager::removeEnemy(Enemy* enemy) {
   if (this->getChildren()->containsObject(enemy)) {
     _trash->addObject(enemy); // 遅延解法のため、ゴミ箱に追加してpoolさせておく
     EffectLayer* layer = EffectLayer::sharedLayer();
-    layer->addEffectOnEnemy(enemy, "defeat", 3, CCRectMake(0, 0, 200, 200));
+    if (enemy == this->getBoss()) {
+      layer->addEffectOnEnemy(NULL, "explosion", 16, CCRectMake(0, 0, 480, 320));
+    } else {
+      layer->addEffectOnEnemy(enemy, "defeat", 3, CCRectMake(0, 0, 200, 200));
+    }
     this->removeChild(enemy, true);
     return true;
   }
