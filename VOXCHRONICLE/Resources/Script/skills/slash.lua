@@ -13,7 +13,7 @@ Skill = {
   skillType = SkillTypePhysical,
   getPower = function(characterManager)
     local tension = characterManager:getTension()
-    t = {0, 4, 6, 9, 12}
+    t = {0, 4, 7, 10, 15}
     return t[tension + 1]
   end,
   messages = {
