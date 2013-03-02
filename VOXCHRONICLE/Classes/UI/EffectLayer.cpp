@@ -48,6 +48,7 @@ EffectLayer::EffectLayer() {
 
 EffectLayer::~EffectLayer() {
   _tensionEffectLayer->release();
+  _characterEffectLayer->release();
 }
 
 void EffectLayer::addEffectOnEnemy(Enemy *enemy, const char *prefix, int frameCount, CCRect rect) {
