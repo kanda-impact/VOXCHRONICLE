@@ -15,7 +15,7 @@ Skill = {
     return t[tension + 1]
   end,
   skillRange = SkillRangeBack,
-  skillType = SkillTypeNone,
+  skillType = SkillTypeMagical,
   messages = {
     "{chara}は　ゆみを　はなった"
   }
