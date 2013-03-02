@@ -12,8 +12,7 @@ Enemy = {
   getFrequency = function(enemy, characterManager)
     return 1
   end,
-  disableSkills = {},
-  disableSkills = {},
+  disableSkills = {"knockback"},
   animationFrames = 4,
   performSkill = function(self)
     local key = "waveTurn"
