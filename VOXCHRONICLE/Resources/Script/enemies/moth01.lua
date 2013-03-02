@@ -1,7 +1,7 @@
 Enemy = {
   species = "moth",
   level = 20,
-  hp = 18,
+  hp = 15,
   getExp = function(default)
       return 12
   end,

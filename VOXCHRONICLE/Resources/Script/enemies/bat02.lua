@@ -1,9 +1,9 @@
 Enemy = {
   species = "bat",
   level = 20,
-  hp = 12,
+  hp = 9,
   getExp = function(default)
-      return 5
+      return 12
   end,
   item = EnemyItemNone,
   type = SkillTypeNormal,
