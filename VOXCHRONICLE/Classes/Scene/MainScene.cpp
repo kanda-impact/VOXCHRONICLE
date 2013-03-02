@@ -129,6 +129,11 @@ bool MainScene::init(Map* map) {
   _isLevelUped = false;
   _preLevel = _level->getLevel();
   
+  CCAssert(_effectLayer != NULL, "EffectLayer must not be null.");
+  CCNode* parent = _effectLayer->getParent();
+  if (parent) {
+    parent->removeChild(_effectLayer, true);
+  }
   this->addChild(_effectLayer, MainSceneZOrderEffect);
   
   this->setTouchEnabled(true);
@@ -449,10 +454,10 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _musicManager->setIntroCount(0);
       _preLevel = currentLevel;
       _map->performOnLevel(currentLevel, _characterManager, _enemyManager); // スクリプトを呼んでやる
-      //_characterManager->updateParameters();
+      _characterManager->updateParameters();
       _level = _map->createLevel(currentLevel, _characterManager);
       _enemyManager->setLevel(_level);
-      //this->updateGUI();
+      this->updateGUI();
       
       _enemyManager->removeAllEnemiesQueue();
       _isLevelUped = true;

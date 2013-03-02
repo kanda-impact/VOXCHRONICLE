@@ -7,7 +7,7 @@ Map = {
   introCount = 0,
   backgroundImage = "3d_background0.png",
   nextMaps = {},
-  initialLevel = 1,
+  initialLevel = 21,
   maxLevel = 30,
   getEnemyTable = function(level)
     if level < 30 then
