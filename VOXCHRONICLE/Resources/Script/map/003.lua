@@ -10,9 +10,19 @@ Map = {
   initialLevel = 21,
   maxLevel = 30,
   getEnemyTable = function(level)
-    if level < 30 then
-      return {mimic01 = 4, dragon01 = 3, gago01 = 2, cryst01 = 1}
-    end
+      if level <= 22 then
+       return {mimic01 = 2, dragon01 = 1}
+      elseif level <= 24 then
+       return {mimic01 = 2, gago01 = 1, cryst01 = 2}
+      elseif level <= 25 then
+       return {gago01 = 3, cryst01 = 2}
+      elseif level <= 27 then
+       return {mimic01 = 2, dragon01 = 1, gago01 = 2}
+      elseif level <= 28 then
+       return {mimic01 = 1, dragon01 = 2, gago01 = 2}
+      elseif level <= 29 then
+       return {dragon01 = 2, gago01 = 1, cryst01 = 2}
+      end
     return {}
   end,
   onLevel = function(level, characterManager, enemyManager)
@@ -22,7 +32,11 @@ Map = {
     end
   end,
   getEnemyPopRate = function(level)
-    return 0.3
+    if level < 25 then
+      return 0.3
+    else 
+      return 0.4
+    end
   end
 }
 

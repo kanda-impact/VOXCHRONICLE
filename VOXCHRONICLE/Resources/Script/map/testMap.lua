@@ -10,14 +10,14 @@ Map = {
   maxLevel = 10,
   getEnemyTable = function(level)
     if level <= 1 then
-      return {tut_slime1 = 1}
+      return {slime1T1 = 1}
     elseif level <= 2 then
-      return {tut_slime0 = 1}
+      return {slime1T0 = 1}
     else
       if level % 2 == 1 then
-        return {tut_slime0 = 1}
+        return {slime1T0 = 1}
       else
-        return {tut_slime1 = 1}
+        return {slime1T1 = 1}
       end
     end
     return {}
@@ -53,6 +53,6 @@ Map = {
     return 0.7
   end,
   fixedEnemies = {
-    {"tut_flower", 240}
+    {"flower1T0", 240}
   }
 }
