@@ -1,6 +1,6 @@
 Map = {
   name = "歪み電脳",
-  wayMusic = "",
+  wayMusic = "dhun",
   bossMusic = "",
   backgroundImage = "",
   skin = "skinA",
@@ -10,7 +10,7 @@ Map = {
   maxLevel = 20,
   getEnemyTable = function(level)
     if level <= 20 then
-      return {tetufez1B0 = 1} --歪み電脳の敵はすべて未実装
+      return {slime1T1 = 1} --歪み電脳の敵はすべて未実装
     elseif level <= 3 then
       return {}
     else
