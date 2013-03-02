@@ -1,11 +1,11 @@
 Enemy = {
-  species = "acorn",
+  species = "typhoon",
   level = 10,
   hp = 9,
   getExp = function(default)
       return 12
   end,
-  item = EnemyItemNone,
+  item = EnemyItemBarrier,
   type = SkillTypeNomal,
 }
 
