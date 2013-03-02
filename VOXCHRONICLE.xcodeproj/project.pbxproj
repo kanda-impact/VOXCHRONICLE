@@ -158,6 +158,7 @@
 		0738FBB216C534D800FE2816 /* death.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0738FBB116C534D800FE2816 /* death.lua */; };
 		0739C4481615D2FD00CB864D /* CharacterManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0739C4461615D2FD00CB864D /* CharacterManager.cpp */; };
 		0739C44B1615D30800CB864D /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0739C4491615D30800CB864D /* Character.cpp */; };
+		073A468D16E28F200093DC01 /* musi.lua in Resources */ = {isa = PBXBuildFile; fileRef = 073A468C16E28F200093DC01 /* musi.lua */; };
 		07425E31168072C4001134D0 /* charge.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07425E30168072C4001134D0 /* charge.lua */; };
 		07448CBD16C289B800F005C6 /* welcome.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07448CBC16C289B800F005C6 /* welcome.lua */; };
 		07448CBF16C28E0D00F005C6 /* empty.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07448CBE16C28E0D00F005C6 /* empty.lua */; };
@@ -1170,6 +1171,7 @@
 		0738FBB116C534D800FE2816 /* death.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = death.lua; path = messages/death.lua; sourceTree = "<group>"; };
 		0739C4461615D2FD00CB864D /* CharacterManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CharacterManager.cpp; path = Classes/Model/CharacterManager.cpp; sourceTree = "<group>"; };
 		0739C4491615D30800CB864D /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Character.cpp; path = Classes/Model/Character.cpp; sourceTree = "<group>"; };
+		073A468C16E28F200093DC01 /* musi.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = musi.lua; path = species/musi.lua; sourceTree = "<group>"; };
 		07425E30168072C4001134D0 /* charge.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = charge.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		07448CBC16C289B800F005C6 /* welcome.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = welcome.lua; path = messages/welcome.lua; sourceTree = "<group>"; };
 		07448CBE16C28E0D00F005C6 /* empty.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = empty.lua; path = messages/empty.lua; sourceTree = "<group>"; };
@@ -2950,6 +2952,7 @@
 		078D452516CE87D900E21DC5 /* species */ = {
 			isa = PBXGroup;
 			children = (
+				073A468C16E28F200093DC01 /* musi.lua */,
 				0701424F16E245A800B00887 /* clawfoot.lua */,
 				0701425016E245A800B00887 /* kraken.lua */,
 				0701425116E245A800B00887 /* wave.lua */,
@@ -5266,6 +5269,7 @@
 				0701425E16E24A2800B00887 /* wave_skill.lua in Resources */,
 				0701426116E25BD700B00887 /* clawfoot3C1.lua in Resources */,
 				0701426216E25BD700B00887 /* clawfoot3C2.lua in Resources */,
+				073A468D16E28F200093DC01 /* musi.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
