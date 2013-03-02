@@ -396,6 +396,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         MessageManager::sharedManager()->pushRandomMessageFromLua("empty"); // MP切れメッセージ
       }
       
+      _effectLayer->addSkillEffect(skill, enemies);
       _effectLayer->addCutin(skill, isHit, _musicManager->getMusic()->getCurrentMainTrack()->getDuration());
       
       if (isHit) {

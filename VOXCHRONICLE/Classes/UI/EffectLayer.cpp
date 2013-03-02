@@ -58,7 +58,7 @@ void EffectLayer::addSkillEffect(Skill *skill, CCArray* targets) {
       const char* frameName = (string(skill->getIdentifier()) + lexical_cast<string>(i) + string(".png")).c_str();
       animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath(frameName).c_str(), rect));
     }
-    animation->setDelayPerUnit(2.0 / 60.0);
+    animation->setDelayPerUnit(4.0 / 60.0);
     effect->runAction(CCSequence::create(CCAnimate::create(animation),
                                          CCFadeOut::create(0.1f),
                                          CCRemoveFromParentAction::create(),

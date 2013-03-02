@@ -1,7 +1,7 @@
 Skill = {
   name = "弓",
   identifier = "bow",
-  effectFrames = 0,
+  effectFrames = 4,
   mp = 1,
   se = true,
   tensionLevel = 0,
