@@ -20,8 +20,9 @@ typedef enum {
 static EffectLayer* _shared = NULL;
 
 EffectLayer* EffectLayer::sharedLayer() {
-  if (!_shared) {
+  if (_shared == NULL) {
     _shared = new EffectLayer();
+    _shared->retain();
   }
   return _shared;
 }
