@@ -284,7 +284,7 @@ void Enemy::setItem(EnemyItem item) {
       sprite = CCSprite::create(FileUtils::getFilePath(filename).c_str());
       sprite->setColor(LSK_COLOR);
       point = ccp(this->getContentSize().width / 2.0f, this->getContentSize().height / 2.0f);
-      sprite->setOpacity(100);
+      sprite->setOpacity(200);
       sprite->setScale(2.0f);
     }
     this->addChild(sprite, 1000, EnemyTagItem);
