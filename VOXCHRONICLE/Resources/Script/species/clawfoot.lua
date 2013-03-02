@@ -11,7 +11,7 @@ Enemy = {
   getFrequency = function(enemy, characterManager)
     return 1
   end,
-  disableSkills = {},
+  disableSkills = {"knockback"},
   animationFrames = 4,
   performSkill = function(self)
     math.random(100)
