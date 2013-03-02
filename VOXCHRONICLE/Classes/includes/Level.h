@@ -24,7 +24,7 @@ class Level :public CCObject {
   int _level;
   list<pair<string, int> > _enemyTable;
   float _enemyPopRate;
-  CCDictionary* _skillDictionary;
+  CCDictionary* _skillTable;
   Map* _map;
  public:
   Level(int level, Map* map);
@@ -36,7 +36,7 @@ class Level :public CCObject {
   void setEnemyTable(list<pair<string, int> > table);
   CCArray* getAllSkills(Character* character);
   CCArray* getSkills(Character* character);
-  void loadSkills(Character* character);
+  void setSkillTable(CCDictionary* skillTable);
 };
 
 #endif /* defined(__VOXCHRONICLE__Level__) */

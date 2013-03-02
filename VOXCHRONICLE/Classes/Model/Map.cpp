@@ -12,6 +12,7 @@
 #include "LuaObject.h"
 #include "Enemy.h"
 #include "FileUtils.h"
+#include <boost/lexical_cast.hpp>
 
 using namespace std;
 
@@ -22,6 +23,7 @@ Map::Map(const char* mapName) {
   _identifier = mapName;
   _background = NULL;
   _lua = new LuaObject(ss.str().c_str(), "Map");
+  _skillCache = NULL;
   
   // スキンの生成
   _skin = new Skin(_lua->getString("skin"));
@@ -76,6 +78,9 @@ Map::~Map() {
   if (_background != NULL) {
     _background->release();
   }
+  if (_skillCache != NULL) {
+    _skillCache->release();
+  }
   _lua->release();
   _skin->release();
 }
@@ -113,12 +118,16 @@ Level* Map::createLevel(int level, CharacterManager* manager) {
   }
   
   // 技の読み込み
-  CCObject* obj = NULL;
-  CCARRAY_FOREACH(manager->getCharacters(), obj) {
-    Character* chara = (Character*)obj;
-    lv->loadSkills(chara);
+  if (_skillCache == NULL) {
+    _skillCache = CCDictionary::create();
+    _skillCache->retain();
+    CCObject* obj = NULL;
+    CCARRAY_FOREACH(manager->getCharacters(), obj) {
+      Character* chara = (Character*)obj;
+      this->loadSkillTable(chara);
+    }
   }
-  
+  lv->setSkillTable(_skillCache);
   return lv;
 }
 
@@ -212,4 +221,34 @@ CCSprite* Map::getBackground() {
     _background->retain();
   }
   return _background;
+}
+
+void Map::loadSkillTable(Character* character) {
+  CCArray* skills = CCArray::create();
+  LuaObject* lua = LuaObject::create(character->getIdentifier().c_str());
+  lua_State* L = lua->getLuaEngineWithLoad()->getLuaState();
+  lua_getfield(L, lua_gettop(L), "getSkills");
+  if (lua_isfunction(L, lua_gettop(L))) {
+    lua_pushstring(L, this->getIdentifier().c_str()); // Map名をpushしてやる
+    if (lua_pcall(L, 1, 1, 0)) {
+      cout << lua_tostring(L, lua_gettop(L)) << endl;
+    }
+    CCLuaValueDict* sks = lua->recursivelyLoadTable(lua_gettop(L));
+    for (int i = 1; i <= sks->size(); ++i) {
+      CCLuaValueDict a = (*sks)[boost::lexical_cast<string>(i).c_str()].dictValue();
+      string skillName;
+      int alv = 0;
+      for (int i = 1; i <= 2; ++i) {
+        if (i == 1) {
+          skillName = a["1"].stringValue();
+        } else if (i == 2){
+          alv = a["2"].floatValue();
+        }
+      }
+      Skill* skill = new Skill(skillName.c_str());
+      skill->setAcquirementLV(alv);
+      skills->addObject(skill);
+    }
+    _skillCache->setObject(skills, character->getIdentifier());
+  }
 }

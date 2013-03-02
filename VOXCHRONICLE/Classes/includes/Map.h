@@ -17,6 +17,7 @@
 #include "CharacterManager.h"
 #include "EnemyManager.h"
 #include "Skin.h"
+#include "Character.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -37,6 +38,8 @@ class Map :public CCObject {
   MusicSet* _wayMusic;
   MusicSet* _bossMusic;
   Skin* _skin;
+  void loadSkillTable(Character* character);
+  CCDictionary* _skillCache;
  public:
   Map(const char* mapName);
   ~Map();
