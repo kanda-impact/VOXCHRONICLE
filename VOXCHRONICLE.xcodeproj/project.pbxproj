@@ -805,6 +805,7 @@
 		07C6468016E0DB2500B29842 /* endingC.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07C6467F16E0DB2500B29842 /* endingC.lua */; };
 		07C6468216E0DCFF00B29842 /* endingB.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07C6468116E0DCFF00B29842 /* endingB.mp3 */; };
 		07C6468516E11CB400B29842 /* PopupWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6468316E11CB400B29842 /* PopupWindow.cpp */; };
+		07C6468F16E1CDC600B29842 /* SaveData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6468D16E1CDC600B29842 /* SaveData.cpp */; };
 		07C6F6AD1615D6300084708C /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AB1615D6300084708C /* Enemy.cpp */; };
 		07C6F6B11615D6420084708C /* EnemyManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6F6AF1615D6420084708C /* EnemyManager.cpp */; };
 		07D873F515ED1215009CC446 /* attack0.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 07D873E415ED1215009CC446 /* attack0.WAV */; };
@@ -2019,6 +2020,8 @@
 		07C6468116E0DCFF00B29842 /* endingB.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = endingB.mp3; path = Resources/Music/general/endingB.mp3; sourceTree = "<group>"; };
 		07C6468316E11CB400B29842 /* PopupWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PopupWindow.cpp; path = Classes/UI/PopupWindow.cpp; sourceTree = "<group>"; };
 		07C6468616E11CFC00B29842 /* PopupWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopupWindow.h; path = Classes/includes/PopupWindow.h; sourceTree = "<group>"; };
+		07C6468D16E1CDC600B29842 /* SaveData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SaveData.cpp; path = Classes/Model/SaveData.cpp; sourceTree = "<group>"; };
+		07C6469016E1CDF000B29842 /* SaveData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SaveData.h; path = Classes/includes/SaveData.h; sourceTree = "<group>"; };
 		07C6F6AB1615D6300084708C /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = Classes/Model/Enemy.cpp; sourceTree = "<group>"; };
 		07C6F6AF1615D6420084708C /* EnemyManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyManager.cpp; path = Classes/Model/EnemyManager.cpp; sourceTree = "<group>"; };
 		07D873E415ED1215009CC446 /* attack0.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = attack0.WAV; path = Resources/Music/VOXQUEST/attack0.WAV; sourceTree = "<group>"; };
@@ -2407,6 +2410,8 @@
 				079D275516D34B46006D6A8F /* MusicManager.h */,
 				07C6466F16DE119100B29842 /* SEManager.cpp */,
 				07C6467216DE11E400B29842 /* SEManager.h */,
+				07C6469016E1CDF000B29842 /* SaveData.h */,
+				07C6468D16E1CDC600B29842 /* SaveData.cpp */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -5245,6 +5250,7 @@
 				07C6467516DE3FB200B29842 /* EffectLayer.cpp in Sources */,
 				07C6467916DE48D000B29842 /* CCRemoveFromParentAction.cpp in Sources */,
 				07C6468516E11CB400B29842 /* PopupWindow.cpp in Sources */,
+				07C6468F16E1CDC600B29842 /* SaveData.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
