@@ -1,4 +1,4 @@
 Setting = {
-  initialMap = "001",
-  initialLevel = 1
+  initialMap = "003",
+  initialLevel = 21
 }

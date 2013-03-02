@@ -1,9 +1,9 @@
 Enemy = {
-  species = "mimic",
-  level = 20,
-  hp = 9,
+  species = "slime",
+  level = 1,
+  hp = 1,
   getExp = function(default)
-      return 10
+      return 20
   end,
   item = EnemyItemNone,
   type = SkillTypeNormal,
