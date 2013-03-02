@@ -31,9 +31,18 @@ EffectLayer::EffectLayer() {
   _tensionEffectLayer = CCSprite::create("tension_effect.png");
   _tensionEffectLayer->retain();
   CCDirector* director = CCDirector::sharedDirector();
-  _tensionEffectLayer->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
+  CCPoint center = ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f);
+  _tensionEffectLayer->setPosition(center);
   this->addChild(_tensionEffectLayer);
   _tensionEffectLayer->setVisible(false);
+  _characterEffectLayer = CCSprite::create("mode_vox.png");
+  CCTextureCache::sharedTextureCache()->addImage("mode_lsk.png"); // テクスチャーを読んでおく
+  _characterEffectLayer->setPosition(center);
+  this->addChild(_characterEffectLayer);
+  
+  _characterEffectLayer->setOpacity(50);
+  _characterEffectLayer->runAction(CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(1.0f, 25),
+                                                                                            CCFadeTo::create(1.0f, 50))));
 }
 
 EffectLayer::~EffectLayer() {
@@ -85,6 +94,16 @@ void EffectLayer::setTensionEffect(int tension) {
     CCSequence* blink = CCSequence::createWithTwoActions(CCFadeTo::create(delay, 100),
                                                          CCFadeTo::create(delay, 20));
     _tensionEffectLayer->runAction(CCRepeatForever::create(blink));
+  }
+}
+
+void EffectLayer::setCharacterEffect(Character *character) {
+  if (character->getCharacterType() == CharacterTypeVox) {
+    CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage("mode_vox.png");
+    _characterEffectLayer->setTexture(texture);
+  } else {
+    CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage("mode_lsk.png");
+    _characterEffectLayer->setTexture(texture);
   }
 }
 

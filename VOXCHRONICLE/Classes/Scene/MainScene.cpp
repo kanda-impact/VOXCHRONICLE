@@ -487,6 +487,9 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _characterManager->resetTension();
     }
     _effectLayer->setTensionEffect(_characterManager->getTension());
+    if (_characterManager->getLastSkill() != NULL && _characterManager->getLastSkill()->getIdentifier() == "change") { // チェンジ使ったとき
+      _effectLayer->setCharacterEffect(_characterManager->getCurrentCharacter());
+    }
     
     if (skill) {
       _skin->getController()->updateSkills(_characterManager, _level);
