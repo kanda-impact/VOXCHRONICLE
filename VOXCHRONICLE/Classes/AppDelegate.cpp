@@ -3,7 +3,7 @@
 #include "SimpleAudioEngine.h"
 #include "CCScriptSupport.h"
 #include "CCLuaEngine.h"
-#include "LogoScene.h"
+#include "TitleScene.h"
 #include "macros.h"
 
 USING_NS_CC;
@@ -51,7 +51,7 @@ bool AppDelegate::applicationDidFinishLaunching()
   pDirector->setAnimationInterval(1.0 / 60);
   
   // create a scene. it's an autorelease object
-  CCScene *pScene = LogoScene::scene();
+  CCScene *pScene = TitleScene::scene();
   
   CCScriptEngineManager::sharedManager()->setScriptEngine(CCLuaEngine::defaultEngine());
   
