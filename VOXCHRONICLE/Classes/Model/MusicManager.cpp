@@ -324,8 +324,16 @@ void MusicManager::preloadAllTracks(CharacterManager* manager, Level* level) {
   this->preloadMusic("wait", _musicSet->getWaitCount());
   this->preloadMusic("drum", 5);
   this->preloadMusic("impact", 4);
+  this->preloadMusic("counter", 4);
   this->preloadMusic("intro", _musicSet->getIntroCount());
   this->preloadMusic("finish", _musicSet->getFinishCount());
+  if (_musicSet->getType() == MusicSetTypeBoss) { // ボス面なら
+    this->preloadMusic("qte"); // QTE曲
+  }
+}
+
+void MusicManager::preloadMusic(const char *trackName) {
+  BufferCache::sharedCache()->addBuffer(this->getTrackFileName(trackName).c_str());
 }
 
 void MusicManager::preloadMusic(const char *trackName, int maxCount) {

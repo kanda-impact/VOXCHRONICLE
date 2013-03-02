@@ -70,6 +70,7 @@ class MusicManager :public CCObject {
   string buildTrackName(const char* skillIdentifier, Skill* skill, int repeatCount);
   string buildTrackName(const char* skillIdentifier, Skill* skill, int repeatCount, Character* currentCharacter);
   
+  void preloadMusic(const char* trackName);
   void preloadMusic(const char* trackName, int maxCount);
  public:
   MusicManager(VISS::Music* music, MusicSet* musicSet, EnemyManager* enemyManager, CharacterManager* characterManager);
