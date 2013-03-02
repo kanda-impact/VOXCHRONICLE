@@ -214,7 +214,7 @@ void Enemy::setRowAndCol(int row, float col) {
 }
 
 float Enemy::getCurrentScale(float row) {
-  return (0.08f * MAX_ROW) - (0.08f * row);
+  return 1.0 - row * 0.12;
 }
 
 void Enemy::setRow(float r) {
