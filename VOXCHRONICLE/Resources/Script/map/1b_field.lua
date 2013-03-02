@@ -19,5 +19,6 @@ Map = {
     return 0.7
   end,
   fixedEnemies = {
+    --{"level10",0}
   }
 }
