@@ -1,19 +1,17 @@
 Map = {
-  name = "城",
-  wayMusic = "",
-  bossMusic = "",
+  name = "深海",
+  wayMusic = "dub",
+  bossMusic = "3Bb",
   backgroundImage = "",
-  skin = "skinC",
-  ending = "",
+  skin = "skinA",
+  ending = "endingC",
   nextMaps = {""},
   initialLevel = 21,
   maxLevel = 30,
   getEnemyTable = function(level)
-    if level <= 2 then
-      return {mimic3B0 = 3, gargoyle3B0 = 2,slime3B0 = 2 }
-    elseif level <= 5 then
-      return {}
-    else
+    if level < 30 then
+      return {whale3C0 = 3, jfish3C0 = 2, } --naut 未実装
+    elseif level == 30 then
       return {}
     end
   end,

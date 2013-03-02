@@ -1,8 +1,8 @@
 Map = {
   name = "古代遺跡",
-  wayMusic = "",
-  bossMusic = "",
-  backgroundImage = "",
+  wayMusic = "ttn1",
+  bossMusic = "3Bb",
+  backgroundImage = "ruin_background.png",
   skin = "skinC",
   ending = "",
   nextMaps = {""},

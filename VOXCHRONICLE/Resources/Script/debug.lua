@@ -1,10 +1,7 @@
 DebugData = {
   stages = {
     -- デバッグメニューに表示するステージ名のリストを定義します
-    "1b",
-    "3b",
-    "2a",
-    "ttn",
+    "1a_simple",
     "space_test",
     "shaba_map",
     "bossdebug",

@@ -1,11 +1,11 @@
 Map = {
   name = "シンプル",
-  wayMusic = "",
+  wayMusic = "volca",
   bossMusic = "",
-  backgroundImage = "",
+  backgroundImage = "simple_background.png",
   skin = "skinA",
   ending = "",
-  nextMaps = {"2a_forest","2b_cave"},
+  nextMaps = {"2a_forest", "2b_cave"},
   initialLevel = 1,
   maxLevel = 10,
   getEnemyTable = function(level)

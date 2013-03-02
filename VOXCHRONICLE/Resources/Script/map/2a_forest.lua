@@ -1,9 +1,9 @@
 Map = {
   name = "森林",
-  wayMusic = "nmb",
+  wayMusic = "volca",
   bossMusic = "",
   backgroundImage = "",
-  skin = "skinA",
+  skin = "skinB",
   ending = "",
   nextMaps = {"3a_ruin","3b_castle"},
   initialLevel = 11,
