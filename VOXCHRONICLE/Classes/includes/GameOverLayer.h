@@ -25,7 +25,7 @@ class GameOverLayer :public CCLayer {
   void titleButtonPressed(CCObject *sender);
  public:
   GameOverLayer(MainScene* main);
-  ~GameOverLayer();
+  virtual ~GameOverLayer();
 };
 
 

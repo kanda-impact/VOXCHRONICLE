@@ -96,7 +96,7 @@ bool MainScene::init(Map* map) {
   _focus->setVisible(false);
   _focus->setAnchorPoint(ccp(0.5f, 0.0f));
   this->addChild(_focus, MainSceneZOrderFocus);
-
+  
   _characterManager = new CharacterManager();
   CCSize size = director->getWinSize();
   _musicManager = new MusicManager(music, NULL, _enemyManager, _characterManager);
@@ -225,7 +225,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     Skill* skill = NULL;
     if (_characterManager->isPerforming()) {
       skill = _characterManager->getCurrentSkill();
-    } else if (_effectLayer->getTutorialWindow()) { // チュートリアルウィンドウが出ているとき
+    } else if (_effectLayer->getPopupWindow()) { // チュートリアルウィンドウが出ているとき
       _state = VCStateWindow;
       _skin->getController()->setEnable(false); // コントローラーを無効に
     }else {
@@ -316,7 +316,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     }
   } else if (_state == VCStateWindow) { // ウィンドウが出てたら
     _musicManager->pushNextTracks(NULL, _currentSkillInfo); // 常にwait
-    if (!_effectLayer->getTutorialWindow()) {
+    if (!_effectLayer->getPopupWindow()) {
       _state = VCStateMain;
     }
   }
@@ -503,8 +503,16 @@ void MainScene::registerWithTouchDispatcher() {
 
 bool MainScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
   if (_state == VCStateWindow) {
-    _effectLayer->removeChild(_effectLayer->getTutorialWindow(), true);
-    _state = VCStateMain;
+    PopupWindow* layer = _effectLayer->getPopupWindow();
+    if (!layer) return false;
+    if (layer->isLastPage()) { // 最終ページだったら
+      layer->runAction(CCSequence::create(CCScaleTo::create(0.3f, 0),
+                                          CCRemoveFromParentAction::create(),
+                                          NULL));
+      _state = VCStateMain;
+    } else { // まだページが残っていたら
+      layer->nextPage();
+    }
   }
   return true;
 }
@@ -783,18 +791,18 @@ void MainScene::changeMusic(MusicSet* mSet, bool enablePreload) {
   // 作曲者情報と曲名を表示する
   CCNode* musicInfo = CCNode::create();
   CCLabelTTF* nameShadowLabel = CCLabelTTF::create(mSet->getName().c_str(),
-                                             "Helvetica",
-                                             24,
-                                             CCSizeMake(200, 30),
-                                             kCCTextAlignmentRight);
+                                                   "Helvetica",
+                                                   24,
+                                                   CCSizeMake(200, 30),
+                                                   kCCTextAlignmentRight);
   musicInfo->addChild(nameShadowLabel);
   nameShadowLabel->setColor(ccc3(33, 33, 33));
   nameShadowLabel->setPosition(ccp(3, -3));
   CCLabelTTF* composerShadowLabel = CCLabelTTF::create(mSet->getComposer().c_str(),
-                                                 "Helvetica",
-                                                 16,
-                                                 CCSizeMake(200, 20),
-                                                 kCCTextAlignmentRight);
+                                                       "Helvetica",
+                                                       16,
+                                                       CCSizeMake(200, 20),
+                                                       kCCTextAlignmentRight);
   composerShadowLabel->setColor(ccc3(33, 33, 33));
   composerShadowLabel->setPosition(ccp(3, -28));
   musicInfo->addChild(composerShadowLabel);

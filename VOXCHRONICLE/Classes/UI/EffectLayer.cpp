@@ -66,8 +66,9 @@ void EffectLayer::addSkillEffect(Skill *skill, CCArray* targets) {
   }
 }
 
-CCSprite* EffectLayer::addTutorialWindow() {
-  CCSprite* window = CCSprite::create("tutorial_window.png");
+PopupWindow* EffectLayer::addPopupWindow(int pages) {
+  CCAssert(this->getPopupWindow() == NULL, "");
+  PopupWindow* window = PopupWindow::create(pages);
   CCDirector* director = CCDirector::sharedDirector();
   window->setPosition(ccp(director->getWinSize().width / 2.0, director->getWinSize().height / 2.0f));
   window->setScale(0);
@@ -105,6 +106,6 @@ void EffectLayer::addCutin(Skill *skill, bool succeed, float duration) {
   }
 }
 
-CCSprite* EffectLayer::getTutorialWindow() {
-  return (CCSprite*)this->getChildByTag(EffectLayerTagTutorial);
+PopupWindow* EffectLayer::getPopupWindow() {
+  return (PopupWindow*)this->getChildByTag(EffectLayerTagTutorial);
 }

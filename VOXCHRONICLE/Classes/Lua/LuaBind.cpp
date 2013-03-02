@@ -28,6 +28,7 @@ static void tolua_reg_types (lua_State* tolua_S) {
   tolua_usertype(tolua_S, "EnemySkill");
   tolua_usertype(tolua_S, "MessageManager");
   tolua_usertype(tolua_S, "EffectLayer");
+  tolua_usertype(tolua_S, "PopupWindow");
 }
 
 // Skill
@@ -330,10 +331,11 @@ static int tolua_VC_EffectLayer_sharedLayer(lua_State* tolua_S) {
   return 1;
 }
 
-static int tolua_VC_EffectLayer_addTutorialWindow(lua_State* tolua_S) {
+static int tolua_VC_EffectLayer_addPopupWindow(lua_State* tolua_S) {
   EffectLayer* self = (EffectLayer*)tolua_tousertype(tolua_S, 1, 0);
-  CCSprite* window = self->addTutorialWindow();
-  tolua_pushusertype(tolua_S, window, "CCSprite");
+  int pages = (int)tolua_tonumber(tolua_S, 2, 0);
+  PopupWindow* window = self->addPopupWindow(pages);
+  tolua_pushusertype(tolua_S, window, "PopupWindow");
   return 1;
 }
 
@@ -446,7 +448,12 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_cclass(tolua_S, "EffectLayer", "EffectLayer", "CCLayer", NULL);
   tolua_beginmodule(tolua_S, "EffectLayer");
   tolua_function(tolua_S, "sharedLayer", tolua_VC_EffectLayer_sharedLayer);
-  tolua_function(tolua_S, "addTutorialWindow", tolua_VC_EffectLayer_addTutorialWindow);
+  tolua_function(tolua_S, "addPopupWindow", tolua_VC_EffectLayer_addPopupWindow);
   tolua_endmodule(tolua_S);
+  // PopupWindow
+  tolua_cclass(tolua_S, "PopupWindow", "PopupWindow", "CCSprite", NULL);
+  tolua_beginmodule(tolua_S, "PopupWindow");
+  tolua_endmodule(tolua_S);
+  
   return 1;
 }
