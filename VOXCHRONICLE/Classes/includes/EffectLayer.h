@@ -30,6 +30,7 @@ class EffectLayer :public CCLayer {
   static EffectLayer* sharedLayer();
   EffectLayer();
   ~EffectLayer();
+  void addEffectOnEnemy(Enemy* enemy, const char* prefix, int frameCount, CCRect rect);
   void addSkillEffect(Skill* skill, CCArray* targets);
   void setTensionEffect(int tension);
   void setCharacterEffect(Character* character);

@@ -49,6 +49,30 @@ EffectLayer::~EffectLayer() {
   _tensionEffectLayer->release();
 }
 
+void EffectLayer::addEffectOnEnemy(Enemy *enemy, const char *prefix, int frameCount, CCRect rect) {
+  CCSprite* effect = CCSprite::create((string(prefix) + string("0.png")).c_str());
+  CCAnimation* animation = CCAnimation::create();
+  CCPoint position;
+  CCDirector* director = CCDirector::sharedDirector();
+  if (enemy) {
+    position = ccpAdd(enemy->getPosition(), ccp(0, enemy->getContentSize().height * enemy->getCurrentScale(enemy->getRow()) * 0.5f));
+    effect->setScale(enemy->getScale());
+  } else {
+    position = ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f);
+  }
+  effect->setPosition(position);
+  for (int i = 0; i < frameCount; ++i) {
+    const char* frameName = (string(prefix) + lexical_cast<string>(i) + string(".png")).c_str();
+    animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath(frameName).c_str(), rect));
+  }
+  animation->setDelayPerUnit(4.0 / 60.0);
+  effect->runAction(CCSequence::create(CCAnimate::create(animation),
+                                       CCFadeOut::create(0.1f),
+                                       CCRemoveFromParentAction::create(),
+                                       NULL));
+  this->addChild(effect);
+}
+
 void EffectLayer::addSkillEffect(Skill *skill, CCArray* targets) {
   // エフェクトを追加する
   CCDirector* director = CCDirector::sharedDirector();
@@ -56,30 +80,13 @@ void EffectLayer::addSkillEffect(Skill *skill, CCArray* targets) {
   int enemyCount = targets->count();
   if (effectType == SkillEffectTypeAll || (effectType == SkillEffectTypeTarget && enemyCount > 0)) {
     int frames = skill->getEffectFrames();
-    CCSprite* effect = CCSprite::create((string(skill->getIdentifier()) + string("0.png")).c_str());
-    CCAnimation* animation = CCAnimation::create();
-    CCRect rect;
     if (effectType == SkillEffectTypeTarget) { // 1体のみにアニメーションを表示させるとき
       Enemy* target = (Enemy*)targets->objectAtIndex(0);
-      CCPoint position = ccpAdd(target->getPosition(), ccp(0, target->getContentSize().height * target->getCurrentScale(target->getRow()) * 0.5f));
-      rect = CCRectMake(0, 0, 200, 200);
-      effect->setPosition(position);
-      effect->setScale(target->getScale());
+      this->addEffectOnEnemy(target, skill->getIdentifier().c_str(), frames, CCRectMake(0, 0, 200, 200));
     } else { // 全体にアニメーションを表示させるとき
-      CCPoint position = ccp(director->getWinSize().width / 2.0, director->getWinSize().height / 2.0);
-      rect = CCRectMake(0, 0, director->getWinSize().width, director->getWinSize().height);
-      effect->setPosition(position);
+      CCRect rect = CCRectMake(0, 0, director->getWinSize().width, director->getWinSize().height);
+      this->addEffectOnEnemy(NULL, skill->getIdentifier().c_str(), frames, rect);
     }
-    for (int i = 0; i < frames; ++i) {
-      const char* frameName = (string(skill->getIdentifier()) + lexical_cast<string>(i) + string(".png")).c_str();
-      animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath(frameName).c_str(), rect));
-    }
-    animation->setDelayPerUnit(4.0 / 60.0);
-    effect->runAction(CCSequence::create(CCAnimate::create(animation),
-                                         CCFadeOut::create(0.1f),
-                                         CCRemoveFromParentAction::create(),
-                                         NULL));
-    this->addChild(effect);
   }
 }
 
