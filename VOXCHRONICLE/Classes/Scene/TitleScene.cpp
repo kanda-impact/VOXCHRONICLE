@@ -10,7 +10,7 @@
 #include "SimpleAudioEngine.h"
 #include "TitleScene.h"
 #include "MainScene.h"
-#include "SelectScene.h"
+#include "MainMenuScene.h"
 #include "FileUtils.h"
 #include "DebugScene.h"
 #include "macros.h"
@@ -96,11 +96,10 @@ void TitleScene::onEnterTransitionDidFinish() {
 }
 
 void TitleScene::onStartButtonPressed(CCObject* sender) {
-  CCScene* scene = CCScene::create();
-  SelectScene* layer = SelectScene::create();
-  scene->addChild(layer);
-  CCTransitionSlideInT* transition = CCTransitionSlideInT::create(0.25f, scene);
-  CCDirector::sharedDirector()->replaceScene(transition);
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
+  MainMenuScene* scene = new MainMenuScene(true);
+  scene->autorelease();
+  nextScene(scene);
 }
 
 void TitleScene::onDebugButtonPressed(CCObject* sender) {
