@@ -249,7 +249,11 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         _state = VCStateFinish;
         _skin->getController()->setEnable(false);
         _musicManager->getMusic()->removeAllNextTracks();
-        _musicManager->pushFinishTracks();
+        if (_musicManager->getMusicSet()->getFinishCount() == 0) {
+          this->startBossBattle();
+        } else {
+          _musicManager->pushFinishTracks();
+        }
       } else if (_level->getLevel() >= _map->getMaxLevel() + 1) { // 最大レベル + 1のとき
         _state = VCStateFinish;
         _skin->getController()->setEnable(false);
