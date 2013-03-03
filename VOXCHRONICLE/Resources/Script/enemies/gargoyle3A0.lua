@@ -1,12 +1,12 @@
 Enemy = {
   species = "gargoyle",
   level = 10,
-  hp = 9,
+  hp = 15,
   getExp = function(default)
-      return 12
+      return 18
   end,
   item = EnemyItemNone,
-  type = SkillTypeNomal,
+  type = SkillTypeNormal,
 }
 
 return Enemy

@@ -3,6 +3,7 @@ DebugData = {
     -- デバッグメニューに表示するステージ名のリストを定義します
     "1a_simple",
     "1b_field",
+    "3a_ruin",
     "2a_forest",
     "2c_cyber",
     "ocean_boss",
@@ -10,7 +11,6 @@ DebugData = {
     "bossdebug",
     "map_select",
     "ttn",
-    "testMap"
   }
 }
 
