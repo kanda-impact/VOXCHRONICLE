@@ -32,7 +32,11 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
+<<<<<<< HEAD
 	<string>2240</string>
+=======
+	<string>2243</string>
+>>>>>>> acb327a5039fec549213f04cfdebb488d3bc8b03
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIPrerenderedIcon</key>

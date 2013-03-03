@@ -17,6 +17,11 @@ typedef enum {
   EffectLayerTagTutorial
 } EffectLayerTag;
 
+typedef enum {
+  EffectLayerZOrderTension,
+  EffectLayerZOrderCharacter
+} EffectLayerZOrder;
+
 static EffectLayer* _shared = NULL;
 
 EffectLayer* EffectLayer::sharedLayer() {
@@ -30,16 +35,24 @@ EffectLayer* EffectLayer::sharedLayer() {
 EffectLayer::EffectLayer() {
   _tensionEffectLayer = CCSprite::create("tension_effect.png");
   _tensionEffectLayer->retain();
+  _characterEffectLayer = CCSprite::create("mode_vox.png");
+  _characterEffectLayer->retain();
+  this->reloadEffects();
+}
+
+void EffectLayer::reloadEffects() {
   CCDirector* director = CCDirector::sharedDirector();
   CCPoint center = ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f);
   _tensionEffectLayer->setPosition(center);
-  this->addChild(_tensionEffectLayer);
+  if (!_tensionEffectLayer->getParent()) {
+    this->addChild(_tensionEffectLayer, EffectLayerZOrderTension);
+  }
   _tensionEffectLayer->setVisible(false);
-  _characterEffectLayer = CCSprite::create("mode_vox.png");
-  _characterEffectLayer->retain();
   CCTextureCache::sharedTextureCache()->addImage("mode_lsk.png"); // テクスチャーを読んでおく
   _characterEffectLayer->setPosition(center);
-  this->addChild(_characterEffectLayer);
+  if (!_characterEffectLayer->getParent()) {
+    this->addChild(_characterEffectLayer, EffectLayerZOrderCharacter);
+  }
   
   _characterEffectLayer->setOpacity(50);
   _characterEffectLayer->runAction(CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(1.0f, 25),

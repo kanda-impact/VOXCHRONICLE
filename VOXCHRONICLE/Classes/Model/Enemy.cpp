@@ -208,7 +208,7 @@ void Enemy::setRowAndCol(int row, float col) {
     int order = (MAX_ROW - row) * 10 + (3 - col);
     parent->addChild(this, order);
   }
-  this->toggleBlink(row <= 1);
+  this->toggleBlink(row == 0);
   _row = row;
   _col = col;
 }
@@ -356,8 +356,8 @@ bool Enemy::setAnimationAndFrame(const char *filePrefix, int frames, bool hasFra
     if (hasFrame) {
       CCSprite* frameSprite = this->createFrameSprite(filePrefix, frames);
       frameSprite->setAnchorPoint(ccp(0, 0));
-      CCRepeatForever* blink = CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.1f, 128),
-                                                                          CCFadeTo::create(0.1f, 200)));
+      CCRepeatForever* blink = CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.05f, 64),
+                                                                          CCFadeTo::create(0.05f, 255)));
       if (_type == SkillTypePhysical) {
         frameSprite->setColor(VOX_COLOR);
         frameSprite->runAction(blink);

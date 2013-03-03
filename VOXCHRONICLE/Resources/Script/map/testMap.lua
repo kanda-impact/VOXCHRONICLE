@@ -10,7 +10,7 @@ Map = {
   maxLevel = 10,
   getEnemyTable = function(level)
     if level <= 1 then
-      return {slime1T1 = 1}
+      return {slime1T1 = 1, bat01 = 3}
     elseif level <= 2 then
       return {slime1T0 = 1}
     else

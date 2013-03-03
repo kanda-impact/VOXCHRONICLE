@@ -58,19 +58,18 @@ void StatusLayer::setMarkerDuration(float d) {
     this->removeChild(_timeMarker, true);
     _timeMarker = NULL;
   }
-  _timeMarker = CCSprite::create(FileUtils::getFilePath("Image/marker0.png").c_str());
+  _timeMarker = CCSprite::create(FileUtils::getFilePath("Image/marker.png").c_str(), CCRectMake(0, 0, 90, 22.5));
   _timeMarker->retain();
   CCArray* frames = CCArray::create();
   for (int i = 0; i < 4; ++i) {
-    stringstream ss;
-    ss << "Image/" << "marker" << i << ".png";
-    CCSpriteFrame* frame = CCSpriteFrame::create(FileUtils::getFilePath(ss.str().c_str()).c_str(), CCRectMake(0, 0, 24, 24));
+    CCSpriteFrame* frame = CCSpriteFrame::create(FileUtils::getFilePath("Image/marker.png").c_str(), CCRectMake(0, i * 22.5, 90, 22.5));
     frames->addObject(frame);
   }
   CCAnimation* animation = CCAnimation::createWithSpriteFrames(frames);
   animation->setDelayPerUnit(d);
   animation->setRestoreOriginalFrame(true);
   _timeMarker->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
+  _timeMarker->setAnchorPoint(ccp(0.5f, 0.5f));
   int width = CCDirector::sharedDirector()->getWinSize().width;
   _timeMarker->setPosition(ccp(width / 2, 20));
   this->addChild(_timeMarker);
