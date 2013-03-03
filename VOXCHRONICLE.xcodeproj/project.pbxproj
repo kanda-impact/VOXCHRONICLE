@@ -165,6 +165,7 @@
 		0744B5B3167DD9EA00730393 /* StatusLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0744B5B1167DD9EA00730393 /* StatusLayer.cpp */; };
 		074EFD0B15FA926E004D8273 /* SkillTrigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 074EFD0915FA906D004D8273 /* SkillTrigger.cpp */; };
 		074EFD0C15FA93AA004D8273 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 074EFD0715FA906C004D8273 /* Controller.cpp */; };
+		0754384016E3865700802970 /* TutorialScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0754383E16E3865700802970 /* TutorialScene.cpp */; };
 		07565378161705B200C69E27 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07565376161705B200C69E27 /* Level.cpp */; };
 		075653A016171A5500C69E27 /* magic.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0756539F16171A5500C69E27 /* magic.lua */; };
 		075653A616171F2400C69E27 /* change.lua in Resources */ = {isa = PBXBuildFile; fileRef = 075653A516171F2400C69E27 /* change.lua */; };
@@ -1185,6 +1186,8 @@
 		0744B5B1167DD9EA00730393 /* StatusLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StatusLayer.cpp; path = Classes/UI/StatusLayer.cpp; sourceTree = "<group>"; };
 		074EFD0715FA906C004D8273 /* Controller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Controller.cpp; path = Classes/UI/Controller.cpp; sourceTree = "<group>"; };
 		074EFD0915FA906D004D8273 /* SkillTrigger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SkillTrigger.cpp; path = Classes/UI/SkillTrigger.cpp; sourceTree = "<group>"; };
+		0754383E16E3865700802970 /* TutorialScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TutorialScene.cpp; path = Classes/Scene/TutorialScene.cpp; sourceTree = "<group>"; };
+		0754383F16E3865700802970 /* TutorialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TutorialScene.h; path = Classes/Scene/TutorialScene.h; sourceTree = "<group>"; };
 		07565376161705B200C69E27 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Level.cpp; path = Classes/Model/Level.cpp; sourceTree = "<group>"; };
 		0756539F16171A5500C69E27 /* magic.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = magic.lua; sourceTree = "<group>"; };
 		075653A516171F2400C69E27 /* change.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = change.lua; sourceTree = "<group>"; };
@@ -2715,6 +2718,8 @@
 				07C6467316DE3FB200B29842 /* EffectLayer.cpp */,
 				078FFC2D16E37419001C9A4F /* MainMenuScene.cpp */,
 				078FFC2E16E37419001C9A4F /* MainMenuScene.h */,
+				0754383E16E3865700802970 /* TutorialScene.cpp */,
+				0754383F16E3865700802970 /* TutorialScene.h */,
 			);
 			name = Scene;
 			sourceTree = "<group>";
@@ -5616,6 +5621,7 @@
 				07C6468516E11CB400B29842 /* PopupWindow.cpp in Sources */,
 				07C6468F16E1CDC600B29842 /* SaveData.cpp in Sources */,
 				078FFC2F16E37419001C9A4F /* MainMenuScene.cpp in Sources */,
+				0754384016E3865700802970 /* TutorialScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -36,7 +36,10 @@ bool SelectScene::init() {
   mainMenu->setPosition(ccp(director->getWinSize().width / 2.0f, 100));
   this->addChild(mainMenu);
   
-  CCMenuItemImage* backButton = CCMenuItemImage::create("back_down.png", "back_down_pressed.png", this, menu_selector(SelectScene::onBackButtonPressed));
+  CCMenuItemImage* backButton = CCMenuItemImage::create("back_down.png",
+                                                        "back_down_pressed.png",
+                                                        this,
+                                                        menu_selector(SelectScene::onBackButtonPressed));
   CCMenu* backMenu = CCMenu::create(backButton, NULL);
   backMenu->setPosition(ccp(director->getWinSize().width / 2.0f, 17.5));
   this->addChild(backMenu);
@@ -50,7 +53,6 @@ SelectScene::~SelectScene() {
 }
 
 void SelectScene::onEasyButtonPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/start.mp3").c_str());
   MainScene* layer = MainScene::create();
   CCScene* scene = CCScene::create();
   scene->addChild(layer);
