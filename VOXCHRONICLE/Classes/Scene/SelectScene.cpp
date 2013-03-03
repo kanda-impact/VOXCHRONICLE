@@ -7,8 +7,8 @@
 //
 
 #include "SelectScene.h"
-#include "TitleScene.h"
 #include "MainScene.h"
+#include "MainMenuScene.h"
 #include "SimpleAudioEngine.h"
 #include "FileUtils.h"
 
@@ -40,7 +40,6 @@ bool SelectScene::init() {
   CCMenu* backMenu = CCMenu::create(backButton, NULL);
   backMenu->setPosition(ccp(director->getWinSize().width / 2.0f, 17.5));
   this->addChild(backMenu);
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(FileUtils::getFilePath("Music/general/menu.mp3").c_str(), true);
   return true;
 }
 
@@ -65,7 +64,8 @@ void SelectScene::onHardButtonPressed(cocos2d::CCObject *sender) {
 
 void SelectScene::onBackButtonPressed(cocos2d::CCObject *sender) {
   CCScene* scene = CCScene::create();
-  TitleScene* layer = TitleScene::create();
+  MainMenuScene* layer = new MainMenuScene(false);
+  layer->autorelease();
   scene->addChild(layer);
   CCTransitionSlideInB* transition = CCTransitionSlideInB::create(0.25f, scene);
   CCDirector::sharedDirector()->replaceScene(transition);

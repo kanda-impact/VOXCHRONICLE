@@ -388,6 +388,7 @@
 		078FFC2A16E2D549001C9A4F /* mask3A3.lua in Resources */ = {isa = PBXBuildFile; fileRef = 078FFC2716E2D549001C9A4F /* mask3A3.lua */; };
 		078FFC2B16E2D549001C9A4F /* typhoon3A6.lua in Resources */ = {isa = PBXBuildFile; fileRef = 078FFC2816E2D549001C9A4F /* typhoon3A6.lua */; };
 		078FFC2C16E2D549001C9A4F /* wisp3A6.lua in Resources */ = {isa = PBXBuildFile; fileRef = 078FFC2916E2D549001C9A4F /* wisp3A6.lua */; };
+		078FFC2F16E37419001C9A4F /* MainMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 078FFC2D16E37419001C9A4F /* MainMenuScene.cpp */; };
 		0791585A15EBA8350083D348 /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0791585815EBA8350083D348 /* LogoScene.cpp */; };
 		0791587615EBB50E0083D348 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586A15EBB4BB0083D348 /* fps_images.png */; };
 		0791587715EBB50E0083D348 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586B15EBB4BB0083D348 /* Icon-72.png */; };
@@ -1414,6 +1415,8 @@
 		078FFC2716E2D549001C9A4F /* mask3A3.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mask3A3.lua; sourceTree = "<group>"; };
 		078FFC2816E2D549001C9A4F /* typhoon3A6.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = typhoon3A6.lua; sourceTree = "<group>"; };
 		078FFC2916E2D549001C9A4F /* wisp3A6.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wisp3A6.lua; sourceTree = "<group>"; };
+		078FFC2D16E37419001C9A4F /* MainMenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainMenuScene.cpp; path = Classes/Scene/MainMenuScene.cpp; sourceTree = "<group>"; };
+		078FFC2E16E37419001C9A4F /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMenuScene.h; path = Classes/Scene/MainMenuScene.h; sourceTree = "<group>"; };
 		0791585815EBA8350083D348 /* LogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LogoScene.cpp; path = Classes/Scene/LogoScene.cpp; sourceTree = "<group>"; };
 		0791586915EBB4BB0083D348 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/ios/Default.png; sourceTree = "<group>"; };
 		0791586A15EBB4BB0083D348 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = Resources/ios/fps_images.png; sourceTree = "<group>"; };
@@ -2710,6 +2713,8 @@
 				079D274816D2210C006D6A8F /* EndingScene.cpp */,
 				07F88F1D16DBC66800FE6B2B /* SelectScene.cpp */,
 				07C6467316DE3FB200B29842 /* EffectLayer.cpp */,
+				078FFC2D16E37419001C9A4F /* MainMenuScene.cpp */,
+				078FFC2E16E37419001C9A4F /* MainMenuScene.h */,
 			);
 			name = Scene;
 			sourceTree = "<group>";
@@ -5610,6 +5615,7 @@
 				07C6467916DE48D000B29842 /* CCRemoveFromParentAction.cpp in Sources */,
 				07C6468516E11CB400B29842 /* PopupWindow.cpp in Sources */,
 				07C6468F16E1CDC600B29842 /* SaveData.cpp in Sources */,
+				078FFC2F16E37419001C9A4F /* MainMenuScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

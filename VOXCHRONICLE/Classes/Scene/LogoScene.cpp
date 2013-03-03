@@ -58,5 +58,5 @@ void LogoScene::nextScene() {
   CCScene* scene = CCScene::create();
   scene->addChild(TitleScene::create());
   CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
-  CCDirector::sharedDirector()->replaceScene(transition);
+  CCDirector::sharedDirector()->pushScene(transition);
 }
