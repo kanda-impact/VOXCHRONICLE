@@ -166,6 +166,8 @@
 		074EFD0B15FA926E004D8273 /* SkillTrigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 074EFD0915FA906D004D8273 /* SkillTrigger.cpp */; };
 		074EFD0C15FA93AA004D8273 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 074EFD0715FA906C004D8273 /* Controller.cpp */; };
 		0754384016E3865700802970 /* TutorialScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0754383E16E3865700802970 /* TutorialScene.cpp */; };
+		0754384516E3931F00802970 /* StaffRollScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0754384316E3931F00802970 /* StaffRollScene.cpp */; };
+		0754384816E3985600802970 /* staffroll.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0754384716E3985600802970 /* staffroll.lua */; };
 		07565378161705B200C69E27 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07565376161705B200C69E27 /* Level.cpp */; };
 		075653A016171A5500C69E27 /* magic.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0756539F16171A5500C69E27 /* magic.lua */; };
 		075653A616171F2400C69E27 /* change.lua in Resources */ = {isa = PBXBuildFile; fileRef = 075653A516171F2400C69E27 /* change.lua */; };
@@ -1187,7 +1189,11 @@
 		074EFD0715FA906C004D8273 /* Controller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Controller.cpp; path = Classes/UI/Controller.cpp; sourceTree = "<group>"; };
 		074EFD0915FA906D004D8273 /* SkillTrigger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SkillTrigger.cpp; path = Classes/UI/SkillTrigger.cpp; sourceTree = "<group>"; };
 		0754383E16E3865700802970 /* TutorialScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TutorialScene.cpp; path = Classes/Scene/TutorialScene.cpp; sourceTree = "<group>"; };
-		0754383F16E3865700802970 /* TutorialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TutorialScene.h; path = Classes/Scene/TutorialScene.h; sourceTree = "<group>"; };
+		0754384116E391E600802970 /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMenuScene.h; path = Classes/includes/MainMenuScene.h; sourceTree = "<group>"; };
+		0754384216E391E600802970 /* TutorialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TutorialScene.h; path = Classes/includes/TutorialScene.h; sourceTree = "<group>"; };
+		0754384316E3931F00802970 /* StaffRollScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StaffRollScene.cpp; path = Classes/Scene/StaffRollScene.cpp; sourceTree = "<group>"; };
+		0754384616E3934500802970 /* StaffRollScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaffRollScene.h; path = Classes/includes/StaffRollScene.h; sourceTree = "<group>"; };
+		0754384716E3985600802970 /* staffroll.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = staffroll.lua; sourceTree = "<group>"; };
 		07565376161705B200C69E27 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Level.cpp; path = Classes/Model/Level.cpp; sourceTree = "<group>"; };
 		0756539F16171A5500C69E27 /* magic.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = magic.lua; sourceTree = "<group>"; };
 		075653A516171F2400C69E27 /* change.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = change.lua; sourceTree = "<group>"; };
@@ -1419,7 +1425,6 @@
 		078FFC2816E2D549001C9A4F /* typhoon3A6.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = typhoon3A6.lua; sourceTree = "<group>"; };
 		078FFC2916E2D549001C9A4F /* wisp3A6.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wisp3A6.lua; sourceTree = "<group>"; };
 		078FFC2D16E37419001C9A4F /* MainMenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainMenuScene.cpp; path = Classes/Scene/MainMenuScene.cpp; sourceTree = "<group>"; };
-		078FFC2E16E37419001C9A4F /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMenuScene.h; path = Classes/Scene/MainMenuScene.h; sourceTree = "<group>"; };
 		0791585815EBA8350083D348 /* LogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LogoScene.cpp; path = Classes/Scene/LogoScene.cpp; sourceTree = "<group>"; };
 		0791586915EBB4BB0083D348 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/ios/Default.png; sourceTree = "<group>"; };
 		0791586A15EBB4BB0083D348 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = Resources/ios/fps_images.png; sourceTree = "<group>"; };
@@ -2717,9 +2722,11 @@
 				07F88F1D16DBC66800FE6B2B /* SelectScene.cpp */,
 				07C6467316DE3FB200B29842 /* EffectLayer.cpp */,
 				078FFC2D16E37419001C9A4F /* MainMenuScene.cpp */,
-				078FFC2E16E37419001C9A4F /* MainMenuScene.h */,
+				0754384116E391E600802970 /* MainMenuScene.h */,
+				0754384216E391E600802970 /* TutorialScene.h */,
 				0754383E16E3865700802970 /* TutorialScene.cpp */,
-				0754383F16E3865700802970 /* TutorialScene.h */,
+				0754384316E3931F00802970 /* StaffRollScene.cpp */,
+				0754384616E3934500802970 /* StaffRollScene.h */,
 			);
 			name = Scene;
 			sourceTree = "<group>";
@@ -3306,6 +3313,7 @@
 				079F89A6169EE596001357B5 /* debug.lua */,
 				07D8D649169F3BD900B646E5 /* controller.lua */,
 				079D275716D38B7E006D6A8F /* enemy.lua */,
+				0754384716E3985600802970 /* staffroll.lua */,
 			);
 			name = Script;
 			path = Resources/Script;
@@ -5308,6 +5316,7 @@
 				078FFC2A16E2D549001C9A4F /* mask3A3.lua in Resources */,
 				078FFC2B16E2D549001C9A4F /* typhoon3A6.lua in Resources */,
 				078FFC2C16E2D549001C9A4F /* wisp3A6.lua in Resources */,
+				0754384816E3985600802970 /* staffroll.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5622,6 +5631,7 @@
 				07C6468F16E1CDC600B29842 /* SaveData.cpp in Sources */,
 				078FFC2F16E37419001C9A4F /* MainMenuScene.cpp in Sources */,
 				0754384016E3865700802970 /* TutorialScene.cpp in Sources */,
+				0754384516E3931F00802970 /* StaffRollScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

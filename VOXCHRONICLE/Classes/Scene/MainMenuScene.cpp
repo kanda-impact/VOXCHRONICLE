@@ -18,15 +18,15 @@ MainMenuScene::MainMenuScene(bool fromTitle) {
   CCSprite* background = CCSprite::create("mainmenu_background.png");
   background->setPosition(center);
   CCMenuItemImage* start = CCMenuItemImage::create("mainmenu_start.png",
-                                                   "mainmenu_start.png",
+                                                   "mainmenu_start_pressed.png",
                                                    this,
                                                    menu_selector(MainMenuScene::onStartPressed));
   CCMenuItemImage* tutorial = CCMenuItemImage::create("mainmenu_tutorial.png",
-                                                      "mainmenu_tutorial.png",
+                                                      "mainmenu_tutorial_pressed.png",
                                                       this,
                                                       menu_selector(MainMenuScene::onTutorialPressed));
   CCMenuItemImage* extra = CCMenuItemImage::create("mainmenu_extra.png",
-                                                   "mainmenu_extra.png",
+                                                   "mainmenu_extra_pressed.png",
                                                    this,
                                                    menu_selector(MainMenuScene::onExtraPressed));
   CCMenu* menu = CCMenu::create(tutorial, start, extra, NULL);
