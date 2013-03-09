@@ -15,6 +15,7 @@
 #include "DebugScene.h"
 #include "macros.h"
 #include "BufferCache.h"
+#include "StaffRollScene.h"
 
 using namespace cocos2d;
 
@@ -47,9 +48,11 @@ bool TitleScene::init() {
   
   CCLabelTTF* startLabel = CCLabelTTF::create("Start", FONT_NAME, 32);
   CCLabelTTF* debugLabel = CCLabelTTF::create("Debug", FONT_NAME, 32);
+  CCLabelTTF* staffLabel = CCLabelTTF::create("Staff", FONT_NAME, 32);
   
   CCMenu* menu = CCMenu::create(CCMenuItemLabel::create(startLabel, this, menu_selector(TitleScene::onStartButtonPressed)),
                                 CCMenuItemLabel::create(debugLabel, this, menu_selector(TitleScene::onDebugButtonPressed)),
+                                CCMenuItemLabel::create(staffLabel, this, menu_selector(TitleScene::onStaffButtonPressed)),
                                 NULL);
   menu->alignItemsHorizontallyWithPadding(50);
   menu->setPosition(ccp(winSize.width / 2, 80));
@@ -111,4 +114,22 @@ void TitleScene::onDebugButtonPressed(CCObject* sender) {
 void TitleScene::onSETogglePressed(cocos2d::CCObject *sender) {
   CCMenuItemToggle* item = (CCMenuItemToggle*)sender;
   SimpleAudioEngine::sharedEngine()->setEffectsVolume(item->getSelectedIndex());
+}
+
+void TitleScene::onStaffButtonPressed(cocos2d::CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
+  CCArray* array = CCArray::create();
+  Map* map0 = new Map("001");
+  map0->autorelease();
+  array->addObject(map0);
+  Map* map1 = new Map("002");
+  map1->autorelease();
+  array->addObject(map1);
+  Map* map2 = new Map("003");
+  map2->autorelease();
+  array->addObject(map2);
+  
+  StaffRollScene* scene = new StaffRollScene(array);
+  scene->autorelease();
+  nextScene(scene);
 }

@@ -31,9 +31,9 @@ class StaffRollScene :public CCLayer {
   void trackWillFinishPlaying(Music* music, Track* currentTrack, Track* nextTrack, int trackNumber);
   void trackDidFinishPlaying(Music* music, Track* finishedTrack, Track* nextTrack, int trackNumber);
   void pushTracksFor(MusicSet* set);
-  void pushTracks(const char* identifier, int count);
+  void pushTracks(const char* identifier, int count, MusicSet* set);
   void pushWaitTracks(const char* characterIdentifier, MusicSet* set);
-  void pushTrack(const char* identifier);
+  void pushTrack(const char* identifier, MusicSet* set);
  public:
   StaffRollScene(CCArray* maps);
   virtual ~StaffRollScene();

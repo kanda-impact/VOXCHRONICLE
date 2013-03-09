@@ -19,6 +19,7 @@ private:
   virtual void nextScene(CCLayer* layer);
   void onStartButtonPressed(CCObject* sender);
   void onDebugButtonPressed(CCObject* sender);
+  void onStaffButtonPressed(CCObject* sender);
   void onSETogglePressed(CCObject* sender);
 public:
   virtual bool init();

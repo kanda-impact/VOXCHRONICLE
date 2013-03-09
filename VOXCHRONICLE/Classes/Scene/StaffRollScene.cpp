@@ -59,46 +59,46 @@ void StaffRollScene::pushTracksFor(MusicSet* set) {
   for (CCLuaValueArrayIterator it = tracks->begin(); it != tracks->end(); ++it) {
     string track = it->stringValue();
     if (track == "intro") {
-      this->pushTracks("intro", set->getIntroCount());
+      this->pushTracks("intro", set->getIntroCount(), set);
     } else if (track == "finish") {
-      this->pushTracks("finish", set->getFinishCount());
-    } else if ("change") {
+      this->pushTracks("finish", set->getFinishCount(), set);
+    } else if (track == "change") {
       if (_currentCharacterType == CharacterTypeVox) {
         _currentCharacterType = CharacterTypeLaska;
-        this->pushTrack("voxchange");
+        this->pushTrack("voxchange0", set);
       } else {
         _currentCharacterType = CharacterTypeVox;
-        this->pushTrack("lskchange");
+        this->pushTrack("lskchange0", set);
       }
-    } else if ("wait") {
+    } else if (track == "wait") {
       if (_currentCharacterType == CharacterTypeVox) {
         this->pushWaitTracks("vox", set);
       } else {
         this->pushWaitTracks("lsk", set);
       }
     } else {
-      this->pushTrack(track.c_str());
+      cout << track << endl;
+      this->pushTrack(track.c_str(), set);
     }
   }
 }
 
-void StaffRollScene::pushTrack(const char *identifier) {
+void StaffRollScene::pushTrack(const char *identifier, MusicSet* set) {
   stringstream ss;
   ss << identifier << EXT;
-  _music->pushTrack(ss.str().c_str(), MusicChannelMain);
+  _music->pushTrack(set->getPrefixedMusicName(ss.str().c_str()).c_str(), MusicChannelMain);
   // ドラムとリフは仮ですが、いずれランダムで載るようにする？
-  _music->pushTrack((string("silent") + string(EXT)).c_str(), MusicChannelCounter);
-  _music->pushTrack((string("silent") + string(EXT)).c_str(), MusicChannelDrum);
+  _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelCounter);
+  _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelDrum);
 }
 
-void StaffRollScene::pushTracks(const char *identifier, int count) {
-  stringstream ss;
+void StaffRollScene::pushTracks(const char *identifier, int count, MusicSet* set) {
   for (int i = 0; i < count; ++i) {
-    ss << identifier << count << EXT;
-    _music->pushTrack(ss.str().c_str(), MusicChannelMain);
-    _music->pushTrack((string("silent") + string(EXT)).c_str(), MusicChannelCounter);
-    _music->pushTrack((string("silent") + string(EXT)).c_str(), MusicChannelDrum);
-    ss.clear();
+    stringstream ss;
+    ss << identifier << i << EXT;
+    _music->pushTrack(set->getPrefixedMusicName(ss.str().c_str()).c_str(), MusicChannelMain);
+    _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelCounter);
+    _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelDrum);
   }
 }
 
@@ -109,9 +109,9 @@ void StaffRollScene::pushWaitTracks(const char *characterIdentifier, MusicSet* s
     if (!set->isCommon("wait")) {
       ss << characterIdentifier;
     }
-    ss << "wait" << waitCount << EXT;
-    _music->pushTrack(ss.str().c_str(), MusicChannelMain);
-    _music->pushTrack((string("silent") + string(EXT)).c_str(), MusicChannelCounter);
-    _music->pushTrack((string("silent") + string(EXT)).c_str(), MusicChannelDrum);
+    ss << "wait" << i << EXT;
+    _music->pushTrack(set->getPrefixedMusicName(ss.str().c_str()).c_str(), MusicChannelMain);
+    _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelCounter);
+    _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelDrum);
   }
 }
