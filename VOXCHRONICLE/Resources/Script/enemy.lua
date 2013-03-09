@@ -35,7 +35,22 @@ function getColor(hp)
   if hp == 0 then -- HPが0のとき
     return 255, 0, 0 -- 強制的に赤を返します
   end
-  local key = math.ceil(hp / 3) -- 3で割って切り上げます
+  --  local key = math.ceil(hp / 3) -- 3で割って切り上げます
+  local key = 1 -- 2^nを5回ずつ使った数列を使います 1 2 3 4 5 7 9 11 13 15 19 ...
+  if hp >= 155 then
+    key = math.ceil((hp - 135) / 32) + 25
+  elseif hp >= 75 then
+    key = math.ceil((hp - 75) / 16) + 20
+  elseif hp >= 35 then
+    key = math.ceil((hp - 35) / 8) + 15
+  elseif hp >= 15 then
+    key = math.ceil((hp - 15) / 4) + 10
+  elseif hp >= 5 then
+    key = math.ceil((hp - 5) / 2) + 5
+  else
+    key = hp   
+  end
+
   local length = #colors -- 長さをとります
   key = math.min(length, key) -- keyが長さ以上の時、バグるのでkeyを最大値にします
   return colors[key][1], colors[key][2], colors[key][3] -- key番目のr, g, bを1こずつ返します
