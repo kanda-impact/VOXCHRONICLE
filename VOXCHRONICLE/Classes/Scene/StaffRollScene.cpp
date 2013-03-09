@@ -7,8 +7,13 @@
 //
 
 #include "StaffRollScene.h"
+#include "Map.h"
 #include <boost/bind.hpp>
+#include <sstream>
 
+#define EXT ".caf"
+
+using namespace std;
 using namespace boost;
 
 const char* kLuaFileName = "staffroll";
@@ -25,7 +30,7 @@ StaffRollScene::StaffRollScene(CCArray* maps) {
   CCObject* obj = NULL;
   CCARRAY_FOREACH(maps, obj) {
     Map* map = (Map*)obj;
-    this->pushTracksFor(map);
+    this->pushTracksFor(map->getWayMusic());
   }
 }
 
@@ -35,6 +40,7 @@ StaffRollScene::~StaffRollScene() {
 }
 
 void StaffRollScene::onEnterTransitionDidFinish() {
+  _music->play();
 }
 
 void StaffRollScene::trackDidBack(VISS::Music *music, VISS::Track *currentTrack, int trackNumber) {
@@ -47,10 +53,65 @@ void StaffRollScene::trackDidFinishPlaying(VISS::Music *music, VISS::Track *fini
   
 }
 
-void StaffRollScene::pushTracksFor(Map *map) {
+void StaffRollScene::pushTracksFor(MusicSet* set) {
   lua_State* L = _lua->getLuaEngineWithLoad()->getLuaState();
   CCLuaValueArray* tracks = _lua->getArray("tracks");
   for (CCLuaValueArrayIterator it = tracks->begin(); it != tracks->end(); ++it) {
     string track = it->stringValue();
+    if (track == "intro") {
+      this->pushTracks("intro", set->getIntroCount());
+    } else if (track == "finish") {
+      this->pushTracks("finish", set->getFinishCount());
+    } else if ("change") {
+      if (_currentCharacterType == CharacterTypeVox) {
+        _currentCharacterType = CharacterTypeLaska;
+        this->pushTrack("voxchange");
+      } else {
+        _currentCharacterType = CharacterTypeVox;
+        this->pushTrack("lskchange");
+      }
+    } else if ("wait") {
+      if (_currentCharacterType == CharacterTypeVox) {
+        this->pushWaitTracks("vox", set);
+      } else {
+        this->pushWaitTracks("lsk", set);
+      }
+    } else {
+      this->pushTrack(track.c_str());
+    }
+  }
+}
+
+void StaffRollScene::pushTrack(const char *identifier) {
+  stringstream ss;
+  ss << identifier << EXT;
+  _music->pushTrack(ss.str().c_str(), MusicChannelMain);
+  // ドラムとリフは仮ですが、いずれランダムで載るようにする？
+  _music->pushTrack((string("silent") + string(EXT)).c_str(), MusicChannelCounter);
+  _music->pushTrack((string("silent") + string(EXT)).c_str(), MusicChannelDrum);
+}
+
+void StaffRollScene::pushTracks(const char *identifier, int count) {
+  stringstream ss;
+  for (int i = 0; i < count; ++i) {
+    ss << identifier << count << EXT;
+    _music->pushTrack(ss.str().c_str(), MusicChannelMain);
+    _music->pushTrack((string("silent") + string(EXT)).c_str(), MusicChannelCounter);
+    _music->pushTrack((string("silent") + string(EXT)).c_str(), MusicChannelDrum);
+    ss.clear();
+  }
+}
+
+void StaffRollScene::pushWaitTracks(const char *characterIdentifier, MusicSet* set) {
+  int waitCount = set->getWaitCount();
+  for (int i = 0; i < waitCount; ++i) {
+    stringstream ss;
+    if (!set->isCommon("wait")) {
+      ss << characterIdentifier;
+    }
+    ss << "wait" << waitCount << EXT;
+    _music->pushTrack(ss.str().c_str(), MusicChannelMain);
+    _music->pushTrack((string("silent") + string(EXT)).c_str(), MusicChannelCounter);
+    _music->pushTrack((string("silent") + string(EXT)).c_str(), MusicChannelDrum);
   }
 }

@@ -252,3 +252,11 @@ void Map::loadSkillTable(Character* character) {
     _skillCache->setObject(skills, character->getIdentifier());
   }
 }
+
+MusicSet* Map::getWayMusic() {
+  return _wayMusic;
+}
+
+MusicSet* Map::getBossMusic() {
+  return _bossMusic;
+}

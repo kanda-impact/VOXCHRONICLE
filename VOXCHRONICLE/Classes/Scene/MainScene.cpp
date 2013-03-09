@@ -282,7 +282,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       rect = CCRectMake(0, 0, 400, 400);
       effect->setPosition(position);
       effect->setScale(boss->getScale());
-      for (int i = 0; i < 6; ++i) {
+      for (int i = 0; i < 4; ++i) {
         const char* frameName = (string("attack") + lexical_cast<string>(i) + string(".png")).c_str();
         animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath(frameName).c_str(), rect));
       }
