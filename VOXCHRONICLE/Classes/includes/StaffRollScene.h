@@ -32,6 +32,8 @@ class StaffRollScene :public CCLayer {
  private:
   int _maxTrackCount;
   int _trackCount;
+  int _textIndex;
+  deque<bool>* _isAddCutin;
   CCArray* _texts;
   Music* _music;
   LuaObject* _lua;

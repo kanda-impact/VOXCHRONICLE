@@ -33,8 +33,10 @@ StaffRollScene::StaffRollScene(CCArray* maps) {
   _currentCharacterType = CharacterTypeVox;
   _maxTrackCount = 0;
   _trackCount = 0;
+  _textIndex = 0;
   _lua = LuaObject::create(kLuaFileName);
   _lua->retain();
+  _isAddCutin = new deque<bool>();
   CCObject* obj = NULL;
   CCARRAY_FOREACH(maps, obj) {
     Map* map = (Map*)obj;
@@ -60,6 +62,7 @@ StaffRollScene::StaffRollScene(CCArray* maps) {
 }
 
 StaffRollScene::~StaffRollScene() {
+  delete _isAddCutin;
   _texts->release();
   _music->release();
   _lua->release();
@@ -82,8 +85,9 @@ void StaffRollScene::trackWillFinishPlaying(VISS::Music *music, VISS::Track *cur
 
 void StaffRollScene::trackDidFinishPlaying(VISS::Music *music, VISS::Track *finishedTrack, VISS::Track *nextTrack, int trackNumber) {
   // カットインを追加する
-  if (_trackCount < _texts->count()) {
-    CCArray* texts = (CCArray*)_texts->objectAtIndex(_trackCount - 1);
+  bool isAdd = (*_isAddCutin)[_trackCount];
+  if (_textIndex < _texts->count() && (isAdd || _trackCount == 1 || _trackCount >= _maxTrackCount - 4)) {
+    CCArray* texts = (CCArray*)_texts->objectAtIndex(_textIndex);
     string section = ((CCString*)texts->objectAtIndex(0))->getCString();
     string text = ((CCString*)texts->objectAtIndex(1))->getCString();
     string description = ((CCString*)texts->objectAtIndex(2))->getCString();
@@ -96,6 +100,7 @@ void StaffRollScene::trackDidFinishPlaying(VISS::Music *music, VISS::Track *fini
     if (description.length() > 0) {
       this->addCutin(description.c_str(), TextTypeDescription);
     }
+    ++_textIndex;
   }
 }
 
@@ -112,7 +117,7 @@ void StaffRollScene::addCutin(const char *text, TextType type) {
     CCSize size = CCDirector::sharedDirector()->getWinSize();
     // 成功したとき、カットインを挿入
     label->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)),
-                                        CCDelayTime::create(duration * 0.25),
+                                        CCDelayTime::create(duration * 0.75),
                                         CCMoveTo::create(duration * 0.125, ccp(size.width, height)),
                                         CCRemoveFromParentAction::create(),
                                         NULL));
@@ -165,6 +170,7 @@ void StaffRollScene::pushTrack(const char *identifier, MusicSet* set) {
   _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelCounter);
   _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelDrum);
   ++_maxTrackCount;
+  _isAddCutin->push_back(true);
 }
 
 void StaffRollScene::pushTracks(const char *identifier, int count, MusicSet* set) {
@@ -175,6 +181,7 @@ void StaffRollScene::pushTracks(const char *identifier, int count, MusicSet* set
     _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelCounter);
     _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelDrum);
     ++_maxTrackCount;
+    _isAddCutin->push_back(false);
   }
 }
 
@@ -189,6 +196,7 @@ void StaffRollScene::pushWaitTracks(const char *characterIdentifier, MusicSet* s
     _music->pushTrack(set->getPrefixedMusicName(ss.str().c_str()).c_str(), MusicChannelMain);
     _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelCounter);
     _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelDrum);
+    _isAddCutin->push_back(false);
     ++_maxTrackCount;
   }
 }
