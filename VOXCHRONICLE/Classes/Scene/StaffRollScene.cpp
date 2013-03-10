@@ -10,6 +10,9 @@
 #include "Map.h"
 #include "TitleScene.h"
 #include <boost/bind.hpp>
+#include <boost/lexical_cast.hpp>
+#include "FileUtils.h"
+#include "CCRemoveFromParentAction.h"
 #include <sstream>
 
 #define EXT ".caf"
@@ -24,6 +27,9 @@ StaffRollScene::StaffRollScene(CCArray* maps) {
   _music->setTrackDidBackFunction(boost::bind(&StaffRollScene::trackDidBack, this, _1, _2, _3));
   _music->setTrackDidFinishFunction(boost::bind(&StaffRollScene::trackDidFinishPlaying, this, _1, _2, _3, _4));
   _music->setTrackWillFinishFunction(boost::bind(&StaffRollScene::trackWillFinishPlaying, this, _1, _2, _3, _4));
+  _texts = CCArray::create();
+  _texts->retain();
+  
   _currentCharacterType = CharacterTypeVox;
   _maxTrackCount = 0;
   _trackCount = 0;
@@ -39,9 +45,22 @@ StaffRollScene::StaffRollScene(CCArray* maps) {
       this->pushTracksFor(map->getBossMusic());
     }
   }
+  
+  _lua->getLuaEngineWithLoad();
+  CCLuaValueArray* texts = _lua->getArray("texts");
+  for (CCLuaValueArrayIterator it = texts->begin(); it != texts->end(); ++it) {
+    CCLuaValueDict dict = it->dictValue();
+    CCArray* t = CCArray::create();
+    for (int i = 1; i <= 3; ++i) {
+      CCString* str = CCString::create(dict[lexical_cast<string>(i)].stringValue());
+      t->addObject(str);
+    }
+    _texts->addObject(t);
+  }
 }
 
 StaffRollScene::~StaffRollScene() {
+  _texts->release();
   _music->release();
   _lua->release();
 }
@@ -62,7 +81,43 @@ void StaffRollScene::trackWillFinishPlaying(VISS::Music *music, VISS::Track *cur
 }
 
 void StaffRollScene::trackDidFinishPlaying(VISS::Music *music, VISS::Track *finishedTrack, VISS::Track *nextTrack, int trackNumber) {
-  
+  // カットインを追加する
+  if (_trackCount < _texts->count()) {
+    CCArray* texts = (CCArray*)_texts->objectAtIndex(_trackCount - 1);
+    string section = ((CCString*)texts->objectAtIndex(0))->getCString();
+    string text = ((CCString*)texts->objectAtIndex(1))->getCString();
+    string description = ((CCString*)texts->objectAtIndex(2))->getCString();
+    if (section.length() > 0) {
+      this->addCutin(section.c_str(), TextTypeSection);
+    }
+    if (text.length() > 0) {
+      this->addCutin(text.c_str(), TextTypeText);
+    }
+    if (description.length() > 0) {
+      this->addCutin(description.c_str(), TextTypeDescription);
+    }
+  }
+}
+
+void StaffRollScene::addCutin(const char *text, TextType type) {
+  int heights[] = {250, 150, 50};
+  int sizes[] = {64, 48, 32};
+  int height = heights[type];
+  int size = sizes[type];
+  CCLabelTTF* label = CCLabelTTF::create(text, "Helvetica", size);
+  float duration = _music->getCurrentMainTrack()->getDuration();
+  if (label != NULL) {
+    label->setPosition(ccp(0, height));
+    label->setScale(0.5);
+    CCSize size = CCDirector::sharedDirector()->getWinSize();
+    // 成功したとき、カットインを挿入
+    label->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)),
+                                        CCDelayTime::create(duration * 0.25),
+                                        CCMoveTo::create(duration * 0.125, ccp(size.width, height)),
+                                        CCRemoveFromParentAction::create(),
+                                        NULL));
+    this->addChild(label);
+  }
 }
 
 void StaffRollScene::onFinishPlaying(cocos2d::CCObject *sender) {
@@ -73,7 +128,7 @@ void StaffRollScene::onFinishPlaying(cocos2d::CCObject *sender) {
 }
 
 void StaffRollScene::pushTracksFor(MusicSet* set) {
-  lua_State* L = _lua->getLuaEngineWithLoad()->getLuaState();
+  _lua->getLuaEngineWithLoad();
   CCLuaValueArray* tracks = _lua->getArray("tracks");
   for (CCLuaValueArrayIterator it = tracks->begin(); it != tracks->end(); ++it) {
     string track = it->stringValue();

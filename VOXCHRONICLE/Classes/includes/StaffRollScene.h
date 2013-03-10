@@ -22,10 +22,17 @@
 using namespace VISS;
 using namespace cocos2d;
 
+typedef enum {
+  TextTypeSection,
+  TextTypeText,
+  TextTypeDescription
+} TextType;
+
 class StaffRollScene :public CCLayer {
  private:
   int _maxTrackCount;
   int _trackCount;
+  CCArray* _texts;
   Music* _music;
   LuaObject* _lua;
   CharacterType _currentCharacterType;
@@ -37,6 +44,7 @@ class StaffRollScene :public CCLayer {
   void pushWaitTracks(const char* characterIdentifier, MusicSet* set);
   void pushTrack(const char* identifier, MusicSet* set);
   void onFinishPlaying(CCObject* sender);
+  void addCutin(const char* text, TextType type);
  public:
   StaffRollScene(CCArray* maps);
   virtual ~StaffRollScene();
