@@ -8,6 +8,7 @@
 
 #include "StaffRollScene.h"
 #include "Map.h"
+#include "TitleScene.h"
 #include <boost/bind.hpp>
 #include <sstream>
 
@@ -24,13 +25,19 @@ StaffRollScene::StaffRollScene(CCArray* maps) {
   _music->setTrackDidFinishFunction(boost::bind(&StaffRollScene::trackDidFinishPlaying, this, _1, _2, _3, _4));
   _music->setTrackWillFinishFunction(boost::bind(&StaffRollScene::trackWillFinishPlaying, this, _1, _2, _3, _4));
   _currentCharacterType = CharacterTypeVox;
-  
+  _maxTrackCount = 0;
+  _trackCount = 0;
   _lua = LuaObject::create(kLuaFileName);
   _lua->retain();
   CCObject* obj = NULL;
   CCARRAY_FOREACH(maps, obj) {
     Map* map = (Map*)obj;
+    _currentCharacterType = CharacterTypeVox;
     this->pushTracksFor(map->getWayMusic());
+    _currentCharacterType = CharacterTypeVox;
+    if (map->isBossStage()) {
+      this->pushTracksFor(map->getBossMusic());
+    }
   }
 }
 
@@ -47,10 +54,22 @@ void StaffRollScene::trackDidBack(VISS::Music *music, VISS::Track *currentTrack,
 }
 
 void StaffRollScene::trackWillFinishPlaying(VISS::Music *music, VISS::Track *currentTrack, VISS::Track *nextTrack, int trackNumber) {
+  ++_trackCount;
+  if (_trackCount >= _maxTrackCount) {
+    _music->stop(); // 音楽止めて
+    this->scheduleOnce(schedule_selector(StaffRollScene::onFinishPlaying), 2.0f);
+  }
 }
 
 void StaffRollScene::trackDidFinishPlaying(VISS::Music *music, VISS::Track *finishedTrack, VISS::Track *nextTrack, int trackNumber) {
   
+}
+
+void StaffRollScene::onFinishPlaying(cocos2d::CCObject *sender) {
+  CCScene* scene = CCScene::create();
+  scene->addChild(TitleScene::create());
+  CCTransitionFade* fade = CCTransitionFade::create(2.0f, scene);
+  CCDirector::sharedDirector()->replaceScene(fade);
 }
 
 void StaffRollScene::pushTracksFor(MusicSet* set) {
@@ -90,6 +109,7 @@ void StaffRollScene::pushTrack(const char *identifier, MusicSet* set) {
   // ドラムとリフは仮ですが、いずれランダムで載るようにする？
   _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelCounter);
   _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelDrum);
+  ++_maxTrackCount;
 }
 
 void StaffRollScene::pushTracks(const char *identifier, int count, MusicSet* set) {
@@ -99,6 +119,7 @@ void StaffRollScene::pushTracks(const char *identifier, int count, MusicSet* set
     _music->pushTrack(set->getPrefixedMusicName(ss.str().c_str()).c_str(), MusicChannelMain);
     _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelCounter);
     _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelDrum);
+    ++_maxTrackCount;
   }
 }
 
@@ -113,5 +134,6 @@ void StaffRollScene::pushWaitTracks(const char *characterIdentifier, MusicSet* s
     _music->pushTrack(set->getPrefixedMusicName(ss.str().c_str()).c_str(), MusicChannelMain);
     _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelCounter);
     _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelDrum);
+    ++_maxTrackCount;
   }
 }

@@ -24,6 +24,8 @@ using namespace cocos2d;
 
 class StaffRollScene :public CCLayer {
  private:
+  int _maxTrackCount;
+  int _trackCount;
   Music* _music;
   LuaObject* _lua;
   CharacterType _currentCharacterType;
@@ -34,6 +36,7 @@ class StaffRollScene :public CCLayer {
   void pushTracks(const char* identifier, int count, MusicSet* set);
   void pushWaitTracks(const char* characterIdentifier, MusicSet* set);
   void pushTrack(const char* identifier, MusicSet* set);
+  void onFinishPlaying(CCObject* sender);
  public:
   StaffRollScene(CCArray* maps);
   virtual ~StaffRollScene();

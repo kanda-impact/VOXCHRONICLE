@@ -7,12 +7,11 @@ StaffRoll = {
     "voxattack2",
     "voxattack3",
     "change",
-    "wait",
     "lskmagic0",
     "lskmagic1",
     "lskmagic2",
     "lskmagic3",
-    "change",
+    "wait",
     "finish"
   },
 }
