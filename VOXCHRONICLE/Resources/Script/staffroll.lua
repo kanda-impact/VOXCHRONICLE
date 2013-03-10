@@ -36,7 +36,7 @@ StaffRoll = {
     {"Music Direction", "Tetu_fs", ""},
     {"Music Compose", "nmb", "チュートリアルステージ"},
     {"", "geekdrums", "1Aシンプルステージ"},
-    {"", "rushana", "1B草原ステージ"},
+    {"", "るしゃな", "1B草原ステージ"},
     {"", "shinka_cb", "2A森林ステージ"},
     {"", "yuki_mm", "2B炭鉱ステージ"},
     {"", "Yudaidhun", "2C電脳ステージ"},
@@ -53,8 +53,9 @@ StaffRoll = {
     {"", "Yudaidhun", "エンディングC"},
     {"Executive Producer", "geekdrms", ""},
     {"Special Thanks", "All Kawaz Members", ""},
-    {"", "2009-2013 Kawaz All rights reserved.", ""},
-    {"", "Thank you for your playing", ""},
+    {" ", "", "2009-2013 Kawaz All rights reserved."},
+    {"", "", "Thank you for your playing"},
+    {"", "The End", ""},
     {"", "TO BE CONTINUED?", ""},
   }
 }

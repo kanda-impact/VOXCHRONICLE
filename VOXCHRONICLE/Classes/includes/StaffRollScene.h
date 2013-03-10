@@ -28,6 +28,12 @@ typedef enum {
   TextTypeDescription
 } TextType;
 
+typedef enum {
+  CutinTypeNormal,
+  CutinTypeIn,
+  CutinTypeOut
+} CutinType;
+
 class StaffRollScene :public CCLayer {
  private:
   int _maxTrackCount;
@@ -46,7 +52,7 @@ class StaffRollScene :public CCLayer {
   void pushWaitTracks(const char* characterIdentifier, MusicSet* set);
   void pushTrack(const char* identifier, MusicSet* set);
   void onFinishPlaying(CCObject* sender);
-  void addCutin(const char* text, TextType type);
+  void addCutin(const char* text, TextType type, CutinType cutinType);
  public:
   StaffRollScene(CCArray* maps);
   virtual ~StaffRollScene();

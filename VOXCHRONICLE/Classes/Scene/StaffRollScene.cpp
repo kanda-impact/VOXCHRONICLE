@@ -45,6 +45,7 @@ StaffRollScene::StaffRollScene(CCArray* maps) {
     _currentCharacterType = CharacterTypeVox;
     if (map->isBossStage()) {
       this->pushTracksFor(map->getBossMusic());
+      this->pushTrack("silent", map->getBossMusic());
     }
   }
   
@@ -79,49 +80,80 @@ void StaffRollScene::trackWillFinishPlaying(VISS::Music *music, VISS::Track *cur
   ++_trackCount;
   if (_trackCount >= _maxTrackCount) {
     _music->stop(); // 音楽止めて
-    this->scheduleOnce(schedule_selector(StaffRollScene::onFinishPlaying), 2.0f);
+    this->scheduleOnce(schedule_selector(StaffRollScene::onFinishPlaying), 0.5f);
   }
 }
 
 void StaffRollScene::trackDidFinishPlaying(VISS::Music *music, VISS::Track *finishedTrack, VISS::Track *nextTrack, int trackNumber) {
   // カットインを追加する
   bool isAdd = (*_isAddCutin)[_trackCount];
-  if (_textIndex < _texts->count() && (isAdd || _trackCount == 1 || _trackCount >= _maxTrackCount - 4)) {
+  if (_textIndex < _texts->count() && (isAdd || _trackCount == 1 || _trackCount >= _maxTrackCount - 5)) {
     CCArray* texts = (CCArray*)_texts->objectAtIndex(_textIndex);
     string section = ((CCString*)texts->objectAtIndex(0))->getCString();
     string text = ((CCString*)texts->objectAtIndex(1))->getCString();
     string description = ((CCString*)texts->objectAtIndex(2))->getCString();
-    if (section.length() > 0) {
-      this->addCutin(section.c_str(), TextTypeSection);
+    CutinType sectionCutinType = CutinTypeNormal;
+    if (_textIndex < _texts->count() - 1 && _textIndex > 0) {
+      CCArray* prevTexts = (CCArray*)_texts->objectAtIndex(_textIndex - 1);
+      string prevSection = ((CCString*)prevTexts->objectAtIndex(0))->getCString();
+      
+      CCArray* nextTexts = (CCArray*)_texts->objectAtIndex(_textIndex + 1);
+      string nextSection = ((CCString*)nextTexts->objectAtIndex(0))->getCString();
+      
+      cout << "prev : " << prevSection.c_str() << " current = " << section.c_str() << " next = " << nextSection.c_str() << endl;
+      
+      if (section.length() > 0 && nextSection.length() == 0) {
+        sectionCutinType = CutinTypeIn;
+      } else if (section.length() == 0 && nextSection.length() > 0) {
+        sectionCutinType = CutinTypeOut;
+      } else if (section.length() > 0 && prevSection.length() == 0 && nextSection.length() > 0) {
+        sectionCutinType = CutinTypeNormal;
+      }
     }
+    
+    this->addCutin(section.c_str(), TextTypeSection, sectionCutinType);
+    
     if (text.length() > 0) {
-      this->addCutin(text.c_str(), TextTypeText);
+      this->addCutin(text.c_str(), TextTypeText, CutinTypeNormal);
     }
     if (description.length() > 0) {
-      this->addCutin(description.c_str(), TextTypeDescription);
+      this->addCutin(description.c_str(), TextTypeDescription, CutinTypeNormal);
     }
     ++_textIndex;
   }
 }
 
-void StaffRollScene::addCutin(const char *text, TextType type) {
-  int heights[] = {250, 150, 50};
-  int sizes[] = {64, 48, 32};
+void StaffRollScene::addCutin(const char *text, TextType type, CutinType cutinType) {
+  int heights[] = {250, 150, 80};
+  int sizes[] = {48, 36, 16};
   int height = heights[type];
   int size = sizes[type];
-  CCLabelTTF* label = CCLabelTTF::create(text, "Helvetica", size);
+  CCLabelTTF* label = NULL;
+  if (cutinType == CutinTypeOut && type == TextTypeSection) {
+    label = (CCLabelTTF*)this->getChildByTag(type); // 出て行くとき、古いセクションを使い回す
+  } else {
+    label = CCLabelTTF::create(text, "Helvetica", size); // それ以外の時は新しく生成する
+    label->setPosition(ccp(0, height));
+  }
+  
   float duration = _music->getCurrentMainTrack()->getDuration();
   if (label != NULL) {
-    label->setPosition(ccp(0, height));
-    label->setScale(0.5);
     CCSize size = CCDirector::sharedDirector()->getWinSize();
-    // 成功したとき、カットインを挿入
-    label->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)),
-                                        CCDelayTime::create(duration * 0.75),
-                                        CCMoveTo::create(duration * 0.125, ccp(size.width, height)),
-                                        CCRemoveFromParentAction::create(),
-                                        NULL));
-    this->addChild(label);
+    
+    CCArray* actions = CCArray::create();
+    if (cutinType != CutinTypeOut) {
+      actions->addObject(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)));
+      actions->addObject(CCDelayTime::create(duration * 0.75));
+      this->addChild(label, 0, type);
+    }
+    if (cutinType == CutinTypeOut) {
+      actions->addObject(CCDelayTime::create(duration * 0.875));
+    }
+    if (cutinType != CutinTypeIn) {
+      actions->addObject(CCMoveTo::create(duration * 0.125, ccp(size.width, height)));
+      actions->addObject(CCRemoveFromParentAction::create());
+    }
+    label->runAction(CCSequence::create(actions));
   }
 }
 
