@@ -9,8 +9,11 @@
 #include "EndingScene.h"
 #include "LuaObject.h"
 #include "TitleScene.h"
+#include "StaffRollScene.h"
 
-EndingScene::EndingScene(const char* endingScript) {
+EndingScene::EndingScene(const char* endingScript, CCArray* maps) {
+  _maps = maps;
+  maps->retain();
   LuaObject* obj = LuaObject::create(endingScript);
 
   CCDirector* director = CCDirector::sharedDirector();
@@ -38,12 +41,15 @@ EndingScene::EndingScene(const char* endingScript) {
 }
 
 EndingScene::~EndingScene() {
+  _maps->release();
 }
 
 void EndingScene::goToNextScene(cocos2d::CCObject *sender) {
   CCScene* scene = CCScene::create();
-  scene->addChild(TitleScene::create());
-  CCTransitionFade* fade = CCTransitionFade::create(2.0f, scene);
+  StaffRollScene* layer = new StaffRollScene(_maps);
+  layer->autorelease();
+  scene->addChild(layer);
+  CCTransitionFade* fade = CCTransitionFade::create(0.5f, scene);
   CCDirector::sharedDirector()->replaceScene(fade);
 }
 

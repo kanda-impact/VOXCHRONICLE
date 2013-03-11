@@ -58,6 +58,7 @@ class MainScene : public CCLayer {
   QTETrigger* _qteTrigger;
   Skin* _skin;
   EffectLayer* _effectLayer;
+  CCArray* _mapHistory;
   
   Level* _level;
   Map* _map;

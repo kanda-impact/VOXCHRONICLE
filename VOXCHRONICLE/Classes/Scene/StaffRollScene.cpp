@@ -100,8 +100,6 @@ void StaffRollScene::trackDidFinishPlaying(VISS::Music *music, VISS::Track *fini
       CCArray* nextTexts = (CCArray*)_texts->objectAtIndex(_textIndex + 1);
       string nextSection = ((CCString*)nextTexts->objectAtIndex(0))->getCString();
       
-      cout << "prev : " << prevSection.c_str() << " current = " << section.c_str() << " next = " << nextSection.c_str() << endl;
-      
       if (section.length() > 0 && nextSection.length() == 0) {
         sectionCutinType = CutinTypeIn;
       } else if (section.length() == 0 && nextSection.length() > 0) {
@@ -188,7 +186,6 @@ void StaffRollScene::pushTracksFor(MusicSet* set) {
         this->pushWaitTracks("lsk", set);
       }
     } else {
-      cout << track << endl;
       this->pushTrack(track.c_str(), set);
     }
   }
