@@ -14,10 +14,12 @@
 using namespace boost;
 
 typedef enum {
-  EffectLayerTagTutorial
+  EffectLayerTagTutorial,
+  EffectLayerTagCutin
 } EffectLayerTag;
 
 typedef enum {
+  EffectLayerZOrderCutin,
   EffectLayerZOrderTension,
   EffectLayerZOrderCharacter
 } EffectLayerZOrder;
@@ -140,32 +142,42 @@ PopupWindow* EffectLayer::addPopupWindow(int pages) {
   return window;
 }
 
-void EffectLayer::addCutin(Skill *skill, bool succeed, float duration) {
+void EffectLayer::addCutin(Skill *skill, EffectLayerCutinType cutinType, float duration) {
   // カットインを追加する
+  const int height = 100;
+  CCSize size = CCDirector::sharedDirector()->getWinSize();
+  if (cutinType == EffectLayerCutinTypeCastOff) {
+    CCSprite* holdCutin = (CCSprite*)this->getChildByTag(EffectLayerTagCutin);
+    if (!holdCutin) return;
+    holdCutin->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width, height)),
+                                            CCRemoveFromParentAction::create(),
+                                            NULL));
+    return;
+  }
   string cutinFile = "Image/" + string(skill->getIdentifier()) + "_icon.png";
   CCSprite* cutin = CCSprite::create(FileUtils::getFilePath(cutinFile.c_str()).c_str());
   if (cutin != NULL) {
-    const int height = 100;
     cutin->setPosition(ccp(0, height));
     cutin->setScale(0.5);
-    CCSize size = CCDirector::sharedDirector()->getWinSize();
-    if (succeed) {
-      // 成功したとき、カットインを挿入
+    if (cutinType == EffectLayerCutinTypeNormal) {
+      // 通常カットイン
       cutin->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)),
                                           CCDelayTime::create(duration * 0.25),
                                           CCMoveTo::create(duration * 0.125, ccp(size.width, height)),
                                           CCRemoveFromParentAction::create(),
                                           NULL));
-    } else {
-      // ミスったとき、コマンドを落とす
+    } else if (cutinType == EffectLayerCutinTypeFailure) {
+      // ミスったとき
       cutin->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)),
                                           CCRotateBy::create(duration * 0.125, 45),
                                           CCDelayTime::create(duration * 0.125),
                                           CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, -100)),
                                           CCRemoveFromParentAction::create(),
                                           NULL));
+    } else if (cutinType == EffectLayerCutinTypeHold) {
+      cutin->runAction(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)));
     }
-    this->addChild(cutin);
+    this->addChild(cutin, EffectLayerZOrderCutin, EffectLayerTagCutin);
   }
 }
 

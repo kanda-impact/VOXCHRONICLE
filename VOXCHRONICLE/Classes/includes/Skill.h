@@ -62,6 +62,7 @@ class Skill :public CCObject {
   SkillType _type;
   LuaObject* _lua;
   CCArray* _messages;
+  int _cutinType;
  public:
   Skill(const char* identifier);
   ~Skill();
@@ -72,6 +73,7 @@ class Skill :public CCObject {
   int getMaxRepeat();
   int getMP();
   int getAcquirementLV();
+  int getCutinType();
   void setAcquirementLV(int lv);
   int getEffectFrames();
   int getTensionLevel();

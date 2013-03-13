@@ -211,6 +211,11 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
     this->addDamageEffect();
     this->updateFocus();
     this->updateGUI();
+    
+    // 盾を外すエフェクト
+    if (!_characterManager->getShield()) {
+      _effectLayer->addCutin(NULL, EffectLayerCutinTypeCastOff, _musicManager->getMusic()->getCurrentMainTrack()->getDuration());
+    }
   }
 }
 
@@ -412,7 +417,10 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       }
       
       _effectLayer->addSkillEffect(skill, enemies);
-      _effectLayer->addCutin(skill, isHit, _musicManager->getMusic()->getCurrentMainTrack()->getDuration());
+      if (!_characterManager->getShield()) {
+        _effectLayer->addCutin(NULL, EffectLayerCutinTypeCastOff, _musicManager->getMusic()->getCurrentMainTrack()->getDuration());
+      }
+      _effectLayer->addCutin(skill, (EffectLayerCutinType)skill->getCutinType(), _musicManager->getMusic()->getCurrentMainTrack()->getDuration());
       
       if (isHit) {
         // ヒットしたとき、SEがあればSEをならしてやる

@@ -22,6 +22,13 @@ using namespace cocos2d;
  スクリプトから叩きやすいようにシングルトンになっている
  */
 
+typedef enum {
+  EffectLayerCutinTypeNormal,
+  EffectLayerCutinTypeFailure,
+  EffectLayerCutinTypeHold,
+  EffectLayerCutinTypeCastOff
+} EffectLayerCutinType;
+
 class EffectLayer :public CCLayer {
  private:
   CCSprite* _tensionEffectLayer;
@@ -36,7 +43,7 @@ class EffectLayer :public CCLayer {
   void setCharacterEffect(Character* character);
   PopupWindow* addPopupWindow(int pages);
   PopupWindow* getPopupWindow();
-  void addCutin(Skill *skill, bool succeed, float duration);
+  void addCutin(Skill *skill, EffectLayerCutinType cutinType, float duration);
   void reloadEffects();
 };
 

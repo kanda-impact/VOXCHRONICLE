@@ -412,6 +412,11 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_constant(tolua_S, "ControllerFrameTypeNone", ControllerFrameTypeNone);
   tolua_constant(tolua_S, "ControllerFrameTypeCommon", ControllerFrameTypeCommon);
   tolua_constant(tolua_S, "ControllerFrameTypeFull", ControllerFrameTypeFull);
+  // EffectLeyerCutinType
+  tolua_constant(tolua_S, "EffectLayerCutinTypeNormal", EffectLayerCutinTypeNormal);
+  tolua_constant(tolua_S, "EffectLayerCutinTypeFailure", EffectLayerCutinTypeFailure);
+  tolua_constant(tolua_S, "EffectLayerCutinTypeHold", EffectLayerCutinTypeHold);
+  tolua_constant(tolua_S, "EffectLayerCutinTypeCastOff", EffectLayerCutinTypeCastOff);
   // Skillクラス
   tolua_cclass(tolua_S, "Skill", "Skill", "CCObject", NULL);
   tolua_beginmodule(tolua_S, "Skill");

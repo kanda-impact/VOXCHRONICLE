@@ -32,6 +32,7 @@ Skill::Skill(const char* identifier) {
   _type = (SkillType)_lua->getInt("skillType");
   _se = _lua->getBoolean("se");
   _loop = _lua->getBoolean("loop");
+  _cutinType = _lua->getInt("cutinType");
   CCLuaValueArray* mes = _lua->getArray("messages");
   
   // エフェクトを先読みしておきます
@@ -148,4 +149,8 @@ SkillEffectType Skill::getEffectType() {
 
 CCArray* Skill::getMessages() {
   return _messages;
+}
+
+int Skill::getCutinType() {
+  return _cutinType;
 }

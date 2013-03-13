@@ -5,6 +5,7 @@ Skill = {
   mp = 0,
   tensionLevel = 0,
   common = true,
+  cutinType = EffectLayerCutinTypeHold,
   se = true,
   maxRepeat = 1,
   turn = 1,
