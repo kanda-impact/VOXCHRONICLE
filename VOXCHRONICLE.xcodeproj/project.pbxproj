@@ -975,6 +975,7 @@
 		07EDA66F16EFF4C100A4BAC9 /* Ceres78_3-C_wait0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA64116EFF4C100A4BAC9 /* Ceres78_3-C_wait0.caf */; };
 		07EDA67116EFF4DC00A4BAC9 /* Ceres78.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA67016EFF4DC00A4BAC9 /* Ceres78.lua */; };
 		07EDA67316EFF6D500A4BAC9 /* Ceres78_3-C_silent.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA67216EFF6D500A4BAC9 /* Ceres78_3-C_silent.caf */; };
+		07EDA67516EFF9FE00A4BAC9 /* Ceres78_3-C_drum0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA67416EFF9FE00A4BAC9 /* Ceres78_3-C_drum0.caf */; };
 		07F0D799163C1EC1005592AF /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F0D797163C1EC0005592AF /* TitleScene.cpp */; };
 		07F166FE16DDD8D8007DCB3F /* space_test.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F166FD16DDD8D8007DCB3F /* space_test.lua */; };
 		07F40F10163D0FC0009FC104 /* Music.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F40F0F163D0FC0009FC104 /* Music.cpp */; };
@@ -2366,6 +2367,7 @@
 		07EDA64116EFF4C100A4BAC9 /* Ceres78_3-C_wait0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_wait0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_wait0.caf"; sourceTree = "<group>"; };
 		07EDA67016EFF4DC00A4BAC9 /* Ceres78.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Ceres78.lua; path = musics/Ceres78.lua; sourceTree = "<group>"; };
 		07EDA67216EFF6D500A4BAC9 /* Ceres78_3-C_silent.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_silent.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_silent.caf"; sourceTree = "<group>"; };
+		07EDA67416EFF9FE00A4BAC9 /* Ceres78_3-C_drum0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_drum0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_drum0.caf"; sourceTree = "<group>"; };
 		07F0D750163BABCD005592AF /* macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = macros.h; path = Classes/includes/macros.h; sourceTree = "<group>"; };
 		07F0D751163BABDF005592AF /* Music.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Music.h; path = Classes/includes/Music.h; sourceTree = "<group>"; };
 		07F0D752163BABDF005592AF /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Track.h; path = Classes/includes/Track.h; sourceTree = "<group>"; };
@@ -4541,6 +4543,7 @@
 				07EDA61516EFF4C100A4BAC9 /* Ceres78_3-C_counter1.caf */,
 				07EDA61616EFF4C100A4BAC9 /* Ceres78_3-C_counter2.caf */,
 				07EDA61716EFF4C100A4BAC9 /* Ceres78_3-C_counter3.caf */,
+				07EDA67416EFF9FE00A4BAC9 /* Ceres78_3-C_drum0.caf */,
 				07EDA61816EFF4C100A4BAC9 /* Ceres78_3-C_drum1.caf */,
 				07EDA61916EFF4C100A4BAC9 /* Ceres78_3-C_drum2.caf */,
 				07EDA61A16EFF4C100A4BAC9 /* Ceres78_3-C_drum3.caf */,
@@ -5517,6 +5520,7 @@
 				07EDA66F16EFF4C100A4BAC9 /* Ceres78_3-C_wait0.caf in Resources */,
 				07EDA67116EFF4DC00A4BAC9 /* Ceres78.lua in Resources */,
 				07EDA67316EFF6D500A4BAC9 /* Ceres78_3-C_silent.caf in Resources */,
+				07EDA67516EFF9FE00A4BAC9 /* Ceres78_3-C_drum0.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
