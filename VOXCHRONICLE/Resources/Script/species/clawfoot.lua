@@ -18,7 +18,7 @@ Enemy = {
     local turn = self:getRegister(key, 0) -- 溜めているターンを取得
     math.random(100)
     local rand = math.random(100)
-    if turn > 0 or rand <= 10 then -- 溜めてる最中、または10%の確率で
+    if turn > 0 or rand <= 5 then -- 溜めてる最中、または5%の確率で
       return "foot"
     end
     return ""

@@ -101,6 +101,58 @@
 		0731E4EF16181025006AEF3D /* Skill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0731E4ED16181024006AEF3D /* Skill.cpp */; };
 		0731E4F616181060006AEF3D /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0731E4F416181060006AEF3D /* Utils.cpp */; };
 		0731E4F916181DD5006AEF3D /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0731E4F716181DD4006AEF3D /* Map.cpp */; };
+		0737EEDF16F08BD700C46E6C /* Hawa-3A_counter0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEB016F08BD700C46E6C /* Hawa-3A_counter0.caf */; };
+		0737EEE016F08BD700C46E6C /* Hawa-3A_counter1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEB116F08BD700C46E6C /* Hawa-3A_counter1.caf */; };
+		0737EEE116F08BD700C46E6C /* Hawa-3A_counter2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEB216F08BD700C46E6C /* Hawa-3A_counter2.caf */; };
+		0737EEE216F08BD700C46E6C /* Hawa-3A_counter3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEB316F08BD700C46E6C /* Hawa-3A_counter3.caf */; };
+		0737EEE316F08BD700C46E6C /* Hawa-3A_drum0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEB416F08BD700C46E6C /* Hawa-3A_drum0.caf */; };
+		0737EEE416F08BD700C46E6C /* Hawa-3A_drum1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEB516F08BD700C46E6C /* Hawa-3A_drum1.caf */; };
+		0737EEE516F08BD700C46E6C /* Hawa-3A_drum2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEB616F08BD700C46E6C /* Hawa-3A_drum2.caf */; };
+		0737EEE616F08BD700C46E6C /* Hawa-3A_drum3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEB716F08BD700C46E6C /* Hawa-3A_drum3.caf */; };
+		0737EEE716F08BD700C46E6C /* Hawa-3A_drum4.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEB816F08BD700C46E6C /* Hawa-3A_drum4.caf */; };
+		0737EEE816F08BD700C46E6C /* Hawa-3A_finish0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEB916F08BD700C46E6C /* Hawa-3A_finish0.caf */; };
+		0737EEE916F08BD700C46E6C /* Hawa-3A_finish1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEBA16F08BD700C46E6C /* Hawa-3A_finish1.caf */; };
+		0737EEEA16F08BD700C46E6C /* Hawa-3A_finish2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEBB16F08BD700C46E6C /* Hawa-3A_finish2.caf */; };
+		0737EEEB16F08BD700C46E6C /* Hawa-3A_finish3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEBC16F08BD700C46E6C /* Hawa-3A_finish3.caf */; };
+		0737EEEC16F08BD700C46E6C /* Hawa-3A_impact0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEBD16F08BD700C46E6C /* Hawa-3A_impact0.caf */; };
+		0737EEED16F08BD700C46E6C /* Hawa-3A_impact1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEBE16F08BD700C46E6C /* Hawa-3A_impact1.caf */; };
+		0737EEEE16F08BD700C46E6C /* Hawa-3A_impact2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEBF16F08BD700C46E6C /* Hawa-3A_impact2.caf */; };
+		0737EEEF16F08BD700C46E6C /* Hawa-3A_impact3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEC016F08BD700C46E6C /* Hawa-3A_impact3.caf */; };
+		0737EEF016F08BD700C46E6C /* Hawa-3A_intro0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEC116F08BD700C46E6C /* Hawa-3A_intro0.caf */; };
+		0737EEF116F08BD700C46E6C /* Hawa-3A_intro1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEC216F08BD700C46E6C /* Hawa-3A_intro1.caf */; };
+		0737EEF216F08BD700C46E6C /* Hawa-3A_lskbow0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEC316F08BD700C46E6C /* Hawa-3A_lskbow0.caf */; };
+		0737EEF316F08BD700C46E6C /* Hawa-3A_lskchange0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEC416F08BD700C46E6C /* Hawa-3A_lskchange0.caf */; };
+		0737EEF416F08BD700C46E6C /* Hawa-3A_lskcure0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEC516F08BD700C46E6C /* Hawa-3A_lskcure0.caf */; };
+		0737EEF516F08BD700C46E6C /* Hawa-3A_lskmagic0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEC616F08BD700C46E6C /* Hawa-3A_lskmagic0.caf */; };
+		0737EEF616F08BD700C46E6C /* Hawa-3A_lskmagic1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEC716F08BD700C46E6C /* Hawa-3A_lskmagic1.caf */; };
+		0737EEF716F08BD700C46E6C /* Hawa-3A_lskmagic2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEC816F08BD700C46E6C /* Hawa-3A_lskmagic2.caf */; };
+		0737EEF816F08BD700C46E6C /* Hawa-3A_lskmagic3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEC916F08BD700C46E6C /* Hawa-3A_lskmagic3.caf */; };
+		0737EEF916F08BD700C46E6C /* Hawa-3A_lskthunder0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EECA16F08BD700C46E6C /* Hawa-3A_lskthunder0.caf */; };
+		0737EEFA16F08BD700C46E6C /* Hawa-3A_miss.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EECB16F08BD700C46E6C /* Hawa-3A_miss.caf */; };
+		0737EEFB16F08BD700C46E6C /* Hawa-3A_qte.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EECC16F08BD700C46E6C /* Hawa-3A_qte.caf */; };
+		0737EEFC16F08BD700C46E6C /* Hawa-3A_run0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EECD16F08BD700C46E6C /* Hawa-3A_run0.caf */; };
+		0737EEFD16F08BD700C46E6C /* Hawa-3A_run1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EECE16F08BD700C46E6C /* Hawa-3A_run1.caf */; };
+		0737EEFE16F08BD700C46E6C /* Hawa-3A_shield0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EECF16F08BD700C46E6C /* Hawa-3A_shield0.caf */; };
+		0737EEFF16F08BD700C46E6C /* Hawa-3A_silent.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EED016F08BD700C46E6C /* Hawa-3A_silent.caf */; };
+		0737EF0016F08BD700C46E6C /* Hawa-3A_tension0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EED116F08BD700C46E6C /* Hawa-3A_tension0.caf */; };
+		0737EF0116F08BD700C46E6C /* Hawa-3A_tension1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EED216F08BD700C46E6C /* Hawa-3A_tension1.caf */; };
+		0737EF0216F08BD700C46E6C /* Hawa-3A_tension2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EED316F08BD700C46E6C /* Hawa-3A_tension2.caf */; };
+		0737EF0316F08BD700C46E6C /* Hawa-3A_tension3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EED416F08BD700C46E6C /* Hawa-3A_tension3.caf */; };
+		0737EF0416F08BD700C46E6C /* Hawa-3A_voxattack0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EED516F08BD700C46E6C /* Hawa-3A_voxattack0.caf */; };
+		0737EF0516F08BD700C46E6C /* Hawa-3A_voxattack1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EED616F08BD700C46E6C /* Hawa-3A_voxattack1.caf */; };
+		0737EF0616F08BD700C46E6C /* Hawa-3A_voxattack2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EED716F08BD700C46E6C /* Hawa-3A_voxattack2.caf */; };
+		0737EF0716F08BD700C46E6C /* Hawa-3A_voxattack3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EED816F08BD700C46E6C /* Hawa-3A_voxattack3.caf */; };
+		0737EF0816F08BD700C46E6C /* Hawa-3A_voxchange0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EED916F08BD700C46E6C /* Hawa-3A_voxchange0.caf */; };
+		0737EF0916F08BD700C46E6C /* Hawa-3A_voxcharge0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEDA16F08BD700C46E6C /* Hawa-3A_voxcharge0.caf */; };
+		0737EF0A16F08BD700C46E6C /* Hawa-3A_voxknockback0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEDB16F08BD700C46E6C /* Hawa-3A_voxknockback0.caf */; };
+		0737EF0B16F08BD700C46E6C /* Hawa-3A_voxslash0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEDC16F08BD700C46E6C /* Hawa-3A_voxslash0.caf */; };
+		0737EF0C16F08BD700C46E6C /* Hawa-3A_wait0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEDD16F08BD700C46E6C /* Hawa-3A_wait0.caf */; };
+		0737EF0D16F08BD700C46E6C /* Hawa-3A_wait1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEDE16F08BD700C46E6C /* Hawa-3A_wait1.caf */; };
+		0737EF0F16F08BF700C46E6C /* Hawaii.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0737EF0E16F08BF700C46E6C /* Hawaii.lua */; };
+		0737EF1416F08D6500C46E6C /* ttn1_finish0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EF1016F08D6500C46E6C /* ttn1_finish0.caf */; };
+		0737EF1516F08D6500C46E6C /* ttn1_finish1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EF1116F08D6500C46E6C /* ttn1_finish1.caf */; };
+		0737EF1616F08D6500C46E6C /* ttn1_finish2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EF1216F08D6500C46E6C /* ttn1_finish2.caf */; };
+		0737EF1716F08D6500C46E6C /* ttn1_finish3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EF1316F08D6500C46E6C /* ttn1_finish3.caf */; };
 		0738FB4616C530DD00FE2816 /* 2b.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0738FB4516C530DD00FE2816 /* 2b.lua */; };
 		0738FB4816C530E800FE2816 /* yuki.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0738FB4716C530E800FE2816 /* yuki.lua */; };
 		0738FB7D16C5320300FE2816 /* 2b_counter0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0738FB4916C5320300FE2816 /* 2b_counter0.caf */; };
@@ -1173,6 +1225,58 @@
 		0731E4ED16181024006AEF3D /* Skill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Skill.cpp; path = Classes/Model/Skill.cpp; sourceTree = "<group>"; };
 		0731E4F416181060006AEF3D /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
 		0731E4F716181DD4006AEF3D /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Map.cpp; path = Classes/Model/Map.cpp; sourceTree = "<group>"; };
+		0737EEB016F08BD700C46E6C /* Hawa-3A_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_counter0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_counter0.caf"; sourceTree = "<group>"; };
+		0737EEB116F08BD700C46E6C /* Hawa-3A_counter1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_counter1.caf"; path = "Resources/Music/Hawaii/Hawa-3A_counter1.caf"; sourceTree = "<group>"; };
+		0737EEB216F08BD700C46E6C /* Hawa-3A_counter2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_counter2.caf"; path = "Resources/Music/Hawaii/Hawa-3A_counter2.caf"; sourceTree = "<group>"; };
+		0737EEB316F08BD700C46E6C /* Hawa-3A_counter3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_counter3.caf"; path = "Resources/Music/Hawaii/Hawa-3A_counter3.caf"; sourceTree = "<group>"; };
+		0737EEB416F08BD700C46E6C /* Hawa-3A_drum0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_drum0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_drum0.caf"; sourceTree = "<group>"; };
+		0737EEB516F08BD700C46E6C /* Hawa-3A_drum1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_drum1.caf"; path = "Resources/Music/Hawaii/Hawa-3A_drum1.caf"; sourceTree = "<group>"; };
+		0737EEB616F08BD700C46E6C /* Hawa-3A_drum2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_drum2.caf"; path = "Resources/Music/Hawaii/Hawa-3A_drum2.caf"; sourceTree = "<group>"; };
+		0737EEB716F08BD700C46E6C /* Hawa-3A_drum3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_drum3.caf"; path = "Resources/Music/Hawaii/Hawa-3A_drum3.caf"; sourceTree = "<group>"; };
+		0737EEB816F08BD700C46E6C /* Hawa-3A_drum4.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_drum4.caf"; path = "Resources/Music/Hawaii/Hawa-3A_drum4.caf"; sourceTree = "<group>"; };
+		0737EEB916F08BD700C46E6C /* Hawa-3A_finish0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_finish0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_finish0.caf"; sourceTree = "<group>"; };
+		0737EEBA16F08BD700C46E6C /* Hawa-3A_finish1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_finish1.caf"; path = "Resources/Music/Hawaii/Hawa-3A_finish1.caf"; sourceTree = "<group>"; };
+		0737EEBB16F08BD700C46E6C /* Hawa-3A_finish2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_finish2.caf"; path = "Resources/Music/Hawaii/Hawa-3A_finish2.caf"; sourceTree = "<group>"; };
+		0737EEBC16F08BD700C46E6C /* Hawa-3A_finish3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_finish3.caf"; path = "Resources/Music/Hawaii/Hawa-3A_finish3.caf"; sourceTree = "<group>"; };
+		0737EEBD16F08BD700C46E6C /* Hawa-3A_impact0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_impact0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_impact0.caf"; sourceTree = "<group>"; };
+		0737EEBE16F08BD700C46E6C /* Hawa-3A_impact1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_impact1.caf"; path = "Resources/Music/Hawaii/Hawa-3A_impact1.caf"; sourceTree = "<group>"; };
+		0737EEBF16F08BD700C46E6C /* Hawa-3A_impact2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_impact2.caf"; path = "Resources/Music/Hawaii/Hawa-3A_impact2.caf"; sourceTree = "<group>"; };
+		0737EEC016F08BD700C46E6C /* Hawa-3A_impact3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_impact3.caf"; path = "Resources/Music/Hawaii/Hawa-3A_impact3.caf"; sourceTree = "<group>"; };
+		0737EEC116F08BD700C46E6C /* Hawa-3A_intro0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_intro0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_intro0.caf"; sourceTree = "<group>"; };
+		0737EEC216F08BD700C46E6C /* Hawa-3A_intro1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_intro1.caf"; path = "Resources/Music/Hawaii/Hawa-3A_intro1.caf"; sourceTree = "<group>"; };
+		0737EEC316F08BD700C46E6C /* Hawa-3A_lskbow0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_lskbow0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_lskbow0.caf"; sourceTree = "<group>"; };
+		0737EEC416F08BD700C46E6C /* Hawa-3A_lskchange0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_lskchange0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_lskchange0.caf"; sourceTree = "<group>"; };
+		0737EEC516F08BD700C46E6C /* Hawa-3A_lskcure0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_lskcure0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_lskcure0.caf"; sourceTree = "<group>"; };
+		0737EEC616F08BD700C46E6C /* Hawa-3A_lskmagic0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_lskmagic0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_lskmagic0.caf"; sourceTree = "<group>"; };
+		0737EEC716F08BD700C46E6C /* Hawa-3A_lskmagic1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_lskmagic1.caf"; path = "Resources/Music/Hawaii/Hawa-3A_lskmagic1.caf"; sourceTree = "<group>"; };
+		0737EEC816F08BD700C46E6C /* Hawa-3A_lskmagic2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_lskmagic2.caf"; path = "Resources/Music/Hawaii/Hawa-3A_lskmagic2.caf"; sourceTree = "<group>"; };
+		0737EEC916F08BD700C46E6C /* Hawa-3A_lskmagic3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_lskmagic3.caf"; path = "Resources/Music/Hawaii/Hawa-3A_lskmagic3.caf"; sourceTree = "<group>"; };
+		0737EECA16F08BD700C46E6C /* Hawa-3A_lskthunder0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_lskthunder0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_lskthunder0.caf"; sourceTree = "<group>"; };
+		0737EECB16F08BD700C46E6C /* Hawa-3A_miss.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_miss.caf"; path = "Resources/Music/Hawaii/Hawa-3A_miss.caf"; sourceTree = "<group>"; };
+		0737EECC16F08BD700C46E6C /* Hawa-3A_qte.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_qte.caf"; path = "Resources/Music/Hawaii/Hawa-3A_qte.caf"; sourceTree = "<group>"; };
+		0737EECD16F08BD700C46E6C /* Hawa-3A_run0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_run0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_run0.caf"; sourceTree = "<group>"; };
+		0737EECE16F08BD700C46E6C /* Hawa-3A_run1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_run1.caf"; path = "Resources/Music/Hawaii/Hawa-3A_run1.caf"; sourceTree = "<group>"; };
+		0737EECF16F08BD700C46E6C /* Hawa-3A_shield0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_shield0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_shield0.caf"; sourceTree = "<group>"; };
+		0737EED016F08BD700C46E6C /* Hawa-3A_silent.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_silent.caf"; path = "Resources/Music/Hawaii/Hawa-3A_silent.caf"; sourceTree = "<group>"; };
+		0737EED116F08BD700C46E6C /* Hawa-3A_tension0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_tension0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_tension0.caf"; sourceTree = "<group>"; };
+		0737EED216F08BD700C46E6C /* Hawa-3A_tension1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_tension1.caf"; path = "Resources/Music/Hawaii/Hawa-3A_tension1.caf"; sourceTree = "<group>"; };
+		0737EED316F08BD700C46E6C /* Hawa-3A_tension2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_tension2.caf"; path = "Resources/Music/Hawaii/Hawa-3A_tension2.caf"; sourceTree = "<group>"; };
+		0737EED416F08BD700C46E6C /* Hawa-3A_tension3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_tension3.caf"; path = "Resources/Music/Hawaii/Hawa-3A_tension3.caf"; sourceTree = "<group>"; };
+		0737EED516F08BD700C46E6C /* Hawa-3A_voxattack0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_voxattack0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_voxattack0.caf"; sourceTree = "<group>"; };
+		0737EED616F08BD700C46E6C /* Hawa-3A_voxattack1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_voxattack1.caf"; path = "Resources/Music/Hawaii/Hawa-3A_voxattack1.caf"; sourceTree = "<group>"; };
+		0737EED716F08BD700C46E6C /* Hawa-3A_voxattack2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_voxattack2.caf"; path = "Resources/Music/Hawaii/Hawa-3A_voxattack2.caf"; sourceTree = "<group>"; };
+		0737EED816F08BD700C46E6C /* Hawa-3A_voxattack3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_voxattack3.caf"; path = "Resources/Music/Hawaii/Hawa-3A_voxattack3.caf"; sourceTree = "<group>"; };
+		0737EED916F08BD700C46E6C /* Hawa-3A_voxchange0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_voxchange0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_voxchange0.caf"; sourceTree = "<group>"; };
+		0737EEDA16F08BD700C46E6C /* Hawa-3A_voxcharge0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_voxcharge0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_voxcharge0.caf"; sourceTree = "<group>"; };
+		0737EEDB16F08BD700C46E6C /* Hawa-3A_voxknockback0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_voxknockback0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_voxknockback0.caf"; sourceTree = "<group>"; };
+		0737EEDC16F08BD700C46E6C /* Hawa-3A_voxslash0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_voxslash0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_voxslash0.caf"; sourceTree = "<group>"; };
+		0737EEDD16F08BD700C46E6C /* Hawa-3A_wait0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_wait0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_wait0.caf"; sourceTree = "<group>"; };
+		0737EEDE16F08BD700C46E6C /* Hawa-3A_wait1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_wait1.caf"; path = "Resources/Music/Hawaii/Hawa-3A_wait1.caf"; sourceTree = "<group>"; };
+		0737EF0E16F08BF700C46E6C /* Hawaii.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Hawaii.lua; path = musics/Hawaii.lua; sourceTree = "<group>"; };
+		0737EF1016F08D6500C46E6C /* ttn1_finish0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ttn1_finish0.caf; path = Resources/Music/ttn1/ttn1_finish0.caf; sourceTree = "<group>"; };
+		0737EF1116F08D6500C46E6C /* ttn1_finish1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ttn1_finish1.caf; path = Resources/Music/ttn1/ttn1_finish1.caf; sourceTree = "<group>"; };
+		0737EF1216F08D6500C46E6C /* ttn1_finish2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ttn1_finish2.caf; path = Resources/Music/ttn1/ttn1_finish2.caf; sourceTree = "<group>"; };
+		0737EF1316F08D6500C46E6C /* ttn1_finish3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ttn1_finish3.caf; path = Resources/Music/ttn1/ttn1_finish3.caf; sourceTree = "<group>"; };
 		0738FB4516C530DD00FE2816 /* 2b.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 2b.lua; path = map/2b.lua; sourceTree = "<group>"; };
 		0738FB4716C530E800FE2816 /* yuki.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = yuki.lua; path = musics/yuki.lua; sourceTree = "<group>"; };
 		0738FB4916C5320300FE2816 /* 2b_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2b_counter0.caf; path = Resources/Music/2b/2b_counter0.caf; sourceTree = "<group>"; };
@@ -2667,6 +2771,60 @@
 			name = map;
 			sourceTree = "<group>";
 		};
+		0737EEAF16F08BC900C46E6C /* Hawaii */ = {
+			isa = PBXGroup;
+			children = (
+				0737EEB016F08BD700C46E6C /* Hawa-3A_counter0.caf */,
+				0737EEB116F08BD700C46E6C /* Hawa-3A_counter1.caf */,
+				0737EEB216F08BD700C46E6C /* Hawa-3A_counter2.caf */,
+				0737EEB316F08BD700C46E6C /* Hawa-3A_counter3.caf */,
+				0737EEB416F08BD700C46E6C /* Hawa-3A_drum0.caf */,
+				0737EEB516F08BD700C46E6C /* Hawa-3A_drum1.caf */,
+				0737EEB616F08BD700C46E6C /* Hawa-3A_drum2.caf */,
+				0737EEB716F08BD700C46E6C /* Hawa-3A_drum3.caf */,
+				0737EEB816F08BD700C46E6C /* Hawa-3A_drum4.caf */,
+				0737EEB916F08BD700C46E6C /* Hawa-3A_finish0.caf */,
+				0737EEBA16F08BD700C46E6C /* Hawa-3A_finish1.caf */,
+				0737EEBB16F08BD700C46E6C /* Hawa-3A_finish2.caf */,
+				0737EEBC16F08BD700C46E6C /* Hawa-3A_finish3.caf */,
+				0737EEBD16F08BD700C46E6C /* Hawa-3A_impact0.caf */,
+				0737EEBE16F08BD700C46E6C /* Hawa-3A_impact1.caf */,
+				0737EEBF16F08BD700C46E6C /* Hawa-3A_impact2.caf */,
+				0737EEC016F08BD700C46E6C /* Hawa-3A_impact3.caf */,
+				0737EEC116F08BD700C46E6C /* Hawa-3A_intro0.caf */,
+				0737EEC216F08BD700C46E6C /* Hawa-3A_intro1.caf */,
+				0737EEC316F08BD700C46E6C /* Hawa-3A_lskbow0.caf */,
+				0737EEC416F08BD700C46E6C /* Hawa-3A_lskchange0.caf */,
+				0737EEC516F08BD700C46E6C /* Hawa-3A_lskcure0.caf */,
+				0737EEC616F08BD700C46E6C /* Hawa-3A_lskmagic0.caf */,
+				0737EEC716F08BD700C46E6C /* Hawa-3A_lskmagic1.caf */,
+				0737EEC816F08BD700C46E6C /* Hawa-3A_lskmagic2.caf */,
+				0737EEC916F08BD700C46E6C /* Hawa-3A_lskmagic3.caf */,
+				0737EECA16F08BD700C46E6C /* Hawa-3A_lskthunder0.caf */,
+				0737EECB16F08BD700C46E6C /* Hawa-3A_miss.caf */,
+				0737EECC16F08BD700C46E6C /* Hawa-3A_qte.caf */,
+				0737EECD16F08BD700C46E6C /* Hawa-3A_run0.caf */,
+				0737EECE16F08BD700C46E6C /* Hawa-3A_run1.caf */,
+				0737EECF16F08BD700C46E6C /* Hawa-3A_shield0.caf */,
+				0737EED016F08BD700C46E6C /* Hawa-3A_silent.caf */,
+				0737EED116F08BD700C46E6C /* Hawa-3A_tension0.caf */,
+				0737EED216F08BD700C46E6C /* Hawa-3A_tension1.caf */,
+				0737EED316F08BD700C46E6C /* Hawa-3A_tension2.caf */,
+				0737EED416F08BD700C46E6C /* Hawa-3A_tension3.caf */,
+				0737EED516F08BD700C46E6C /* Hawa-3A_voxattack0.caf */,
+				0737EED616F08BD700C46E6C /* Hawa-3A_voxattack1.caf */,
+				0737EED716F08BD700C46E6C /* Hawa-3A_voxattack2.caf */,
+				0737EED816F08BD700C46E6C /* Hawa-3A_voxattack3.caf */,
+				0737EED916F08BD700C46E6C /* Hawa-3A_voxchange0.caf */,
+				0737EEDA16F08BD700C46E6C /* Hawa-3A_voxcharge0.caf */,
+				0737EEDB16F08BD700C46E6C /* Hawa-3A_voxknockback0.caf */,
+				0737EEDC16F08BD700C46E6C /* Hawa-3A_voxslash0.caf */,
+				0737EEDD16F08BD700C46E6C /* Hawa-3A_wait0.caf */,
+				0737EEDE16F08BD700C46E6C /* Hawa-3A_wait1.caf */,
+			);
+			name = Hawaii;
+			sourceTree = "<group>";
+		};
 		0738FADC16C530A800FE2816 /* 2b */ = {
 			isa = PBXGroup;
 			children = (
@@ -2903,6 +3061,7 @@
 				0701703916C813500000E632 /* shaba.lua */,
 				078D45DF16CF1FD200E21DC5 /* 3Bb.lua */,
 				07EDA67016EFF4DC00A4BAC9 /* Ceres78.lua */,
+				0737EF0E16F08BF700C46E6C /* Hawaii.lua */,
 			);
 			name = musics;
 			sourceTree = "<group>";
@@ -4393,6 +4552,7 @@
 		07D873E215ED1200009CC446 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				0737EEAF16F08BC900C46E6C /* Hawaii */,
 				07EDA61316EFF4AE00A4BAC9 /* Ceres78_3-C */,
 				070141E016E1F7E400B00887 /* dhun */,
 				075B927616D51EFC00DBB2D1 /* AttaQ3-D */,
@@ -4594,6 +4754,10 @@
 		07F933DF16C16AFA00A2F1CA /* ttn1 */ = {
 			isa = PBXGroup;
 			children = (
+				0737EF1016F08D6500C46E6C /* ttn1_finish0.caf */,
+				0737EF1116F08D6500C46E6C /* ttn1_finish1.caf */,
+				0737EF1216F08D6500C46E6C /* ttn1_finish2.caf */,
+				0737EF1316F08D6500C46E6C /* ttn1_finish3.caf */,
 				07F9344416C16C9800A2F1CA /* ttn1_counter0.caf */,
 				07F9344516C16C9800A2F1CA /* ttn1_counter1.caf */,
 				07F9344616C16C9800A2F1CA /* ttn1_counter2.caf */,
@@ -5521,6 +5685,58 @@
 				07EDA67116EFF4DC00A4BAC9 /* Ceres78.lua in Resources */,
 				07EDA67316EFF6D500A4BAC9 /* Ceres78_3-C_silent.caf in Resources */,
 				07EDA67516EFF9FE00A4BAC9 /* Ceres78_3-C_drum0.caf in Resources */,
+				0737EEDF16F08BD700C46E6C /* Hawa-3A_counter0.caf in Resources */,
+				0737EEE016F08BD700C46E6C /* Hawa-3A_counter1.caf in Resources */,
+				0737EEE116F08BD700C46E6C /* Hawa-3A_counter2.caf in Resources */,
+				0737EEE216F08BD700C46E6C /* Hawa-3A_counter3.caf in Resources */,
+				0737EEE316F08BD700C46E6C /* Hawa-3A_drum0.caf in Resources */,
+				0737EEE416F08BD700C46E6C /* Hawa-3A_drum1.caf in Resources */,
+				0737EEE516F08BD700C46E6C /* Hawa-3A_drum2.caf in Resources */,
+				0737EEE616F08BD700C46E6C /* Hawa-3A_drum3.caf in Resources */,
+				0737EEE716F08BD700C46E6C /* Hawa-3A_drum4.caf in Resources */,
+				0737EEE816F08BD700C46E6C /* Hawa-3A_finish0.caf in Resources */,
+				0737EEE916F08BD700C46E6C /* Hawa-3A_finish1.caf in Resources */,
+				0737EEEA16F08BD700C46E6C /* Hawa-3A_finish2.caf in Resources */,
+				0737EEEB16F08BD700C46E6C /* Hawa-3A_finish3.caf in Resources */,
+				0737EEEC16F08BD700C46E6C /* Hawa-3A_impact0.caf in Resources */,
+				0737EEED16F08BD700C46E6C /* Hawa-3A_impact1.caf in Resources */,
+				0737EEEE16F08BD700C46E6C /* Hawa-3A_impact2.caf in Resources */,
+				0737EEEF16F08BD700C46E6C /* Hawa-3A_impact3.caf in Resources */,
+				0737EEF016F08BD700C46E6C /* Hawa-3A_intro0.caf in Resources */,
+				0737EEF116F08BD700C46E6C /* Hawa-3A_intro1.caf in Resources */,
+				0737EEF216F08BD700C46E6C /* Hawa-3A_lskbow0.caf in Resources */,
+				0737EEF316F08BD700C46E6C /* Hawa-3A_lskchange0.caf in Resources */,
+				0737EEF416F08BD700C46E6C /* Hawa-3A_lskcure0.caf in Resources */,
+				0737EEF516F08BD700C46E6C /* Hawa-3A_lskmagic0.caf in Resources */,
+				0737EEF616F08BD700C46E6C /* Hawa-3A_lskmagic1.caf in Resources */,
+				0737EEF716F08BD700C46E6C /* Hawa-3A_lskmagic2.caf in Resources */,
+				0737EEF816F08BD700C46E6C /* Hawa-3A_lskmagic3.caf in Resources */,
+				0737EEF916F08BD700C46E6C /* Hawa-3A_lskthunder0.caf in Resources */,
+				0737EEFA16F08BD700C46E6C /* Hawa-3A_miss.caf in Resources */,
+				0737EEFB16F08BD700C46E6C /* Hawa-3A_qte.caf in Resources */,
+				0737EEFC16F08BD700C46E6C /* Hawa-3A_run0.caf in Resources */,
+				0737EEFD16F08BD700C46E6C /* Hawa-3A_run1.caf in Resources */,
+				0737EEFE16F08BD700C46E6C /* Hawa-3A_shield0.caf in Resources */,
+				0737EEFF16F08BD700C46E6C /* Hawa-3A_silent.caf in Resources */,
+				0737EF0016F08BD700C46E6C /* Hawa-3A_tension0.caf in Resources */,
+				0737EF0116F08BD700C46E6C /* Hawa-3A_tension1.caf in Resources */,
+				0737EF0216F08BD700C46E6C /* Hawa-3A_tension2.caf in Resources */,
+				0737EF0316F08BD700C46E6C /* Hawa-3A_tension3.caf in Resources */,
+				0737EF0416F08BD700C46E6C /* Hawa-3A_voxattack0.caf in Resources */,
+				0737EF0516F08BD700C46E6C /* Hawa-3A_voxattack1.caf in Resources */,
+				0737EF0616F08BD700C46E6C /* Hawa-3A_voxattack2.caf in Resources */,
+				0737EF0716F08BD700C46E6C /* Hawa-3A_voxattack3.caf in Resources */,
+				0737EF0816F08BD700C46E6C /* Hawa-3A_voxchange0.caf in Resources */,
+				0737EF0916F08BD700C46E6C /* Hawa-3A_voxcharge0.caf in Resources */,
+				0737EF0A16F08BD700C46E6C /* Hawa-3A_voxknockback0.caf in Resources */,
+				0737EF0B16F08BD700C46E6C /* Hawa-3A_voxslash0.caf in Resources */,
+				0737EF0C16F08BD700C46E6C /* Hawa-3A_wait0.caf in Resources */,
+				0737EF0D16F08BD700C46E6C /* Hawa-3A_wait1.caf in Resources */,
+				0737EF0F16F08BF700C46E6C /* Hawaii.lua in Resources */,
+				0737EF1416F08D6500C46E6C /* ttn1_finish0.caf in Resources */,
+				0737EF1516F08D6500C46E6C /* ttn1_finish1.caf in Resources */,
+				0737EF1616F08D6500C46E6C /* ttn1_finish2.caf in Resources */,
+				0737EF1716F08D6500C46E6C /* ttn1_finish3.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
