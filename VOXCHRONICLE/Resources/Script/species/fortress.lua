@@ -1,7 +1,7 @@
 Enemy = {
   name = "砦",
   imageName = "fortress",
-  attack = 100,
+  attack = 50,
   baseExp = 0,
   hasFrame = true,
   counter = 0,

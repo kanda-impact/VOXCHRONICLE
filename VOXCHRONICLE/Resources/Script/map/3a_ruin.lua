@@ -20,7 +20,8 @@ Map = {
     elseif level < 30 then
       return { wisp3A6 = 2, typhoon3A6 = 1,gargoyle3A0 = 1}
     end
-    return {mask3A3 = 3, typhoon3A6 = 2,wisp3A6 = 2 ,gargoyle3A0 = 1}
+    -- return {mask3A3 = 3, typhoon3A6 = 2,wisp3A6 = 2 ,gargoyle3A0 = 1}
+    return {}
   end,
   onLevel = function(level, characterManager, enemyManager)
     if level == 30 then
