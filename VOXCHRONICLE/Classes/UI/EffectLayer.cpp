@@ -50,6 +50,7 @@ void EffectLayer::reloadEffects() {
   _tensionEffectLayer->setVisible(false);
   CCTextureCache::sharedTextureCache()->addImage("mode_lsk.png"); // テクスチャーを読んでおく
   _characterEffectLayer->setPosition(center);
+  
   if (!_characterEffectLayer->getParent()) {
     this->addChild(_characterEffectLayer, EffectLayerZOrderCharacter);
   }

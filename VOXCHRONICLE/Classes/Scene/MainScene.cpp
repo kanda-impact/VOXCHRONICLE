@@ -139,6 +139,8 @@ bool MainScene::init(Map* map) {
   }
   this->addChild(_effectLayer, MainSceneZOrderEffect);
   
+  _effectLayer->setCharacterEffect(_characterManager->getCurrentCharacter()); // キャラクター登録
+  
   this->setTouchEnabled(true);
   
   return true;
