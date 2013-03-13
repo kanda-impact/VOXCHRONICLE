@@ -4,11 +4,12 @@ Map = {
   bossMusic = "Hawaii",
   backgroundImage = "ruin_background.png",
   skin = "skinC",
-  ending = "endingB",
+  ending = "endingA",
   nextMaps = {},
   initialLevel = 30,
   maxLevel = 30,
   getEnemyTable = function(level)
+    return {}
   end,
   onLevel = function(level, characterManager, enemyManager)
     if level == 30 then
