@@ -1,26 +1,14 @@
 Map = {
-  name = "古代遺跡",
+  name = "戦闘！砦",
   wayMusic = "ttn1",
   bossMusic = "Hawaii",
   backgroundImage = "ruin_background.png",
   skin = "skinC",
   ending = "endingB",
   nextMaps = {},
-  initialLevel = 29,
+  initialLevel = 30,
   maxLevel = 30,
   getEnemyTable = function(level)
-    if level <= 22 then
-      return {mask3A3 = 3, wisp3A0 = 1 ,gargoyle3A0 = 1}
-    elseif level <= 23 then
-      return {typhoon3A6 = 3,gargoyle3A0 = 1}
-    elseif level <= 25 then
-      return {mask3A3 = 2, wisp3A6 = 1, typhoon3A6 = 1}
-    elseif level <= 27 then
-      return {mask3A3 = 1, typhoon3A6 = 1}
-    elseif level < 30 then
-      return { wisp3A6 = 2, typhoon3A6 = 1,gargoyle3A0 = 1}
-    end
-    return {mask3A3 = 3, typhoon3A6 = 2,wisp3A6 = 2 ,gargoyle3A0 = 1}
   end,
   onLevel = function(level, characterManager, enemyManager)
     if level == 30 then

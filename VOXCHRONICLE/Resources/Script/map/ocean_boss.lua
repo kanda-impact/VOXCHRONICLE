@@ -1,5 +1,5 @@
 Map = {
-  name = "イカテスト",
+  name = "戦闘！クラーケン",
   wayMusic = "dub",
   bossMusic = "Ceres78",
   backgroundImage = "",
