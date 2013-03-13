@@ -6,13 +6,12 @@ Enemy = {
   hasFrame = true,
   counter = 2,
   getSpeed = function(enemy, characterManager)
-    return 1
+    return 0
   end,
   getFrequency = function(enemy, characterManager)
-    return 2
+    return 1
   end,
-  disableSkills = {},
-  disableSkills = {},
+  disableSkills = {"knockback"},
   animationFrames = 4,
   performSkill = function(self)
     return ""

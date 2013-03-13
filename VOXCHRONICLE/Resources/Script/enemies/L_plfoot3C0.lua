@@ -1,5 +1,5 @@
 Enemy = {
-  species = "clawfoot",
+  species = "L_plfoot",
   level = 1,
   hp = 80,
   getExp = function(default)
