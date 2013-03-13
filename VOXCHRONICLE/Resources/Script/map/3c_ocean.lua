@@ -10,7 +10,7 @@ Map = {
   maxLevel = 30,
   getEnemyTable = function(level)
     if level < 30 then
-      return {whale3C0 = 3, jfish3C0 = 2, } --naut 未実装
+      return {whale3C0 = 3, jfish3C0 = 2, naut3C0 = 1}
     elseif level == 30 then
       return {}
     end

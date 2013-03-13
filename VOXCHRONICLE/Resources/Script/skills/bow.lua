@@ -11,7 +11,7 @@ Skill = {
   turn = 1,
   getPower = function(characterManager)
     local tension = characterManager:getTension()
-    t = {6, 9, 12, 15, 18}
+    t = {6, 12, 18, 24, 30}
     return t[tension + 1]
   end,
   skillRange = SkillRangeBack,
