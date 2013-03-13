@@ -1,6 +1,6 @@
 Map = {
   name = "テストステージ２",
-  wayMusic = "ttn1",
+  wayMusic = "dhun",
   bossMusic = "",
   backgroundImage = "",
   skin = "skinB",

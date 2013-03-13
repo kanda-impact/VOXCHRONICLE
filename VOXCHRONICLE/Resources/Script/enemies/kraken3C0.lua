@@ -1,7 +1,7 @@
 Enemy = {
   species = "kraken",
   level = 30,
-  hp = 200,
+  hp = 180,
   getExp = function(default)
       return 0
   end,

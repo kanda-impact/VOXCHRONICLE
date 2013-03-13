@@ -1,17 +1,17 @@
 Enemy = {
   name = "砦",
   imageName = "fortress",
-  attack = 1,
-  baseExp = 1,
+  attack = 50,
+  baseExp = 0,
   hasFrame = true,
-  counter = 1,
+  counter = 0,
   getSpeed = function(enemy, characterManager)
     return 1
   end,
   getFrequency = function(enemy, characterManager)
-    return 2
+    return 5
   end,
-  disableSkills = {},
+  disableSkills = {"knockback"},
   animationFrames = 4,
   performSkill = function(self)
     return ""

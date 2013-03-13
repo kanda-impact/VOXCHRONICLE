@@ -54,6 +54,8 @@ class Map :public CCObject {
   CCArray* getFixedEnemies(int preExp, int currentExp);
   CCArray* getNextMaps();
   bool isBossStage();
+  MusicSet* getWayMusic();
+  MusicSet* getBossMusic();
   MusicSet* getCurrentMusic(Level* level);
   void performOnLevel(int level, CharacterManager* characterManager, EnemyManager* enemyManager);
   Skin* getSkin();

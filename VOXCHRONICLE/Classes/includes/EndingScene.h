@@ -20,8 +20,9 @@ class EndingScene :public CCLayer {
   std::string _music;
   void goToNextScene(CCObject* sender);
   void onEnterTransitionDidFinish();
+  CCArray* _maps;
  public:
-  EndingScene(const char* endingScript);
+  EndingScene(const char* endingScript, CCArray* maps);
   ~EndingScene();
 };
 

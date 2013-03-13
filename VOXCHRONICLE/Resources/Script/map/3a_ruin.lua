@@ -1,10 +1,10 @@
 Map = {
   name = "古代遺跡",
   wayMusic = "ttn1",
-  bossMusic = "3Bb",
+  bossMusic = "Hawaii",
   backgroundImage = "ruin_background.png",
   skin = "skinC",
-  ending = "endingB",
+  ending = "endingA",
   nextMaps = {},
   initialLevel = 29,
   maxLevel = 30,
@@ -17,18 +17,17 @@ Map = {
       return {mask3A3 = 2, wisp3A6 = 1, typhoon3A6 = 1}
     elseif level <= 27 then
       return {mask3A3 = 1, typhoon3A6 = 1}
-    else
+    elseif level < 30 then
       return { wisp3A6 = 2, typhoon3A6 = 1,gargoyle3A0 = 1}
     end
-    return {mask3A3 = 3, typhoon3A6 = 2,wisp3A6 = 2 ,gargoyle3A0 = 1}
+    return {}
   end,
   onLevel = function(level, characterManager, enemyManager)
     if level == 30 then
-      knight = enemyManager:popEnemyAt("knight_debug", MAX_ROW - 1, 1)
-      enemyManager:setBoss(knight)
+      fortress = enemyManager:popEnemyAt("fortress3A0", MAX_ROW - 1, 1)
+      enemyManager:setBoss(fortress)
     end
   end,
-
   getEnemyPopRate = function(level)
     if level <= 22 then
       return 0.3

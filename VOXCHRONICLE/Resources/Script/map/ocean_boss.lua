@@ -1,7 +1,7 @@
 Map = {
-  name = "イカテスト",
+  name = "戦闘！クラーケン",
   wayMusic = "dub",
-  bossMusic = "3Bb",
+  bossMusic = "Ceres78",
   backgroundImage = "",
   skin = "skinA",
   ending = "endingC",

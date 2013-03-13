@@ -101,6 +101,61 @@
 		0731E4EF16181025006AEF3D /* Skill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0731E4ED16181024006AEF3D /* Skill.cpp */; };
 		0731E4F616181060006AEF3D /* Utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0731E4F416181060006AEF3D /* Utils.cpp */; };
 		0731E4F916181DD5006AEF3D /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0731E4F716181DD4006AEF3D /* Map.cpp */; };
+		0737EEDF16F08BD700C46E6C /* Hawa-3A_counter0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEB016F08BD700C46E6C /* Hawa-3A_counter0.caf */; };
+		0737EEE016F08BD700C46E6C /* Hawa-3A_counter1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEB116F08BD700C46E6C /* Hawa-3A_counter1.caf */; };
+		0737EEE116F08BD700C46E6C /* Hawa-3A_counter2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEB216F08BD700C46E6C /* Hawa-3A_counter2.caf */; };
+		0737EEE216F08BD700C46E6C /* Hawa-3A_counter3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEB316F08BD700C46E6C /* Hawa-3A_counter3.caf */; };
+		0737EEE316F08BD700C46E6C /* Hawa-3A_drum0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEB416F08BD700C46E6C /* Hawa-3A_drum0.caf */; };
+		0737EEE416F08BD700C46E6C /* Hawa-3A_drum1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEB516F08BD700C46E6C /* Hawa-3A_drum1.caf */; };
+		0737EEE516F08BD700C46E6C /* Hawa-3A_drum2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEB616F08BD700C46E6C /* Hawa-3A_drum2.caf */; };
+		0737EEE616F08BD700C46E6C /* Hawa-3A_drum3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEB716F08BD700C46E6C /* Hawa-3A_drum3.caf */; };
+		0737EEE716F08BD700C46E6C /* Hawa-3A_drum4.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEB816F08BD700C46E6C /* Hawa-3A_drum4.caf */; };
+		0737EEE816F08BD700C46E6C /* Hawa-3A_finish0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEB916F08BD700C46E6C /* Hawa-3A_finish0.caf */; };
+		0737EEE916F08BD700C46E6C /* Hawa-3A_finish1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEBA16F08BD700C46E6C /* Hawa-3A_finish1.caf */; };
+		0737EEEA16F08BD700C46E6C /* Hawa-3A_finish2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEBB16F08BD700C46E6C /* Hawa-3A_finish2.caf */; };
+		0737EEEB16F08BD700C46E6C /* Hawa-3A_finish3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEBC16F08BD700C46E6C /* Hawa-3A_finish3.caf */; };
+		0737EEEC16F08BD700C46E6C /* Hawa-3A_impact0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEBD16F08BD700C46E6C /* Hawa-3A_impact0.caf */; };
+		0737EEED16F08BD700C46E6C /* Hawa-3A_impact1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEBE16F08BD700C46E6C /* Hawa-3A_impact1.caf */; };
+		0737EEEE16F08BD700C46E6C /* Hawa-3A_impact2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEBF16F08BD700C46E6C /* Hawa-3A_impact2.caf */; };
+		0737EEEF16F08BD700C46E6C /* Hawa-3A_impact3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEC016F08BD700C46E6C /* Hawa-3A_impact3.caf */; };
+		0737EEF016F08BD700C46E6C /* Hawa-3A_intro0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEC116F08BD700C46E6C /* Hawa-3A_intro0.caf */; };
+		0737EEF116F08BD700C46E6C /* Hawa-3A_intro1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEC216F08BD700C46E6C /* Hawa-3A_intro1.caf */; };
+		0737EEF216F08BD700C46E6C /* Hawa-3A_lskbow0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEC316F08BD700C46E6C /* Hawa-3A_lskbow0.caf */; };
+		0737EEF316F08BD700C46E6C /* Hawa-3A_lskchange0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEC416F08BD700C46E6C /* Hawa-3A_lskchange0.caf */; };
+		0737EEF416F08BD700C46E6C /* Hawa-3A_lskcure0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEC516F08BD700C46E6C /* Hawa-3A_lskcure0.caf */; };
+		0737EEF516F08BD700C46E6C /* Hawa-3A_lskmagic0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEC616F08BD700C46E6C /* Hawa-3A_lskmagic0.caf */; };
+		0737EEF616F08BD700C46E6C /* Hawa-3A_lskmagic1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEC716F08BD700C46E6C /* Hawa-3A_lskmagic1.caf */; };
+		0737EEF716F08BD700C46E6C /* Hawa-3A_lskmagic2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEC816F08BD700C46E6C /* Hawa-3A_lskmagic2.caf */; };
+		0737EEF816F08BD700C46E6C /* Hawa-3A_lskmagic3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEC916F08BD700C46E6C /* Hawa-3A_lskmagic3.caf */; };
+		0737EEF916F08BD700C46E6C /* Hawa-3A_lskthunder0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EECA16F08BD700C46E6C /* Hawa-3A_lskthunder0.caf */; };
+		0737EEFA16F08BD700C46E6C /* Hawa-3A_miss.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EECB16F08BD700C46E6C /* Hawa-3A_miss.caf */; };
+		0737EEFB16F08BD700C46E6C /* Hawa-3A_qte.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EECC16F08BD700C46E6C /* Hawa-3A_qte.caf */; };
+		0737EEFC16F08BD700C46E6C /* Hawa-3A_run0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EECD16F08BD700C46E6C /* Hawa-3A_run0.caf */; };
+		0737EEFD16F08BD700C46E6C /* Hawa-3A_run1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EECE16F08BD700C46E6C /* Hawa-3A_run1.caf */; };
+		0737EEFE16F08BD700C46E6C /* Hawa-3A_shield0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EECF16F08BD700C46E6C /* Hawa-3A_shield0.caf */; };
+		0737EEFF16F08BD700C46E6C /* Hawa-3A_silent.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EED016F08BD700C46E6C /* Hawa-3A_silent.caf */; };
+		0737EF0016F08BD700C46E6C /* Hawa-3A_tension0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EED116F08BD700C46E6C /* Hawa-3A_tension0.caf */; };
+		0737EF0116F08BD700C46E6C /* Hawa-3A_tension1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EED216F08BD700C46E6C /* Hawa-3A_tension1.caf */; };
+		0737EF0216F08BD700C46E6C /* Hawa-3A_tension2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EED316F08BD700C46E6C /* Hawa-3A_tension2.caf */; };
+		0737EF0316F08BD700C46E6C /* Hawa-3A_tension3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EED416F08BD700C46E6C /* Hawa-3A_tension3.caf */; };
+		0737EF0416F08BD700C46E6C /* Hawa-3A_voxattack0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EED516F08BD700C46E6C /* Hawa-3A_voxattack0.caf */; };
+		0737EF0516F08BD700C46E6C /* Hawa-3A_voxattack1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EED616F08BD700C46E6C /* Hawa-3A_voxattack1.caf */; };
+		0737EF0616F08BD700C46E6C /* Hawa-3A_voxattack2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EED716F08BD700C46E6C /* Hawa-3A_voxattack2.caf */; };
+		0737EF0716F08BD700C46E6C /* Hawa-3A_voxattack3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EED816F08BD700C46E6C /* Hawa-3A_voxattack3.caf */; };
+		0737EF0816F08BD700C46E6C /* Hawa-3A_voxchange0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EED916F08BD700C46E6C /* Hawa-3A_voxchange0.caf */; };
+		0737EF0916F08BD700C46E6C /* Hawa-3A_voxcharge0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEDA16F08BD700C46E6C /* Hawa-3A_voxcharge0.caf */; };
+		0737EF0A16F08BD700C46E6C /* Hawa-3A_voxknockback0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEDB16F08BD700C46E6C /* Hawa-3A_voxknockback0.caf */; };
+		0737EF0B16F08BD700C46E6C /* Hawa-3A_voxslash0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEDC16F08BD700C46E6C /* Hawa-3A_voxslash0.caf */; };
+		0737EF0C16F08BD700C46E6C /* Hawa-3A_wait0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEDD16F08BD700C46E6C /* Hawa-3A_wait0.caf */; };
+		0737EF0D16F08BD700C46E6C /* Hawa-3A_wait1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EEDE16F08BD700C46E6C /* Hawa-3A_wait1.caf */; };
+		0737EF0F16F08BF700C46E6C /* Hawaii.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0737EF0E16F08BF700C46E6C /* Hawaii.lua */; };
+		0737EF1416F08D6500C46E6C /* ttn1_finish0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EF1016F08D6500C46E6C /* ttn1_finish0.caf */; };
+		0737EF1516F08D6500C46E6C /* ttn1_finish1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EF1116F08D6500C46E6C /* ttn1_finish1.caf */; };
+		0737EF1616F08D6500C46E6C /* ttn1_finish2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EF1216F08D6500C46E6C /* ttn1_finish2.caf */; };
+		0737EF1716F08D6500C46E6C /* ttn1_finish3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0737EF1316F08D6500C46E6C /* ttn1_finish3.caf */; };
+		0737EF1916F0909800C46E6C /* ruin_boss.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0737EF1816F0909800C46E6C /* ruin_boss.lua */; };
+		0737EF1B16F093B400C46E6C /* fortress3A0.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0737EF1A16F093B400C46E6C /* fortress3A0.lua */; };
+		0737EF1D16F098FD00C46E6C /* endingA.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0737EF1C16F098FD00C46E6C /* endingA.lua */; };
 		0738FB4616C530DD00FE2816 /* 2b.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0738FB4516C530DD00FE2816 /* 2b.lua */; };
 		0738FB4816C530E800FE2816 /* yuki.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0738FB4716C530E800FE2816 /* yuki.lua */; };
 		0738FB7D16C5320300FE2816 /* 2b_counter0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0738FB4916C5320300FE2816 /* 2b_counter0.caf */; };
@@ -165,6 +220,9 @@
 		0744B5B3167DD9EA00730393 /* StatusLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0744B5B1167DD9EA00730393 /* StatusLayer.cpp */; };
 		074EFD0B15FA926E004D8273 /* SkillTrigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 074EFD0915FA906D004D8273 /* SkillTrigger.cpp */; };
 		074EFD0C15FA93AA004D8273 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 074EFD0715FA906C004D8273 /* Controller.cpp */; };
+		0754384016E3865700802970 /* TutorialScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0754383E16E3865700802970 /* TutorialScene.cpp */; };
+		0754384516E3931F00802970 /* StaffRollScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0754384316E3931F00802970 /* StaffRollScene.cpp */; };
+		0754384816E3985600802970 /* staffroll.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0754384716E3985600802970 /* staffroll.lua */; };
 		07565378161705B200C69E27 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07565376161705B200C69E27 /* Level.cpp */; };
 		075653A016171A5500C69E27 /* magic.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0756539F16171A5500C69E27 /* magic.lua */; };
 		075653A616171F2400C69E27 /* change.lua in Resources */ = {isa = PBXBuildFile; fileRef = 075653A516171F2400C69E27 /* change.lua */; };
@@ -388,6 +446,7 @@
 		078FFC2A16E2D549001C9A4F /* mask3A3.lua in Resources */ = {isa = PBXBuildFile; fileRef = 078FFC2716E2D549001C9A4F /* mask3A3.lua */; };
 		078FFC2B16E2D549001C9A4F /* typhoon3A6.lua in Resources */ = {isa = PBXBuildFile; fileRef = 078FFC2816E2D549001C9A4F /* typhoon3A6.lua */; };
 		078FFC2C16E2D549001C9A4F /* wisp3A6.lua in Resources */ = {isa = PBXBuildFile; fileRef = 078FFC2916E2D549001C9A4F /* wisp3A6.lua */; };
+		078FFC2F16E37419001C9A4F /* MainMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 078FFC2D16E37419001C9A4F /* MainMenuScene.cpp */; };
 		0791585A15EBA8350083D348 /* LogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0791585815EBA8350083D348 /* LogoScene.cpp */; };
 		0791587615EBB50E0083D348 /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586A15EBB4BB0083D348 /* fps_images.png */; };
 		0791587715EBB50E0083D348 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586B15EBB4BB0083D348 /* Icon-72.png */; };
@@ -923,6 +982,55 @@
 		07E1351F1621AF2700CCF72E /* levelup.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07E1351E1621AF2700CCF72E /* levelup.lua */; };
 		07E135261621CABF00CCF72E /* character.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07E135251621CABF00CCF72E /* character.lua */; };
 		07E135731624AC4700CCF72E /* cure.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07E135721624AC4700CCF72E /* cure.lua */; };
+		07EDA64216EFF4C100A4BAC9 /* Ceres78_3-C_counter0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA61416EFF4C100A4BAC9 /* Ceres78_3-C_counter0.caf */; };
+		07EDA64316EFF4C100A4BAC9 /* Ceres78_3-C_counter1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA61516EFF4C100A4BAC9 /* Ceres78_3-C_counter1.caf */; };
+		07EDA64416EFF4C100A4BAC9 /* Ceres78_3-C_counter2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA61616EFF4C100A4BAC9 /* Ceres78_3-C_counter2.caf */; };
+		07EDA64516EFF4C100A4BAC9 /* Ceres78_3-C_counter3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA61716EFF4C100A4BAC9 /* Ceres78_3-C_counter3.caf */; };
+		07EDA64616EFF4C100A4BAC9 /* Ceres78_3-C_drum1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA61816EFF4C100A4BAC9 /* Ceres78_3-C_drum1.caf */; };
+		07EDA64716EFF4C100A4BAC9 /* Ceres78_3-C_drum2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA61916EFF4C100A4BAC9 /* Ceres78_3-C_drum2.caf */; };
+		07EDA64816EFF4C100A4BAC9 /* Ceres78_3-C_drum3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA61A16EFF4C100A4BAC9 /* Ceres78_3-C_drum3.caf */; };
+		07EDA64916EFF4C100A4BAC9 /* Ceres78_3-C_drum4.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA61B16EFF4C100A4BAC9 /* Ceres78_3-C_drum4.caf */; };
+		07EDA64A16EFF4C100A4BAC9 /* Ceres78_3-C_finish0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA61C16EFF4C100A4BAC9 /* Ceres78_3-C_finish0.caf */; };
+		07EDA64B16EFF4C100A4BAC9 /* Ceres78_3-C_finish1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA61D16EFF4C100A4BAC9 /* Ceres78_3-C_finish1.caf */; };
+		07EDA64C16EFF4C100A4BAC9 /* Ceres78_3-C_finish2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA61E16EFF4C100A4BAC9 /* Ceres78_3-C_finish2.caf */; };
+		07EDA64D16EFF4C100A4BAC9 /* Ceres78_3-C_finish3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA61F16EFF4C100A4BAC9 /* Ceres78_3-C_finish3.caf */; };
+		07EDA64E16EFF4C100A4BAC9 /* Ceres78_3-C_impact0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA62016EFF4C100A4BAC9 /* Ceres78_3-C_impact0.caf */; };
+		07EDA64F16EFF4C100A4BAC9 /* Ceres78_3-C_impact1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA62116EFF4C100A4BAC9 /* Ceres78_3-C_impact1.caf */; };
+		07EDA65016EFF4C100A4BAC9 /* Ceres78_3-C_impact2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA62216EFF4C100A4BAC9 /* Ceres78_3-C_impact2.caf */; };
+		07EDA65116EFF4C100A4BAC9 /* Ceres78_3-C_impact3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA62316EFF4C100A4BAC9 /* Ceres78_3-C_impact3.caf */; };
+		07EDA65216EFF4C100A4BAC9 /* Ceres78_3-C_intro0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA62416EFF4C100A4BAC9 /* Ceres78_3-C_intro0.caf */; };
+		07EDA65316EFF4C100A4BAC9 /* Ceres78_3-C_intro1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA62516EFF4C100A4BAC9 /* Ceres78_3-C_intro1.caf */; };
+		07EDA65416EFF4C100A4BAC9 /* Ceres78_3-C_intro2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA62616EFF4C100A4BAC9 /* Ceres78_3-C_intro2.caf */; };
+		07EDA65516EFF4C100A4BAC9 /* Ceres78_3-C_intro3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA62716EFF4C100A4BAC9 /* Ceres78_3-C_intro3.caf */; };
+		07EDA65616EFF4C100A4BAC9 /* Ceres78_3-C_lskbow0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA62816EFF4C100A4BAC9 /* Ceres78_3-C_lskbow0.caf */; };
+		07EDA65716EFF4C100A4BAC9 /* Ceres78_3-C_lskchange0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA62916EFF4C100A4BAC9 /* Ceres78_3-C_lskchange0.caf */; };
+		07EDA65816EFF4C100A4BAC9 /* Ceres78_3-C_lskcure0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA62A16EFF4C100A4BAC9 /* Ceres78_3-C_lskcure0.caf */; };
+		07EDA65916EFF4C100A4BAC9 /* Ceres78_3-C_lskmagic0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA62B16EFF4C100A4BAC9 /* Ceres78_3-C_lskmagic0.caf */; };
+		07EDA65A16EFF4C100A4BAC9 /* Ceres78_3-C_lskmagic1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA62C16EFF4C100A4BAC9 /* Ceres78_3-C_lskmagic1.caf */; };
+		07EDA65B16EFF4C100A4BAC9 /* Ceres78_3-C_lskmagic2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA62D16EFF4C100A4BAC9 /* Ceres78_3-C_lskmagic2.caf */; };
+		07EDA65C16EFF4C100A4BAC9 /* Ceres78_3-C_lskmagic3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA62E16EFF4C100A4BAC9 /* Ceres78_3-C_lskmagic3.caf */; };
+		07EDA65D16EFF4C100A4BAC9 /* Ceres78_3-C_lskthunder0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA62F16EFF4C100A4BAC9 /* Ceres78_3-C_lskthunder0.caf */; };
+		07EDA65E16EFF4C100A4BAC9 /* Ceres78_3-C_miss.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA63016EFF4C100A4BAC9 /* Ceres78_3-C_miss.caf */; };
+		07EDA65F16EFF4C100A4BAC9 /* Ceres78_3-C_qte.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA63116EFF4C100A4BAC9 /* Ceres78_3-C_qte.caf */; };
+		07EDA66016EFF4C100A4BAC9 /* Ceres78_3-C_run0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA63216EFF4C100A4BAC9 /* Ceres78_3-C_run0.caf */; };
+		07EDA66116EFF4C100A4BAC9 /* Ceres78_3-C_run1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA63316EFF4C100A4BAC9 /* Ceres78_3-C_run1.caf */; };
+		07EDA66216EFF4C100A4BAC9 /* Ceres78_3-C_shield0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA63416EFF4C100A4BAC9 /* Ceres78_3-C_shield0.caf */; };
+		07EDA66316EFF4C100A4BAC9 /* Ceres78_3-C_tension0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA63516EFF4C100A4BAC9 /* Ceres78_3-C_tension0.caf */; };
+		07EDA66416EFF4C100A4BAC9 /* Ceres78_3-C_tension1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA63616EFF4C100A4BAC9 /* Ceres78_3-C_tension1.caf */; };
+		07EDA66516EFF4C100A4BAC9 /* Ceres78_3-C_tension2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA63716EFF4C100A4BAC9 /* Ceres78_3-C_tension2.caf */; };
+		07EDA66616EFF4C100A4BAC9 /* Ceres78_3-C_tension3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA63816EFF4C100A4BAC9 /* Ceres78_3-C_tension3.caf */; };
+		07EDA66716EFF4C100A4BAC9 /* Ceres78_3-C_voxattack0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA63916EFF4C100A4BAC9 /* Ceres78_3-C_voxattack0.caf */; };
+		07EDA66816EFF4C100A4BAC9 /* Ceres78_3-C_voxattack1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA63A16EFF4C100A4BAC9 /* Ceres78_3-C_voxattack1.caf */; };
+		07EDA66916EFF4C100A4BAC9 /* Ceres78_3-C_voxattack2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA63B16EFF4C100A4BAC9 /* Ceres78_3-C_voxattack2.caf */; };
+		07EDA66A16EFF4C100A4BAC9 /* Ceres78_3-C_voxattack3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA63C16EFF4C100A4BAC9 /* Ceres78_3-C_voxattack3.caf */; };
+		07EDA66B16EFF4C100A4BAC9 /* Ceres78_3-C_voxchange0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA63D16EFF4C100A4BAC9 /* Ceres78_3-C_voxchange0.caf */; };
+		07EDA66C16EFF4C100A4BAC9 /* Ceres78_3-C_voxcharge0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA63E16EFF4C100A4BAC9 /* Ceres78_3-C_voxcharge0.caf */; };
+		07EDA66D16EFF4C100A4BAC9 /* Ceres78_3-C_voxknockback0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA63F16EFF4C100A4BAC9 /* Ceres78_3-C_voxknockback0.caf */; };
+		07EDA66E16EFF4C100A4BAC9 /* Ceres78_3-C_voxslash0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA64016EFF4C100A4BAC9 /* Ceres78_3-C_voxslash0.caf */; };
+		07EDA66F16EFF4C100A4BAC9 /* Ceres78_3-C_wait0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA64116EFF4C100A4BAC9 /* Ceres78_3-C_wait0.caf */; };
+		07EDA67116EFF4DC00A4BAC9 /* Ceres78.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA67016EFF4DC00A4BAC9 /* Ceres78.lua */; };
+		07EDA67316EFF6D500A4BAC9 /* Ceres78_3-C_silent.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA67216EFF6D500A4BAC9 /* Ceres78_3-C_silent.caf */; };
+		07EDA67516EFF9FE00A4BAC9 /* Ceres78_3-C_drum0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA67416EFF9FE00A4BAC9 /* Ceres78_3-C_drum0.caf */; };
 		07F0D799163C1EC1005592AF /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F0D797163C1EC0005592AF /* TitleScene.cpp */; };
 		07F166FE16DDD8D8007DCB3F /* space_test.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F166FD16DDD8D8007DCB3F /* space_test.lua */; };
 		07F40F10163D0FC0009FC104 /* Music.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F40F0F163D0FC0009FC104 /* Music.cpp */; };
@@ -1120,6 +1228,61 @@
 		0731E4ED16181024006AEF3D /* Skill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Skill.cpp; path = Classes/Model/Skill.cpp; sourceTree = "<group>"; };
 		0731E4F416181060006AEF3D /* Utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utils.cpp; sourceTree = "<group>"; };
 		0731E4F716181DD4006AEF3D /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Map.cpp; path = Classes/Model/Map.cpp; sourceTree = "<group>"; };
+		0737EEB016F08BD700C46E6C /* Hawa-3A_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_counter0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_counter0.caf"; sourceTree = "<group>"; };
+		0737EEB116F08BD700C46E6C /* Hawa-3A_counter1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_counter1.caf"; path = "Resources/Music/Hawaii/Hawa-3A_counter1.caf"; sourceTree = "<group>"; };
+		0737EEB216F08BD700C46E6C /* Hawa-3A_counter2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_counter2.caf"; path = "Resources/Music/Hawaii/Hawa-3A_counter2.caf"; sourceTree = "<group>"; };
+		0737EEB316F08BD700C46E6C /* Hawa-3A_counter3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_counter3.caf"; path = "Resources/Music/Hawaii/Hawa-3A_counter3.caf"; sourceTree = "<group>"; };
+		0737EEB416F08BD700C46E6C /* Hawa-3A_drum0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_drum0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_drum0.caf"; sourceTree = "<group>"; };
+		0737EEB516F08BD700C46E6C /* Hawa-3A_drum1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_drum1.caf"; path = "Resources/Music/Hawaii/Hawa-3A_drum1.caf"; sourceTree = "<group>"; };
+		0737EEB616F08BD700C46E6C /* Hawa-3A_drum2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_drum2.caf"; path = "Resources/Music/Hawaii/Hawa-3A_drum2.caf"; sourceTree = "<group>"; };
+		0737EEB716F08BD700C46E6C /* Hawa-3A_drum3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_drum3.caf"; path = "Resources/Music/Hawaii/Hawa-3A_drum3.caf"; sourceTree = "<group>"; };
+		0737EEB816F08BD700C46E6C /* Hawa-3A_drum4.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_drum4.caf"; path = "Resources/Music/Hawaii/Hawa-3A_drum4.caf"; sourceTree = "<group>"; };
+		0737EEB916F08BD700C46E6C /* Hawa-3A_finish0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_finish0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_finish0.caf"; sourceTree = "<group>"; };
+		0737EEBA16F08BD700C46E6C /* Hawa-3A_finish1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_finish1.caf"; path = "Resources/Music/Hawaii/Hawa-3A_finish1.caf"; sourceTree = "<group>"; };
+		0737EEBB16F08BD700C46E6C /* Hawa-3A_finish2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_finish2.caf"; path = "Resources/Music/Hawaii/Hawa-3A_finish2.caf"; sourceTree = "<group>"; };
+		0737EEBC16F08BD700C46E6C /* Hawa-3A_finish3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_finish3.caf"; path = "Resources/Music/Hawaii/Hawa-3A_finish3.caf"; sourceTree = "<group>"; };
+		0737EEBD16F08BD700C46E6C /* Hawa-3A_impact0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_impact0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_impact0.caf"; sourceTree = "<group>"; };
+		0737EEBE16F08BD700C46E6C /* Hawa-3A_impact1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_impact1.caf"; path = "Resources/Music/Hawaii/Hawa-3A_impact1.caf"; sourceTree = "<group>"; };
+		0737EEBF16F08BD700C46E6C /* Hawa-3A_impact2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_impact2.caf"; path = "Resources/Music/Hawaii/Hawa-3A_impact2.caf"; sourceTree = "<group>"; };
+		0737EEC016F08BD700C46E6C /* Hawa-3A_impact3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_impact3.caf"; path = "Resources/Music/Hawaii/Hawa-3A_impact3.caf"; sourceTree = "<group>"; };
+		0737EEC116F08BD700C46E6C /* Hawa-3A_intro0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_intro0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_intro0.caf"; sourceTree = "<group>"; };
+		0737EEC216F08BD700C46E6C /* Hawa-3A_intro1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_intro1.caf"; path = "Resources/Music/Hawaii/Hawa-3A_intro1.caf"; sourceTree = "<group>"; };
+		0737EEC316F08BD700C46E6C /* Hawa-3A_lskbow0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_lskbow0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_lskbow0.caf"; sourceTree = "<group>"; };
+		0737EEC416F08BD700C46E6C /* Hawa-3A_lskchange0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_lskchange0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_lskchange0.caf"; sourceTree = "<group>"; };
+		0737EEC516F08BD700C46E6C /* Hawa-3A_lskcure0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_lskcure0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_lskcure0.caf"; sourceTree = "<group>"; };
+		0737EEC616F08BD700C46E6C /* Hawa-3A_lskmagic0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_lskmagic0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_lskmagic0.caf"; sourceTree = "<group>"; };
+		0737EEC716F08BD700C46E6C /* Hawa-3A_lskmagic1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_lskmagic1.caf"; path = "Resources/Music/Hawaii/Hawa-3A_lskmagic1.caf"; sourceTree = "<group>"; };
+		0737EEC816F08BD700C46E6C /* Hawa-3A_lskmagic2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_lskmagic2.caf"; path = "Resources/Music/Hawaii/Hawa-3A_lskmagic2.caf"; sourceTree = "<group>"; };
+		0737EEC916F08BD700C46E6C /* Hawa-3A_lskmagic3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_lskmagic3.caf"; path = "Resources/Music/Hawaii/Hawa-3A_lskmagic3.caf"; sourceTree = "<group>"; };
+		0737EECA16F08BD700C46E6C /* Hawa-3A_lskthunder0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_lskthunder0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_lskthunder0.caf"; sourceTree = "<group>"; };
+		0737EECB16F08BD700C46E6C /* Hawa-3A_miss.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_miss.caf"; path = "Resources/Music/Hawaii/Hawa-3A_miss.caf"; sourceTree = "<group>"; };
+		0737EECC16F08BD700C46E6C /* Hawa-3A_qte.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_qte.caf"; path = "Resources/Music/Hawaii/Hawa-3A_qte.caf"; sourceTree = "<group>"; };
+		0737EECD16F08BD700C46E6C /* Hawa-3A_run0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_run0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_run0.caf"; sourceTree = "<group>"; };
+		0737EECE16F08BD700C46E6C /* Hawa-3A_run1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_run1.caf"; path = "Resources/Music/Hawaii/Hawa-3A_run1.caf"; sourceTree = "<group>"; };
+		0737EECF16F08BD700C46E6C /* Hawa-3A_shield0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_shield0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_shield0.caf"; sourceTree = "<group>"; };
+		0737EED016F08BD700C46E6C /* Hawa-3A_silent.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_silent.caf"; path = "Resources/Music/Hawaii/Hawa-3A_silent.caf"; sourceTree = "<group>"; };
+		0737EED116F08BD700C46E6C /* Hawa-3A_tension0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_tension0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_tension0.caf"; sourceTree = "<group>"; };
+		0737EED216F08BD700C46E6C /* Hawa-3A_tension1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_tension1.caf"; path = "Resources/Music/Hawaii/Hawa-3A_tension1.caf"; sourceTree = "<group>"; };
+		0737EED316F08BD700C46E6C /* Hawa-3A_tension2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_tension2.caf"; path = "Resources/Music/Hawaii/Hawa-3A_tension2.caf"; sourceTree = "<group>"; };
+		0737EED416F08BD700C46E6C /* Hawa-3A_tension3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_tension3.caf"; path = "Resources/Music/Hawaii/Hawa-3A_tension3.caf"; sourceTree = "<group>"; };
+		0737EED516F08BD700C46E6C /* Hawa-3A_voxattack0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_voxattack0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_voxattack0.caf"; sourceTree = "<group>"; };
+		0737EED616F08BD700C46E6C /* Hawa-3A_voxattack1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_voxattack1.caf"; path = "Resources/Music/Hawaii/Hawa-3A_voxattack1.caf"; sourceTree = "<group>"; };
+		0737EED716F08BD700C46E6C /* Hawa-3A_voxattack2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_voxattack2.caf"; path = "Resources/Music/Hawaii/Hawa-3A_voxattack2.caf"; sourceTree = "<group>"; };
+		0737EED816F08BD700C46E6C /* Hawa-3A_voxattack3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_voxattack3.caf"; path = "Resources/Music/Hawaii/Hawa-3A_voxattack3.caf"; sourceTree = "<group>"; };
+		0737EED916F08BD700C46E6C /* Hawa-3A_voxchange0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_voxchange0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_voxchange0.caf"; sourceTree = "<group>"; };
+		0737EEDA16F08BD700C46E6C /* Hawa-3A_voxcharge0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_voxcharge0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_voxcharge0.caf"; sourceTree = "<group>"; };
+		0737EEDB16F08BD700C46E6C /* Hawa-3A_voxknockback0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_voxknockback0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_voxknockback0.caf"; sourceTree = "<group>"; };
+		0737EEDC16F08BD700C46E6C /* Hawa-3A_voxslash0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_voxslash0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_voxslash0.caf"; sourceTree = "<group>"; };
+		0737EEDD16F08BD700C46E6C /* Hawa-3A_wait0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_wait0.caf"; path = "Resources/Music/Hawaii/Hawa-3A_wait0.caf"; sourceTree = "<group>"; };
+		0737EEDE16F08BD700C46E6C /* Hawa-3A_wait1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Hawa-3A_wait1.caf"; path = "Resources/Music/Hawaii/Hawa-3A_wait1.caf"; sourceTree = "<group>"; };
+		0737EF0E16F08BF700C46E6C /* Hawaii.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Hawaii.lua; path = musics/Hawaii.lua; sourceTree = "<group>"; };
+		0737EF1016F08D6500C46E6C /* ttn1_finish0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ttn1_finish0.caf; path = Resources/Music/ttn1/ttn1_finish0.caf; sourceTree = "<group>"; };
+		0737EF1116F08D6500C46E6C /* ttn1_finish1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ttn1_finish1.caf; path = Resources/Music/ttn1/ttn1_finish1.caf; sourceTree = "<group>"; };
+		0737EF1216F08D6500C46E6C /* ttn1_finish2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ttn1_finish2.caf; path = Resources/Music/ttn1/ttn1_finish2.caf; sourceTree = "<group>"; };
+		0737EF1316F08D6500C46E6C /* ttn1_finish3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ttn1_finish3.caf; path = Resources/Music/ttn1/ttn1_finish3.caf; sourceTree = "<group>"; };
+		0737EF1816F0909800C46E6C /* ruin_boss.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ruin_boss.lua; path = map/ruin_boss.lua; sourceTree = "<group>"; };
+		0737EF1A16F093B400C46E6C /* fortress3A0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fortress3A0.lua; sourceTree = "<group>"; };
+		0737EF1C16F098FD00C46E6C /* endingA.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = endingA.lua; path = endings/endingA.lua; sourceTree = "<group>"; };
 		0738FB4516C530DD00FE2816 /* 2b.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 2b.lua; path = map/2b.lua; sourceTree = "<group>"; };
 		0738FB4716C530E800FE2816 /* yuki.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = yuki.lua; path = musics/yuki.lua; sourceTree = "<group>"; };
 		0738FB4916C5320300FE2816 /* 2b_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2b_counter0.caf; path = Resources/Music/2b/2b_counter0.caf; sourceTree = "<group>"; };
@@ -1184,6 +1347,12 @@
 		0744B5B1167DD9EA00730393 /* StatusLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StatusLayer.cpp; path = Classes/UI/StatusLayer.cpp; sourceTree = "<group>"; };
 		074EFD0715FA906C004D8273 /* Controller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Controller.cpp; path = Classes/UI/Controller.cpp; sourceTree = "<group>"; };
 		074EFD0915FA906D004D8273 /* SkillTrigger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SkillTrigger.cpp; path = Classes/UI/SkillTrigger.cpp; sourceTree = "<group>"; };
+		0754383E16E3865700802970 /* TutorialScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TutorialScene.cpp; path = Classes/Scene/TutorialScene.cpp; sourceTree = "<group>"; };
+		0754384116E391E600802970 /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMenuScene.h; path = Classes/includes/MainMenuScene.h; sourceTree = "<group>"; };
+		0754384216E391E600802970 /* TutorialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TutorialScene.h; path = Classes/includes/TutorialScene.h; sourceTree = "<group>"; };
+		0754384316E3931F00802970 /* StaffRollScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StaffRollScene.cpp; path = Classes/Scene/StaffRollScene.cpp; sourceTree = "<group>"; };
+		0754384616E3934500802970 /* StaffRollScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaffRollScene.h; path = Classes/includes/StaffRollScene.h; sourceTree = "<group>"; };
+		0754384716E3985600802970 /* staffroll.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = staffroll.lua; sourceTree = "<group>"; };
 		07565376161705B200C69E27 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Level.cpp; path = Classes/Model/Level.cpp; sourceTree = "<group>"; };
 		0756539F16171A5500C69E27 /* magic.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = magic.lua; sourceTree = "<group>"; };
 		075653A516171F2400C69E27 /* change.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = change.lua; sourceTree = "<group>"; };
@@ -1414,6 +1583,7 @@
 		078FFC2716E2D549001C9A4F /* mask3A3.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mask3A3.lua; sourceTree = "<group>"; };
 		078FFC2816E2D549001C9A4F /* typhoon3A6.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = typhoon3A6.lua; sourceTree = "<group>"; };
 		078FFC2916E2D549001C9A4F /* wisp3A6.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wisp3A6.lua; sourceTree = "<group>"; };
+		078FFC2D16E37419001C9A4F /* MainMenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainMenuScene.cpp; path = Classes/Scene/MainMenuScene.cpp; sourceTree = "<group>"; };
 		0791585815EBA8350083D348 /* LogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LogoScene.cpp; path = Classes/Scene/LogoScene.cpp; sourceTree = "<group>"; };
 		0791586915EBB4BB0083D348 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/ios/Default.png; sourceTree = "<group>"; };
 		0791586A15EBB4BB0083D348 /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = Resources/ios/fps_images.png; sourceTree = "<group>"; };
@@ -2259,6 +2429,55 @@
 		07E1351E1621AF2700CCF72E /* levelup.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = levelup.lua; sourceTree = "<group>"; };
 		07E135251621CABF00CCF72E /* character.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = character.lua; path = character/character.lua; sourceTree = "<group>"; };
 		07E135721624AC4700CCF72E /* cure.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cure.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		07EDA61416EFF4C100A4BAC9 /* Ceres78_3-C_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_counter0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_counter0.caf"; sourceTree = "<group>"; };
+		07EDA61516EFF4C100A4BAC9 /* Ceres78_3-C_counter1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_counter1.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_counter1.caf"; sourceTree = "<group>"; };
+		07EDA61616EFF4C100A4BAC9 /* Ceres78_3-C_counter2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_counter2.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_counter2.caf"; sourceTree = "<group>"; };
+		07EDA61716EFF4C100A4BAC9 /* Ceres78_3-C_counter3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_counter3.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_counter3.caf"; sourceTree = "<group>"; };
+		07EDA61816EFF4C100A4BAC9 /* Ceres78_3-C_drum1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_drum1.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_drum1.caf"; sourceTree = "<group>"; };
+		07EDA61916EFF4C100A4BAC9 /* Ceres78_3-C_drum2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_drum2.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_drum2.caf"; sourceTree = "<group>"; };
+		07EDA61A16EFF4C100A4BAC9 /* Ceres78_3-C_drum3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_drum3.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_drum3.caf"; sourceTree = "<group>"; };
+		07EDA61B16EFF4C100A4BAC9 /* Ceres78_3-C_drum4.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_drum4.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_drum4.caf"; sourceTree = "<group>"; };
+		07EDA61C16EFF4C100A4BAC9 /* Ceres78_3-C_finish0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_finish0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_finish0.caf"; sourceTree = "<group>"; };
+		07EDA61D16EFF4C100A4BAC9 /* Ceres78_3-C_finish1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_finish1.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_finish1.caf"; sourceTree = "<group>"; };
+		07EDA61E16EFF4C100A4BAC9 /* Ceres78_3-C_finish2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_finish2.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_finish2.caf"; sourceTree = "<group>"; };
+		07EDA61F16EFF4C100A4BAC9 /* Ceres78_3-C_finish3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_finish3.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_finish3.caf"; sourceTree = "<group>"; };
+		07EDA62016EFF4C100A4BAC9 /* Ceres78_3-C_impact0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_impact0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_impact0.caf"; sourceTree = "<group>"; };
+		07EDA62116EFF4C100A4BAC9 /* Ceres78_3-C_impact1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_impact1.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_impact1.caf"; sourceTree = "<group>"; };
+		07EDA62216EFF4C100A4BAC9 /* Ceres78_3-C_impact2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_impact2.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_impact2.caf"; sourceTree = "<group>"; };
+		07EDA62316EFF4C100A4BAC9 /* Ceres78_3-C_impact3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_impact3.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_impact3.caf"; sourceTree = "<group>"; };
+		07EDA62416EFF4C100A4BAC9 /* Ceres78_3-C_intro0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_intro0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_intro0.caf"; sourceTree = "<group>"; };
+		07EDA62516EFF4C100A4BAC9 /* Ceres78_3-C_intro1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_intro1.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_intro1.caf"; sourceTree = "<group>"; };
+		07EDA62616EFF4C100A4BAC9 /* Ceres78_3-C_intro2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_intro2.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_intro2.caf"; sourceTree = "<group>"; };
+		07EDA62716EFF4C100A4BAC9 /* Ceres78_3-C_intro3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_intro3.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_intro3.caf"; sourceTree = "<group>"; };
+		07EDA62816EFF4C100A4BAC9 /* Ceres78_3-C_lskbow0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_lskbow0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_lskbow0.caf"; sourceTree = "<group>"; };
+		07EDA62916EFF4C100A4BAC9 /* Ceres78_3-C_lskchange0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_lskchange0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_lskchange0.caf"; sourceTree = "<group>"; };
+		07EDA62A16EFF4C100A4BAC9 /* Ceres78_3-C_lskcure0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_lskcure0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_lskcure0.caf"; sourceTree = "<group>"; };
+		07EDA62B16EFF4C100A4BAC9 /* Ceres78_3-C_lskmagic0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_lskmagic0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_lskmagic0.caf"; sourceTree = "<group>"; };
+		07EDA62C16EFF4C100A4BAC9 /* Ceres78_3-C_lskmagic1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_lskmagic1.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_lskmagic1.caf"; sourceTree = "<group>"; };
+		07EDA62D16EFF4C100A4BAC9 /* Ceres78_3-C_lskmagic2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_lskmagic2.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_lskmagic2.caf"; sourceTree = "<group>"; };
+		07EDA62E16EFF4C100A4BAC9 /* Ceres78_3-C_lskmagic3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_lskmagic3.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_lskmagic3.caf"; sourceTree = "<group>"; };
+		07EDA62F16EFF4C100A4BAC9 /* Ceres78_3-C_lskthunder0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_lskthunder0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_lskthunder0.caf"; sourceTree = "<group>"; };
+		07EDA63016EFF4C100A4BAC9 /* Ceres78_3-C_miss.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_miss.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_miss.caf"; sourceTree = "<group>"; };
+		07EDA63116EFF4C100A4BAC9 /* Ceres78_3-C_qte.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_qte.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_qte.caf"; sourceTree = "<group>"; };
+		07EDA63216EFF4C100A4BAC9 /* Ceres78_3-C_run0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_run0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_run0.caf"; sourceTree = "<group>"; };
+		07EDA63316EFF4C100A4BAC9 /* Ceres78_3-C_run1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_run1.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_run1.caf"; sourceTree = "<group>"; };
+		07EDA63416EFF4C100A4BAC9 /* Ceres78_3-C_shield0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_shield0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_shield0.caf"; sourceTree = "<group>"; };
+		07EDA63516EFF4C100A4BAC9 /* Ceres78_3-C_tension0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_tension0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_tension0.caf"; sourceTree = "<group>"; };
+		07EDA63616EFF4C100A4BAC9 /* Ceres78_3-C_tension1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_tension1.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_tension1.caf"; sourceTree = "<group>"; };
+		07EDA63716EFF4C100A4BAC9 /* Ceres78_3-C_tension2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_tension2.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_tension2.caf"; sourceTree = "<group>"; };
+		07EDA63816EFF4C100A4BAC9 /* Ceres78_3-C_tension3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_tension3.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_tension3.caf"; sourceTree = "<group>"; };
+		07EDA63916EFF4C100A4BAC9 /* Ceres78_3-C_voxattack0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_voxattack0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_voxattack0.caf"; sourceTree = "<group>"; };
+		07EDA63A16EFF4C100A4BAC9 /* Ceres78_3-C_voxattack1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_voxattack1.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_voxattack1.caf"; sourceTree = "<group>"; };
+		07EDA63B16EFF4C100A4BAC9 /* Ceres78_3-C_voxattack2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_voxattack2.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_voxattack2.caf"; sourceTree = "<group>"; };
+		07EDA63C16EFF4C100A4BAC9 /* Ceres78_3-C_voxattack3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_voxattack3.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_voxattack3.caf"; sourceTree = "<group>"; };
+		07EDA63D16EFF4C100A4BAC9 /* Ceres78_3-C_voxchange0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_voxchange0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_voxchange0.caf"; sourceTree = "<group>"; };
+		07EDA63E16EFF4C100A4BAC9 /* Ceres78_3-C_voxcharge0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_voxcharge0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_voxcharge0.caf"; sourceTree = "<group>"; };
+		07EDA63F16EFF4C100A4BAC9 /* Ceres78_3-C_voxknockback0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_voxknockback0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_voxknockback0.caf"; sourceTree = "<group>"; };
+		07EDA64016EFF4C100A4BAC9 /* Ceres78_3-C_voxslash0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_voxslash0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_voxslash0.caf"; sourceTree = "<group>"; };
+		07EDA64116EFF4C100A4BAC9 /* Ceres78_3-C_wait0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_wait0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_wait0.caf"; sourceTree = "<group>"; };
+		07EDA67016EFF4DC00A4BAC9 /* Ceres78.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Ceres78.lua; path = musics/Ceres78.lua; sourceTree = "<group>"; };
+		07EDA67216EFF6D500A4BAC9 /* Ceres78_3-C_silent.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_silent.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_silent.caf"; sourceTree = "<group>"; };
+		07EDA67416EFF9FE00A4BAC9 /* Ceres78_3-C_drum0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_drum0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_drum0.caf"; sourceTree = "<group>"; };
 		07F0D750163BABCD005592AF /* macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = macros.h; path = Classes/includes/macros.h; sourceTree = "<group>"; };
 		07F0D751163BABDF005592AF /* Music.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Music.h; path = Classes/includes/Music.h; sourceTree = "<group>"; };
 		07F0D752163BABDF005592AF /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Track.h; path = Classes/includes/Track.h; sourceTree = "<group>"; };
@@ -2548,6 +2767,7 @@
 				B03F7B0016E1D74A00D7FF9C /* 2a_forest.lua */,
 				070141D516E1F34E00B00887 /* 2b_cave.lua */,
 				B07E38C516E1073400473629 /* 2c_cyber.lua */,
+				0737EF1816F0909800C46E6C /* ruin_boss.lua */,
 				070141D616E1F34E00B00887 /* 3a_ruin.lua */,
 				070141D716E1F34E00B00887 /* 3b_castle.lua */,
 				070141D816E1F34E00B00887 /* 3c_ocean.lua */,
@@ -2556,6 +2776,60 @@
 				0701424D16E243BC00B00887 /* ocean_boss.lua */,
 			);
 			name = map;
+			sourceTree = "<group>";
+		};
+		0737EEAF16F08BC900C46E6C /* Hawaii */ = {
+			isa = PBXGroup;
+			children = (
+				0737EEB016F08BD700C46E6C /* Hawa-3A_counter0.caf */,
+				0737EEB116F08BD700C46E6C /* Hawa-3A_counter1.caf */,
+				0737EEB216F08BD700C46E6C /* Hawa-3A_counter2.caf */,
+				0737EEB316F08BD700C46E6C /* Hawa-3A_counter3.caf */,
+				0737EEB416F08BD700C46E6C /* Hawa-3A_drum0.caf */,
+				0737EEB516F08BD700C46E6C /* Hawa-3A_drum1.caf */,
+				0737EEB616F08BD700C46E6C /* Hawa-3A_drum2.caf */,
+				0737EEB716F08BD700C46E6C /* Hawa-3A_drum3.caf */,
+				0737EEB816F08BD700C46E6C /* Hawa-3A_drum4.caf */,
+				0737EEB916F08BD700C46E6C /* Hawa-3A_finish0.caf */,
+				0737EEBA16F08BD700C46E6C /* Hawa-3A_finish1.caf */,
+				0737EEBB16F08BD700C46E6C /* Hawa-3A_finish2.caf */,
+				0737EEBC16F08BD700C46E6C /* Hawa-3A_finish3.caf */,
+				0737EEBD16F08BD700C46E6C /* Hawa-3A_impact0.caf */,
+				0737EEBE16F08BD700C46E6C /* Hawa-3A_impact1.caf */,
+				0737EEBF16F08BD700C46E6C /* Hawa-3A_impact2.caf */,
+				0737EEC016F08BD700C46E6C /* Hawa-3A_impact3.caf */,
+				0737EEC116F08BD700C46E6C /* Hawa-3A_intro0.caf */,
+				0737EEC216F08BD700C46E6C /* Hawa-3A_intro1.caf */,
+				0737EEC316F08BD700C46E6C /* Hawa-3A_lskbow0.caf */,
+				0737EEC416F08BD700C46E6C /* Hawa-3A_lskchange0.caf */,
+				0737EEC516F08BD700C46E6C /* Hawa-3A_lskcure0.caf */,
+				0737EEC616F08BD700C46E6C /* Hawa-3A_lskmagic0.caf */,
+				0737EEC716F08BD700C46E6C /* Hawa-3A_lskmagic1.caf */,
+				0737EEC816F08BD700C46E6C /* Hawa-3A_lskmagic2.caf */,
+				0737EEC916F08BD700C46E6C /* Hawa-3A_lskmagic3.caf */,
+				0737EECA16F08BD700C46E6C /* Hawa-3A_lskthunder0.caf */,
+				0737EECB16F08BD700C46E6C /* Hawa-3A_miss.caf */,
+				0737EECC16F08BD700C46E6C /* Hawa-3A_qte.caf */,
+				0737EECD16F08BD700C46E6C /* Hawa-3A_run0.caf */,
+				0737EECE16F08BD700C46E6C /* Hawa-3A_run1.caf */,
+				0737EECF16F08BD700C46E6C /* Hawa-3A_shield0.caf */,
+				0737EED016F08BD700C46E6C /* Hawa-3A_silent.caf */,
+				0737EED116F08BD700C46E6C /* Hawa-3A_tension0.caf */,
+				0737EED216F08BD700C46E6C /* Hawa-3A_tension1.caf */,
+				0737EED316F08BD700C46E6C /* Hawa-3A_tension2.caf */,
+				0737EED416F08BD700C46E6C /* Hawa-3A_tension3.caf */,
+				0737EED516F08BD700C46E6C /* Hawa-3A_voxattack0.caf */,
+				0737EED616F08BD700C46E6C /* Hawa-3A_voxattack1.caf */,
+				0737EED716F08BD700C46E6C /* Hawa-3A_voxattack2.caf */,
+				0737EED816F08BD700C46E6C /* Hawa-3A_voxattack3.caf */,
+				0737EED916F08BD700C46E6C /* Hawa-3A_voxchange0.caf */,
+				0737EEDA16F08BD700C46E6C /* Hawa-3A_voxcharge0.caf */,
+				0737EEDB16F08BD700C46E6C /* Hawa-3A_voxknockback0.caf */,
+				0737EEDC16F08BD700C46E6C /* Hawa-3A_voxslash0.caf */,
+				0737EEDD16F08BD700C46E6C /* Hawa-3A_wait0.caf */,
+				0737EEDE16F08BD700C46E6C /* Hawa-3A_wait1.caf */,
+			);
+			name = Hawaii;
 			sourceTree = "<group>";
 		};
 		0738FADC16C530A800FE2816 /* 2b */ = {
@@ -2710,6 +2984,12 @@
 				079D274816D2210C006D6A8F /* EndingScene.cpp */,
 				07F88F1D16DBC66800FE6B2B /* SelectScene.cpp */,
 				07C6467316DE3FB200B29842 /* EffectLayer.cpp */,
+				078FFC2D16E37419001C9A4F /* MainMenuScene.cpp */,
+				0754384116E391E600802970 /* MainMenuScene.h */,
+				0754384216E391E600802970 /* TutorialScene.h */,
+				0754383E16E3865700802970 /* TutorialScene.cpp */,
+				0754384316E3931F00802970 /* StaffRollScene.cpp */,
+				0754384616E3934500802970 /* StaffRollScene.h */,
 			);
 			name = Scene;
 			sourceTree = "<group>";
@@ -2787,6 +3067,8 @@
 				0738FB4716C530E800FE2816 /* yuki.lua */,
 				0701703916C813500000E632 /* shaba.lua */,
 				078D45DF16CF1FD200E21DC5 /* 3Bb.lua */,
+				07EDA67016EFF4DC00A4BAC9 /* Ceres78.lua */,
+				0737EF0E16F08BF700C46E6C /* Hawaii.lua */,
 			);
 			name = musics;
 			sourceTree = "<group>";
@@ -3087,6 +3369,7 @@
 		079D274B16D223A2006D6A8F /* endings */ = {
 			isa = PBXGroup;
 			children = (
+				0737EF1C16F098FD00C46E6C /* endingA.lua */,
 				079D274C16D223C1006D6A8F /* endingB.lua */,
 				07C6467F16E0DB2500B29842 /* endingC.lua */,
 			);
@@ -3296,6 +3579,7 @@
 				079F89A6169EE596001357B5 /* debug.lua */,
 				07D8D649169F3BD900B646E5 /* controller.lua */,
 				079D275716D38B7E006D6A8F /* enemy.lua */,
+				0754384716E3985600802970 /* staffroll.lua */,
 			);
 			name = Script;
 			path = Resources/Script;
@@ -4190,6 +4474,7 @@
 		07C6093A161674650084708C /* enemies */ = {
 			isa = PBXGroup;
 			children = (
+				0737EF1A16F093B400C46E6C /* fortress3A0.lua */,
 				078FFC2716E2D549001C9A4F /* mask3A3.lua */,
 				078FFC2816E2D549001C9A4F /* typhoon3A6.lua */,
 				078FFC2916E2D549001C9A4F /* wisp3A6.lua */,
@@ -4276,6 +4561,8 @@
 		07D873E215ED1200009CC446 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				0737EEAF16F08BC900C46E6C /* Hawaii */,
+				07EDA61316EFF4AE00A4BAC9 /* Ceres78_3-C */,
 				070141E016E1F7E400B00887 /* dhun */,
 				075B927616D51EFC00DBB2D1 /* AttaQ3-D */,
 				078D456216CF1FA400E21DC5 /* 3Bb */,
@@ -4418,9 +4705,68 @@
 			name = general;
 			sourceTree = "<group>";
 		};
+		07EDA61316EFF4AE00A4BAC9 /* Ceres78_3-C */ = {
+			isa = PBXGroup;
+			children = (
+				07EDA61416EFF4C100A4BAC9 /* Ceres78_3-C_counter0.caf */,
+				07EDA61516EFF4C100A4BAC9 /* Ceres78_3-C_counter1.caf */,
+				07EDA61616EFF4C100A4BAC9 /* Ceres78_3-C_counter2.caf */,
+				07EDA61716EFF4C100A4BAC9 /* Ceres78_3-C_counter3.caf */,
+				07EDA67416EFF9FE00A4BAC9 /* Ceres78_3-C_drum0.caf */,
+				07EDA61816EFF4C100A4BAC9 /* Ceres78_3-C_drum1.caf */,
+				07EDA61916EFF4C100A4BAC9 /* Ceres78_3-C_drum2.caf */,
+				07EDA61A16EFF4C100A4BAC9 /* Ceres78_3-C_drum3.caf */,
+				07EDA61B16EFF4C100A4BAC9 /* Ceres78_3-C_drum4.caf */,
+				07EDA61C16EFF4C100A4BAC9 /* Ceres78_3-C_finish0.caf */,
+				07EDA61D16EFF4C100A4BAC9 /* Ceres78_3-C_finish1.caf */,
+				07EDA61E16EFF4C100A4BAC9 /* Ceres78_3-C_finish2.caf */,
+				07EDA61F16EFF4C100A4BAC9 /* Ceres78_3-C_finish3.caf */,
+				07EDA62016EFF4C100A4BAC9 /* Ceres78_3-C_impact0.caf */,
+				07EDA62116EFF4C100A4BAC9 /* Ceres78_3-C_impact1.caf */,
+				07EDA62216EFF4C100A4BAC9 /* Ceres78_3-C_impact2.caf */,
+				07EDA62316EFF4C100A4BAC9 /* Ceres78_3-C_impact3.caf */,
+				07EDA62416EFF4C100A4BAC9 /* Ceres78_3-C_intro0.caf */,
+				07EDA62516EFF4C100A4BAC9 /* Ceres78_3-C_intro1.caf */,
+				07EDA62616EFF4C100A4BAC9 /* Ceres78_3-C_intro2.caf */,
+				07EDA62716EFF4C100A4BAC9 /* Ceres78_3-C_intro3.caf */,
+				07EDA62816EFF4C100A4BAC9 /* Ceres78_3-C_lskbow0.caf */,
+				07EDA62916EFF4C100A4BAC9 /* Ceres78_3-C_lskchange0.caf */,
+				07EDA62A16EFF4C100A4BAC9 /* Ceres78_3-C_lskcure0.caf */,
+				07EDA62B16EFF4C100A4BAC9 /* Ceres78_3-C_lskmagic0.caf */,
+				07EDA62C16EFF4C100A4BAC9 /* Ceres78_3-C_lskmagic1.caf */,
+				07EDA62D16EFF4C100A4BAC9 /* Ceres78_3-C_lskmagic2.caf */,
+				07EDA62E16EFF4C100A4BAC9 /* Ceres78_3-C_lskmagic3.caf */,
+				07EDA62F16EFF4C100A4BAC9 /* Ceres78_3-C_lskthunder0.caf */,
+				07EDA63016EFF4C100A4BAC9 /* Ceres78_3-C_miss.caf */,
+				07EDA63116EFF4C100A4BAC9 /* Ceres78_3-C_qte.caf */,
+				07EDA63216EFF4C100A4BAC9 /* Ceres78_3-C_run0.caf */,
+				07EDA63316EFF4C100A4BAC9 /* Ceres78_3-C_run1.caf */,
+				07EDA63416EFF4C100A4BAC9 /* Ceres78_3-C_shield0.caf */,
+				07EDA67216EFF6D500A4BAC9 /* Ceres78_3-C_silent.caf */,
+				07EDA63516EFF4C100A4BAC9 /* Ceres78_3-C_tension0.caf */,
+				07EDA63616EFF4C100A4BAC9 /* Ceres78_3-C_tension1.caf */,
+				07EDA63716EFF4C100A4BAC9 /* Ceres78_3-C_tension2.caf */,
+				07EDA63816EFF4C100A4BAC9 /* Ceres78_3-C_tension3.caf */,
+				07EDA63916EFF4C100A4BAC9 /* Ceres78_3-C_voxattack0.caf */,
+				07EDA63A16EFF4C100A4BAC9 /* Ceres78_3-C_voxattack1.caf */,
+				07EDA63B16EFF4C100A4BAC9 /* Ceres78_3-C_voxattack2.caf */,
+				07EDA63C16EFF4C100A4BAC9 /* Ceres78_3-C_voxattack3.caf */,
+				07EDA63D16EFF4C100A4BAC9 /* Ceres78_3-C_voxchange0.caf */,
+				07EDA63E16EFF4C100A4BAC9 /* Ceres78_3-C_voxcharge0.caf */,
+				07EDA63F16EFF4C100A4BAC9 /* Ceres78_3-C_voxknockback0.caf */,
+				07EDA64016EFF4C100A4BAC9 /* Ceres78_3-C_voxslash0.caf */,
+				07EDA64116EFF4C100A4BAC9 /* Ceres78_3-C_wait0.caf */,
+			);
+			name = "Ceres78_3-C";
+			sourceTree = "<group>";
+		};
 		07F933DF16C16AFA00A2F1CA /* ttn1 */ = {
 			isa = PBXGroup;
 			children = (
+				0737EF1016F08D6500C46E6C /* ttn1_finish0.caf */,
+				0737EF1116F08D6500C46E6C /* ttn1_finish1.caf */,
+				0737EF1216F08D6500C46E6C /* ttn1_finish2.caf */,
+				0737EF1316F08D6500C46E6C /* ttn1_finish3.caf */,
 				07F9344416C16C9800A2F1CA /* ttn1_counter0.caf */,
 				07F9344516C16C9800A2F1CA /* ttn1_counter1.caf */,
 				07F9344616C16C9800A2F1CA /* ttn1_counter2.caf */,
@@ -5298,6 +5644,111 @@
 				078FFC2A16E2D549001C9A4F /* mask3A3.lua in Resources */,
 				078FFC2B16E2D549001C9A4F /* typhoon3A6.lua in Resources */,
 				078FFC2C16E2D549001C9A4F /* wisp3A6.lua in Resources */,
+				0754384816E3985600802970 /* staffroll.lua in Resources */,
+				07EDA64216EFF4C100A4BAC9 /* Ceres78_3-C_counter0.caf in Resources */,
+				07EDA64316EFF4C100A4BAC9 /* Ceres78_3-C_counter1.caf in Resources */,
+				07EDA64416EFF4C100A4BAC9 /* Ceres78_3-C_counter2.caf in Resources */,
+				07EDA64516EFF4C100A4BAC9 /* Ceres78_3-C_counter3.caf in Resources */,
+				07EDA64616EFF4C100A4BAC9 /* Ceres78_3-C_drum1.caf in Resources */,
+				07EDA64716EFF4C100A4BAC9 /* Ceres78_3-C_drum2.caf in Resources */,
+				07EDA64816EFF4C100A4BAC9 /* Ceres78_3-C_drum3.caf in Resources */,
+				07EDA64916EFF4C100A4BAC9 /* Ceres78_3-C_drum4.caf in Resources */,
+				07EDA64A16EFF4C100A4BAC9 /* Ceres78_3-C_finish0.caf in Resources */,
+				07EDA64B16EFF4C100A4BAC9 /* Ceres78_3-C_finish1.caf in Resources */,
+				07EDA64C16EFF4C100A4BAC9 /* Ceres78_3-C_finish2.caf in Resources */,
+				07EDA64D16EFF4C100A4BAC9 /* Ceres78_3-C_finish3.caf in Resources */,
+				07EDA64E16EFF4C100A4BAC9 /* Ceres78_3-C_impact0.caf in Resources */,
+				07EDA64F16EFF4C100A4BAC9 /* Ceres78_3-C_impact1.caf in Resources */,
+				07EDA65016EFF4C100A4BAC9 /* Ceres78_3-C_impact2.caf in Resources */,
+				07EDA65116EFF4C100A4BAC9 /* Ceres78_3-C_impact3.caf in Resources */,
+				07EDA65216EFF4C100A4BAC9 /* Ceres78_3-C_intro0.caf in Resources */,
+				07EDA65316EFF4C100A4BAC9 /* Ceres78_3-C_intro1.caf in Resources */,
+				07EDA65416EFF4C100A4BAC9 /* Ceres78_3-C_intro2.caf in Resources */,
+				07EDA65516EFF4C100A4BAC9 /* Ceres78_3-C_intro3.caf in Resources */,
+				07EDA65616EFF4C100A4BAC9 /* Ceres78_3-C_lskbow0.caf in Resources */,
+				07EDA65716EFF4C100A4BAC9 /* Ceres78_3-C_lskchange0.caf in Resources */,
+				07EDA65816EFF4C100A4BAC9 /* Ceres78_3-C_lskcure0.caf in Resources */,
+				07EDA65916EFF4C100A4BAC9 /* Ceres78_3-C_lskmagic0.caf in Resources */,
+				07EDA65A16EFF4C100A4BAC9 /* Ceres78_3-C_lskmagic1.caf in Resources */,
+				07EDA65B16EFF4C100A4BAC9 /* Ceres78_3-C_lskmagic2.caf in Resources */,
+				07EDA65C16EFF4C100A4BAC9 /* Ceres78_3-C_lskmagic3.caf in Resources */,
+				07EDA65D16EFF4C100A4BAC9 /* Ceres78_3-C_lskthunder0.caf in Resources */,
+				07EDA65E16EFF4C100A4BAC9 /* Ceres78_3-C_miss.caf in Resources */,
+				07EDA65F16EFF4C100A4BAC9 /* Ceres78_3-C_qte.caf in Resources */,
+				07EDA66016EFF4C100A4BAC9 /* Ceres78_3-C_run0.caf in Resources */,
+				07EDA66116EFF4C100A4BAC9 /* Ceres78_3-C_run1.caf in Resources */,
+				07EDA66216EFF4C100A4BAC9 /* Ceres78_3-C_shield0.caf in Resources */,
+				07EDA66316EFF4C100A4BAC9 /* Ceres78_3-C_tension0.caf in Resources */,
+				07EDA66416EFF4C100A4BAC9 /* Ceres78_3-C_tension1.caf in Resources */,
+				07EDA66516EFF4C100A4BAC9 /* Ceres78_3-C_tension2.caf in Resources */,
+				07EDA66616EFF4C100A4BAC9 /* Ceres78_3-C_tension3.caf in Resources */,
+				07EDA66716EFF4C100A4BAC9 /* Ceres78_3-C_voxattack0.caf in Resources */,
+				07EDA66816EFF4C100A4BAC9 /* Ceres78_3-C_voxattack1.caf in Resources */,
+				07EDA66916EFF4C100A4BAC9 /* Ceres78_3-C_voxattack2.caf in Resources */,
+				07EDA66A16EFF4C100A4BAC9 /* Ceres78_3-C_voxattack3.caf in Resources */,
+				07EDA66B16EFF4C100A4BAC9 /* Ceres78_3-C_voxchange0.caf in Resources */,
+				07EDA66C16EFF4C100A4BAC9 /* Ceres78_3-C_voxcharge0.caf in Resources */,
+				07EDA66D16EFF4C100A4BAC9 /* Ceres78_3-C_voxknockback0.caf in Resources */,
+				07EDA66E16EFF4C100A4BAC9 /* Ceres78_3-C_voxslash0.caf in Resources */,
+				07EDA66F16EFF4C100A4BAC9 /* Ceres78_3-C_wait0.caf in Resources */,
+				07EDA67116EFF4DC00A4BAC9 /* Ceres78.lua in Resources */,
+				07EDA67316EFF6D500A4BAC9 /* Ceres78_3-C_silent.caf in Resources */,
+				07EDA67516EFF9FE00A4BAC9 /* Ceres78_3-C_drum0.caf in Resources */,
+				0737EEDF16F08BD700C46E6C /* Hawa-3A_counter0.caf in Resources */,
+				0737EEE016F08BD700C46E6C /* Hawa-3A_counter1.caf in Resources */,
+				0737EEE116F08BD700C46E6C /* Hawa-3A_counter2.caf in Resources */,
+				0737EEE216F08BD700C46E6C /* Hawa-3A_counter3.caf in Resources */,
+				0737EEE316F08BD700C46E6C /* Hawa-3A_drum0.caf in Resources */,
+				0737EEE416F08BD700C46E6C /* Hawa-3A_drum1.caf in Resources */,
+				0737EEE516F08BD700C46E6C /* Hawa-3A_drum2.caf in Resources */,
+				0737EEE616F08BD700C46E6C /* Hawa-3A_drum3.caf in Resources */,
+				0737EEE716F08BD700C46E6C /* Hawa-3A_drum4.caf in Resources */,
+				0737EEE816F08BD700C46E6C /* Hawa-3A_finish0.caf in Resources */,
+				0737EEE916F08BD700C46E6C /* Hawa-3A_finish1.caf in Resources */,
+				0737EEEA16F08BD700C46E6C /* Hawa-3A_finish2.caf in Resources */,
+				0737EEEB16F08BD700C46E6C /* Hawa-3A_finish3.caf in Resources */,
+				0737EEEC16F08BD700C46E6C /* Hawa-3A_impact0.caf in Resources */,
+				0737EEED16F08BD700C46E6C /* Hawa-3A_impact1.caf in Resources */,
+				0737EEEE16F08BD700C46E6C /* Hawa-3A_impact2.caf in Resources */,
+				0737EEEF16F08BD700C46E6C /* Hawa-3A_impact3.caf in Resources */,
+				0737EEF016F08BD700C46E6C /* Hawa-3A_intro0.caf in Resources */,
+				0737EEF116F08BD700C46E6C /* Hawa-3A_intro1.caf in Resources */,
+				0737EEF216F08BD700C46E6C /* Hawa-3A_lskbow0.caf in Resources */,
+				0737EEF316F08BD700C46E6C /* Hawa-3A_lskchange0.caf in Resources */,
+				0737EEF416F08BD700C46E6C /* Hawa-3A_lskcure0.caf in Resources */,
+				0737EEF516F08BD700C46E6C /* Hawa-3A_lskmagic0.caf in Resources */,
+				0737EEF616F08BD700C46E6C /* Hawa-3A_lskmagic1.caf in Resources */,
+				0737EEF716F08BD700C46E6C /* Hawa-3A_lskmagic2.caf in Resources */,
+				0737EEF816F08BD700C46E6C /* Hawa-3A_lskmagic3.caf in Resources */,
+				0737EEF916F08BD700C46E6C /* Hawa-3A_lskthunder0.caf in Resources */,
+				0737EEFA16F08BD700C46E6C /* Hawa-3A_miss.caf in Resources */,
+				0737EEFB16F08BD700C46E6C /* Hawa-3A_qte.caf in Resources */,
+				0737EEFC16F08BD700C46E6C /* Hawa-3A_run0.caf in Resources */,
+				0737EEFD16F08BD700C46E6C /* Hawa-3A_run1.caf in Resources */,
+				0737EEFE16F08BD700C46E6C /* Hawa-3A_shield0.caf in Resources */,
+				0737EEFF16F08BD700C46E6C /* Hawa-3A_silent.caf in Resources */,
+				0737EF0016F08BD700C46E6C /* Hawa-3A_tension0.caf in Resources */,
+				0737EF0116F08BD700C46E6C /* Hawa-3A_tension1.caf in Resources */,
+				0737EF0216F08BD700C46E6C /* Hawa-3A_tension2.caf in Resources */,
+				0737EF0316F08BD700C46E6C /* Hawa-3A_tension3.caf in Resources */,
+				0737EF0416F08BD700C46E6C /* Hawa-3A_voxattack0.caf in Resources */,
+				0737EF0516F08BD700C46E6C /* Hawa-3A_voxattack1.caf in Resources */,
+				0737EF0616F08BD700C46E6C /* Hawa-3A_voxattack2.caf in Resources */,
+				0737EF0716F08BD700C46E6C /* Hawa-3A_voxattack3.caf in Resources */,
+				0737EF0816F08BD700C46E6C /* Hawa-3A_voxchange0.caf in Resources */,
+				0737EF0916F08BD700C46E6C /* Hawa-3A_voxcharge0.caf in Resources */,
+				0737EF0A16F08BD700C46E6C /* Hawa-3A_voxknockback0.caf in Resources */,
+				0737EF0B16F08BD700C46E6C /* Hawa-3A_voxslash0.caf in Resources */,
+				0737EF0C16F08BD700C46E6C /* Hawa-3A_wait0.caf in Resources */,
+				0737EF0D16F08BD700C46E6C /* Hawa-3A_wait1.caf in Resources */,
+				0737EF0F16F08BF700C46E6C /* Hawaii.lua in Resources */,
+				0737EF1416F08D6500C46E6C /* ttn1_finish0.caf in Resources */,
+				0737EF1516F08D6500C46E6C /* ttn1_finish1.caf in Resources */,
+				0737EF1616F08D6500C46E6C /* ttn1_finish2.caf in Resources */,
+				0737EF1716F08D6500C46E6C /* ttn1_finish3.caf in Resources */,
+				0737EF1916F0909800C46E6C /* ruin_boss.lua in Resources */,
+				0737EF1B16F093B400C46E6C /* fortress3A0.lua in Resources */,
+				0737EF1D16F098FD00C46E6C /* endingA.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5610,6 +6061,9 @@
 				07C6467916DE48D000B29842 /* CCRemoveFromParentAction.cpp in Sources */,
 				07C6468516E11CB400B29842 /* PopupWindow.cpp in Sources */,
 				07C6468F16E1CDC600B29842 /* SaveData.cpp in Sources */,
+				078FFC2F16E37419001C9A4F /* MainMenuScene.cpp in Sources */,
+				0754384016E3865700802970 /* TutorialScene.cpp in Sources */,
+				0754384516E3931F00802970 /* StaffRollScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

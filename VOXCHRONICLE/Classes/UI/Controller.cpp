@@ -85,7 +85,7 @@ bool Controller::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
       CCPoint p = ((SkillTrigger*)trigger)->getBackground()->convertTouchToNodeSpace(pTouch);
       CCSize size = ((SkillTrigger*)trigger)->getBackground()->getContentSize();
       const CCPoint triggerCenter = ccp(size.width / 2.0f, size.height / 2.0f);
-      const int triggerRadius = size.width / 2.0;
+      const int triggerRadius = size.width / 1.5;
       if (((SkillTrigger*)trigger)->getSkillTriggerState() == SkillTriggerStateNormal && ccpDistance(triggerCenter, p) < triggerRadius) {
         isTouched = true;
         this->resetAllTriggers();

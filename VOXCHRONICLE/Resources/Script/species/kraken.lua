@@ -21,10 +21,9 @@ Enemy = {
     local tension = characterManager:getTension()
     math.random(100)
     local random = math.random(100)
-    if tension > 0 then -- テンションが0以上の時
-      if random <= tension * 10 then
-        return "reset_tension"
-      end
+    local tensionTurn = self:getRegister("tensionWave", 0) -- いてつくはどうの溜めターン取得
+    if tensionTurn > 0 or random <= tension * 10 then
+      return "reset_tension"
     end
     -- 波はwaitTurnターン以内には出ない
     if random <= 30 and turn == 0 then

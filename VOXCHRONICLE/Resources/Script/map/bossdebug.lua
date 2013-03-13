@@ -1,19 +1,19 @@
 Map = {
-  name = "QTEテスト面",
+  name = "戦闘！ナイト",
   wayMusic = "dub",
   bossMusic = "3Bb",
   ending = "endingB",
   backgroundImage = "",
   skin = "skinA",
   nextMaps = {},
-  initialLevel = 29,
+  initialLevel = 30,
   maxLevel = 30,
   getEnemyTable = function(level)
     return {}
   end,
   onLevel = function(level, characterManager, enemyManager)
     if level == 30 then
-      knight = enemyManager:popEnemyAt("knight_debug", MAX_ROW - 1, 1)
+      knight = enemyManager:popEnemyAt("knight_boss", MAX_ROW - 1, 1)
       enemyManager:setBoss(knight)
     end
   end,

@@ -81,6 +81,8 @@ bool MainScene::init(Map* map) {
   _currentSkillInfo.skillTrackName = "";
   _currentSkillInfo.type = SkillPerformTypeNone;
   _currentSkillInfo.skill = NULL;
+  _mapHistory = CCArray::create();
+  _mapHistory->retain();
   
   _turnCount = 0;
   _mapTurnCount = 0;
@@ -137,6 +139,8 @@ bool MainScene::init(Map* map) {
   }
   this->addChild(_effectLayer, MainSceneZOrderEffect);
   
+  _effectLayer->setCharacterEffect(_characterManager->getCurrentCharacter()); // キャラクター登録
+  
   this->setTouchEnabled(true);
   
   return true;
@@ -151,6 +155,7 @@ MainScene::~MainScene() {
   _characterManager->release();
   _skin->release();
   _focus->release();
+  _mapHistory->release();
   if (_mapSelector != NULL) {
     _mapSelector->release();
   }
@@ -282,7 +287,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       rect = CCRectMake(0, 0, 400, 400);
       effect->setPosition(position);
       effect->setScale(boss->getScale());
-      for (int i = 0; i < 6; ++i) {
+      for (int i = 0; i < 4; ++i) {
         const char* frameName = (string("attack") + lexical_cast<string>(i) + string(".png")).c_str();
         animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath(frameName).c_str(), rect));
       }
@@ -661,6 +666,7 @@ void MainScene::changeMap(Map* nextMap) {
     _map->release();
   }
   nextMap->retain();
+  _mapHistory->addObject(nextMap); // マップ履歴にマップ追加
   _map = nextMap;
   _level = nextMap->createInitialLevel(_characterManager); // レベルを生成する
   _enemyManager->setLevel(_level); // レベルをセット
@@ -767,7 +773,7 @@ void MainScene::onFinishTracksCompleted() {
     string endingScript = _map->getEndingName();
     CCAssert(endingScript.length() != 0, "Ending Script is not defined.");
     _musicManager->getMusic()->stop();
-    EndingScene* endingLayer = new EndingScene(endingScript.c_str());
+    EndingScene* endingLayer = new EndingScene(endingScript.c_str(), _mapHistory);
     endingLayer->autorelease();
     CCScene* ending = CCScene::create();
     ending->addChild(endingLayer);

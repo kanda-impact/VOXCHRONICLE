@@ -267,6 +267,20 @@ static int tolua_VC_CharacterManager_getCurrentCharacter(lua_State* tolua_S) {
   return 1;
 }
 
+static int tolua_VC_CharacterManager_getRepeatCount(lua_State* tolua_S) {
+  CharacterManager* self = (CharacterManager*)tolua_tousertype(tolua_S, 1, 0);
+  int repeat = self->getRepeatCount();
+  tolua_pushnumber(tolua_S, repeat);
+  return 1;
+}
+
+static int tolua_VC_CharacterManager_setRepeatCount(lua_State* tolua_S) {
+  CharacterManager* self = (CharacterManager*)tolua_tousertype(tolua_S, 1, 0);
+  int rc = (int)tolua_tonumber(tolua_S, 2, 0);
+  self->setRepeatCount(rc);
+  return 0;
+}
+
 // EnemyManager
 #pragma mark EnemyManager
 
@@ -337,6 +351,16 @@ static int tolua_VC_EffectLayer_addPopupWindow(lua_State* tolua_S) {
   PopupWindow* window = self->addPopupWindow(pages);
   tolua_pushusertype(tolua_S, window, "PopupWindow");
   return 1;
+}
+
+static int tolua_VC_EffectLayer_addEffectOnEnemy(lua_State* tolua_S) {
+  EffectLayer* self = (EffectLayer*)tolua_tousertype(tolua_S, 1, 0);
+  Enemy* enemy = (Enemy*)tolua_tousertype(tolua_S, 2, 0);
+  const char* prefix = tolua_tostring(tolua_S, 3, 0);
+  int frameCount = tolua_tonumber(tolua_S, 4, 0);
+  CCRect* rect = (CCRect*)tolua_tousertype(tolua_S, 5, 0);
+  self->addEffectOnEnemy(enemy, prefix, frameCount, *rect);
+  return 0;
 }
 
 // Popup Window
@@ -433,6 +457,8 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_function(tolua_S, "getMaxMP", tolua_VC_CharacterManager_getMaxMP);
   tolua_function(tolua_S, "resetTension", tolua_VC_CharacterManager_resetTension);
   tolua_function(tolua_S, "getCurrentCharacter", tolua_VC_CharacterManager_getCurrentCharacter);
+  tolua_function(tolua_S, "getRepeatCount", tolua_VC_CharacterManager_getRepeatCount);
+  tolua_function(tolua_S, "setRepeatCount", tolua_VC_CharacterManager_setRepeatCount);
   tolua_endmodule(tolua_S);
   // EnemyManagerクラス
   tolua_cclass(tolua_S, "EnemyManager", "EnemyManager", "CCLayer", NULL);
@@ -458,6 +484,7 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_beginmodule(tolua_S, "EffectLayer");
   tolua_function(tolua_S, "sharedLayer", tolua_VC_EffectLayer_sharedLayer);
   tolua_function(tolua_S, "addPopupWindow", tolua_VC_EffectLayer_addPopupWindow);
+  tolua_function(tolua_S, "addEffectOnEnemy", tolua_VC_EffectLayer_addEffectOnEnemy);
   tolua_endmodule(tolua_S);
   // PopupWindow
   tolua_cclass(tolua_S, "PopupWindow", "PopupWindow", "CCSprite", NULL);

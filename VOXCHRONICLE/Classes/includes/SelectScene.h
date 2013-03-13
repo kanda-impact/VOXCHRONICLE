@@ -16,6 +16,8 @@ using namespace cocos2d;
 
 class SelectScene :public CCLayer {
  private:
+  CCArray* _thumbnails;
+  void createThumbnails();
   void onEasyButtonPressed(CCObject* sender);
   void onHardButtonPressed(CCObject* sender);
   void onBackButtonPressed(CCObject* sender);
