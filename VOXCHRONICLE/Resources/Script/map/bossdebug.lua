@@ -3,8 +3,8 @@ Map = {
   wayMusic = "dub",
   bossMusic = "3Bb",
   ending = "endingB",
-  backgroundImage = "",
-  skin = "skinA",
+  backgroundImage = "castle_background.png",
+  skin = "skinC",
   nextMaps = {},
   initialLevel = 30,
   maxLevel = 30,
@@ -21,6 +21,5 @@ Map = {
     return 1.0
   end,
   fixedEnemies = {
-    {"level10", 0}
   }
 }

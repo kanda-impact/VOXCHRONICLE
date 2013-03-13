@@ -51,6 +51,13 @@ static int tolua_VC_Enemy_getRow(lua_State* tolua_S) {
   return 1;
 }
 
+static int tolua_VC_Enemy_getAttack(lua_State* tolua_S) {
+  Enemy* self = (Enemy*)  tolua_tousertype(tolua_S, 1, 0);
+  float tolua_ret = (float)  self->getAttack();
+  tolua_pushnumber(tolua_S, (float)tolua_ret);
+  return 1;
+}
+
 static int tolua_VC_Enemy_moveRow(lua_State* tolua_S) {
   Enemy* self = (Enemy*)tolua_tousertype(tolua_S, 1, 0);
   float row = (float)tolua_tonumber(tolua_S, 2, 0);
@@ -426,6 +433,7 @@ TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S) {
   tolua_cclass(tolua_S, "Enemy", "Enemy", "CCSprite", NULL);
   tolua_beginmodule(tolua_S, "Enemy");
   tolua_function(tolua_S, "getRow", tolua_VC_Enemy_getRow);
+  tolua_function(tolua_S, "getAttack", tolua_VC_Enemy_getAttack);
   tolua_function(tolua_S, "moveRow", tolua_VC_Enemy_moveRow);
   tolua_function(tolua_S, "setRow", tolua_VC_Enemy_setRow);
   tolua_function(tolua_S, "getCol", tolua_VC_Enemy_getCol);

@@ -156,6 +156,7 @@
 		0737EF1916F0909800C46E6C /* ruin_boss.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0737EF1816F0909800C46E6C /* ruin_boss.lua */; };
 		0737EF1B16F093B400C46E6C /* fortress3A0.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0737EF1A16F093B400C46E6C /* fortress3A0.lua */; };
 		0737EF1D16F098FD00C46E6C /* endingA.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0737EF1C16F098FD00C46E6C /* endingA.lua */; };
+		0737EF2116F0D70A00C46E6C /* direct_attack.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0737EF2016F0D70A00C46E6C /* direct_attack.lua */; };
 		0738FB4616C530DD00FE2816 /* 2b.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0738FB4516C530DD00FE2816 /* 2b.lua */; };
 		0738FB4816C530E800FE2816 /* yuki.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0738FB4716C530E800FE2816 /* yuki.lua */; };
 		0738FB7D16C5320300FE2816 /* 2b_counter0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0738FB4916C5320300FE2816 /* 2b_counter0.caf */; };
@@ -1283,6 +1284,7 @@
 		0737EF1816F0909800C46E6C /* ruin_boss.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ruin_boss.lua; path = map/ruin_boss.lua; sourceTree = "<group>"; };
 		0737EF1A16F093B400C46E6C /* fortress3A0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fortress3A0.lua; sourceTree = "<group>"; };
 		0737EF1C16F098FD00C46E6C /* endingA.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = endingA.lua; path = endings/endingA.lua; sourceTree = "<group>"; };
+		0737EF2016F0D70A00C46E6C /* direct_attack.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = direct_attack.lua; path = enemySkills/direct_attack.lua; sourceTree = "<group>"; };
 		0738FB4516C530DD00FE2816 /* 2b.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 2b.lua; path = map/2b.lua; sourceTree = "<group>"; };
 		0738FB4716C530E800FE2816 /* yuki.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = yuki.lua; path = musics/yuki.lua; sourceTree = "<group>"; };
 		0738FB4916C5320300FE2816 /* 2b_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2b_counter0.caf; path = Resources/Music/2b/2b_counter0.caf; sourceTree = "<group>"; };
@@ -3132,6 +3134,7 @@
 				0715C2321690E8F600009479 /* ironball.lua */,
 				07DCD6861692953500FBBC3A /* sword.lua */,
 				072AB85D16DB7A12005385A5 /* reset_tension.lua */,
+				0737EF2016F0D70A00C46E6C /* direct_attack.lua */,
 			);
 			name = enemySkills;
 			sourceTree = "<group>";
@@ -5749,6 +5752,7 @@
 				0737EF1916F0909800C46E6C /* ruin_boss.lua in Resources */,
 				0737EF1B16F093B400C46E6C /* fortress3A0.lua in Resources */,
 				0737EF1D16F098FD00C46E6C /* endingA.lua in Resources */,
+				0737EF2116F0D70A00C46E6C /* direct_attack.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
