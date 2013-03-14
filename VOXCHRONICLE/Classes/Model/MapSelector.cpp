@@ -28,19 +28,35 @@ bool MapSelector::init() {
   this->addChild(menu);
   _nextMaps = NULL;
   _selectedMap = NULL;
+  _effectID = 0;
   return true;
+}
+
+void MapSelector::onEnter() {
+  CCLayer::onEnter();
+  //_effectID = SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/selector.mp3").c_str(), true);
 }
 
 MapSelector::MapSelector() {
 }
 
+MapSelector::~MapSelector() {
+  if (_effectID != 0) {
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->stopEffect(_effectID);
+  }
+  _nextMaps->release();
+}
+
 void MapSelector::leftButtonPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
+  if (_effectID != 0) {
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->stopEffect(_effectID);
+  }
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/selector_decide.mp3").c_str());
   _selectedMap = (Map*)_nextMaps->objectAtIndex(0);
 }
 
 void MapSelector::rightButtonPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/selector_decide.mp3").c_str());
   _selectedMap = (Map*)_nextMaps->objectAtIndex(1);
 }
 

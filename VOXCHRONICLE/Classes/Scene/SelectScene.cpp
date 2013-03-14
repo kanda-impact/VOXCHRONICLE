@@ -110,7 +110,7 @@ void SelectScene::createThumbnails() {
 }
 
 void SelectScene::onEasyButtonPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/easy_decide.mp3").c_str());
   MainScene* layer = MainScene::create();
   CCScene* scene = CCScene::create();
   scene->addChild(layer);
@@ -120,6 +120,7 @@ void SelectScene::onEasyButtonPressed(cocos2d::CCObject *sender) {
 }
 
 void SelectScene::onHardButtonPressed(cocos2d::CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/hard_decide.mp3").c_str());
 }
 
 void SelectScene::onBackButtonPressed(cocos2d::CCObject *sender) {

@@ -28,6 +28,7 @@ QTETrigger::~QTETrigger() {
 
 void QTETrigger::onButtonPressed(CCObject* sender) {
   _pressed = true;
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/qte_decide.mp3").c_str());
   //this->getParent()->removeChild(this, true);
 }
 

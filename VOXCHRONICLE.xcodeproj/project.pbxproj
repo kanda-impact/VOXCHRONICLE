@@ -686,6 +686,16 @@
 		07A1F4D51693161600C4329F /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A1F4D41693161600C4329F /* libTestFlight.a */; };
 		07A1F535169319B300C4329F /* volca.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F534169319B300C4329F /* volca.lua */; };
 		07A8E9F316320DBC00E007C9 /* MessageWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */; };
+		07ADDF8216F22959007825D2 /* enemy_revive.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF7816F22959007825D2 /* enemy_revive.mp3 */; };
+		07ADDF8316F22959007825D2 /* hard_decide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF7916F22959007825D2 /* hard_decide.mp3 */; };
+		07ADDF8416F22959007825D2 /* qte_attack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF7A16F22959007825D2 /* qte_attack.mp3 */; };
+		07ADDF8516F22959007825D2 /* qte_decide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF7B16F22959007825D2 /* qte_decide.mp3 */; };
+		07ADDF8616F22959007825D2 /* selector_decide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF7C16F22959007825D2 /* selector_decide.mp3 */; };
+		07ADDF8716F22959007825D2 /* selector.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF7D16F22959007825D2 /* selector.mp3 */; };
+		07ADDF8816F22959007825D2 /* decide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF7E16F22959007825D2 /* decide.mp3 */; };
+		07ADDF8916F22959007825D2 /* easy_decide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF7F16F22959007825D2 /* easy_decide.mp3 */; };
+		07ADDF8A16F22959007825D2 /* enemy_burn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF8016F22959007825D2 /* enemy_burn.mp3 */; };
+		07ADDF8B16F22959007825D2 /* enemy_cure.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF8116F22959007825D2 /* enemy_cure.mp3 */; };
 		07B2200316CFCB820083B865 /* acorn01.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FE016CFCB820083B865 /* acorn01.lua */; };
 		07B2200416CFCB820083B865 /* acorn02.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FE116CFCB820083B865 /* acorn02.lua */; };
 		07B2200516CFCB820083B865 /* bat01.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FE216CFCB820083B865 /* bat01.lua */; };
@@ -1858,6 +1868,16 @@
 		07A1F4D61693162500C4329F /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestFlight.h; path = ios/TestFlight.h; sourceTree = "<group>"; };
 		07A1F534169319B300C4329F /* volca.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = volca.lua; path = musics/volca.lua; sourceTree = "<group>"; };
 		07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageWindow.cpp; path = Classes/UI/MessageWindow.cpp; sourceTree = "<group>"; };
+		07ADDF7816F22959007825D2 /* enemy_revive.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = enemy_revive.mp3; path = Resources/SE/enemy_revive.mp3; sourceTree = "<group>"; };
+		07ADDF7916F22959007825D2 /* hard_decide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = hard_decide.mp3; path = Resources/SE/hard_decide.mp3; sourceTree = "<group>"; };
+		07ADDF7A16F22959007825D2 /* qte_attack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = qte_attack.mp3; path = Resources/SE/qte_attack.mp3; sourceTree = "<group>"; };
+		07ADDF7B16F22959007825D2 /* qte_decide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = qte_decide.mp3; path = Resources/SE/qte_decide.mp3; sourceTree = "<group>"; };
+		07ADDF7C16F22959007825D2 /* selector_decide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = selector_decide.mp3; path = Resources/SE/selector_decide.mp3; sourceTree = "<group>"; };
+		07ADDF7D16F22959007825D2 /* selector.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = selector.mp3; path = Resources/SE/selector.mp3; sourceTree = "<group>"; };
+		07ADDF7E16F22959007825D2 /* decide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = decide.mp3; path = Resources/SE/decide.mp3; sourceTree = "<group>"; };
+		07ADDF7F16F22959007825D2 /* easy_decide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = easy_decide.mp3; path = Resources/SE/easy_decide.mp3; sourceTree = "<group>"; };
+		07ADDF8016F22959007825D2 /* enemy_burn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = enemy_burn.mp3; path = Resources/SE/enemy_burn.mp3; sourceTree = "<group>"; };
+		07ADDF8116F22959007825D2 /* enemy_cure.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = enemy_cure.mp3; path = Resources/SE/enemy_cure.mp3; sourceTree = "<group>"; };
 		07B21FE016CFCB820083B865 /* acorn01.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = acorn01.lua; sourceTree = "<group>"; };
 		07B21FE116CFCB820083B865 /* acorn02.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = acorn02.lua; sourceTree = "<group>"; };
 		07B21FE216CFCB820083B865 /* bat01.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bat01.lua; sourceTree = "<group>"; };
@@ -4899,6 +4919,16 @@
 		07FA3B2A16107EE500E9C7DE /* SE */ = {
 			isa = PBXGroup;
 			children = (
+				07ADDF7816F22959007825D2 /* enemy_revive.mp3 */,
+				07ADDF7916F22959007825D2 /* hard_decide.mp3 */,
+				07ADDF7A16F22959007825D2 /* qte_attack.mp3 */,
+				07ADDF7B16F22959007825D2 /* qte_decide.mp3 */,
+				07ADDF7C16F22959007825D2 /* selector_decide.mp3 */,
+				07ADDF7D16F22959007825D2 /* selector.mp3 */,
+				07ADDF7E16F22959007825D2 /* decide.mp3 */,
+				07ADDF7F16F22959007825D2 /* easy_decide.mp3 */,
+				07ADDF8016F22959007825D2 /* enemy_burn.mp3 */,
+				07ADDF8116F22959007825D2 /* enemy_cure.mp3 */,
 				078D45E916CFA02C00E21DC5 /* explosion.mp3 */,
 				07A1B99016CDC1CA0092AF8C /* magic_effect.mp3 */,
 				07A1B99116CDC1CA0092AF8C /* shield_effect.mp3 */,
@@ -5849,6 +5879,16 @@
 				0737EF5716F0E12000C46E6C /* R_plfoot3C0.lua in Resources */,
 				0737EF5816F0E12000C46E6C /* R_strclaw3C0.lua in Resources */,
 				0737EF5916F0E12000C46E6C /* R_strfoot3C0.lua in Resources */,
+				07ADDF8216F22959007825D2 /* enemy_revive.mp3 in Resources */,
+				07ADDF8316F22959007825D2 /* hard_decide.mp3 in Resources */,
+				07ADDF8416F22959007825D2 /* qte_attack.mp3 in Resources */,
+				07ADDF8516F22959007825D2 /* qte_decide.mp3 in Resources */,
+				07ADDF8616F22959007825D2 /* selector_decide.mp3 in Resources */,
+				07ADDF8716F22959007825D2 /* selector.mp3 in Resources */,
+				07ADDF8816F22959007825D2 /* decide.mp3 in Resources */,
+				07ADDF8916F22959007825D2 /* easy_decide.mp3 in Resources */,
+				07ADDF8A16F22959007825D2 /* enemy_burn.mp3 in Resources */,
+				07ADDF8B16F22959007825D2 /* enemy_cure.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

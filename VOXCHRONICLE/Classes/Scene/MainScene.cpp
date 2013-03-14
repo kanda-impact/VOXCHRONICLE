@@ -285,6 +285,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       _state = VCStateQTEFinish;
       Enemy* boss = _enemyManager->getBoss();
       // 攻撃エフェクト
+      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/qte_attack.mp3").c_str());
       CCSprite* effect = CCSprite::create((string("attack") + string("0.png")).c_str());
       CCAnimation* animation = CCAnimation::create();
       CCRect rect;

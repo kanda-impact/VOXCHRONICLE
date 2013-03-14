@@ -16,13 +16,16 @@
 using namespace cocos2d;
 class MapSelector :public CCLayer {
  private:
+  unsigned int _effectID;
   void leftButtonPressed(CCObject* sender);
   void rightButtonPressed(CCObject* sender);
   CCArray* _nextMaps;
   Map* _selectedMap;
  public:
+  virtual void onEnter();
   virtual bool init();
   MapSelector();
+  ~MapSelector();
   void setNextMaps(CCArray* maps);
   CREATE_FUNC(MapSelector)
   Map* getSelectedMap();
