@@ -21,6 +21,7 @@ class SelectScene :public CCLayer {
   void onEasyButtonPressed(CCObject* sender);
   void onHardButtonPressed(CCObject* sender);
   void onBackButtonPressed(CCObject* sender);
+  CCNode* buttonNode(const char* key, const char* thumbnail, bool pressed);
  public:
   virtual bool init();
   SelectScene();

@@ -42,7 +42,9 @@ Track::~Track() {
 }
 
 bool Track::play() {
-  [_track->source play:_track->buffer];
+  if (_track && _track->source) {
+    [_track->source play:_track->buffer];
+  }
   return true;
 }
 
