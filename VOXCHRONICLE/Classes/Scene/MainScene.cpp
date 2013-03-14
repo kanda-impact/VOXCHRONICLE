@@ -421,7 +421,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       if (!_characterManager->getShield()) {
         _effectLayer->addCutin(NULL, EffectLayerCutinTypeCastOff, _musicManager->getMusic()->getCurrentMainTrack()->getDuration());
       }
-      _effectLayer->addCutin(skill, (EffectLayerCutinType)skill->getCutinType(), _musicManager->getMusic()->getCurrentMainTrack()->getDuration());
+      _effectLayer->addCutin(skill, isHit ? (EffectLayerCutinType)skill->getCutinType() : EffectLayerCutinTypeFailure, _musicManager->getMusic()->getCurrentMainTrack()->getDuration());
       
       if (isHit) {
         // ヒットしたとき、SEがあればSEをならしてやる
