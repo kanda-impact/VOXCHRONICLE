@@ -696,6 +696,7 @@
 		07ADDF8916F22959007825D2 /* easy_decide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF7F16F22959007825D2 /* easy_decide.mp3 */; };
 		07ADDF8A16F22959007825D2 /* enemy_burn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF8016F22959007825D2 /* enemy_burn.mp3 */; };
 		07ADDF8B16F22959007825D2 /* enemy_cure.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF8116F22959007825D2 /* enemy_cure.mp3 */; };
+		07ADDF8D16F254C8007825D2 /* hsv.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF8C16F254C8007825D2 /* hsv.lua */; };
 		07B2200316CFCB820083B865 /* acorn01.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FE016CFCB820083B865 /* acorn01.lua */; };
 		07B2200416CFCB820083B865 /* acorn02.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FE116CFCB820083B865 /* acorn02.lua */; };
 		07B2200516CFCB820083B865 /* bat01.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FE216CFCB820083B865 /* bat01.lua */; };
@@ -1878,6 +1879,7 @@
 		07ADDF7F16F22959007825D2 /* easy_decide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = easy_decide.mp3; path = Resources/SE/easy_decide.mp3; sourceTree = "<group>"; };
 		07ADDF8016F22959007825D2 /* enemy_burn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = enemy_burn.mp3; path = Resources/SE/enemy_burn.mp3; sourceTree = "<group>"; };
 		07ADDF8116F22959007825D2 /* enemy_cure.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = enemy_cure.mp3; path = Resources/SE/enemy_cure.mp3; sourceTree = "<group>"; };
+		07ADDF8C16F254C8007825D2 /* hsv.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hsv.lua; sourceTree = "<group>"; };
 		07B21FE016CFCB820083B865 /* acorn01.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = acorn01.lua; sourceTree = "<group>"; };
 		07B21FE116CFCB820083B865 /* acorn02.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = acorn02.lua; sourceTree = "<group>"; };
 		07B21FE216CFCB820083B865 /* bat01.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bat01.lua; sourceTree = "<group>"; };
@@ -3670,6 +3672,7 @@
 				07D8D649169F3BD900B646E5 /* controller.lua */,
 				079D275716D38B7E006D6A8F /* enemy.lua */,
 				0754384716E3985600802970 /* staffroll.lua */,
+				07ADDF8C16F254C8007825D2 /* hsv.lua */,
 			);
 			name = Script;
 			path = Resources/Script;
@@ -5889,6 +5892,7 @@
 				07ADDF8916F22959007825D2 /* easy_decide.mp3 in Resources */,
 				07ADDF8A16F22959007825D2 /* enemy_burn.mp3 in Resources */,
 				07ADDF8B16F22959007825D2 /* enemy_cure.mp3 in Resources */,
+				07ADDF8D16F254C8007825D2 /* hsv.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

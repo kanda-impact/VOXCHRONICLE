@@ -173,9 +173,9 @@ void Enemy::setLifeColor() {
     if (lua_pcall(L, 1, 3, 0)) {
       cout << lua_tostring(L, lua_gettop(L)) << endl;
     }
-    int r = lua_tointeger(L, -1);
-    int g = lua_tointeger(L, -2);
-    int b = lua_tointeger(L, -3);
+    int r = lua_tointeger(L, lua_gettop(L) - 2);
+    int g = lua_tointeger(L, lua_gettop(L) - 1);
+    int b = lua_tointeger(L, lua_gettop(L));
     ccColor3B color = ccc3(r, g, b);
     this->setColor(color);
   }
