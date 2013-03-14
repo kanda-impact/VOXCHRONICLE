@@ -1,11 +1,11 @@
 Enemy = {
   species = "L_strfoot",
   level = 1,
-  hp = 50,
+  hp = 80,
   getExp = function(default)
       return 0
   end,
-  item = EnemyItemMagical,
+  item = EnemyItemNone,
   type = SkillTypeNormal,
 }
 
