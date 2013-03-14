@@ -12,6 +12,17 @@
 #include "SimpleAudioEngine.h"
 #include "FileUtils.h"
 
+typedef enum {
+  SelectSceneZOrderBackground,
+  SelectSceneZOrderButton,
+  SelectSceneZOrderFrame
+} SelectSceneZOrder;
+
+typedef enum {
+  SelectSceneTagEasyFrame,
+  SelectSceneTagHardFrame
+} SelectSceneTag;
+
 bool SelectScene::init() {
   if ( !CCLayer::init() ) {
     return false;
@@ -24,7 +35,7 @@ bool SelectScene::init() {
   
   CCSprite* background = CCSprite::create("select_background.png");
   background->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
-  this->addChild(background);
+  this->addChild(background, SelectSceneZOrderBackground);
   
   CCMenuItemSprite* easyButton = CCMenuItemSprite::create(this->buttonNode("easy", "simple_thumbnail.png", false),
                                                           this->buttonNode("easy", "simple_thumbnail.png", true),
@@ -40,7 +51,7 @@ bool SelectScene::init() {
   mainMenu->setAnchorPoint(ccp(0.5, 0.5));
   
   mainMenu->setPosition(ccp(director->getWinSize().width / 2.0 + 2, 127));
-  this->addChild(mainMenu);
+  this->addChild(mainMenu, SelectSceneZOrderButton);
   
   CCMenuItemImage* backButton = CCMenuItemImage::create("back_down.png",
                                                         "back_down_pressed.png",
@@ -48,6 +59,7 @@ bool SelectScene::init() {
                                                         menu_selector(SelectScene::onBackButtonPressed));
   CCMenu* backMenu = CCMenu::create(backButton, NULL);
   backMenu->setPosition(ccp(director->getWinSize().width / 2.0f, 30));
+  _nextScene = NULL;
   this->addChild(backMenu);
   
   CCSprite* map = CCSprite::create("select_map.png");
@@ -56,11 +68,13 @@ bool SelectScene::init() {
   
   CCSprite* easyFrame = CCSprite::create("select_easy_frame.png");
   easyFrame->setPosition(ccp(134, 140));
-  this->addChild(easyFrame);
-
+  this->blinkSprite(easyFrame, 0.5f);
+  this->addChild(easyFrame, SelectSceneZOrderFrame, SelectSceneTagEasyFrame);
+  
   CCSprite* hardFrame = CCSprite::create("select_hard_frame.png");
   hardFrame->setPosition(ccp(350, 140));
-  this->addChild(hardFrame);
+  this->blinkSprite(hardFrame, 0.5f);
+  this->addChild(hardFrame, SelectSceneZOrderFrame, SelectSceneTagHardFrame);
   
   this->createThumbnails();
   
@@ -72,6 +86,16 @@ SelectScene::SelectScene() {
 
 SelectScene::~SelectScene() {
   _thumbnails->release();
+  if (_nextScene) {
+    _nextScene->release();
+  }
+}
+
+CCSprite* SelectScene::blinkSprite(CCSprite* sprite, float speed) {
+  CCSequence* blink = CCSequence::createWithTwoActions(CCFadeTo::create(speed, 128),
+                                                       CCFadeTo::create(speed, 255));
+  sprite->runAction(CCRepeatForever::create(blink));
+  return sprite;
 }
 
 CCNode* SelectScene::buttonNode(const char *key, const char* thumbnail, bool pressed) {
@@ -100,27 +124,41 @@ CCNode* SelectScene::buttonNode(const char *key, const char* thumbnail, bool pre
 void SelectScene::createThumbnails() {
   const int x[] = {190, 240, 290, 165, 215, 265, 315};
   const int y[] = {262, 262, 262, 303, 303, 303, 303};
+  const string filenames[] = {"forest", "", "", "", "castle", "", "space"}; // とりあえずハードコーディング
   // マップによって切り替えたり、セーブデータによって切り替えたりはあとで実装する
   for (int i = 0; i < 7; ++i) {
-    CCSprite* sprite = CCSprite::create("castle_icon.png");
-    sprite->setPosition(ccp(x[i], y[i]));
-    this->addChild(sprite);
-    _thumbnails->addObject(sprite);
+    string filename = filenames[i];
+    if (filename.length() > 0) {
+      CCSprite* sprite = CCSprite::create((filename + string("_icon.png")).c_str());
+      sprite->setPosition(ccp(x[i], y[i]));
+      this->addChild(sprite);
+      _thumbnails->addObject(sprite);
+    }
   }
 }
 
 void SelectScene::onEasyButtonPressed(cocos2d::CCObject *sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/easy_decide.mp3").c_str());
+  CCSprite* frame = (CCSprite*)this->getChildByTag(SelectSceneTagEasyFrame);
+  this->blinkSprite(frame, 0.05);
   MainScene* layer = MainScene::create();
-  CCScene* scene = CCScene::create();
-  scene->addChild(layer);
-  CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
-  CCDirector::sharedDirector()->replaceScene(transition);
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
+  layer->retain();
+  _nextScene = layer;
+  this->scheduleOnce(schedule_selector(SelectScene::startGame), 3.0f); // 遅延してゲーム開始
 }
 
 void SelectScene::onHardButtonPressed(cocos2d::CCObject *sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/hard_decide.mp3").c_str());
+  CCSprite* frame = (CCSprite*)this->getChildByTag(SelectSceneTagHardFrame);
+  this->blinkSprite(frame, 0.05);
+}
+
+void SelectScene::startGame(cocos2d::CCObject *sender) {
+  CCScene* scene = CCScene::create();
+  scene->addChild(_nextScene);
+  CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
+  CCDirector::sharedDirector()->replaceScene(transition);
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
 }
 
 void SelectScene::onBackButtonPressed(cocos2d::CCObject *sender) {

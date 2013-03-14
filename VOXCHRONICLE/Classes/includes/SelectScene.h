@@ -21,7 +21,10 @@ class SelectScene :public CCLayer {
   void onEasyButtonPressed(CCObject* sender);
   void onHardButtonPressed(CCObject* sender);
   void onBackButtonPressed(CCObject* sender);
+  void startGame(CCObject* sender);
+  CCSprite* blinkSprite(CCSprite* sprite, float speed);
   CCNode* buttonNode(const char* key, const char* thumbnail, bool pressed);
+  CCLayer* _nextScene;
  public:
   virtual bool init();
   SelectScene();
