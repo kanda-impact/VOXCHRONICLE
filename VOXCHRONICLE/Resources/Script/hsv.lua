@@ -1,4 +1,4 @@
--[[
+--[[
 HSV色空間をRGB値に変換して返却します
 http://stackoverflow.com/questions/10393134/converting-hsl-to-rgb
 ]]

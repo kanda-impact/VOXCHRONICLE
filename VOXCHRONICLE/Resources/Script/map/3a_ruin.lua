@@ -6,7 +6,7 @@ Map = {
   skin = "skinC",
   ending = "endingA",
   nextMaps = {},
-  initialLevel = 29,
+  initialLevel = 21,
   maxLevel = 30,
   getEnemyTable = function(level)
     if level <= 22 then
@@ -29,8 +29,10 @@ Map = {
     end
   end,
   getEnemyPopRate = function(level)
-    if level <= 25 then
+    if level <= 23 then
       return 0.3
+    elseif level <= 25 then
+      return 0.2
     elseif level <= 27 then
       return 0.4
     else

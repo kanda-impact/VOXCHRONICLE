@@ -12,7 +12,7 @@ Map = {
       if level <= 12 then
       return {leaf1A0 = 2, acorn1A0 = 1, moth2A0 = 1}
     elseif level <= 14 then
-      return {leaf2A2 = 1, acorn1A0 = 2, moth2A0 = 3}
+      return {leaf1A0 = 1, acorn1A0 = 2, moth2A0 = 3}
     elseif level <= 16 then
       return {slime1A0 = 1, hornet2A0 = 1}
     elseif level <= 18 then
