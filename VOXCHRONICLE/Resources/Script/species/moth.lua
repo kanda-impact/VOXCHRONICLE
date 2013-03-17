@@ -7,6 +7,7 @@ Enemy = {
   counter = 3,
   getSpeed = function(enemy, characterManager)
     return 1
+
   end,
   getFrequency = function(enemy, characterManager)
     return 2

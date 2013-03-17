@@ -1,7 +1,7 @@
 Enemy = {
   name = "マスク",
   imageName = "mask",
-  attack = 5,
+  attack = 6,
   baseExp = 4,
   hasFrame = true,
   counter = 3,

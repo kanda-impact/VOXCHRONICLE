@@ -1,9 +1,9 @@
 Enemy = {
   species = "toadstool",
   level = 10,
-  hp = 12,
+  hp = 30,
   getExp = function(default)
-      return 12
+      return 15
   end,
   item = EnemyItemNone,
   type = SkillTypeMagical,

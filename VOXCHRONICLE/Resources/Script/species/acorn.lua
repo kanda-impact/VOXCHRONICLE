@@ -1,7 +1,7 @@
 Enemy = {
   name = "ドングリ",
   imageName = "acorn",
-  attack = 1,
+  attack = 3,
   baseExp = 6,
   hasFrame = true,
   counter = 2,

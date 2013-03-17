@@ -1,7 +1,7 @@
 Enemy = {
   name = "ハチ",
   imageName = "hornet",
-  attack = 1,
+  attack = 4,
   baseExp = 1,
   hasFrame = true,
   counter = 3,

@@ -1,9 +1,9 @@
 Enemy = {
-  species = "leaf",
+  species = "moth",
   level = 10,
-  hp = 3,
+  hp = 4,
   getExp = function(default)
-      return 16
+      return 10
   end,
   item = EnemyItemNone,
   type = SkillTypeNormal,
