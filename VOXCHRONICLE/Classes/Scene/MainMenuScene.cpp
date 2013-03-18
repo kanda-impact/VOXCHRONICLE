@@ -11,6 +11,7 @@
 #include "FileUtils.h"
 #include "SimpleAudioEngine.h"
 #include "TutorialScene.h"
+#include "ExtraScene.h"
 
 MainMenuScene::MainMenuScene(bool fromTitle) {
   CCDirector* director = CCDirector::sharedDirector();
@@ -61,4 +62,10 @@ void MainMenuScene::onTutorialPressed(cocos2d::CCObject *sender) {
 }
 
 void MainMenuScene::onExtraPressed(cocos2d::CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
+  CCScene* scene = CCScene::create();
+  ExtraScene* layer = ExtraScene::create();
+  scene->addChild(layer);
+  CCTransitionSlideInR* transition = CCTransitionSlideInR::create(0.25f, scene);
+  CCDirector::sharedDirector()->pushScene(transition);
 }

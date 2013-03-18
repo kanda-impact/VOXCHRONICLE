@@ -33,7 +33,7 @@ StaffRoll = {
     {"", "TTNTAWASi", "エフェクト・アニメーション"},
     {"", "はこねこ", "ステージ背景"},
     {"", "うめ", "ステージ背景"},
-    {"", "tobi", "エンディングイラスト"},
+    {"", "kataasitobi", "エンディングイラスト"},
     {"Music Direction", "Tetu_fs", ""},
     -- 3面曲
     {"Music Compose", "nmb", "チュートリアルステージ"},
@@ -54,7 +54,7 @@ StaffRoll = {
     {"", "AttaQ", "エンディングA"},
     {"", "Tetu_fs", "エンディングB"},
     {"", "Yudaidhun", "エンディングC"},
-    {"Executive Producer", "geekdrms", ""},
+    {"Executive Producer", "geekdrums", ""},
     -- 3面アウトロ
     {"Special Thanks", "All Kawaz Members", ""},
     {" ", "Created by Kawaz", "2009-2013 Kawaz All rights reserved."},
