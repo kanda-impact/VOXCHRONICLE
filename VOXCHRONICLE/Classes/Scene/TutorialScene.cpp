@@ -19,7 +19,7 @@ bool TutorialLayer::init() {
   CCDirector* director = CCDirector::sharedDirector();
   CCPoint center = ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f);
   
-  CCSprite* background = CCSprite::create("mainmenu_background.png");
+  CCSprite* background = CCSprite::create("select_background.png");
   background->setPosition(center);
   this->addChild(background);
   
