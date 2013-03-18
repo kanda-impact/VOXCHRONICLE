@@ -699,6 +699,7 @@
 		07ADDF8D16F254C8007825D2 /* hsv.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF8C16F254C8007825D2 /* hsv.lua */; };
 		07ADDF9A16F72048007825D2 /* ExtraScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07ADDF9816F72048007825D2 /* ExtraScene.cpp */; };
 		07ADDF9E16F73518007825D2 /* DictionaryScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07ADDF9C16F73514007825D2 /* DictionaryScene.cpp */; };
+		07ADDFA116F7621F007825D2 /* paper.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDFA016F7621F007825D2 /* paper.mp3 */; };
 		07B2200316CFCB820083B865 /* acorn01.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FE016CFCB820083B865 /* acorn01.lua */; };
 		07B2200416CFCB820083B865 /* acorn02.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FE116CFCB820083B865 /* acorn02.lua */; };
 		07B2200516CFCB820083B865 /* bat01.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FE216CFCB820083B865 /* bat01.lua */; };
@@ -1888,6 +1889,7 @@
 		07ADDF9B16F72525007825D2 /* ExtraScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExtraScene.h; path = Classes/includes/ExtraScene.h; sourceTree = "<group>"; };
 		07ADDF9C16F73514007825D2 /* DictionaryScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DictionaryScene.cpp; path = Classes/Scene/DictionaryScene.cpp; sourceTree = "<group>"; };
 		07ADDF9F16F75086007825D2 /* DictionaryScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryScene.h; path = Classes/includes/DictionaryScene.h; sourceTree = "<group>"; };
+		07ADDFA016F7621F007825D2 /* paper.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = paper.mp3; path = Resources/SE/paper.mp3; sourceTree = "<group>"; };
 		07B21FE016CFCB820083B865 /* acorn01.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = acorn01.lua; sourceTree = "<group>"; };
 		07B21FE116CFCB820083B865 /* acorn02.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = acorn02.lua; sourceTree = "<group>"; };
 		07B21FE216CFCB820083B865 /* bat01.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bat01.lua; sourceTree = "<group>"; };
@@ -4955,6 +4957,7 @@
 				07A1B99316CDC1CA0092AF8C /* attack_effect1.mp3 */,
 				07A1B99416CDC1CA0092AF8C /* attack_effect2.mp3 */,
 				07A1B99516CDC1CA0092AF8C /* attack_effect3.mp3 */,
+				07ADDFA016F7621F007825D2 /* paper.mp3 */,
 				07D8D64F169F656F00B646E5 /* cancel.mp3 */,
 				07D8D650169F656F00B646E5 /* pause.mp3 */,
 				07244C311695712400C5A442 /* qte.mp3 */,
@@ -5911,6 +5914,7 @@
 				B0AA405016F58CB300674A2A /* mask3A1.lua in Resources */,
 				B0AA405216F58D2300674A2A /* typhoon3A2.lua in Resources */,
 				B0AA405416F58E0100674A2A /* mask3A11.lua in Resources */,
+				07ADDFA116F7621F007825D2 /* paper.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

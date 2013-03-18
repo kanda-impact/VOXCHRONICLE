@@ -17,6 +17,9 @@ Enemy = {
     return 1
   end,
   disableSkills = {"knockback"},
+  description = [[
+  ]],
+  habitat = "",
   animationFrames = 4,
   performSkill = function(self)
     local isCharge = self:getRegister("swordTurn", 0) > 0 -- チャージ中かどうか

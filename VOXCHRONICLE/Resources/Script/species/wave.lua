@@ -12,6 +12,9 @@ Enemy = {
     return 1
   end,
   disableSkills = {"attack", "magic", "knockback", "bow", "thunder", "slash"}, -- 全技を無効化する
+  description = [[
+  ]],
+  habitat = "",
   animationFrames = 0,
   performSkill = function(self)
     return ""

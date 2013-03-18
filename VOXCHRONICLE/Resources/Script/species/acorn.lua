@@ -11,7 +11,10 @@ Enemy = {
   getFrequency = function(enemy, characterManager)
     return 2
   end,
-  disableSkills = {},
+  description = [[
+    どう見てもドングリです、本当にありがとうございました。
+  ]],
+  habitat = "森林ほか",
   disableSkills = {},
   animationFrames = 4,
   performSkill = function(self)

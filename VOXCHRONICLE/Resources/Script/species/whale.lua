@@ -12,7 +12,9 @@ Enemy = {
     return 2
   end,
   disableSkills = {},
-  disableSkills = {},
+  description = [[
+  ]],
+  habitat = "",
   animationFrames = 4,
   performSkill = function(self)
     return ""

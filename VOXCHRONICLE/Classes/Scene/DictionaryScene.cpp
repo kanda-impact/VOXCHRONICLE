@@ -37,7 +37,7 @@ bool DictionaryScene::init() {
   this->addChild(background);
   
   _nameLabel = CCLabelTTF::create("敵キャラ名", "Helvetica", 24, CCSizeMake(150, 30), kCCTextAlignmentLeft);
-  _habitatLabel = CCLabelTTF::create("生息地", "Helvetica", 16, CCSizeMake(300, 30), kCCTextAlignmentLeft, kCCVerticalTextAlignmentBottom);
+  _habitatLabel = CCLabelTTF::create("生息地", "Helvetica", 16, CCSizeMake(300, 30), kCCTextAlignmentLeft, kCCVerticalTextAlignmentCenter);
   _descriptionLabel = CCLabelTTF::create("ここに敵キャラの解説が入ります", "Helvetica", 16, CCSizeMake(450, 120), kCCTextAlignmentLeft, kCCVerticalTextAlignmentTop);
   _nameLabel->setAnchorPoint(ccp(0.5f, 0.5f));
   _nameLabel->setPosition(ccp(80, 140));
@@ -99,6 +99,9 @@ void DictionaryScene::loadEnemyByIndex(int idx) {
   _enemy->setPosition(ccp(director->getWinSize().width / 2.0f, 150));
   this->addChild(_enemy);
   _nameLabel->setString(_enemy->getName().c_str());
+  _habitatLabel->setString(_enemy->getSpecies()->getHabitat().c_str());
+  _descriptionLabel->setString(_enemy->getSpecies()->getDescription().c_str());
+  _enemy->setColor(ccc3(255, 255, 255));
 }
 
 void DictionaryScene::onBackButtonPressed(cocos2d::CCObject *sender) {
@@ -106,13 +109,15 @@ void DictionaryScene::onBackButtonPressed(cocos2d::CCObject *sender) {
   ExtraScene* layer = ExtraScene::create();
   CCScene* scene = CCScene::create();
   scene->addChild(layer);
-  CCTransitionCrossFade* fade = CCTransitionCrossFade::create(0.5, scene);
+  CCTransitionFade* fade = CCTransitionFade::create(0.2, scene);
   CCDirector::sharedDirector()->replaceScene(fade);
 }
 
 void DictionaryScene::onCursorButtonPressed(cocos2d::CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/paper.mp3").c_str());
   CCNode* node = (CCNode*)sender;
   int direction = -1 + node->getTag() * 2;
-  _cursor = (_cursor + direction) % _enemies->count();
+  int count = _enemies->count();
+  _cursor = (count + _cursor + direction) % count;
   this->loadEnemyByIndex(_cursor);
 }

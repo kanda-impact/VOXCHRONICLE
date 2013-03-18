@@ -62,6 +62,9 @@ end
 ]]
 dictionary = {
   "acorn01",
-  "bat01",
-  "cryst01"
+  "slime01",
+  "mask01",
+  "fortress3A0",
+  "knight_boss",
+  "kraken3C0"
 }

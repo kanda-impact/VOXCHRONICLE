@@ -43,6 +43,8 @@ class Species :public CCObject {
   ~Species();
   string getImageName();
   string getName();
+  string getHabitat();
+  string getDescription();
   int getAttack();
   int getCounter();
   int getAnimationFrames();
