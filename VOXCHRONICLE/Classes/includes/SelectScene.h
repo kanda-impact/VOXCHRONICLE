@@ -11,7 +11,9 @@
 
 #include <iostream>
 #include "cocos2d.h"
+#include "Map.h"
 
+using namespace std;
 using namespace cocos2d;
 
 class SelectScene :public CCLayer {
@@ -24,7 +26,7 @@ class SelectScene :public CCLayer {
   void startGame(CCObject* sender);
   CCSprite* blinkSprite(CCSprite* sprite, float speed);
   CCNode* buttonNode(const char* key, const char* thumbnail, bool pressed);
-  CCLayer* _nextScene;
+  Map* _nextMap;
  public:
   virtual bool init();
   SelectScene();
