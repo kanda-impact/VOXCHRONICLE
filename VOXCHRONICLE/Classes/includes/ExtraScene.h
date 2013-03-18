@@ -23,6 +23,7 @@ private:
   void onBackButtonPressed(CCObject* sender);
 public:
   virtual bool init();
+  virtual void onExit();
   CREATE_FUNC(ExtraScene);
 };
 
