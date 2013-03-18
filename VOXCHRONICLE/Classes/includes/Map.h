@@ -18,11 +18,12 @@
 #include "EnemyManager.h"
 #include "Skin.h"
 #include "Character.h"
+#include "IRegister.h"
 
 using namespace std;
 using namespace cocos2d;
 
-class Map :public CCObject {
+class Map :public CCObject, public IRegister {
  private:
   int _endLevel;
   int _initialLevel;
@@ -38,8 +39,9 @@ class Map :public CCObject {
   MusicSet* _wayMusic;
   MusicSet* _bossMusic;
   Skin* _skin;
-  void loadSkillTable(Character* character);
+  CCDictionary* _register;
   CCDictionary* _skillCache;
+  void loadSkillTable(Character* character);
  public:
   Map(const char* mapName);
   ~Map();

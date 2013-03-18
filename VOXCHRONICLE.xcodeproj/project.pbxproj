@@ -700,6 +700,7 @@
 		07ADDF9A16F72048007825D2 /* ExtraScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07ADDF9816F72048007825D2 /* ExtraScene.cpp */; };
 		07ADDF9E16F73518007825D2 /* DictionaryScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07ADDF9C16F73514007825D2 /* DictionaryScene.cpp */; };
 		07ADDFA116F7621F007825D2 /* paper.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDFA016F7621F007825D2 /* paper.mp3 */; };
+		07ADDFA416F784F9007825D2 /* IRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07ADDFA216F784F6007825D2 /* IRegister.cpp */; };
 		07B2200316CFCB820083B865 /* acorn01.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FE016CFCB820083B865 /* acorn01.lua */; };
 		07B2200416CFCB820083B865 /* acorn02.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FE116CFCB820083B865 /* acorn02.lua */; };
 		07B2200516CFCB820083B865 /* bat01.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FE216CFCB820083B865 /* bat01.lua */; };
@@ -1890,6 +1891,8 @@
 		07ADDF9C16F73514007825D2 /* DictionaryScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DictionaryScene.cpp; path = Classes/Scene/DictionaryScene.cpp; sourceTree = "<group>"; };
 		07ADDF9F16F75086007825D2 /* DictionaryScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryScene.h; path = Classes/includes/DictionaryScene.h; sourceTree = "<group>"; };
 		07ADDFA016F7621F007825D2 /* paper.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = paper.mp3; path = Resources/SE/paper.mp3; sourceTree = "<group>"; };
+		07ADDFA216F784F6007825D2 /* IRegister.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IRegister.cpp; path = Classes/Model/IRegister.cpp; sourceTree = "<group>"; };
+		07ADDFA316F784F8007825D2 /* IRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IRegister.h; path = Classes/Model/IRegister.h; sourceTree = "<group>"; };
 		07B21FE016CFCB820083B865 /* acorn01.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = acorn01.lua; sourceTree = "<group>"; };
 		07B21FE116CFCB820083B865 /* acorn02.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = acorn02.lua; sourceTree = "<group>"; };
 		07B21FE216CFCB820083B865 /* bat01.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bat01.lua; sourceTree = "<group>"; };
@@ -3008,6 +3011,8 @@
 				07C6467216DE11E400B29842 /* SEManager.h */,
 				07C6469016E1CDF000B29842 /* SaveData.h */,
 				07C6468D16E1CDC600B29842 /* SaveData.cpp */,
+				07ADDFA216F784F6007825D2 /* IRegister.cpp */,
+				07ADDFA316F784F8007825D2 /* IRegister.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -6232,6 +6237,7 @@
 				0754384516E3931F00802970 /* StaffRollScene.cpp in Sources */,
 				07ADDF9A16F72048007825D2 /* ExtraScene.cpp in Sources */,
 				07ADDF9E16F73518007825D2 /* DictionaryScene.cpp in Sources */,
+				07ADDFA416F784F9007825D2 /* IRegister.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

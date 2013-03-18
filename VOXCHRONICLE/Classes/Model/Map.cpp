@@ -65,6 +65,8 @@ Map::Map(const char* mapName) {
       _fixedEnemyTable->push_back(table);
     }
   }
+  _register = CCDictionary::create();
+  _register->retain();
 }
 
 Map::~Map() {
@@ -83,6 +85,7 @@ Map::~Map() {
   }
   _lua->release();
   _skin->release();
+  _register->release();
 }
 
 Level* Map::createLevel(int level, CharacterManager* manager) {

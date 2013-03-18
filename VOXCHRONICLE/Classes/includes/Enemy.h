@@ -14,6 +14,7 @@
 #include <map>
 
 #include "cocos2d.h"
+#include "IRegister.h"
 
 #include "Skill.h"
 #include "CharacterManager.h"
@@ -24,7 +25,7 @@ using namespace cocos2d;
 
 class EnemyManager;
 
-class Enemy : public CCSprite {
+class Enemy : public CCSprite, public IRegister {
 private:
   int _hp;
   int _maxHP;
@@ -43,7 +44,6 @@ private:
   void setLifeColor();
   LuaObject* _lua;
   string _scriptPath;
-  std::map<string, int>* _register;
   bool setAnimationAndFrame(const char* filePrefix, int frames, bool hasFrame);
   CCSprite* createFrameSprite(const char* filePrefix, int frames);
 public:
@@ -77,32 +77,6 @@ public:
    @return bool 技を使ったかどうかを返します
    */
   bool performSkill(CharacterManager* characterManager, EnemyManager* enemyManager);
-  
-  
-  /**
-   敵キャラのレジスタの値を取り出します
-   主にスクリプト側から数ターンに跨ぐ行動のステートを保存したりするのに使います
-   未登録の値を取り出そうとした場合は、第二引数を強制的に返します
-   @param const char* key 取り出す値のキー
-   @param int defaultValue キーが未登録だったときに返却する値
-   @return int 登録されている値
-   */
-  int getRegister(const char* key, int defaultValue);
-  
-  /**
-   敵キャラのレジスタの値を登録します
-   主にスクリプト側から利用します
-   @param const char* key
-   @param int value 登録する値
-   */
-  void setRegister(const char* key, int value);
-  
-  /**
-   あるキーを与えたとき、そのレジスタに登録済みかどうかを返します
-   @param const char* key キー
-   @return bool 登録済みかどうか
-   */
-  bool hasRegister(const char* key);
   
   /**
    現在の表示グラと枠を変えます
