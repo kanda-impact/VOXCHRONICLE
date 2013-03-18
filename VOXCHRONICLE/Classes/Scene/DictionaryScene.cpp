@@ -1,0 +1,118 @@
+//
+//  DictionaryScene.cpp
+//  VOXCHRONICLE
+//
+//  Created by giginet on 2013/3/18.
+//
+//
+
+#include "DictionaryScene.h"
+#include "Enemy.h"
+#include "LuaObject.h"
+#include "FileUtils.h"
+#include "ExtraScene.h"
+
+bool DictionaryScene::init() {
+  if (!CCLayer::init()) {
+    return false;
+  }
+  
+  LuaObject* lua = LuaObject::create("enemy.lua");
+  lua_State* L = lua->getLuaEngineWithLoad()->getLuaState();
+  lua_getglobal(L, "dictionary");
+  CCLuaValueArray* array = lua->getArray();
+  _enemies = CCArray::create();
+  _enemies->retain();
+  _enemy = NULL;
+  
+  for (CCLuaValueArrayIterator it = array->begin(); it != array->end();  ++it) {
+    CCString* string = CCString::create(it->stringValue());
+    _enemies->addObject(string);
+  }
+  
+  CCDirector* director = CCDirector::sharedDirector();
+  
+  CCSprite* background = CCSprite::create("select_background.png");
+  background->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
+  this->addChild(background);
+  
+  _nameLabel = CCLabelTTF::create("敵キャラ名", "Helvetica", 24, CCSizeMake(150, 30), kCCTextAlignmentLeft);
+  _habitatLabel = CCLabelTTF::create("生息地", "Helvetica", 16, CCSizeMake(300, 30), kCCTextAlignmentLeft, kCCVerticalTextAlignmentBottom);
+  _descriptionLabel = CCLabelTTF::create("ここに敵キャラの解説が入ります", "Helvetica", 16, CCSizeMake(450, 120), kCCTextAlignmentLeft, kCCVerticalTextAlignmentTop);
+  _nameLabel->setAnchorPoint(ccp(0.5f, 0.5f));
+  _nameLabel->setPosition(ccp(80, 140));
+  _habitatLabel->setAnchorPoint(ccp(0.5f, 0.5f));
+  _habitatLabel->setPosition(ccp(305, 140));
+  _descriptionLabel->setAnchorPoint(ccp(0.5f, 0.5f));
+  _descriptionLabel->setPosition(ccp(director->getWinSize().width / 2.0f, 65));
+  this->addChild(_nameLabel);
+  this->addChild(_habitatLabel);
+  this->addChild(_descriptionLabel);
+  
+  CCMenuItemImage* left = CCMenuItemImage::create("dictionary_cursor_left.png",
+                                                  "dictionary_cursor_left_pressed.png",
+                                                  this,
+                                                  menu_selector(DictionaryScene::onCursorButtonPressed));
+  CCMenuItemImage* right = CCMenuItemImage::create("dictionary_cursor_right.png",
+                                                  "dictionary_cursor_right_pressed.png",
+                                                  this,
+                                                  menu_selector(DictionaryScene::onCursorButtonPressed));
+  CCMenuItemImage* back = CCMenuItemImage::create("dictionary_back.png",
+                                                  "dictionary_back_pressed.png",
+                                                  this,
+                                                  menu_selector(DictionaryScene::onBackButtonPressed));
+  left->setTag(0);
+  right->setTag(1);
+  
+  this->loadEnemyByIndex(0);
+  
+  CCMenu* menu = CCMenu::create(left, right, NULL);
+  menu->setPosition(ccp(director->getWinSize().width / 2.0, 280));
+  menu->alignItemsHorizontallyWithPadding(300);
+  CCMenu* backMenu = CCMenu::create(back, NULL);
+  this->addChild(backMenu);
+  backMenu->setPosition(ccp(420, 30));
+  this->addChild(menu);
+  
+  _cursor = 0;
+  
+  return true;
+}
+
+DictionaryScene::~DictionaryScene() {
+  if (_enemy) {
+    _enemy->release();
+  }
+  _enemies->release();
+}
+
+void DictionaryScene::loadEnemyByIndex(int idx) {
+  CCString* script = (CCString*)_enemies->objectAtIndex(idx);
+  if (_enemy) {
+    this->removeChild(_enemy, true);
+    _enemy->release();
+  }
+  _enemy = Enemy::create(script->getCString());
+  _enemy->retain();
+  _enemy->setRowAndCol(1, 0);
+  CCDirector* director = CCDirector::sharedDirector();
+  _enemy->setPosition(ccp(director->getWinSize().width / 2.0f, 150));
+  this->addChild(_enemy);
+  _nameLabel->setString(_enemy->getName().c_str());
+}
+
+void DictionaryScene::onBackButtonPressed(cocos2d::CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
+  ExtraScene* layer = ExtraScene::create();
+  CCScene* scene = CCScene::create();
+  scene->addChild(layer);
+  CCTransitionCrossFade* fade = CCTransitionCrossFade::create(0.5, scene);
+  CCDirector::sharedDirector()->replaceScene(fade);
+}
+
+void DictionaryScene::onCursorButtonPressed(cocos2d::CCObject *sender) {
+  CCNode* node = (CCNode*)sender;
+  int direction = -1 + node->getTag() * 2;
+  _cursor = (_cursor + direction) % _enemies->count();
+  this->loadEnemyByIndex(_cursor);
+}

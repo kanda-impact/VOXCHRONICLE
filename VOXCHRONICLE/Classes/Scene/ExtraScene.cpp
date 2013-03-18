@@ -12,6 +12,7 @@
 #include "MainMenuScene.h"
 #include "Map.h"
 #include "StaffRollScene.h"
+#include "DictionaryScene.h"
 
 bool ExtraScene::init() {
   if (!CCLayer::init()) {
@@ -61,7 +62,6 @@ bool ExtraScene::init() {
 
 void ExtraScene::onExit() {
   CCLayer::onExit();
-  SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
 }
 
 void ExtraScene::onSoundTestButtonPressed(cocos2d::CCObject *sender) {
@@ -71,9 +71,12 @@ void ExtraScene::onAchievementButtonPressed(cocos2d::CCObject *sender) {
 }
 
 void ExtraScene::onDictionaryButtonPressed(cocos2d::CCObject *sender) {
+  DictionaryScene* scene = DictionaryScene::create();
+  this->nextScene(scene);
 }
 
 void ExtraScene::onCreditButtonPressed(cocos2d::CCObject *sender) {
+  SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   CCArray* array = CCArray::create();
   Map* map0 = new Map("001");
@@ -88,10 +91,7 @@ void ExtraScene::onCreditButtonPressed(cocos2d::CCObject *sender) {
   
   StaffRollScene* scene = new StaffRollScene(array);
   scene->autorelease();
-  CCScene* nextScene = CCScene::create();
-  nextScene->addChild(scene);
-  CCTransitionCrossFade* fade = CCTransitionCrossFade::create(0.5f, nextScene);
-  CCDirector::sharedDirector()->replaceScene(fade);
+  this->nextScene(scene);
 }
 
 void ExtraScene::onBackButtonPressed(cocos2d::CCObject *sender) {
@@ -102,4 +102,12 @@ void ExtraScene::onBackButtonPressed(cocos2d::CCObject *sender) {
   scene->addChild(layer);
   CCTransitionSlideInL* transition = CCTransitionSlideInL::create(0.25f, scene);
   CCDirector::sharedDirector()->pushScene(transition);
+}
+
+void ExtraScene::nextScene(CCLayer* layer) {
+  CCScene* scene = CCScene::create();
+  scene->addChild(layer);
+  CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
+  CCDirector::sharedDirector()->replaceScene(transition);
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
 }

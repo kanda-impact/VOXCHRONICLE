@@ -55,3 +55,13 @@ function getColor(hp)
   key = math.min(length, key) -- keyが長さ以上の時、バグるのでkeyを最大値にします
   return colors[key][1], colors[key][2], colors[key][3] -- key番目のr, g, bを1こずつ返します
 end
+
+--[[ 
+モンスター図鑑で利用するモンスターを返してください 
+本当は種族を返却させたかったけど、種族だとグラの描画が大変面倒だったのでモンスターを返すようにしてください
+]]
+dictionary = {
+  "acorn01",
+  "bat01",
+  "cryst01"
+}
