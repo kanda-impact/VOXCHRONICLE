@@ -1073,6 +1073,9 @@
 		07EDA67516EFF9FE00A4BAC9 /* Ceres78_3-C_drum0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA67416EFF9FE00A4BAC9 /* Ceres78_3-C_drum0.caf */; };
 		07F0D799163C1EC1005592AF /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F0D797163C1EC0005592AF /* TitleScene.cpp */; };
 		07F166FE16DDD8D8007DCB3F /* space_test.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F166FD16DDD8D8007DCB3F /* space_test.lua */; };
+		07F350F916F8846F00F95FDD /* make_glue.sh in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F616F8846F00F95FDD /* make_glue.sh */; };
+		07F350FA16F8846F00F95FDD /* tolua++ in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F716F8846F00F95FDD /* tolua++ */; };
+		07F350FB16F8846F00F95FDD /* VOXCHRONICLE.pkg in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F816F8846F00F95FDD /* VOXCHRONICLE.pkg */; };
 		07F40F10163D0FC0009FC104 /* Music.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F40F0F163D0FC0009FC104 /* Music.cpp */; };
 		07F88F1816DB842100FE6B2B /* endingC.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F88F1716DB842100FE6B2B /* endingC.mp3 */; };
 		07F88F1B16DB8FF600FE6B2B /* jfish.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F88F1916DB8FF600FE6B2B /* jfish.lua */; };
@@ -2586,6 +2589,9 @@
 		07F0D797163C1EC0005592AF /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleScene.cpp; path = Classes/Scene/TitleScene.cpp; sourceTree = "<group>"; };
 		07F0D79A163C1EFD005592AF /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = Classes/includes/TitleScene.h; sourceTree = "<group>"; };
 		07F166FD16DDD8D8007DCB3F /* space_test.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = space_test.lua; path = map/space_test.lua; sourceTree = "<group>"; };
+		07F350F616F8846F00F95FDD /* make_glue.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = make_glue.sh; sourceTree = "<group>"; };
+		07F350F716F8846F00F95FDD /* tolua++ */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "tolua++"; sourceTree = "<group>"; };
+		07F350F816F8846F00F95FDD /* VOXCHRONICLE.pkg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VOXCHRONICLE.pkg; sourceTree = "<group>"; };
 		07F40F0F163D0FC0009FC104 /* Music.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Music.cpp; path = Classes/VISS/Music.cpp; sourceTree = "<group>"; };
 		07F470721691AD340062975F /* EnemySkill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemySkill.h; path = Classes/includes/EnemySkill.h; sourceTree = "<group>"; };
 		07F470731691AD340062975F /* MusicSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicSet.h; path = Classes/includes/MusicSet.h; sourceTree = "<group>"; };
@@ -3268,6 +3274,7 @@
 			children = (
 				076F1A6115EB94750013A45E /* Resources */,
 				076F1A7B15EB94750013A45E /* libs */,
+				07F350F516F8846F00F95FDD /* lua_glue */,
 				076F1D3015EB94780013A45E /* ios */,
 				076F1D3915EB94780013A45E /* Classes */,
 				076F1D2E15EB94780013A45E /* Supporting Files */,
@@ -4881,6 +4888,16 @@
 			name = "Ceres78_3-C";
 			sourceTree = "<group>";
 		};
+		07F350F516F8846F00F95FDD /* lua_glue */ = {
+			isa = PBXGroup;
+			children = (
+				07F350F616F8846F00F95FDD /* make_glue.sh */,
+				07F350F716F8846F00F95FDD /* tolua++ */,
+				07F350F816F8846F00F95FDD /* VOXCHRONICLE.pkg */,
+			);
+			path = lua_glue;
+			sourceTree = "<group>";
+		};
 		07F933DF16C16AFA00A2F1CA /* ttn1 */ = {
 			isa = PBXGroup;
 			children = (
@@ -5920,6 +5937,9 @@
 				B0AA405216F58D2300674A2A /* typhoon3A2.lua in Resources */,
 				B0AA405416F58E0100674A2A /* mask3A11.lua in Resources */,
 				07ADDFA116F7621F007825D2 /* paper.mp3 in Resources */,
+				07F350F916F8846F00F95FDD /* make_glue.sh in Resources */,
+				07F350FA16F8846F00F95FDD /* tolua++ in Resources */,
+				07F350FB16F8846F00F95FDD /* VOXCHRONICLE.pkg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

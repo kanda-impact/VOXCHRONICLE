@@ -51,7 +51,8 @@ void LuaObject::init(const char* scriptName, const char* className) {
   _className = className;
   _ccObjectPool = CCArray::create();
   _ccObjectPool->retain();
-  tolua_voxchronicle_open(_engine->getLuaState());
+  tolua_Cocos2d_open(_engine->getLuaState());
+  tolua_VOXCHRONICLE_open(_engine->getLuaState());
 }
 
 LuaObject::~LuaObject() {

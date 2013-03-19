@@ -1,31 +1,8 @@
-//
-//  LuaBind.h
-//  VOXCHRONICLE
-//
-//  Created by giginet on 2012/10/6.
-//
-//
+/*
+** Lua binding: VOXCHRONICLE
+** Generated automatically by tolua++-1.0.92 on Tue Mar 19 21:38:27 2013.
+*/
 
-#ifndef __VOXCHRONICLE__LuaBind__
-#define __VOXCHRONICLE__LuaBind__
+/* Exported function */
+TOLUA_API int  tolua_VOXCHRONICLE_open (lua_State* tolua_S);
 
-#include <iostream>
-
-extern "C" {
-#include "tolua++.h"
-#include "tolua_fix.h"
-}
-
-#include <map>
-#include <string>
-#include "tolua_fix.h"
-#include "cocos2d.h"
-#include "CCLuaEngine.h"
-#include "SimpleAudioEngine.h"
-
-using namespace cocos2d;
-using namespace CocosDenshion;
-
-TOLUA_API int tolua_voxchronicle_open(lua_State* tolua_S);
-
-#endif /* defined(__VOXCHRONICLE__LuaBind__) */
