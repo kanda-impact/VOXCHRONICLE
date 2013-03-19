@@ -10,6 +10,9 @@
 #include "FileUtils.h"
 #include "SimpleAudioEngine.h"
 #include "MainMenuScene.h"
+#include "LuaObject.h"
+#include "Map.h"
+#include "MainScene.h"
 
 bool TutorialLayer::init() {
   if (!CCLayer::init()) {
@@ -57,6 +60,27 @@ bool TutorialLayer::init() {
 }
 
 void TutorialLayer::onTutorialButtonPressed(cocos2d::CCObject *sender) {
+  SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/easy_decide.mp3").c_str());
+  LuaObject* lua = LuaObject::create("setting");
+  int tag = ((CCNode*)sender)->getTag();
+  CCLuaValueArray* array = lua->getArray("tutorials");
+  int i = 0;
+  for (CCLuaValueArrayIterator it = array->begin(); it != array->end(); ++it) {
+    if (i == tag) {
+      string mapName = it->stringValue();
+      Map* map = new Map(mapName.c_str());
+      MainScene* layer = new MainScene();
+      layer->autorelease();
+      layer->init(map);
+      CCScene* scene = CCScene::create();
+      scene->addChild(layer);
+      CCTransitionFade* fade = CCTransitionFade::create(0.5f, scene);
+      CCDirector::sharedDirector()->pushScene(fade);
+      return;
+    }
+    ++i;
+  }
 }
 
 void TutorialLayer::onBackButtonPressed(cocos2d::CCObject *sender) {
