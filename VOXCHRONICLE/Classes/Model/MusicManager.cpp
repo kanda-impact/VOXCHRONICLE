@@ -171,16 +171,21 @@ string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& perform
   if (skill) {
     _characterManager->setWaitTurn(_characterManager->getWaitTurn() + 1);
     if (_characterManager->getWaitTurn() == skill->getTurn()) {
-      string trackName = "";
       if (_characterManager->getLastSkill() &&
           string(_characterManager->getLastSkill()->getIdentifier()) != string(skill->getIdentifier())) {
         _characterManager->setRepeatCount(0);
       }
-      trackName = this->buildTrackName(skill->getIdentifier().c_str(), skill, _characterManager->getRepeatCount());
-      if (skill->isLoop()) {
-        _characterManager->setRepeatCount((_characterManager->getRepeatCount() + 1) % skill->getMaxRepeat());
+      if (_characterManager->getLastSkill() == NULL || _characterManager->getLastSkill()->getIdentifier() != skill->getIdentifier()) {
+        // 前のターンがwaitだった場合、カウンターをリセット
+        _characterManager->setRepeatCount(0);
       } else {
-        _characterManager->setRepeatCount(min(_characterManager->getRepeatCount() + 1, skill->getMaxRepeat() - 1));
+        // そうじゃなかったら+1
+        _characterManager->setRepeatCount(_characterManager->getRepeatCount() + 1);
+      }
+      if (skill->isLoop()) {
+        _characterManager->setRepeatCount((_characterManager->getRepeatCount()) % skill->getMaxRepeat());
+      } else {
+        _characterManager->setRepeatCount(min(_characterManager->getRepeatCount(), skill->getMaxRepeat() - 1));
       }
       _characterManager->setLastSkill(skill);
       _characterManager->setCurrentSkill(NULL);
@@ -210,7 +215,7 @@ string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& perform
       if (performeType == SkillPerformTypeFailure || isMiss) { // 失敗したとき、もしくはピロったとき、miss音を返す
         return this->buildTrackName("miss", NULL, -1);
       } else {
-        return trackName;
+        return this->buildTrackName(skill->getIdentifier().c_str(), skill, _characterManager->getRepeatCount());
       }
     } else {
       _characterManager->setCurrentSkill(skill);
