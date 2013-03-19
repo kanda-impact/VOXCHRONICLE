@@ -47,8 +47,8 @@ bool TutorialLayer::init() {
   
   tutorialMenu->alignItemsVerticallyWithPadding(40);
   
-  tutorialMenu->setPosition(ccp(250, center.y));
-  backMenu->setPosition(ccp(480 - 17.5, center.y));
+  tutorialMenu->setPosition(ccp(225, center.y));
+  backMenu->setPosition(ccp(480 - 40, center.y));
   
   this->addChild(tutorialMenu);
   this->addChild(backMenu);
