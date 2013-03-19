@@ -11,7 +11,8 @@ Map = {
   getEnemyTable = function(level)
     return {leaf02 = 3, acorn02 = 2, flower02 = 2, doku01 = 1}
   end,
-  onLevel = function(level, characterManager, enemyManager)
+  onLevelUp = function(self, characterManager, enemyManager)
+    local level = characterManager:getLevel()
   end,
   getEnemyPopRate = function(level)
     return 1.0

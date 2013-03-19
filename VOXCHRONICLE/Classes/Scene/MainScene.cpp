@@ -217,6 +217,7 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
       _effectLayer->addCutin(NULL, EffectLayerCutinTypeCastOff, _musicManager->getMusic()->getCurrentMainTrack()->getDuration());
     }
   }
+  _map->performOnBack(_characterManager, _enemyManager);
 }
 
 void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track *nextTrack, int trackNumber) {
@@ -227,7 +228,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       _musicManager->setIntroCount(0);
       _skin->getController()->setEnable(true);
       if (_level->getLevel() == _map->getInitialLevel()) {
-        _map->performOnLevel(_level->getLevel(), _characterManager, _enemyManager); // 初期レベルの時、スクリプトを呼んでやる
+        _map->performOnLevel(_characterManager, _enemyManager); // 初期レベルの時、スクリプトを呼んでやる
       }
       _state = VCStateMain;
     }
@@ -472,7 +473,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/levelup.mp3").c_str());
       _musicManager->setIntroCount(0);
       _preLevel = currentLevel;
-      _map->performOnLevel(currentLevel, _characterManager, _enemyManager); // スクリプトを呼んでやる
+      _map->performOnLevel(_characterManager, _enemyManager); // スクリプトを呼んでやる
       _characterManager->updateParameters();
       _level = _map->createLevel(currentLevel, _characterManager);
       _enemyManager->setLevel(_level);
@@ -540,6 +541,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
   
   // マーカーを再同期
   _skin->getStatusLayer()->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
+  _map->performOnFinishPlaying(_characterManager, _enemyManager);
 }
 
 void MainScene::registerWithTouchDispatcher() {

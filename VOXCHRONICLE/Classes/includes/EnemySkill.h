@@ -23,6 +23,7 @@ class EnemySkill :public CCObject {
   string _name;
   LuaObject* _lua;
  public:
+  string getName();
   EnemySkill(const char* identifier);
   ~EnemySkill();
   void performSkill(Enemy* user, CharacterManager* characterManager, EnemyManager* enemyManager);

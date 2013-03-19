@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Tue Mar 19 21:38:27 2013.
+** Generated automatically by tolua++-1.0.92 on Tue Mar 19 22:21:55 2013.
 */
 
 #ifndef __cplusplus
@@ -27,6 +27,7 @@ TOLUA_API int  tolua_VOXCHRONICLE_open (lua_State* tolua_S);
 #include "Controller.h"
 #include "StatusLayer.h"
 #include "EnemySkill.h"
+#include "Map.h"
 
 /* function to release collected object via destructor */
 #ifdef __cplusplus
@@ -44,21 +45,22 @@ static int tolua_collect_DamageType (lua_State* tolua_S)
 static void tolua_reg_types (lua_State* tolua_S)
 {
  tolua_usertype(tolua_S,"EnemySkill");
- tolua_usertype(tolua_S,"DamageType");
- tolua_usertype(tolua_S,"EnemyManager");
+ tolua_usertype(tolua_S,"CCLayer");
  tolua_usertype(tolua_S,"IRegister");
- tolua_usertype(tolua_S,"CCNode");
- tolua_usertype(tolua_S,"PopupWindow");
  tolua_usertype(tolua_S,"Skill");
  tolua_usertype(tolua_S,"Enemy");
- tolua_usertype(tolua_S,"CCRect");
  tolua_usertype(tolua_S,"Character");
+ tolua_usertype(tolua_S,"MessageManager");
+ tolua_usertype(tolua_S,"CCNode");
+ tolua_usertype(tolua_S,"EffectLayer");
+ tolua_usertype(tolua_S,"Map");
+ tolua_usertype(tolua_S,"DamageType");
+ tolua_usertype(tolua_S,"PopupWindow");
  tolua_usertype(tolua_S,"CharacterManager");
  tolua_usertype(tolua_S,"CCSprite");
- tolua_usertype(tolua_S,"MessageManager");
  tolua_usertype(tolua_S,"CCObject");
- tolua_usertype(tolua_S,"EffectLayer");
- tolua_usertype(tolua_S,"CCLayer");
+ tolua_usertype(tolua_S,"EnemyManager");
+ tolua_usertype(tolua_S,"CCRect");
 }
 
 /* method: getPower of class  Skill */
@@ -1675,6 +1677,183 @@ static int tolua_VOXCHRONICLE_IRegister_hasRegister00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: getName of class  EnemySkill */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_EnemySkill_getName00
+static int tolua_VOXCHRONICLE_EnemySkill_getName00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"EnemySkill",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  EnemySkill* self = (EnemySkill*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getName'", NULL);
+#endif
+  {
+   string tolua_ret = (string)  self->getName();
+   tolua_pushcppstring(tolua_S,(const char*)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getName'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: getMaxLevel of class  Map */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_Map_getMaxLevel00
+static int tolua_VOXCHRONICLE_Map_getMaxLevel00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"Map",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  Map* self = (Map*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getMaxLevel'", NULL);
+#endif
+  {
+   int tolua_ret = (int)  self->getMaxLevel();
+   tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getMaxLevel'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: getInitialLevel of class  Map */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_Map_getInitialLevel00
+static int tolua_VOXCHRONICLE_Map_getInitialLevel00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"Map",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  Map* self = (Map*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getInitialLevel'", NULL);
+#endif
+  {
+   int tolua_ret = (int)  self->getInitialLevel();
+   tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getInitialLevel'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: getName of class  Map */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_Map_getName00
+static int tolua_VOXCHRONICLE_Map_getName00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"Map",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  Map* self = (Map*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getName'", NULL);
+#endif
+  {
+   string tolua_ret = (string)  self->getName();
+   tolua_pushcppstring(tolua_S,(const char*)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getName'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: isBossStage of class  Map */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_Map_isBossStage00
+static int tolua_VOXCHRONICLE_Map_isBossStage00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"Map",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  Map* self = (Map*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'isBossStage'", NULL);
+#endif
+  {
+   bool tolua_ret = (bool)  self->isBossStage();
+   tolua_pushboolean(tolua_S,(bool)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'isBossStage'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* get function: __IRegister__ of class  Map */
+#ifndef TOLUA_DISABLE_tolua_get_Map___IRegister__
+static int tolua_get_Map___IRegister__(lua_State* tolua_S)
+{
+  Map* self = (Map*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in accessing variable '__IRegister__'",NULL);
+#endif
+#ifdef __cplusplus
+   tolua_pushusertype(tolua_S,(void*)static_cast<IRegister*>(self), "IRegister");
+#else
+   tolua_pushusertype(tolua_S,(void*)((IRegister*)self), "IRegister");
+#endif
+ return 1;
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* Open function */
 TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
 {
@@ -1807,6 +1986,15 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"EnemySkill","EnemySkill","CCObject",NULL);
   tolua_beginmodule(tolua_S,"EnemySkill");
+   tolua_function(tolua_S,"getName",tolua_VOXCHRONICLE_EnemySkill_getName00);
+  tolua_endmodule(tolua_S);
+  tolua_cclass(tolua_S,"Map","Map","CCObject",NULL);
+  tolua_beginmodule(tolua_S,"Map");
+   tolua_function(tolua_S,"getMaxLevel",tolua_VOXCHRONICLE_Map_getMaxLevel00);
+   tolua_function(tolua_S,"getInitialLevel",tolua_VOXCHRONICLE_Map_getInitialLevel00);
+   tolua_function(tolua_S,"getName",tolua_VOXCHRONICLE_Map_getName00);
+   tolua_function(tolua_S,"isBossStage",tolua_VOXCHRONICLE_Map_isBossStage00);
+   tolua_variable(tolua_S,"__IRegister__",tolua_get_Map___IRegister__,NULL);
   tolua_endmodule(tolua_S);
  tolua_endmodule(tolua_S);
  return 1;

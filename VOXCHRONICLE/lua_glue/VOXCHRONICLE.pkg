@@ -12,6 +12,7 @@ $#include "IRegister.h"
 $#include "Controller.h"
 $#include "StatusLayer.h"
 $#include "EnemySkill.h"
+$#include "Map.h"
 
 #define MAX_ROW
 
@@ -164,4 +165,12 @@ class IRegister {
 };
 
 class EnemySkill : public CCObject {
+	string getName();
+};
+
+class Map : public CCObject, public IRegister {
+	int getMaxLevel();
+	int getInitialLevel();
+	string getName();
+	bool isBossStage();
 };

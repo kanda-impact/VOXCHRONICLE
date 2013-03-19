@@ -39,9 +39,9 @@ class Map :public CCObject, public IRegister {
   MusicSet* _wayMusic;
   MusicSet* _bossMusic;
   Skin* _skin;
-  CCDictionary* _register;
   CCDictionary* _skillCache;
   void loadSkillTable(Character* character);
+  void performFunction(const char* function, CharacterManager* characterManager, EnemyManager* enemyManager);
  public:
   Map(const char* mapName);
   ~Map();
@@ -59,7 +59,9 @@ class Map :public CCObject, public IRegister {
   MusicSet* getWayMusic();
   MusicSet* getBossMusic();
   MusicSet* getCurrentMusic(Level* level);
-  void performOnLevel(int level, CharacterManager* characterManager, EnemyManager* enemyManager);
+  void performOnLevel(CharacterManager* characterManager, EnemyManager* enemyManager);
+  void performOnFinishPlaying(CharacterManager* characterManager, EnemyManager* enemyManager);
+  void performOnBack(CharacterManager* characterManager, EnemyManager* enemyManager);
   Skin* getSkin();
 };
 
