@@ -91,6 +91,9 @@ enum {
 
 class Skill :public CCObject {
 	int getPower(CharacterManager* manager);
+	string getIdentifier();
+	string getName();
+	int getMP();
 };
 
 class Enemy : public CCSprite, public IRegister {
@@ -133,6 +136,8 @@ class CharacterManager : public CCObject {
 	Character* getCurrentCharacter();
 	int getRepeatCount();
 	void setRepeatCount(int repeat);
+	Skill* getLastSkill();
+	int getExp();
 };
 
 class EnemyManager : public CCLayer {

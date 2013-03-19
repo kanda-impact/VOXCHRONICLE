@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Tue Mar 19 22:21:55 2013.
+** Generated automatically by tolua++-1.0.92 on Tue Mar 19 22:37:33 2013.
 */
 
 #ifndef __cplusplus
@@ -92,6 +92,102 @@ static int tolua_VOXCHRONICLE_Skill_getPower00(lua_State* tolua_S)
 #ifndef TOLUA_RELEASE
  tolua_lerror:
  tolua_error(tolua_S,"#ferror in function 'getPower'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: getIdentifier of class  Skill */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_Skill_getIdentifier00
+static int tolua_VOXCHRONICLE_Skill_getIdentifier00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"Skill",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  Skill* self = (Skill*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getIdentifier'", NULL);
+#endif
+  {
+   string tolua_ret = (string)  self->getIdentifier();
+   tolua_pushcppstring(tolua_S,(const char*)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getIdentifier'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: getName of class  Skill */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_Skill_getName00
+static int tolua_VOXCHRONICLE_Skill_getName00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"Skill",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  Skill* self = (Skill*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getName'", NULL);
+#endif
+  {
+   string tolua_ret = (string)  self->getName();
+   tolua_pushcppstring(tolua_S,(const char*)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getName'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: getMP of class  Skill */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_Skill_getMP00
+static int tolua_VOXCHRONICLE_Skill_getMP00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"Skill",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  Skill* self = (Skill*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getMP'", NULL);
+#endif
+  {
+   int tolua_ret = (int)  self->getMP();
+   tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getMP'.",&tolua_err);
  return 0;
 #endif
 }
@@ -1207,6 +1303,70 @@ static int tolua_VOXCHRONICLE_CharacterManager_setRepeatCount00(lua_State* tolua
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: getLastSkill of class  CharacterManager */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_CharacterManager_getLastSkill00
+static int tolua_VOXCHRONICLE_CharacterManager_getLastSkill00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CharacterManager",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  CharacterManager* self = (CharacterManager*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getLastSkill'", NULL);
+#endif
+  {
+   Skill* tolua_ret = (Skill*)  self->getLastSkill();
+    tolua_pushusertype(tolua_S,(void*)tolua_ret,"Skill");
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getLastSkill'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: getExp of class  CharacterManager */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_CharacterManager_getExp00
+static int tolua_VOXCHRONICLE_CharacterManager_getExp00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CharacterManager",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  CharacterManager* self = (CharacterManager*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getExp'", NULL);
+#endif
+  {
+   int tolua_ret = (int)  self->getExp();
+   tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getExp'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* method: nextTurn of class  EnemyManager */
 #ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_EnemyManager_nextTurn00
 static int tolua_VOXCHRONICLE_EnemyManager_nextTurn00(lua_State* tolua_S)
@@ -1911,6 +2071,9 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
   tolua_cclass(tolua_S,"Skill","Skill","CCObject",NULL);
   tolua_beginmodule(tolua_S,"Skill");
    tolua_function(tolua_S,"getPower",tolua_VOXCHRONICLE_Skill_getPower00);
+   tolua_function(tolua_S,"getIdentifier",tolua_VOXCHRONICLE_Skill_getIdentifier00);
+   tolua_function(tolua_S,"getName",tolua_VOXCHRONICLE_Skill_getName00);
+   tolua_function(tolua_S,"getMP",tolua_VOXCHRONICLE_Skill_getMP00);
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"Enemy","Enemy","CCSprite",NULL);
   tolua_beginmodule(tolua_S,"Enemy");
@@ -1954,6 +2117,8 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
    tolua_function(tolua_S,"getCurrentCharacter",tolua_VOXCHRONICLE_CharacterManager_getCurrentCharacter00);
    tolua_function(tolua_S,"getRepeatCount",tolua_VOXCHRONICLE_CharacterManager_getRepeatCount00);
    tolua_function(tolua_S,"setRepeatCount",tolua_VOXCHRONICLE_CharacterManager_setRepeatCount00);
+   tolua_function(tolua_S,"getLastSkill",tolua_VOXCHRONICLE_CharacterManager_getLastSkill00);
+   tolua_function(tolua_S,"getExp",tolua_VOXCHRONICLE_CharacterManager_getExp00);
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"EnemyManager","EnemyManager","CCLayer",NULL);
   tolua_beginmodule(tolua_S,"EnemyManager");
