@@ -111,6 +111,12 @@ int Enemy::damage(Skill* skill, CharacterManager* characterManager, DamageType& 
   // ToDo 属性によるダメージ軽減とかもこの辺に載せてやる
   float damage = floor(0.5 + skill->getPower(characterManager));
   
+  // 無効化の処理
+  if (!this->getSpecies()->isEnableSkill(skill)) {
+    damageType = DamageTypeDisable;
+    return 0;
+  }
+  
   // アイテムの処理
   if ((_item == EnemyItemShield && skill->getType() == SkillTypePhysical) ||
       (_item == EnemyItemBarrier && skill->getType() == SkillTypeMagical)) {

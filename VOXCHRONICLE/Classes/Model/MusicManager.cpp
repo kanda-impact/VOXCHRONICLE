@@ -192,20 +192,18 @@ string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& perform
       _characterManager->setWaitTurn(0);
       
       performeType = SkillPerformTypeSuccess;
-      bool isMiss = true;
       // 攻撃ミスってたら失敗扱いに
       CCArray* targets = _enemyManager->getTargets(skill);
+      bool isMiss = targets->count() > 0;
       if (targets->count() > 0) {
         for (int i = 0; i < targets->count(); ++i) {
           Enemy* enemy = (Enemy*)targets->objectAtIndex(i);
           DamageType damageType = DamageTypeNone;
           enemy->damage(skill, _characterManager, damageType, true); // ダメージは与えずに結果だけ取り出す
-          if (damageType != DamageTypePhysicalInvalid && damageType != DamageTypeMagicalInvalid && damageType != DamageTypeNoDamage) {
+          if (damageType != DamageTypePhysicalInvalid && damageType != DamageTypeMagicalInvalid && damageType != DamageTypeNoDamage && damageType != DamageTypeDisable) {
             isMiss = false;
           }
         }
-      } else {
-        isMiss = false;
       }
       if (skill->getMP() > _characterManager->getMP()) { // MP足りてないとき、失敗に
         performeType = SkillPerformTypeFailure;
