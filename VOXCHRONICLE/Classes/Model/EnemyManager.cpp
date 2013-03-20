@@ -427,9 +427,17 @@ CCPoint& EnemyManager::calcLinePosition(int row, int col) {
 }
 
 void EnemyManager::removeAllEnemies() {
-  CCObject* obj = NULL;
-  CCARRAY_FOREACH(this->getEnemies(), obj) {
-    Enemy* enemy = (Enemy*)obj;
+  while (this->getEnemies() && this->getEnemies()->count() > 0) {
+    Enemy* enemy = (Enemy*)this->getEnemies()->objectAtIndex(0);
     this->removeEnemy(enemy);
+  }
+}
+
+void EnemyManager::removeAllNormalEnemies() {
+  while (this->getEnemies() && this->getEnemies()->count() > 0) {
+    Enemy* enemy = (Enemy*)this->getEnemies()->objectAtIndex(0);
+    if (enemy != this->getBoss()) {
+      this->removeEnemy(enemy);
+    }
   }
 }

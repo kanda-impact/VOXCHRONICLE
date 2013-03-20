@@ -325,7 +325,8 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     if (count == 2) { // 3小節目
       _enemyManager->removeEnemy(_enemyManager->getBoss());
       _enemyManager->setBoss(NULL);
-      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("explosion.mp3").c_str());
+      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("explosion.mp3").c_str()); // 爆発
+      _enemyManager->removeAllNormalEnemies(); // ついでに雑魚キャラ全消去
     }
   } else if (_state == VCStateMapSelect) {
     Map* nextMap = _mapSelector->getSelectedMap();
@@ -681,7 +682,6 @@ void MainScene::changeMap(Map* nextMap) {
   _map = nextMap;
   _level = nextMap->createInitialLevel(_characterManager); // レベルを生成する
   _enemyManager->setLevel(_level); // レベルをセット
-  _enemyManager->removeAllEnemies();
   _enemyManager->removeAllEnemiesQueue(); // キューを初期化
   _mapTurnCount = 0; // マップカウント0に戻す
   // 背景画像を設置
@@ -781,6 +781,7 @@ void MainScene::gotoNextStage() {
 void MainScene::onFinishTracksCompleted() {
   if (_state == VCStateQTEFinish) { // QTEFinishのとき
     // おそらくボス撃破後なので、エンディングに移行します
+    _enemyManager->removeAllNormalEnemies(); // 雑魚キャラを全滅させます
     string endingScript = _map->getEndingName();
     CCAssert(endingScript.length() != 0, "Ending Script is not defined.");
     _musicManager->getMusic()->stop();
@@ -788,7 +789,7 @@ void MainScene::onFinishTracksCompleted() {
     endingLayer->autorelease();
     CCScene* ending = CCScene::create();
     ending->addChild(endingLayer);
-    CCTransitionFade* fade = CCTransitionFade::create(5.0f, ending, ccc3(255, 255, 255));
+    CCTransitionFade* fade = CCTransitionFade::create(7.0f, ending, ccc3(255, 255, 255));
     CCDirector::sharedDirector()->replaceScene(fade);
   } else if (_map->isBossStage() && _level->getLevel() == _map->getMaxLevel()) { // ボスステージで、現在が最高レベルの時
     // ボス戦を開始します

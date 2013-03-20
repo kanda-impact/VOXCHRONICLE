@@ -159,7 +159,15 @@ class EnemyManager :public CCLayer {
   static float calcScale(float row);
   static CCPoint& calcLinePosition(int row, int col);
   
+  /**
+   ボス含めて全滅させます
+   */
   void removeAllEnemies();
+  
+  /**
+   ボス以外の敵を消します
+   */
+  void removeAllNormalEnemies();
 
   CREATE_FUNC(EnemyManager)
 };
