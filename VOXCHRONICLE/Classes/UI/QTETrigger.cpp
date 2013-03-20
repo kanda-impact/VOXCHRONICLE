@@ -7,6 +7,7 @@
 //
 
 #include "QTETrigger.h"
+#include "BlinkLayer.h"
 #include "FileUtils.h"
 
 QTETrigger::QTETrigger(EnemyManager* manager) {
@@ -28,6 +29,10 @@ QTETrigger::~QTETrigger() {
 
 void QTETrigger::onButtonPressed(CCObject* sender) {
   _pressed = true;
+  BlinkLayer* bLayer = new BlinkLayer(ccc4(255, 255, 255, 255), 0.1f);
+  bLayer->autorelease();
+  _enemyManager->addChild(bLayer);
+  
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/qte_decide.mp3").c_str());
   //this->getParent()->removeChild(this, true);
 }

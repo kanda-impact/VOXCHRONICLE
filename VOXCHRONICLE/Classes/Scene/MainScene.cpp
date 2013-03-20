@@ -647,7 +647,7 @@ void MainScene::addDamageEffect() {
   if (sumDamage > 0) {
     // 画面点滅させて音を鳴らす
     SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/damage.mp3").c_str());
-    BlinkLayer* bLayer = new BlinkLayer(ccc4(255, 0, 0, 255));
+    BlinkLayer* bLayer = new BlinkLayer(ccc4(255, 0, 0, 255), 0.05f);
     bLayer->autorelease();
     this->addChild(bLayer, MainSceneZOrderUI);
     // ついでに画面もゆらしちゃう
