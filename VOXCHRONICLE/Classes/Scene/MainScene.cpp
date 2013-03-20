@@ -487,7 +487,9 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     }
     
     // 床を更新する
-    _skin->getGround()->nextFrame();
+    if (!this->isBossBattle()) {
+      _skin->getGround()->nextFrame();
+    }
     
     // ターンカウントを進める
     ++_turnCount;
@@ -850,4 +852,8 @@ void MainScene::changeMusic(MusicSet* mSet, bool enablePreload) {
 
 VCState MainScene::getState () {
   return _state;
+}
+
+bool MainScene::isBossBattle() {
+  return _map && _map->isBossStage() && _level->getLevel() == _map->getMaxLevel();
 }

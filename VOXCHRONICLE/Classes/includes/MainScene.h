@@ -96,6 +96,7 @@ class MainScene : public CCLayer {
  public:
   virtual bool init(Map* map);
   virtual bool init();
+  bool isBossBattle();
   ~MainScene();
   void setPause(bool pause);
   Music* getMusic();
