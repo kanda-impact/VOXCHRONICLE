@@ -767,7 +767,7 @@ void MainScene::gotoNextStage() {
 void MainScene::onFinishTracksCompleted() {
   if (_state == VCStateQTEFinish) { // QTEFinishのとき
     // おそらくボス撃破後なので、エンディングに移行します
-    _enemyManager->removeAllNormalEnemies(); // 雑魚キャラを全滅させます
+    _enemyManager->removeAllNormalEnemies();
     string endingScript = _map->getEndingName();
     CCAssert(endingScript.length() != 0, "Ending Script is not defined.");
     _musicManager->getMusic()->stop();
@@ -782,6 +782,7 @@ void MainScene::onFinishTracksCompleted() {
     this->startBossBattle();
   } else if (_level->getLevel() >= _map->getMaxLevel() + 1 && _map->getNextMaps()->count() > 0) { // 最高レベルの次の時で、次のマップが存在するとき
     // 次のステージに移動します
+    _enemyManager->removeAllNormalEnemies(); // 雑魚キャラを全滅させます
     this->gotoNextStage();
   }
 }
