@@ -105,7 +105,7 @@ void DictionaryScene::loadEnemyByIndex(int idx) {
 }
 
 void DictionaryScene::onBackButtonPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cancel.mp3").c_str());
   ExtraScene* layer = ExtraScene::create();
   CCScene* scene = CCScene::create();
   scene->addChild(layer);
