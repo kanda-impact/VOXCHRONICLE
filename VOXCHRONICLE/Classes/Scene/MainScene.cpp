@@ -287,23 +287,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       Enemy* boss = _enemyManager->getBoss();
       // 攻撃エフェクト
       CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/qte_attack.mp3").c_str());
-      CCSprite* effect = CCSprite::create((string("attack") + string("0.png")).c_str());
-      CCAnimation* animation = CCAnimation::create();
-      CCRect rect;
-      CCPoint position = ccpAdd(boss->getPosition(), ccp(0, boss->getContentSize().height * boss->getCurrentScale(boss->getRow()) * 0.5f));
-      rect = CCRectMake(0, 0, 400, 400);
-      effect->setPosition(position);
-      effect->setScale(boss->getScale());
-      for (int i = 0; i < 4; ++i) {
-        const char* frameName = (string("attack") + lexical_cast<string>(i) + string(".png")).c_str();
-        animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath(frameName).c_str(), rect));
-      }
-      animation->setDelayPerUnit(2.0 / 60.0);
-      effect->runAction(CCSequence::create(CCAnimate::create(animation),
-                                           CCFadeOut::create(0.1f),
-                                           CCRemoveFromParentAction::create(),
-                                           NULL));
-      _enemyManager->addChild(effect, MainSceneZOrderEffect);
+      _effectLayer->addEffectOnEnemy(_enemyManager->getBoss(), "qte_attack", 13, CCRectMake(0, 0, 200, 200));
       // ぷるぷるさせる
       CCArray* actions = CCArray::create();
       float duration = _musicManager->getMusic()->getCurrentMainTrack()->getDuration();
