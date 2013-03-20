@@ -185,6 +185,34 @@ void EffectLayer::addCutin(Skill *skill, EffectLayerCutinType cutinType, float d
   }
 }
 
+void EffectLayer::addQTEAttack(Enemy *boss) {
+  // QTE用攻撃エフェクト
+  // 同じコマをループさせるという特殊なことをしているため、ハードコーディング
+  const char* prefix = "qte_attack";
+  CCSprite* effect = CCSprite::create((string(prefix) + string("0.png")).c_str());
+  CCAnimation* animation = CCAnimation::create();
+  CCPoint position = ccpAdd(boss->getPosition(), ccp(0, boss->getContentSize().height * boss->getCurrentScale(boss->getRow()) * 0.5f));
+  effect->setScale(boss->getScale());
+  effect->setPosition(position);
+  CCRect rect = CCRectMake(0, 0, 200, 200);
+  for (int i = 0; i < 5; ++i) {
+    const char* frameName = (string(prefix) + lexical_cast<string>(i) + string(".png")).c_str();
+    animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath(frameName).c_str(), rect));
+  }
+  for (int j = 0; j < 4; ++j) {
+    for (int i = 6; i < 13; ++i) {
+      const char* frameName = (string(prefix) + lexical_cast<string>(i) + string(".png")).c_str();
+      animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath(frameName).c_str(), rect));
+    }
+  }
+  animation->setDelayPerUnit(4 / 60.0);
+  effect->runAction(CCSequence::create(CCAnimate::create(animation),
+                                       CCFadeOut::create(0.1f),
+                                       CCRemoveFromParentAction::create(),
+                                       NULL));
+  this->addChild(effect);
+}
+
 PopupWindow* EffectLayer::getPopupWindow() {
   return (PopupWindow*)this->getChildByTag(EffectLayerTagTutorial);
 }

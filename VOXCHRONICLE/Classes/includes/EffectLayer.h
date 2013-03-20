@@ -45,6 +45,7 @@ class EffectLayer :public CCLayer {
   PopupWindow* addPopupWindow(int pages);
   PopupWindow* getPopupWindow();
   void addCutin(Skill *skill, EffectLayerCutinType cutinType, float duration);
+  void addQTEAttack(Enemy* boss);
   void reloadEffects();
 };
 

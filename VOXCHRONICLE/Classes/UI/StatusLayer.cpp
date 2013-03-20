@@ -37,12 +37,14 @@ StatusLayer::StatusLayer(const char* scriptName) {
   _timeMarker = NULL;
   
   // デバッグ用にEXPの出力を表示
-  CCLabelTTF* currentExp = CCLabelTTF::create("0", "Helvetica", 16);
+CCLabelTTF* currentExp = CCLabelTTF::create("0", "Helvetica", 16);
   currentExp->setPosition(ccp(30, 250));
   CCLabelTTF* nextExp = CCLabelTTF::create("0", "Helvetica", 16);
   nextExp->setPosition(ccp(30, 230));
+#if DEBUG
   this->addChild(currentExp, 0, CurrentExpLabelTag);
   this->addChild(nextExp, 0, NextExpLabelTag);
+#endif
 }
 
 StatusLayer::~StatusLayer() {
