@@ -399,27 +399,30 @@ void EnemyManager::setBoss(Enemy* boss) {
   _boss = boss;
 }
 
+float EnemyManager::calcScale(float row) {
+  float r = (float)row;
+  float sum = (0 + 7) * 8 / 2.0;
+  float cur = r * (2 + r - 1) / 2.0;
+  float scale = 0.95 * (sum - cur) / sum + 0.05;
+  return scale;
+}
+
 CCPoint& EnemyManager::calcLinePosition(int row, int col) {
   CCPoint root = CCPointZero;
   CCPoint end = CCPointZero;
-  const int width = 480;
-  const int horizonWidth = 120;
-  const int horizonDistance = 122.5;
-  const int marginLeft = (width - horizonWidth) / 2.0f;
-  const int padding = 80;
-  const float scale = horizonWidth / width;
-  if (col == 0) {
-    root = ccp(padding, 0);
-    end = ccp(marginLeft + padding * scale, horizonDistance);
-  } else if (col == 1) {
-    root = ccp(width / 2.0, 0);
-    end = ccp(width / 2.0, horizonDistance);
-  } else if (col == 2) {
-    root = ccp(width - padding, 0);
-    end = ccp(marginLeft + horizonWidth - padding * scale, horizonDistance);
-  }
+  const float width = 480;
+  const float horizonWidth = 120;
+  const float horizonDistance = 122.5;
+  const float margin = 80;
+  const float baseWidth = 480 - margin * 2;
+  
+  float scale = EnemyManager::calcScale(row);
+  
+  root = ccp(margin + baseWidth / 6.0f * (1 + col * 2), 0);
+  end = ccp((width - horizonWidth) / 2.0f + root.x * horizonWidth / width, horizonDistance);
+  
   CCPoint sub = ccpSub(end, root);
-  CCPoint p = ccpAdd(root, ccpMult(sub, row / (float)MAX_ROW));
+  CCPoint p = ccpAdd(root, ccpMult(sub, 1.0f - scale));
   return p;
 }
 

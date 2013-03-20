@@ -156,6 +156,7 @@ class EnemyManager :public CCLayer {
   Enemy* getBoss();
   void setBoss(Enemy* boss);
   
+  static float calcScale(float row);
   static CCPoint& calcLinePosition(int row, int col);
   
   void removeAllEnemies();
