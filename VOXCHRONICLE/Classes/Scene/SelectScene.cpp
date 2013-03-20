@@ -138,6 +138,7 @@ void SelectScene::createThumbnails() {
 }
 
 void SelectScene::onEasyButtonPressed(cocos2d::CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/easy_decide.mp3").c_str());
   LuaObject* obj = LuaObject::create("setting");
   string stage = obj->getString("easyMap");
@@ -149,6 +150,7 @@ void SelectScene::onEasyButtonPressed(cocos2d::CCObject *sender) {
 }
 
 void SelectScene::onHardButtonPressed(cocos2d::CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/hard_decide.mp3").c_str());
   LuaObject* obj = LuaObject::create("setting");
   string stage = obj->getString("hardMap");
@@ -166,7 +168,6 @@ void SelectScene::startGame(cocos2d::CCObject *sender) {
   
   CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
   CCDirector::sharedDirector()->replaceScene(transition);
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
 }
 
 void SelectScene::onBackButtonPressed(cocos2d::CCObject *sender) {

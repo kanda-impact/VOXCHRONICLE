@@ -38,6 +38,7 @@ class EffectLayer :public CCLayer {
   EffectLayer();
   ~EffectLayer();
   void addEffectOnEnemy(Enemy* enemy, const char* prefix, int frameCount, CCRect rect);
+  void addEffectOnEnemy(Enemy* enemy, const char* prefix, int frameCount, CCRect rect, float delay);
   void addSkillEffect(Skill* skill, CCArray* targets);
   void setTensionEffect(int tension);
   void setCharacterEffect(Character* character);

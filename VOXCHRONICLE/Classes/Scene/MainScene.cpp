@@ -287,7 +287,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       Enemy* boss = _enemyManager->getBoss();
       // 攻撃エフェクト
       CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/qte_attack.mp3").c_str());
-      _effectLayer->addEffectOnEnemy(_enemyManager->getBoss(), "qte_attack", 13, CCRectMake(0, 0, 200, 200));
+      _effectLayer->addEffectOnEnemy(_enemyManager->getBoss(), "qte_attack", 13, CCRectMake(0, 0, 200, 200), 0.15f);
       // ぷるぷるさせる
       CCArray* actions = CCArray::create();
       float duration = _musicManager->getMusic()->getCurrentMainTrack()->getDuration();

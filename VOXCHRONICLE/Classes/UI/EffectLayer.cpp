@@ -67,6 +67,10 @@ EffectLayer::~EffectLayer() {
 }
 
 void EffectLayer::addEffectOnEnemy(Enemy *enemy, const char *prefix, int frameCount, CCRect rect) {
+  this->addEffectOnEnemy(enemy, prefix, frameCount, rect, 4.0 / 60.0);
+}
+
+void EffectLayer::addEffectOnEnemy(Enemy *enemy, const char *prefix, int frameCount, CCRect rect, float delay) {
   CCSprite* effect = CCSprite::create((string(prefix) + string("0.png")).c_str());
   CCAnimation* animation = CCAnimation::create();
   CCPoint position;
@@ -82,7 +86,7 @@ void EffectLayer::addEffectOnEnemy(Enemy *enemy, const char *prefix, int frameCo
     const char* frameName = (string(prefix) + lexical_cast<string>(i) + string(".png")).c_str();
     animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath(frameName).c_str(), rect));
   }
-  animation->setDelayPerUnit(4.0 / 60.0);
+  animation->setDelayPerUnit(delay);
   effect->runAction(CCSequence::create(CCAnimate::create(animation),
                                        CCFadeOut::create(0.1f),
                                        CCRemoveFromParentAction::create(),

@@ -14,7 +14,7 @@ QTETrigger::QTETrigger(EnemyManager* manager) {
   _enemyManager = manager;
   _enemyManager->retain();
   CCSprite* buttonSprite = CCSprite::create("qte.png");
-  CCSequence* seq = CCSequence::createWithTwoActions(CCFadeTo::create(0.5, 128), CCFadeTo::create(0.5, 255));
+  CCSequence* seq = CCSequence::createWithTwoActions(CCFadeTo::create(1.0f, 128), CCFadeTo::create(1.0f, 255));
   buttonSprite->runAction(CCRepeatForever::create(seq));
   
   CCSprite* pressedSprite = CCSprite::create("qte_pressed.png");
