@@ -361,23 +361,24 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       CCArray* enemies = (CCArray*)info->objectForKey("enemies");
       CCArray* damages = (CCArray*)info->objectForKey("damages");
       CCArray* damageTypes = (CCArray*)info->objectForKey("damageTypes");
+      
       int enemyCount = enemies->count();
+      isHit = skill->getRange() == SkillRangeSelf; // 自分が対象なら絶対に当たる
       for (int i = 0; i < enemyCount; ++i) {
-        isHit = true;
         Enemy* enemy = (Enemy*)enemies->objectAtIndex(i);
         CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(((CCInteger*)damages->objectAtIndex(i))->getValue()).c_str(),
                                                          FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 100, '0');
         // ダメージが0かつ、元々ダメージのない技じゃないかつ、アイテムも破壊していないとき、ヒットしていない状態にしてやる
         int damage = ((CCInteger*)damages->objectAtIndex(i))->getValue();
         DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(i))->getValue();
-        if (damage == 0 && damageType != DamageTypeBarrierBreak && damageType != DamageTypeShieldBreak && damageType != DamageTypeNoDamage) {
-          isHit = false;
-        } else if (damageType == DamageTypeDisable) {
-          isHit = false;
+        if (damage > 0 || damageType == DamageTypeBarrierBreak || damageType == DamageTypeShieldBreak || damageType == DamageTypeNoDamage) {
+          isHit = true;
         } else if (damageType != DamageTypeDeath) {
           // ヒットしたとき、敵キャラを点滅させる
           enemy->runAction(CCRepeat::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.05, 64), CCFadeTo::create(0.05, 255)), 3));
         }
+        
+        // ダメージラベル
         damageLabel->setPosition(enemy->getPosition());
         float scale = enemy->getCurrentScale(enemy->getRow());
         damageLabel->setScale(scale);
@@ -387,7 +388,47 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
                                                   CCFadeOut::create(0.2),
                                                   CCRemoveFromParentAction::create(),
                                                   NULL));
+        
+        // 敵毎に効果音を鳴らす
+        string fileName = "";
+        switch (damageType) {
+          case DamageTypeShieldBreak:
+          case DamageTypeBarrierBreak:
+            fileName = "shield_break.mp3";
+            break;
+          case DamageTypePhysicalInvalid:
+            fileName = "shield_invalid.mp3";
+            break;
+          case DamageTypeMagicalInvalid:
+            fileName = "barrier_invalid.mp3";
+            break;
+          case DamageTypePhysicalResist:
+            fileName = "physical_resist.mp3";
+            break;
+          case DamageTypeMagicalResist:
+            fileName = "magical_resist.mp3";
+            break;
+          default:
+            break;
+        }
+        if (fileName.length() > 0) {
+          SEManager::sharedManager()->registerEffect(fileName.c_str(), 0.2f);
+        }
       }
+      
+      // 全体のSE
+      if (enemyCount > 0 && skill->hasSE() && isHit) { // ヒットしたとき、SEがあればSEをならしてやる
+        stringstream ss;
+        ss << "SE/"<< skill->getIdentifier() << "_effect.mp3"; // 対象が自分、もしくは対象が1体以上いたとき、ダメージ効果音をならします
+        SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(ss.str().c_str()).c_str());
+      } else if (skill->getRange() == SkillRangeSelf && skill->hasSE()) { // 対象が自分だけ、かつSEを持っているとき
+        stringstream seStream;
+        seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3"; // 効果音をならします
+        SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
+      } else if (enemies->count() == 0) { // 誰もいないときピロリ音
+        SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("miss.mp3").c_str());
+      }
+      
       
       // メッセージを追加する
       CCArray* messages = skill->getMessages();
@@ -408,50 +449,10 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       }
       _effectLayer->addCutin(skill, isHit ? (EffectLayerCutinType)skill->getCutinType() : EffectLayerCutinTypeFailure, _musicManager->getMusic()->getCurrentMainTrack()->getDuration());
       
-      if (isHit) {
-        // ヒットしたとき、SEがあればSEをならしてやる
-        if (enemies->count() > 0) { // 対象が1体以上いるとき
-          DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(0))->getValue();
-          stringstream seStream;
-          // 今は当たった敵1体目のダメージタイプをとってきてならしているが、
-          // 複数体に同時に当たったときは遅延して順番にならしても良さそう
-          if (damageType == DamageTypeShieldBreak) {
-            SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("shield_break.mp3").c_str());
-          } else if (damageType == DamageTypeBarrierBreak) {
-            SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("barrier_break.mp3").c_str());
-          } else if (skill->hasSE()) {
-            // 対象が自分、もしくは対象が1体以上いたとき、ダメージ効果音をならします
-            seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
-            SEManager::sharedManager()->registerEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
-          }
-        }  else if (skill->getRange() == SkillRangeSelf && skill->hasSE()) { // 対象が自分だけ、かつSEを持っているとき
-          stringstream seStream;
-          // 効果音をならします
-          seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
-          SEManager::sharedManager()->registerEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
-        }
-      } else if (!isHit) { // ヒットしていないとき、強制的にミス音にする
-        if (enemyCount == 0) {
-          // 誰もいないときピロリ音
-          SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("miss.caf").c_str());
-        } else {
-          DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(0))->getValue();
-          if (damageType == DamageTypePhysicalInvalid) {
-            // 1体だけ敵がいるのに当たらず、盾持ちだったとき
-            SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("shield_invalid.mp3").c_str());
-          } else if (damageType == DamageTypeMagicalInvalid) {
-            // バリア持ちだったとき
-            SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("barrier_invalid.mp3").c_str());
-          }
-        }
-        
-      }
       getExp = ((CCInteger*)info->objectForKey("exp"))->getValue();
-    } else if (performType == SkillPerformTypeNone) {
-      // 何も実行しなかったとき
-      // MP回復 コマンド化したのでコメントアウトしておきます
-      //_characterManager->addMP(1);
     }
+    
+    // レベルアップ判定
     if (this->checkLevelUp() ) {
       int currentLevel = _characterManager->getLevel();
       SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/levelup.mp3").c_str());

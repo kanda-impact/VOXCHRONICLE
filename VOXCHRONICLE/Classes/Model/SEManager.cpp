@@ -13,6 +13,8 @@ static SEManager* _shared = NULL;
 
 using namespace cocos2d;
 
+const float kSEManagerDefaultDelay = 0.03f;
+
 SEManager* SEManager::sharedManager () {
   if (!_shared) {
     _shared = new SEManager();
@@ -21,25 +23,41 @@ SEManager* SEManager::sharedManager () {
 }
 
 SEManager::SEManager() {
-  _seQueue = CCArray::create();
-  _seQueue->retain();
-  CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(SEManager::playEffect), this, 0.03f, false);
+  _seQueue = new queue< pair<string, float> >();
+  _currentDelay = 0;
+  CCDirector::sharedDirector()->getScheduler()->scheduleUpdateForTarget(this, 0, false);
 }
 
 SEManager::~SEManager() {
-  _seQueue->release();
+  delete _seQueue;
+}
+
+void SEManager::update(float delay) {
+  if (!_seQueue->empty()) {
+    _currentDelay += delay;
+    this->playEffect();
+  }
+}
+
+
+void SEManager::registerEffect(const char *filename, float delay) {
+  pair<string, float> p;
+  p.first = string(filename);
+  p.second = delay;
+  _seQueue->push(p);
 }
 
 void SEManager::registerEffect(const char *filename) {
-  CCString* str = CCString::create(filename);
-  _seQueue->addObject(str);
+  this->registerEffect(filename, kSEManagerDefaultDelay);
 }
 
-void SEManager::playEffect(CCObject *sender) {
-  if (_seQueue->count() > 0) {
-    CCString* str = (CCString*)_seQueue->objectAtIndex(0);
-    const char* filename = str->getCString();
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(filename);
-    _seQueue->removeObjectAtIndex(0);
+void SEManager::playEffect() {
+  if (!_seQueue->empty()) {
+    pair<string, float> p = _seQueue->front();
+    if (p.second < _currentDelay) {
+      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(p.first.c_str());
+      _seQueue->pop();
+      _currentDelay = 0;
+    }
   }
 }
