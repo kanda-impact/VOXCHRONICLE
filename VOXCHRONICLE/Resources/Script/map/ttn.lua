@@ -11,7 +11,8 @@ Map = {
   getEnemyTable = function(level)
     return {slime0 = 1}
   end,
-  onLevel = function(level, characterManager, enemyManager)
+  onLevelUp = function(self, characterManager, enemyManager)
+    local level = characterManager:getLevel()
     if level == 1 then
       local layer = EffectLayer:sharedLayer()
       local popup = layer:addPopupWindow(3)

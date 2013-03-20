@@ -82,7 +82,6 @@ Enemy::Enemy() {
 Enemy::~Enemy() {
   _lua->release();
   _species->release();
-  delete _register;
   cout << "Enemy was released." << endl;
 }
 
@@ -111,6 +110,12 @@ void Enemy::moveRow(float r) {
 int Enemy::damage(Skill* skill, CharacterManager* characterManager, DamageType& damageType, bool simulate) {
   // ToDo 属性によるダメージ軽減とかもこの辺に載せてやる
   float damage = floor(0.5 + skill->getPower(characterManager));
+  
+  // 無効化の処理
+  if (!this->getSpecies()->isEnableSkill(skill)) {
+    damageType = DamageTypeDisable;
+    return 0;
+  }
   
   // アイテムの処理
   if ((_item == EnemyItemShield && skill->getType() == SkillTypePhysical) ||
@@ -298,25 +303,6 @@ bool Enemy::performSkill(CharacterManager* characterManager, EnemyManager* enemy
   EnemySkill* skill = new EnemySkill(skillName.c_str());
   skill->performSkill(this, characterManager, enemyManager);
   return true;
-}
-
-int Enemy::getRegister(const char *key, int defaultValue) {
-  if (this->hasRegister(key)) {
-    return _register->at(key);
-  }
-  return defaultValue;
-}
-
-void Enemy::setRegister(const char *key, int value) {
-  if (this->hasRegister(key)) {
-    (*_register)[string(key)] = value;
-  } else {
-    _register->insert(std::pair<string, int>(string(key), value));
-  }
-}
-
-bool Enemy::hasRegister(const char *key) {
-  return _register->count(key) == 1;
 }
 
 bool Enemy::setAnimationClip(const char *clipName, int frames, bool hasFrame) {

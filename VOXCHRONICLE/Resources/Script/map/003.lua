@@ -25,7 +25,8 @@ Map = {
       end
     return {}
   end,
-  onLevel = function(level, characterManager, enemyManager)
+  onLevelUp = function(self, characterManager, enemyManager)
+    local level = characterManager:getLevel()
     if level == 30 then
       knight = enemyManager:popEnemyAt("knight_boss", MAX_ROW - 1, 1)
       enemyManager:setBoss(knight)

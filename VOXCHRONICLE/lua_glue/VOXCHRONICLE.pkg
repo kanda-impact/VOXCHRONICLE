@@ -1,0 +1,181 @@
+$#include "LuaCocos2d.h"
+$#include "Skill.h"
+$#include "Enemy.h"
+$#include "Character.h"
+$#include "CharacterManager.h"
+$#include "EnemyManager.h"
+$#include "EnemySkill.h"
+$#include "MessageManager.h"
+$#include "EffectLayer.h"
+$#include "PopupWindow.h"
+$#include "IRegister.h"
+$#include "Controller.h"
+$#include "StatusLayer.h"
+$#include "EnemySkill.h"
+$#include "Map.h"
+
+#define MAX_ROW
+
+enum {
+	SkillRangeSingle,
+	SkillRangeAll,
+	SkillRangeHorizontal,
+	SkillRangeVertical,
+	SkillRangeBack,
+	SkillRangeSelf,
+	SkillRangeFront
+};
+
+enum {
+	SkillTypeNone,
+	SkillTypeNormal,
+	SkillTypePhysical,
+	SkillTypeMagical
+};
+
+enum {
+	CharacterTypeVox,
+	CharacterTypeLaska
+};
+
+enum {
+	EnemyItemNone,
+	EnemyItemShield,
+	EnemyItemBarrier
+};
+
+enum {
+	MusicSetTypeWay,
+	MusicSetTypeBoss
+};
+
+enum {
+	MaxHPLabelTag,
+	CurrentHPLabelTag,
+	LevelLabelTag,
+	LifeGaugeBackgroundTag,
+	LifeGaugeTag,
+	MPMarkerTag
+};
+
+enum {
+	ControllerFrameTypeNone,
+	ControllerFrameTypeCommon,
+	ControllerFrameTypeFull
+};
+
+enum {
+	EffectLayerCutinTypeNormal,
+	EffectLayerCutinTypeFailure,
+	EffectLayerCutinTypeHold,
+	EffectLayerCutinTypeCastOff
+};
+
+enum {
+	DamageTypeNone,
+	DamageTypeHit,
+	DamageTypeNoDamage,
+	DamageTypeDisable,
+	DamageTypeShield,
+	DamageTypeInvincible,
+	DamageTypeWeak,
+	DamageTypePhysicalResist,
+	DamageTypeMagicalResist,
+	DamageTypePhysicalInvalid,
+	DamageTypeMagicalInvalid,
+	DamageTypeShieldBreak,
+	DamageTypeBarrierBreak,
+	DamageTypeDeath,
+	DamageTypeAbsorption
+};
+
+class Skill :public CCObject {
+	int getPower(CharacterManager* manager);
+	string getIdentifier();
+	string getName();
+	int getMP();
+};
+
+class Enemy : public CCSprite, public IRegister {
+	int getRow();
+	int getAttack();
+	void moveRow(float row);
+	void setRow(float row);
+	int getCol();
+	bool setAnimationClip(const char* clipName, int frames, bool hasFrame);
+	bool setDefaultAnimationClip();
+	string getName();
+	int getHP();
+	void setCounter(int counter);
+	int getRegister(const char* key, int defaultValue);
+	void setRegister(const char* key, int value);
+	bool hasRegister(const char* key);
+}:
+
+class Character : public CCObject {
+	string getName();
+};
+
+class CharacterManager : public CCObject {
+	void setShield(bool shield);
+	void changeCharacter();
+	void addTension(int tension);
+	int getTension();
+	int getLevel();
+	void setLevel(int lv);
+	int addHP(int hp);
+	int addMP(int mp);
+	int getDrumLevel();
+	void setDrumLevel(int lv);
+	DamageType damage(int d);
+	int getHP();
+	int getMP();
+	int getMaxHP();
+	int getMaxMP();
+	void resetTension();
+	Character* getCurrentCharacter();
+	int getRepeatCount();
+	void setRepeatCount(int repeat);
+	Skill* getLastSkill();
+	int getExp();
+};
+
+class EnemyManager : public CCLayer {
+	void nextTurn(CharacterManager* manager);
+	Enemy* popEnemyAt(const char* enemy, float row, int col);
+	Enemy* getBoss();
+	void setBoss(Enemy* enemy);
+};
+
+class MessageManager : public CCObject {
+	static MessageManager* sharedManager();
+	void pushMessage(const char* message);
+	void pushRandomMessageFromLua(const char* luaFile);
+};
+
+class EffectLayer : public CCLayer {
+	static EffectLayer* sharedLayer();
+	PopupWindow* addPopupWindow(int pages);
+	void addEffectOnEnemy(Enemy* enemy, const char* prefix, int frameCount, CCRect rect);
+};
+
+class PopupWindow : public CCSprite {
+	CCNode* getPage(int page);
+};
+
+class IRegister {
+	int getRegister(const char* key, int defaultValue);
+	void setRegister(const char* key, int value);
+	bool hasRegister(const char* key);
+};
+
+class EnemySkill : public CCObject {
+	string getName();
+};
+
+class Map : public CCObject, public IRegister {
+	int getMaxLevel();
+	int getInitialLevel();
+	string getName();
+	bool isBossStage();
+};

@@ -60,6 +60,14 @@ StaffRollScene::StaffRollScene(CCArray* maps) {
     }
     _texts->addObject(t);
   }
+  
+  CCMenuItem* backItem = CCMenuItemImage::create("credit_back.png",
+                                                 "credit_back_pressed.png",
+                                                 this,
+                                                 menu_selector(StaffRollScene::onBackButtonPressed));
+  CCMenu* backMenu = CCMenu::create(backItem, NULL);
+  backMenu->setPosition(ccp(440, 300));
+  this->addChild(backMenu);
 }
 
 StaffRollScene::~StaffRollScene() {
@@ -228,4 +236,10 @@ void StaffRollScene::pushWaitTracks(const char *characterIdentifier, MusicSet* s
     _isAddCutin->push_back(false);
     ++_maxTrackCount;
   }
+}
+
+void StaffRollScene::onBackButtonPressed(cocos2d::CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
+  _music->stop();
+  this->onFinishPlaying(sender);
 }

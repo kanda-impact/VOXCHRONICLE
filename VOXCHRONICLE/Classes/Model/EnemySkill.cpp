@@ -34,3 +34,7 @@ void EnemySkill::performSkill(Enemy *user, CharacterManager *characterManager, E
     }
   }
 }
+
+string EnemySkill::getName() {
+  return _name;
+}

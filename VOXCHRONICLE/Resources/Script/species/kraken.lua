@@ -13,6 +13,9 @@ Enemy = {
     return 1
   end,
   disableSkills = {"knockback"},
+  description = [[
+  ]],
+  habitat = "",
   animationFrames = 4,
   performSkill = function(self, characterManager, enemyManager)
     local key = "waveTurn"

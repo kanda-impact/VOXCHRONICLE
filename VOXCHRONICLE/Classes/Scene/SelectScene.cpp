@@ -59,7 +59,7 @@ bool SelectScene::init() {
                                                         menu_selector(SelectScene::onBackButtonPressed));
   CCMenu* backMenu = CCMenu::create(backButton, NULL);
   backMenu->setPosition(ccp(director->getWinSize().width / 2.0f, 30));
-  _nextScene = NULL;
+  _nextMap = NULL;
   this->addChild(backMenu);
   
   CCSprite* map = CCSprite::create("select_map.png");
@@ -86,8 +86,8 @@ SelectScene::SelectScene() {
 
 SelectScene::~SelectScene() {
   _thumbnails->release();
-  if (_nextScene) {
-    _nextScene->release();
+  if (_nextMap) {
+    _nextMap->release();
   }
 }
 
@@ -139,23 +139,31 @@ void SelectScene::createThumbnails() {
 
 void SelectScene::onEasyButtonPressed(cocos2d::CCObject *sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/easy_decide.mp3").c_str());
+  LuaObject* obj = LuaObject::create("setting");
+  string stage = obj->getString("easyMap");
+  _nextMap = new Map(stage.c_str());
+  
   CCSprite* frame = (CCSprite*)this->getChildByTag(SelectSceneTagEasyFrame);
   this->blinkSprite(frame, 0.05);
-  MainScene* layer = MainScene::create();
-  layer->retain();
-  _nextScene = layer;
   this->scheduleOnce(schedule_selector(SelectScene::startGame), 3.0f); // 遅延してゲーム開始
 }
 
 void SelectScene::onHardButtonPressed(cocos2d::CCObject *sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/hard_decide.mp3").c_str());
+  LuaObject* obj = LuaObject::create("setting");
+  string stage = obj->getString("hardMap");
+  _nextMap = new Map(stage.c_str());
   CCSprite* frame = (CCSprite*)this->getChildByTag(SelectSceneTagHardFrame);
   this->blinkSprite(frame, 0.05);
+  this->scheduleOnce(schedule_selector(SelectScene::startGame), 3.0f); // 遅延してゲーム開始
 }
 
 void SelectScene::startGame(cocos2d::CCObject *sender) {
   CCScene* scene = CCScene::create();
-  scene->addChild(_nextScene);
+  MainScene* layer = new MainScene();
+  layer->init(_nextMap);
+  scene->addChild(layer);
+  
   CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
   CCDirector::sharedDirector()->replaceScene(transition);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);

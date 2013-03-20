@@ -99,3 +99,11 @@ bool Species::isEnableSkill(Skill *skill) {
   }
   return true;
 }
+
+string Species::getDescription() {
+  return _lua->getString("description");
+}
+
+string Species::getHabitat() {
+  return _lua->getString("habitat");
+}

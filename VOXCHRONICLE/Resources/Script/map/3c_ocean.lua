@@ -15,7 +15,8 @@ Map = {
       return {}
     end
   end,
-  onLevel = function(level, characterManager, enemyManager)
+  onLevelUp = function(self, characterManager, enemyManager)
+    local level = characterManager:getLevel()
     if level == 30 then
       local kraken = enemyManager:popEnemyAt("kraken3C0", 4, 1) -- 頭
       enemyManager:setBoss(kraken)

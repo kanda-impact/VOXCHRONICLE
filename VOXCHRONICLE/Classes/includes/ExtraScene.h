@@ -21,8 +21,10 @@ private:
   void onAchievementButtonPressed(CCObject* sender);
   void onCreditButtonPressed(CCObject* sender);
   void onBackButtonPressed(CCObject* sender);
+  void nextScene(CCLayer* layer);
 public:
   virtual bool init();
+  virtual void onExit();
   CREATE_FUNC(ExtraScene);
 };
 

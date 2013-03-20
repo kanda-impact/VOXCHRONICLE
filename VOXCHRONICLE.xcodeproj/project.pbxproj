@@ -80,6 +80,59 @@
 		070E4044163CB10400A76BEA /* select_stage.wav in Resources */ = {isa = PBXBuildFile; fileRef = 070E4040163CB10400A76BEA /* select_stage.wav */; };
 		070E4045163CB10400A76BEA /* title.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 070E4041163CB10400A76BEA /* title.mp3 */; };
 		070E4047163CB3BE00A76BEA /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 070E4046163CB3BE00A76BEA /* gameover.mp3 */; };
+		070EF5A616F8B424005ED3B2 /* chabo_counter0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF57516F8B424005ED3B2 /* chabo_counter0.caf */; };
+		070EF5A716F8B424005ED3B2 /* chabo_counter1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF57616F8B424005ED3B2 /* chabo_counter1.caf */; };
+		070EF5A816F8B424005ED3B2 /* chabo_counter2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF57716F8B424005ED3B2 /* chabo_counter2.caf */; };
+		070EF5A916F8B424005ED3B2 /* chabo_counter3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF57816F8B424005ED3B2 /* chabo_counter3.caf */; };
+		070EF5AA16F8B424005ED3B2 /* chabo_drum0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF57916F8B424005ED3B2 /* chabo_drum0.caf */; };
+		070EF5AB16F8B424005ED3B2 /* chabo_drum1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF57A16F8B424005ED3B2 /* chabo_drum1.caf */; };
+		070EF5AC16F8B424005ED3B2 /* chabo_drum2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF57B16F8B424005ED3B2 /* chabo_drum2.caf */; };
+		070EF5AD16F8B424005ED3B2 /* chabo_drum3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF57C16F8B424005ED3B2 /* chabo_drum3.caf */; };
+		070EF5AE16F8B424005ED3B2 /* chabo_drum4.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF57D16F8B424005ED3B2 /* chabo_drum4.caf */; };
+		070EF5AF16F8B424005ED3B2 /* chabo_impact0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF57E16F8B424005ED3B2 /* chabo_impact0.caf */; };
+		070EF5B016F8B424005ED3B2 /* chabo_impact1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF57F16F8B424005ED3B2 /* chabo_impact1.caf */; };
+		070EF5B116F8B424005ED3B2 /* chabo_impact2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF58016F8B424005ED3B2 /* chabo_impact2.caf */; };
+		070EF5B216F8B424005ED3B2 /* chabo_impact3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF58116F8B424005ED3B2 /* chabo_impact3.caf */; };
+		070EF5B316F8B424005ED3B2 /* chabo_intro0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF58216F8B424005ED3B2 /* chabo_intro0.caf */; };
+		070EF5B416F8B424005ED3B2 /* chabo_intro1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF58316F8B424005ED3B2 /* chabo_intro1.caf */; };
+		070EF5B516F8B424005ED3B2 /* chabo_intro2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF58416F8B424005ED3B2 /* chabo_intro2.caf */; };
+		070EF5B616F8B424005ED3B2 /* chabo_intro3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF58516F8B424005ED3B2 /* chabo_intro3.caf */; };
+		070EF5B716F8B424005ED3B2 /* chabo_lskbow0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF58616F8B424005ED3B2 /* chabo_lskbow0.caf */; };
+		070EF5B816F8B424005ED3B2 /* chabo_lskchange0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF58716F8B424005ED3B2 /* chabo_lskchange0.caf */; };
+		070EF5B916F8B424005ED3B2 /* chabo_lskcure0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF58816F8B424005ED3B2 /* chabo_lskcure0.caf */; };
+		070EF5BA16F8B424005ED3B2 /* chabo_lskmagic0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF58916F8B424005ED3B2 /* chabo_lskmagic0.caf */; };
+		070EF5BB16F8B424005ED3B2 /* chabo_lskmagic1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF58A16F8B424005ED3B2 /* chabo_lskmagic1.caf */; };
+		070EF5BC16F8B424005ED3B2 /* chabo_lskmagic2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF58B16F8B424005ED3B2 /* chabo_lskmagic2.caf */; };
+		070EF5BD16F8B424005ED3B2 /* chabo_lskmagic3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF58C16F8B424005ED3B2 /* chabo_lskmagic3.caf */; };
+		070EF5BE16F8B424005ED3B2 /* chabo_lskrun0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF58D16F8B424005ED3B2 /* chabo_lskrun0.caf */; };
+		070EF5BF16F8B424005ED3B2 /* chabo_lskrun1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF58E16F8B424005ED3B2 /* chabo_lskrun1.caf */; };
+		070EF5C016F8B424005ED3B2 /* chabo_lsktension0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF58F16F8B424005ED3B2 /* chabo_lsktension0.caf */; };
+		070EF5C116F8B424005ED3B2 /* chabo_lsktension1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59016F8B424005ED3B2 /* chabo_lsktension1.caf */; };
+		070EF5C216F8B424005ED3B2 /* chabo_lsktension2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59116F8B424005ED3B2 /* chabo_lsktension2.caf */; };
+		070EF5C316F8B424005ED3B2 /* chabo_lsktension3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59216F8B424005ED3B2 /* chabo_lsktension3.caf */; };
+		070EF5C416F8B424005ED3B2 /* chabo_lskthunder0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59316F8B424005ED3B2 /* chabo_lskthunder0.caf */; };
+		070EF5C516F8B424005ED3B2 /* chabo_miss.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59416F8B424005ED3B2 /* chabo_miss.caf */; };
+		070EF5C616F8B424005ED3B2 /* chabo_shield0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59516F8B424005ED3B2 /* chabo_shield0.caf */; };
+		070EF5C716F8B424005ED3B2 /* chabo_silent.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59616F8B424005ED3B2 /* chabo_silent.caf */; };
+		070EF5C816F8B424005ED3B2 /* chabo_tension0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59716F8B424005ED3B2 /* chabo_tension0.caf */; };
+		070EF5C916F8B424005ED3B2 /* chabo_tension1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59816F8B424005ED3B2 /* chabo_tension1.caf */; };
+		070EF5CA16F8B424005ED3B2 /* chabo_tension2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59916F8B424005ED3B2 /* chabo_tension2.caf */; };
+		070EF5CB16F8B424005ED3B2 /* chabo_tension3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59A16F8B424005ED3B2 /* chabo_tension3.caf */; };
+		070EF5CC16F8B424005ED3B2 /* chabo_voxattack0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59B16F8B424005ED3B2 /* chabo_voxattack0.caf */; };
+		070EF5CD16F8B424005ED3B2 /* chabo_voxattack1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59C16F8B424005ED3B2 /* chabo_voxattack1.caf */; };
+		070EF5CE16F8B424005ED3B2 /* chabo_voxattack2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59D16F8B424005ED3B2 /* chabo_voxattack2.caf */; };
+		070EF5CF16F8B424005ED3B2 /* chabo_voxattack3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59E16F8B424005ED3B2 /* chabo_voxattack3.caf */; };
+		070EF5D016F8B424005ED3B2 /* chabo_voxchange0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59F16F8B424005ED3B2 /* chabo_voxchange0.caf */; };
+		070EF5D116F8B424005ED3B2 /* chabo_voxcharge0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF5A016F8B424005ED3B2 /* chabo_voxcharge0.caf */; };
+		070EF5D216F8B424005ED3B2 /* chabo_voxknockback0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF5A116F8B424005ED3B2 /* chabo_voxknockback0.caf */; };
+		070EF5D316F8B424005ED3B2 /* chabo_voxrun0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF5A216F8B424005ED3B2 /* chabo_voxrun0.caf */; };
+		070EF5D416F8B424005ED3B2 /* chabo_voxrun1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF5A316F8B424005ED3B2 /* chabo_voxrun1.caf */; };
+		070EF5D516F8B424005ED3B2 /* chabo_voxslash0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF5A416F8B424005ED3B2 /* chabo_voxslash0.caf */; };
+		070EF5D616F8B424005ED3B2 /* chabo_wait0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF5A516F8B424005ED3B2 /* chabo_wait0.caf */; };
+		070EF5DA16F8B49A005ED3B2 /* tutorial0.lua in Resources */ = {isa = PBXBuildFile; fileRef = 070EF5D716F8B497005ED3B2 /* tutorial0.lua */; };
+		070EF5DB16F8B49A005ED3B2 /* tutorial1.lua in Resources */ = {isa = PBXBuildFile; fileRef = 070EF5D816F8B498005ED3B2 /* tutorial1.lua */; };
+		070EF5DC16F8B49A005ED3B2 /* tutorial2.lua in Resources */ = {isa = PBXBuildFile; fileRef = 070EF5D916F8B499005ED3B2 /* tutorial2.lua */; };
+		070EF5DE16F8B66B005ED3B2 /* chabo.lua in Resources */ = {isa = PBXBuildFile; fileRef = 070EF5DD16F8B66B005ED3B2 /* chabo.lua */; };
 		0715C2331690E8F600009479 /* ironball.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0715C2321690E8F600009479 /* ironball.lua */; };
 		0715C2371690EB3000009479 /* EnemySkill.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0715C2351690EB3000009479 /* EnemySkill.cpp */; };
 		07244C3016956CAD00C5A442 /* QTETrigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07244C2E16956CAD00C5A442 /* QTETrigger.cpp */; };
@@ -698,6 +751,9 @@
 		07ADDF8B16F22959007825D2 /* enemy_cure.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF8116F22959007825D2 /* enemy_cure.mp3 */; };
 		07ADDF8D16F254C8007825D2 /* hsv.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF8C16F254C8007825D2 /* hsv.lua */; };
 		07ADDF9A16F72048007825D2 /* ExtraScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07ADDF9816F72048007825D2 /* ExtraScene.cpp */; };
+		07ADDF9E16F73518007825D2 /* DictionaryScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07ADDF9C16F73514007825D2 /* DictionaryScene.cpp */; };
+		07ADDFA116F7621F007825D2 /* paper.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDFA016F7621F007825D2 /* paper.mp3 */; };
+		07ADDFA416F784F9007825D2 /* IRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07ADDFA216F784F6007825D2 /* IRegister.cpp */; };
 		07B2200316CFCB820083B865 /* acorn01.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FE016CFCB820083B865 /* acorn01.lua */; };
 		07B2200416CFCB820083B865 /* acorn02.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FE116CFCB820083B865 /* acorn02.lua */; };
 		07B2200516CFCB820083B865 /* bat01.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B21FE216CFCB820083B865 /* bat01.lua */; };
@@ -1070,6 +1126,9 @@
 		07EDA67516EFF9FE00A4BAC9 /* Ceres78_3-C_drum0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07EDA67416EFF9FE00A4BAC9 /* Ceres78_3-C_drum0.caf */; };
 		07F0D799163C1EC1005592AF /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F0D797163C1EC0005592AF /* TitleScene.cpp */; };
 		07F166FE16DDD8D8007DCB3F /* space_test.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F166FD16DDD8D8007DCB3F /* space_test.lua */; };
+		07F350F916F8846F00F95FDD /* make_glue.sh in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F616F8846F00F95FDD /* make_glue.sh */; };
+		07F350FA16F8846F00F95FDD /* tolua++ in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F716F8846F00F95FDD /* tolua++ */; };
+		07F350FB16F8846F00F95FDD /* VOXCHRONICLE.pkg in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F816F8846F00F95FDD /* VOXCHRONICLE.pkg */; };
 		07F40F10163D0FC0009FC104 /* Music.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F40F0F163D0FC0009FC104 /* Music.cpp */; };
 		07F88F1816DB842100FE6B2B /* endingC.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F88F1716DB842100FE6B2B /* endingC.mp3 */; };
 		07F88F1B16DB8FF600FE6B2B /* jfish.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F88F1916DB8FF600FE6B2B /* jfish.lua */; };
@@ -1245,6 +1304,59 @@
 		070E4040163CB10400A76BEA /* select_stage.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = select_stage.wav; path = Resources/Music/general/select_stage.wav; sourceTree = "<group>"; };
 		070E4041163CB10400A76BEA /* title.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = title.mp3; path = Resources/Music/general/title.mp3; sourceTree = "<group>"; };
 		070E4046163CB3BE00A76BEA /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gameover.mp3; path = Resources/Music/general/gameover.mp3; sourceTree = "<group>"; };
+		070EF57516F8B424005ED3B2 /* chabo_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_counter0.caf; sourceTree = "<group>"; };
+		070EF57616F8B424005ED3B2 /* chabo_counter1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_counter1.caf; sourceTree = "<group>"; };
+		070EF57716F8B424005ED3B2 /* chabo_counter2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_counter2.caf; sourceTree = "<group>"; };
+		070EF57816F8B424005ED3B2 /* chabo_counter3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_counter3.caf; sourceTree = "<group>"; };
+		070EF57916F8B424005ED3B2 /* chabo_drum0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_drum0.caf; sourceTree = "<group>"; };
+		070EF57A16F8B424005ED3B2 /* chabo_drum1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_drum1.caf; sourceTree = "<group>"; };
+		070EF57B16F8B424005ED3B2 /* chabo_drum2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_drum2.caf; sourceTree = "<group>"; };
+		070EF57C16F8B424005ED3B2 /* chabo_drum3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_drum3.caf; sourceTree = "<group>"; };
+		070EF57D16F8B424005ED3B2 /* chabo_drum4.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_drum4.caf; sourceTree = "<group>"; };
+		070EF57E16F8B424005ED3B2 /* chabo_impact0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_impact0.caf; sourceTree = "<group>"; };
+		070EF57F16F8B424005ED3B2 /* chabo_impact1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_impact1.caf; sourceTree = "<group>"; };
+		070EF58016F8B424005ED3B2 /* chabo_impact2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_impact2.caf; sourceTree = "<group>"; };
+		070EF58116F8B424005ED3B2 /* chabo_impact3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_impact3.caf; sourceTree = "<group>"; };
+		070EF58216F8B424005ED3B2 /* chabo_intro0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_intro0.caf; sourceTree = "<group>"; };
+		070EF58316F8B424005ED3B2 /* chabo_intro1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_intro1.caf; sourceTree = "<group>"; };
+		070EF58416F8B424005ED3B2 /* chabo_intro2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_intro2.caf; sourceTree = "<group>"; };
+		070EF58516F8B424005ED3B2 /* chabo_intro3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_intro3.caf; sourceTree = "<group>"; };
+		070EF58616F8B424005ED3B2 /* chabo_lskbow0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_lskbow0.caf; sourceTree = "<group>"; };
+		070EF58716F8B424005ED3B2 /* chabo_lskchange0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_lskchange0.caf; sourceTree = "<group>"; };
+		070EF58816F8B424005ED3B2 /* chabo_lskcure0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_lskcure0.caf; sourceTree = "<group>"; };
+		070EF58916F8B424005ED3B2 /* chabo_lskmagic0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_lskmagic0.caf; sourceTree = "<group>"; };
+		070EF58A16F8B424005ED3B2 /* chabo_lskmagic1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_lskmagic1.caf; sourceTree = "<group>"; };
+		070EF58B16F8B424005ED3B2 /* chabo_lskmagic2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_lskmagic2.caf; sourceTree = "<group>"; };
+		070EF58C16F8B424005ED3B2 /* chabo_lskmagic3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_lskmagic3.caf; sourceTree = "<group>"; };
+		070EF58D16F8B424005ED3B2 /* chabo_lskrun0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_lskrun0.caf; sourceTree = "<group>"; };
+		070EF58E16F8B424005ED3B2 /* chabo_lskrun1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_lskrun1.caf; sourceTree = "<group>"; };
+		070EF58F16F8B424005ED3B2 /* chabo_lsktension0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_lsktension0.caf; sourceTree = "<group>"; };
+		070EF59016F8B424005ED3B2 /* chabo_lsktension1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_lsktension1.caf; sourceTree = "<group>"; };
+		070EF59116F8B424005ED3B2 /* chabo_lsktension2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_lsktension2.caf; sourceTree = "<group>"; };
+		070EF59216F8B424005ED3B2 /* chabo_lsktension3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_lsktension3.caf; sourceTree = "<group>"; };
+		070EF59316F8B424005ED3B2 /* chabo_lskthunder0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_lskthunder0.caf; sourceTree = "<group>"; };
+		070EF59416F8B424005ED3B2 /* chabo_miss.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_miss.caf; sourceTree = "<group>"; };
+		070EF59516F8B424005ED3B2 /* chabo_shield0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_shield0.caf; sourceTree = "<group>"; };
+		070EF59616F8B424005ED3B2 /* chabo_silent.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_silent.caf; sourceTree = "<group>"; };
+		070EF59716F8B424005ED3B2 /* chabo_tension0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_tension0.caf; sourceTree = "<group>"; };
+		070EF59816F8B424005ED3B2 /* chabo_tension1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_tension1.caf; sourceTree = "<group>"; };
+		070EF59916F8B424005ED3B2 /* chabo_tension2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_tension2.caf; sourceTree = "<group>"; };
+		070EF59A16F8B424005ED3B2 /* chabo_tension3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_tension3.caf; sourceTree = "<group>"; };
+		070EF59B16F8B424005ED3B2 /* chabo_voxattack0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_voxattack0.caf; sourceTree = "<group>"; };
+		070EF59C16F8B424005ED3B2 /* chabo_voxattack1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_voxattack1.caf; sourceTree = "<group>"; };
+		070EF59D16F8B424005ED3B2 /* chabo_voxattack2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_voxattack2.caf; sourceTree = "<group>"; };
+		070EF59E16F8B424005ED3B2 /* chabo_voxattack3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_voxattack3.caf; sourceTree = "<group>"; };
+		070EF59F16F8B424005ED3B2 /* chabo_voxchange0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_voxchange0.caf; sourceTree = "<group>"; };
+		070EF5A016F8B424005ED3B2 /* chabo_voxcharge0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_voxcharge0.caf; sourceTree = "<group>"; };
+		070EF5A116F8B424005ED3B2 /* chabo_voxknockback0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_voxknockback0.caf; sourceTree = "<group>"; };
+		070EF5A216F8B424005ED3B2 /* chabo_voxrun0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_voxrun0.caf; sourceTree = "<group>"; };
+		070EF5A316F8B424005ED3B2 /* chabo_voxrun1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_voxrun1.caf; sourceTree = "<group>"; };
+		070EF5A416F8B424005ED3B2 /* chabo_voxslash0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_voxslash0.caf; sourceTree = "<group>"; };
+		070EF5A516F8B424005ED3B2 /* chabo_wait0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_wait0.caf; sourceTree = "<group>"; };
+		070EF5D716F8B497005ED3B2 /* tutorial0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = tutorial0.lua; path = map/tutorial0.lua; sourceTree = "<group>"; };
+		070EF5D816F8B498005ED3B2 /* tutorial1.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = tutorial1.lua; path = map/tutorial1.lua; sourceTree = "<group>"; };
+		070EF5D916F8B499005ED3B2 /* tutorial2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = tutorial2.lua; path = map/tutorial2.lua; sourceTree = "<group>"; };
+		070EF5DD16F8B66B005ED3B2 /* chabo.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = chabo.lua; path = musics/chabo.lua; sourceTree = "<group>"; };
 		0715C2321690E8F600009479 /* ironball.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ironball.lua; path = enemySkills/ironball.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		0715C2351690EB3000009479 /* EnemySkill.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemySkill.cpp; path = Classes/Model/EnemySkill.cpp; sourceTree = "<group>"; };
 		07244C2E16956CAD00C5A442 /* QTETrigger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = QTETrigger.cpp; path = Classes/UI/QTETrigger.cpp; sourceTree = "<group>"; };
@@ -1886,6 +1998,11 @@
 		07ADDF8C16F254C8007825D2 /* hsv.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hsv.lua; sourceTree = "<group>"; };
 		07ADDF9816F72048007825D2 /* ExtraScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ExtraScene.cpp; path = Classes/Scene/ExtraScene.cpp; sourceTree = "<group>"; };
 		07ADDF9B16F72525007825D2 /* ExtraScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExtraScene.h; path = Classes/includes/ExtraScene.h; sourceTree = "<group>"; };
+		07ADDF9C16F73514007825D2 /* DictionaryScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DictionaryScene.cpp; path = Classes/Scene/DictionaryScene.cpp; sourceTree = "<group>"; };
+		07ADDF9F16F75086007825D2 /* DictionaryScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DictionaryScene.h; path = Classes/includes/DictionaryScene.h; sourceTree = "<group>"; };
+		07ADDFA016F7621F007825D2 /* paper.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = paper.mp3; path = Resources/SE/paper.mp3; sourceTree = "<group>"; };
+		07ADDFA216F784F6007825D2 /* IRegister.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IRegister.cpp; path = Classes/Model/IRegister.cpp; sourceTree = "<group>"; };
+		07ADDFA316F784F8007825D2 /* IRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IRegister.h; path = Classes/Model/IRegister.h; sourceTree = "<group>"; };
 		07B21FE016CFCB820083B865 /* acorn01.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = acorn01.lua; sourceTree = "<group>"; };
 		07B21FE116CFCB820083B865 /* acorn02.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = acorn02.lua; sourceTree = "<group>"; };
 		07B21FE216CFCB820083B865 /* bat01.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bat01.lua; sourceTree = "<group>"; };
@@ -2579,6 +2696,9 @@
 		07F0D797163C1EC0005592AF /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleScene.cpp; path = Classes/Scene/TitleScene.cpp; sourceTree = "<group>"; };
 		07F0D79A163C1EFD005592AF /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = Classes/includes/TitleScene.h; sourceTree = "<group>"; };
 		07F166FD16DDD8D8007DCB3F /* space_test.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = space_test.lua; path = map/space_test.lua; sourceTree = "<group>"; };
+		07F350F616F8846F00F95FDD /* make_glue.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = make_glue.sh; sourceTree = "<group>"; };
+		07F350F716F8846F00F95FDD /* tolua++ */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "tolua++"; sourceTree = "<group>"; };
+		07F350F816F8846F00F95FDD /* VOXCHRONICLE.pkg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VOXCHRONICLE.pkg; sourceTree = "<group>"; };
 		07F40F0F163D0FC0009FC104 /* Music.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Music.cpp; path = Classes/VISS/Music.cpp; sourceTree = "<group>"; };
 		07F470721691AD340062975F /* EnemySkill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemySkill.h; path = Classes/includes/EnemySkill.h; sourceTree = "<group>"; };
 		07F470731691AD340062975F /* MusicSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicSet.h; path = Classes/includes/MusicSet.h; sourceTree = "<group>"; };
@@ -2808,6 +2928,63 @@
 			name = shaba;
 			sourceTree = "<group>";
 		};
+		070EF57416F8B424005ED3B2 /* chabo */ = {
+			isa = PBXGroup;
+			children = (
+				070EF57516F8B424005ED3B2 /* chabo_counter0.caf */,
+				070EF57616F8B424005ED3B2 /* chabo_counter1.caf */,
+				070EF57716F8B424005ED3B2 /* chabo_counter2.caf */,
+				070EF57816F8B424005ED3B2 /* chabo_counter3.caf */,
+				070EF57916F8B424005ED3B2 /* chabo_drum0.caf */,
+				070EF57A16F8B424005ED3B2 /* chabo_drum1.caf */,
+				070EF57B16F8B424005ED3B2 /* chabo_drum2.caf */,
+				070EF57C16F8B424005ED3B2 /* chabo_drum3.caf */,
+				070EF57D16F8B424005ED3B2 /* chabo_drum4.caf */,
+				070EF57E16F8B424005ED3B2 /* chabo_impact0.caf */,
+				070EF57F16F8B424005ED3B2 /* chabo_impact1.caf */,
+				070EF58016F8B424005ED3B2 /* chabo_impact2.caf */,
+				070EF58116F8B424005ED3B2 /* chabo_impact3.caf */,
+				070EF58216F8B424005ED3B2 /* chabo_intro0.caf */,
+				070EF58316F8B424005ED3B2 /* chabo_intro1.caf */,
+				070EF58416F8B424005ED3B2 /* chabo_intro2.caf */,
+				070EF58516F8B424005ED3B2 /* chabo_intro3.caf */,
+				070EF58616F8B424005ED3B2 /* chabo_lskbow0.caf */,
+				070EF58716F8B424005ED3B2 /* chabo_lskchange0.caf */,
+				070EF58816F8B424005ED3B2 /* chabo_lskcure0.caf */,
+				070EF58916F8B424005ED3B2 /* chabo_lskmagic0.caf */,
+				070EF58A16F8B424005ED3B2 /* chabo_lskmagic1.caf */,
+				070EF58B16F8B424005ED3B2 /* chabo_lskmagic2.caf */,
+				070EF58C16F8B424005ED3B2 /* chabo_lskmagic3.caf */,
+				070EF58D16F8B424005ED3B2 /* chabo_lskrun0.caf */,
+				070EF58E16F8B424005ED3B2 /* chabo_lskrun1.caf */,
+				070EF58F16F8B424005ED3B2 /* chabo_lsktension0.caf */,
+				070EF59016F8B424005ED3B2 /* chabo_lsktension1.caf */,
+				070EF59116F8B424005ED3B2 /* chabo_lsktension2.caf */,
+				070EF59216F8B424005ED3B2 /* chabo_lsktension3.caf */,
+				070EF59316F8B424005ED3B2 /* chabo_lskthunder0.caf */,
+				070EF59416F8B424005ED3B2 /* chabo_miss.caf */,
+				070EF59516F8B424005ED3B2 /* chabo_shield0.caf */,
+				070EF59616F8B424005ED3B2 /* chabo_silent.caf */,
+				070EF59716F8B424005ED3B2 /* chabo_tension0.caf */,
+				070EF59816F8B424005ED3B2 /* chabo_tension1.caf */,
+				070EF59916F8B424005ED3B2 /* chabo_tension2.caf */,
+				070EF59A16F8B424005ED3B2 /* chabo_tension3.caf */,
+				070EF59B16F8B424005ED3B2 /* chabo_voxattack0.caf */,
+				070EF59C16F8B424005ED3B2 /* chabo_voxattack1.caf */,
+				070EF59D16F8B424005ED3B2 /* chabo_voxattack2.caf */,
+				070EF59E16F8B424005ED3B2 /* chabo_voxattack3.caf */,
+				070EF59F16F8B424005ED3B2 /* chabo_voxchange0.caf */,
+				070EF5A016F8B424005ED3B2 /* chabo_voxcharge0.caf */,
+				070EF5A116F8B424005ED3B2 /* chabo_voxknockback0.caf */,
+				070EF5A216F8B424005ED3B2 /* chabo_voxrun0.caf */,
+				070EF5A316F8B424005ED3B2 /* chabo_voxrun1.caf */,
+				070EF5A416F8B424005ED3B2 /* chabo_voxslash0.caf */,
+				070EF5A516F8B424005ED3B2 /* chabo_wait0.caf */,
+			);
+			name = chabo;
+			path = Resources/Music/chabo;
+			sourceTree = "<group>";
+		};
 		0731E4F016181051006AEF3D /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -2827,6 +3004,9 @@
 		0731E4FA16184A59006AEF3D /* map */ = {
 			isa = PBXGroup;
 			children = (
+				070EF5D716F8B497005ED3B2 /* tutorial0.lua */,
+				070EF5D816F8B498005ED3B2 /* tutorial1.lua */,
+				070EF5D916F8B499005ED3B2 /* tutorial2.lua */,
 				07F166FD16DDD8D8007DCB3F /* space_test.lua */,
 				075B92E116D51FFA00DBB2D1 /* attaq.lua */,
 				077EDE2416874B1F009B9F6B /* 3b.lua */,
@@ -3005,6 +3185,8 @@
 				07C6467216DE11E400B29842 /* SEManager.h */,
 				07C6469016E1CDF000B29842 /* SaveData.h */,
 				07C6468D16E1CDC600B29842 /* SaveData.cpp */,
+				07ADDFA216F784F6007825D2 /* IRegister.cpp */,
+				07ADDFA316F784F8007825D2 /* IRegister.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -3073,6 +3255,8 @@
 				0754384616E3934500802970 /* StaffRollScene.h */,
 				07ADDF9B16F72525007825D2 /* ExtraScene.h */,
 				07ADDF9816F72048007825D2 /* ExtraScene.cpp */,
+				07ADDF9F16F75086007825D2 /* DictionaryScene.h */,
+				07ADDF9C16F73514007825D2 /* DictionaryScene.cpp */,
 			);
 			name = Scene;
 			sourceTree = "<group>";
@@ -3140,6 +3324,7 @@
 		07660C4B169097F00092104F /* musics */ = {
 			isa = PBXGroup;
 			children = (
+				070EF5DD16F8B66B005ED3B2 /* chabo.lua */,
 				070141DE16E1F6E400B00887 /* dhun.lua */,
 				075B92DF16D51F1E00DBB2D1 /* AttaQ3-D.lua */,
 				07660C4D1690980B0092104F /* dub.lua */,
@@ -3258,6 +3443,7 @@
 			children = (
 				076F1A6115EB94750013A45E /* Resources */,
 				076F1A7B15EB94750013A45E /* libs */,
+				07F350F516F8846F00F95FDD /* lua_glue */,
 				076F1D3015EB94780013A45E /* ios */,
 				076F1D3915EB94780013A45E /* Classes */,
 				076F1D2E15EB94780013A45E /* Supporting Files */,
@@ -4673,6 +4859,7 @@
 		07D873E215ED1200009CC446 /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				070EF57416F8B424005ED3B2 /* chabo */,
 				0737EEAF16F08BC900C46E6C /* Hawaii */,
 				07EDA61316EFF4AE00A4BAC9 /* Ceres78_3-C */,
 				070141E016E1F7E400B00887 /* dhun */,
@@ -4872,6 +5059,16 @@
 			name = "Ceres78_3-C";
 			sourceTree = "<group>";
 		};
+		07F350F516F8846F00F95FDD /* lua_glue */ = {
+			isa = PBXGroup;
+			children = (
+				07F350F616F8846F00F95FDD /* make_glue.sh */,
+				07F350F716F8846F00F95FDD /* tolua++ */,
+				07F350F816F8846F00F95FDD /* VOXCHRONICLE.pkg */,
+			);
+			path = lua_glue;
+			sourceTree = "<group>";
+		};
 		07F933DF16C16AFA00A2F1CA /* ttn1 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4953,6 +5150,7 @@
 				07A1B99316CDC1CA0092AF8C /* attack_effect1.mp3 */,
 				07A1B99416CDC1CA0092AF8C /* attack_effect2.mp3 */,
 				07A1B99516CDC1CA0092AF8C /* attack_effect3.mp3 */,
+				07ADDFA016F7621F007825D2 /* paper.mp3 */,
 				07D8D64F169F656F00B646E5 /* cancel.mp3 */,
 				07D8D650169F656F00B646E5 /* pause.mp3 */,
 				07244C311695712400C5A442 /* qte.mp3 */,
@@ -5910,6 +6108,63 @@
 				B0AA405216F58D2300674A2A /* typhoon3A2.lua in Resources */,
 				B0AA405416F58E0100674A2A /* mask3A11.lua in Resources */,
 				B04AE42B16F95A3800295885 /* mimic3A1.lua in Resources */,
+				07ADDFA116F7621F007825D2 /* paper.mp3 in Resources */,
+				07F350F916F8846F00F95FDD /* make_glue.sh in Resources */,
+				07F350FA16F8846F00F95FDD /* tolua++ in Resources */,
+				07F350FB16F8846F00F95FDD /* VOXCHRONICLE.pkg in Resources */,
+				070EF5A616F8B424005ED3B2 /* chabo_counter0.caf in Resources */,
+				070EF5A716F8B424005ED3B2 /* chabo_counter1.caf in Resources */,
+				070EF5A816F8B424005ED3B2 /* chabo_counter2.caf in Resources */,
+				070EF5A916F8B424005ED3B2 /* chabo_counter3.caf in Resources */,
+				070EF5AA16F8B424005ED3B2 /* chabo_drum0.caf in Resources */,
+				070EF5AB16F8B424005ED3B2 /* chabo_drum1.caf in Resources */,
+				070EF5AC16F8B424005ED3B2 /* chabo_drum2.caf in Resources */,
+				070EF5AD16F8B424005ED3B2 /* chabo_drum3.caf in Resources */,
+				070EF5AE16F8B424005ED3B2 /* chabo_drum4.caf in Resources */,
+				070EF5AF16F8B424005ED3B2 /* chabo_impact0.caf in Resources */,
+				070EF5B016F8B424005ED3B2 /* chabo_impact1.caf in Resources */,
+				070EF5B116F8B424005ED3B2 /* chabo_impact2.caf in Resources */,
+				070EF5B216F8B424005ED3B2 /* chabo_impact3.caf in Resources */,
+				070EF5B316F8B424005ED3B2 /* chabo_intro0.caf in Resources */,
+				070EF5B416F8B424005ED3B2 /* chabo_intro1.caf in Resources */,
+				070EF5B516F8B424005ED3B2 /* chabo_intro2.caf in Resources */,
+				070EF5B616F8B424005ED3B2 /* chabo_intro3.caf in Resources */,
+				070EF5B716F8B424005ED3B2 /* chabo_lskbow0.caf in Resources */,
+				070EF5B816F8B424005ED3B2 /* chabo_lskchange0.caf in Resources */,
+				070EF5B916F8B424005ED3B2 /* chabo_lskcure0.caf in Resources */,
+				070EF5BA16F8B424005ED3B2 /* chabo_lskmagic0.caf in Resources */,
+				070EF5BB16F8B424005ED3B2 /* chabo_lskmagic1.caf in Resources */,
+				070EF5BC16F8B424005ED3B2 /* chabo_lskmagic2.caf in Resources */,
+				070EF5BD16F8B424005ED3B2 /* chabo_lskmagic3.caf in Resources */,
+				070EF5BE16F8B424005ED3B2 /* chabo_lskrun0.caf in Resources */,
+				070EF5BF16F8B424005ED3B2 /* chabo_lskrun1.caf in Resources */,
+				070EF5C016F8B424005ED3B2 /* chabo_lsktension0.caf in Resources */,
+				070EF5C116F8B424005ED3B2 /* chabo_lsktension1.caf in Resources */,
+				070EF5C216F8B424005ED3B2 /* chabo_lsktension2.caf in Resources */,
+				070EF5C316F8B424005ED3B2 /* chabo_lsktension3.caf in Resources */,
+				070EF5C416F8B424005ED3B2 /* chabo_lskthunder0.caf in Resources */,
+				070EF5C516F8B424005ED3B2 /* chabo_miss.caf in Resources */,
+				070EF5C616F8B424005ED3B2 /* chabo_shield0.caf in Resources */,
+				070EF5C716F8B424005ED3B2 /* chabo_silent.caf in Resources */,
+				070EF5C816F8B424005ED3B2 /* chabo_tension0.caf in Resources */,
+				070EF5C916F8B424005ED3B2 /* chabo_tension1.caf in Resources */,
+				070EF5CA16F8B424005ED3B2 /* chabo_tension2.caf in Resources */,
+				070EF5CB16F8B424005ED3B2 /* chabo_tension3.caf in Resources */,
+				070EF5CC16F8B424005ED3B2 /* chabo_voxattack0.caf in Resources */,
+				070EF5CD16F8B424005ED3B2 /* chabo_voxattack1.caf in Resources */,
+				070EF5CE16F8B424005ED3B2 /* chabo_voxattack2.caf in Resources */,
+				070EF5CF16F8B424005ED3B2 /* chabo_voxattack3.caf in Resources */,
+				070EF5D016F8B424005ED3B2 /* chabo_voxchange0.caf in Resources */,
+				070EF5D116F8B424005ED3B2 /* chabo_voxcharge0.caf in Resources */,
+				070EF5D216F8B424005ED3B2 /* chabo_voxknockback0.caf in Resources */,
+				070EF5D316F8B424005ED3B2 /* chabo_voxrun0.caf in Resources */,
+				070EF5D416F8B424005ED3B2 /* chabo_voxrun1.caf in Resources */,
+				070EF5D516F8B424005ED3B2 /* chabo_voxslash0.caf in Resources */,
+				070EF5D616F8B424005ED3B2 /* chabo_wait0.caf in Resources */,
+				070EF5DA16F8B49A005ED3B2 /* tutorial0.lua in Resources */,
+				070EF5DB16F8B49A005ED3B2 /* tutorial1.lua in Resources */,
+				070EF5DC16F8B49A005ED3B2 /* tutorial2.lua in Resources */,
+				070EF5DE16F8B66B005ED3B2 /* chabo.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6226,6 +6481,8 @@
 				0754384016E3865700802970 /* TutorialScene.cpp in Sources */,
 				0754384516E3931F00802970 /* StaffRollScene.cpp in Sources */,
 				07ADDF9A16F72048007825D2 /* ExtraScene.cpp in Sources */,
+				07ADDF9E16F73518007825D2 /* DictionaryScene.cpp in Sources */,
+				07ADDFA416F784F9007825D2 /* IRegister.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

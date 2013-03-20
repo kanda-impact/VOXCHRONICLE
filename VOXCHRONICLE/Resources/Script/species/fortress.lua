@@ -16,6 +16,9 @@ Enemy = {
     return 5
   end,
   disableSkills = {"knockback"},
+  description = [[
+  ]],
+  habitat = "",
   animationFrames = 4,
   performSkill = function(self)
     local row = self:getRow()

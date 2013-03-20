@@ -189,19 +189,32 @@ MusicSet* Map::getCurrentMusic(Level *level) {
   return _wayMusic;
 }
 
-void Map::performOnLevel(int level, CharacterManager* characterManager, EnemyManager *enemyManager) {
+void Map::performFunction(const char* function, CharacterManager *characterManager, EnemyManager *enemyManager) {
   lua_State* L = _lua->getLuaEngineWithLoad()->getLuaState();
   lua_getglobal(L, "Map");
   int table = lua_gettop(L);
-  lua_getfield(L, table, "onLevel");
+  lua_getfield(L, table, function);
   if (lua_isfunction(L,  lua_gettop(L))) {
-    lua_pushinteger(L, level);
+    _lua->pushCCObject(this, "Map");
     _lua->pushCCObject(characterManager, "CharacterManager");
     _lua->pushCCObject(enemyManager, "EnemyManager");
     if (lua_pcall(L, 3, 0, 0)) {
       cout << lua_tostring(L, lua_gettop(L)) << endl;
     }
   }
+
+}
+
+void Map::performOnLevel(CharacterManager* characterManager, EnemyManager *enemyManager) {
+  this->performFunction("onLevelUp", characterManager, enemyManager);
+}
+
+void Map::performOnBack(CharacterManager* characterManager, EnemyManager *enemyManager) {
+  this->performFunction("onBack", characterManager, enemyManager);
+}
+
+void Map::performOnFinishPlaying(CharacterManager *characterManager, EnemyManager *enemyManager) {
+  this->performFunction("onFinishPlaying", characterManager, enemyManager);
 }
 
 string Map::getEndingName() {

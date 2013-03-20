@@ -15,7 +15,8 @@ Map = {
     end
     return {}
   end,
-  onLevel = function(level, characterManager, enemyManager)
+  onLevelUp = function(self, characterManager, enemyManager)
+    local level = characterManager:getLevel()
   end,
   getEnemyPopRate = function(level)
     return 0.3
