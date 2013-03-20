@@ -42,8 +42,9 @@ Skill::Skill(const char* identifier) {
   }
   
   // アイコンも先読みしておきます
-  const char* iconName = (string(this->getIdentifier()) + string("_icon.png")).c_str();
-  CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath(iconName).c_str());
+  std::stringstream icon;
+  icon << "Images/" + this->getIdentifier() << "_icon.png";
+  CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath(icon.str().c_str()).c_str());
   
 
   // メッセージ一覧を生成します
