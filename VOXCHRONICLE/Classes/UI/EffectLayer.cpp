@@ -150,13 +150,15 @@ void EffectLayer::addCutin(Skill *skill, EffectLayerCutinType cutinType, float d
   // カットインを追加する
   const int height = 100;
   CCSize size = CCDirector::sharedDirector()->getWinSize();
-  if (cutinType == EffectLayerCutinTypeCastOff) {
-    CCSprite* holdCutin = (CCSprite*)this->getChildByTag(EffectLayerTagCutin);
+  CCSprite* holdCutin = (CCSprite*)this->getChildByTag(EffectLayerTagCutin);
+  if (cutinType == EffectLayerCutinTypeCastOff || holdCutin) {
     if (!holdCutin) return;
     holdCutin->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width, height)),
                                             CCRemoveFromParentAction::create(),
                                             NULL));
-    return;
+    if (cutinType == EffectLayerCutinTypeCastOff) {
+      return;
+    }
   }
   string cutinFile = "Image/" + string(skill->getIdentifier()) + "_icon.png";
   CCSprite* cutin = CCSprite::create(FileUtils::getFilePath(cutinFile.c_str()).c_str());

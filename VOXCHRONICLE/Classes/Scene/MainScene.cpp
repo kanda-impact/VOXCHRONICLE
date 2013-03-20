@@ -363,7 +363,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       CCArray* damageTypes = (CCArray*)info->objectForKey("damageTypes");
       
       int enemyCount = enemies->count();
-      isHit = skill->getRange() == SkillRangeSelf; // 自分が対象なら絶対に当たる
+      isHit = skill->getRange() == SkillRangeSelf || targets->count() == 0; // 自分が対象もしくは誰もいなければ絶対に成功
       for (int i = 0; i < enemyCount; ++i) {
         Enemy* enemy = (Enemy*)enemies->objectAtIndex(i);
         CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(((CCInteger*)damages->objectAtIndex(i))->getValue()).c_str(),
@@ -412,7 +412,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
             break;
         }
         if (fileName.length() > 0) {
-          SEManager::sharedManager()->registerEffect(fileName.c_str(), 0.2f);
+          SEManager::sharedManager()->registerEffect(fileName.c_str(), 0.15f);
         }
       }
       
