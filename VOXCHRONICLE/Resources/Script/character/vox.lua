@@ -19,12 +19,12 @@ Character = {
     end
     return {
       {"attack", 1},
-      {"knockback", 6},
-      {"slash", 8},
-      {"charge", 5},
-      {"tension", 3},
-      {"change", 2},
-      {"shield", 10},
+      {"knockback", 1},
+      {"slash", 1},
+      {"charge", 1},
+      {"tension", 1},
+      {"change", 1},
+      {"shield", 1},
       {"run", 1}
     }
   end

@@ -10,15 +10,15 @@ Map = {
   maxLevel = 30,
   getEnemyTable = function(level)
     if level <= 22 then
-      return {mask3A1 = 1, wisp3A2 = 1}
-    elseif level <= 23 then
-      return {wisp3A2 = 3, typhoon3A2 = 1,gargoyle3A0 = 1}
-    elseif level <= 25 then
-      return {mask3A11 = 7,gargoyle3A0 = 2}
-    elseif level <= 27 then
-      return {mask3A1 = 3, wisp3A2 = 3, typhoon3A2 = 1}
+      return {mimic3A1 = 2, mask3A1 = 5}
+    elseif level <= 24 then
+      return {wisp3A2 = 3, typhoon3A2 = 2}
+    elseif level <= 26 then
+      return {mimic3A1 = 2,mask3A1 = 6,gargoyle3A0 = 2}
+    elseif level <= 28 then
+      return {mask3A1 = 3, wisp3A2 = 3, typhoon3A2 = 1, mimic3A1 = 1}
     elseif level < 30 then
-      return {mask3A11 = 4, typhoon3A2 = 1,gargoyle3A0 = 2}
+      return {mask3A1 = 3, typhoon3A2 = 3,gargoyle3A0 = 1}
     end
     return {}
   end,
@@ -29,14 +29,14 @@ Map = {
     end
   end,
   getEnemyPopRate = function(level)
-    if level <= 23 then
+    if level <= 24 then
+      return 0.4
+    elseif level <= 26 then
       return 0.3
-    elseif level <= 25 then
-      return 0.2
-    elseif level <= 27 then
+    elseif level <= 28 then
       return 0.4
     else
-      return 0.2
+      return 0.3
     end
     return 0.6
   end,

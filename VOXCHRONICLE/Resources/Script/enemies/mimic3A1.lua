@@ -1,12 +1,12 @@
 Enemy = {
-  species = "toadstool",
+  species = "mimic",
   level = 10,
-  hp = 30,
+  hp = 12,
   getExp = function(default)
       return 15
   end,
   item = EnemyItemNone,
-  type = SkillTypeNormal,
+  type = SkillTypePhysical,
 }
 
 return Enemy
