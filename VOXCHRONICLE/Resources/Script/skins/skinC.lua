@@ -53,7 +53,7 @@ Skin = {
     lifeGaugeBackground:setPosition(ccp(33, 307))
     self:addChild(lifeGaugeBackground, 0, LifeGaugeBackgroundTag)
 
-    local lifeGauge = CCSprite:create("cyber_gauge.png")
+    local lifeGauge = CCSprite:create("cave_gauge.png")
     lifeGauge:setAnchorPoint(ccp(0.0, 0.5))
     lifeGauge:setPosition(ccp(33, 307))
     self:addChild(lifeGauge, 0, LifeGaugeTag)
