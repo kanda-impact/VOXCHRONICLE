@@ -400,10 +400,10 @@ void EnemyManager::setBoss(Enemy* boss) {
 }
 
 float EnemyManager::calcScale(float row) {
-  float r = (float)row;
-  float sum = (0 + 7) * 8 / 2.0;
+  float r = (float)(MAX_ROW - row - 1);
+  float sum = (0 + MAX_ROW - 1) * MAX_ROW / 2.0;
   float cur = r * (2 + r - 1) / 2.0;
-  float scale = 0.95 * (sum - cur) / sum + 0.05;
+  float scale = 0.95 * cur / sum + 0.05;
   return scale;
 }
 
