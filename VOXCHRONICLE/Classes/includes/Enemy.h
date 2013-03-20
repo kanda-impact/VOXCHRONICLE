@@ -35,6 +35,7 @@ private:
   int _frequencyCount;
   int _level;
   int _counter;
+  int _exp;
   bool _enable;
   bool _movable;
   Species* _species;
@@ -46,6 +47,7 @@ private:
   string _scriptPath;
   bool setAnimationAndFrame(const char* filePrefix, int frames, bool hasFrame);
   CCSprite* createFrameSprite(const char* filePrefix, int frames);
+  int getExpFromLua();
 public:
   static Enemy* create(const char* enemyName);
   Enemy();
@@ -67,7 +69,7 @@ public:
    @param bool simulate trueのとき、実際にはダメージを与えません。結果だけ返します
    @return int 与えたダメージを返却します
    */
-  int damage(Skill* skill, CharacterManager* characterManager, DamageType& damageType, bool simulate);
+  int damage(int power, Skill* skill, CharacterManager* characterManager, DamageType& damageType, bool simulate);
   
   /**
    Luaに定義された敵の技を使う関数を実行します

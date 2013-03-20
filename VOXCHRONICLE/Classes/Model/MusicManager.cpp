@@ -196,10 +196,11 @@ string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& perform
       CCArray* targets = _enemyManager->getTargets(skill);
       bool isMiss = targets->count() > 0;
       if (targets->count() > 0) {
+        int power = skill->getPower(_characterManager);
         for (int i = 0; i < targets->count(); ++i) {
           Enemy* enemy = (Enemy*)targets->objectAtIndex(i);
           DamageType damageType = DamageTypeNone;
-          enemy->damage(skill, _characterManager, damageType, true); // ダメージは与えずに結果だけ取り出す
+          enemy->damage(power, skill, _characterManager, damageType, true); // ダメージは与えずに結果だけ取り出す
           if (damageType != DamageTypePhysicalInvalid && damageType != DamageTypeMagicalInvalid && damageType != DamageTypeNoDamage && damageType != DamageTypeDisable) {
             isMiss = false;
           }

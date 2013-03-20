@@ -57,6 +57,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _enable = true;
   _movable = true;
   _counter = -1;
+  _exp = this->getExpFromLua();
   stringstream ss;
   ss << "Image/" << _species->getImageName().c_str() << "0.png";
   bool success = (bool)this->initWithFile(FileUtils::getFilePath(ss.str().c_str()).c_str());
@@ -107,9 +108,9 @@ void Enemy::moveRow(float r) {
   //this->getParent()->reorderChild(this, (MAX_ROW - _row));
 }
 
-int Enemy::damage(Skill* skill, CharacterManager* characterManager, DamageType& damageType, bool simulate) {
+int Enemy::damage(int power, Skill* skill, CharacterManager* characterManager, DamageType& damageType, bool simulate) {
   // ToDo 属性によるダメージ軽減とかもこの辺に載せてやる
-  float damage = floor(0.5 + skill->getPower(characterManager));
+  float damage = floor(0.5 + power);
   
   // 無効化の処理
   if (!this->getSpecies()->isEnableSkill(skill)) {
@@ -186,7 +187,7 @@ void Enemy::setLifeColor() {
   }
 }
 
-int Enemy::getExp() {
+int Enemy::getExpFromLua() {
   int defaultExp = _species->getDefaultExp(_level, _maxHP, _item, _type);
   lua_State* L = _lua->getLuaEngineWithLoad()->getLuaState();
   lua_getfield(L, lua_gettop(L), "getExp");
@@ -199,7 +200,10 @@ int Enemy::getExp() {
     return exp;
   }
   return defaultExp;
- 
+}
+
+int Enemy::getExp() {
+  return _exp;
 }
 
 void Enemy::setRowAndCol(int row, float col) {

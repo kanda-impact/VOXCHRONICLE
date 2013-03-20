@@ -190,7 +190,7 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CCArray* targets, Charact
         DamageType damageType = DamageTypeNone;
         if (power != 0) {
           // 威力が1以上の場合、ダメージを与える
-          damage = target->damage(skill, characterManager, damageType, false);
+          damage = target->damage(power, skill, characterManager, damageType, false);
         } else {
           // 威力が0の場合、NoDamageを設定する
           damageType = DamageTypeNoDamage;
@@ -202,11 +202,12 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CCArray* targets, Charact
             _boss->setAnimationClip("death", 1, true); // 敵がボスなら殺さない
             _boss->setMovable(false);
           } else {
-            if (target->getExp() == -1) nextLvExp = true;
+            int getExp = target->getExp();
+            if (getExp == -1) nextLvExp = true;
             if (nextLvExp) {
               exp = -1; // 強制的に経験値を-1にする
             } else {
-              exp += target->getExp();
+              exp += getExp;
             }
             this->removeEnemy(target);
           }
