@@ -1,7 +1,7 @@
 Enemy = {
   name = "カニ",
   imageName = "kani",
-  attack = 1,
+  attack = 2,
   baseExp = 6,
   hasFrame = true,
   counter = 2,
@@ -9,7 +9,7 @@ Enemy = {
     return 1
   end,
   getFrequency = function(enemy, characterManager)
-    return 2
+    return 1
   end,
   disableSkills = {},
   description = [[
