@@ -1,6 +1,6 @@
 Map = {
   name = "深海",
-  wayMusic = "dub",
+  wayMusic = "negi",
   bossMusic = "Ceres78",
   backgroundImage = "",
   skin = "skinA",

@@ -5,11 +5,10 @@ DebugData = {
     "1b_field",
     "3a_ruin",
     "2c_cyber",
+    "3c_ocean",
     "ruin_boss",
     "bossdebug",
     "ocean_boss",
-    "shaba_map",
-    "map_select",
     "ttn",
   }
 }
