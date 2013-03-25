@@ -34,9 +34,11 @@ Map = {
     end
   end,
   getEnemyPopRate = function(level)
-    if level <=19
+    if level <=14 then
     return 0.7
-    elseif level <=20
+    elseif level <=19 then
+    return 0.6
+    elseif level <=20 then
     return 0.4
     end
   end,
