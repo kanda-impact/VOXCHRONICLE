@@ -32,7 +32,11 @@ function getMaxHP(level)
 end
 
 function getMaxMP(level)
+  if level <=29 then
   return 3 + 2 * math.floor(level / 10)
+  else
+  return 7
+  end
 end
 
 function getLevelOffsetRate(attackLevel, defenseLevel)

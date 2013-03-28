@@ -1,11 +1,11 @@
 Enemy = {
   species = "dragon",
   level = 10,
-  hp = 9,
+  hp = 30,
   getExp = function(default)
-      return 12
+      return 36
   end,
-  item = EnemyItemNone,
+  item = EnemyItemBarrier,
   type = SkillTypeNormal,
 }
 
