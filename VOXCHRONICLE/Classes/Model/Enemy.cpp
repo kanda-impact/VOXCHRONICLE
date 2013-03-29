@@ -318,9 +318,9 @@ bool Enemy::performSkill(CharacterManager* characterManager, EnemyManager* enemy
 bool Enemy::setAnimationClip(const char *clipName, int frames, bool hasFrame) {
   string name = string(clipName);
   int xOffset = 0;
-  if (name == "death") {
+  if (name == "attack") {
     xOffset = 0;
-  } else if (name == "attack") {
+  } else if (name == "death") {
     xOffset = 1;
   }
   return this->setAnimationAndFrame(xOffset, 2, frames, hasFrame);
