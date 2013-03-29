@@ -59,7 +59,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _counter = -1;
   _exp = this->getExpFromLua();
   stringstream ss;
-  ss << _species->getImageName().c_str() << ".png";
+  ss << _species->getImageName().c_str();
   _sheet = CCTextureCache::sharedTextureCache()->addImage(ss.str().c_str());
   _sheet->retain();
   _enemySize = _sheet->getContentSize().width / _species->getAnimationFrames();
@@ -227,7 +227,7 @@ void Enemy::setRowAndCol(int row, float col) {
   _row = row;
   _col = col;
   if (_row > 0) {
-    this->setOpacity(1.0f);
+    this->setOpacity(255);
   }
 }
 

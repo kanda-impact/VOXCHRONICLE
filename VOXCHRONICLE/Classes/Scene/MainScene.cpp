@@ -687,6 +687,7 @@ void MainScene::changeMap(Map* nextMap) {
   _musicManager->pushIntroTracks();
   _characterManager->setRepeatCount(0); // repeatCountをリセット
   this->updateGUI();
+  _map->performOnLoad(_characterManager, _enemyManager);
 }
 
 void MainScene::changeSkin(Skin *newSkin, bool crossFade) {

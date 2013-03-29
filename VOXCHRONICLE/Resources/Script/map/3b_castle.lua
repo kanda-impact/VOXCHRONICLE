@@ -27,7 +27,10 @@ Map = {
       return {slime3B1 = 2, mimic3B3 = 3, gargoyle3B = 1, dragon3B6 =1}
     end
   end,
-    onLevelUp = function(self, characterManager, enemyManager)
+   onLoad = function(self, characterManager, enemyManager)
+    enemyManager:loadEnemyTextureAsync("knight.png")
+  end,
+   onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
     if level == 30 then
       knight = enemyManager:popEnemyAt("knight_boss", MAX_ROW - 1, 1)

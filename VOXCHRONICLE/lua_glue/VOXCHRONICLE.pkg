@@ -145,6 +145,7 @@ class EnemyManager : public CCLayer {
 	Enemy* popEnemyAt(const char* enemy, float row, int col);
 	Enemy* getBoss();
 	void setBoss(Enemy* enemy);
+	void loadEnemyTextureAsync(const char* enemyImageName);
 };
 
 class MessageManager : public CCObject {

@@ -441,3 +441,10 @@ void EnemyManager::removeAllNormalEnemies() {
     }
   }
 }
+
+void EnemyManager::loadEnemyTextureAsync(const char *enemyImageName) {
+  CCTextureCache::sharedTextureCache()->addImageAsync(enemyImageName, this, callfuncO_selector(EnemyManager::onTextureLoaded));
+}
+
+void EnemyManager::onTextureLoaded(cocos2d::CCTexture2D *texture) {
+}

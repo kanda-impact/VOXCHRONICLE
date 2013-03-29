@@ -205,6 +205,10 @@ void Map::performFunction(const char* function, CharacterManager *characterManag
 
 }
 
+void Map::performOnLoad(CharacterManager* characterManager, EnemyManager *enemyManager) {
+  this->performFunction("onLoad", characterManager, enemyManager);
+}
+
 void Map::performOnLevel(CharacterManager* characterManager, EnemyManager *enemyManager) {
   this->performFunction("onLevelUp", characterManager, enemyManager);
 }

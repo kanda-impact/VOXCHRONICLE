@@ -22,6 +22,9 @@ Map = {
     end
     return {}
   end,
+  onLoad = function(self, characterManager, enemyManager)
+    enemyManager:loadEnemyTextureAsync("fortress.png")
+  end,
   onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
     if level == 30 then
