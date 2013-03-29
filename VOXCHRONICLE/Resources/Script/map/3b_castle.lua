@@ -9,16 +9,36 @@ Map = {
   initialLevel = 21,
   maxLevel = 30,
   getEnemyTable = function(level)
-    if level <= 2 then
-      return {mimic3B0 = 3, gargoyle3B0 = 2,slime3B0 = 2 }
-    elseif level <= 5 then
+    if level <= 22 then
+      return {slime3B1 = 1, mimic3B3 = 1}
+    elseif level <= 24 then
+      return {mimic3B3 = 2, gargoyle3B2 = 3}
+    elseif level <= 26 then
+      return {slime3B1 = 1, gargoyle3B2 = 1}
+    elseif level <= 27 then
+      return {slime3B1 = 1, dragon3B6 =1}
+    elseif level <= 28 then
+      return {slime3B1 = 3, mimic3B3 = 1, gargoyle3B2 = 2}
+    elseif level <= 29 then
+      return {slime3B1 = 3, gargoyle3B2 = 1, dragon3B6 =1}
+    elseif level <= 30 then
       return {}
     else
-      return {}
+      return {slime3B1 = 2, mimic3B3 = 3, gargoyle3B = 1, dragon3B6 =1}
+    end
+  end,
+    onLevelUp = function(self, characterManager, enemyManager)
+    local level = characterManager:getLevel()
+    if level == 30 then
+      knight = enemyManager:popEnemyAt("knight_boss", MAX_ROW - 1, 1)
+      enemyManager:setBoss(knight)
     end
   end,
   getEnemyPopRate = function(level)
-    return 0.6
+    if level <= 26 then
+      return 0.2
+    end
+    return 0.2
   end,
   fixedEnemies = {
   }
