@@ -226,6 +226,9 @@ void Enemy::setRowAndCol(int row, float col) {
   this->toggleBlink(row == 0);
   _row = row;
   _col = col;
+  if (_row > 0) {
+    this->setOpacity(1.0f);
+  }
 }
 
 float Enemy::getCurrentScale(float row) {
