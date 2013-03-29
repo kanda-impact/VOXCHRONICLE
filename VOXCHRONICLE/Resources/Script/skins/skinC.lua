@@ -6,11 +6,11 @@ Skin = {
   frameType = ControllerFrameTypeFull,
   buildSkin = function(self)
     -- ここでスキンの定義をｇｄｇｄ書きます
-    local hpLabel = CCSprite:create("cave_hp.png")
+    local hpLabel = CCSprite:createWithSpriteFrameName("cave_hp.png")
     hpLabel:setPosition(ccp(15, 299));
     self:addChild(hpLabel)
     
-    local mpLabel = CCSprite:create("cave_mp.png");
+    local mpLabel = CCSprite:createWithSpriteFrameName("cave_mp.png");
     mpLabel:setPosition(ccp(275, 299))
     self:addChild(mpLabel)
   
@@ -26,7 +26,7 @@ Skin = {
     self:addChild(currentHPLabel, 0, CurrentHPLabelTag)
     self:addChild(maxHPLabel, 0, MaxHPLabelTag)
   
-    local slash = CCSprite:create("cave_slash.png")
+    local slash = CCSprite:createWithSpriteFrameName("cave_slash.png")
     slash:setPosition(ccp(68, 290))
     self:addChild(slash)
     
@@ -36,11 +36,11 @@ Skin = {
     self:addChild(mpMarker, 0, MPMarkerTag)
   
     -- レベル
-    local levelBack = CCSprite:create("cave_level_back.png")
+    local levelBack = CCSprite:createWithSpriteFrameName("cave_level_back.png")
     levelBack:setPosition(ccp(240, 295))
     self:addChild(levelBack)
     
-    local stageLabel = CCSprite:create("cave_level.png")
+    local stageLabel = CCSprite:createWithSpriteFrameName("cave_level.png")
     stageLabel:setPosition(ccp(240, 282))
     self:addChild(stageLabel)
   
@@ -48,12 +48,12 @@ Skin = {
     levelLabel:setPosition(ccp(225, 290))
     self:addChild(levelLabel, 0, LevelLabelTag)
   
-    local lifeGaugeBackground = CCSprite:create("cyber_gauge_bg.png")
+    local lifeGaugeBackground = CCSprite:createWithSpriteFrameName("cyber_gauge_bg.png")
     lifeGaugeBackground:setAnchorPoint(ccp(0.0, 0.5))
     lifeGaugeBackground:setPosition(ccp(33, 307))
     self:addChild(lifeGaugeBackground, 0, LifeGaugeBackgroundTag)
 
-    local lifeGauge = CCSprite:create("cave_gauge.png")
+    local lifeGauge = CCSprite:createWithSpriteFrameName("cave_gauge.png")
     lifeGauge:setAnchorPoint(ccp(0.0, 0.5))
     lifeGauge:setPosition(ccp(33, 307))
     self:addChild(lifeGauge, 0, LifeGaugeTag)
