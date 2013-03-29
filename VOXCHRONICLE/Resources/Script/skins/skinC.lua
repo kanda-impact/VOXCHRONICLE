@@ -48,7 +48,7 @@ Skin = {
     levelLabel:setPosition(ccp(225, 290))
     self:addChild(levelLabel, 0, LevelLabelTag)
   
-    local lifeGaugeBackground = CCSprite:createWithSpriteFrameName("cyber_gauge_bg.png")
+    local lifeGaugeBackground = CCSprite:createWithSpriteFrameName("cave_gauge_bg.png")
     lifeGaugeBackground:setAnchorPoint(ccp(0.0, 0.5))
     lifeGaugeBackground:setPosition(ccp(33, 307))
     self:addChild(lifeGaugeBackground, 0, LifeGaugeBackgroundTag)

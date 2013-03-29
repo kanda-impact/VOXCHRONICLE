@@ -36,6 +36,7 @@ private:
   int _level;
   int _counter;
   int _exp;
+  int _enemySize;
   bool _enable;
   bool _movable;
   Species* _species;
@@ -45,8 +46,9 @@ private:
   void setLifeColor();
   LuaObject* _lua;
   string _scriptPath;
-  bool setAnimationAndFrame(const char* filePrefix, int frames, bool hasFrame);
-  CCSprite* createFrameSprite(const char* filePrefix, int frames);
+  bool setAnimationAndFrame(int xOffset, int yOffset, int frames, bool hasFrame);
+  CCSprite* createFrameSprite(int xOffset, int yOffset, int frames);
+  CCTexture2D* _sheet;
   int getExpFromLua();
 public:
   static Enemy* create(const char* enemyName);

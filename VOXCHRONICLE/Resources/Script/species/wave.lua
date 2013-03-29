@@ -15,7 +15,7 @@ Enemy = {
   description = [[
   ]],
   habitat = "",
-  animationFrames = 0,
+  animationFrames = 1,
   performSkill = function(self)
     return ""
   end

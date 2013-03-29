@@ -5,7 +5,7 @@
 	<key>frames</key>
 	<dict>
 		
-		<key>cave_frame_lsk_left.png</key>
+		<key>grass_frame_left.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
@@ -27,7 +27,7 @@
 			<false/>
 		</dict>
 		
-		<key>cave_frame_lsk_right.png</key>
+		<key>grass_frame_right.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
@@ -49,354 +49,288 @@
 			<false/>
 		</dict>
 		
-		<key>cave_frame_vox_left.png</key>
+		<key>grass_gauge.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 0}, {270, 270}}</string>
+			<string>{{0, 0}, {15, 30}}</string>
 			<key>spriteOffset</key>
 			<string>{0, -0}</string>
 			<key>spriteSize</key>
-			<string>{270, 270}</string>
+			<string>{15, 30}</string>
 			<key>spriteSourceSize</key>
-			<string>{270, 270}</string>
+			<string>{15, 30}</string>
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{272, 0}, {270, 270}}</string>
+			<string>{{971, 85}, {15, 30}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
 		
-		<key>cave_frame_vox_right.png</key>
+		<key>grass_gauge_bg.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 0}, {270, 220}}</string>
+			<string>{{0, 0}, {15, 30}}</string>
 			<key>spriteOffset</key>
 			<string>{0, -0}</string>
 			<key>spriteSize</key>
-			<string>{270, 220}</string>
+			<string>{15, 30}</string>
 			<key>spriteSourceSize</key>
-			<string>{270, 220}</string>
+			<string>{15, 30}</string>
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{544, 113}, {270, 220}}</string>
+			<string>{{1002, 0}, {15, 30}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
 		
-		<key>cave_gauge.png</key>
+		<key>grass_hp.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 0}, {12, 36}}</string>
+			<string>{{0, 0}, {50, 30}}</string>
 			<key>spriteOffset</key>
 			<string>{0, -0}</string>
 			<key>spriteSize</key>
-			<string>{12, 36}</string>
+			<string>{50, 30}</string>
 			<key>spriteSourceSize</key>
-			<string>{12, 36}</string>
+			<string>{50, 30}</string>
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{906, 0}, {12, 36}}</string>
+			<string>{{944, 53}, {50, 30}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
 		
-		<key>cave_gauge_bg.png</key>
+		<key>grass_hp_numbers.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 0}, {12, 30}}</string>
+			<string>{{0, 0}, {400, 51}}</string>
 			<key>spriteOffset</key>
 			<string>{0, -0}</string>
 			<key>spriteSize</key>
-			<string>{12, 30}</string>
+			<string>{400, 51}</string>
 			<key>spriteSourceSize</key>
-			<string>{12, 30}</string>
+			<string>{400, 51}</string>
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{576, 73}, {12, 30}}</string>
+			<string>{{272, 68}, {400, 51}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
 		
-		<key>cave_hp.png</key>
+		<key>grass_level.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 0}, {50, 26}}</string>
+			<string>{{8, 0}, {56, 19}}</string>
 			<key>spriteOffset</key>
-			<string>{0, -0}</string>
+			<string>{1, -0}</string>
 			<key>spriteSize</key>
-			<string>{50, 26}</string>
+			<string>{56, 19}</string>
 			<key>spriteSourceSize</key>
-			<string>{50, 26}</string>
+			<string>{70, 19}</string>
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{601, 73}, {50, 26}}</string>
+			<string>{{944, 0}, {56, 19}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
 		
-		<key>cave_hp_numbers.png</key>
+		<key>grass_level_numbers.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 0}, {340, 30}}</string>
+			<string>{{0, 0}, {520, 66}}</string>
 			<key>spriteOffset</key>
 			<string>{0, -0}</string>
 			<key>spriteSize</key>
-			<string>{340, 30}</string>
+			<string>{520, 66}</string>
 			<key>spriteSourceSize</key>
-			<string>{340, 30}</string>
+			<string>{520, 66}</string>
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{544, 41}, {340, 30}}</string>
+			<string>{{272, 0}, {520, 66}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
 		
-		<key>cave_level.png</key>
+		<key>grass_mp.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 0}, {70, 18}}</string>
+			<string>{{0, 0}, {50, 30}}</string>
 			<key>spriteOffset</key>
 			<string>{0, -0}</string>
 			<key>spriteSize</key>
-			<string>{70, 18}</string>
+			<string>{50, 30}</string>
 			<key>spriteSourceSize</key>
-			<string>{70, 18}</string>
+			<string>{50, 30}</string>
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{952, 0}, {70, 18}}</string>
+			<string>{{944, 21}, {50, 30}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
 		
-		<key>cave_level_back.png</key>
+		<key>grass_mp_off.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 0}, {70, 70}}</string>
+			<string>{{1, 1}, {28, 28}}</string>
 			<key>spriteOffset</key>
 			<string>{0, -0}</string>
 			<key>spriteSize</key>
-			<string>{70, 70}</string>
-			<key>spriteSourceSize</key>
-			<string>{70, 70}</string>
-			<key>spriteTrimmed</key>
-			<true/>
-			<key>textureRect</key>
-			<string>{{886, 41}, {70, 70}}</string>
-			<key>textureRotated</key>
-			<false/>
-		</dict>
-		
-		<key>cave_level_numbers.png</key>
-		<dict>
-			<key>aliases</key>
-			<array>
-			
-			</array>
-			<key>spriteColorRect</key>
-			<string>{{0, 0}, {360, 39}}</string>
-			<key>spriteOffset</key>
-			<string>{0, -0}</string>
-			<key>spriteSize</key>
-			<string>{360, 39}</string>
-			<key>spriteSourceSize</key>
-			<string>{360, 39}</string>
-			<key>spriteTrimmed</key>
-			<true/>
-			<key>textureRect</key>
-			<string>{{544, 0}, {360, 39}}</string>
-			<key>textureRotated</key>
-			<false/>
-		</dict>
-		
-		<key>cave_mp.png</key>
-		<dict>
-			<key>aliases</key>
-			<array>
-			
-			</array>
-			<key>spriteColorRect</key>
-			<string>{{0, 0}, {50, 25}}</string>
-			<key>spriteOffset</key>
-			<string>{0, -0}</string>
-			<key>spriteSize</key>
-			<string>{50, 25}</string>
-			<key>spriteSourceSize</key>
-			<string>{50, 25}</string>
-			<key>spriteTrimmed</key>
-			<true/>
-			<key>textureRect</key>
-			<string>{{653, 73}, {50, 25}}</string>
-			<key>textureRotated</key>
-			<false/>
-		</dict>
-		
-		<key>cave_mp_off.png</key>
-		<dict>
-			<key>aliases</key>
-			<array>
-			
-			</array>
-			<key>spriteColorRect</key>
-			<string>{{0, 0}, {30, 30}}</string>
-			<key>spriteOffset</key>
-			<string>{0, -0}</string>
-			<key>spriteSize</key>
-			<string>{30, 30}</string>
+			<string>{28, 28}</string>
 			<key>spriteSourceSize</key>
 			<string>{30, 30}</string>
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{920, 0}, {30, 30}}</string>
+			<string>{{996, 32}, {28, 28}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
 		
-		<key>cave_mp_on.png</key>
+		<key>grass_mp_on.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 0}, {30, 30}}</string>
+			<string>{{1, 1}, {28, 28}}</string>
 			<key>spriteOffset</key>
 			<string>{0, -0}</string>
 			<key>spriteSize</key>
-			<string>{30, 30}</string>
+			<string>{28, 28}</string>
 			<key>spriteSourceSize</key>
 			<string>{30, 30}</string>
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{544, 73}, {30, 30}}</string>
+			<string>{{996, 62}, {28, 28}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
 		
-		<key>cave_slash.png</key>
+		<key>grass_slash.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 0}, {9, 30}}</string>
+			<string>{{0, 0}, {25, 30}}</string>
 			<key>spriteOffset</key>
 			<string>{0, -0}</string>
 			<key>spriteSize</key>
-			<string>{9, 30}</string>
+			<string>{25, 30}</string>
 			<key>spriteSourceSize</key>
-			<string>{9, 30}</string>
+			<string>{25, 30}</string>
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{590, 73}, {9, 30}}</string>
+			<string>{{944, 85}, {25, 30}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
 		
-		<key>cave_trigger_lsk.png</key>
+		<key>grass_trigger_lsk.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 10}, {148, 128}}</string>
+			<string>{{0, 6}, {148, 136}}</string>
 			<key>spriteOffset</key>
 			<string>{0, -0}</string>
 			<key>spriteSize</key>
-			<string>{148, 128}</string>
+			<string>{148, 136}</string>
 			<key>spriteSourceSize</key>
 			<string>{148, 148}</string>
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{816, 243}, {148, 128}}</string>
+			<string>{{794, 0}, {148, 136}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
 		
-		<key>cave_trigger_on.png</key>
+		<key>grass_trigger_on.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 6}, {148, 138}}</string>
+			<string>{{0, 10}, {148, 130}}</string>
 			<key>spriteOffset</key>
 			<string>{0, -1}</string>
 			<key>spriteSize</key>
-			<string>{148, 138}</string>
+			<string>{148, 130}</string>
 			<key>spriteSourceSize</key>
 			<string>{148, 148}</string>
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{272, 272}, {148, 138}}</string>
+			<string>{{272, 270}, {148, 130}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
 		
-		<key>cave_trigger_vox.png</key>
+		<key>grass_trigger_vox.png</key>
 		<dict>
 			<key>aliases</key>
 			<array>
 			
 			</array>
 			<key>spriteColorRect</key>
-			<string>{{0, 10}, {148, 128}}</string>
+			<string>{{0, 9}, {148, 130}}</string>
 			<key>spriteOffset</key>
 			<string>{0, -0}</string>
 			<key>spriteSize</key>
-			<string>{148, 128}</string>
+			<string>{148, 130}</string>
 			<key>spriteSourceSize</key>
 			<string>{148, 148}</string>
 			<key>spriteTrimmed</key>
 			<true/>
 			<key>textureRect</key>
-			<string>{{816, 113}, {148, 128}}</string>
+			<string>{{272, 138}, {148, 130}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
@@ -411,9 +345,9 @@
 		<key>size</key>
 		<string>{1024, 512}</string>
 		<key>name</key>
-		<string>cave.zwd</string>
+		<string>grass.zwd</string>
 		<key>textureFileName</key>
-		<string>cave_default.png</string>
+		<string>grass_default.png</string>
 		<key>premultipliedAlpha</key>
 		<false/>
 	</dict>

@@ -59,8 +59,13 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _counter = -1;
   _exp = this->getExpFromLua();
   stringstream ss;
-  ss << "Image/" << _species->getImageName().c_str() << "0.png";
-  bool success = (bool)this->initWithFile(FileUtils::getFilePath(ss.str().c_str()).c_str());
+  ss << _species->getImageName().c_str() << ".png";
+  _sheet = CCTextureCache::sharedTextureCache()->addImage(ss.str().c_str());
+  _sheet->retain();
+  _enemySize = _sheet->getContentSize().width / _species->getAnimationFrames();
+  bool success = (bool)this->initWithTexture(_sheet, CCRectMake(0, 0,
+                                                                _enemySize,
+                                                                _enemySize));
   
   this->setLifeColor();
   this->setItem((EnemyItem)_lua->getInt("item"));
@@ -83,6 +88,7 @@ Enemy::Enemy() {
 Enemy::~Enemy() {
   _lua->release();
   _species->release();
+  _sheet->release();
   cout << "Enemy was released." << endl;
 }
 
@@ -310,33 +316,34 @@ bool Enemy::performSkill(CharacterManager* characterManager, EnemyManager* enemy
 }
 
 bool Enemy::setAnimationClip(const char *clipName, int frames, bool hasFrame) {
-  stringstream ss;
-  ss << _species->getImageName() << "_" << clipName;
-  return this->setAnimationAndFrame(ss.str().c_str(), frames, hasFrame);
+  string name = string(clipName);
+  int xOffset = 0;
+  if (name == "death") {
+    xOffset = 0;
+  } else if (name == "attack") {
+    xOffset = 1;
+  }
+  return this->setAnimationAndFrame(xOffset, 2, frames, hasFrame);
 }
 
 bool Enemy::setDefaultAnimationClip() {
-  return this->setAnimationAndFrame(_species->getImageName().c_str(), _species->getAnimationFrames(), _species->hasFrame());
+  return this->setAnimationAndFrame(0, 0, _species->getAnimationFrames(), _species->hasFrame());
 }
 
-bool Enemy::setAnimationAndFrame(const char *filePrefix, int frames, bool hasFrame) {
+bool Enemy::setAnimationAndFrame(int xOffset, int yOffset, int frames, bool hasFrame) {
   this->stopAllActions(); // 全てのアニメーションを停止
   if (this->getChildByTag(EnemyTagFrame) != NULL) {
     this->removeChildByTag(EnemyTagFrame, true); // フレームを取る
   }
   stringstream ss;
-  ss << "Image/" << filePrefix << "0.png";
-  CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath(ss.str().c_str()).c_str());
-  bool success = texture != NULL;
-  this->setTexture(texture);
+  bool success = _sheet != NULL;
   
   if (success) {
+    int width = _enemySize;
+    int height = _enemySize;
     CCAnimation* animation = CCAnimation::create();
-    CCSize size = this->getTexture()->getContentSize();
     for (int i = 0; i < frames; ++i) {
-      stringstream frameSS;
-      frameSS << "Image/" << filePrefix << i << ".png";
-      CCSpriteFrame* frame = CCSpriteFrame::create(FileUtils::getFilePath(frameSS.str().c_str()).c_str(), CCRectMake(0, 0, size.width, size.height));
+      CCSpriteFrame* frame = CCSpriteFrame::createWithTexture(_sheet, CCRectMake(xOffset * width + width * i, yOffset * height, width, height));
       animation->addSpriteFrame(frame);
     }
     animation->setLoops(-1);
@@ -344,10 +351,9 @@ bool Enemy::setAnimationAndFrame(const char *filePrefix, int frames, bool hasFra
     this->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
     // もし、フレームを持っているなら、フレームを追加してやる
     if (hasFrame) {
-      CCSprite* frameSprite = this->createFrameSprite(filePrefix, frames);
+      CCSprite* frameSprite = this->createFrameSprite(xOffset, yOffset + 1, frames);
       frameSprite->setAnchorPoint(ccp(0, 0));
-      CCRepeatForever* blink = CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.05f, 64),
-                                                                          CCFadeTo::create(0.05f, 255)));
+      CCRepeatForever* blink = CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.05f, 64), CCFadeTo::create(0.05f, 255)));
       if (_type == SkillTypePhysical) {
         frameSprite->setColor(VOX_COLOR);
         frameSprite->runAction(blink);
@@ -364,16 +370,13 @@ bool Enemy::setAnimationAndFrame(const char *filePrefix, int frames, bool hasFra
   return false;
 }
 
-CCSprite* Enemy::createFrameSprite(const char* filePrefix, int frames) {
-  stringstream ss;
-  ss << "Image/" << "w_" << filePrefix << 0 << ".png";
-  CCSprite* frame = CCSprite::create(FileUtils::getFilePath(ss.str().c_str()).c_str());
+CCSprite* Enemy::createFrameSprite(int xOffset, int yOffset, int frames) {
+  int width = _enemySize;
+  int height = _enemySize;
+  CCSprite* frame = CCSprite::createWithTexture(_sheet, CCRectMake(xOffset * width, yOffset * height, width, height));
   CCAnimation* animation = CCAnimation::create();
-  CCSize size = this->getTexture()->getContentSize();
   for (int i = 0; i < frames; ++i) {
-    stringstream frameSS;
-    frameSS << "Image/" << "w_" << filePrefix << i << ".png";
-    CCSpriteFrame* frame = CCSpriteFrame::create(FileUtils::getFilePath(frameSS.str().c_str()).c_str(), CCRectMake(0, 0, size.width, size.height));
+    CCSpriteFrame* frame = CCSpriteFrame::createWithTexture(_sheet, CCRectMake(xOffset * width + width * i, yOffset * height, width, height));
     animation->addSpriteFrame(frame);
   }
   animation->setLoops(-1);
