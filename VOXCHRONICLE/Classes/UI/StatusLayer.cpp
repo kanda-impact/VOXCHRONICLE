@@ -105,8 +105,8 @@ void StatusLayer::setCurrentMP(int mp) {
     } else {
       filepath = _prefix + "_mp_off.png";
     }
-    chip->setTexture(CCTextureCache::sharedTextureCache()->addImage(filepath.c_str()));
-    
+    chip->setTexture(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(filepath.c_str())->getTexture());
+    chip->setTextureRect(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(filepath.c_str())->getRect());
   }
 }
 

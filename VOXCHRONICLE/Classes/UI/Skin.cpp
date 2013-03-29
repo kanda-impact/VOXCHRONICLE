@@ -13,6 +13,8 @@ Skin::Skin(const char* scriptName) {
   LuaObject* lua = LuaObject::create(scriptName);
   int frameCount = lua->getInt("groundFrameCount");
   _prefix = lua->getString("prefix");
+  CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile((string(_prefix) + "_default.plist").c_str());
+  
   _ground = new Ground(_prefix.c_str(), frameCount);
   _statusLayer = new StatusLayer(scriptName);
   _background = NULL;
