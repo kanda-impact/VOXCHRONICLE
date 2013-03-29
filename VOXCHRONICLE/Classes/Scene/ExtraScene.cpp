@@ -72,6 +72,7 @@ void ExtraScene::onAchievementButtonPressed(cocos2d::CCObject *sender) {
 
 void ExtraScene::onDictionaryButtonPressed(cocos2d::CCObject *sender) {
   DictionaryScene* scene = DictionaryScene::create();
+  SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
   this->nextScene(scene);
 }
 

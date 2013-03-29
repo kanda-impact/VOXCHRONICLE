@@ -86,6 +86,11 @@ DictionaryScene::~DictionaryScene() {
   _enemies->release();
 }
 
+void DictionaryScene::onEnterTransitionDidFinish() {
+  CCLayer::onEnterTransitionDidFinish();
+  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("dictionary.mp3", true);
+}
+
 void DictionaryScene::loadEnemyByIndex(int idx) {
   CCString* script = (CCString*)_enemies->objectAtIndex(idx);
   if (_enemy) {
@@ -111,6 +116,7 @@ void DictionaryScene::onBackButtonPressed(cocos2d::CCObject *sender) {
   scene->addChild(layer);
   CCTransitionFade* fade = CCTransitionFade::create(0.2, scene);
   CCDirector::sharedDirector()->replaceScene(fade);
+  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("menu.mp3", true);
 }
 
 void DictionaryScene::onCursorButtonPressed(cocos2d::CCObject *sender) {
