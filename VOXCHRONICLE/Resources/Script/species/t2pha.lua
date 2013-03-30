@@ -13,6 +13,9 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  生物と無生物の間で揺れる構造体。
+  生物に対して無類の強さだが、電子生命に負ける。
+  電子生命にはやる気がないので実質敵なし。
   ]],
   habitat = "",
   animationFrames = 4,

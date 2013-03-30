@@ -1,5 +1,5 @@
 Enemy = {
-  name = "ガーゴイル",
+  name = "てぃえぬてぃ",
   imageName = "gargoyle",
   attack = 1,
   baseExp = 1,
@@ -13,6 +13,8 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  雪原でしばしば目撃される。
+  原始的で合理的な巨体の持ち主。
   ]],
   habitat = "",
   animationFrames = 7,

@@ -13,7 +13,7 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
-  血を３００ｃｃ吸ったりしないコウモリ。
+  血を３００ｃｃ吸ったりしない割合安全なコウモリ。陽気で騒々しい。
   ]],
   habitat = "",
   animationFrames = 4,

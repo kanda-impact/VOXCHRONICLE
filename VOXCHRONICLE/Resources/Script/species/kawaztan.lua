@@ -1,6 +1,6 @@
 Enemy = {
-  name = "ドングリ",
-  imageName = "acorn",
+  name = "かわずたん",
+  imageName = "kawaztan",
   attack = 3,
   baseExp = 6,
   hasFrame = true,
@@ -12,8 +12,8 @@ Enemy = {
     return 2
   end,
   description = [[
-    どう見てもマツボックリです、本当にありがとうございました。
-    確かにコロコロしながらやってくるが、彼らはY軸回転を採用したようである。
+    みんなのアイドルかわずたんが黒魔法と光剣術を習得して参戦したぞ！
+    『まとめてノシイカにしてやるケロ～☆』
   ]],
   habitat = "森林ほか",
   disableSkills = {},

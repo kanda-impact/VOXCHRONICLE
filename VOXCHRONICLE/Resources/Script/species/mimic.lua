@@ -13,7 +13,8 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
-  ばけものたからばこ　宝に卑しい人を捕食する。
+  擬態がバレないよう、宝箱の流行を追い求めて日々進化を続ける進化の奇跡の産物。
+  流行を追わなくなったら、冒険者に狩られてしまうさだめ。
   ]],
   habitat = "",
   animationFrames = 4,
