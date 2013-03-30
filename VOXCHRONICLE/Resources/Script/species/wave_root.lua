@@ -1,7 +1,7 @@
 Enemy = {
   name = "波",
   imageName = "wave",
-  attack = 10,
+  attack = 4,
   baseExp = 0,
   hasFrame = true,
   counter = 1,

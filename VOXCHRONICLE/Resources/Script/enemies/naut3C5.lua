@@ -5,8 +5,8 @@ Enemy = {
   getExp = function(default)
       return 20
   end,
-  item = EnemyItemShield,
-  type = SkillTypePhysical,
+  item = EnemyItemBarrier,
+  type = SkillTypeNormal,
 }
 
 return Enemy
