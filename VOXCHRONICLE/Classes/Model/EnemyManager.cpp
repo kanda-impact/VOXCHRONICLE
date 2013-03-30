@@ -185,7 +185,7 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CCArray* targets, Charact
       if (target->getSpecies()->isEnableSkill(skill)) { // その敵に技が有効かどうか
         // 追加効果がある場合、関数を呼び出す
         int damage = 0;
-        if (count == 1) { // 1体だけの時のみ
+        if (skill->getRange() != SkillRangeAll || skill->getRange() != SkillRangeFront) { // 1体だけの時のみ
           performLuaFunction(skill, target, characterManager);
         }
         DamageType damageType = DamageTypeNone;
