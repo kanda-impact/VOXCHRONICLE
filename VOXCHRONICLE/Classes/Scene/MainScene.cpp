@@ -65,6 +65,7 @@ bool MainScene::init(Map* map) {
   if ( !CCLayer::init() ) {
     return false;
   }
+  Enemy::loadLifeColors();
   Music* music = new Music(3);
   music->autorelease();
   music->setTrackDidBackFunction(boost::bind(&MainScene::trackDidBack, this, _1, _2, _3));
@@ -248,7 +249,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     } else if (_effectLayer->getPopupWindow()) { // チュートリアルウィンドウが出ているとき
       _state = VCStateWindow;
       _skin->getController()->setEnable(false); // コントローラーを無効に
-    }else {
+    } else {
       skill = _skin->getController()->currentTriggerSkill();
       //_controller->resetAllTriggers(); // このタイミングでトリガーをOFFにしてやる
     }
@@ -364,10 +365,12 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       
       int enemyCount = enemies->count();
       isHit = skill->getRange() == SkillRangeSelf || targets->count() == 0; // 自分が対象もしくは誰もいなければ絶対に成功
-      for (int i = 0; i < enemyCount; ++i) {
-        Enemy* enemy = (Enemy*)enemies->objectAtIndex(i);
+      CCObject* obj = NULL;
+      int i = 0;
+      CCARRAY_FOREACH(enemies, obj) {
+        Enemy* enemy = (Enemy*)obj;
         CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(((CCInteger*)damages->objectAtIndex(i))->getValue()).c_str(),
-                                                         FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 100, '0');
+        FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 100, '0');
         // ダメージが0かつ、元々ダメージのない技じゃないかつ、アイテムも破壊していないとき、ヒットしていない状態にしてやる
         int damage = ((CCInteger*)damages->objectAtIndex(i))->getValue();
         DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(i))->getValue();
@@ -380,14 +383,14 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         
         // ダメージラベル
         damageLabel->setPosition(enemy->getPosition());
-        float scale = enemy->getCurrentScale(enemy->getRow());
-        damageLabel->setScale(scale);
-        this->addChild(damageLabel, MainSceneZOrderDamageLabel);
-        damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
-                                                  CCDelayTime::create(0.5),
-                                                  CCFadeOut::create(0.2),
-                                                  CCRemoveFromParentAction::create(),
-                                                  NULL));
+         float scale = enemy->getCurrentScale(enemy->getRow());
+         damageLabel->setScale(scale);
+         this->addChild(damageLabel, MainSceneZOrderDamageLabel);
+         damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
+         CCDelayTime::create(0.5),
+         CCFadeOut::create(0.2),
+         CCRemoveFromParentAction::create(),
+         NULL));
         
         // 敵毎に効果音を鳴らす
         string fileName = "";
@@ -414,6 +417,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         if (fileName.length() > 0) {
           SEManager::sharedManager()->registerEffect(fileName.c_str(), 0.15f);
         }
+        ++i;
       }
       
       // 全体のSE
