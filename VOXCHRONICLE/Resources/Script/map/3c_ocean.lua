@@ -20,13 +20,13 @@ Map = {
     elseif level <= 25 then
       return {whale3C8 = 1, cryst3C7 = 3}
     elseif level <= 26 then
-      return {jfish3C4 = 2, naut3C5 = 2, wave3C0 = 1}
+      return {jfish3C4 = 2, naut3C5 = 2, wave3C1 = 1}
     elseif level <= 27 then
-      return {whale3C8 = 1, cryst3C7 = 1, wave3C0 = 1}
+      return {whale3C8 = 1, cryst3C7 = 1, wave3C1 = 1}
     elseif level <= 28 then
-      return {jfish3C4 = 1, naut3C5 = 2, wave3C0 = 1}
+      return {jfish3C4 = 1, naut3C5 = 2, wave3C1 = 1}
     elseif level <= 29 then
-      return {whale3C8 = 1, jfish3C4 = 2, cryst3C7 = 3, wave3C0 = 2}
+      return {whale3C8 = 1, jfish3C4 = 2, cryst3C7 = 3, wave3C1 = 2}
     elseif level == 30 then
       return {}
     end
@@ -59,7 +59,7 @@ Map = {
     end
   end,
   getEnemyPopRate = function(level)
-    return 0.25
+    return 0.16
   end,
   fixedEnemies = {
   }
