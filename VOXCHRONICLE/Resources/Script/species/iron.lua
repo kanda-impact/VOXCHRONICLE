@@ -13,6 +13,7 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  実は核エンジンで駆動しているらしい。
   ]],
   habitat = "",
   animationFrames = 1,

@@ -13,6 +13,9 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  天球を惑う迷子の星。
+  恒星をみつけては他の惑星と一緒にまとわりつきたがる。
+  さみしがり。
   ]],
   habitat = "",
   animationFrames = 4,

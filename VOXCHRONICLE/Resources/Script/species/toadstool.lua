@@ -13,6 +13,9 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  ゴホゴホ。これ病気じゃないんですよゴホゴホ。
+  うつらないから大丈夫ですからゴホゴホ。
+  でもなんか虫とか死ぬんですよねゴホゴホ。
   ]],
   habitat = "",
   animationFrames = 4,

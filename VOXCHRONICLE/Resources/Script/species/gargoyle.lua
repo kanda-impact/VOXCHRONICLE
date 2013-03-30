@@ -13,6 +13,7 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  がーごいる　がー　がー　あひるじゃないよ　いわだよ
   ]],
   habitat = "",
   animationFrames = 4,

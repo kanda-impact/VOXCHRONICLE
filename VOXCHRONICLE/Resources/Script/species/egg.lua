@@ -13,6 +13,8 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  電子に自己増殖機能を与える試みの末うまれた。
+  転ぶまでは増えつづける。
   ]],
   habitat = "",
   animationFrames = 4,

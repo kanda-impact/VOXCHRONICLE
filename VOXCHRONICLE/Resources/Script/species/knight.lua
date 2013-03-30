@@ -18,6 +18,7 @@ Enemy = {
   end,
   disableSkills = {"knockback"},
   description = [[
+  きっとぜんまい仕掛け。たぶんぜんまい仕掛け。
   ]],
   habitat = "",
   animationFrames = 4,

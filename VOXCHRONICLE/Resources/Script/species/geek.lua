@@ -13,6 +13,7 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  伝説の戦闘兵器　伝統の雑魚モンスター　ふたたび
   ]],
   habitat = "",
   animationFrames = 4,

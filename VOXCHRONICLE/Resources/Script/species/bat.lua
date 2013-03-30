@@ -19,6 +19,7 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  血を３００ｃｃ吸ったりしないコウモリ。
   ]],
   habitat = "",
   animationFrames = 4,

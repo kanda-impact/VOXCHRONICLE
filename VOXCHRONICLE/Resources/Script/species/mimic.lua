@@ -13,6 +13,7 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  ばけものたからばこ　宝に卑しい人を捕食する。
   ]],
   habitat = "",
   animationFrames = 4,

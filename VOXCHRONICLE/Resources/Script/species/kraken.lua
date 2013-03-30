@@ -14,6 +14,7 @@ Enemy = {
   end,
   disableSkills = {"knockback"},
   description = [[
+  くらげじゃないよ！クラーケンだよー！！足いっぱいあるよー！
   ]],
   habitat = "",
   animationFrames = 4,

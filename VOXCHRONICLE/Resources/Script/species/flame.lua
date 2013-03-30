@@ -13,6 +13,8 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  電子に火を与える試みの末うまれた。この事件が遠い未来
+  の電子界に一大叙事詩を紡ぐ事になるが、それはまた別のお話。
   ]],
   habitat = "",
   animationFrames = 4,
