@@ -15,16 +15,16 @@ bool MapSelector::init() {
     return false;
   }
   
-  CCMenuItemImage* leftArrow = CCMenuItemImage::create(FileUtils::getFilePath("selector_no.png").c_str(),
-                                                       FileUtils::getFilePath("selector_no_selected.png").c_str(),
+  CCMenuItemImage* leftArrow = CCMenuItemImage::create(FileUtils::getFilePath("selector_easy.png").c_str(),
+                                                       FileUtils::getFilePath("selector_easy_selected.png").c_str(),
                                                        this,
                                                        menu_selector(MapSelector::leftButtonPressed));
-  CCMenuItemImage* rightArrow = CCMenuItemImage::create(FileUtils::getFilePath("selector_yes.png").c_str(),
-                                                        FileUtils::getFilePath("selector_yes_selected.png").c_str(),
+  CCMenuItemImage* rightArrow = CCMenuItemImage::create(FileUtils::getFilePath("selector_hard.png").c_str(),
+                                                        FileUtils::getFilePath("selector_hard_selected.png").c_str(),
                                                         this,
                                                         menu_selector(MapSelector::rightButtonPressed));
   CCMenu* menu = CCMenu::create(leftArrow, rightArrow, NULL);
-  menu->alignItemsHorizontallyWithPadding(180);
+  menu->alignItemsHorizontallyWithPadding(135);
   this->addChild(menu);
   _nextMaps = NULL;
   _selectedMap = NULL;

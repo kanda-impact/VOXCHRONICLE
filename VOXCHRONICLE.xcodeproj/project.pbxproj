@@ -1162,8 +1162,6 @@
 		07FD922016210A2300E74459 /* lsk.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921F16210A2300E74459 /* lsk.lua */; };
 		B00634D516D876FB008D8E25 /* testMap.lua in Resources */ = {isa = PBXBuildFile; fileRef = B00634D416D876FA008D8E25 /* testMap.lua */; };
 		B0175500170353CE008053BB /* gargoyle3B2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B01754FF170353CE008053BB /* gargoyle3B2.lua */; };
-		B01755021706CCDA008053BB /* wisp2B6.lua in Resources */ = {isa = PBXBuildFile; fileRef = B01755011706CCD3008053BB /* wisp2B6.lua */; };
-		B01755041706D2F2008053BB /* dragon2B0.lua in Resources */ = {isa = PBXBuildFile; fileRef = B01755031706D2EC008053BB /* dragon2B0.lua */; };
 		B03F7B0116E1D74C00D7FF9C /* 2a_forest.lua in Resources */ = {isa = PBXBuildFile; fileRef = B03F7B0016E1D74A00D7FF9C /* 2a_forest.lua */; };
 		B03F7B0716E1D86900D7FF9C /* slime3B1.lua in Resources */ = {isa = PBXBuildFile; fileRef = B03F7B0616E1D86700D7FF9C /* slime3B1.lua */; };
 		B03F7B1916E2B29300D7FF9C /* leaf1A0.lua in Resources */ = {isa = PBXBuildFile; fileRef = B03F7B1816E2B28E00D7FF9C /* leaf1A0.lua */; };
@@ -2555,7 +2553,7 @@
 		07D8745515F01500009CC446 /* OpenALManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OpenALManager.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/OpenALManager.h; sourceTree = "<group>"; };
 		07D8745615F01500009CC446 /* OpenALManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OpenALManager.m; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/OpenALManager.m; sourceTree = "<group>"; };
 		07D8745715F01500009CC446 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/Support/SynthesizeSingleton.h; sourceTree = "<group>"; };
-		07D8D649169F3BD900B646E5 /* controller.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = controller.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		07D8D649169F3BD900B646E5 /* controller.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = controller.lua; sourceTree = "<group>"; };
 		07D8D64B169F4D9100B646E5 /* PauseLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PauseLayer.cpp; path = Classes/UI/PauseLayer.cpp; sourceTree = "<group>"; };
 		07D8D64E169F4DA800B646E5 /* PauseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PauseLayer.h; path = Classes/includes/PauseLayer.h; sourceTree = "<group>"; };
 		07D8D64F169F656F00B646E5 /* cancel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = cancel.mp3; path = Resources/SE/cancel.mp3; sourceTree = "<group>"; };
@@ -2714,8 +2712,6 @@
 		07FD921F16210A2300E74459 /* lsk.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lsk.lua; path = character/lsk.lua; sourceTree = "<group>"; };
 		B00634D416D876FA008D8E25 /* testMap.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = testMap.lua; path = map/testMap.lua; sourceTree = "<group>"; };
 		B01754FF170353CE008053BB /* gargoyle3B2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gargoyle3B2.lua; sourceTree = "<group>"; };
-		B01755011706CCD3008053BB /* wisp2B6.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wisp2B6.lua; sourceTree = "<group>"; };
-		B01755031706D2EC008053BB /* dragon2B0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dragon2B0.lua; sourceTree = "<group>"; };
 		B03F7B0016E1D74A00D7FF9C /* 2a_forest.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 2a_forest.lua; path = map/2a_forest.lua; sourceTree = "<group>"; };
 		B03F7B0616E1D86700D7FF9C /* slime3B1.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = slime3B1.lua; sourceTree = "<group>"; };
 		B03F7B1816E2B28E00D7FF9C /* leaf1A0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = leaf1A0.lua; sourceTree = "<group>"; };
@@ -4739,7 +4735,6 @@
 				B07E38D516E1107200473629 /* cryst2B3.lua */,
 				B07E38D916E111EB00473629 /* cryst3D0.lua */,
 				B07E38DD16E122D500473629 /* dragon3B6.lua */,
-				B01755031706D2EC008053BB /* dragon2B0.lua */,
 				B07E38DF16E1230000473629 /* flower1A0.lua */,
 				B07E38E116E1236E00473629 /* gargoyle3A0.lua */,
 				B01754FF170353CE008053BB /* gargoyle3B2.lua */,
@@ -4765,7 +4760,6 @@
 				B0AA405316F58DFF00674A2A /* mask3A11.lua */,
 				B0AA405116F58D2200674A2A /* typhoon3A2.lua */,
 				B07E38FD16E12AB300473629 /* wisp3A2.lua */,
-				B01755011706CCD3008053BB /* wisp2B6.lua */,
 				070141D016E1DB5200B00887 /* mukade2B0.lua */,
 			);
 			path = enemies;
@@ -6056,8 +6050,6 @@
 				07A3D5DD1705F3B4009AE7F3 /* magic_effect2.mp3 in Resources */,
 				07A3D5DE1705F3B4009AE7F3 /* magic_effect3.mp3 in Resources */,
 				07A3D5E01705F4D0009AE7F3 /* endingD.mp3 in Resources */,
-				B01755021706CCDA008053BB /* wisp2B6.lua in Resources */,
-				B01755041706D2F2008053BB /* dragon2B0.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

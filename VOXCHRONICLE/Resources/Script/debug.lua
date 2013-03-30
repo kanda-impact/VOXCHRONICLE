@@ -10,7 +10,8 @@ DebugData = {
     "3d_space",
     "ruin_boss",
     "bossdebug",
-    "ocean_boss",
+    -- "ocean_boss",
+    "map_select"
   }
 }
 
