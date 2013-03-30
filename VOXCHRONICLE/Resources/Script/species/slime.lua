@@ -13,6 +13,9 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  自由を手にした誰かのおやつ。
+  お目目をどこかに失くしがちなので、
+  見つけたら戻してあげて。
   ]],
   habitat = "",
   animationFrames = 4,

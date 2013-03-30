@@ -13,6 +13,8 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  電子に光合成能力を与える試みの末うまれた。
+  光合成より他のいきものを捕食した方が効率がいいので使ってない。
   ]],
   habitat = "",
   animationFrames = 4,

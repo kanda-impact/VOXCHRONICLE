@@ -13,6 +13,8 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  働きバチではない。彼らは誇り高きノマドワーカー。
+  しかし巣畜時代の元同僚に対する心中は複雑。
   ]],
   habitat = "",
   animationFrames = 4,

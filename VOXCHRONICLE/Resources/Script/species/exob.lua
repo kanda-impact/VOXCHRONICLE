@@ -13,6 +13,8 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  あまねく宇宙に普遍的に存在している、
+  故郷の星をもたない謎生命。
   ]],
   habitat = "",
   animationFrames = 4,
