@@ -1,5 +1,5 @@
 Enemy = {
-  name = "蛾",
+  name = "ちょうちょ",
   imageName = "moth",
   attack = 5,
   baseExp = 10,
@@ -14,6 +14,8 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  ポンポンの粉を散らされると死んでしまう儚い命。
+  稀に集団発生してはオクスとラスカと誰かを大いに苦しめる。
   ]],
   habitat = "",
   animationFrames = 4,

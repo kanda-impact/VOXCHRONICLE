@@ -13,6 +13,8 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  気の遠くなるような年月を経て力を持った結晶石。
+  自分のうまれた場所を守ろうとしている。
   ]],
   habitat = "",
   animationFrames = 4,

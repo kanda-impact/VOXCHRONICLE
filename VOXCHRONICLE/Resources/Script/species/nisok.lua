@@ -13,6 +13,8 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  電子に自由を与える試みの末うまれた。
+  歩く事が目的であって行く宛はない。
   ]],
   habitat = "",
   animationFrames = 4,
