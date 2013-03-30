@@ -29,6 +29,7 @@ class DictionaryScene :public CCLayer {
  public:
   virtual bool init();
   virtual ~DictionaryScene();
+  virtual void onEnterTransitionDidFinish();
   CREATE_FUNC(DictionaryScene);
 };
 

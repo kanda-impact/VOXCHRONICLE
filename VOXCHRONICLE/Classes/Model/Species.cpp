@@ -15,7 +15,7 @@ Species::Species(const char* identifier) {
   _name = string(_lua->getString("name"));
   _attack = _lua->getInt("attack");
   _counter = _lua->getInt("counter");
-  _imageName = string(_lua->getString("imageName"));
+  _imageName = string(_lua->getString("imageName")) + ".png";
   _animationFrames = _lua->getInt("animationFrames");
   _hasFrame = _lua->getBoolean("hasFrame");
   _disableSkills = _lua->getArray("disableSkills");

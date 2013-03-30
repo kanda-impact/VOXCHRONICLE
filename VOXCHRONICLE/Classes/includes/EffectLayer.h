@@ -38,12 +38,14 @@ class EffectLayer :public CCLayer {
   EffectLayer();
   ~EffectLayer();
   void addEffectOnEnemy(Enemy* enemy, const char* prefix, int frameCount, CCRect rect);
+  void addEffectOnEnemy(Enemy* enemy, const char* prefix, int frameCount, CCRect rect, float delay);
   void addSkillEffect(Skill* skill, CCArray* targets);
   void setTensionEffect(int tension);
   void setCharacterEffect(Character* character);
   PopupWindow* addPopupWindow(int pages);
   PopupWindow* getPopupWindow();
   void addCutin(Skill *skill, EffectLayerCutinType cutinType, float duration);
+  void addQTEAttack(Enemy* boss);
   void reloadEffects();
 };
 

@@ -6,11 +6,11 @@ Skin = {
   frameType = ControllerFrameTypeNone,
   buildSkin = function(self)
     -- ここでスキンの定義をｇｄｇｄ書きます
-    local hpLabel = CCSprite:create("cyber_hp.png")
+    local hpLabel = CCSprite:createWithSpriteFrameName("cyber_hp.png")
     hpLabel:setPosition(ccp(20, 300));
     self:addChild(hpLabel)
     
-    local mpLabel = CCSprite:create("cyber_mp.png");
+    local mpLabel = CCSprite:createWithSpriteFrameName("cyber_mp.png");
     mpLabel:setPosition(ccp(282, 300))
     self:addChild(mpLabel)
   
@@ -31,11 +31,11 @@ Skin = {
     mpMarker:setPosition(ccp(305, 300))
     self:addChild(mpMarker, 0, MPMarkerTag)
   
-    local slash = CCSprite:create("cyber_slash.png")
+    local slash = CCSprite:createWithSpriteFrameName("cyber_slash.png")
     slash:setPosition(ccp(71, 293))
     self:addChild(slash)
   
-    local stageLabel = CCSprite:create("cyber_level.png")
+    local stageLabel = CCSprite:createWithSpriteFrameName("cyber_level.png")
     stageLabel:setPosition(ccp(240, 282))
     self:addChild(stageLabel)
   
@@ -43,12 +43,12 @@ Skin = {
     levelLabel:setPosition(ccp(222, 290))
     self:addChild(levelLabel, 0, LevelLabelTag)
   
-    local lifeGaugeBackground = CCSprite:create("cyber_gauge_bg.png")
+    local lifeGaugeBackground = CCSprite:createWithSpriteFrameName("cyber_gauge_bg.png")
     lifeGaugeBackground:setAnchorPoint(ccp(0.0, 0.5))
     lifeGaugeBackground:setPosition(ccp(35, 307))
     self:addChild(lifeGaugeBackground, 0, LifeGaugeBackgroundTag)
   
-    local lifeGauge = CCSprite:create("cyber_gauge.png")
+    local lifeGauge = CCSprite:createWithSpriteFrameName("cyber_gauge.png")
     lifeGauge:setAnchorPoint(ccp(0.0, 0.5))
     lifeGauge:setPosition(ccp(35, 307))
     self:addChild(lifeGauge, 0, LifeGaugeTag)

@@ -67,6 +67,10 @@ EffectLayer::~EffectLayer() {
 }
 
 void EffectLayer::addEffectOnEnemy(Enemy *enemy, const char *prefix, int frameCount, CCRect rect) {
+  this->addEffectOnEnemy(enemy, prefix, frameCount, rect, 4.0 / 60.0);
+}
+
+void EffectLayer::addEffectOnEnemy(Enemy *enemy, const char *prefix, int frameCount, CCRect rect, float delay) {
   CCSprite* effect = CCSprite::create((string(prefix) + string("0.png")).c_str());
   CCAnimation* animation = CCAnimation::create();
   CCPoint position;
@@ -82,7 +86,7 @@ void EffectLayer::addEffectOnEnemy(Enemy *enemy, const char *prefix, int frameCo
     const char* frameName = (string(prefix) + lexical_cast<string>(i) + string(".png")).c_str();
     animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath(frameName).c_str(), rect));
   }
-  animation->setDelayPerUnit(4.0 / 60.0);
+  animation->setDelayPerUnit(delay);
   effect->runAction(CCSequence::create(CCAnimate::create(animation),
                                        CCFadeOut::create(0.1f),
                                        CCRemoveFromParentAction::create(),
@@ -146,13 +150,15 @@ void EffectLayer::addCutin(Skill *skill, EffectLayerCutinType cutinType, float d
   // カットインを追加する
   const int height = 100;
   CCSize size = CCDirector::sharedDirector()->getWinSize();
-  if (cutinType == EffectLayerCutinTypeCastOff) {
-    CCSprite* holdCutin = (CCSprite*)this->getChildByTag(EffectLayerTagCutin);
+  CCSprite* holdCutin = (CCSprite*)this->getChildByTag(EffectLayerTagCutin);
+  if (cutinType == EffectLayerCutinTypeCastOff || holdCutin) {
     if (!holdCutin) return;
     holdCutin->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width, height)),
                                             CCRemoveFromParentAction::create(),
                                             NULL));
-    return;
+    if (cutinType == EffectLayerCutinTypeCastOff) {
+      return;
+    }
   }
   string cutinFile = "Image/" + string(skill->getIdentifier()) + "_icon.png";
   CCSprite* cutin = CCSprite::create(FileUtils::getFilePath(cutinFile.c_str()).c_str());
@@ -179,6 +185,34 @@ void EffectLayer::addCutin(Skill *skill, EffectLayerCutinType cutinType, float d
     }
     this->addChild(cutin, EffectLayerZOrderCutin, EffectLayerTagCutin);
   }
+}
+
+void EffectLayer::addQTEAttack(Enemy *boss) {
+  // QTE用攻撃エフェクト
+  // 同じコマをループさせるという特殊なことをしているため、ハードコーディング
+  const char* prefix = "qte_attack";
+  CCSprite* effect = CCSprite::create((string(prefix) + string("0.png")).c_str());
+  CCAnimation* animation = CCAnimation::create();
+  CCPoint position = ccpAdd(boss->getPosition(), ccp(0, boss->getContentSize().height * boss->getCurrentScale(boss->getRow()) * 0.5f));
+  effect->setScale(boss->getScale());
+  effect->setPosition(position);
+  CCRect rect = CCRectMake(0, 0, 200, 200);
+  for (int i = 0; i < 5; ++i) {
+    const char* frameName = (string(prefix) + lexical_cast<string>(i) + string(".png")).c_str();
+    animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath(frameName).c_str(), rect));
+  }
+  for (int j = 0; j < 4; ++j) {
+    for (int i = 6; i < 13; ++i) {
+      const char* frameName = (string(prefix) + lexical_cast<string>(i) + string(".png")).c_str();
+      animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath(frameName).c_str(), rect));
+    }
+  }
+  animation->setDelayPerUnit(4 / 60.0);
+  effect->runAction(CCSequence::create(CCAnimate::create(animation),
+                                       CCFadeOut::create(0.1f),
+                                       CCRemoveFromParentAction::create(),
+                                       NULL));
+  this->addChild(effect);
 }
 
 PopupWindow* EffectLayer::getPopupWindow() {

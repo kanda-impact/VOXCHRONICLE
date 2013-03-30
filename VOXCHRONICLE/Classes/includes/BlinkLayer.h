@@ -18,7 +18,7 @@ class BlinkLayer :public CCNode {
  private:
    void suicide();
  public:
-  BlinkLayer(ccColor4B color);
+  BlinkLayer(ccColor4B color, float delay);
 };
 
 #endif /* defined(__VOXCHRONICLE__BlinkLayer__) */

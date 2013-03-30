@@ -7,13 +7,24 @@
 //
 
 #include "QTETrigger.h"
+#include "BlinkLayer.h"
 #include "FileUtils.h"
 
 QTETrigger::QTETrigger(EnemyManager* manager) {
   _enemyManager = manager;
   _enemyManager->retain();
-  string fileName = FileUtils::getFilePath("Image/qte.png");
-  CCMenuItemImage* button = CCMenuItemImage::create(fileName.c_str(), fileName.c_str(), this, menu_selector(QTETrigger::onButtonPressed));
+  CCSprite* buttonSprite = CCSprite::create("qte.png");
+  CCSequence* seq = CCSequence::createWithTwoActions(CCFadeTo::create(1.0f, 128), CCFadeTo::create(1.0f, 255));
+  buttonSprite->runAction(CCRepeatForever::create(seq));
+  
+  CCSprite* pressedSprite = CCSprite::create("qte_pressed.png");
+  CCSprite* disableSprite = CCSprite::create("qte_pressed.png");
+  
+  CCMenuItemSprite* button = CCMenuItemSprite::create(buttonSprite,
+                                                      pressedSprite,
+                                                      disableSprite,
+                                                      this,
+                                                      menu_selector(QTETrigger::onButtonPressed));
   CCMenu* menu = CCMenu::create(button, NULL);
   CCDirector* director = CCDirector::sharedDirector();
   CCPoint center = CCPointMake(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f);
@@ -28,6 +39,15 @@ QTETrigger::~QTETrigger() {
 
 void QTETrigger::onButtonPressed(CCObject* sender) {
   _pressed = true;
+  CCMenuItemSprite* item = (CCMenuItemSprite*)sender;
+  item->setEnabled(false);
+  CCSprite* sprite = (CCSprite*)item->getNormalImage();
+  sprite->setOpacity(1.0f);
+  sprite->stopAllActions();
+  BlinkLayer* bLayer = new BlinkLayer(ccc4(255, 255, 255, 255), 0.1f);
+  bLayer->autorelease();
+  _enemyManager->addChild(bLayer);
+  
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/qte_decide.mp3").c_str());
   //this->getParent()->removeChild(this, true);
 }

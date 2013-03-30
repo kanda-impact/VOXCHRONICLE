@@ -11,6 +11,9 @@ Map = {
   getEnemyTable = function(level)
     return {}
   end,
+  onLoad = function(self, characterManager, enemyManager)
+    enemyManager:loadEnemyTextureAsync("knight.png")
+  end,
   onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
     if level == 30 then

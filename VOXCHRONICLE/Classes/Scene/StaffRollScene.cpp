@@ -239,7 +239,7 @@ void StaffRollScene::pushWaitTracks(const char *characterIdentifier, MusicSet* s
 }
 
 void StaffRollScene::onBackButtonPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cancel.mp3").c_str());
   _music->stop();
   this->onFinishPlaying(sender);
 }

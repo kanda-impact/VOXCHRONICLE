@@ -72,6 +72,7 @@ void ExtraScene::onAchievementButtonPressed(cocos2d::CCObject *sender) {
 
 void ExtraScene::onDictionaryButtonPressed(cocos2d::CCObject *sender) {
   DictionaryScene* scene = DictionaryScene::create();
+  SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
   this->nextScene(scene);
 }
 
@@ -94,7 +95,7 @@ void ExtraScene::onCreditButtonPressed(cocos2d::CCObject *sender) {
 }
 
 void ExtraScene::onBackButtonPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cancel.mp3").c_str());
   CCScene* scene = CCScene::create();
   MainMenuScene* layer = new MainMenuScene(false);
   layer->autorelease();

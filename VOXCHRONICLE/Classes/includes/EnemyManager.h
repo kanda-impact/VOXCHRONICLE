@@ -37,6 +37,7 @@ class EnemyManager :public CCLayer {
    */
   CCArray* _trash;
   Enemy* _boss;
+  void onTextureLoaded(CCTexture2D* texture);
   bool performLuaFunction(Skill* skill, Enemy* target, CharacterManager* characterManager);
  public:
   virtual bool init();
@@ -156,9 +157,20 @@ class EnemyManager :public CCLayer {
   Enemy* getBoss();
   void setBoss(Enemy* boss);
   
+  static float calcScale(float row);
   static CCPoint& calcLinePosition(int row, int col);
   
+  /**
+   ボス含めて全滅させます
+   */
   void removeAllEnemies();
+  
+  /**
+   ボス以外の敵を消します
+   */
+  void removeAllNormalEnemies();
+  
+  void loadEnemyTextureAsync(const char* enemyImageName);
 
   CREATE_FUNC(EnemyManager)
 };

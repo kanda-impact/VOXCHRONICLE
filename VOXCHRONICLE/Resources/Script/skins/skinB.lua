@@ -6,11 +6,11 @@ Skin = {
   frameType = ControllerFrameTypeCommon,
   buildSkin = function(self)
     -- ここでスキンの定義をｇｄｇｄ書きます
-    local hpLabel = CCSprite:create("grass_hp.png")
+    local hpLabel = CCSprite:createWithSpriteFrameName("grass_hp.png")
     hpLabel:setPosition(ccp(21, 301));
     self:addChild(hpLabel)
     
-    local mpLabel = CCSprite:create("grass_mp.png");
+    local mpLabel = CCSprite:createWithSpriteFrameName("grass_mp.png");
     mpLabel:setPosition(ccp(283, 301))
     self:addChild(mpLabel)
   
@@ -31,11 +31,11 @@ Skin = {
     mpMarker:setPosition(ccp(305, 301))
     self:addChild(mpMarker, 0, MPMarkerTag)
   
-    local slash = CCSprite:create("grass_slash.png")
+    local slash = CCSprite:createWithSpriteFrameName("grass_slash.png")
     slash:setPosition(ccp(77, 290))
     self:addChild(slash)
   
-    local stageLabel = CCSprite:create("grass_level.png")
+    local stageLabel = CCSprite:createWithSpriteFrameName("grass_level.png")
     stageLabel:setPosition(ccp(240, 275))
     stageLabel:setAnchorPoint(ccp(0.5, 0))
     self:addChild(stageLabel)
@@ -45,12 +45,12 @@ Skin = {
     levelLabel:setAnchorPoint(ccp(0.5, 0))
     self:addChild(levelLabel, 0, LevelLabelTag)
   
-    local lifeGaugeBackground = CCSprite:create("grass_gauge_bg.png")
+    local lifeGaugeBackground = CCSprite:createWithSpriteFrameName("grass_gauge_bg.png")
     lifeGaugeBackground:setAnchorPoint(ccp(0.0, 0.5))
     lifeGaugeBackground:setPosition(ccp(37, 307))
     self:addChild(lifeGaugeBackground, 0, LifeGaugeBackgroundTag)
 
-    local lifeGauge = CCSprite:create("grass_gauge.png")
+    local lifeGauge = CCSprite:createWithSpriteFrameName("grass_gauge.png")
     lifeGauge:setAnchorPoint(ccp(0.0, 0.5))
     lifeGauge:setPosition(ccp(37, 307))
     self:addChild(lifeGauge, 0, LifeGaugeTag)

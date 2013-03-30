@@ -86,6 +86,11 @@ DictionaryScene::~DictionaryScene() {
   _enemies->release();
 }
 
+void DictionaryScene::onEnterTransitionDidFinish() {
+  CCLayer::onEnterTransitionDidFinish();
+  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("dictionary.mp3", true);
+}
+
 void DictionaryScene::loadEnemyByIndex(int idx) {
   CCString* script = (CCString*)_enemies->objectAtIndex(idx);
   if (_enemy) {
@@ -105,12 +110,13 @@ void DictionaryScene::loadEnemyByIndex(int idx) {
 }
 
 void DictionaryScene::onBackButtonPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cancel.mp3").c_str());
   ExtraScene* layer = ExtraScene::create();
   CCScene* scene = CCScene::create();
   scene->addChild(layer);
   CCTransitionFade* fade = CCTransitionFade::create(0.2, scene);
   CCDirector::sharedDirector()->replaceScene(fade);
+  SimpleAudioEngine::sharedEngine()->playBackgroundMusic("menu.mp3", true);
 }
 
 void DictionaryScene::onCursorButtonPressed(cocos2d::CCObject *sender) {

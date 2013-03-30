@@ -65,6 +65,7 @@ bool MainScene::init(Map* map) {
   if ( !CCLayer::init() ) {
     return false;
   }
+  Enemy::loadLifeColors();
   Music* music = new Music(3);
   music->autorelease();
   music->setTrackDidBackFunction(boost::bind(&MainScene::trackDidBack, this, _1, _2, _3));
@@ -248,7 +249,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     } else if (_effectLayer->getPopupWindow()) { // チュートリアルウィンドウが出ているとき
       _state = VCStateWindow;
       _skin->getController()->setEnable(false); // コントローラーを無効に
-    }else {
+    } else {
       skill = _skin->getController()->currentTriggerSkill();
       //_controller->resetAllTriggers(); // このタイミングでトリガーをOFFにしてやる
     }
@@ -285,25 +286,8 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       _musicManager->setMinDrumScore(0);
       _state = VCStateQTEFinish;
       Enemy* boss = _enemyManager->getBoss();
-      // 攻撃エフェクト
       CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/qte_attack.mp3").c_str());
-      CCSprite* effect = CCSprite::create((string("attack") + string("0.png")).c_str());
-      CCAnimation* animation = CCAnimation::create();
-      CCRect rect;
-      CCPoint position = ccpAdd(boss->getPosition(), ccp(0, boss->getContentSize().height * boss->getCurrentScale(boss->getRow()) * 0.5f));
-      rect = CCRectMake(0, 0, 400, 400);
-      effect->setPosition(position);
-      effect->setScale(boss->getScale());
-      for (int i = 0; i < 4; ++i) {
-        const char* frameName = (string("attack") + lexical_cast<string>(i) + string(".png")).c_str();
-        animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath(frameName).c_str(), rect));
-      }
-      animation->setDelayPerUnit(2.0 / 60.0);
-      effect->runAction(CCSequence::create(CCAnimate::create(animation),
-                                           CCFadeOut::create(0.1f),
-                                           CCRemoveFromParentAction::create(),
-                                           NULL));
-      _enemyManager->addChild(effect, MainSceneZOrderEffect);
+      _effectLayer->addQTEAttack(boss);
       // ぷるぷるさせる
       CCArray* actions = CCArray::create();
       float duration = _musicManager->getMusic()->getCurrentMainTrack()->getDuration();
@@ -325,7 +309,8 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     if (count == 2) { // 3小節目
       _enemyManager->removeEnemy(_enemyManager->getBoss());
       _enemyManager->setBoss(NULL);
-      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("explosion.mp3").c_str());
+      CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("explosion.mp3").c_str()); // 爆発
+      _enemyManager->removeAllNormalEnemies(); // ついでに雑魚キャラ全消去
     }
   } else if (_state == VCStateMapSelect) {
     Map* nextMap = _mapSelector->getSelectedMap();
@@ -377,33 +362,77 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       CCArray* enemies = (CCArray*)info->objectForKey("enemies");
       CCArray* damages = (CCArray*)info->objectForKey("damages");
       CCArray* damageTypes = (CCArray*)info->objectForKey("damageTypes");
+      
       int enemyCount = enemies->count();
-      for (int i = 0; i < enemyCount; ++i) {
-        isHit = true;
-        Enemy* enemy = (Enemy*)enemies->objectAtIndex(i);
+      isHit = skill->getRange() == SkillRangeSelf || targets->count() == 0; // 自分が対象もしくは誰もいなければ絶対に成功
+      CCObject* obj = NULL;
+      int i = 0;
+      CCARRAY_FOREACH(enemies, obj) {
+        Enemy* enemy = (Enemy*)obj;
         CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(((CCInteger*)damages->objectAtIndex(i))->getValue()).c_str(),
-                                                         FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 100, '0');
+        FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 100, '0');
         // ダメージが0かつ、元々ダメージのない技じゃないかつ、アイテムも破壊していないとき、ヒットしていない状態にしてやる
         int damage = ((CCInteger*)damages->objectAtIndex(i))->getValue();
         DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(i))->getValue();
-        if (damage == 0 && damageType != DamageTypeBarrierBreak && damageType != DamageTypeShieldBreak && damageType != DamageTypeNoDamage) {
-          isHit = false;
-        } else if (damageType == DamageTypeDisable) {
-          isHit = false;
+        if (damage > 0 || damageType == DamageTypeBarrierBreak || damageType == DamageTypeShieldBreak || damageType == DamageTypeNoDamage) {
+          isHit = true;
         } else if (damageType != DamageTypeDeath) {
           // ヒットしたとき、敵キャラを点滅させる
           enemy->runAction(CCRepeat::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.05, 64), CCFadeTo::create(0.05, 255)), 3));
         }
+        
+        // ダメージラベル
         damageLabel->setPosition(enemy->getPosition());
-        float scale = enemy->getCurrentScale(enemy->getRow());
-        damageLabel->setScale(scale);
-        this->addChild(damageLabel, MainSceneZOrderDamageLabel);
-        damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
-                                                  CCDelayTime::create(0.5),
-                                                  CCFadeOut::create(0.2),
-                                                  CCRemoveFromParentAction::create(),
-                                                  NULL));
+         float scale = enemy->getCurrentScale(enemy->getRow());
+         damageLabel->setScale(scale);
+         this->addChild(damageLabel, MainSceneZOrderDamageLabel);
+         damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
+         CCDelayTime::create(0.5),
+         CCFadeOut::create(0.2),
+         CCRemoveFromParentAction::create(),
+         NULL));
+        
+        // 敵毎に効果音を鳴らす
+        string fileName = "";
+        switch (damageType) {
+          case DamageTypeShieldBreak:
+          case DamageTypeBarrierBreak:
+            fileName = "shield_break.mp3";
+            break;
+          case DamageTypePhysicalInvalid:
+            fileName = "shield_invalid.mp3";
+            break;
+          case DamageTypeMagicalInvalid:
+            fileName = "barrier_invalid.mp3";
+            break;
+          case DamageTypePhysicalResist:
+            fileName = "physical_resist.mp3";
+            break;
+          case DamageTypeMagicalResist:
+            fileName = "magical_resist.mp3";
+            break;
+          default:
+            break;
+        }
+        if (fileName.length() > 0) {
+          SEManager::sharedManager()->registerEffect(fileName.c_str(), 0.15f);
+        }
+        ++i;
       }
+      
+      // 全体のSE
+      if (enemyCount > 0 && skill->hasSE() && isHit) { // ヒットしたとき、SEがあればSEをならしてやる
+        stringstream ss;
+        ss << "SE/"<< skill->getIdentifier() << "_effect.mp3"; // 対象が自分、もしくは対象が1体以上いたとき、ダメージ効果音をならします
+        SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(ss.str().c_str()).c_str());
+      } else if (skill->getRange() == SkillRangeSelf && skill->hasSE()) { // 対象が自分だけ、かつSEを持っているとき
+        stringstream seStream;
+        seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3"; // 効果音をならします
+        SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
+      } else if (enemies->count() == 0) { // 誰もいないときピロリ音
+        SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("miss.mp3").c_str());
+      }
+      
       
       // メッセージを追加する
       CCArray* messages = skill->getMessages();
@@ -424,50 +453,10 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       }
       _effectLayer->addCutin(skill, isHit ? (EffectLayerCutinType)skill->getCutinType() : EffectLayerCutinTypeFailure, _musicManager->getMusic()->getCurrentMainTrack()->getDuration());
       
-      if (isHit) {
-        // ヒットしたとき、SEがあればSEをならしてやる
-        if (enemies->count() > 0) { // 対象が1体以上いるとき
-          DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(0))->getValue();
-          stringstream seStream;
-          // 今は当たった敵1体目のダメージタイプをとってきてならしているが、
-          // 複数体に同時に当たったときは遅延して順番にならしても良さそう
-          if (damageType == DamageTypeShieldBreak) {
-            SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("shield_break.mp3").c_str());
-          } else if (damageType == DamageTypeBarrierBreak) {
-            SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("barrier_break.mp3").c_str());
-          } else if (skill->hasSE()) {
-            // 対象が自分、もしくは対象が1体以上いたとき、ダメージ効果音をならします
-            seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
-            SEManager::sharedManager()->registerEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
-          }
-        }  else if (skill->getRange() == SkillRangeSelf && skill->hasSE()) { // 対象が自分だけ、かつSEを持っているとき
-          stringstream seStream;
-          // 効果音をならします
-          seStream << "SE/"<< skill->getIdentifier() << "_effect.mp3";
-          SEManager::sharedManager()->registerEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
-        }
-      } else if (!isHit) { // ヒットしていないとき、強制的にミス音にする
-        if (enemyCount == 0) {
-          // 誰もいないときピロリ音
-          SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("miss.caf").c_str());
-        } else {
-          DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(0))->getValue();
-          if (damageType == DamageTypePhysicalInvalid) {
-            // 1体だけ敵がいるのに当たらず、盾持ちだったとき
-            SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("shield_invalid.mp3").c_str());
-          } else if (damageType == DamageTypeMagicalInvalid) {
-            // バリア持ちだったとき
-            SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("barrier_invalid.mp3").c_str());
-          }
-        }
-        
-      }
       getExp = ((CCInteger*)info->objectForKey("exp"))->getValue();
-    } else if (performType == SkillPerformTypeNone) {
-      // 何も実行しなかったとき
-      // MP回復 コマンド化したのでコメントアウトしておきます
-      //_characterManager->addMP(1);
     }
+    
+    // レベルアップ判定
     if (this->checkLevelUp() ) {
       int currentLevel = _characterManager->getLevel();
       SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/levelup.mp3").c_str());
@@ -502,7 +491,9 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     }
     
     // 床を更新する
-    _skin->getGround()->nextFrame();
+    if (!this->isBossBattle()) {
+      _skin->getGround()->nextFrame();
+    }
     
     // ターンカウントを進める
     ++_turnCount;
@@ -646,7 +637,7 @@ void MainScene::addDamageEffect() {
   if (sumDamage > 0) {
     // 画面点滅させて音を鳴らす
     SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/damage.mp3").c_str());
-    BlinkLayer* bLayer = new BlinkLayer(ccc4(255, 0, 0, 255));
+    BlinkLayer* bLayer = new BlinkLayer(ccc4(255, 0, 0, 255), 0.05f);
     bLayer->autorelease();
     this->addChild(bLayer, MainSceneZOrderUI);
     // ついでに画面もゆらしちゃう
@@ -681,7 +672,6 @@ void MainScene::changeMap(Map* nextMap) {
   _map = nextMap;
   _level = nextMap->createInitialLevel(_characterManager); // レベルを生成する
   _enemyManager->setLevel(_level); // レベルをセット
-  _enemyManager->removeAllEnemies();
   _enemyManager->removeAllEnemiesQueue(); // キューを初期化
   _mapTurnCount = 0; // マップカウント0に戻す
   // 背景画像を設置
@@ -701,6 +691,7 @@ void MainScene::changeMap(Map* nextMap) {
   _musicManager->pushIntroTracks();
   _characterManager->setRepeatCount(0); // repeatCountをリセット
   this->updateGUI();
+  _map->performOnLoad(_characterManager, _enemyManager);
 }
 
 void MainScene::changeSkin(Skin *newSkin, bool crossFade) {
@@ -781,6 +772,7 @@ void MainScene::gotoNextStage() {
 void MainScene::onFinishTracksCompleted() {
   if (_state == VCStateQTEFinish) { // QTEFinishのとき
     // おそらくボス撃破後なので、エンディングに移行します
+    _enemyManager->removeAllNormalEnemies();
     string endingScript = _map->getEndingName();
     CCAssert(endingScript.length() != 0, "Ending Script is not defined.");
     _musicManager->getMusic()->stop();
@@ -788,13 +780,14 @@ void MainScene::onFinishTracksCompleted() {
     endingLayer->autorelease();
     CCScene* ending = CCScene::create();
     ending->addChild(endingLayer);
-    CCTransitionFade* fade = CCTransitionFade::create(5.0f, ending, ccc3(255, 255, 255));
+    CCTransitionFade* fade = CCTransitionFade::create(7.0f, ending, ccc3(255, 255, 255));
     CCDirector::sharedDirector()->replaceScene(fade);
   } else if (_map->isBossStage() && _level->getLevel() == _map->getMaxLevel()) { // ボスステージで、現在が最高レベルの時
     // ボス戦を開始します
     this->startBossBattle();
   } else if (_level->getLevel() >= _map->getMaxLevel() + 1 && _map->getNextMaps()->count() > 0) { // 最高レベルの次の時で、次のマップが存在するとき
     // 次のステージに移動します
+    _enemyManager->removeAllNormalEnemies(); // 雑魚キャラを全滅させます
     this->gotoNextStage();
   }
 }
@@ -865,4 +858,8 @@ void MainScene::changeMusic(MusicSet* mSet, bool enablePreload) {
 
 VCState MainScene::getState () {
   return _state;
+}
+
+bool MainScene::isBossBattle() {
+  return _map && _map->isBossStage() && _level->getLevel() == _map->getMaxLevel();
 }

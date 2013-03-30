@@ -59,6 +59,7 @@ class Map :public CCObject, public IRegister {
   MusicSet* getWayMusic();
   MusicSet* getBossMusic();
   MusicSet* getCurrentMusic(Level* level);
+  void performOnLoad(CharacterManager* characterManager, EnemyManager* enemyManager);
   void performOnLevel(CharacterManager* characterManager, EnemyManager* enemyManager);
   void performOnFinishPlaying(CharacterManager* characterManager, EnemyManager* enemyManager);
   void performOnBack(CharacterManager* characterManager, EnemyManager* enemyManager);

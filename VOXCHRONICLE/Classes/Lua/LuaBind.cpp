@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Tue Mar 19 22:37:33 2013.
+** Generated automatically by tolua++-1.0.92 on Sat Mar 30 02:28:12 2013.
 */
 
 #ifndef __cplusplus
@@ -1503,6 +1503,39 @@ static int tolua_VOXCHRONICLE_EnemyManager_setBoss00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: loadEnemyTextureAsync of class  EnemyManager */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_EnemyManager_loadEnemyTextureAsync00
+static int tolua_VOXCHRONICLE_EnemyManager_loadEnemyTextureAsync00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"EnemyManager",0,&tolua_err) ||
+     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  EnemyManager* self = (EnemyManager*)  tolua_tousertype(tolua_S,1,0);
+  const char* enemyImageName = ((const char*)  tolua_tostring(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'loadEnemyTextureAsync'", NULL);
+#endif
+  {
+   self->loadEnemyTextureAsync(enemyImageName);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'loadEnemyTextureAsync'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* method: sharedManager of class  MessageManager */
 #ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_MessageManager_sharedManager00
 static int tolua_VOXCHRONICLE_MessageManager_sharedManager00(lua_State* tolua_S)
@@ -2126,6 +2159,7 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
    tolua_function(tolua_S,"popEnemyAt",tolua_VOXCHRONICLE_EnemyManager_popEnemyAt00);
    tolua_function(tolua_S,"getBoss",tolua_VOXCHRONICLE_EnemyManager_getBoss00);
    tolua_function(tolua_S,"setBoss",tolua_VOXCHRONICLE_EnemyManager_setBoss00);
+   tolua_function(tolua_S,"loadEnemyTextureAsync",tolua_VOXCHRONICLE_EnemyManager_loadEnemyTextureAsync00);
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"MessageManager","MessageManager","CCObject",NULL);
   tolua_beginmodule(tolua_S,"MessageManager");

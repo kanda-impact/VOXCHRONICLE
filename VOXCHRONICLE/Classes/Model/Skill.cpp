@@ -40,6 +40,12 @@ Skill::Skill(const char* identifier) {
     const char* frameName = (string(this->getIdentifier()) + lexical_cast<string>(i) + string(".png")).c_str();
     CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath(frameName).c_str());
   }
+  
+  // アイコンも先読みしておきます
+  std::stringstream icon;
+  icon << "Images/" + this->getIdentifier() << "_icon.png";
+  CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath(icon.str().c_str()).c_str());
+  
 
   // メッセージ一覧を生成します
   _messages = CCArray::create();
