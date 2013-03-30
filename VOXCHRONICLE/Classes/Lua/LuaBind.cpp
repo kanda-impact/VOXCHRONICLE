@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Sat Mar 30 02:28:12 2013.
+** Generated automatically by tolua++-1.0.92 on Sun Mar 31 06:02:14 2013.
 */
 
 #ifndef __cplusplus
@@ -1765,6 +1765,41 @@ static int tolua_VOXCHRONICLE_PopupWindow_getPage00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: setText of class  PopupWindow */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_PopupWindow_setText00
+static int tolua_VOXCHRONICLE_PopupWindow_setText00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"PopupWindow",0,&tolua_err) ||
+     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isstring(tolua_S,3,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,4,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  PopupWindow* self = (PopupWindow*)  tolua_tousertype(tolua_S,1,0);
+  const char* headerText = ((const char*)  tolua_tostring(tolua_S,2,0));
+  const char* message = ((const char*)  tolua_tostring(tolua_S,3,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setText'", NULL);
+#endif
+  {
+   self->setText(headerText,message);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'setText'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* method: getRegister of class  IRegister */
 #ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_IRegister_getRegister00
 static int tolua_VOXCHRONICLE_IRegister_getRegister00(lua_State* tolua_S)
@@ -2176,6 +2211,7 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
   tolua_cclass(tolua_S,"PopupWindow","PopupWindow","CCSprite",NULL);
   tolua_beginmodule(tolua_S,"PopupWindow");
    tolua_function(tolua_S,"getPage",tolua_VOXCHRONICLE_PopupWindow_getPage00);
+   tolua_function(tolua_S,"setText",tolua_VOXCHRONICLE_PopupWindow_setText00);
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"IRegister","IRegister","",NULL);
   tolua_beginmodule(tolua_S,"IRegister");

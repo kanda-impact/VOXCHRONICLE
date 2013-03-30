@@ -11,6 +11,8 @@
 
 #include <iostream>
 #include "cocos2d.h"
+#include "VQString.h"
+#include "MessageWindow.h"
 
 using namespace cocos2d;
 
@@ -27,6 +29,9 @@ class PopupWindow :public CCSprite {
   int getCurrentPage();
   bool isLastPage();
   void nextPage();
+  void setText(const char* header, const char* text);
+  void onUpdateFunction(VQString* string, MessageWindow* window);
+  void onFinishedFunction(VQString* string, MessageWindow* window);
 };
 
 #endif /* defined(__VOXCHRONICLE__PopupWindow__) */

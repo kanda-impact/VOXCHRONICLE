@@ -162,6 +162,7 @@ class EffectLayer : public CCLayer {
 
 class PopupWindow : public CCSprite {
 	CCNode* getPage(int page);
+	void setText(const char* headerText, const char* message);
 };
 
 class IRegister {

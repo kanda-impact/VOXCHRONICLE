@@ -9,17 +9,16 @@
 #include "MessageWindow.h"
 #include <sstream>
 
-const int kDefaultMessageWindowDelay = 1.5f;
-const int kDefalutMessageWindowLastDelay = 3.0f;
-const int kDefaultMessageWindowSpeed = 0.3f;
+const float kDefaultMessageWindowDelay = 1.5f;
+const float kDefaultMessageWindowLastDelay = 3.0f;
+const float kDefaultMessageWindowSpeed = 1.0f / 60.0f;
 
 MessageWindow::MessageWindow(const char* fontName, float size, CCSize dimensions) {
   _messageQueue = CCArray::create();
   _messageQueue->retain();
   _textIndex = 0;
   _delay = kDefaultMessageWindowDelay;
-  _lastDelay = kDefalutMessageWindowLastDelay;
-  _messageSpeed = kDefaultMessageWindowSpeed;
+  _lastDelay = kDefaultMessageWindowLastDelay;
   _label = CCLabelTTF::create("", fontName, size, dimensions, kCCTextAlignmentLeft, kCCVerticalTextAlignmentTop);
   _label->retain();
   _label->setColor(ccc3(255, 255, 255));
@@ -27,7 +26,7 @@ MessageWindow::MessageWindow(const char* fontName, float size, CCSize dimensions
   _onFinishedFunction = NULL;
   _onUpdatedFunction = NULL;
   _ended = false;
-  this->schedule(schedule_selector(MessageWindow::updateNextText), _messageSpeed);
+  this->setMessageSpeed(kDefaultMessageWindowSpeed);
 }
 
 MessageWindow::~MessageWindow() {
@@ -63,7 +62,7 @@ VQString* MessageWindow::getCurrentMessage() {
   return this->getCurrentWholeMessage()->substringWithRange(0, _textIndex);
 }
 
-void MessageWindow::setMessageSpeed(int speed) {
+void MessageWindow::setMessageSpeed(float speed) {
   _messageSpeed = speed;
   this->unschedule(schedule_selector(MessageWindow::updateNextText));
   this->schedule(schedule_selector(MessageWindow::updateNextText), _messageSpeed);
