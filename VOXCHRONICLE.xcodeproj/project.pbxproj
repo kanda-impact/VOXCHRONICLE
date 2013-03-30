@@ -77,6 +77,7 @@
 		0703A7EC16F9CA1000093DD4 /* AttaQ3-D_finish3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0703A7E816F9CA1000093DD4 /* AttaQ3-D_finish3.caf */; };
 		0703A7EE16F9CA3200093DD4 /* AttaQ3-D_qte.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0703A7ED16F9CA3200093DD4 /* AttaQ3-D_qte.caf */; };
 		0703A7F116FA1BCA00093DD4 /* 3Bb_counter3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0703A7F016FA1BCA00093DD4 /* 3Bb_counter3.caf */; };
+		0703E2241707229F006617AB /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0703E2231707229F006617AB /* Icon.png */; };
 		0704344416BFEEC600339F8A /* nmb_drum4.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0704344316BFEEC600339F8A /* nmb_drum4.caf */; };
 		0704344716BFF3CB00339F8A /* MusicManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0704344516BFF3CB00339F8A /* MusicManager.cpp */; };
 		070E4020163C29E600A76BEA /* BlinkLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 070E401E163C29E600A76BEA /* BlinkLayer.cpp */; };
@@ -1277,6 +1278,7 @@
 		0703A7E816F9CA1000093DD4 /* AttaQ3-D_finish3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_finish3.caf"; sourceTree = "<group>"; };
 		0703A7ED16F9CA3200093DD4 /* AttaQ3-D_qte.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_qte.caf"; sourceTree = "<group>"; };
 		0703A7F016FA1BCA00093DD4 /* 3Bb_counter3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 3Bb_counter3.caf; path = Resources/Music/3Bb/3Bb_counter3.caf; sourceTree = "<group>"; };
+		0703E2231707229F006617AB /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		0704344316BFEEC600339F8A /* nmb_drum4.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = nmb_drum4.caf; sourceTree = "<group>"; };
 		0704344516BFF3CB00339F8A /* MusicManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MusicManager.cpp; path = Classes/Model/MusicManager.cpp; sourceTree = "<group>"; };
 		070E401E163C29E600A76BEA /* BlinkLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BlinkLayer.cpp; path = Classes/UI/BlinkLayer.cpp; sourceTree = "<group>"; };
@@ -3273,6 +3275,7 @@
 		076F1A4115EB94750013A45E = {
 			isa = PBXGroup;
 			children = (
+				0703E2231707229F006617AB /* Icon.png */,
 				076F1A6015EB94750013A45E /* VOXCHRONICLE */,
 				076F1A4F15EB94750013A45E /* Frameworks */,
 				076F1A4D15EB94750013A45E /* Products */,
@@ -6058,6 +6061,7 @@
 				07A3D5E01705F4D0009AE7F3 /* endingD.mp3 in Resources */,
 				B017550A1706E23A008053BB /* dragon2B0.lua in Resources */,
 				B017550C1706E280008053BB /* wisp2B6.lua in Resources */,
+				0703E2241707229F006617AB /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
