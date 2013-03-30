@@ -185,27 +185,27 @@ void Controller::setFrame(CharacterManager *manager) {
   if (_frameType != ControllerFrameTypeNone) {
     string filepathL, filepathR;
     if (_frameType == ControllerFrameTypeCommon) {
-      filepathL = string("Image/") + _skinPrefix + string("_frame_left.png");
+      filepathL = _skinPrefix + string("_frame_left.png");
     } else {
       if (manager->getCurrentCharacter()->getCharacterType() == CharacterTypeVox) {
-        filepathL = string("Image/") + _skinPrefix + string("_frame_vox_left.png");
+        filepathL = _skinPrefix + string("_frame_vox_left.png");
       } else {
-        filepathL = string("Image/") + _skinPrefix + string("_frame_lsk_left.png");
+        filepathL = _skinPrefix + string("_frame_lsk_left.png");
       }
     }
-    CCSprite* leftFrame = CCSprite::create(FileUtils::getFilePath(filepathL.c_str()).c_str());
+    CCSprite* leftFrame = CCSprite::createWithSpriteFrameName(filepathL.c_str());
     leftFrame->setPosition(leftFramePosition);
     
     if (_frameType == ControllerFrameTypeCommon) {
-      filepathR = string("Image/") + _skinPrefix + string("_frame_right.png");
+      filepathR = _skinPrefix + string("_frame_right.png");
     } else {
       if (manager->getCurrentCharacter()->getCharacterType() == CharacterTypeVox) {
-        filepathR = string("Image/") + _skinPrefix + string("_frame_vox_right.png");
+        filepathR = _skinPrefix + string("_frame_vox_right.png");
       } else {
-        filepathR = string("Image/") + _skinPrefix + string("_frame_lsk_right.png");
+        filepathR = _skinPrefix + string("_frame_lsk_right.png");
       }
     }
-    CCSprite* rightFrame = CCSprite::create(FileUtils::getFilePath(filepathR.c_str()).c_str());
+    CCSprite* rightFrame = CCSprite::createWithSpriteFrameName(filepathR.c_str());
     rightFrame->setPosition(rightFramePosition);
     
     CCNode* newFrame = CCNode::create();

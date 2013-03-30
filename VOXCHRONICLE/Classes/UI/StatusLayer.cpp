@@ -125,7 +125,7 @@ void StatusLayer::setMaxMP(int mp) {
     for (int i = count; i < mp; ++i) {
       int col = i % colLength;
       int row = floor(i / colLength);
-      CCSprite* chip = CCSprite::create((_prefix + "_mp_on.png").c_str());
+      CCSprite* chip = CCSprite::createWithSpriteFrameName(string(_prefix + "_mp_on.png").c_str());
       chip->setPosition(ccp(16 * col, - 16 * row));
       _mpChips->addObject(chip);
       mpMarkerNode->addChild(chip);

@@ -22,7 +22,7 @@ Skin::Skin(const char* scriptName) {
   _controller = NULL;
   if (lua->getBoolean("hasBackground")) {
     string filename = _prefix + "_background.png";
-    _background = CCSprite::create(filename.c_str());
+    _background = CCSprite::createWithSpriteFrameName(filename.c_str());
     _background->retain();
   }
 }
