@@ -17,6 +17,8 @@
 
 using namespace std;
 
+CCArray* Enemy::_lifeColors = NULL;
+
 enum { // 深度
   EnemyLayerFrame = 1,
   EnemyLayerItem = 2
@@ -30,6 +32,33 @@ enum { // タグ
 enum { // アニメーションタグ
   EnemyAnimationTagBlink = 1
 };
+
+void Enemy::loadLifeColors() {
+  if (_lifeColors == NULL) {
+    _lifeColors = CCArray::create();
+    _lifeColors->retain();
+    for (int i = 0; i < 200; ++i) {
+      // Luaスクリプトを呼びます
+      LuaObject* obj = LuaObject::create("enemy.lua");
+      lua_State* L = obj->getLuaEngineWithLoad()->getLuaState();
+      lua_getglobal(L, "getColor");
+      if ( lua_isfunction(L, lua_gettop(L))) {
+        lua_pushinteger(L, i);
+        if (lua_pcall(L, 1, 3, 0)) {
+          cout << lua_tostring(L, lua_gettop(L)) << endl;
+        }
+        int r = lua_tointeger(L, lua_gettop(L) - 2);
+        int g = lua_tointeger(L, lua_gettop(L) - 1);
+        int b = lua_tointeger(L, lua_gettop(L));
+        CCArray* c = CCArray::create();
+        c->addObject(CCInteger::create(r));
+        c->addObject(CCInteger::create(g));
+        c->addObject(CCInteger::create(b));
+        _lifeColors->addObject(c);
+      }
+    }
+  }
+}
 
 Enemy* Enemy::create(const char *enemyName) {
   Enemy *pobSprite = new Enemy();
@@ -115,7 +144,6 @@ void Enemy::moveRow(float r) {
 }
 
 int Enemy::damage(int power, Skill* skill, CharacterManager* characterManager, DamageType& damageType, bool simulate) {
-  // ToDo 属性によるダメージ軽減とかもこの辺に載せてやる
   float damage = floor(0.5 + power);
   
   // 無効化の処理
@@ -151,8 +179,8 @@ int Enemy::damage(int power, Skill* skill, CharacterManager* characterManager, D
     damage *= 0.5;
   }
   // レベル補正を行います
-  float levelOffset = characterManager->getLevelOffsetRate(characterManager->getLevel(), this->getLevel());
-  damage = floor(0.5 + damage * levelOffset);
+  //float levelOffset = characterManager->getLevelOffsetRate(characterManager->getLevel(), this->getLevel());
+  //damage = floor(0.5 + damage * levelOffset);
   int hp = this->getHP();
   hp -= damage;
   if (hp <= 0) {
@@ -176,21 +204,12 @@ int Enemy::damage(int power, Skill* skill, CharacterManager* characterManager, D
 }
 
 void Enemy::setLifeColor() {
-  // Luaスクリプトを呼びます
-  LuaObject* obj = LuaObject::create("enemy.lua");
-  lua_State* L = obj->getLuaEngineWithLoad()->getLuaState();
-  lua_getglobal(L, "getColor");
-  if ( lua_isfunction(L, lua_gettop(L))) {
-    lua_pushinteger(L, this->getHP());
-    if (lua_pcall(L, 1, 3, 0)) {
-      cout << lua_tostring(L, lua_gettop(L)) << endl;
-    }
-    int r = lua_tointeger(L, lua_gettop(L) - 2);
-    int g = lua_tointeger(L, lua_gettop(L) - 1);
-    int b = lua_tointeger(L, lua_gettop(L));
-    ccColor3B color = ccc3(r, g, b);
-    this->setColor(color);
-  }
+  CCArray* color = (CCArray*)_lifeColors->objectAtIndex(_hp);
+  int r = ((CCInteger*)color->objectAtIndex(0))->getValue();
+  int g = ((CCInteger*)color->objectAtIndex(1))->getValue();
+  int b = ((CCInteger*)color->objectAtIndex(2))->getValue();
+  ccColor3B c = ccc3(r, g, b);
+  this->setColor(c);
 }
 
 int Enemy::getExpFromLua() {
@@ -358,7 +377,7 @@ bool Enemy::setAnimationAndFrame(int xOffset, int yOffset, int frames, bool hasF
       frameSprite->setAnchorPoint(ccp(0, 0));
       CCRepeatForever* blink = CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.05f, 64), CCFadeTo::create(0.05f, 255)));
       if (_type == SkillTypePhysical) {
-        frameSprite->setColor(VOX_COLOR);
+        frameSprite->setColor(ccc3(0, 255, 230));
         frameSprite->runAction(blink);
       } else if (_type == SkillTypeMagical) {
         frameSprite->setColor(LSK_COLOR);

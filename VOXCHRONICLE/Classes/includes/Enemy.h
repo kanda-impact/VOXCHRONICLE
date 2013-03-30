@@ -27,6 +27,8 @@ class EnemyManager;
 
 class Enemy : public CCSprite, public IRegister {
 private:
+  static CCArray* _lifeColors;
+  
   int _hp;
   int _maxHP;
   int _mp;
@@ -51,6 +53,7 @@ private:
   CCTexture2D* _sheet;
   int getExpFromLua();
 public:
+  static void loadLifeColors();
   static Enemy* create(const char* enemyName);
   Enemy();
   ~Enemy();

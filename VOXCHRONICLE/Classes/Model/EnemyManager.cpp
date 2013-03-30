@@ -178,13 +178,14 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CCArray* targets, Charact
     }
     bool nextLvExp = false; // もし、expが-1の敵が1体でもいたらtrueに
     int power = skill->getPower(characterManager); // 威力を取っておく
+    int count = targets->count();
     CCObject* obj = NULL;
     CCARRAY_FOREACH(targets, obj) {
       Enemy* target = (Enemy*)obj;
       if (target->getSpecies()->isEnableSkill(skill)) { // その敵に技が有効かどうか
         // 追加効果がある場合、関数を呼び出す
         int damage = 0;
-        if (skill->getRange() != SkillRangeAll && skill->getRange() != SkillRangeFront) { // 1体だけの時のみ
+        if (count == 1) { // 1体だけの時のみ
           performLuaFunction(skill, target, characterManager);
         }
         DamageType damageType = DamageTypeNone;
