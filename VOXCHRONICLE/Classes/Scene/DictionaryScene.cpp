@@ -16,7 +16,7 @@ bool DictionaryScene::init() {
   if (!CCLayer::init()) {
     return false;
   }
-  
+  Enemy::loadLifeColors();
   LuaObject* lua = LuaObject::create("enemy.lua");
   lua_State* L = lua->getLuaEngineWithLoad()->getLuaState();
   lua_getglobal(L, "dictionary");
@@ -36,15 +36,18 @@ bool DictionaryScene::init() {
   background->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
   this->addChild(background);
   
-  _nameLabel = CCLabelTTF::create("敵キャラ名", "Helvetica", 24, CCSizeMake(150, 30), kCCTextAlignmentLeft);
-  _habitatLabel = CCLabelTTF::create("生息地", "Helvetica", 16, CCSizeMake(300, 30), kCCTextAlignmentLeft, kCCVerticalTextAlignmentCenter);
-  _descriptionLabel = CCLabelTTF::create("ここに敵キャラの解説が入ります", "Helvetica", 16, CCSizeMake(450, 120), kCCTextAlignmentLeft, kCCVerticalTextAlignmentTop);
+  _nameLabel = CCLabelTTF::create("敵キャラ名", "Helvetica", 24, CCSizeMake(200, 30), kCCTextAlignmentLeft);
+  _habitatLabel = CCLabelTTF::create("生息地", "Helvetica", 16, CCSizeMake(200, 30), kCCTextAlignmentLeft, kCCVerticalTextAlignmentCenter);
+  _descriptionLabel = CCLabelTTF::create("ここに敵キャラの解説が入ります", "Helvetica", 16, CCSizeMake(420, 120), kCCTextAlignmentLeft, kCCVerticalTextAlignmentTop);
   _nameLabel->setAnchorPoint(ccp(0.5f, 0.5f));
-  _nameLabel->setPosition(ccp(80, 140));
+  _nameLabel->setPosition(ccp(125, 135));
   _habitatLabel->setAnchorPoint(ccp(0.5f, 0.5f));
-  _habitatLabel->setPosition(ccp(305, 140));
+  _habitatLabel->setPosition(ccp(345, 135));
+  CCSprite* dictionaryWindow = CCSprite::create("dictionary_window.png");
+  dictionaryWindow->setPosition(ccp(director->getWinSize().width / 2.0, 80));
   _descriptionLabel->setAnchorPoint(ccp(0.5f, 0.5f));
-  _descriptionLabel->setPosition(ccp(director->getWinSize().width / 2.0f, 65));
+  _descriptionLabel->setPosition(ccp(director->getWinSize().width / 2.0f, 60));
+  this->addChild(dictionaryWindow);
   this->addChild(_nameLabel);
   this->addChild(_habitatLabel);
   this->addChild(_descriptionLabel);

@@ -70,7 +70,7 @@ MapSelector::MapSelector() {
 
 MapSelector::~MapSelector() {
   if (_effectID != 0) {
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->stopEffect(_effectID);
+    //CocosDenshion::SimpleAudioEngine::sharedEngine()->stopEffect(_effectID);
   }
   _nextMaps->release();
 }
