@@ -7,7 +7,7 @@ Enemy = {
   counter = 0,
   getSpeed = function(enemy, characterManager)
    local row = enemy:getRow()
-    if row > 1 then -- 1列目より前に行ったとき、速度を0にします
+    if row > 0 then -- 1列目より前に行ったとき、速度を0にします
       return 1
     end
     return 0
