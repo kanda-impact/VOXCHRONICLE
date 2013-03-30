@@ -144,8 +144,11 @@ class EnemyManager : public CCLayer {
 	void nextTurn(CharacterManager* manager);
 	Enemy* popEnemyAt(const char* enemy, float row, int col);
 	Enemy* getBoss();
+	CCArray* getEnemies();
 	void setBoss(Enemy* enemy);
 	void loadEnemyTextureAsync(const char* enemyImageName);
+	void removeAllNormalEnemies();
+	void removeAllEnemies();
 };
 
 class MessageManager : public CCObject {

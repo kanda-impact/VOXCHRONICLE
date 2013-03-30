@@ -57,8 +57,13 @@ void PopupWindow::nextPage() {
 
 void PopupWindow::setText(int page, const char *headerText, const char *text) {
   CCNode* node = this->getPage(page);
+  CCLabelTTF* headerShadow = CCLabelTTF::create(headerText, "Helvetica", 24, CCSizeMake(380, 40), kCCTextAlignmentLeft, kCCVerticalTextAlignmentCenter);
+  
   CCLabelTTF* header = CCLabelTTF::create(headerText, "Helvetica", 24, CCSizeMake(380, 40), kCCTextAlignmentLeft, kCCVerticalTextAlignmentCenter);
+  headerShadow->setColor(ccc3(33, 33, 33));
+  headerShadow->setPosition(ccp(217, 268));
   header->setPosition(ccp(215, 270));
+  node->addChild(headerShadow);
   node->addChild(header);
   MessageWindow* window = new MessageWindow("Helvetica", 16, CCSizeMake(350, 240));
   window->setPosition(ccp(220, 130));

@@ -27,6 +27,17 @@ Character = {
         {"shield", 6},
         {"run", 1}
       }
+    elseif mapName == "tutorial0" then
+      return {
+        {"attack", 1},
+        {"knockback", 9},
+        {"slash", 7},
+        {"charge", 11},
+        {"tension", 5},
+        {"change", 11},
+        {"shield", 8},
+        {"run", 4}
+      }
     end
     return {
       {"attack", 1},

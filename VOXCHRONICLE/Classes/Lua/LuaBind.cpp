@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Sun Mar 31 06:28:29 2013.
+** Generated automatically by tolua++-1.0.92 on Sun Mar 31 08:19:35 2013.
 */
 
 #ifndef __cplusplus
@@ -53,6 +53,7 @@ static void tolua_reg_types (lua_State* tolua_S)
  tolua_usertype(tolua_S,"MessageManager");
  tolua_usertype(tolua_S,"CCNode");
  tolua_usertype(tolua_S,"EffectLayer");
+ tolua_usertype(tolua_S,"CCArray");
  tolua_usertype(tolua_S,"Map");
  tolua_usertype(tolua_S,"DamageType");
  tolua_usertype(tolua_S,"PopupWindow");
@@ -1470,6 +1471,38 @@ static int tolua_VOXCHRONICLE_EnemyManager_getBoss00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: getEnemies of class  EnemyManager */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_EnemyManager_getEnemies00
+static int tolua_VOXCHRONICLE_EnemyManager_getEnemies00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"EnemyManager",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  EnemyManager* self = (EnemyManager*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getEnemies'", NULL);
+#endif
+  {
+   CCArray* tolua_ret = (CCArray*)  self->getEnemies();
+    tolua_pushusertype(tolua_S,(void*)tolua_ret,"CCArray");
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getEnemies'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* method: setBoss of class  EnemyManager */
 #ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_EnemyManager_setBoss00
 static int tolua_VOXCHRONICLE_EnemyManager_setBoss00(lua_State* tolua_S)
@@ -1531,6 +1564,68 @@ static int tolua_VOXCHRONICLE_EnemyManager_loadEnemyTextureAsync00(lua_State* to
 #ifndef TOLUA_RELEASE
  tolua_lerror:
  tolua_error(tolua_S,"#ferror in function 'loadEnemyTextureAsync'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: removeAllNormalEnemies of class  EnemyManager */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_EnemyManager_removeAllNormalEnemies00
+static int tolua_VOXCHRONICLE_EnemyManager_removeAllNormalEnemies00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"EnemyManager",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  EnemyManager* self = (EnemyManager*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'removeAllNormalEnemies'", NULL);
+#endif
+  {
+   self->removeAllNormalEnemies();
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'removeAllNormalEnemies'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: removeAllEnemies of class  EnemyManager */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_EnemyManager_removeAllEnemies00
+static int tolua_VOXCHRONICLE_EnemyManager_removeAllEnemies00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"EnemyManager",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  EnemyManager* self = (EnemyManager*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'removeAllEnemies'", NULL);
+#endif
+  {
+   self->removeAllEnemies();
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'removeAllEnemies'.",&tolua_err);
  return 0;
 #endif
 }
@@ -2195,8 +2290,11 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
    tolua_function(tolua_S,"nextTurn",tolua_VOXCHRONICLE_EnemyManager_nextTurn00);
    tolua_function(tolua_S,"popEnemyAt",tolua_VOXCHRONICLE_EnemyManager_popEnemyAt00);
    tolua_function(tolua_S,"getBoss",tolua_VOXCHRONICLE_EnemyManager_getBoss00);
+   tolua_function(tolua_S,"getEnemies",tolua_VOXCHRONICLE_EnemyManager_getEnemies00);
    tolua_function(tolua_S,"setBoss",tolua_VOXCHRONICLE_EnemyManager_setBoss00);
    tolua_function(tolua_S,"loadEnemyTextureAsync",tolua_VOXCHRONICLE_EnemyManager_loadEnemyTextureAsync00);
+   tolua_function(tolua_S,"removeAllNormalEnemies",tolua_VOXCHRONICLE_EnemyManager_removeAllNormalEnemies00);
+   tolua_function(tolua_S,"removeAllEnemies",tolua_VOXCHRONICLE_EnemyManager_removeAllEnemies00);
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"MessageManager","MessageManager","CCObject",NULL);
   tolua_beginmodule(tolua_S,"MessageManager");
