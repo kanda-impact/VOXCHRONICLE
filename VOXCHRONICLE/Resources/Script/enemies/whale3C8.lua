@@ -1,12 +1,12 @@
 Enemy = {
   species = "whale",
   level = 10,
-  hp = 9,
+  hp = 42,
   getExp = function(default)
-      return 12
+      return 24
   end,
-  item = EnemyItemNone,
-  type = SkillTypeNormal,
+  item = EnemyItemBarrier,
+  type = SkillTypeMagical,
 }
 
 return Enemy

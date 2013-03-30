@@ -1,7 +1,7 @@
 Enemy = {
   name = "クジラ",
   imageName = "whale",
-  attack = 1,
+  attack = 12,
   baseExp = 3,
   hasFrame = true,
   counter = 2,

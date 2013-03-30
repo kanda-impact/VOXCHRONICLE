@@ -9,8 +9,24 @@ Map = {
   initialLevel = 21,
   maxLevel = 30,
   getEnemyTable = function(level)
-    if level < 30 then
-      return {whale3C0 = 3, jfish3C0 = 2, naut3C0 = 1}
+    if level <= 21 then
+      return {jfish3C4 = 1, naut3C5 = 1}
+    elseif level <= 22 then
+      return {whale3C8 = 1, cryst3C7 = 1}
+    elseif level <= 23 then
+      return {whale3C8 = 1, naut3C5 = 1}
+    elseif level <= 24 then
+      return {jfish3C4 = 1, naut3C5 = 2}
+    elseif level <= 25 then
+      return {whale3C8 = 1, cryst3C7 = 3}
+    elseif level <= 26 then
+      return {jfish3C4 = 2, naut3C5 = 2, wave3C0 = 1}
+    elseif level <= 27 then
+      return {whale3C8 = 1, cryst3C7 = 1, wave3C0 = 1}
+    elseif level <= 28 then
+      return {jfish3C4 = 1, naut3C5 = 2, wave3C0 = 1}
+    elseif level <= 29 then
+      return {whale3C8 = 1, jfish3C4 = 2, cryst3C7 = 3, wave3C0 = 2}
     elseif level == 30 then
       return {}
     end
@@ -43,7 +59,7 @@ Map = {
     end
   end,
   getEnemyPopRate = function(level)
-    return 0.6
+    return 0.25
   end,
   fixedEnemies = {
   }

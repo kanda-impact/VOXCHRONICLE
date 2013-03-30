@@ -1,11 +1,11 @@
 Enemy = {
-  species = "jfish",
+  species = "naut",
   level = 10,
-  hp = 9,
+  hp = 24,
   getExp = function(default)
-      return 12
+      return 20
   end,
-  item = EnemyItemNone,
+  item = EnemyItemShield,
   type = SkillTypePhysical,
 }
 

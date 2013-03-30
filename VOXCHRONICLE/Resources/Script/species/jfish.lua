@@ -1,12 +1,16 @@
 Enemy = {
   name = "クラゲ",
   imageName = "jfish",
-  attack = 1,
+  attack = 2,
   baseExp = 3,
   hasFrame = true,
   counter = 0,
   getSpeed = function(enemy, characterManager)
-    return 1
+   local row = enemy:getRow()
+    if row > 1 then -- 1列目より前に行ったとき、速度を0にします
+      return 1
+    end
+    return 0
   end,
   getFrequency = function(enemy, characterManager)
     return 2
@@ -17,6 +21,10 @@ Enemy = {
   habitat = "",
   animationFrames = 4,
   performSkill = function(self)
+    local row = self:getRow()
+    if row == 0 then
+      return "direct_attack"
+    end
     return ""
   end
 }
