@@ -1,7 +1,7 @@
 Enemy = {
-  species = "wave",
+  species = "wave_root",
   level = 10,
-  hp = 350,
+  hp = 15,
   getExp = function(default)
       return 0
   end,

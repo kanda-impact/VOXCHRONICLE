@@ -9,7 +9,7 @@ Enemy = {
     return 1
   end,
   getFrequency = function(enemy, characterManager)
-    return 2
+    return 3
   end,
   disableSkills = {},
   description = [[
