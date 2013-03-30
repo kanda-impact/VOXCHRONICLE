@@ -55,14 +55,14 @@ void PopupWindow::nextPage() {
   }
 }
 
-void PopupWindow::setText(const char *headerText, const char *text) {
+void PopupWindow::setText(int page, const char *headerText, const char *text) {
+  CCNode* node = this->getPage(page);
   CCLabelTTF* header = CCLabelTTF::create(headerText, "Helvetica", 24, CCSizeMake(380, 40), kCCTextAlignmentLeft, kCCVerticalTextAlignmentCenter);
   header->setPosition(ccp(215, 270));
-  this->addChild(header);
-  MessageWindow* window = new MessageWindow("Helvetica", 16, CCSizeMake(370, 240));
-  window->setPosition(ccp(225, 130));
-  window->setMessageSpeed(0.05f);
-  this->addChild(window);
+  node->addChild(header);
+  MessageWindow* window = new MessageWindow("Helvetica", 16, CCSizeMake(350, 240));
+  window->setPosition(ccp(220, 130));
+  node->addChild(window);
   window->setLastDelay(INTMAX_MAX);
   window->pushMessage(text);
   window->setOnMessageFinishedFunction(boost::bind(&PopupWindow::onFinishedFunction, this, _1, _2));

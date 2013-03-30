@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Sun Mar 31 06:02:14 2013.
+** Generated automatically by tolua++-1.0.92 on Sun Mar 31 06:28:29 2013.
 */
 
 #ifndef __cplusplus
@@ -1773,22 +1773,24 @@ static int tolua_VOXCHRONICLE_PopupWindow_setText00(lua_State* tolua_S)
  tolua_Error tolua_err;
  if (
      !tolua_isusertype(tolua_S,1,"PopupWindow",0,&tolua_err) ||
-     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,2,0,&tolua_err) ||
      !tolua_isstring(tolua_S,3,0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,4,&tolua_err)
+     !tolua_isstring(tolua_S,4,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,5,&tolua_err)
  )
   goto tolua_lerror;
  else
 #endif
  {
   PopupWindow* self = (PopupWindow*)  tolua_tousertype(tolua_S,1,0);
-  const char* headerText = ((const char*)  tolua_tostring(tolua_S,2,0));
-  const char* message = ((const char*)  tolua_tostring(tolua_S,3,0));
+  int page = ((int)  tolua_tonumber(tolua_S,2,0));
+  const char* headerText = ((const char*)  tolua_tostring(tolua_S,3,0));
+  const char* message = ((const char*)  tolua_tostring(tolua_S,4,0));
 #ifndef TOLUA_RELEASE
   if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setText'", NULL);
 #endif
   {
-   self->setText(headerText,message);
+   self->setText(page,headerText,message);
   }
  }
  return 0;

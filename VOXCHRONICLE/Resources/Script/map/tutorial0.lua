@@ -15,12 +15,12 @@ Map = {
     local level = characterManager:getLevel()
     if level == 1 then
       local layer = EffectLayer:sharedLayer()
-      local popup = layer:addPopupWindow(3)
-      local node = popup:getPage(0)
-      popup:setText("Hello VOXCHRONICLE", [[
-さあ！攻撃だ！
-剣のコマンドを押すんだ！ざしゅ！！攻撃キター！！！！こうげききたー！
-みろよ！スライムが！無残に粉砕！ひゃっほう。
+      local popup = layer:addPopupWindow(2)
+      popup:setText(0, "さあ！戦いの始まりだ！", [[
+やあやあ！私はラスカ。オクス君（あなた）のパートナーよ。細かい説明は省くけど、これからゲームについて説明していくよ。タイトルで少しの間待っているとストーリーのデモが流れるのでそちらも宜しくね！
+]])
+      popup:setText(1, "オクスクロニクルってどんなゲーム？", [[
+オクスクロニクルは主観視点、画面奥から自分に近づいてくる敵をやっつけていくゲームよ。音量を上げてノリノリでプレイしてみてね。下にあるタイムマーカーが一周する毎に選択していたコマンドが行われるわ。まずは剣のマークをタッチして攻撃コマンドを試してみましょ。
 ]])
     end
   end,
