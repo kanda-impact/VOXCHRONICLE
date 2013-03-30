@@ -16,6 +16,17 @@ Character = {
         {"shield", 11},
         {"run", 1}
       }
+    elseif mapName == "1a_simple" then
+      return {
+        {"attack", 1},
+        {"knockback", 8},
+        {"slash", 7},
+        {"charge", 5},
+        {"tension", 1},
+        {"change", 3},
+        {"shield", 6},
+        {"run", 1}
+      }
     end
     return {
       {"attack", 1},
