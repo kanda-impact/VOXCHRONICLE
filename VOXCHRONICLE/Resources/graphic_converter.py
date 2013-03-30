@@ -1,5 +1,4 @@
 import os
-import shutil
 from PIL import Image
 
 SRC = "Retina"
@@ -20,15 +19,13 @@ def remove_all(path):
     os.rmdir(path)
 
 if __name__ == '__main__':
-    if os.path.exists(DST):
-        remove_all(DST)
-    shutil.copytree(SRC, DST)
-    files = os.listdir(DST)
+    files = os.listdir(SRC)
     base = os.getcwd()
     for file in files:
         filename, ext = os.path.splitext(file)
+        print filename
         if ext == '.png':
-            original = Image.open(os.path.join(base, DST, file))
+            original = Image.open(os.path.join(base, SRC, file))
             tmb = original.copy()
             width, height = original.size
             tmb.thumbnail((width / 2, height / 2))
