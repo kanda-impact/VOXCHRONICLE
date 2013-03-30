@@ -8,7 +8,7 @@ Enemy = {
   getSpeed = function(enemy, characterManager)
    local row = enemy:getRow()
     if row > 3 then -- 4列目より前に行ったとき、速度を0にします
-      return 3
+      return 2
     elseif row > 0 then
       return 1
     end

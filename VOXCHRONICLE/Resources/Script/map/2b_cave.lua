@@ -9,30 +9,30 @@ Map = {
   initialLevel = 11,
   maxLevel = 20,
   getEnemyTable = function(level)
-    if level <= 22 then
+    if level <= 12 then
       return {mukade2B0 = 3, wisp2B6 = 2}
-    elseif level <= 24 then
+    elseif level <= 14 then
       return {mukade2B0 = 2, bat2B0 = 3}
-    elseif level <= 26 then
+    elseif level <= 16 then
       return {cryst2B3 = 1, bat2B0 = 4}
-    elseif level <= 28 then
+    elseif level <= 18 then
       return {cryst2B3 = 1, mukade2B0 = 3, bat2B0 = 3}
-    elseif level <= 30 then
+    elseif level <= 20 then
       return {cryst2B3 = 1, bat2B0 = 3, wisp2B6 = 1}
     end
-      return {cryst2B3 = 1, bat2B0 = 1, mukade2B0 = 0, wisp2B6 = 1}
+      return {cryst2B3 = 1, bat2B0 = 1, mukade2B0 = 1, wisp2B6 = 1}
   end,
   getEnemyPopRate = function(level)
-    if level <= 22  then
-    return 0.28
-    elseif level <= 24 then
-    return 0.3
-    elseif level <= 26 then
-    return 0.27
-    elseif level <= 28 then
-    return 0.28
-    elseif level <= 30 then
+    if level <= 12  then
     return 0.26
+    elseif level <= 14 then
+    return 0.28
+    elseif level <= 16 then
+    return 0.25
+    elseif level <= 18 then
+    return 0.26
+    elseif level <= 20 then
+    return 0.25
     end
   end,
   fixedEnemies = {
