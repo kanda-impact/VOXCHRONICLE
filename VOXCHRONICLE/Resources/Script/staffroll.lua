@@ -2,6 +2,7 @@ StaffRoll = {
   tracks = {
     "intro",
     "wait",
+    "wait",
     "voxattack0",
     "voxattack1",
     "voxattack2",
