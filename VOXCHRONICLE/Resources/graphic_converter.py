@@ -3,6 +3,7 @@ from PIL import Image
 
 SRC = "Retina"
 DST = "Image"
+IGNORES = ['cyber_default', 'cave_default', 'grass_default']
 
 def remove_all(path):
     for (root, dirs, files) in os.walk(path, topdown=False):
@@ -24,7 +25,7 @@ if __name__ == '__main__':
     for file in files:
         filename, ext = os.path.splitext(file)
         print filename
-        if ext == '.png':
+        if ext == '.png' and not filename in IGNORES:
             original = Image.open(os.path.join(base, SRC, file))
             tmb = original.copy()
             width, height = original.size
