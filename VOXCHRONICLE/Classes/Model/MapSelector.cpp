@@ -15,15 +15,44 @@ bool MapSelector::init() {
     return false;
   }
   
-  CCMenuItemImage* leftArrow = CCMenuItemImage::create(FileUtils::getFilePath("selector_easy.png").c_str(),
-                                                       FileUtils::getFilePath("selector_easy_selected.png").c_str(),
-                                                       this,
-                                                       menu_selector(MapSelector::leftButtonPressed));
-  CCMenuItemImage* rightArrow = CCMenuItemImage::create(FileUtils::getFilePath("selector_hard.png").c_str(),
-                                                        FileUtils::getFilePath("selector_hard_selected.png").c_str(),
-                                                        this,
-                                                        menu_selector(MapSelector::rightButtonPressed));
+  CCDirector* director = CCDirector::sharedDirector();
+  
+  CCNode* leftSprite = CCNode::create();
+  //Map* leftMap = (Map*)_nextMaps->objectAtIndex(0);
+  CCSprite* leftThumbnail = CCSprite::create("cyber_hexagon.png");
+  if (leftThumbnail != NULL) {
+    leftThumbnail->setPosition(ccp(0, -22.5));
+    leftSprite->addChild(leftThumbnail);
+  }
+  CCSprite* leftFrame = CCSprite::create("selector_easy.png");
+  leftSprite->addChild(leftFrame);
+  leftSprite->setContentSize(leftFrame->getTextureRect().size);
+  leftSprite->setPosition(ccp(62.5, 100));
+  
+  CCMenuItemSprite* leftArrow = CCMenuItemSprite::create(leftSprite,
+                                                         leftSprite,
+                                                         this, menu_selector(MapSelector::leftButtonPressed));
+  
+  CCNode* rightSprite = CCNode::create();
+  //Map* rightMap = (Map*)_nextMaps->objectAtIndex(1);
+  CCSprite* rightThumbnail = CCSprite::create("cyber_hexagon.png");
+  if (rightThumbnail != NULL) {
+    rightThumbnail->setPosition(ccp(0, -22.5));
+    rightSprite->addChild(rightThumbnail);
+  }
+  CCSprite* rightFrame = CCSprite::create("selector_hard.png");
+  rightSprite->addChild(rightFrame);
+  rightSprite->setContentSize(rightFrame->getTextureRect().size);
+  rightSprite->setPosition(ccp(62.5, 100));
+  
+  CCMenuItemSprite* rightArrow = CCMenuItemSprite::create(rightSprite,
+                                                          rightSprite,
+                                                          this, menu_selector(MapSelector::rightButtonPressed));
+  
   CCMenu* menu = CCMenu::create(leftArrow, rightArrow, NULL);
+  CCSize offset = rightFrame->getTextureRect().size;
+  menu->setAnchorPoint(ccp(0.5, 0.5));
+  menu->setPosition(ccp(director->getWinSize().width / 2.0, director->getWinSize().height / 2.0));
   menu->alignItemsHorizontallyWithPadding(135);
   this->addChild(menu);
   _nextMaps = NULL;
@@ -34,7 +63,6 @@ bool MapSelector::init() {
 
 void MapSelector::onEnter() {
   CCLayer::onEnter();
-  //_effectID = SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/selector.mp3").c_str(), true);
 }
 
 MapSelector::MapSelector() {
