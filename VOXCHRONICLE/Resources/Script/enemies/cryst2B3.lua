@@ -1,11 +1,11 @@
 Enemy = {
   species = "cryst",
   level = 10,
-  hp = 9,
+  hp = 24,
   getExp = function(default)
-      return 12
+      return 30
   end,
-  item = EnemyItemNone,
+  item = EnemyItemShield,
   type = SkillTypeNormal,
 }
 

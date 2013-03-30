@@ -42,8 +42,8 @@ bool SelectScene::init() {
                                                           this,
                                                           menu_selector(SelectScene::onEasyButtonPressed));
   
-  CCMenuItemSprite* hardButton = CCMenuItemSprite::create(this->buttonNode("hard", "simple_thumbnail.png", false),
-                                                          this->buttonNode("hard", "simple_thumbnail.png", true),
+  CCMenuItemSprite* hardButton = CCMenuItemSprite::create(this->buttonNode("hard", "field_thumbnail.png", false),
+                                                          this->buttonNode("hard", "field_thumbnail.png", true),
                                                           this,
                                                           menu_selector(SelectScene::onHardButtonPressed));
   CCMenu* mainMenu = CCMenu::create(easyButton, hardButton, NULL);
@@ -122,12 +122,14 @@ CCNode* SelectScene::buttonNode(const char *key, const char* thumbnail, bool pre
 }
 
 void SelectScene::createThumbnails() {
-  const int x[] = {190, 240, 290, 165, 215, 265, 315};
-  const int y[] = {262, 262, 262, 303, 303, 303, 303};
-  const string filenames[] = {"forest", "", "", "", "castle", "", "space"}; // とりあえずハードコーディング
+  const int x[] = {190, 240, 291, 165, 215, 265, 315};
+  const int y[] = {262, 262, 260, 303, 303, 303, 303};
+  LuaObject* obj = LuaObject::create("setting");
+  CCLuaValueArray* maps = obj->getArray("maps");
   // マップによって切り替えたり、セーブデータによって切り替えたりはあとで実装する
-  for (int i = 0; i < 7; ++i) {
-    string filename = filenames[i];
+  int i = 0;
+  for (CCLuaValueArrayIterator it = maps->begin(); it != maps->end(); ++it, ++i) {
+    string filename = it->stringValue();
     if (filename.length() > 0) {
       CCSprite* sprite = CCSprite::create((filename + string("_icon.png")).c_str());
       sprite->setPosition(ccp(x[i], y[i]));

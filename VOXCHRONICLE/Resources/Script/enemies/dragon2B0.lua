@@ -1,9 +1,9 @@
 Enemy = {
-  species = "mukade",
+  species = "dragon",
   level = 10,
-  hp = 16,
+  hp = 96,
   getExp = function(default)
-      return 24
+      return 60
   end,
   item = EnemyItemNone,
   type = SkillTypeNormal,

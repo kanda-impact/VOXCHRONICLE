@@ -1,11 +1,11 @@
 Enemy = {
-  species = "mukade",
+  species = "wisp",
   level = 10,
-  hp = 16,
+  hp = 14,
   getExp = function(default)
-      return 24
+      return 20
   end,
-  item = EnemyItemNone,
+  item = EnemyItemBarrier,
   type = SkillTypeNormal,
 }
 
