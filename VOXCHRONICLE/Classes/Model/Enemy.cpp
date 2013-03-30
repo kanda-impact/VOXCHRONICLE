@@ -377,7 +377,7 @@ bool Enemy::setAnimationAndFrame(int xOffset, int yOffset, int frames, bool hasF
       frameSprite->setAnchorPoint(ccp(0, 0));
       CCRepeatForever* blink = CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.05f, 64), CCFadeTo::create(0.05f, 255)));
       if (_type == SkillTypePhysical) {
-        frameSprite->setColor(VOX_COLOR);
+        frameSprite->setColor(ccc3(0, 255, 230));
         frameSprite->runAction(blink);
       } else if (_type == SkillTypeMagical) {
         frameSprite->setColor(LSK_COLOR);
