@@ -17,6 +17,8 @@ Enemy = {
   end,
   disableSkills = {"knockback"},
   description = [[
+  古代の超技術で作られた。なんか歩く城。
+  硬いけど　古いから　突っ込んでくるだけ。
   ]],
   habitat = "",
   animationFrames = 4,

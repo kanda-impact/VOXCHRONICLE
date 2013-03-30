@@ -13,6 +13,8 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  電子に回避を与える試みの末うまれた。
+  下方向からの衝撃をおそれているようだ。
   ]],
   habitat = "",
   animationFrames = 4,

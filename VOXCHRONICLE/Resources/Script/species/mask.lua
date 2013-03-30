@@ -13,6 +13,8 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  古代の呪術師が作ったマスク。
+  マスクが浮いてるように見えるが、見えない体もある。
   ]],
   habitat = "",
   animationFrames = 4,

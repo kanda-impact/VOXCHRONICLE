@@ -13,6 +13,8 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  ハミングしていないと光合成できないので、
+  常にハミングしてる。最近のパンジーさん界隈ではボッサが来てる。
   ]],
   habitat = "",
   animationFrames = 4,

@@ -13,6 +13,8 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  パワーも一丁前。炎が吐ける所も一丁前。
+  ふてぶてしい態度も一丁前。でもまだ飛べない。
   ]],
   habitat = "",
   animationFrames = 4,

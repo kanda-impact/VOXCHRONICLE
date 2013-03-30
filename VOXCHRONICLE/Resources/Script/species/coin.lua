@@ -13,6 +13,8 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+電子に通貨の概念を与える試みの末うまれた。
+100枚集めたら１UPしない。
   ]],
   habitat = "",
   animationFrames = 4,

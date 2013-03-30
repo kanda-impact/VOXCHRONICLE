@@ -13,6 +13,7 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  クラゲのくらりん。足一つ一つに名前がある。
   ]],
   habitat = "",
   animationFrames = 4,

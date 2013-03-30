@@ -13,6 +13,7 @@ Enemy = {
   end,
   disableSkills = {"attack", "magic", "knockback", "bow", "thunder", "slash"}, -- 全技を無効化する
   description = [[
+  ざぷーーーーーーん。無敵です。
   ]],
   habitat = "",
   animationFrames = 1,
