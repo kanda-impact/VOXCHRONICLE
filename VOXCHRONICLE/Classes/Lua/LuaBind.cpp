@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Sun Mar 31 08:19:35 2013.
+** Generated automatically by tolua++-1.0.92 on Mon Apr  1 02:06:45 2013.
 */
 
 #ifndef __cplusplus
@@ -1377,7 +1377,8 @@ static int tolua_VOXCHRONICLE_EnemyManager_nextTurn00(lua_State* tolua_S)
  if (
      !tolua_isusertype(tolua_S,1,"EnemyManager",0,&tolua_err) ||
      !tolua_isusertype(tolua_S,2,"CharacterManager",0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,3,&tolua_err)
+     !tolua_isboolean(tolua_S,3,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,4,&tolua_err)
  )
   goto tolua_lerror;
  else
@@ -1385,11 +1386,12 @@ static int tolua_VOXCHRONICLE_EnemyManager_nextTurn00(lua_State* tolua_S)
  {
   EnemyManager* self = (EnemyManager*)  tolua_tousertype(tolua_S,1,0);
   CharacterManager* manager = ((CharacterManager*)  tolua_tousertype(tolua_S,2,0));
+  bool moveOnly = ((bool)  tolua_toboolean(tolua_S,3,0));
 #ifndef TOLUA_RELEASE
   if (!self) tolua_error(tolua_S,"invalid 'self' in function 'nextTurn'", NULL);
 #endif
   {
-   self->nextTurn(manager);
+   self->nextTurn(manager,moveOnly);
   }
  }
  return 0;

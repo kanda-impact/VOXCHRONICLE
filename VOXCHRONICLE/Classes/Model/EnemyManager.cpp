@@ -355,7 +355,7 @@ void EnemyManager::pushEnemiesQueue(cocos2d::CCArray *enemies) {
   }
 }
 
-void EnemyManager::nextTurn (CharacterManager* characterManager) {
+void EnemyManager::nextTurn (CharacterManager* characterManager, bool moveOnly) {
   this->lotPopEnemy();
   CCObject* obj = NULL;
   // コピーしないとだめじゃね
@@ -368,7 +368,7 @@ void EnemyManager::nextTurn (CharacterManager* characterManager) {
     Enemy* enemy = (Enemy*)obj;
     if (enemy == NULL) continue;
     if (enemy->getEnable() && enemy->getRow() >= 0) {
-      if (!enemy->performSkill(characterManager, this)) { // 敵の技を実行する
+      if (moveOnly || !enemy->performSkill(characterManager, this)) { // 敵の技を実行する
         if (enemy->canMove(characterManager)) { // 何も実行されなかったら、移動できるか調べる
           int speed = enemy->getSpeed(characterManager); // 早さを取得する
           enemy->moveRow(-speed); // 移動できたら1歩移動する
