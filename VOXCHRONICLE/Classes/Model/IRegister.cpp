@@ -34,3 +34,18 @@ void IRegister::setRegister(const char *key, int value) {
 bool IRegister::hasRegister(const char *key) {
   return _register->count(key) == 1;
 }
+
+bool IRegister::getBool(const char *key) {
+  if (hasRegister(key)) {
+    return (*_register)[string(key)] != 0;
+  }
+  return false;
+}
+
+void IRegister::setBool(const char *key, bool value) {
+  (*_register)[string(key)] = value ? 1 : 0;
+}
+
+void IRegister::clearRegister() {
+  _register->clear();
+}

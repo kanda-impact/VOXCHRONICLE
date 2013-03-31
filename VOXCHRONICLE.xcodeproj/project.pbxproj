@@ -766,6 +766,8 @@
 		07B2202D16CFD4270083B865 /* 003.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B2202C16CFD4270083B865 /* 003.lua */; };
 		07B7A6981620470000FCE64C /* LuaObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A6961620470000FCE64C /* LuaObject.cpp */; };
 		07B7A69E16204D4D00FCE64C /* LuaBind.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A69C16204D4D00FCE64C /* LuaBind.cpp */; };
+		07B8B6121708BBA200DB739F /* T_tetufez7.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B8B6101708BBA200DB739F /* T_tetufez7.lua */; };
+		07B8B6131708BBA200DB739F /* T_moth7.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B8B6111708BBA200DB739F /* T_moth7.lua */; };
 		07B95E1B15F304120024C672 /* Track.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B95E1915F303E30024C672 /* Track.mm */; };
 		07C6064216164F810084708C /* hello.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07C6064116164F810084708C /* hello.lua */; };
 		07C6085816164FEE0084708C /* CCAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6064916164FED0084708C /* CCAction.cpp */; };
@@ -2013,6 +2015,8 @@
 		07B2202C16CFD4270083B865 /* 003.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 003.lua; path = VOXCHRONICLE/Resources/Script/map/003.lua; sourceTree = SOURCE_ROOT; };
 		07B7A6961620470000FCE64C /* LuaObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaObject.cpp; path = Classes/Lua/LuaObject.cpp; sourceTree = "<group>"; };
 		07B7A69C16204D4D00FCE64C /* LuaBind.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaBind.cpp; path = Classes/Lua/LuaBind.cpp; sourceTree = "<group>"; };
+		07B8B6101708BBA200DB739F /* T_tetufez7.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_tetufez7.lua; sourceTree = "<group>"; };
+		07B8B6111708BBA200DB739F /* T_moth7.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_moth7.lua; sourceTree = "<group>"; };
 		07B95E1915F303E30024C672 /* Track.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = Track.mm; path = Classes/VISS/Track.mm; sourceTree = "<group>"; };
 		07C6064116164F810084708C /* hello.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hello.lua; sourceTree = "<group>"; };
 		07C6064916164FED0084708C /* CCAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCAction.cpp; sourceTree = "<group>"; };
@@ -4830,6 +4834,8 @@
 				B0821D4A1707AFA7009417B5 /* T_ginet.lua */,
 				B0821D4C1707B98A009417B5 /* T_tetufez.lua */,
 				B0821D501707BD04009417B5 /* T_moth.lua */,
+				07B8B6101708BBA200DB739F /* T_tetufez7.lua */,
+				07B8B6111708BBA200DB739F /* T_moth7.lua */,
 			);
 			path = enemies;
 			sourceTree = "<group>";
@@ -6142,6 +6148,8 @@
 				B0821D4D1707B98A009417B5 /* T_tetufez.lua in Resources */,
 				B0821D4F1707BCBD009417B5 /* Ts_moth.lua in Resources */,
 				B0821D511707BD05009417B5 /* T_moth.lua in Resources */,
+				07B8B6121708BBA200DB739F /* T_tetufez7.lua in Resources */,
+				07B8B6131708BBA200DB739F /* T_moth7.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

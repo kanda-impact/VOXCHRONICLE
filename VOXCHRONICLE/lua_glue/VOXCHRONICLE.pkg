@@ -172,6 +172,9 @@ class IRegister {
 	int getRegister(const char* key, int defaultValue);
 	void setRegister(const char* key, int value);
 	bool hasRegister(const char* key);
+	bool getBool(const char* key);
+	void setBool(const char* key, bool value);
+	void clearRegister();
 };
 
 class EnemySkill : public CCObject {

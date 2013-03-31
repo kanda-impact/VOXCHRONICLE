@@ -13,6 +13,25 @@ Map = {
   end,
   onFinishPlaying = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
+    local layer = EffectLayer:sharedLayer()
+    if level == 4 then
+      local popuped = self.__IRegister__:getBool("popuped") -- ポップアップしたかフラグ
+      if enemyManager:getEnemies():count() == 1 and not popuped then
+        self.__IRegister__:setBool("popuped", true)
+        -- 前の裏拍で敵が出現したあと、ポップアップを出します
+        local popup = layer:addPopupWindow(1)
+        popup:setText(0, "ダッシュで敵が出現", [[あ、見てみて！敵が見えてきたよ
+        
+        うっかりダッシュしすぎると敵がすぐ目の前でどうしようなんてなっちゃうから、最初のうちは焦らずにゆったり構えている方がいいかもね。
+        ]])
+      end
+    end
+  end,
+  onBack = function(self, characterManager, enemyManager)
+    math.random(100)
+    local layer = EffectLayer:sharedLayer()
+    local preHP = self.__IRegister__:getRegister("preHP", characterManager:getHP())  
+    local level = characterManager:getLevel()
     local enemies = enemyManager:getEnemies()
     local enemyCount = 0
     if not (enemies == nil) then
@@ -38,47 +57,82 @@ Map = {
         end
         self.__IRegister__:setRegister("enemyCount", killedEnemyCount + 1)
       end
+      if characterManager:getHP() < preHP then -- ダメージ受けた
+        local popup = layer:addPopupWindow(1)
+        popup:setText(0, "ぶつかるとダメージ！", [[迫ってくる敵は倒しきれないとオクス君にぶつかっちゃうよ！
+        ぶつかると自分の体力（HP）が減っちゃうから気をつけて！HPが0になるとゲームオーバーだからね。そのステージからやり直しだよ！]])
+      end
     elseif level == 4 then
       local lastSkill = characterManager:getLastSkill()
       local runCount = self.__IRegister__:getRegister("runCount", 0)
       if lastSkill and lastSkill:getIdentifier() == "run" then -- 前に使った技がrunの時
-        self.__IRegister__:setRegister("runCount", runCount + 1)
+        runCount = runCount + 1
+        self.__IRegister__:setRegister("runCount", runCount)
       end
-      if runCount > 2 then -- 走り行動を3回以上行っていたとき
-        enemyManager:popEnemyAt("T_slime12", 3, 1)
+      if runCount >= 2 and enemyManager:getEnemies():count() == 0 then -- 走り行動を2回行っていたとき、かつ敵がいないとき
+        enemyManager:popEnemyAt("T_slime12", 3, 1)  
+      end
+    elseif level == 5 then
+      if enemyCount == 0 then
+        local killedEnemyCount = self.__IRegister__:getRegister("enemyCount", 0)
+        local enemies = {"T_slime12", "T_ginet", "T_flower",}
+        if killedEnemyCount >= 3 then
+          enemyManager:popEnemyAt("T_slime30", 5, 1)
+        else
+          enemyManager:popEnemyAt(enemies[killedEnemyCount + 1], 4, 1)
+        end
+        self.__IRegister__:setRegister("enemyCount", killedEnemyCount + 1)
+      end
+    elseif level == 6 then
+      local killedEnemyCount = self.__IRegister__:getRegister("enemyCount", 0)
+      if killedEnemyCount > 0 then -- 1体目倒したあと、雑魚を毎ターン生成。次のレベル用に溜めておく
+        enemyManager:popEnemyAt("T_moth", MAX_ROW - 1, enemyCount % 3)
+      end
+      if enemyCount == 0 then
+        enemyManager:popEnemyAt("T_tetufez", 5, 1)
+        self.__IRegister__:setRegister("enemyCount", killedEnemyCount + 1)
+      end
+    elseif level == 7 then
+      local isAnnihilation = self.__IRegister__:getBool("isAnnihiration")
+      if isAnnihilation and enemyCount == 0 then
+        enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, enemyCount % 3) -- 全滅済みなら毎ターン雑魚を後ろに出す
+      end
+      if enemyCount == 0 then
+        if not isAnnihilation then
+          self.__IRegister__:setBool("isAnnihiration", true) -- 最初からいる敵が全滅した
+          local popup = layer:addPopupWindow(1)
+          popup:setText(0, "炸裂、オクスラッシュ！", [[
+やったね！オクス。一度にたくさんの敵を攻撃できたよ
+オクススラッシュの攻撃範囲は一番手前の敵から後ろ4列の敵まで
+あんまり後ろにいる敵には攻撃が届かないから要注意だね
+          ]])
+          enemyManager:popEnemyAt("T_moth7", 2, 0)
+          enemyManager:popEnemyAt("T_moth7", 2, 1)
+          enemyManager:popEnemyAt("T_moth7", 2, 2)
+          enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, 0)
+          enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, 1)
+          enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, 2)
+        end
       end
     end
-  end,
-  onBack = function(self, characterManager, enemyManager)
-    local level = characterManager:getLevel()
-    if level == 3 then
-      local preHP = self.__IRegister__:getRegister("preHP", characterManager:getHP())
-      if characterManager:getHP() < preHP then -- ダメージ受けた
-        local layer = EffectLayer:sharedLayer()
-        local popup = layer:addPopupWindow(1)
-        popup:setText(0, "ぶつかるとダメージ！", [[
-迫ってくる敵は倒しきれないとオクス君にぶつかっちゃうよ！ぶつかると自分の体力（HP）が減っちゃうから気をつけて！HPが0になるとゲームオーバーだからね。そのステージからやり直しだよ！
-]])
-      end
-      self.__IRegister__:setRegister("preHP", characterManager:getHP())
-    end
+    self.__IRegister__:setRegister("preHP", characterManager:getHP())
   end,
   onLevelUp = function(self, characterManager, enemyManager)
+    self.__IRegister__:clearRegister()
     local level = characterManager:getLevel()
     local layer = EffectLayer:sharedLayer()
     if level == 1 then
-      local popup = layer:addPopupWindow(2)
+      local popup = layer:addPopupWindow(3)
       popup:setText(0, "さあ！戦いの始まりだ！", [[
 やあやあ！私はラスカ。オクス君（あなた）のパートナーよ。細かい説明は省くけど、これからゲームについて説明していくよ。タイトルで少しの間待っているとストーリーのデモが流れるのでそちらも宜しくね！
 ]])
-      popup:setText(1, "オクスってどんなゲーム？", [[
-オクスクロニクルは主観視点、画面奥から自分に近づいてくる敵をやっつけていくゲームよ。音量を上げてノリノリでプレイしてみてね。下にあるタイムマーカーが一周する毎に選択していたコマンドが行われるわ。まずは剣のマークをタッチして攻撃コマンドを試してみましょ。
-]])
+      popup:setText(1, "オクスってどんなゲーム？", "オクスクロニクルは主観視点、画面奥から自分に近づいてくる敵をやっつけていくゲームよ。音量を上げてノリノリでプレイしてみてね。")
+      popup:setText(2, "音楽に合わせて行動しよう！", "下にあるタイムマーカーが一周する毎に選択していたコマンドが行われるわ。まずは剣のマークをタッチして攻撃コマンドを試してみましょ。")
     elseif level == 2 then
-      local popup = layer:addPopupWindow(1)
-      popup:setText(0, "レベルアップで次のステージ！", [[
-こんな調子で敵をどんどん倒していくと今みたいにレベルアップするよ！レベルが30になればステージクリア。ちなみに攻撃は一番近くの敵に当たるから、「近づく敵は全て切る！」って感じにどんどん倒していっちゃおう！ちなみに連続で攻撃していると、4連撃までは攻撃力が上がっていくよ。サービスサービスぅ！
-]])
+      local popup = layer:addPopupWindow(3)
+      popup:setText(0, "レベルアップで次のステージ！", "こんな調子で敵をどんどん倒していくと今みたいにレベルアップするよ！レベルが30になればステージクリア")
+      popup:setText(1, "近くの敵を狙い撃ち", "攻撃は一番近くの敵に当たるから、「近づく敵は全て切る！」って感じにどんどん倒していっちゃおう！")
+      popup:setText(2, "攻撃を繋げて威力アップ！", "ちなみに連続で攻撃していると、4連撃までは攻撃力が上がっていくよ。サービスサービスぅ！")
     elseif level == 3 then
       local popup = layer:addPopupWindow(1)
       popup:setText(0, "敵の体力は色で判断！", [[
@@ -90,7 +144,7 @@ Map = {
 おおっと！今のレベルアップで新しい行動ができるようになったよ！！やるねぇオクス君、成長期だ！どんどんレベルを上げて新しいワザ、身につけよう！
 ]])
       popup:setText(1, "ダッシュでどんどん攻め込もう！", [[
-今回出来るようになったのはダッシュ！ダッシュコマンドにタッチして敵にどんどん近づいてみよう。敵がまだ見えてこないで暇なときは、ダッシュして近づいて攻撃しよう。うっかりダッシュしすぎると敵がすぐ目の前でどうしようなんてなっちゃうから、最初のうちは焦らずにゆったり構えている方がいいかもね。
+今回出来るようになったのはダッシュ！ダッシュコマンドにタッチして敵にどんどん近づいてみよう。敵がまだ見えてこないで暇なときは、ダッシュして近づいて攻撃しよう。
 ]])
     elseif level == 5 then
       local popup = layer:addPopupWindow(2)
@@ -108,7 +162,11 @@ Map = {
     elseif level == 7 then
       local popup = layer:addPopupWindow(1)
       popup:setText(0, "敵を一掃！必殺オクススラッシュ！！", [[
-      うわぁ！固い敵に手間取っていたらいつの間にか目の前が敵で一杯だよ！　でも大丈夫。こんな時は必殺オクススラッシュ！！　オクススラッシュコマンドはテンションが1段階以上溜まっていないと放てないけれど、一番手前から後ろ4列の敵まで一度に攻撃できる協力な範囲攻撃技だよ！敵の軍団も一気に一掃してしちゃおう！
+うわぁ！固い敵に手間取っていたらいつの間にか目の前が敵で一杯だよ！　でも大丈夫。こんな時は必殺オクススラッシュ！！
+
+オクススラッシュはテンションが1段階以上溜まっていないと放てないけれど、複数の敵を同時に攻撃できる強力な技だよ
+
+敵の軍団も一気に一掃しちゃおう！
 ]])
     elseif level == 8 then
       local popup = layer:addPopupWindow(1)

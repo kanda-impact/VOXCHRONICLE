@@ -98,6 +98,9 @@ Enemy* EnemyManager::enemyAt(int col, int row) {
 }
 
 CCArray* EnemyManager::getEnemies() {
+  if (this->getChildrenCount() == 0) {
+    return CCArray::create();
+  }
   return this->getChildren();
 }
 

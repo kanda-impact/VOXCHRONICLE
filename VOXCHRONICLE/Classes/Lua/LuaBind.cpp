@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Mon Apr  1 02:06:45 2013.
+** Generated automatically by tolua++-1.0.92 on Mon Apr  1 03:18:10 2013.
 */
 
 #ifndef __cplusplus
@@ -2004,6 +2004,106 @@ static int tolua_VOXCHRONICLE_IRegister_hasRegister00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: getBool of class  IRegister */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_IRegister_getBool00
+static int tolua_VOXCHRONICLE_IRegister_getBool00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"IRegister",0,&tolua_err) ||
+     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  IRegister* self = (IRegister*)  tolua_tousertype(tolua_S,1,0);
+  const char* key = ((const char*)  tolua_tostring(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getBool'", NULL);
+#endif
+  {
+   bool tolua_ret = (bool)  self->getBool(key);
+   tolua_pushboolean(tolua_S,(bool)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getBool'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: setBool of class  IRegister */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_IRegister_setBool00
+static int tolua_VOXCHRONICLE_IRegister_setBool00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"IRegister",0,&tolua_err) ||
+     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isboolean(tolua_S,3,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,4,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  IRegister* self = (IRegister*)  tolua_tousertype(tolua_S,1,0);
+  const char* key = ((const char*)  tolua_tostring(tolua_S,2,0));
+  bool value = ((bool)  tolua_toboolean(tolua_S,3,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setBool'", NULL);
+#endif
+  {
+   self->setBool(key,value);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'setBool'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: clearRegister of class  IRegister */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_IRegister_clearRegister00
+static int tolua_VOXCHRONICLE_IRegister_clearRegister00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"IRegister",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  IRegister* self = (IRegister*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'clearRegister'", NULL);
+#endif
+  {
+   self->clearRegister();
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'clearRegister'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* method: getName of class  EnemySkill */
 #ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_EnemySkill_getName00
 static int tolua_VOXCHRONICLE_EnemySkill_getName00(lua_State* tolua_S)
@@ -2320,6 +2420,9 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
    tolua_function(tolua_S,"getRegister",tolua_VOXCHRONICLE_IRegister_getRegister00);
    tolua_function(tolua_S,"setRegister",tolua_VOXCHRONICLE_IRegister_setRegister00);
    tolua_function(tolua_S,"hasRegister",tolua_VOXCHRONICLE_IRegister_hasRegister00);
+   tolua_function(tolua_S,"getBool",tolua_VOXCHRONICLE_IRegister_getBool00);
+   tolua_function(tolua_S,"setBool",tolua_VOXCHRONICLE_IRegister_setBool00);
+   tolua_function(tolua_S,"clearRegister",tolua_VOXCHRONICLE_IRegister_clearRegister00);
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"EnemySkill","EnemySkill","CCObject",NULL);
   tolua_beginmodule(tolua_S,"EnemySkill");
