@@ -64,6 +64,7 @@ class Map :public CCObject, public IRegister {
   void performOnFinishPlaying(CharacterManager* characterManager, EnemyManager* enemyManager);
   void performOnBack(CharacterManager* characterManager, EnemyManager* enemyManager);
   Skin* getSkin();
+  void changeBackgroundImage(const char* imageName);
 };
 
 #endif /* defined(__VOXCHRONICLE__Map__) */

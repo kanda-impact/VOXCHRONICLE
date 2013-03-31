@@ -15,6 +15,11 @@ Map = {
       return {slime0 = 1}
     end
   end,
+  onLevelUp = function(self, characterManager, enemyManager)
+    local num = (characterManager:getLevel() - 1) % 3
+    local imageName = "field_background"..num..".png"
+    self:changeBackgroundImage(imageName)
+  end,
   getEnemyPopRate = function(level)
     return 0.7
   end,

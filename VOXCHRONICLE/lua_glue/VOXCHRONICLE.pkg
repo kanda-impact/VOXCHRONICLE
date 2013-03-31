@@ -186,4 +186,5 @@ class Map : public CCObject, public IRegister {
 	int getInitialLevel();
 	string getName();
 	bool isBossStage();
+	void changeBackgroundImage(const char* imageName);
 };

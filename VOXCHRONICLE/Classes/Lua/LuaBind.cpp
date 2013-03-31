@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Mon Apr  1 03:18:10 2013.
+** Generated automatically by tolua++-1.0.92 on Mon Apr  1 06:26:40 2013.
 */
 
 #ifndef __cplusplus
@@ -2264,6 +2264,39 @@ static int tolua_VOXCHRONICLE_Map_isBossStage00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: changeBackgroundImage of class  Map */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_Map_changeBackgroundImage00
+static int tolua_VOXCHRONICLE_Map_changeBackgroundImage00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"Map",0,&tolua_err) ||
+     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  Map* self = (Map*)  tolua_tousertype(tolua_S,1,0);
+  const char* imageName = ((const char*)  tolua_tostring(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'changeBackgroundImage'", NULL);
+#endif
+  {
+   self->changeBackgroundImage(imageName);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'changeBackgroundImage'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* get function: __IRegister__ of class  Map */
 #ifndef TOLUA_DISABLE_tolua_get_Map___IRegister__
 static int tolua_get_Map___IRegister__(lua_State* tolua_S)
@@ -2434,6 +2467,7 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
    tolua_function(tolua_S,"getInitialLevel",tolua_VOXCHRONICLE_Map_getInitialLevel00);
    tolua_function(tolua_S,"getName",tolua_VOXCHRONICLE_Map_getName00);
    tolua_function(tolua_S,"isBossStage",tolua_VOXCHRONICLE_Map_isBossStage00);
+   tolua_function(tolua_S,"changeBackgroundImage",tolua_VOXCHRONICLE_Map_changeBackgroundImage00);
    tolua_variable(tolua_S,"__IRegister__",tolua_get_Map___IRegister__,NULL);
   tolua_endmodule(tolua_S);
  tolua_endmodule(tolua_S);

@@ -240,6 +240,10 @@ CCSprite* Map::getBackground() {
   return _background;
 }
 
+void Map::changeBackgroundImage(const char *imageName) {
+  _background->setTexture(CCTextureCache::sharedTextureCache()->addImage(imageName));
+}
+
 void Map::loadSkillTable(Character* character) {
   CCArray* skills = CCArray::create();
   LuaObject* lua = LuaObject::create(character->getIdentifier().c_str());
