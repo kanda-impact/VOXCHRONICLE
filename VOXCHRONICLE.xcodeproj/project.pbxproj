@@ -768,6 +768,7 @@
 		07B7A69E16204D4D00FCE64C /* LuaBind.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A69C16204D4D00FCE64C /* LuaBind.cpp */; };
 		07B8B6121708BBA200DB739F /* T_tetufez7.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B8B6101708BBA200DB739F /* T_tetufez7.lua */; };
 		07B8B6131708BBA200DB739F /* T_moth7.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B8B6111708BBA200DB739F /* T_moth7.lua */; };
+		07B8B6151708D2C000DB739F /* shield_test.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B8B6141708D2C000DB739F /* shield_test.lua */; };
 		07B95E1B15F304120024C672 /* Track.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B95E1915F303E30024C672 /* Track.mm */; };
 		07C6064216164F810084708C /* hello.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07C6064116164F810084708C /* hello.lua */; };
 		07C6085816164FEE0084708C /* CCAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6064916164FED0084708C /* CCAction.cpp */; };
@@ -2017,6 +2018,7 @@
 		07B7A69C16204D4D00FCE64C /* LuaBind.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaBind.cpp; path = Classes/Lua/LuaBind.cpp; sourceTree = "<group>"; };
 		07B8B6101708BBA200DB739F /* T_tetufez7.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_tetufez7.lua; sourceTree = "<group>"; };
 		07B8B6111708BBA200DB739F /* T_moth7.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_moth7.lua; sourceTree = "<group>"; };
+		07B8B6141708D2C000DB739F /* shield_test.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shield_test.lua; sourceTree = "<group>"; };
 		07B95E1915F303E30024C672 /* Track.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = Track.mm; path = Classes/VISS/Track.mm; sourceTree = "<group>"; };
 		07C6064116164F810084708C /* hello.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hello.lua; sourceTree = "<group>"; };
 		07C6064916164FED0084708C /* CCAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCAction.cpp; sourceTree = "<group>"; };
@@ -4836,6 +4838,7 @@
 				B0821D501707BD04009417B5 /* T_moth.lua */,
 				07B8B6101708BBA200DB739F /* T_tetufez7.lua */,
 				07B8B6111708BBA200DB739F /* T_moth7.lua */,
+				07B8B6141708D2C000DB739F /* shield_test.lua */,
 			);
 			path = enemies;
 			sourceTree = "<group>";
@@ -6150,6 +6153,7 @@
 				B0821D511707BD05009417B5 /* T_moth.lua in Resources */,
 				07B8B6121708BBA200DB739F /* T_tetufez7.lua in Resources */,
 				07B8B6131708BBA200DB739F /* T_moth7.lua in Resources */,
+				07B8B6151708D2C000DB739F /* shield_test.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -73,6 +73,7 @@ Enemy* Enemy::create(const char *enemyName) {
 Enemy* Enemy::initWithScriptName(const char* scriptName) {
   stringstream file;
   file << "Script/enemies/" << scriptName;
+  _identifier = scriptName;
   _scriptPath = file.str();
   _register = new map<string, int>();
   _lua = new LuaObject(file.str().c_str());
@@ -118,7 +119,6 @@ Enemy::~Enemy() {
   _lua->release();
   _species->release();
   _sheet->release();
-  cout << "Enemy was released." << endl;
 }
 
 void Enemy::update(float dt) {
@@ -303,6 +303,10 @@ int Enemy::getAttack() {
 }
 
 EnemyItem Enemy::getItem() {
+  if (_item != EnemyItemNone) {
+    CCNode* item = this->getChildByTag(EnemyTagItem);
+    CCAssert(item == NULL, "アイテム消えてる!!!");
+  }
   return _item;
 }
 
@@ -474,4 +478,8 @@ int Enemy::getFrequency(CharacterManager* manager) {
 
 Species* Enemy::getSpecies() {
   return _species;
+}
+
+string Enemy::getIdentifier() {
+  return _identifier;
 }

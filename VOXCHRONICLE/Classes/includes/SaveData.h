@@ -12,6 +12,7 @@
 #include <iostream>
 #include "cocos2d.h"
 #include "Map.h"
+#include "Enemy.h"
 
 using namespace cocos2d;
 
@@ -22,18 +23,15 @@ using namespace cocos2d;
  */
 
 class SaveData :public CCObject {
- private:
-  bool _dirty;
-  CCArray* _clearedMaps; // マップのクリア状態保存
-  CCDictionary* _defeatedCount; // 討伐モンスターカウント
  public:
   static SaveData* sharedData();
   SaveData();
   virtual ~SaveData();
-  bool save();
-  bool load();
-  CCArray* getClearedMaps();
-  void markClearedForMap(Map* map);
+  void save();
+  int getDefeatedCount(const char* enemyIdentifier);
+  void addDefeatedCountForEnemy(const char* enemyIdentifier);
+  bool isClearedMap(const char* mapIdentifier);
+  void setClearedForMap(const char* mapIdentifier);
 };
 
 #endif /* defined(__VOXCHRONICLE__SaveData__) */

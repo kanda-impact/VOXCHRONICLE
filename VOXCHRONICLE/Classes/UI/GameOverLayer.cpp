@@ -14,14 +14,11 @@
 
 GameOverLayer::GameOverLayer(MainScene* main) {
   _main = main;
-  main->retain();
+  // 巡回参照してた
   this->buildUI();
 }
 
 GameOverLayer::~GameOverLayer() {
-  if (_main) {
-    _main->release();
-  }
 }
 
 void GameOverLayer::buildUI() {

@@ -52,11 +52,13 @@ private:
   CCSprite* createFrameSprite(int xOffset, int yOffset, int frames);
   CCTexture2D* _sheet;
   int getExpFromLua();
+  string _identifier;
 public:
   static void loadLifeColors();
   static Enemy* create(const char* enemyName);
   Enemy();
   ~Enemy();
+  string getIdentifier();
   void setRow(float r);
   void setCol(int c);
   float bottomLine();

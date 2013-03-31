@@ -13,41 +13,34 @@ static SaveData* _shared = NULL;
 SaveData* SaveData::sharedData() {
   if (_shared == NULL) {
     _shared = new SaveData();
-    _shared->load();
   }
   return _shared;
 }
 
 SaveData::SaveData() {
-  _clearedMaps = CCArray::create();
-  _clearedMaps->retain();
-  _defeatedCount = CCDictionary::create();
-  _defeatedCount->retain();
-  _dirty = true;
 }
 
 SaveData::~SaveData() {
-  _clearedMaps->release();
-  _defeatedCount->release();
 }
 
-bool SaveData::load() {
-  if (_dirty) {
-    CCUserDefault* ud = CCUserDefault::sharedUserDefault();
-    return true;
-  }
-  return false;
+void SaveData::save() {
+  CCLog("saved");
+  CCUserDefault::sharedUserDefault()->flush();
 }
 
-bool SaveData::save() {
-  return false;
+bool SaveData::isClearedMap(const char* mapIdentifier) {
+  return CCUserDefault::sharedUserDefault()->getBoolForKey(string(string("map_") + mapIdentifier).c_str());
 }
 
-CCArray* SaveData::getClearedMaps() {
-  return _clearedMaps;
+void SaveData::setClearedForMap(const char* mapIdentifier) {
+  CCUserDefault::sharedUserDefault()->setBoolForKey(string(string("map_") + mapIdentifier).c_str(), true);
 }
 
-void SaveData::markClearedForMap(Map *map) {
-  CCString* str = CCString::create(map->getIdentifier());
-  _clearedMaps->addObject(str);
+int SaveData::getDefeatedCount(const char* enemyIdentifier) {
+  return CCUserDefault::sharedUserDefault()->getIntegerForKey(string(string("enemy_") + enemyIdentifier).c_str());
+}
+
+void SaveData::addDefeatedCountForEnemy(const char* enemyIdentifier) {
+  int current = this->getDefeatedCount(enemyIdentifier);
+  CCUserDefault::sharedUserDefault()->setBoolForKey(string(string("enemy_") + enemyIdentifier).c_str(), current + 1);
 }

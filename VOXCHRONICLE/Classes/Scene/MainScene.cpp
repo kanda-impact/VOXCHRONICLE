@@ -28,6 +28,7 @@
 #include "BufferCache.h"
 #include "EndingScene.h"
 #include "SEManager.h"
+#include "SaveData.h"
 
 #include "CCRemoveFromParentAction.h"
 
@@ -148,6 +149,7 @@ bool MainScene::init(Map* map) {
 }
 
 MainScene::~MainScene() {
+  SaveData::sharedData()->save();
   _musicManager->getMusic()->stop();
   _map->release();
   _messageWindow->release();
@@ -782,12 +784,14 @@ void MainScene::onFinishTracksCompleted() {
     ending->addChild(endingLayer);
     CCTransitionFade* fade = CCTransitionFade::create(7.0f, ending, ccc3(255, 255, 255));
     CCDirector::sharedDirector()->replaceScene(fade);
+    SaveData::sharedData()->setClearedForMap(_map->getIdentifier().c_str());
   } else if (_map->isBossStage() && _level->getLevel() == _map->getMaxLevel()) { // ボスステージで、現在が最高レベルの時
     // ボス戦を開始します
     this->startBossBattle();
   } else if (_level->getLevel() >= _map->getMaxLevel() + 1 && _map->getNextMaps()->count() > 0) { // 最高レベルの次の時で、次のマップが存在するとき
     // 次のステージに移動します
     _enemyManager->removeAllNormalEnemies(); // 雑魚キャラを全滅させます
+    SaveData::sharedData()->setClearedForMap(_map->getIdentifier().c_str()); // クリアした
     this->gotoNextStage();
   }
 }
