@@ -6,7 +6,7 @@ Map = {
   skin = "skinA",
   ending = "",
   nextMaps = {},
-  initialLevel = 4,
+  initialLevel = 1,
   maxLevel = 10,
   getEnemyTable = function(level)
     return {}
@@ -18,17 +18,24 @@ Map = {
     if not (enemies == nil) then
       enemyCount = enemies:count()
     end
-    if level == 1 or level == 2 then
+    if level == 1 then
       -- 敵が1体もいなくなったらモンスター生成
       if enemyCount == 0 then
-        enemyManager:popEnemyAt("slime0", MAX_ROW - 1, 1)
+        enemyManager:popEnemyAt("T_slime30", 3, 1)
+      end
+    elseif level == 2 then
+      if enemyCount == 0 then
+        enemyManager:popEnemyAt("T_flower", 5, 1)
       end
     elseif level == 3 then
       if enemyCount == 0 then
         local killedEnemyCount = self.__IRegister__:getRegister("enemyCount", 0)
-        -- if killedEnemyCount == 0 then
-        -- end
-        enemyManager:popEnemyAt("slime0", MAX_ROW - 1, 1)
+        local enemies = {"T_leaf", "T_ginet", "T_flower", "T_tnt", "T_slime30"}
+        if killedEnemyCount > 4 then
+          enemyManager:popEnemyAt("T_slime30", 5, 1)
+        else
+          enemyManager:popEnemyAt(enemies[killedEnemyCount + 1], 4, 1)
+        end
         self.__IRegister__:setRegister("enemyCount", killedEnemyCount + 1)
       end
     elseif level == 4 then
@@ -38,8 +45,22 @@ Map = {
         self.__IRegister__:setRegister("runCount", runCount + 1)
       end
       if runCount > 2 then -- 走り行動を3回以上行っていたとき
-        enemyManager:popEnemyAt("slime0", MAX_ROW - 1, 1)
+        enemyManager:popEnemyAt("T_slime12", 3, 1)
       end
+    end
+  end,
+  onBack = function(self, characterManager, enemyManager)
+    local level = characterManager:getLevel()
+    if level == 3 then
+      local preHP = self.__IRegister__:getRegister("preHP", characterManager:getHP())
+      if characterManager:getHP() < preHP then -- ダメージ受けた
+        local layer = EffectLayer:sharedLayer()
+        local popup = layer:addPopupWindow(1)
+        popup:setText(0, "ぶつかるとダメージ！", [[
+迫ってくる敵は倒しきれないとオクス君にぶつかっちゃうよ！ぶつかると自分の体力（HP）が減っちゃうから気をつけて！HPが0になるとゲームオーバーだからね。そのステージからやり直しだよ！
+]])
+      end
+      self.__IRegister__:setRegister("preHP", characterManager:getHP())
     end
   end,
   onLevelUp = function(self, characterManager, enemyManager)
@@ -59,12 +80,9 @@ Map = {
 こんな調子で敵をどんどん倒していくと今みたいにレベルアップするよ！レベルが30になればステージクリア。ちなみに攻撃は一番近くの敵に当たるから、「近づく敵は全て切る！」って感じにどんどん倒していっちゃおう！ちなみに連続で攻撃していると、4連撃までは攻撃力が上がっていくよ。サービスサービスぅ！
 ]])
     elseif level == 3 then
-      local popup = layer:addPopupWindow(2)
+      local popup = layer:addPopupWindow(1)
       popup:setText(0, "敵の体力は色で判断！", [[
 さっきの敵はなかなか倒れなかったけれど、体の色が違ったことには気付いたかな？　敵の残り体力があとどのくらいかっていうのは敵の色で分かるんだ！攻撃する前には敵の顔色はよ～くうかがっておこう！
-]])
-      popup:setText(1, "ぶつかるとダメージ！", [[
-迫ってくる敵は倒しきれないとオクス君にぶつかっちゃうよ！ぶつかると自分の体力（HP）が減っちゃうから気をつけて！HPが0になるとゲームオーバーだからね。そのステージからやり直しだよ！
 ]])
     elseif level == 4 then
       local popup = layer:addPopupWindow(2)

@@ -1209,7 +1209,7 @@
 		B0821D491707AF4D009417B5 /* T_tnt.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0821D481707AF4D009417B5 /* T_tnt.lua */; };
 		B0821D4B1707AFA7009417B5 /* T_ginet.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0821D4A1707AFA7009417B5 /* T_ginet.lua */; };
 		B0821D4D1707B98A009417B5 /* T_tetufez.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0821D4C1707B98A009417B5 /* T_tetufez.lua */; };
-		B0821D4F1707BCBD009417B5 /* T_moth.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0821D4E1707BCBC009417B5 /* T_moth.lua */; };
+		B0821D4F1707BCBD009417B5 /* Ts_moth.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0821D4E1707BCBC009417B5 /* Ts_moth.lua */; };
 		B0821D511707BD05009417B5 /* T_moth.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0821D501707BD04009417B5 /* T_moth.lua */; };
 		B0AA405016F58CB300674A2A /* mask3A1.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AA404F16F58CB300674A2A /* mask3A1.lua */; };
 		B0AA405216F58D2300674A2A /* typhoon3A2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AA405116F58D2200674A2A /* typhoon3A2.lua */; };
@@ -2782,7 +2782,7 @@
 		B0821D481707AF4D009417B5 /* T_tnt.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_tnt.lua; sourceTree = "<group>"; };
 		B0821D4A1707AFA7009417B5 /* T_ginet.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_ginet.lua; sourceTree = "<group>"; };
 		B0821D4C1707B98A009417B5 /* T_tetufez.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_tetufez.lua; sourceTree = "<group>"; };
-		B0821D4E1707BCBC009417B5 /* T_moth.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = T_moth.lua; path = species/T_moth.lua; sourceTree = "<group>"; };
+		B0821D4E1707BCBC009417B5 /* Ts_moth.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Ts_moth.lua; path = species/Ts_moth.lua; sourceTree = "<group>"; };
 		B0821D501707BD04009417B5 /* T_moth.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_moth.lua; sourceTree = "<group>"; };
 		B0AA404F16F58CB300674A2A /* mask3A1.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mask3A1.lua; sourceTree = "<group>"; };
 		B0AA405116F58D2200674A2A /* typhoon3A2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = typhoon3A2.lua; sourceTree = "<group>"; };
@@ -3432,7 +3432,7 @@
 				B017551B17079FD7008053BB /* Ts_geek.lua */,
 				B017551917079FBD008053BB /* Ts_ginet.lua */,
 				B0821D3A1707AD61009417B5 /* Ts_tetufez.lua */,
-				B0821D4E1707BCBC009417B5 /* T_moth.lua */,
+				B0821D4E1707BCBC009417B5 /* Ts_moth.lua */,
 				0796691416FD4C540001F8B2 /* acorn.lua */,
 				0796691516FD4C540001F8B2 /* bat.lua */,
 				0796691616FD4C540001F8B2 /* coin.lua */,
@@ -6140,7 +6140,7 @@
 				B0821D491707AF4D009417B5 /* T_tnt.lua in Resources */,
 				B0821D4B1707AFA7009417B5 /* T_ginet.lua in Resources */,
 				B0821D4D1707B98A009417B5 /* T_tetufez.lua in Resources */,
-				B0821D4F1707BCBD009417B5 /* T_moth.lua in Resources */,
+				B0821D4F1707BCBD009417B5 /* Ts_moth.lua in Resources */,
 				B0821D511707BD05009417B5 /* T_moth.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -37,7 +37,7 @@ void Enemy::loadLifeColors() {
   if (_lifeColors == NULL) {
     _lifeColors = CCArray::create();
     _lifeColors->retain();
-    for (int i = 0; i < 200; ++i) {
+    for (int i = 0; i < 300; ++i) {
       // Luaスクリプトを呼びます
       LuaObject* obj = LuaObject::create("enemy.lua");
       lua_State* L = obj->getLuaEngineWithLoad()->getLuaState();
@@ -204,7 +204,12 @@ int Enemy::damage(int power, Skill* skill, CharacterManager* characterManager, D
 }
 
 void Enemy::setLifeColor() {
-  CCArray* color = (CCArray*)_lifeColors->objectAtIndex(_hp);
+  CCArray* color = NULL;
+  if (_hp < _lifeColors->count()) {
+    color = (CCArray*)_lifeColors->objectAtIndex(_hp);
+  } else {
+    color = (CCArray*)_lifeColors->lastObject();
+  }
   int r = ((CCInteger*)color->objectAtIndex(0))->getValue();
   int g = ((CCInteger*)color->objectAtIndex(1))->getValue();
   int b = ((CCInteger*)color->objectAtIndex(2))->getValue();

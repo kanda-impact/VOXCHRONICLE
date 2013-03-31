@@ -1,5 +1,5 @@
 Enemy = {
-  species = "Ts_flower",
+  species = "Ts_leaf",
   level = 10,
   hp = 6,
   getExp = function(default)
