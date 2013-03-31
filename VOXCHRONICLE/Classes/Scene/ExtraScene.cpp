@@ -49,10 +49,10 @@ bool ExtraScene::init() {
   CCMenu* extraMenu = CCMenu::create(dictionary, soundtest, achievement, credit, NULL);
   CCMenu* backMenu = CCMenu::createWithItem(back);
   
-  extraMenu->alignItemsVerticallyWithPadding(20);
+  extraMenu->alignItemsVerticallyWithPadding(10);
   
-  extraMenu->setPosition(ccp(250, center.y));
-  backMenu->setPosition(ccp(17.5, center.y));
+  extraMenu->setPosition(ccp(250, center.y + 30));
+  backMenu->setPosition(ccp(40, center.y));
   
   this->addChild(extraMenu);
   this->addChild(backMenu);
