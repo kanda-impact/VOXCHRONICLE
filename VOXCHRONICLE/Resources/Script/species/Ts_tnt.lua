@@ -1,6 +1,6 @@
 Enemy = {
   name = "ガーゴイル",
-  imageName = "gargoyle",
+  imageName = "ttn",
   attack = 1,
   baseExp = 1,
   hasFrame = false,
