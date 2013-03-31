@@ -25,26 +25,20 @@ GameOverLayer::~GameOverLayer() {
 }
 
 void GameOverLayer::buildUI() {
-  CCLabelTTF* gameOverLabel = CCLabelTTF::create("GAME OVER", FONT_NAME, 48);
+  CCSprite* gameover = CCSprite::create("gameover_label.png");
   CCDirector* director = CCDirector::sharedDirector();
   CCPoint center = CCPointMake(director->getWinSize().width / 2, director->getWinSize().height / 2);
-  CCLabelTTF* gameOverShadowLavel = CCLabelTTF::create("GAME OVER", FONT_NAME, 48);
-  gameOverShadowLavel->setColor(ccc3(64, 64, 64));
-  gameOverShadowLavel->setPosition(center);
-  gameOverLabel->setPosition(ccpAdd(ccp(gameOverShadowLavel->getContentSize().width / 2, gameOverShadowLavel->getContentSize().height / 2), ccp(-3, 3)));
-  this->addChild(gameOverShadowLavel);
-  gameOverShadowLavel->addChild(gameOverLabel);
-  gameOverShadowLavel->runAction(CCSequence::create(CCDelayTime::create(3.0),
-                                                    CCMoveTo::create(0.1, ccp(director->getWinSize().width / 2, 200)),
-                                                    CCCallFunc::create(this, callfunc_selector(GameOverLayer::addGameOverButtons)),
-                                                    NULL));
+  gameover->setPosition(center);
+  gameover->runAction(CCSequence::create(CCDelayTime::create(3.0),
+                                         CCMoveTo::create(0.1, ccp(director->getWinSize().width / 2, 200)),
+                                         CCCallFunc::create(this, callfunc_selector(GameOverLayer::addGameOverButtons)),
+                                         NULL));
+  this->addChild(gameover);
 }
 
 void GameOverLayer::addGameOverButtons() {
-  CCLabelTTF* replayLabel = CCLabelTTF::create("リプレイ", "", 24);
-  CCLabelTTF* titleLabel = CCLabelTTF::create("タイトル", FONT_NAME, 24);
-  CCMenu* menu = CCMenu::create(CCMenuItemLabel::create(replayLabel, this, menu_selector(GameOverLayer::replayButtonPressed)),
-                                CCMenuItemLabel::create(titleLabel, this, menu_selector(GameOverLayer::titleButtonPressed)),
+  CCMenu* menu = CCMenu::create(CCMenuItemImage::create("replay.png", "replay_pressed.png", this, menu_selector(GameOverLayer::replayButtonPressed)),
+                                CCMenuItemImage::create("title.png", "title_pressed.png", this, menu_selector(GameOverLayer::titleButtonPressed)),
                                 NULL);
   CCDirector* director = CCDirector::sharedDirector();
   menu->setPosition(ccp(director->getWinSize().width / 2, 90));
