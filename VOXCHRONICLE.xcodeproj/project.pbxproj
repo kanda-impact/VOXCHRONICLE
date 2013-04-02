@@ -769,6 +769,9 @@
 		07B8B6121708BBA200DB739F /* T_tetufez7.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B8B6101708BBA200DB739F /* T_tetufez7.lua */; };
 		07B8B6131708BBA200DB739F /* T_moth7.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B8B6111708BBA200DB739F /* T_moth7.lua */; };
 		07B8B6151708D2C000DB739F /* shield_test.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B8B6141708D2C000DB739F /* shield_test.lua */; };
+		07B8B6181709B47F00DB739F /* CCAchievementManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B8B6161709B47F00DB739F /* CCAchievementManager.mm */; };
+		07B8B61A1709C43600DB739F /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B8B6191709C43200DB739F /* GameKit.framework */; };
+		07B8B61D1709CDC000DB739F /* CCAchievementDescription.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B8B61B1709CDC000DB739F /* CCAchievementDescription.mm */; };
 		07B95E1B15F304120024C672 /* Track.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B95E1915F303E30024C672 /* Track.mm */; };
 		07C6064216164F810084708C /* hello.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07C6064116164F810084708C /* hello.lua */; };
 		07C6085816164FEE0084708C /* CCAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6064916164FED0084708C /* CCAction.cpp */; };
@@ -2019,6 +2022,11 @@
 		07B8B6101708BBA200DB739F /* T_tetufez7.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_tetufez7.lua; sourceTree = "<group>"; };
 		07B8B6111708BBA200DB739F /* T_moth7.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_moth7.lua; sourceTree = "<group>"; };
 		07B8B6141708D2C000DB739F /* shield_test.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shield_test.lua; sourceTree = "<group>"; };
+		07B8B6161709B47F00DB739F /* CCAchievementManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCAchievementManager.mm; sourceTree = "<group>"; };
+		07B8B6171709B47F00DB739F /* CCAchievementManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAchievementManager.h; sourceTree = "<group>"; };
+		07B8B6191709C43200DB739F /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		07B8B61B1709CDC000DB739F /* CCAchievementDescription.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCAchievementDescription.mm; sourceTree = "<group>"; };
+		07B8B61C1709CDC000DB739F /* CCAchievementDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAchievementDescription.h; sourceTree = "<group>"; };
 		07B95E1915F303E30024C672 /* Track.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = Track.mm; path = Classes/VISS/Track.mm; sourceTree = "<group>"; };
 		07C6064116164F810084708C /* hello.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hello.lua; sourceTree = "<group>"; };
 		07C6064916164FED0084708C /* CCAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCAction.cpp; sourceTree = "<group>"; };
@@ -2811,6 +2819,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07B8B61A1709C43600DB739F /* GameKit.framework in Frameworks */,
 				076F1A5115EB94750013A45E /* QuartzCore.framework in Frameworks */,
 				076F1A5315EB94750013A45E /* OpenGLES.framework in Frameworks */,
 				076F1A5515EB94750013A45E /* OpenAL.framework in Frameworks */,
@@ -2950,6 +2959,10 @@
 				07F0D758163BAF51005592AF /* Utils.h */,
 				07F0D778163BE85E005592AF /* FileUtils.h */,
 				0772FEB716C260D300A50931 /* VQString.h */,
+				07B8B6161709B47F00DB739F /* CCAchievementManager.mm */,
+				07B8B6171709B47F00DB739F /* CCAchievementManager.h */,
+				07B8B61B1709CDC000DB739F /* CCAchievementDescription.mm */,
+				07B8B61C1709CDC000DB739F /* CCAchievementDescription.h */,
 			);
 			name = Util;
 			path = Classes/Util;
@@ -3339,6 +3352,7 @@
 		076F1A4F15EB94750013A45E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07B8B6191709C43200DB739F /* GameKit.framework */,
 				07A1F4D41693161600C4329F /* libTestFlight.a */,
 				076F1A5015EB94750013A45E /* QuartzCore.framework */,
 				076F1A5215EB94750013A45E /* OpenGLES.framework */,
@@ -6472,6 +6486,8 @@
 				07ADDF9A16F72048007825D2 /* ExtraScene.cpp in Sources */,
 				07ADDF9E16F73518007825D2 /* DictionaryScene.cpp in Sources */,
 				07ADDFA416F784F9007825D2 /* IRegister.cpp in Sources */,
+				07B8B6181709B47F00DB739F /* CCAchievementManager.mm in Sources */,
+				07B8B61D1709CDC000DB739F /* CCAchievementDescription.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
