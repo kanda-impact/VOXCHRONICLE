@@ -41,7 +41,7 @@ void PauseLayer::buildUI() {
                                 CCMenuItemImage::create("no.png", "no_pressed.png",
                                                         this, menu_selector(PauseLayer::onNoPressed)),
                                 NULL);
-  _topMenu->setPosition(ccp(director->getWinSize().width / 2.0, 120));
+  _topMenu->setPosition(ccp(director->getWinSize().width / 2.0, 160));
   _topMenu->alignItemsVerticallyWithPadding(20);
   _confirmMenu->alignItemsVerticallyWithPadding(20);
   

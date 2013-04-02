@@ -1,12 +1,12 @@
 //
-//  DebugScene.cpp
+//  FreePlayScene.cpp
 //  VOXCHRONICLE
 //
 //  Created by giginet on 1/9/13.
 //
 //
 
-#include "DebugScene.h"
+#include "FreePlayScene.h"
 #include "LuaObject.h"
 #include "macros.h"
 #include "Map.h"
@@ -15,17 +15,25 @@
 
 static const char* DEBUG_SCRIPT = "Script/debug.lua";
 
-CCScene* DebugScene::scene() {
+FreePlayScene* FreePlayScene::create(const char *script) {
+  FreePlayScene* scene = new FreePlayScene();
+  scene->autorelease();
+  if (!scene->init(script)) {
+    return NULL;
+  }
+  return scene;
+}
+
+CCScene* FreePlayScene::scene(const char* script) {
   CCScene* scene = CCScene::create();
   
-  DebugScene* layer = DebugScene::create();
-  
+  FreePlayScene* layer = FreePlayScene::create(script);
   scene->addChild(layer);
   
   return scene;
 }
 
-bool DebugScene::init() {
+bool FreePlayScene::init(const char* script) {
   if ( !CCLayer::init() ) {
     return false;
   }
@@ -39,7 +47,7 @@ bool DebugScene::init() {
     Map* map = new Map(name.c_str());
     map->autorelease();
     CCLabelTTF* label = CCLabelTTF::create(map->getName().c_str(), FONT_NAME, 16);
-    CCMenuItemLabel* item = CCMenuItemLabel::create(label, this, menu_selector(DebugScene::onMenuItemPressed));
+    CCMenuItemLabel* item = CCMenuItemLabel::create(label, this, menu_selector(FreePlayScene::onMenuItemPressed));
     items->addObject(item);
     item->setUserObject(map);
   }
@@ -51,11 +59,11 @@ bool DebugScene::init() {
   return true;
 }
 
-void DebugScene::onEnterTransitionDidFinish() {
+void FreePlayScene::onEnterTransitionDidFinish() {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(FileUtils::getFilePath("Music/general/menu.mp3").c_str(), true);
 }
 
-void DebugScene::onMenuItemPressed(cocos2d::CCObject *sender) {
+void FreePlayScene::onMenuItemPressed(cocos2d::CCObject *sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/start.mp3").c_str());
   Map* map = (Map*)((CCNode*)sender)->getUserObject();
   MainScene* layer = new MainScene();

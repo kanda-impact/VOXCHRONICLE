@@ -12,7 +12,7 @@
 #include "MainScene.h"
 #include "MainMenuScene.h"
 #include "FileUtils.h"
-#include "DebugScene.h"
+#include "FreePlayScene.h"
 #include "macros.h"
 #include "BufferCache.h"
 #include "StaffRollScene.h"
@@ -111,7 +111,7 @@ void TitleScene::onStartButtonPressed(CCObject* sender) {
 
 void TitleScene::onDebugButtonPressed(CCObject* sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
-  DebugScene* scene = DebugScene::create();
+  FreePlayScene* scene = FreePlayScene::create("debug.lua");
   nextScene(scene);
 }
 

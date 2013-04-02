@@ -403,7 +403,6 @@
 		0791587B15EBB50E0083D348 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586F15EBB4BB0083D348 /* Icon.png */; };
 		0791587C15EBB50E0083D348 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791587015EBB4BB0083D348 /* Icon@2x.png */; };
 		0791587E15EBB50E0083D348 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 0791587215EBB4BB0083D348 /* iTunesArtwork */; };
-		079331A3169D85D300AE4F93 /* DebugScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 079331A1169D85D300AE4F93 /* DebugScene.cpp */; };
 		079487951616D8C5004ABCF5 /* knockback.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079487941616D8C5004ABCF5 /* knockback.lua */; };
 		0794879C1616EC7E004ABCF5 /* tension.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0794879B1616EC7E004ABCF5 /* tension.lua */; };
 		079668E216FD4B110001F8B2 /* negi-3c_counter0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 079668B216FD4B110001F8B2 /* negi-3c_counter0.caf */; };
@@ -769,6 +768,7 @@
 		07B8B6121708BBA200DB739F /* T_tetufez7.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B8B6101708BBA200DB739F /* T_tetufez7.lua */; };
 		07B8B6131708BBA200DB739F /* T_moth7.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B8B6111708BBA200DB739F /* T_moth7.lua */; };
 		07B8B6151708D2C000DB739F /* shield_test.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B8B6141708D2C000DB739F /* shield_test.lua */; };
+		07B8B61F170AFF3100DB739F /* FreePlayScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B8B61E170AFF3100DB739F /* FreePlayScene.cpp */; };
 		07B95E1B15F304120024C672 /* Track.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B95E1915F303E30024C672 /* Track.mm */; };
 		07C6064216164F810084708C /* hello.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07C6064116164F810084708C /* hello.lua */; };
 		07C6085816164FEE0084708C /* CCAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6064916164FED0084708C /* CCAction.cpp */; };
@@ -1642,8 +1642,6 @@
 		0791587015EBB4BB0083D348 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Resources/ios/Icon@2x.png"; sourceTree = "<group>"; };
 		0791587115EBB4BB0083D348 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/ios/Info.plist; sourceTree = "<group>"; };
 		0791587215EBB4BB0083D348 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Resources/ios/iTunesArtwork; sourceTree = "<group>"; };
-		079331A1169D85D300AE4F93 /* DebugScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DebugScene.cpp; path = Classes/Scene/DebugScene.cpp; sourceTree = "<group>"; };
-		079331A4169D85EA00AE4F93 /* DebugScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DebugScene.h; path = Classes/includes/DebugScene.h; sourceTree = "<group>"; };
 		079487941616D8C5004ABCF5 /* knockback.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knockback.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		0794879B1616EC7E004ABCF5 /* tension.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tension.lua; sourceTree = "<group>"; };
 		079668B216FD4B110001F8B2 /* negi-3c_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "negi-3c_counter0.caf"; sourceTree = "<group>"; };
@@ -2019,6 +2017,8 @@
 		07B8B6101708BBA200DB739F /* T_tetufez7.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_tetufez7.lua; sourceTree = "<group>"; };
 		07B8B6111708BBA200DB739F /* T_moth7.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_moth7.lua; sourceTree = "<group>"; };
 		07B8B6141708D2C000DB739F /* shield_test.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shield_test.lua; sourceTree = "<group>"; };
+		07B8B61E170AFF3100DB739F /* FreePlayScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FreePlayScene.cpp; path = Classes/Scene/FreePlayScene.cpp; sourceTree = "<group>"; };
+		07B8B620170AFF4E00DB739F /* FreePlayScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FreePlayScene.h; path = Classes/includes/FreePlayScene.h; sourceTree = "<group>"; };
 		07B95E1915F303E30024C672 /* Track.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = Track.mm; path = Classes/VISS/Track.mm; sourceTree = "<group>"; };
 		07C6064116164F810084708C /* hello.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hello.lua; sourceTree = "<group>"; };
 		07C6064916164FED0084708C /* CCAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCAction.cpp; sourceTree = "<group>"; };
@@ -3194,14 +3194,14 @@
 				07F0D756163BABFF005592AF /* LogoScene.h */,
 				07F0D757163BABFF005592AF /* MainScene.h */,
 				07F0D79A163C1EFD005592AF /* TitleScene.h */,
-				079331A4169D85EA00AE4F93 /* DebugScene.h */,
 				07F88F2016DBC7A900FE6B2B /* EndingScene.h */,
 				07F88F2116DBC7AA00FE6B2B /* SelectScene.h */,
 				07C6467616DE406F00B29842 /* EffectLayer.h */,
 				0791585815EBA8350083D348 /* LogoScene.cpp */,
 				07D8740615ED13CD009CC446 /* MainScene.cpp */,
+				07B8B620170AFF4E00DB739F /* FreePlayScene.h */,
+				07B8B61E170AFF3100DB739F /* FreePlayScene.cpp */,
 				07F0D797163C1EC0005592AF /* TitleScene.cpp */,
-				079331A1169D85D300AE4F93 /* DebugScene.cpp */,
 				079D274816D2210C006D6A8F /* EndingScene.cpp */,
 				07F88F1D16DBC66800FE6B2B /* SelectScene.cpp */,
 				07C6467316DE3FB200B29842 /* EffectLayer.cpp */,
@@ -6448,7 +6448,6 @@
 				07660C5316909BF10092104F /* MusicSet.cpp in Sources */,
 				0715C2371690EB3000009479 /* EnemySkill.cpp in Sources */,
 				07244C3016956CAD00C5A442 /* QTETrigger.cpp in Sources */,
-				079331A3169D85D300AE4F93 /* DebugScene.cpp in Sources */,
 				07D8D64D169F4D9300B646E5 /* PauseLayer.cpp in Sources */,
 				0725180D16B141FB004361B7 /* BufferCache.cpp in Sources */,
 				072A5C9E16BAAE5D00A64AD6 /* GameOverLayer.cpp in Sources */,
@@ -6472,6 +6471,7 @@
 				07ADDF9A16F72048007825D2 /* ExtraScene.cpp in Sources */,
 				07ADDF9E16F73518007825D2 /* DictionaryScene.cpp in Sources */,
 				07ADDFA416F784F9007825D2 /* IRegister.cpp in Sources */,
+				07B8B61F170AFF3100DB739F /* FreePlayScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
