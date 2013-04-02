@@ -41,20 +41,33 @@ bool FreePlayScene::init(const char* script) {
   
   LuaObject* lua = new LuaObject(DEBUG_SCRIPT);
   CCArray* items = CCArray::create();
+  CCArray* items2 = CCArray::create();
   CCLuaValueArray* array = lua->getArray("stages");
-  for (CCLuaValueArrayIterator it = array->begin(); it != array->end(); ++it) {
+  int i = 0;
+  for (CCLuaValueArrayIterator it = array->begin(); it != array->end(); ++it, ++i) {
     string name = it->stringValue();
     Map* map = new Map(name.c_str());
     map->autorelease();
-    CCLabelTTF* label = CCLabelTTF::create(map->getName().c_str(), FONT_NAME, 16);
+    CCLabelTTF* label = CCLabelTTF::create(map->getName().c_str(), FONT_NAME, 24);
     CCMenuItemLabel* item = CCMenuItemLabel::create(label, this, menu_selector(FreePlayScene::onMenuItemPressed));
-    items->addObject(item);
     item->setUserObject(map);
+    if (i < 7) {
+      items->addObject(item);
+    } else {
+      items2->addObject(item);
+    }
   }
+  
   CCMenu* menu = CCMenu::createWithArray(items);
-  menu->setPosition(ccp(240, 160));
-  menu->alignItemsVerticallyWithPadding(15);
+  menu->setPosition(ccp(140, 160));
+  menu->alignItemsVerticallyWithPadding(20);
   this->addChild(menu);
+  if (items2->count() > 0) {
+    CCMenu* menu2 = CCMenu::createWithArray(items2);
+    menu2->setPosition(ccp(340, 160));
+    menu2->alignItemsVerticallyWithPadding(20);
+    this->addChild(menu2);
+  }
   
   return true;
 }
