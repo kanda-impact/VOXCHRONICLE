@@ -131,13 +131,13 @@ void SelectScene::createThumbnails() {
   for (CCLuaValueArrayIterator it = maps->begin(); it != maps->end(); ++it, ++i) {
     string mapName = it->stringValue();
     if (mapName.length() > 0) {
-      const char* thumbnail = "";
+      string thumbnail = "";
       if (SaveData::sharedData()->isClearedMap(mapName.c_str())) {
         thumbnail = (mapName + string("_icon.png")).c_str();
       } else {
         thumbnail = (mapName + string("_icon_disable.png")).c_str();
       }
-      CCSprite* sprite = CCSprite::create(thumbnail);
+      CCSprite* sprite = CCSprite::create(thumbnail.c_str());
       sprite->setPosition(ccp(x[i], y[i]));
       this->addChild(sprite);
       _thumbnails->addObject(sprite);
