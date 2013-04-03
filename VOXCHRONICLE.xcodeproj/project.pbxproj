@@ -660,6 +660,7 @@
 		07A1B99B16CDC1CA0092AF8C /* attack_effect3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1B99516CDC1CA0092AF8C /* attack_effect3.mp3 */; };
 		07A1F4D51693161600C4329F /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A1F4D41693161600C4329F /* libTestFlight.a */; };
 		07A1F535169319B300C4329F /* volca.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F534169319B300C4329F /* volca.lua */; };
+		07A317AB170C5F770032CAA4 /* AchievementSceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A317AA170C5F770032CAA4 /* AchievementSceneDelegate.m */; };
 		07A3D59D1705E8DB009AE7F3 /* 2b_counter0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07A3D5651705E8DB009AE7F3 /* 2b_counter0.caf */; };
 		07A3D59E1705E8DB009AE7F3 /* 2b_counter1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07A3D5661705E8DB009AE7F3 /* 2b_counter1.caf */; };
 		07A3D59F1705E8DB009AE7F3 /* 2b_counter2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07A3D5671705E8DB009AE7F3 /* 2b_counter2.caf */; };
@@ -773,6 +774,7 @@
 		07B8B61D1709CDC000DB739F /* CCAchievementDescription.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B8B61B1709CDC000DB739F /* CCAchievementDescription.mm */; };
 		07B8B61F170AFF3100DB739F /* FreePlayScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B8B61E170AFF3100DB739F /* FreePlayScene.cpp */; };
 		07B8B623170C399000DB739F /* AchievementManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B8B621170C399000DB739F /* AchievementManager.cpp */; };
+		07B8B626170C599900DB739F /* AchievementScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B8B624170C599800DB739F /* AchievementScene.mm */; };
 		07B95E1B15F304120024C672 /* Track.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B95E1915F303E30024C672 /* Track.mm */; };
 		07C6064216164F810084708C /* hello.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07C6064116164F810084708C /* hello.lua */; };
 		07C6085816164FEE0084708C /* CCAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6064916164FED0084708C /* CCAction.cpp */; };
@@ -1910,6 +1912,8 @@
 		07A1F4D41693161600C4329F /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTestFlight.a; path = VOXCHRONICLE/ios/libTestFlight.a; sourceTree = "<group>"; };
 		07A1F4D61693162500C4329F /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestFlight.h; path = ios/TestFlight.h; sourceTree = "<group>"; };
 		07A1F534169319B300C4329F /* volca.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = volca.lua; path = musics/volca.lua; sourceTree = "<group>"; };
+		07A317A9170C5F770032CAA4 /* AchievementSceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AchievementSceneDelegate.h; path = ios/AchievementSceneDelegate.h; sourceTree = "<group>"; };
+		07A317AA170C5F770032CAA4 /* AchievementSceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AchievementSceneDelegate.m; path = ios/AchievementSceneDelegate.m; sourceTree = "<group>"; };
 		07A3D5651705E8DB009AE7F3 /* 2b_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2b_counter0.caf; path = Resources/Music/2b/2b_counter0.caf; sourceTree = "<group>"; };
 		07A3D5661705E8DB009AE7F3 /* 2b_counter1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2b_counter1.caf; path = Resources/Music/2b/2b_counter1.caf; sourceTree = "<group>"; };
 		07A3D5671705E8DB009AE7F3 /* 2b_counter2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2b_counter2.caf; path = Resources/Music/2b/2b_counter2.caf; sourceTree = "<group>"; };
@@ -2030,6 +2034,8 @@
 		07B8B620170AFF4E00DB739F /* FreePlayScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FreePlayScene.h; path = Classes/includes/FreePlayScene.h; sourceTree = "<group>"; };
 		07B8B621170C399000DB739F /* AchievementManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AchievementManager.cpp; path = Classes/Model/AchievementManager.cpp; sourceTree = "<group>"; };
 		07B8B622170C399000DB739F /* AchievementManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AchievementManager.h; path = Classes/Model/AchievementManager.h; sourceTree = "<group>"; };
+		07B8B624170C599800DB739F /* AchievementScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AchievementScene.mm; path = Classes/Scene/AchievementScene.mm; sourceTree = "<group>"; };
+		07B8B625170C599800DB739F /* AchievementScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AchievementScene.h; path = Classes/Scene/AchievementScene.h; sourceTree = "<group>"; };
 		07B95E1915F303E30024C672 /* Track.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = Track.mm; path = Classes/VISS/Track.mm; sourceTree = "<group>"; };
 		07C6064116164F810084708C /* hello.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hello.lua; sourceTree = "<group>"; };
 		07C6064916164FED0084708C /* CCAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCAction.cpp; sourceTree = "<group>"; };
@@ -3233,6 +3239,8 @@
 				07ADDF9816F72048007825D2 /* ExtraScene.cpp */,
 				07ADDF9F16F75086007825D2 /* DictionaryScene.h */,
 				07ADDF9C16F73514007825D2 /* DictionaryScene.cpp */,
+				07B8B624170C599800DB739F /* AchievementScene.mm */,
+				07B8B625170C599800DB739F /* AchievementScene.h */,
 			);
 			name = Scene;
 			sourceTree = "<group>";
@@ -3426,6 +3434,8 @@
 				076F1D3415EB94780013A45E /* AppController.mm */,
 				076F1D3615EB94780013A45E /* RootViewController.h */,
 				076F1D3715EB94780013A45E /* RootViewController.mm */,
+				07A317A9170C5F770032CAA4 /* AchievementSceneDelegate.h */,
+				07A317AA170C5F770032CAA4 /* AchievementSceneDelegate.m */,
 			);
 			name = ios;
 			sourceTree = "<group>";
@@ -6494,6 +6504,8 @@
 				07B8B61D1709CDC000DB739F /* CCAchievementDescription.mm in Sources */,
 				07B8B61F170AFF3100DB739F /* FreePlayScene.cpp in Sources */,
 				07B8B623170C399000DB739F /* AchievementManager.cpp in Sources */,
+				07B8B626170C599900DB739F /* AchievementScene.mm in Sources */,
+				07A317AB170C5F770032CAA4 /* AchievementSceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

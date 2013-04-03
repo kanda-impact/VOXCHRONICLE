@@ -14,6 +14,8 @@
 #include "StaffRollScene.h"
 #include "DictionaryScene.h"
 #include "CCAchievementManager.h"
+#include "AchievementScene.h"
+#include "FreePlayScene.h"
 
 bool ExtraScene::init() {
   if (!CCLayer::init()) {
@@ -66,10 +68,13 @@ void ExtraScene::onExit() {
 }
 
 void ExtraScene::onSoundTestButtonPressed(cocos2d::CCObject *sender) {
+  FreePlayScene* scene = FreePlayScene::create("debug.lua");
+  nextScene(scene);
 }
 
 void ExtraScene::onAchievementButtonPressed(cocos2d::CCObject *sender) {
-  CCAchievementManager::sharedManager()->loadAhievements(NULL);
+  AchievementScene::create();
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
 }
 
 void ExtraScene::onDictionaryButtonPressed(cocos2d::CCObject *sender) {
