@@ -18,6 +18,7 @@ MapSelector::MapSelector(CCArray* nextMaps) {
   CCDirector* director = CCDirector::sharedDirector();
   
   _nextMaps = nextMaps;
+  _nextMaps->retain();
   CCNode* leftSprite = CCNode::create();
   Map* leftMap = (Map*)_nextMaps->objectAtIndex(0);
   CCSprite* leftThumbnail = CCSprite::create(leftMap->getThumbnailImageName().c_str());
