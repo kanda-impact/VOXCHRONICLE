@@ -19,6 +19,13 @@ MessageManager* MessageManager::sharedManager() {
   return _instance;
 }
 
+void MessageManager::purgeMessageManager() {
+  if (_instance) {
+    _instance->release();
+  }
+  _instance = NULL;
+}
+
 MessageManager::MessageManager() {
   _defaultWindow = NULL;
 }

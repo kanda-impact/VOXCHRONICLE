@@ -169,6 +169,7 @@ MainScene::~MainScene() {
     _qteTrigger->release();
   }
   _effectLayer->removeAllChildrenWithCleanup(true);
+  MessageManager::purgeMessageManager();
 }
 
 void MainScene::update(float dt) {
