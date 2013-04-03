@@ -27,6 +27,8 @@
 #import "EAGLView.h"
 #import "AppDelegate.h"
 #import "CCAchievementManager.h"
+#import <GameKit/GameKit.h>
+#import "CCAchievementManager.h"
 
 #import "RootViewController.h"
 #import "TestFlight.h"
@@ -95,7 +97,27 @@ void SignalHandler(int sig) {
   viewController.wantsFullScreenLayout = YES;
   viewController.view = __glView;
   
-  CCAchievementManager::sharedManager()->authenticate();
+  // GameCenter
+  float iosVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+  GKLocalPlayer* localPlayer = [GKLocalPlayer localPlayer];
+  if (iosVersion >= 6) { // iOS6向け
+    localPlayer.authenticateHandler = ^(UIViewController* ui, NSError* error) {
+      if (ui != nil) {
+        [viewController presentModalViewController:ui animated:YES];
+      } else if (localPlayer.isAuthenticated) {
+        NSLog(@"authentication is completed");
+      } else {
+        NSLog(@"%@", error);
+      }
+    };
+  } else {
+    [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
+      NSLog(@"%@", error);
+      if (error == nil) {
+        NSLog(@"authentication is completed");
+      }
+    }];
+  }
   
   // Set RootViewController to window
   // Fix orientation problem on iOS6

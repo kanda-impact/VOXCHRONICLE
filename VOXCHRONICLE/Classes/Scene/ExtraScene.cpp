@@ -13,6 +13,7 @@
 #include "Map.h"
 #include "StaffRollScene.h"
 #include "DictionaryScene.h"
+#include "CCAchievementManager.h"
 
 bool ExtraScene::init() {
   if (!CCLayer::init()) {
@@ -68,6 +69,7 @@ void ExtraScene::onSoundTestButtonPressed(cocos2d::CCObject *sender) {
 }
 
 void ExtraScene::onAchievementButtonPressed(cocos2d::CCObject *sender) {
+  CCAchievementManager::sharedManager()->loadAhievements(NULL);
 }
 
 void ExtraScene::onDictionaryButtonPressed(cocos2d::CCObject *sender) {
