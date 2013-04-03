@@ -772,6 +772,7 @@
 		07B8B61A1709C43600DB739F /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B8B6191709C43200DB739F /* GameKit.framework */; };
 		07B8B61D1709CDC000DB739F /* CCAchievementDescription.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B8B61B1709CDC000DB739F /* CCAchievementDescription.mm */; };
 		07B8B61F170AFF3100DB739F /* FreePlayScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B8B61E170AFF3100DB739F /* FreePlayScene.cpp */; };
+		07B8B623170C399000DB739F /* AchievementManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B8B621170C399000DB739F /* AchievementManager.cpp */; };
 		07B95E1B15F304120024C672 /* Track.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B95E1915F303E30024C672 /* Track.mm */; };
 		07C6064216164F810084708C /* hello.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07C6064116164F810084708C /* hello.lua */; };
 		07C6085816164FEE0084708C /* CCAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6064916164FED0084708C /* CCAction.cpp */; };
@@ -2027,6 +2028,8 @@
 		07B8B61C1709CDC000DB739F /* CCAchievementDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAchievementDescription.h; sourceTree = "<group>"; };
 		07B8B61E170AFF3100DB739F /* FreePlayScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FreePlayScene.cpp; path = Classes/Scene/FreePlayScene.cpp; sourceTree = "<group>"; };
 		07B8B620170AFF4E00DB739F /* FreePlayScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FreePlayScene.h; path = Classes/includes/FreePlayScene.h; sourceTree = "<group>"; };
+		07B8B621170C399000DB739F /* AchievementManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AchievementManager.cpp; path = Classes/Model/AchievementManager.cpp; sourceTree = "<group>"; };
+		07B8B622170C399000DB739F /* AchievementManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AchievementManager.h; path = Classes/Model/AchievementManager.h; sourceTree = "<group>"; };
 		07B95E1915F303E30024C672 /* Track.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = Track.mm; path = Classes/VISS/Track.mm; sourceTree = "<group>"; };
 		07C6064116164F810084708C /* hello.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hello.lua; sourceTree = "<group>"; };
 		07C6064916164FED0084708C /* CCAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCAction.cpp; sourceTree = "<group>"; };
@@ -3158,6 +3161,8 @@
 				07C6468D16E1CDC600B29842 /* SaveData.cpp */,
 				07ADDFA216F784F6007825D2 /* IRegister.cpp */,
 				07ADDFA316F784F8007825D2 /* IRegister.h */,
+				07B8B621170C399000DB739F /* AchievementManager.cpp */,
+				07B8B622170C399000DB739F /* AchievementManager.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -6488,6 +6493,7 @@
 				07B8B6181709B47F00DB739F /* CCAchievementManager.mm in Sources */,
 				07B8B61D1709CDC000DB739F /* CCAchievementDescription.mm in Sources */,
 				07B8B61F170AFF3100DB739F /* FreePlayScene.cpp in Sources */,
+				07B8B623170C399000DB739F /* AchievementManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

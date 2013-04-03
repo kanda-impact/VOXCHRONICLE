@@ -22,9 +22,9 @@ class CCAchievementManager :public CCObject {
   ~CCAchievementManager();
  public:
   static CCAchievementManager* sharedManager();
-  void reportAchievement(const char *identifier, float percent);
-  void reportAchievements(CCArray *identifiers, CCArray *percents);
-  void loadAhievements(function<void (CCArray* achievements, bool error)> onComplete);
+  void reportAchievement(const char *identifier, float percent, bool showBanner, function<void (bool error)> onComplete);
+  void reportAchievements(CCArray *identifiers, CCArray *percents, bool showBanner, function<void (bool error)> onComplete);
+  void loadAhievements(function<void (CCArray* achievements, bool error)> onCompleter);
   void authenticate();
 };
 

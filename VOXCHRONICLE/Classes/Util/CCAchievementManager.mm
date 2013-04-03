@@ -25,33 +25,37 @@ CCAchievementManager::CCAchievementManager() {
 CCAchievementManager::~CCAchievementManager() {
 }
 
-void CCAchievementManager::authenticate() {
-  
-}
-
-void CCAchievementManager::reportAchievement(const char *identifier, float percent) {
+void CCAchievementManager::reportAchievement(const char *identifier, float percent, bool showBanner, function<void (bool error)> onComplete) {
   GKAchievement* achievement = [[GKAchievement alloc] initWithIdentifier:[NSString stringWithCString:identifier encoding:NSUTF8StringEncoding]];
   achievement.percentComplete = percent;
-  achievement.showsCompletionBanner = YES;
+  achievement.showsCompletionBanner = showBanner;
   [achievement reportAchievementWithCompletionHandler:^(NSError *error) {
     NSLog(@"report = %@", error);
+    if (onComplete != nil) {
+      onComplete(error != nil);
+    }
   }];
 }
 
-void CCAchievementManager::reportAchievements(cocos2d::CCArray *identifiers, cocos2d::CCArray *percents) {
+void CCAchievementManager::reportAchievements(cocos2d::CCArray *identifiers, cocos2d::CCArray *percents, bool showBanner, function<void (bool error)> onComplete) {
   NSArray* achievements = [NSArray array];
   
   for (int i = 0; i < identifiers->count(); ++i) {
     const char* identifierString = ((CCString*)identifiers->objectAtIndex(0))->getCString();
     GKAchievement* achievement = [[GKAchievement alloc] initWithIdentifier:[NSString stringWithCString:identifierString encoding:NSUTF8StringEncoding]];
-    achievement.showsCompletionBanner = YES;
     float percent = (float)((CCInteger*)percents->objectAtIndex(i))->getValue() / 100.0;
     achievement.percentComplete = percent;
+    achievement.showsCompletionBanner = showBanner;
   }
   [GKAchievement reportAchievements:achievements
               withCompletionHandler:^(NSError *error) {
+                onComplete(error != nil);
               }];
 }
 
 void CCAchievementManager::loadAhievements(function<void (CCArray* achievements, bool error)> onCompleter) {
+  [GKAchievement loadAchievementsWithCompletionHandler:^(NSArray *achievements, NSError *error) {
+    for (GKAchievement* achievement in achievements) {
+    }
+  }];
 }

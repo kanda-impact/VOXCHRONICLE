@@ -12,7 +12,7 @@ $#include "IRegister.h"
 $#include "Controller.h"
 $#include "StatusLayer.h"
 $#include "EnemySkill.h"
-$#include "CCAchievementManager.h"
+$#include "AchievementManager.h"
 $#include "Map.h"
 
 #define MAX_ROW
@@ -190,7 +190,7 @@ class Map : public CCObject, public IRegister {
 	void changeBackgroundImage(const char* imageName);
 };
 
-class CCAchievementManager :public CCObject {
-	static CCAchievementManager* sharedManager();
+class AchievementManager :public CCObject {
+	static AchievementManager* sharedManager();
 	void reportAchievement(const char* identifier, float percent);
 }

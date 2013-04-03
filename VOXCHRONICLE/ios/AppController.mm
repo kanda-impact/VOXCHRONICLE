@@ -110,13 +110,6 @@ void SignalHandler(int sig) {
         NSLog(@"%@", error);
       }
     };
-    [GKAchievement loadAchievementsWithCompletionHandler:^(NSArray *achievements, NSError *error) {
-      NSLog(@"%@", error);
-      NSLog(@"count = %d", [achievements count]);
-      for (GKAchievement* achievement in achievements) {
-        NSLog(@"%@", achievement);
-      }
-    }];
   } else {
     [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
       NSLog(@"%@", error);
