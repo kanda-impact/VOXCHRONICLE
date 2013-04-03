@@ -129,6 +129,8 @@ Map = {
       popup:setText(1, "オクスってどんなゲーム？", "オクスクロニクルは主観視点、画面奥から自分に近づいてくる敵をやっつけていくゲームよ。音量を上げてノリノリでプレイしてみてね。")
       popup:setText(2, "音楽に合わせて行動しよう！", "下にあるタイムマーカーが一周する毎に選択していたコマンドが行われるわ。まずは剣のマークをタッチして攻撃コマンドを試してみましょ。")
     elseif level == 2 then
+      local manager = CCAchievementManager:sharedManager()
+      manager:reportAchievement("clearTutorialA", 100)
       local popup = layer:addPopupWindow(3)
       popup:setText(0, "レベルアップで次のステージ！", "こんな調子で敵をどんどん倒していくと今みたいにレベルアップするよ！レベルが30になればステージクリア")
       popup:setText(1, "近くの敵を狙い撃ち", "攻撃は一番近くの敵に当たるから、「近づく敵は全て切る！」って感じにどんどん倒していっちゃおう！")

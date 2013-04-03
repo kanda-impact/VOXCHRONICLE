@@ -29,29 +29,27 @@ void CCAchievementManager::authenticate() {
   
 }
 
-void CCAchievementManager::reportAchievement(const char *identifier, float percent, function<void (bool error)> onComplete) {
+void CCAchievementManager::reportAchievement(const char *identifier, float percent) {
   GKAchievement* achievement = [[GKAchievement alloc] initWithIdentifier:[NSString stringWithCString:identifier encoding:NSUTF8StringEncoding]];
   achievement.percentComplete = percent;
+  achievement.showsCompletionBanner = YES;
   [achievement reportAchievementWithCompletionHandler:^(NSError *error) {
     NSLog(@"report = %@", error);
-    if (onComplete != nil) {
-      onComplete(error != nil);
-    }
   }];
 }
 
-void CCAchievementManager::reportAchievements(cocos2d::CCArray *identifiers, cocos2d::CCArray *percents, function<void (bool error)> onComplete) {
+void CCAchievementManager::reportAchievements(cocos2d::CCArray *identifiers, cocos2d::CCArray *percents) {
   NSArray* achievements = [NSArray array];
   
   for (int i = 0; i < identifiers->count(); ++i) {
     const char* identifierString = ((CCString*)identifiers->objectAtIndex(0))->getCString();
     GKAchievement* achievement = [[GKAchievement alloc] initWithIdentifier:[NSString stringWithCString:identifierString encoding:NSUTF8StringEncoding]];
+    achievement.showsCompletionBanner = YES;
     float percent = (float)((CCInteger*)percents->objectAtIndex(i))->getValue() / 100.0;
     achievement.percentComplete = percent;
   }
   [GKAchievement reportAchievements:achievements
               withCompletionHandler:^(NSError *error) {
-                onComplete(error != nil);
               }];
 }
 
