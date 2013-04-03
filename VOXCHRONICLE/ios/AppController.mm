@@ -26,6 +26,7 @@
 #import "cocos2d.h"
 #import "EAGLView.h"
 #import "AppDelegate.h"
+#import "CCAchievementManager.h"
 
 #import "RootViewController.h"
 #import "TestFlight.h"
@@ -93,6 +94,8 @@ void SignalHandler(int sig) {
   viewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
   viewController.wantsFullScreenLayout = YES;
   viewController.view = __glView;
+  
+  CCAchievementManager::sharedManager()->authenticate();
   
   // Set RootViewController to window
   // Fix orientation problem on iOS6

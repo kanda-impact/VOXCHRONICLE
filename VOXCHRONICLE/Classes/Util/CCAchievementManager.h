@@ -24,6 +24,7 @@ class CCAchievementManager :public CCObject {
   static CCAchievementManager* sharedManager();
   void reportAchievement(const char *identifier, float percent, function<void (bool error)> onComplete);
   void reportAchievements(CCArray *identifiers, CCArray *percents, function<void (bool error)> onComplete);
+  void authenticate();
 };
 
 #endif /* defined(__VOXCHRONICLE__GKAchievementManager__) */

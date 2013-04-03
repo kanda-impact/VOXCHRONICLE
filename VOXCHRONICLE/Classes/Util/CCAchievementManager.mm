@@ -19,20 +19,41 @@ CCAchievementManager* CCAchievementManager::sharedManager() {
 }
 
 CCAchievementManager::CCAchievementManager() {
-  GKLocalPlayer* localPlayer = [GKLocalPlayer localPlayer];
-  [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
-   CCLog("authentication is completed");
-   }];
+  
 }
 
 CCAchievementManager::~CCAchievementManager() {
+}
+
+void CCAchievementManager::authenticate() {
+  float iosVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+  GKLocalPlayer* localPlayer = [GKLocalPlayer localPlayer];
+  NSLog(@"%@", localPlayer);
+  if (iosVersion >= 6) { // iOS6向け
+    localPlayer.authenticateHandler = ^(UIViewController* ui, NSError* error) {
+      if (ui != nil) {
+        NSLog(@"authentication is completed");
+      } else if (localPlayer.isAuthenticated) {
+        NSLog(@"authentication is completed");
+      } else {
+        NSLog(@"%@", error);
+      }
+    };
+  } else {
+    [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
+      NSLog(@"%@", error);
+      if (error == nil) {
+        NSLog(@"authentication is completed");
+      }
+    }];
+  }
 }
 
 void CCAchievementManager::reportAchievement(const char *identifier, float percent, function<void (bool error)> onComplete) {
   GKAchievement* achievement = [[GKAchievement alloc] initWithIdentifier:[NSString stringWithCString:identifier encoding:NSUTF8StringEncoding]];
   achievement.percentComplete = percent;
   [achievement reportAchievementWithCompletionHandler:^(NSError *error) {
-   onComplete(error != nil);
+    onComplete(error != nil);
   }];
 }
 
@@ -47,6 +68,6 @@ void CCAchievementManager::reportAchievements(cocos2d::CCArray *identifiers, coc
   }
   [GKAchievement reportAchievements:achievements
               withCompletionHandler:^(NSError *error) {
-   onComplete(error != nil);
-   }];
+                onComplete(error != nil);
+              }];
 }
