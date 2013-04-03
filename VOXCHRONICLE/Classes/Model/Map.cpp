@@ -42,6 +42,7 @@ Map::Map(const char* mapName) {
   // スクリプトから各種データ読み込み
   _name = _lua->getString("name");
   _backgroundImageName = _lua->getString("backgroundImage");
+  _thumbnailImageName = _lua->getString("thumbnailImage");
   _ending = _lua->getString("ending");
   CCLuaValueArray* nexts = _lua->getArray("nextMaps");
   _initialLevel = _lua->getInt("initialLevel");
@@ -280,4 +281,8 @@ MusicSet* Map::getWayMusic() {
 
 MusicSet* Map::getBossMusic() {
   return _bossMusic;
+}
+
+string Map::getThumbnailImageName() {
+  return _thumbnailImageName;
 }

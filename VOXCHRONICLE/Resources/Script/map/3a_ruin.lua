@@ -3,6 +3,7 @@ Map = {
   wayMusic = "ttn1",
   bossMusic = "Hawaii",
   backgroundImage = "ruin_background.png",
+  thumbnailImage = "ruin_thumbnail.png",
   skin = "skinC",
   ending = "endingA",
   nextMaps = {},

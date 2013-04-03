@@ -761,9 +761,7 @@ void MainScene::gotoNextStage() {
     if (maps->count() == 1) {
       this->changeMap((Map*)maps->objectAtIndex(0));
     } else if (maps->count() >= 2) {
-      _mapSelector = MapSelector::create();
-      _mapSelector->retain();
-      _mapSelector->setNextMaps(maps);
+      _mapSelector = new MapSelector(maps);
       _skin->getController()->setEnable(false);
       this->addChild(_mapSelector, MainSceneZOrderUI);
       _state = VCStateMapSelect;

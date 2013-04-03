@@ -32,6 +32,7 @@ class Map :public CCObject, public IRegister {
   vector<string>* _nextMaps;
   string _name;
   string _backgroundImageName;
+  string _thumbnailImageName;
   string _ending;
   CCSprite* _background;
   LuaObject* _lua;
@@ -52,6 +53,7 @@ class Map :public CCObject, public IRegister {
   string getName();
   string getIdentifier();
   string getEndingName();
+  string getThumbnailImageName();
   CCSprite* getBackground();
   CCArray* getFixedEnemies(int preExp, int currentExp);
   CCArray* getNextMaps();
