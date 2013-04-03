@@ -335,7 +335,7 @@ void EnemyManager::draw() {
   // とりあえずVOX1を移植
   // 面倒なので他の人に計算してもらう
   CCLayer::draw();
-  CCDirector* director = CCDirector::sharedDirector();
+  /*CCDirector* director = CCDirector::sharedDirector();
   for (int row = 0; row < MAX_ROW; ++row) {
     CCPoint line = EnemyManager::calcLinePosition(row, 1);
     CCPoint origin = ccp(0, line.y);
@@ -343,7 +343,7 @@ void EnemyManager::draw() {
     float opacity = 0.25 + 0.75 * ((float)(MAX_ROW - row) / MAX_ROW);
     ccDrawColor4F(1.0 * opacity, 1.0 * opacity, 1.0 * opacity, 1);
     ccDrawLine(origin, end);
-  }
+  }*/
 }
 
 void EnemyManager::purgeAllTrash() {

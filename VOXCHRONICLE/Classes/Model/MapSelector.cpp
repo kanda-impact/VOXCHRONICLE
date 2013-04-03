@@ -76,13 +76,15 @@ MapSelector::~MapSelector() {
 
 void MapSelector::buttonPressed(cocos2d::CCObject *sender) {
   CCSprite* sprite = (CCSprite*)sender;
-  CCObject* obj = NULL;
-  CCARRAY_FOREACH(sprite->getChildren(), obj) {
-    CCSprite* child = (CCSprite*)obj;
-    child->stopAllActions();
-    /*child->runAction(CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.5, 128),
-                                                                               CCFadeTo::create(0.5, 255))));*/
-  }
+  /*CCObject* obj = NULL;
+  if (sprite->getChildren() != NULL) {
+    CCARRAY_FOREACH(sprite->getChildren(), obj) {
+      CCNode* child = (CCNode*)obj;
+      child->stopAllActions();
+      child->runAction(CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.5, 128),
+                                                                                CCFadeTo::create(0.5, 255))));
+    }
+  }*/
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/selector_decide.mp3").c_str());
   _selectedMap = (Map*)sprite->getUserObject();
 }

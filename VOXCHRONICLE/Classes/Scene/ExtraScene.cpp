@@ -68,6 +68,7 @@ void ExtraScene::onExit() {
 }
 
 void ExtraScene::onSoundTestButtonPressed(cocos2d::CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   FreePlayScene* scene = FreePlayScene::create("debug.lua");
   nextScene(scene);
 }
@@ -78,12 +79,14 @@ void ExtraScene::onAchievementButtonPressed(cocos2d::CCObject *sender) {
 }
 
 void ExtraScene::onDictionaryButtonPressed(cocos2d::CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   DictionaryScene* scene = DictionaryScene::create();
   SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
   this->nextScene(scene);
 }
 
 void ExtraScene::onCreditButtonPressed(cocos2d::CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   CCArray* array = CCArray::create();
   Map* map0 = new Map("001");
   map0->autorelease();
@@ -112,7 +115,6 @@ void ExtraScene::onBackButtonPressed(cocos2d::CCObject *sender) {
 }
 
 void ExtraScene::nextScene(CCLayer* layer) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   CCScene* scene = CCScene::create();
   scene->addChild(layer);
   CCTransitionFade* transition = CCTransitionFade::create(0.2f, scene);
