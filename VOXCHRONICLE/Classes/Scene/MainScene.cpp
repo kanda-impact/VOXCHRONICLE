@@ -373,7 +373,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       CCARRAY_FOREACH(enemies, obj) {
         Enemy* enemy = (Enemy*)obj;
         CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(((CCInteger*)damages->objectAtIndex(i))->getValue()).c_str(),
-        FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 100, '0');
+                                                         FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 100, '0');
         // ダメージが0かつ、元々ダメージのない技じゃないかつ、アイテムも破壊していないとき、ヒットしていない状態にしてやる
         int damage = ((CCInteger*)damages->objectAtIndex(i))->getValue();
         DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(i))->getValue();
@@ -386,14 +386,14 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         
         // ダメージラベル
         damageLabel->setPosition(enemy->getPosition());
-         float scale = enemy->getCurrentScale(enemy->getRow());
-         damageLabel->setScale(scale);
-         this->addChild(damageLabel, MainSceneZOrderDamageLabel);
-         damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
-         CCDelayTime::create(0.5),
-         CCFadeOut::create(0.2),
-         CCRemoveFromParentAction::create(),
-         NULL));
+        float scale = enemy->getCurrentScale(enemy->getRow());
+        damageLabel->setScale(scale);
+        this->addChild(damageLabel, MainSceneZOrderDamageLabel);
+        damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
+                                                  CCDelayTime::create(0.5),
+                                                  CCFadeOut::create(0.2),
+                                                  CCRemoveFromParentAction::create(),
+                                                  NULL));
         
         // 敵毎に効果音を鳴らす
         string fileName = "";
@@ -784,6 +784,7 @@ void MainScene::onFinishTracksCompleted() {
     CCTransitionFade* fade = CCTransitionFade::create(7.0f, ending, ccc3(255, 255, 255));
     CCDirector::sharedDirector()->replaceScene(fade);
     SaveData::sharedData()->setClearedForMap(_map->getIdentifier().c_str());
+    _map->performOnClear(_characterManager, _enemyManager);
   } else if (_map->isBossStage() && _level->getLevel() == _map->getMaxLevel()) { // ボスステージで、現在が最高レベルの時
     // ボス戦を開始します
     this->startBossBattle();
@@ -792,6 +793,7 @@ void MainScene::onFinishTracksCompleted() {
     _enemyManager->removeAllNormalEnemies(); // 雑魚キャラを全滅させます
     SaveData::sharedData()->setClearedForMap(_map->getIdentifier().c_str()); // クリアした
     this->gotoNextStage();
+    _map->performOnClear(_characterManager, _enemyManager);
   }
 }
 

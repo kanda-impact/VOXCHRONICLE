@@ -65,6 +65,7 @@ class Map :public CCObject, public IRegister {
   void performOnLevel(CharacterManager* characterManager, EnemyManager* enemyManager);
   void performOnFinishPlaying(CharacterManager* characterManager, EnemyManager* enemyManager);
   void performOnBack(CharacterManager* characterManager, EnemyManager* enemyManager);
+  void performOnClear(CharacterManager* characterManager, EnemyManager* enemyManager);
   Skin* getSkin();
   void changeBackgroundImage(const char* imageName);
 };

@@ -222,6 +222,10 @@ void Map::performOnFinishPlaying(CharacterManager *characterManager, EnemyManage
   this->performFunction("onFinishPlaying", characterManager, enemyManager);
 }
 
+void Map::performOnClear(CharacterManager *characterManager, EnemyManager *enemyManager) {
+  this->performFunction("onClear", characterManager, enemyManager);
+}
+
 string Map::getEndingName() {
   return _ending;
 }
