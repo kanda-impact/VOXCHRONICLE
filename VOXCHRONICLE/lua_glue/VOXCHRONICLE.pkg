@@ -189,3 +189,16 @@ class Map : public CCObject, public IRegister {
 	bool isBossStage();
 	void changeBackgroundImage(const char* imageName);
 };
+
+class SaveData : public CCObject {
+	static SaveData* sharedData();
+	bool isUnlockAchievement(const char* identifier);
+	void unlockAchievement(const char* identifier);
+	void addCountFor(SaveDataCountKey key, int value);
+	void addCountFor(SaveDataCountKey key);
+	int getCountFor(SaveDataCountKey key);
+	void setClearedForMap(const char* mapIdentifier);
+	bool isClearedMap(const char* mapIdentifier);
+	void save();
+	void load();
+};

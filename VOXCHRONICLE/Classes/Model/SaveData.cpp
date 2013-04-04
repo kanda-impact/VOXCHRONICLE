@@ -96,7 +96,14 @@ int SaveData::getCountFor(SaveDataCountKey keynum) {
 }
 
 bool SaveData::isUnlockAchievement(const char* identifier) {
-  return _achievements->containsObject(CCString::create(identifier));
+  CCObject* obj = NULL;
+  CCARRAY_FOREACH(_achievements, obj) {
+    CCString* str = (CCString*)obj;
+    if (strcmp(identifier, str->getCString()) == 0) { // 同じ時
+      return true;
+    }
+  }
+  return false;
 }
 
 
@@ -119,9 +126,11 @@ void SaveData::checkUnlockAchievement(SaveDataCountKey key, int value) {
 }
 
 void SaveData::onFinishAchievementReporting(const char* identifier, bool error) {
-  CCLog("unlock achievement %s !", identifier);
-  CCString* str = CCString::create(identifier);
-  _achievements->addObject(str);
+  if (!error) {
+    CCLog("unlock achievement %s !", identifier);
+    CCString* str = CCString::create(identifier);
+    _achievements->addObject(str);
+  }
 }
 
 void SaveData::setUnlockedAchievement(const char *identifier) {
