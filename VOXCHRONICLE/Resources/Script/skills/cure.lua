@@ -17,6 +17,7 @@ Skill = {
     local max = characterManager:getMaxHP() -- 最大値出して
     local cure = math.ceil(max * rate)
     characterManager:addHP(cure) -- 回復させる
+    EffectLayer:sharedLayer():addDamageLabel(-cure, 0)
   end,
   getPower = function(characterManager)
     local tension = characterManager:getTension()

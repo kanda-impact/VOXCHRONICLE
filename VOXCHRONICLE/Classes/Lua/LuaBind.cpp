@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Thu Apr  4 22:38:11 2013.
+** Generated automatically by tolua++-1.0.92 on Fri Apr  5 02:12:43 2013.
 */
 
 #ifndef __cplusplus
@@ -1831,6 +1831,41 @@ static int tolua_VOXCHRONICLE_EffectLayer_addEffectOnEnemy00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: addDamageLabel of class  EffectLayer */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_EffectLayer_addDamageLabel00
+static int tolua_VOXCHRONICLE_EffectLayer_addDamageLabel00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"EffectLayer",0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,3,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,4,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  EffectLayer* self = (EffectLayer*)  tolua_tousertype(tolua_S,1,0);
+  int damage = ((int)  tolua_tonumber(tolua_S,2,0));
+  int offset = ((int)  tolua_tonumber(tolua_S,3,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'addDamageLabel'", NULL);
+#endif
+  {
+   self->addDamageLabel(damage,offset);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'addDamageLabel'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* method: getPage of class  PopupWindow */
 #ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_PopupWindow_getPage00
 static int tolua_VOXCHRONICLE_PopupWindow_getPage00(lua_State* tolua_S)
@@ -2766,6 +2801,7 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
    tolua_function(tolua_S,"sharedLayer",tolua_VOXCHRONICLE_EffectLayer_sharedLayer00);
    tolua_function(tolua_S,"addPopupWindow",tolua_VOXCHRONICLE_EffectLayer_addPopupWindow00);
    tolua_function(tolua_S,"addEffectOnEnemy",tolua_VOXCHRONICLE_EffectLayer_addEffectOnEnemy00);
+   tolua_function(tolua_S,"addDamageLabel",tolua_VOXCHRONICLE_EffectLayer_addDamageLabel00);
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"PopupWindow","PopupWindow","CCSprite",NULL);
   tolua_beginmodule(tolua_S,"PopupWindow");

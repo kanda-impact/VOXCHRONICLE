@@ -20,6 +20,7 @@ typedef enum {
 
 typedef enum {
   EffectLayerZOrderCutin,
+  EffectLayerZOrderDamageLabel,
   EffectLayerZOrderTension,
   EffectLayerZOrderCharacter
 } EffectLayerZOrder;
@@ -259,4 +260,26 @@ void EffectLayer::addMusicInfo(Map* map, Level* level) {
                                           CCMoveTo::create(0.5f, ccp(600, 40)),
                                           CCRemoveFromParentAction::create(),
                                           NULL));
+}
+
+void EffectLayer::addDamageLabel(int damage, int offset) {
+  // 被ダメージ表示しちゃう
+  CCDirector* director = CCDirector::sharedDirector();
+  string filename = string("damage_number_hit.png");
+  if (damage < 0) {
+    damage *= -1;
+    filename = string("damage_number_cure.png");
+  }
+  CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(damage).c_str(),
+                                                   filename.c_str(), 50, 150, '0');
+  damageLabel->setPosition(ccp(director->getWinSize().width / 2 + 50 * offset, 90 + 20 * offset));
+  this->addChild(damageLabel, EffectLayerZOrderDamageLabel);
+  damageLabel->setScale(0);
+  damageLabel->setAnchorPoint(ccp(0.5, 0.5));
+  damageLabel->runAction(CCSequence::create(CCDelayTime::create(0.2 * offset), // 時間ずらそう
+                                            CCScaleTo::create(0.1, 1.0),
+                                            CCDelayTime::create(0.5),
+                                            CCEaseSineIn::create(CCMoveBy::create(0.2, ccp(0, -150))),
+                                            CCRemoveFromParentAction::create(),
+                                            NULL));
 }
