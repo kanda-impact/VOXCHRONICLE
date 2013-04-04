@@ -1,10 +1,10 @@
 Enemy = {
-  name = "宇宙生物",
+  name = "エクソブ",
   imageName = "exob",
   attack = 1,
   baseExp = 6,
   hasFrame = true,
-  counter = 2,
+  counter = 0,
   getSpeed = function(enemy, characterManager)
     return 1
   end,
