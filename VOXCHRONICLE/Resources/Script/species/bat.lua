@@ -1,10 +1,10 @@
 Enemy = {
-  name = "コウモリ",
+  name = "スガァワ",
   imageName = "bat",
   attack = 3,
   baseExp = 3,
   hasFrame = true,
-  counter = 2,
+  counter = 0,
   getSpeed = function(enemy, characterManager)
    local row = enemy:getRow()
     if row > 3 then -- 4列目より前に行ったとき、速度を0にします
