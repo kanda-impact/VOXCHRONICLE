@@ -1,5 +1,5 @@
 Map = {
-  name = "歪み電脳",
+  name = "電脳",
   wayMusic = "dhun",
   bossMusic = "",
   backgroundImage = "cyber_background.png",

@@ -836,44 +836,7 @@ void MainScene::changeMusic(MusicSet* mSet, bool enablePreload) {
   if (enablePreload) {
     _musicManager->preloadAllTracks(_characterManager, _level); // 曲データを読む
   }
-  // 作曲者情報と曲名を表示する
-  CCNode* musicInfo = CCNode::create();
-  CCLabelTTF* nameShadowLabel = CCLabelTTF::create(mSet->getName().c_str(),
-                                                   "Helvetica",
-                                                   24,
-                                                   CCSizeMake(200, 30),
-                                                   kCCTextAlignmentRight);
-  musicInfo->addChild(nameShadowLabel);
-  nameShadowLabel->setColor(ccc3(33, 33, 33));
-  nameShadowLabel->setPosition(ccp(3, -3));
-  CCLabelTTF* composerShadowLabel = CCLabelTTF::create(mSet->getComposer().c_str(),
-                                                       "Helvetica",
-                                                       16,
-                                                       CCSizeMake(200, 20),
-                                                       kCCTextAlignmentRight);
-  composerShadowLabel->setColor(ccc3(33, 33, 33));
-  composerShadowLabel->setPosition(ccp(3, -28));
-  musicInfo->addChild(composerShadowLabel);
-  CCLabelTTF* nameLabel = CCLabelTTF::create(mSet->getName().c_str(),
-                                             "Helvetica",
-                                             24,
-                                             CCSizeMake(200, 30),
-                                             kCCTextAlignmentRight);
-  musicInfo->addChild(nameLabel);
-  CCLabelTTF* composerLabel = CCLabelTTF::create(mSet->getComposer().c_str(),
-                                                 "Helvetica",
-                                                 16,
-                                                 CCSizeMake(200, 20),
-                                                 kCCTextAlignmentRight);
-  composerLabel->setPosition(ccp(0, -25));
-  musicInfo->addChild(composerLabel);
-  this->addChild(musicInfo, MainSceneZOrderUI);
-  musicInfo->setPosition(ccp(600, 40));
-  musicInfo->runAction(CCSequence::create(CCMoveTo::create(0.5f, ccp(360, 40)),
-                                          CCDelayTime::create(2.0f),
-                                          CCMoveTo::create(0.5f, ccp(600, 40)),
-                                          CCRemoveFromParentAction::create(),
-                                          NULL));
+  _effectLayer->addMusicInfo(_map, _level);
 }
 
 VCState MainScene::getState () {

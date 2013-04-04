@@ -11,6 +11,7 @@ DebugData = {
     "ruin_boss",
     "bossdebug",
     "ocean_boss",
+    "space_boss",
     "map_select"
   }
 }

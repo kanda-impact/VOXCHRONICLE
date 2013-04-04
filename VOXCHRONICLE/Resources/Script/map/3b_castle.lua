@@ -1,5 +1,5 @@
 Map = {
-  name = "城",
+  name = "古城",
   wayMusic = "dub",
   bossMusic = "3Bb",
   backgroundImage = "castle_background.png",
