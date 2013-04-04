@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Wed Apr  3 19:36:01 2013.
+** Generated automatically by tolua++-1.0.92 on Thu Apr  4 22:23:20 2013.
 */
 
 #ifndef __cplusplus
@@ -27,8 +27,8 @@ TOLUA_API int  tolua_VOXCHRONICLE_open (lua_State* tolua_S);
 #include "Controller.h"
 #include "StatusLayer.h"
 #include "EnemySkill.h"
-#include "AchievementManager.h"
 #include "Map.h"
+#include "SaveData.h"
 
 /* function to release collected object via destructor */
 #ifdef __cplusplus
@@ -60,7 +60,6 @@ static void tolua_reg_types (lua_State* tolua_S)
  tolua_usertype(tolua_S,"PopupWindow");
  tolua_usertype(tolua_S,"CharacterManager");
  tolua_usertype(tolua_S,"CCSprite");
- tolua_usertype(tolua_S,"AchievementManager");
  tolua_usertype(tolua_S,"CCObject");
  tolua_usertype(tolua_S,"EnemyManager");
  tolua_usertype(tolua_S,"CCRect");
@@ -2316,69 +2315,6 @@ static int tolua_get_Map___IRegister__(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
-/* method: sharedManager of class  AchievementManager */
-#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_AchievementManager_sharedManager00
-static int tolua_VOXCHRONICLE_AchievementManager_sharedManager00(lua_State* tolua_S)
-{
-#ifndef TOLUA_RELEASE
- tolua_Error tolua_err;
- if (
-     !tolua_isusertable(tolua_S,1,"AchievementManager",0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,2,&tolua_err)
- )
-  goto tolua_lerror;
- else
-#endif
- {
-  {
-   AchievementManager* tolua_ret = (AchievementManager*)  AchievementManager::sharedManager();
-    tolua_pushusertype(tolua_S,(void*)tolua_ret,"AchievementManager");
-  }
- }
- return 1;
-#ifndef TOLUA_RELEASE
- tolua_lerror:
- tolua_error(tolua_S,"#ferror in function 'sharedManager'.",&tolua_err);
- return 0;
-#endif
-}
-#endif //#ifndef TOLUA_DISABLE
-
-/* method: reportAchievement of class  AchievementManager */
-#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_AchievementManager_reportAchievement00
-static int tolua_VOXCHRONICLE_AchievementManager_reportAchievement00(lua_State* tolua_S)
-{
-#ifndef TOLUA_RELEASE
- tolua_Error tolua_err;
- if (
-     !tolua_isusertype(tolua_S,1,"AchievementManager",0,&tolua_err) ||
-     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
-     !tolua_isnumber(tolua_S,3,0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,4,&tolua_err)
- )
-  goto tolua_lerror;
- else
-#endif
- {
-  AchievementManager* self = (AchievementManager*)  tolua_tousertype(tolua_S,1,0);
-  const char* identifier = ((const char*)  tolua_tostring(tolua_S,2,0));
-  float percent = ((float)  tolua_tonumber(tolua_S,3,0));
-#ifndef TOLUA_RELEASE
-  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'reportAchievement'", NULL);
-#endif
-  {
-   self->reportAchievement(identifier,percent);
-  }
- }
- return 0;
-#ifndef TOLUA_RELEASE
- tolua_lerror:
- tolua_error(tolua_S,"#ferror in function 'reportAchievement'.",&tolua_err);
- return 0;
-#endif
-}
-#endif //#ifndef TOLUA_DISABLE
-
 /* Open function */
 TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
 {
@@ -2534,11 +2470,6 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
    tolua_function(tolua_S,"isBossStage",tolua_VOXCHRONICLE_Map_isBossStage00);
    tolua_function(tolua_S,"changeBackgroundImage",tolua_VOXCHRONICLE_Map_changeBackgroundImage00);
    tolua_variable(tolua_S,"__IRegister__",tolua_get_Map___IRegister__,NULL);
-  tolua_endmodule(tolua_S);
-  tolua_cclass(tolua_S,"AchievementManager","AchievementManager","CCObject",NULL);
-  tolua_beginmodule(tolua_S,"AchievementManager");
-   tolua_function(tolua_S,"sharedManager",tolua_VOXCHRONICLE_AchievementManager_sharedManager00);
-   tolua_function(tolua_S,"reportAchievement",tolua_VOXCHRONICLE_AchievementManager_reportAchievement00);
   tolua_endmodule(tolua_S);
  tolua_endmodule(tolua_S);
  return 1;

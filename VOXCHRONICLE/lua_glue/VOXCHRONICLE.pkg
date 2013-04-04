@@ -12,8 +12,8 @@ $#include "IRegister.h"
 $#include "Controller.h"
 $#include "StatusLayer.h"
 $#include "EnemySkill.h"
-$#include "AchievementManager.h"
 $#include "Map.h"
+$#include "SaveData.h"
 
 #define MAX_ROW
 
@@ -189,8 +189,3 @@ class Map : public CCObject, public IRegister {
 	bool isBossStage();
 	void changeBackgroundImage(const char* imageName);
 };
-
-class AchievementManager :public CCObject {
-	static AchievementManager* sharedManager();
-	void reportAchievement(const char* identifier, float percent);
-}

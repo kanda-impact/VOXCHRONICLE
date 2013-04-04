@@ -36,6 +36,9 @@ typedef enum {
 class SaveData :public CCObject {
  private:
   CCDictionary* _countDictionary;
+  CCArray* _achievements;
+  void checkUnlockAchievement(SaveDataCountKey key, int value);
+  void onFinishAchievementReporting(const char* identifier, bool error);
  public:
   static SaveData* sharedData();
   SaveData();
@@ -47,7 +50,11 @@ class SaveData :public CCObject {
   bool isClearedMap(const char* mapIdentifier);
   void setClearedForMap(const char* mapIdentifier);
   void addCountFor(SaveDataCountKey key);
+  void addCountFor(SaveDataCountKey key, int value);
   int getCountFor(SaveDataCountKey key);
+  bool isUnlockAchievement(const char* identifier);
+  void unlockAchievement(const char* identifier);
+  void setUnlockedAchievement(const char* identifier);
 };
 
 #endif /* defined(__VOXCHRONICLE__SaveData__) */

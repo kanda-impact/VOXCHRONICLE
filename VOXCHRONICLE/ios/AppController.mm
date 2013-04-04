@@ -29,6 +29,7 @@
 #import "CCAchievementManager.h"
 #import <GameKit/GameKit.h>
 #import "CCAchievementManager.h"
+#import "SaveData.h"
 
 #import "RootViewController.h"
 #import "TestFlight.h"
@@ -97,6 +98,12 @@ void SignalHandler(int sig) {
   viewController.wantsFullScreenLayout = YES;
   viewController.view = __glView;
   
+  // 起動回数カウント
+  SaveData::sharedData()->addCountFor(SaveDataCountKeyBoot);
+  int count = SaveData::sharedData()->getCountFor(SaveDataCountKeyBoot);
+  CCLog("boot count = %d", count);
+  SaveData::sharedData()->save();
+  
   // GameCenter
   float iosVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
   GKLocalPlayer* localPlayer = [GKLocalPlayer localPlayer];
@@ -106,6 +113,7 @@ void SignalHandler(int sig) {
         [viewController presentModalViewController:ui animated:YES];
       } else if (localPlayer.isAuthenticated) {
         NSLog(@"authentication is completed");
+        [self onCompleteAuthenticationToGameCenter];
       } else {
         NSLog(@"%@", error);
       }
@@ -115,6 +123,7 @@ void SignalHandler(int sig) {
       NSLog(@"%@", error);
       if (error == nil) {
         NSLog(@"authentication is completed");
+        [self onCompleteAuthenticationToGameCenter];
       }
     }];
   }
@@ -135,6 +144,17 @@ void SignalHandler(int sig) {
   
   cocos2d::CCApplication::sharedApplication()->run();
   return YES;
+}
+
+- (void)onCompleteAuthenticationToGameCenter {
+  [GKAchievement loadAchievementsWithCompletionHandler:^(NSArray *achievements, NSError *error) {
+    for (GKAchievement* achievement in achievements) {
+      NSString* name = achievement.identifier;
+      const char* identifier = [name UTF8String];
+      CCLog("unlocked %s", identifier);
+      SaveData::sharedData()->setUnlockedAchievement(identifier);
+    }
+  }];
 }
 
 

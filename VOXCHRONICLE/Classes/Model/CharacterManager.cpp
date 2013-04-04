@@ -11,6 +11,7 @@
 #include "CharacterManager.h"
 #include "Skill.h"
 #include "CCLuaEngine.h"
+#include "SaveData.h"
 
 CharacterManager::CharacterManager() {
   Character* vox = new Character("vox");
@@ -148,6 +149,7 @@ DamageType CharacterManager::damage(int damage) {
     damageType = DamageTypeShield;
   } else {
     _hp -= damage;
+    SaveData::sharedData()->addCountFor(SaveDataCountKeyHitDamage, damage); // 被ダメージカウント
     if (_hp <= 0) { // 死亡時
       _hp = 0;
       damageType = DamageTypeDeath;

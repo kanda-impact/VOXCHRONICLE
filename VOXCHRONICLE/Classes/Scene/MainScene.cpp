@@ -353,6 +353,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     int preExp = _characterManager->getExp();
     int getExp = 0;
     
+    int sumDamage = 0;
     bool isHit = true; // ヒットしたかどうか
     /* 以下のとき、ヒットしていない
      1. 対象が自分以外の技を使用し、対象の全てについて
@@ -380,6 +381,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
                                                          FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 100, '0');
         // ダメージが0かつ、元々ダメージのない技じゃないかつ、アイテムも破壊していないとき、ヒットしていない状態にしてやる
         int damage = ((CCInteger*)damages->objectAtIndex(i))->getValue();
+        sumDamage += damage;
         DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(i))->getValue();
         if (damage > 0 || damageType == DamageTypeBarrierBreak || damageType == DamageTypeShieldBreak || damageType == DamageTypeNoDamage) {
           isHit = true;
@@ -429,6 +431,9 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         }
         ++i;
       }
+      
+      // ダメージ更新
+      SaveData::sharedData()->addCountFor(SaveDataCountKeyAttackDamage, sumDamage);
       
       // 全体のSE
       if (enemyCount > 0 && skill->hasSE() && isHit) { // ヒットしたとき、SEがあればSEをならしてやる
