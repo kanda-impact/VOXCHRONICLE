@@ -622,6 +622,7 @@ void MainScene::addDamageEffect() {
   bool isDead = false;
   bool isShield = false;
   int sumDamage = 0;
+  int i = 0;
   std::queue<DamageInfo>* queue = _characterManager->getDamageInfoQueue();
   while (!queue->empty()) { // キューが空になるまで取り出す
     DamageInfo info = queue->front();
@@ -632,15 +633,16 @@ void MainScene::addDamageEffect() {
     CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(damage).c_str(),
                                                      FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 100, '0');
     CCDirector* director = CCDirector::sharedDirector();
-    damageLabel->setPosition(ccp(director->getWinSize().width / 2, 90));
+    damageLabel->setPosition(ccp(director->getWinSize().width / 2 + i * 50, 90 + i * 20));
     this->addChild(damageLabel, MainSceneZOrderDamageLabel);
     damageLabel->setScale(0);
-    damageLabel->runAction(CCSequence::create(CCScaleTo::create(0.1, 0.8),
+    damageLabel->runAction(CCSequence::create(CCScaleTo::create(0.1, 1.0),
                                               CCDelayTime::create(0.5),
-                                              CCScaleTo::create(0.2, 0.0),
+                                              CCEaseSineIn::create(CCMoveBy::create(0.2, ccp(0, -150))),
                                               CCRemoveFromParentAction::create(),
                                               NULL));
     sumDamage += damage;
+    ++i;
     if (damageType == DamageTypeDeath) {
       isDead = true;
     } else if (damageType == DamageTypeShield) {
