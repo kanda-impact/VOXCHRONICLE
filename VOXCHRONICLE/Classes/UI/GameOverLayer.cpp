@@ -14,37 +14,28 @@
 
 GameOverLayer::GameOverLayer(MainScene* main) {
   _main = main;
-  main->retain();
+  // 巡回参照してた
   this->buildUI();
 }
 
 GameOverLayer::~GameOverLayer() {
-  if (_main) {
-    _main->release();
-  }
 }
 
 void GameOverLayer::buildUI() {
-  CCLabelTTF* gameOverLabel = CCLabelTTF::create("GAME OVER", FONT_NAME, 48);
+  CCSprite* gameover = CCSprite::create("gameover_label.png");
   CCDirector* director = CCDirector::sharedDirector();
   CCPoint center = CCPointMake(director->getWinSize().width / 2, director->getWinSize().height / 2);
-  CCLabelTTF* gameOverShadowLavel = CCLabelTTF::create("GAME OVER", FONT_NAME, 48);
-  gameOverShadowLavel->setColor(ccc3(64, 64, 64));
-  gameOverShadowLavel->setPosition(center);
-  gameOverLabel->setPosition(ccpAdd(ccp(gameOverShadowLavel->getContentSize().width / 2, gameOverShadowLavel->getContentSize().height / 2), ccp(-3, 3)));
-  this->addChild(gameOverShadowLavel);
-  gameOverShadowLavel->addChild(gameOverLabel);
-  gameOverShadowLavel->runAction(CCSequence::create(CCDelayTime::create(3.0),
-                                                    CCMoveTo::create(0.1, ccp(director->getWinSize().width / 2, 200)),
-                                                    CCCallFunc::create(this, callfunc_selector(GameOverLayer::addGameOverButtons)),
-                                                    NULL));
+  gameover->setPosition(center);
+  gameover->runAction(CCSequence::create(CCDelayTime::create(3.0),
+                                         CCMoveTo::create(0.1, ccp(director->getWinSize().width / 2, 200)),
+                                         CCCallFunc::create(this, callfunc_selector(GameOverLayer::addGameOverButtons)),
+                                         NULL));
+  this->addChild(gameover);
 }
 
 void GameOverLayer::addGameOverButtons() {
-  CCLabelTTF* replayLabel = CCLabelTTF::create("リプレイ", "", 24);
-  CCLabelTTF* titleLabel = CCLabelTTF::create("タイトル", FONT_NAME, 24);
-  CCMenu* menu = CCMenu::create(CCMenuItemLabel::create(replayLabel, this, menu_selector(GameOverLayer::replayButtonPressed)),
-                                CCMenuItemLabel::create(titleLabel, this, menu_selector(GameOverLayer::titleButtonPressed)),
+  CCMenu* menu = CCMenu::create(CCMenuItemImage::create("replay.png", "replay_pressed.png", this, menu_selector(GameOverLayer::replayButtonPressed)),
+                                CCMenuItemImage::create("title.png", "title_pressed.png", this, menu_selector(GameOverLayer::titleButtonPressed)),
                                 NULL);
   CCDirector* director = CCDirector::sharedDirector();
   menu->setPosition(ccp(director->getWinSize().width / 2, 90));
@@ -63,6 +54,15 @@ void GameOverLayer::replayButtonPressed(CCObject *sender) {
   newScene->init(newMap);
   scene->addChild(newScene);
   newMap->release();
+  
+  CCArray* oldHistory = _main->getMapHistory();
+  CCArray* newHistory = CCArray::create();
+  // 古いのは使い回す
+  for (int i = 0; i < oldHistory->count() - 1; ++i) {
+    newHistory->addObject(oldHistory->objectAtIndex(i));
+  }
+  newHistory->addObject(newMap); // 最後だけ新しいマップ
+  newScene->setMapHistory(newHistory);
   CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
   CCDirector::sharedDirector()->replaceScene(transition);
 }

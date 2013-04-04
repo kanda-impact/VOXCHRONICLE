@@ -40,7 +40,7 @@ class MessageWindow :public CCNode {
   MessageWindow(const char* fontName, float size, CCSize dimensions);
   ~MessageWindow();
   void pushMessage(const char* message);
-  void setMessageSpeed(int speed);
+  void setMessageSpeed(float speed);
   void setOnMessageFinishedFunction(function<void (VQString*, MessageWindow*)> finish);
   void setOnMessageUpdatedFunction(function<void (VQString*, MessageWindow*)> update);
   VQString* getCurrentMessage();

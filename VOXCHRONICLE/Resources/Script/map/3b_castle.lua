@@ -3,6 +3,7 @@ Map = {
   wayMusic = "dub",
   bossMusic = "3Bb",
   backgroundImage = "castle_background.png",
+  thumbnailImage = "castle_thumbnail.png",
   skin = "skinC",
   ending = "endingB",
   nextMaps = {""},

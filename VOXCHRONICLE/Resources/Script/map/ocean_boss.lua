@@ -1,8 +1,8 @@
 Map = {
   name = "戦闘！クラーケン",
-  wayMusic = "dub",
+  wayMusic = "negi",
   bossMusic = "Ceres78",
-  backgroundImage = "",
+  backgroundImage = "ocean_background.png",
   skin = "skinA",
   ending = "endingC",
   nextMaps = {},

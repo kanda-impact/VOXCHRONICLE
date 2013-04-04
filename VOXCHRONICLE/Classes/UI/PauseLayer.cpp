@@ -27,25 +27,21 @@ void PauseLayer::buildUI() {
   CCLayerColor* background = CCLayerColor::create(ccc4(0, 0, 0, 128), director->getWinSize().width, director->getWinSize().height);
   this->addChild(background);
   
-  CCLabelTTF* pause = CCLabelTTF::create("Pause", FONT_NAME, 48);
+  CCSprite* pause = CCSprite::create("pause_label.png");
   pause->setPosition(ccp(director->getWinSize().width / 2.0, 280));
   this->addChild(pause);
   
-  CCLabelTTF* replayLabel = CCLabelTTF::create("リプレイ", FONT_NAME, 24);
-  CCLabelTTF* titleLabel = CCLabelTTF::create("タイトル", FONT_NAME, 24);
-  CCLabelTTF* cancelLabel = CCLabelTTF::create("再開", FONT_NAME, 24);
-  CCLabelTTF* yesLabel = CCLabelTTF::create("はい", FONT_NAME, 24);
-  CCLabelTTF* noLabel = CCLabelTTF::create("いいえ", FONT_NAME, 24);
-  
-  _topMenu = CCMenu::create(CCMenuItemLabel::create(cancelLabel, this, menu_selector(PauseLayer::onCancelPressed)),
-                            CCMenuItemLabel::create(replayLabel, this, menu_selector(PauseLayer::onReplayPressed)),
-                            CCMenuItemLabel::create(titleLabel, this, menu_selector(PauseLayer::onTitlePressed)),
+  _topMenu = CCMenu::create(CCMenuItemImage::create("resume.png", "resume_pressed.png", this, menu_selector(PauseLayer::onCancelPressed)),
+                            CCMenuItemImage::create("replay.png", "replay_pressed.png", this, menu_selector(PauseLayer::onReplayPressed)),
+                            CCMenuItemImage::create("title.png", "title_pressed.png", this, menu_selector(PauseLayer::onTitlePressed)),
                             NULL);
   
-  _confirmMenu = CCMenu::create(CCMenuItemLabel::create(yesLabel, this, menu_selector(PauseLayer::onYesPressed)),
-                                CCMenuItemLabel::create(noLabel, this, menu_selector(PauseLayer::onNoPressed)),
+  _confirmMenu = CCMenu::create(CCMenuItemImage::create("yes.png", "yes_pressed.png",
+                                                        this, menu_selector(PauseLayer::onYesPressed)),
+                                CCMenuItemImage::create("no.png", "no_pressed.png",
+                                                        this, menu_selector(PauseLayer::onNoPressed)),
                                 NULL);
-  _topMenu->setPosition(ccp(director->getWinSize().width / 2.0, 120));
+  _topMenu->setPosition(ccp(director->getWinSize().width / 2.0, 160));
   _topMenu->alignItemsVerticallyWithPadding(20);
   _confirmMenu->alignItemsVerticallyWithPadding(20);
   

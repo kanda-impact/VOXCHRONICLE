@@ -7,6 +7,7 @@
 //
 
 #include "PopupWindow.h"
+#include <boost/bind.hpp>
 
 PopupWindow* PopupWindow::create(int pages) {
   PopupWindow* window = new PopupWindow(pages);
@@ -52,4 +53,29 @@ void PopupWindow::nextPage() {
     CCNode *next = (CCNode*)_pages->objectAtIndex(_currentPage);
     this->addChild(next);
   }
+}
+
+void PopupWindow::setText(int page, const char *headerText, const char *text) {
+  CCNode* node = this->getPage(page);
+  CCLabelTTF* headerShadow = CCLabelTTF::create(headerText, "Helvetica", 24, CCSizeMake(380, 40), kCCTextAlignmentLeft, kCCVerticalTextAlignmentCenter);
+  
+  CCLabelTTF* header = CCLabelTTF::create(headerText, "Helvetica", 24, CCSizeMake(380, 40), kCCTextAlignmentLeft, kCCVerticalTextAlignmentCenter);
+  headerShadow->setColor(ccc3(33, 33, 33));
+  headerShadow->setPosition(ccp(217, 268));
+  header->setPosition(ccp(215, 270));
+  node->addChild(headerShadow);
+  node->addChild(header);
+  MessageWindow* window = new MessageWindow("Helvetica", 16, CCSizeMake(350, 240));
+  window->setPosition(ccp(220, 130));
+  node->addChild(window);
+  window->setLastDelay(INTMAX_MAX);
+  window->pushMessage(text);
+  window->setOnMessageFinishedFunction(boost::bind(&PopupWindow::onFinishedFunction, this, _1, _2));
+  window->setOnMessageUpdatedFunction(boost::bind(&PopupWindow::onUpdateFunction, this, _1, _2));
+}
+
+void PopupWindow::onUpdateFunction(VQString *string, MessageWindow *window) {
+}
+
+void PopupWindow::onFinishedFunction(VQString *string, MessageWindow *window) {
 }

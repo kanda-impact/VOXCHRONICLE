@@ -14,6 +14,8 @@
 
 #include "EffectLayer.h"
 
+#include "SaveData.h"
+
 using namespace boost;
 using namespace boost::lambda;
 
@@ -98,6 +100,9 @@ Enemy* EnemyManager::enemyAt(int col, int row) {
 }
 
 CCArray* EnemyManager::getEnemies() {
+  if (this->getChildrenCount() == 0) {
+    return CCArray::create();
+  }
   return this->getChildren();
 }
 
@@ -185,7 +190,7 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CCArray* targets, Charact
       if (target->getSpecies()->isEnableSkill(skill)) { // その敵に技が有効かどうか
         // 追加効果がある場合、関数を呼び出す
         int damage = 0;
-        if (count == 1) { // 1体だけの時のみ
+        if (skill->getRange() != SkillRangeAll || skill->getRange() != SkillRangeFront) { // 1体だけの時のみ
           performLuaFunction(skill, target, characterManager);
         }
         DamageType damageType = DamageTypeNone;
@@ -210,6 +215,7 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CCArray* targets, Charact
             } else {
               exp += getExp;
             }
+            SaveData::sharedData()->addDefeatedCountForEnemy(target->getIdentifier().c_str()); // 倒したカウンター増加
             this->removeEnemy(target);
           }
         }
@@ -220,7 +226,7 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CCArray* targets, Charact
     }
     characterManager->addMP(-1 * skill->getMP());
   } else {
-    cout << "MP is nothing!" << endl;
+    SaveData::sharedData()->addCountFor(SaveDataCountKeyMPMiss); // MP切れ
   }
   
   info->setObject(targets, "enemies");
@@ -332,7 +338,7 @@ void EnemyManager::draw() {
   // とりあえずVOX1を移植
   // 面倒なので他の人に計算してもらう
   CCLayer::draw();
-  CCDirector* director = CCDirector::sharedDirector();
+  /*CCDirector* director = CCDirector::sharedDirector();
   for (int row = 0; row < MAX_ROW; ++row) {
     CCPoint line = EnemyManager::calcLinePosition(row, 1);
     CCPoint origin = ccp(0, line.y);
@@ -340,7 +346,7 @@ void EnemyManager::draw() {
     float opacity = 0.25 + 0.75 * ((float)(MAX_ROW - row) / MAX_ROW);
     ccDrawColor4F(1.0 * opacity, 1.0 * opacity, 1.0 * opacity, 1);
     ccDrawLine(origin, end);
-  }
+  }*/
 }
 
 void EnemyManager::purgeAllTrash() {
@@ -355,7 +361,7 @@ void EnemyManager::pushEnemiesQueue(cocos2d::CCArray *enemies) {
   }
 }
 
-void EnemyManager::nextTurn (CharacterManager* characterManager) {
+void EnemyManager::nextTurn (CharacterManager* characterManager, bool moveOnly) {
   this->lotPopEnemy();
   CCObject* obj = NULL;
   // コピーしないとだめじゃね
@@ -368,7 +374,7 @@ void EnemyManager::nextTurn (CharacterManager* characterManager) {
     Enemy* enemy = (Enemy*)obj;
     if (enemy == NULL) continue;
     if (enemy->getEnable() && enemy->getRow() >= 0) {
-      if (!enemy->performSkill(characterManager, this)) { // 敵の技を実行する
+      if (moveOnly || !enemy->performSkill(characterManager, this)) { // 敵の技を実行する
         if (enemy->canMove(characterManager)) { // 何も実行されなかったら、移動できるか調べる
           int speed = enemy->getSpeed(characterManager); // 早さを取得する
           enemy->moveRow(-speed); // 移動できたら1歩移動する

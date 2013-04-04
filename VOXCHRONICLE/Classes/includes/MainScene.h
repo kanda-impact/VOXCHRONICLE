@@ -103,6 +103,9 @@ class MainScene : public CCLayer {
   Map* getMap();
   VCState getState();
   
+  CCArray* getMapHistory();
+  void setMapHistory(CCArray* mapHistory);
+  
   CREATE_FUNC(MainScene);
 };
 

@@ -1,9 +1,9 @@
 import os
-import shutil
 from PIL import Image
 
 SRC = "Retina"
 DST = "Image"
+IGNORES = ['cyber_default', 'cave_default', 'grass_default']
 
 def remove_all(path):
     for (root, dirs, files) in os.walk(path, topdown=False):
@@ -20,15 +20,13 @@ def remove_all(path):
     os.rmdir(path)
 
 if __name__ == '__main__':
-    if os.path.exists(DST):
-        remove_all(DST)
-    shutil.copytree(SRC, DST)
-    files = os.listdir(DST)
+    files = os.listdir(SRC)
     base = os.getcwd()
     for file in files:
         filename, ext = os.path.splitext(file)
-        if ext == '.png':
-            original = Image.open(os.path.join(base, DST, file))
+        print filename
+        if ext == '.png' and not filename in IGNORES:
+            original = Image.open(os.path.join(base, SRC, file))
             tmb = original.copy()
             width, height = original.size
             tmb.thumbnail((width / 2, height / 2))

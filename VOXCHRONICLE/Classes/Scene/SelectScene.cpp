@@ -11,6 +11,7 @@
 #include "MainMenuScene.h"
 #include "SimpleAudioEngine.h"
 #include "FileUtils.h"
+#include "SaveData.h"
 
 typedef enum {
   SelectSceneZOrderBackground,
@@ -126,12 +127,17 @@ void SelectScene::createThumbnails() {
   const int y[] = {262, 262, 260, 303, 303, 303, 303};
   LuaObject* obj = LuaObject::create("setting");
   CCLuaValueArray* maps = obj->getArray("maps");
-  // マップによって切り替えたり、セーブデータによって切り替えたりはあとで実装する
   int i = 0;
   for (CCLuaValueArrayIterator it = maps->begin(); it != maps->end(); ++it, ++i) {
-    string filename = it->stringValue();
-    if (filename.length() > 0) {
-      CCSprite* sprite = CCSprite::create((filename + string("_icon.png")).c_str());
+    string mapName = it->stringValue();
+    if (mapName.length() > 0) {
+      string thumbnail = "";
+      if (SaveData::sharedData()->isClearedMap(mapName.c_str())) {
+        thumbnail = (mapName + string("_icon.png")).c_str();
+      } else {
+        thumbnail = (mapName + string("_icon_disable.png")).c_str();
+      }
+      CCSprite* sprite = CCSprite::create(thumbnail.c_str());
       sprite->setPosition(ccp(x[i], y[i]));
       this->addChild(sprite);
       _thumbnails->addObject(sprite);

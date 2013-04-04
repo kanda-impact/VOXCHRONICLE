@@ -13,6 +13,9 @@
 #include "Map.h"
 #include "StaffRollScene.h"
 #include "DictionaryScene.h"
+#include "CCAchievementManager.h"
+#include "AchievementScene.h"
+#include "FreePlayScene.h"
 
 bool ExtraScene::init() {
   if (!CCLayer::init()) {
@@ -49,10 +52,10 @@ bool ExtraScene::init() {
   CCMenu* extraMenu = CCMenu::create(dictionary, soundtest, achievement, credit, NULL);
   CCMenu* backMenu = CCMenu::createWithItem(back);
   
-  extraMenu->alignItemsVerticallyWithPadding(20);
+  extraMenu->alignItemsVerticallyWithPadding(10);
   
-  extraMenu->setPosition(ccp(250, center.y));
-  backMenu->setPosition(ccp(17.5, center.y));
+  extraMenu->setPosition(ccp(250, center.y + 30));
+  backMenu->setPosition(ccp(40, center.y));
   
   this->addChild(extraMenu);
   this->addChild(backMenu);
@@ -65,18 +68,25 @@ void ExtraScene::onExit() {
 }
 
 void ExtraScene::onSoundTestButtonPressed(cocos2d::CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
+  FreePlayScene* scene = FreePlayScene::create("debug.lua");
+  nextScene(scene);
 }
 
 void ExtraScene::onAchievementButtonPressed(cocos2d::CCObject *sender) {
+  AchievementScene::create();
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
 }
 
 void ExtraScene::onDictionaryButtonPressed(cocos2d::CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   DictionaryScene* scene = DictionaryScene::create();
   SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
   this->nextScene(scene);
 }
 
 void ExtraScene::onCreditButtonPressed(cocos2d::CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   CCArray* array = CCArray::create();
   Map* map0 = new Map("001");
   map0->autorelease();
@@ -105,7 +115,6 @@ void ExtraScene::onBackButtonPressed(cocos2d::CCObject *sender) {
 }
 
 void ExtraScene::nextScene(CCLayer* layer) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   CCScene* scene = CCScene::create();
   scene->addChild(layer);
   CCTransitionFade* transition = CCTransitionFade::create(0.2f, scene);

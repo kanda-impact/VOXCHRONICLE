@@ -3,6 +3,7 @@ Map = {
   wayMusic = "volca",
   bossMusic = "",
   backgroundImage = "forest_background.png",
+  thumbnailImage = "forest_thumbnail.png",
   skin = "skinB",
   ending = "",
   nextMaps = {"3a_ruin","3b_castle"},

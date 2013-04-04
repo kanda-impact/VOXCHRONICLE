@@ -32,6 +32,7 @@ class Map :public CCObject, public IRegister {
   vector<string>* _nextMaps;
   string _name;
   string _backgroundImageName;
+  string _thumbnailImageName;
   string _ending;
   CCSprite* _background;
   LuaObject* _lua;
@@ -52,6 +53,7 @@ class Map :public CCObject, public IRegister {
   string getName();
   string getIdentifier();
   string getEndingName();
+  string getThumbnailImageName();
   CCSprite* getBackground();
   CCArray* getFixedEnemies(int preExp, int currentExp);
   CCArray* getNextMaps();
@@ -63,7 +65,9 @@ class Map :public CCObject, public IRegister {
   void performOnLevel(CharacterManager* characterManager, EnemyManager* enemyManager);
   void performOnFinishPlaying(CharacterManager* characterManager, EnemyManager* enemyManager);
   void performOnBack(CharacterManager* characterManager, EnemyManager* enemyManager);
+  void performOnClear(CharacterManager* characterManager, EnemyManager* enemyManager);
   Skin* getSkin();
+  void changeBackgroundImage(const char* imageName);
 };
 
 #endif /* defined(__VOXCHRONICLE__Map__) */

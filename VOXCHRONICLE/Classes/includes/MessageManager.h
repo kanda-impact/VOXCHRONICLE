@@ -25,6 +25,7 @@ class MessageManager :public CCObject {
   static MessageManager* _instance;
  public:
   static MessageManager* sharedManager();
+  static void purgeMessageManager();
   MessageManager();
   ~MessageManager();
   void setDefaultMessageWindow(MessageWindow* window);

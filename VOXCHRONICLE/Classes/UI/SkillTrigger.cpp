@@ -19,7 +19,7 @@ SkillTrigger::SkillTrigger(const char* skinPrefix) : CCNode() {
   _skill = NULL;
   _state = SkillTriggerStateNormal;
   _skinPrefix = skinPrefix;
-  _background = CCSprite::create(this->buildFilePath("trigger_on.png").c_str());
+  _background = CCSprite::createWithSpriteFrameName(this->buildFilePath("trigger_on.png").c_str());
   _background->retain();
   _icon = NULL;
   _defaultScale = 1.0f;
@@ -35,8 +35,8 @@ SkillTrigger::~SkillTrigger() {
 }
 
 string SkillTrigger::buildFilePath(const char *file) {
-  string path = string("Image/") + _skinPrefix + string("_") + string(file);
-  return FileUtils::getFilePath(path.c_str());
+  string path = _skinPrefix + string("_") + string(file);
+  return path.c_str();
 }
 
 bool SkillTrigger::getPress() {
@@ -48,8 +48,9 @@ void SkillTrigger::setPress(bool press) {
   _press = press;
   if (press) {
     _state = SkillTriggerStateSelected;
-    CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(this->buildFilePath("trigger_on.png").c_str());
-    _background->setTexture(texture);
+    CCSpriteFrame* frame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(this->buildFilePath("trigger_on.png").c_str());
+    _background->setTexture(frame->getTexture());
+    _background->setTextureRect(frame->getRect());
     _icon->setColor(ccc3(44, 44, 44));
     this->setScale(1.2f);
   } else {
@@ -120,9 +121,9 @@ void SkillTrigger::setColor(SkillTriggerColor color) {
     filename = this->buildFilePath("trigger_lsk.png").c_str();
     _icon->setColor(ccc3(255, 232, 202));
   }
-  CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage(filename.c_str());
-  _background->setTexture(texture);
-  
+  CCSpriteFrame* frame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(filename.c_str());
+  _background->setTexture(frame->getTexture());
+  _background->setTextureRect(frame->getRect());
 }
 
 CCSprite* SkillTrigger::getBackground() {

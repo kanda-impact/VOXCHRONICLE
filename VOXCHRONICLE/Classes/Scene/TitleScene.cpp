@@ -12,7 +12,7 @@
 #include "MainScene.h"
 #include "MainMenuScene.h"
 #include "FileUtils.h"
-#include "DebugScene.h"
+#include "FreePlayScene.h"
 #include "macros.h"
 #include "BufferCache.h"
 #include "StaffRollScene.h"
@@ -37,8 +37,8 @@ bool TitleScene::init() {
   this->setTouchEnabled(true);
   CCDirector* director = CCDirector::sharedDirector();
   CCSize winSize = director->getWinSize();
-  string images[] = {"logo.png", "title_start.png"};
-  for (int i = 0; i < 2; ++i) {
+  string images[] = {"logo.png"};
+  for (int i = 0; i < 1; ++i) {
     stringstream ss;
     ss << "Image/" << images[i];
     CCSprite* sprite = CCSprite::create(FileUtils::getFilePath(ss.str().c_str()).c_str());
@@ -56,7 +56,7 @@ bool TitleScene::init() {
   menu->setPosition(ccp(winSize.width / 2, 80));
   this->addChild(menu);
   
-  int r = rand() % 128;
+  int r = rand() % 1024;
   if (r == 0) {
     CCSprite* mask = CCSprite::create("easter0.png");
     CCAnimation* animation = CCAnimation::create();
@@ -70,6 +70,7 @@ bool TitleScene::init() {
                                        NULL));
     this->addChild(mask);
     mask->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
+    
   }
   
   CCMenuItemLabel* seOff = CCMenuItemLabel::create(CCLabelTTF::create("SE OFF", FONT_NAME, 24));
@@ -111,7 +112,7 @@ void TitleScene::onStartButtonPressed(CCObject* sender) {
 
 void TitleScene::onDebugButtonPressed(CCObject* sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
-  DebugScene* scene = DebugScene::create();
+  FreePlayScene* scene = FreePlayScene::create("debug.lua");
   nextScene(scene);
 }
 

@@ -51,12 +51,15 @@ private:
   bool setAnimationAndFrame(int xOffset, int yOffset, int frames, bool hasFrame);
   CCSprite* createFrameSprite(int xOffset, int yOffset, int frames);
   CCTexture2D* _sheet;
+  CCSprite* _frameSprite;
   int getExpFromLua();
+  string _identifier;
 public:
   static void loadLifeColors();
   static Enemy* create(const char* enemyName);
   Enemy();
   ~Enemy();
+  string getIdentifier();
   void setRow(float r);
   void setCol(int c);
   float bottomLine();
@@ -127,6 +130,8 @@ public:
   
   bool isMovable();
   void setMovable(bool m);
+  
+  void setSilhouette();
 };
 
 #endif /* defined(__VOXCHRONICLE__Enemy__) */
