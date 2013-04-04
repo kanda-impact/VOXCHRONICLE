@@ -27,6 +27,7 @@ typedef enum {
   SaveDataCountKeyBeat,
   SaveDataCountDefeat,
   SaveDataCountKeyMPMiss,
+  SaveDataCountKeyBoot,
   SaveDataCountKeyNum
 } SaveDataCountKey;
 
