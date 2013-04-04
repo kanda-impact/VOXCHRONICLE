@@ -22,16 +22,29 @@ using namespace cocos2d;
  save/loadはCCUserDefaultに任せます。
  */
 
+typedef enum {
+  SaveDataCountKeyDead,
+  SaveDataCountKeyBeat,
+  SaveDataCountDefeat,
+  SaveDataCountKeyMPMiss,
+  SaveDataCountKeyNum
+} SaveDataCountKey;
+
 class SaveData :public CCObject {
+ private:
+  CCDictionary* _countDictionary;
  public:
   static SaveData* sharedData();
   SaveData();
   virtual ~SaveData();
   void save();
+  void load();
   int getDefeatedCount(const char* enemyIdentifier);
   void addDefeatedCountForEnemy(const char* enemyIdentifier);
   bool isClearedMap(const char* mapIdentifier);
   void setClearedForMap(const char* mapIdentifier);
+  void addCountFor(SaveDataCountKey key);
+  int getCountFor(SaveDataCountKey key);
 };
 
 #endif /* defined(__VOXCHRONICLE__SaveData__) */
