@@ -51,6 +51,7 @@ private:
   bool setAnimationAndFrame(int xOffset, int yOffset, int frames, bool hasFrame);
   CCSprite* createFrameSprite(int xOffset, int yOffset, int frames);
   CCTexture2D* _sheet;
+  CCSprite* _frameSprite;
   int getExpFromLua();
   string _identifier;
 public:
@@ -129,6 +130,8 @@ public:
   
   bool isMovable();
   void setMovable(bool m);
+  
+  void setSilhouette();
 };
 
 #endif /* defined(__VOXCHRONICLE__Enemy__) */

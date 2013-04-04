@@ -26,6 +26,7 @@ class DictionaryScene :public CCLayer {
   CCLabelTTF* _nameLabel;
   CCLabelTTF* _habitatLabel;
   CCLabelTTF* _descriptionLabel;
+  string repeatChar(const char * string, int times);
  public:
   virtual bool init();
   virtual ~DictionaryScene();

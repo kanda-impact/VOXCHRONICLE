@@ -88,6 +88,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _movable = true;
   _counter = -1;
   _exp = this->getExpFromLua();
+  _frameSprite = NULL;
   stringstream ss;
   ss << _species->getImageName().c_str();
   _sheet = CCTextureCache::sharedTextureCache()->addImage(ss.str().c_str());
@@ -395,6 +396,12 @@ bool Enemy::setAnimationAndFrame(int xOffset, int yOffset, int frames, bool hasF
         frameSprite->setColor(ccc3(0, 0, 0));
       }
       this->addChild(frameSprite, EnemyLayerFrame, EnemyTagFrame);
+      if (_frameSprite) {
+        _frameSprite->release();
+        _frameSprite = NULL;
+      }
+      _frameSprite = frameSprite;
+      _frameSprite->retain();
     }
     return true;
   }
@@ -482,4 +489,11 @@ Species* Enemy::getSpecies() {
 
 string Enemy::getIdentifier() {
   return _identifier;
+}
+
+void Enemy::setSilhouette() {
+  this->stopAllActions();
+  _frameSprite->stopAllActions();
+  this->setColor(ccc3(5, 5, 5));
+  _frameSprite->setColor(ccc3(5, 5, 5));
 }
