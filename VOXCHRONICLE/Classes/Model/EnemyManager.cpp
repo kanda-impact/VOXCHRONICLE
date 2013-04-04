@@ -215,7 +215,7 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CCArray* targets, Charact
             } else {
               exp += getExp;
             }
-            SaveData::sharedData()->addDefeatedCountForEnemy(target->getIdentifier().c_str()); // 倒したカウンター増加
+            SaveData::sharedData()->addDefeatedCountForEnemy(target->getSpecies()->getIdentifier().c_str()); // 倒したカウンター増加
             this->removeEnemy(target);
           }
         }
