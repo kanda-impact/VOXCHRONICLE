@@ -276,6 +276,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         if (_musicManager->getMusicSet()->getFinishCount() == 0) {
           this->gotoNextStage();
         } else {
+          _enemyManager->removeAllNormalEnemies(); // 雑魚キャラを全滅させます
           _musicManager->pushFinishTracks();
         }
       }
@@ -790,7 +791,6 @@ void MainScene::onFinishTracksCompleted() {
     this->startBossBattle();
   } else if (_level->getLevel() >= _map->getMaxLevel() + 1 && _map->getNextMaps()->count() > 0) { // 最高レベルの次の時で、次のマップが存在するとき
     // 次のステージに移動します
-    _enemyManager->removeAllNormalEnemies(); // 雑魚キャラを全滅させます
     SaveData::sharedData()->setClearedForMap(_map->getIdentifier().c_str()); // クリアした
     this->gotoNextStage();
     _map->performOnClear(_characterManager, _enemyManager);
