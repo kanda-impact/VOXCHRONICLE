@@ -164,6 +164,7 @@ class EffectLayer : public CCLayer {
 	static EffectLayer* sharedLayer();
 	PopupWindow* addPopupWindow(int pages);
 	void addEffectOnEnemy(Enemy* enemy, const char* prefix, int frameCount, CCRect rect);
+	void addDamageLabel(int damage, int offset);
 };
 
 class PopupWindow : public CCSprite {

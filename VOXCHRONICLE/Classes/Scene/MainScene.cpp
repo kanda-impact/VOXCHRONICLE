@@ -47,10 +47,10 @@ typedef enum {
   MainSceneZOrderStatus,
   MainSceneZOrderController,
   MainSceneZOrderFocus,
-  MainSceneZOrderDamageLabel,
-  MainSceneZOrderEffect,
-  MainSceneZOrderCutIn,
   MainSceneZOrderMessageWindow,
+  MainSceneZOrderEffect,
+  MainSceneZOrderDamageLabel,
+  MainSceneZOrderCutIn,
   MainSceneZOrderUI
 } MainSceneZOrder;
 
@@ -379,7 +379,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       CCARRAY_FOREACH(enemies, obj) {
         Enemy* enemy = (Enemy*)obj;
         CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(((CCInteger*)damages->objectAtIndex(i))->getValue()).c_str(),
-                                                         FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 100, '0');
+                                                         FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 150, '0');
         // ダメージが0かつ、元々ダメージのない技じゃないかつ、アイテムも破壊していないとき、ヒットしていない状態にしてやる
         int damage = ((CCInteger*)damages->objectAtIndex(i))->getValue();
         sumDamage += damage;
@@ -394,6 +394,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
           SaveData::sharedData()->addCountFor(SaveDataCountKeyDefeat); // 殺しカウント++
         }
         
+<<<<<<< HEAD
         if (damageType != DamageTypeNoDamage) { // 威力のない技は表示しない
           // ダメージラベル
           damageLabel->setPosition(enemy->getPosition());
@@ -406,6 +407,20 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
                                                     CCRemoveFromParentAction::create(),
                                                     NULL));
         }
+=======
+        // ダメージラベル
+        CCSize size = enemy->getContentSize();
+        float scale = MAX(enemy->getCurrentScale(enemy->getRow()), 0.4);
+        damageLabel->setAnchorPoint(ccp(0.5, 0.5));
+        damageLabel->setPosition(ccpAdd(enemy->getPosition(), ccp(0, 50 * scale)));
+        damageLabel->setScale(scale);
+        this->addChild(damageLabel, MainSceneZOrderDamageLabel);
+        damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
+                                                  CCDelayTime::create(0.5),
+                                                  CCFadeOut::create(0.2),
+                                                  CCRemoveFromParentAction::create(),
+                                                  NULL));
+>>>>>>> f5b909d... ダメージ文字差し替え。回復文字を追加
         
         // 敵毎に効果音を鳴らす
         string fileName = "";
@@ -635,18 +650,7 @@ void MainScene::addDamageEffect() {
     queue->pop();
     int damage = info.damage;
     DamageType damageType = info.damageType;
-    // 被ダメージ表示しちゃう
-    CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(damage).c_str(),
-                                                     FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 100, '0');
-    CCDirector* director = CCDirector::sharedDirector();
-    damageLabel->setPosition(ccp(director->getWinSize().width / 2 + i * 50, 90 + i * 20));
-    this->addChild(damageLabel, MainSceneZOrderDamageLabel);
-    damageLabel->setScale(0);
-    damageLabel->runAction(CCSequence::create(CCScaleTo::create(0.1, 1.0),
-                                              CCDelayTime::create(0.5),
-                                              CCEaseSineIn::create(CCMoveBy::create(0.2, ccp(0, -150))),
-                                              CCRemoveFromParentAction::create(),
-                                              NULL));
+    _effectLayer->addDamageLabel(damage, i);
     sumDamage += damage;
     ++i;
     if (damageType == DamageTypeDeath) {
