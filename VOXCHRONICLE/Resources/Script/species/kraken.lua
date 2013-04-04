@@ -14,7 +14,8 @@ Enemy = {
   end,
   disableSkills = {"knockback"},
   description = [[
-  くらげじゃないよ！クラーケンだよー！！足いっぱいあるよー！
+ 深海を根城にする海の荒くれ王者。
+ 通りかかる帆船を襲い、沈没させてはコレクションして最大サイズを競う。
   ]],
   habitat = "",
   animationFrames = 4,

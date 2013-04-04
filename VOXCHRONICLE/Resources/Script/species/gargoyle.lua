@@ -13,7 +13,9 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
-  がーごいる　がー　がー　あひるじゃないよ　いわだよ
+石の彫像に兵士の魂をこめて作られた。
+当初は責務から侵入者を攻撃していたが、
+今は動けない事に飽きて侵入者にちょっかいを掛ける。
   ]],
   habitat = "",
   animationFrames = 4,
