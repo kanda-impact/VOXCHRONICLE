@@ -25,9 +25,11 @@ using namespace cocos2d;
 typedef enum {
   SaveDataCountKeyDead,
   SaveDataCountKeyBeat,
-  SaveDataCountDefeat,
+  SaveDataCountKeyDefeat,
   SaveDataCountKeyMPMiss,
   SaveDataCountKeyBoot,
+  SaveDataCountKeyHitDamage,
+  SaveDataCountKeyAttackDamage,
   SaveDataCountKeyNum
 } SaveDataCountKey;
 

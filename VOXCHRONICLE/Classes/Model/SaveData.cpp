@@ -21,17 +21,19 @@ SaveData* SaveData::sharedData() {
 
 SaveData::SaveData() {
   _countDictionary = CCDictionary::create();
+  _countDictionary->retain();
   this->load();
 }
 
 SaveData::~SaveData() {
+  _countDictionary->release();
 }
 
 void SaveData::save() {
   CCUserDefault* ud = CCUserDefault::sharedUserDefault();
   for (int i = 0; i < SaveDataCountKeyNum; ++i) {
     string key = countDataPrefix + boost::lexical_cast<string>(i);
-    int count = ((CCInteger*)_countDictionary->objectForKey(key))->getValue();
+    int count = this->getCountFor((SaveDataCountKey)i);
     ud->setIntegerForKey(key.c_str(), count);
   }
   CCLog("saved");
@@ -44,6 +46,7 @@ void SaveData::load() {
     string key = countDataPrefix + boost::lexical_cast<string>(i);
     int count = ud->getIntegerForKey(key.c_str());
     CCInteger* data = CCInteger::create(count);
+    cout << key << endl;
     _countDictionary->setObject(data, key);
   }
   CCLog("loaded");
@@ -74,6 +77,9 @@ void SaveData::addCountFor(SaveDataCountKey keynum) {
 
 int SaveData::getCountFor(SaveDataCountKey keynum) {
   string key = countDataPrefix + boost::lexical_cast<string>(keynum);
-  int count = ((CCInteger*)_countDictionary->objectForKey(key))->getValue();
-  return count;
+  CCInteger* obj = (CCInteger*)_countDictionary->objectForKey(key);
+  if (obj) {
+    return obj->getValue();
+  }
+  return 0;
 }

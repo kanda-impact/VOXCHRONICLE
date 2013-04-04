@@ -14,6 +14,8 @@
 
 #include "EffectLayer.h"
 
+#include "SaveData.h"
+
 using namespace boost;
 using namespace boost::lambda;
 
@@ -223,7 +225,7 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CCArray* targets, Charact
     }
     characterManager->addMP(-1 * skill->getMP());
   } else {
-    cout << "MP is nothing!" << endl;
+    SaveData::sharedData()->addCountFor(SaveDataCountKeyMPMiss); // MP切れ
   }
   
   info->setObject(targets, "enemies");

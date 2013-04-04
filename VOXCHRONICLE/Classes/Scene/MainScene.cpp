@@ -336,6 +336,9 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
   }
   
   this->updateGUI(); // GUI更新
+  
+  SaveData::sharedData()->addCountFor(SaveDataCountKeyBeat); // 小節数を数えます
+  
 }
 
 void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track *nextTrack, int trackNumber) {
@@ -383,6 +386,9 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         } else if (damageType != DamageTypeDeath) {
           // ヒットしたとき、敵キャラを点滅させる
           enemy->runAction(CCRepeat::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.05, 64), CCFadeTo::create(0.05, 255)), 3));
+        }
+        if (damageType == DamageTypeDeath) { // 敵キャラを殺したとき
+          SaveData::sharedData()->addCountFor(SaveDataCountKeyDefeat); // 殺しカウント++
         }
         
         // ダメージラベル
@@ -591,6 +597,7 @@ void MainScene::onGameOver() {
   gameover->autorelease();
   _musicManager->getMusic()->pause();
   _skin->getController()->setVisible(false);
+  SaveData::sharedData()->addCountFor(SaveDataCountKeyDead); // 死亡回数をカウント
 }
 
 void MainScene::updateFocus() {

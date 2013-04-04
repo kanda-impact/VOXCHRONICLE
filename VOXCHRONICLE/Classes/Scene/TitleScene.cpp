@@ -16,6 +16,7 @@
 #include "macros.h"
 #include "BufferCache.h"
 #include "StaffRollScene.h"
+#include "SaveData.h"
 
 using namespace cocos2d;
 
@@ -70,6 +71,7 @@ bool TitleScene::init() {
                                        NULL));
     this->addChild(mask);
     mask->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
+    
   }
   
   CCMenuItemLabel* seOff = CCMenuItemLabel::create(CCLabelTTF::create("SE OFF", FONT_NAME, 24));
@@ -86,6 +88,11 @@ bool TitleScene::init() {
   credit->setColor(ccc3(220, 220, 220));
   credit->setPosition(ccp(director->getWinSize().width / 2.0, 25));
   this->addChild(credit);
+  
+  SaveData::sharedData()->addCountFor(SaveDataCountKeyBoot);
+  int count = SaveData::sharedData()->getCountFor(SaveDataCountKeyBoot);
+  CCLog("boot count = %d", count);
+  SaveData::sharedData()->save();
   
   return true;
 }
