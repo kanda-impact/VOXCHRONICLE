@@ -866,3 +866,17 @@ VCState MainScene::getState () {
 bool MainScene::isBossBattle() {
   return _map && _map->isBossStage() && _level->getLevel() == _map->getMaxLevel();
 }
+
+CCArray* MainScene::getMapHistory() {
+  return _mapHistory;
+}
+
+void MainScene::setMapHistory(CCArray* mapHistory) {
+  if (_mapHistory) {
+    _mapHistory->release();
+  }
+  _mapHistory = mapHistory;
+  if (mapHistory) {
+    mapHistory->retain();
+  }
+}
