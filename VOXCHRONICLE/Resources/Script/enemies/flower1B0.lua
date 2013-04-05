@@ -1,7 +1,7 @@
 Enemy = {
   species = "flower",
   level = 10,
-  hp = 12,
+  hp = 15,
   getExp = function(default)
       return 15
   end,
