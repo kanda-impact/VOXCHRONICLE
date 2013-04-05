@@ -19,6 +19,6 @@ Skill = {
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone,
   messages = {
-    "ｼｬﾊﾞﾃﾞｭﾋﾞﾀｯﾁｺｳﾀｰｲ!"
+    ""
   }
 }
