@@ -13,6 +13,7 @@
 #include "MainScene.h"
 #include "FileUtils.h"
 #include "ExtraScene.h"
+#include "SaveData.h"
 
 static const char* DEBUG_SCRIPT = "Script/debug.lua";
 
@@ -72,6 +73,7 @@ bool FreePlayScene::init(const char* script) {
                                                       this,
                                                       menu_selector(FreePlayScene::onMenuItemPressed));
     item->setUserObject(map);
+    item->setEnabled(SaveData::sharedData()->isClearedMap(map->getIdentifier().c_str()));
     CCArray* array = (CCArray*)items->objectAtIndex(col);
     if (col >= 3) break;
     array->addObject(item);
