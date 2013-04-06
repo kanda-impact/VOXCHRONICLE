@@ -26,7 +26,7 @@ Map = {
   getEnemyTable = function(level)
     if level <= 2 then
 --return {}
-      --return {slime1B7 = 3, moth1B0 = 2}
+      return {slime1B7 = 3, moth1B0 = 2}
     elseif level <= 4 then
       return {flower1B0 = 1, moth1B0 = 5}
     elseif level <= 6 then
