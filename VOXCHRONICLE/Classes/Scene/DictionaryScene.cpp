@@ -75,7 +75,7 @@ bool DictionaryScene::init() {
   menu->alignItemsHorizontallyWithPadding(300);
   CCMenu* backMenu = CCMenu::create(back, NULL);
   this->addChild(backMenu);
-  backMenu->setPosition(ccp(420, 30));
+  backMenu->setPosition(ccp(425, 32));
   this->addChild(menu);
   
   _cursor = 0;
@@ -132,12 +132,12 @@ string DictionaryScene::repeatChar(const char *c, int times) {
 }
 
 void DictionaryScene::onBackButtonPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cancel.mp3").c_str());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/menu_cancel.mp3").c_str());
   ExtraScene* layer = ExtraScene::create();
   CCScene* scene = CCScene::create();
   scene->addChild(layer);
-  CCTransitionFade* fade = CCTransitionFade::create(0.2, scene);
-  CCDirector::sharedDirector()->replaceScene(fade);
+  CCTransitionSlideInB* transition = CCTransitionSlideInB::create(0.25f, scene);
+  CCDirector::sharedDirector()->replaceScene(transition);
   SimpleAudioEngine::sharedEngine()->playBackgroundMusic("menu.mp3", true);
 }
 

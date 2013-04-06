@@ -235,6 +235,8 @@
 		074E13761710231E00308F67 /* enemy_wave.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 074E13701710231E00308F67 /* enemy_wave.mp3 */; };
 		074E13771710231E00308F67 /* message_finish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 074E13711710231E00308F67 /* message_finish.mp3 */; };
 		074E137917105CE400308F67 /* endingD.lua in Resources */ = {isa = PBXBuildFile; fileRef = 074E137817105CE400308F67 /* endingD.lua */; };
+		074E137B171067EC00308F67 /* freeplay.lua in Resources */ = {isa = PBXBuildFile; fileRef = 074E137A171067EC00308F67 /* freeplay.lua */; };
+		074E137D1710697500308F67 /* fp_simple.lua in Resources */ = {isa = PBXBuildFile; fileRef = 074E137C1710697500308F67 /* fp_simple.lua */; };
 		074EFD0B15FA926E004D8273 /* SkillTrigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 074EFD0915FA906D004D8273 /* SkillTrigger.cpp */; };
 		074EFD0C15FA93AA004D8273 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 074EFD0715FA906C004D8273 /* Controller.cpp */; };
 		0754384016E3865700802970 /* TutorialScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0754383E16E3865700802970 /* TutorialScene.cpp */; };
@@ -1481,6 +1483,8 @@
 		074E13701710231E00308F67 /* enemy_wave.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = enemy_wave.mp3; path = Resources/SE/enemy_wave.mp3; sourceTree = "<group>"; };
 		074E13711710231E00308F67 /* message_finish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = message_finish.mp3; path = Resources/SE/message_finish.mp3; sourceTree = "<group>"; };
 		074E137817105CE400308F67 /* endingD.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = endingD.lua; path = endings/endingD.lua; sourceTree = "<group>"; };
+		074E137A171067EC00308F67 /* freeplay.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = freeplay.lua; sourceTree = "<group>"; };
+		074E137C1710697500308F67 /* fp_simple.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fp_simple.lua; path = map/fp_simple.lua; sourceTree = "<group>"; };
 		074EFD0715FA906C004D8273 /* Controller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Controller.cpp; path = Classes/UI/Controller.cpp; sourceTree = "<group>"; };
 		074EFD0915FA906D004D8273 /* SkillTrigger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SkillTrigger.cpp; path = Classes/UI/SkillTrigger.cpp; sourceTree = "<group>"; };
 		0754383E16E3865700802970 /* TutorialScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TutorialScene.cpp; path = Classes/Scene/TutorialScene.cpp; sourceTree = "<group>"; };
@@ -3008,6 +3012,7 @@
 		0731E4FA16184A59006AEF3D /* map */ = {
 			isa = PBXGroup;
 			children = (
+				074E137C1710697500308F67 /* fp_simple.lua */,
 				070EF5D716F8B497005ED3B2 /* tutorial0.lua */,
 				070EF5D816F8B498005ED3B2 /* tutorial1.lua */,
 				070EF5D916F8B499005ED3B2 /* tutorial2.lua */,
@@ -3905,6 +3910,7 @@
 				07C6064116164F810084708C /* hello.lua */,
 				07E1351A1621A04300CCF72E /* setting.lua */,
 				079F89A6169EE596001357B5 /* debug.lua */,
+				074E137A171067EC00308F67 /* freeplay.lua */,
 				07D8D649169F3BD900B646E5 /* controller.lua */,
 				079D275716D38B7E006D6A8F /* enemy.lua */,
 				0754384716E3985600802970 /* staffroll.lua */,
@@ -6235,6 +6241,8 @@
 				074E13761710231E00308F67 /* enemy_wave.mp3 in Resources */,
 				074E13771710231E00308F67 /* message_finish.mp3 in Resources */,
 				074E137917105CE400308F67 /* endingD.lua in Resources */,
+				074E137B171067EC00308F67 /* freeplay.lua in Resources */,
+				074E137D1710697500308F67 /* fp_simple.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
