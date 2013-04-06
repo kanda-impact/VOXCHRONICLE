@@ -7,7 +7,7 @@ Enemy = {
   counter = 1,
   getSpeed = function(enemy, characterManager)
     local row = enemy:getRow()
-    local rand = math.random(3)  
+    local rand = math.random(3)
     if rand == 1 then
     rand = math.random(3)
     end
@@ -30,6 +30,10 @@ Enemy = {
   animationFrames = 4,
   performSkill = function(enemy,self)
     local row = enemy:getRow()
+    --[[ local col = user:getCol()
+        col = math.random(2) - 1 - col
+    user:setCol(col)
+]]
     local rand = math.random(5)
     if row == 0 and rand <= 3 then
         return "direct_attack"
