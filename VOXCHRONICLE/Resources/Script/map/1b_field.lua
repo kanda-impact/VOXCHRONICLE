@@ -8,6 +8,21 @@ Map = {
   nextMaps = {"2b_cave","2c_cyber"},
   initialLevel = 1,
   maxLevel = 10,
+  onLoad = function(self, characterManager, enemyManager)
+    local time = VQTime:sharedTime()
+    local hour = time:getCurrentHour()
+    local number = 0
+    if 6 <= hour and hour < 16 then
+      number = 0
+    elseif 16 <= hour and hour < 19 then
+      number = 1
+    else
+      number = 2
+    end
+    local imageName = "field_background"..number..".png"
+    self:changeBackgroundImage(imageName)
+    
+  end,
   getEnemyTable = function(level)
     if level <= 2 then
       return {slime1B7 = 3, flower1B2 = 0, moth1B0 = 2, hornet1B2 = 0}
@@ -20,25 +35,21 @@ Map = {
     elseif level <= 10 then
       return {slime1B7 = 1, flower1B2 = 1, moth1B0 = 1, hornet1B2 = 1}
     end
-      return {slime1B7 = 1, flower1B2 = 1, moth1B0 = 1, hornet1B2 = 1}
-    end
+    return {slime1B7 = 1, flower1B2 = 1, moth1B0 = 1, hornet1B2 = 1}
   end,
   onLevelUp = function(self, characterManager, enemyManager)
-    local num = (characterManager:getLevel() - 1) % 3
-    local imageName = "field_background"..num..".png"
-    self:changeBackgroundImage(imageName)
   end,
   getEnemyPopRate = function(level)
     if level <= 2 then
-    return 0.3
+      return 0.3
     elseif level <= 4 then
-    return 0.4
+      return 0.4
     elseif level <= 6 then
-    return 0.3
+      return 0.3
     elseif level <= 8 then
-    return 0.3
+      return 0.3
     elseif level <= 10 then
-    return 0.3
+      return 0.3
     end
     return 0.2
   end,

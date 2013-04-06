@@ -14,6 +14,7 @@ $#include "StatusLayer.h"
 $#include "EnemySkill.h"
 $#include "Map.h"
 $#include "SaveData.h"
+$#include "VQTime.h"
 
 #define MAX_ROW
 
@@ -103,6 +104,7 @@ class Enemy : public CCSprite, public IRegister {
 	void moveRow(float row);
 	void setRow(float row);
 	int getCol();
+	void setCol(int col);
 	bool setAnimationClip(const char* clipName, int frames, bool hasFrame);
 	bool setDefaultAnimationClip();
 	string getName();
@@ -201,4 +203,9 @@ class SaveData : public CCObject {
 	bool isClearedMap(const char* mapIdentifier);
 	void save();
 	void load();
+};
+
+class VQTime : public CCObject {
+	static VQTime* sharedTime();
+	int getCurrentHour();
 };
