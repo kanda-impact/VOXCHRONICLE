@@ -1,5 +1,5 @@
 Enemy = {
-  name = "クラゲ",
+  name = "レセス",
   imageName = "jfish",
   attack = 2,
   baseExp = 3,
@@ -19,7 +19,7 @@ Enemy = {
   description = [[
   真っ暗な深海をポツリポツリと照らす大クラゲ。
   時折集団で謎の幾何学模様を形成したり、その生態は不明。
-  トメゾラとは遠い親戚。
+  トメゾラという親戚クラゲもいる
   ]],
   habitat = "",
   animationFrames = 4,

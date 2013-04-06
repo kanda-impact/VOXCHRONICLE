@@ -13,7 +13,7 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
-  実は核エンジンで駆動しているらしい。
+かつては世界中で活躍した鉄球の末裔。 鉄球の割に脆いのは年代物だからか。歳には勝てないね。
   ]],
   habitat = "",
   animationFrames = 1,

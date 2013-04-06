@@ -1,10 +1,10 @@
 Enemy = {
-  name = "毒キノコ",
+  name = "ヌェハココ",
   imageName = "toadstool",
   attack = 7,
   baseExp = 5,
   hasFrame = true,
-  counter = 3,
+  counter = 1,
   getSpeed = function(enemy, characterManager)
     return 1
   end,

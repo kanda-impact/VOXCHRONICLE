@@ -1,5 +1,5 @@
 Enemy = {
-  name = "オウムガイ",
+  name = "ボゥチャー",
   imageName = "naut",
   attack = 6,
   baseExp = 3,
@@ -15,7 +15,7 @@ Enemy = {
   description = [[
   太古の昔から姿の変わらない生きた化石。
   頑丈な殻で生存競争から離脱。
-  《クラゲの名称》の周囲に集まって井戸端会議をする。
+  レセスの周囲に集まって井戸端会議をする。
   ]],
   habitat = "",
   animationFrames = 4,

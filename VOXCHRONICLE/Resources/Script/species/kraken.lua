@@ -1,6 +1,6 @@
 math.randomseed(os.time())
 Enemy = {
-  name = "クラーケン",
+  name = "ヴゥゥ・マー",
   imageName = "kraken_body",
   attack = 1,
   baseExp = 3,

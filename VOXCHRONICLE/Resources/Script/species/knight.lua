@@ -1,6 +1,6 @@
 math.randomseed(os.time())
 Enemy = {
-  name = "ナイト",
+  name = "ウィル・デ・ヤウク",
   imageName = "knight",
   attack = 1,
   baseExp = 1,
@@ -18,7 +18,7 @@ Enemy = {
   end,
   disableSkills = {"knockback"},
   description = [[
-  きっとぜんまい仕掛け。たぶんぜんまい仕掛け。
+  きっとぜんまい仕掛け。たぶんぜんまい仕掛け。ちょっと錆びついてるがまだまだ現役。
   ]],
   habitat = "",
   animationFrames = 4,

@@ -13,6 +13,7 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+ 没
   ]],
   habitat = "",
   animationFrames = 4,

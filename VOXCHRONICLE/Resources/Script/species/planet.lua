@@ -1,5 +1,5 @@
 Enemy = {
-  name = "惑星",
+  name = "クタツアー",
   imageName = "planet",
   attack = 1,
   baseExp = 6,

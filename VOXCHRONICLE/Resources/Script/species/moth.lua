@@ -1,10 +1,10 @@
 Enemy = {
-  name = "ちょうちょ",
+  name = "ジクーイーター",
   imageName = "moth",
   attack = 5,
   baseExp = 10,
   hasFrame = true,
-  counter = 3,
+  counter = 1,
   getSpeed = function(enemy, characterManager)
     return 1
 
@@ -14,7 +14,7 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
-  ポンポンの粉を散らされると死んでしまう儚い命。
+  ポンポンの粉を散らされると死んでしまう儚い命。ジクーの天敵。
   稀に集団発生してはオクスとラスカと誰かを大いに苦しめる。
   ]],
   habitat = "",
