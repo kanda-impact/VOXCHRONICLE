@@ -1,8 +1,9 @@
 Map = {
-  name = "城",
+  name = "古城",
   wayMusic = "dub",
   bossMusic = "3Bb",
   backgroundImage = "castle_background.png",
+  thumbnailImage = "castle_thumbnail.png",
   skin = "skinC",
   ending = "endingB",
   nextMaps = {""},

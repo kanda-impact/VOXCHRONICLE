@@ -307,8 +307,11 @@
 		076F1D3C15EB94780013A45E /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 076F1D3B15EB94780013A45E /* AppDelegate.cpp */; };
 		0772FEB616C260BA00A50931 /* VQString.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0772FEB416C260BA00A50931 /* VQString.mm */; };
 		0772FEBA16C2786D00A50931 /* MessageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0772FEB816C2786B00A50931 /* MessageManager.cpp */; };
+		0778C5DF170FEE310017D230 /* menu_cancel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0778C5DD170FEE310017D230 /* menu_cancel.mp3 */; };
+		0778C5E0170FEE310017D230 /* menu_decide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0778C5DE170FEE310017D230 /* menu_decide.mp3 */; };
 		077DCFC3169EE872007A7003 /* Image in Resources */ = {isa = PBXBuildFile; fileRef = 077DCFC1169EE872007A7003 /* Image */; };
 		077DCFC6169EE89B007A7003 /* Retina in Resources */ = {isa = PBXBuildFile; fileRef = 077DCFC5169EE89B007A7003 /* Retina */; };
+		077DF757170DD69A00F0C799 /* space_boss.lua in Resources */ = {isa = PBXBuildFile; fileRef = 077DF756170DD69900F0C799 /* space_boss.lua */; };
 		077EDDF916870767009B9F6B /* charge_effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDEF16870767009B9F6B /* charge_effect.mp3 */; };
 		077EDDFA16870767009B9F6B /* cure_effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDF016870767009B9F6B /* cure_effect.mp3 */; };
 		077EDDFB16870767009B9F6B /* cursor.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDF116870767009B9F6B /* cursor.mp3 */; };
@@ -403,7 +406,6 @@
 		0791587B15EBB50E0083D348 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586F15EBB4BB0083D348 /* Icon.png */; };
 		0791587C15EBB50E0083D348 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791587015EBB4BB0083D348 /* Icon@2x.png */; };
 		0791587E15EBB50E0083D348 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 0791587215EBB4BB0083D348 /* iTunesArtwork */; };
-		079331A3169D85D300AE4F93 /* DebugScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 079331A1169D85D300AE4F93 /* DebugScene.cpp */; };
 		079487951616D8C5004ABCF5 /* knockback.lua in Resources */ = {isa = PBXBuildFile; fileRef = 079487941616D8C5004ABCF5 /* knockback.lua */; };
 		0794879C1616EC7E004ABCF5 /* tension.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0794879B1616EC7E004ABCF5 /* tension.lua */; };
 		079668E216FD4B110001F8B2 /* negi-3c_counter0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 079668B216FD4B110001F8B2 /* negi-3c_counter0.caf */; };
@@ -661,6 +663,7 @@
 		07A1B99B16CDC1CA0092AF8C /* attack_effect3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A1B99516CDC1CA0092AF8C /* attack_effect3.mp3 */; };
 		07A1F4D51693161600C4329F /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A1F4D41693161600C4329F /* libTestFlight.a */; };
 		07A1F535169319B300C4329F /* volca.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07A1F534169319B300C4329F /* volca.lua */; };
+		07A317AB170C5F770032CAA4 /* AchievementSceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A317AA170C5F770032CAA4 /* AchievementSceneDelegate.m */; };
 		07A3D59D1705E8DB009AE7F3 /* 2b_counter0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07A3D5651705E8DB009AE7F3 /* 2b_counter0.caf */; };
 		07A3D59E1705E8DB009AE7F3 /* 2b_counter1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07A3D5661705E8DB009AE7F3 /* 2b_counter1.caf */; };
 		07A3D59F1705E8DB009AE7F3 /* 2b_counter2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07A3D5671705E8DB009AE7F3 /* 2b_counter2.caf */; };
@@ -766,6 +769,14 @@
 		07B2202D16CFD4270083B865 /* 003.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B2202C16CFD4270083B865 /* 003.lua */; };
 		07B7A6981620470000FCE64C /* LuaObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A6961620470000FCE64C /* LuaObject.cpp */; };
 		07B7A69E16204D4D00FCE64C /* LuaBind.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B7A69C16204D4D00FCE64C /* LuaBind.cpp */; };
+		07B8B6121708BBA200DB739F /* T_tetufez7.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B8B6101708BBA200DB739F /* T_tetufez7.lua */; };
+		07B8B6131708BBA200DB739F /* T_moth7.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B8B6111708BBA200DB739F /* T_moth7.lua */; };
+		07B8B6151708D2C000DB739F /* shield_test.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07B8B6141708D2C000DB739F /* shield_test.lua */; };
+		07B8B6181709B47F00DB739F /* CCAchievementManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B8B6161709B47F00DB739F /* CCAchievementManager.mm */; };
+		07B8B61A1709C43600DB739F /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B8B6191709C43200DB739F /* GameKit.framework */; };
+		07B8B61D1709CDC000DB739F /* CCAchievementDescription.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B8B61B1709CDC000DB739F /* CCAchievementDescription.mm */; };
+		07B8B61F170AFF3100DB739F /* FreePlayScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B8B61E170AFF3100DB739F /* FreePlayScene.cpp */; };
+		07B8B626170C599900DB739F /* AchievementScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B8B624170C599800DB739F /* AchievementScene.mm */; };
 		07B95E1B15F304120024C672 /* Track.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B95E1915F303E30024C672 /* Track.mm */; };
 		07C6064216164F810084708C /* hello.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07C6064116164F810084708C /* hello.lua */; };
 		07C6085816164FEE0084708C /* CCAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6064916164FED0084708C /* CCAction.cpp */; };
@@ -1209,7 +1220,7 @@
 		B0821D491707AF4D009417B5 /* T_tnt.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0821D481707AF4D009417B5 /* T_tnt.lua */; };
 		B0821D4B1707AFA7009417B5 /* T_ginet.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0821D4A1707AFA7009417B5 /* T_ginet.lua */; };
 		B0821D4D1707B98A009417B5 /* T_tetufez.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0821D4C1707B98A009417B5 /* T_tetufez.lua */; };
-		B0821D4F1707BCBD009417B5 /* T_moth.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0821D4E1707BCBC009417B5 /* T_moth.lua */; };
+		B0821D4F1707BCBD009417B5 /* Ts_moth.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0821D4E1707BCBC009417B5 /* Ts_moth.lua */; };
 		B0821D511707BD05009417B5 /* T_moth.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0821D501707BD04009417B5 /* T_moth.lua */; };
 		B0AA405016F58CB300674A2A /* mask3A1.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AA404F16F58CB300674A2A /* mask3A1.lua */; };
 		B0AA405216F58D2300674A2A /* typhoon3A2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AA405116F58D2200674A2A /* typhoon3A2.lua */; };
@@ -1540,8 +1551,11 @@
 		0772FEB416C260BA00A50931 /* VQString.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VQString.mm; sourceTree = "<group>"; };
 		0772FEB716C260D300A50931 /* VQString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VQString.h; path = VOXCHRONICLE/Classes/includes/VQString.h; sourceTree = SOURCE_ROOT; };
 		0772FEB816C2786B00A50931 /* MessageManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageManager.cpp; path = Classes/Model/MessageManager.cpp; sourceTree = "<group>"; };
+		0778C5DD170FEE310017D230 /* menu_cancel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = menu_cancel.mp3; path = Resources/SE/menu_cancel.mp3; sourceTree = "<group>"; };
+		0778C5DE170FEE310017D230 /* menu_decide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = menu_decide.mp3; path = Resources/SE/menu_decide.mp3; sourceTree = "<group>"; };
 		077DCFC1169EE872007A7003 /* Image */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Image; path = Resources/Image; sourceTree = "<group>"; };
 		077DCFC5169EE89B007A7003 /* Retina */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Retina; path = Resources/Retina; sourceTree = "<group>"; };
+		077DF756170DD69900F0C799 /* space_boss.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = space_boss.lua; path = map/space_boss.lua; sourceTree = "<group>"; };
 		077EDDEF16870767009B9F6B /* charge_effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = charge_effect.mp3; path = Resources/SE/charge_effect.mp3; sourceTree = "<group>"; };
 		077EDDF016870767009B9F6B /* cure_effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = cure_effect.mp3; path = Resources/SE/cure_effect.mp3; sourceTree = "<group>"; };
 		077EDDF116870767009B9F6B /* cursor.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = cursor.mp3; path = Resources/SE/cursor.mp3; sourceTree = "<group>"; };
@@ -1639,8 +1653,6 @@
 		0791587015EBB4BB0083D348 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Resources/ios/Icon@2x.png"; sourceTree = "<group>"; };
 		0791587115EBB4BB0083D348 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/ios/Info.plist; sourceTree = "<group>"; };
 		0791587215EBB4BB0083D348 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Resources/ios/iTunesArtwork; sourceTree = "<group>"; };
-		079331A1169D85D300AE4F93 /* DebugScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DebugScene.cpp; path = Classes/Scene/DebugScene.cpp; sourceTree = "<group>"; };
-		079331A4169D85EA00AE4F93 /* DebugScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DebugScene.h; path = Classes/includes/DebugScene.h; sourceTree = "<group>"; };
 		079487941616D8C5004ABCF5 /* knockback.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knockback.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		0794879B1616EC7E004ABCF5 /* tension.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tension.lua; sourceTree = "<group>"; };
 		079668B216FD4B110001F8B2 /* negi-3c_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "negi-3c_counter0.caf"; sourceTree = "<group>"; };
@@ -1905,6 +1917,8 @@
 		07A1F4D41693161600C4329F /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTestFlight.a; path = VOXCHRONICLE/ios/libTestFlight.a; sourceTree = "<group>"; };
 		07A1F4D61693162500C4329F /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestFlight.h; path = ios/TestFlight.h; sourceTree = "<group>"; };
 		07A1F534169319B300C4329F /* volca.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = volca.lua; path = musics/volca.lua; sourceTree = "<group>"; };
+		07A317A9170C5F770032CAA4 /* AchievementSceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AchievementSceneDelegate.h; path = ios/AchievementSceneDelegate.h; sourceTree = "<group>"; };
+		07A317AA170C5F770032CAA4 /* AchievementSceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AchievementSceneDelegate.m; path = ios/AchievementSceneDelegate.m; sourceTree = "<group>"; };
 		07A3D5651705E8DB009AE7F3 /* 2b_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2b_counter0.caf; path = Resources/Music/2b/2b_counter0.caf; sourceTree = "<group>"; };
 		07A3D5661705E8DB009AE7F3 /* 2b_counter1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2b_counter1.caf; path = Resources/Music/2b/2b_counter1.caf; sourceTree = "<group>"; };
 		07A3D5671705E8DB009AE7F3 /* 2b_counter2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2b_counter2.caf; path = Resources/Music/2b/2b_counter2.caf; sourceTree = "<group>"; };
@@ -2013,6 +2027,18 @@
 		07B2202C16CFD4270083B865 /* 003.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 003.lua; path = VOXCHRONICLE/Resources/Script/map/003.lua; sourceTree = SOURCE_ROOT; };
 		07B7A6961620470000FCE64C /* LuaObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaObject.cpp; path = Classes/Lua/LuaObject.cpp; sourceTree = "<group>"; };
 		07B7A69C16204D4D00FCE64C /* LuaBind.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LuaBind.cpp; path = Classes/Lua/LuaBind.cpp; sourceTree = "<group>"; };
+		07B8B6101708BBA200DB739F /* T_tetufez7.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_tetufez7.lua; sourceTree = "<group>"; };
+		07B8B6111708BBA200DB739F /* T_moth7.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_moth7.lua; sourceTree = "<group>"; };
+		07B8B6141708D2C000DB739F /* shield_test.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shield_test.lua; sourceTree = "<group>"; };
+		07B8B6161709B47F00DB739F /* CCAchievementManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCAchievementManager.mm; sourceTree = "<group>"; };
+		07B8B6171709B47F00DB739F /* CCAchievementManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAchievementManager.h; sourceTree = "<group>"; };
+		07B8B6191709C43200DB739F /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		07B8B61B1709CDC000DB739F /* CCAchievementDescription.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CCAchievementDescription.mm; sourceTree = "<group>"; };
+		07B8B61C1709CDC000DB739F /* CCAchievementDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAchievementDescription.h; sourceTree = "<group>"; };
+		07B8B61E170AFF3100DB739F /* FreePlayScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FreePlayScene.cpp; path = Classes/Scene/FreePlayScene.cpp; sourceTree = "<group>"; };
+		07B8B620170AFF4E00DB739F /* FreePlayScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FreePlayScene.h; path = Classes/includes/FreePlayScene.h; sourceTree = "<group>"; };
+		07B8B624170C599800DB739F /* AchievementScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AchievementScene.mm; path = Classes/Scene/AchievementScene.mm; sourceTree = "<group>"; };
+		07B8B625170C599800DB739F /* AchievementScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AchievementScene.h; path = Classes/Scene/AchievementScene.h; sourceTree = "<group>"; };
 		07B95E1915F303E30024C672 /* Track.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = Track.mm; path = Classes/VISS/Track.mm; sourceTree = "<group>"; };
 		07C6064116164F810084708C /* hello.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hello.lua; sourceTree = "<group>"; };
 		07C6064916164FED0084708C /* CCAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCAction.cpp; sourceTree = "<group>"; };
@@ -2782,7 +2808,7 @@
 		B0821D481707AF4D009417B5 /* T_tnt.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_tnt.lua; sourceTree = "<group>"; };
 		B0821D4A1707AFA7009417B5 /* T_ginet.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_ginet.lua; sourceTree = "<group>"; };
 		B0821D4C1707B98A009417B5 /* T_tetufez.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_tetufez.lua; sourceTree = "<group>"; };
-		B0821D4E1707BCBC009417B5 /* T_moth.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = T_moth.lua; path = species/T_moth.lua; sourceTree = "<group>"; };
+		B0821D4E1707BCBC009417B5 /* Ts_moth.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Ts_moth.lua; path = species/Ts_moth.lua; sourceTree = "<group>"; };
 		B0821D501707BD04009417B5 /* T_moth.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_moth.lua; sourceTree = "<group>"; };
 		B0AA404F16F58CB300674A2A /* mask3A1.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mask3A1.lua; sourceTree = "<group>"; };
 		B0AA405116F58D2200674A2A /* typhoon3A2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = typhoon3A2.lua; sourceTree = "<group>"; };
@@ -2805,6 +2831,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07B8B61A1709C43600DB739F /* GameKit.framework in Frameworks */,
 				076F1A5115EB94750013A45E /* QuartzCore.framework in Frameworks */,
 				076F1A5315EB94750013A45E /* OpenGLES.framework in Frameworks */,
 				076F1A5515EB94750013A45E /* OpenAL.framework in Frameworks */,
@@ -2944,6 +2971,10 @@
 				07F0D758163BAF51005592AF /* Utils.h */,
 				07F0D778163BE85E005592AF /* FileUtils.h */,
 				0772FEB716C260D300A50931 /* VQString.h */,
+				07B8B6161709B47F00DB739F /* CCAchievementManager.mm */,
+				07B8B6171709B47F00DB739F /* CCAchievementManager.h */,
+				07B8B61B1709CDC000DB739F /* CCAchievementDescription.mm */,
+				07B8B61C1709CDC000DB739F /* CCAchievementDescription.h */,
 			);
 			name = Util;
 			path = Classes/Util;
@@ -3188,14 +3219,14 @@
 				07F0D756163BABFF005592AF /* LogoScene.h */,
 				07F0D757163BABFF005592AF /* MainScene.h */,
 				07F0D79A163C1EFD005592AF /* TitleScene.h */,
-				079331A4169D85EA00AE4F93 /* DebugScene.h */,
 				07F88F2016DBC7A900FE6B2B /* EndingScene.h */,
 				07F88F2116DBC7AA00FE6B2B /* SelectScene.h */,
 				07C6467616DE406F00B29842 /* EffectLayer.h */,
 				0791585815EBA8350083D348 /* LogoScene.cpp */,
 				07D8740615ED13CD009CC446 /* MainScene.cpp */,
+				07B8B620170AFF4E00DB739F /* FreePlayScene.h */,
+				07B8B61E170AFF3100DB739F /* FreePlayScene.cpp */,
 				07F0D797163C1EC0005592AF /* TitleScene.cpp */,
-				079331A1169D85D300AE4F93 /* DebugScene.cpp */,
 				079D274816D2210C006D6A8F /* EndingScene.cpp */,
 				07F88F1D16DBC66800FE6B2B /* SelectScene.cpp */,
 				07C6467316DE3FB200B29842 /* EffectLayer.cpp */,
@@ -3209,6 +3240,8 @@
 				07ADDF9816F72048007825D2 /* ExtraScene.cpp */,
 				07ADDF9F16F75086007825D2 /* DictionaryScene.h */,
 				07ADDF9C16F73514007825D2 /* DictionaryScene.cpp */,
+				07B8B624170C599800DB739F /* AchievementScene.mm */,
+				07B8B625170C599800DB739F /* AchievementScene.h */,
 			);
 			name = Scene;
 			sourceTree = "<group>";
@@ -3333,6 +3366,7 @@
 		076F1A4F15EB94750013A45E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07B8B6191709C43200DB739F /* GameKit.framework */,
 				07A1F4D41693161600C4329F /* libTestFlight.a */,
 				076F1A5015EB94750013A45E /* QuartzCore.framework */,
 				076F1A5215EB94750013A45E /* OpenGLES.framework */,
@@ -3401,6 +3435,8 @@
 				076F1D3415EB94780013A45E /* AppController.mm */,
 				076F1D3615EB94780013A45E /* RootViewController.h */,
 				076F1D3715EB94780013A45E /* RootViewController.mm */,
+				07A317A9170C5F770032CAA4 /* AchievementSceneDelegate.h */,
+				07A317AA170C5F770032CAA4 /* AchievementSceneDelegate.m */,
 			);
 			name = ios;
 			sourceTree = "<group>";
@@ -3432,7 +3468,7 @@
 				B017551B17079FD7008053BB /* Ts_geek.lua */,
 				B017551917079FBD008053BB /* Ts_ginet.lua */,
 				B0821D3A1707AD61009417B5 /* Ts_tetufez.lua */,
-				B0821D4E1707BCBC009417B5 /* T_moth.lua */,
+				B0821D4E1707BCBC009417B5 /* Ts_moth.lua */,
 				0796691416FD4C540001F8B2 /* acorn.lua */,
 				0796691516FD4C540001F8B2 /* bat.lua */,
 				0796691616FD4C540001F8B2 /* coin.lua */,
@@ -3837,6 +3873,7 @@
 				07660C4B169097F00092104F /* musics */,
 				07FD921C1621097700E74459 /* character */,
 				0731E4FA16184A59006AEF3D /* map */,
+				077DF756170DD69900F0C799 /* space_boss.lua */,
 				07C6093A161674650084708C /* enemies */,
 				07C6093B161674650084708C /* skills */,
 				07C6064116164F810084708C /* hello.lua */,
@@ -4830,6 +4867,9 @@
 				B0821D4A1707AFA7009417B5 /* T_ginet.lua */,
 				B0821D4C1707B98A009417B5 /* T_tetufez.lua */,
 				B0821D501707BD04009417B5 /* T_moth.lua */,
+				07B8B6101708BBA200DB739F /* T_tetufez7.lua */,
+				07B8B6111708BBA200DB739F /* T_moth7.lua */,
+				07B8B6141708D2C000DB739F /* shield_test.lua */,
 			);
 			path = enemies;
 			sourceTree = "<group>";
@@ -5155,6 +5195,8 @@
 				077EDE311687E490009B9F6B /* guard.mp3 */,
 				077EDE321687E490009B9F6B /* miss.mp3 */,
 				077EDE331687E491009B9F6B /* shield_invalid.mp3 */,
+				0778C5DD170FEE310017D230 /* menu_cancel.mp3 */,
+				0778C5DE170FEE310017D230 /* menu_decide.mp3 */,
 			);
 			name = SE;
 			sourceTree = "<group>";
@@ -6140,8 +6182,14 @@
 				B0821D491707AF4D009417B5 /* T_tnt.lua in Resources */,
 				B0821D4B1707AFA7009417B5 /* T_ginet.lua in Resources */,
 				B0821D4D1707B98A009417B5 /* T_tetufez.lua in Resources */,
-				B0821D4F1707BCBD009417B5 /* T_moth.lua in Resources */,
+				B0821D4F1707BCBD009417B5 /* Ts_moth.lua in Resources */,
 				B0821D511707BD05009417B5 /* T_moth.lua in Resources */,
+				07B8B6121708BBA200DB739F /* T_tetufez7.lua in Resources */,
+				07B8B6131708BBA200DB739F /* T_moth7.lua in Resources */,
+				07B8B6151708D2C000DB739F /* shield_test.lua in Resources */,
+				077DF757170DD69A00F0C799 /* space_boss.lua in Resources */,
+				0778C5DF170FEE310017D230 /* menu_cancel.mp3 in Resources */,
+				0778C5E0170FEE310017D230 /* menu_decide.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6436,7 +6484,6 @@
 				07660C5316909BF10092104F /* MusicSet.cpp in Sources */,
 				0715C2371690EB3000009479 /* EnemySkill.cpp in Sources */,
 				07244C3016956CAD00C5A442 /* QTETrigger.cpp in Sources */,
-				079331A3169D85D300AE4F93 /* DebugScene.cpp in Sources */,
 				07D8D64D169F4D9300B646E5 /* PauseLayer.cpp in Sources */,
 				0725180D16B141FB004361B7 /* BufferCache.cpp in Sources */,
 				072A5C9E16BAAE5D00A64AD6 /* GameOverLayer.cpp in Sources */,
@@ -6460,6 +6507,11 @@
 				07ADDF9A16F72048007825D2 /* ExtraScene.cpp in Sources */,
 				07ADDF9E16F73518007825D2 /* DictionaryScene.cpp in Sources */,
 				07ADDFA416F784F9007825D2 /* IRegister.cpp in Sources */,
+				07B8B6181709B47F00DB739F /* CCAchievementManager.mm in Sources */,
+				07B8B61D1709CDC000DB739F /* CCAchievementDescription.mm in Sources */,
+				07B8B61F170AFF3100DB739F /* FreePlayScene.cpp in Sources */,
+				07B8B626170C599900DB739F /* AchievementScene.mm in Sources */,
+				07A317AB170C5F770032CAA4 /* AchievementSceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

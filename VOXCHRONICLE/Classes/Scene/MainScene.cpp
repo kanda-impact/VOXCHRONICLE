@@ -28,6 +28,7 @@
 #include "BufferCache.h"
 #include "EndingScene.h"
 #include "SEManager.h"
+#include "SaveData.h"
 
 #include "CCRemoveFromParentAction.h"
 
@@ -148,6 +149,7 @@ bool MainScene::init(Map* map) {
 }
 
 MainScene::~MainScene() {
+  SaveData::sharedData()->save();
   _musicManager->getMusic()->stop();
   _map->release();
   _messageWindow->release();
@@ -167,6 +169,7 @@ MainScene::~MainScene() {
     _qteTrigger->release();
   }
   _effectLayer->removeAllChildrenWithCleanup(true);
+  MessageManager::purgeMessageManager();
 }
 
 void MainScene::update(float dt) {
@@ -198,7 +201,7 @@ void MainScene::onEnterTransitionDidFinish() {
 
 void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber) {
   if (_state == VCStateMain) {
-    _enemyManager->nextTurn(_characterManager);
+    _enemyManager->nextTurn(_characterManager, false);
     CCObject* obj = NULL;
     CCARRAY_FOREACH(_enemyManager->getEnemies(), obj) {
       Enemy* enemy = (Enemy*)obj;
@@ -273,6 +276,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         if (_musicManager->getMusicSet()->getFinishCount() == 0) {
           this->gotoNextStage();
         } else {
+          _enemyManager->removeAllNormalEnemies(); // 雑魚キャラを全滅させます
           _musicManager->pushFinishTracks();
         }
       }
@@ -307,6 +311,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
   } else if (_state == VCStateQTEFinish) { // QTE終了時
     int count = _musicManager->getFinishCount();
     if (count == 2) { // 3小節目
+      SaveData::sharedData()->addDefeatedCountForEnemy(_enemyManager->getBoss()->getSpecies()->getIdentifier().c_str()); // ボスの倒したカウンター増加
       _enemyManager->removeEnemy(_enemyManager->getBoss());
       _enemyManager->setBoss(NULL);
       CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("explosion.mp3").c_str()); // 爆発
@@ -332,6 +337,9 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
   }
   
   this->updateGUI(); // GUI更新
+  
+  SaveData::sharedData()->addCountFor(SaveDataCountKeyBeat); // 小節数を数えます
+  
 }
 
 void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track *nextTrack, int trackNumber) {
@@ -346,6 +354,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     int preExp = _characterManager->getExp();
     int getExp = 0;
     
+    int sumDamage = 0;
     bool isHit = true; // ヒットしたかどうか
     /* 以下のとき、ヒットしていない
      1. 対象が自分以外の技を使用し、対象の全てについて
@@ -370,9 +379,10 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       CCARRAY_FOREACH(enemies, obj) {
         Enemy* enemy = (Enemy*)obj;
         CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(((CCInteger*)damages->objectAtIndex(i))->getValue()).c_str(),
-        FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 100, '0');
+                                                         FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 100, '0');
         // ダメージが0かつ、元々ダメージのない技じゃないかつ、アイテムも破壊していないとき、ヒットしていない状態にしてやる
         int damage = ((CCInteger*)damages->objectAtIndex(i))->getValue();
+        sumDamage += damage;
         DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(i))->getValue();
         if (damage > 0 || damageType == DamageTypeBarrierBreak || damageType == DamageTypeShieldBreak || damageType == DamageTypeNoDamage) {
           isHit = true;
@@ -380,17 +390,20 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
           // ヒットしたとき、敵キャラを点滅させる
           enemy->runAction(CCRepeat::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.05, 64), CCFadeTo::create(0.05, 255)), 3));
         }
+        if (damageType == DamageTypeDeath) { // 敵キャラを殺したとき
+          SaveData::sharedData()->addCountFor(SaveDataCountKeyDefeat); // 殺しカウント++
+        }
         
         // ダメージラベル
         damageLabel->setPosition(enemy->getPosition());
-         float scale = enemy->getCurrentScale(enemy->getRow());
-         damageLabel->setScale(scale);
-         this->addChild(damageLabel, MainSceneZOrderDamageLabel);
-         damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
-         CCDelayTime::create(0.5),
-         CCFadeOut::create(0.2),
-         CCRemoveFromParentAction::create(),
-         NULL));
+        float scale = enemy->getCurrentScale(enemy->getRow());
+        damageLabel->setScale(scale);
+        this->addChild(damageLabel, MainSceneZOrderDamageLabel);
+        damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
+                                                  CCDelayTime::create(0.5),
+                                                  CCFadeOut::create(0.2),
+                                                  CCRemoveFromParentAction::create(),
+                                                  NULL));
         
         // 敵毎に効果音を鳴らす
         string fileName = "";
@@ -419,6 +432,9 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         }
         ++i;
       }
+      
+      // ダメージ更新
+      SaveData::sharedData()->addCountFor(SaveDataCountKeyAttackDamage, sumDamage);
       
       // 全体のSE
       if (enemyCount > 0 && skill->hasSE() && isHit) { // ヒットしたとき、SEがあればSEをならしてやる
@@ -587,6 +603,7 @@ void MainScene::onGameOver() {
   gameover->autorelease();
   _musicManager->getMusic()->pause();
   _skin->getController()->setVisible(false);
+  SaveData::sharedData()->addCountFor(SaveDataCountKeyDead); // 死亡回数をカウント
 }
 
 void MainScene::updateFocus() {
@@ -605,6 +622,7 @@ void MainScene::addDamageEffect() {
   bool isDead = false;
   bool isShield = false;
   int sumDamage = 0;
+  int i = 0;
   std::queue<DamageInfo>* queue = _characterManager->getDamageInfoQueue();
   while (!queue->empty()) { // キューが空になるまで取り出す
     DamageInfo info = queue->front();
@@ -615,15 +633,16 @@ void MainScene::addDamageEffect() {
     CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(damage).c_str(),
                                                      FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 100, '0');
     CCDirector* director = CCDirector::sharedDirector();
-    damageLabel->setPosition(ccp(director->getWinSize().width / 2, 90));
+    damageLabel->setPosition(ccp(director->getWinSize().width / 2 + i * 50, 90 + i * 20));
     this->addChild(damageLabel, MainSceneZOrderDamageLabel);
     damageLabel->setScale(0);
-    damageLabel->runAction(CCSequence::create(CCScaleTo::create(0.1, 0.8),
+    damageLabel->runAction(CCSequence::create(CCScaleTo::create(0.1, 1.0),
                                               CCDelayTime::create(0.5),
-                                              CCScaleTo::create(0.2, 0.0),
+                                              CCEaseSineIn::create(CCMoveBy::create(0.2, ccp(0, -150))),
                                               CCRemoveFromParentAction::create(),
                                               NULL));
     sumDamage += damage;
+    ++i;
     if (damageType == DamageTypeDeath) {
       isDead = true;
     } else if (damageType == DamageTypeShield) {
@@ -759,9 +778,7 @@ void MainScene::gotoNextStage() {
     if (maps->count() == 1) {
       this->changeMap((Map*)maps->objectAtIndex(0));
     } else if (maps->count() >= 2) {
-      _mapSelector = MapSelector::create();
-      _mapSelector->retain();
-      _mapSelector->setNextMaps(maps);
+      _mapSelector = new MapSelector(maps);
       _skin->getController()->setEnable(false);
       this->addChild(_mapSelector, MainSceneZOrderUI);
       _state = VCStateMapSelect;
@@ -782,13 +799,16 @@ void MainScene::onFinishTracksCompleted() {
     ending->addChild(endingLayer);
     CCTransitionFade* fade = CCTransitionFade::create(7.0f, ending, ccc3(255, 255, 255));
     CCDirector::sharedDirector()->replaceScene(fade);
+    SaveData::sharedData()->setClearedForMap(_map->getIdentifier().c_str());
+    _map->performOnClear(_characterManager, _enemyManager);
   } else if (_map->isBossStage() && _level->getLevel() == _map->getMaxLevel()) { // ボスステージで、現在が最高レベルの時
     // ボス戦を開始します
     this->startBossBattle();
   } else if (_level->getLevel() >= _map->getMaxLevel() + 1 && _map->getNextMaps()->count() > 0) { // 最高レベルの次の時で、次のマップが存在するとき
     // 次のステージに移動します
-    _enemyManager->removeAllNormalEnemies(); // 雑魚キャラを全滅させます
+    SaveData::sharedData()->setClearedForMap(_map->getIdentifier().c_str()); // クリアした
     this->gotoNextStage();
+    _map->performOnClear(_characterManager, _enemyManager);
   }
 }
 
@@ -816,44 +836,7 @@ void MainScene::changeMusic(MusicSet* mSet, bool enablePreload) {
   if (enablePreload) {
     _musicManager->preloadAllTracks(_characterManager, _level); // 曲データを読む
   }
-  // 作曲者情報と曲名を表示する
-  CCNode* musicInfo = CCNode::create();
-  CCLabelTTF* nameShadowLabel = CCLabelTTF::create(mSet->getName().c_str(),
-                                                   "Helvetica",
-                                                   24,
-                                                   CCSizeMake(200, 30),
-                                                   kCCTextAlignmentRight);
-  musicInfo->addChild(nameShadowLabel);
-  nameShadowLabel->setColor(ccc3(33, 33, 33));
-  nameShadowLabel->setPosition(ccp(3, -3));
-  CCLabelTTF* composerShadowLabel = CCLabelTTF::create(mSet->getComposer().c_str(),
-                                                       "Helvetica",
-                                                       16,
-                                                       CCSizeMake(200, 20),
-                                                       kCCTextAlignmentRight);
-  composerShadowLabel->setColor(ccc3(33, 33, 33));
-  composerShadowLabel->setPosition(ccp(3, -28));
-  musicInfo->addChild(composerShadowLabel);
-  CCLabelTTF* nameLabel = CCLabelTTF::create(mSet->getName().c_str(),
-                                             "Helvetica",
-                                             24,
-                                             CCSizeMake(200, 30),
-                                             kCCTextAlignmentRight);
-  musicInfo->addChild(nameLabel);
-  CCLabelTTF* composerLabel = CCLabelTTF::create(mSet->getComposer().c_str(),
-                                                 "Helvetica",
-                                                 16,
-                                                 CCSizeMake(200, 20),
-                                                 kCCTextAlignmentRight);
-  composerLabel->setPosition(ccp(0, -25));
-  musicInfo->addChild(composerLabel);
-  this->addChild(musicInfo, MainSceneZOrderUI);
-  musicInfo->setPosition(ccp(600, 40));
-  musicInfo->runAction(CCSequence::create(CCMoveTo::create(0.5f, ccp(360, 40)),
-                                          CCDelayTime::create(2.0f),
-                                          CCMoveTo::create(0.5f, ccp(600, 40)),
-                                          CCRemoveFromParentAction::create(),
-                                          NULL));
+  _effectLayer->addMusicInfo(_map, _level);
 }
 
 VCState MainScene::getState () {
@@ -862,4 +845,18 @@ VCState MainScene::getState () {
 
 bool MainScene::isBossBattle() {
   return _map && _map->isBossStage() && _level->getLevel() == _map->getMaxLevel();
+}
+
+CCArray* MainScene::getMapHistory() {
+  return _mapHistory;
+}
+
+void MainScene::setMapHistory(CCArray* mapHistory) {
+  if (_mapHistory) {
+    _mapHistory->release();
+  }
+  _mapHistory = mapHistory;
+  if (mapHistory) {
+    mapHistory->retain();
+  }
 }

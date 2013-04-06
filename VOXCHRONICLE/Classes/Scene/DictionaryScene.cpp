@@ -11,6 +11,7 @@
 #include "LuaObject.h"
 #include "FileUtils.h"
 #include "ExtraScene.h"
+#include "SaveData.h"
 
 bool DictionaryScene::init() {
   if (!CCLayer::init()) {
@@ -103,13 +104,31 @@ void DictionaryScene::loadEnemyByIndex(int idx) {
   _enemy = Enemy::create(script->getCString());
   _enemy->retain();
   _enemy->setRowAndCol(1, 0);
+  
+  bool isDefeated = SaveData::sharedData()->getDefeatedCount(_enemy->getSpecies()->getIdentifier().c_str()) > 0; // 倒したかどうか
   CCDirector* director = CCDirector::sharedDirector();
-  _enemy->setPosition(ccp(director->getWinSize().width / 2.0f, 150));
+  _enemy->setPosition(ccp(director->getWinSize().width / 2.0f, 160));
   this->addChild(_enemy);
-  _nameLabel->setString(_enemy->getName().c_str());
-  _habitatLabel->setString(_enemy->getSpecies()->getHabitat().c_str());
-  _descriptionLabel->setString(_enemy->getSpecies()->getDescription().c_str());
-  _enemy->setColor(ccc3(255, 255, 255));
+  if (isDefeated) {
+    _nameLabel->setString(_enemy->getName().c_str());
+    _habitatLabel->setString(_enemy->getSpecies()->getHabitat().c_str());
+    _descriptionLabel->setString(_enemy->getSpecies()->getDescription().c_str());
+    _enemy->setColor(ccc3(255, 255, 255));
+  } else {
+    _nameLabel->setString(this->repeatChar("?", _enemy->getName().size()).c_str());
+    _habitatLabel->setString(this->repeatChar("?", _enemy->getSpecies()->getHabitat().size()).c_str());
+    _descriptionLabel->setString(this->repeatChar("?", _enemy->getSpecies()->getDescription().size()).c_str());
+    _enemy->setColor(ccc3(5, 5, 5));
+    _enemy->setSilhouette();
+  }
+}
+
+string DictionaryScene::repeatChar(const char *c, int times) {
+  string str = string(c);
+  for (int i = 0; i < times - 1; ++i) {
+    str += string(c);
+  }
+  return str;
 }
 
 void DictionaryScene::onBackButtonPressed(cocos2d::CCObject *sender) {

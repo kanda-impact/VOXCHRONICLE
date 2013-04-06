@@ -14,6 +14,7 @@
 #include "Skill.h"
 #include "EnemyManager.h"
 #include "PopupWindow.h"
+#include "Map.h"
 
 using namespace cocos2d;
 
@@ -39,6 +40,7 @@ class EffectLayer :public CCLayer {
   ~EffectLayer();
   void addEffectOnEnemy(Enemy* enemy, const char* prefix, int frameCount, CCRect rect);
   void addEffectOnEnemy(Enemy* enemy, const char* prefix, int frameCount, CCRect rect, float delay);
+  void addMusicInfo(Map* map, Level* level);
   void addSkillEffect(Skill* skill, CCArray* targets);
   void setTensionEffect(int tension);
   void setCharacterEffect(Character* character);

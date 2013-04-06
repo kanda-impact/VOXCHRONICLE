@@ -13,6 +13,7 @@ $#include "Controller.h"
 $#include "StatusLayer.h"
 $#include "EnemySkill.h"
 $#include "Map.h"
+$#include "SaveData.h"
 
 #define MAX_ROW
 
@@ -141,11 +142,14 @@ class CharacterManager : public CCObject {
 };
 
 class EnemyManager : public CCLayer {
-	void nextTurn(CharacterManager* manager);
+	void nextTurn(CharacterManager* manager, bool moveOnly);
 	Enemy* popEnemyAt(const char* enemy, float row, int col);
 	Enemy* getBoss();
+	CCArray* getEnemies();
 	void setBoss(Enemy* enemy);
 	void loadEnemyTextureAsync(const char* enemyImageName);
+	void removeAllNormalEnemies();
+	void removeAllEnemies();
 };
 
 class MessageManager : public CCObject {
@@ -162,12 +166,16 @@ class EffectLayer : public CCLayer {
 
 class PopupWindow : public CCSprite {
 	CCNode* getPage(int page);
+	void setText(int page, const char* headerText, const char* message);
 };
 
 class IRegister {
 	int getRegister(const char* key, int defaultValue);
 	void setRegister(const char* key, int value);
 	bool hasRegister(const char* key);
+	bool getBool(const char* key);
+	void setBool(const char* key, bool value);
+	void clearRegister();
 };
 
 class EnemySkill : public CCObject {
@@ -179,4 +187,18 @@ class Map : public CCObject, public IRegister {
 	int getInitialLevel();
 	string getName();
 	bool isBossStage();
+	void changeBackgroundImage(const char* imageName);
+};
+
+class SaveData : public CCObject {
+	static SaveData* sharedData();
+	bool isUnlockAchievement(const char* identifier);
+	void unlockAchievement(const char* identifier);
+	void addCountFor(SaveDataCountKey key, int value);
+	void addCountFor(SaveDataCountKey key);
+	int getCountFor(SaveDataCountKey key);
+	void setClearedForMap(const char* mapIdentifier);
+	bool isClearedMap(const char* mapIdentifier);
+	void save();
+	void load();
 };

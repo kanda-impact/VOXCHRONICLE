@@ -14,14 +14,11 @@
 
 GameOverLayer::GameOverLayer(MainScene* main) {
   _main = main;
-  main->retain();
+  // 巡回参照してた
   this->buildUI();
 }
 
 GameOverLayer::~GameOverLayer() {
-  if (_main) {
-    _main->release();
-  }
 }
 
 void GameOverLayer::buildUI() {
@@ -57,6 +54,15 @@ void GameOverLayer::replayButtonPressed(CCObject *sender) {
   newScene->init(newMap);
   scene->addChild(newScene);
   newMap->release();
+  
+  CCArray* oldHistory = _main->getMapHistory();
+  CCArray* newHistory = CCArray::create();
+  // 古いのは使い回す
+  for (int i = 0; i < oldHistory->count() - 1; ++i) {
+    newHistory->addObject(oldHistory->objectAtIndex(i));
+  }
+  newHistory->addObject(newMap); // 最後だけ新しいマップ
+  newScene->setMapHistory(newHistory);
   CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
   CCDirector::sharedDirector()->replaceScene(transition);
 }

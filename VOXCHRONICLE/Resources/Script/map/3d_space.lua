@@ -6,6 +6,7 @@ Map = {
   skin = "skinA",
   introCount = 0,
   backgroundImage = "3d_background0.png",
+  thumbnailImage = "space_thumbnail.png",
   nextMaps = {},
   initialLevel = 21,
   maxLevel = 30,

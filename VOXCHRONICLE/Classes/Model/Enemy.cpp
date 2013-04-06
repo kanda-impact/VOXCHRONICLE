@@ -37,7 +37,7 @@ void Enemy::loadLifeColors() {
   if (_lifeColors == NULL) {
     _lifeColors = CCArray::create();
     _lifeColors->retain();
-    for (int i = 0; i < 200; ++i) {
+    for (int i = 0; i < 300; ++i) {
       // Luaスクリプトを呼びます
       LuaObject* obj = LuaObject::create("enemy.lua");
       lua_State* L = obj->getLuaEngineWithLoad()->getLuaState();
@@ -73,6 +73,7 @@ Enemy* Enemy::create(const char *enemyName) {
 Enemy* Enemy::initWithScriptName(const char* scriptName) {
   stringstream file;
   file << "Script/enemies/" << scriptName;
+  _identifier = scriptName;
   _scriptPath = file.str();
   _register = new map<string, int>();
   _lua = new LuaObject(file.str().c_str());
@@ -87,6 +88,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _movable = true;
   _counter = -1;
   _exp = this->getExpFromLua();
+  _frameSprite = NULL;
   stringstream ss;
   ss << _species->getImageName().c_str();
   _sheet = CCTextureCache::sharedTextureCache()->addImage(ss.str().c_str());
@@ -118,7 +120,6 @@ Enemy::~Enemy() {
   _lua->release();
   _species->release();
   _sheet->release();
-  cout << "Enemy was released." << endl;
 }
 
 void Enemy::update(float dt) {
@@ -204,7 +205,12 @@ int Enemy::damage(int power, Skill* skill, CharacterManager* characterManager, D
 }
 
 void Enemy::setLifeColor() {
-  CCArray* color = (CCArray*)_lifeColors->objectAtIndex(_hp);
+  CCArray* color = NULL;
+  if (_hp < _lifeColors->count()) {
+    color = (CCArray*)_lifeColors->objectAtIndex(_hp);
+  } else {
+    color = (CCArray*)_lifeColors->lastObject();
+  }
   int r = ((CCInteger*)color->objectAtIndex(0))->getValue();
   int g = ((CCInteger*)color->objectAtIndex(1))->getValue();
   int b = ((CCInteger*)color->objectAtIndex(2))->getValue();
@@ -298,6 +304,10 @@ int Enemy::getAttack() {
 }
 
 EnemyItem Enemy::getItem() {
+  if (_item != EnemyItemNone) {
+    CCNode* item = this->getChildByTag(EnemyTagItem);
+    CCAssert(item == NULL, "アイテム消えてる!!!");
+  }
   return _item;
 }
 
@@ -386,6 +396,12 @@ bool Enemy::setAnimationAndFrame(int xOffset, int yOffset, int frames, bool hasF
         frameSprite->setColor(ccc3(0, 0, 0));
       }
       this->addChild(frameSprite, EnemyLayerFrame, EnemyTagFrame);
+      if (_frameSprite) {
+        _frameSprite->release();
+        _frameSprite = NULL;
+      }
+      _frameSprite = frameSprite;
+      _frameSprite->retain();
     }
     return true;
   }
@@ -469,4 +485,15 @@ int Enemy::getFrequency(CharacterManager* manager) {
 
 Species* Enemy::getSpecies() {
   return _species;
+}
+
+string Enemy::getIdentifier() {
+  return _identifier;
+}
+
+void Enemy::setSilhouette() {
+  this->stopAllActions();
+  _frameSprite->stopAllActions();
+  this->setColor(ccc3(5, 5, 5));
+  _frameSprite->setColor(ccc3(5, 5, 5));
 }

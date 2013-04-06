@@ -1,10 +1,10 @@
 Enemy = {
-  name = "コウモリ",
+  name = "スガァワ",
   imageName = "bat",
   attack = 2,
   baseExp = 3,
   hasFrame = true,
-  counter = 2,
+  counter = 0,
   getSpeed = function(enemy, characterManager)
    local row = enemy:getRow()
     if row > 3 then -- 4列目より前に行ったとき、速度を0にします
@@ -19,7 +19,7 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
-  血を３００ｃｃ吸ったりしないコウモリ。
+  血を３００ｃｃ吸ったりしない割合安全なコウモリ。陽気で騒々しい。
   ]],
   habitat = "",
   animationFrames = 4,

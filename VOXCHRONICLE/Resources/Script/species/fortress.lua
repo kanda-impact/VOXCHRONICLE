@@ -1,5 +1,5 @@
 Enemy = {
-  name = "砦",
+  name = "リスアク・バ―",
   imageName = "fortress",
   attack = 50,
   baseExp = 0,
@@ -17,8 +17,8 @@ Enemy = {
   end,
   disableSkills = {"knockback"},
   description = [[
-  古代の超技術で作られた。なんか歩く城。
-  硬いけど　古いから　突っ込んでくるだけ。
+攻防一体、退却も可能な万能要塞を！と作られた魔法生物。
+しかしうっかりやさんでたびたび味方に危機をもたらし捨てられてしまった。
   ]],
   habitat = "",
   animationFrames = 4,

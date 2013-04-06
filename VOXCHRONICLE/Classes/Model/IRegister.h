@@ -45,6 +45,12 @@ class IRegister {
    @return bool 登録済みかどうか
    */
   bool hasRegister(const char* key);
+  
+  void setBool(const char* key, bool value);
+  
+  bool getBool(const char* key);
+  
+  void clearRegister();
 };
 
 #endif /* defined(__VOXCHRONICLE__IRegister__) */

@@ -94,7 +94,10 @@ const char* LuaObject::getString(const char *key) {
   this->loadTable();
   int table = lua_gettop(L);
   lua_getfield(L, table, key);
-  const char* result = lua_tostring(L, -1);
+  const char* result = "";
+  if (lua_isstring(L, lua_gettop(L))) {
+    result = lua_tostring(L, -1);
+  }
   lua_pop(L, 1);
   return result;
 }

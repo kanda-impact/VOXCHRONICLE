@@ -1,8 +1,9 @@
 Map = {
-  name = "歪み電脳",
+  name = "電脳",
   wayMusic = "dhun",
   bossMusic = "",
   backgroundImage = "cyber_background.png",
+  thumbnailImage = "cyber_thumbnail.png",
   skin = "skinA",
   ending = "",
   nextMaps = {"3c_ocean","3d_space"},

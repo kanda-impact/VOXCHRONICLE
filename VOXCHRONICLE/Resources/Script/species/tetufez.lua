@@ -13,6 +13,8 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  魔物であるか人工的な魔法生物であるか
+  諸説あるがわかっていない。叩くといい音がする。
   ]],
   habitat = "",
   animationFrames = 6,

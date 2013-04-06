@@ -13,6 +13,8 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  かつてここで信仰されていた光の力の痕跡が、姿を持って立ちのぼった。
+  闇の勢力と終わりのない闘いを永久に続けている。
   ]],
   habitat = "",
   animationFrames = 4,

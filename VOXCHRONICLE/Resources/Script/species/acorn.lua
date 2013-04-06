@@ -1,10 +1,10 @@
 Enemy = {
-  name = "ドングリ",
+  name = "ドングリィ",
   imageName = "acorn",
   attack = 3,
   baseExp = 6,
   hasFrame = true,
-  counter = 2,
+  counter = 1,
   getSpeed = function(enemy, characterManager)
     return 1
   end,
@@ -12,7 +12,8 @@ Enemy = {
     return 2
   end,
   description = [[
-    どう見てもドングリです、本当にありがとうございました。
+    どう見てもマツボックリです、本当にありがとうございました。
+    確かにコロコロしながらやってくるが、彼らはY軸回転を採用したようである。
   ]],
   habitat = "森林ほか",
   disableSkills = {},
