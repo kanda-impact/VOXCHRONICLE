@@ -10,6 +10,7 @@
 #include "LuaObject.h"
 
 Species::Species(const char* identifier) {
+  _identifier = identifier;
   _lua = new LuaObject(identifier);
   _baseExp = _lua->getInt("baseExp");
   _name = string(_lua->getString("name"));
@@ -24,6 +25,10 @@ Species::Species(const char* identifier) {
 Species::~Species() {
   _lua->release();
   delete _disableSkills;
+}
+
+string Species::getIdentifier() {
+  return _identifier;
 }
 
 string Species::getImageName() {

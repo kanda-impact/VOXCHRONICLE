@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Thu Apr  4 22:38:11 2013.
+** Generated automatically by tolua++-1.0.92 on Sat Apr  6 17:39:42 2013.
 */
 
 #ifndef __cplusplus
@@ -29,6 +29,7 @@ TOLUA_API int  tolua_VOXCHRONICLE_open (lua_State* tolua_S);
 #include "EnemySkill.h"
 #include "Map.h"
 #include "SaveData.h"
+#include "VQTime.h"
 
 /* function to release collected object via destructor */
 #ifdef __cplusplus
@@ -51,6 +52,7 @@ static void tolua_reg_types (lua_State* tolua_S)
  tolua_usertype(tolua_S,"Skill");
  tolua_usertype(tolua_S,"Enemy");
  tolua_usertype(tolua_S,"Character");
+ tolua_usertype(tolua_S,"VQTime");
  tolua_usertype(tolua_S,"MessageManager");
  tolua_usertype(tolua_S,"SaveData");
  tolua_usertype(tolua_S,"CCNode");
@@ -354,6 +356,39 @@ static int tolua_VOXCHRONICLE_Enemy_getCol00(lua_State* tolua_S)
 #ifndef TOLUA_RELEASE
  tolua_lerror:
  tolua_error(tolua_S,"#ferror in function 'getCol'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: setCol of class  Enemy */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_Enemy_setCol00
+static int tolua_VOXCHRONICLE_Enemy_setCol00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"Enemy",0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  Enemy* self = (Enemy*)  tolua_tousertype(tolua_S,1,0);
+  int col = ((int)  tolua_tonumber(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setCol'", NULL);
+#endif
+  {
+   self->setCol(col);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'setCol'.",&tolua_err);
  return 0;
 #endif
 }
@@ -2638,6 +2673,66 @@ static int tolua_VOXCHRONICLE_SaveData_load00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: sharedTime of class  VQTime */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_VQTime_sharedTime00
+static int tolua_VOXCHRONICLE_VQTime_sharedTime00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertable(tolua_S,1,"VQTime",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  {
+   VQTime* tolua_ret = (VQTime*)  VQTime::sharedTime();
+    tolua_pushusertype(tolua_S,(void*)tolua_ret,"VQTime");
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'sharedTime'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: getCurrentHour of class  VQTime */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_VQTime_getCurrentHour00
+static int tolua_VOXCHRONICLE_VQTime_getCurrentHour00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"VQTime",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  VQTime* self = (VQTime*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getCurrentHour'", NULL);
+#endif
+  {
+   int tolua_ret = (int)  self->getCurrentHour();
+   tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getCurrentHour'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* Open function */
 TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
 {
@@ -2706,6 +2801,7 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
    tolua_function(tolua_S,"moveRow",tolua_VOXCHRONICLE_Enemy_moveRow00);
    tolua_function(tolua_S,"setRow",tolua_VOXCHRONICLE_Enemy_setRow00);
    tolua_function(tolua_S,"getCol",tolua_VOXCHRONICLE_Enemy_getCol00);
+   tolua_function(tolua_S,"setCol",tolua_VOXCHRONICLE_Enemy_setCol00);
    tolua_function(tolua_S,"setAnimationClip",tolua_VOXCHRONICLE_Enemy_setAnimationClip00);
    tolua_function(tolua_S,"setDefaultAnimationClip",tolua_VOXCHRONICLE_Enemy_setDefaultAnimationClip00);
    tolua_function(tolua_S,"getName",tolua_VOXCHRONICLE_Enemy_getName00);
@@ -2806,6 +2902,11 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
    tolua_function(tolua_S,"isClearedMap",tolua_VOXCHRONICLE_SaveData_isClearedMap00);
    tolua_function(tolua_S,"save",tolua_VOXCHRONICLE_SaveData_save00);
    tolua_function(tolua_S,"load",tolua_VOXCHRONICLE_SaveData_load00);
+  tolua_endmodule(tolua_S);
+  tolua_cclass(tolua_S,"VQTime","VQTime","CCObject",NULL);
+  tolua_beginmodule(tolua_S,"VQTime");
+   tolua_function(tolua_S,"sharedTime",tolua_VOXCHRONICLE_VQTime_sharedTime00);
+   tolua_function(tolua_S,"getCurrentHour",tolua_VOXCHRONICLE_VQTime_getCurrentHour00);
   tolua_endmodule(tolua_S);
  tolua_endmodule(tolua_S);
  return 1;

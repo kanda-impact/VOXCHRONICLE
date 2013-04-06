@@ -54,12 +54,12 @@ bool SelectScene::init() {
   mainMenu->setPosition(ccp(director->getWinSize().width / 2.0 + 2, 127));
   this->addChild(mainMenu, SelectSceneZOrderButton);
   
-  CCMenuItemImage* backButton = CCMenuItemImage::create("back_down.png",
-                                                        "back_down_pressed.png",
+  CCMenuItemImage* backButton = CCMenuItemImage::create("select_back.png",
+                                                        "select_back_pressed.png",
                                                         this,
                                                         menu_selector(SelectScene::onBackButtonPressed));
   CCMenu* backMenu = CCMenu::create(backButton, NULL);
-  backMenu->setPosition(ccp(director->getWinSize().width / 2.0f, 30));
+  backMenu->setPosition(ccp(director->getWinSize().width / 2.0f, 45));
   _nextMap = NULL;
   this->addChild(backMenu);
   
@@ -179,7 +179,7 @@ void SelectScene::startGame(cocos2d::CCObject *sender) {
 }
 
 void SelectScene::onBackButtonPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cancel.mp3").c_str());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/menu_cancel.mp3").c_str());
   CCScene* scene = CCScene::create();
   MainMenuScene* layer = new MainMenuScene(false);
   layer->autorelease();

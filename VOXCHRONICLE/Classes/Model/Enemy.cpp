@@ -37,23 +37,21 @@ void Enemy::loadLifeColors() {
   if (_lifeColors == NULL) {
     _lifeColors = CCArray::create();
     _lifeColors->retain();
-    for (int i = 0; i < 300; ++i) {
-      // Luaスクリプトを呼びます
-      LuaObject* obj = LuaObject::create("enemy.lua");
-      lua_State* L = obj->getLuaEngineWithLoad()->getLuaState();
-      lua_getglobal(L, "getColor");
-      if ( lua_isfunction(L, lua_gettop(L))) {
-        lua_pushinteger(L, i);
-        if (lua_pcall(L, 1, 3, 0)) {
-          cout << lua_tostring(L, lua_gettop(L)) << endl;
-        }
-        int r = lua_tointeger(L, lua_gettop(L) - 2);
-        int g = lua_tointeger(L, lua_gettop(L) - 1);
-        int b = lua_tointeger(L, lua_gettop(L));
+    LuaObject* obj = LuaObject::create("enemy.lua");
+    lua_State* L = obj->getLuaEngineWithLoad()->getLuaState();
+    lua_getglobal(L, "getColors");
+    if ( lua_isfunction(L, lua_gettop(L))) {
+      lua_pushinteger(L, 300);
+      if (lua_pcall(L, 1, 1, 0)) {
+        cout << lua_tostring(L, lua_gettop(L)) << endl;
+      }
+      CCLuaValueArray* colorArray = obj->getArray();
+      for (CCLuaValueArrayIterator it = colorArray->begin(); it != colorArray->end(); ++it) {
         CCArray* c = CCArray::create();
-        c->addObject(CCInteger::create(r));
-        c->addObject(CCInteger::create(g));
-        c->addObject(CCInteger::create(b));
+        CCLuaValueDict colors = it->dictValue();
+        c->addObject(CCInteger::create(colors["1"].floatValue()));
+        c->addObject(CCInteger::create(colors["2"].floatValue()));
+        c->addObject(CCInteger::create(colors["3"].floatValue()));
         _lifeColors->addObject(c);
       }
     }

@@ -72,7 +72,7 @@ int SaveData::getDefeatedCount(const char* enemyIdentifier) {
 
 void SaveData::addDefeatedCountForEnemy(const char* enemyIdentifier) {
   int current = this->getDefeatedCount(enemyIdentifier);
-  CCUserDefault::sharedUserDefault()->setBoolForKey(string(string("enemy_") + enemyIdentifier).c_str(), current + 1);
+  CCUserDefault::sharedUserDefault()->setIntegerForKey(string(string("enemy_") + enemyIdentifier).c_str(), current + 1);
 }
 
 void SaveData::addCountFor(SaveDataCountKey key) {

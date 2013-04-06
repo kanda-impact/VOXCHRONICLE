@@ -29,6 +29,7 @@ typedef enum {
  */
 class Species :public CCObject {
  private:
+  string _identifier;
   string _imageName;
   string _name;
   int _attack;
@@ -41,6 +42,7 @@ class Species :public CCObject {
  public:
   Species(const char* identifier);
   ~Species();
+  string getIdentifier();
   string getImageName();
   string getName();
   string getHabitat();

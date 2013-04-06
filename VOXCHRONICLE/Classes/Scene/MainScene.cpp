@@ -311,6 +311,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
   } else if (_state == VCStateQTEFinish) { // QTE終了時
     int count = _musicManager->getFinishCount();
     if (count == 2) { // 3小節目
+      SaveData::sharedData()->addDefeatedCountForEnemy(_enemyManager->getBoss()->getSpecies()->getIdentifier().c_str()); // ボスの倒したカウンター増加
       _enemyManager->removeEnemy(_enemyManager->getBoss());
       _enemyManager->setBoss(NULL);
       CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("explosion.mp3").c_str()); // 爆発
@@ -393,16 +394,18 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
           SaveData::sharedData()->addCountFor(SaveDataCountKeyDefeat); // 殺しカウント++
         }
         
-        // ダメージラベル
-        damageLabel->setPosition(enemy->getPosition());
-        float scale = enemy->getCurrentScale(enemy->getRow());
-        damageLabel->setScale(scale);
-        this->addChild(damageLabel, MainSceneZOrderDamageLabel);
-        damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
-                                                  CCDelayTime::create(0.5),
-                                                  CCFadeOut::create(0.2),
-                                                  CCRemoveFromParentAction::create(),
-                                                  NULL));
+        if (damageType != DamageTypeNoDamage) { // 威力のない技は表示しない
+          // ダメージラベル
+          damageLabel->setPosition(enemy->getPosition());
+          float scale = enemy->getCurrentScale(enemy->getRow());
+          damageLabel->setScale(scale);
+          this->addChild(damageLabel, MainSceneZOrderDamageLabel);
+          damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
+                                                    CCDelayTime::create(0.5),
+                                                    CCFadeOut::create(0.2),
+                                                    CCRemoveFromParentAction::create(),
+                                                    NULL));
+        }
         
         // 敵毎に効果音を鳴らす
         string fileName = "";
@@ -621,6 +624,7 @@ void MainScene::addDamageEffect() {
   bool isDead = false;
   bool isShield = false;
   int sumDamage = 0;
+  int i = 0;
   std::queue<DamageInfo>* queue = _characterManager->getDamageInfoQueue();
   while (!queue->empty()) { // キューが空になるまで取り出す
     DamageInfo info = queue->front();
@@ -631,15 +635,16 @@ void MainScene::addDamageEffect() {
     CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(damage).c_str(),
                                                      FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 100, '0');
     CCDirector* director = CCDirector::sharedDirector();
-    damageLabel->setPosition(ccp(director->getWinSize().width / 2, 90));
+    damageLabel->setPosition(ccp(director->getWinSize().width / 2 + i * 50, 90 + i * 20));
     this->addChild(damageLabel, MainSceneZOrderDamageLabel);
     damageLabel->setScale(0);
-    damageLabel->runAction(CCSequence::create(CCScaleTo::create(0.1, 0.8),
+    damageLabel->runAction(CCSequence::create(CCScaleTo::create(0.1, 1.0),
                                               CCDelayTime::create(0.5),
-                                              CCScaleTo::create(0.2, 0.0),
+                                              CCEaseSineIn::create(CCMoveBy::create(0.2, ccp(0, -150))),
                                               CCRemoveFromParentAction::create(),
                                               NULL));
     sumDamage += damage;
+    ++i;
     if (damageType == DamageTypeDeath) {
       isDead = true;
     } else if (damageType == DamageTypeShield) {
@@ -833,44 +838,7 @@ void MainScene::changeMusic(MusicSet* mSet, bool enablePreload) {
   if (enablePreload) {
     _musicManager->preloadAllTracks(_characterManager, _level); // 曲データを読む
   }
-  // 作曲者情報と曲名を表示する
-  CCNode* musicInfo = CCNode::create();
-  CCLabelTTF* nameShadowLabel = CCLabelTTF::create(mSet->getName().c_str(),
-                                                   "Helvetica",
-                                                   24,
-                                                   CCSizeMake(200, 30),
-                                                   kCCTextAlignmentRight);
-  musicInfo->addChild(nameShadowLabel);
-  nameShadowLabel->setColor(ccc3(33, 33, 33));
-  nameShadowLabel->setPosition(ccp(3, -3));
-  CCLabelTTF* composerShadowLabel = CCLabelTTF::create(mSet->getComposer().c_str(),
-                                                       "Helvetica",
-                                                       16,
-                                                       CCSizeMake(200, 20),
-                                                       kCCTextAlignmentRight);
-  composerShadowLabel->setColor(ccc3(33, 33, 33));
-  composerShadowLabel->setPosition(ccp(3, -28));
-  musicInfo->addChild(composerShadowLabel);
-  CCLabelTTF* nameLabel = CCLabelTTF::create(mSet->getName().c_str(),
-                                             "Helvetica",
-                                             24,
-                                             CCSizeMake(200, 30),
-                                             kCCTextAlignmentRight);
-  musicInfo->addChild(nameLabel);
-  CCLabelTTF* composerLabel = CCLabelTTF::create(mSet->getComposer().c_str(),
-                                                 "Helvetica",
-                                                 16,
-                                                 CCSizeMake(200, 20),
-                                                 kCCTextAlignmentRight);
-  composerLabel->setPosition(ccp(0, -25));
-  musicInfo->addChild(composerLabel);
-  this->addChild(musicInfo, MainSceneZOrderUI);
-  musicInfo->setPosition(ccp(600, 40));
-  musicInfo->runAction(CCSequence::create(CCMoveTo::create(0.5f, ccp(360, 40)),
-                                          CCDelayTime::create(2.0f),
-                                          CCMoveTo::create(0.5f, ccp(600, 40)),
-                                          CCRemoveFromParentAction::create(),
-                                          NULL));
+  _effectLayer->addMusicInfo(_map, _level);
 }
 
 VCState MainScene::getState () {

@@ -105,7 +105,7 @@ void DictionaryScene::loadEnemyByIndex(int idx) {
   _enemy->retain();
   _enemy->setRowAndCol(1, 0);
   
-  bool isDefeated = SaveData::sharedData()->getDefeatedCount(_enemy->getIdentifier().c_str()) > 0; // 倒したかどうか
+  bool isDefeated = SaveData::sharedData()->getDefeatedCount(_enemy->getSpecies()->getIdentifier().c_str()) > 0; // 倒したかどうか
   CCDirector* director = CCDirector::sharedDirector();
   _enemy->setPosition(ccp(director->getWinSize().width / 2.0f, 160));
   this->addChild(_enemy);
