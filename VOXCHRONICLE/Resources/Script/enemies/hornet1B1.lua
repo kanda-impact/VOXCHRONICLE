@@ -1,12 +1,12 @@
 Enemy = {
-  species = "flower",
+  species = "hornet",
   level = 10,
-  hp = 15,
+  hp = 14,
   getExp = function(default)
-      return 15
+      return 30
   end,
   item = EnemyItemNone,
-  type = SkillTypeNormal,
+  type = SkillTypePhysical,
 }
 
 return Enemy

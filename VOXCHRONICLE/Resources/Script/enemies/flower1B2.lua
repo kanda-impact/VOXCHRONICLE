@@ -1,12 +1,12 @@
 Enemy = {
-  species = "wave",
+  species = "flower",
   level = 10,
-  hp = 20,
+  hp = 18,
   getExp = function(default)
-      return 0
+      return 36
   end,
   item = EnemyItemNone,
-  type = SkillTypeNormal,
+  type = SkillTypeMagical,
 }
 
 return Enemy
