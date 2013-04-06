@@ -77,7 +77,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _lua = new LuaObject(file.str().c_str());
   _maxHP = _lua->getInt("hp");
   _hp = _maxHP;
-  _species = new Species(_lua->getString("species"));
+  _species = Species::getSpecies(_lua->getString("species"));
   _species->retain();
   _type = (SkillType)_lua->getInt("type");
   _level = _lua->getInt("level");
