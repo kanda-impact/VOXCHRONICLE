@@ -38,6 +38,18 @@ Character = {
         {"shield", 8},
         {"run", 4}
       }
+    elseif mapName == "tutorial1" then
+       -- チュートリアル「Lesson2」初期状態(チェンジ以外無効)
+       return {
+        {"attack", 12},
+        {"knockback", 12},
+        {"slash", 12},
+        {"charge", 12},
+        {"tension", 12},
+        {"change", 11},
+        {"shield", 12},
+        {"run", 12}
+      }
     end
     return {
       {"attack", 1},

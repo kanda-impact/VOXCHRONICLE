@@ -9,7 +9,28 @@ Map = {
   initialLevel = 11,
   maxLevel = 21,
   getEnemyTable = function(level)
-    return {slime0 = 1}
+    return {}
+  end,
+   onBack = function(self, characterManager, enemyManager)
+    math.random(100)
+    local layer = EffectLayer:sharedLayer()
+    local preHP = self.__IRegister__:getRegister("preHP", characterManager:getHP())  
+    local level = characterManager:getLevel()
+    local enemies = enemyManager:getEnemies()
+    local enemyCount = 0
+    if not (enemies == nil) then
+      enemyCount = enemies:count()
+    end
+    if level == 11 then
+      -- ラスカにチェンジしないと先には進めない
+      if characterManager:getCurrentCharacter():getName() == "ラスカ" then
+      	-- ラスカにチェンジ済なので、敵が1体もいなくなったらモンスター生成
+      	if enemyCount == 0 then
+          enemyManager:popEnemyAt("T_slime30", 3, 1)
+      	end
+      end
+
+    end
   end,
   onLevelUp = function(self, characterManager, enemyManager)
     self.__IRegister__:clearRegister()
