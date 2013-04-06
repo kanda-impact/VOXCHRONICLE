@@ -149,8 +149,6 @@ bool MainScene::init(Map* map) {
 }
 
 MainScene::~MainScene() {
-  SaveData::sharedData()->save();
-  _musicManager->getMusic()->stop();
   _map->release();
   _messageWindow->release();
   _musicManager->release();
@@ -168,8 +166,15 @@ MainScene::~MainScene() {
   if (_qteTrigger != NULL) {
     _qteTrigger->release();
   }
+}
+
+void MainScene::onExit() {
+  // 後処理
+  CCLayer::onExit();
+  _musicManager->getMusic()->stop();
   _effectLayer->removeAllChildrenWithCleanup(true);
   MessageManager::purgeMessageManager();
+  SaveData::sharedData()->save();
 }
 
 void MainScene::update(float dt) {
@@ -394,11 +399,12 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
           SaveData::sharedData()->addCountFor(SaveDataCountKeyDefeat); // 殺しカウント++
         }
         
-<<<<<<< HEAD
         if (damageType != DamageTypeNoDamage) { // 威力のない技は表示しない
           // ダメージラベル
-          damageLabel->setPosition(enemy->getPosition());
-          float scale = enemy->getCurrentScale(enemy->getRow());
+          CCSize size = enemy->getContentSize();
+          float scale = MAX(enemy->getCurrentScale(enemy->getRow()), 0.4);
+          damageLabel->setAnchorPoint(ccp(0.5, 0.5));
+          damageLabel->setPosition(ccpAdd(enemy->getPosition(), ccp(0, 50 * scale)));
           damageLabel->setScale(scale);
           this->addChild(damageLabel, MainSceneZOrderDamageLabel);
           damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
@@ -407,20 +413,6 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
                                                     CCRemoveFromParentAction::create(),
                                                     NULL));
         }
-=======
-        // ダメージラベル
-        CCSize size = enemy->getContentSize();
-        float scale = MAX(enemy->getCurrentScale(enemy->getRow()), 0.4);
-        damageLabel->setAnchorPoint(ccp(0.5, 0.5));
-        damageLabel->setPosition(ccpAdd(enemy->getPosition(), ccp(0, 50 * scale)));
-        damageLabel->setScale(scale);
-        this->addChild(damageLabel, MainSceneZOrderDamageLabel);
-        damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
-                                                  CCDelayTime::create(0.5),
-                                                  CCFadeOut::create(0.2),
-                                                  CCRemoveFromParentAction::create(),
-                                                  NULL));
->>>>>>> f5b909d... ダメージ文字差し替え。回復文字を追加
         
         // 敵毎に効果音を鳴らす
         string fileName = "";

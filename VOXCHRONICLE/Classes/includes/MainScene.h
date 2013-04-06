@@ -69,6 +69,7 @@ class MainScene : public CCLayer {
   CCSet* _pausedTargets;
   
   void onEnterTransitionDidFinish();
+  virtual void onExit();
   
   void trackDidBack(Music* music, Track* currentTrack, int trackNumber);
   void trackWillFinishPlaying(Music* music, Track* currentTrack, Track* nextTrack, int trackNumber);

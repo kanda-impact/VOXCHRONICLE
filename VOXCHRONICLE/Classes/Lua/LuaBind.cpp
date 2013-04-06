@@ -1,6 +1,7 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Sat Apr  6 17:39:42 2013.
+** Generated automatically by tolua++-1.0.92 on Sat Apr  6 21:49:20 2013.
+*/
 
 #ifndef __cplusplus
 #include "stdlib.h"
