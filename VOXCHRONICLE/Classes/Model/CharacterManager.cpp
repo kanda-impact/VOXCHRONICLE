@@ -147,6 +147,7 @@ DamageType CharacterManager::damage(int damage) {
   if (_shield) { // 盾装備中
     damage = 0;
     damageType = DamageTypeShield;
+    this->setShield(false); // 盾問答無用で外します
   } else {
     _hp -= damage;
     SaveData::sharedData()->addCountFor(SaveDataCountKeyHitDamage, damage); // 被ダメージカウント
