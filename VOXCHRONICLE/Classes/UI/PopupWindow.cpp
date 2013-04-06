@@ -7,7 +7,9 @@
 //
 
 #include "PopupWindow.h"
+#include "SimpleAudioEngine.h"
 #include <boost/bind.hpp>
+
 
 PopupWindow* PopupWindow::create(int pages) {
   PopupWindow* window = new PopupWindow(pages);
@@ -75,7 +77,9 @@ void PopupWindow::setText(int page, const char *headerText, const char *text) {
 }
 
 void PopupWindow::onUpdateFunction(VQString *string, MessageWindow *window) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("message.mp3");
 }
 
 void PopupWindow::onFinishedFunction(VQString *string, MessageWindow *window) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("message_finish.mp3");
 }

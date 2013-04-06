@@ -554,7 +554,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
 }
 
 void MainScene::registerWithTouchDispatcher() {
-  CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+  CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 100, true);
 }
 
 bool MainScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
@@ -562,15 +562,19 @@ bool MainScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
     PopupWindow* layer = _effectLayer->getPopupWindow();
     if (!layer) return false;
     if (layer->isLastPage()) { // 最終ページだったら
+      SimpleAudioEngine::sharedEngine()->playEffect("window_close.mp3");
       layer->runAction(CCSequence::create(CCScaleTo::create(0.3f, 0),
                                           CCRemoveFromParentAction::create(),
                                           NULL));
       _state = VCStateMain;
+      return true;
     } else { // まだページが残っていたら
+      SimpleAudioEngine::sharedEngine()->playEffect("window_next.mp3");
       layer->nextPage();
+      return true;
     }
   }
-  return true;
+  return false;
 }
 
 void MainScene::updateGUI() {

@@ -10,6 +10,7 @@
 #include "FileUtils.h"
 #include <boost/lexical_cast.hpp>
 #include "CCRemoveFromParentAction.h"
+#include "SimpleAudioEngine.h"
 
 using namespace boost;
 
@@ -137,6 +138,7 @@ void EffectLayer::setCharacterEffect(Character *character) {
 
 PopupWindow* EffectLayer::addPopupWindow(int pages) {
   CCAssert(this->getPopupWindow() == NULL, "");
+  SimpleAudioEngine::sharedEngine()->playEffect("window_open.mp3");
   PopupWindow* window = PopupWindow::create(pages);
   CCDirector* director = CCDirector::sharedDirector();
   window->setPosition(ccp(director->getWinSize().width / 2.0, director->getWinSize().height / 2.0f));

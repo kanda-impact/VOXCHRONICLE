@@ -228,6 +228,12 @@
 		07448CBD16C289B800F005C6 /* welcome.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07448CBC16C289B800F005C6 /* welcome.lua */; };
 		07448CBF16C28E0D00F005C6 /* empty.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07448CBE16C28E0D00F005C6 /* empty.lua */; };
 		0744B5B3167DD9EA00730393 /* StatusLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0744B5B1167DD9EA00730393 /* StatusLayer.cpp */; };
+		074E13721710231E00308F67 /* message.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 074E136C1710231E00308F67 /* message.mp3 */; };
+		074E13731710231E00308F67 /* window_close.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 074E136D1710231E00308F67 /* window_close.mp3 */; };
+		074E13741710231E00308F67 /* window_next.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 074E136E1710231E00308F67 /* window_next.mp3 */; };
+		074E13751710231E00308F67 /* window_open.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 074E136F1710231E00308F67 /* window_open.mp3 */; };
+		074E13761710231E00308F67 /* enemy_wave.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 074E13701710231E00308F67 /* enemy_wave.mp3 */; };
+		074E13771710231E00308F67 /* message_finish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 074E13711710231E00308F67 /* message_finish.mp3 */; };
 		074EFD0B15FA926E004D8273 /* SkillTrigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 074EFD0915FA906D004D8273 /* SkillTrigger.cpp */; };
 		074EFD0C15FA93AA004D8273 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 074EFD0715FA906C004D8273 /* Controller.cpp */; };
 		0754384016E3865700802970 /* TutorialScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0754383E16E3865700802970 /* TutorialScene.cpp */; };
@@ -1467,6 +1473,12 @@
 		07448CBC16C289B800F005C6 /* welcome.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = welcome.lua; path = messages/welcome.lua; sourceTree = "<group>"; };
 		07448CBE16C28E0D00F005C6 /* empty.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = empty.lua; path = messages/empty.lua; sourceTree = "<group>"; };
 		0744B5B1167DD9EA00730393 /* StatusLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StatusLayer.cpp; path = Classes/UI/StatusLayer.cpp; sourceTree = "<group>"; };
+		074E136C1710231E00308F67 /* message.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = message.mp3; path = Resources/SE/message.mp3; sourceTree = "<group>"; };
+		074E136D1710231E00308F67 /* window_close.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = window_close.mp3; path = Resources/SE/window_close.mp3; sourceTree = "<group>"; };
+		074E136E1710231E00308F67 /* window_next.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = window_next.mp3; path = Resources/SE/window_next.mp3; sourceTree = "<group>"; };
+		074E136F1710231E00308F67 /* window_open.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = window_open.mp3; path = Resources/SE/window_open.mp3; sourceTree = "<group>"; };
+		074E13701710231E00308F67 /* enemy_wave.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = enemy_wave.mp3; path = Resources/SE/enemy_wave.mp3; sourceTree = "<group>"; };
+		074E13711710231E00308F67 /* message_finish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = message_finish.mp3; path = Resources/SE/message_finish.mp3; sourceTree = "<group>"; };
 		074EFD0715FA906C004D8273 /* Controller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Controller.cpp; path = Classes/UI/Controller.cpp; sourceTree = "<group>"; };
 		074EFD0915FA906D004D8273 /* SkillTrigger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SkillTrigger.cpp; path = Classes/UI/SkillTrigger.cpp; sourceTree = "<group>"; };
 		0754383E16E3865700802970 /* TutorialScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TutorialScene.cpp; path = Classes/Scene/TutorialScene.cpp; sourceTree = "<group>"; };
@@ -5161,6 +5173,12 @@
 		07FA3B2A16107EE500E9C7DE /* SE */ = {
 			isa = PBXGroup;
 			children = (
+				074E136C1710231E00308F67 /* message.mp3 */,
+				074E136D1710231E00308F67 /* window_close.mp3 */,
+				074E136E1710231E00308F67 /* window_next.mp3 */,
+				074E136F1710231E00308F67 /* window_open.mp3 */,
+				074E13701710231E00308F67 /* enemy_wave.mp3 */,
+				074E13711710231E00308F67 /* message_finish.mp3 */,
 				0796697616FD4DB20001F8B2 /* magical_resist.mp3 */,
 				0796697716FD4DB20001F8B2 /* physical_resist.mp3 */,
 				07ADDF7816F22959007825D2 /* enemy_revive.mp3 */,
@@ -6207,6 +6225,12 @@
 				B0A94E5A170FF93D006B35C6 /* slime1B7.lua in Resources */,
 				B0A94E5C170FF98C006B35C6 /* moth1B0.lua in Resources */,
 				B0A94E5E170FFA04006B35C6 /* hornet1B1.lua in Resources */,
+				074E13721710231E00308F67 /* message.mp3 in Resources */,
+				074E13731710231E00308F67 /* window_close.mp3 in Resources */,
+				074E13741710231E00308F67 /* window_next.mp3 in Resources */,
+				074E13751710231E00308F67 /* window_open.mp3 in Resources */,
+				074E13761710231E00308F67 /* enemy_wave.mp3 in Resources */,
+				074E13771710231E00308F67 /* message_finish.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6629,8 +6653,8 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C1B58134-B76B-4925-93E1-689EC9E2EBE7";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C1B58134-B76B-4925-93E1-689EC9E2EBE7";
+				PROVISIONING_PROFILE = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -6665,8 +6689,8 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C1B58134-B76B-4925-93E1-689EC9E2EBE7";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C1B58134-B76B-4925-93E1-689EC9E2EBE7";
+				PROVISIONING_PROFILE = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -6733,8 +6757,8 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C1B58134-B76B-4925-93E1-689EC9E2EBE7";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C1B58134-B76B-4925-93E1-689EC9E2EBE7";
+				PROVISIONING_PROFILE = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
