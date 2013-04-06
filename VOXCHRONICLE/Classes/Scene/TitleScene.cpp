@@ -112,7 +112,7 @@ void TitleScene::onStartButtonPressed(CCObject* sender) {
 
 void TitleScene::onDebugButtonPressed(CCObject* sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
-  FreePlayScene* scene = FreePlayScene::create("debug.lua");
+  FreePlayScene* scene = FreePlayScene::create("debug.lua", true);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(FileUtils::getFilePath("Music/general/menu.mp3").c_str(), true);
   nextScene(scene);
 }

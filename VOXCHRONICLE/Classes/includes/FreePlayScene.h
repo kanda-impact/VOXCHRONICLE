@@ -19,11 +19,11 @@ class FreePlayScene :public CCLayer {
  private:
   void onMenuItemPressed(CCObject* sender);
  public:
-  virtual bool init(const char* script);
+  virtual bool init(const char* script, bool unlock);
   virtual void onEnterTransitionDidFinish();
   virtual void onBackButtonPressed();
-  static cocos2d::CCScene* scene(const char* script);
-  static FreePlayScene* create(const char* script);
+  static cocos2d::CCScene* scene(const char* script, bool unlock);
+  static FreePlayScene* create(const char* script, bool unlock);
 };
 
 #endif /* defined(__VOXCHRONICLE__FreePlayScene__) */

@@ -17,25 +17,25 @@
 
 static const char* DEBUG_SCRIPT = "Script/debug.lua";
 
-FreePlayScene* FreePlayScene::create(const char *script) {
+FreePlayScene* FreePlayScene::create(const char *script, bool unlock) {
   FreePlayScene* scene = new FreePlayScene();
   scene->autorelease();
-  if (!scene->init(script)) {
+  if (!scene->init(script, unlock)) {
     return NULL;
   }
   return scene;
 }
 
-CCScene* FreePlayScene::scene(const char* script) {
+CCScene* FreePlayScene::scene(const char* script, bool unlock) {
   CCScene* scene = CCScene::create();
   
-  FreePlayScene* layer = FreePlayScene::create(script);
+  FreePlayScene* layer = FreePlayScene::create(script, unlock);
   scene->addChild(layer);
   
   return scene;
 }
 
-bool FreePlayScene::init(const char* script) {
+bool FreePlayScene::init(const char* script, bool unlock) {
   if ( !CCLayer::init() ) {
     return false;
   }
@@ -73,7 +73,7 @@ bool FreePlayScene::init(const char* script) {
                                                       this,
                                                       menu_selector(FreePlayScene::onMenuItemPressed));
     item->setUserObject(map);
-    item->setEnabled(SaveData::sharedData()->isClearedMap(map->getIdentifier().c_str()));
+    item->setEnabled(SaveData::sharedData()->isClearedMap(map->getIdentifier().c_str()) || unlock);
     CCArray* array = (CCArray*)items->objectAtIndex(col);
     if (col >= 3) break;
     array->addObject(item);
@@ -105,6 +105,7 @@ void FreePlayScene::onEnterTransitionDidFinish() {
 }
 
 void FreePlayScene::onMenuItemPressed(cocos2d::CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/start.mp3").c_str());
   Map* map = (Map*)((CCNode*)sender)->getUserObject();
   MainScene* layer = new MainScene();

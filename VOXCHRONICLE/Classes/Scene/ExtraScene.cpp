@@ -69,7 +69,7 @@ void ExtraScene::onExit() {
 
 void ExtraScene::onSoundTestButtonPressed(cocos2d::CCObject *sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
-  FreePlayScene* scene = FreePlayScene::create("debug.lua");
+  FreePlayScene* scene = FreePlayScene::create("debug.lua", false);
   nextScene(scene);
 }
 
