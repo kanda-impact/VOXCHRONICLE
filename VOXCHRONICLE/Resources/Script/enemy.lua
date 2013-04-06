@@ -72,9 +72,54 @@ end
 ]]
 dictionary = {
   "acorn01",
-  "slime01",
-  "mask01",
+  "bat01",
+  "coin2C2",
+  "cryst01",
+  "doku01",
+  "dragon01"
+  "egg2C1",
+  "flame2C2",
+  "flower01",
   "fortress3A0",
-  "knight_boss",
-  "kraken3C0"
+  "gago01",
+  "gargoyle3A0"
+  "heart2C2",
+  "hornet01",
+  "iron_boss",
+  "jfish3C4",
+  "kani2C1",
+  "knight_boss"
+  "kraken3C0",
+  "L_plclaw3C0",
+  "L_plfoot3C0",
+  "L_strclaw3C0",
+  "L_strfootC0",
+  "R_plclaw3C0",
+  "R_plfoot3C0",
+  "R_strclaw3C0",
+  "R_strfootC0",
+  "leaf01",
+  "level10",
+  "mask01",
+  "mimic01"
+  "moth01",
+  "mukade2B0",
+  "naut3C5",
+  "neko2C0",
+  "nisok2C0",
+  "pak2C0"
+  "robot2C0",
+  "shield_test",
+  "slime01",
+  "T_flower",
+  "T_geek",
+  "T_ginet",
+  "T_tetufez"
+  "T_tnt",
+  "toadstool2A0",
+  "typhoon3A6",
+  "wave3C0",
+  "whale3C0",
+  "wisp3A2",
+  
 }
