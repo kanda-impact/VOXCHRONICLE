@@ -234,6 +234,7 @@
 		074E13751710231E00308F67 /* window_open.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 074E136F1710231E00308F67 /* window_open.mp3 */; };
 		074E13761710231E00308F67 /* enemy_wave.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 074E13701710231E00308F67 /* enemy_wave.mp3 */; };
 		074E13771710231E00308F67 /* message_finish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 074E13711710231E00308F67 /* message_finish.mp3 */; };
+		074E137917105CE400308F67 /* endingD.lua in Resources */ = {isa = PBXBuildFile; fileRef = 074E137817105CE400308F67 /* endingD.lua */; };
 		074EFD0B15FA926E004D8273 /* SkillTrigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 074EFD0915FA906D004D8273 /* SkillTrigger.cpp */; };
 		074EFD0C15FA93AA004D8273 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 074EFD0715FA906C004D8273 /* Controller.cpp */; };
 		0754384016E3865700802970 /* TutorialScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0754383E16E3865700802970 /* TutorialScene.cpp */; };
@@ -1479,6 +1480,7 @@
 		074E136F1710231E00308F67 /* window_open.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = window_open.mp3; path = Resources/SE/window_open.mp3; sourceTree = "<group>"; };
 		074E13701710231E00308F67 /* enemy_wave.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = enemy_wave.mp3; path = Resources/SE/enemy_wave.mp3; sourceTree = "<group>"; };
 		074E13711710231E00308F67 /* message_finish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = message_finish.mp3; path = Resources/SE/message_finish.mp3; sourceTree = "<group>"; };
+		074E137817105CE400308F67 /* endingD.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = endingD.lua; path = endings/endingD.lua; sourceTree = "<group>"; };
 		074EFD0715FA906C004D8273 /* Controller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Controller.cpp; path = Classes/UI/Controller.cpp; sourceTree = "<group>"; };
 		074EFD0915FA906D004D8273 /* SkillTrigger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SkillTrigger.cpp; path = Classes/UI/SkillTrigger.cpp; sourceTree = "<group>"; };
 		0754383E16E3865700802970 /* TutorialScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TutorialScene.cpp; path = Classes/Scene/TutorialScene.cpp; sourceTree = "<group>"; };
@@ -3696,6 +3698,7 @@
 				0737EF1C16F098FD00C46E6C /* endingA.lua */,
 				079D274C16D223C1006D6A8F /* endingB.lua */,
 				07C6467F16E0DB2500B29842 /* endingC.lua */,
+				074E137817105CE400308F67 /* endingD.lua */,
 			);
 			name = endings;
 			sourceTree = "<group>";
@@ -6231,6 +6234,7 @@
 				074E13751710231E00308F67 /* window_open.mp3 in Resources */,
 				074E13761710231E00308F67 /* enemy_wave.mp3 in Resources */,
 				074E13771710231E00308F67 /* message_finish.mp3 in Resources */,
+				074E137917105CE400308F67 /* endingD.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

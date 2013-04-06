@@ -1,7 +1,7 @@
 Ending = {
   background = "endingA.png",
-  music = "endingA.mp3",
-  duration = 24,
+  music = "endingD.mp3",
+  duration = 27,
   text = [[
     「わぁい！やったよラスカ！ついにクリアしたよ！すごいね！」
     「そうね。でもこれはデバックバージョンだから、
