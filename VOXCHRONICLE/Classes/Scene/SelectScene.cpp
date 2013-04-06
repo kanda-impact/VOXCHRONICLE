@@ -123,8 +123,8 @@ CCNode* SelectScene::buttonNode(const char *key, const char* thumbnail, bool pre
 }
 
 void SelectScene::createThumbnails() {
-  const int x[] = {190, 240, 291, 165, 215, 265, 315};
-  const int y[] = {262, 262, 260, 303, 303, 303, 303};
+  const int x[] = {190, 240, 290, 165, 215, 265, 315};
+  const int y[] = {262, 262, 261, 303, 303, 303, 303};
   LuaObject* obj = LuaObject::create("setting");
   CCLuaValueArray* maps = obj->getArray("maps");
   int i = 0;

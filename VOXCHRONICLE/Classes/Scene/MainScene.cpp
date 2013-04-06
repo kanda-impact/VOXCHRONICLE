@@ -214,6 +214,7 @@ void MainScene::onEnterTransitionDidFinish() {
 }
 
 void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber) {
+  int preTension = _characterManager->getTension(); // 敵の行動前テンション
   if (_state == VCStateMain) {
     _enemyManager->nextTurn(_characterManager, false);
     CCObject* obj = NULL;
@@ -234,6 +235,9 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
     if (!_characterManager->getShield()) {
       _effectLayer->addCutin(NULL, EffectLayerCutinTypeCastOff, _musicManager->getMusic()->getCurrentMainTrack()->getDuration());
     }
+  }
+  if (preTension != _characterManager->getTension()) { // テンションが変わってたら技の状態を更新
+    _skin->getController()->updateSkills(_characterManager, _level);
   }
   _map->performOnBack(_characterManager, _enemyManager);
 }
@@ -268,7 +272,6 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       _skin->getController()->setEnable(false); // コントローラーを無効に
     } else {
       skill = _skin->getController()->currentTriggerSkill();
-      //_controller->resetAllTriggers(); // このタイミングでトリガーをOFFにしてやる
     }
     _musicManager->pushNextTracks(skill, _currentSkillInfo);
     if (_isLevelUped) { // 前のターンでレベルが上がっていたら
@@ -350,10 +353,8 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     }
   }
   
-  this->updateGUI(); // GUI更新
-  
   SaveData::sharedData()->addCountFor(SaveDataCountKeyBeat); // 小節数を数えます
-  
+  this->updateGUI(); // GUI更新
 }
 
 void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track *nextTrack, int trackNumber) {
@@ -546,6 +547,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     }
     
     this->updateFocus();
+    this->updateGUI(); // GUI更新
     
     if (!_characterManager->isPerforming()) {
       _enemyManager->purgeAllTrash();

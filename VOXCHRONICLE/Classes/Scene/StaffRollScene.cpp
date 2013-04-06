@@ -66,7 +66,7 @@ StaffRollScene::StaffRollScene(CCArray* maps) {
                                                  this,
                                                  menu_selector(StaffRollScene::onBackButtonPressed));
   CCMenu* backMenu = CCMenu::create(backItem, NULL);
-  backMenu->setPosition(ccp(440, 270));
+  backMenu->setPosition(ccp(440, 290));
   this->addChild(backMenu);
 }
 
