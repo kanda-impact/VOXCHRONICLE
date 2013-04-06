@@ -84,7 +84,7 @@ void TutorialLayer::onTutorialButtonPressed(cocos2d::CCObject *sender) {
 }
 
 void TutorialLayer::onBackButtonPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cancel.mp3").c_str());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/menu_cancel.mp3").c_str());
   CCScene* scene = CCScene::create();
   MainMenuScene* layer = new MainMenuScene(false);
   layer->autorelease();

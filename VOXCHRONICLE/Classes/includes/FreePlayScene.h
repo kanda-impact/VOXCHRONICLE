@@ -21,6 +21,7 @@ class FreePlayScene :public CCLayer {
  public:
   virtual bool init(const char* script);
   virtual void onEnterTransitionDidFinish();
+  virtual void onBackButtonPressed();
   static cocos2d::CCScene* scene(const char* script);
   static FreePlayScene* create(const char* script);
 };

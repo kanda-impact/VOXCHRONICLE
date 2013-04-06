@@ -307,6 +307,8 @@
 		076F1D3C15EB94780013A45E /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 076F1D3B15EB94780013A45E /* AppDelegate.cpp */; };
 		0772FEB616C260BA00A50931 /* VQString.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0772FEB416C260BA00A50931 /* VQString.mm */; };
 		0772FEBA16C2786D00A50931 /* MessageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0772FEB816C2786B00A50931 /* MessageManager.cpp */; };
+		0778C5DF170FEE310017D230 /* menu_cancel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0778C5DD170FEE310017D230 /* menu_cancel.mp3 */; };
+		0778C5E0170FEE310017D230 /* menu_decide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0778C5DE170FEE310017D230 /* menu_decide.mp3 */; };
 		077DCFC3169EE872007A7003 /* Image in Resources */ = {isa = PBXBuildFile; fileRef = 077DCFC1169EE872007A7003 /* Image */; };
 		077DCFC6169EE89B007A7003 /* Retina in Resources */ = {isa = PBXBuildFile; fileRef = 077DCFC5169EE89B007A7003 /* Retina */; };
 		077DF757170DD69A00F0C799 /* space_boss.lua in Resources */ = {isa = PBXBuildFile; fileRef = 077DF756170DD69900F0C799 /* space_boss.lua */; };
@@ -1549,6 +1551,8 @@
 		0772FEB416C260BA00A50931 /* VQString.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VQString.mm; sourceTree = "<group>"; };
 		0772FEB716C260D300A50931 /* VQString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VQString.h; path = VOXCHRONICLE/Classes/includes/VQString.h; sourceTree = SOURCE_ROOT; };
 		0772FEB816C2786B00A50931 /* MessageManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageManager.cpp; path = Classes/Model/MessageManager.cpp; sourceTree = "<group>"; };
+		0778C5DD170FEE310017D230 /* menu_cancel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = menu_cancel.mp3; path = Resources/SE/menu_cancel.mp3; sourceTree = "<group>"; };
+		0778C5DE170FEE310017D230 /* menu_decide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = menu_decide.mp3; path = Resources/SE/menu_decide.mp3; sourceTree = "<group>"; };
 		077DCFC1169EE872007A7003 /* Image */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Image; path = Resources/Image; sourceTree = "<group>"; };
 		077DCFC5169EE89B007A7003 /* Retina */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Retina; path = Resources/Retina; sourceTree = "<group>"; };
 		077DF756170DD69900F0C799 /* space_boss.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = space_boss.lua; path = map/space_boss.lua; sourceTree = "<group>"; };
@@ -5191,6 +5195,8 @@
 				077EDE311687E490009B9F6B /* guard.mp3 */,
 				077EDE321687E490009B9F6B /* miss.mp3 */,
 				077EDE331687E491009B9F6B /* shield_invalid.mp3 */,
+				0778C5DD170FEE310017D230 /* menu_cancel.mp3 */,
+				0778C5DE170FEE310017D230 /* menu_decide.mp3 */,
 			);
 			name = SE;
 			sourceTree = "<group>";
@@ -6182,6 +6188,8 @@
 				07B8B6131708BBA200DB739F /* T_moth7.lua in Resources */,
 				07B8B6151708D2C000DB739F /* shield_test.lua in Resources */,
 				077DF757170DD69A00F0C799 /* space_boss.lua in Resources */,
+				0778C5DF170FEE310017D230 /* menu_cancel.mp3 in Resources */,
+				0778C5E0170FEE310017D230 /* menu_decide.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
