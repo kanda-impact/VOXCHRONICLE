@@ -49,11 +49,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-<<<<<<< HEAD
 	<string>2908</string>
-=======
-	<string>2862</string>
->>>>>>> f5b909d... ダメージ文字差し替え。回復文字を追加
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIPrerenderedIcon</key>
