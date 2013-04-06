@@ -280,6 +280,9 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         _state = VCStateFinish;
         _skin->getController()->setEnable(false);
         _musicManager->getMusic()->removeAllNextTracks();
+        float musicDuration = _musicManager->getMusic()->getCurrentMainTrack()->getDuration();
+        float duration = musicDuration * (_map->getWayMusic()->getFinishCount());
+        _effectLayer->addWarning(duration);
         if (_musicManager->getMusicSet()->getFinishCount() == 0) {
           this->startBossBattle();
         } else {

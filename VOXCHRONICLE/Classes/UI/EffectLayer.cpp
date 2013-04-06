@@ -24,6 +24,7 @@ typedef enum {
   EffectLayerZOrderDamageLabel,
   EffectLayerZOrderTension,
   EffectLayerZOrderCharacter,
+  EffectLayerZOrderWarning,
   EffectLayerZOrderWindow
 } EffectLayerZOrder;
 
@@ -313,4 +314,46 @@ void EffectLayer::addDamageLabelForEnemy(Enemy *enemy, int damage) {
                                             CCFadeOut::create(0.2),
                                             CCRemoveFromParentAction::create(),
                                             NULL));
+}
+
+void EffectLayer::addWarning(float delay) {
+  const float fadeDuration = 0.5f;
+  const float animationDuration = 0.1f;
+  CCDirector* director = CCDirector::sharedDirector();
+  CCNode* node = CCNode::create();
+  CCSprite* warning = CCSprite::create("warning0.png");
+  CCArray* frames = CCArray::create();
+  frames->addObject(CCSpriteFrame::create("warning0.png", CCRectMake(0, 0, 480, 123)));
+  frames->addObject(CCSpriteFrame::create("warning1.png", CCRectMake(0, 0, 480, 123)));
+  CCAnimation* animation = CCAnimation::createWithSpriteFrames(frames);
+  animation->setDelayPerUnit(animationDuration);
+  animation->setLoops((delay / animation->getDelayPerUnit()) / 2);
+  warning->setOpacity(0);
+  warning->runAction(CCSequence::create(CCFadeIn::create(fadeDuration),
+                                        CCAnimate::create(animation),
+                                        CCFadeOut::create(fadeDuration),
+                                        NULL));
+  CCSprite* band0 = CCSprite::create("warning2.png");
+  band0->setPosition(ccp(240, 56));
+  band0->runAction(CCMoveBy::create(delay, ccp(-480, 0)));
+  
+  band0->runAction(CCSequence::create(CCFadeIn::create(fadeDuration),
+                                      CCDelayTime::create(delay),
+                                      CCFadeOut::create(fadeDuration),
+                                      NULL));
+  
+  CCSprite* band1 = CCSprite::create("warning2.png");
+  band1->setPosition(ccp(-240, -56));
+  band1->runAction(CCMoveBy::create(delay, ccp(480, 0)));
+  band1->runAction(CCSequence::create(CCFadeIn::create(fadeDuration),
+                                      CCDelayTime::create(delay),
+                                      CCFadeOut::create(fadeDuration),
+                                      NULL));
+  node->addChild(warning);
+  node->addChild(band0);
+  node->addChild(band1);
+  node->runAction(CCSequence::create(CCDelayTime::create(delay * 2),
+                                     CCRemoveFromParentAction::create(), NULL));
+  node->setPosition(ccp(director->getWinSize().width / 2.0, 180));
+  this->addChild(node, EffectLayerZOrderWarning);
 }

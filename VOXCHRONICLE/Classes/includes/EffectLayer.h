@@ -52,6 +52,7 @@ class EffectLayer :public CCLayer {
   void addCutin(Skill *skill, EffectLayerCutinType cutinType, float duration);
   void addQTEAttack(Enemy* boss);
   void reloadEffects();
+  void addWarning(float delay);
 };
 
 #endif /* defined(__VOXCHRONICLE__EffectLayer__) */
