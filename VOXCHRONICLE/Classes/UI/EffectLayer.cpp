@@ -23,7 +23,8 @@ typedef enum {
   EffectLayerZOrderCutin,
   EffectLayerZOrderDamageLabel,
   EffectLayerZOrderTension,
-  EffectLayerZOrderCharacter
+  EffectLayerZOrderCharacter,
+  EffectLayerZOrderWindow
 } EffectLayerZOrder;
 
 static EffectLayer* _shared = NULL;
@@ -156,7 +157,7 @@ PopupWindow* EffectLayer::addPopupWindow(int pages) {
   window->setPosition(ccp(director->getWinSize().width / 2.0, director->getWinSize().height / 2.0f));
   window->setScale(0);
   window->runAction(CCScaleTo::create(0.3f, 1.0));
-  this->addChild(window, 0, EffectLayerTagTutorial);
+  this->addChild(window, EffectLayerZOrderWindow, EffectLayerTagTutorial);
   return window;
 }
 
@@ -293,6 +294,23 @@ void EffectLayer::addDamageLabel(int damage, int offset) {
                                             CCScaleTo::create(0.1, 1.0),
                                             CCDelayTime::create(0.5),
                                             CCEaseSineIn::create(CCMoveBy::create(0.2, ccp(0, -150))),
+                                            CCRemoveFromParentAction::create(),
+                                            NULL));
+}
+
+void EffectLayer::addDamageLabelForEnemy(Enemy *enemy, int damage) {
+  // ダメージラベル
+  CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(damage).c_str(),
+                                                   FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 150, '0');
+  CCSize size = enemy->getContentSize();
+  float scale = MAX(enemy->getCurrentScale(enemy->getRow()), 0.4);
+  damageLabel->setAnchorPoint(ccp(0.5, 0.5));
+  damageLabel->setPosition(ccpAdd(enemy->getPosition(), ccp(0, 50 * scale)));
+  damageLabel->setScale(scale);
+  this->addChild(damageLabel, EffectLayerZOrderDamageLabel);
+  damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
+                                            CCDelayTime::create(0.5),
+                                            CCFadeOut::create(0.2),
                                             CCRemoveFromParentAction::create(),
                                             NULL));
 }

@@ -43,6 +43,7 @@ class EffectLayer :public CCLayer {
   void addEffectOnEnemy(Enemy* enemy, const char* prefix, int frameCount, CCRect rect, float delay);
   void addMusicInfo(Map* map, Level* level);
   void addDamageLabel(int damage, int offset);
+  void addDamageLabelForEnemy(Enemy* enemy, int damage);
   void addSkillEffect(Skill* skill, CCArray* targets);
   void setTensionEffect(int tension);
   void setCharacterEffect(Character* character);

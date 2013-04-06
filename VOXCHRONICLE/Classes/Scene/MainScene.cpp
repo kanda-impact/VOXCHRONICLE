@@ -173,8 +173,7 @@ MainScene::~MainScene() {
 }
 
 void MainScene::onExit() {
-  // 後処理
-  CCLayer::onExit();
+  CCLayer::onExit(); // 後処理
 }
 
 void MainScene::teardown() {
@@ -393,8 +392,6 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       int i = 0;
       CCARRAY_FOREACH(enemies, obj) {
         Enemy* enemy = (Enemy*)obj;
-        CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(((CCInteger*)damages->objectAtIndex(i))->getValue()).c_str(),
-                                                         FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 150, '0');
         // ダメージが0かつ、元々ダメージのない技じゃないかつ、アイテムも破壊していないとき、ヒットしていない状態にしてやる
         int damage = ((CCInteger*)damages->objectAtIndex(i))->getValue();
         sumDamage += damage;
@@ -410,18 +407,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         }
         
         if (damageType != DamageTypeNoDamage) { // 威力のない技は表示しない
-          // ダメージラベル
-          CCSize size = enemy->getContentSize();
-          float scale = MAX(enemy->getCurrentScale(enemy->getRow()), 0.4);
-          damageLabel->setAnchorPoint(ccp(0.5, 0.5));
-          damageLabel->setPosition(ccpAdd(enemy->getPosition(), ccp(0, 50 * scale)));
-          damageLabel->setScale(scale);
-          this->addChild(damageLabel, MainSceneZOrderDamageLabel);
-          damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
-                                                    CCDelayTime::create(0.5),
-                                                    CCFadeOut::create(0.2),
-                                                    CCRemoveFromParentAction::create(),
-                                                    NULL));
+          _effectLayer->addDamageLabelForEnemy(enemy, damage);
         }
         
         // 敵毎に効果音を鳴らす
