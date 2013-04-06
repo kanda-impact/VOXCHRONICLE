@@ -107,6 +107,8 @@ class MainScene : public CCLayer {
   CCArray* getMapHistory();
   void setMapHistory(CCArray* mapHistory);
   
+  void teardown();
+  
   CREATE_FUNC(MainScene);
 };
 

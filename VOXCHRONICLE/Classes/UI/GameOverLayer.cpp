@@ -11,6 +11,7 @@
 #include "FileUtils.h"
 #include "TitleScene.h"
 #include "macros.h"
+#include "MessageManager.h"
 
 GameOverLayer::GameOverLayer(MainScene* main) {
   _main = main;
@@ -44,9 +45,11 @@ void GameOverLayer::addGameOverButtons() {
 }
 
 void GameOverLayer::replayButtonPressed(CCObject *sender) {
-  _main->getMusic()->stop();
   CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
+  
+  _main->teardown();
+  
   CCScene* scene = CCScene::create();
   MainScene* newScene = new MainScene();
   Map* newMap = new Map(_main->getMap()->getIdentifier().c_str());
@@ -68,7 +71,7 @@ void GameOverLayer::replayButtonPressed(CCObject *sender) {
 }
 
 void GameOverLayer::titleButtonPressed(CCObject *sender) {
-  _main->getMusic()->stop();
+  _main->teardown();
   CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   CCScene* scene = CCScene::create();

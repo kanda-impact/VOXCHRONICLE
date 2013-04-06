@@ -75,7 +75,6 @@ bool MainScene::init(Map* map) {
   
   _skin = NULL;
   _effectLayer = EffectLayer::sharedLayer();
-  _effectLayer->retain();
   _effectLayer->reloadEffects();
   
   _pausedTargets = NULL;
@@ -138,6 +137,7 @@ bool MainScene::init(Map* map) {
   CCNode* parent = _effectLayer->getParent();
   if (parent) {
     parent->removeChild(_effectLayer, true);
+    _effectLayer->removeAllChildrenWithCleanup(true);
   }
   this->addChild(_effectLayer, MainSceneZOrderEffect);
   
@@ -149,32 +149,41 @@ bool MainScene::init(Map* map) {
 }
 
 MainScene::~MainScene() {
-  _map->release();
-  _messageWindow->release();
-  _musicManager->release();
   _enemyManager->release();
   _characterManager->release();
-  _skin->release();
-  _focus->release();
-  _mapHistory->release();
   if (_mapSelector != NULL) {
     _mapSelector->release();
   }
-  if (_pausedTargets != NULL) {
-    _pausedTargets->release();
-  }
+  _messageWindow->release();
+  _focus->release();
+  
   if (_qteTrigger != NULL) {
     _qteTrigger->release();
   }
+  _skin->release();
+  _mapHistory->release();
+  _level->release();
+  _map->release();
+  _musicManager->release();
+  
+  if (_pausedTargets != NULL) {
+    _pausedTargets->release();
+  }
+  
 }
 
 void MainScene::onExit() {
   // 後処理
   CCLayer::onExit();
+}
+
+void MainScene::teardown() {
   _musicManager->getMusic()->stop();
   _effectLayer->removeAllChildrenWithCleanup(true);
   MessageManager::purgeMessageManager();
   SaveData::sharedData()->save();
+  EffectLayer::purgeEffectLayer();
+  MessageManager::purgeMessageManager();
 }
 
 void MainScene::update(float dt) {
@@ -803,6 +812,7 @@ void MainScene::onFinishTracksCompleted() {
     CCDirector::sharedDirector()->replaceScene(fade);
     SaveData::sharedData()->setClearedForMap(_map->getIdentifier().c_str());
     _map->performOnClear(_characterManager, _enemyManager);
+    this->teardown();
   } else if (_map->isBossStage() && _level->getLevel() == _map->getMaxLevel()) { // ボスステージで、現在が最高レベルの時
     // ボス戦を開始します
     this->startBossBattle();

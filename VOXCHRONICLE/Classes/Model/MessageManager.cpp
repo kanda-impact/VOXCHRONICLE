@@ -21,9 +21,10 @@ MessageManager* MessageManager::sharedManager() {
 
 void MessageManager::purgeMessageManager() {
   if (_instance) {
+    _instance->_defaultWindow->unscheduleAllSelectors();
     _instance->release();
+    _instance = NULL;
   }
-  _instance = NULL;
 }
 
 MessageManager::MessageManager() {

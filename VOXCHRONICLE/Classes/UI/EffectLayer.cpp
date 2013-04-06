@@ -31,9 +31,20 @@ static EffectLayer* _shared = NULL;
 EffectLayer* EffectLayer::sharedLayer() {
   if (_shared == NULL) {
     _shared = new EffectLayer();
-    _shared->retain();
   }
   return _shared;
+}
+
+void EffectLayer::purgeEffectLayer() {
+  if (_shared) {
+    _shared->stopAllActions();
+    _shared->unscheduleAllSelectors();
+    if (_shared->getParent()) {
+      _shared->getParent()->removeChild(_shared, true);
+    }
+    _shared->release();
+    _shared = NULL;
+  }
 }
 
 EffectLayer::EffectLayer() {

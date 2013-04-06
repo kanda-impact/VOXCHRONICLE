@@ -36,6 +36,7 @@ class EffectLayer :public CCLayer {
   CCSprite* _characterEffectLayer;
  public:
   static EffectLayer* sharedLayer();
+  static void purgeEffectLayer();
   EffectLayer();
   ~EffectLayer();
   void addEffectOnEnemy(Enemy* enemy, const char* prefix, int frameCount, CCRect rect);
