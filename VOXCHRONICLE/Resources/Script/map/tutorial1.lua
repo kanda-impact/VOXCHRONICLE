@@ -29,7 +29,14 @@ Map = {
           enemyManager:popEnemyAt("T_slime30", 3, 1)
       	end
       end
-
+    elseif level == 12 then
+      -- 敵が1体もいなくなったらモンスター生成
+      if enemyCount == 0 then
+          enemyManager:popEnemyAt("T_moth7", 5, 0)
+          enemyManager:popEnemyAt("T_moth7", 5, 1)
+          enemyManager:popEnemyAt("T_moth7", 5, 2)
+          enemyManager:popEnemyAt("T_moth7", 5, 3)
+      end
     end
   end,
   onLevelUp = function(self, characterManager, enemyManager)
@@ -44,12 +51,11 @@ Map = {
 私、ラスカは魔法使い。オクス君は剣だけど私は杖で氷結魔法を使って攻撃するわ。基本はオクス君と操作は変わらないから色々試してみてね！
 ]])
     elseif level == 12 then
-      local popup = layer:addPopupWindow(1)
-      popup:setText(0, [[MPに注意！
-
-必殺！ラスカサンダー！]], [[
+      local popup = layer:addPopupWindow(2)
+      popup:setText(0, "MPに注意！", [[
 私、ラスカは魔法使い！　…なんだけれど、魔法使いの宿命として特殊な行動にはMPを消費しちゃうのよねぇ。これから説明する範囲攻撃、弓攻撃、回復魔法を使うときはMPを消費するからMP切れには注意してね！
-
+]])
+      popup:setText(1, "必殺！ラスカサンダー！", [[
 さて軍団が攻めてくるわ！オクス君の時と同じように、テンション溜めながら敵を引きつけて、範囲攻撃の必殺！ラスカサンダー！で一気に倒しちゃいましょう。オクススラッシュとは違ってMPを消費しちゃうので気をつけてね。
 
 あ、MP切れそうだったけれどいつの間にか回復してる！オクス君でしょ、気が利くわねぇ！
