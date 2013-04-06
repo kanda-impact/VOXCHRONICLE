@@ -27,12 +27,12 @@ Character = {
     elseif mapName == "tutorial1" then
     -- チュートリアル「Lesson2」初期状態(最初は攻撃・ガード・進むのみ)
       return {
-      {"magic", 12},
-      {"bow", 11},
+      {"magic", 11},
+      {"bow", 13},
       {"thunder", 12},
-      {"cure", 12},
+      {"cure", 13},
       {"tension", 12},
-      {"change", 12},
+      {"change", 13},
       {"shield", 11},
       {"run", 11}
       }
