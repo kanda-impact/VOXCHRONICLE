@@ -394,16 +394,18 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
           SaveData::sharedData()->addCountFor(SaveDataCountKeyDefeat); // 殺しカウント++
         }
         
-        // ダメージラベル
-        damageLabel->setPosition(enemy->getPosition());
-        float scale = enemy->getCurrentScale(enemy->getRow());
-        damageLabel->setScale(scale);
-        this->addChild(damageLabel, MainSceneZOrderDamageLabel);
-        damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
-                                                  CCDelayTime::create(0.5),
-                                                  CCFadeOut::create(0.2),
-                                                  CCRemoveFromParentAction::create(),
-                                                  NULL));
+        if (damageType != DamageTypeNoDamage) { // 威力のない技は表示しない
+          // ダメージラベル
+          damageLabel->setPosition(enemy->getPosition());
+          float scale = enemy->getCurrentScale(enemy->getRow());
+          damageLabel->setScale(scale);
+          this->addChild(damageLabel, MainSceneZOrderDamageLabel);
+          damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
+                                                    CCDelayTime::create(0.5),
+                                                    CCFadeOut::create(0.2),
+                                                    CCRemoveFromParentAction::create(),
+                                                    NULL));
+        }
         
         // 敵毎に効果音を鳴らす
         string fileName = "";
