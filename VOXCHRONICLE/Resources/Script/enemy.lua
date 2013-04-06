@@ -56,6 +56,16 @@ function getColor(hp)
   return colors[key][1], colors[key][2], colors[key][3] -- key番目のr, g, bを1こずつ返します
 end
 
+function getColors(count)
+  local colors = {}
+  for i = 1, count do
+    local length = #colors
+    local r, g, b = getColor(i)
+    table.insert(colors, {r, g, b})
+  end
+  return colors
+end
+
 --[[ 
 モンスター図鑑で利用するモンスターを返してください 
 本当は種族を返却させたかったけど、種族だとグラの描画が大変面倒だったのでモンスターを返すようにしてください
