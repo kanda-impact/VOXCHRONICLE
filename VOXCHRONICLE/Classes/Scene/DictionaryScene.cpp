@@ -71,7 +71,7 @@ bool DictionaryScene::init() {
   this->loadEnemyByIndex(0);
   
   CCMenu* menu = CCMenu::create(left, right, NULL);
-  menu->setPosition(ccp(director->getWinSize().width / 2.0, 280));
+  menu->setPosition(ccp(director->getWinSize().width / 2.0, 240));
   menu->alignItemsHorizontallyWithPadding(300);
   CCMenu* backMenu = CCMenu::create(back, NULL);
   this->addChild(backMenu);
