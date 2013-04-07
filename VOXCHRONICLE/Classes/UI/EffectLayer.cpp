@@ -239,7 +239,7 @@ void EffectLayer::addMusicInfo(Map* map, Level* level) {
   // 作曲者情報と曲名を表示する
   MusicSet* mSet = map->getCurrentMusic(level);
   CCNode* musicInfo = CCNode::create();
-  CCLabelTTF* nameShadowLabel = CCLabelTTF::create(map->getName().c_str(),
+  CCLabelTTF* nameShadowLabel = CCLabelTTF::create(mSet->getName().c_str(),
                                                    "Helvetica",
                                                    24,
                                                    CCSizeMake(200, 30),
@@ -255,7 +255,7 @@ void EffectLayer::addMusicInfo(Map* map, Level* level) {
   composerShadowLabel->setColor(ccc3(33, 33, 33));
   composerShadowLabel->setPosition(ccp(3, -28));
   musicInfo->addChild(composerShadowLabel);
-  CCLabelTTF* nameLabel = CCLabelTTF::create(map->getName().c_str(),
+  CCLabelTTF* nameLabel = CCLabelTTF::create(mSet->getName().c_str(),
                                              "Helvetica",
                                              24,
                                              CCSizeMake(200, 30),
