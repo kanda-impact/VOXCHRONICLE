@@ -16,7 +16,7 @@ Achievement = {
     {SaveDataCountKeyDictionaryCount, dictionaryEnemyCount * 0.8, "enemy80"},
     {SaveDataCountKeyDictionaryCount, dictionaryEnemyCount, "enemy100"},
     {SaveDataCountKeyHitDamage, 1000, "hit1000"},
-    {SaveDataCountKeyAttackDamage, 1000, "attack1000"},
+    {SaveDataCountKeyAttackDamage, 10000, "attack10000"},
     {SaveDataCountKeyDead, 1000, "play1000"}
   },
   -- 1回のプレイ中のカウントに依存する実績を書きます
