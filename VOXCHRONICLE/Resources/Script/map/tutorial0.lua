@@ -6,7 +6,7 @@ Map = {
   skin = "skinA",
   ending = "",
   nextMaps = {},
-  initialLevel = 1,
+  initialLevel = 6,
   maxLevel = 10,
   getEnemyTable = function(level)
     return {}
@@ -114,6 +114,22 @@ Map = {
           enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, 2)
         end
       end
+    elseif level == 8 then
+      local maxHP = characterManager:getMaxHP()
+      local enemies = enemyManager:getEnemies()
+      local popup = layer:getPopupWindow()
+      local enemyCount = enemies:count()
+      local lastSkill = characterManager:getLastSkill()
+      if enemyCount == 0 then --敵がいなくて、
+        if lastSkill:getIdentifier() == "shield" then --前回が盾の時
+          enemyManager:popEnemyAt("acorn1A0",5,1)
+        else --前回が盾でない時
+          enemyManager:popEnemyAt("moth2A0",5,1)
+        end
+      end
+      if characterManager:getHP() <= maxHP then
+        characterManager:addHP(maxHP) --ダメージを受けているはずなので全快させる
+      end
     end
     self.__IRegister__:setRegister("preHP", characterManager:getHP())
   end,
@@ -129,8 +145,6 @@ Map = {
       popup:setText(1, "オクスってどんなゲーム？", "このゲームは画面奥から自分に向かって近づいてくる敵をやっつけていくゲームよ。音楽が気持ちいいから、音量を上げてノリノリでプレイしてみてね。")
       popup:setText(2, "音楽に合わせて行動しよう！", "下にあるタイムマーカーが一周するごとに、あなたが選択した行動（コマンド）が行われるわ。まずは剣のマークをタッチして『攻撃』コマンドを試してみましょ！")
     elseif level == 2 then
-      local data = SaveData:sharedData()
-      data:unlockAchievement("clearTutorialA")
       local popup = layer:addPopupWindow(3)
       popup:setText(0, "レベルアップで強くなろう！", "そう！こんな調子で敵をどんどん倒していくと、今みたいにレベルアップするよ！さらに、１０レベルごとに次のステージに行けるの！そして、３ステージ目が最後の戦いなの")
       popup:setText(1, "攻撃は、近くの敵に", "あとね。攻撃は基本的に一番近くの敵に当たるから、「近づく敵は全て切る！」って感じでどんどん倒していっちゃおう！")
@@ -195,6 +209,11 @@ Map = {
 …………といいたいけれど、もうちょっとだけ続くんじゃ。
 オクスクロニクルの真の主役は実は私、ラスカなのよ。前作オクスクエストから1年くらい、続編の今作はキャラチェンジシステムが最大の目玉！！そもそもまだ説明していないコマンドが残ってるじゃない。「キャラチェンジシステムとはいったいなんなのか！そしてオクスを待ち受けるさらなる試練とは！！……to be continued.」
 ]])
+    --if get == nil then
+    
+    local data = SaveData:sharedData()
+    data:unlockAchievement("clearTutorialA")
+    
     end
   end,
   getEnemyPopRate = function(level)
