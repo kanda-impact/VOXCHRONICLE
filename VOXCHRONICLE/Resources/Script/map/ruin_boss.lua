@@ -21,6 +21,10 @@ Map = {
       enemyManager:setBoss(fortress)
     end
   end,
+  onClear = function(self, characterManager, enemyManager)
+    local data = SaveData:sharedData()
+    data:unlockAchievement("clear3A")
+  end,
   getEnemyPopRate = function(level)
     if level <= 22 then
       return 0.3

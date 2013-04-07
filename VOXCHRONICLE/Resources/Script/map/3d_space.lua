@@ -17,15 +17,14 @@ Map = {
       return {planet3D0 = 1, t2pha3D1 = 3}
     elseif level <= 25 then
       return {exob3D5 = 1, planet3D0 = 1, t2pha3D1 = 3}
-    elseif level == 27 then
-      return {exob3D5 = 1, planet3D0 = 1, t2pha3D1 = 1}
-    elseif level == 29 then
+    elseif level <= 29 then
       return {exob3D5 = 1, planet3D0 = 1, t2pha3D1 = 1}
     end
     return {}
       --return {exob3D5 = 3, planet3D0 = 1, t2pha3D1 = 1, whale3D7 = 1}
   end,
   onLevelUp = function(self, characterManager, enemyManager)
+    local level = characterManager:getLevel()
     if level == 26 then
       enemyManager:popEnemyAt("fortress3D0", 7, 0)
       enemyManager:popEnemyAt("fortress3D0", 6, 1)
@@ -37,9 +36,11 @@ Map = {
     elseif level == 28 then
       enemyManager:popEnemyAt("kraken3D0", 7, 0)
     end
-    local level = characterManager:getLevel()
   end,
   getEnemyPopRate = function(level)
+    if level >= 26 and level <= 28 then
+    return 0
+    end
     return 0.3
   end
 }
