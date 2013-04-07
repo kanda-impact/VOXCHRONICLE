@@ -38,6 +38,7 @@ private:
   int _level;
   int _counter;
   int _exp;
+  int _attack;
   int _enemySize;
   bool _enable;
   bool _movable;

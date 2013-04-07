@@ -64,7 +64,10 @@ int LuaObject::getInt(const char *key) {
   this->loadTable();
   int table = lua_gettop(L);
   lua_getfield(L, table, key);
-  int result = lua_tointeger(L, -1);
+  int result = 0;
+  if (lua_isnumber(L, lua_gettop(L))) {
+    result = lua_tointeger(L, -1);
+  }
   lua_pop(L, 1);
   return result;
 }

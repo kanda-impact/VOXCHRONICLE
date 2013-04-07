@@ -86,6 +86,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _movable = true;
   _counter = -1;
   _exp = this->getExpFromLua();
+  _attack = _lua->getInt("attack");
   _frameSprite = NULL;
   stringstream ss;
   ss << _species->getImageName().c_str();
@@ -298,6 +299,9 @@ int Enemy::getLevel() {
 }
 
 int Enemy::getAttack() {
+  if (_attack != 0) {
+    return _attack;
+  }
   return _species->getAttack();
 }
 

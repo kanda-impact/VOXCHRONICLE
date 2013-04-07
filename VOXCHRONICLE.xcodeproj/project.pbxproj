@@ -1116,6 +1116,7 @@
 		07F0D799163C1EC1005592AF /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F0D797163C1EC0005592AF /* TitleScene.cpp */; };
 		07F166FE16DDD8D8007DCB3F /* space_test.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F166FD16DDD8D8007DCB3F /* space_test.lua */; };
 		07F2018E16FD48E2001A0674 /* negi.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F2018D16FD48E2001A0674 /* negi.lua */; };
+		07F20F7617110B2E0099ACD8 /* endingA.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F7517110B2E0099ACD8 /* endingA.mp3 */; };
 		07F350F916F8846F00F95FDD /* make_glue.sh in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F616F8846F00F95FDD /* make_glue.sh */; };
 		07F350FA16F8846F00F95FDD /* tolua++ in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F716F8846F00F95FDD /* tolua++ */; };
 		07F350FB16F8846F00F95FDD /* VOXCHRONICLE.pkg in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F816F8846F00F95FDD /* VOXCHRONICLE.pkg */; };
@@ -2713,6 +2714,7 @@
 		07F0D79A163C1EFD005592AF /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = Classes/includes/TitleScene.h; sourceTree = "<group>"; };
 		07F166FD16DDD8D8007DCB3F /* space_test.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = space_test.lua; path = map/space_test.lua; sourceTree = "<group>"; };
 		07F2018D16FD48E2001A0674 /* negi.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = negi.lua; path = musics/negi.lua; sourceTree = "<group>"; };
+		07F20F7517110B2E0099ACD8 /* endingA.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = endingA.mp3; path = Resources/Music/general/endingA.mp3; sourceTree = "<group>"; };
 		07F350F616F8846F00F95FDD /* make_glue.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = make_glue.sh; sourceTree = "<group>"; };
 		07F350F716F8846F00F95FDD /* tolua++ */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "tolua++"; sourceTree = "<group>"; };
 		07F350F816F8846F00F95FDD /* VOXCHRONICLE.pkg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VOXCHRONICLE.pkg; sourceTree = "<group>"; };
@@ -5041,6 +5043,7 @@
 			isa = PBXGroup;
 			children = (
 				07A3D5D51705EFB9009AE7F3 /* dictionary.mp3 */,
+				07F20F7517110B2E0099ACD8 /* endingA.mp3 */,
 				07C6468116E0DCFF00B29842 /* endingB.mp3 */,
 				07F88F1716DB842100FE6B2B /* endingC.mp3 */,
 				07A3D5DF1705F4D0009AE7F3 /* endingD.mp3 */,
@@ -6243,6 +6246,7 @@
 				074E137917105CE400308F67 /* endingD.lua in Resources */,
 				074E137B171067EC00308F67 /* freeplay.lua in Resources */,
 				074E137D1710697500308F67 /* fp_simple.lua in Resources */,
+				07F20F7617110B2E0099ACD8 /* endingA.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
