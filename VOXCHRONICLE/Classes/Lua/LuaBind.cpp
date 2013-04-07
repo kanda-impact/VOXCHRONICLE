@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Sun Apr  7 20:31:34 2013.
+** Generated automatically by tolua++-1.0.92 on Sun Apr  7 20:51:30 2013.
 */
 
 #ifndef __cplusplus
@@ -2852,9 +2852,9 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
   tolua_constant(tolua_S,"PlayLogKeyTurn",PlayLogKeyTurn);
   tolua_constant(tolua_S,"PlayLogKeyMaxRepeatCount",PlayLogKeyMaxRepeatCount);
   tolua_constant(tolua_S,"PlayLogKeyTensionCount",PlayLogKeyTensionCount);
-  tolua_constant(tolua_S,"PlayLogKeyChangeCount
-	PlayLogKeyNum",PlayLogKeyChangeCount
-	PlayLogKeyNum);
+  tolua_constant(tolua_S,"PlayLogKeyChangeCount",PlayLogKeyChangeCount);
+  tolua_constant(tolua_S,"PlayLogKeyHitDamage",PlayLogKeyHitDamage);
+  tolua_constant(tolua_S,"PlayLogKeyNum",PlayLogKeyNum);
   tolua_constant(tolua_S,"DamageTypeNone",DamageTypeNone);
   tolua_constant(tolua_S,"DamageTypeHit",DamageTypeHit);
   tolua_constant(tolua_S,"DamageTypeNoDamage",DamageTypeNoDamage);

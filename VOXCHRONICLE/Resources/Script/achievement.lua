@@ -49,6 +49,9 @@ Achievement = {
     if playlog:getCount(PlayLogKeyTensionCount) == 0 then -- 能ある鷹は爪を隠す
       data:unlockAchievement("notension")
     end
+    if playlog:getCount(PlayLogKeyHitDamage) == 0 then -- 完全無欠
+      data:unlockAchievement("clearNoDamage")
+    end
   end
 }
 

@@ -30,6 +30,7 @@ typedef enum {
   PlayLogKeyMaxRepeatCount,
   PlayLogKeyTensionCount,
   PlayLogKeyChangeCount,
+  PlayLogKeyHitDamage,
   PlayLogKeyNum
 } PlayLogKey;
 

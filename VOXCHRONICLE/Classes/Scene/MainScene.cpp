@@ -222,7 +222,11 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
       Enemy* enemy = (Enemy*)obj;
       if (enemy->getRow() < 0) {
         int damage = floor(0.5 + enemy->getAttack() * _characterManager->getLevelOffsetRate(enemy->getLevel(), _characterManager->getLevel()));
+        int preHP = _characterManager->getHP();
         _characterManager->damage(damage);
+        int sub = _characterManager->getHP() - preHP;
+        SaveData::sharedData()->addCountFor(SaveDataCountKeyHitDamage, sub); // 被ダメージカウント
+        _log->setCount(PlayLogKeyHitDamage, sub + _log->getCount(PlayLogKeyHitDamage)); // 被ダメージカウント
         _enemyManager->removeEnemy(enemy);
       }
     }
@@ -528,7 +532,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     // ターンカウントを進める
     _log->addCount(PlayLogKeyTurn);
     
-    _log->setGraterCount(PlayLogKeyMaxRepeat, _characterManager->getRepeatCountRaw()); // repeatCount追加
+    _log->setGraterCount(PlayLogKeyMaxRepeatCount, _characterManager->getRepeatCountRaw()); // repeatCount追加
     ++_mapTurnCount;
     // このターンにテンション使ってないときreset
     if (_characterManager->getLastSkill() != NULL && _characterManager->getLastSkill()->getIdentifier() != "tension") {

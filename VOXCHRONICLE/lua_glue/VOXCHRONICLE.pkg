@@ -83,8 +83,10 @@ enum {
 	PlayLogKeyTurn,
 	PlayLogKeyMaxRepeatCount,
 	PlayLogKeyTensionCount,
-	PlayLogKeyChangeCount
+	PlayLogKeyChangeCount,
+	PlayLogKeyHitDamage,
 	PlayLogKeyNum
+
 };
 
 enum {

@@ -151,7 +151,6 @@ DamageType CharacterManager::damage(int damage) {
     this->setShield(false); // 盾問答無用で外します
   } else {
     _hp -= damage;
-    SaveData::sharedData()->addCountFor(SaveDataCountKeyHitDamage, damage); // 被ダメージカウント
     if (_hp <= 0) { // 死亡時
       _hp = 0;
       damageType = DamageTypeDeath;
