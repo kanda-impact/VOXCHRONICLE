@@ -2,7 +2,7 @@ math.randomseed(os.time())
 Enemy = {
   name = "ウィル・デ・ヤウク",
   imageName = "knight",
-  attack = 1,
+  attack = 20,
   baseExp = 1,
   hasFrame = true,
   counter = 0,

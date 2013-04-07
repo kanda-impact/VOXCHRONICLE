@@ -49,7 +49,11 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
+<<<<<<< Updated upstream
 	<string>2968</string>
+=======
+	<string>2902</string>
+>>>>>>> Stashed changes
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIPrerenderedIcon</key>
