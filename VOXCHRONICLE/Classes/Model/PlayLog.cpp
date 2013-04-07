@@ -19,8 +19,8 @@ PlayLog::PlayLog() {
   CCLuaValueArray* array = lua->getArray("playLog");
   for (CCLuaValueArrayIterator it = array->begin(); it != array->end(); ++it) {
     CCLuaValueDict dict = (it->dictValue());
-    SaveDataCountKey key = (SaveDataCountKey)dict["1"].intValue();
-    int value = (SaveDataCountKey)dict["2"].intValue();
+    SaveDataCountKey key = (SaveDataCountKey)dict["1"].floatValue();
+    int value = dict["2"].floatValue();
     string identifier = dict["3"].stringValue();
     AchievementInfo info;
     info.key = key;
@@ -32,8 +32,9 @@ PlayLog::PlayLog() {
 
 void PlayLog::checkAchievement(PlayLogKey key, int value) {
   for (list<AchievementInfo>::iterator it = _achievementInfos->begin(); it != _achievementInfos->end(); ++it) {
+    AchievementInfo info = (*it);
     if ((*it).key == key) {
-      if ((*it).count < value) {
+      if ((*it).count <= value) {
         CCAchievementManager::sharedManager()->reportAchievement((*it).identifier.c_str(), 100, true, NULL);
       }
     }

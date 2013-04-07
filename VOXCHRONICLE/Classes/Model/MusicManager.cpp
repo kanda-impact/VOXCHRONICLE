@@ -181,6 +181,7 @@ string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& perform
       } else {
         // そうじゃなかったら+1
         _characterManager->setRepeatCount(_characterManager->getRepeatCount() + 1);
+        _characterManager->setRepeatCountRaw(_characterManager->getRepeatCountRaw() + 1);
       }
       if (skill->isLoop()) {
         _characterManager->setRepeatCount((_characterManager->getRepeatCount()) % skill->getMaxRepeat());

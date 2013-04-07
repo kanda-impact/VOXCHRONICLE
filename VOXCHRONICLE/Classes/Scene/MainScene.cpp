@@ -527,7 +527,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     // ターンカウントを進める
     _log->addCount(PlayLogKeyTurn);
     
-    _log->setGraterCount(PlayLogKeyMaxRepeat, _characterManager->getRepeatCount()); // repeatCount追加
+    _log->setGraterCount(PlayLogKeyMaxRepeat, _characterManager->getRepeatCountRaw()); // repeatCount追加
     ++_mapTurnCount;
     // このターンにテンション使ってないときreset
     if (_characterManager->getLastSkill() != NULL && _characterManager->getLastSkill()->getIdentifier() != "tension") {

@@ -36,8 +36,8 @@ SaveData::SaveData() {
   CCLuaValueArray* array = lua->getArray("saveData");
   for (CCLuaValueArrayIterator it = array->begin(); it != array->end(); ++it) {
     CCLuaValueDict dict = (it->dictValue());
-    SaveDataCountKey key = (SaveDataCountKey)dict["1"].intValue();
-    int value = (SaveDataCountKey)dict["2"].intValue();
+    SaveDataCountKey key = (SaveDataCountKey)dict["1"].floatValue();
+    int value = dict["2"].floatValue();
     string identifier = dict["3"].stringValue();
     AchievementInfo info;
     info.key = key;
