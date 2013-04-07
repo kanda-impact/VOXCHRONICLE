@@ -74,6 +74,14 @@ enum {
 };
 
 enum {
+	PlayLogKeyRun,
+	PlayLogKeyMaxRepeatChange,
+	PlayLogKeyMaxDefeat,
+	PlayLogKeyTurn,
+	PlayLogKeyMaxRepeat
+};
+
+enum {
 	DamageTypeNone,
 	DamageTypeHit,
 	DamageTypeNoDamage,

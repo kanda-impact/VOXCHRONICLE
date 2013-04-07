@@ -40,14 +40,14 @@ typedef struct {
   SaveDataCountKey key;
   int count;
   string identifier;
-} SaveDataAchievementInfo;
+} AchievementInfo;
 
 class SaveData :public CCObject {
  private:
   CCDictionary* _countDictionary;
   CCArray* _achievements;
   
-  list<SaveDataAchievementInfo>* _achievementInfos;
+  list<AchievementInfo>* _achievementInfos;
   
   void checkUnlockAchievement(SaveDataCountKey key, int value);
   void onFinishAchievementReporting(const char* identifier, bool error);

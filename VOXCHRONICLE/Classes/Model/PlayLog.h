@@ -10,16 +10,20 @@
 #define __VOXCHRONICLE__PlayLog__
 
 #include <iostream>
+#include "SaveData.h"
 #include "cocos2d.h"
 #include <map>
+#include <list>
 
 using namespace std;
 using namespace cocos2d;
 
 typedef enum {
-  PlayLogKeyRun,
   PlayLogKeyMaxRepeatChange,
   PlayLogKeyMaxDefeat,
+  PlayLogKeyVOXAttack,
+  PlayLogKeyLSKAttack,
+  PlayLogKeyRun,
   PlayLogKeyTurn,
   PlayLogKeyMaxRepeat,
   PlayLogKeyNum
@@ -28,7 +32,8 @@ typedef enum {
 class PlayLog :public CCObject {
  private:
   map<int, int>* _count;
-  void checkAchievement();
+  list<AchievementInfo>* _achievementInfos;
+  void checkAchievement(PlayLogKey key, int value);
  public:
   PlayLog();
   virtual ~PlayLog();

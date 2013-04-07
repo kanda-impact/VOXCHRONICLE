@@ -31,7 +31,7 @@ SaveData::SaveData() {
   _achievements = CCArray::create();
   _achievements->retain();
   this->load();
-  _achievementInfos = new list<SaveDataAchievementInfo>();
+  _achievementInfos = new list<AchievementInfo>();
   LuaObject* lua = LuaObject::create("achievement.lua");
   CCLuaValueArray* array = lua->getArray("saveData");
   for (CCLuaValueArrayIterator it = array->begin(); it != array->end(); ++it) {
@@ -39,11 +39,10 @@ SaveData::SaveData() {
     SaveDataCountKey key = (SaveDataCountKey)dict["1"].intValue();
     int value = (SaveDataCountKey)dict["2"].intValue();
     string identifier = dict["3"].stringValue();
-    SaveDataAchievementInfo info;
+    AchievementInfo info;
     info.key = key;
     info.count = value;
     info.identifier = identifier;
-    CCLog("%s", identifier.c_str());
     _achievementInfos->push_back(info);
   }
 }
@@ -135,7 +134,7 @@ void SaveData::unlockAchievement(const char *identifier) {
 
 void SaveData::checkUnlockAchievement(SaveDataCountKey key, int value) {
   // パフォーマンス的にも微妙なのでハードコーディング安定
-  for (list<SaveDataAchievementInfo>::iterator it = _achievementInfos->begin(); it != _achievementInfos->end(); ++it) {
+  for (list<AchievementInfo>::iterator it = _achievementInfos->begin(); it != _achievementInfos->end(); ++it) {
     if ((*it).key == key) {
       if ((*it).count < value) {
         this->unlockAchievement((*it).identifier.c_str());
