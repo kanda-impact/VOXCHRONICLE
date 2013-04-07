@@ -1,5 +1,5 @@
 Map = {
-  name = "炭鉱",
+  name = "クシフォウ炭鉱",
   wayMusic = "yuki",
   bossMusic = "",
   backgroundImage = "cave_background.png",

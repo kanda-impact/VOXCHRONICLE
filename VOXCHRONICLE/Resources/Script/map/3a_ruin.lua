@@ -1,5 +1,5 @@
 Map = {
-  name = "遺跡",
+  name = "ツアドゥラグ遺跡",
   wayMusic = "ttn1",
   bossMusic = "Hawaii",
   backgroundImage = "ruin_background.png",

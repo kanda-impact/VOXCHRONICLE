@@ -1,5 +1,5 @@
 Map = {
-  name = "古城",
+  name = "古城ルパティナ",
   wayMusic = "dub",
   bossMusic = "3Bb",
   backgroundImage = "castle_background.png",

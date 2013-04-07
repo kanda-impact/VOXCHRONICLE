@@ -1,5 +1,5 @@
 Skill = {
-  name = "攻撃",
+  name = "アタック",
   identifier = "attack",
   effectFrames = 4,
   mp = 0,

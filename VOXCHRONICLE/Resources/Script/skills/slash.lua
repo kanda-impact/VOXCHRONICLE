@@ -1,5 +1,5 @@
 Skill = {
-  name = "スラッシュ",
+  name = "オクススラッシュ",
   identifier = "slash",
   effectFrames = 4,
   mp = 0,
