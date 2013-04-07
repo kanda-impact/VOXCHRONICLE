@@ -684,6 +684,8 @@ void MainScene::addDamageEffect() {
     CCMoveTo* reset = CCMoveTo::create(0, ccp(0, 0));
     actions->addObject(reset);
     this->runAction(CCSequence::create(actions));
+  } else if (sumDamage == 0) { // 0のとき
+    SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/guard.mp3").c_str());
   }
   if (isDead) { // 死んだとき
     this->onGameOver();
