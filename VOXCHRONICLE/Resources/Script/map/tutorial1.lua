@@ -93,6 +93,12 @@ Map = {
         enemyManager:popEnemyAt("T_moth7", 3, 1)
         enemyManager:popEnemyAt("T_moth7", 3, 2)
       end
+    elseif level == 16 then
+      -- 敵が1体もいなくなったらモンスター生成
+      if enemyCount == 0 then
+          enemyManager:popEnemyAt("slime3B1", 5, 0)
+          enemyManager:popEnemyAt("wisp3A2", 5, 1)
+      end
     end
   end,
   onLevelUp = function(self, characterManager, enemyManager)
@@ -140,6 +146,17 @@ Map = {
       local popup = layer:addPopupWindow(1)
       popup:setText(0, "MP足りなくってピンチだよ！", [[
 ちょっと、オクス君！私に任せてばっかりだと息切れしちゃうんだから。さっきみたいに私にMP注入してよ～！いったんチェンジチェンジ！
+]])
+	elseif level == 16 then
+      local popup = layer:addPopupWindow(3)
+      popup:setText(0, "本格的な戦いへ！", [[
+これで全ての操作は把握できたことだし、そろそろ連係プレイと行ってみようか、オクス君！チェンジを駆使して強敵を倒していこう！
+]])
+      popup:setText(1, "物理耐性と魔法耐性", [[
+オクス君は剣で物理攻撃、私は杖で魔法攻撃をしてるんだけれど、中にはそれが効きにくいっていう耐性をもった敵がいるのよ。
+]])
+      popup:setText(2, "耐性はオーラで分かる！", [[
+青いオーラが出てる敵はオクス君の剣が効きにくくって、赤いオーラが出てる敵は私の魔法が効きにくいわよ。敵との相性を気にして戦わないと、いつの間にかに追い詰められちゃうわ！敵のオーラをよーく観察してね！
 ]])
     end
   end,
