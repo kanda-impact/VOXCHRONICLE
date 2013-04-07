@@ -29,6 +29,10 @@ Map = {
     end
   end,
    onLoad = function(self, characterManager, enemyManager)
+    enemyManager:loadEnemyTextureAsync("slime.png")
+    enemyManager:loadEnemyTextureAsync("mimic.png")
+    enemyManager:loadEnemyTextureAsync("gargoyle.png")
+    enemyManager:loadEnemyTextureAsync("dragon.png")
     enemyManager:loadEnemyTextureAsync("knight.png")
   end,
    onLevelUp = function(self, characterManager, enemyManager)
@@ -43,6 +47,10 @@ Map = {
       return 0.22
     end
     return 0.2
+  end,
+  onClear = function(self, characterManager, enemyManager)
+    local data = SaveData:sharedData()
+    data:unlockAchievement("clear3B")
   end,
   fixedEnemies = {
   }

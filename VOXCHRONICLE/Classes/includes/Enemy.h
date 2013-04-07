@@ -38,6 +38,7 @@ private:
   int _level;
   int _counter;
   int _exp;
+  int _attack;
   int _enemySize;
   bool _enable;
   bool _movable;
@@ -125,13 +126,16 @@ public:
   Species* getSpecies();
   void setCounter(int counter);
   
+  void setSkillType(SkillType type);
   void setItem(EnemyItem item);
   void setEnable(bool enable);
   
   bool isMovable();
   void setMovable(bool m);
+  void setHP(int hp);
   
   void setSilhouette();
+  void setFrameColor(CCSprite* frameSprite, SkillType type);
 };
 
 #endif /* defined(__VOXCHRONICLE__Enemy__) */

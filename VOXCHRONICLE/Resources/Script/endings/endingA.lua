@@ -1,7 +1,7 @@
 Ending = {
   background = "endingA.png",
   music = "endingA.mp3",
-  duration = 21,
+  duration = 24,
   text = [[
 遺跡に巣食う魔物を撃破し、遺跡の奥へと進むオクス。
 そこには伝説の地『グランエターナ』への転送装置があった。

@@ -17,6 +17,8 @@ using namespace cocos2d;
 // NSDateのC++ Wrapperです
 
 class VQTime :public CCObject {
+ private:
+  static VQTime* _shared;
  public:
   static VQTime* sharedTime();
   int getCurrentHour();

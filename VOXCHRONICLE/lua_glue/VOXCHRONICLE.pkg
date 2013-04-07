@@ -14,6 +14,7 @@ $#include "StatusLayer.h"
 $#include "EnemySkill.h"
 $#include "Map.h"
 $#include "SaveData.h"
+$#include "PlayLog.h"
 $#include "VQTime.h"
 
 #define MAX_ROW
@@ -74,6 +75,21 @@ enum {
 };
 
 enum {
+	PlayLogKeyMaxDefeat,
+	PlayLogKeyVOXAttackCount,
+	PlayLogKeyLSKAttackCount,
+	PlayLogKeyRunCount,
+	PlayLogKeyMaxRepeatChangeCount,
+	PlayLogKeyTurn,
+	PlayLogKeyMaxRepeatCount,
+	PlayLogKeyTensionCount,
+	PlayLogKeyChangeCount,
+	PlayLogKeyHitDamage,
+	PlayLogKeyNum
+
+};
+
+enum {
 	DamageTypeNone,
 	DamageTypeHit,
 	DamageTypeNoDamage,
@@ -91,6 +107,18 @@ enum {
 	DamageTypeAbsorption
 };
 
+enum {
+	SaveDataCountKeyDead,
+	SaveDataCountKeyTurn,
+	SaveDataCountKeyDefeat,
+	SaveDataCountKeyMPMiss,
+	SaveDataCountKeyBoot,
+	SaveDataCountKeyHitDamage,
+	SaveDataCountKeyAttackDamage,
+	SaveDataCountKeyDictionaryCount,
+	SaveDataCountKeyNum
+};
+
 class Skill :public CCObject {
 	int getPower(CharacterManager* manager);
 	string getIdentifier();
@@ -100,16 +128,17 @@ class Skill :public CCObject {
 
 class Enemy : public CCSprite, public IRegister {
 	int getRow();
+	int getCol();
+	int getHP();
 	int getAttack();
+	string getName();
 	void moveRow(float row);
 	void setRow(float row);
-	int getCol();
 	void setCol(int col);
 	bool setAnimationClip(const char* clipName, int frames, bool hasFrame);
 	bool setDefaultAnimationClip();
-	string getName();
-	int getHP();
 	void setCounter(int counter);
+	void setHP(int hp);
 	int getRegister(const char* key, int defaultValue);
 	void setRegister(const char* key, int value);
 	bool hasRegister(const char* key);
@@ -164,6 +193,8 @@ class EffectLayer : public CCLayer {
 	static EffectLayer* sharedLayer();
 	PopupWindow* addPopupWindow(int pages);
 	void addEffectOnEnemy(Enemy* enemy, const char* prefix, int frameCount, CCRect rect);
+	void addDamageLabel(int damage, int offset);
+	PopupWindow* getPopupWindow();
 };
 
 class PopupWindow : public CCSprite {
@@ -203,6 +234,10 @@ class SaveData : public CCObject {
 	bool isClearedMap(const char* mapIdentifier);
 	void save();
 	void load();
+};
+
+class PlayLog :public CCObject {
+	int getCount(int key);
 };
 
 class VQTime : public CCObject {

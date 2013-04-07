@@ -9,6 +9,8 @@
 #include "Species.h"
 #include "LuaObject.h"
 
+CCDictionary* Species::_speciesDict = NULL;
+
 Species::Species(const char* identifier) {
   _identifier = identifier;
   _lua = new LuaObject(identifier);
@@ -20,6 +22,20 @@ Species::Species(const char* identifier) {
   _animationFrames = _lua->getInt("animationFrames");
   _hasFrame = _lua->getBoolean("hasFrame");
   _disableSkills = _lua->getArray("disableSkills");
+}
+
+Species* Species::getSpecies(const char *identifier) {
+  if (!_speciesDict) {
+    _speciesDict = CCDictionary::create();
+    _speciesDict->retain();
+  }
+  Species* species = (Species*)_speciesDict->objectForKey(identifier);
+  if (!species) {
+    species = new Species(identifier);
+    species->autorelease();
+    _speciesDict->setObject(species, identifier);
+  }
+  return species;
 }
 
 Species::~Species() {

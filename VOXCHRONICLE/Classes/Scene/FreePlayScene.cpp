@@ -15,33 +15,31 @@
 #include "ExtraScene.h"
 #include "SaveData.h"
 
-static const char* DEBUG_SCRIPT = "Script/debug.lua";
-
-FreePlayScene* FreePlayScene::create(const char *script) {
+FreePlayScene* FreePlayScene::create(const char *script, bool unlock) {
   FreePlayScene* scene = new FreePlayScene();
   scene->autorelease();
-  if (!scene->init(script)) {
+  if (!scene->init(script, unlock)) {
     return NULL;
   }
   return scene;
 }
 
-CCScene* FreePlayScene::scene(const char* script) {
+CCScene* FreePlayScene::scene(const char* script, bool unlock) {
   CCScene* scene = CCScene::create();
   
-  FreePlayScene* layer = FreePlayScene::create(script);
+  FreePlayScene* layer = FreePlayScene::create(script, unlock);
   scene->addChild(layer);
   
   return scene;
 }
 
-bool FreePlayScene::init(const char* script) {
+bool FreePlayScene::init(const char* script, bool unlock) {
   if ( !CCLayer::init() ) {
     return false;
   }
   this->setTouchEnabled(true);
   
-  LuaObject* lua = new LuaObject(DEBUG_SCRIPT);
+  LuaObject* lua = new LuaObject(script);
   CCArray* items = CCArray::create();
   for (int i = 0; i < 3; ++i) {
     items->addObject(CCArray::create());
@@ -73,14 +71,14 @@ bool FreePlayScene::init(const char* script) {
                                                       this,
                                                       menu_selector(FreePlayScene::onMenuItemPressed));
     item->setUserObject(map);
-    item->setEnabled(SaveData::sharedData()->isClearedMap(map->getIdentifier().c_str()));
+    item->setEnabled(SaveData::sharedData()->isClearedMap(map->getIdentifier().c_str()) || unlock);
     CCArray* array = (CCArray*)items->objectAtIndex(col);
     if (col >= 3) break;
     array->addObject(item);
   }
   
-  CCMenuItemImage* back = CCMenuItemImage::create("select_back.png",
-                                                  "select_back_pressed.png",
+  CCMenuItemImage* back = CCMenuItemImage::create("dictionary_back.png",
+                                                  "dictionary_back_pressed.png",
                                                   this,
                                                   menu_selector(FreePlayScene::onBackButtonPressed));
   CCArray* last = (CCArray*)items->objectAtIndex(2);
@@ -101,10 +99,11 @@ bool FreePlayScene::init(const char* script) {
 }
 
 void FreePlayScene::onEnterTransitionDidFinish() {
-
+  CCLayer::onEnterTransitionDidFinish();
 }
 
 void FreePlayScene::onMenuItemPressed(cocos2d::CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/start.mp3").c_str());
   Map* map = (Map*)((CCNode*)sender)->getUserObject();
   MainScene* layer = new MainScene();
@@ -117,10 +116,10 @@ void FreePlayScene::onMenuItemPressed(cocos2d::CCObject *sender) {
 }
 
 void FreePlayScene::onBackButtonPressed() {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cancel.mp3").c_str());  
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/menu_cancel.mp3").c_str());  
   ExtraScene* layer = ExtraScene::create();
   CCScene* scene = CCScene::create();
   scene->addChild(layer);
-  CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
+  CCTransitionSlideInB* transition = CCTransitionSlideInB::create(0.25f, scene);
   CCDirector::sharedDirector()->replaceScene(transition);
 }

@@ -228,6 +228,15 @@
 		07448CBD16C289B800F005C6 /* welcome.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07448CBC16C289B800F005C6 /* welcome.lua */; };
 		07448CBF16C28E0D00F005C6 /* empty.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07448CBE16C28E0D00F005C6 /* empty.lua */; };
 		0744B5B3167DD9EA00730393 /* StatusLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0744B5B1167DD9EA00730393 /* StatusLayer.cpp */; };
+		074E13721710231E00308F67 /* message.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 074E136C1710231E00308F67 /* message.mp3 */; };
+		074E13731710231E00308F67 /* window_close.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 074E136D1710231E00308F67 /* window_close.mp3 */; };
+		074E13741710231E00308F67 /* window_next.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 074E136E1710231E00308F67 /* window_next.mp3 */; };
+		074E13751710231E00308F67 /* window_open.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 074E136F1710231E00308F67 /* window_open.mp3 */; };
+		074E13761710231E00308F67 /* enemy_wave.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 074E13701710231E00308F67 /* enemy_wave.mp3 */; };
+		074E13771710231E00308F67 /* message_finish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 074E13711710231E00308F67 /* message_finish.mp3 */; };
+		074E137917105CE400308F67 /* endingD.lua in Resources */ = {isa = PBXBuildFile; fileRef = 074E137817105CE400308F67 /* endingD.lua */; };
+		074E137B171067EC00308F67 /* freeplay.lua in Resources */ = {isa = PBXBuildFile; fileRef = 074E137A171067EC00308F67 /* freeplay.lua */; };
+		074E137D1710697500308F67 /* fp_simple.lua in Resources */ = {isa = PBXBuildFile; fileRef = 074E137C1710697500308F67 /* fp_simple.lua */; };
 		074EFD0B15FA926E004D8273 /* SkillTrigger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 074EFD0915FA906D004D8273 /* SkillTrigger.cpp */; };
 		074EFD0C15FA93AA004D8273 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 074EFD0715FA906C004D8273 /* Controller.cpp */; };
 		0754384016E3865700802970 /* TutorialScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0754383E16E3865700802970 /* TutorialScene.cpp */; };
@@ -1107,6 +1116,14 @@
 		07F0D799163C1EC1005592AF /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F0D797163C1EC0005592AF /* TitleScene.cpp */; };
 		07F166FE16DDD8D8007DCB3F /* space_test.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F166FD16DDD8D8007DCB3F /* space_test.lua */; };
 		07F2018E16FD48E2001A0674 /* negi.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F2018D16FD48E2001A0674 /* negi.lua */; };
+		07F20F7617110B2E0099ACD8 /* endingA.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F7517110B2E0099ACD8 /* endingA.mp3 */; };
+		07F20F7917112C150099ACD8 /* PlayLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F20F7717112C150099ACD8 /* PlayLog.cpp */; };
+		07F20F7B17114F3C0099ACD8 /* achievement.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F7A17114F3C0099ACD8 /* achievement.lua */; };
+		07F20F7E1711BB420099ACD8 /* last1.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F7C1711BB420099ACD8 /* last1.lua */; };
+		07F20F7F1711BB420099ACD8 /* last2.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F7D1711BB420099ACD8 /* last2.lua */; };
+		07F20F831711BC7F0099ACD8 /* cure_skill.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F801711BC7F0099ACD8 /* cure_skill.lua */; };
+		07F20F841711BC7F0099ACD8 /* revive.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F811711BC7F0099ACD8 /* revive.lua */; };
+		07F20F851711BC7F0099ACD8 /* warp.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F821711BC7F0099ACD8 /* warp.lua */; };
 		07F350F916F8846F00F95FDD /* make_glue.sh in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F616F8846F00F95FDD /* make_glue.sh */; };
 		07F350FA16F8846F00F95FDD /* tolua++ in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F716F8846F00F95FDD /* tolua++ */; };
 		07F350FB16F8846F00F95FDD /* VOXCHRONICLE.pkg in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F816F8846F00F95FDD /* VOXCHRONICLE.pkg */; };
@@ -1229,6 +1246,14 @@
 		B0AA405016F58CB300674A2A /* mask3A1.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AA404F16F58CB300674A2A /* mask3A1.lua */; };
 		B0AA405216F58D2300674A2A /* typhoon3A2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AA405116F58D2200674A2A /* typhoon3A2.lua */; };
 		B0AA405416F58E0100674A2A /* mask3A11.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AA405316F58DFF00674A2A /* mask3A11.lua */; };
+		B0AADBDC17114A9200FB214E /* knight3D1.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBDB17114A9200FB214E /* knight3D1.lua */; };
+		B0AADBDE17114BF500FB214E /* knight3D2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBDD17114BF500FB214E /* knight3D2.lua */; };
+		B0AADBE017114C5C00FB214E /* fortress3D0.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBDF17114C5B00FB214E /* fortress3D0.lua */; };
+		B0AADBE217114CF800FB214E /* exob3D5.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBE117114CF700FB214E /* exob3D5.lua */; };
+		B0AADBE417114D5D00FB214E /* planet3D0.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBE317114D5C00FB214E /* planet3D0.lua */; };
+		B0AADBE617114D9900FB214E /* t2pha3D1.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBE517114D9800FB214E /* t2pha3D1.lua */; };
+		B0AADBE817114DE400FB214E /* whale3D7.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBE717114DE200FB214E /* whale3D7.lua */; };
+		B0AADBEA171151A300FB214E /* kraken3D0.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBE9171151A100FB214E /* kraken3D0.lua */; };
 		B0D60BFA16FD89B50071C406 /* coin2C2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0D60BF916FD89B50071C406 /* coin2C2.lua */; };
 		B0D60BFC16FD89FF0071C406 /* heart2C2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0D60BFB16FD89FE0071C406 /* heart2C2.lua */; };
 		B0D60BFE16FD8A410071C406 /* flame2C2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0D60BFD16FD8A410071C406 /* flame2C2.lua */; };
@@ -1467,6 +1492,15 @@
 		07448CBC16C289B800F005C6 /* welcome.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = welcome.lua; path = messages/welcome.lua; sourceTree = "<group>"; };
 		07448CBE16C28E0D00F005C6 /* empty.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = empty.lua; path = messages/empty.lua; sourceTree = "<group>"; };
 		0744B5B1167DD9EA00730393 /* StatusLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StatusLayer.cpp; path = Classes/UI/StatusLayer.cpp; sourceTree = "<group>"; };
+		074E136C1710231E00308F67 /* message.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = message.mp3; path = Resources/SE/message.mp3; sourceTree = "<group>"; };
+		074E136D1710231E00308F67 /* window_close.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = window_close.mp3; path = Resources/SE/window_close.mp3; sourceTree = "<group>"; };
+		074E136E1710231E00308F67 /* window_next.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = window_next.mp3; path = Resources/SE/window_next.mp3; sourceTree = "<group>"; };
+		074E136F1710231E00308F67 /* window_open.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = window_open.mp3; path = Resources/SE/window_open.mp3; sourceTree = "<group>"; };
+		074E13701710231E00308F67 /* enemy_wave.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = enemy_wave.mp3; path = Resources/SE/enemy_wave.mp3; sourceTree = "<group>"; };
+		074E13711710231E00308F67 /* message_finish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = message_finish.mp3; path = Resources/SE/message_finish.mp3; sourceTree = "<group>"; };
+		074E137817105CE400308F67 /* endingD.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = endingD.lua; path = endings/endingD.lua; sourceTree = "<group>"; };
+		074E137A171067EC00308F67 /* freeplay.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = freeplay.lua; sourceTree = "<group>"; };
+		074E137C1710697500308F67 /* fp_simple.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fp_simple.lua; path = map/fp_simple.lua; sourceTree = "<group>"; };
 		074EFD0715FA906C004D8273 /* Controller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Controller.cpp; path = Classes/UI/Controller.cpp; sourceTree = "<group>"; };
 		074EFD0915FA906D004D8273 /* SkillTrigger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SkillTrigger.cpp; path = Classes/UI/SkillTrigger.cpp; sourceTree = "<group>"; };
 		0754383E16E3865700802970 /* TutorialScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TutorialScene.cpp; path = Classes/Scene/TutorialScene.cpp; sourceTree = "<group>"; };
@@ -1659,7 +1693,7 @@
 		0791587015EBB4BB0083D348 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Resources/ios/Icon@2x.png"; sourceTree = "<group>"; };
 		0791587115EBB4BB0083D348 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/ios/Info.plist; sourceTree = "<group>"; };
 		0791587215EBB4BB0083D348 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Resources/ios/iTunesArtwork; sourceTree = "<group>"; };
-		079487941616D8C5004ABCF5 /* knockback.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knockback.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		079487941616D8C5004ABCF5 /* knockback.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knockback.lua; sourceTree = "<group>"; };
 		0794879B1616EC7E004ABCF5 /* tension.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tension.lua; sourceTree = "<group>"; };
 		079668B216FD4B110001F8B2 /* negi-3c_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "negi-3c_counter0.caf"; sourceTree = "<group>"; };
 		079668B316FD4B110001F8B2 /* negi-3c_counter1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "negi-3c_counter1.caf"; sourceTree = "<group>"; };
@@ -2621,7 +2655,7 @@
 		07E1351A1621A04300CCF72E /* setting.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = setting.lua; sourceTree = "<group>"; };
 		07E1351E1621AF2700CCF72E /* levelup.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = levelup.lua; sourceTree = "<group>"; };
 		07E135251621CABF00CCF72E /* character.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = character.lua; path = character/character.lua; sourceTree = "<group>"; };
-		07E135721624AC4700CCF72E /* cure.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cure.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		07E135721624AC4700CCF72E /* cure.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cure.lua; sourceTree = "<group>"; };
 		07EDA61416EFF4C100A4BAC9 /* Ceres78_3-C_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_counter0.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_counter0.caf"; sourceTree = "<group>"; };
 		07EDA61516EFF4C100A4BAC9 /* Ceres78_3-C_counter1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_counter1.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_counter1.caf"; sourceTree = "<group>"; };
 		07EDA61616EFF4C100A4BAC9 /* Ceres78_3-C_counter2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ceres78_3-C_counter2.caf"; path = "Resources/Music/Ceres78_3-C/Ceres78_3-C_counter2.caf"; sourceTree = "<group>"; };
@@ -2695,6 +2729,15 @@
 		07F0D79A163C1EFD005592AF /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = Classes/includes/TitleScene.h; sourceTree = "<group>"; };
 		07F166FD16DDD8D8007DCB3F /* space_test.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = space_test.lua; path = map/space_test.lua; sourceTree = "<group>"; };
 		07F2018D16FD48E2001A0674 /* negi.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = negi.lua; path = musics/negi.lua; sourceTree = "<group>"; };
+		07F20F7517110B2E0099ACD8 /* endingA.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = endingA.mp3; path = Resources/Music/general/endingA.mp3; sourceTree = "<group>"; };
+		07F20F7717112C150099ACD8 /* PlayLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlayLog.cpp; path = Classes/Model/PlayLog.cpp; sourceTree = "<group>"; };
+		07F20F7817112C150099ACD8 /* PlayLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayLog.h; path = Classes/Model/PlayLog.h; sourceTree = "<group>"; };
+		07F20F7A17114F3C0099ACD8 /* achievement.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = achievement.lua; sourceTree = "<group>"; };
+		07F20F7C1711BB420099ACD8 /* last1.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = last1.lua; path = species/last1.lua; sourceTree = "<group>"; };
+		07F20F7D1711BB420099ACD8 /* last2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = last2.lua; path = species/last2.lua; sourceTree = "<group>"; };
+		07F20F801711BC7F0099ACD8 /* cure_skill.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cure_skill.lua; path = enemySkills/cure_skill.lua; sourceTree = "<group>"; };
+		07F20F811711BC7F0099ACD8 /* revive.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = revive.lua; path = enemySkills/revive.lua; sourceTree = "<group>"; };
+		07F20F821711BC7F0099ACD8 /* warp.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = warp.lua; path = enemySkills/warp.lua; sourceTree = "<group>"; };
 		07F350F616F8846F00F95FDD /* make_glue.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = make_glue.sh; sourceTree = "<group>"; };
 		07F350F716F8846F00F95FDD /* tolua++ */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "tolua++"; sourceTree = "<group>"; };
 		07F350F816F8846F00F95FDD /* VOXCHRONICLE.pkg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VOXCHRONICLE.pkg; sourceTree = "<group>"; };
@@ -2822,6 +2865,14 @@
 		B0AA404F16F58CB300674A2A /* mask3A1.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mask3A1.lua; sourceTree = "<group>"; };
 		B0AA405116F58D2200674A2A /* typhoon3A2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = typhoon3A2.lua; sourceTree = "<group>"; };
 		B0AA405316F58DFF00674A2A /* mask3A11.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mask3A11.lua; sourceTree = "<group>"; };
+		B0AADBDB17114A9200FB214E /* knight3D1.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knight3D1.lua; sourceTree = "<group>"; };
+		B0AADBDD17114BF500FB214E /* knight3D2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knight3D2.lua; sourceTree = "<group>"; };
+		B0AADBDF17114C5B00FB214E /* fortress3D0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fortress3D0.lua; sourceTree = "<group>"; };
+		B0AADBE117114CF700FB214E /* exob3D5.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = exob3D5.lua; sourceTree = "<group>"; };
+		B0AADBE317114D5C00FB214E /* planet3D0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = planet3D0.lua; sourceTree = "<group>"; };
+		B0AADBE517114D9800FB214E /* t2pha3D1.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = t2pha3D1.lua; sourceTree = "<group>"; };
+		B0AADBE717114DE200FB214E /* whale3D7.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = whale3D7.lua; sourceTree = "<group>"; };
+		B0AADBE9171151A100FB214E /* kraken3D0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kraken3D0.lua; sourceTree = "<group>"; };
 		B0D60BF916FD89B50071C406 /* coin2C2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = coin2C2.lua; sourceTree = "<group>"; };
 		B0D60BFB16FD89FE0071C406 /* heart2C2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = heart2C2.lua; sourceTree = "<group>"; };
 		B0D60BFD16FD8A410071C406 /* flame2C2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = flame2C2.lua; sourceTree = "<group>"; };
@@ -2994,6 +3045,7 @@
 		0731E4FA16184A59006AEF3D /* map */ = {
 			isa = PBXGroup;
 			children = (
+				074E137C1710697500308F67 /* fp_simple.lua */,
 				070EF5D716F8B497005ED3B2 /* tutorial0.lua */,
 				070EF5D816F8B498005ED3B2 /* tutorial1.lua */,
 				070EF5D916F8B499005ED3B2 /* tutorial2.lua */,
@@ -3181,6 +3233,8 @@
 				07C6468D16E1CDC600B29842 /* SaveData.cpp */,
 				07ADDFA216F784F6007825D2 /* IRegister.cpp */,
 				07ADDFA316F784F8007825D2 /* IRegister.h */,
+				07F20F7717112C150099ACD8 /* PlayLog.cpp */,
+				07F20F7817112C150099ACD8 /* PlayLog.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -3346,6 +3400,9 @@
 		07660CCC1690E8BD0092104F /* enemySkills */ = {
 			isa = PBXGroup;
 			children = (
+				07F20F801711BC7F0099ACD8 /* cure_skill.lua */,
+				07F20F811711BC7F0099ACD8 /* revive.lua */,
+				07F20F821711BC7F0099ACD8 /* warp.lua */,
 				0701425B16E24A2800B00887 /* foot.lua */,
 				0701425C16E24A2800B00887 /* wave_skill.lua */,
 				0715C2321690E8F600009479 /* ironball.lua */,
@@ -3471,6 +3528,8 @@
 		078D452516CE87D900E21DC5 /* species */ = {
 			isa = PBXGroup;
 			children = (
+				07F20F7C1711BB420099ACD8 /* last1.lua */,
+				07F20F7D1711BB420099ACD8 /* last2.lua */,
 				B017551717079F1D008053BB /* Ts_slime30.lua */,
 				B0821D421707AEA6009417B5 /* Ts_slime12.lua */,
 				B017551D1707A06D008053BB /* Ts_leaf.lua */,
@@ -3684,6 +3743,7 @@
 				0737EF1C16F098FD00C46E6C /* endingA.lua */,
 				079D274C16D223C1006D6A8F /* endingB.lua */,
 				07C6467F16E0DB2500B29842 /* endingC.lua */,
+				074E137817105CE400308F67 /* endingD.lua */,
 			);
 			name = endings;
 			sourceTree = "<group>";
@@ -3888,8 +3948,10 @@
 				07C6093A161674650084708C /* enemies */,
 				07C6093B161674650084708C /* skills */,
 				07C6064116164F810084708C /* hello.lua */,
+				07F20F7A17114F3C0099ACD8 /* achievement.lua */,
 				07E1351A1621A04300CCF72E /* setting.lua */,
 				079F89A6169EE596001357B5 /* debug.lua */,
+				074E137A171067EC00308F67 /* freeplay.lua */,
 				07D8D649169F3BD900B646E5 /* controller.lua */,
 				079D275716D38B7E006D6A8F /* enemy.lua */,
 				0754384716E3985600802970 /* staffroll.lua */,
@@ -4810,6 +4872,8 @@
 				07B21FF716CFCB820083B865 /* hornet02.lua */,
 				07B21FF816CFCB820083B865 /* iron_boss.lua */,
 				07B21FF916CFCB820083B865 /* knight_boss.lua */,
+				B0AADBDB17114A9200FB214E /* knight3D1.lua */,
+				B0AADBDD17114BF500FB214E /* knight3D2.lua */,
 				079D274616D21BBE006D6A8F /* knight_debug.lua */,
 				07B21FFA16CFCB820083B865 /* leaf01.lua */,
 				07B21FFB16CFCB820083B865 /* leaf02.lua */,
@@ -4822,10 +4886,12 @@
 				07B2200216CFCB820083B865 /* slime02.lua */,
 				B0E29E2316DA26830058DBF7 /* slime1T0.lua */,
 				0737EF1A16F093B400C46E6C /* fortress3A0.lua */,
+				B0AADBDF17114C5B00FB214E /* fortress3D0.lua */,
 				078FFC2716E2D549001C9A4F /* mask3A3.lua */,
 				078FFC2816E2D549001C9A4F /* typhoon3A6.lua */,
 				078FFC2916E2D549001C9A4F /* wisp3A6.lua */,
 				0701425616E2476D00B00887 /* kraken3C0.lua */,
+				B0AADBE9171151A100FB214E /* kraken3D0.lua */,
 				0701425716E2476D00B00887 /* wave3C0.lua */,
 				B01755131707225D008053BB /* wave3C1.lua */,
 				B0E29E2516DA26DC0058DBF7 /* slime1T1.lua */,
@@ -4872,6 +4938,10 @@
 				B07E38CF16E10F2900473629 /* jfish3C4.lua */,
 				0796691216FD4B990001F8B2 /* naut3C5.lua */,
 				B07E38D916E111EB00473629 /* cryst3C4.lua */,
+				B0AADBE117114CF700FB214E /* exob3D5.lua */,
+				B0AADBE317114D5C00FB214E /* planet3D0.lua */,
+				B0AADBE517114D9800FB214E /* t2pha3D1.lua */,
+				B0AADBE717114DE200FB214E /* whale3D7.lua */,
 				B0821D3C1707AE3F009417B5 /* T_slime30.lua */,
 				B0821D441707AEC2009417B5 /* T_slime12.lua */,
 				B0821D3E1707AE5E009417B5 /* T_flower.lua */,
@@ -5020,6 +5090,7 @@
 			isa = PBXGroup;
 			children = (
 				07A3D5D51705EFB9009AE7F3 /* dictionary.mp3 */,
+				07F20F7517110B2E0099ACD8 /* endingA.mp3 */,
 				07C6468116E0DCFF00B29842 /* endingB.mp3 */,
 				07F88F1716DB842100FE6B2B /* endingC.mp3 */,
 				07A3D5DF1705F4D0009AE7F3 /* endingD.mp3 */,
@@ -5161,6 +5232,12 @@
 		07FA3B2A16107EE500E9C7DE /* SE */ = {
 			isa = PBXGroup;
 			children = (
+				074E136C1710231E00308F67 /* message.mp3 */,
+				074E136D1710231E00308F67 /* window_close.mp3 */,
+				074E136E1710231E00308F67 /* window_next.mp3 */,
+				074E136F1710231E00308F67 /* window_open.mp3 */,
+				074E13701710231E00308F67 /* enemy_wave.mp3 */,
+				074E13711710231E00308F67 /* message_finish.mp3 */,
 				0796697616FD4DB20001F8B2 /* magical_resist.mp3 */,
 				0796697716FD4DB20001F8B2 /* physical_resist.mp3 */,
 				07ADDF7816F22959007825D2 /* enemy_revive.mp3 */,
@@ -6207,6 +6284,30 @@
 				B0A94E5A170FF93D006B35C6 /* slime1B7.lua in Resources */,
 				B0A94E5C170FF98C006B35C6 /* moth1B0.lua in Resources */,
 				B0A94E5E170FFA04006B35C6 /* hornet1B1.lua in Resources */,
+				074E13721710231E00308F67 /* message.mp3 in Resources */,
+				074E13731710231E00308F67 /* window_close.mp3 in Resources */,
+				074E13741710231E00308F67 /* window_next.mp3 in Resources */,
+				074E13751710231E00308F67 /* window_open.mp3 in Resources */,
+				074E13761710231E00308F67 /* enemy_wave.mp3 in Resources */,
+				074E13771710231E00308F67 /* message_finish.mp3 in Resources */,
+				074E137917105CE400308F67 /* endingD.lua in Resources */,
+				074E137B171067EC00308F67 /* freeplay.lua in Resources */,
+				074E137D1710697500308F67 /* fp_simple.lua in Resources */,
+				07F20F7617110B2E0099ACD8 /* endingA.mp3 in Resources */,
+				07F20F7B17114F3C0099ACD8 /* achievement.lua in Resources */,
+				B0AADBDC17114A9200FB214E /* knight3D1.lua in Resources */,
+				B0AADBDE17114BF500FB214E /* knight3D2.lua in Resources */,
+				B0AADBE017114C5C00FB214E /* fortress3D0.lua in Resources */,
+				B0AADBE217114CF800FB214E /* exob3D5.lua in Resources */,
+				B0AADBE417114D5D00FB214E /* planet3D0.lua in Resources */,
+				B0AADBE617114D9900FB214E /* t2pha3D1.lua in Resources */,
+				B0AADBE817114DE400FB214E /* whale3D7.lua in Resources */,
+				B0AADBEA171151A300FB214E /* kraken3D0.lua in Resources */,
+				07F20F7E1711BB420099ACD8 /* last1.lua in Resources */,
+				07F20F7F1711BB420099ACD8 /* last2.lua in Resources */,
+				07F20F831711BC7F0099ACD8 /* cure_skill.lua in Resources */,
+				07F20F841711BC7F0099ACD8 /* revive.lua in Resources */,
+				07F20F851711BC7F0099ACD8 /* warp.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6530,6 +6631,7 @@
 				07B8B626170C599900DB739F /* AchievementScene.mm in Sources */,
 				07A317AB170C5F770032CAA4 /* AchievementSceneDelegate.m in Sources */,
 				0778C5E317100DD20017D230 /* VQTime.mm in Sources */,
+				07F20F7917112C150099ACD8 /* PlayLog.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6629,8 +6731,8 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C1B58134-B76B-4925-93E1-689EC9E2EBE7";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C1B58134-B76B-4925-93E1-689EC9E2EBE7";
+				PROVISIONING_PROFILE = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -6665,8 +6767,8 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C1B58134-B76B-4925-93E1-689EC9E2EBE7";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C1B58134-B76B-4925-93E1-689EC9E2EBE7";
+				PROVISIONING_PROFILE = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -6733,8 +6835,8 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C1B58134-B76B-4925-93E1-689EC9E2EBE7";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C1B58134-B76B-4925-93E1-689EC9E2EBE7";
+				PROVISIONING_PROFILE = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

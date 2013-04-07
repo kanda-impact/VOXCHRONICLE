@@ -8,7 +8,7 @@
 
 #include "VQTime.h"
 
-static VQTime* _shared = NULL;
+VQTime* VQTime::_shared = NULL;
 
 VQTime* VQTime::sharedTime() {
   if (!_shared) {

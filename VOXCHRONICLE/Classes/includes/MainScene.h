@@ -24,6 +24,7 @@
 #include "QTETrigger.h"
 #include "MusicManager.h"
 #include "Skin.h"
+#include "PlayLog.h"
 
 #include "EffectLayer.h"
 
@@ -46,7 +47,6 @@ using namespace cocos2d;
 class MainScene : public CCLayer {
  private:
   int _preLevel;
-  int _turnCount;
   int _mapTurnCount;
   bool _isLevelUped;
   SkillPerformInfo _currentSkillInfo;
@@ -58,7 +58,7 @@ class MainScene : public CCLayer {
   QTETrigger* _qteTrigger;
   Skin* _skin;
   EffectLayer* _effectLayer;
-  CCArray* _mapHistory;
+  PlayLog* _log;
   
   Level* _level;
   Map* _map;
@@ -69,6 +69,7 @@ class MainScene : public CCLayer {
   CCSet* _pausedTargets;
   
   void onEnterTransitionDidFinish();
+  virtual void onExit();
   
   void trackDidBack(Music* music, Track* currentTrack, int trackNumber);
   void trackWillFinishPlaying(Music* music, Track* currentTrack, Track* nextTrack, int trackNumber);
@@ -103,8 +104,10 @@ class MainScene : public CCLayer {
   Map* getMap();
   VCState getState();
   
-  CCArray* getMapHistory();
-  void setMapHistory(CCArray* mapHistory);
+  PlayLog* getPlayLog();
+  void setPlayLog(PlayLog* log);
+  
+  void teardown();
   
   CREATE_FUNC(MainScene);
 };

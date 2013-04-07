@@ -30,7 +30,6 @@ void CCAchievementManager::reportAchievement(const char *identifier, float perce
   achievement.percentComplete = percent;
   achievement.showsCompletionBanner = showBanner;
   [achievement reportAchievementWithCompletionHandler:^(NSError *error) {
-    NSLog(@"report = %@", error);
     if (onComplete != nil) {
       onComplete(identifier, error != nil);
     }

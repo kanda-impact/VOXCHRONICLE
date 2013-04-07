@@ -24,6 +24,7 @@ CharacterManager::CharacterManager() {
   _characters->retain();
   _currentCharacter = vox;
   _repeatCount = 0;
+  _repeatCountRaw = 0;
   _waitTurn = 0;
   _currentSkill = NULL;
   _lastSkill = NULL;
@@ -147,9 +148,9 @@ DamageType CharacterManager::damage(int damage) {
   if (_shield) { // 盾装備中
     damage = 0;
     damageType = DamageTypeShield;
+    this->setShield(false); // 盾問答無用で外します
   } else {
     _hp -= damage;
-    SaveData::sharedData()->addCountFor(SaveDataCountKeyHitDamage, damage); // 被ダメージカウント
     if (_hp <= 0) { // 死亡時
       _hp = 0;
       damageType = DamageTypeDeath;
@@ -264,12 +265,20 @@ int CharacterManager::getRepeatCount() {
   return _repeatCount;
 }
 
+int CharacterManager::getRepeatCountRaw() {
+  return _repeatCountRaw;
+}
+
 void CharacterManager::setWaitTurn(int waitTurn) {
   _waitTurn = waitTurn;
 }
 
 void CharacterManager::setRepeatCount(int repeatCount) {
   _repeatCount = repeatCount;
+}
+
+void CharacterManager::setRepeatCountRaw(int repeatCount) {
+  _repeatCountRaw = repeatCount;
 }
 
 CCArray* CharacterManager::getCharacters() {

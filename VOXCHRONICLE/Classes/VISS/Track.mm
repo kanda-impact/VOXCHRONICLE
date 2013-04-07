@@ -53,6 +53,7 @@ void Track::playAfterTime(float time) {
 }
 
 void Track::stop() {
+  CCDirector::sharedDirector()->getScheduler()->unscheduleAllSelectorsForTarget(this);
   return [_track->source stop];
 }
   

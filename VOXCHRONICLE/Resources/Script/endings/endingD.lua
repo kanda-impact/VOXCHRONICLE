@@ -1,7 +1,7 @@
 Ending = {
-  background = "endingD.png",
+  background = "endingA.png",
   music = "endingD.mp3",
-  duration = 21,
+  duration = 27,
   text = [[
 圧倒的な力で、ありとあらゆる脅威を退けるオクス。ついにはその身を宇宙にまで進め、魔物の源流となる災いそのものを打ち砕くことに成功した！
 しかし、その手には安息の２文字が訪れることはない。ラスカとの力で無限の力を手に入れたオクスの戦いに終わりはない。

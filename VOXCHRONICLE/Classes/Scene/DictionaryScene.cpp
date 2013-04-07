@@ -39,7 +39,7 @@ bool DictionaryScene::init() {
   
   _nameLabel = CCLabelTTF::create("敵キャラ名", "Helvetica", 24, CCSizeMake(200, 30), kCCTextAlignmentLeft);
   _habitatLabel = CCLabelTTF::create("生息地", "Helvetica", 16, CCSizeMake(200, 30), kCCTextAlignmentLeft, kCCVerticalTextAlignmentCenter);
-  _descriptionLabel = CCLabelTTF::create("ここに敵キャラの解説が入ります", "Helvetica", 16, CCSizeMake(420, 120), kCCTextAlignmentLeft, kCCVerticalTextAlignmentTop);
+  _descriptionLabel = CCLabelTTF::create("ここに敵キャラの解説が入ります", "Helvetica", 16, CCSizeMake(440, 120), kCCTextAlignmentLeft, kCCVerticalTextAlignmentTop);
   _nameLabel->setAnchorPoint(ccp(0.5f, 0.5f));
   _nameLabel->setPosition(ccp(125, 135));
   _habitatLabel->setAnchorPoint(ccp(0.5f, 0.5f));
@@ -71,11 +71,11 @@ bool DictionaryScene::init() {
   this->loadEnemyByIndex(0);
   
   CCMenu* menu = CCMenu::create(left, right, NULL);
-  menu->setPosition(ccp(director->getWinSize().width / 2.0, 280));
+  menu->setPosition(ccp(director->getWinSize().width / 2.0, 240));
   menu->alignItemsHorizontallyWithPadding(300);
   CCMenu* backMenu = CCMenu::create(back, NULL);
   this->addChild(backMenu);
-  backMenu->setPosition(ccp(420, 30));
+  backMenu->setPosition(ccp(425, 32));
   this->addChild(menu);
   
   _cursor = 0;
@@ -105,9 +105,16 @@ void DictionaryScene::loadEnemyByIndex(int idx) {
   _enemy->retain();
   _enemy->setRowAndCol(1, 0);
   
+#if DEBUG
+  bool isDefeated = true;
+#else
   bool isDefeated = SaveData::sharedData()->getDefeatedCount(_enemy->getSpecies()->getIdentifier().c_str()) > 0; // 倒したかどうか
+#endif
+  
   CCDirector* director = CCDirector::sharedDirector();
   _enemy->setPosition(ccp(director->getWinSize().width / 2.0f, 160));
+  _enemy->setItem(EnemyItemNone);
+  _enemy->setSkillType(SkillTypeNormal);
   this->addChild(_enemy);
   if (isDefeated) {
     _nameLabel->setString(_enemy->getName().c_str());
@@ -132,12 +139,12 @@ string DictionaryScene::repeatChar(const char *c, int times) {
 }
 
 void DictionaryScene::onBackButtonPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cancel.mp3").c_str());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/menu_cancel.mp3").c_str());
   ExtraScene* layer = ExtraScene::create();
   CCScene* scene = CCScene::create();
   scene->addChild(layer);
-  CCTransitionFade* fade = CCTransitionFade::create(0.2, scene);
-  CCDirector::sharedDirector()->replaceScene(fade);
+  CCTransitionSlideInB* transition = CCTransitionSlideInB::create(0.25f, scene);
+  CCDirector::sharedDirector()->replaceScene(transition);
   SimpleAudioEngine::sharedEngine()->playBackgroundMusic("menu.mp3", true);
 }
 

@@ -11,6 +11,8 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/bind.hpp>
 
+#include "LuaObject.h"
+
 using namespace boost;
 
 static SaveData* _shared = NULL;
@@ -29,9 +31,24 @@ SaveData::SaveData() {
   _achievements = CCArray::create();
   _achievements->retain();
   this->load();
+  _achievementInfos = new list<AchievementInfo>();
+  LuaObject* lua = LuaObject::create("achievement.lua");
+  CCLuaValueArray* array = lua->getArray("saveData");
+  for (CCLuaValueArrayIterator it = array->begin(); it != array->end(); ++it) {
+    CCLuaValueDict dict = (it->dictValue());
+    SaveDataCountKey key = (SaveDataCountKey)dict["1"].floatValue();
+    int value = dict["2"].floatValue();
+    string identifier = dict["3"].stringValue();
+    AchievementInfo info;
+    info.key = key;
+    info.count = value;
+    info.identifier = identifier;
+    _achievementInfos->push_back(info);
+  }
 }
 
 SaveData::~SaveData() {
+  delete _achievementInfos;
   _countDictionary->release();
   _achievements->release();
 }
@@ -110,6 +127,7 @@ bool SaveData::isUnlockAchievement(const char* identifier) {
 void SaveData::unlockAchievement(const char *identifier) {
   CCAchievementManager* manager = CCAchievementManager::sharedManager();
   if (!this->isUnlockAchievement(identifier)) {
+    CCLog("unlock achievement %s!", identifier);
     manager->reportAchievement(identifier, 100, true, bind(&SaveData::onFinishAchievementReporting, this, _1, _2));
   }
 
@@ -117,17 +135,18 @@ void SaveData::unlockAchievement(const char *identifier) {
 
 void SaveData::checkUnlockAchievement(SaveDataCountKey key, int value) {
   // パフォーマンス的にも微妙なのでハードコーディング安定
-  switch (key) {
-    case SaveDataCountKeyBeat:
-      break;
-    default:
-      break;
+  for (list<AchievementInfo>::iterator it = _achievementInfos->begin(); it != _achievementInfos->end(); ++it) {
+    if ((*it).key == key) {
+      if ((*it).count < value) {
+        this->unlockAchievement((*it).identifier.c_str());
+      }
+    }
   }
 }
 
 void SaveData::onFinishAchievementReporting(const char* identifier, bool error) {
   if (!error) {
-    CCLog("unlock achievement %s !", identifier);
+    CCLog("send achievement %s!", identifier);
     CCString* str = CCString::create(identifier);
     _achievements->addObject(str);
   }

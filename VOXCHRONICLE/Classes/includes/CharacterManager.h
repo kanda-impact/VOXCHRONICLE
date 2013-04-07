@@ -49,6 +49,7 @@ class CharacterManager :public CCObject {
   int _exp;
   int _drumLevel;
   int _repeatCount;
+  int _repeatCountRaw;
   int _waitTurn;
   int _tension;
   int _levelCache;
@@ -164,6 +165,7 @@ class CharacterManager :public CCObject {
   int getDrumLevel();
   int getWaitTurn();
   int getRepeatCount();
+  int getRepeatCountRaw();
   CCArray* getCharacters();
   std::queue<DamageInfo>* getDamageInfoQueue();
   
@@ -175,7 +177,7 @@ class CharacterManager :public CCObject {
   void setDrumLevel(int l);
   void setWaitTurn(int waitTurn);
   void setRepeatCount(int repeatCount);
-  
+  void setRepeatCountRaw(int repeatCount);
 };
 
 #endif /* defined(__VOXCHRONICLE__CharacterManager__) */
