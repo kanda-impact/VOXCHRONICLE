@@ -1241,6 +1241,14 @@
 		B0AA405016F58CB300674A2A /* mask3A1.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AA404F16F58CB300674A2A /* mask3A1.lua */; };
 		B0AA405216F58D2300674A2A /* typhoon3A2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AA405116F58D2200674A2A /* typhoon3A2.lua */; };
 		B0AA405416F58E0100674A2A /* mask3A11.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AA405316F58DFF00674A2A /* mask3A11.lua */; };
+		B0AADBDC17114A9200FB214E /* knight3D1.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBDB17114A9200FB214E /* knight3D1.lua */; };
+		B0AADBDE17114BF500FB214E /* knight3D2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBDD17114BF500FB214E /* knight3D2.lua */; };
+		B0AADBE017114C5C00FB214E /* fortress3D0.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBDF17114C5B00FB214E /* fortress3D0.lua */; };
+		B0AADBE217114CF800FB214E /* exob3D5.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBE117114CF700FB214E /* exob3D5.lua */; };
+		B0AADBE417114D5D00FB214E /* planet3D0.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBE317114D5C00FB214E /* planet3D0.lua */; };
+		B0AADBE617114D9900FB214E /* t2pha3D1.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBE517114D9800FB214E /* t2pha3D1.lua */; };
+		B0AADBE817114DE400FB214E /* whale3D7.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBE717114DE200FB214E /* whale3D7.lua */; };
+		B0AADBEA171151A300FB214E /* kraken3D0.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBE9171151A100FB214E /* kraken3D0.lua */; };
 		B0D60BFA16FD89B50071C406 /* coin2C2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0D60BF916FD89B50071C406 /* coin2C2.lua */; };
 		B0D60BFC16FD89FF0071C406 /* heart2C2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0D60BFB16FD89FE0071C406 /* heart2C2.lua */; };
 		B0D60BFE16FD8A410071C406 /* flame2C2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0D60BFD16FD8A410071C406 /* flame2C2.lua */; };
@@ -2847,6 +2855,14 @@
 		B0AA404F16F58CB300674A2A /* mask3A1.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mask3A1.lua; sourceTree = "<group>"; };
 		B0AA405116F58D2200674A2A /* typhoon3A2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = typhoon3A2.lua; sourceTree = "<group>"; };
 		B0AA405316F58DFF00674A2A /* mask3A11.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mask3A11.lua; sourceTree = "<group>"; };
+		B0AADBDB17114A9200FB214E /* knight3D1.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knight3D1.lua; sourceTree = "<group>"; };
+		B0AADBDD17114BF500FB214E /* knight3D2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knight3D2.lua; sourceTree = "<group>"; };
+		B0AADBDF17114C5B00FB214E /* fortress3D0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fortress3D0.lua; sourceTree = "<group>"; };
+		B0AADBE117114CF700FB214E /* exob3D5.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = exob3D5.lua; sourceTree = "<group>"; };
+		B0AADBE317114D5C00FB214E /* planet3D0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = planet3D0.lua; sourceTree = "<group>"; };
+		B0AADBE517114D9800FB214E /* t2pha3D1.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = t2pha3D1.lua; sourceTree = "<group>"; };
+		B0AADBE717114DE200FB214E /* whale3D7.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = whale3D7.lua; sourceTree = "<group>"; };
+		B0AADBE9171151A100FB214E /* kraken3D0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kraken3D0.lua; sourceTree = "<group>"; };
 		B0D60BF916FD89B50071C406 /* coin2C2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = coin2C2.lua; sourceTree = "<group>"; };
 		B0D60BFB16FD89FE0071C406 /* heart2C2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = heart2C2.lua; sourceTree = "<group>"; };
 		B0D60BFD16FD8A410071C406 /* flame2C2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = flame2C2.lua; sourceTree = "<group>"; };
@@ -4841,6 +4857,8 @@
 				07B21FF716CFCB820083B865 /* hornet02.lua */,
 				07B21FF816CFCB820083B865 /* iron_boss.lua */,
 				07B21FF916CFCB820083B865 /* knight_boss.lua */,
+				B0AADBDB17114A9200FB214E /* knight3D1.lua */,
+				B0AADBDD17114BF500FB214E /* knight3D2.lua */,
 				079D274616D21BBE006D6A8F /* knight_debug.lua */,
 				07B21FFA16CFCB820083B865 /* leaf01.lua */,
 				07B21FFB16CFCB820083B865 /* leaf02.lua */,
@@ -4853,10 +4871,12 @@
 				07B2200216CFCB820083B865 /* slime02.lua */,
 				B0E29E2316DA26830058DBF7 /* slime1T0.lua */,
 				0737EF1A16F093B400C46E6C /* fortress3A0.lua */,
+				B0AADBDF17114C5B00FB214E /* fortress3D0.lua */,
 				078FFC2716E2D549001C9A4F /* mask3A3.lua */,
 				078FFC2816E2D549001C9A4F /* typhoon3A6.lua */,
 				078FFC2916E2D549001C9A4F /* wisp3A6.lua */,
 				0701425616E2476D00B00887 /* kraken3C0.lua */,
+				B0AADBE9171151A100FB214E /* kraken3D0.lua */,
 				0701425716E2476D00B00887 /* wave3C0.lua */,
 				B01755131707225D008053BB /* wave3C1.lua */,
 				B0E29E2516DA26DC0058DBF7 /* slime1T1.lua */,
@@ -4903,6 +4923,10 @@
 				B07E38CF16E10F2900473629 /* jfish3C4.lua */,
 				0796691216FD4B990001F8B2 /* naut3C5.lua */,
 				B07E38D916E111EB00473629 /* cryst3C4.lua */,
+				B0AADBE117114CF700FB214E /* exob3D5.lua */,
+				B0AADBE317114D5C00FB214E /* planet3D0.lua */,
+				B0AADBE517114D9800FB214E /* t2pha3D1.lua */,
+				B0AADBE717114DE200FB214E /* whale3D7.lua */,
 				B0821D3C1707AE3F009417B5 /* T_slime30.lua */,
 				B0821D441707AEC2009417B5 /* T_slime12.lua */,
 				B0821D3E1707AE5E009417B5 /* T_flower.lua */,
@@ -6256,6 +6280,14 @@
 				074E137D1710697500308F67 /* fp_simple.lua in Resources */,
 				07F20F7617110B2E0099ACD8 /* endingA.mp3 in Resources */,
 				07F20F7B17114F3C0099ACD8 /* achievement.lua in Resources */,
+				B0AADBDC17114A9200FB214E /* knight3D1.lua in Resources */,
+				B0AADBDE17114BF500FB214E /* knight3D2.lua in Resources */,
+				B0AADBE017114C5C00FB214E /* fortress3D0.lua in Resources */,
+				B0AADBE217114CF800FB214E /* exob3D5.lua in Resources */,
+				B0AADBE417114D5D00FB214E /* planet3D0.lua in Resources */,
+				B0AADBE617114D9900FB214E /* t2pha3D1.lua in Resources */,
+				B0AADBE817114DE400FB214E /* whale3D7.lua in Resources */,
+				B0AADBEA171151A300FB214E /* kraken3D0.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

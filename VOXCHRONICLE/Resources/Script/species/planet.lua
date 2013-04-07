@@ -1,7 +1,7 @@
 Enemy = {
   name = "クタツアー",
   imageName = "planet",
-  attack = 1,
+  attack = 7,
   baseExp = 6,
   hasFrame = true,
   counter = 2,
