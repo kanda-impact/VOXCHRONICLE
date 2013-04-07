@@ -82,6 +82,17 @@ Map = {
 ]])
        -- FIXME MP不足で詰んでしまうので暫定的にMPを全回復
        characterManager:addMP(characterManager:getMaxMP())
+	elseif level == 14 then
+      local popup = layer:addPopupWindow(2)
+      popup:setText(0, "いのちをだいじに", [[
+ふふふ。どう？私の魔法は！恐れ入ったかー！！わはははは！！
+でもそろそろ体力的に疲れてきたわね…！いや、もちろんまだまだ全然大丈夫なんですけど！でも油断大敵って言うし！一応こまめに体力の回復をしておきましょ！
+
+回復コマンドをタッチすれば、癒しの魔法でHPが回復するわ。今作は敵の種類で食らうダメージが変わるから、油断して思わぬ大ダメージを受けてゲームオーバー！なんてならないように常にHPには気をつけてね。
+]])
+      popup:setText(1, "いのちをだいじに", [[
+そうそう、テンションを溜めてから使うと攻撃の威力みたいに回復量が一気に上がるからお得よ！
+]])
     end
   end,
   getEnemyPopRate = function(level)
