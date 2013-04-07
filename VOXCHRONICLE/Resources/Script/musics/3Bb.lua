@@ -1,5 +1,5 @@
 Music = {
-  name = "3Bボス曲",
+  name = "古城ボス　ナイト　ウィル・デ・ヤゥク",
   composer = "tetu_fs",
   prefix = "3Bb",
   type = MusicSetTypeBoss,

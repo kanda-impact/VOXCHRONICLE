@@ -1,5 +1,5 @@
 Music = {
-  name = "ゆうき曲(2B)",
+  name = "クシフォウ炭鉱",
   composer = "yuki_mm",
   prefix = "2b",
   type = MusicSetTypeWay,

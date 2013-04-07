@@ -1,5 +1,5 @@
 Music = {
-  name = "たわし曲",
+  name = "ツアドゥラグ遺跡",
   composer = "ttntawasi",
   prefix = "ttn1",
   type = MusicSetTypeWay,
