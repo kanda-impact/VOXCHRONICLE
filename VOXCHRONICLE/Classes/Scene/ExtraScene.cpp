@@ -68,9 +68,9 @@ void ExtraScene::onExit() {
 }
 
 void ExtraScene::onSoundTestButtonPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
-  FreePlayScene* scene = FreePlayScene::create("debug.lua");
-  nextScene(scene);
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/menu_decide.mp3").c_str());
+  FreePlayScene* scene = FreePlayScene::create("freeplay.lua", false);
+  nextScene(scene, true);
 }
 
 void ExtraScene::onAchievementButtonPressed(cocos2d::CCObject *sender) {
@@ -79,10 +79,10 @@ void ExtraScene::onAchievementButtonPressed(cocos2d::CCObject *sender) {
 }
 
 void ExtraScene::onDictionaryButtonPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/menu_decide.mp3").c_str());
   DictionaryScene* scene = DictionaryScene::create();
   SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
-  this->nextScene(scene);
+  this->nextScene(scene, true);
 }
 
 void ExtraScene::onCreditButtonPressed(cocos2d::CCObject *sender) {
@@ -101,11 +101,11 @@ void ExtraScene::onCreditButtonPressed(cocos2d::CCObject *sender) {
   StaffRollScene* scene = new StaffRollScene(array);
   scene->autorelease();
   CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
-  this->nextScene(scene);
+  this->nextScene(scene, false);
 }
 
 void ExtraScene::onBackButtonPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cancel.mp3").c_str());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/menu_cancel.mp3").c_str());
   CCScene* scene = CCScene::create();
   MainMenuScene* layer = new MainMenuScene(false);
   layer->autorelease();
@@ -114,9 +114,14 @@ void ExtraScene::onBackButtonPressed(cocos2d::CCObject *sender) {
   CCDirector::sharedDirector()->pushScene(transition);
 }
 
-void ExtraScene::nextScene(CCLayer* layer) {
+void ExtraScene::nextScene(CCLayer* layer, bool slide) {
   CCScene* scene = CCScene::create();
   scene->addChild(layer);
-  CCTransitionFade* transition = CCTransitionFade::create(0.2f, scene);
-  CCDirector::sharedDirector()->replaceScene(transition);
+  if (slide) {
+    CCTransitionSlideInT* transition = CCTransitionSlideInT::create(0.25f, scene);
+    CCDirector::sharedDirector()->replaceScene(transition);
+  } else {
+    CCTransitionFade* transition = CCTransitionFade::create(0.2f, scene);
+    CCDirector::sharedDirector()->replaceScene(transition);
+  }
 }

@@ -1,10 +1,10 @@
 Enemy = {
-  name = "テツフェズ",
+  name = "ツテフェズ",
   imageName = "tetufez",
   attack = 1,
   baseExp = 1,
   hasFrame = false,
-  counter = 1,
+  counter = 0,
   getSpeed = function(enemy, characterManager)
     return 1
   end,
@@ -13,6 +13,7 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  魔物であるか人工的な魔法生物であるか諸説あるがわかっていない。叩くといい音がする。
   ]],
   habitat = "",
   animationFrames = 6,

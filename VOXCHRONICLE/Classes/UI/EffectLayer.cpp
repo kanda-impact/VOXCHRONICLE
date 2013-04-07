@@ -10,6 +10,7 @@
 #include "FileUtils.h"
 #include <boost/lexical_cast.hpp>
 #include "CCRemoveFromParentAction.h"
+#include "SimpleAudioEngine.h"
 
 using namespace boost;
 
@@ -22,7 +23,9 @@ typedef enum {
   EffectLayerZOrderCutin,
   EffectLayerZOrderDamageLabel,
   EffectLayerZOrderTension,
-  EffectLayerZOrderCharacter
+  EffectLayerZOrderCharacter,
+  EffectLayerZOrderWarning,
+  EffectLayerZOrderWindow
 } EffectLayerZOrder;
 
 static EffectLayer* _shared = NULL;
@@ -30,9 +33,20 @@ static EffectLayer* _shared = NULL;
 EffectLayer* EffectLayer::sharedLayer() {
   if (_shared == NULL) {
     _shared = new EffectLayer();
-    _shared->retain();
   }
   return _shared;
+}
+
+void EffectLayer::purgeEffectLayer() {
+  if (_shared) {
+    _shared->stopAllActions();
+    _shared->unscheduleAllSelectors();
+    if (_shared->getParent()) {
+      _shared->getParent()->removeChild(_shared, true);
+    }
+    _shared->release();
+    _shared = NULL;
+  }
 }
 
 EffectLayer::EffectLayer() {
@@ -138,12 +152,13 @@ void EffectLayer::setCharacterEffect(Character *character) {
 
 PopupWindow* EffectLayer::addPopupWindow(int pages) {
   CCAssert(this->getPopupWindow() == NULL, "");
+  SimpleAudioEngine::sharedEngine()->playEffect("window_open.mp3");
   PopupWindow* window = PopupWindow::create(pages);
   CCDirector* director = CCDirector::sharedDirector();
   window->setPosition(ccp(director->getWinSize().width / 2.0, director->getWinSize().height / 2.0f));
   window->setScale(0);
   window->runAction(CCScaleTo::create(0.3f, 1.0));
-  this->addChild(window, 0, EffectLayerTagTutorial);
+  this->addChild(window, EffectLayerZOrderWindow, EffectLayerTagTutorial);
   return window;
 }
 
@@ -282,4 +297,63 @@ void EffectLayer::addDamageLabel(int damage, int offset) {
                                             CCEaseSineIn::create(CCMoveBy::create(0.2, ccp(0, -150))),
                                             CCRemoveFromParentAction::create(),
                                             NULL));
+}
+
+void EffectLayer::addDamageLabelForEnemy(Enemy *enemy, int damage) {
+  // ダメージラベル
+  CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(damage).c_str(),
+                                                   FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 150, '0');
+  CCSize size = enemy->getContentSize();
+  float scale = MAX(enemy->getCurrentScale(enemy->getRow()), 0.4);
+  damageLabel->setAnchorPoint(ccp(0.5, 0.5));
+  damageLabel->setPosition(ccpAdd(enemy->getPosition(), ccp(0, 50 * scale)));
+  damageLabel->setScale(scale);
+  this->addChild(damageLabel, EffectLayerZOrderDamageLabel);
+  damageLabel->runAction(CCSequence::create(CCFadeIn::create(0.2),
+                                            CCDelayTime::create(0.5),
+                                            CCFadeOut::create(0.2),
+                                            CCRemoveFromParentAction::create(),
+                                            NULL));
+}
+
+void EffectLayer::addWarning(float delay) {
+  const float fadeDuration = 0.5f;
+  const float animationDuration = 0.1f;
+  CCDirector* director = CCDirector::sharedDirector();
+  CCNode* node = CCNode::create();
+  CCSprite* warning = CCSprite::create("warning0.png");
+  CCArray* frames = CCArray::create();
+  frames->addObject(CCSpriteFrame::create("warning0.png", CCRectMake(0, 0, 480, 123)));
+  frames->addObject(CCSpriteFrame::create("warning1.png", CCRectMake(0, 0, 480, 123)));
+  CCAnimation* animation = CCAnimation::createWithSpriteFrames(frames);
+  animation->setDelayPerUnit(animationDuration);
+  animation->setLoops((delay / animation->getDelayPerUnit()) / 2);
+  warning->setOpacity(0);
+  warning->runAction(CCSequence::create(CCFadeIn::create(fadeDuration),
+                                        CCAnimate::create(animation),
+                                        CCFadeOut::create(fadeDuration),
+                                        NULL));
+  CCSprite* band0 = CCSprite::create("warning2.png");
+  band0->setPosition(ccp(240, 56));
+  band0->runAction(CCMoveBy::create(delay, ccp(-480, 0)));
+  
+  band0->runAction(CCSequence::create(CCFadeIn::create(fadeDuration),
+                                      CCDelayTime::create(delay),
+                                      CCFadeOut::create(fadeDuration),
+                                      NULL));
+  
+  CCSprite* band1 = CCSprite::create("warning2.png");
+  band1->setPosition(ccp(-240, -56));
+  band1->runAction(CCMoveBy::create(delay, ccp(480, 0)));
+  band1->runAction(CCSequence::create(CCFadeIn::create(fadeDuration),
+                                      CCDelayTime::create(delay),
+                                      CCFadeOut::create(fadeDuration),
+                                      NULL));
+  node->addChild(warning);
+  node->addChild(band0);
+  node->addChild(band1);
+  node->runAction(CCSequence::create(CCDelayTime::create(delay * 2),
+                                     CCRemoveFromParentAction::create(), NULL));
+  node->setPosition(ccp(director->getWinSize().width / 2.0, 180));
+  this->addChild(node, EffectLayerZOrderWarning);
 }

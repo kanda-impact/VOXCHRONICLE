@@ -29,6 +29,7 @@ typedef enum {
  */
 class Species :public CCObject {
  private:
+  static CCDictionary* _speciesDict;
   string _identifier;
   string _imageName;
   string _name;
@@ -40,6 +41,7 @@ class Species :public CCObject {
   LuaObject* _lua;
   CCLuaValueArray* _disableSkills;
  public:
+  static Species* getSpecies(const char* identifier);
   Species(const char* identifier);
   ~Species();
   string getIdentifier();

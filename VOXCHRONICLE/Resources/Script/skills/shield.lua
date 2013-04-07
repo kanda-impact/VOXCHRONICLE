@@ -1,5 +1,5 @@
 Skill = {
-  name = "盾",
+  name = "シールド",
   identifier = "shield",
   effectFrames = 0,
   mp = 0,

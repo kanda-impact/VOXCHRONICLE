@@ -7,7 +7,9 @@
 //
 
 #include "PopupWindow.h"
+#include "SimpleAudioEngine.h"
 #include <boost/bind.hpp>
+
 
 PopupWindow* PopupWindow::create(int pages) {
   PopupWindow* window = new PopupWindow(pages);
@@ -57,16 +59,16 @@ void PopupWindow::nextPage() {
 
 void PopupWindow::setText(int page, const char *headerText, const char *text) {
   CCNode* node = this->getPage(page);
-  CCLabelTTF* headerShadow = CCLabelTTF::create(headerText, "Helvetica", 24, CCSizeMake(380, 40), kCCTextAlignmentLeft, kCCVerticalTextAlignmentCenter);
+  CCLabelTTF* headerShadow = CCLabelTTF::create(headerText, "Helvetica", 24, CCSizeMake(380, 40), kCCTextAlignmentCenter, kCCVerticalTextAlignmentCenter);
   
-  CCLabelTTF* header = CCLabelTTF::create(headerText, "Helvetica", 24, CCSizeMake(380, 40), kCCTextAlignmentLeft, kCCVerticalTextAlignmentCenter);
+  CCLabelTTF* header = CCLabelTTF::create(headerText, "Helvetica", 24, CCSizeMake(380, 40), kCCTextAlignmentCenter, kCCVerticalTextAlignmentCenter);
   headerShadow->setColor(ccc3(33, 33, 33));
-  headerShadow->setPosition(ccp(217, 268));
-  header->setPosition(ccp(215, 270));
+  headerShadow->setPosition(ccp(202, 268));
+  header->setPosition(ccp(200, 270));
   node->addChild(headerShadow);
   node->addChild(header);
-  MessageWindow* window = new MessageWindow("Helvetica", 16, CCSizeMake(350, 240));
-  window->setPosition(ccp(220, 130));
+  MessageWindow* window = new MessageWindow("Helvetica", 16, CCSizeMake(370, 240));
+  window->setPosition(ccp(200, 130));
   node->addChild(window);
   window->setLastDelay(INTMAX_MAX);
   window->pushMessage(text);
@@ -75,7 +77,9 @@ void PopupWindow::setText(int page, const char *headerText, const char *text) {
 }
 
 void PopupWindow::onUpdateFunction(VQString *string, MessageWindow *window) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("message.mp3");
 }
 
 void PopupWindow::onFinishedFunction(VQString *string, MessageWindow *window) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("message_finish.mp3");
 }

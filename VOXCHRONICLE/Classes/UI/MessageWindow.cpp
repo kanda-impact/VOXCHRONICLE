@@ -109,7 +109,7 @@ void MessageWindow::updateNextText(CCObject* sender) {
         _onFinishedFunction(this->getCurrentWholeMessage(), this);
       }
       SEL_SCHEDULE sel = (SEL_SCHEDULE)schedule_selector(MessageWindow::updateNextMessage);
-      this->scheduleOnce(sel, this->isLastMessage() ? _lastDelay : _delay);
+      this->scheduleOnce(sel, this->isLastMessage() ? _lastDelay : _delay); // ToDo ここで落ちる
     }
   }
 }

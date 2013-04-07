@@ -4,7 +4,7 @@ Enemy = {
   attack = 0,
   baseExp = 1,
   hasFrame = false,
-  counter = 1,
+  counter = 0,
   getSpeed = function(enemy, characterManager)
     return 1
   end,
@@ -13,7 +13,8 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
-  伝説の戦闘兵器　伝統の雑魚モンスター　ふたたび
+ 魔物であるか人工的な魔法生物であるか諸説あるがわかっていない。
+ 機嫌によって点滅のパターンが変わる。
   ]],
   habitat = "",
   animationFrames = 4,

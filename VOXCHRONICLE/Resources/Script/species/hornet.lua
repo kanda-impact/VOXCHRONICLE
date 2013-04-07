@@ -1,10 +1,10 @@
 Enemy = {
-  name = "ハチ",
+  name = "リートォ",
   imageName = "hornet",
   attack = 4,
   baseExp = 1,
   hasFrame = true,
-  counter = 3,
+  counter = 2,
   getSpeed = function(enemy, characterManager)
     return 1
   end,

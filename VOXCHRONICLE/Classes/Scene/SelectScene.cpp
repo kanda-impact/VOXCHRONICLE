@@ -54,12 +54,12 @@ bool SelectScene::init() {
   mainMenu->setPosition(ccp(director->getWinSize().width / 2.0 + 2, 127));
   this->addChild(mainMenu, SelectSceneZOrderButton);
   
-  CCMenuItemImage* backButton = CCMenuItemImage::create("back_down.png",
-                                                        "back_down_pressed.png",
+  CCMenuItemImage* backButton = CCMenuItemImage::create("select_back.png",
+                                                        "select_back_pressed.png",
                                                         this,
                                                         menu_selector(SelectScene::onBackButtonPressed));
   CCMenu* backMenu = CCMenu::create(backButton, NULL);
-  backMenu->setPosition(ccp(director->getWinSize().width / 2.0f, 30));
+  backMenu->setPosition(ccp(director->getWinSize().width / 2.0f, 45));
   _nextMap = NULL;
   this->addChild(backMenu);
   
@@ -123,8 +123,8 @@ CCNode* SelectScene::buttonNode(const char *key, const char* thumbnail, bool pre
 }
 
 void SelectScene::createThumbnails() {
-  const int x[] = {190, 240, 291, 165, 215, 265, 315};
-  const int y[] = {262, 262, 260, 303, 303, 303, 303};
+  const int x[] = {190, 240, 290.5, 165, 215, 265, 315};
+  const int y[] = {262, 262, 261, 303, 303, 303, 303};
   LuaObject* obj = LuaObject::create("setting");
   CCLuaValueArray* maps = obj->getArray("maps");
   int i = 0;
@@ -179,7 +179,7 @@ void SelectScene::startGame(cocos2d::CCObject *sender) {
 }
 
 void SelectScene::onBackButtonPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cancel.mp3").c_str());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/menu_cancel.mp3").c_str());
   CCScene* scene = CCScene::create();
   MainMenuScene* layer = new MainMenuScene(false);
   layer->autorelease();

@@ -1,8 +1,8 @@
 Skill = {
-  name = "弓",
+  name = "スナイプ",
   identifier = "bow",
   effectFrames = 4,
-  mp = 1,
+  mp = 0,
   se = true,
   tensionLevel = 0,
   common = false,

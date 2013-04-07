@@ -1,5 +1,5 @@
 Map = {
-  name = "シンプル",
+  name = "ターヴァナ荒野",
   wayMusic = "volca",
   bossMusic = "",
   backgroundImage = "simple_background.png",
@@ -21,6 +21,12 @@ Map = {
       return {slime1A0 = 1, acorn1A0 = 2}
     end
   end,
+    onLoad = function(self, characterManager, enemyManager)
+    enemyManager:loadEnemyTextureAsync("leaf.png")
+    enemyManager:loadEnemyTextureAsync("slime.png")
+    enemyManager:loadEnemyTextureAsync("acorn.png")
+  end,
+  
   getEnemyPopRate = function(level)
     if level <= 6 then
         return 0.6
@@ -29,6 +35,11 @@ Map = {
     end
     return 0.4
   end,
+  onClear = function(self, characterManager, enemyManager)
+    local data = SaveData:sharedData()
+    data:unlockAchievement("clear1A")
+  end,
+
   fixedEnemies = {
   --{"level10",0}
   }

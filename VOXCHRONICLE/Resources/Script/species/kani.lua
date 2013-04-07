@@ -1,5 +1,5 @@
 Enemy = {
-  name = "カニ",
+  name = "ンカシィ",
   imageName = "kani",
   attack = 2,
   baseExp = 6,
@@ -13,7 +13,7 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
-  電子に回避を与える試みの末うまれた。
+  電子に危機回避を与える試みの末うまれた。
   下方向からの衝撃をおそれているようだ。
   ]],
   habitat = "",

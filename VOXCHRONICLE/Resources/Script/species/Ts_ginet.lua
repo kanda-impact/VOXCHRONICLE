@@ -1,5 +1,5 @@
 Enemy = {
-  name = "ギネット",
+  name = "ギネード",
   imageName = "ginet",
   attack = 0,
   baseExp = 1,
@@ -13,6 +13,8 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  なりふり構わずとりあえず噛み付く事がコミュニケーションないぬ。
+  しかし、実はねこなのではないかという情報もある。
   ]],
   habitat = "",
   animationFrames = 3,

@@ -29,4 +29,5 @@ void Ground::nextFrame() {
   _currentFrame = (_currentFrame + 1) % _frameCount;
   string filename = (_prefix + string("_ground") + lexical_cast<string>(_currentFrame) + string(".png"));
   this->setTexture(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(filename.c_str())->getTexture());
+  this->setTextureRect(CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(filename.c_str())->getRect());
 }

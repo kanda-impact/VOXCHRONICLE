@@ -1,10 +1,10 @@
 Enemy = {
-  name = "タイフーン",
+  name = "マーシミー",
   imageName = "typhoon",
   attack = 8,
   baseExp = 1,
   hasFrame = true,
-  counter = 1,
+  counter = 3,
   getSpeed = function(enemy, characterManager)
     return 1
   end,

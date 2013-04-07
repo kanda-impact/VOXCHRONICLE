@@ -1,5 +1,5 @@
 Map = {
-  name = "遺跡",
+  name = "ツアドゥラグ遺跡",
   wayMusic = "ttn1",
   bossMusic = "Hawaii",
   backgroundImage = "ruin_background.png",
@@ -24,6 +24,11 @@ Map = {
     return {}
   end,
   onLoad = function(self, characterManager, enemyManager)
+    enemyManager:loadEnemyTextureAsync("mask.png")
+    enemyManager:loadEnemyTextureAsync("wisp.png")
+    enemyManager:loadEnemyTextureAsync("typhoon.png")
+    enemyManager:loadEnemyTextureAsync("mimic.png")
+    enemyManager:loadEnemyTextureAsync("gargoyle.png")
     enemyManager:loadEnemyTextureAsync("fortress.png")
   end,
   onLevelUp = function(self, characterManager, enemyManager)
@@ -44,6 +49,10 @@ Map = {
       return 0.3
     end
     return 0.6
+  end,
+  onClear = function(self, characterManager, enemyManager)
+    local data = SaveData:sharedData()
+    data:unlockAchievement("clear3A")
   end,
   fixedEnemies = {
   }

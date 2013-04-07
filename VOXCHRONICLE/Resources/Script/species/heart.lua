@@ -1,10 +1,10 @@
 Enemy = {
-  name = "心臓",
+  name = "ラメゥユ",
   imageName = "heart",
   attack = 1,
   baseExp = 6,
   hasFrame = true,
-  counter = 2,
+  counter = 1,
   getSpeed = function(enemy, characterManager)
     return 1
   end,
@@ -13,6 +13,8 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
+  電子に生命を与える試みの末うまれた。
+  われわれは　どこからきて　どこへ　ゆくのか
   ]],
   habitat = "",
   animationFrames = 4,

@@ -1,5 +1,5 @@
 Skill = {
-  name = "回復",
+  name = "ＨＰヒーリング",
   identifier = "cure",
   mp = 1,
   tensionLevel = 0,

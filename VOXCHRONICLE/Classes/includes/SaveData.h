@@ -10,10 +10,12 @@
 #define __VOXCHRONICLE__SaveData__
 
 #include <iostream>
+#include <list>
 #include "cocos2d.h"
 #include "Map.h"
 #include "Enemy.h"
 
+using namespace std;
 using namespace cocos2d;
 
 /**
@@ -24,19 +26,29 @@ using namespace cocos2d;
 
 typedef enum {
   SaveDataCountKeyDead,
-  SaveDataCountKeyBeat,
+  SaveDataCountKeyTurn,
   SaveDataCountKeyDefeat,
   SaveDataCountKeyMPMiss,
   SaveDataCountKeyBoot,
   SaveDataCountKeyHitDamage,
   SaveDataCountKeyAttackDamage,
+  SaveDataCountKeyDictionaryCount,
   SaveDataCountKeyNum
 } SaveDataCountKey;
+
+typedef struct {
+  SaveDataCountKey key;
+  int count;
+  string identifier;
+} AchievementInfo;
 
 class SaveData :public CCObject {
  private:
   CCDictionary* _countDictionary;
   CCArray* _achievements;
+  
+  list<AchievementInfo>* _achievementInfos;
+  
   void checkUnlockAchievement(SaveDataCountKey key, int value);
   void onFinishAchievementReporting(const char* identifier, bool error);
  public:

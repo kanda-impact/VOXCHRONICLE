@@ -1,5 +1,5 @@
 Skill = {
-  name = "魔法",
+  name = "マジック",
   identifier = "magic",
   effectFrames = 6,
   mp = 0,

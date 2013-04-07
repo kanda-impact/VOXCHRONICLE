@@ -15,15 +15,15 @@ EndingScene::EndingScene(const char* endingScript, CCArray* maps) {
   _maps = maps;
   maps->retain();
   LuaObject* obj = LuaObject::create(endingScript);
-
   CCDirector* director = CCDirector::sharedDirector();
+  
   string text = obj->getString("text");
   _musicDuration = obj->getInt("duration");
   _music = obj->getString("music");
   CCLabelTTF* label = CCLabelTTF::create(text.c_str(),
                                          "Helvetica",
                                          24,
-                                         CCSizeMake(director->getWinSize().width, director->getWinSize().height * 2),
+                                         CCSizeMake(director->getWinSize().width - 50, director->getWinSize().height * 2),
                                          kCCTextAlignmentLeft,
                                          kCCVerticalTextAlignmentCenter);
   label->setColor(ccc3(255, 255, 255));
@@ -33,6 +33,10 @@ EndingScene::EndingScene(const char* endingScript, CCArray* maps) {
     sprite->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
     this->addChild(sprite);
   }
+
+  CCLayerColor* bg = CCLayerColor::create(ccc4(100, 100, 100, 128), director->getWinSize().width, director->getWinSize().height);
+  this->addChild(bg);
+  
   label->setPosition(ccp(director->getWinSize().width / 2.0f, - director->getWinSize().height));
   this->addChild(label);
   label->runAction(CCSequence::create(CCMoveTo::create(15.0f, ccp(director->getWinSize().width / 2.0f, director->getWinSize().height /2.0f)),

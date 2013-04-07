@@ -11,5 +11,5 @@
 # 開発環境セットアップ
 
 ```sh
-curl https://gist.github.com/raw/4378579/voxchronicle_setup.sh | sh
+curl https://gist.github.com/giginet/4378579/raw/voxchronicle_setup.sh | sh
 ```

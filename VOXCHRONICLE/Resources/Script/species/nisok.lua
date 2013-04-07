@@ -1,5 +1,5 @@
 Enemy = {
-  name = "二足歩行",
+  name = "エヌティ",
   imageName = "nisok",
   attack = 8,
   baseExp = 6,

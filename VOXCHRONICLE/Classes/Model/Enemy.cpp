@@ -37,23 +37,21 @@ void Enemy::loadLifeColors() {
   if (_lifeColors == NULL) {
     _lifeColors = CCArray::create();
     _lifeColors->retain();
-    for (int i = 0; i < 300; ++i) {
-      // Luaスクリプトを呼びます
-      LuaObject* obj = LuaObject::create("enemy.lua");
-      lua_State* L = obj->getLuaEngineWithLoad()->getLuaState();
-      lua_getglobal(L, "getColor");
-      if ( lua_isfunction(L, lua_gettop(L))) {
-        lua_pushinteger(L, i);
-        if (lua_pcall(L, 1, 3, 0)) {
-          cout << lua_tostring(L, lua_gettop(L)) << endl;
-        }
-        int r = lua_tointeger(L, lua_gettop(L) - 2);
-        int g = lua_tointeger(L, lua_gettop(L) - 1);
-        int b = lua_tointeger(L, lua_gettop(L));
+    LuaObject* obj = LuaObject::create("enemy.lua");
+    lua_State* L = obj->getLuaEngineWithLoad()->getLuaState();
+    lua_getglobal(L, "getColors");
+    if ( lua_isfunction(L, lua_gettop(L))) {
+      lua_pushinteger(L, 300);
+      if (lua_pcall(L, 1, 1, 0)) {
+        cout << lua_tostring(L, lua_gettop(L)) << endl;
+      }
+      CCLuaValueArray* colorArray = obj->getArray();
+      for (CCLuaValueArrayIterator it = colorArray->begin(); it != colorArray->end(); ++it) {
         CCArray* c = CCArray::create();
-        c->addObject(CCInteger::create(r));
-        c->addObject(CCInteger::create(g));
-        c->addObject(CCInteger::create(b));
+        CCLuaValueDict colors = it->dictValue();
+        c->addObject(CCInteger::create(colors["1"].floatValue()));
+        c->addObject(CCInteger::create(colors["2"].floatValue()));
+        c->addObject(CCInteger::create(colors["3"].floatValue()));
         _lifeColors->addObject(c);
       }
     }
@@ -79,7 +77,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _lua = new LuaObject(file.str().c_str());
   _maxHP = _lua->getInt("hp");
   _hp = _maxHP;
-  _species = new Species(_lua->getString("species"));
+  _species = Species::getSpecies(_lua->getString("species"));
   _species->retain();
   _type = (SkillType)_lua->getInt("type");
   _level = _lua->getInt("level");
@@ -88,6 +86,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _movable = true;
   _counter = -1;
   _exp = this->getExpFromLua();
+  _attack = _lua->getInt("attack");
   _frameSprite = NULL;
   stringstream ss;
   ss << _species->getImageName().c_str();
@@ -286,6 +285,10 @@ int Enemy::getHP() {
   return _hp;
 }
 
+void Enemy::setHP(int hp) {
+  _hp = hp;
+}
+
 bool Enemy::canMove(CharacterManager* manager) {
   _frequencyCount = (_frequencyCount + 1) % this->getFrequency(manager);
   return _frequencyCount == 0;
@@ -300,6 +303,9 @@ int Enemy::getLevel() {
 }
 
 int Enemy::getAttack() {
+  if (_attack != 0) {
+    return _attack;
+  }
   return _species->getAttack();
 }
 
@@ -385,16 +391,7 @@ bool Enemy::setAnimationAndFrame(int xOffset, int yOffset, int frames, bool hasF
     if (hasFrame) {
       CCSprite* frameSprite = this->createFrameSprite(xOffset, yOffset + 1, frames);
       frameSprite->setAnchorPoint(ccp(0, 0));
-      CCRepeatForever* blink = CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.05f, 64), CCFadeTo::create(0.05f, 255)));
-      if (_type == SkillTypePhysical) {
-        frameSprite->setColor(ccc3(0, 255, 230));
-        frameSprite->runAction(blink);
-      } else if (_type == SkillTypeMagical) {
-        frameSprite->setColor(LSK_COLOR);
-        frameSprite->runAction(blink);
-      } else {
-        frameSprite->setColor(ccc3(0, 0, 0));
-      }
+      this->setFrameColor(frameSprite, _type);
       this->addChild(frameSprite, EnemyLayerFrame, EnemyTagFrame);
       if (_frameSprite) {
         _frameSprite->release();
@@ -493,7 +490,30 @@ string Enemy::getIdentifier() {
 
 void Enemy::setSilhouette() {
   this->stopAllActions();
-  _frameSprite->stopAllActions();
   this->setColor(ccc3(5, 5, 5));
-  _frameSprite->setColor(ccc3(5, 5, 5));
+  
+  if (_frameSprite) {
+    _frameSprite->stopAllActions();
+    _frameSprite->setColor(ccc3(5, 5, 5));
+  }
+}
+
+void Enemy::setSkillType(SkillType type) {
+  _type = type;
+  if (_frameSprite) {
+    this->setFrameColor(_frameSprite, type);
+  }
+}
+
+void Enemy::setFrameColor(cocos2d::CCSprite *frameSprite, SkillType type) {
+  CCRepeatForever* blink = CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.05f, 64), CCFadeTo::create(0.05f, 255)));
+  if (type == SkillTypePhysical) {
+    frameSprite->setColor(ccc3(0, 255, 230));
+    frameSprite->runAction(blink);
+  } else if (type == SkillTypeMagical) {
+    frameSprite->setColor(LSK_COLOR);
+    frameSprite->runAction(blink);
+  } else {
+    frameSprite->setColor(ccc3(0, 0, 0));
+  }
 }

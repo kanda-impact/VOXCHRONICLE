@@ -1,5 +1,5 @@
 Skill = {
-  name = "溜める",
+  name = "パワーチャージ",
   identifier = "tension",
   effectFrames = 0,
   mp = 0,

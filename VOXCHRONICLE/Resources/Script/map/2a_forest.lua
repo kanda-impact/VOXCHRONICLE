@@ -1,5 +1,5 @@
 Map = {
-  name = "森林",
+  name = "メイガラの森",
   wayMusic = "volca",
   bossMusic = "",
   backgroundImage = "forest_background.png",
@@ -23,6 +23,14 @@ Map = {
     end
     return {leaf2A0 = 1}
   end,
+  onLoad = function(self, characterManager, enemyManager)
+    enemyManager:loadEnemyTextureAsync("leaf.png")
+    enemyManager:loadEnemyTextureAsync("slime.png")
+    enemyManager:loadEnemyTextureAsync("acorn.png")
+    enemyManager:loadEnemyTextureAsync("moth.png")
+    enemyManager:loadEnemyTextureAsync("hornet.png")    
+    enemyManager:loadEnemyTextureAsync("toadstool.png")
+  end,
   getEnemyPopRate = function(level)
   if level <= 12 then
       return 0.7
@@ -36,6 +44,11 @@ Map = {
       return 0.4
   end
   end,
+  onClear = function(self, characterManager, enemyManager)
+    local data = SaveData:sharedData()
+    data:unlockAchievement("clear2A")
+  end,
+
   fixedEnemies = {
     --{"level10",0}
   }
