@@ -23,6 +23,12 @@ Map = {
     end
       return {cryst2B3 = 1, bat2B0 = 1, mukade2B0 = 1, wisp2B6 = 1}
   end,
+  onLoad = function(self, characterManager, enemyManager)
+    enemyManager:loadEnemyTextureAsync("cryst.png")
+    enemyManager:loadEnemyTextureAsync("bat.png")
+    enemyManager:loadEnemyTextureAsync("mukade.png")
+    enemyManager:loadEnemyTextureAsync("wisp.png")
+  end,
   getEnemyPopRate = function(level)
     if level <= 12  then
     return 0.25
@@ -36,6 +42,11 @@ Map = {
     return 0.24
     end
   end,
+  onClear = function(self, characterManager, enemyManager)
+    local data = SaveData:sharedData()
+    data:unlockAchievement("clear2B")
+  end,
+
   fixedEnemies = {
     {"dragon2B0",840}
   }

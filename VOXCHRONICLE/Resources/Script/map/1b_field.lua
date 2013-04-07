@@ -65,6 +65,12 @@ Map = {
   end,
   onLevelUp = function(self, characterManager, enemyManager)
   end,
+  onLoad = function(self, characterManager, enemyManager)
+    enemyManager:loadEnemyTextureAsync("flower.png")
+    enemyManager:loadEnemyTextureAsync("slime.png")
+    enemyManager:loadEnemyTextureAsync("moth.png")
+    enemyManager:loadEnemyTextureAsync("hornet.png")    
+  end,
   getEnemyPopRate = function(level)
     local number = getTime()
     if number == 1 then
@@ -94,6 +100,15 @@ Map = {
       return 0.2
     end
   end,
+  onClear = function(self, characterManager, enemyManager)
+    local data = SaveData:sharedData()
+    local number = getTime()
+    if number == 1 then
+    data:unlockAchievement("clear1B")
+    end
+    data:unlockAchievement("clear1B")
+  end,
+
   fixedEnemies = {
     {"flower1B0",0}
   }
