@@ -32,7 +32,7 @@ Character = {
       {"thunder", 12},
       {"cure", 14},
       {"tension", 12},
-      {"change", 14},
+      {"change", 15},
       {"shield", 11},
       {"run", 11}
       }
