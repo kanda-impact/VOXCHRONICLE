@@ -128,16 +128,17 @@ class Skill :public CCObject {
 
 class Enemy : public CCSprite, public IRegister {
 	int getRow();
+	int getCol();
+	int getHP();
 	int getAttack();
+	string getName();
 	void moveRow(float row);
 	void setRow(float row);
-	int getCol();
 	void setCol(int col);
 	bool setAnimationClip(const char* clipName, int frames, bool hasFrame);
 	bool setDefaultAnimationClip();
-	string getName();
-	int getHP();
 	void setCounter(int counter);
+	void setHP(int hp);
 	int getRegister(const char* key, int defaultValue);
 	void setRegister(const char* key, int value);
 	bool hasRegister(const char* key);
@@ -193,6 +194,7 @@ class EffectLayer : public CCLayer {
 	PopupWindow* addPopupWindow(int pages);
 	void addEffectOnEnemy(Enemy* enemy, const char* prefix, int frameCount, CCRect rect);
 	void addDamageLabel(int damage, int offset);
+	PopupWindow* getPopupWindow();
 };
 
 class PopupWindow : public CCSprite {

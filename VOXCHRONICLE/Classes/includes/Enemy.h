@@ -132,6 +132,7 @@ public:
   
   bool isMovable();
   void setMovable(bool m);
+  void setHP(int hp);
   
   void setSilhouette();
   void setFrameColor(CCSprite* frameSprite, SkillType type);

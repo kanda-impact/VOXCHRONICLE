@@ -285,6 +285,10 @@ int Enemy::getHP() {
   return _hp;
 }
 
+void Enemy::setHP(int hp) {
+  _hp = hp;
+}
+
 bool Enemy::canMove(CharacterManager* manager) {
   _frequencyCount = (_frequencyCount + 1) % this->getFrequency(manager);
   return _frequencyCount == 0;
