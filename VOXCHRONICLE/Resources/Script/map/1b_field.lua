@@ -1,15 +1,12 @@
 function getTime()
-    local time = VQTime:sharedTime()
-    local hour = time:getCurrentHour()
-    local number = 0
-    if 6 <= hour and hour < 16 then
-      number = 0
-    elseif 16 <= hour and hour < 19 then
-      number = 1
-    else
-      number = 2
-    end
-    return number
+  local time = VQTime:sharedTime()
+  local hour = time:getCurrentHour()
+  if 6 <= hour and hour < 16 then -- 朝
+    return 0
+  elseif 16 <= hour and hour < 19 then -- 夕方
+    return 1
+  end
+  return 2
 end
 
 Map = {
@@ -22,16 +19,6 @@ Map = {
   nextMaps = {"2b_cave","2c_cyber"},
   initialLevel = 1,
   maxLevel = 10,
-  
-  onLoad = function(self, characterManager, enemyManager)
-    local number = getTime()
-    local imageName = "field_background"..number..".png"
-    self:changeBackgroundImage(imageName)
-
-    local level = characterManager:getLevel()
-    --if number == 1 and level == 10
-    
-  end,
   getEnemyTable = function(level)
     local number = getTime()
     if number == 1 then
@@ -66,6 +53,11 @@ Map = {
   onLevelUp = function(self, characterManager, enemyManager)
   end,
   onLoad = function(self, characterManager, enemyManager)
+    local number = getTime()
+    local imageName = "field_background"..number..".png"
+    self:changeBackgroundImage(imageName)
+    local level = characterManager:getLevel()
+  
     enemyManager:loadEnemyTextureAsync("flower.png")
     enemyManager:loadEnemyTextureAsync("slime.png")
     enemyManager:loadEnemyTextureAsync("moth.png")
@@ -108,7 +100,6 @@ Map = {
     end
     data:unlockAchievement("clear1B")
   end,
-
   fixedEnemies = {
     {"flower1B0",0}
   }
