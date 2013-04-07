@@ -67,6 +67,19 @@ Map = {
            enemyManager:popEnemyAt("flame2C2", 1, 1)
          end
       end
+	elseif level == 15 then
+	  local changedVox = self.__IRegister__:getBool("changedVox")
+	  if not changedVox and characterManager:getCurrentCharacter():getName() == "オクス" then
+	    -- 初回限定でオクスにチェンジしたらポップアップを表示する
+	    self.__IRegister__:setBool("changedVox", true)
+        local popup = layer:addPopupWindow(2)
+        popup:setText(0, "らすかをだいじに", [[
+オクス君が宝玉に力を込めてくれれば、私のMPは回復するわ。さっきの回復コマンドをオクス君にチェンジしてからタッチしてみてね。
+]])
+        popup:setText(1, "回復し合おう！HPはラスカ、MPはオクス", [[
+オクス君はMP回復、私はHP回復、って補い合う感じになってるから上手くチェンジして回復していってね！　ん？よく考えると私たち、もしかして永久機関！？
+]])
+      end
     end
   end,
   onLevelUp = function(self, characterManager, enemyManager)
@@ -109,6 +122,11 @@ Map = {
 ]])
       popup:setText(1, "いのちをだいじに", [[
 そうそう、テンションを溜めてから使うと攻撃の威力みたいに回復量が一気に上がるからお得よ！
+]])
+	elseif level == 15 then
+      local popup = layer:addPopupWindow(1)
+      popup:setText(0, "MP足りなくってピンチだよ！", [[
+ちょっと、オクス君！私に任せてばっかりだと息切れしちゃうんだから。さっきみたいに私にMP注入してよ～！いったんチェンジチェンジ！
 ]])
     end
   end,
