@@ -184,6 +184,7 @@ void MainScene::teardown() {
   SaveData::sharedData()->save();
   EffectLayer::purgeEffectLayer();
   MessageManager::purgeMessageManager();
+  CCTextureCache::sharedTextureCache()->removeUnusedTextures(); // いらないの消す
 }
 
 void MainScene::update(float dt) {

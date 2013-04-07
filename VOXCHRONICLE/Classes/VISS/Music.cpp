@@ -109,11 +109,13 @@ bool Music::play() {
 }
 
 void Music::stop() {
+  // 先の含め全部止める
   CCObject* obj = NULL;
   CCARRAY_FOREACH(_tracks, obj) {
     CCArray* track = (CCArray*)obj;
-    if (track->count() > 0) {
-      Track* t = (Track*)((CCArray*)track->objectAtIndex(0));
+    CCObject* obj2 = NULL;
+    CCARRAY_FOREACH(track, obj2) {
+      Track* t = (Track*)obj2;
       t->stop();
       t->setVolume(0);
     }
