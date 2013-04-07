@@ -691,6 +691,7 @@ void MainScene::addDamageEffect() {
     this->onGameOver();
   } else if (isShield) { // 盾装備してたとき
     SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/guard.mp3").c_str());
+    _characterManager->setShield(false); // 盾問答無用で外します
   }
 }
 
