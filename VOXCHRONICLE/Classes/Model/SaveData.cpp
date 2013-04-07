@@ -127,6 +127,7 @@ bool SaveData::isUnlockAchievement(const char* identifier) {
 void SaveData::unlockAchievement(const char *identifier) {
   CCAchievementManager* manager = CCAchievementManager::sharedManager();
   if (!this->isUnlockAchievement(identifier)) {
+    CCLog("unlock achievement %s!", identifier);
     manager->reportAchievement(identifier, 100, true, bind(&SaveData::onFinishAchievementReporting, this, _1, _2));
   }
 
@@ -145,7 +146,7 @@ void SaveData::checkUnlockAchievement(SaveDataCountKey key, int value) {
 
 void SaveData::onFinishAchievementReporting(const char* identifier, bool error) {
   if (!error) {
-    CCLog("unlock achievement %s!", identifier);
+    CCLog("send achievement %s!", identifier);
     CCString* str = CCString::create(identifier);
     _achievements->addObject(str);
   }
