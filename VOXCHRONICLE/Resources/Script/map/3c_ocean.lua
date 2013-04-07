@@ -1,5 +1,5 @@
 Map = {
-  name = "深海",
+  name = "深海ダリウス",
   wayMusic = "negi",
   bossMusic = "Ceres78",
   backgroundImage = "ocean_background.png",

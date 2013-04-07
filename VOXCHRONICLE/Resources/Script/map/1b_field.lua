@@ -1,5 +1,5 @@
 Map = {
-  name = "草原",
+  name = "スハリィ平原",
   wayMusic = "volca",
   bossMusic = "",
   backgroundImage = "field_background0.png",

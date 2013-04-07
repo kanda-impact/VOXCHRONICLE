@@ -4,7 +4,7 @@ Enemy = {
   attack = 1,
   baseExp = 3,
   hasFrame = true,
-  counter = 3,
+  counter = 1,
   getSpeed = function(enemy, characterManager)
     return 1
   end,
