@@ -68,7 +68,9 @@ Map = {
          end
       end
 	elseif level == 15 then
+	  local lastSkill = characterManager:getLastSkill()
 	  local changedVox = self.__IRegister__:getBool("changedVox")
+	  local healedMp = self.__IRegister__:getBool("healedMp")
 	  if not changedVox and characterManager:getCurrentCharacter():getName() == "オクス" then
 	    -- 初回限定でオクスにチェンジしたらポップアップを表示する
 	    self.__IRegister__:setBool("changedVox", true)
@@ -79,6 +81,17 @@ Map = {
         popup:setText(1, "回復し合おう！HPはラスカ、MPはオクス", [[
 オクス君はMP回復、私はHP回復、って補い合う感じになってるから上手くチェンジして回復していってね！　ん？よく考えると私たち、もしかして永久機関！？
 ]])
+      end
+      -- オクスが回復スキル使ったら敵を出すようにフラグを立てる
+      if lastSkill and lastSkill:getIdentifier() == "charge" then
+        healedMp = true
+        self.__IRegister__:setBool("healedMp", healedMp)
+      end
+      -- 回復スキル使用フラグが立っていて敵がいなかったら敵を出す
+      if enemyCount == 0 and healedMp then
+        enemyManager:popEnemyAt("T_moth7", 3, 0)
+        enemyManager:popEnemyAt("T_moth7", 3, 1)
+        enemyManager:popEnemyAt("T_moth7", 3, 2)
       end
     end
   end,
