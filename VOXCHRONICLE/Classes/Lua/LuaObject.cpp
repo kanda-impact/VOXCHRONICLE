@@ -16,6 +16,8 @@
 using namespace std;
 using namespace cocos2d;
 
+bool LuaObject::isInitialized = false;
+
 typedef enum {
   kStructType_INVALID = 0,
   kStructTypePoint,
@@ -51,8 +53,11 @@ void LuaObject::init(const char* scriptName, const char* className) {
   _className = className;
   _ccObjectPool = CCArray::create();
   _ccObjectPool->retain();
-  tolua_Cocos2d_open(_engine->getLuaState());
-  tolua_VOXCHRONICLE_open(_engine->getLuaState());
+  if (!isInitialized) {
+    tolua_Cocos2d_open(_engine->getLuaState());
+    tolua_VOXCHRONICLE_open(_engine->getLuaState());
+    isInitialized = true;
+  }
 }
 
 LuaObject::~LuaObject() {

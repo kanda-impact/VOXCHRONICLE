@@ -11,6 +11,8 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/bind.hpp>
 
+#include "LuaObject.h"
+
 using namespace boost;
 
 static SaveData* _shared = NULL;
@@ -29,9 +31,25 @@ SaveData::SaveData() {
   _achievements = CCArray::create();
   _achievements->retain();
   this->load();
+  _achievementInfos = new list<SaveDataAchievementInfo>();
+  LuaObject* lua = LuaObject::create("achievement.lua");
+  CCLuaValueArray* array = lua->getArray("saveData");
+  for (CCLuaValueArrayIterator it = array->begin(); it != array->end(); ++it) {
+    CCLuaValueDict dict = (it->dictValue());
+    SaveDataCountKey key = (SaveDataCountKey)dict["1"].intValue();
+    int value = (SaveDataCountKey)dict["2"].intValue();
+    string identifier = dict["3"].stringValue();
+    SaveDataAchievementInfo info;
+    info.key = key;
+    info.count = value;
+    info.identifier = identifier;
+    CCLog("%s", identifier.c_str());
+    _achievementInfos->push_back(info);
+  }
 }
 
 SaveData::~SaveData() {
+  delete _achievementInfos;
   _countDictionary->release();
   _achievements->release();
 }
@@ -117,11 +135,12 @@ void SaveData::unlockAchievement(const char *identifier) {
 
 void SaveData::checkUnlockAchievement(SaveDataCountKey key, int value) {
   // パフォーマンス的にも微妙なのでハードコーディング安定
-  switch (key) {
-    case SaveDataCountKeyTurn:
-      break;
-    default:
-      break;
+  for (list<SaveDataAchievementInfo>::iterator it = _achievementInfos->begin(); it != _achievementInfos->end(); ++it) {
+    if ((*it).key == key) {
+      if ((*it).count < value) {
+        this->unlockAchievement((*it).identifier.c_str());
+      }
+    }
   }
 }
 

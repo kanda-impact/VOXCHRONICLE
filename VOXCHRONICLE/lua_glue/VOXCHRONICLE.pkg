@@ -91,6 +91,18 @@ enum {
 	DamageTypeAbsorption
 };
 
+enum {
+	SaveDataCountKeyDead,
+	SaveDataCountKeyTurn,
+	SaveDataCountKeyDefeat,
+	SaveDataCountKeyMPMiss,
+	SaveDataCountKeyBoot,
+	SaveDataCountKeyHitDamage,
+	SaveDataCountKeyAttackDamage,
+	SaveDataCountKeyDictionaryCount,
+	SaveDataCountKeyNum
+};
+
 class Skill :public CCObject {
 	int getPower(CharacterManager* manager);
 	string getIdentifier();

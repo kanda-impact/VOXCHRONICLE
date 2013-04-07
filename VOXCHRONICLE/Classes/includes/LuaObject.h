@@ -27,6 +27,7 @@ class LuaObject :public CCObject {
   float getFloatFromTable(lua_State* state, int index);
   void internalLoadSubTableWithKey(string key, lua_State* state, CCLuaValueDict* dict);
   void loadTable();
+  static bool isInitialized;
   CCArray* _ccObjectPool;
  public:
   static LuaObject* create(const char* scriptName);
