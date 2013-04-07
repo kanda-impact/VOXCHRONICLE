@@ -651,6 +651,7 @@ void MainScene::addDamageEffect() {
   int sumDamage = 0;
   int i = 0;
   std::queue<DamageInfo>* queue = _characterManager->getDamageInfoQueue();
+  int queueCount = queue->size();
   while (!queue->empty()) { // キューが空になるまで取り出す
     DamageInfo info = queue->front();
     queue->pop();
@@ -684,7 +685,7 @@ void MainScene::addDamageEffect() {
     CCMoveTo* reset = CCMoveTo::create(0, ccp(0, 0));
     actions->addObject(reset);
     this->runAction(CCSequence::create(actions));
-  } else if (sumDamage == 0) { // 0のとき
+  } else if (sumDamage == 0 && queueCount > 0) { // 0のとき、かつqueueが空だったとき
     SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/guard.mp3").c_str());
   }
   if (isDead) { // 死んだとき

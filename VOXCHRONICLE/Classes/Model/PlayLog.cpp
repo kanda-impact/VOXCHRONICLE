@@ -97,9 +97,9 @@ void PlayLog::setSkillCount(Skill* skill, CharacterManager *_characterManager) {
   if (lastSkill && skill->getIdentifier() == lastSkill->getIdentifier()) { // 前回と同じ時
     int count = _characterManager->getRepeatCountRaw();
     if (skill->getIdentifier() == "change") {
-      this->setGraterCount(PlayLogKeyMaxRepeatChangeCount, count);
+      this->setGraterCount(PlayLogKeyMaxRepeatChangeCount, count + 2);
     } else {
-      this->setGraterCount(PlayLogKeyMaxRepeatCount, count);
+      this->setGraterCount(PlayLogKeyMaxRepeatCount, count + 2);
     }
   }
   if (skill->getIdentifier() == "attack") {
