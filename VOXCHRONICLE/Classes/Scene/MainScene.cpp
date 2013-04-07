@@ -355,7 +355,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     }
   }
   
-  SaveData::sharedData()->addCountFor(SaveDataCountKeyBeat); // 小節数を数えます
+  SaveData::sharedData()->addCountFor(SaveDataCountKeyTurn); // 小節数を数えます
   this->updateGUI(); // GUI更新
 }
 

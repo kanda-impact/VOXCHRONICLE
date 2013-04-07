@@ -24,12 +24,13 @@ using namespace cocos2d;
 
 typedef enum {
   SaveDataCountKeyDead,
-  SaveDataCountKeyBeat,
+  SaveDataCountKeyTurn,
   SaveDataCountKeyDefeat,
   SaveDataCountKeyMPMiss,
   SaveDataCountKeyBoot,
   SaveDataCountKeyHitDamage,
   SaveDataCountKeyAttackDamage,
+  SaveDataCountKeyDictionaryCount,
   SaveDataCountKeyNum
 } SaveDataCountKey;
 

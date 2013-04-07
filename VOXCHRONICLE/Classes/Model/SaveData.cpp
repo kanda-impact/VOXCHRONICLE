@@ -118,7 +118,7 @@ void SaveData::unlockAchievement(const char *identifier) {
 void SaveData::checkUnlockAchievement(SaveDataCountKey key, int value) {
   // パフォーマンス的にも微妙なのでハードコーディング安定
   switch (key) {
-    case SaveDataCountKeyBeat:
+    case SaveDataCountKeyTurn:
       break;
     default:
       break;
