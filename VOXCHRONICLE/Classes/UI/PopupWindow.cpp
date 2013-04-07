@@ -67,7 +67,7 @@ void PopupWindow::setText(int page, const char *headerText, const char *text) {
   header->setPosition(ccp(200, 270));
   node->addChild(headerShadow);
   node->addChild(header);
-  MessageWindow* window = new MessageWindow("Helvetica", 16, CCSizeMake(380, 240));
+  MessageWindow* window = new MessageWindow("Helvetica", 16, CCSizeMake(370, 240));
   window->setPosition(ccp(200, 130));
   node->addChild(window);
   window->setLastDelay(INTMAX_MAX);
