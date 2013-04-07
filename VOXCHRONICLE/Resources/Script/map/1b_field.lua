@@ -29,7 +29,7 @@ Map = {
     self:changeBackgroundImage(imageName)
 
     local level = characterManager:getLevel()
-    if number == 1 and level == 10
+    --if number == 1 and level == 10
     
   end,
   getEnemyTable = function(level)
@@ -91,8 +91,8 @@ Map = {
       elseif level <= 10 then
         return 0.3
       end
-    else
-    return 0.2
+      return 0.2
+    end
   end,
   fixedEnemies = {
     {"flower1B0",0}
