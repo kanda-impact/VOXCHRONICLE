@@ -22,7 +22,7 @@ Achievement = {
   -- 1回のプレイ中のカウントに依存する実績を書きます
   playLog = {
     {PlayLogKeyMaxDefeat, 10, "defeat10"}, -- 一気呵成
-    {PlayLogKeyMaxRepeat, 20, "repeat20"}, -- こだわりのワンパターン
+    {PlayLogKeyMaxRepeatCount, 20, "repeat20"}, -- こだわりのワンパターン
     {PlayLogKeyMaxRepeatChange, 10, "change10"} -- 戦場の踊り子
   },
   -- クリア時に実績チェックのために呼び出されます
@@ -34,7 +34,7 @@ Achievement = {
     if playlog:getCount(PlayLogKeyRunCount) >= 20 then -- りえきは　ないと　いったのに
       data:unlockAchievement("run20")
     end
-    if playlog:getCount(PlayLogKeyVOXAttack) == playlog:getCount(PlayLogKeyLSKAttack) then -- シンクロナイズ
+    if playlog:getCount(PlayLogKeyVOXAttackCount) == playlog:getCount(PlayLogKeyLSKAttackCount) then -- シンクロナイズ
       data:unlockAchievement("sync")
     end
     if characterManager:getHP() == 1 then -- 死線、紙一重

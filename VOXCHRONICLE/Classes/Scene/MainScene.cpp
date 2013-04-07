@@ -273,6 +273,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     } else {
       skill = _skin->getController()->currentTriggerSkill();
     }
+    _log->setSkillCount(skill, _characterManager); // カウントを更新
     _musicManager->pushNextTracks(skill, _currentSkillInfo);
     if (_isLevelUped) { // 前のターンでレベルが上がっていたら
       _isLevelUped = false;

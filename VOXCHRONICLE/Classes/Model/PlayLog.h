@@ -22,12 +22,12 @@ using namespace cocos2d;
 
 typedef enum {
   PlayLogKeyMaxDefeat,
-  PlayLogKeyVOXAttack,
-  PlayLogKeyLSKAttack,
-  PlayLogKeyRun,
-  PlayLogKeyMaxRepeatChange,
+  PlayLogKeyVOXAttackCount,
+  PlayLogKeyLSKAttackCount,
+  PlayLogKeyRunCount,
+  PlayLogKeyMaxRepeatChangeCount,
   PlayLogKeyTurn,
-  PlayLogKeyMaxRepeat,
+  PlayLogKeyMaxRepeatCount,
   PlayLogKeyTensionCount,
   PlayLogKeyChangeCount,
   PlayLogKeyNum
@@ -49,6 +49,7 @@ class PlayLog :public CCObject {
   void setLesserCount(PlayLogKey key, int value);
   CCArray* getMapHistory();
   void checkAchievementsOnClear(CharacterManager* characterManager, EnemyManager* enemyManager);
+  void setSkillCount(Skill* skill, CharacterManager* _characterManager);
 };
 
 #endif /* defined(__VOXCHRONICLE__PlayLog__) */

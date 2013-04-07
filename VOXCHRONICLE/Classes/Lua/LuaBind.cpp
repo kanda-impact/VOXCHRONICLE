@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Sun Apr  7 19:44:52 2013.
+** Generated automatically by tolua++-1.0.92 on Sun Apr  7 20:31:34 2013.
 */
 
 #ifndef __cplusplus
@@ -2845,13 +2845,16 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
   tolua_constant(tolua_S,"EffectLayerCutinTypeHold",EffectLayerCutinTypeHold);
   tolua_constant(tolua_S,"EffectLayerCutinTypeCastOff",EffectLayerCutinTypeCastOff);
   tolua_constant(tolua_S,"PlayLogKeyMaxDefeat",PlayLogKeyMaxDefeat);
-  tolua_constant(tolua_S,"PlayLogKeyVOXAttack",PlayLogKeyVOXAttack);
-  tolua_constant(tolua_S,"PlayLogKeyLSKAttack",PlayLogKeyLSKAttack);
-  tolua_constant(tolua_S,"PlayLogKeyRun",PlayLogKeyRun);
-  tolua_constant(tolua_S,"PlayLogKeyMaxRepeatChange",PlayLogKeyMaxRepeatChange);
+  tolua_constant(tolua_S,"PlayLogKeyVOXAttackCount",PlayLogKeyVOXAttackCount);
+  tolua_constant(tolua_S,"PlayLogKeyLSKAttackCount",PlayLogKeyLSKAttackCount);
+  tolua_constant(tolua_S,"PlayLogKeyRunCount",PlayLogKeyRunCount);
+  tolua_constant(tolua_S,"PlayLogKeyMaxRepeatChangeCount",PlayLogKeyMaxRepeatChangeCount);
   tolua_constant(tolua_S,"PlayLogKeyTurn",PlayLogKeyTurn);
-  tolua_constant(tolua_S,"PlayLogKeyMaxRepeat",PlayLogKeyMaxRepeat);
-  tolua_constant(tolua_S,"PlayLogKeyNum",PlayLogKeyNum);
+  tolua_constant(tolua_S,"PlayLogKeyMaxRepeatCount",PlayLogKeyMaxRepeatCount);
+  tolua_constant(tolua_S,"PlayLogKeyTensionCount",PlayLogKeyTensionCount);
+  tolua_constant(tolua_S,"PlayLogKeyChangeCount
+	PlayLogKeyNum",PlayLogKeyChangeCount
+	PlayLogKeyNum);
   tolua_constant(tolua_S,"DamageTypeNone",DamageTypeNone);
   tolua_constant(tolua_S,"DamageTypeHit",DamageTypeHit);
   tolua_constant(tolua_S,"DamageTypeNoDamage",DamageTypeNoDamage);

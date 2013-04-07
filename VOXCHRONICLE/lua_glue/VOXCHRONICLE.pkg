@@ -76,12 +76,14 @@ enum {
 
 enum {
 	PlayLogKeyMaxDefeat,
-	PlayLogKeyVOXAttack,
-	PlayLogKeyLSKAttack,
-	PlayLogKeyRun,
-	PlayLogKeyMaxRepeatChange,
+	PlayLogKeyVOXAttackCount,
+	PlayLogKeyLSKAttackCount,
+	PlayLogKeyRunCount,
+	PlayLogKeyMaxRepeatChangeCount,
 	PlayLogKeyTurn,
-	PlayLogKeyMaxRepeat,
+	PlayLogKeyMaxRepeatCount,
+	PlayLogKeyTensionCount,
+	PlayLogKeyChangeCount
 	PlayLogKeyNum
 };
 

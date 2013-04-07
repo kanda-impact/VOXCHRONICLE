@@ -89,3 +89,27 @@ void PlayLog::checkAchievementsOnClear(CharacterManager *characterManager, Enemy
     }
   }
 }
+
+void PlayLog::setSkillCount(Skill* skill, CharacterManager *_characterManager) {
+  //CharacterType type = _characterManager->getCurrentCharacter()->getCharacterType();
+  Skill* lastSkill = _characterManager->getLastSkill();
+  if (skill->getIdentifier() == lastSkill->getIdentifier()) { // 前回と同じ時
+    int count = _characterManager->getRepeatCountRaw();
+    if (skill->getIdentifier() == "change") {
+      this->setGraterCount(PlayLogKeyMaxRepeatChangeCount, count);
+    } else {
+      this->setGraterCount(PlayLogKeyMaxRepeatCount, count);
+    }
+  }
+  if (skill->getIdentifier() == "attack") {
+    this->addCount(PlayLogKeyVOXAttackCount);
+  } else if (skill->getIdentifier() == "magic") {
+    this->addCount(PlayLogKeyLSKAttackCount);
+  } else if (skill->getIdentifier() == "run") {
+    this->addCount(PlayLogKeyRunCount);
+  } else if (skill->getIdentifier() == "change") {
+    this->addCount(PlayLogKeyChangeCount);
+  } else if (skill->getIdentifier() == "tension") {
+    this->addCount(PlayLogKeyTensionCount);
+  }
+}
