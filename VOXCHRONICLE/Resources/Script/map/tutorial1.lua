@@ -50,6 +50,23 @@ Map = {
           enemyManager:popEnemyAt("T_slime30", 5, 0)
         end
       end
+    elseif level == 14 then
+      local lastSkill = characterManager:getLastSkill()
+      local usedCure = self.__IRegister__:getBool("usedCure")
+      -- 回復スキルの使用判定を行う
+      if lastSkill and lastSkill:getIdentifier() == "cure" then
+        usedCure = true
+        self.__IRegister__:setBool("usedCure", usedCure)
+      end
+      -- 敵が1体もいなくなったらモンスター生成
+      if enemyCount == 0 then
+         -- ちゃんと回復を使うまで近くにモンスターを出す
+         if usedCure then
+           enemyManager:popEnemyAt("T_moth7", 3, 1)
+         else
+           enemyManager:popEnemyAt("flame2C2", 1, 1)
+         end
+      end
     end
   end,
   onLevelUp = function(self, characterManager, enemyManager)
