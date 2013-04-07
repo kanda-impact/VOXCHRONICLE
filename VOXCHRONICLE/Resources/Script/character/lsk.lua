@@ -30,9 +30,9 @@ Character = {
       {"magic", 11},
       {"bow", 13},
       {"thunder", 12},
-      {"cure", 13},
+      {"cure", 14},
       {"tension", 12},
-      {"change", 13},
+      {"change", 14},
       {"shield", 11},
       {"run", 11}
       }
