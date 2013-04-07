@@ -108,6 +108,8 @@ void DictionaryScene::loadEnemyByIndex(int idx) {
   bool isDefeated = SaveData::sharedData()->getDefeatedCount(_enemy->getSpecies()->getIdentifier().c_str()) > 0; // 倒したかどうか
   CCDirector* director = CCDirector::sharedDirector();
   _enemy->setPosition(ccp(director->getWinSize().width / 2.0f, 160));
+  _enemy->setItem(EnemyItemNone);
+  _enemy->setSkillType(SkillTypeNormal);
   this->addChild(_enemy);
   if (isDefeated) {
     _nameLabel->setString(_enemy->getName().c_str());

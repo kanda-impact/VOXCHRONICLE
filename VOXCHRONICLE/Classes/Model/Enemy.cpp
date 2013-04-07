@@ -387,16 +387,7 @@ bool Enemy::setAnimationAndFrame(int xOffset, int yOffset, int frames, bool hasF
     if (hasFrame) {
       CCSprite* frameSprite = this->createFrameSprite(xOffset, yOffset + 1, frames);
       frameSprite->setAnchorPoint(ccp(0, 0));
-      CCRepeatForever* blink = CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.05f, 64), CCFadeTo::create(0.05f, 255)));
-      if (_type == SkillTypePhysical) {
-        frameSprite->setColor(ccc3(0, 255, 230));
-        frameSprite->runAction(blink);
-      } else if (_type == SkillTypeMagical) {
-        frameSprite->setColor(LSK_COLOR);
-        frameSprite->runAction(blink);
-      } else {
-        frameSprite->setColor(ccc3(0, 0, 0));
-      }
+      this->setFrameColor(frameSprite, _type);
       this->addChild(frameSprite, EnemyLayerFrame, EnemyTagFrame);
       if (_frameSprite) {
         _frameSprite->release();
@@ -495,7 +486,30 @@ string Enemy::getIdentifier() {
 
 void Enemy::setSilhouette() {
   this->stopAllActions();
-  _frameSprite->stopAllActions();
   this->setColor(ccc3(5, 5, 5));
-  _frameSprite->setColor(ccc3(5, 5, 5));
+  
+  if (_frameSprite) {
+    _frameSprite->stopAllActions();
+    _frameSprite->setColor(ccc3(5, 5, 5));
+  }
+}
+
+void Enemy::setSkillType(SkillType type) {
+  _type = type;
+  if (_frameSprite) {
+    this->setFrameColor(_frameSprite, type);
+  }
+}
+
+void Enemy::setFrameColor(cocos2d::CCSprite *frameSprite, SkillType type) {
+  CCRepeatForever* blink = CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.05f, 64), CCFadeTo::create(0.05f, 255)));
+  if (type == SkillTypePhysical) {
+    frameSprite->setColor(ccc3(0, 255, 230));
+    frameSprite->runAction(blink);
+  } else if (type == SkillTypeMagical) {
+    frameSprite->setColor(LSK_COLOR);
+    frameSprite->runAction(blink);
+  } else {
+    frameSprite->setColor(ccc3(0, 0, 0));
+  }
 }

@@ -126,6 +126,7 @@ public:
   Species* getSpecies();
   void setCounter(int counter);
   
+  void setSkillType(SkillType type);
   void setItem(EnemyItem item);
   void setEnable(bool enable);
   
@@ -133,6 +134,7 @@ public:
   void setMovable(bool m);
   
   void setSilhouette();
+  void setFrameColor(CCSprite* frameSprite, SkillType type);
 };
 
 #endif /* defined(__VOXCHRONICLE__Enemy__) */
