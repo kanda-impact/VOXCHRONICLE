@@ -804,6 +804,7 @@ void MainScene::onFinishTracksCompleted() {
     endingLayer->autorelease();
     CCScene* ending = CCScene::create();
     ending->addChild(endingLayer);
+    _log->checkAchievementsOnClear(_characterManager, _enemyManager);
     CCTransitionFade* fade = CCTransitionFade::create(7.0f, ending, ccc3(255, 255, 255));
     CCDirector::sharedDirector()->replaceScene(fade);
     SaveData::sharedData()->setClearedForMap(_map->getIdentifier().c_str());

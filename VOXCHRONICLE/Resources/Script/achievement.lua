@@ -21,14 +21,34 @@ Achievement = {
   },
   -- 1回のプレイ中のカウントに依存する実績を書きます
   playLog = {
-    {PlayLogKeyMaxDefeat, 10, "defeat10"},
-    {PlayLogKeyMaxRepeat, 20, "repeat20"},
-    {PlayLogKeyMaxRepeatChange, 10, "change10"}
+    {PlayLogKeyMaxDefeat, 10, "defeat10"}, -- 一気呵成
+    {PlayLogKeyMaxRepeat, 20, "repeat20"}, -- こだわりのワンパターン
+    {PlayLogKeyMaxRepeatChange, 10, "change10"} -- 戦場の踊り子
   },
   -- クリア時に実績チェックのために呼び出されます
-  checkAchievementOnClear = function(characterManager, enemyManager, playlog)
-    if characterManager:getHP() == 1 then
-    end 
+  checkAchievementOnClear = function(playlog, characterManager, enemyManager)
+    local data = SaveData:sharedData()
+    if playlog:getCount(PlayLogKeyTurn) <= 300 then -- 疾風迅雷
+      data:unlockAchievement("clearSpeedy")
+    end
+    if playlog:getCount(PlayLogKeyRunCount) >= 20 then -- りえきは　ないと　いったのに
+      data:unlockAchievement("run20")
+    end
+    if playlog:getCount(PlayLogKeyVOXAttack) == playlog:getCount(PlayLogKeyLSKAttack) then -- シンクロナイズ
+      data:unlockAchievement("sync")
+    end
+    if characterManager:getHP() == 1 then -- 死線、紙一重
+      data:unlockAchievement("hp1")
+    end
+    if characterManager:getMP() == 0 then -- お疲れラスカ
+      data:unlockAchievement("mp0")
+    end
+    if playlog:getCount(PlayLogKeyChangeCount) == 0 then -- 孤高の戦士
+      data:unlockAchievement("nochange")
+    end
+    if playlog:getCount(PlayLogKeyTensionCount) == 0 then -- 能ある鷹は爪を隠す
+      data:unlockAchievement("notension")
+    end
   end
 }
 

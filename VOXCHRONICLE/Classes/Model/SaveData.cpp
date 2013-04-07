@@ -145,7 +145,7 @@ void SaveData::checkUnlockAchievement(SaveDataCountKey key, int value) {
 
 void SaveData::onFinishAchievementReporting(const char* identifier, bool error) {
   if (!error) {
-    CCLog("unlock achievement %s !", identifier);
+    CCLog("unlock achievement %s!", identifier);
     CCString* str = CCString::create(identifier);
     _achievements->addObject(str);
   }

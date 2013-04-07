@@ -230,6 +230,10 @@ class SaveData : public CCObject {
 	void load();
 };
 
+class PlayLog :public CCObject {
+	int getCount(PlayLogKey key);
+};
+
 class VQTime : public CCObject {
 	static VQTime* sharedTime();
 	int getCurrentHour();

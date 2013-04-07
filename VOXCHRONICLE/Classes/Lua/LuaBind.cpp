@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Sun Apr  7 17:41:57 2013.
+** Generated automatically by tolua++-1.0.92 on Sun Apr  7 19:44:52 2013.
 */
 
 #ifndef __cplusplus
@@ -50,6 +50,7 @@ static void tolua_reg_types (lua_State* tolua_S)
  tolua_usertype(tolua_S,"EnemySkill");
  tolua_usertype(tolua_S,"CCLayer");
  tolua_usertype(tolua_S,"IRegister");
+ tolua_usertype(tolua_S,"PlayLogKey");
  tolua_usertype(tolua_S,"Skill");
  tolua_usertype(tolua_S,"Enemy");
  tolua_usertype(tolua_S,"Character");
@@ -62,6 +63,7 @@ static void tolua_reg_types (lua_State* tolua_S)
  tolua_usertype(tolua_S,"Map");
  tolua_usertype(tolua_S,"DamageType");
  tolua_usertype(tolua_S,"PopupWindow");
+ tolua_usertype(tolua_S,"PlayLog");
  tolua_usertype(tolua_S,"CharacterManager");
  tolua_usertype(tolua_S,"CCSprite");
  tolua_usertype(tolua_S,"SaveDataCountKey");
@@ -2709,6 +2711,40 @@ static int tolua_VOXCHRONICLE_SaveData_load00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: getCount of class  PlayLog */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_PlayLog_getCount00
+static int tolua_VOXCHRONICLE_PlayLog_getCount00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"PlayLog",0,&tolua_err) ||
+     (tolua_isvaluenil(tolua_S,2,&tolua_err) || !tolua_isusertype(tolua_S,2,"PlayLogKey",0,&tolua_err)) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  PlayLog* self = (PlayLog*)  tolua_tousertype(tolua_S,1,0);
+  PlayLogKey key = *((PlayLogKey*)  tolua_tousertype(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getCount'", NULL);
+#endif
+  {
+   int tolua_ret = (int)  self->getCount(key);
+   tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getCount'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* method: sharedTime of class  VQTime */
 #ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_VQTime_sharedTime00
 static int tolua_VOXCHRONICLE_VQTime_sharedTime00(lua_State* tolua_S)
@@ -2956,6 +2992,10 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
    tolua_function(tolua_S,"isClearedMap",tolua_VOXCHRONICLE_SaveData_isClearedMap00);
    tolua_function(tolua_S,"save",tolua_VOXCHRONICLE_SaveData_save00);
    tolua_function(tolua_S,"load",tolua_VOXCHRONICLE_SaveData_load00);
+  tolua_endmodule(tolua_S);
+  tolua_cclass(tolua_S,"PlayLog","PlayLog","CCObject",NULL);
+  tolua_beginmodule(tolua_S,"PlayLog");
+   tolua_function(tolua_S,"getCount",tolua_VOXCHRONICLE_PlayLog_getCount00);
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"VQTime","VQTime","CCObject",NULL);
   tolua_beginmodule(tolua_S,"VQTime");

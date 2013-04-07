@@ -14,6 +14,8 @@
 #include "cocos2d.h"
 #include <map>
 #include <list>
+#include "EnemyManager.h"
+#include "CharacterManager.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -26,6 +28,8 @@ typedef enum {
   PlayLogKeyMaxRepeatChange,
   PlayLogKeyTurn,
   PlayLogKeyMaxRepeat,
+  PlayLogKeyTensionCount,
+  PlayLogKeyChangeCount,
   PlayLogKeyNum
 } PlayLogKey;
 
@@ -44,6 +48,7 @@ class PlayLog :public CCObject {
   void setGraterCount(PlayLogKey key, int value);
   void setLesserCount(PlayLogKey key, int value);
   CCArray* getMapHistory();
+  void checkAchievementsOnClear(CharacterManager* characterManager, EnemyManager* enemyManager);
 };
 
 #endif /* defined(__VOXCHRONICLE__PlayLog__) */

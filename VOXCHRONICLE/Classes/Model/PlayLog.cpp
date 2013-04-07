@@ -75,3 +75,17 @@ void PlayLog::setLesserCount(PlayLogKey key, int value) {
 CCArray* PlayLog::getMapHistory() {
   return _mapHistory;
 }
+
+void PlayLog::checkAchievementsOnClear(CharacterManager *characterManager, EnemyManager *enemyManager) {
+  LuaObject* lua = LuaObject::create("achievement.lua");
+  lua_State* L = lua->getLuaEngineWithLoad()->getLuaState();
+  lua_getglobal(L, "checkAchievementOnClear");
+  if (lua_isfunction(L, lua_gettop(L))) {
+    lua->pushCCObject(this, "PlayLog");
+    lua->pushCCObject(characterManager, "CharacterManager");
+    lua->pushCCObject(enemyManager, "EnemyManager");
+    if (lua_pcall(L, 3, 0, 0)) {
+      cout << lua_tostring(L, lua_gettop(L)) << endl;
+    }
+  }
+}
