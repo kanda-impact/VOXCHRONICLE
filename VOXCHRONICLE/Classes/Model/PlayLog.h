@@ -36,7 +36,7 @@ typedef enum {
 
 class PlayLog :public CCObject {
  private:
-  map<int, int>* _count;
+  map<PlayLogKey, int>* _count;
   list<AchievementInfo>* _achievementInfos;
   void checkAchievement(PlayLogKey key, int value);
   CCArray* _mapHistory;
@@ -44,7 +44,7 @@ class PlayLog :public CCObject {
   PlayLog();
   virtual ~PlayLog();
   void addCount(PlayLogKey key);
-  int getCount(PlayLogKey key);
+  int getCount(int key);
   void setCount(PlayLogKey key, int value);
   void setGraterCount(PlayLogKey key, int value);
   void setLesserCount(PlayLogKey key, int value);

@@ -11,7 +11,7 @@
 #include "CCAchievementManager.h"
 
 PlayLog::PlayLog() {
-  _count = new map<int, int>();
+  _count = new map<PlayLogKey, int>();
   _achievementInfos = new list<AchievementInfo>();
   _mapHistory = CCArray::create();
   _mapHistory->retain();
@@ -51,8 +51,8 @@ void PlayLog::addCount(PlayLogKey key) {
   this->setCount(key, value + 1);
 }
 
-int PlayLog::getCount(PlayLogKey key) {
-  return (*_count)[key];
+int PlayLog::getCount(int key) {
+  return (*_count)[(PlayLogKey)key];
 }
 
 void PlayLog::setCount(PlayLogKey key, int value) {
@@ -79,7 +79,7 @@ CCArray* PlayLog::getMapHistory() {
 void PlayLog::checkAchievementsOnClear(CharacterManager *characterManager, EnemyManager *enemyManager) {
   LuaObject* lua = LuaObject::create("achievement.lua");
   lua_State* L = lua->getLuaEngineWithLoad()->getLuaState();
-  lua_getglobal(L, "checkAchievementOnClear");
+  lua_getfield(L, lua_gettop(L), "checkAchievementOnClear");
   if (lua_isfunction(L, lua_gettop(L))) {
     lua->pushCCObject(this, "PlayLog");
     lua->pushCCObject(characterManager, "CharacterManager");
@@ -92,8 +92,9 @@ void PlayLog::checkAchievementsOnClear(CharacterManager *characterManager, Enemy
 
 void PlayLog::setSkillCount(Skill* skill, CharacterManager *_characterManager) {
   //CharacterType type = _characterManager->getCurrentCharacter()->getCharacterType();
+  if (skill == NULL) return;
   Skill* lastSkill = _characterManager->getLastSkill();
-  if (skill->getIdentifier() == lastSkill->getIdentifier()) { // 前回と同じ時
+  if (lastSkill && skill->getIdentifier() == lastSkill->getIdentifier()) { // 前回と同じ時
     int count = _characterManager->getRepeatCountRaw();
     if (skill->getIdentifier() == "change") {
       this->setGraterCount(PlayLogKeyMaxRepeatChangeCount, count);

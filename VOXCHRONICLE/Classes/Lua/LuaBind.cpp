@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Sun Apr  7 20:51:30 2013.
+** Generated automatically by tolua++-1.0.92 on Sun Apr  7 21:20:03 2013.
 */
 
 #ifndef __cplusplus
@@ -50,7 +50,6 @@ static void tolua_reg_types (lua_State* tolua_S)
  tolua_usertype(tolua_S,"EnemySkill");
  tolua_usertype(tolua_S,"CCLayer");
  tolua_usertype(tolua_S,"IRegister");
- tolua_usertype(tolua_S,"PlayLogKey");
  tolua_usertype(tolua_S,"Skill");
  tolua_usertype(tolua_S,"Enemy");
  tolua_usertype(tolua_S,"Character");
@@ -2719,7 +2718,7 @@ static int tolua_VOXCHRONICLE_PlayLog_getCount00(lua_State* tolua_S)
  tolua_Error tolua_err;
  if (
      !tolua_isusertype(tolua_S,1,"PlayLog",0,&tolua_err) ||
-     (tolua_isvaluenil(tolua_S,2,&tolua_err) || !tolua_isusertype(tolua_S,2,"PlayLogKey",0,&tolua_err)) ||
+     !tolua_isnumber(tolua_S,2,0,&tolua_err) ||
      !tolua_isnoobj(tolua_S,3,&tolua_err)
  )
   goto tolua_lerror;
@@ -2727,7 +2726,7 @@ static int tolua_VOXCHRONICLE_PlayLog_getCount00(lua_State* tolua_S)
 #endif
  {
   PlayLog* self = (PlayLog*)  tolua_tousertype(tolua_S,1,0);
-  PlayLogKey key = *((PlayLogKey*)  tolua_tousertype(tolua_S,2,0));
+  int key = ((int)  tolua_tonumber(tolua_S,2,0));
 #ifndef TOLUA_RELEASE
   if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getCount'", NULL);
 #endif

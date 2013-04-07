@@ -235,7 +235,7 @@ class SaveData : public CCObject {
 };
 
 class PlayLog :public CCObject {
-	int getCount(PlayLogKey key);
+	int getCount(int key);
 };
 
 class VQTime : public CCObject {
