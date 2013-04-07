@@ -37,6 +37,19 @@ Map = {
           enemyManager:popEnemyAt("T_moth7", 5, 2)
           enemyManager:popEnemyAt("T_moth7", 5, 3)
       end
+     elseif level == 13 then
+       local isAnnihilation = self.__IRegister__:getBool("isAnnihiration")
+       if isAnnihilation and enemyCount == 0 then
+         enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, enemyCount % 3) -- 全滅済みなら毎ターン雑魚を後ろに出す
+       end
+       -- 敵が1体もいなくなったらモンスター生成
+       if enemyCount == 0 then
+        if not isAnnihilation then
+          -- 初回なのでフラグを立てて、撃破済みの時は撃破済みのモンスター生成を見るようにする
+          self.__IRegister__:setBool("isAnnihiration", true)
+          enemyManager:popEnemyAt("T_slime30", 5, 0)
+        end
+      end
     end
   end,
   onLevelUp = function(self, characterManager, enemyManager)
@@ -67,6 +80,8 @@ Map = {
 
 威力も高めだし、ボス戦とかで重宝するかもね！他には倒せない敵が最前列に来たときとかかしら。けれどこれもMP消費するから注意して使ってね。
 ]])
+       -- FIXME MP不足で詰んでしまうので暫定的にMPを全回復
+       characterManager:addMP(characterManager:getMaxMP())
     end
   end,
   getEnemyPopRate = function(level)
