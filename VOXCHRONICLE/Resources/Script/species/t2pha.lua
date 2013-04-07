@@ -6,10 +6,16 @@ Enemy = {
   hasFrame = true,
   counter = 1,
   getSpeed = function(enemy, characterManager)
-    return 1
+    local row = enemy:getRow()
+    if row == 1 then
+      return 1
+    elseif row == 0 then
+      return 0
+    end
+    return 2
   end,
   getFrequency = function(enemy, characterManager)
-    return 2
+    return 1
   end,
   disableSkills = {},
   description = [[
@@ -20,6 +26,10 @@ Enemy = {
   habitat = "",
   animationFrames = 4,
   performSkill = function(self)
+    local row = self:getRow()
+    if row == 0 then
+      return "direct_attack"
+    end
     return ""
   end
 }
