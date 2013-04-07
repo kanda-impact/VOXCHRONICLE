@@ -6,7 +6,7 @@ Map = {
   skin = "skinA",
   ending = "",
   nextMaps = {},
-  initialLevel = 1,
+  initialLevel = 6,
   maxLevel = 10,
   getEnemyTable = function(level)
     return {}
@@ -114,6 +114,22 @@ Map = {
           enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, 2)
         end
       end
+    elseif level == 8 then
+      local maxHP = characterManager:getMaxHP()
+      local enemies = enemyManager:getEnemies()
+      local popup = layer:getPopupWindow()
+      local enemyCount = enemies:count()
+      local lastSkill = characterManager:getLastSkill()
+      if enemyCount == 0 then --敵がいなくて、
+        if lastSkill:getIdentifier() == "shield" then --前回が盾の時
+          enemyManager:popEnemyAt("acorn1A0",5,1)
+        else --前回が盾でない時
+          enemyManager:popEnemyAt("moth2A0",5,1)
+        end
+      end
+      if characterManager:getHP() <= maxHP then
+        characterManager:addHP(maxHP) --ダメージを受けているはずなので全快させる
+      end
     end
     self.__IRegister__:setRegister("preHP", characterManager:getHP())
   end,
@@ -147,8 +163,6 @@ popup:setText(5, "音楽に合わせて行動しよう！", [[
 まずは『剣』のマークをタッチして
 『アタック』コマンドを試しましょ！]])
     elseif level == 2 then
-      local data = SaveData:sharedData()
-      data:unlockAchievement("clearTutorialA")
       local popup = layer:addPopupWindow(3)
       popup:setText(0, "レベルアップで強くなろう！", 
 [[
@@ -216,6 +230,11 @@ popup:setText(5, "音楽に合わせて行動しよう！", [[
 …………といいたいけれど、もうちょっとだけ続くんじゃ。
 オクスクロニクルの真の主役は実は私、ラスカなのよ。前作オクスクエストから1年くらい、続編の今作はキャラチェンジシステムが最大の目玉！！そもそもまだ説明していないコマンドが残ってるじゃない。「キャラチェンジシステムとはいったいなんなのか！そしてオクスを待ち受けるさらなる試練とは！！……to be continued.」
 ]])
+    --if get == nil then
+    
+    local data = SaveData:sharedData()
+    data:unlockAchievement("clearTutorialA")
+    
     end
   end,
   getEnemyPopRate = function(level)
