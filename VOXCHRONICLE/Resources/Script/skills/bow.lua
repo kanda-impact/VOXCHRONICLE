@@ -1,5 +1,5 @@
 Skill = {
-  name = "マジックアロー",
+  name = "スナイプ",
   identifier = "bow",
   effectFrames = 4,
   mp = 0,

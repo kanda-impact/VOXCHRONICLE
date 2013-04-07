@@ -1,5 +1,5 @@
 Skill = {
-  name = "チャージ",
+  name = "ＭＰリカバリー",
   identifier = "charge",
   mp = 0,
   tensionLevel = 0,

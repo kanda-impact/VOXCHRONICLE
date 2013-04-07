@@ -1,5 +1,5 @@
 Skill = {
-  name = "雷",
+  name = "ラスカサンダー",
   identifier = "thunder",
   effectFrames = 6,
   mp = 2,

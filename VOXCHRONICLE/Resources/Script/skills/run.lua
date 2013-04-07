@@ -1,5 +1,5 @@
 Skill = {
-  name = "走る",
+  name = "ダッシュ",
   identifier = "run",
   effectFrames = 3,
   mp = 0,
