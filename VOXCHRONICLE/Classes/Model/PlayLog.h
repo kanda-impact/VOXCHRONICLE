@@ -19,11 +19,11 @@ using namespace std;
 using namespace cocos2d;
 
 typedef enum {
-  PlayLogKeyMaxRepeatChange,
   PlayLogKeyMaxDefeat,
   PlayLogKeyVOXAttack,
   PlayLogKeyLSKAttack,
   PlayLogKeyRun,
+  PlayLogKeyMaxRepeatChange,
   PlayLogKeyTurn,
   PlayLogKeyMaxRepeat,
   PlayLogKeyNum
@@ -34,6 +34,7 @@ class PlayLog :public CCObject {
   map<int, int>* _count;
   list<AchievementInfo>* _achievementInfos;
   void checkAchievement(PlayLogKey key, int value);
+  CCArray* _mapHistory;
  public:
   PlayLog();
   virtual ~PlayLog();
@@ -42,6 +43,7 @@ class PlayLog :public CCObject {
   void setCount(PlayLogKey key, int value);
   void setGraterCount(PlayLogKey key, int value);
   void setLesserCount(PlayLogKey key, int value);
+  CCArray* getMapHistory();
 };
 
 #endif /* defined(__VOXCHRONICLE__PlayLog__) */

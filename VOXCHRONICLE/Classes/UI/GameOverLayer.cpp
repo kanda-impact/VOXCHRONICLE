@@ -12,6 +12,7 @@
 #include "TitleScene.h"
 #include "macros.h"
 #include "MessageManager.h"
+#include "PlayLog.h"
 
 GameOverLayer::GameOverLayer(MainScene* main) {
   _main = main;
@@ -53,19 +54,14 @@ void GameOverLayer::replayButtonPressed(CCObject *sender) {
   CCScene* scene = CCScene::create();
   MainScene* newScene = new MainScene();
   Map* newMap = new Map(_main->getMap()->getIdentifier().c_str());
+  PlayLog* oldLog = _main->getPlayLog();
   newScene->autorelease();
   newScene->init(newMap);
   scene->addChild(newScene);
   newMap->release();
   
-  CCArray* oldHistory = _main->getMapHistory();
-  CCArray* newHistory = CCArray::create();
-  // 古いのは使い回す
-  for (int i = 0; i < oldHistory->count() - 1; ++i) {
-    newHistory->addObject(oldHistory->objectAtIndex(i));
-  }
-  newHistory->addObject(newMap); // 最後だけ新しいマップ
-  newScene->setMapHistory(newHistory);
+  newScene->setPlayLog(oldLog);
+  
   CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
   CCDirector::sharedDirector()->replaceScene(transition);
 }

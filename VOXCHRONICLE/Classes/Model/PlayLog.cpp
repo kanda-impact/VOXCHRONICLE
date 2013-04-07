@@ -13,6 +13,8 @@
 PlayLog::PlayLog() {
   _count = new map<int, int>();
   _achievementInfos = new list<AchievementInfo>();
+  _mapHistory = CCArray::create();
+  _mapHistory->retain();
   LuaObject* lua = LuaObject::create("achievement.lua");
   CCLuaValueArray* array = lua->getArray("playLog");
   for (CCLuaValueArrayIterator it = array->begin(); it != array->end(); ++it) {
@@ -40,10 +42,12 @@ void PlayLog::checkAchievement(PlayLogKey key, int value) {
 
 PlayLog::~PlayLog() {
   delete _count;
+  _mapHistory->release();
 }
 
 void PlayLog::addCount(PlayLogKey key) {
-  (*_count)[key] += 1;
+  int value = this->getCount(key);
+  this->setCount(key, value + 1);
 }
 
 int PlayLog::getCount(PlayLogKey key) {
@@ -52,6 +56,7 @@ int PlayLog::getCount(PlayLogKey key) {
 
 void PlayLog::setCount(PlayLogKey key, int value) {
   (*_count)[key] = value;
+  this->checkAchievement(key, value);
 }
 
 void PlayLog::setGraterCount(PlayLogKey key, int value) {
@@ -64,4 +69,8 @@ void PlayLog::setLesserCount(PlayLogKey key, int value) {
   if (this->getCount(key) > value) {
     this->setCount(key, value);
   }
+}
+
+CCArray* PlayLog::getMapHistory() {
+  return _mapHistory;
 }

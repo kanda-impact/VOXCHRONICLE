@@ -21,6 +21,9 @@ Achievement = {
   },
   -- 1回のプレイ中のカウントに依存する実績を書きます
   playLog = {
+    {PlayLogKeyMaxDefeat, 10, "defeat10"},
+    {PlayLogKeyMaxRepeat, 20, "repeat20"},
+    {PlayLogKeyMaxRepeatRepeatChange, 10, "change10"}
   },
   -- クリア時に実績チェックのために呼び出されます
   checkAchievementOnClear = function(characterManager, enemyManager, playlog)

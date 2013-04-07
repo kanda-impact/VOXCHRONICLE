@@ -82,11 +82,10 @@ bool MainScene::init(Map* map) {
   _currentSkillInfo.skillTrackName = "";
   _currentSkillInfo.type = SkillPerformTypeNone;
   _currentSkillInfo.skill = NULL;
-  _mapHistory = CCArray::create();
-  _mapHistory->retain();
   
-  _turnCount = 0;
   _mapTurnCount = 0;
+  
+  _log = new PlayLog();
   
   //LuaObject* setting = LuaObject::create("Script/setting");
   
@@ -161,7 +160,9 @@ MainScene::~MainScene() {
     _qteTrigger->release();
   }
   _skin->release();
-  _mapHistory->release();
+  
+  _log->release();
+  
   _level->release();
   _map->release();
   _musicManager->release();
@@ -393,6 +394,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       isHit = skill->getRange() == SkillRangeSelf || targets->count() == 0; // 自分が対象もしくは誰もいなければ絶対に成功
       CCObject* obj = NULL;
       int i = 0;
+      int deathCount = 0; // 倒した敵の数
       CCARRAY_FOREACH(enemies, obj) {
         Enemy* enemy = (Enemy*)obj;
         // ダメージが0かつ、元々ダメージのない技じゃないかつ、アイテムも破壊していないとき、ヒットしていない状態にしてやる
@@ -407,6 +409,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         }
         if (damageType == DamageTypeDeath) { // 敵キャラを殺したとき
           SaveData::sharedData()->addCountFor(SaveDataCountKeyDefeat); // 殺しカウント++
+          deathCount += 1;
         }
         
         if (damageType != DamageTypeNoDamage) { // 威力のない技は表示しない
@@ -440,6 +443,8 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         }
         ++i;
       }
+      
+      _log->setGraterCount(PlayLogKeyMaxDefeat, deathCount); // 同時に倒した数更新
       
       // ダメージ更新
       SaveData::sharedData()->addCountFor(SaveDataCountKeyAttackDamage, sumDamage);
@@ -520,7 +525,9 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     }
     
     // ターンカウントを進める
-    ++_turnCount;
+    _log->addCount(PlayLogKeyTurn);
+    
+    _log->setGraterCount(PlayLogKeyMaxRepeat, _characterManager->getRepeatCount()); // repeatCount追加
     ++_mapTurnCount;
     // このターンにテンション使ってないときreset
     if (_characterManager->getLastSkill() != NULL && _characterManager->getLastSkill()->getIdentifier() != "tension") {
@@ -687,7 +694,7 @@ void MainScene::changeMap(Map* nextMap) {
     _map->release();
   }
   nextMap->retain();
-  _mapHistory->addObject(nextMap); // マップ履歴にマップ追加
+  _log->getMapHistory()->addObject(nextMap); // マップ履歴にマップ追加
   _map = nextMap;
   _level = nextMap->createInitialLevel(_characterManager); // レベルを生成する
   _enemyManager->setLevel(_level); // レベルをセット
@@ -793,7 +800,7 @@ void MainScene::onFinishTracksCompleted() {
     string endingScript = _map->getEndingName();
     CCAssert(endingScript.length() != 0, "Ending Script is not defined.");
     _musicManager->getMusic()->stop();
-    EndingScene* endingLayer = new EndingScene(endingScript.c_str(), _mapHistory);
+    EndingScene* endingLayer = new EndingScene(endingScript.c_str(), _log->getMapHistory());
     endingLayer->autorelease();
     CCScene* ending = CCScene::create();
     ending->addChild(endingLayer);
@@ -848,16 +855,16 @@ bool MainScene::isBossBattle() {
   return _map && _map->isBossStage() && _level->getLevel() == _map->getMaxLevel();
 }
 
-CCArray* MainScene::getMapHistory() {
-  return _mapHistory;
+PlayLog* MainScene::getPlayLog() {
+  return _log;
 }
 
-void MainScene::setMapHistory(CCArray* mapHistory) {
-  if (_mapHistory) {
-    _mapHistory->release();
+void MainScene::setPlayLog(PlayLog* log) {
+  if (_log) {
+    _log->release();
   }
-  _mapHistory = mapHistory;
-  if (mapHistory) {
-    mapHistory->retain();
+  _log = log;
+  if (log) {
+    log->retain();
   }
 }

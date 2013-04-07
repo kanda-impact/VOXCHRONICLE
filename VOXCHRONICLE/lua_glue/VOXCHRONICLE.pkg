@@ -14,6 +14,7 @@ $#include "StatusLayer.h"
 $#include "EnemySkill.h"
 $#include "Map.h"
 $#include "SaveData.h"
+$#include "PlayLog.h"
 $#include "VQTime.h"
 
 #define MAX_ROW
@@ -74,11 +75,14 @@ enum {
 };
 
 enum {
+	PlayLogKeyMaxDefeat,
+	PlayLogKeyVOXAttack,
+	PlayLogKeyLSKAttack,
 	PlayLogKeyRun,
 	PlayLogKeyMaxRepeatChange,
-	PlayLogKeyMaxDefeat,
 	PlayLogKeyTurn,
-	PlayLogKeyMaxRepeat
+	PlayLogKeyMaxRepeat,
+	PlayLogKeyNum
 };
 
 enum {
