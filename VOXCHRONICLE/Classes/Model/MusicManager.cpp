@@ -174,10 +174,12 @@ string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& perform
       if (_characterManager->getLastSkill() &&
           string(_characterManager->getLastSkill()->getIdentifier()) != string(skill->getIdentifier())) {
         _characterManager->setRepeatCount(0);
+        _characterManager->setRepeatCountRaw(0);
       }
       if (_characterManager->getLastSkill() == NULL || _characterManager->getLastSkill()->getIdentifier() != skill->getIdentifier()) {
         // 前のターンがwaitだった場合、カウンターをリセット
         _characterManager->setRepeatCount(0);
+        _characterManager->setRepeatCountRaw(0);
       } else {
         // そうじゃなかったら+1
         _characterManager->setRepeatCount(_characterManager->getRepeatCount() + 1);
@@ -229,6 +231,7 @@ string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& perform
       _characterManager->setRepeatCount((_characterManager->getRepeatCount() + 1) % _musicSet->getWaitCount());
     } else {
       _characterManager->setRepeatCount(0);
+      _characterManager->setRepeatCountRaw(0);
     }
     _characterManager->setLastSkill(skill);
   }

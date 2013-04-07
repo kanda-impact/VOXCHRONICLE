@@ -35,7 +35,7 @@ void PlayLog::checkAchievement(PlayLogKey key, int value) {
     AchievementInfo info = (*it);
     if ((*it).key == key) {
       if ((*it).count <= value) {
-        CCAchievementManager::sharedManager()->reportAchievement((*it).identifier.c_str(), 100, true, NULL);
+        SaveData::sharedData()->unlockAchievement((*it).identifier.c_str());
       }
     }
   }
