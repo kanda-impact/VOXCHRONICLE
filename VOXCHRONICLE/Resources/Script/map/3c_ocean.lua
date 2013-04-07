@@ -33,6 +33,11 @@ Map = {
     end
   end,
   onLoad = function(self, characterManager, enemyManager)
+    enemyManager:loadEnemyTextureAsync("naut.png")
+    enemyManager:loadEnemyTextureAsync("jfish.png")
+    enemyManager:loadEnemyTextureAsync("cryst.png")
+    enemyManager:loadEnemyTextureAsync("whale.png")
+    
     enemyManager:loadEnemyTextureAsync("kraken_body.png")
     enemyManager:loadEnemyTextureAsync("R_strfoot.png")
     enemyManager:loadEnemyTextureAsync("R_plfoot.png")
@@ -59,6 +64,11 @@ Map = {
       enemyManager:popEnemyAt("L_strclaw3C0", 1, 0)
     end
   end,
+  onClear = function(self, characterManager, enemyManager)
+    local data = SaveData:sharedData()
+    data:unlockAchievement("clear3C")
+  end,
+
   getEnemyPopRate = function(level)
     return 0.16
   end,

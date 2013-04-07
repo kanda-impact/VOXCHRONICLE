@@ -1,7 +1,7 @@
 Enemy = {
   name = "鉄球",
   imageName = "iron",
-  attack = 2,
+  attack = 4,
   baseExp = 1,
   hasFrame = true,
   counter = 1,
