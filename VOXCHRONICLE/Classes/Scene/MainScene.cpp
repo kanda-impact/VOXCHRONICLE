@@ -479,9 +479,6 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         dict->setObject(CCString::create(_characterManager->getCurrentCharacter()->getName()), "chara");
         MessageManager::sharedManager()->pushMessage(str->getCString(), dict);
       }
-      if (_currentSkillInfo.type == SkillPerformTypeFailure) {
-        MessageManager::sharedManager()->pushRandomMessageFromLua("empty"); // MP切れメッセージ
-      }
       
       _effectLayer->addSkillEffect(skill, enemies);
       if (!_characterManager->getShield()) {
@@ -490,6 +487,11 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _effectLayer->addCutin(skill, isHit ? (EffectLayerCutinType)skill->getCutinType() : EffectLayerCutinTypeFailure, _musicManager->getMusic()->getCurrentMainTrack()->getDuration());
       
       getExp = ((CCInteger*)info->objectForKey("exp"))->getValue();
+    }
+    
+    if (_currentSkillInfo.type == SkillPerformTypeFailure) { // MP切れで失敗したとき
+      MessageManager::sharedManager()->pushRandomMessageFromLua("empty"); // MP切れメッセージ
+      SaveData::sharedData()->addCountFor(SaveDataCountKeyMPMiss); // MP切れ
     }
     
     // レベルアップ判定
