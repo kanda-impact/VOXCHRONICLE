@@ -6,7 +6,7 @@ Map = {
   skin = "skinA",
   ending = "",
   nextMaps = {},
-  initialLevel = 6,
+  initialLevel = 1,
   maxLevel = 10,
   getEnemyTable = function(level)
     return {}

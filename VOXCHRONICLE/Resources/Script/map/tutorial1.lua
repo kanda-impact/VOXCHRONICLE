@@ -99,6 +99,12 @@ Map = {
           enemyManager:popEnemyAt("slime3B1", 5, 0)
           enemyManager:popEnemyAt("wisp3A2", 5, 1)
       end
+    elseif level == 17 then
+      -- 敵が1体もいなくなったらモンスター生成
+      if enemyCount == 0 then
+          enemyManager:popEnemyAt("cryst3C4", MAX_ROW - 1, 0)
+          enemyManager:popEnemyAt("naut3C5", MAX_ROW - 1, 1)
+      end
     end
   end,
   onLevelUp = function(self, characterManager, enemyManager)
@@ -157,6 +163,16 @@ Map = {
 ]])
       popup:setText(2, "耐性はオーラで分かる！", [[
 青いオーラが出てる敵はオクス君の剣が効きにくくって、赤いオーラが出てる敵は私の魔法が効きにくいわよ。敵との相性を気にして戦わないと、いつの間にかに追い詰められちゃうわ！敵のオーラをよーく観察してね！
+]])
+	elseif level == 17 then
+      local popup = layer:addPopupWindow(2)
+      popup:setText(0, "無効化アイテム：大盾と魔鏡", [[
+耐性を持ってる敵もやっかいなんだけれど、もーっとやっかいなのが大盾と魔鏡っていう無効化のアイテムを持った敵！
+]])
+      popup:setText(1, "キャラチェンジで無効化を打ち破ろう！", [[
+オクス君の剣を完璧に防いじゃう大盾と、私の魔法を完璧に防いじゃう魔鏡を装備してる敵もいるから、攻撃が通らないときはすぐキャラチェンジして対応してね。
+
+大盾と魔鏡は、それぞれ通用する攻撃ができれば壊すことが出来るよ！シールドブレイク！
 ]])
     end
   end,
