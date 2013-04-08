@@ -105,6 +105,14 @@ Map = {
           enemyManager:popEnemyAt("cryst3C4", MAX_ROW - 1, 0)
           enemyManager:popEnemyAt("naut3C5", MAX_ROW - 1, 1)
       end
+    elseif level == 20 then
+      -- 敵がいなかったら敵を出す
+      if enemyCount == 0 then
+        enemyManager:popEnemyAt("cryst3C4", MAX_ROW - 1, 0)
+        enemyManager:popEnemyAt("naut3C5", MAX_ROW - 1, 1)
+        enemyManager:popEnemyAt("flame2C2", 5, 1)
+        enemyManager:popEnemyAt("T_moth7", 3, 2)
+      end
     end
   end,
   onLevelUp = function(self, characterManager, enemyManager)
@@ -173,6 +181,16 @@ Map = {
 オクス君の剣を完璧に防いじゃう大盾と、私の魔法を完璧に防いじゃう魔鏡を装備してる敵もいるから、攻撃が通らないときはすぐキャラチェンジして対応してね。
 
 大盾と魔鏡は、それぞれ通用する攻撃ができれば壊すことが出来るよ！シールドブレイク！
+]])
+	elseif level == 20 then
+      local popup = layer:addPopupWindow(2)
+      popup:setText(0, "ラスカちゃん編完了！", [[
+だいたいキャラチェンジの話はこんな所ね～。オクス君は私がついてないとダメなんだから！　でも上手く力を合わせていければ恐い物なしなんだから一緒に頑張りましょ！そ、それに私も一人じゃ不安だからちゃんと助けてちょうだいね…！
+]])
+      popup:setText(1, "これにて免許皆伝！", [[
+これでグランエターナを目指す準備は万端！まだちょっと不安だったらここで練習していってね。チュートリアルはポーズから抜けられるわよ！
+
+あとは戦いのテクニック編もあるから、ゲームで詰まっちゃったら、是非参考にしてみてね。
 ]])
     end
   end,
