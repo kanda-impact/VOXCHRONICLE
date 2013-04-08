@@ -1,7 +1,7 @@
 Enemy = {
   species = "last1",
   level = 1,
-  hp = 200,
+  hp = 120,
   getExp = function(default)
       return 0
   end,

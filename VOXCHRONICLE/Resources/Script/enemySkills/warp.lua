@@ -3,12 +3,13 @@ EnemySkill = {
   name = "warp",
   performSkill = function(self, user, characterManager, enemyManager)
     math.random(100)
+    local currentRow = user:getRow()
     local rand = math.random(100)
-    if rand < 30 then
+    if rand < 30 and currentRow > 0 then
       user:setRow(0)
       user:setCol(1)
     else
-      local row = math.random(MAX_ROW - 4)
+      local row = math.random(MAX_ROW - 1)
       local col = math.random(3) - 1
       user:setRow(row)
       user:setCol(col)

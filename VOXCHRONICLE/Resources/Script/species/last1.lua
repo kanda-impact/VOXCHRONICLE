@@ -41,14 +41,22 @@ Enemy = {
         local r2 = math.random(100)
         if r2 < 30 then
           return "beam"
-        elseif r2 < 50 and self:getItem() == EnemyItemNone then
-          return "equip"
-        elseif enemyManager:getEnemies():count() == 1 and r2 < 70 then -- 敵が1体だけなら10%で
-          return "call_last" -- t2ファージ召喚
-        elseif self:getHP() < self:getMaxHP() * 0.5 and r2 < 90 then -- HPが半分以下なら5%で回復
-          return "cure" -- 回復
-        elseif characterManager:getMP() > characterManager:getMaxMP() * 0.5 and r2 < 100 then -- 現在MPによって
-          return "mp_absorb" -- MP吸収   
+        elseif r2 < 50 then
+          if self:getItem() == EnemyItemNone then
+            return "equip"
+          end
+        elseif r2 < 70 then -- 敵が1体だけなら10%で
+          if enemyManager:getEnemies():count() == 1 then 
+            return "call_last" -- t2ファージ召喚
+          end
+        elseif  r2 < 90 then -- HPが半分以下なら5%で回復
+          if self:getHP() < self:getMaxHP() * 0.5 then
+            return "cure" -- 回復
+          end
+        elseif r2 < 95 then -- 現在MPによって
+          if characterManager:getMP() > characterManager:getMaxMP() * 0.5 then
+            return "mp_absorb" -- MP吸収   
+          end
         end
       end
     end
