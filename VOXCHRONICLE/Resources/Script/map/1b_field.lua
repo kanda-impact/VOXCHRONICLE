@@ -13,7 +13,7 @@ function getTime()
 end
 
 Map = {
-  name = "スハリィ平原",
+  name = "平原",
   wayMusic = "volca",
   bossMusic = "",
   backgroundImage = "field_background0.png",

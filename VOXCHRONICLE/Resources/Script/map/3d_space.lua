@@ -1,5 +1,5 @@
 Map = {
-  name = "惑星外宙域S-B-α",
+  name = "宙域",
   wayMusic = "nmb",
   bossMusic = "AttaQ3-D",
   ending = "",
