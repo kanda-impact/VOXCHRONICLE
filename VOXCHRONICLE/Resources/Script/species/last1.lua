@@ -39,13 +39,13 @@ Enemy = {
         return "warp"
       elseif rand < 100 then -- 6割はその他の攻撃
         local r2 = math.random(100)
-        if r2 < 30 then
+        if r2 < 35 then
           return "beam"
-        elseif r2 < 50 then
+        elseif r2 < 55 then
           if self:getItem() == EnemyItemNone then
             return "equip"
           end
-        elseif r2 < 70 then -- 敵が1体だけなら10%で
+        elseif r2 < 75 then -- 敵が1体だけなら15%で
           if enemyManager:getEnemies():count() == 1 then 
             return "call_last" -- t2ファージ召喚
           end
