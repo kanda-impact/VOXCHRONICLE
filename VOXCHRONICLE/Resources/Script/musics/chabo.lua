@@ -1,5 +1,5 @@
 Music = {
-  name = "チュートリアル",
+  name = "レッスン　オクスクロニクル！",
   composer = "nmb",
   prefix = "chabo",
   type = MusicSetTypeWay,

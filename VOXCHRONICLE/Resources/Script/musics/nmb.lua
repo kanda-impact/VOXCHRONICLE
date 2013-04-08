@@ -1,5 +1,5 @@
 Music = {
-  name = "ちゃぼ曲",
+  name = "惑星外宙域S-B-α",
   composer = "nmb",
   prefix = "nmb",
   type = MusicSetTypeWay,

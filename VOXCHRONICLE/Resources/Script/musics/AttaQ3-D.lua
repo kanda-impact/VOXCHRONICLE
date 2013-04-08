@@ -1,5 +1,5 @@
 Music = {
-  name = "3Dボス曲",
+  name = "死闘　ラスボス　グームド・ジィラ",
   composer = "AttaQ",
   prefix = "AttaQ3-D",
   type = MusicSetTypeBoss,

@@ -14,7 +14,7 @@
 
 
 Music = {
-  name = "テストステージ道中曲",
+  name = "古城ルパティナ",
   composer = "tetu_fs",
   prefix = "dub",
   type = MusicSetTypeWay,

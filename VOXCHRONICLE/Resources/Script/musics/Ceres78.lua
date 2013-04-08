@@ -1,5 +1,5 @@
 Music = {
-  name = "深海ボス",
+  name = "深海ボス　クラーケン　ヴゥゥ・マー",
   composer = "Ceres78",
   prefix = "Ceres78_3-C",
   type = MusicSetTypeBoss,

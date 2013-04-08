@@ -1,5 +1,5 @@
 Music = {
-  name = "2C",
+  name = "深海ダリウス",
   composer = "negiyan",
   prefix = "negi-3c",
   type = MusicSetTypeWay,
