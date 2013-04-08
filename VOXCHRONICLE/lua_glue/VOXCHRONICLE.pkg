@@ -139,6 +139,8 @@ class Enemy : public CCSprite, public IRegister {
 	bool setDefaultAnimationClip();
 	void setCounter(int counter);
 	void setHP(int hp);
+	void setItem(EnemyItem item);
+	void setSkillType(SkillType type);
 	int getRegister(const char* key, int defaultValue);
 	void setRegister(const char* key, int value);
 	bool hasRegister(const char* key);
@@ -146,6 +148,7 @@ class Enemy : public CCSprite, public IRegister {
 
 class Character : public CCObject {
 	string getName();
+	CharacterType getCharacterType();
 };
 
 class CharacterManager : public CCObject {

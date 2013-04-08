@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Mon Apr  8 00:05:32 2013.
+** Generated automatically by tolua++-1.0.92 on Mon Apr  8 18:17:04 2013.
 */
 
 #ifndef __cplusplus
@@ -41,6 +41,13 @@ static int tolua_collect_DamageType (lua_State* tolua_S)
 	Mtolua_delete(self);
 	return 0;
 }
+
+static int tolua_collect_CharacterType (lua_State* tolua_S)
+{
+ CharacterType* self = (CharacterType*) tolua_tousertype(tolua_S,1,0);
+	Mtolua_delete(self);
+	return 0;
+}
 #endif
 
 
@@ -49,7 +56,7 @@ static void tolua_reg_types (lua_State* tolua_S)
 {
  tolua_usertype(tolua_S,"EnemySkill");
  tolua_usertype(tolua_S,"CCLayer");
- tolua_usertype(tolua_S,"IRegister");
+ tolua_usertype(tolua_S,"CharacterType");
  tolua_usertype(tolua_S,"Skill");
  tolua_usertype(tolua_S,"Enemy");
  tolua_usertype(tolua_S,"Character");
@@ -58,17 +65,20 @@ static void tolua_reg_types (lua_State* tolua_S)
  tolua_usertype(tolua_S,"SaveData");
  tolua_usertype(tolua_S,"CCNode");
  tolua_usertype(tolua_S,"EffectLayer");
- tolua_usertype(tolua_S,"CCArray");
+ tolua_usertype(tolua_S,"EnemyItem");
  tolua_usertype(tolua_S,"Map");
  tolua_usertype(tolua_S,"DamageType");
- tolua_usertype(tolua_S,"PopupWindow");
+ tolua_usertype(tolua_S,"EnemyManager");
  tolua_usertype(tolua_S,"PlayLog");
+ tolua_usertype(tolua_S,"SaveDataCountKey");
+ tolua_usertype(tolua_S,"SkillType");
+ tolua_usertype(tolua_S,"IRegister");
  tolua_usertype(tolua_S,"CharacterManager");
  tolua_usertype(tolua_S,"CCSprite");
- tolua_usertype(tolua_S,"SaveDataCountKey");
+ tolua_usertype(tolua_S,"PopupWindow");
  tolua_usertype(tolua_S,"CCObject");
- tolua_usertype(tolua_S,"EnemyManager");
  tolua_usertype(tolua_S,"CCRect");
+ tolua_usertype(tolua_S,"CCArray");
 }
 
 /* method: getPower of class  Skill */
@@ -596,6 +606,72 @@ static int tolua_VOXCHRONICLE_Enemy_setHP00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: setItem of class  Enemy */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_Enemy_setItem00
+static int tolua_VOXCHRONICLE_Enemy_setItem00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"Enemy",0,&tolua_err) ||
+     (tolua_isvaluenil(tolua_S,2,&tolua_err) || !tolua_isusertype(tolua_S,2,"EnemyItem",0,&tolua_err)) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  Enemy* self = (Enemy*)  tolua_tousertype(tolua_S,1,0);
+  EnemyItem item = *((EnemyItem*)  tolua_tousertype(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setItem'", NULL);
+#endif
+  {
+   self->setItem(item);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'setItem'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: setSkillType of class  Enemy */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_Enemy_setSkillType00
+static int tolua_VOXCHRONICLE_Enemy_setSkillType00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"Enemy",0,&tolua_err) ||
+     (tolua_isvaluenil(tolua_S,2,&tolua_err) || !tolua_isusertype(tolua_S,2,"SkillType",0,&tolua_err)) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  Enemy* self = (Enemy*)  tolua_tousertype(tolua_S,1,0);
+  SkillType type = *((SkillType*)  tolua_tousertype(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setSkillType'", NULL);
+#endif
+  {
+   self->setSkillType(type);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'setSkillType'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* method: getRegister of class  Enemy */
 #ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_Enemy_getRegister00
 static int tolua_VOXCHRONICLE_Enemy_getRegister00(lua_State* tolua_S)
@@ -745,6 +821,48 @@ static int tolua_VOXCHRONICLE_Character_getName00(lua_State* tolua_S)
 #ifndef TOLUA_RELEASE
  tolua_lerror:
  tolua_error(tolua_S,"#ferror in function 'getName'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: getCharacterType of class  Character */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_Character_getCharacterType00
+static int tolua_VOXCHRONICLE_Character_getCharacterType00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"Character",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  Character* self = (Character*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getCharacterType'", NULL);
+#endif
+  {
+   CharacterType tolua_ret = (CharacterType)  self->getCharacterType();
+   {
+#ifdef __cplusplus
+    void* tolua_obj = Mtolua_new((CharacterType)(tolua_ret));
+     tolua_pushusertype(tolua_S,tolua_obj,"CharacterType");
+    tolua_register_gc(tolua_S,lua_gettop(tolua_S));
+#else
+    void* tolua_obj = tolua_copy(tolua_S,(void*)&tolua_ret,sizeof(CharacterType));
+     tolua_pushusertype(tolua_S,tolua_obj,"CharacterType");
+    tolua_register_gc(tolua_S,lua_gettop(tolua_S));
+#endif
+   }
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getCharacterType'.",&tolua_err);
  return 0;
 #endif
 }
@@ -2964,6 +3082,8 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
    tolua_function(tolua_S,"setDefaultAnimationClip",tolua_VOXCHRONICLE_Enemy_setDefaultAnimationClip00);
    tolua_function(tolua_S,"setCounter",tolua_VOXCHRONICLE_Enemy_setCounter00);
    tolua_function(tolua_S,"setHP",tolua_VOXCHRONICLE_Enemy_setHP00);
+   tolua_function(tolua_S,"setItem",tolua_VOXCHRONICLE_Enemy_setItem00);
+   tolua_function(tolua_S,"setSkillType",tolua_VOXCHRONICLE_Enemy_setSkillType00);
    tolua_function(tolua_S,"getRegister",tolua_VOXCHRONICLE_Enemy_getRegister00);
    tolua_function(tolua_S,"setRegister",tolua_VOXCHRONICLE_Enemy_setRegister00);
    tolua_function(tolua_S,"hasRegister",tolua_VOXCHRONICLE_Enemy_hasRegister00);
@@ -2972,6 +3092,7 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
   tolua_cclass(tolua_S,"Character","Character","CCObject",NULL);
   tolua_beginmodule(tolua_S,"Character");
    tolua_function(tolua_S,"getName",tolua_VOXCHRONICLE_Character_getName00);
+   tolua_function(tolua_S,"getCharacterType",tolua_VOXCHRONICLE_Character_getCharacterType00);
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"CharacterManager","CharacterManager","CCObject",NULL);
   tolua_beginmodule(tolua_S,"CharacterManager");

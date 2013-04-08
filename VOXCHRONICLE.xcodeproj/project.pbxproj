@@ -1126,6 +1126,12 @@
 		07F20F851711BC7F0099ACD8 /* warp.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F821711BC7F0099ACD8 /* warp.lua */; };
 		07F20F881711C71E0099ACD8 /* last1_boss.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F861711C71E0099ACD8 /* last1_boss.lua */; };
 		07F20F891711C71E0099ACD8 /* last2_boss.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F871711C71E0099ACD8 /* last2_boss.lua */; };
+		07F20F8F1712BA8C0099ACD8 /* beam.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F8A1712BA8C0099ACD8 /* beam.lua */; };
+		07F20F901712BA8C0099ACD8 /* call_last.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F8B1712BA8C0099ACD8 /* call_last.lua */; };
+		07F20F911712BA8C0099ACD8 /* charge_attack_last.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F8C1712BA8C0099ACD8 /* charge_attack_last.lua */; };
+		07F20F921712BA8C0099ACD8 /* equip.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F8D1712BA8C0099ACD8 /* equip.lua */; };
+		07F20F931712BA8C0099ACD8 /* mp_absorb.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F8E1712BA8C0099ACD8 /* mp_absorb.lua */; };
+		07F20F951712C2E60099ACD8 /* laugh.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F941712C2E50099ACD8 /* laugh.lua */; };
 		07F350F916F8846F00F95FDD /* make_glue.sh in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F616F8846F00F95FDD /* make_glue.sh */; };
 		07F350FA16F8846F00F95FDD /* tolua++ in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F716F8846F00F95FDD /* tolua++ */; };
 		07F350FB16F8846F00F95FDD /* VOXCHRONICLE.pkg in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F816F8846F00F95FDD /* VOXCHRONICLE.pkg */; };
@@ -2742,6 +2748,12 @@
 		07F20F821711BC7F0099ACD8 /* warp.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = warp.lua; path = enemySkills/warp.lua; sourceTree = "<group>"; };
 		07F20F861711C71E0099ACD8 /* last1_boss.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = last1_boss.lua; sourceTree = "<group>"; };
 		07F20F871711C71E0099ACD8 /* last2_boss.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = last2_boss.lua; sourceTree = "<group>"; };
+		07F20F8A1712BA8C0099ACD8 /* beam.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = beam.lua; path = enemySkills/beam.lua; sourceTree = "<group>"; };
+		07F20F8B1712BA8C0099ACD8 /* call_last.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = call_last.lua; path = enemySkills/call_last.lua; sourceTree = "<group>"; };
+		07F20F8C1712BA8C0099ACD8 /* charge_attack_last.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = charge_attack_last.lua; path = enemySkills/charge_attack_last.lua; sourceTree = "<group>"; };
+		07F20F8D1712BA8C0099ACD8 /* equip.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = equip.lua; path = enemySkills/equip.lua; sourceTree = "<group>"; };
+		07F20F8E1712BA8C0099ACD8 /* mp_absorb.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mp_absorb.lua; path = enemySkills/mp_absorb.lua; sourceTree = "<group>"; };
+		07F20F941712C2E50099ACD8 /* laugh.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = laugh.lua; path = enemySkills/laugh.lua; sourceTree = "<group>"; };
 		07F350F616F8846F00F95FDD /* make_glue.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = make_glue.sh; sourceTree = "<group>"; };
 		07F350F716F8846F00F95FDD /* tolua++ */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "tolua++"; sourceTree = "<group>"; };
 		07F350F816F8846F00F95FDD /* VOXCHRONICLE.pkg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VOXCHRONICLE.pkg; sourceTree = "<group>"; };
@@ -3413,6 +3425,12 @@
 				07DCD6861692953500FBBC3A /* sword.lua */,
 				072AB85D16DB7A12005385A5 /* reset_tension.lua */,
 				0737EF2016F0D70A00C46E6C /* direct_attack.lua */,
+				07F20F8A1712BA8C0099ACD8 /* beam.lua */,
+				07F20F8B1712BA8C0099ACD8 /* call_last.lua */,
+				07F20F8C1712BA8C0099ACD8 /* charge_attack_last.lua */,
+				07F20F8D1712BA8C0099ACD8 /* equip.lua */,
+				07F20F8E1712BA8C0099ACD8 /* mp_absorb.lua */,
+				07F20F941712C2E50099ACD8 /* laugh.lua */,
 			);
 			name = enemySkills;
 			sourceTree = "<group>";
@@ -6316,6 +6334,12 @@
 				07F20F851711BC7F0099ACD8 /* warp.lua in Resources */,
 				07F20F881711C71E0099ACD8 /* last1_boss.lua in Resources */,
 				07F20F891711C71E0099ACD8 /* last2_boss.lua in Resources */,
+				07F20F8F1712BA8C0099ACD8 /* beam.lua in Resources */,
+				07F20F901712BA8C0099ACD8 /* call_last.lua in Resources */,
+				07F20F911712BA8C0099ACD8 /* charge_attack_last.lua in Resources */,
+				07F20F921712BA8C0099ACD8 /* equip.lua in Resources */,
+				07F20F931712BA8C0099ACD8 /* mp_absorb.lua in Resources */,
+				07F20F951712C2E60099ACD8 /* laugh.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
