@@ -6,6 +6,8 @@ Enemy = {
   baseExp = 1,
   hasFrame = true,
   counter = 0,
+  width = 256,
+  height = 170.75,
   getSpeed = function(enemy, characterManager)
     return 0
   end,

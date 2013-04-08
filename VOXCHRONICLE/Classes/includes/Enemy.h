@@ -39,9 +39,9 @@ private:
   int _counter;
   int _exp;
   int _attack;
-  int _enemySize;
   bool _enable;
   bool _movable;
+  CCSize _enemySize;
   Species* _species;
   SkillType _type;
   EnemyItem _item;

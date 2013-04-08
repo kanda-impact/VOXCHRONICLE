@@ -92,10 +92,14 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   ss << _species->getImageName().c_str();
   _sheet = CCTextureCache::sharedTextureCache()->addImage(ss.str().c_str());
   _sheet->retain();
-  _enemySize = _sheet->getContentSize().width / _species->getAnimationFrames();
+  _enemySize = _species->getEnemySize();
+  if (_enemySize.width == 0 || _enemySize.height == 0) {
+    int width = _sheet->getContentSize().width / _species->getAnimationFrames();
+    _enemySize = CCSizeMake(width, width);
+  }
   bool success = (bool)this->initWithTexture(_sheet, CCRectMake(0, 0,
-                                                                _enemySize,
-                                                                _enemySize));
+                                                                _enemySize.width,
+                                                                _enemySize.height));
   
   this->setLifeColor();
   this->setItem((EnemyItem)_lua->getInt("item"));
@@ -377,8 +381,8 @@ bool Enemy::setAnimationAndFrame(int xOffset, int yOffset, int frames, bool hasF
   bool success = _sheet != NULL;
   
   if (success) {
-    int width = _enemySize;
-    int height = _enemySize;
+    int width = _enemySize.width;
+    int height = _enemySize.height;
     CCAnimation* animation = CCAnimation::create();
     for (int i = 0; i < frames; ++i) {
       CCSpriteFrame* frame = CCSpriteFrame::createWithTexture(_sheet, CCRectMake(xOffset * width + width * i, yOffset * height, width, height));
@@ -406,8 +410,8 @@ bool Enemy::setAnimationAndFrame(int xOffset, int yOffset, int frames, bool hasF
 }
 
 CCSprite* Enemy::createFrameSprite(int xOffset, int yOffset, int frames) {
-  int width = _enemySize;
-  int height = _enemySize;
+  int width = _enemySize.width;
+  int height = _enemySize.height;
   CCSprite* frame = CCSprite::createWithTexture(_sheet, CCRectMake(xOffset * width, yOffset * height, width, height));
   CCAnimation* animation = CCAnimation::create();
   for (int i = 0; i < frames; ++i) {

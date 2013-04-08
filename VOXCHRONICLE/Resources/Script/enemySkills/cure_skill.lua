@@ -9,7 +9,7 @@ EnemySkill = {
     SimpleAudioEngine:sharedEngine():playEffect("enemy_cure.mp3")
     layer:addEffectOnEnemy(user, "enemy_cure", 3, CCRectMake(0, 0, 200, 200))
     local message = user:getName().."の　きずが　みるみるふさがっていく！"
-    mManager:pushMessage(message)
+    MessageManager:sharedManager():pushMessage(message)
     user:setHP(10)
   end
 }

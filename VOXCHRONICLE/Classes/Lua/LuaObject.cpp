@@ -82,7 +82,10 @@ float LuaObject::getNumber(const char *key) {
   this->loadTable();
   int table = lua_gettop(L);
   lua_getfield(L, table, key);
-  float result = lua_tonumber(L, -1);
+  float result = 0;
+  if (lua_isnumber(L, lua_gettop(L))) {
+    result = lua_tointeger(L, -1);
+  }
   lua_pop(L, 1);
   return result;
 }
