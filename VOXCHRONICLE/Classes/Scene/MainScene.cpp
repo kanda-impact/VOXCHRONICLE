@@ -94,13 +94,7 @@ bool MainScene::init(Map* map) {
   // EnemyManager
   _enemyManager = EnemyManager::create();
   _enemyManager->retain();
-  
-  _focus = CCSprite::create(FileUtils::getFilePath("Image/focus.png").c_str());
-  _focus->retain();
-  _focus->setVisible(false);
-  _focus->setAnchorPoint(ccp(0.5f, 0.0f));
-  this->addChild(_focus, MainSceneZOrderFocus);
-  
+
   _characterManager = new CharacterManager();
   CCSize size = director->getWinSize();
   _musicManager = new MusicManager(music, NULL, _enemyManager, _characterManager);
@@ -139,6 +133,13 @@ bool MainScene::init(Map* map) {
     _effectLayer->removeAllChildrenWithCleanup(true);
   }
   this->addChild(_effectLayer, MainSceneZOrderEffect);
+  
+  string focusName = string("Image/") + _skin->getPrefix() + string("_focus.png");
+  _focus = CCSprite::create(FileUtils::getFilePath(focusName.c_str()).c_str());
+  _focus->retain();
+  _focus->setVisible(false);
+  _focus->setAnchorPoint(ccp(0.5f, 0.0f));
+  this->addChild(_focus, MainSceneZOrderFocus);
   
   _effectLayer->setCharacterEffect(_characterManager->getCurrentCharacter()); // キャラクター登録
   
@@ -641,7 +642,7 @@ void MainScene::updateFocus() {
   if (nearest) {
     _focus->setVisible(true);
     _focus->setPosition(ccpAdd(nearest->getPosition(), ccp(0, nearest->getContentSize().height * nearest->getCurrentScale(nearest->getRow()) * 0.8)));
-    _focus->setScale(nearest->getCurrentScale(nearest->getRow()));
+    _focus->setScale(MAX(nearest->getCurrentScale(nearest->getRow()), 0.4));
   } else {
     _focus->setVisible(false);
   }
