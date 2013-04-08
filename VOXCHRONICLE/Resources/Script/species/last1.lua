@@ -41,17 +41,17 @@ Enemy = {
         local r2 = math.random(100)
         if r2 < 35 then
           return "beam"
-        elseif r2 < 55 then
+        elseif r2 < 60 then
           if self:getItem() == EnemyItemNone then
             return "equip"
           end
-        elseif r2 < 75 then -- 敵が1体だけなら15%で
+        elseif r2 < 70 then -- 敵が1体だけなら10%で
           if enemyManager:getEnemies():count() == 1 then 
             return "call_last" -- t2ファージ召喚
           end
-        elseif  r2 < 90 then -- HPが半分以下なら5%で回復
+        elseif  r2 < 80 then -- HPが半分以下なら5%で回復
           if self:getHP() < self:getMaxHP() * 0.5 then
-            return "cure" -- 回復
+            return "cure_skill" -- 回復
           end
         elseif r2 < 95 then -- 現在MPによって
           if characterManager:getMP() > characterManager:getMaxMP() * 0.5 then
