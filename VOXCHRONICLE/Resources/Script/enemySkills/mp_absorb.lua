@@ -7,10 +7,10 @@ EnemySkill = {
     local layer = EffectLayer:sharedLayer()
     layer:addEffectOnEnemy(nil, "run", 3, CCRectMake(0, 0, 480, 320))
     
-    local mManager = MessageManager:shaderManager()
-    characterManager:addMP(-characterManager:getMP())
+    local mManager = MessageManager:sharedManager()
+    characterManager:addMP(-1 * characterManager:getMP())
     mManager:pushMessage(user:getName().."の　全身から 波動が　ほとばしる")
-    mManager:pushMessage(user:getName().."の MPが　全てなくなってしまった")
+    mManager:pushMessage(characterManager:getCurrentCharacter():getName().."の MPが　全てなくなってしまった")
   end
 }
 return EnemySkill

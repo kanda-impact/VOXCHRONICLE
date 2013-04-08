@@ -20,15 +20,39 @@ Enemy = {
   ]],
   habitat = "",
   animationFrames = 4,
-  performSkill = function(self)
+  performSkill = function(self, characterManager, enemyManager)
     math.random(100)
-    local rand = math.random(100)
-    if rand < 50 then
-      return "warp"
-    elseif rand < 60 then
-      return "cure_skill"
+    local row = self:getRow()
+    local key = "directAttack"
+    local chargeTurn = self.__IRegister__:getRegister(key, 0)
+    if chargeTurn > 0 then -- 溜め中の時
+      self.__IRegister__:setBool("isLastAttack", true) -- 前のターン攻撃したフラグ
+      return "charge_attack_last" -- 直接攻撃する
+    elseif self.__IRegister__:getBool("isLastAttack") then -- 前のターンが攻撃してたとき
+      self.__IRegister__:setBool("isLastAttack", false) -- 前のターン攻撃したフラグを下ろして
+      return "warp" -- 確実にワープする
+    elseif row == 0 then -- 最前列にいるとき
+      return "charge_attack_last" -- 確実に溜め攻撃
+    else -- それ以外の時
+      local rand = math.random(100) -- 乱数出して
+      if rand < 40 then -- 4割はワープ
+        return "warp"
+      elseif rand < 100 then -- 6割はその他の攻撃
+        local r2 = math.random(100)
+        if r2 < 30 then
+          return "beam"
+        elseif r2 < 50 and self:getItem() == EnemyItemNone then
+          return "equip"
+        elseif enemyManager:getEnemies():count() == 1 and r2 < 70 then -- 敵が1体だけなら10%で
+          return "call_last" -- t2ファージ召喚
+        elseif self:getHP() < self:getMaxHP() * 0.5 and r2 < 90 then -- HPが半分以下なら5%で回復
+          return "cure" -- 回復
+        elseif characterManager:getMP() > characterManager:getMaxMP() * 0.5 and r2 < 100 then -- 現在MPによって
+          return "mp_absorb" -- MP吸収   
+        end
+      end
     end
-    return ""
+    return "laugh" -- とにかく笑う
   end
 }
 

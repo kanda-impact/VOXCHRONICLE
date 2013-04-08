@@ -1136,6 +1136,7 @@
 		07F20F9D1712C5B60099ACD8 /* damage0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F9A1712C5B60099ACD8 /* damage0.mp3 */; };
 		07F20F9E1712C5B60099ACD8 /* damage1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F9B1712C5B60099ACD8 /* damage1.mp3 */; };
 		07F20F9F1712C5B60099ACD8 /* damage2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F9C1712C5B60099ACD8 /* damage2.mp3 */; };
+		07F20FA11712CEE10099ACD8 /* lastboss_beam.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F20FA01712CEE00099ACD8 /* lastboss_beam.mp3 */; };
 		07F350F916F8846F00F95FDD /* make_glue.sh in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F616F8846F00F95FDD /* make_glue.sh */; };
 		07F350FA16F8846F00F95FDD /* tolua++ in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F716F8846F00F95FDD /* tolua++ */; };
 		07F350FB16F8846F00F95FDD /* VOXCHRONICLE.pkg in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F816F8846F00F95FDD /* VOXCHRONICLE.pkg */; };
@@ -2762,6 +2763,7 @@
 		07F20F9A1712C5B60099ACD8 /* damage0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = damage0.mp3; path = Resources/SE/damage0.mp3; sourceTree = "<group>"; };
 		07F20F9B1712C5B60099ACD8 /* damage1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = damage1.mp3; path = Resources/SE/damage1.mp3; sourceTree = "<group>"; };
 		07F20F9C1712C5B60099ACD8 /* damage2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = damage2.mp3; path = Resources/SE/damage2.mp3; sourceTree = "<group>"; };
+		07F20FA01712CEE00099ACD8 /* lastboss_beam.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = lastboss_beam.mp3; path = Resources/SE/lastboss_beam.mp3; sourceTree = "<group>"; };
 		07F350F616F8846F00F95FDD /* make_glue.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = make_glue.sh; sourceTree = "<group>"; };
 		07F350F716F8846F00F95FDD /* tolua++ */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "tolua++"; sourceTree = "<group>"; };
 		07F350F816F8846F00F95FDD /* VOXCHRONICLE.pkg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VOXCHRONICLE.pkg; sourceTree = "<group>"; };
@@ -5324,6 +5326,7 @@
 				0778C5DE170FEE310017D230 /* menu_decide.mp3 */,
 				07F20F961712C5AB0099ACD8 /* menu_cancel_slide.mp3 */,
 				07F20F971712C5AB0099ACD8 /* menu_decide_slide.mp3 */,
+				07F20FA01712CEE00099ACD8 /* lastboss_beam.mp3 */,
 			);
 			name = SE;
 			sourceTree = "<group>";
@@ -6356,6 +6359,7 @@
 				07F20F9D1712C5B60099ACD8 /* damage0.mp3 in Resources */,
 				07F20F9E1712C5B60099ACD8 /* damage1.mp3 in Resources */,
 				07F20F9F1712C5B60099ACD8 /* damage2.mp3 in Resources */,
+				07F20FA11712CEE10099ACD8 /* lastboss_beam.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

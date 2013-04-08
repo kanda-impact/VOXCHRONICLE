@@ -3,7 +3,7 @@ EnemySkill = {
   name = "装備",
   performSkill = function(self, user, characterManager, enemyManager)
     local chara = characterManager:getCurrentCharacter():getCharacterType() -- 現在のキャラタイプを取得
-    local mManager = MessageManager:shaderManager()
+    local mManager = MessageManager:sharedManager()
     if chara == CharacterTypeVox then -- 盾装備
       user:setItem(EnemyItemShield)
       mManager:pushMessage(user:getName().."は 盾を　装備した")

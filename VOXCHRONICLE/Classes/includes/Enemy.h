@@ -108,6 +108,7 @@ public:
   void toggleBlink(bool toggle);
   
   int getHP();
+  int getMaxHP();
   float getRow();
   int getCol();
   int getLevel();

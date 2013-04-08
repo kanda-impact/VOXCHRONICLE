@@ -316,7 +316,7 @@ int Enemy::getAttack() {
 EnemyItem Enemy::getItem() {
   if (_item != EnemyItemNone) {
     CCNode* item = this->getChildByTag(EnemyTagItem);
-    CCAssert(item == NULL, "アイテム消えてる!!!");
+    //CCAssert(item == NULL, "アイテム消えてる!!!");
   }
   return _item;
 }
@@ -520,4 +520,8 @@ void Enemy::setFrameColor(cocos2d::CCSprite *frameSprite, SkillType type) {
   } else {
     frameSprite->setColor(ccc3(0, 0, 0));
   }
+}
+
+int Enemy::getMaxHP() {
+  return _maxHP;
 }
