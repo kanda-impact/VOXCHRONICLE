@@ -325,7 +325,6 @@
 		077EDDF916870767009B9F6B /* charge_effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDEF16870767009B9F6B /* charge_effect.mp3 */; };
 		077EDDFA16870767009B9F6B /* cure_effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDF016870767009B9F6B /* cure_effect.mp3 */; };
 		077EDDFB16870767009B9F6B /* cursor.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDF116870767009B9F6B /* cursor.mp3 */; };
-		077EDDFC16870767009B9F6B /* damage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDF216870767009B9F6B /* damage.mp3 */; };
 		077EDDFD16870767009B9F6B /* death.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDF316870767009B9F6B /* death.mp3 */; };
 		077EDDFE16870767009B9F6B /* decide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDF416870767009B9F6B /* decide.mp3 */; };
 		077EDDFF16870767009B9F6B /* levelup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDDF516870767009B9F6B /* levelup.mp3 */; };
@@ -1132,6 +1131,11 @@
 		07F20F921712BA8C0099ACD8 /* equip.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F8D1712BA8C0099ACD8 /* equip.lua */; };
 		07F20F931712BA8C0099ACD8 /* mp_absorb.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F8E1712BA8C0099ACD8 /* mp_absorb.lua */; };
 		07F20F951712C2E60099ACD8 /* laugh.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F941712C2E50099ACD8 /* laugh.lua */; };
+		07F20F981712C5AB0099ACD8 /* menu_cancel_slide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F961712C5AB0099ACD8 /* menu_cancel_slide.mp3 */; };
+		07F20F991712C5AB0099ACD8 /* menu_decide_slide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F971712C5AB0099ACD8 /* menu_decide_slide.mp3 */; };
+		07F20F9D1712C5B60099ACD8 /* damage0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F9A1712C5B60099ACD8 /* damage0.mp3 */; };
+		07F20F9E1712C5B60099ACD8 /* damage1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F9B1712C5B60099ACD8 /* damage1.mp3 */; };
+		07F20F9F1712C5B60099ACD8 /* damage2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F20F9C1712C5B60099ACD8 /* damage2.mp3 */; };
 		07F350F916F8846F00F95FDD /* make_glue.sh in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F616F8846F00F95FDD /* make_glue.sh */; };
 		07F350FA16F8846F00F95FDD /* tolua++ in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F716F8846F00F95FDD /* tolua++ */; };
 		07F350FB16F8846F00F95FDD /* VOXCHRONICLE.pkg in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F816F8846F00F95FDD /* VOXCHRONICLE.pkg */; };
@@ -1607,7 +1611,6 @@
 		077EDDEF16870767009B9F6B /* charge_effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = charge_effect.mp3; path = Resources/SE/charge_effect.mp3; sourceTree = "<group>"; };
 		077EDDF016870767009B9F6B /* cure_effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = cure_effect.mp3; path = Resources/SE/cure_effect.mp3; sourceTree = "<group>"; };
 		077EDDF116870767009B9F6B /* cursor.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = cursor.mp3; path = Resources/SE/cursor.mp3; sourceTree = "<group>"; };
-		077EDDF216870767009B9F6B /* damage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = damage.mp3; path = Resources/SE/damage.mp3; sourceTree = "<group>"; };
 		077EDDF316870767009B9F6B /* death.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = death.mp3; path = Resources/SE/death.mp3; sourceTree = "<group>"; };
 		077EDDF416870767009B9F6B /* decide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = decide.mp3; path = Resources/SE/decide.mp3; sourceTree = "<group>"; };
 		077EDDF516870767009B9F6B /* levelup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = levelup.mp3; path = Resources/SE/levelup.mp3; sourceTree = "<group>"; };
@@ -2754,6 +2757,11 @@
 		07F20F8D1712BA8C0099ACD8 /* equip.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = equip.lua; path = enemySkills/equip.lua; sourceTree = "<group>"; };
 		07F20F8E1712BA8C0099ACD8 /* mp_absorb.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mp_absorb.lua; path = enemySkills/mp_absorb.lua; sourceTree = "<group>"; };
 		07F20F941712C2E50099ACD8 /* laugh.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = laugh.lua; path = enemySkills/laugh.lua; sourceTree = "<group>"; };
+		07F20F961712C5AB0099ACD8 /* menu_cancel_slide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = menu_cancel_slide.mp3; path = Resources/SE/menu_cancel_slide.mp3; sourceTree = "<group>"; };
+		07F20F971712C5AB0099ACD8 /* menu_decide_slide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = menu_decide_slide.mp3; path = Resources/SE/menu_decide_slide.mp3; sourceTree = "<group>"; };
+		07F20F9A1712C5B60099ACD8 /* damage0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = damage0.mp3; path = Resources/SE/damage0.mp3; sourceTree = "<group>"; };
+		07F20F9B1712C5B60099ACD8 /* damage1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = damage1.mp3; path = Resources/SE/damage1.mp3; sourceTree = "<group>"; };
+		07F20F9C1712C5B60099ACD8 /* damage2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = damage2.mp3; path = Resources/SE/damage2.mp3; sourceTree = "<group>"; };
 		07F350F616F8846F00F95FDD /* make_glue.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = make_glue.sh; sourceTree = "<group>"; };
 		07F350F716F8846F00F95FDD /* tolua++ */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "tolua++"; sourceTree = "<group>"; };
 		07F350F816F8846F00F95FDD /* VOXCHRONICLE.pkg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VOXCHRONICLE.pkg; sourceTree = "<group>"; };
@@ -5301,7 +5309,9 @@
 				077EDDEF16870767009B9F6B /* charge_effect.mp3 */,
 				077EDDF016870767009B9F6B /* cure_effect.mp3 */,
 				077EDDF116870767009B9F6B /* cursor.mp3 */,
-				077EDDF216870767009B9F6B /* damage.mp3 */,
+				07F20F9A1712C5B60099ACD8 /* damage0.mp3 */,
+				07F20F9B1712C5B60099ACD8 /* damage1.mp3 */,
+				07F20F9C1712C5B60099ACD8 /* damage2.mp3 */,
 				077EDDF316870767009B9F6B /* death.mp3 */,
 				077EDDF416870767009B9F6B /* decide.mp3 */,
 				077EDDF516870767009B9F6B /* levelup.mp3 */,
@@ -5312,6 +5322,8 @@
 				077EDE331687E491009B9F6B /* shield_invalid.mp3 */,
 				0778C5DD170FEE310017D230 /* menu_cancel.mp3 */,
 				0778C5DE170FEE310017D230 /* menu_decide.mp3 */,
+				07F20F961712C5AB0099ACD8 /* menu_cancel_slide.mp3 */,
+				07F20F971712C5AB0099ACD8 /* menu_decide_slide.mp3 */,
 			);
 			name = SE;
 			sourceTree = "<group>";
@@ -5411,7 +5423,6 @@
 				077EDDF916870767009B9F6B /* charge_effect.mp3 in Resources */,
 				077EDDFA16870767009B9F6B /* cure_effect.mp3 in Resources */,
 				077EDDFB16870767009B9F6B /* cursor.mp3 in Resources */,
-				077EDDFC16870767009B9F6B /* damage.mp3 in Resources */,
 				077EDDFD16870767009B9F6B /* death.mp3 in Resources */,
 				077EDDFE16870767009B9F6B /* decide.mp3 in Resources */,
 				077EDDFF16870767009B9F6B /* levelup.mp3 in Resources */,
@@ -6340,6 +6351,11 @@
 				07F20F921712BA8C0099ACD8 /* equip.lua in Resources */,
 				07F20F931712BA8C0099ACD8 /* mp_absorb.lua in Resources */,
 				07F20F951712C2E60099ACD8 /* laugh.lua in Resources */,
+				07F20F981712C5AB0099ACD8 /* menu_cancel_slide.mp3 in Resources */,
+				07F20F991712C5AB0099ACD8 /* menu_decide_slide.mp3 in Resources */,
+				07F20F9D1712C5B60099ACD8 /* damage0.mp3 in Resources */,
+				07F20F9E1712C5B60099ACD8 /* damage1.mp3 in Resources */,
+				07F20F9F1712C5B60099ACD8 /* damage2.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

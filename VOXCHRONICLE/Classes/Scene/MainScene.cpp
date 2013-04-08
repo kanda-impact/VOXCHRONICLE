@@ -673,7 +673,13 @@ void MainScene::addDamageEffect() {
   
   if (sumDamage > 0) {
     // 画面点滅させて音を鳴らす
-    SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/damage.mp3").c_str());
+    if (sumDamage < 5) {
+      SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/damage0.mp3").c_str());
+    } else if (sumDamage < 10) {
+      SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/damage1.mp3").c_str());
+    } else {
+      SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/damage2.mp3").c_str());
+    }
     BlinkLayer* bLayer = new BlinkLayer(ccc4(255, 0, 0, 255), 0.05f);
     bLayer->autorelease();
     this->addChild(bLayer, MainSceneZOrderUI);
