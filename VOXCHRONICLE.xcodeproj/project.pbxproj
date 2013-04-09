@@ -319,6 +319,8 @@
 		0778C5DF170FEE310017D230 /* menu_cancel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0778C5DD170FEE310017D230 /* menu_cancel.mp3 */; };
 		0778C5E0170FEE310017D230 /* menu_decide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0778C5DE170FEE310017D230 /* menu_decide.mp3 */; };
 		0778C5E317100DD20017D230 /* VQTime.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0778C5E117100DD20017D230 /* VQTime.mm */; };
+		077D0C231713B4E5006C3F17 /* 2a_lskshield0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 077D0C221713B4E5006C3F17 /* 2a_lskshield0.caf */; };
+		077D0C251713B51D006C3F17 /* 2a_voxwait1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 077D0C241713B51D006C3F17 /* 2a_voxwait1.caf */; };
 		077DCFC3169EE872007A7003 /* Image in Resources */ = {isa = PBXBuildFile; fileRef = 077DCFC1169EE872007A7003 /* Image */; };
 		077DCFC6169EE89B007A7003 /* Retina in Resources */ = {isa = PBXBuildFile; fileRef = 077DCFC5169EE89B007A7003 /* Retina */; };
 		077DF757170DD69A00F0C799 /* space_boss.lua in Resources */ = {isa = PBXBuildFile; fileRef = 077DF756170DD69900F0C799 /* space_boss.lua */; };
@@ -1166,7 +1168,6 @@
 		07F20FF41712E2EC0099ACD8 /* 2a_lskmiss.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07F20FBE1712E2EC0099ACD8 /* 2a_lskmiss.caf */; };
 		07F20FF51712E2EC0099ACD8 /* 2a_lskrun0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07F20FBF1712E2EC0099ACD8 /* 2a_lskrun0.caf */; };
 		07F20FF61712E2EC0099ACD8 /* 2a_lskrun1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07F20FC01712E2EC0099ACD8 /* 2a_lskrun1.caf */; };
-		07F20FF71712E2EC0099ACD8 /* 2a_lskshiled0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07F20FC11712E2EC0099ACD8 /* 2a_lskshiled0.caf */; };
 		07F20FF81712E2EC0099ACD8 /* 2a_lsktension0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07F20FC21712E2EC0099ACD8 /* 2a_lsktension0.caf */; };
 		07F20FF91712E2EC0099ACD8 /* 2a_lsktension1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07F20FC31712E2EC0099ACD8 /* 2a_lsktension1.caf */; };
 		07F20FFA1712E2EC0099ACD8 /* 2a_lsktension2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07F20FC41712E2EC0099ACD8 /* 2a_lsktension2.caf */; };
@@ -1662,6 +1663,8 @@
 		0778C5DE170FEE310017D230 /* menu_decide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = menu_decide.mp3; path = Resources/SE/menu_decide.mp3; sourceTree = "<group>"; };
 		0778C5E117100DD20017D230 /* VQTime.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VQTime.mm; sourceTree = "<group>"; };
 		0778C5E217100DD20017D230 /* VQTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VQTime.h; sourceTree = "<group>"; };
+		077D0C221713B4E5006C3F17 /* 2a_lskshield0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2a_lskshield0.caf; path = Resources/Music/shinka/2a_lskshield0.caf; sourceTree = "<group>"; };
+		077D0C241713B51D006C3F17 /* 2a_voxwait1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2a_voxwait1.caf; path = Resources/Music/shinka/2a_voxwait1.caf; sourceTree = "<group>"; };
 		077DCFC1169EE872007A7003 /* Image */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Image; path = Resources/Image; sourceTree = "<group>"; };
 		077DCFC5169EE89B007A7003 /* Retina */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Retina; path = Resources/Retina; sourceTree = "<group>"; };
 		077DF756170DD69900F0C799 /* space_boss.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = space_boss.lua; path = map/space_boss.lua; sourceTree = "<group>"; };
@@ -2849,7 +2852,6 @@
 		07F20FBE1712E2EC0099ACD8 /* 2a_lskmiss.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2a_lskmiss.caf; path = Resources/Music/shinka/2a_lskmiss.caf; sourceTree = "<group>"; };
 		07F20FBF1712E2EC0099ACD8 /* 2a_lskrun0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2a_lskrun0.caf; path = Resources/Music/shinka/2a_lskrun0.caf; sourceTree = "<group>"; };
 		07F20FC01712E2EC0099ACD8 /* 2a_lskrun1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2a_lskrun1.caf; path = Resources/Music/shinka/2a_lskrun1.caf; sourceTree = "<group>"; };
-		07F20FC11712E2EC0099ACD8 /* 2a_lskshiled0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2a_lskshiled0.caf; path = Resources/Music/shinka/2a_lskshiled0.caf; sourceTree = "<group>"; };
 		07F20FC21712E2EC0099ACD8 /* 2a_lsktension0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2a_lsktension0.caf; path = Resources/Music/shinka/2a_lsktension0.caf; sourceTree = "<group>"; };
 		07F20FC31712E2EC0099ACD8 /* 2a_lsktension1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2a_lsktension1.caf; path = Resources/Music/shinka/2a_lsktension1.caf; sourceTree = "<group>"; };
 		07F20FC41712E2EC0099ACD8 /* 2a_lsktension2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2a_lsktension2.caf; path = Resources/Music/shinka/2a_lsktension2.caf; sourceTree = "<group>"; };
@@ -5338,7 +5340,7 @@
 				07F20FBE1712E2EC0099ACD8 /* 2a_lskmiss.caf */,
 				07F20FBF1712E2EC0099ACD8 /* 2a_lskrun0.caf */,
 				07F20FC01712E2EC0099ACD8 /* 2a_lskrun1.caf */,
-				07F20FC11712E2EC0099ACD8 /* 2a_lskshiled0.caf */,
+				077D0C221713B4E5006C3F17 /* 2a_lskshield0.caf */,
 				07F20FC21712E2EC0099ACD8 /* 2a_lsktension0.caf */,
 				07F20FC31712E2EC0099ACD8 /* 2a_lsktension1.caf */,
 				07F20FC41712E2EC0099ACD8 /* 2a_lsktension2.caf */,
@@ -5364,6 +5366,7 @@
 				07F20FD81712E2EC0099ACD8 /* 2a_voxtension2.caf */,
 				07F20FD91712E2EC0099ACD8 /* 2a_voxtension3.caf */,
 				07F20FDA1712E2EC0099ACD8 /* 2a_voxwait0.caf */,
+				077D0C241713B51D006C3F17 /* 2a_voxwait1.caf */,
 			);
 			name = shinka;
 			sourceTree = "<group>";
@@ -6565,7 +6568,6 @@
 				07F20FF41712E2EC0099ACD8 /* 2a_lskmiss.caf in Resources */,
 				07F20FF51712E2EC0099ACD8 /* 2a_lskrun0.caf in Resources */,
 				07F20FF61712E2EC0099ACD8 /* 2a_lskrun1.caf in Resources */,
-				07F20FF71712E2EC0099ACD8 /* 2a_lskshiled0.caf in Resources */,
 				07F20FF81712E2EC0099ACD8 /* 2a_lsktension0.caf in Resources */,
 				07F20FF91712E2EC0099ACD8 /* 2a_lsktension1.caf in Resources */,
 				07F20FFA1712E2EC0099ACD8 /* 2a_lsktension2.caf in Resources */,
@@ -6592,6 +6594,8 @@
 				07F210101712E2EC0099ACD8 /* 2a_voxwait0.caf in Resources */,
 				07F210121712E52F0099ACD8 /* 2a_voxshield0.caf in Resources */,
 				07F210141712E5B20099ACD8 /* 2a_drum4.caf in Resources */,
+				077D0C231713B4E5006C3F17 /* 2a_lskshield0.caf in Resources */,
+				077D0C251713B51D006C3F17 /* 2a_voxwait1.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

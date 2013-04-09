@@ -346,7 +346,11 @@ void MusicManager::preloadMusic(const char *trackName) {
 
 void MusicManager::preloadMusic(const char *trackName, int maxCount) {
   for (int i = 0; i < maxCount; ++i) {
-    string file = buildTrackName(trackName, NULL, i);
-    BufferCache::sharedCache()->addBuffer(this->getTrackFileName(file.c_str()).c_str());
+    CCObject* obj = NULL;
+    CCARRAY_FOREACH(_characterManager->getCharacters(), obj) {
+      Character* chara = (Character*)obj;
+      string file = buildTrackName(trackName, NULL, i, chara);
+      BufferCache::sharedCache()->addBuffer(this->getTrackFileName(file.c_str()).c_str());
+    }
   }
 }
