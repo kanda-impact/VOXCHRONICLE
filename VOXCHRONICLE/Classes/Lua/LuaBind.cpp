@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Mon Apr  8 19:30:27 2013.
+** Generated automatically by tolua++-1.0.92 on Tue Apr  9 09:41:49 2013.
 */
 
 #ifndef __cplusplus
@@ -2049,7 +2049,8 @@ static int tolua_VOXCHRONICLE_EffectLayer_addDamageLabel00(lua_State* tolua_S)
      !tolua_isusertype(tolua_S,1,"EffectLayer",0,&tolua_err) ||
      !tolua_isnumber(tolua_S,2,0,&tolua_err) ||
      !tolua_isnumber(tolua_S,3,0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,4,&tolua_err)
+     !tolua_isnumber(tolua_S,4,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,5,&tolua_err)
  )
   goto tolua_lerror;
  else
@@ -2058,17 +2059,55 @@ static int tolua_VOXCHRONICLE_EffectLayer_addDamageLabel00(lua_State* tolua_S)
   EffectLayer* self = (EffectLayer*)  tolua_tousertype(tolua_S,1,0);
   int damage = ((int)  tolua_tonumber(tolua_S,2,0));
   int offset = ((int)  tolua_tonumber(tolua_S,3,0));
+  DamageLabelType type = ((DamageLabelType) (int)  tolua_tonumber(tolua_S,4,0));
 #ifndef TOLUA_RELEASE
   if (!self) tolua_error(tolua_S,"invalid 'self' in function 'addDamageLabel'", NULL);
 #endif
   {
-   self->addDamageLabel(damage,offset);
+   self->addDamageLabel(damage,offset,type);
   }
  }
  return 0;
 #ifndef TOLUA_RELEASE
  tolua_lerror:
  tolua_error(tolua_S,"#ferror in function 'addDamageLabel'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: addDamageLabelOnEnemy of class  EffectLayer */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_EffectLayer_addDamageLabelOnEnemy00
+static int tolua_VOXCHRONICLE_EffectLayer_addDamageLabelOnEnemy00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"EffectLayer",0,&tolua_err) ||
+     !tolua_isusertype(tolua_S,2,"Enemy",0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,3,0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,4,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,5,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  EffectLayer* self = (EffectLayer*)  tolua_tousertype(tolua_S,1,0);
+  Enemy* target = ((Enemy*)  tolua_tousertype(tolua_S,2,0));
+  int damage = ((int)  tolua_tonumber(tolua_S,3,0));
+  DamageLabelType type = ((DamageLabelType) (int)  tolua_tonumber(tolua_S,4,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'addDamageLabelOnEnemy'", NULL);
+#endif
+  {
+   self->addDamageLabelOnEnemy(target,damage,type);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'addDamageLabelOnEnemy'.",&tolua_err);
  return 0;
 #endif
 }
@@ -3081,6 +3120,10 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
   tolua_constant(tolua_S,"SaveDataCountKeyAttackDamage",SaveDataCountKeyAttackDamage);
   tolua_constant(tolua_S,"SaveDataCountKeyDictionaryCount",SaveDataCountKeyDictionaryCount);
   tolua_constant(tolua_S,"SaveDataCountKeyNum",SaveDataCountKeyNum);
+  tolua_constant(tolua_S,"DamageLabelTypeAttack",DamageLabelTypeAttack);
+  tolua_constant(tolua_S,"DamageLabelTypeHit",DamageLabelTypeHit);
+  tolua_constant(tolua_S,"DamageLabelTypeCure",DamageLabelTypeCure);
+  tolua_constant(tolua_S,"DamageLabelTypeMPCure",DamageLabelTypeMPCure);
   tolua_cclass(tolua_S,"Skill","Skill","CCObject",NULL);
   tolua_beginmodule(tolua_S,"Skill");
    tolua_function(tolua_S,"getPower",tolua_VOXCHRONICLE_Skill_getPower00);
@@ -3163,6 +3206,7 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
    tolua_function(tolua_S,"addPopupWindow",tolua_VOXCHRONICLE_EffectLayer_addPopupWindow00);
    tolua_function(tolua_S,"addEffectOnEnemy",tolua_VOXCHRONICLE_EffectLayer_addEffectOnEnemy00);
    tolua_function(tolua_S,"addDamageLabel",tolua_VOXCHRONICLE_EffectLayer_addDamageLabel00);
+   tolua_function(tolua_S,"addDamageLabelOnEnemy",tolua_VOXCHRONICLE_EffectLayer_addDamageLabelOnEnemy00);
    tolua_function(tolua_S,"getPopupWindow",tolua_VOXCHRONICLE_EffectLayer_getPopupWindow00);
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"PopupWindow","PopupWindow","CCSprite",NULL);

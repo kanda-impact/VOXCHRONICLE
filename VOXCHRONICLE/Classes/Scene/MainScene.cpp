@@ -422,7 +422,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         }
         
         if (damageType != DamageTypeNoDamage) { // 威力のない技は表示しない
-          _effectLayer->addDamageLabelForEnemy(enemy, damage);
+          _effectLayer->addDamageLabelOnEnemy(enemy, damage, DamageLabelTypeAttack);
         }
         
         // 敵毎に効果音を鳴らす
@@ -661,7 +661,7 @@ void MainScene::addDamageEffect() {
     queue->pop();
     int damage = info.damage;
     DamageType damageType = info.damageType;
-    _effectLayer->addDamageLabel(damage, i);
+    _effectLayer->addDamageLabel(damage, i, DamageLabelTypeHit);
     sumDamage += damage;
     ++i;
     if (damageType == DamageTypeDeath) {
@@ -695,7 +695,7 @@ void MainScene::addDamageEffect() {
     CCMoveTo* reset = CCMoveTo::create(0, ccp(0, 0));
     actions->addObject(reset);
     this->runAction(CCSequence::create(actions));
-  } else if (sumDamage == 0 && queueCount > 0) { // 0のとき、かつqueueが空だったとき
+  } else if (sumDamage == 0 && queueCount > 0 && !isShield) { // 0のとき、かつqueueが空だったとき
     SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/guard.mp3").c_str());
   }
   if (isDead) { // 死んだとき

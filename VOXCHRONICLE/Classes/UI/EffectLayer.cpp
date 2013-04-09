@@ -277,14 +277,10 @@ void EffectLayer::addMusicInfo(Map* map, Level* level) {
                                           NULL));
 }
 
-void EffectLayer::addDamageLabel(int damage, int offset) {
+void EffectLayer::addDamageLabel(int damage, int offset, DamageLabelType type) {
   // 被ダメージ表示しちゃう
   CCDirector* director = CCDirector::sharedDirector();
-  string filename = string("damage_number_hit.png");
-  if (damage < 0) {
-    damage *= -1;
-    filename = string("damage_number_cure.png");
-  }
+  string filename =this->getDamageLabelName(type);
   CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(damage).c_str(),
                                                    filename.c_str(), 50, 150, '0');
   damageLabel->setPosition(ccp(director->getWinSize().width / 2 + 50 * offset, 90 + 20 * offset));
@@ -299,10 +295,10 @@ void EffectLayer::addDamageLabel(int damage, int offset) {
                                             NULL));
 }
 
-void EffectLayer::addDamageLabelForEnemy(Enemy *enemy, int damage) {
+void EffectLayer::addDamageLabelOnEnemy(Enemy* enemy, int damage, DamageLabelType type) {
   // ダメージラベル
   CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(damage).c_str(),
-                                                   FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 150, '0');
+                                                   FileUtils::getFilePath(this->getDamageLabelName(type).c_str()).c_str(), 50, 150, '0');
   CCSize size = enemy->getContentSize();
   float scale = MAX(enemy->getCurrentScale(enemy->getRow()), 0.4);
   damageLabel->setAnchorPoint(ccp(0.5, 0.5));
@@ -314,6 +310,26 @@ void EffectLayer::addDamageLabelForEnemy(Enemy *enemy, int damage) {
                                             CCFadeOut::create(0.2),
                                             CCRemoveFromParentAction::create(),
                                             NULL));
+}
+
+string EffectLayer::getDamageLabelName(DamageLabelType type) {
+  switch (type) {
+    case DamageLabelTypeAttack:
+      return "damage_number.png";
+      break;
+    case DamageLabelTypeHit:
+      return "damage_number_hit.png";
+      break;
+    case DamageLabelTypeCure:
+      return "damage_number_cure.png";
+      break;
+    case DamageLabelTypeMPCure:
+      return "damage_number_MPcure.png";
+      break;
+    default:
+      break;
+  }
+  return "damage_number.png";
 }
 
 void EffectLayer::addWarning(float delay) {

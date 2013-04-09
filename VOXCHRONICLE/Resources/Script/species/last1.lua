@@ -49,12 +49,12 @@ Enemy = {
           if enemyManager:getEnemies():count() == 1 then 
             return "call_last" -- t2ファージ召喚
           end
-        elseif  r2 < 80 then -- HPが半分以下なら5%で回復
+        elseif  r2 < 90 then -- HPが半分以下なら5%で回復
           if self:getHP() < self:getMaxHP() * 0.5 then
             return "cure_skill" -- 回復
           end
         elseif r2 < 95 then -- 現在MPによって
-          if characterManager:getMP() > characterManager:getMaxMP() * 0.5 then
+          if characterManager:getMP() > characterManager:getMaxMP() * 0.8 then
             return "mp_absorb" -- MP吸収   
           end
         end
