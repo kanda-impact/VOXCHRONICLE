@@ -42,6 +42,7 @@ class EffectLayer :public CCLayer {
   CCSprite* _tensionEffectLayer;
   CCSprite* _characterEffectLayer;
   string getDamageLabelName(DamageLabelType type);
+  CCNode* _cutinExtention;
  public:
   static EffectLayer* sharedLayer();
   static void purgeEffectLayer();
@@ -61,6 +62,7 @@ class EffectLayer :public CCLayer {
   void addQTEAttack(Enemy* boss);
   void reloadEffects();
   void addWarning(float delay);
+  void setCutinExtension(CCNode* extension);
 };
 
 #endif /* defined(__VOXCHRONICLE__EffectLayer__) */

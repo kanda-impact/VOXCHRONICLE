@@ -54,6 +54,7 @@ EffectLayer::EffectLayer() {
   _tensionEffectLayer->retain();
   _characterEffectLayer = CCSprite::create("mode_vox.png");
   _characterEffectLayer->retain();
+  _cutinExtention = NULL;
   this->reloadEffects();
 }
 
@@ -79,6 +80,9 @@ void EffectLayer::reloadEffects() {
 EffectLayer::~EffectLayer() {
   _tensionEffectLayer->release();
   _characterEffectLayer->release();
+  if (_cutinExtention) {
+    _cutinExtention->release();
+  }
 }
 
 void EffectLayer::addEffectOnEnemy(Enemy *enemy, const char *prefix, int frameCount, CCRect rect) {
@@ -178,6 +182,9 @@ void EffectLayer::addCutin(Skill *skill, EffectLayerCutinType cutinType, float d
   }
   string cutinFile = "Image/" + string(skill->getIdentifier()) + "_icon.png";
   CCSprite* cutin = CCSprite::create(FileUtils::getFilePath(cutinFile.c_str()).c_str());
+  if (_cutinExtention) {
+    cutin->addChild(_cutinExtention);
+  }
   if (cutin != NULL) {
     cutin->setPosition(ccp(0, height));
     cutin->setScale(0.5);
@@ -201,6 +208,7 @@ void EffectLayer::addCutin(Skill *skill, EffectLayerCutinType cutinType, float d
     }
     this->addChild(cutin, EffectLayerZOrderCutin, EffectLayerTagCutin);
   }
+  this->setCutinExtension(NULL);
 }
 
 void EffectLayer::addQTEAttack(Enemy *boss) {
@@ -372,4 +380,14 @@ void EffectLayer::addWarning(float delay) {
                                      CCRemoveFromParentAction::create(), NULL));
   node->setPosition(ccp(director->getWinSize().width / 2.0, 180));
   this->addChild(node, EffectLayerZOrderWarning);
+}
+
+void EffectLayer::setCutinExtension(CCNode* extension) {
+  if (_cutinExtention) {
+    _cutinExtention->release();
+  }
+  _cutinExtention = extension;
+  if (extension) {
+    extension->retain();
+  }
 }
