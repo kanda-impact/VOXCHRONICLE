@@ -23,6 +23,7 @@ using namespace boost;
 const char* kLuaFileName = "staffroll";
 
 StaffRollScene::StaffRollScene(CCArray* maps) {
+  CCTextureCache::sharedTextureCache()->removeUnusedTextures();
   _music = new Music(3);
   _music->setTrackDidBackFunction(boost::bind(&StaffRollScene::trackDidBack, this, _1, _2, _3));
   _music->setTrackDidFinishFunction(boost::bind(&StaffRollScene::trackDidFinishPlaying, this, _1, _2, _3, _4));

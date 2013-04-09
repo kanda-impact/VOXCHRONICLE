@@ -184,7 +184,7 @@ void MainScene::teardown() {
   MessageManager::purgeMessageManager();
   SaveData::sharedData()->save();
   EffectLayer::purgeEffectLayer();
-  CCTextureCache::sharedTextureCache()->removeAllTextures();
+  CCTextureCache::sharedTextureCache()->removeUnusedTextures();
   Species::purgeSpeciesCache();
   CCLog("teardown");
 }
