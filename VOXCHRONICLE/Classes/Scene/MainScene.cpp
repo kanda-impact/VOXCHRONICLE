@@ -171,7 +171,7 @@ MainScene::~MainScene() {
   if (_pausedTargets != NULL) {
     _pausedTargets->release();
   }
-  
+  CCLog("main scene is released");
 }
 
 void MainScene::onExit() {
@@ -184,8 +184,9 @@ void MainScene::teardown() {
   MessageManager::purgeMessageManager();
   SaveData::sharedData()->save();
   EffectLayer::purgeEffectLayer();
-  MessageManager::purgeMessageManager();
-  CCTextureCache::sharedTextureCache()->removeUnusedTextures(); // いらないの消す
+  CCTextureCache::sharedTextureCache()->removeAllTextures();
+  Species::purgeSpeciesCache();
+  CCLog("teardown");
 }
 
 void MainScene::update(float dt) {

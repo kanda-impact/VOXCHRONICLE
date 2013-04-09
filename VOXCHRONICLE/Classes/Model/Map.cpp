@@ -84,6 +84,7 @@ Map::~Map() {
   }
   _lua->release();
   _skin->release();
+  CCLog("map %s is released", this->getIdentifier().c_str());
 }
 
 Level* Map::createLevel(int level, CharacterManager* manager) {

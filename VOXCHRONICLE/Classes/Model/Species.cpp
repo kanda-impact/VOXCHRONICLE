@@ -29,7 +29,13 @@ Species::Species(const char* identifier) {
   } else {
     _enemySize = CCSizeMake(0, 0);
   }
-  
+}
+
+void Species::purgeSpeciesCache() {
+  if (_speciesDict) {
+    _speciesDict->release();
+    _speciesDict = NULL;
+  }
 }
 
 Species* Species::getSpecies(const char *identifier) {
@@ -49,6 +55,7 @@ Species* Species::getSpecies(const char *identifier) {
 Species::~Species() {
   _lua->release();
   delete _disableSkills;
+  CCLog("species %s is released", this->getIdentifier().c_str());
 }
 
 string Species::getIdentifier() {

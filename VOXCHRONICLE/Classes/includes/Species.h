@@ -43,6 +43,7 @@ class Species :public CCObject {
   CCLuaValueArray* _disableSkills;
  public:
   static Species* getSpecies(const char* identifier);
+  static void purgeSpeciesCache();
   Species(const char* identifier);
   ~Species();
   string getIdentifier();

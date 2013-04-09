@@ -123,6 +123,7 @@ Enemy::~Enemy() {
   _lua->release();
   _species->release();
   _sheet->release();
+  CCLog("enemy %s is released", this->getIdentifier().c_str());
 }
 
 void Enemy::update(float dt) {

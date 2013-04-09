@@ -17,6 +17,7 @@ bool DictionaryScene::init() {
   if (!CCLayer::init()) {
     return false;
   }
+  CCTextureCache::sharedTextureCache()->removeAllTextures();
   Enemy::loadLifeColors();
   LuaObject* lua = LuaObject::create("enemy.lua");
   lua_State* L = lua->getLuaEngineWithLoad()->getLuaState();
@@ -88,6 +89,7 @@ DictionaryScene::~DictionaryScene() {
     _enemy->release();
   }
   _enemies->release();
+  CCTextureCache::sharedTextureCache()->removeAllTextures();
 }
 
 void DictionaryScene::onEnterTransitionDidFinish() {
