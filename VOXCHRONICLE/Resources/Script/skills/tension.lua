@@ -12,6 +12,20 @@ Skill = {
   loop = false,
   performSkill = function(self, target, characterManager, enemyManager)
     characterManager:addTension(1)
+    local tension = characterManager:getTension()
+    print(tension)
+    local layer = EffectLayer:sharedLayer()
+    local node = CCNode:create()
+    local tensionLabel = CCLabelAtlas:create(tension.."", "tension_number.png", 65, 97.5, string.byte("0"))
+    local cross = CCSprite:create("tension_cross.png")
+    cross:setAnchorPoint(ccp(0.5, 0.5))
+    tensionLabel:setAnchorPoint(ccp(0.5, 0.5))
+    cross:setPosition(ccp(0, 15))
+    node:setPosition(ccp(210,80))
+    node:addChild(tensionLabel)
+    tensionLabel:setPosition(ccp(80, 10))
+    node:addChild(cross)
+    layer:setCutinExtension(node)
   end,
   getPower = function(characterManager)
     return 0

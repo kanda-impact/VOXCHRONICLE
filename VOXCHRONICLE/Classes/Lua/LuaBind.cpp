@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Tue Apr  9 09:41:49 2013.
+** Generated automatically by tolua++-1.0.92 on Tue Apr  9 10:30:46 2013.
 */
 
 #ifndef __cplusplus
@@ -48,12 +48,12 @@ static void tolua_reg_types (lua_State* tolua_S)
  tolua_usertype(tolua_S,"EffectLayer");
  tolua_usertype(tolua_S,"CCArray");
  tolua_usertype(tolua_S,"Map");
- tolua_usertype(tolua_S,"PopupWindow");
+ tolua_usertype(tolua_S,"EnemyManager");
  tolua_usertype(tolua_S,"PlayLog");
  tolua_usertype(tolua_S,"CharacterManager");
  tolua_usertype(tolua_S,"CCSprite");
  tolua_usertype(tolua_S,"CCObject");
- tolua_usertype(tolua_S,"EnemyManager");
+ tolua_usertype(tolua_S,"PopupWindow");
  tolua_usertype(tolua_S,"CCRect");
 }
 
@@ -2113,6 +2113,39 @@ static int tolua_VOXCHRONICLE_EffectLayer_addDamageLabelOnEnemy00(lua_State* tol
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: setCutinExtension of class  EffectLayer */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_EffectLayer_setCutinExtension00
+static int tolua_VOXCHRONICLE_EffectLayer_setCutinExtension00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"EffectLayer",0,&tolua_err) ||
+     !tolua_isusertype(tolua_S,2,"CCNode",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  EffectLayer* self = (EffectLayer*)  tolua_tousertype(tolua_S,1,0);
+  CCNode* extension = ((CCNode*)  tolua_tousertype(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setCutinExtension'", NULL);
+#endif
+  {
+   self->setCutinExtension(extension);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'setCutinExtension'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* method: getPopupWindow of class  EffectLayer */
 #ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_EffectLayer_getPopupWindow00
 static int tolua_VOXCHRONICLE_EffectLayer_getPopupWindow00(lua_State* tolua_S)
@@ -3207,6 +3240,7 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
    tolua_function(tolua_S,"addEffectOnEnemy",tolua_VOXCHRONICLE_EffectLayer_addEffectOnEnemy00);
    tolua_function(tolua_S,"addDamageLabel",tolua_VOXCHRONICLE_EffectLayer_addDamageLabel00);
    tolua_function(tolua_S,"addDamageLabelOnEnemy",tolua_VOXCHRONICLE_EffectLayer_addDamageLabelOnEnemy00);
+   tolua_function(tolua_S,"setCutinExtension",tolua_VOXCHRONICLE_EffectLayer_setCutinExtension00);
    tolua_function(tolua_S,"getPopupWindow",tolua_VOXCHRONICLE_EffectLayer_getPopupWindow00);
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"PopupWindow","PopupWindow","CCSprite",NULL);

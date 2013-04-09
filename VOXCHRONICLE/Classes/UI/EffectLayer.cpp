@@ -182,9 +182,6 @@ void EffectLayer::addCutin(Skill *skill, EffectLayerCutinType cutinType, float d
   }
   string cutinFile = "Image/" + string(skill->getIdentifier()) + "_icon.png";
   CCSprite* cutin = CCSprite::create(FileUtils::getFilePath(cutinFile.c_str()).c_str());
-  if (_cutinExtention) {
-    cutin->addChild(_cutinExtention);
-  }
   if (cutin != NULL) {
     cutin->setPosition(ccp(0, height));
     cutin->setScale(0.5);
@@ -205,6 +202,9 @@ void EffectLayer::addCutin(Skill *skill, EffectLayerCutinType cutinType, float d
                                           NULL));
     } else if (cutinType == EffectLayerCutinTypeHold) {
       cutin->runAction(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)));
+    }
+    if (_cutinExtention) {
+      cutin->addChild(_cutinExtention);
     }
     this->addChild(cutin, EffectLayerZOrderCutin, EffectLayerTagCutin);
   }
