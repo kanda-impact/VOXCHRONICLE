@@ -250,7 +250,7 @@ void EffectLayer::addMusicInfo(Map* map, Level* level) {
   CCLabelTTF* nameShadowLabel = CCLabelTTF::create(mSet->getName().c_str(),
                                                    "Helvetica",
                                                    24,
-                                                   CCSizeMake(200, 30),
+                                                   CCSizeMake(300, 30),
                                                    kCCTextAlignmentRight);
   musicInfo->addChild(nameShadowLabel);
   nameShadowLabel->setColor(ccc3(33, 33, 33));
@@ -258,7 +258,7 @@ void EffectLayer::addMusicInfo(Map* map, Level* level) {
   CCLabelTTF* composerShadowLabel = CCLabelTTF::create(mSet->getComposer().c_str(),
                                                        "Helvetica",
                                                        16,
-                                                       CCSizeMake(200, 20),
+                                                       CCSizeMake(300, 20),
                                                        kCCTextAlignmentRight);
   composerShadowLabel->setColor(ccc3(33, 33, 33));
   composerShadowLabel->setPosition(ccp(3, -28));
@@ -266,21 +266,22 @@ void EffectLayer::addMusicInfo(Map* map, Level* level) {
   CCLabelTTF* nameLabel = CCLabelTTF::create(mSet->getName().c_str(),
                                              "Helvetica",
                                              24,
-                                             CCSizeMake(200, 30),
+                                             CCSizeMake(300, 30),
                                              kCCTextAlignmentRight);
   musicInfo->addChild(nameLabel);
   CCLabelTTF* composerLabel = CCLabelTTF::create(mSet->getComposer().c_str(),
                                                  "Helvetica",
                                                  16,
-                                                 CCSizeMake(200, 20),
+                                                 CCSizeMake(300, 20),
                                                  kCCTextAlignmentRight);
   composerLabel->setPosition(ccp(0, -25));
   musicInfo->addChild(composerLabel);
   this->addChild(musicInfo);
-  musicInfo->setPosition(ccp(600, 40));
-  musicInfo->runAction(CCSequence::create(CCMoveTo::create(0.5f, ccp(360, 40)),
-                                          CCDelayTime::create(2.0f),
-                                          CCMoveTo::create(0.5f, ccp(600, 40)),
+  musicInfo->setPosition(ccp(700, 40));
+  musicInfo->runAction(CCSequence::create(CCDelayTime::create(0.5f),
+                                          CCMoveTo::create(0.5f, ccp(310, 40)),
+                                          CCDelayTime::create(3.0f),
+                                          CCMoveTo::create(0.5f, ccp(700, 40)),
                                           CCRemoveFromParentAction::create(),
                                           NULL));
 }
