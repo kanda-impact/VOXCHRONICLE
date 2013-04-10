@@ -1,11 +1,10 @@
 Enemy = {
-  species = "knight",
+  species = "fortress",
   level = 30,
-  hp = 50,
+  hp = 60,
   getExp = function(default)
-      return 15
+      return 30
   end,
-  attack = 12,
   item = EnemyItemNone,
   type = SkillTypePhysical,
 }

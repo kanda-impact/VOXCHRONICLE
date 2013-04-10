@@ -1,9 +1,9 @@
 Enemy = {
-  species = "fortress",
-  level = 30,
-  hp = 72,
+  species = "planet",
+  level = 10,
+  hp = 36,
   getExp = function(default)
-      return 30
+      return 15
   end,
   item = EnemyItemNone,
   type = SkillTypeNormal,
