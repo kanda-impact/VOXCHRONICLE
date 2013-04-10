@@ -10,6 +10,7 @@ Skill = {
   maxRepeat = 4,
   turn = 1,
   loop = false,
+  canRepeat = true,
   performSkill = function(self, target, characterManager, enemyManager)
     characterManager:addTension(1)
     local tension = characterManager:getTension()

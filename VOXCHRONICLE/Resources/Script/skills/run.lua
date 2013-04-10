@@ -10,6 +10,7 @@ Skill = {
   maxRepeat = 2,
   turn = 1,
   loop = true,
+  canRepeat = true,
   performSkill = function(self, target, characterManager, enemyManager)
     enemyManager:nextTurn(characterManager, true)
   end,

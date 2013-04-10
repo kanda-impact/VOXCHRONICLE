@@ -10,6 +10,7 @@ Skill = {
   maxRepeat = 1,
   turn = 1,
   loop = true,
+  canRepeat = true,
   skillRange = SkillRangeFront,
   skillType = SkillTypePhysical,
   getPower = function(characterManager)
