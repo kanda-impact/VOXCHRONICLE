@@ -25,7 +25,7 @@ Enemy = {
     local row = self:getRow()
     local key = "directAttack"
     local chargeTurn = self.__IRegister__:getRegister(key, 0)
-    if self:getHP() < 50 then -- HPが50以下なら
+    if self:getHP() < 200 then -- HPが50以下なら
       return "boss_change" -- 第2形態変身
     end
     if chargeTurn > 0 then -- 溜め中の時
@@ -59,13 +59,13 @@ Enemy = {
             self:setCounter(1)
             return "call_last" -- t2ファージ召喚
           end
-        elseif  r2 < 90 then -- HPが半分以下なら5%で回復
-          if self:getHP() < self:getMaxHP() * 0.5 then
+        elseif  r2 < 83 then -- HPが7割以下なら10%で回復
+          if self:getHP() < self:getMaxHP() * 0.7 then
             self:setCounter(3)
             return "cure_skill" -- 回復
           end
-        elseif r2 < 95 then -- 現在MPによって
-          if characterManager:getMP() > characterManager:getMaxMP() * 0.8 then
+        elseif r2 < 90 then -- 現在MPによって
+          if characterManager:getMP() > characterManager:getMaxMP() * 0.5 then
             self:setCounter(3)
             return "mp_absorb" -- MP吸収   
           end

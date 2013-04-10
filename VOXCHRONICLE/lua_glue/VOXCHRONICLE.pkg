@@ -16,6 +16,7 @@ $#include "Map.h"
 $#include "SaveData.h"
 $#include "PlayLog.h"
 $#include "VQTime.h"
+$#include "SEManager.h"
 
 #define MAX_ROW
 
@@ -259,4 +260,10 @@ class PlayLog :public CCObject {
 class VQTime : public CCObject {
 	static VQTime* sharedTime();
 	int getCurrentHour();
+};
+
+class SEManager :public CCObject {
+	static SEManager* sharedManager();
+	void registerEffect(const char* filename);
+	void registerEffect(const char* filename, float delay);
 };

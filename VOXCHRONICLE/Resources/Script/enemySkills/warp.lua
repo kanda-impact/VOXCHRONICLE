@@ -5,7 +5,7 @@ EnemySkill = {
     math.random(100)
     local currentRow = user:getRow()
     local rand = math.random(100)
-    if rand < 30 and currentRow > 0 then
+    if rand < 20 and currentRow > 0 then
       user:setRow(0)
       user:setCol(1)
     else

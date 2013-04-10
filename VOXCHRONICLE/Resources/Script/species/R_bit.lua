@@ -25,7 +25,7 @@ Enemy = {
       return "revive"
     end
     local r = math.random(100)
-    if enemyManager:getEnemies():count() < 3 and r < 10 then -- 誰か死んでるかつ25%
+    if enemyManager:getEnemies():count() < 3 and r < 5 then -- 誰か死んでるかつ10%
       local leftBitDead = true
       for i=0, enemyManager:getEnemies():count() - 1 do
         local enemy = enemyManager:getEnemies():objectAtIndex(i)
@@ -37,6 +37,19 @@ Enemy = {
       if leftBitDead then
         return "revive" -- 蘇生呪文
       end
+    end
+    -- ベホマラー
+    local sumMaxHP = 0
+    local sumHP = 0
+    for i=0, enemyManager:getEnemies():count() - 1 do
+      local enemy = enemyManager:getEnemies():objectAtIndex(i)
+      if enemy then
+        sumMaxHP = sumMaxHP + enemy:getMaxHP()
+        sumHP = sumHP + enemy:getHP()
+      end
+    end
+    if sumHP / sumMaxHP < 0.6 and r < 5 then
+      return "cure_all_skill"
     end
     if r < 5 then
       return "beam"

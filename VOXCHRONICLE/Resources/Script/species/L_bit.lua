@@ -2,7 +2,7 @@ math.randomseed(os.time())
 Enemy = {
   name = "左ビット",
   imageName = "bit",
-  attack = 20,
+  attack = 15,
   baseExp = 1,
   hasFrame = true,
   counter = 0,
@@ -21,7 +21,7 @@ Enemy = {
   performSkill = function(self, characterManager, enemyManager)
     math.random(100)
     local r = math.random(100)
-    if r < 70 then
+    if r < 65 then
       return "beam"
     end
     return ""

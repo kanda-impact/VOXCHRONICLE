@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Thu Apr 11 02:01:27 2013.
+** Generated automatically by tolua++-1.0.92 on Thu Apr 11 03:16:40 2013.
 */
 
 #ifndef __cplusplus
@@ -31,6 +31,7 @@ TOLUA_API int  tolua_VOXCHRONICLE_open (lua_State* tolua_S);
 #include "SaveData.h"
 #include "PlayLog.h"
 #include "VQTime.h"
+#include "SEManager.h"
 
 /* function to register type */
 static void tolua_reg_types (lua_State* tolua_S)
@@ -52,6 +53,7 @@ static void tolua_reg_types (lua_State* tolua_S)
  tolua_usertype(tolua_S,"PlayLog");
  tolua_usertype(tolua_S,"CharacterManager");
  tolua_usertype(tolua_S,"CCSprite");
+ tolua_usertype(tolua_S,"SEManager");
  tolua_usertype(tolua_S,"CCObject");
  tolua_usertype(tolua_S,"PopupWindow");
  tolua_usertype(tolua_S,"CCRect");
@@ -3144,6 +3146,97 @@ static int tolua_VOXCHRONICLE_VQTime_getCurrentHour00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: sharedManager of class  SEManager */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_SEManager_sharedManager00
+static int tolua_VOXCHRONICLE_SEManager_sharedManager00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertable(tolua_S,1,"SEManager",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  {
+   SEManager* tolua_ret = (SEManager*)  SEManager::sharedManager();
+    tolua_pushusertype(tolua_S,(void*)tolua_ret,"SEManager");
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'sharedManager'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: registerEffect of class  SEManager */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_SEManager_registerEffect00
+static int tolua_VOXCHRONICLE_SEManager_registerEffect00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"SEManager",0,&tolua_err) ||
+     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  SEManager* self = (SEManager*)  tolua_tousertype(tolua_S,1,0);
+  const char* filename = ((const char*)  tolua_tostring(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'registerEffect'", NULL);
+#endif
+  {
+   self->registerEffect(filename);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'registerEffect'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: registerEffect of class  SEManager */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_SEManager_registerEffect01
+static int tolua_VOXCHRONICLE_SEManager_registerEffect01(lua_State* tolua_S)
+{
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"SEManager",0,&tolua_err) ||
+     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,3,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,4,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+ {
+  SEManager* self = (SEManager*)  tolua_tousertype(tolua_S,1,0);
+  const char* filename = ((const char*)  tolua_tostring(tolua_S,2,0));
+  float delay = ((float)  tolua_tonumber(tolua_S,3,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'registerEffect'", NULL);
+#endif
+  {
+   self->registerEffect(filename,delay);
+  }
+ }
+ return 0;
+tolua_lerror:
+ return tolua_VOXCHRONICLE_SEManager_registerEffect00(tolua_S);
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* Open function */
 TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
 {
@@ -3358,6 +3451,12 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
   tolua_beginmodule(tolua_S,"VQTime");
    tolua_function(tolua_S,"sharedTime",tolua_VOXCHRONICLE_VQTime_sharedTime00);
    tolua_function(tolua_S,"getCurrentHour",tolua_VOXCHRONICLE_VQTime_getCurrentHour00);
+  tolua_endmodule(tolua_S);
+  tolua_cclass(tolua_S,"SEManager","SEManager","CCObject",NULL);
+  tolua_beginmodule(tolua_S,"SEManager");
+   tolua_function(tolua_S,"sharedManager",tolua_VOXCHRONICLE_SEManager_sharedManager00);
+   tolua_function(tolua_S,"registerEffect",tolua_VOXCHRONICLE_SEManager_registerEffect00);
+   tolua_function(tolua_S,"registerEffect",tolua_VOXCHRONICLE_SEManager_registerEffect01);
   tolua_endmodule(tolua_S);
  tolua_endmodule(tolua_S);
  return 1;

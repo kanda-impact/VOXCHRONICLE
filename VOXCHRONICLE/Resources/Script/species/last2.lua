@@ -20,14 +20,14 @@ Enemy = {
   ]],
   habitat = "",
   animationFrames = 4,
-  performSkill = function(self)
+  performSkill = function(self, characterManager, enemyManager)
     math.random(100)
     local r = math.random(100)
     local tensionTurn = self:getRegister("tensionWave", 0)
     --local swordTurn = self:getRegister("", 0)
-    if tensionTurn > 0 or r < characterManager:getTension() * 20 then
+    if tensionTurn > 0 or r < characterManager:getTension() * 10 then
       return "reset_tension"
-    elseif self:getItem() == EnemyItemNone and r < 25 then
+    elseif self:getItem() == EnemyItemNone and r < 15 then
       return "equip"
     end
     return ""
