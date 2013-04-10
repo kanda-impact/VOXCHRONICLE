@@ -51,7 +51,7 @@ void ResultScene::buildUI() {
   CCLabelTTF* totalDamage = CCLabelTTF::create("受けたダメージ", "Helvetica", 18, CCSizeMake(150, 30), kCCTextAlignmentRight);
   totalDamage->setPosition(ccp(140, 90));
   CCLabelTTF* damage = CCLabelTTF::create(lexical_cast<string>(_log->getCount(PlayLogKeyHitDamage)).c_str(), "Helvetica", 18,
-                                          CCSizeMake(60, 30), kCCTextAlignmentLeft);
+                                          CCSizeMake(60, 30), kCCTextAlignmentRight);
   damage->setPosition(ccp(280, 90));
   this->addChild(totalDamage);
   this->addChild(damage);
