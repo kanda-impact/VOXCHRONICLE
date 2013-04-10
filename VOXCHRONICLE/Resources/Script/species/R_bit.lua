@@ -1,13 +1,11 @@
 math.randomseed(os.time())
 Enemy = {
-  name = "ラスボス最終形態",
-  imageName = "2last",
-  attack = 20,
+  name = "右ビット",
+  imageName = "bit",
+  attack = 100,
   baseExp = 1,
   hasFrame = true,
   counter = 0,
-  width = 256,
-  height = 170.75,
   getSpeed = function(enemy, characterManager)
     return 0
   end,
@@ -16,7 +14,7 @@ Enemy = {
   end,
   disableSkills = {"knockback"},
   description = [[
-  残念、倒したと思った？突然出てきてプレイヤーを絶望の淵に陥れるのを生き甲斐とする生命体
+  右側のビット。その正体は真の究極生命体＜＞コアだった、ということはなく、ただの中間管理職。いつかラスボスになれる日を夢見て職務を全うしている
   ]],
   habitat = "",
   animationFrames = 4,

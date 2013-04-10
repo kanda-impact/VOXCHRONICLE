@@ -319,6 +319,12 @@
 		0778C5DF170FEE310017D230 /* menu_cancel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0778C5DD170FEE310017D230 /* menu_cancel.mp3 */; };
 		0778C5E0170FEE310017D230 /* menu_decide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0778C5DE170FEE310017D230 /* menu_decide.mp3 */; };
 		0778C5E317100DD20017D230 /* VQTime.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0778C5E117100DD20017D230 /* VQTime.mm */; };
+		077931C61715C6D10023E46E /* R_bit.lua in Resources */ = {isa = PBXBuildFile; fileRef = 077931C31715C6D10023E46E /* R_bit.lua */; };
+		077931C71715C6D10023E46E /* L_bit.lua in Resources */ = {isa = PBXBuildFile; fileRef = 077931C41715C6D10023E46E /* L_bit.lua */; };
+		077931C81715C6D10023E46E /* last2.lua in Resources */ = {isa = PBXBuildFile; fileRef = 077931C51715C6D10023E46E /* last2.lua */; };
+		077931CA1715C7FE0023E46E /* boss_change.lua in Resources */ = {isa = PBXBuildFile; fileRef = 077931C91715C7FE0023E46E /* boss_change.lua */; };
+		077931CD1715C8420023E46E /* L_bit_boss.lua in Resources */ = {isa = PBXBuildFile; fileRef = 077931CB1715C8420023E46E /* L_bit_boss.lua */; };
+		077931CE1715C8420023E46E /* R_bit_boss.lua in Resources */ = {isa = PBXBuildFile; fileRef = 077931CC1715C8420023E46E /* R_bit_boss.lua */; };
 		077D0C231713B4E5006C3F17 /* 2a_lskshield0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 077D0C221713B4E5006C3F17 /* 2a_lskshield0.caf */; };
 		077D0C251713B51D006C3F17 /* 2a_voxwait1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 077D0C241713B51D006C3F17 /* 2a_voxwait1.caf */; };
 		077DCFC3169EE872007A7003 /* Image in Resources */ = {isa = PBXBuildFile; fileRef = 077DCFC1169EE872007A7003 /* Image */; };
@@ -1676,6 +1682,12 @@
 		0778C5DE170FEE310017D230 /* menu_decide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = menu_decide.mp3; path = Resources/SE/menu_decide.mp3; sourceTree = "<group>"; };
 		0778C5E117100DD20017D230 /* VQTime.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VQTime.mm; sourceTree = "<group>"; };
 		0778C5E217100DD20017D230 /* VQTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VQTime.h; sourceTree = "<group>"; };
+		077931C31715C6D10023E46E /* R_bit.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = R_bit.lua; path = species/R_bit.lua; sourceTree = "<group>"; };
+		077931C41715C6D10023E46E /* L_bit.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = L_bit.lua; path = species/L_bit.lua; sourceTree = "<group>"; };
+		077931C51715C6D10023E46E /* last2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = last2.lua; path = species/last2.lua; sourceTree = "<group>"; };
+		077931C91715C7FE0023E46E /* boss_change.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = boss_change.lua; path = enemySkills/boss_change.lua; sourceTree = "<group>"; };
+		077931CB1715C8420023E46E /* L_bit_boss.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = L_bit_boss.lua; sourceTree = "<group>"; };
+		077931CC1715C8420023E46E /* R_bit_boss.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = R_bit_boss.lua; sourceTree = "<group>"; };
 		077D0C221713B4E5006C3F17 /* 2a_lskshield0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2a_lskshield0.caf; path = Resources/Music/shinka/2a_lskshield0.caf; sourceTree = "<group>"; };
 		077D0C241713B51D006C3F17 /* 2a_voxwait1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2a_voxwait1.caf; path = Resources/Music/shinka/2a_voxwait1.caf; sourceTree = "<group>"; };
 		077DCFC1169EE872007A7003 /* Image */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Image; path = Resources/Image; sourceTree = "<group>"; };
@@ -3567,6 +3579,7 @@
 		07660CCC1690E8BD0092104F /* enemySkills */ = {
 			isa = PBXGroup;
 			children = (
+				077931C91715C7FE0023E46E /* boss_change.lua */,
 				07F20F801711BC7F0099ACD8 /* cure_skill.lua */,
 				07F20F811711BC7F0099ACD8 /* revive.lua */,
 				07F20F821711BC7F0099ACD8 /* warp.lua */,
@@ -3703,6 +3716,9 @@
 			children = (
 				07F20F7C1711BB420099ACD8 /* last1.lua */,
 				07F20F7D1711BB420099ACD8 /* last2.lua */,
+				077931C31715C6D10023E46E /* R_bit.lua */,
+				077931C41715C6D10023E46E /* L_bit.lua */,
+				077931C51715C6D10023E46E /* last2.lua */,
 				B017551717079F1D008053BB /* Ts_slime30.lua */,
 				B0821D421707AEA6009417B5 /* Ts_slime12.lua */,
 				B017551D1707A06D008053BB /* Ts_leaf.lua */,
@@ -5023,6 +5039,8 @@
 		07C6093A161674650084708C /* enemies */ = {
 			isa = PBXGroup;
 			children = (
+				077931CB1715C8420023E46E /* L_bit_boss.lua */,
+				077931CC1715C8420023E46E /* R_bit_boss.lua */,
 				07F20F861711C71E0099ACD8 /* last1_boss.lua */,
 				07F20F871711C71E0099ACD8 /* last2_boss.lua */,
 				B01755091706E23A008053BB /* dragon2B0.lua */,
@@ -6648,6 +6666,12 @@
 				07F210141712E5B20099ACD8 /* 2a_drum4.caf in Resources */,
 				077D0C231713B4E5006C3F17 /* 2a_lskshield0.caf in Resources */,
 				077D0C251713B51D006C3F17 /* 2a_voxwait1.caf in Resources */,
+				077931C61715C6D10023E46E /* R_bit.lua in Resources */,
+				077931C71715C6D10023E46E /* L_bit.lua in Resources */,
+				077931C81715C6D10023E46E /* last2.lua in Resources */,
+				077931CA1715C7FE0023E46E /* boss_change.lua in Resources */,
+				077931CD1715C8420023E46E /* L_bit_boss.lua in Resources */,
+				077931CE1715C8420023E46E /* R_bit_boss.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

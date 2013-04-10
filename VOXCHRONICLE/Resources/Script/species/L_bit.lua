@@ -1,13 +1,11 @@
 math.randomseed(os.time())
 Enemy = {
-  name = "ラスボス最終形態",
-  imageName = "2last",
-  attack = 20,
+  name = "左ビット",
+  imageName = "bit",
+  attack = 50,
   baseExp = 1,
   hasFrame = true,
   counter = 0,
-  width = 256,
-  height = 170.75,
   getSpeed = function(enemy, characterManager)
     return 0
   end,
@@ -16,7 +14,7 @@ Enemy = {
   end,
   disableSkills = {"knockback"},
   description = [[
-  残念、倒したと思った？突然出てきてプレイヤーを絶望の淵に陥れるのを生き甲斐とする生命体
+  左側のビット。すぐに倒されてしまうが右ビットの蘇生呪文で不死鳥の如く蘇る。
   ]],
   habitat = "",
   animationFrames = 4,

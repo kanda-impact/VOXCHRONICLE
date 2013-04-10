@@ -13,7 +13,8 @@ Map = {
   end,
   onLoad = function(self, characterManager, enemyManager)
     enemyManager:loadEnemyTextureAsync("flast.png")
-    --enemyManager:loadEnemyTextureAsync("last2.png")
+    enemyManager:loadEnemyTextureAsync("2last.png")
+    enemyManager:loadEnemyTextureAsync("bit.png")
   end,
   onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()

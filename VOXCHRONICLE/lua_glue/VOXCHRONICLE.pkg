@@ -191,6 +191,7 @@ class EnemyManager : public CCLayer {
 	CCArray* getEnemies();
 	void setBoss(Enemy* enemy);
 	void loadEnemyTextureAsync(const char* enemyImageName);
+	void removeEnemy(Enemy* enemy);
 	void removeAllNormalEnemies();
 	void removeAllEnemies();
 };

@@ -9,7 +9,7 @@ EnemySkill = {
       user:setRow(0)
       user:setCol(1)
     else
-      local row = math.random(MAX_ROW - 1)
+      local row = math.random(MAX_ROW - 4)
       local col = math.random(3) - 1
       user:setRow(row)
       user:setCol(col)
