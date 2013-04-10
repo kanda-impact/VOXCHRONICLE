@@ -251,7 +251,7 @@ Map = {
 ]])
     elseif level == 4 then
       local popup = layer:addPopupWindow(2)
-      popup:setText(0, "新しい（コマンド）！", 
+      popup:setText(0, "新しい行動（ワザ）！", 
 [[
 レベルアップすると新しい行動（ワザ）をおぼえる
 ことがあるよ！やったね！
