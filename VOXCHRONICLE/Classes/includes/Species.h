@@ -39,9 +39,11 @@ class Species :public CCObject {
   int _baseExp;
   bool _hasFrame;
   LuaObject* _lua;
+  CCSize _enemySize;
   CCLuaValueArray* _disableSkills;
  public:
   static Species* getSpecies(const char* identifier);
+  static void purgeSpeciesCache();
   Species(const char* identifier);
   ~Species();
   string getIdentifier();
@@ -57,6 +59,7 @@ class Species :public CCObject {
   string choiceEnemySkill(CCObject* enemy, CCObject* characterManager, CCObject* enemyManager);
   LuaObject* getLuaObject();
   bool isEnableSkill(Skill* skill);
+  CCSize getEnemySize();
 };
 
 #endif /* defined(__VOXCHRONICLE__Species__) */

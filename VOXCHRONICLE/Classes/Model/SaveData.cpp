@@ -100,7 +100,7 @@ void SaveData::addCountFor(SaveDataCountKey keynum, int value) {
   string key = countDataPrefix + boost::lexical_cast<string>(keynum);
   int current = this->getCountFor(keynum);
   _countDictionary->setObject(CCInteger::create(current + value), key);
-  this->checkUnlockAchievement(keynum, value);
+  this->checkUnlockAchievement(keynum, current + value);
 }
 
 int SaveData::getCountFor(SaveDataCountKey keynum) {
@@ -127,14 +127,12 @@ bool SaveData::isUnlockAchievement(const char* identifier) {
 void SaveData::unlockAchievement(const char *identifier) {
   CCAchievementManager* manager = CCAchievementManager::sharedManager();
   if (!this->isUnlockAchievement(identifier)) {
-    CCLog("unlock achievement %s!", identifier);
     manager->reportAchievement(identifier, 100, true, bind(&SaveData::onFinishAchievementReporting, this, _1, _2));
   }
 
 }
 
 void SaveData::checkUnlockAchievement(SaveDataCountKey key, int value) {
-  // パフォーマンス的にも微妙なのでハードコーディング安定
   for (list<AchievementInfo>::iterator it = _achievementInfos->begin(); it != _achievementInfos->end(); ++it) {
     if ((*it).key == key) {
       if ((*it).count < value) {

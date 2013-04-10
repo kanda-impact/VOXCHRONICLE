@@ -6,48 +6,61 @@ Enemy = {
   baseExp = 1,
   hasFrame = true,
   counter = 0,
+  width = 256,
+  height = 170.75,
   getSpeed = function(enemy, characterManager)
-    local row = enemy:getRow()
-    if row < 4 then -- 4列目より前に行ったとき、速度を0にします
-      return 0
-    end
-    return 1
+    return 0
   end,
   getFrequency = function(enemy, characterManager)
     return 1
   end,
   disableSkills = {"knockback"},
   description = [[
-  きっとぜんまい仕掛け。たぶんぜんまい仕掛け。ちょっと錆びついてるがまだまだ現役。
+  ラスボスだよー
   ]],
   habitat = "",
   animationFrames = 4,
-  performSkill = function(self)
-    local isCharge = self:getRegister("swordTurn", 0) > 0 -- チャージ中かどうか
-    self:setCounter(-1)
-    if self:getRow() < 4 then -- 最前列にいるとき
-      if isCharge then -- チャージ中だったら常にswordを返してやる
-        self:setCounter(2)
-        return "sword"
-      else -- それ以外は乱数によって行動を振り分ける
-        math.random(100)
-        rand = math.random(100)
-        if rand <= 70 then -- 70%で鉄球投げ
-          self:setCounter(1)
-          return "ironball"
-        elseif rand <= 80 then -- 残り10%で溜め攻撃
-          self:setCounter(2)
-          return "sword"
+  performSkill = function(self, characterManager, enemyManager)
+    math.random(100)
+    local row = self:getRow()
+    local key = "directAttack"
+    local chargeTurn = self.__IRegister__:getRegister(key, 0)
+    if chargeTurn > 0 then -- 溜め中の時
+      self.__IRegister__:setBool("isLastAttack", true) -- 前のターン攻撃したフラグ
+      return "charge_attack_last" -- 直接攻撃する
+    elseif self.__IRegister__:getBool("isLastAttack") then -- 前のターンが攻撃してたとき
+      self.__IRegister__:setBool("isLastAttack", false) -- 前のターン攻撃したフラグを下ろして
+      return "warp" -- 確実にワープする
+    elseif row == 0 then -- 最前列にいるとき
+      return "charge_attack_last" -- 確実に溜め攻撃
+    else -- それ以外の時
+      local rand = math.random(100) -- 乱数出して
+      if rand < 40 then -- 4割はワープ
+        return "warp"
+      elseif rand < 100 then -- 6割はその他の攻撃
+        local r2 = math.random(100)
+        if r2 < 35 then
+          return "beam"
+        elseif r2 < 60 then
+          if self:getItem() == EnemyItemNone then
+            return "equip"
+          end
+        elseif r2 < 70 then -- 敵が1体だけなら10%で
+          if enemyManager:getEnemies():count() == 1 then 
+            return "call_last" -- t2ファージ召喚
+          end
+        elseif  r2 < 90 then -- HPが半分以下なら5%で回復
+          if self:getHP() < self:getMaxHP() * 0.5 then
+            return "cure_skill" -- 回復
+          end
+        elseif r2 < 95 then -- 現在MPによって
+          if characterManager:getMP() > characterManager:getMaxMP() * 0.8 then
+            return "mp_absorb" -- MP吸収   
+          end
         end
       end
-    else -- 最前列にいなかったら
-      -- チャージをリセットしてやる（ノックバックなどで飛ばされたとき）
-      if isCharge then
-        self:setRegister("swordTurn", 0)
-        self:setDefaultAnimationClip()
-      end
     end
-    return ""
+    return "laugh" -- とにかく笑う
   end
 }
 

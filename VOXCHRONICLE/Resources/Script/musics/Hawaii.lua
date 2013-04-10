@@ -1,5 +1,5 @@
 Music = {
-  name = "遺跡ボス",
+  name = "遺跡ボス　魔砦　リスアク・バー",
   composer = "ハワイ長万部",
   prefix = "Hawa-3A",
   type = MusicSetTypeBoss,

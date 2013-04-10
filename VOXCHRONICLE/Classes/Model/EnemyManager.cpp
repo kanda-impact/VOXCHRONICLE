@@ -225,8 +225,6 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CCArray* targets, Charact
       }
     }
     characterManager->addMP(-1 * skill->getMP());
-  } else {
-    SaveData::sharedData()->addCountFor(SaveDataCountKeyMPMiss); // MP切れ
   }
   
   info->setObject(targets, "enemies");

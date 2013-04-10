@@ -94,13 +94,7 @@ bool MainScene::init(Map* map) {
   // EnemyManager
   _enemyManager = EnemyManager::create();
   _enemyManager->retain();
-  
-  _focus = CCSprite::create(FileUtils::getFilePath("Image/focus.png").c_str());
-  _focus->retain();
-  _focus->setVisible(false);
-  _focus->setAnchorPoint(ccp(0.5f, 0.0f));
-  this->addChild(_focus, MainSceneZOrderFocus);
-  
+
   _characterManager = new CharacterManager();
   CCSize size = director->getWinSize();
   _musicManager = new MusicManager(music, NULL, _enemyManager, _characterManager);
@@ -140,6 +134,13 @@ bool MainScene::init(Map* map) {
   }
   this->addChild(_effectLayer, MainSceneZOrderEffect);
   
+  string focusName = string("Image/") + _skin->getPrefix() + string("_focus.png");
+  _focus = CCSprite::create(FileUtils::getFilePath(focusName.c_str()).c_str());
+  _focus->retain();
+  _focus->setVisible(false);
+  _focus->setAnchorPoint(ccp(0.5f, 0.0f));
+  this->addChild(_focus, MainSceneZOrderFocus);
+  
   _effectLayer->setCharacterEffect(_characterManager->getCurrentCharacter()); // キャラクター登録
   
   this->setTouchEnabled(true);
@@ -170,7 +171,7 @@ MainScene::~MainScene() {
   if (_pausedTargets != NULL) {
     _pausedTargets->release();
   }
-  
+  CCLog("main scene is released");
 }
 
 void MainScene::onExit() {
@@ -183,7 +184,9 @@ void MainScene::teardown() {
   MessageManager::purgeMessageManager();
   SaveData::sharedData()->save();
   EffectLayer::purgeEffectLayer();
-  MessageManager::purgeMessageManager();
+  CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+  Species::purgeSpeciesCache();
+  CCLog("teardown");
 }
 
 void MainScene::update(float dt) {
@@ -420,7 +423,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         }
         
         if (damageType != DamageTypeNoDamage) { // 威力のない技は表示しない
-          _effectLayer->addDamageLabelForEnemy(enemy, damage);
+          _effectLayer->addDamageLabelOnEnemy(enemy, damage, DamageLabelTypeAttack);
         }
         
         // 敵毎に効果音を鳴らす
@@ -479,9 +482,6 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         dict->setObject(CCString::create(_characterManager->getCurrentCharacter()->getName()), "chara");
         MessageManager::sharedManager()->pushMessage(str->getCString(), dict);
       }
-      if (_currentSkillInfo.type == SkillPerformTypeFailure) {
-        MessageManager::sharedManager()->pushRandomMessageFromLua("empty"); // MP切れメッセージ
-      }
       
       _effectLayer->addSkillEffect(skill, enemies);
       if (!_characterManager->getShield()) {
@@ -490,6 +490,11 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _effectLayer->addCutin(skill, isHit ? (EffectLayerCutinType)skill->getCutinType() : EffectLayerCutinTypeFailure, _musicManager->getMusic()->getCurrentMainTrack()->getDuration());
       
       getExp = ((CCInteger*)info->objectForKey("exp"))->getValue();
+    }
+    
+    if (_currentSkillInfo.type == SkillPerformTypeFailure) { // MP切れで失敗したとき
+      MessageManager::sharedManager()->pushRandomMessageFromLua("empty"); // MP切れメッセージ
+      SaveData::sharedData()->addCountFor(SaveDataCountKeyMPMiss); // MP切れ
     }
     
     // レベルアップ判定
@@ -638,7 +643,7 @@ void MainScene::updateFocus() {
   if (nearest) {
     _focus->setVisible(true);
     _focus->setPosition(ccpAdd(nearest->getPosition(), ccp(0, nearest->getContentSize().height * nearest->getCurrentScale(nearest->getRow()) * 0.8)));
-    _focus->setScale(nearest->getCurrentScale(nearest->getRow()));
+    _focus->setScale(MAX(nearest->getCurrentScale(nearest->getRow()), 0.4));
   } else {
     _focus->setVisible(false);
   }
@@ -651,12 +656,13 @@ void MainScene::addDamageEffect() {
   int sumDamage = 0;
   int i = 0;
   std::queue<DamageInfo>* queue = _characterManager->getDamageInfoQueue();
+  int queueCount = queue->size();
   while (!queue->empty()) { // キューが空になるまで取り出す
     DamageInfo info = queue->front();
     queue->pop();
     int damage = info.damage;
     DamageType damageType = info.damageType;
-    _effectLayer->addDamageLabel(damage, i);
+    _effectLayer->addDamageLabel(damage, i, DamageLabelTypeHit);
     sumDamage += damage;
     ++i;
     if (damageType == DamageTypeDeath) {
@@ -669,7 +675,13 @@ void MainScene::addDamageEffect() {
   
   if (sumDamage > 0) {
     // 画面点滅させて音を鳴らす
-    SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/damage.mp3").c_str());
+    if (sumDamage < 5) {
+      SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/damage0.mp3").c_str());
+    } else if (sumDamage < 10) {
+      SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/damage1.mp3").c_str());
+    } else {
+      SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/damage2.mp3").c_str());
+    }
     BlinkLayer* bLayer = new BlinkLayer(ccc4(255, 0, 0, 255), 0.05f);
     bLayer->autorelease();
     this->addChild(bLayer, MainSceneZOrderUI);
@@ -684,11 +696,14 @@ void MainScene::addDamageEffect() {
     CCMoveTo* reset = CCMoveTo::create(0, ccp(0, 0));
     actions->addObject(reset);
     this->runAction(CCSequence::create(actions));
+  } else if (sumDamage == 0 && queueCount > 0 && !isShield) { // 0のとき、かつqueueが空だったとき
+    SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/guard.mp3").c_str());
   }
   if (isDead) { // 死んだとき
     this->onGameOver();
   } else if (isShield) { // 盾装備してたとき
     SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/guard.mp3").c_str());
+    _characterManager->setShield(false); // 盾問答無用で外します
   }
 }
 

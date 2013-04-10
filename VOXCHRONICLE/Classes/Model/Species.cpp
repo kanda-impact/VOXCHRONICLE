@@ -22,6 +22,20 @@ Species::Species(const char* identifier) {
   _animationFrames = _lua->getInt("animationFrames");
   _hasFrame = _lua->getBoolean("hasFrame");
   _disableSkills = _lua->getArray("disableSkills");
+  int width = _lua->getNumber("width");
+  int height = _lua->getNumber("height");
+  if (width > 0 && height > 0) {
+    _enemySize = CCSizeMake(width, height);
+  } else {
+    _enemySize = CCSizeMake(0, 0);
+  }
+}
+
+void Species::purgeSpeciesCache() {
+  if (_speciesDict) {
+    _speciesDict->release();
+    _speciesDict = NULL;
+  }
 }
 
 Species* Species::getSpecies(const char *identifier) {
@@ -41,6 +55,7 @@ Species* Species::getSpecies(const char *identifier) {
 Species::~Species() {
   _lua->release();
   delete _disableSkills;
+  CCLog("species %s is released", this->getIdentifier().c_str());
 }
 
 string Species::getIdentifier() {
@@ -127,4 +142,8 @@ string Species::getDescription() {
 
 string Species::getHabitat() {
   return _lua->getString("habitat");
+}
+
+CCSize Species::getEnemySize() {
+  return _enemySize;
 }

@@ -1,6 +1,6 @@
 Map = {
-  name = "メイガラの森",
-  wayMusic = "volca",
+  name = "森林",
+  wayMusic = "shinka",
   bossMusic = "",
   backgroundImage = "forest_background.png",
   thumbnailImage = "forest_thumbnail.png",

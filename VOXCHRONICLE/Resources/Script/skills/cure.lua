@@ -10,6 +10,7 @@ Skill = {
   se = true,
   turn = 1,
   loop = true,
+  canRepeat = true,
   performSkill = function(self, target, characterManager, enemyManager)
     local tension = characterManager:getTension() -- テンションをとって
     local power = self:getPower(characterManager) -- パワーとって
@@ -17,7 +18,7 @@ Skill = {
     local max = characterManager:getMaxHP() -- 最大値出して
     local cure = math.ceil(max * rate)
     characterManager:addHP(cure) -- 回復させる
-    EffectLayer:sharedLayer():addDamageLabel(-cure, 0)
+    EffectLayer:sharedLayer():addDamageLabel(-cure, 0, DamageLabelTypeCure)
   end,
   getPower = function(characterManager)
     local tension = characterManager:getTension()

@@ -1,5 +1,5 @@
 Music = {
-  name = "2C",
+  name = "電脳世界ファミル",
   composer = "Yudaidhun",
   prefix = "dhun",
   type = MusicSetTypeWay,

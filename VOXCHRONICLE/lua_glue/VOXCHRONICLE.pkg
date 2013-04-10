@@ -19,7 +19,7 @@ $#include "VQTime.h"
 
 #define MAX_ROW
 
-enum {
+enum SkillRange {
 	SkillRangeSingle,
 	SkillRangeAll,
 	SkillRangeHorizontal,
@@ -29,30 +29,30 @@ enum {
 	SkillRangeFront
 };
 
-enum {
+enum SkillType {
 	SkillTypeNone,
 	SkillTypeNormal,
 	SkillTypePhysical,
 	SkillTypeMagical
 };
 
-enum {
+enum CharacterType {
 	CharacterTypeVox,
 	CharacterTypeLaska
 };
 
-enum {
+enum EnemyItem {
 	EnemyItemNone,
 	EnemyItemShield,
 	EnemyItemBarrier
 };
 
-enum {
+enum MusicSetType {
 	MusicSetTypeWay,
 	MusicSetTypeBoss
 };
 
-enum {
+enum StatusLayerPartsTag {
 	MaxHPLabelTag,
 	CurrentHPLabelTag,
 	LevelLabelTag,
@@ -61,20 +61,20 @@ enum {
 	MPMarkerTag
 };
 
-enum {
+enum ControllerFrameType {
 	ControllerFrameTypeNone,
 	ControllerFrameTypeCommon,
 	ControllerFrameTypeFull
 };
 
-enum {
+enum EffectLayerCutinType {
 	EffectLayerCutinTypeNormal,
 	EffectLayerCutinTypeFailure,
 	EffectLayerCutinTypeHold,
 	EffectLayerCutinTypeCastOff
 };
 
-enum {
+enum PlayerLogKey {
 	PlayLogKeyMaxDefeat,
 	PlayLogKeyVOXAttackCount,
 	PlayLogKeyLSKAttackCount,
@@ -89,7 +89,7 @@ enum {
 
 };
 
-enum {
+enum DamageType {
 	DamageTypeNone,
 	DamageTypeHit,
 	DamageTypeNoDamage,
@@ -107,7 +107,7 @@ enum {
 	DamageTypeAbsorption
 };
 
-enum {
+enum SaveDataCountKey {
 	SaveDataCountKeyDead,
 	SaveDataCountKeyTurn,
 	SaveDataCountKeyDefeat,
@@ -117,6 +117,13 @@ enum {
 	SaveDataCountKeyAttackDamage,
 	SaveDataCountKeyDictionaryCount,
 	SaveDataCountKeyNum
+};
+
+enum DamageLabelType {
+	DamageLabelTypeAttack,
+	DamageLabelTypeHit,
+	DamageLabelTypeCure,
+	DamageLabelTypeMPCure
 };
 
 class Skill :public CCObject {
@@ -131,7 +138,9 @@ class Enemy : public CCSprite, public IRegister {
 	int getCol();
 	int getHP();
 	int getAttack();
+	int getMaxHP();
 	string getName();
+	EnemyItem getItem();
 	void moveRow(float row);
 	void setRow(float row);
 	void setCol(int col);
@@ -139,6 +148,8 @@ class Enemy : public CCSprite, public IRegister {
 	bool setDefaultAnimationClip();
 	void setCounter(int counter);
 	void setHP(int hp);
+	void setItem(EnemyItem item);
+	void setSkillType(SkillType type);
 	int getRegister(const char* key, int defaultValue);
 	void setRegister(const char* key, int value);
 	bool hasRegister(const char* key);
@@ -146,6 +157,7 @@ class Enemy : public CCSprite, public IRegister {
 
 class Character : public CCObject {
 	string getName();
+	CharacterType getCharacterType();
 };
 
 class CharacterManager : public CCObject {
@@ -193,7 +205,9 @@ class EffectLayer : public CCLayer {
 	static EffectLayer* sharedLayer();
 	PopupWindow* addPopupWindow(int pages);
 	void addEffectOnEnemy(Enemy* enemy, const char* prefix, int frameCount, CCRect rect);
-	void addDamageLabel(int damage, int offset);
+	void addDamageLabel(int damage, int offset, DamageLabelType type);
+	void addDamageLabelOnEnemy(Enemy* target, int damage, DamageLabelType type);
+	void setCutinExtension(CCNode* extension);
 	PopupWindow* getPopupWindow();
 };
 

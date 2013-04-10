@@ -190,6 +190,7 @@ string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& perform
       } else {
         _characterManager->setRepeatCount(min(_characterManager->getRepeatCount(), skill->getMaxRepeat() - 1));
       }
+      Skill* lastSkill = _characterManager->getLastSkill();
       _characterManager->setLastSkill(skill);
       _characterManager->setCurrentSkill(NULL);
       _characterManager->setWaitTurn(0);
@@ -210,6 +211,9 @@ string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& perform
         }
       }
       if (skill->getMP() > _characterManager->getMP()) { // MP足りてないとき、失敗に
+        performeType = SkillPerformTypeFailure;
+        isMiss = true;
+      } else if (lastSkill && !skill->canRepeat() && lastSkill->getIdentifier() == skill->getIdentifier()) {
         performeType = SkillPerformTypeFailure;
         isMiss = true;
       }
@@ -346,7 +350,11 @@ void MusicManager::preloadMusic(const char *trackName) {
 
 void MusicManager::preloadMusic(const char *trackName, int maxCount) {
   for (int i = 0; i < maxCount; ++i) {
-    string file = buildTrackName(trackName, NULL, i);
-    BufferCache::sharedCache()->addBuffer(this->getTrackFileName(file.c_str()).c_str());
+    CCObject* obj = NULL;
+    CCARRAY_FOREACH(_characterManager->getCharacters(), obj) {
+      Character* chara = (Character*)obj;
+      string file = buildTrackName(trackName, NULL, i, chara);
+      BufferCache::sharedCache()->addBuffer(this->getTrackFileName(file.c_str()).c_str());
+    }
   }
 }

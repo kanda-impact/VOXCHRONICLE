@@ -10,6 +10,7 @@ Skill = {
   maxRepeat = 1,
   turn = 1,
   loop = true,
+  canRepeat = true,
   performSkill = function(self, target, characterManager, enemyManager)
     row = target:getRow()
     local newRow = row + 4

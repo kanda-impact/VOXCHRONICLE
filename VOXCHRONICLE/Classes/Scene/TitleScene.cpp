@@ -83,7 +83,7 @@ bool TitleScene::init() {
   seMenu->setPosition(ccp(280, 20));
   //this->addChild(seMenu);
   
-  CCLabelTTF* credit = CCLabelTTF::create("2009-2013 Kawaz all right reserved.", "Helvetica", 12);
+  CCLabelTTF* credit = CCLabelTTF::create("2009-2013 Kawaz all rights reserved.", "Helvetica", 12);
   credit->setColor(ccc3(220, 220, 220));
   credit->setPosition(ccp(director->getWinSize().width / 2.0, 25));
   this->addChild(credit);

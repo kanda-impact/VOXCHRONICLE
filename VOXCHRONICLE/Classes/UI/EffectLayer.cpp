@@ -54,6 +54,7 @@ EffectLayer::EffectLayer() {
   _tensionEffectLayer->retain();
   _characterEffectLayer = CCSprite::create("mode_vox.png");
   _characterEffectLayer->retain();
+  _cutinExtention = NULL;
   this->reloadEffects();
 }
 
@@ -79,6 +80,9 @@ void EffectLayer::reloadEffects() {
 EffectLayer::~EffectLayer() {
   _tensionEffectLayer->release();
   _characterEffectLayer->release();
+  if (_cutinExtention) {
+    _cutinExtention->release();
+  }
 }
 
 void EffectLayer::addEffectOnEnemy(Enemy *enemy, const char *prefix, int frameCount, CCRect rect) {
@@ -199,8 +203,12 @@ void EffectLayer::addCutin(Skill *skill, EffectLayerCutinType cutinType, float d
     } else if (cutinType == EffectLayerCutinTypeHold) {
       cutin->runAction(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)));
     }
+    if (_cutinExtention) {
+      cutin->addChild(_cutinExtention);
+    }
     this->addChild(cutin, EffectLayerZOrderCutin, EffectLayerTagCutin);
   }
+  this->setCutinExtension(NULL);
 }
 
 void EffectLayer::addQTEAttack(Enemy *boss) {
@@ -239,10 +247,10 @@ void EffectLayer::addMusicInfo(Map* map, Level* level) {
   // 作曲者情報と曲名を表示する
   MusicSet* mSet = map->getCurrentMusic(level);
   CCNode* musicInfo = CCNode::create();
-  CCLabelTTF* nameShadowLabel = CCLabelTTF::create(map->getName().c_str(),
+  CCLabelTTF* nameShadowLabel = CCLabelTTF::create(mSet->getName().c_str(),
                                                    "Helvetica",
                                                    24,
-                                                   CCSizeMake(200, 30),
+                                                   CCSizeMake(300, 30),
                                                    kCCTextAlignmentRight);
   musicInfo->addChild(nameShadowLabel);
   nameShadowLabel->setColor(ccc3(33, 33, 33));
@@ -250,41 +258,38 @@ void EffectLayer::addMusicInfo(Map* map, Level* level) {
   CCLabelTTF* composerShadowLabel = CCLabelTTF::create(mSet->getComposer().c_str(),
                                                        "Helvetica",
                                                        16,
-                                                       CCSizeMake(200, 20),
+                                                       CCSizeMake(300, 20),
                                                        kCCTextAlignmentRight);
   composerShadowLabel->setColor(ccc3(33, 33, 33));
   composerShadowLabel->setPosition(ccp(3, -28));
   musicInfo->addChild(composerShadowLabel);
-  CCLabelTTF* nameLabel = CCLabelTTF::create(map->getName().c_str(),
+  CCLabelTTF* nameLabel = CCLabelTTF::create(mSet->getName().c_str(),
                                              "Helvetica",
                                              24,
-                                             CCSizeMake(200, 30),
+                                             CCSizeMake(300, 30),
                                              kCCTextAlignmentRight);
   musicInfo->addChild(nameLabel);
   CCLabelTTF* composerLabel = CCLabelTTF::create(mSet->getComposer().c_str(),
                                                  "Helvetica",
                                                  16,
-                                                 CCSizeMake(200, 20),
+                                                 CCSizeMake(300, 20),
                                                  kCCTextAlignmentRight);
   composerLabel->setPosition(ccp(0, -25));
   musicInfo->addChild(composerLabel);
   this->addChild(musicInfo);
-  musicInfo->setPosition(ccp(600, 40));
-  musicInfo->runAction(CCSequence::create(CCMoveTo::create(0.5f, ccp(360, 40)),
-                                          CCDelayTime::create(2.0f),
-                                          CCMoveTo::create(0.5f, ccp(600, 40)),
+  musicInfo->setPosition(ccp(700, 40));
+  musicInfo->runAction(CCSequence::create(CCDelayTime::create(0.5f),
+                                          CCMoveTo::create(0.5f, ccp(310, 40)),
+                                          CCDelayTime::create(3.0f),
+                                          CCMoveTo::create(0.5f, ccp(700, 40)),
                                           CCRemoveFromParentAction::create(),
                                           NULL));
 }
 
-void EffectLayer::addDamageLabel(int damage, int offset) {
+void EffectLayer::addDamageLabel(int damage, int offset, DamageLabelType type) {
   // 被ダメージ表示しちゃう
   CCDirector* director = CCDirector::sharedDirector();
-  string filename = string("damage_number_hit.png");
-  if (damage < 0) {
-    damage *= -1;
-    filename = string("damage_number_cure.png");
-  }
+  string filename =this->getDamageLabelName(type);
   CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(damage).c_str(),
                                                    filename.c_str(), 50, 150, '0');
   damageLabel->setPosition(ccp(director->getWinSize().width / 2 + 50 * offset, 90 + 20 * offset));
@@ -299,10 +304,10 @@ void EffectLayer::addDamageLabel(int damage, int offset) {
                                             NULL));
 }
 
-void EffectLayer::addDamageLabelForEnemy(Enemy *enemy, int damage) {
+void EffectLayer::addDamageLabelOnEnemy(Enemy* enemy, int damage, DamageLabelType type) {
   // ダメージラベル
   CCLabelAtlas* damageLabel = CCLabelAtlas::create(boost::lexical_cast<string>(damage).c_str(),
-                                                   FileUtils::getFilePath("Image/damage_number.png").c_str(), 50, 150, '0');
+                                                   FileUtils::getFilePath(this->getDamageLabelName(type).c_str()).c_str(), 50, 150, '0');
   CCSize size = enemy->getContentSize();
   float scale = MAX(enemy->getCurrentScale(enemy->getRow()), 0.4);
   damageLabel->setAnchorPoint(ccp(0.5, 0.5));
@@ -314,6 +319,26 @@ void EffectLayer::addDamageLabelForEnemy(Enemy *enemy, int damage) {
                                             CCFadeOut::create(0.2),
                                             CCRemoveFromParentAction::create(),
                                             NULL));
+}
+
+string EffectLayer::getDamageLabelName(DamageLabelType type) {
+  switch (type) {
+    case DamageLabelTypeAttack:
+      return "damage_number.png";
+      break;
+    case DamageLabelTypeHit:
+      return "damage_number_hit.png";
+      break;
+    case DamageLabelTypeCure:
+      return "damage_number_cure.png";
+      break;
+    case DamageLabelTypeMPCure:
+      return "damage_number_MPcure.png";
+      break;
+    default:
+      break;
+  }
+  return "damage_number.png";
 }
 
 void EffectLayer::addWarning(float delay) {
@@ -356,4 +381,14 @@ void EffectLayer::addWarning(float delay) {
                                      CCRemoveFromParentAction::create(), NULL));
   node->setPosition(ccp(director->getWinSize().width / 2.0, 180));
   this->addChild(node, EffectLayerZOrderWarning);
+}
+
+void EffectLayer::setCutinExtension(CCNode* extension) {
+  if (_cutinExtention) {
+    _cutinExtention->release();
+  }
+  _cutinExtention = extension;
+  if (extension) {
+    extension->retain();
+  }
 }

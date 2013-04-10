@@ -4,7 +4,7 @@ Map = {
   bossMusic = "AttaQ3-D",
   backgroundImage = "3d_background0.png",
   skin = "skinA",
-  ending = "endingA",
+  ending = "endingD",
   nextMaps = {},
   initialLevel = 30,
   maxLevel = 30,
@@ -12,13 +12,14 @@ Map = {
     return {}
   end,
   onLoad = function(self, characterManager, enemyManager)
-    enemyManager:loadEnemyTextureAsync("fortress.png")
+    enemyManager:loadEnemyTextureAsync("flast.png")
+    --enemyManager:loadEnemyTextureAsync("last2.png")
   end,
   onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
     if level == 30 then
-      fortress = enemyManager:popEnemyAt("fortress3A0", MAX_ROW - 1, 1)
-      enemyManager:setBoss(fortress)
+      local boss = enemyManager:popEnemyAt("last1_boss", 3, 1)
+      enemyManager:setBoss(boss)
     end
   end,
   getEnemyPopRate = function(level)

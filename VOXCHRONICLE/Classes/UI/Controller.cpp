@@ -137,6 +137,8 @@ void Controller::updateSkills(CharacterManager* manager, Level* level) {
     } else if (skill->getTensionLevel() > manager->getTension()) {
       // テンションレベルが足りないとき、使用不可状態に
       trigger->setSkillTriggerState(SkillTriggerStateDisable);
+    } else if (manager->getLastSkill() && manager->getLastSkill()->getIdentifier() == skill->getIdentifier() && !skill->canRepeat()) { // 連続使用不可の技を連続で使っていたとき
+      trigger->setSkillTriggerState(SkillTriggerStateDisable);
     } else {
       // その他のとき、通常状態に
       trigger->setSkillTriggerState(SkillTriggerStateNormal);

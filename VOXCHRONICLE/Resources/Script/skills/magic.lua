@@ -10,6 +10,7 @@ Skill = {
   maxRepeat = 4,
   turn = 1,
   loop = true,
+  canRepeat = true,
   performSkill = function(self, target, characterManager, enemyManager)
     local basename = "magic_effect"
     local number = characterManager:getRepeatCount()

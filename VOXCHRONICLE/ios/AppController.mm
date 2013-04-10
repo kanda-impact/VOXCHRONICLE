@@ -128,6 +128,15 @@ void SignalHandler(int sig) {
     }];
   }
   
+  // カウント集表示
+  SaveData* data = SaveData::sharedData();
+  CCLog("dead = %d", data->getCountFor(SaveDataCountKeyDead));
+  CCLog("defeat = %d", data->getCountFor(SaveDataCountKeyDefeat));
+  CCLog("hitDamage = %d", data->getCountFor(SaveDataCountKeyHitDamage));
+  CCLog("mpmiss = %d", data->getCountFor(SaveDataCountKeyMPMiss));
+  CCLog("turn = %d", data->getCountFor(SaveDataCountKeyTurn));
+  CCLog("attackDamage = %d", data->getCountFor(SaveDataCountKeyAttackDamage));
+  
   // Set RootViewController to window
   // Fix orientation problem on iOS6
   if ( [[UIDevice currentDevice].systemVersion floatValue] < 6.0) {
@@ -203,6 +212,24 @@ void SignalHandler(int sig) {
   /*
    Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
    */
+#if TESTING
+  TFLog(@"memory warning!!!!!!!!!!");
+  [TestFlight passCheckpoint:@"MemoryWarning"];
+#endif
+  UIAlertView* memoryWarning = [[UIAlertView alloc] initWithTitle:@"Memory Warning"
+                                                          message:@"もう入らないよぉ……"
+                                                         delegate:self
+                                                cancelButtonTitle:@"消しちゃう"
+                                                otherButtonTitles:nil];
+  [memoryWarning show];
+}
+
+#pragma mark UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
+  CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+#if TESTING
+  [TestFlight submitFeedback:@"メモリリークしたんでなんとかしてください"];
+#endif
 }
 
 

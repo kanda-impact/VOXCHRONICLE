@@ -16,14 +16,14 @@ Achievement = {
     {SaveDataCountKeyDictionaryCount, dictionaryEnemyCount * 0.8, "enemy80"},
     {SaveDataCountKeyDictionaryCount, dictionaryEnemyCount, "enemy100"},
     {SaveDataCountKeyHitDamage, 1000, "hit1000"},
-    {SaveDataCountKeyAttackDamage, 1000, "attack1000"},
+    {SaveDataCountKeyAttackDamage, 10000, "attack10000"},
     {SaveDataCountKeyDead, 1000, "play1000"}
   },
   -- 1回のプレイ中のカウントに依存する実績を書きます
   playLog = {
     {PlayLogKeyMaxDefeat, 10, "defeat10"}, -- 一気呵成
     {PlayLogKeyMaxRepeatCount, 20, "repeat20"}, -- こだわりのワンパターン
-    {PlayLogKeyMaxRepeatChange, 10, "change10"} -- 戦場の踊り子
+    {PlayLogKeyMaxRepeatChangeCount, 10, "change10"} -- 戦場の踊り子
   },
   -- クリア時に実績チェックのために呼び出されます
   checkAchievementOnClear = function(playlog, characterManager, enemyManager)

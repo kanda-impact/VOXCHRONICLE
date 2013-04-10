@@ -39,9 +39,9 @@ private:
   int _counter;
   int _exp;
   int _attack;
-  int _enemySize;
   bool _enable;
   bool _movable;
+  CCSize _enemySize;
   Species* _species;
   SkillType _type;
   EnemyItem _item;
@@ -108,6 +108,7 @@ public:
   void toggleBlink(bool toggle);
   
   int getHP();
+  int getMaxHP();
   float getRow();
   int getCol();
   int getLevel();

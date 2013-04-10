@@ -17,6 +17,7 @@ bool DictionaryScene::init() {
   if (!CCLayer::init()) {
     return false;
   }
+  CCTextureCache::sharedTextureCache()->removeUnusedTextures();
   Enemy::loadLifeColors();
   LuaObject* lua = LuaObject::create("enemy.lua");
   lua_State* L = lua->getLuaEngineWithLoad()->getLuaState();
@@ -88,6 +89,7 @@ DictionaryScene::~DictionaryScene() {
     _enemy->release();
   }
   _enemies->release();
+  CCTextureCache::sharedTextureCache()->removeUnusedTextures();
 }
 
 void DictionaryScene::onEnterTransitionDidFinish() {
@@ -128,6 +130,7 @@ void DictionaryScene::loadEnemyByIndex(int idx) {
     _enemy->setColor(ccc3(5, 5, 5));
     _enemy->setSilhouette();
   }
+  CCTextureCache::sharedTextureCache()->removeUnusedTextures();
 }
 
 string DictionaryScene::repeatChar(const char *c, int times) {
