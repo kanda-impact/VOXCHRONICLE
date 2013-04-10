@@ -134,6 +134,7 @@ class Skill :public CCObject {
 };
 
 class Enemy : public CCSprite, public IRegister {
+	string getIdentifier();
 	int getRow();
 	int getCol();
 	int getHP();

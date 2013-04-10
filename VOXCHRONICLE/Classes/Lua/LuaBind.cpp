@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Thu Apr 11 01:22:19 2013.
+** Generated automatically by tolua++-1.0.92 on Thu Apr 11 02:01:27 2013.
 */
 
 #ifndef __cplusplus
@@ -182,6 +182,38 @@ static int tolua_VOXCHRONICLE_Skill_getMP00(lua_State* tolua_S)
 #ifndef TOLUA_RELEASE
  tolua_lerror:
  tolua_error(tolua_S,"#ferror in function 'getMP'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: getIdentifier of class  Enemy */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_Enemy_getIdentifier00
+static int tolua_VOXCHRONICLE_Enemy_getIdentifier00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"Enemy",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  Enemy* self = (Enemy*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getIdentifier'", NULL);
+#endif
+  {
+   string tolua_ret = (string)  self->getIdentifier();
+   tolua_pushcppstring(tolua_S,(const char*)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getIdentifier'.",&tolua_err);
  return 0;
 #endif
 }
@@ -3199,6 +3231,7 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"Enemy","Enemy","CCSprite",NULL);
   tolua_beginmodule(tolua_S,"Enemy");
+   tolua_function(tolua_S,"getIdentifier",tolua_VOXCHRONICLE_Enemy_getIdentifier00);
    tolua_function(tolua_S,"getRow",tolua_VOXCHRONICLE_Enemy_getRow00);
    tolua_function(tolua_S,"getCol",tolua_VOXCHRONICLE_Enemy_getCol00);
    tolua_function(tolua_S,"getHP",tolua_VOXCHRONICLE_Enemy_getHP00);

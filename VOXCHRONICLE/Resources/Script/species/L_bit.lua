@@ -2,7 +2,7 @@ math.randomseed(os.time())
 Enemy = {
   name = "左ビット",
   imageName = "bit",
-  attack = 50,
+  attack = 20,
   baseExp = 1,
   hasFrame = true,
   counter = 0,
@@ -14,11 +14,16 @@ Enemy = {
   end,
   disableSkills = {"knockback"},
   description = [[
-  左側のビット。すぐに倒されてしまうが右ビットの蘇生呪文で不死鳥の如く蘇る。
+  左側のビット。すぐに倒されてしまうが右ビットの蘇生呪文で不死鳥の如く蘇る
   ]],
   habitat = "",
   animationFrames = 4,
-  performSkill = function(self)
+  performSkill = function(self, characterManager, enemyManager)
+    math.random(100)
+    local r = math.random(100)
+    if r < 70 then
+      return "beam"
+    end
     return ""
   end
 }
