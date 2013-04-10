@@ -61,7 +61,7 @@ bool TutorialLayer::init() {
 
 void TutorialLayer::onTutorialButtonPressed(cocos2d::CCObject *sender) {
   SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/easy_decide.mp3").c_str());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/tutorial_decide.mp3").c_str());
   LuaObject* lua = LuaObject::create("setting");
   int tag = ((CCNode*)sender)->getTag();
   CCLuaValueArray* array = lua->getArray("tutorials");

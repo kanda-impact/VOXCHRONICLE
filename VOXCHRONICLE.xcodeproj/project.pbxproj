@@ -145,6 +145,8 @@
 		0725180D16B141FB004361B7 /* BufferCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0725180C16B141FB004361B7 /* BufferCache.cpp */; };
 		0725180F16B15BB8004361B7 /* nmb_impact3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0725180E16B15BB8004361B7 /* nmb_impact3.caf */; };
 		072921421715E4490083F905 /* cure_all_skill.lua in Resources */ = {isa = PBXBuildFile; fileRef = 072921411715E4490083F905 /* cure_all_skill.lua */; };
+		072921451715EBAA0083F905 /* tutorial_decide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 072921431715EBAA0083F905 /* tutorial_decide.mp3 */; };
+		072921461715EBAA0083F905 /* unlock_achievement.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 072921441715EBAA0083F905 /* unlock_achievement.mp3 */; };
 		072A5C9716BAA72500A64AD6 /* volca_voxrun1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 072A5C9616BAA72500A64AD6 /* volca_voxrun1.caf */; };
 		072A5C9916BAA72E00A64AD6 /* volca_lskrun1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 072A5C9816BAA72E00A64AD6 /* volca_lskrun1.caf */; };
 		072A5C9B16BAAA1E00A64AD6 /* menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 072A5C9A16BAAA1E00A64AD6 /* menu.mp3 */; };
@@ -1498,6 +1500,8 @@
 		0725180C16B141FB004361B7 /* BufferCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BufferCache.cpp; path = Classes/VISS/BufferCache.cpp; sourceTree = "<group>"; };
 		0725180E16B15BB8004361B7 /* nmb_impact3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = nmb_impact3.caf; sourceTree = "<group>"; };
 		072921411715E4490083F905 /* cure_all_skill.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cure_all_skill.lua; path = enemySkills/cure_all_skill.lua; sourceTree = "<group>"; };
+		072921431715EBAA0083F905 /* tutorial_decide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = tutorial_decide.mp3; path = Resources/SE/tutorial_decide.mp3; sourceTree = "<group>"; };
+		072921441715EBAA0083F905 /* unlock_achievement.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_achievement.mp3; path = Resources/SE/unlock_achievement.mp3; sourceTree = "<group>"; };
 		072A5C9616BAA72500A64AD6 /* volca_voxrun1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = volca_voxrun1.caf; sourceTree = "<group>"; };
 		072A5C9816BAA72E00A64AD6 /* volca_lskrun1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = volca_lskrun1.caf; sourceTree = "<group>"; };
 		072A5C9A16BAAA1E00A64AD6 /* menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = menu.mp3; path = Resources/Music/general/menu.mp3; sourceTree = "<group>"; };
@@ -5566,6 +5570,8 @@
 				07F20F961712C5AB0099ACD8 /* menu_cancel_slide.mp3 */,
 				07F20F971712C5AB0099ACD8 /* menu_decide_slide.mp3 */,
 				07F20FA01712CEE00099ACD8 /* lastboss_beam.mp3 */,
+				072921431715EBAA0083F905 /* tutorial_decide.mp3 */,
+				072921441715EBAA0083F905 /* unlock_achievement.mp3 */,
 			);
 			name = SE;
 			sourceTree = "<group>";
@@ -6676,6 +6682,8 @@
 				077931CE1715C8420023E46E /* R_bit_boss.lua in Resources */,
 				077931D01715CE140023E46E /* revive.lua in Resources */,
 				072921421715E4490083F905 /* cure_all_skill.lua in Resources */,
+				072921451715EBAA0083F905 /* tutorial_decide.mp3 in Resources */,
+				072921461715EBAA0083F905 /* unlock_achievement.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

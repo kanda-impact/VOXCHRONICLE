@@ -147,6 +147,7 @@ void SaveData::onFinishAchievementReporting(const char* identifier, bool error) 
     CCLog("send achievement %s!", identifier);
     CCString* str = CCString::create(identifier);
     _achievements->addObject(str);
+    SimpleAudioEngine::sharedEngine()->playEffect("unlock_achievement.mp3");
   }
 }
 
