@@ -1,9 +1,9 @@
 Enemy = {
-  species = "kraken",
-  level = 30,
-  hp = 72,
+  species = "R_plclaw",
+  level = 1,
+  hp = 24,
   getExp = function(default)
-      return 12
+      return 6
   end,
   item = EnemyItemNone,
   type = SkillTypeNormal,

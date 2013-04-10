@@ -8,7 +8,7 @@ Map = {
   backgroundImage = "3d_background0.png",
   thumbnailImage = "space_thumbnail.png",
   nextMaps = {},
-  initialLevel = 25,
+  initialLevel = 27,
   maxLevel = 30,
   getEnemyTable = function(level)
     if level <= 22 then
@@ -42,7 +42,7 @@ Map = {
     local enemies = enemyManager:getEnemies()
     local enemyCount = enemies:count()
     local level = characterManager:getLevel()
-    if level >= 25 then
+    if level == 25 or level == 29 then
       if enemyCount == 0 then
         enemyManager:popEnemyAt("planet15_3D0", 7, 1)
       end
@@ -61,15 +61,15 @@ Map = {
       enemyManager:popEnemyAt("fortress3D0", 7, 0)
       enemyManager:popEnemyAt("fortress3D0", 7, 2)
     elseif level == 28 then
-      enemyManager:popEnemyAt("kraken3D0", 7, 0)
-      enemyManager:popEnemyAt("R_strfoot3C0", 4, 2)-- 足
-      enemyManager:popEnemyAt("L_plfoot3C0", 4, 0)
-      enemyManager:popEnemyAt("R_plfoot3C0", 3, 2)
-      enemyManager:popEnemyAt("L_strfoot3C0", 3, 0)
-      enemyManager:popEnemyAt("R_strclaw3C0", 2, 2)
-      enemyManager:popEnemyAt("L_plclaw3C0", 2, 0)
-      enemyManager:popEnemyAt("R_plclaw3C0", 1, 2)
-      enemyManager:popEnemyAt("L_strclaw3C0", 1, 0)
+      enemyManager:popEnemyAt("kraken3D0", 3, 1)
+      enemyManager:popEnemyAt("R_strfoot3D0", 1, 2)-- 足
+      enemyManager:popEnemyAt("L_plfoot3D0", 4, 0)
+      enemyManager:popEnemyAt("R_plfoot3D0", 4, 2)
+      enemyManager:popEnemyAt("L_strfoot3D0", 3, 0)
+      enemyManager:popEnemyAt("R_strclaw3D0", 3, 2)
+      enemyManager:popEnemyAt("L_plclaw3D0", 2, 0)
+      enemyManager:popEnemyAt("R_plclaw3D0", 2, 2)
+      enemyManager:popEnemyAt("L_strclaw3D0", 1, 0)
     elseif level == 29 then
       enemyManager:popEnemyAt("planet15_3D0", 7, 1)
     end
