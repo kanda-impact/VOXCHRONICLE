@@ -321,6 +321,7 @@
 		0778C5E317100DD20017D230 /* VQTime.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0778C5E117100DD20017D230 /* VQTime.mm */; };
 		077D0C231713B4E5006C3F17 /* 2a_lskshield0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 077D0C221713B4E5006C3F17 /* 2a_lskshield0.caf */; };
 		077D0C251713B51D006C3F17 /* 2a_voxwait1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 077D0C241713B51D006C3F17 /* 2a_voxwait1.caf */; };
+		077D0C2817144467006C3F17 /* TestFlightWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 077D0C2617144467006C3F17 /* TestFlightWrapper.cpp */; };
 		077DCFC3169EE872007A7003 /* Image in Resources */ = {isa = PBXBuildFile; fileRef = 077DCFC1169EE872007A7003 /* Image */; };
 		077DCFC6169EE89B007A7003 /* Retina in Resources */ = {isa = PBXBuildFile; fileRef = 077DCFC5169EE89B007A7003 /* Retina */; };
 		077DF757170DD69A00F0C799 /* space_boss.lua in Resources */ = {isa = PBXBuildFile; fileRef = 077DF756170DD69900F0C799 /* space_boss.lua */; };
@@ -1665,6 +1666,8 @@
 		0778C5E217100DD20017D230 /* VQTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VQTime.h; sourceTree = "<group>"; };
 		077D0C221713B4E5006C3F17 /* 2a_lskshield0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2a_lskshield0.caf; path = Resources/Music/shinka/2a_lskshield0.caf; sourceTree = "<group>"; };
 		077D0C241713B51D006C3F17 /* 2a_voxwait1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2a_voxwait1.caf; path = Resources/Music/shinka/2a_voxwait1.caf; sourceTree = "<group>"; };
+		077D0C2617144467006C3F17 /* TestFlightWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestFlightWrapper.cpp; sourceTree = "<group>"; };
+		077D0C2717144467006C3F17 /* TestFlightWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlightWrapper.h; sourceTree = "<group>"; };
 		077DCFC1169EE872007A7003 /* Image */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Image; path = Resources/Image; sourceTree = "<group>"; };
 		077DCFC5169EE89B007A7003 /* Retina */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Retina; path = Resources/Retina; sourceTree = "<group>"; };
 		077DF756170DD69900F0C799 /* space_boss.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = space_boss.lua; path = map/space_boss.lua; sourceTree = "<group>"; };
@@ -3177,6 +3180,8 @@
 				07B8B61C1709CDC000DB739F /* CCAchievementDescription.h */,
 				0778C5E117100DD20017D230 /* VQTime.mm */,
 				0778C5E217100DD20017D230 /* VQTime.h */,
+				077D0C2617144467006C3F17 /* TestFlightWrapper.cpp */,
+				077D0C2717144467006C3F17 /* TestFlightWrapper.h */,
 			);
 			name = Util;
 			path = Classes/Util;
@@ -6920,6 +6925,7 @@
 				07A317AB170C5F770032CAA4 /* AchievementSceneDelegate.m in Sources */,
 				0778C5E317100DD20017D230 /* VQTime.mm in Sources */,
 				07F20F7917112C150099ACD8 /* PlayLog.cpp in Sources */,
+				077D0C2817144467006C3F17 /* TestFlightWrapper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
