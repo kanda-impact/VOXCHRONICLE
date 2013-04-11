@@ -509,6 +509,13 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _enemyManager->setLevel(_level);
       this->updateGUI();
       
+      CCSprite* levelup = CCSprite::create("levelup.png");
+      levelup->setPosition(ccp(-100, 180));
+      levelup->runAction(CCSequence::create(CCMoveBy::create(2.5f, ccp(680, 0)),
+                         CCRemoveFromParentAction::create(),
+                         NULL));
+      _effectLayer->addChild(levelup);
+      
       _enemyManager->removeAllEnemiesQueue();
       _isLevelUped = true;
     }
