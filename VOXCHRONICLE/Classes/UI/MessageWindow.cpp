@@ -120,3 +120,9 @@ void MessageWindow::updateNextMessage(CCObject* sender) {
   _messageQueue->removeObjectAtIndex(0);
   this->unschedule(schedule_selector(MessageWindow::updateNextMessage));
 }
+
+void MessageWindow::finishMessage() {
+  if (_ended) return;
+  _textIndex = this->getCurrentWholeMessage()->length() - 2; // 最大文字-1文字
+  this->updateNextMessage(this);
+}

@@ -594,10 +594,6 @@ bool MainScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
                                           NULL));
       _state = VCStateMain;
       return true;
-    } else { // まだページが残っていたら
-      SimpleAudioEngine::sharedEngine()->playEffect("window_next.mp3");
-      layer->nextPage();
-      return true;
     }
   }
   return false;
