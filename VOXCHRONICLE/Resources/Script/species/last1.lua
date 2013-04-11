@@ -25,7 +25,7 @@ Enemy = {
     local row = self:getRow()
     local key = "directAttack"
     local chargeTurn = self.__IRegister__:getRegister(key, 0)
-    if self:getHP() < 200 then -- HPが50以下なら
+    if self:getHP() < 50 then -- HPが50以下なら
       return "boss_change" -- 第2形態変身
     end
     if chargeTurn > 0 then -- 溜め中の時

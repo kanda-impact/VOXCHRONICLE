@@ -47,6 +47,7 @@ Map = {
   onClear = function(self, characterManager, enemyManager)
     local data = SaveData:sharedData()
     data:unlockAchievement("clear2A")
+    data:setClearedForMap("fp_forest")
   end,
 
   fixedEnemies = {

@@ -57,6 +57,7 @@ Map = {
     local imageName = "field_background"..number..".png"
     self:changeBackgroundImage(imageName)
     local level = characterManager:getLevel()
+    self.__IRegister__:setRegister("currentTime", number)
   
     enemyManager:loadEnemyTextureAsync("flower.png")
     enemyManager:loadEnemyTextureAsync("slime.png")
@@ -94,11 +95,12 @@ Map = {
   end,
   onClear = function(self, characterManager, enemyManager)
     local data = SaveData:sharedData()
-    local number = getTime()
+    local number = self.__IRegister__:getRegister("currentTime", 0)
     if number == 1 then
-    data:unlockAchievement("clear1B")
+      data:unlockAchievement("tasonobara")
     end
     data:unlockAchievement("clear1B")
+    data:setClearedForMap("fp_field")
   end,
   fixedEnemies = {
     {"flower1B0",0}

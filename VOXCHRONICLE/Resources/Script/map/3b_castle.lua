@@ -58,6 +58,8 @@ Map = {
   onClear = function(self, characterManager, enemyManager)
     local data = SaveData:sharedData()
     data:unlockAchievement("clear3B")
+    data:setClearedForMap("fp_castle")
+    data:setClearedForMap("fp_castle_boss")
   end,
   fixedEnemies = {
   }

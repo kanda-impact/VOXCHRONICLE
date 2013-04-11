@@ -33,7 +33,7 @@ Map = {
   onBack = function(self, characterManager, enemyManager)
     math.random(100)
     local layer = EffectLayer:sharedLayer()
-    local preHP = self.__IRegister__:getRegister("preHP", characterManager:getHP())  
+    local preHP = self.__IRegister__:getRegister("preHP", characterManager:getHP())
     local level = characterManager:getLevel()
     local enemies = enemyManager:getEnemies()
     local enemyCount = 0
@@ -78,7 +78,7 @@ Map = {
         self.__IRegister__:setRegister("runCount", runCount)
       end
       if runCount >= 2 and enemyManager:getEnemies():count() == 0 then -- 走り行動を2回行っていたとき、かつ敵がいないとき
-        enemyManager:popEnemyAt("T_slime12", 3, 1)  
+        enemyManager:popEnemyAt("T_slime12", 3, 1)
       end
     elseif level == 5 then
       if enemyCount == 0 then
@@ -134,9 +134,9 @@ Map = {
       if lastSkill == "" then
         lastSkill = "null"
       end
-      
+
       if lastSkill == "null" and self.__IRegister__:getBool("laterIsShield",false) == true then --盾がでている状態ならlastSkillを盾に
-          lastSkill = "shield.lua"
+        lastSkill = "shield.lua"
       else
         lastSkill = lastSkill:getIdentifier()
       end
@@ -166,9 +166,9 @@ Map = {
       end
       if enemyCount == 0 then
         if self.__IRegister__:getBool("useKnockback", false) then
-        enemyManager:popEnemyAt("T_flower",4,1)
+          enemyManager:popEnemyAt("T_flower",4,1)
         else
-        enemyManager:popEnemyAt("T_ginet",4,1)
+          enemyManager:popEnemyAt("T_ginet",4,1)
         end
       end
     elseif level == 10 then
@@ -197,7 +197,7 @@ Map = {
 タイトルで少しの間待っているとストーリーの
 デモも流れるのでそちらもよろしくね！
 ]])
-      popup:setText(1, "コレってどんなゲーム？", 
+      popup:setText(1, "コレってどんなゲーム？",
       [[
 このゲームは、画面奥から自分に向かって近づいて
 くるモンスターを倒していくゲームよ。
@@ -212,37 +212,37 @@ Map = {
 『アタック』 のワザを試しましょ！]])
     elseif level == 2 then
       local popup = layer:addPopupWindow(3)
-      popup:setText(0, "レベルアップで強くなろう！", 
-[[
+      popup:setText(0, "レベルアップで強くなろう！",
+      [[
 そう！こんなカンジでモンスターをどんどん倒して
 いくと、今みたいに 『レベルアップ』 するよ！
 
 １０レベルごとに次のステージに行けるんだ！
 ３０レベルまでたどり着くとゲームクリアだよ！！]])
-      popup:setText(1, 
-"こうげきは、近くの敵から", 
-[[
+      popup:setText(1,
+      "こうげきは、近くの敵から",
+      [[
 あとね。こうげきは基本的に一番近くの敵に当た
 るよ。モンスターの上にマーカーも表示される
 から、さんこうにしてね！
 
 モンスターが現われたら、バシバシ攻撃して
 どんどんやっつけていこう！]]
-)
-      popup:setText(2, 
-"『連続こうげき』してみよう！", 
-[[
+      )
+      popup:setText(2,
+      "『連続こうげき』してみよう！",
+      [[
 ちなみに 『アタック』 は、連続してだすことで
 『連続こうげき』になるよ！
 
 『連続こうげき』することで攻撃力と音楽が変化
 するよ！気持ちイイのでぜひ試してみてね！
 ]]
-)
+      )
     elseif level == 3 then
       local popup = layer:addPopupWindow(1)
-      popup:setText(0, "モンスターの色", 
-[[
+      popup:setText(0, "モンスターの色",
+      [[
 モンスターをこうげきしてた時、モンスターの
 色が変わっていったことには気づいたかな？　
 
@@ -251,16 +251,16 @@ Map = {
 ]])
     elseif level == 4 then
       local popup = layer:addPopupWindow(2)
-      popup:setText(0, "新しい行動（ワザ）！", 
-[[
+      popup:setText(0, "新しい行動（ワザ）！",
+      [[
 レベルアップすると新しい行動（ワザ）をおぼえる
 ことがあるよ！やったね！
 
 どんどんレベル上げて、新しいワザをおぼえよう！
 そして、おぼえたワザはさっそく試してみよう！
 ]])
-      popup:setText(1, "攻めこめ！『ダッシュ』", 
-[[
+      popup:setText(1, "攻めこめ！『ダッシュ』",
+      [[
 今回できるようになったワザは『ダッシュ』！
 モンスターとのキョリをちぢめることができるよ！
 
@@ -269,15 +269,15 @@ Map = {
 ]])
     elseif level == 5 then
       local popup = layer:addPopupWindow(3)
-      popup:setText(0, "ためよう！『パワーチャージ』！", 
-[[
+      popup:setText(0, "ためよう！『パワーチャージ』！",
+      [[
 『パワーチャージ』おぼえたね！これは大事だよー
 
 パワーチャージ マークをタッチすると文字通り
  『パワー』 をためることができるんだ。
 ]])
-      popup:setText(1, "ためよう！『パワーチャージ』！", 
-[[
+      popup:setText(1, "ためよう！『パワーチャージ』！",
+      [[
 『パワー』 をためると次のワザの効果がアップ！
 
 『アタック』なら、3回攻撃しないと倒せない
@@ -328,7 +328,7 @@ Map = {
 『ガード』のワザは 盾 のマークをタッチ！
 盾を構えて『ガード』状態になるよ。]])
 
-local popup = layer:addPopupWindow(2)--ＴＡＷＡＳＩ「盾で防げたらの条件を追加してちょ」
+      local popup = layer:addPopupWindow(2)--ＴＡＷＡＳＩ「盾で防げたらの条件を追加してちょ」
       popup:setText(0, "『ガード』の注意点", [[
 よし！防げた！『ガード』状態はモンスターの
 どんなこうげきも防ぐことができるよ！
@@ -336,7 +336,7 @@ local popup = layer:addPopupWindow(2)--ＴＡＷＡＳＩ「盾で防げたら�
 でも『ガード』状態はモンスターのこうげきを防ぐか
 ほかの行動をとると解除されちゃうから気をつけて！　
 ]])
-popup:setText(1, "『ガード』の注意点", [[
+      popup:setText(1, "『ガード』の注意点", [[
 あと『ガード』は無敵になれるけど、こうげきを
 防いだあとすぐに、もういちど『ガード』する
 ことはできないから、タイミングを考えようね。
@@ -372,11 +372,11 @@ popup:setText(1, "『ガード』の注意点", [[
 でしっかりレクチャーするわ！
 じゃ、次回もよろしくね！バイバイ！
 ]])
-    --if get == nil then
-    
-    local data = SaveData:sharedData()
-    data:unlockAchievement("clearTutorialA")
-    
+      --if get == nil then
+
+      local data = SaveData:sharedData()
+      data:unlockAchievement("clearTutorialA")
+      data:setClearedForMap("fp_simple")
     end
   end,
   getEnemyPopRate = function(level)

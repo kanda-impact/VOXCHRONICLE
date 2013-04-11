@@ -73,6 +73,8 @@ Map = {
   onClear = function(self, characterManager, enemyManager)
     local data = SaveData:sharedData()
     data:unlockAchievement("clear3C")
+    data:setClearedForMap("fp_ocean")
+    data:setClearedForMap("fp_ocean_boss")
   end,
 
   getEnemyPopRate = function(level)

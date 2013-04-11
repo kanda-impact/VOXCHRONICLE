@@ -20,7 +20,7 @@ Enemy = {
   animationFrames = 4,
   performSkill = function(self, characterManager, enemyManager)
     math.random(100)
-    local row = self:getRow()
+    --[[local row = self:getRow()
     local col = self:getCol()
     if row == 1 and col == 2 then
       self:setRow(0)
@@ -34,7 +34,7 @@ Enemy = {
     elseif row == 2 and col == 1 then
       self:setRow(1)
       self:setCol(2)
-    end
+    end]]
     local reviveTurn = self:getRegister("reviveTurn", 0)
     if reviveTurn > 0 then
       return "revive"
