@@ -123,7 +123,7 @@ int Controller::currentTriggerIndex() {
   return -1;
 }
 
-void Controller::updateSkills(CharacterManager* manager, Level* level) {
+void Controller::updateSkills(CharacterManager* manager, Level* level, bool reset) {
   CCArray* allSkills = level->getAllSkills(manager->getCurrentCharacter());
   CCArray* skills = level->getSkills(manager->getCurrentCharacter());
   int index = this->currentTriggerIndex();
@@ -153,7 +153,7 @@ void Controller::updateSkills(CharacterManager* manager, Level* level) {
   }
   if (index >= 0) {
     SkillTrigger* trigger = (SkillTrigger*)_triggers->objectAtIndex(index);
-    if (trigger->getSkillTriggerState() == SkillTriggerStateNormal) {
+    if (reset && trigger->getSkillTriggerState() == SkillTriggerStateNormal) {
       ((SkillTrigger*)trigger)->setPress(true);
       this->reorderChild((SkillTrigger*)trigger, ControllerZOrderTriggerPressed);
     }

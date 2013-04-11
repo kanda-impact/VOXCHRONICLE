@@ -40,7 +40,7 @@ public:
   int currentTriggerIndex();
   Skill* currentTriggerSkill();
   SkillTrigger* getSkillTriggerFor(Skill* skill);
-  void updateSkills(CharacterManager* manager, Level* level);
+  void updateSkills(CharacterManager* manager, Level* level, bool reset);
   void setEnable(bool enable);
   void setFrameType(ControllerFrameType type);
   void setSkinPrefix(const char* skinPrefix);

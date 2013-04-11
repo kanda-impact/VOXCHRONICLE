@@ -120,7 +120,7 @@ bool MainScene::init(Map* map) {
   this->addChild(_enemyManager, MainSceneZOrderEnemyManager);
   this->addChild(_skin->getController(), MainSceneZOrderController);
   this->updateGUI();
-  _skin->getController()->updateSkills(_characterManager, _level);
+  _skin->getController()->updateSkills(_characterManager, _level, false);
   
   _qteTrigger = NULL;
   _isLevelUped = false;
@@ -244,7 +244,7 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
     }
   }
   if (preTension != _characterManager->getTension()) { // テンションが変わってたら技の状態を更新
-    _skin->getController()->updateSkills(_characterManager, _level);
+    _skin->getController()->updateSkills(_characterManager, _level, true);
   }
   _map->performOnBack(_characterManager, _enemyManager);
 }
@@ -558,8 +558,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     }
     
     if (skill) {
-      _skin->getController()->updateSkills(_characterManager, _level);
-      _skin->getController()->resetAllTriggers();
+      _skin->getController()->updateSkills(_characterManager, _level, false);
     }
     
     this->updateFocus();
@@ -747,7 +746,7 @@ void MainScene::changeSkin(Skin *newSkin, bool crossFade) {
   const float kCrossFadeSpeed = 1.0f;
   if (_skin != NULL) {
     newSkin->setController(_skin->getController()); // 古いコントローラーを受け渡す
-    _skin->getController()->updateSkills(_characterManager, _level); // スキン更新
+    _skin->getController()->updateSkills(_characterManager, _level, false); // スキン更新
     if (crossFade) {
       CCArray* nodes = CCArray::create();
       if (_skin->getBackground()) nodes->addObject(_skin->getBackground());
