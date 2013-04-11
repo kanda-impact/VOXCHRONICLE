@@ -29,11 +29,12 @@ Map = {
     enemyManager:loadEnemyTextureAsync("typhoon.png")
     enemyManager:loadEnemyTextureAsync("mimic.png")
     enemyManager:loadEnemyTextureAsync("gargoyle.png")
-    enemyManager:loadEnemyTextureAsync("fortress.png")
   end,
   onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
-    if level == 30 then
+    if level == 29 then
+    enemyManager:loadEnemyTextureAsync("fortress.png")
+    elseif level == 30 then
       fortress = enemyManager:popEnemyAt("fortress3A0", MAX_ROW - 1, 1)
       enemyManager:setBoss(fortress)
     end

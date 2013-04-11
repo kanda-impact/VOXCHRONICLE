@@ -33,11 +33,13 @@ Map = {
     enemyManager:loadEnemyTextureAsync("mimic.png")
     enemyManager:loadEnemyTextureAsync("gargoyle.png")
     enemyManager:loadEnemyTextureAsync("dragon.png")
-    enemyManager:loadEnemyTextureAsync("knight.png")
   end,
    onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
-    if level == 30 then
+    if level == 29 then
+      enemyManager:loadEnemyTextureAsync("knight.png")
+      enemyManager:loadEnemyTextureAsync("iron.png")
+    elseif level == 30 then
       knight = enemyManager:popEnemyAt("knight_boss", MAX_ROW - 1, 1)
       enemyManager:setBoss(knight)
     end

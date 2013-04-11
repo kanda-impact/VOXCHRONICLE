@@ -37,7 +37,10 @@ Map = {
     enemyManager:loadEnemyTextureAsync("jfish.png")
     enemyManager:loadEnemyTextureAsync("cryst.png")
     enemyManager:loadEnemyTextureAsync("whale.png")
-    
+    end,
+  onLevelUp = function(self, characterManager, enemyManager)
+    local level = characterManager:getLevel()
+    if level == 29 then
     enemyManager:loadEnemyTextureAsync("kraken_body.png")
     enemyManager:loadEnemyTextureAsync("R_strfoot.png")
     enemyManager:loadEnemyTextureAsync("R_plfoot.png")
@@ -47,10 +50,8 @@ Map = {
     enemyManager:loadEnemyTextureAsync("L_plfoot.png")
     enemyManager:loadEnemyTextureAsync("L_plclaw.png")
     enemyManager:loadEnemyTextureAsync("L_strclaw.png")
-  end,
-  onLevelUp = function(self, characterManager, enemyManager)
-    local level = characterManager:getLevel()
-    if level == 30 then
+
+    elseif level == 30 then
       local kraken = enemyManager:popEnemyAt("kraken3C0", 3, 1) -- 頭
       enemyManager:setBoss(kraken)
       -- 足

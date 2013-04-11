@@ -8,7 +8,7 @@ Map = {
   backgroundImage = "3d_background0.png",
   thumbnailImage = "space_thumbnail.png",
   nextMaps = {},
-  initialLevel = 21,
+  initialLevel = 25,
   maxLevel = 30,
   getEnemyTable = function(level)
     if level <= 22 then
@@ -25,18 +25,6 @@ Map = {
     enemyManager:loadEnemyTextureAsync("t2pha.png")
     enemyManager:loadEnemyTextureAsync("exob.png")
     enemyManager:loadEnemyTextureAsync("planet.png")
-    enemyManager:loadEnemyTextureAsync("fortress.png")
-    enemyManager:loadEnemyTextureAsync("knight.png")
-    
-    enemyManager:loadEnemyTextureAsync("kraken_body.png")
-    enemyManager:loadEnemyTextureAsync("R_strfoot.png")
-    enemyManager:loadEnemyTextureAsync("R_plfoot.png")
-    enemyManager:loadEnemyTextureAsync("R_plclaw.png")
-    enemyManager:loadEnemyTextureAsync("R_strclaw.png")
-    enemyManager:loadEnemyTextureAsync("L_strfoot.png")
-    enemyManager:loadEnemyTextureAsync("L_plfoot.png")
-    enemyManager:loadEnemyTextureAsync("L_plclaw.png")
-    enemyManager:loadEnemyTextureAsync("L_strclaw.png")
   end,
     onBack = function(self, characterManager, enemyManager)
     local enemies = enemyManager:getEnemies()
@@ -52,15 +40,40 @@ Map = {
   onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
     if level == 25 then
+     -- CCTextureCache:sharedCache():removeTextureForKey("t2pha.png")
+     -- CCTextureCache:sharedCache():removeTextureForKey("exob.png")
+
       enemyManager:popEnemyAt("planet15_3D0", 7, 1)
+
+      enemyManager:loadEnemyTextureAsync("fortress.png")
+      enemyManager:loadEnemyTextureAsync("knight.png")
+      enemyManager:loadEnemyTextureAsync("iron.png")
     elseif level == 26 then
+      --CCTextureCache:sharedCache():removeTextureForKey("planet.png")    
+
       enemyManager:popEnemyAt("fortress3D0", 7, 1)
       enemyManager:popEnemyAt("knight3D1", 7, 0)
       enemyManager:popEnemyAt("knight3D2", 7, 2)
     elseif level == 27 then
       enemyManager:popEnemyAt("fortress3D0", 7, 0)
       enemyManager:popEnemyAt("fortress3D0", 7, 2)
+      
+      --CCTextureCache:sharedCache():removeTextureForKey("knight.png")
+
+      enemyManager:loadEnemyTextureAsync("kraken_body.png")
+      enemyManager:loadEnemyTextureAsync("R_strfoot.png")
+      enemyManager:loadEnemyTextureAsync("R_plfoot.png")
+      enemyManager:loadEnemyTextureAsync("R_plclaw.png")
+      enemyManager:loadEnemyTextureAsync("R_strclaw.png")
+      enemyManager:loadEnemyTextureAsync("L_strfoot.png")
+      enemyManager:loadEnemyTextureAsync("L_plfoot.png")
+      enemyManager:loadEnemyTextureAsync("L_plclaw.png")
+      enemyManager:loadEnemyTextureAsync("L_strclaw.png")
+
     elseif level == 28 then
+    --  CCTextureCache:sharedCache():removeTextureForKey("fortress.png")
+      enemyManager:loadEnemyTextureAsync("cryst.png")
+
       enemyManager:popEnemyAt("kraken3D0", 3, 1)
       enemyManager:popEnemyAt("R_strfoot3D0", 1, 2)-- 足
       enemyManager:popEnemyAt("L_plfoot3D0", 4, 0)
@@ -71,6 +84,16 @@ Map = {
       enemyManager:popEnemyAt("R_plclaw3D0", 2, 2)
       enemyManager:popEnemyAt("L_strclaw3D0", 1, 0)
     elseif level == 29 then
+      --[[CCTextureCache:sharedCache():removeTextureForKey("kraken_body.png")
+      CCTextureCache:sharedCache():removeTextureForKey("R_strfoot.png")
+      CCTextureCache:sharedCache():removeTextureForKey("R_plfoot.png")
+      CCTextureCache:sharedCache():removeTextureForKey("R_plclaw.png")
+      CCTextureCache:sharedCache():removeTextureForKey("R_strclaw.png")
+      CCTextureCache:sharedCache():removeTextureForKey("L_strfoot.png")
+      CCTextureCache:sharedCache():removeTextureForKey("L_plfoot.png")
+      CCTextureCache:sharedCache():removeTextureForKey("L_plclaw.png")
+      CCTextureCache:sharedCache():removeTextureForKey("L_strclaw.png")
+]]
       enemyManager:popEnemyAt("save_cryst3D0", 7, 1)
     end
   end,
