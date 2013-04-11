@@ -20,6 +20,21 @@ Enemy = {
   animationFrames = 4,
   performSkill = function(self, characterManager, enemyManager)
     math.random(100)
+    local row = self:getRow()
+    local col = self:getCol()
+    if row == 1 and col == 2 then
+      self:setRow(0)
+      self:setCol(1)
+    elseif row == 0 and col == 1 then
+      self:setRow(1)
+      self:setCol(0)
+    elseif row == 1 and col == 0 then
+      self:setRow(2)
+      self:setCol(1)
+    elseif row == 2 and col == 1 then
+      self:setRow(1)
+      self:setCol(2)
+    end
     local r = math.random(100)
     if r < 65 then
       return "beam"
