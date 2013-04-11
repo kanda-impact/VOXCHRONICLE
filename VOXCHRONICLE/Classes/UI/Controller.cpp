@@ -126,6 +126,7 @@ int Controller::currentTriggerIndex() {
 void Controller::updateSkills(CharacterManager* manager, Level* level) {
   CCArray* allSkills = level->getAllSkills(manager->getCurrentCharacter());
   CCArray* skills = level->getSkills(manager->getCurrentCharacter());
+  int index = this->currentTriggerIndex();
   for (int i = 0; i < _triggers->count(); ++i) {
     if (i >= allSkills->count()) break;
     Skill* skill = (Skill*)allSkills->objectAtIndex(i);
@@ -148,6 +149,13 @@ void Controller::updateSkills(CharacterManager* manager, Level* level) {
       trigger->setColor(SkillTriggerColorVox);
     } else {
       trigger->setColor(SkillTriggerColorLaska);
+    }
+  }
+  if (index >= 0) {
+    SkillTrigger* trigger = (SkillTrigger*)_triggers->objectAtIndex(index);
+    if (trigger->getSkillTriggerState() == SkillTriggerStateNormal) {
+      ((SkillTrigger*)trigger)->setPress(true);
+      this->reorderChild((SkillTrigger*)trigger, ControllerZOrderTriggerPressed);
     }
   }
   this->setFrame(manager);
