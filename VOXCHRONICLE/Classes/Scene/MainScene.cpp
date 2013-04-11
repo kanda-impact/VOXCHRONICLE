@@ -219,20 +219,20 @@ void MainScene::onEnterTransitionDidFinish() {
 void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber) {
   int preTension = _characterManager->getTension(); // 敵の行動前テンション
   if (_state == VCStateMain) {
+    int preHP = _characterManager->getHP();
     _enemyManager->nextTurn(_characterManager, false);
     CCObject* obj = NULL;
     CCARRAY_FOREACH(_enemyManager->getEnemies(), obj) {
       Enemy* enemy = (Enemy*)obj;
       if (enemy->getRow() < 0) {
         int damage = floor(0.5 + enemy->getAttack() * _characterManager->getLevelOffsetRate(enemy->getLevel(), _characterManager->getLevel()));
-        int preHP = _characterManager->getHP();
         _characterManager->damage(damage);
-        int sub = _characterManager->getHP() - preHP;
-        SaveData::sharedData()->addCountFor(SaveDataCountKeyHitDamage, sub); // 被ダメージカウント
-        _log->setCount(PlayLogKeyHitDamage, sub + _log->getCount(PlayLogKeyHitDamage)); // 被ダメージカウント
         _enemyManager->removeEnemy(enemy);
       }
     }
+    int sub = _characterManager->getHP() - preHP;
+    SaveData::sharedData()->addCountFor(SaveDataCountKeyHitDamage, sub); // 被ダメージカウント
+    _log->setCount(PlayLogKeyHitDamage, sub + _log->getCount(PlayLogKeyHitDamage)); // 被ダメージカウント
     
     this->addDamageEffect();
     this->updateFocus();
