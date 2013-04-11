@@ -52,6 +52,11 @@ Map = {
     enemyManager:loadEnemyTextureAsync("L_strclaw.png")
 
     elseif level == 30 then
+      CCTextureCache:sharedTextureCache():removeTextureForKey("naut.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("whale.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("jfish.png")
+
+
       local kraken = enemyManager:popEnemyAt("kraken3C0", 3, 1) -- 頭
       enemyManager:setBoss(kraken)
       -- 足

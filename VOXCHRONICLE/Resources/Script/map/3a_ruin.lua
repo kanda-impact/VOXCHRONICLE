@@ -35,6 +35,11 @@ Map = {
     if level == 29 then
     enemyManager:loadEnemyTextureAsync("fortress.png")
     elseif level == 30 then
+      CCTextureCache:sharedTextureCache():removeTextureForKey("mask.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("wisp.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("typhoon.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("gargoyle.png")
+
       fortress = enemyManager:popEnemyAt("fortress3A0", MAX_ROW - 1, 1)
       enemyManager:setBoss(fortress)
     end

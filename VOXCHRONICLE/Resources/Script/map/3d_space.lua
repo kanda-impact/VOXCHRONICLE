@@ -40,8 +40,8 @@ Map = {
   onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
     if level == 25 then
-     -- CCTextureCache:sharedCache():removeTextureForKey("t2pha.png")
-     -- CCTextureCache:sharedCache():removeTextureForKey("exob.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("t2pha.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("exob.png")
 
       enemyManager:popEnemyAt("planet15_3D0", 7, 1)
 
@@ -49,7 +49,7 @@ Map = {
       enemyManager:loadEnemyTextureAsync("knight.png")
       enemyManager:loadEnemyTextureAsync("iron.png")
     elseif level == 26 then
-      --CCTextureCache:sharedCache():removeTextureForKey("planet.png")    
+      CCTextureCache:sharedTextureCache():removeTextureForKey("planet.png")    
 
       enemyManager:popEnemyAt("fortress3D0", 7, 1)
       enemyManager:popEnemyAt("knight3D1", 7, 0)
@@ -58,7 +58,7 @@ Map = {
       enemyManager:popEnemyAt("fortress3D0", 7, 0)
       enemyManager:popEnemyAt("fortress3D0", 7, 2)
       
-      --CCTextureCache:sharedCache():removeTextureForKey("knight.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("knight.png")
 
       enemyManager:loadEnemyTextureAsync("kraken_body.png")
       enemyManager:loadEnemyTextureAsync("R_strfoot.png")
@@ -71,7 +71,7 @@ Map = {
       enemyManager:loadEnemyTextureAsync("L_strclaw.png")
 
     elseif level == 28 then
-    --  CCTextureCache:sharedCache():removeTextureForKey("fortress.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("fortress.png")
       enemyManager:loadEnemyTextureAsync("cryst.png")
 
       enemyManager:popEnemyAt("kraken3D0", 3, 1)
@@ -84,16 +84,16 @@ Map = {
       enemyManager:popEnemyAt("R_plclaw3D0", 2, 2)
       enemyManager:popEnemyAt("L_strclaw3D0", 1, 0)
     elseif level == 29 then
-      --[[CCTextureCache:sharedCache():removeTextureForKey("kraken_body.png")
-      CCTextureCache:sharedCache():removeTextureForKey("R_strfoot.png")
-      CCTextureCache:sharedCache():removeTextureForKey("R_plfoot.png")
-      CCTextureCache:sharedCache():removeTextureForKey("R_plclaw.png")
-      CCTextureCache:sharedCache():removeTextureForKey("R_strclaw.png")
-      CCTextureCache:sharedCache():removeTextureForKey("L_strfoot.png")
-      CCTextureCache:sharedCache():removeTextureForKey("L_plfoot.png")
-      CCTextureCache:sharedCache():removeTextureForKey("L_plclaw.png")
-      CCTextureCache:sharedCache():removeTextureForKey("L_strclaw.png")
-]]
+      CCTextureCache:sharedTextureCache():removeTextureForKey("kraken_body.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("R_strfoot.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("R_plfoot.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("R_plclaw.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("R_strclaw.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("L_strfoot.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("L_plfoot.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("L_plclaw.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("L_strclaw.png")
+
       enemyManager:popEnemyAt("save_cryst3D0", 7, 1)
     end
   end,

@@ -40,6 +40,11 @@ Map = {
       enemyManager:loadEnemyTextureAsync("knight.png")
       enemyManager:loadEnemyTextureAsync("iron.png")
     elseif level == 30 then
+      CCTextureCache:sharedTextureCache():removeTextureForKey("slime.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("mimic.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("gargoyle.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("dragon.png")
+
       knight = enemyManager:popEnemyAt("knight_boss", MAX_ROW - 1, 1)
       enemyManager:setBoss(knight)
     end
