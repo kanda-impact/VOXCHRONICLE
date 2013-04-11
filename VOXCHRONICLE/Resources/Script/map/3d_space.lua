@@ -8,7 +8,7 @@ Map = {
   backgroundImage = "3d_background0.png",
   thumbnailImage = "space_thumbnail.png",
   nextMaps = {},
-  initialLevel = 27,
+  initialLevel = 21,
   maxLevel = 30,
   getEnemyTable = function(level)
     if level <= 22 then
@@ -71,7 +71,7 @@ Map = {
       enemyManager:popEnemyAt("R_plclaw3D0", 2, 2)
       enemyManager:popEnemyAt("L_strclaw3D0", 1, 0)
     elseif level == 29 then
-      enemyManager:popEnemyAt("planet15_3D0", 7, 1)
+      enemyManager:popEnemyAt("save_cryst3D0", 7, 1)
     end
   end,
   onClear = function(self, characterManager, enemyManager)

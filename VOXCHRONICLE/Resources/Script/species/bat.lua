@@ -1,7 +1,7 @@
 Enemy = {
   name = "スガァワ",
   imageName = "bat",
-  attack = 2,
+  attack = 6,
   baseExp = 3,
   hasFrame = true,
   counter = 0,

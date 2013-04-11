@@ -13,7 +13,7 @@ Map = {
     if level <= 22 then
       return {slime3B1 = 1, mimic3B3 = 1}
     elseif level <= 24 then
-      return {mimic3B3 = 2, gargoyle3B2 = 3}
+      return {mimic3B3 = 2, gargoyle3B2 = 1}
     elseif level <= 26 then
       return {slime3B1 = 1, gargoyle3B2 = 1}
     elseif level <= 27 then
