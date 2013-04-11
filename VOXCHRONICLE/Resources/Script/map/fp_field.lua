@@ -1,14 +1,29 @@
+function getTime()
+  local time = VQTime:sharedTime()
+  local hour = time:getCurrentHour()
+  if 6 <= hour and hour < 16 then -- 朝
+    return 0
+  elseif 16 <= hour and hour < 19 then -- 夕方
+    return 1
+  end
+  return 2
+end
+
 Map = {
-  name = "シンプル",
-  wayMusic = "volca",
+  name = "草原",
+  wayMusic = "shinka",
   bossMusic = "",
-  backgroundImage = "simple_background.png",
-  skin = "skinA",
+  backgroundImage = "field_background0.png",
+  skin = "skinB",
   ending = "",
   nextMaps = {},
   initialLevel = 1,
   maxLevel = 30,
   onLoad = function(self, characterManager, enemyManager)
+    local number = getTime()
+    local imageName = "field_background"..number..".png"
+    self:changeBackgroundImage(imageName)
+    local level = characterManager:getLevel()
     enemyManager:loadEnemyTextureAsync("leaf.png")
     enemyManager:loadEnemyTextureAsync("slime.png")
     enemyManager:loadEnemyTextureAsync("acorn.png")

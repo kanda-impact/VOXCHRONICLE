@@ -1,8 +1,8 @@
 Map = {
-  name = "シンプル",
-  wayMusic = "volca",
+  name = "チュートリアル",
+  wayMusic = "chabo",
   bossMusic = "",
-  backgroundImage = "simple_background.png",
+  backgroundImage = "tutorial_background.png",
   skin = "skinA",
   ending = "",
   nextMaps = {},

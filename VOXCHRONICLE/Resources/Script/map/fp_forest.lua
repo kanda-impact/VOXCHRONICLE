@@ -1,5 +1,5 @@
 Map = {
-  name = "シンプル",
+  name = "荒野",
   wayMusic = "volca",
   bossMusic = "",
   backgroundImage = "simple_background.png",
@@ -8,25 +8,6 @@ Map = {
   nextMaps = {},
   initialLevel = 1,
   maxLevel = 30,
-  onLoad = function(self, characterManager, enemyManager)
-    enemyManager:loadEnemyTextureAsync("leaf.png")
-    enemyManager:loadEnemyTextureAsync("slime.png")
-    enemyManager:loadEnemyTextureAsync("acorn.png")
-  end,
-  onLevel = function(self, characterManager, enemyManager)
-    local level = characterManager:getLevel()
-    if level == 19 then
-      enemyManager:loadEnemyTextureAsync("moth.png")
-      enemyManager:loadEnemyTextureAsync("hornet.png")
-      enemyManager:loadEnemyTextureAsync("toadstool.png")
-    elseif level == 29 then
-      enemyManager:loadEnemyTextureAsync("mask.png")
-      enemyManager:loadEnemyTextureAsync("wisp.png")
-      enemyManager:loadEnemyTextureAsync("typhoon.png")
-      enemyManager:loadEnemyTextureAsync("mimic.png")
-      enemyManager:loadEnemyTextureAsync("gargoyle.png")
-    end
-  end,
   getEnemyTable = function(level)
     if level <= 2 then
       return {leaf1A0 = 1, slime1A0 = 1 }

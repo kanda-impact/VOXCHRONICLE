@@ -1,9 +1,9 @@
 Map = {
-  name = "シンプル",
-  wayMusic = "volca",
+  name = "遺跡ボス",
+  wayMusic = "Hawaii",
   bossMusic = "",
-  backgroundImage = "simple_background.png",
-  skin = "skinA",
+  backgroundImage = "ruin_background.png",
+  skin = "skinC",
   ending = "",
   nextMaps = {},
   initialLevel = 1,

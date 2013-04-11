@@ -1,8 +1,8 @@
 Map = {
-  name = "シンプル",
-  wayMusic = "volca",
+  name = "宙域",
+  wayMusic = "nmb",
   bossMusic = "",
-  backgroundImage = "simple_background.png",
+  backgroundImage = "3d_background0.png",
   skin = "skinA",
   ending = "",
   nextMaps = {},
