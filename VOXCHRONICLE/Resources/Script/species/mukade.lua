@@ -12,7 +12,7 @@ Enemy = {
     elseif row > 0 then
       return 1
     end
-    return 0
+    return 1
   end,
   getFrequency = function(enemy, characterManager)
     return 2
@@ -25,10 +25,10 @@ Enemy = {
   habitat = "",
   animationFrames = 4,
   performSkill = function(self)
-    local row = self:getRow()
+ --[[   local row = self:getRow()
     if row == 0 then
       return "direct_attack"
-    end
+    end]]
     return ""
   end
 }
