@@ -552,6 +552,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     
     if (skill) {
       _skin->getController()->updateSkills(_characterManager, _level);
+      _skin->getController()->resetAllTriggers();
     }
     
     this->updateFocus();
