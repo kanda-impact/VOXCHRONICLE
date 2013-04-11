@@ -9,11 +9,14 @@
 #include "PopupWindow.h"
 #include "SimpleAudioEngine.h"
 #include <boost/bind.hpp>
+#include "CCRemoveFromParentAction.h"
 
 using namespace CocosDenshion;
 
 typedef enum {
-  PopupWindowTagMessageWindow
+  PopupWindowTagWindow,
+  PopupWindowTagMessageWindow,
+  PopupWindowTagCursor
 } PopupWindowTag;
 
 PopupWindow* PopupWindow::create(int pages) {
@@ -24,7 +27,6 @@ PopupWindow* PopupWindow::create(int pages) {
 
 PopupWindow::PopupWindow(int pages) {
   if (this->initWithFile("tutorial_window.png")) {
-    CCDirector* director = CCDirector::sharedDirector();
     _maxPages = pages;
     _currentPage = 0;
     _pages = CCArray::create();
@@ -34,8 +36,8 @@ PopupWindow::PopupWindow(int pages) {
       _pages->addObject(node);
     }
     CCNode* root = (CCNode*)_pages->objectAtIndex(0);
-    this->addChild(root);
-    
+    this->addChild(root, 0, PopupWindowTagWindow);
+  
     CCMenuItemImage* left = CCMenuItemImage::create("tutorial_cursor_left.png",
                                                     "tutorial_cursor_left_pressed.png",
                                                     this,
@@ -47,9 +49,10 @@ PopupWindow::PopupWindow(int pages) {
     left->setTag(0);
     right->setTag(1);
     CCMenu* cursors = CCMenu::create(left, right, NULL);
-    cursors->setPosition(ccp(director->getWinSize().width / 2.0, director->getWinSize().height / 2.0));
-    cursors->alignItemsHorizontallyWithPadding(350);
-    this->addChild(cursors);
+    cursors->setAnchorPoint(ccp(0.5, 0.5));
+    cursors->setPosition(ccp(this->getContentSize().width / 2.0, this->getContentSize().height / 2.0));
+    cursors->alignItemsHorizontallyWithPadding(390);
+    this->addChild(cursors, 0, PopupWindowTagCursor);
   }
 }
 
@@ -78,11 +81,15 @@ void PopupWindow::nextPage() {
 }
 
 void PopupWindow::setPage(int page) {
-  this->removeAllChildrenWithCleanup(true);
-  if (page > 0 && page < _maxPages) {
+  if (page >= 0 && page < _maxPages) {
+    this->removeChildByTag(PopupWindowTagWindow, true);
     _currentPage = page;
     CCNode *next = (CCNode*)_pages->objectAtIndex(_currentPage);
-    this->addChild(next);
+    this->addChild(next, 0, PopupWindowTagWindow);
+  } else if (page == _maxPages) {
+    this->runAction(CCSequence::create(CCScaleTo::create(0.3f, 0),
+                                       CCRemoveFromParentAction::create(),
+                                       NULL));
   }
 }
 
@@ -123,12 +130,16 @@ void PopupWindow::onCursorPressed(cocos2d::CCNode *node) {
       SimpleAudioEngine::sharedEngine()->playEffect("window_close.mp3");
     } else {
       SimpleAudioEngine::sharedEngine()->playEffect("window_next.mp3");
-      this->nextPage();
     }
+    this->onWindowTouched();
+    this->nextPage();
   }
 }
 
 void PopupWindow::onWindowTouched() {
-  MessageWindow* window = (MessageWindow*)this->getChildByTag(PopupWindowTagMessageWindow);
-  window->finishMessage();
+  CCNode* window = this->getPage(_currentPage);
+  MessageWindow* mWindow = (MessageWindow*)window->getChildByTag(PopupWindowTagMessageWindow);
+  if (mWindow) {
+    mWindow->finishMessage();
+  }
 }

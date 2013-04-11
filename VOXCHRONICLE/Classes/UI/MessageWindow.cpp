@@ -124,5 +124,5 @@ void MessageWindow::updateNextMessage(CCObject* sender) {
 void MessageWindow::finishMessage() {
   if (_ended) return;
   _textIndex = this->getCurrentWholeMessage()->length() - 2; // 最大文字-1文字
-  this->updateNextMessage(this);
+  this->updateNextText(this);
 }
