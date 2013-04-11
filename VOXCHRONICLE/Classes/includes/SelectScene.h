@@ -24,6 +24,7 @@ class SelectScene :public CCLayer {
   void onHardButtonPressed(CCObject* sender);
   void onBackButtonPressed(CCObject* sender);
   void startGame(CCObject* sender);
+  void disableButtons();
   CCSprite* blinkSprite(CCSprite* sprite, float speed);
   CCNode* buttonNode(const char* key, const char* thumbnail, bool pressed);
   Map* _nextMap;

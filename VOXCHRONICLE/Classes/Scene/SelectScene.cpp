@@ -20,6 +20,8 @@ typedef enum {
 } SelectSceneZOrder;
 
 typedef enum {
+  SelectSceneTagMenu,
+  SelectSceneTagBackMenu,
   SelectSceneTagEasyFrame,
   SelectSceneTagHardFrame
 } SelectSceneTag;
@@ -52,7 +54,7 @@ bool SelectScene::init() {
   mainMenu->setAnchorPoint(ccp(0.5, 0.5));
   
   mainMenu->setPosition(ccp(director->getWinSize().width / 2.0 + 2, 127));
-  this->addChild(mainMenu, SelectSceneZOrderButton);
+  this->addChild(mainMenu, SelectSceneZOrderButton, SelectSceneTagMenu);
   
   CCMenuItemImage* backButton = CCMenuItemImage::create("select_back.png",
                                                         "select_back_pressed.png",
@@ -61,7 +63,7 @@ bool SelectScene::init() {
   CCMenu* backMenu = CCMenu::create(backButton, NULL);
   backMenu->setPosition(ccp(director->getWinSize().width / 2.0f, 45));
   _nextMap = NULL;
-  this->addChild(backMenu);
+  this->addChild(backMenu, SelectSceneZOrderButton, SelectSceneTagBackMenu);
   
   CCSprite* map = CCSprite::create("select_map.png");
   map->setPosition(ccp(director->getWinSize().width / 2.0f, 255));
@@ -155,6 +157,7 @@ void SelectScene::onEasyButtonPressed(cocos2d::CCObject *sender) {
   CCSprite* frame = (CCSprite*)this->getChildByTag(SelectSceneTagEasyFrame);
   this->blinkSprite(frame, 0.05);
   this->scheduleOnce(schedule_selector(SelectScene::startGame), 3.0f); // 遅延してゲーム開始
+  this->disableButtons();
 }
 
 void SelectScene::onHardButtonPressed(cocos2d::CCObject *sender) {
@@ -166,6 +169,7 @@ void SelectScene::onHardButtonPressed(cocos2d::CCObject *sender) {
   CCSprite* frame = (CCSprite*)this->getChildByTag(SelectSceneTagHardFrame);
   this->blinkSprite(frame, 0.05);
   this->scheduleOnce(schedule_selector(SelectScene::startGame), 3.0f); // 遅延してゲーム開始
+  this->disableButtons();
 }
 
 void SelectScene::startGame(cocos2d::CCObject *sender) {
@@ -186,4 +190,12 @@ void SelectScene::onBackButtonPressed(cocos2d::CCObject *sender) {
   scene->addChild(layer);
   CCTransitionSlideInB* transition = CCTransitionSlideInB::create(0.25f, scene);
   CCDirector::sharedDirector()->replaceScene(transition);
+  this->disableButtons();
+}
+
+void SelectScene::disableButtons() {
+  CCMenu* menu = (CCMenu*)this->getChildByTag(SelectSceneTagMenu);
+  CCMenu* back = (CCMenu*)this->getChildByTag(SelectSceneTagBackMenu);
+  menu->setEnabled(false);
+  back->setEnabled(false);
 }
