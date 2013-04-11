@@ -8,7 +8,7 @@ Map = {
   backgroundImage = "3d_background0.png",
   thumbnailImage = "space_thumbnail.png",
   nextMaps = {},
-  initialLevel = 25,
+  initialLevel = 21,
   maxLevel = 30,
   getEnemyTable = function(level)
     if level <= 22 then
@@ -19,14 +19,14 @@ Map = {
       return {exob3D5 = 1, planet3D0 = 1, t2pha3D1 = 1}
     end
     return {}
-      --return {exob3D5 = 3, planet3D0 = 1, t2pha3D1 = 1, whale3D7 = 1}
+    --return {exob3D5 = 3, planet3D0 = 1, t2pha3D1 = 1, whale3D7 = 1}
   end,
-    onLoad = function(self, characterManager, enemyManager)
+  onLoad = function(self, characterManager, enemyManager)
     enemyManager:loadEnemyTextureAsync("t2pha.png")
     enemyManager:loadEnemyTextureAsync("exob.png")
     enemyManager:loadEnemyTextureAsync("planet.png")
   end,
-    onBack = function(self, characterManager, enemyManager)
+  onBack = function(self, characterManager, enemyManager)
     local enemies = enemyManager:getEnemies()
     local enemyCount = enemies:count()
     local level = characterManager:getLevel()
@@ -36,7 +36,7 @@ Map = {
       end
     end
   end,
-  
+
   onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
     if level == 25 then
@@ -49,7 +49,7 @@ Map = {
       enemyManager:loadEnemyTextureAsync("knight.png")
       enemyManager:loadEnemyTextureAsync("iron.png")
     elseif level == 26 then
-      CCTextureCache:sharedTextureCache():removeTextureForKey("planet.png")    
+      CCTextureCache:sharedTextureCache():removeTextureForKey("planet.png")
 
       enemyManager:popEnemyAt("fortress3D0", 7, 1)
       enemyManager:popEnemyAt("knight3D1", 7, 0)
@@ -57,7 +57,7 @@ Map = {
     elseif level == 27 then
       enemyManager:popEnemyAt("fortress3D0", 7, 0)
       enemyManager:popEnemyAt("fortress3D0", 7, 2)
-      
+
       CCTextureCache:sharedTextureCache():removeTextureForKey("knight.png")
 
       enemyManager:loadEnemyTextureAsync("kraken_body.png")
@@ -94,7 +94,14 @@ Map = {
       CCTextureCache:sharedTextureCache():removeTextureForKey("L_plclaw.png")
       CCTextureCache:sharedTextureCache():removeTextureForKey("L_strclaw.png")
 
+      enemyManager:loadEnemyTextureAsync("flast.png")
+      enemyManager:loadEnemyTextureAsync("2last.png")
+      enemyManager:loadEnemyTextureAsync("bit.png")
+
       enemyManager:popEnemyAt("save_cryst3D0", 7, 1)
+    elseif level == 30 then
+      local boss = enemyManager:popEnemyAt("last1_boss", 3, 1)
+      enemyManager:setBoss(boss)
     end
   end,
   onClear = function(self, characterManager, enemyManager)
@@ -105,7 +112,7 @@ Map = {
   end,
   getEnemyPopRate = function(level)
     if level >= 25 then
-    return 0
+      return 0
     end
     return 0.3
   end
