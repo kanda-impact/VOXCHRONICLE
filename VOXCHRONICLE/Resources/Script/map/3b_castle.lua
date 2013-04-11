@@ -13,7 +13,7 @@ Map = {
     if level <= 22 then
       return {slime3B1 = 1, mimic3B3 = 1}
     elseif level <= 24 then
-      return {mimic3B3 = 2, gargoyle3B2 = 3}
+      return {mimic3B3 = 2, gargoyle3B2 = 1}
     elseif level <= 26 then
       return {slime3B1 = 1, gargoyle3B2 = 1}
     elseif level <= 27 then
@@ -33,11 +33,18 @@ Map = {
     enemyManager:loadEnemyTextureAsync("mimic.png")
     enemyManager:loadEnemyTextureAsync("gargoyle.png")
     enemyManager:loadEnemyTextureAsync("dragon.png")
-    enemyManager:loadEnemyTextureAsync("knight.png")
   end,
    onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
-    if level == 30 then
+    if level == 29 then
+      enemyManager:loadEnemyTextureAsync("knight.png")
+      enemyManager:loadEnemyTextureAsync("iron.png")
+    elseif level == 30 then
+      CCTextureCache:sharedTextureCache():removeTextureForKey("slime.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("mimic.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("gargoyle.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("dragon.png")
+
       knight = enemyManager:popEnemyAt("knight_boss", MAX_ROW - 1, 1)
       enemyManager:setBoss(knight)
     end

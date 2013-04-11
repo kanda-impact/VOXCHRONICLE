@@ -1314,6 +1314,8 @@
 		B06D41E01715A71D006ABB6A /* R_plfoot3D0.lua in Resources */ = {isa = PBXBuildFile; fileRef = B06D41DF1715A71A006ABB6A /* R_plfoot3D0.lua */; };
 		B06D41E21715A737006ABB6A /* R_strclaw3D0.lua in Resources */ = {isa = PBXBuildFile; fileRef = B06D41E11715A732006ABB6A /* R_strclaw3D0.lua */; };
 		B06D41E41715A78A006ABB6A /* R_strfoot3D0.lua in Resources */ = {isa = PBXBuildFile; fileRef = B06D41E31715A786006ABB6A /* R_strfoot3D0.lua */; };
+		B06D41E61716FB7F006ABB6A /* save_cryst.lua in Resources */ = {isa = PBXBuildFile; fileRef = B06D41E51716FB7E006ABB6A /* save_cryst.lua */; };
+		B06D41E81716FBD6006ABB6A /* save_cryst3D0.lua in Resources */ = {isa = PBXBuildFile; fileRef = B06D41E71716FBD6006ABB6A /* save_cryst3D0.lua */; };
 		B07E38C416E1072200473629 /* 1a_simple.lua in Resources */ = {isa = PBXBuildFile; fileRef = B07E38C316E1071C00473629 /* 1a_simple.lua */; };
 		B07E38C616E1073700473629 /* 2c_cyber.lua in Resources */ = {isa = PBXBuildFile; fileRef = B07E38C516E1073400473629 /* 2c_cyber.lua */; };
 		B07E38CC16E10AD500473629 /* 3d_space.lua in Resources */ = {isa = PBXBuildFile; fileRef = B07E38CB16E10ACF00473629 /* 3d_space.lua */; };
@@ -3038,6 +3040,8 @@
 		B06D41DF1715A71A006ABB6A /* R_plfoot3D0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = R_plfoot3D0.lua; sourceTree = "<group>"; };
 		B06D41E11715A732006ABB6A /* R_strclaw3D0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = R_strclaw3D0.lua; sourceTree = "<group>"; };
 		B06D41E31715A786006ABB6A /* R_strfoot3D0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = R_strfoot3D0.lua; sourceTree = "<group>"; };
+		B06D41E51716FB7E006ABB6A /* save_cryst.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = save_cryst.lua; path = species/save_cryst.lua; sourceTree = "<group>"; };
+		B06D41E71716FBD6006ABB6A /* save_cryst3D0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = save_cryst3D0.lua; sourceTree = "<group>"; };
 		B07E38C316E1071C00473629 /* 1a_simple.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 1a_simple.lua; path = map/1a_simple.lua; sourceTree = "<group>"; };
 		B07E38C516E1073400473629 /* 2c_cyber.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 2c_cyber.lua; path = map/2c_cyber.lua; sourceTree = "<group>"; };
 		B07E38CB16E10ACF00473629 /* 3d_space.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 3d_space.lua; path = map/3d_space.lua; sourceTree = "<group>"; };
@@ -3778,6 +3782,7 @@
 				0796691516FD4C540001F8B2 /* bat.lua */,
 				0796691616FD4C540001F8B2 /* coin.lua */,
 				0796691716FD4C540001F8B2 /* cryst.lua */,
+				B06D41E51716FB7E006ABB6A /* save_cryst.lua */,
 				0796691816FD4C540001F8B2 /* dragon.lua */,
 				0796691916FD4C540001F8B2 /* egg.lua */,
 				0796691A16FD4C540001F8B2 /* exob.lua */,
@@ -5151,6 +5156,7 @@
 				B04AE42A16F95A3800295885 /* mimic3A1.lua */,
 				B017550B1706E27B008053BB /* wisp2B6.lua */,
 				B07E38D516E1107200473629 /* cryst2B3.lua */,
+				B06D41E71716FBD6006ABB6A /* save_cryst3D0.lua */,
 				B07E38E716E1244B00473629 /* hornet2A0.lua */,
 				B0A94E5D170FFA04006B35C6 /* hornet1B1.lua */,
 				B03F7B2216E2BD5B00D7FF9C /* leaf2A2.lua */,
@@ -6736,6 +6742,8 @@
 				0729215E1717037F0083F905 /* fp_cyber.lua in Resources */,
 				0729215F1717037F0083F905 /* fp_field.lua in Resources */,
 				072921601717037F0083F905 /* fp_forest.lua in Resources */,
+				B06D41E61716FB7F006ABB6A /* save_cryst.lua in Resources */,
+				B06D41E81716FBD6006ABB6A /* save_cryst3D0.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
