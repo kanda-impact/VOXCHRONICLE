@@ -315,10 +315,6 @@ int Enemy::getAttack() {
 }
 
 EnemyItem Enemy::getItem() {
-  if (_item != EnemyItemNone) {
-    CCNode* item = this->getChildByTag(EnemyTagItem);
-    //CCAssert(item == NULL, "アイテム消えてる!!!");
-  }
   return _item;
 }
 
@@ -330,21 +326,21 @@ void Enemy::setItem(EnemyItem item) {
   _item = item;
   CCPoint point = CCPointZero;
   if (item != EnemyItemNone) {
-    const char* filename;
+    string filename;
     CCSprite* sprite = NULL;
     if (item == EnemyItemShield) {
       filename = "Image/shield.png";
-      sprite = CCSprite::create(FileUtils::getFilePath(filename).c_str());
+      sprite = CCSprite::create(FileUtils::getFilePath(filename.c_str()).c_str());
       sprite->setColor(VOX_COLOR);
-      point = ccp(0, this->getContentSize().height / 2.0f);
+      sprite->setScale(1.0f);
     } else if (item == EnemyItemBarrier) {
       filename = "Image/barrier.png";
-      sprite = CCSprite::create(FileUtils::getFilePath(filename).c_str());
+      sprite = CCSprite::create(FileUtils::getFilePath(filename.c_str()).c_str());
       sprite->setColor(LSK_COLOR);
-      point = ccp(this->getContentSize().width / 2.0f, this->getContentSize().height / 2.0f);
-      sprite->setOpacity(200);
       sprite->setScale(2.0f);
     }
+    point = ccp(this->getContentSize().width / 2.0f, this->getContentSize().height / 2.0f);
+    sprite->setOpacity(164);
     this->addChild(sprite, 1000, EnemyTagItem);
     sprite->setPosition(point);
   }
@@ -511,15 +507,20 @@ void Enemy::setSkillType(SkillType type) {
 }
 
 void Enemy::setFrameColor(cocos2d::CCSprite *frameSprite, SkillType type) {
-  CCRepeatForever* blink = CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.05f, 64), CCFadeTo::create(0.05f, 255)));
-  if (type == SkillTypePhysical) {
-    frameSprite->setColor(ccc3(0, 255, 230));
-    frameSprite->runAction(blink);
-  } else if (type == SkillTypeMagical) {
-    frameSprite->setColor(LSK_COLOR);
-    frameSprite->runAction(blink);
+  ccColor3B color = ccc3(0, 0, 0);
+  if (type == SkillTypeNormal || type == SkillTypeNone) {
+    frameSprite->setColor(color);
   } else {
+    if (type == SkillTypeMagical) {
+      color = LSK_COLOR;
+    } else {
+      color = ccc3(0, 255, 230);
+    }
     frameSprite->setColor(ccc3(0, 0, 0));
+    CCRepeatForever* blink = CCRepeatForever::create(CCSequence::createWithTwoActions(CCTintTo::create(0.5, color.r, color.g, color.b),
+                                                                                      CCTintTo::create(1.0, 0, 0, 0)));
+    frameSprite->runAction(blink);
+    frameSprite->setColor(color);
   }
 }
 
