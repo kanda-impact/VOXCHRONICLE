@@ -28,7 +28,7 @@ void PauseLayer::buildUI() {
   this->addChild(background);
   
   CCSprite* pause = CCSprite::create("pause_label.png");
-  pause->setPosition(ccp(director->getWinSize().width / 2.0, 280));
+  pause->setPosition(ccp(director->getWinSize().width / 2.0, 250));
   this->addChild(pause);
   
   _topMenu = CCMenu::create(CCMenuItemImage::create("resume.png", "resume_pressed.png", this, menu_selector(PauseLayer::onCancelPressed)),
@@ -41,12 +41,15 @@ void PauseLayer::buildUI() {
                                 CCMenuItemImage::create("no.png", "no_pressed.png",
                                                         this, menu_selector(PauseLayer::onNoPressed)),
                                 NULL);
-  _topMenu->setPosition(ccp(director->getWinSize().width / 2.0, 160));
+  _topMenu->setPosition(ccp(director->getWinSize().width / 2.0, 140));
+  _confirmMenu->setPosition(ccp(director->getWinSize().width / 2.0, 140));
   _topMenu->alignItemsVerticallyWithPadding(20);
+  _topMenu->setAnchorPoint(ccp(0.5, 0.5));
+  _confirmMenu->setAnchorPoint(ccp(0.5, 0.5));
   _confirmMenu->alignItemsVerticallyWithPadding(20);
   
   _descriptionLabel = CCLabelTTF::create("ゲームを中断します。よろしいですか？", FONT_NAME, 16);
-  _descriptionLabel->setPosition(ccp(director->getWinSize().width / 2.0, 230));
+  _descriptionLabel->setPosition(ccp(director->getWinSize().width / 2.0, 200));
   _descriptionLabel->setVisible(false);
   this->addChild(_descriptionLabel);
   

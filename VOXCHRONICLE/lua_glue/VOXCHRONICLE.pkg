@@ -246,6 +246,8 @@ class SaveData : public CCObject {
 	static SaveData* sharedData();
 	bool isUnlockAchievement(const char* identifier);
 	void unlockAchievement(const char* identifier);
+	int getDefeatedCount(const char* enemyIdentifier);
+	void addDefeatedCountForEnemy(const char* enemyIdentifier);
 	void addCountFor(SaveDataCountKey key, int value);
 	void addCountFor(SaveDataCountKey key);
 	int getCountFor(SaveDataCountKey key);
