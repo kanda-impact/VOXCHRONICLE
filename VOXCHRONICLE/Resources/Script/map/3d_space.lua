@@ -115,6 +115,8 @@ Map = {
       return 0
     end
     return 0.3
-  end
+  end,
+  fixedEnemies = {
+  }
 }
 

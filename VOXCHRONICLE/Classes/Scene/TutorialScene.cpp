@@ -70,6 +70,7 @@ void TutorialLayer::onTutorialButtonPressed(cocos2d::CCObject *sender) {
     if (i == tag) {
       string mapName = it->stringValue();
       Map* map = new Map(mapName.c_str());
+      map->autorelease();
       MainScene* layer = new MainScene();
       layer->autorelease();
       layer->init(map);

@@ -175,6 +175,7 @@ void SelectScene::onHardButtonPressed(cocos2d::CCObject *sender) {
 void SelectScene::startGame(cocos2d::CCObject *sender) {
   CCScene* scene = CCScene::create();
   MainScene* layer = new MainScene();
+  layer->autorelease();
   layer->init(_nextMap);
   scene->addChild(layer);
   

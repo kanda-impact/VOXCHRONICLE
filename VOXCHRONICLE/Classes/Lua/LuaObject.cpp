@@ -164,6 +164,7 @@ CCLuaEngine* LuaObject::getLuaEngine() {
 }
 
 CCLuaEngine* LuaObject::getLuaEngineWithLoad() {
+  _engine->cleanStack();
   _engine->executeScriptFile(_path.c_str());
   lua_State* L = _engine->getLuaState();
   if (_className != NULL) {
