@@ -51,7 +51,7 @@ PopupWindow::PopupWindow(int pages) {
     CCMenu* cursors = CCMenu::create(left, right, NULL);
     cursors->setAnchorPoint(ccp(0.5, 0.5));
     cursors->setPosition(ccp(this->getContentSize().width / 2.0, this->getContentSize().height / 2.0));
-    cursors->alignItemsHorizontallyWithPadding(390);
+    cursors->alignItemsHorizontallyWithPadding(410);
     this->addChild(cursors, 0, PopupWindowTagCursor);
   }
 }
@@ -142,4 +142,13 @@ void PopupWindow::onWindowTouched() {
   if (mWindow) {
     mWindow->finishMessage();
   }
+}
+
+bool PopupWindow::isMessageEnded() {
+  CCNode* window = this->getPage(_currentPage);
+  MessageWindow* mWindow = (MessageWindow*)window->getChildByTag(PopupWindowTagMessageWindow);
+  if (mWindow) {
+    return mWindow->isEndMessage();
+  }
+  return true;
 }

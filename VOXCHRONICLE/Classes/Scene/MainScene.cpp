@@ -593,8 +593,12 @@ void MainScene::registerWithTouchDispatcher() {
 bool MainScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
   if (_state == VCStateWindow) {
     PopupWindow* layer = _effectLayer->getPopupWindow();
-    if (layer) { // 最終ページだったら
-      layer->onWindowTouched();
+    if (layer) {
+      if (layer->isMessageEnded()) { // メッセージ終わってたら次のページ
+        layer->nextPage();
+      } else {
+        layer->onWindowTouched(); // そうじゃなきゃメッセージ終了
+      }
       return true;
     }
   }

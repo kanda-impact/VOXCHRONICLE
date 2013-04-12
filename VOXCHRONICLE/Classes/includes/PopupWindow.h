@@ -30,6 +30,7 @@ class PopupWindow :public CCSprite {
   CCNode* getPage(int page);
   int getCurrentPage();
   bool isLastPage();
+  bool isMessageEnded();
   void prevPage();
   void nextPage();
   void setText(int page, const char* header, const char* text);
