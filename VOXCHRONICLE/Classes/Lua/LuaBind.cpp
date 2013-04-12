@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Thu Apr 11 03:16:40 2013.
+** Generated automatically by tolua++-1.0.92 on Fri Apr 12 23:16:20 2013.
 */
 
 #ifndef __cplusplus
@@ -1608,6 +1608,73 @@ static int tolua_VOXCHRONICLE_CharacterManager_getExp00(lua_State* tolua_S)
 #ifndef TOLUA_RELEASE
  tolua_lerror:
  tolua_error(tolua_S,"#ferror in function 'getExp'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: getExpWithLevel of class  CharacterManager */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_CharacterManager_getExpWithLevel00
+static int tolua_VOXCHRONICLE_CharacterManager_getExpWithLevel00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CharacterManager",0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  CharacterManager* self = (CharacterManager*)  tolua_tousertype(tolua_S,1,0);
+  int level = ((int)  tolua_tonumber(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getExpWithLevel'", NULL);
+#endif
+  {
+   int tolua_ret = (int)  self->getExpWithLevel(level);
+   tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getExpWithLevel'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: setExp of class  CharacterManager */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_CharacterManager_setExp00
+static int tolua_VOXCHRONICLE_CharacterManager_setExp00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CharacterManager",0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  CharacterManager* self = (CharacterManager*)  tolua_tousertype(tolua_S,1,0);
+  int exp = ((int)  tolua_tonumber(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setExp'", NULL);
+#endif
+  {
+   self->setExp(exp);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'setExp'.",&tolua_err);
  return 0;
 #endif
 }
@@ -3374,6 +3441,8 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
    tolua_function(tolua_S,"setRepeatCount",tolua_VOXCHRONICLE_CharacterManager_setRepeatCount00);
    tolua_function(tolua_S,"getLastSkill",tolua_VOXCHRONICLE_CharacterManager_getLastSkill00);
    tolua_function(tolua_S,"getExp",tolua_VOXCHRONICLE_CharacterManager_getExp00);
+   tolua_function(tolua_S,"getExpWithLevel",tolua_VOXCHRONICLE_CharacterManager_getExpWithLevel00);
+   tolua_function(tolua_S,"setExp",tolua_VOXCHRONICLE_CharacterManager_setExp00);
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"EnemyManager","EnemyManager","CCLayer",NULL);
   tolua_beginmodule(tolua_S,"EnemyManager");

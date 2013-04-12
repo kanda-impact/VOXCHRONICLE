@@ -557,9 +557,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _effectLayer->setCharacterEffect(_characterManager->getCurrentCharacter());
     }
     
-    if (skill) {
-      _skin->getController()->updateSkills(_characterManager, _level, false);
-    }
+    _skin->getController()->updateSkills(_characterManager, _level, false);
     
     this->updateFocus();
     this->updateGUI(); // GUI更新

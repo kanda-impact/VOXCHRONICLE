@@ -184,6 +184,8 @@ class CharacterManager : public CCObject {
 	void setRepeatCount(int repeat);
 	Skill* getLastSkill();
 	int getExp();
+	int getExpWithLevel(int level);
+	void setExp(int exp);
 };
 
 class EnemyManager : public CCLayer {

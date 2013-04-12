@@ -110,6 +110,11 @@ int CharacterManager::getExpWithLevel(int level) {
   return executeLuaFunction("getExp", level);
 }
 
+void CharacterManager::setExp(int exp) {
+  _exp = exp;
+  _isExpDirty = true;
+}
+
 int CharacterManager::executeLuaFunction(const char *methodName, int argument) {
   CCLuaEngine* engine = CCLuaEngine::defaultEngine();
   std::string path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath(FileUtils::getFilePath("Script/character/character.lua").c_str());
