@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Sat Apr 13 00:31:29 2013.
+** Generated automatically by tolua++-1.0.92 on Sat Apr 13 02:04:36 2013.
 */
 
 #ifndef __cplusplus
@@ -3186,6 +3186,70 @@ static int tolua_VOXCHRONICLE_SaveData_load00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: getAllEnemyDictionaryCount of class  SaveData */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_SaveData_getAllEnemyDictionaryCount00
+static int tolua_VOXCHRONICLE_SaveData_getAllEnemyDictionaryCount00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"SaveData",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  SaveData* self = (SaveData*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getAllEnemyDictionaryCount'", NULL);
+#endif
+  {
+   int tolua_ret = (int)  self->getAllEnemyDictionaryCount();
+   tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getAllEnemyDictionaryCount'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: getEnemyDictionaryCount of class  SaveData */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_SaveData_getEnemyDictionaryCount00
+static int tolua_VOXCHRONICLE_SaveData_getEnemyDictionaryCount00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"SaveData",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  SaveData* self = (SaveData*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getEnemyDictionaryCount'", NULL);
+#endif
+  {
+   int tolua_ret = (int)  self->getEnemyDictionaryCount();
+   tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getEnemyDictionaryCount'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* method: getCount of class  PlayLog */
 #ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_PlayLog_getCount00
 static int tolua_VOXCHRONICLE_PlayLog_getCount00(lua_State* tolua_S)
@@ -3580,6 +3644,8 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
    tolua_function(tolua_S,"isClearedMap",tolua_VOXCHRONICLE_SaveData_isClearedMap00);
    tolua_function(tolua_S,"save",tolua_VOXCHRONICLE_SaveData_save00);
    tolua_function(tolua_S,"load",tolua_VOXCHRONICLE_SaveData_load00);
+   tolua_function(tolua_S,"getAllEnemyDictionaryCount",tolua_VOXCHRONICLE_SaveData_getAllEnemyDictionaryCount00);
+   tolua_function(tolua_S,"getEnemyDictionaryCount",tolua_VOXCHRONICLE_SaveData_getEnemyDictionaryCount00);
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"PlayLog","PlayLog","CCObject",NULL);
   tolua_beginmodule(tolua_S,"PlayLog");

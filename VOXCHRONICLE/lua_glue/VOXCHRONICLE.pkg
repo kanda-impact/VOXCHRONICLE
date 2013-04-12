@@ -255,6 +255,8 @@ class SaveData : public CCObject {
 	bool isClearedMap(const char* mapIdentifier);
 	void save();
 	void load();
+	int getAllEnemyDictionaryCount();
+	int getEnemyDictionaryCount();
 };
 
 class PlayLog :public CCObject {
