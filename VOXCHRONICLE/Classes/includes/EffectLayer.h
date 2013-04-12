@@ -66,6 +66,7 @@ class EffectLayer :public CCLayer {
   void setCutinExtension(CCNode* extension);
   void reloadFocus(Skin* skin);
   void updateFocus(EnemyManager* manager);
+  void addWaitMarker(float duration);
 };
 
 #endif /* defined(__VOXCHRONICLE__EffectLayer__) */

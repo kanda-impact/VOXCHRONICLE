@@ -503,7 +503,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       
       CCSprite* levelup = CCSprite::create("levelup.png");
       levelup->setPosition(ccp(-100, 180));
-      levelup->runAction(CCSequence::create(CCMoveBy::create(2.5f, ccp(680, 0)),
+      levelup->runAction(CCSequence::create(CCMoveBy::create(1.5f, ccp(680, 0)),
                          CCRemoveFromParentAction::create(),
                          NULL));
       _effectLayer->addChild(levelup);
@@ -718,6 +718,7 @@ void MainScene::changeMap(Map* nextMap) {
   _musicManager->setFinishCount(0);
   _skin->getController()->setEnable(false);
   _musicManager->pushIntroTracks();
+  _effectLayer->addWaitMarker(_musicManager->getMusic()->getCurrentMainTrack()->getDuration() * _musicManager->getMusicSet()->getIntroCount());
   _characterManager->setRepeatCount(0); // repeatCountをリセット
   this->updateGUI();
   _map->performOnLoad(_characterManager, _enemyManager);
