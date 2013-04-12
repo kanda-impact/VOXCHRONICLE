@@ -54,7 +54,6 @@ class MainScene : public CCLayer {
   CharacterManager* _characterManager;
   MapSelector* _mapSelector;
   MessageWindow* _messageWindow;
-  CCSprite* _focus;
   QTETrigger* _qteTrigger;
   Skin* _skin;
   EffectLayer* _effectLayer;
@@ -81,7 +80,6 @@ class MainScene : public CCLayer {
   void update(float dt);
   bool checkLevelUp();
   
-  void updateFocus();
   void addDamageEffect();
   void changeMap(Map* nextMap);
   void changeMusic(MusicSet* mSet, bool enablePreload);

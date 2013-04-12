@@ -134,13 +134,6 @@ bool MainScene::init(Map* map) {
   }
   this->addChild(_effectLayer, MainSceneZOrderEffect);
   
-  string focusName = string("Image/") + _skin->getPrefix() + string("_focus.png");
-  _focus = CCSprite::create(FileUtils::getFilePath(focusName.c_str()).c_str());
-  _focus->retain();
-  _focus->setVisible(false);
-  _focus->setAnchorPoint(ccp(0.5f, 0.0f));
-  this->addChild(_focus, MainSceneZOrderFocus);
-  
   _effectLayer->setCharacterEffect(_characterManager->getCurrentCharacter()); // キャラクター登録
   
   this->setTouchEnabled(true);
@@ -155,7 +148,6 @@ MainScene::~MainScene() {
     _mapSelector->release();
   }
   _messageWindow->release();
-  _focus->release();
   
   if (_qteTrigger != NULL) {
     _qteTrigger->release();
@@ -235,7 +227,6 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
     _log->setCount(PlayLogKeyHitDamage, sub + _log->getCount(PlayLogKeyHitDamage)); // 被ダメージカウント
     
     this->addDamageEffect();
-    this->updateFocus();
     this->updateGUI();
     
     // 盾を外すエフェクト
@@ -247,6 +238,7 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
     _skin->getController()->updateSkills(_characterManager, _level, true);
   }
   _map->performOnBack(_characterManager, _enemyManager);
+  _effectLayer->updateFocus(_enemyManager);
 }
 
 void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track *nextTrack, int trackNumber) {
@@ -559,7 +551,6 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     
     _skin->getController()->updateSkills(_characterManager, _level, false);
     
-    this->updateFocus();
     this->updateGUI(); // GUI更新
     
     if (!_characterManager->isPerforming()) {
@@ -581,6 +572,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
   
   // マーカーを再同期
   _skin->getStatusLayer()->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
+  _effectLayer->updateFocus(_enemyManager);
   _map->performOnFinishPlaying(_characterManager, _enemyManager);
 }
 
@@ -636,17 +628,6 @@ void MainScene::onGameOver() {
   _musicManager->getMusic()->pause();
   _skin->getController()->setVisible(false);
   SaveData::sharedData()->addCountFor(SaveDataCountKeyDead); // 死亡回数をカウント
-}
-
-void MainScene::updateFocus() {
-  Enemy* nearest = _enemyManager->getNearestEnemy();
-  if (nearest) {
-    _focus->setVisible(true);
-    _focus->setPosition(ccpAdd(nearest->getPosition(), ccp(0, nearest->getContentSize().height * nearest->getCurrentScale(nearest->getRow()) * 0.8)));
-    _focus->setScale(MAX(nearest->getCurrentScale(nearest->getRow()), 0.4));
-  } else {
-    _focus->setVisible(false);
-  }
 }
 
 void MainScene::addDamageEffect() {
@@ -789,6 +770,7 @@ void MainScene::changeSkin(Skin *newSkin, bool crossFade) {
       background->runAction(CCFadeIn::create(kCrossFadeSpeed));
     }
   }
+  _effectLayer->reloadFocus(_skin);
 }
 
 void MainScene::startBossBattle() {

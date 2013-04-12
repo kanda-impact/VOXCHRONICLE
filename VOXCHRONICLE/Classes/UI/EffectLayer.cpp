@@ -22,6 +22,7 @@ typedef enum {
 typedef enum {
   EffectLayerZOrderCutin,
   EffectLayerZOrderDamageLabel,
+  EffectLayerZOrderFocus,
   EffectLayerZOrderTension,
   EffectLayerZOrderCharacter,
   EffectLayerZOrderWarning,
@@ -55,6 +56,7 @@ EffectLayer::EffectLayer() {
   _characterEffectLayer = CCSprite::create("mode_vox.png");
   _characterEffectLayer->retain();
   _cutinExtention = NULL;
+  _focus = NULL;
   this->reloadEffects();
 }
 
@@ -80,6 +82,9 @@ void EffectLayer::reloadEffects() {
 EffectLayer::~EffectLayer() {
   _tensionEffectLayer->release();
   _characterEffectLayer->release();
+  if (_focus) {
+    _focus->release();
+  }
   if (_cutinExtention) {
     _cutinExtention->release();
   }
@@ -390,5 +395,29 @@ void EffectLayer::setCutinExtension(CCNode* extension) {
   _cutinExtention = extension;
   if (extension) {
     extension->retain();
+  }
+}
+
+void EffectLayer::reloadFocus(Skin *skin) {
+  string focusName = string("Image/") + skin->getPrefix() + string("_focus.png");
+  if (_focus) {
+    _focus->setTexture(CCTextureCache::sharedTextureCache()->addImage(focusName.c_str()));
+  } else {
+    _focus = CCSprite::create(FileUtils::getFilePath(focusName.c_str()).c_str());
+    _focus->retain();
+    this->addChild(_focus, EffectLayerZOrderFocus);
+  }
+  _focus->setVisible(false);
+  _focus->setAnchorPoint(ccp(0.5f, 0.0f));
+}
+
+void EffectLayer::updateFocus(EnemyManager *manager) {
+  Enemy* nearest = manager->getNearestEnemy();
+  if (nearest) {
+    _focus->setVisible(true);
+    _focus->setPosition(ccpAdd(nearest->getPosition(), ccp(0, nearest->getContentSize().height * nearest->getCurrentScale(nearest->getRow()) * 0.8)));
+    _focus->setScale(MAX(nearest->getCurrentScale(nearest->getRow()), 0.4));
+  } else {
+    _focus->setVisible(false);
   }
 }
