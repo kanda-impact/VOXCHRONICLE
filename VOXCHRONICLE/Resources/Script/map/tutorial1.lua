@@ -192,8 +192,10 @@ Map = {
 ]])
 	elseif level == 15 then
       local popup = layer:addPopupWindow(1)
-      popup:setText(0, "MP足りなくってピンチだよ！", [[
-ちょっと、オクス君！私に任せてばっかりだと息切れしちゃうんだから。さっきみたいに私にMP注入してよ～！いったんチェンジチェンジ！
+      popup:setText(0, "魔力（ＭＰ）を回復しよう！", [[
+ちょっと、オクス！私に任せてばっかりだと
+魔力（ＭＰ）がなくなっちゃうよ！
+こんな時は、いったん『チェンジ』！
 ]])
 	elseif level == 16 then
       local popup = layer:addPopupWindow(3)
