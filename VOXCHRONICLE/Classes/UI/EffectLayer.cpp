@@ -254,23 +254,23 @@ void EffectLayer::addMusicInfo(Map* map, Level* level) {
   CCNode* musicInfo = CCNode::create();
   CCLabelTTF* nameShadowLabel = CCLabelTTF::create(mSet->getName().c_str(),
                                                    "Helvetica",
-                                                   24,
+                                                   20,
                                                    CCSizeMake(300, 30),
                                                    kCCTextAlignmentRight);
   musicInfo->addChild(nameShadowLabel);
   nameShadowLabel->setColor(ccc3(33, 33, 33));
-  nameShadowLabel->setPosition(ccp(3, -3));
+  nameShadowLabel->setPosition(ccp(2, -2));
   CCLabelTTF* composerShadowLabel = CCLabelTTF::create(mSet->getComposer().c_str(),
                                                        "Helvetica",
                                                        16,
                                                        CCSizeMake(300, 20),
                                                        kCCTextAlignmentRight);
   composerShadowLabel->setColor(ccc3(33, 33, 33));
-  composerShadowLabel->setPosition(ccp(3, -28));
+  composerShadowLabel->setPosition(ccp(2, -27));
   musicInfo->addChild(composerShadowLabel);
   CCLabelTTF* nameLabel = CCLabelTTF::create(mSet->getName().c_str(),
                                              "Helvetica",
-                                             24,
+                                             20,
                                              CCSizeMake(300, 30),
                                              kCCTextAlignmentRight);
   musicInfo->addChild(nameLabel);
