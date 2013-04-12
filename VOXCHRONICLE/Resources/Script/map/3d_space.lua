@@ -45,11 +45,15 @@ Map = {
 
       enemyManager:popEnemyAt("planet15_3D0", 7, 1)
 
+      --characterManager:setExp(characterManager:getExpWithLevel(level))
+
       enemyManager:loadEnemyTextureAsync("fortress.png")
       enemyManager:loadEnemyTextureAsync("knight.png")
       enemyManager:loadEnemyTextureAsync("iron.png")
     elseif level == 26 then
       CCTextureCache:sharedTextureCache():removeTextureForKey("planet.png")
+
+      --characterManager:setExp(characterManager:getExpWithLevel(level))
 
       enemyManager:popEnemyAt("fortress3D0", 7, 1)
       enemyManager:popEnemyAt("knight3D1", 7, 0)

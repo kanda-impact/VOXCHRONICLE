@@ -41,6 +41,10 @@ Map = {
   getEnemyPopRate = function(level)
     return 0.6
   end,
+    onClear = function(self, characterManager, enemyManager)
+    SaveData:sharedData():addDefeatedCountForEmemy("wave3C0")
+  end,
+  
   fixedEnemies = {
   }
 }

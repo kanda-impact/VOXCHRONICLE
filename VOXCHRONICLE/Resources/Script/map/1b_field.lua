@@ -20,7 +20,8 @@ Map = {
   initialLevel = 1,
   maxLevel = 10,
   getEnemyTable = function(level)
-    local number = getTime()
+    local number =  self.__IRegister__:getRegister("currentTime", 0)
+    
     if number == 1 then
       if level <= 2 then
     --return {}
@@ -65,7 +66,7 @@ Map = {
     enemyManager:loadEnemyTextureAsync("hornet.png")    
   end,
   getEnemyPopRate = function(level)
-    local number = getTime()
+    local number =  self.__IRegister__:getRegister("currentTime", 0)
     if number == 1 then
       if level <= 2 then
         return 0.3
