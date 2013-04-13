@@ -208,7 +208,7 @@ void Enemy::moveRow(float r) {
 }
 
 int Enemy::damage(int power, Skill* skill, CharacterManager* characterManager, DamageType& damageType, bool simulate) {
-  float damage = floor(0.5 + power);
+  int damage = floor(0.5 + power);
   
   // 無効化の処理
   if (!this->getSpecies()->isEnableSkill(skill)) {
@@ -241,10 +241,10 @@ int Enemy::damage(int power, Skill* skill, CharacterManager* characterManager, D
   // ダメージ耐性がある場合、威力半減してやる
   if (skill->getType() == SkillTypePhysical && this->getType() == SkillTypePhysical) {
     damageType = DamageTypePhysicalResist;
-    damage *= 0.5;
+    damage = floor(0.5 + damage * 0.5);
   } else if (skill->getType() == SkillTypeMagical && this->getType() == SkillTypeMagical) {
     damageType = DamageTypeMagicalResist;
-    damage *= 0.5;
+    damage = floor(0.5 + damage * 0.5);
   }
   // レベル補正を行います
   //float levelOffset = characterManager->getLevelOffsetRate(characterManager->getLevel(), this->getLevel());
