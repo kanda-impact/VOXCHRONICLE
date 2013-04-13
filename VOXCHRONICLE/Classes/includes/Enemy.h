@@ -132,6 +132,8 @@ public:
   void setSkillType(SkillType type);
   void setItem(EnemyItem item);
   void setEnable(bool enable);
+  void setAttack(int attack);
+  void setExp(int exp);
   
   bool isMovable();
   void setMovable(bool m);

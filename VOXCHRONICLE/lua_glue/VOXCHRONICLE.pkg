@@ -150,8 +150,10 @@ class Enemy : public CCSprite, public IRegister {
 	bool setDefaultAnimationClip();
 	void setCounter(int counter);
 	void setHP(int hp);
+	void setExp(int exp);
 	void setItem(EnemyItem item);
 	void setSkillType(SkillType type);
+	void setAttack(int attack);
 	int getRegister(const char* key, int defaultValue);
 	void setRegister(const char* key, int value);
 	bool hasRegister(const char* key);

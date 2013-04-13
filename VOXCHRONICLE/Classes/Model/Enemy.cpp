@@ -590,3 +590,11 @@ void Enemy::setFrameColor(cocos2d::CCSprite *frameSprite, SkillType type) {
 int Enemy::getMaxHP() {
   return _maxHP;
 }
+
+void Enemy::setExp(int exp) {
+  _exp = exp;
+}
+
+void Enemy::setAttack(int attack) {
+  _attack = attack;
+}
