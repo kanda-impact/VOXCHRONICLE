@@ -1,5 +1,5 @@
 Enemy = {
-  name = "ビトゥ",
+  name = "ビトー",
   imageName = "slime",
   attack = 2,
   baseExp = 5,

@@ -1,6 +1,6 @@
 math.randomseed(os.time())
 Enemy = {
-  name = "ラスボス第1形態",
+  name = "グームド・ジィラ",
   imageName = "flast",
   attack = 20,
   baseExp = 1,
