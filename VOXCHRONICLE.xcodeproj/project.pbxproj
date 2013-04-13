@@ -81,8 +81,6 @@
 		0704344416BFEEC600339F8A /* nmb_drum4.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0704344316BFEEC600339F8A /* nmb_drum4.caf */; };
 		0704344716BFF3CB00339F8A /* MusicManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0704344516BFF3CB00339F8A /* MusicManager.cpp */; };
 		070E4020163C29E600A76BEA /* BlinkLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 070E401E163C29E600A76BEA /* BlinkLayer.cpp */; };
-		070E4043163CB10400A76BEA /* select_silent.wav in Resources */ = {isa = PBXBuildFile; fileRef = 070E403F163CB10400A76BEA /* select_silent.wav */; };
-		070E4044163CB10400A76BEA /* select_stage.wav in Resources */ = {isa = PBXBuildFile; fileRef = 070E4040163CB10400A76BEA /* select_stage.wav */; };
 		070E4045163CB10400A76BEA /* title.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 070E4041163CB10400A76BEA /* title.mp3 */; };
 		070E4047163CB3BE00A76BEA /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 070E4046163CB3BE00A76BEA /* gameover.mp3 */; };
 		070EF5A616F8B424005ED3B2 /* chabo_counter0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF57516F8B424005ED3B2 /* chabo_counter0.caf */; };
@@ -1462,8 +1460,6 @@
 		0704344516BFF3CB00339F8A /* MusicManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MusicManager.cpp; path = Classes/Model/MusicManager.cpp; sourceTree = "<group>"; };
 		070E401E163C29E600A76BEA /* BlinkLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BlinkLayer.cpp; path = Classes/UI/BlinkLayer.cpp; sourceTree = "<group>"; };
 		070E4021163C29FB00A76BEA /* BlinkLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlinkLayer.h; path = Classes/includes/BlinkLayer.h; sourceTree = "<group>"; };
-		070E403F163CB10400A76BEA /* select_silent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = select_silent.wav; path = Resources/Music/general/select_silent.wav; sourceTree = "<group>"; };
-		070E4040163CB10400A76BEA /* select_stage.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = select_stage.wav; path = Resources/Music/general/select_stage.wav; sourceTree = "<group>"; };
 		070E4041163CB10400A76BEA /* title.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = title.mp3; path = Resources/Music/general/title.mp3; sourceTree = "<group>"; };
 		070E4046163CB3BE00A76BEA /* gameover.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gameover.mp3; path = Resources/Music/general/gameover.mp3; sourceTree = "<group>"; };
 		070EF57516F8B424005ED3B2 /* chabo_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_counter0.caf; sourceTree = "<group>"; };
@@ -5394,8 +5390,6 @@
 				07F88F1716DB842100FE6B2B /* endingC.mp3 */,
 				07A3D5DF1705F4D0009AE7F3 /* endingD.mp3 */,
 				070E4046163CB3BE00A76BEA /* gameover.mp3 */,
-				070E403F163CB10400A76BEA /* select_silent.wav */,
-				070E4040163CB10400A76BEA /* select_stage.wav */,
 				070E4041163CB10400A76BEA /* title.mp3 */,
 				072A5C9A16BAAA1E00A64AD6 /* menu.mp3 */,
 			);
@@ -5747,8 +5741,6 @@
 				07E1351F1621AF2700CCF72E /* levelup.lua in Resources */,
 				07E135261621CABF00CCF72E /* character.lua in Resources */,
 				07E135731624AC4700CCF72E /* cure.lua in Resources */,
-				070E4043163CB10400A76BEA /* select_silent.wav in Resources */,
-				070E4044163CB10400A76BEA /* select_stage.wav in Resources */,
 				070E4045163CB10400A76BEA /* title.mp3 in Resources */,
 				070E4047163CB3BE00A76BEA /* gameover.mp3 in Resources */,
 				07425E31168072C4001134D0 /* charge.lua in Resources */,
