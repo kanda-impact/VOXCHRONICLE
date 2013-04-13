@@ -13,6 +13,8 @@
 #include <boost/lexical_cast.hpp>
 #include "FileUtils.h"
 #include "CCRemoveFromParentAction.h"
+#include "PlayLog.h"
+#include "ResultScene.h"
 #include <sstream>
 
 #define EXT ".caf"
@@ -165,10 +167,19 @@ void StaffRollScene::addCutin(const char *text, TextType type, CutinType cutinTy
 }
 
 void StaffRollScene::onFinishPlaying(cocos2d::CCObject *sender) {
+  PlayLog* log = (PlayLog*)this->getUserObject();
   CCScene* scene = CCScene::create();
-  scene->addChild(TitleScene::create());
+  if (log == NULL) {
+    scene->addChild(TitleScene::create());
+  } else { // PlayLogがあったらResultSceneへ
+    ResultScene* layer = ResultScene::create();
+    layer->setPlayLog(log);
+    layer->buildUI();
+    scene->addChild(layer);
+  }
   CCTransitionFade* fade = CCTransitionFade::create(2.0f, scene);
   CCDirector::sharedDirector()->replaceScene(fade);
+  
 }
 
 void StaffRollScene::pushTracksFor(MusicSet* set) {

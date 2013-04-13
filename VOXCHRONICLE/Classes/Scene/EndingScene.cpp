@@ -67,6 +67,7 @@ EndingScene::~EndingScene() {
 void EndingScene::goToNextScene(cocos2d::CCObject *sender) {
   CCScene* scene = CCScene::create();
   StaffRollScene* layer = new StaffRollScene(_maps);
+  layer->setUserObject(this->getUserObject());
   layer->autorelease();
   scene->addChild(layer);
   CCTransitionFade* fade = CCTransitionFade::create(0.5f, scene);

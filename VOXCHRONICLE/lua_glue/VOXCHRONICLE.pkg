@@ -256,7 +256,6 @@ class SaveData : public CCObject {
 	void save();
 	void load();
 	int getAllEnemyDictionaryCount();
-	int getEnemyDictionaryCount();
 };
 
 class PlayLog :public CCObject {

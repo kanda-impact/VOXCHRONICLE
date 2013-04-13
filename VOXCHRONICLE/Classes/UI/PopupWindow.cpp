@@ -51,7 +51,7 @@ PopupWindow::PopupWindow(int pages) {
     CCMenu* cursors = CCMenu::create(left, right, NULL);
     cursors->setAnchorPoint(ccp(0.5, 0.5));
     cursors->setPosition(ccp(this->getContentSize().width / 2.0, this->getContentSize().height / 2.0));
-    cursors->alignItemsHorizontallyWithPadding(410);
+    cursors->alignItemsHorizontallyWithPadding(425);
     this->addChild(cursors, 0, PopupWindowTagCursor);
   }
 }

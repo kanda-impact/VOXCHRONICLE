@@ -330,6 +330,7 @@
 		076F1D3515EB94780013A45E /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 076F1D3415EB94780013A45E /* AppController.mm */; };
 		076F1D3815EB94780013A45E /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 076F1D3715EB94780013A45E /* RootViewController.mm */; };
 		076F1D3C15EB94780013A45E /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 076F1D3B15EB94780013A45E /* AppDelegate.cpp */; };
+		077070651719043200E3F836 /* ResultScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 077070631719043100E3F836 /* ResultScene.cpp */; };
 		0772FEB616C260BA00A50931 /* VQString.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0772FEB416C260BA00A50931 /* VQString.mm */; };
 		0772FEBA16C2786D00A50931 /* MessageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0772FEB816C2786B00A50931 /* MessageManager.cpp */; };
 		0778C5DF170FEE310017D230 /* menu_cancel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0778C5DD170FEE310017D230 /* menu_cancel.mp3 */; };
@@ -1709,6 +1710,8 @@
 		076F1D3715EB94780013A45E /* RootViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = RootViewController.mm; path = ios/RootViewController.mm; sourceTree = "<group>"; };
 		076F1D3A15EB94780013A45E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		076F1D3B15EB94780013A45E /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
+		077070631719043100E3F836 /* ResultScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResultScene.cpp; path = Classes/Scene/ResultScene.cpp; sourceTree = "<group>"; };
+		077070641719043200E3F836 /* ResultScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultScene.h; path = Classes/Scene/ResultScene.h; sourceTree = "<group>"; };
 		0772FEB416C260BA00A50931 /* VQString.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VQString.mm; sourceTree = "<group>"; };
 		0772FEB716C260D300A50931 /* VQString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VQString.h; path = VOXCHRONICLE/Classes/includes/VQString.h; sourceTree = SOURCE_ROOT; };
 		0772FEB816C2786B00A50931 /* MessageManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageManager.cpp; path = Classes/Model/MessageManager.cpp; sourceTree = "<group>"; };
@@ -3534,6 +3537,8 @@
 				07ADDF9C16F73514007825D2 /* DictionaryScene.cpp */,
 				07B8B624170C599800DB739F /* AchievementScene.mm */,
 				07B8B625170C599800DB739F /* AchievementScene.h */,
+				077070631719043100E3F836 /* ResultScene.cpp */,
+				077070641719043200E3F836 /* ResultScene.h */,
 			);
 			name = Scene;
 			sourceTree = "<group>";
@@ -7068,6 +7073,7 @@
 				07A317AB170C5F770032CAA4 /* AchievementSceneDelegate.m in Sources */,
 				0778C5E317100DD20017D230 /* VQTime.mm in Sources */,
 				07F20F7917112C150099ACD8 /* PlayLog.cpp in Sources */,
+				077070651719043200E3F836 /* ResultScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -222,7 +222,7 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
         _enemyManager->removeEnemy(enemy);
       }
     }
-    int sub = _characterManager->getHP() - preHP;
+    int sub = abs(_characterManager->getHP() - preHP);
     SaveData::sharedData()->addCountFor(SaveDataCountKeyHitDamage, sub); // 被ダメージカウント
     _log->setCount(PlayLogKeyHitDamage, sub + _log->getCount(PlayLogKeyHitDamage)); // 被ダメージカウント
     
@@ -807,6 +807,7 @@ void MainScene::onFinishTracksCompleted() {
     _musicManager->getMusic()->stop();
     EndingScene* endingLayer = new EndingScene(endingScript.c_str(), _log->getMapHistory());
     endingLayer->autorelease();
+    endingLayer->setUserObject(_log); // PlayLogをユーザーデータに
     CCScene* ending = CCScene::create();
     ending->addChild(endingLayer);
     _log->checkAchievementsOnClear(_characterManager, _enemyManager);
