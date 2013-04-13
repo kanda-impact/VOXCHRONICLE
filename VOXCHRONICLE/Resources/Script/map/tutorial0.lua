@@ -9,6 +9,9 @@ Map = {
   initialLevel = 1,
   maxLevel = 10,
   getEnemyTable = function(level)
+    if level == 10 then
+      return {T_moth = 3, T_flower = 1, T_ginet = 1, T_leaf = 1, T_geek = 1}
+    end
     return {}
   end,
   onFinishPlaying = function(self, characterManager, enemyManager)
@@ -17,16 +20,19 @@ Map = {
     if level == 4 then
       local popuped = self.__IRegister__:getBool("popuped") -- ポップアップしたかフラグ
       if enemyManager:getEnemies():count() == 1 and not popuped then
-        self.__IRegister__:setBool("popuped", true)
-        -- 前の裏拍で敵が出現したあと、ポップアップを出します
-        local popup = layer:addPopupWindow(1)
-        popup:setText(0, "ダッシュは計画的に", [[
+        local enemy = enemyManager:getEnemies():lastObject() -- モンスター取り出す
+        if enemy:getRow() < 4 then
+          self.__IRegister__:setBool("popuped", true)
+          -- 前の裏拍で敵が出現したあと、ポップアップを出します
+          local popup = layer:addPopupWindow(1)
+          popup:setText(0, "ダッシュは計画的に", [[
 あ、見てみて！モンスターが見えてきたよ。
 
 急いでいるときには便利だけど、モンスターの
 いないうちにこうげき準備していた方が良いこと
 も多いから、ご利用は計画的に．．．ね？
         ]])
+        end
       end
     end
   end,
@@ -52,12 +58,13 @@ Map = {
     elseif level == 3 then
       if enemyCount == 0 then
         local killedEnemyCount = self.__IRegister__:getRegister("enemyCount", 0)
-        local enemies = {"T_leaf", "T_ginet", "T_flower", "T_tnt", "T_slime30"}
-        if killedEnemyCount > 4 then
-          enemyManager:popEnemyAt("T_slime30", 5, 1)
-        else
-          enemyManager:popEnemyAt(enemies[killedEnemyCount + 1], 4, 1)
-        end
+        local enemies = {"T_leaf", "T_ginet", "T_tnt", "T_slime30"}
+        local attacks = {0, 0, 1, 0}
+        local exps = {0, 0, 0, 60}
+        local index = math.min(killedEnemyCount + 1, 4)
+        local enemy = enemyManager:popEnemyAt(enemies[index], 3, 1)
+        enemy:setAttack(attacks[index])
+        enemy:setExp(exps[index])
         self.__IRegister__:setRegister("enemyCount", killedEnemyCount + 1)
       end
       if characterManager:getHP() < preHP then -- ダメージ受けた
@@ -74,27 +81,31 @@ Map = {
       local lastSkill = characterManager:getLastSkill()
       local runCount = self.__IRegister__:getRegister("runCount", 0)
       if lastSkill and lastSkill:getIdentifier() == "run" then -- 前に使った技がrunの時
-        runCount = runCount + 1
-        self.__IRegister__:setRegister("runCount", runCount)
-      end
-      if runCount >= 2 and enemyManager:getEnemies():count() == 0 then -- 走り行動を2回行っていたとき、かつ敵がいないとき
-        enemyManager:popEnemyAt("T_slime12", 3, 1)
+        if enemyManager:getEnemies():count() == 0 then -- 敵がいないとき
+          local enemy = enemyManager:popEnemyAt("T_moth", 5, 1)
+          enemy:setMaxHP(18)
+          enemy:setExp(60)
+        end
       end
     elseif level == 5 then
       if enemyCount == 0 then
         local killedEnemyCount = self.__IRegister__:getRegister("enemyCount", 0)
-        local enemies = {"T_slime12", "T_ginet", "T_flower",}
-        if killedEnemyCount >= 3 then
-          enemyManager:popEnemyAt("T_slime30", 5, 1)
+        local enemies = {"T_ginet", "T_flower"}
+        local index = math.min(killedEnemyCount + 1, 2)
+        local enemy = enemyManager:popEnemyAt(enemies[index], 5, 1)
+        if index == 2 then
+          enemy:setExp(60)
         else
-          enemyManager:popEnemyAt(enemies[killedEnemyCount + 1], 4, 1)
+          enemy:setExp(0)
         end
+        enemy:setAttack(0)
         self.__IRegister__:setRegister("enemyCount", killedEnemyCount + 1)
       end
     elseif level == 6 then
       local killedEnemyCount = self.__IRegister__:getRegister("enemyCount", 0)
       if killedEnemyCount > 0 then -- 1体目倒したあと、雑魚を毎ターン生成。次のレベル用に溜めておく
-        enemyManager:popEnemyAt("T_moth", MAX_ROW - 1, enemyCount % 3)
+        local enemy = enemyManager:popEnemyAt("T_moth", MAX_ROW - 1, enemyCount % 3)
+        enemy:setExp(0)
       end
       if enemyCount == 0 then
         enemyManager:popEnemyAt("T_tetufez", 5, 1)
@@ -103,7 +114,7 @@ Map = {
     elseif level == 7 then
       local isAnnihilation = self.__IRegister__:getBool("isAnnihiration")
       if isAnnihilation and enemyCount == 0 then
-        enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, enemyCount % 3) -- 全滅済みなら毎ターン雑魚を後ろに出す
+        enemyManager:popEnemyAt("T_moth", MAX_ROW - 1, enemyCount % 3) -- 全滅済みなら毎ターン雑魚を後ろに出す
       end
       if enemyCount == 0 then
         if not isAnnihilation then
@@ -117,9 +128,9 @@ Map = {
 いちばん手前のモンスターから後ろ4列分まで
 しか届かないから、注意してね！
           ]])
-          enemyManager:popEnemyAt("T_moth7", 2, 0)
-          enemyManager:popEnemyAt("T_moth7", 2, 1)
-          enemyManager:popEnemyAt("T_moth7", 2, 2)
+          enemyManager:popEnemyAt("T_moth7", 1, 0)
+          enemyManager:popEnemyAt("T_moth7", 1, 1)
+          enemyManager:popEnemyAt("T_moth7", 1, 2)
           enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, 0)
           enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, 1)
           enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, 2)
@@ -131,57 +142,67 @@ Map = {
       local popup = layer:getPopupWindow()
       local enemyCount = enemies:count()
       local lastSkill = characterManager:getLastSkill()
-      if lastSkill == "" then
-        lastSkill = "null"
-      end
+      local isShield = self.__IRegister__:getBool("lastShieldState")
 
-      if lastSkill == "null" and self.__IRegister__:getBool("laterIsShield",false) == true then --盾がでている状態ならlastSkillを盾に
-        lastSkill = "shield.lua"
-      else
-        lastSkill = lastSkill:getIdentifier()
-      end
-      self.__IRegister__:setBool("laterIsShield", lastSkill == "shield")
       if enemyCount == 0 then --敵がいなくて、
-        if lastSkill == "shield" then --前に使ったスキルが盾がだった時
-          popup = layer:addPopupWindow(1)
-          popup:setText(0, "説明が下にある件について", [[
-ごーるにしゅー　ごーるにしゅー
-しゅーしゅーしゅー
+        if isShield then --前に盾状態だったら
+          local popup = layer:addPopupWindow(2)--ＴＡＷＡＳＩ「盾で防げたらの条件を追加してちょ」
+          popup:setText(0, "『ガード』の注意点", [[
+よし！防げた！『ガード』状態はモンスターの
+どんなこうげきも防ぐことができるよ！
 
+でも『ガード』状態はモンスターのこうげきを防ぐか
+ほかの行動をとると解除されちゃうから気をつけて！　
+]])
+          popup:setText(1, "『ガード』の注意点", [[
+あと『ガード』は無敵になれるけど、こうげきを
+防いだあとすぐに、もういちど『ガード』する
+ことはできないから、タイミングを考えようね。
 
+モンスターの中には、わたしたちにぶつからないで
+手前で立ち止まっちゃう奴とかもいるしね！
 ]])
           enemyManager:popEnemyAt("T_slime60",5,1)
         else --前に使ったスキルが盾でない時
-          enemyManager:popEnemyAt("T_geekT3",5,1)
+          local popup = layer:addPopupWindow(1)
+          popup:setText(0, "ピンチのときは『ガード』", [[
+ちょっと、ちょっと、オクス！
+あの敵には攻撃が効かないんだってば！
+今はガマンしてモンスターをやりすごして。
+『ガード』のワザは 盾 のマークをタッチ！
+
+回復してあげるからもう一回頑張ってみて
+]])
+          local enemy = enemyManager:popEnemyAt("T_geekT3", 3, 1) -- 盾持ちを生成
+          enemy:setExp(0)
+          local maxHP = characterManager:getMaxHP()
+          if characterManager:getHP() <= maxHP then
+            characterManager:addHP(maxHP) -- ダメージを受けているはずなので全快させる
+          end
         end
       end
-      if characterManager:getHP() <= maxHP then
-        characterManager:addHP(maxHP) --ダメージを受けているはずなので全快させる
-      end
+      self.__IRegister__:setBool("lastShieldState", characterManager:getShield())
     elseif level == 9 then
-      local enemies = enemyManager:getEnemies()
-      local enemyCount = enemies:count()
-      local lastSkill = characterManager:getLastSkill()
-      if lastSkill:getIdentifier() == "knockack" then --ノックバック使用時にカウント、この後は敵を倒して経験値が入るように
-        self.__IRegister__:setBool("useKnockback", true)
-      end
-      if enemyCount == 0 then
-        if self.__IRegister__:getBool("useKnockback", false) then
-          enemyManager:popEnemyAt("T_flower",4,1)
-        else
-          enemyManager:popEnemyAt("T_ginet",4,1)
+    
+      local poped = self.__IRegister__:getBool("knockbackPoped")
+      if enemyCount == 0 and poped then -- ポップアップ後
+        local popup = layer:addPopupWindow(1)
+        popup:setText(0, "特殊ワザ『ノックバック』", [[
+オクス！倒しきれない体力の高いモンスターには
+『ノックバック』を使ってみて
+このワザは敵を遠くまで吹き飛ばせちゃうの
+
+上手く使って体力の高い奴もやっつけちゃえ！
+]])
+        enemyManager:popEnemyAt("T_tnt9", 4, 1)
+        local maxHP = characterManager:getMaxHP()
+        if characterManager:getHP() <= maxHP then
+          characterManager:addHP(maxHP) -- ダメージを受けているはずなので全快させる
         end
+        characterManager:setTension(0) -- 萎えさせる
       end
     elseif level == 10 then
-      local maxHP = characterManager:getMaxHP()
-      local enemies = enemyManager:getEnemies()
-      local enemyCount = enemies:count()
-      if enemyCount == 0 then
-        enemyManager:popEnemyAt("T_ginet",4,1)
-      end
-      if characterManager:getHP() <= maxHP then
-        characterManager:addHP(maxHP) --ダメージを受けているはずなので全快させる
-      end
+    -- 10面は特に何もしない
     end
     self.__IRegister__:setRegister("preHP", characterManager:getHP())
   end,
@@ -219,20 +240,20 @@ Map = {
 そう！こんなカンジでモンスターをどんどん倒して
 いくと、今みたいに 『レベルアップ』 するよ！
 
-１０レベルごとに次のステージに行けるんだ！
-３０レベルまでたどり着くとゲームクリアだよ！！]])
-      popup:setText(1, 
-"こうげきは、近くの敵から", 
-[[
+10レベルごとに次のステージに行けるんだ！
+30レベルまでたどり着くとゲームクリアだよ！！]])
+      popup:setText(1,
+      "こうげきは、近くの敵から",
+      [[
 あとね。こうげきは基本的に一番近くの敵に当た
 るよ。モンスターの上にマーカーも表示される
 から、さんこうにしてね！
 
 モンスターが現われたら、バシバシ攻撃して
 どんどんやっつけていこう！]])
-      popup:setText(2, 
-"『連続こうげき』してみよう！", 
-[[
+      popup:setText(2,
+      "『連続こうげき』してみよう！",
+      [[
 ちなみに 『アタック』 は、連続してだすことで
 『連続こうげき』になるよ！
 
@@ -242,8 +263,8 @@ Map = {
       )
     elseif level == 3 then
       local popup = layer:addPopupWindow(1)
-      popup:setText(0, "モンスターの色", 
-[[
+      popup:setText(0, "モンスターの色",
+      [[
 モンスターをこうげきしてた時、モンスターの
 色が変わっていったことには気づいたかな？　
 
@@ -270,15 +291,15 @@ Map = {
 ]])
     elseif level == 5 then
       local popup = layer:addPopupWindow(3)
-      popup:setText(0, "ためよう！『パワーチャージ』！", 
-[[
+      popup:setText(0, "ためよう！『パワーチャージ』！",
+      [[
 『パワーチャージ』おぼえたね！これは大事だよー
 
 パワーチャージ マークをタッチすると文字通り
  『パワー』 をためることができるんだ。
 ]])
-      popup:setText(1, "ためよう！『パワーチャージ』！", 
-[[
+      popup:setText(1, "ためよう！『パワーチャージ』！",
+      [[
 『パワー』 をためると次のワザの効果がアップ！
 
 『アタック』なら、3回攻撃しないと倒せない
@@ -319,32 +340,21 @@ Map = {
 一気に倒すことができちゃうよ！
 ]])
     elseif level == 8 then
-      enemyManager:popEnemyAt("T_geekT3",5,1)
-      local popup = layer:addPopupWindow(1)
+      enemyManager:popEnemyAt("T_geekT3",3,1)
+      local popup = layer:addPopupWindow(2)
       popup:setText(0, "ピンチのときは『ガード』", [[
-んん！？あの敵はオクスの『アタック』がきかない
-やつだね。私なら何とか出来るけど、今は
+んん！？あのモンスターは『大盾』を
+持ってるね！くわしくはあとで説明する
+けど、オクスのこうげきワザが効かないの。
+
+私なら何とかできるけど、今は
 とりあえず『ガード』で防ごうか。
-
+]])
+      popup:setText(1, "ピンチのときは『ガード』", [[
 『ガード』のワザは 盾 のマークをタッチ！
-盾を構えて『ガード』状態になるよ。]])
-
-local popup = layer:addPopupWindow(2)--ＴＡＷＡＳＩ「盾で防げたらの条件を追加してちょ」
-      popup:setText(0, "『ガード』の注意点", [[
-よし！防げた！『ガード』状態はモンスターの
-どんなこうげきも防ぐことができるよ！
-
-でも『ガード』状態はモンスターのこうげきを防ぐか
-ほかの行動をとると解除されちゃうから気をつけて！　
+盾を構えて『ガード』状態になるよ。      
 ]])
-popup:setText(1, "『ガード』の注意点", [[
-あと『ガード』は無敵になれるけど、こうげきを
-防いだあとすぐに、もういちど『ガード』する
-ことはできないから、タイミングを考えようね。
 
-モンスターの中には、わたしたちにぶつからないで
-手前で立ち止まっちゃう奴とかもいるしね！
-]])
     elseif level == 9 then
       local popup = layer:addPopupWindow(1)
       popup:setText(0, "特殊ワザ『ノックバック』", [[
@@ -356,11 +366,13 @@ popup:setText(1, "『ガード』の注意点", [[
 ふっとばすことができるんだ。使いドコロが
 難しいけど、使いこなすと戦いが楽になるよ
 ]])
+      enemyManager:popEnemyAt("T_tnt9", 4, 1)
+      self.__IRegister__:setBool("knockbackPoped", true)
     elseif level == 10 then
       local popup = layer:addPopupWindow(2)
       popup:setText(0, "免許皆伝！？", [[
 これでオクス君の戦い方は一通りマスター
-出来たはずよ！あとは練習に満足したら、
+できたはずよ！あとは練習に満足したら、
 『ポーズ』ボタンにタッチして
 チュートリアルを終わってね。
 ]])
@@ -381,7 +393,10 @@ popup:setText(1, "『ガード』の注意点", [[
     end
   end,
   getEnemyPopRate = function(level)
-    return 0.7
+    if level == 10 then
+      return 0.5
+    end
+    return 0
   end,
   fixedEnemies = {
   }

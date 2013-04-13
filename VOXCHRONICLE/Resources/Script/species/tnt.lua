@@ -19,7 +19,7 @@ Enemy = {
   habitat = "",
   animationFrames = 5,
   performSkill = function(self)
-  return ""
+    return ""
   end
 }
 

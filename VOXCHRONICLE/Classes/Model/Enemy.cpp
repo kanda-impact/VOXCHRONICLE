@@ -598,3 +598,8 @@ void Enemy::setExp(int exp) {
 void Enemy::setAttack(int attack) {
   _attack = attack;
 }
+
+void Enemy::setMaxHP(int maxHP) {
+  _maxHP = maxHP;
+  _hp = maxHP;
+}

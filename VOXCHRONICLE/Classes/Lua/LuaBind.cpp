@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Sat Apr 13 18:24:23 2013.
+** Generated automatically by tolua++-1.0.92 on Sat Apr 13 20:11:34 2013.
 */
 
 #ifndef __cplusplus
@@ -506,6 +506,39 @@ static int tolua_VOXCHRONICLE_Enemy_setRow00(lua_State* tolua_S)
 #ifndef TOLUA_RELEASE
  tolua_lerror:
  tolua_error(tolua_S,"#ferror in function 'setRow'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: setMaxHP of class  Enemy */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_Enemy_setMaxHP00
+static int tolua_VOXCHRONICLE_Enemy_setMaxHP00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"Enemy",0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  Enemy* self = (Enemy*)  tolua_tousertype(tolua_S,1,0);
+  int hp = ((int)  tolua_tonumber(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'setMaxHP'", NULL);
+#endif
+  {
+   self->setMaxHP(hp);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'setMaxHP'.",&tolua_err);
  return 0;
 #endif
 }
@@ -3598,6 +3631,7 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
    tolua_function(tolua_S,"getItem",tolua_VOXCHRONICLE_Enemy_getItem00);
    tolua_function(tolua_S,"moveRow",tolua_VOXCHRONICLE_Enemy_moveRow00);
    tolua_function(tolua_S,"setRow",tolua_VOXCHRONICLE_Enemy_setRow00);
+   tolua_function(tolua_S,"setMaxHP",tolua_VOXCHRONICLE_Enemy_setMaxHP00);
    tolua_function(tolua_S,"setCol",tolua_VOXCHRONICLE_Enemy_setCol00);
    tolua_function(tolua_S,"setAnimationClip",tolua_VOXCHRONICLE_Enemy_setAnimationClip00);
    tolua_function(tolua_S,"setDefaultAnimationClip",tolua_VOXCHRONICLE_Enemy_setDefaultAnimationClip00);

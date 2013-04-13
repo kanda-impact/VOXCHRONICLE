@@ -145,6 +145,7 @@ class Enemy : public CCSprite, public IRegister {
 	EnemyItem getItem();
 	void moveRow(float row);
 	void setRow(float row);
+	void setMaxHP(int hp);
 	void setCol(int col);
 	bool setAnimationClip(const char* clipName, int frames, bool hasFrame);
 	bool setDefaultAnimationClip();

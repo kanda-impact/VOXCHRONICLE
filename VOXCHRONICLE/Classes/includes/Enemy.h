@@ -55,7 +55,7 @@ private:
   CCSprite* _frameSprite;
   int getExpFromLua();
   string _identifier;
-public:
+ public:
   static void loadLifeColors();
   static Enemy* create(const char* enemyName);
   static Enemy* createWithSpecies(const char* speciesName);
@@ -138,6 +138,7 @@ public:
   bool isMovable();
   void setMovable(bool m);
   void setHP(int hp);
+  void setMaxHP(int maxHP);
   
   void setSilhouette();
   void setFrameColor(CCSprite* frameSprite, SkillType type);
