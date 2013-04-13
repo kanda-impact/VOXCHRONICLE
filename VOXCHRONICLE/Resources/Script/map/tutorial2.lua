@@ -54,8 +54,9 @@ Map = {
 ]])
     elseif level == 24 then
       local popup = layer:addPopupWindow(1)
-      popup:setText(0, "", [[
+      popup:setText(0, "貼りつきモンスター", [[
 
+]])
     elseif level == 25 then
       local popup = layer:addPopupWindow(1)
       popup:setText(0, "遅い敵・早い敵", [[
