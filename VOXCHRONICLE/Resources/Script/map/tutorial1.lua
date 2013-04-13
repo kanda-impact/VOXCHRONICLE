@@ -32,27 +32,50 @@ Map = {
     elseif level == 12 then
       -- 敵が1体もいなくなったらモンスター生成
       if enemyCount == 0 then
-          enemyManager:popEnemyAt("T_moth7", 5, 0)
-          enemyManager:popEnemyAt("T_moth7", 5, 1)
-          enemyManager:popEnemyAt("T_moth7", 5, 2)
-          enemyManager:popEnemyAt("T_moth7", 5, 3)
+          enemyManager:popEnemyAt("T_geek", 4, 0)
+          enemyManager:popEnemyAt("T_tnt", MAX_ROW - 1, 1)
+          enemyManager:popEnemyAt("T_geek", 4, 2)
       end
      elseif level == 13 then
-       local isAnnihilation = self.__IRegister__:getBool("isAnnihiration")
-       if isAnnihilation and enemyCount == 0 then
-         enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, enemyCount % 3) -- 全滅済みなら毎ターン雑魚を後ろに出す
-       end
        -- 敵が1体もいなくなったらモンスター生成
        if enemyCount == 0 then
-        if not isAnnihilation then
-          -- 初回なのでフラグを立てて、撃破済みの時は撃破済みのモンスター生成を見るようにする
-          self.__IRegister__:setBool("isAnnihiration", true)
-          enemyManager:popEnemyAt("T_slime30", 5, 0)
-        end
+          enemyManager:popEnemyAt("T_geek", 5, 0)
+          enemyManager:popEnemyAt("T_geek", 5, 1)
+          enemyManager:popEnemyAt("T_geek", 5, 2)
+
+          enemyManager:popEnemyAt("T_geek", 6, 0)
+          enemyManager:popEnemyAt("T_geek", 6, 1)
+          enemyManager:popEnemyAt("T_geek", 6, 2)
       end
     elseif level == 14 then
-      local lastSkill = characterManager:getLastSkill()
+      local isNotFirstTurn = self.__IRegister__:getBool("isNotFirstTurn")
+      local isGotDamage = self.__IRegister__:getBool("isGotDamage")
       local usedCure = self.__IRegister__:getBool("usedCure")
+      local lastSkill = characterManager:getLastSkill()
+
+      -- 新たにダメージ受けたらポップアップを出す
+      if characterManager:getHP() < preHP and not isGotDamage then
+        self.__IRegister__:setBool("isGotDamage", true)
+        local popup = layer:addPopupWindow(2)
+        popup:setText(0, "いのちをだいじに", [[
+きゃあ！！いつの間にか体力（ＨＰ）がピンチに！
+モンスターもいないしこの辺でＨＰの回復をしま
+しょ？
+
+ハートのマークをタッチで『ＨＰヒーリング』。
+いやしの魔法でHPが回復するわ。
+ＭＰを１つ使うけど、こまめな回復が大切よ。
+
+]])
+        popup:setText(1, "いのちをだいじに", [[
+そうそう、忘れられがちだけど、『パワーチャージ』
+でためたパワーは、『ＨＰヒーリング』や
+『スナイプ』などのワザでも有効よ！
+
+いろいろ使ってみるとあたらしい戦いかたが
+みつかるかも！
+]])
+      end
       -- 回復スキルの使用判定を行う
       if lastSkill and lastSkill:getIdentifier() == "cure" then
         usedCure = true
@@ -60,11 +83,12 @@ Map = {
       end
       -- 敵が1体もいなくなったらモンスター生成
       if enemyCount == 0 then
-         -- ちゃんと回復を使うまで近くにモンスターを出す
-         if usedCure then
+        -- とてもわかりにくいけど最初のターン以外の場合
+         if isNotFirstTurn and usedCure then
            enemyManager:popEnemyAt("T_moth7", 3, 1)
-         else
-           enemyManager:popEnemyAt("flame2C2", 1, 1)
+         elseif not isNotFirstTurn then
+           self.__IRegister__:setBool("isNotFirstTurn", true)
+           enemyManager:popEnemyAt("flame2C2", 0, 1)
          end
       end
 	elseif level == 15 then
@@ -123,6 +147,7 @@ Map = {
         enemyManager:popEnemyAt("T_moth7", 3, 2)
       end
     end
+    self.__IRegister__:setRegister("preHP", characterManager:getHP())
   end,
   onLevelUp = function(self, characterManager, enemyManager)
     self.__IRegister__:clearRegister()
@@ -185,31 +210,10 @@ Map = {
 今は自動で魔力を回復するから
 どんどん使ってみよう！
 ]])
+      characterManager:addMP(characterManager:getMaxMP())
 --＊サンダーで敵を倒した後　火の玉を近くにポップアップ
 --速攻でオクスにぶつけ死なない程度に傷を負わせる
 --↓で回復するまで敵出さずに放置
-  -- FIXME MP不足で詰んでしまうので暫定的にMPを全回復
-       characterManager:addMP(characterManager:getMaxMP())
-	elseif level == 14 then
-      local popup = layer:addPopupWindow(2)
-      popup:setText(0, "いのちをだいじに", [[
-きゃあ！！いつの間にか体力（ＨＰ）がピンチに！
-モンスターもいないしこの辺でＨＰの回復をしま
-しょ？
-
-ハートのマークをタッチで『ＨＰヒーリング』。
-いやしの魔法でHPが回復するわ。
-ＭＰを１つ使うけど、こまめな回復が大切よ。
-
-]])
-      popup:setText(1, "いのちをだいじに", [[
-そうそう、忘れられがちだけど、『パワーチャージ』
-でためたパワーは、『ＨＰヒーリング』や
-『スナイプ』などのワザでも有効よ！
-
-いろいろ使ってみるとあたらしい戦いかたが
-みつかるかも！
-]])
 	elseif level == 15 then
       local popup = layer:addPopupWindow(1)
       popup:setText(0, "魔力（ＭＰ）を回復しよう！", [[
