@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Sat Apr 13 12:00:49 2013.
+** Generated automatically by tolua++-1.0.92 on Sat Apr 13 16:20:01 2013.
 */
 
 #ifndef __cplusplus
@@ -927,6 +927,38 @@ static int tolua_VOXCHRONICLE_Character_getCharacterType00(lua_State* tolua_S)
 #ifndef TOLUA_RELEASE
  tolua_lerror:
  tolua_error(tolua_S,"#ferror in function 'getCharacterType'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: getShield of class  CharacterManager */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_CharacterManager_getShield00
+static int tolua_VOXCHRONICLE_CharacterManager_getShield00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"CharacterManager",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  CharacterManager* self = (CharacterManager*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getShield'", NULL);
+#endif
+  {
+   bool tolua_ret = (bool)  self->getShield();
+   tolua_pushboolean(tolua_S,(bool)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getShield'.",&tolua_err);
  return 0;
 #endif
 }
@@ -3519,6 +3551,7 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"CharacterManager","CharacterManager","CCObject",NULL);
   tolua_beginmodule(tolua_S,"CharacterManager");
+   tolua_function(tolua_S,"getShield",tolua_VOXCHRONICLE_CharacterManager_getShield00);
    tolua_function(tolua_S,"setShield",tolua_VOXCHRONICLE_CharacterManager_setShield00);
    tolua_function(tolua_S,"changeCharacter",tolua_VOXCHRONICLE_CharacterManager_changeCharacter00);
    tolua_function(tolua_S,"addTension",tolua_VOXCHRONICLE_CharacterManager_addTension00);

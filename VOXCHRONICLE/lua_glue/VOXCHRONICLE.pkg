@@ -163,6 +163,7 @@ class Character : public CCObject {
 };
 
 class CharacterManager : public CCObject {
+	bool getShield();
 	void setShield(bool shield);
 	void changeCharacter();
 	void addTension(int tension);

@@ -41,6 +41,13 @@ typedef enum {
   VCStateEnding
 } VCState;
 
+typedef enum {
+  MainBackSceneTitle,
+  MainBackSceneMainMenu,
+  MainBackSceneTutorial,
+  MainBackSceneFreePlay
+} MainBackScene;
+
 using namespace VISS;
 using namespace cocos2d;
 
@@ -49,6 +56,7 @@ class MainScene : public CCLayer {
   int _preLevel;
   int _mapTurnCount;
   bool _isLevelUped;
+  MainBackScene _backScene;
   SkillPerformInfo _currentSkillInfo;
   EnemyManager* _enemyManager;
   CharacterManager* _characterManager;
@@ -106,6 +114,8 @@ class MainScene : public CCLayer {
   void setPlayLog(PlayLog* log);
   
   void teardown();
+  
+  void setBackScene(MainBackScene backScene);
   
   CREATE_FUNC(MainScene);
 };

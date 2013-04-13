@@ -109,6 +109,7 @@ void FreePlayScene::onMenuItemPressed(cocos2d::CCObject *sender) {
   MainScene* layer = new MainScene();
   layer->autorelease();
   layer->init(map);
+  layer->setBackScene(MainBackSceneFreePlay);
   CCScene* scene = CCScene::create();
   scene->addChild(layer);
   CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);

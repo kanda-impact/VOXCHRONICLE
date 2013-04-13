@@ -74,6 +74,7 @@ void TutorialLayer::onTutorialButtonPressed(cocos2d::CCObject *sender) {
       MainScene* layer = new MainScene();
       layer->autorelease();
       layer->init(map);
+      layer->setBackScene(MainBackSceneTutorial);
       CCScene* scene = CCScene::create();
       scene->addChild(layer);
       CCTransitionFade* fade = CCTransitionFade::create(0.5f, scene);

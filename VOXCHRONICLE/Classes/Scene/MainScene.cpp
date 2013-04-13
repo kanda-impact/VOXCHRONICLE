@@ -66,6 +66,7 @@ bool MainScene::init(Map* map) {
   if ( !CCLayer::init() ) {
     return false;
   }
+  _backScene = MainBackSceneTitle;
   Enemy::loadLifeColors();
   Music* music = new Music(3);
   music->autorelease();
@@ -623,6 +624,7 @@ void MainScene::onGameOver() {
   MessageManager::sharedManager()->pushRandomMessageFromLua("death", dict);
   _state = VCStateGameOver;
   GameOverLayer* gameover = new GameOverLayer(this);
+  gameover->setMainBackScene(_backScene);
   this->addChild(gameover, MainSceneZOrderUI);
   gameover->autorelease();
   _musicManager->getMusic()->pause();
@@ -832,6 +834,7 @@ void MainScene::setPause(bool pause) {
   CCScheduler* scheduler = CCDirector::sharedDirector()->getScheduler();
   if (pause && _pausedTargets == NULL) {
     PauseLayer* layer = new PauseLayer(this);
+    layer->setMainBackScene(_backScene);
     layer->autorelease();
     _pausedTargets = scheduler->pauseAllTargets();
     _pausedTargets->retain();
@@ -875,4 +878,8 @@ void MainScene::setPlayLog(PlayLog* log) {
   if (log) {
     log->retain();
   }
+}
+
+void MainScene::setBackScene(MainBackScene backScene) {
+  _backScene = backScene;
 }
