@@ -65,24 +65,6 @@ EndingScene::EndingScene(const char* endingScript, CCArray* maps) {
   labels->addChild(label);
   bg->addChild(labels, 0, EndingSceneTagLabel);
   
-  // TestFlight用のログを生成
-#if TESTING
-  PlayLog* log = (PlayLog*)this->getUserObject();
-  CCObject* it = NULL;
-  stringstream ss;
-  CCARRAY_FOREACH(maps, it) {
-    Map* map = (Map*)obj;
-    ss << map->getName() << " ";
-  }
-  ss << endl;
-  ss << "death = " << log->getCount(PlayLogKeyDead) << endl;
-  ss << "hit = " << log->getCount(PlayLogKeyHitDamage) << endl;
-  ss << "defeat = " << log->getCount(PlayLogKeyMaxDefeat) << endl;
-  ss << "turn = " << log->getCount(PlayLogKeyTurn) << endl;
-
-  TestFlightWrapper::TestFlightWrapper::submitFeedback(ss.str().c_str());
-#endif
-  
 }
 
 EndingScene::~EndingScene() {
@@ -109,4 +91,22 @@ void EndingScene::onEnterTransitionDidFinish() {
   CCLayer* labels = (CCLayer*)bg->getChildByTag(EndingSceneTagLabel);
   labels->runAction(CCMoveTo::create(12.0f, ccp(director->getWinSize().width / 2.0f, director->getWinSize().height /2.0f)));
   
+  // TestFlight用のログを生成
+#if TESTING
+  PlayLog* log = (PlayLog*)this->getUserObject();
+  CCObject* obj = NULL;
+  stringstream ss;
+  CCARRAY_FOREACH(_maps, obj) {
+    Map* map = (Map*)obj;
+    ss << map->getIdentifier() << " ";
+  }
+  ss << endl;
+  ss << "death = " << log->getCount(PlayLogKeyDead) << endl;
+  ss << "hit = " << log->getCount(PlayLogKeyHitDamage) << endl;
+  ss << "defeat = " << log->getCount(PlayLogKeyMaxDefeat) << endl;
+  ss << "turn = " << log->getCount(PlayLogKeyTurn) << endl;
+  CCLog("%s", ss.str().c_str());
+  Kawaz::TestFlightWrapper::submitFeedback(ss.str().c_str());
+#endif
+
 }

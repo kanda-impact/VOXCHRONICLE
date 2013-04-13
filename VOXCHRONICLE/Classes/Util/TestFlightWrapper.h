@@ -14,7 +14,7 @@
 
 using namespace std;
 
-namespace TestFlightWrapper {
+namespace Kawaz {
   class TestFlightWrapper {
    public:
     static void addCustomEnvironmentInformation(const char* information, const char* key);

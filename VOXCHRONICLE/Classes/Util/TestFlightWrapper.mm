@@ -9,16 +9,16 @@
 #import "TestFlight.h"
 #include "TestFlightWrapper.h"
 
-void TestFlightWrapper::TestFlightWrapper::addCustomEnvironmentInformation(const char* information, const char* key) {
+void Kawaz::TestFlightWrapper::addCustomEnvironmentInformation(const char* information, const char* key) {
   [TestFlight addCustomEnvironmentInformation:[NSString stringWithCString:information encoding:NSASCIIStringEncoding]
                                        forKey:[NSString stringWithCString:key encoding:NSASCIIStringEncoding]];
 }
 
-void TestFlightWrapper::TestFlightWrapper::takeOff(const char *teamToken) {
+void Kawaz::TestFlightWrapper::takeOff(const char *teamToken) {
   [TestFlight takeOff:[NSString stringWithCString:teamToken encoding:NSASCIIStringEncoding]];
 }
 
-void TestFlightWrapper::TestFlightWrapper::setOptions(map<string, bool> options) {
+void Kawaz::TestFlightWrapper::setOptions(map<string, bool> options) {
   NSMutableDictionary* dictionary = [NSDictionary dictionary];
   for (map<string, bool>::iterator it = options.begin(); it != options.end(); ++it) {
     NSString* key = [NSString stringWithCString:it->first.c_str() encoding:NSASCIIStringEncoding];
@@ -28,18 +28,18 @@ void TestFlightWrapper::TestFlightWrapper::setOptions(map<string, bool> options)
   [TestFlight setOptions:dictionary];
 }
 
-void TestFlightWrapper::TestFlightWrapper::passCheckpoint(const char *checkpointName) {
+void Kawaz::TestFlightWrapper::passCheckpoint(const char *checkpointName) {
   [TestFlight passCheckpoint:[NSString stringWithCString:checkpointName encoding:NSASCIIStringEncoding]];
 }
 
-void TestFlightWrapper::TestFlightWrapper::openFeedbackView() {
+void Kawaz::TestFlightWrapper::openFeedbackView() {
   [TestFlight openFeedbackView];
 }
 
-void TestFlightWrapper::TestFlightWrapper::submitFeedback(const char *feedback) {
-  [TestFlight passCheckpoint:[NSString stringWithCString:feedback encoding:NSASCIIStringEncoding]];
+void Kawaz::TestFlightWrapper::submitFeedback(const char *feedback) {
+  [TestFlight submitFeedback:[NSString stringWithCString:feedback encoding:NSASCIIStringEncoding]];
 }
 
-void TestFlightWrapper::TestFlightWrapper::setDeviceIndetifier(const char *deviceIdentifier) {
+void Kawaz::TestFlightWrapper::setDeviceIndetifier(const char *deviceIdentifier) {
   [TestFlight passCheckpoint:[NSString stringWithCString:deviceIdentifier encoding:NSASCIIStringEncoding]];
 }
