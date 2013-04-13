@@ -17,7 +17,7 @@ Map = {
   onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
     if level == 30 then
-      fortress = enemyManager:popEnemyAt("acorn01", MAX_ROW - 1, 1)
+      fortress = enemyManager:popEnemyAt("fortress3A0", MAX_ROW - 1, 1)
       enemyManager:setBoss(fortress)
     end
   end,

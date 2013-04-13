@@ -628,6 +628,7 @@ void MainScene::onGameOver() {
   _musicManager->getMusic()->pause();
   _skin->getController()->setVisible(false);
   SaveData::sharedData()->addCountFor(SaveDataCountKeyDead); // 死亡回数をカウント
+  _log->addCount(PlayLogKeyDead);
 }
 
 void MainScene::addDamageEffect() {

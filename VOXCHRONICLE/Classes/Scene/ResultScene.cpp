@@ -41,24 +41,24 @@ bool ResultScene::init () {
 void ResultScene::buildUI() {
   CCDirector* director = CCDirector::sharedDirector();
   
-  CCLabelTTF* clearTurn = CCLabelTTF::create("Clear Turn", "Helvetica", 32);
+  CCLabelTTF* clearTurn = CCLabelTTF::create("クリアターン", "Helvetica", 32);
   clearTurn->setPosition(ccp(director->getWinSize().width / 2.0, 180));
   CCLabelTTF* clear = CCLabelTTF::create(lexical_cast<string>(_log->getCount(PlayLogKeyTurn)).c_str(), "Helvetica", 32);
-  clear->setPosition(ccp(director->getWinSize().width / 2.0, 150));
+  clear->setPosition(ccp(director->getWinSize().width / 2.0, 145));
   this->addChild(clearTurn);
   this->addChild(clear);
   
-  CCLabelTTF* totalDamage = CCLabelTTF::create("Total Damage", "Helvetica", 18, CCSizeMake(120, 30), kCCTextAlignmentRight);
-  totalDamage->setPosition(ccp(160, 90));
+  CCLabelTTF* totalDamage = CCLabelTTF::create("受けたダメージ", "Helvetica", 18, CCSizeMake(150, 30), kCCTextAlignmentRight);
+  totalDamage->setPosition(ccp(140, 90));
   CCLabelTTF* damage = CCLabelTTF::create(lexical_cast<string>(_log->getCount(PlayLogKeyHitDamage)).c_str(), "Helvetica", 18,
                                           CCSizeMake(60, 30), kCCTextAlignmentLeft);
   damage->setPosition(ccp(280, 90));
   this->addChild(totalDamage);
   this->addChild(damage);
   
-  CCLabelTTF* continueLabel = CCLabelTTF::create("Continue", "Helvetica", 18, CCSizeMake(120, 30), kCCTextAlignmentRight);
-  continueLabel->setPosition(ccp(160, 45));
-  CCLabelTTF* continueNumber = CCLabelTTF::create(lexical_cast<string>(_log->getCount(PlayLogKeyHitDamage)).c_str(), "Helvetica", 18, CCSizeMake(60, 30), kCCTextAlignmentLeft);
+  CCLabelTTF* continueLabel = CCLabelTTF::create("死んだ回数", "Helvetica", 18, CCSizeMake(150, 30), kCCTextAlignmentRight);
+  continueLabel->setPosition(ccp(140, 45));
+  CCLabelTTF* continueNumber = CCLabelTTF::create(lexical_cast<string>(_log->getCount(PlayLogKeyDead)).c_str(), "Helvetica", 18, CCSizeMake(60, 30), kCCTextAlignmentRight);
   continueNumber->setPosition(ccp(280, 45));
   this->addChild(continueLabel);
   this->addChild(continueNumber);
