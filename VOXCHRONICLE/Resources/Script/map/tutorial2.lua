@@ -54,8 +54,13 @@ Map = {
 ]])
     elseif level == 24 then
       local popup = layer:addPopupWindow(1)
-      popup:setText(0, "貼りつきモンスター", [[
+      popup:setText(0, "『貼りつきモンスター』に注意", [[
+モンスターには、『耐性』などのほかに
+トクベツな行動をしてくるヤツもいるわ！
 
+要注意なのが『貼りつきモンスター』ね。
+こいつはわたしたちに激突してこないで
+手前でずっと攻撃してくるわ
 ]])
     elseif level == 25 then
       local popup = layer:addPopupWindow(1)
