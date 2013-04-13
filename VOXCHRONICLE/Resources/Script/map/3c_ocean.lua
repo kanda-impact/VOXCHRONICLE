@@ -75,6 +75,7 @@ Map = {
     data:unlockAchievement("clear3C")
     data:setClearedForMap("fp_ocean")
     data:setClearedForMap("fp_ocean_boss")
+    SaveData:sharedData():addDefeatedCountForEmemy("wave3C0")
   end,
 
   getEnemyPopRate = function(level)

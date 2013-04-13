@@ -51,6 +51,7 @@ Map = {
   end,
 
   fixedEnemies = {
+    {"bat2B0",600},
     {"dragon2B0",840}
   }
 }
