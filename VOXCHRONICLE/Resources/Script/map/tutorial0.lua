@@ -6,7 +6,7 @@ Map = {
   skin = "skinA",
   ending = "",
   nextMaps = {},
-  initialLevel = 1,
+  initialLevel = 8,
   maxLevel = 10,
   getEnemyTable = function(level)
     if level == 10 then
@@ -67,7 +67,8 @@ Map = {
         enemy:setExp(exps[index])
         self.__IRegister__:setRegister("enemyCount", killedEnemyCount + 1)
       end
-      if characterManager:getHP() < preHP then -- ダメージ受けた
+      local popuped = self.__IRegister__:getBool("popuped") -- ポップアップしたかフラグ
+      if characterManager:getHP() < preHP and not popuped then -- ダメージ受けた
         local popup = layer:addPopupWindow(1)
         popup:setText(0, "ぶつかるとダメージ！", [[
 ぎゃあん！いったーい！！
@@ -76,6 +77,7 @@ Map = {
 
 体力（HP）が0になるとゲームオーバー。
 やり直しになっちゃうから気をつけてね！]])
+        self.__IRegister__:setBool('popuped', true)
       end
     elseif level == 4 then
       local lastSkill = characterManager:getLastSkill()
@@ -143,18 +145,31 @@ Map = {
       local enemyCount = enemies:count()
       local lastSkill = characterManager:getLastSkill()
       local isShield = self.__IRegister__:getBool("lastShieldState")
-
+      local popuped = self.__IRegister__:getBool("popuped") -- ポップアップしたかフラグ
       if enemyCount == 0 then --敵がいなくて、
-        if isShield then --前に盾状態だったら
-          local popup = layer:addPopupWindow(2)--ＴＡＷＡＳＩ「盾で防げたらの条件を追加してちょ」
-          popup:setText(0, "『ガード』の注意点", [[
+        if popuped then -- ポップアップ後
+          if isShield then
+            local popup = layer:addPopupWindow(1) --2回目も盾で防いだら隠しメッセージ
+            popup:setText(0, "『ガード』の使いすぎ注意", [[
+盾で防ぐのは倒しきれないモンスターだけで
+いいんだってば！
+敵を盾で防いでばかりだと、先に進めないから
+どんどん倒して先に進んでいって
+]])         
+          end
+          enemyManager:popEnemyAt("T_slime60",5,1) -- スライム再生成
+        else -- ポップアップ前
+          if isShield then --前に盾状態だったら
+            self.__IRegister__:setBool("popuped", true) -- ポップアップフラグ立てる
+            local popup = layer:addPopupWindow(2)--ＴＡＷＡＳＩ「盾で防げたらの条件を追加してちょ」
+            popup:setText(0, "『ガード』の注意点", [[
 よし！防げた！『ガード』状態はモンスターの
 どんなこうげきも防ぐことができるよ！
 
 でも『ガード』状態はモンスターのこうげきを防ぐか
 ほかの行動をとると解除されちゃうから気をつけて！　
 ]])
-          popup:setText(1, "『ガード』の注意点", [[
+            popup:setText(1, "『ガード』の注意点", [[
 あと『ガード』は無敵になれるけど、こうげきを
 防いだあとすぐに、もういちど『ガード』する
 ことはできないから、タイミングを考えようね。
@@ -162,10 +177,10 @@ Map = {
 モンスターの中には、わたしたちにぶつからないで
 手前で立ち止まっちゃう奴とかもいるしね！
 ]])
-          enemyManager:popEnemyAt("T_slime60",5,1)
-        else --前に使ったスキルが盾でない時
-          local popup = layer:addPopupWindow(1)
-          popup:setText(0, "ピンチのときは『ガード』", [[
+            enemyManager:popEnemyAt("T_slime60",5,1)
+          else --前に使ったスキルが盾でない時
+            local popup = layer:addPopupWindow(1)
+            popup:setText(0, "ピンチのときは『ガード』", [[
 ちょっと、ちょっと、オクス！
 あの敵には攻撃が効かないんだってば！
 今はガマンしてモンスターをやりすごして。
@@ -173,17 +188,18 @@ Map = {
 
 回復してあげるからもう一回頑張ってみて
 ]])
-          local enemy = enemyManager:popEnemyAt("T_geekT3", 3, 1) -- 盾持ちを生成
-          enemy:setExp(0)
-          local maxHP = characterManager:getMaxHP()
-          if characterManager:getHP() <= maxHP then
-            characterManager:addHP(maxHP) -- ダメージを受けているはずなので全快させる
+            local enemy = enemyManager:popEnemyAt("T_geekT3", 3, 1) -- 盾持ちを生成
+            enemy:setExp(0)
+            local maxHP = characterManager:getMaxHP()
+            if characterManager:getHP() <= maxHP then
+              characterManager:addHP(maxHP) -- ダメージを受けているはずなので全快させる
+            end
           end
         end
       end
       self.__IRegister__:setBool("lastShieldState", characterManager:getShield())
     elseif level == 9 then
-    
+
       local poped = self.__IRegister__:getBool("knockbackPoped")
       if enemyCount == 0 and poped then -- ポップアップ後
         local popup = layer:addPopupWindow(1)
@@ -199,7 +215,7 @@ Map = {
         if characterManager:getHP() <= maxHP then
           characterManager:addHP(maxHP) -- ダメージを受けているはずなので全快させる
         end
-        characterManager:setTension(0) -- 萎えさせる
+        characterManager:addTension(-characterManager:getTension()) -- 萎えさせる
       end
     elseif level == 10 then
     -- 10面は特に何もしない
@@ -389,7 +405,7 @@ Map = {
 
       local data = SaveData:sharedData()
       data:unlockAchievement("clearTutorialA")
-      data:setClearedForMap("fp_simple")
+      data:setClearedForMap("fp_tutorial")
     end
   end,
   getEnemyPopRate = function(level)
