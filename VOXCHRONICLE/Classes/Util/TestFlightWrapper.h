@@ -10,15 +10,16 @@
 #define __VOXCHRONICLE__TestFlightWrapper__
 
 #include <iostream>
+#include <map>
 
-#import "TestFlight.h"
+using namespace std;
 
-namespace TestFlight {
-  class TestFlight {
+namespace TestFlightWrapper {
+  class TestFlightWrapper {
    public:
     static void addCustomEnvironmentInformation(const char* information, const char* key);
     static void takeOff(const char* teamToken);
-    static void setOptions(map<string, bool>)options;
+    static void setOptions(map<string, bool> options);
     static void passCheckpoint(const char* checkpointName);
     static void openFeedbackView();
     static void submitFeedback(const char* feedback);

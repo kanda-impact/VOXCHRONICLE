@@ -12,6 +12,12 @@
 #include "LuaObject.h"
 #include "TitleScene.h"
 #include "StaffRollScene.h"
+#include "Map.h"
+#include "PlayLog.h"
+
+#include "TestFlightWrapper.h"
+
+#include <sstream>
 
 typedef enum {
   EndingSceneTagLabel,
@@ -58,6 +64,25 @@ EndingScene::EndingScene(const char* endingScript, CCArray* maps) {
   labels->setPosition(ccp(director->getWinSize().width / 2.0f, - director->getWinSize().height / 2.0f));
   labels->addChild(label);
   bg->addChild(labels, 0, EndingSceneTagLabel);
+  
+  // TestFlight用のログを生成
+#if TESTING
+  PlayLog* log = (PlayLog*)this->getUserObject();
+  CCObject* it = NULL;
+  stringstream ss;
+  CCARRAY_FOREACH(maps, it) {
+    Map* map = (Map*)obj;
+    ss << map->getName() << " ";
+  }
+  ss << endl;
+  ss << "death = " << log->getCount(PlayLogKeyDead) << endl;
+  ss << "hit = " << log->getCount(PlayLogKeyHitDamage) << endl;
+  ss << "defeat = " << log->getCount(PlayLogKeyMaxDefeat) << endl;
+  ss << "turn = " << log->getCount(PlayLogKeyTurn) << endl;
+
+  TestFlightWrapper::TestFlightWrapper::submitFeedback(ss.str().c_str());
+#endif
+  
 }
 
 EndingScene::~EndingScene() {
