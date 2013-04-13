@@ -58,6 +58,7 @@ private:
 public:
   static void loadLifeColors();
   static Enemy* create(const char* enemyName);
+  static Enemy* createWithSpecies(const char* speciesName);
   Enemy();
   ~Enemy();
   string getIdentifier();
@@ -66,6 +67,7 @@ public:
   float bottomLine();
   void moveRow(float r);
   Enemy* initWithScriptName(const char* scriptName);
+  Enemy* initWithSpecies(const char* speciesName);
   void setRowAndCol(int row, float col);
   bool canMove(CharacterManager* manager);
   

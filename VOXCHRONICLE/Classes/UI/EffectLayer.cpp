@@ -21,8 +21,8 @@ typedef enum {
 } EffectLayerTag;
 
 typedef enum {
-  EffectLayerZOrderDamageLabel,
   EffectLayerZOrderFocus,
+  EffectLayerZOrderDamageLabel,
   EffectLayerZOrderTension,
   EffectLayerZOrderCharacter,
   EffectLayerZOrderCutin,

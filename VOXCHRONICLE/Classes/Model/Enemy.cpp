@@ -68,6 +68,16 @@ Enemy* Enemy::create(const char *enemyName) {
   return NULL;
 }
 
+Enemy* Enemy::createWithSpecies(const char *speciesName) {
+  Enemy *pobSprite = new Enemy();
+  if (pobSprite && pobSprite->initWithSpecies(speciesName)) {
+    pobSprite->autorelease();
+    return pobSprite;
+  }
+  CC_SAFE_DELETE(pobSprite);
+  return NULL;
+}
+
 Enemy* Enemy::initWithScriptName(const char* scriptName) {
   stringstream file;
   file << "Script/enemies/" << scriptName;
@@ -111,6 +121,53 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   return NULL;
 }
 
+Enemy* Enemy::initWithSpecies(const char* speciesName) {
+  stringstream file;
+  file << "Script/enemies/" << speciesName;
+  _identifier = speciesName;
+  _scriptPath = file.str();
+  _register = new map<string, int>();
+  _lua = NULL;
+  _maxHP = 1;
+  _hp = _maxHP;
+  _species = Species::getSpecies(speciesName);
+  _species->retain();
+  _type = SkillTypeNormal;
+  _level = 1;
+  _frequencyCount = 0;
+  _enable = true;
+  _movable = true;
+  _counter = -1;
+  if (_lua) {
+    _exp = this->getExpFromLua();
+  } else {
+    _exp = 0;
+  }
+  _attack = 0;
+  _frameSprite = NULL;
+  stringstream ss;
+  ss << _species->getImageName().c_str();
+  _sheet = CCTextureCache::sharedTextureCache()->addImage(ss.str().c_str());
+  _sheet->retain();
+  _enemySize = _species->getEnemySize();
+  if (_enemySize.width == 0 || _enemySize.height == 0) {
+    int width = _sheet->getContentSize().width / _species->getAnimationFrames();
+    _enemySize = CCSizeMake(width, width);
+  }
+  bool success = (bool)this->initWithTexture(_sheet, CCRectMake(0, 0,
+                                                                _enemySize.width,
+                                                                _enemySize.height));
+  
+  this->setLifeColor();
+  this->setItem(EnemyItemNone);
+  if (success) {
+    setDefaultAnimationClip();
+    this->setScale(0.0f);
+    return this;
+  }
+  return NULL;
+}
+
 Enemy::Enemy() {
   _row = 7;
   _col = 0;
@@ -120,7 +177,9 @@ Enemy::Enemy() {
 }
 
 Enemy::~Enemy() {
-  _lua->release();
+  if (_lua) {
+    _lua->release();
+  }
   _species->release();
   _sheet->release();
   CCLog("enemy %s is released", this->getIdentifier().c_str());

@@ -101,7 +101,6 @@ void SaveData::setCountFor(SaveDataCountKey keynum, int value) {
   string key = countDataPrefix + boost::lexical_cast<string>(keynum);
   _countDictionary->setObject(CCInteger::create(value), key);
   this->checkUnlockAchievement(keynum, value);
-
 }
 
 void SaveData::addCountFor(SaveDataCountKey key) {
@@ -145,7 +144,7 @@ void SaveData::unlockAchievement(const char *identifier) {
 void SaveData::checkUnlockAchievement(SaveDataCountKey key, int value) {
   for (list<AchievementInfo>::iterator it = _achievementInfos->begin(); it != _achievementInfos->end(); ++it) {
     if ((*it).key == key) {
-      if ((*it).count < value) {
+      if ((*it).count <= value) {
         this->unlockAchievement((*it).identifier.c_str());
       }
     }
