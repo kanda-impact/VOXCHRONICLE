@@ -205,7 +205,7 @@ string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& perform
           Enemy* enemy = (Enemy*)targets->objectAtIndex(i);
           DamageType damageType = DamageTypeNone;
           enemy->damage(power, skill, _characterManager, damageType, true); // ダメージは与えずに結果だけ取り出す
-          if (damageType != DamageTypePhysicalInvalid && damageType != DamageTypeMagicalInvalid && damageType != DamageTypeNoDamage && damageType != DamageTypeDisable) {
+          if (damageType != DamageTypePhysicalInvalid && damageType != DamageTypeMagicalInvalid && damageType != DamageTypeDisable) {
             isMiss = false;
           }
         }
@@ -217,7 +217,6 @@ string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& perform
         performeType = SkillPerformTypeFailure;
         isMiss = true;
       }
-      
       if (performeType == SkillPerformTypeFailure || isMiss) { // 失敗したとき、もしくはピロったとき、miss音を返す
         return this->buildTrackName("miss", NULL, -1);
       } else {

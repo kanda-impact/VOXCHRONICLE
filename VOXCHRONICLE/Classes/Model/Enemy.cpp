@@ -217,7 +217,11 @@ int Enemy::damage(int power, Skill* skill, CharacterManager* characterManager, D
   }
   
   // アイテムの処理
-  if ((_item == EnemyItemShield && skill->getType() == SkillTypePhysical) ||
+  if (skill->getPower(characterManager) == 0) { // そもそもダメージが通らないとき
+    damageType = DamageTypeNoDamage;
+    damage = 0;
+    return damage;
+  } else if ((_item == EnemyItemShield && skill->getType() == SkillTypePhysical) ||
       (_item == EnemyItemBarrier && skill->getType() == SkillTypeMagical)) {
     // 盾によって完全に無効化されている状態
     damage = 0;
