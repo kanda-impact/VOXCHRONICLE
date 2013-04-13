@@ -1,7 +1,7 @@
 Enemy = {
   name = "リスタルク",
   imageName = "cryst",
-  attack = 10,
+  attack = 8,
   baseExp = 1,
   hasFrame = true,
   counter = 2,

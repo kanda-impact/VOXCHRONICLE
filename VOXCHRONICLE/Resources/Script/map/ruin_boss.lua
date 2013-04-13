@@ -6,8 +6,8 @@ Map = {
   skin = "skinC",
   ending = "endingA",
   nextMaps = {},
-  initialLevel = 30,
-  maxLevel = 30,
+  initialLevel = 10,
+  maxLevel = 10,
   getEnemyTable = function(level)
     return {}
   end,
@@ -16,8 +16,9 @@ Map = {
   end,
   onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
-    if level == 30 then
-      fortress = enemyManager:popEnemyAt("fortress3A0", MAX_ROW - 1, 1)
+    if level == 10 then
+    --      fortress = enemyManager:popEnemyAt("fortress3A0", MAX_ROW - 1, 1)
+          fortress = enemyManager:popEnemyAt("kawaztan1S0", MAX_ROW - 1, 1)
       enemyManager:setBoss(fortress)
     end
   end,
