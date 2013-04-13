@@ -22,6 +22,7 @@ using namespace cocos2d;
 
 typedef enum {
   PlayLogKeyMaxDefeat,
+  PlayLogKeyDead,
   PlayLogKeyVOXAttackCount,
   PlayLogKeyLSKAttackCount,
   PlayLogKeyRunCount,

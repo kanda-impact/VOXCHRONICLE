@@ -10,11 +10,12 @@ Skill = {
   maxRepeat = 1,
   turn = 1,
   loop = true,
+  canRepeat = true,
   skillRange = SkillRangeAll,
   skillType = SkillTypeMagical,
   getPower = function(characterManager)
     local tension = characterManager:getTension()
-    t = {0, 6, 9, 12, 15}
+    t = {0, 6, 10, 14, 18}
     return t[tension + 1]
   end,
   messages = {

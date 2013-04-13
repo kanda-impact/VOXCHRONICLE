@@ -6,6 +6,10 @@ Enemy = {
   hasFrame = false,
   counter = 0,
   getSpeed = function(enemy, characterManager)
+    local row = enemy:getRow()
+    if row < 1 then
+      return 0
+    end
     return 1
   end,
   getFrequency = function(enemy, characterManager)
@@ -16,7 +20,7 @@ Enemy = {
   魔物であるか人工的な魔法生物であるか諸説あるがわかっていない。叩くといい音がする。
   ]],
   habitat = "",
-  animationFrames = 6,
+  animationFrames = 4,
   performSkill = function(self)
   return ""
   end

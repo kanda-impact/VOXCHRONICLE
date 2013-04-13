@@ -29,11 +29,17 @@ Map = {
     enemyManager:loadEnemyTextureAsync("typhoon.png")
     enemyManager:loadEnemyTextureAsync("mimic.png")
     enemyManager:loadEnemyTextureAsync("gargoyle.png")
-    enemyManager:loadEnemyTextureAsync("fortress.png")
   end,
   onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
-    if level == 30 then
+    if level == 29 then
+    enemyManager:loadEnemyTextureAsync("fortress.png")
+    elseif level == 30 then
+      CCTextureCache:sharedTextureCache():removeTextureForKey("mask.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("wisp.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("typhoon.png")
+      CCTextureCache:sharedTextureCache():removeTextureForKey("gargoyle.png")
+
       fortress = enemyManager:popEnemyAt("fortress3A0", MAX_ROW - 1, 1)
       enemyManager:setBoss(fortress)
     end
@@ -53,6 +59,8 @@ Map = {
   onClear = function(self, characterManager, enemyManager)
     local data = SaveData:sharedData()
     data:unlockAchievement("clear3A")
+    data:setClearedForMap("fp_ruin")
+    data:setClearedForMap("fp_ruin_boss")
   end,
   fixedEnemies = {
   }

@@ -170,6 +170,7 @@ class CharacterManager :public CCObject {
   std::queue<DamageInfo>* getDamageInfoQueue();
   
   // setter
+  void setExp(int exp);
   void setLastSkill(Skill* skill);
   void setCurrentSkill(Skill* skill);
   void setShield(bool s);

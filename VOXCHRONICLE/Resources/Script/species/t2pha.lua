@@ -1,5 +1,5 @@
 Enemy = {
-  name = "ファージィ",
+  name = "ファージー",
   imageName = "t2pha",
   attack = 1,
   baseExp = 6,

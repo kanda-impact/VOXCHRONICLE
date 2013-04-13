@@ -9,14 +9,14 @@ Enemy = {
     local row = enemy:getRow()
     local rand = math.random(3)
     if rand == 1 then
-    rand = math.random(3)
+    rand = math.random(4)
     end
     if row >= 6 then
       return 1
     elseif row <=1 then
-      return rand - (3 - row)
+      return rand - (4 - row)
     end
-    return rand - 1
+    return rand - 2
   end,
   getFrequency = function(enemy, characterManager)
     return 1

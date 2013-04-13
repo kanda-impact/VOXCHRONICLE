@@ -6,13 +6,14 @@ Skill = {
   se = true,
   tensionLevel = 0,
   common = false,
+  canRepeat = true,
   cutinType = EffectLayerCutinTypeNormal,
   loop = true,
   maxRepeat = 1,
   turn = 1,
   getPower = function(characterManager)
     local tension = characterManager:getTension()
-    t = {6, 12, 18, 24, 30}
+    t = {5, 11, 17, 23, 30}
     return t[tension + 1]
   end,
   skillRange = SkillRangeBack,

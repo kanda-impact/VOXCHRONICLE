@@ -14,6 +14,10 @@
 #include "MessageManager.h"
 #include "PlayLog.h"
 
+#include "MainMenuScene.h"
+#include "FreePlayScene.h"
+#include "TutorialScene.h"
+
 GameOverLayer::GameOverLayer(MainScene* main) {
   _main = main;
   // 巡回参照してた
@@ -53,7 +57,7 @@ void GameOverLayer::replayButtonPressed(CCObject *sender) {
   _main->teardown();
   Map* newMap = new Map(_main->getMap()->getIdentifier().c_str());
   PlayLog* oldLog = _main->getPlayLog();
-
+  
   MainScene* newScene = new MainScene();
   newScene->autorelease();
   newScene->init(newMap);
@@ -71,7 +75,25 @@ void GameOverLayer::titleButtonPressed(CCObject *sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   CCScene* scene = CCScene::create();
-  scene->addChild(TitleScene::create());
+  if (_backScene == MainBackSceneTitle) {
+    scene->addChild(TitleScene::create());
+  } else if (_backScene == MainBackSceneMainMenu) {
+    MainMenuScene* menu = new MainMenuScene(true);
+    menu->autorelease();
+    scene->addChild(menu);
+  } else if (_backScene == MainBackSceneFreePlay) {
+    FreePlayScene* layer = FreePlayScene::create("freeplay.lua", false);
+    scene->addChild(layer);
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(FileUtils::getFilePath("Music/general/menu.mp3").c_str(), true);
+  } else if (_backScene == MainBackSceneTutorial) {
+    TutorialLayer* layer = TutorialLayer::create();
+    scene->addChild(layer);
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(FileUtils::getFilePath("Music/general/menu.mp3").c_str(), true);
+  }
   CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
   CCDirector::sharedDirector()->replaceScene(transition);
+}
+
+void GameOverLayer::setMainBackScene(MainBackScene scene) {
+  _backScene = scene;
 }

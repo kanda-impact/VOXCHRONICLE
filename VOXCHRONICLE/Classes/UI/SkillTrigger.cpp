@@ -99,8 +99,10 @@ void SkillTrigger::setSkillTriggerState(SkillTriggerState state) {
     this->setPress(false);
   }
   _currentOpacity = 255;
-  if (_state == SkillTriggerStateUnknown || _state == SkillTriggerStateDisable) {
+  if (_state == SkillTriggerStateUnknown) {
     _currentOpacity = 64;
+  } else if (_state == SkillTriggerStateDisable) {
+    _currentOpacity = 160;
   }
   _background->setOpacity(_currentOpacity);
   if (_state == SkillTriggerStateUnknown) {

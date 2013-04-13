@@ -52,7 +52,10 @@ void PlayLog::addCount(PlayLogKey key) {
 }
 
 int PlayLog::getCount(int key) {
-  return (*_count)[(PlayLogKey)key];
+  if (_count->count((PlayLogKey)key)) {
+    return (*_count)[(PlayLogKey)key];
+  }
+  return 0;
 }
 
 void PlayLog::setCount(PlayLogKey key, int value) {

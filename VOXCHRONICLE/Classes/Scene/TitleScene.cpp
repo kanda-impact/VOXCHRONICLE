@@ -21,11 +21,8 @@ using namespace cocos2d;
 
 CCScene* TitleScene::scene() {
   CCScene* scene = CCScene::create();
-  
   TitleScene* layer = TitleScene::create();
-  
   scene->addChild(layer);
-  
   return scene;
 }
 

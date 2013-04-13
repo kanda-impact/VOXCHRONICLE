@@ -68,6 +68,16 @@ Enemy* Enemy::create(const char *enemyName) {
   return NULL;
 }
 
+Enemy* Enemy::createWithSpecies(const char *speciesName) {
+  Enemy *pobSprite = new Enemy();
+  if (pobSprite && pobSprite->initWithSpecies(speciesName)) {
+    pobSprite->autorelease();
+    return pobSprite;
+  }
+  CC_SAFE_DELETE(pobSprite);
+  return NULL;
+}
+
 Enemy* Enemy::initWithScriptName(const char* scriptName) {
   stringstream file;
   file << "Script/enemies/" << scriptName;
@@ -111,6 +121,53 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   return NULL;
 }
 
+Enemy* Enemy::initWithSpecies(const char* speciesName) {
+  stringstream file;
+  file << "Script/enemies/" << speciesName;
+  _identifier = speciesName;
+  _scriptPath = file.str();
+  _register = new map<string, int>();
+  _lua = NULL;
+  _maxHP = 1;
+  _hp = _maxHP;
+  _species = Species::getSpecies(speciesName);
+  _species->retain();
+  _type = SkillTypeNormal;
+  _level = 1;
+  _frequencyCount = 0;
+  _enable = true;
+  _movable = true;
+  _counter = -1;
+  if (_lua) {
+    _exp = this->getExpFromLua();
+  } else {
+    _exp = 0;
+  }
+  _attack = 0;
+  _frameSprite = NULL;
+  stringstream ss;
+  ss << _species->getImageName().c_str();
+  _sheet = CCTextureCache::sharedTextureCache()->addImage(ss.str().c_str());
+  _sheet->retain();
+  _enemySize = _species->getEnemySize();
+  if (_enemySize.width == 0 || _enemySize.height == 0) {
+    int width = _sheet->getContentSize().width / _species->getAnimationFrames();
+    _enemySize = CCSizeMake(width, width);
+  }
+  bool success = (bool)this->initWithTexture(_sheet, CCRectMake(0, 0,
+                                                                _enemySize.width,
+                                                                _enemySize.height));
+  
+  this->setLifeColor();
+  this->setItem(EnemyItemNone);
+  if (success) {
+    setDefaultAnimationClip();
+    this->setScale(0.0f);
+    return this;
+  }
+  return NULL;
+}
+
 Enemy::Enemy() {
   _row = 7;
   _col = 0;
@@ -120,7 +177,9 @@ Enemy::Enemy() {
 }
 
 Enemy::~Enemy() {
-  _lua->release();
+  if (_lua) {
+    _lua->release();
+  }
   _species->release();
   _sheet->release();
   CCLog("enemy %s is released", this->getIdentifier().c_str());
@@ -149,7 +208,7 @@ void Enemy::moveRow(float r) {
 }
 
 int Enemy::damage(int power, Skill* skill, CharacterManager* characterManager, DamageType& damageType, bool simulate) {
-  float damage = floor(0.5 + power);
+  int damage = floor(0.5 + power);
   
   // 無効化の処理
   if (!this->getSpecies()->isEnableSkill(skill)) {
@@ -158,7 +217,11 @@ int Enemy::damage(int power, Skill* skill, CharacterManager* characterManager, D
   }
   
   // アイテムの処理
-  if ((_item == EnemyItemShield && skill->getType() == SkillTypePhysical) ||
+  if (skill->getPower(characterManager) == 0) { // そもそもダメージが通らないとき
+    damageType = DamageTypeNoDamage;
+    damage = 0;
+    return damage;
+  } else if ((_item == EnemyItemShield && skill->getType() == SkillTypePhysical) ||
       (_item == EnemyItemBarrier && skill->getType() == SkillTypeMagical)) {
     // 盾によって完全に無効化されている状態
     damage = 0;
@@ -178,10 +241,10 @@ int Enemy::damage(int power, Skill* skill, CharacterManager* characterManager, D
   // ダメージ耐性がある場合、威力半減してやる
   if (skill->getType() == SkillTypePhysical && this->getType() == SkillTypePhysical) {
     damageType = DamageTypePhysicalResist;
-    damage *= 0.5;
+    damage = floor(0.5 + damage * 0.5);
   } else if (skill->getType() == SkillTypeMagical && this->getType() == SkillTypeMagical) {
     damageType = DamageTypeMagicalResist;
-    damage *= 0.5;
+    damage = floor(0.5 + damage * 0.5);
   }
   // レベル補正を行います
   //float levelOffset = characterManager->getLevelOffsetRate(characterManager->getLevel(), this->getLevel());
@@ -315,10 +378,6 @@ int Enemy::getAttack() {
 }
 
 EnemyItem Enemy::getItem() {
-  if (_item != EnemyItemNone) {
-    CCNode* item = this->getChildByTag(EnemyTagItem);
-    //CCAssert(item == NULL, "アイテム消えてる!!!");
-  }
   return _item;
 }
 
@@ -330,21 +389,21 @@ void Enemy::setItem(EnemyItem item) {
   _item = item;
   CCPoint point = CCPointZero;
   if (item != EnemyItemNone) {
-    const char* filename;
+    string filename;
     CCSprite* sprite = NULL;
     if (item == EnemyItemShield) {
       filename = "Image/shield.png";
-      sprite = CCSprite::create(FileUtils::getFilePath(filename).c_str());
+      sprite = CCSprite::create(FileUtils::getFilePath(filename.c_str()).c_str());
       sprite->setColor(VOX_COLOR);
-      point = ccp(0, this->getContentSize().height / 2.0f);
+      sprite->setScale(1.0f);
     } else if (item == EnemyItemBarrier) {
       filename = "Image/barrier.png";
-      sprite = CCSprite::create(FileUtils::getFilePath(filename).c_str());
+      sprite = CCSprite::create(FileUtils::getFilePath(filename.c_str()).c_str());
       sprite->setColor(LSK_COLOR);
-      point = ccp(this->getContentSize().width / 2.0f, this->getContentSize().height / 2.0f);
-      sprite->setOpacity(200);
       sprite->setScale(2.0f);
     }
+    point = ccp(this->getContentSize().width / 2.0f, this->getContentSize().height / 2.0f);
+    sprite->setOpacity(164);
     this->addChild(sprite, 1000, EnemyTagItem);
     sprite->setPosition(point);
   }
@@ -511,18 +570,36 @@ void Enemy::setSkillType(SkillType type) {
 }
 
 void Enemy::setFrameColor(cocos2d::CCSprite *frameSprite, SkillType type) {
-  CCRepeatForever* blink = CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.05f, 64), CCFadeTo::create(0.05f, 255)));
-  if (type == SkillTypePhysical) {
-    frameSprite->setColor(ccc3(0, 255, 230));
-    frameSprite->runAction(blink);
-  } else if (type == SkillTypeMagical) {
-    frameSprite->setColor(LSK_COLOR);
-    frameSprite->runAction(blink);
+  ccColor3B color = ccc3(0, 0, 0);
+  if (type == SkillTypeNormal || type == SkillTypeNone) {
+    frameSprite->setColor(color);
   } else {
+    if (type == SkillTypeMagical) {
+      color = LSK_COLOR;
+    } else {
+      color = ccc3(0, 255, 230);
+    }
     frameSprite->setColor(ccc3(0, 0, 0));
+    CCRepeatForever* blink = CCRepeatForever::create(CCSequence::createWithTwoActions(CCTintTo::create(0.5, color.r, color.g, color.b),
+                                                                                      CCTintTo::create(1.0, 0, 0, 0)));
+    frameSprite->runAction(blink);
+    frameSprite->setColor(color);
   }
 }
 
 int Enemy::getMaxHP() {
   return _maxHP;
+}
+
+void Enemy::setExp(int exp) {
+  _exp = exp;
+}
+
+void Enemy::setAttack(int attack) {
+  _attack = attack;
+}
+
+void Enemy::setMaxHP(int maxHP) {
+  _maxHP = maxHP;
+  _hp = maxHP;
 }

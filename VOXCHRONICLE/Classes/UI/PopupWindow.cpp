@@ -9,7 +9,15 @@
 #include "PopupWindow.h"
 #include "SimpleAudioEngine.h"
 #include <boost/bind.hpp>
+#include "CCRemoveFromParentAction.h"
 
+using namespace CocosDenshion;
+
+typedef enum {
+  PopupWindowTagWindow,
+  PopupWindowTagMessageWindow,
+  PopupWindowTagCursor
+} PopupWindowTag;
 
 PopupWindow* PopupWindow::create(int pages) {
   PopupWindow* window = new PopupWindow(pages);
@@ -28,7 +36,23 @@ PopupWindow::PopupWindow(int pages) {
       _pages->addObject(node);
     }
     CCNode* root = (CCNode*)_pages->objectAtIndex(0);
-    this->addChild(root);
+    this->addChild(root, 0, PopupWindowTagWindow);
+  
+    CCMenuItemImage* left = CCMenuItemImage::create("tutorial_cursor_left.png",
+                                                    "tutorial_cursor_left_pressed.png",
+                                                    this,
+                                                    menu_selector(PopupWindow::onCursorPressed));
+    CCMenuItemImage* right = CCMenuItemImage::create("tutorial_cursor_right.png",
+                                                     "tutorial_cursor_right_pressed.png",
+                                                     this,
+                                                     menu_selector(PopupWindow::onCursorPressed));
+    left->setTag(0);
+    right->setTag(1);
+    CCMenu* cursors = CCMenu::create(left, right, NULL);
+    cursors->setAnchorPoint(ccp(0.5, 0.5));
+    cursors->setPosition(ccp(this->getContentSize().width / 2.0, this->getContentSize().height / 2.0));
+    cursors->alignItemsHorizontallyWithPadding(425);
+    this->addChild(cursors, 0, PopupWindowTagCursor);
   }
 }
 
@@ -48,12 +72,24 @@ bool PopupWindow::isLastPage() {
   return _maxPages - 1 <= _currentPage;
 }
 
+void PopupWindow::prevPage() {
+  this->setPage(_currentPage - 1);
+}
+
 void PopupWindow::nextPage() {
-  this->removeAllChildrenWithCleanup(true);
-  if (!this->isLastPage()) {
-    ++_currentPage;
+  this->setPage(_currentPage + 1);
+}
+
+void PopupWindow::setPage(int page) {
+  if (page >= 0 && page < _maxPages) {
+    this->removeChildByTag(PopupWindowTagWindow, true);
+    _currentPage = page;
     CCNode *next = (CCNode*)_pages->objectAtIndex(_currentPage);
-    this->addChild(next);
+    this->addChild(next, 0, PopupWindowTagWindow);
+  } else if (page == _maxPages) {
+    this->runAction(CCSequence::create(CCScaleTo::create(0.3f, 0),
+                                       CCRemoveFromParentAction::create(),
+                                       NULL));
   }
 }
 
@@ -69,7 +105,7 @@ void PopupWindow::setText(int page, const char *headerText, const char *text) {
   node->addChild(header);
   MessageWindow* window = new MessageWindow("Helvetica", 16, CCSizeMake(370, 240));
   window->setPosition(ccp(200, 130));
-  node->addChild(window);
+  node->addChild(window, 0, PopupWindowTagMessageWindow);
   window->setLastDelay(INTMAX_MAX);
   window->pushMessage(text);
   window->setOnMessageFinishedFunction(boost::bind(&PopupWindow::onFinishedFunction, this, _1, _2));
@@ -82,4 +118,37 @@ void PopupWindow::onUpdateFunction(VQString *string, MessageWindow *window) {
 
 void PopupWindow::onFinishedFunction(VQString *string, MessageWindow *window) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("message_finish.mp3");
+}
+
+void PopupWindow::onCursorPressed(cocos2d::CCNode *node) {
+  int direction = node->getTag();
+  if (direction == 0) {
+    SimpleAudioEngine::sharedEngine()->playEffect("window_next.mp3");
+    this->prevPage();
+  } else {
+    if (this->isLastPage()) {
+      SimpleAudioEngine::sharedEngine()->playEffect("window_close.mp3");
+    } else {
+      SimpleAudioEngine::sharedEngine()->playEffect("window_next.mp3");
+    }
+    this->onWindowTouched();
+    this->nextPage();
+  }
+}
+
+void PopupWindow::onWindowTouched() {
+  CCNode* window = this->getPage(_currentPage);
+  MessageWindow* mWindow = (MessageWindow*)window->getChildByTag(PopupWindowTagMessageWindow);
+  if (mWindow) {
+    mWindow->finishMessage();
+  }
+}
+
+bool PopupWindow::isMessageEnded() {
+  CCNode* window = this->getPage(_currentPage);
+  MessageWindow* mWindow = (MessageWindow*)window->getChildByTag(PopupWindowTagMessageWindow);
+  if (mWindow) {
+    return mWindow->isEndMessage();
+  }
+  return true;
 }

@@ -183,7 +183,6 @@ CCDictionary* EnemyManager::performSkill(Skill* skill, CCArray* targets, Charact
     }
     bool nextLvExp = false; // もし、expが-1の敵が1体でもいたらtrueに
     int power = skill->getPower(characterManager); // 威力を取っておく
-    int count = targets->count();
     CCObject* obj = NULL;
     CCARRAY_FOREACH(targets, obj) {
       Enemy* target = (Enemy*)obj;

@@ -1,6 +1,6 @@
 Enemy = {
   name = "てぃえぬてぃ",
-  imageName = "gargoyle",
+  imageName = "ttn",
   attack = 1,
   baseExp = 1,
   hasFrame = false,
@@ -17,9 +17,9 @@ Enemy = {
   原始的で合理的な巨体の持ち主。
   ]],
   habitat = "",
-  animationFrames = 7,
+  animationFrames = 5,
   performSkill = function(self)
-  return ""
+    return ""
   end
 }
 

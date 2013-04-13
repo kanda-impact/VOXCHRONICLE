@@ -27,10 +27,15 @@ bool DictionaryScene::init() {
   _enemies->retain();
   _enemy = NULL;
   
+  int defeatedCount = 0;
   for (CCLuaValueArrayIterator it = array->begin(); it != array->end();  ++it) {
     CCString* string = CCString::create(it->stringValue());
     _enemies->addObject(string);
+    if ( 0 < SaveData::sharedData()->getDefeatedCount(it->stringValue().c_str()) ) {
+      defeatedCount += 1;
+    }
   }
+  SaveData::sharedData()->setCountFor(SaveDataCountKeyDictionaryCount, defeatedCount);
   
   CCDirector* director = CCDirector::sharedDirector();
   
@@ -103,7 +108,7 @@ void DictionaryScene::loadEnemyByIndex(int idx) {
     this->removeChild(_enemy, true);
     _enemy->release();
   }
-  _enemy = Enemy::create(script->getCString());
+  _enemy = Enemy::createWithSpecies(script->getCString());
   _enemy->retain();
   _enemy->setRowAndCol(1, 0);
   
@@ -115,8 +120,6 @@ void DictionaryScene::loadEnemyByIndex(int idx) {
   
   CCDirector* director = CCDirector::sharedDirector();
   _enemy->setPosition(ccp(director->getWinSize().width / 2.0f, 160));
-  _enemy->setItem(EnemyItemNone);
-  _enemy->setSkillType(SkillTypeNormal);
   this->addChild(_enemy);
   if (isDefeated) {
     _nameLabel->setString(_enemy->getName().c_str());

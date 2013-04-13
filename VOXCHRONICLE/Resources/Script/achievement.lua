@@ -1,5 +1,5 @@
 
-local dictionaryEnemyCount = 10 -- モンスター図鑑の最大数。あとで関数から取れるようにします
+local dictionaryEnemyCount = 53 -- 面倒なのでハードコーディングします
 
 Achievement = {
   -- 毎ターン判定する実績は、関数で呼び出すとパフォーマンス低下が懸念されるので、dictで持つ

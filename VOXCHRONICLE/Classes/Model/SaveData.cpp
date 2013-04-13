@@ -45,9 +45,14 @@ SaveData::SaveData() {
     info.identifier = identifier;
     _achievementInfos->push_back(info);
   }
+  LuaObject* dict = LuaObject::create("enemy.lua");
+  lua_State* L = dict->getLuaEngineWithLoad()->getLuaState();
+  lua_getglobal(L, "dictionary");
+  _enemyDictionary = dict->getArray();
 }
 
 SaveData::~SaveData() {
+  delete _enemyDictionary;
   delete _achievementInfos;
   _countDictionary->release();
   _achievements->release();
@@ -92,15 +97,19 @@ void SaveData::addDefeatedCountForEnemy(const char* enemyIdentifier) {
   CCUserDefault::sharedUserDefault()->setIntegerForKey(string(string("enemy_") + enemyIdentifier).c_str(), current + 1);
 }
 
+void SaveData::setCountFor(SaveDataCountKey keynum, int value) {
+  string key = countDataPrefix + boost::lexical_cast<string>(keynum);
+  _countDictionary->setObject(CCInteger::create(value), key);
+  this->checkUnlockAchievement(keynum, value);
+}
+
 void SaveData::addCountFor(SaveDataCountKey key) {
   this->addCountFor(key, 1);
 }
 
 void SaveData::addCountFor(SaveDataCountKey keynum, int value) {
-  string key = countDataPrefix + boost::lexical_cast<string>(keynum);
   int current = this->getCountFor(keynum);
-  _countDictionary->setObject(CCInteger::create(current + value), key);
-  this->checkUnlockAchievement(keynum, current + value);
+  this->setCountFor(keynum, current + value);
 }
 
 int SaveData::getCountFor(SaveDataCountKey keynum) {
@@ -135,7 +144,7 @@ void SaveData::unlockAchievement(const char *identifier) {
 void SaveData::checkUnlockAchievement(SaveDataCountKey key, int value) {
   for (list<AchievementInfo>::iterator it = _achievementInfos->begin(); it != _achievementInfos->end(); ++it) {
     if ((*it).key == key) {
-      if ((*it).count < value) {
+      if ((*it).count <= value) {
         this->unlockAchievement((*it).identifier.c_str());
       }
     }
@@ -147,10 +156,15 @@ void SaveData::onFinishAchievementReporting(const char* identifier, bool error) 
     CCLog("send achievement %s!", identifier);
     CCString* str = CCString::create(identifier);
     _achievements->addObject(str);
+    SimpleAudioEngine::sharedEngine()->playEffect("unlock_achievement.mp3");
   }
 }
 
 void SaveData::setUnlockedAchievement(const char *identifier) {
   CCString* str = CCString::create(identifier);
   _achievements->addObject(str);
+}
+
+int SaveData::getAllEnemyDictionaryCount() {
+  return _enemyDictionary->size();
 }

@@ -15,13 +15,13 @@
 using namespace cocos2d;
 
 class EndingScene :public CCLayer {
- private:
+private:
   int _musicDuration;
   std::string _music;
   void goToNextScene(CCObject* sender);
   void onEnterTransitionDidFinish();
   CCArray* _maps;
- public:
+public:
   EndingScene(const char* endingScript, CCArray* maps);
   ~EndingScene();
 };

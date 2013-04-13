@@ -136,6 +136,7 @@ void SignalHandler(int sig) {
   CCLog("mpmiss = %d", data->getCountFor(SaveDataCountKeyMPMiss));
   CCLog("turn = %d", data->getCountFor(SaveDataCountKeyTurn));
   CCLog("attackDamage = %d", data->getCountFor(SaveDataCountKeyAttackDamage));
+  CCLog("dictionaryCount = %d", data->getCountFor(SaveDataCountKeyDictionaryCount));
   
   // Set RootViewController to window
   // Fix orientation problem on iOS6

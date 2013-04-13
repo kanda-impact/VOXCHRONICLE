@@ -123,9 +123,10 @@ int Controller::currentTriggerIndex() {
   return -1;
 }
 
-void Controller::updateSkills(CharacterManager* manager, Level* level) {
+void Controller::updateSkills(CharacterManager* manager, Level* level, bool reset) {
   CCArray* allSkills = level->getAllSkills(manager->getCurrentCharacter());
   CCArray* skills = level->getSkills(manager->getCurrentCharacter());
+  int index = this->currentTriggerIndex();
   for (int i = 0; i < _triggers->count(); ++i) {
     if (i >= allSkills->count()) break;
     Skill* skill = (Skill*)allSkills->objectAtIndex(i);
@@ -137,6 +138,8 @@ void Controller::updateSkills(CharacterManager* manager, Level* level) {
     } else if (skill->getTensionLevel() > manager->getTension()) {
       // テンションレベルが足りないとき、使用不可状態に
       trigger->setSkillTriggerState(SkillTriggerStateDisable);
+    } else if (manager->getLastSkill() && manager->getLastSkill()->getIdentifier() == skill->getIdentifier() && !skill->canRepeat()) { // 連続使用不可の技を連続で使っていたとき
+      trigger->setSkillTriggerState(SkillTriggerStateDisable);
     } else {
       // その他のとき、通常状態に
       trigger->setSkillTriggerState(SkillTriggerStateNormal);
@@ -146,6 +149,13 @@ void Controller::updateSkills(CharacterManager* manager, Level* level) {
       trigger->setColor(SkillTriggerColorVox);
     } else {
       trigger->setColor(SkillTriggerColorLaska);
+    }
+  }
+  if (index >= 0) {
+    SkillTrigger* trigger = (SkillTrigger*)_triggers->objectAtIndex(index);
+    if (reset && trigger->getSkillTriggerState() == SkillTriggerStateNormal) {
+      ((SkillTrigger*)trigger)->setPress(true);
+      this->reorderChild((SkillTrigger*)trigger, ControllerZOrderTriggerPressed);
     }
   }
   this->setFrame(manager);

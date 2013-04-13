@@ -61,7 +61,7 @@ bool TutorialLayer::init() {
 
 void TutorialLayer::onTutorialButtonPressed(cocos2d::CCObject *sender) {
   SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/easy_decide.mp3").c_str());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/tutorial_decide.mp3").c_str());
   LuaObject* lua = LuaObject::create("setting");
   int tag = ((CCNode*)sender)->getTag();
   CCLuaValueArray* array = lua->getArray("tutorials");
@@ -70,9 +70,11 @@ void TutorialLayer::onTutorialButtonPressed(cocos2d::CCObject *sender) {
     if (i == tag) {
       string mapName = it->stringValue();
       Map* map = new Map(mapName.c_str());
+      map->autorelease();
       MainScene* layer = new MainScene();
       layer->autorelease();
       layer->init(map);
+      layer->setBackScene(MainBackSceneTutorial);
       CCScene* scene = CCScene::create();
       scene->addChild(layer);
       CCTransitionFade* fade = CCTransitionFade::create(0.5f, scene);

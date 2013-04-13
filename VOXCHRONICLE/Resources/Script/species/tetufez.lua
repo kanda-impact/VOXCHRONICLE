@@ -1,6 +1,6 @@
 Enemy = {
-  name = "ガーゴイル",
-  imageName = "gargoyle",
+  name = "テツフェズ",
+  imageName = "tetufez",
   attack = 1,
   baseExp = 1,
   hasFrame = false,
@@ -17,7 +17,7 @@ Enemy = {
   諸説あるがわかっていない。叩くといい音がする。
   ]],
   habitat = "",
-  animationFrames = 6,
+  animationFrames = 4,
   performSkill = function(self)
   return ""
   end

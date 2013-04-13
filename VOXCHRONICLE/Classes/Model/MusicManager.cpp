@@ -190,6 +190,7 @@ string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& perform
       } else {
         _characterManager->setRepeatCount(min(_characterManager->getRepeatCount(), skill->getMaxRepeat() - 1));
       }
+      Skill* lastSkill = _characterManager->getLastSkill();
       _characterManager->setLastSkill(skill);
       _characterManager->setCurrentSkill(NULL);
       _characterManager->setWaitTurn(0);
@@ -204,7 +205,7 @@ string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& perform
           Enemy* enemy = (Enemy*)targets->objectAtIndex(i);
           DamageType damageType = DamageTypeNone;
           enemy->damage(power, skill, _characterManager, damageType, true); // ダメージは与えずに結果だけ取り出す
-          if (damageType != DamageTypePhysicalInvalid && damageType != DamageTypeMagicalInvalid && damageType != DamageTypeNoDamage && damageType != DamageTypeDisable) {
+          if (damageType != DamageTypePhysicalInvalid && damageType != DamageTypeMagicalInvalid && damageType != DamageTypeDisable) {
             isMiss = false;
           }
         }
@@ -212,8 +213,10 @@ string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& perform
       if (skill->getMP() > _characterManager->getMP()) { // MP足りてないとき、失敗に
         performeType = SkillPerformTypeFailure;
         isMiss = true;
+      } else if (lastSkill && !skill->canRepeat() && lastSkill->getIdentifier() == skill->getIdentifier()) {
+        performeType = SkillPerformTypeFailure;
+        isMiss = true;
       }
-      
       if (performeType == SkillPerformTypeFailure || isMiss) { // 失敗したとき、もしくはピロったとき、miss音を返す
         return this->buildTrackName("miss", NULL, -1);
       } else {

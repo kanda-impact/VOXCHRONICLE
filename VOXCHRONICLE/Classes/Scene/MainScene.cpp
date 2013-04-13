@@ -66,6 +66,7 @@ bool MainScene::init(Map* map) {
   if ( !CCLayer::init() ) {
     return false;
   }
+  _backScene = MainBackSceneTitle;
   Enemy::loadLifeColors();
   Music* music = new Music(3);
   music->autorelease();
@@ -120,7 +121,7 @@ bool MainScene::init(Map* map) {
   this->addChild(_enemyManager, MainSceneZOrderEnemyManager);
   this->addChild(_skin->getController(), MainSceneZOrderController);
   this->updateGUI();
-  _skin->getController()->updateSkills(_characterManager, _level);
+  _skin->getController()->updateSkills(_characterManager, _level, false);
   
   _qteTrigger = NULL;
   _isLevelUped = false;
@@ -133,13 +134,6 @@ bool MainScene::init(Map* map) {
     _effectLayer->removeAllChildrenWithCleanup(true);
   }
   this->addChild(_effectLayer, MainSceneZOrderEffect);
-  
-  string focusName = string("Image/") + _skin->getPrefix() + string("_focus.png");
-  _focus = CCSprite::create(FileUtils::getFilePath(focusName.c_str()).c_str());
-  _focus->retain();
-  _focus->setVisible(false);
-  _focus->setAnchorPoint(ccp(0.5f, 0.0f));
-  this->addChild(_focus, MainSceneZOrderFocus);
   
   _effectLayer->setCharacterEffect(_characterManager->getCurrentCharacter()); // キャラクター登録
   
@@ -155,7 +149,6 @@ MainScene::~MainScene() {
     _mapSelector->release();
   }
   _messageWindow->release();
-  _focus->release();
   
   if (_qteTrigger != NULL) {
     _qteTrigger->release();
@@ -219,23 +212,22 @@ void MainScene::onEnterTransitionDidFinish() {
 void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber) {
   int preTension = _characterManager->getTension(); // 敵の行動前テンション
   if (_state == VCStateMain) {
+    int preHP = _characterManager->getHP();
     _enemyManager->nextTurn(_characterManager, false);
     CCObject* obj = NULL;
     CCARRAY_FOREACH(_enemyManager->getEnemies(), obj) {
       Enemy* enemy = (Enemy*)obj;
       if (enemy->getRow() < 0) {
         int damage = floor(0.5 + enemy->getAttack() * _characterManager->getLevelOffsetRate(enemy->getLevel(), _characterManager->getLevel()));
-        int preHP = _characterManager->getHP();
         _characterManager->damage(damage);
-        int sub = _characterManager->getHP() - preHP;
-        SaveData::sharedData()->addCountFor(SaveDataCountKeyHitDamage, sub); // 被ダメージカウント
-        _log->setCount(PlayLogKeyHitDamage, sub + _log->getCount(PlayLogKeyHitDamage)); // 被ダメージカウント
         _enemyManager->removeEnemy(enemy);
       }
     }
+    int sub = abs(_characterManager->getHP() - preHP);
+    SaveData::sharedData()->addCountFor(SaveDataCountKeyHitDamage, sub); // 被ダメージカウント
+    _log->setCount(PlayLogKeyHitDamage, sub + _log->getCount(PlayLogKeyHitDamage)); // 被ダメージカウント
     
     this->addDamageEffect();
-    this->updateFocus();
     this->updateGUI();
     
     // 盾を外すエフェクト
@@ -244,9 +236,10 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
     }
   }
   if (preTension != _characterManager->getTension()) { // テンションが変わってたら技の状態を更新
-    _skin->getController()->updateSkills(_characterManager, _level);
+    _skin->getController()->updateSkills(_characterManager, _level, true);
   }
   _map->performOnBack(_characterManager, _enemyManager);
+  _effectLayer->updateFocus(_enemyManager);
 }
 
 void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track *nextTrack, int trackNumber) {
@@ -509,6 +502,13 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _enemyManager->setLevel(_level);
       this->updateGUI();
       
+      CCSprite* levelup = CCSprite::create("levelup.png");
+      levelup->setPosition(ccp(-100, 180));
+      levelup->runAction(CCSequence::create(CCMoveBy::create(1.5f, ccp(680, 0)),
+                         CCRemoveFromParentAction::create(),
+                         NULL));
+      _effectLayer->addChild(levelup);
+      
       _enemyManager->removeAllEnemiesQueue();
       _isLevelUped = true;
     }
@@ -550,11 +550,8 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _effectLayer->setCharacterEffect(_characterManager->getCurrentCharacter());
     }
     
-    if (skill) {
-      _skin->getController()->updateSkills(_characterManager, _level);
-    }
+    _skin->getController()->updateSkills(_characterManager, _level, false);
     
-    this->updateFocus();
     this->updateGUI(); // GUI更新
     
     if (!_characterManager->isPerforming()) {
@@ -576,6 +573,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
   
   // マーカーを再同期
   _skin->getStatusLayer()->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
+  _effectLayer->updateFocus(_enemyManager);
   _map->performOnFinishPlaying(_characterManager, _enemyManager);
 }
 
@@ -586,17 +584,12 @@ void MainScene::registerWithTouchDispatcher() {
 bool MainScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
   if (_state == VCStateWindow) {
     PopupWindow* layer = _effectLayer->getPopupWindow();
-    if (!layer) return false;
-    if (layer->isLastPage()) { // 最終ページだったら
-      SimpleAudioEngine::sharedEngine()->playEffect("window_close.mp3");
-      layer->runAction(CCSequence::create(CCScaleTo::create(0.3f, 0),
-                                          CCRemoveFromParentAction::create(),
-                                          NULL));
-      _state = VCStateMain;
-      return true;
-    } else { // まだページが残っていたら
-      SimpleAudioEngine::sharedEngine()->playEffect("window_next.mp3");
-      layer->nextPage();
+    if (layer) {
+      if (layer->isMessageEnded()) { // メッセージ終わってたら次のページ
+        layer->nextPage();
+      } else {
+        layer->onWindowTouched(); // そうじゃなきゃメッセージ終了
+      }
       return true;
     }
   }
@@ -631,22 +624,13 @@ void MainScene::onGameOver() {
   MessageManager::sharedManager()->pushRandomMessageFromLua("death", dict);
   _state = VCStateGameOver;
   GameOverLayer* gameover = new GameOverLayer(this);
+  gameover->setMainBackScene(_backScene);
   this->addChild(gameover, MainSceneZOrderUI);
   gameover->autorelease();
   _musicManager->getMusic()->pause();
   _skin->getController()->setVisible(false);
   SaveData::sharedData()->addCountFor(SaveDataCountKeyDead); // 死亡回数をカウント
-}
-
-void MainScene::updateFocus() {
-  Enemy* nearest = _enemyManager->getNearestEnemy();
-  if (nearest) {
-    _focus->setVisible(true);
-    _focus->setPosition(ccpAdd(nearest->getPosition(), ccp(0, nearest->getContentSize().height * nearest->getCurrentScale(nearest->getRow()) * 0.8)));
-    _focus->setScale(MAX(nearest->getCurrentScale(nearest->getRow()), 0.4));
-  } else {
-    _focus->setVisible(false);
-  }
+  _log->addCount(PlayLogKeyDead);
 }
 
 void MainScene::addDamageEffect() {
@@ -737,6 +721,7 @@ void MainScene::changeMap(Map* nextMap) {
   _musicManager->setFinishCount(0);
   _skin->getController()->setEnable(false);
   _musicManager->pushIntroTracks();
+  _effectLayer->addWaitMarker(_musicManager->getMusic()->getCurrentMainTrack()->getDuration() * _musicManager->getMusicSet()->getIntroCount());
   _characterManager->setRepeatCount(0); // repeatCountをリセット
   this->updateGUI();
   _map->performOnLoad(_characterManager, _enemyManager);
@@ -748,7 +733,7 @@ void MainScene::changeSkin(Skin *newSkin, bool crossFade) {
   const float kCrossFadeSpeed = 1.0f;
   if (_skin != NULL) {
     newSkin->setController(_skin->getController()); // 古いコントローラーを受け渡す
-    _skin->getController()->updateSkills(_characterManager, _level); // スキン更新
+    _skin->getController()->updateSkills(_characterManager, _level, false); // スキン更新
     if (crossFade) {
       CCArray* nodes = CCArray::create();
       if (_skin->getBackground()) nodes->addObject(_skin->getBackground());
@@ -789,6 +774,7 @@ void MainScene::changeSkin(Skin *newSkin, bool crossFade) {
       background->runAction(CCFadeIn::create(kCrossFadeSpeed));
     }
   }
+  _effectLayer->reloadFocus(_skin);
 }
 
 void MainScene::startBossBattle() {
@@ -824,6 +810,7 @@ void MainScene::onFinishTracksCompleted() {
     _musicManager->getMusic()->stop();
     EndingScene* endingLayer = new EndingScene(endingScript.c_str(), _log->getMapHistory());
     endingLayer->autorelease();
+    endingLayer->setUserObject(_log); // PlayLogをユーザーデータに
     CCScene* ending = CCScene::create();
     ending->addChild(endingLayer);
     _log->checkAchievementsOnClear(_characterManager, _enemyManager);
@@ -847,6 +834,7 @@ void MainScene::setPause(bool pause) {
   CCScheduler* scheduler = CCDirector::sharedDirector()->getScheduler();
   if (pause && _pausedTargets == NULL) {
     PauseLayer* layer = new PauseLayer(this);
+    layer->setMainBackScene(_backScene);
     layer->autorelease();
     _pausedTargets = scheduler->pauseAllTargets();
     _pausedTargets->retain();
@@ -890,4 +878,8 @@ void MainScene::setPlayLog(PlayLog* log) {
   if (log) {
     log->retain();
   }
+}
+
+void MainScene::setBackScene(MainBackScene backScene) {
+  _backScene = backScene;
 }

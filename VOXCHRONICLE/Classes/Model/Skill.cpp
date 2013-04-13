@@ -33,6 +33,7 @@ Skill::Skill(const char* identifier) {
   _se = _lua->getBoolean("se");
   _loop = _lua->getBoolean("loop");
   _cutinType = _lua->getInt("cutinType");
+  _canRepeat = _lua->getBoolean("canRepeat");
   CCLuaValueArray* mes = _lua->getArray("messages");
   
   // エフェクトを先読みしておきます
@@ -138,6 +139,10 @@ bool Skill::hasSE() {
 
 bool Skill::isLoop() {
   return _loop;
+}
+
+bool Skill::canRepeat() {
+  return _canRepeat;
 }
 
 SkillEffectType Skill::getEffectType() {
