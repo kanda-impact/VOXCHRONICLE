@@ -141,6 +141,7 @@ class Enemy : public CCSprite, public IRegister {
 	int getHP();
 	int getAttack();
 	int getMaxHP();
+	SkillType getType();
 	string getName();
 	EnemyItem getItem();
 	void moveRow(float row);
