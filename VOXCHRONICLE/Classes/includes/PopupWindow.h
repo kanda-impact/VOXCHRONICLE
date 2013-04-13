@@ -21,6 +21,8 @@ class PopupWindow :public CCSprite {
   int _maxPages;
   int _currentPage;
   CCArray* _pages;
+  void onCursorPressed(CCNode* node);
+  void setPage(int page);
  public:
   static PopupWindow* create(int pages);
   PopupWindow(int pages);
@@ -28,10 +30,13 @@ class PopupWindow :public CCSprite {
   CCNode* getPage(int page);
   int getCurrentPage();
   bool isLastPage();
+  bool isMessageEnded();
+  void prevPage();
   void nextPage();
   void setText(int page, const char* header, const char* text);
   void onUpdateFunction(VQString* string, MessageWindow* window);
   void onFinishedFunction(VQString* string, MessageWindow* window);
+  void onWindowTouched();
 };
 
 #endif /* defined(__VOXCHRONICLE__PopupWindow__) */

@@ -49,6 +49,11 @@ class MessageWindow :public CCNode {
   bool isEndMessage();
   void setDelay(float d);
   void setLastDelay(float d);
+  
+  /**
+   強制的にメッセージを終了させます
+   */
+  void finishMessage();
 };
 
 #endif /* defined(__VOXCHRONICLE__MessageWindow__) */

@@ -46,6 +46,7 @@ class SaveData :public CCObject {
  private:
   CCDictionary* _countDictionary;
   CCArray* _achievements;
+  CCLuaValueArray* _enemyDictionary;
   
   list<AchievementInfo>* _achievementInfos;
   
@@ -61,12 +62,14 @@ class SaveData :public CCObject {
   void addDefeatedCountForEnemy(const char* enemyIdentifier);
   bool isClearedMap(const char* mapIdentifier);
   void setClearedForMap(const char* mapIdentifier);
+  void setCountFor(SaveDataCountKey key, int value);
   void addCountFor(SaveDataCountKey key);
   void addCountFor(SaveDataCountKey key, int value);
   int getCountFor(SaveDataCountKey key);
   bool isUnlockAchievement(const char* identifier);
   void unlockAchievement(const char* identifier);
   void setUnlockedAchievement(const char* identifier);
+  int getAllEnemyDictionaryCount();
 };
 
 #endif /* defined(__VOXCHRONICLE__SaveData__) */

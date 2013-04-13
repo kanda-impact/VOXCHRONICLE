@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Tue Apr  9 10:30:46 2013.
+** Generated automatically by tolua++-1.0.92 on Sat Apr 13 02:04:36 2013.
 */
 
 /* Exported function */

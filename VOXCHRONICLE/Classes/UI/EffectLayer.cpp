@@ -16,15 +16,18 @@ using namespace boost;
 
 typedef enum {
   EffectLayerTagTutorial,
-  EffectLayerTagCutin
+  EffectLayerTagCutin,
+  EffectLayerTagWait
 } EffectLayerTag;
 
 typedef enum {
-  EffectLayerZOrderCutin,
   EffectLayerZOrderDamageLabel,
+  EffectLayerZOrderFocus,
   EffectLayerZOrderTension,
   EffectLayerZOrderCharacter,
+  EffectLayerZOrderCutin,
   EffectLayerZOrderWarning,
+  EffectLayerZOrderWait,
   EffectLayerZOrderWindow
 } EffectLayerZOrder;
 
@@ -55,6 +58,7 @@ EffectLayer::EffectLayer() {
   _characterEffectLayer = CCSprite::create("mode_vox.png");
   _characterEffectLayer->retain();
   _cutinExtention = NULL;
+  _focus = NULL;
   this->reloadEffects();
 }
 
@@ -80,6 +84,9 @@ void EffectLayer::reloadEffects() {
 EffectLayer::~EffectLayer() {
   _tensionEffectLayer->release();
   _characterEffectLayer->release();
+  if (_focus) {
+    _focus->release();
+  }
   if (_cutinExtention) {
     _cutinExtention->release();
   }
@@ -249,23 +256,23 @@ void EffectLayer::addMusicInfo(Map* map, Level* level) {
   CCNode* musicInfo = CCNode::create();
   CCLabelTTF* nameShadowLabel = CCLabelTTF::create(mSet->getName().c_str(),
                                                    "Helvetica",
-                                                   24,
+                                                   20,
                                                    CCSizeMake(300, 30),
                                                    kCCTextAlignmentRight);
   musicInfo->addChild(nameShadowLabel);
   nameShadowLabel->setColor(ccc3(33, 33, 33));
-  nameShadowLabel->setPosition(ccp(3, -3));
+  nameShadowLabel->setPosition(ccp(2, -2));
   CCLabelTTF* composerShadowLabel = CCLabelTTF::create(mSet->getComposer().c_str(),
                                                        "Helvetica",
                                                        16,
                                                        CCSizeMake(300, 20),
                                                        kCCTextAlignmentRight);
   composerShadowLabel->setColor(ccc3(33, 33, 33));
-  composerShadowLabel->setPosition(ccp(3, -28));
+  composerShadowLabel->setPosition(ccp(2, -27));
   musicInfo->addChild(composerShadowLabel);
   CCLabelTTF* nameLabel = CCLabelTTF::create(mSet->getName().c_str(),
                                              "Helvetica",
-                                             24,
+                                             20,
                                              CCSizeMake(300, 30),
                                              kCCTextAlignmentRight);
   musicInfo->addChild(nameLabel);
@@ -390,5 +397,54 @@ void EffectLayer::setCutinExtension(CCNode* extension) {
   _cutinExtention = extension;
   if (extension) {
     extension->retain();
+  }
+}
+
+void EffectLayer::reloadFocus(Skin *skin) {
+  string focusName = string("Image/") + skin->getPrefix() + string("_focus.png");
+  if (_focus) {
+    _focus->setTexture(CCTextureCache::sharedTextureCache()->addImage(focusName.c_str()));
+  } else {
+    _focus = CCSprite::create(FileUtils::getFilePath(focusName.c_str()).c_str());
+    _focus->retain();
+    this->addChild(_focus, EffectLayerZOrderFocus);
+  }
+  _focus->setVisible(false);
+  _focus->setAnchorPoint(ccp(0.5f, 0.0f));
+}
+
+void EffectLayer::updateFocus(EnemyManager *manager) {
+  Enemy* nearest = manager->getNearestEnemy();
+  if (nearest) {
+    _focus->setVisible(true);
+    _focus->setPosition(ccpAdd(nearest->getPosition(), ccp(0, nearest->getContentSize().height * nearest->getCurrentScale(nearest->getRow()) * 0.8)));
+    _focus->setScale(MAX(nearest->getCurrentScale(nearest->getRow()), 0.4));
+  } else {
+    _focus->setVisible(false);
+  }
+}
+
+void EffectLayer::addWaitMarker(float duration) {
+  if (!this->getChildByTag(EffectLayerTagWait)) {
+    CCDirector* director = CCDirector::sharedDirector();
+    const float delay = 0.2;
+    CCSprite* wait = CCSprite::create("wait_front.png");
+    CCSprite* marker = CCSprite::create("wait_back.png");
+    wait->runAction(CCSequence::create(CCFadeIn::create(0.5f),
+                                       CCDelayTime::create(duration),
+                                       CCRemoveFromParentAction::create(),
+                                       CCFadeOut::create(0.5f),
+                                       NULL));
+    marker->runAction(CCSequence::create(CCFadeIn::create(0.5f),
+                                         CCRepeat::create(CCSequence::create(CCRotateBy::create(0, 15),
+                                                                                           CCDelayTime::create(delay),
+                                                                                           NULL), duration / delay),
+                                         CCFadeOut::create(0.5f),
+                                         CCRemoveFromParentAction::create()));
+    wait->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
+    marker->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
+    
+    this->addChild(marker, EffectLayerZOrderWait, EffectLayerTagWait);
+    this->addChild(wait, EffectLayerZOrderWait);
   }
 }

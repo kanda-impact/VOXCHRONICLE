@@ -2,7 +2,7 @@ Map = {
   name = "Lesson2",
   wayMusic = "chabo",
   bossMusic = "",
-  backgroundImage = "simple_background.png",
+  backgroundImage = "tutorial_background.png",
   skin = "skinA",
   ending = "",
   nextMaps = {},
@@ -135,7 +135,7 @@ Map = {
 『チェンジ』マークにタッチして
 私に交代してちょうだい。
 
-音楽もかわって気分一新よ！]]
+音楽もかわって気分一新よ！]])
       popup:setText(0, "ラスカに『チェンジ』！", [[
 オクス君は剣士だけど、私、ラスカは魔法使い
 私は魔法をつかって攻撃するわ。
