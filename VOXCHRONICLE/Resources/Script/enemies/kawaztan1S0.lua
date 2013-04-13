@@ -6,7 +6,7 @@ Enemy = {
       return 60
   end,
   item = EnemyItemNone,
-  type = SkillTypeMagical,
+  type = SkillTypeNormal,
 }
 
 return Enemy
