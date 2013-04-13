@@ -177,7 +177,7 @@ void MainScene::teardown() {
   MessageManager::purgeMessageManager();
   SaveData::sharedData()->save();
   EffectLayer::purgeEffectLayer();
-  CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+  CCTextureCache::sharedTextureCache()->removeAllTextures();
   Species::purgeSpeciesCache();
   CCLog("teardown");
 }
@@ -828,6 +828,7 @@ void MainScene::onFinishTracksCompleted() {
     this->gotoNextStage();
     _map->performOnClear(_characterManager, _enemyManager);
   }
+  CCTextureCache::sharedTextureCache()->removeAllTextures();
 }
 
 void MainScene::setPause(bool pause) {

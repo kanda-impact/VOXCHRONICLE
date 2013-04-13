@@ -39,6 +39,7 @@ Track::Track(const char* fileName) : _track(new VISS::Track::AudioTrack) {
 Track::~Track() {
   //[_track->buffer release];
   [_track->source release];
+  CCLog("remove %s", _fileName.c_str());
 }
 
 bool Track::play() {
