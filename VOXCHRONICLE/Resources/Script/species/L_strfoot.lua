@@ -1,5 +1,5 @@
 Enemy = {
-  name = "左足str",
+  name = "左アシィＧ（グレート）",
   imageName = "L_strfoot",
   attack = 1,
   baseExp = 6,

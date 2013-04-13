@@ -1,5 +1,5 @@
 Enemy = {
-  name = "左かぎ爪pl",
+  name = "左カギー",
   imageName = "L_plclaw",
   attack = 1,
   baseExp = 6,
