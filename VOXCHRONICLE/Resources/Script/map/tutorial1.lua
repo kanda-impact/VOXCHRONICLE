@@ -1,6 +1,6 @@
 Map = {
   name = "Lesson2",
-  wayMusic = "chabo",
+  wayMusic = "Ceres78",
   bossMusic = "",
   backgroundImage = "tutorial_background.png",
   skin = "skinA",
@@ -127,16 +127,51 @@ Map = {
         enemyManager:popEnemyAt("T_moth7", 3, 2)
       end
     elseif level == 16 or level == 17 then
+      local isAnnihilation = self.__IRegister__:getBool("isAnnihilation")
+      local popuped = self.__IRegister__:getBool("popuped")
+      local lastDischargeMagic = self.__IRegister__:getBool("lastDischargeMagic")
       -- 敵が1体もいなくなったらモンスター生成
       if enemyCount == 0 then
-          enemyManager:popEnemyAt("slime3B1", 5, 0)
+        if isAnnihilation then
+          if not popuped and level == 16 then
+            self.__IRegister__:setBool("popuped", true)
+            local popup = layer:addPopupWindow(1)
+            --＊ここに戦闘を入れる　青い敵をだして、倒したら
+            --赤い敵を出して、ポップアップ
+            popup:setText(0, "『耐性』モンスターは光る！", [[
+で、赤く光るモンスターは『魔法耐性』。
+私、ラスカのこうげきワザが効きにくいの。
+
+『耐性』モンスターがいたら、なるべく『チェンジ』して
+戦わないと、いつの間にか追いつめられちゃうわ！
+気をつけてね！
+]])
+            enemyManager:popEnemyAt("slime3B1", 5, 1)
+          else
+            if lastDischargeMagic then
+              self.__IRegister__:setBool("lastDischargeMagic", false)
+              enemyManager:popEnemyAt("slime3B1", 5, 1)
+            else
+              self.__IRegister__:setBool("lastDischargeMagic", true)
+              enemyManager:popEnemyAt("wisp3A2", 5, 1)
+            end
+          end
+        else
           enemyManager:popEnemyAt("wisp3A2", 5, 1)
+          self.__IRegister__:setBool("isAnnihilation", true) -- 最初からいる敵が全滅した
+        end
       end
     elseif level == 18 or level == 19 then
+      local lastDischargeMagic = self.__IRegister__:getBool("lastDischargeMagic")
       -- 敵が1体もいなくなったらモンスター生成
       if enemyCount == 0 then
-          enemyManager:popEnemyAt("cryst3C4", MAX_ROW - 1, 0)
+        if lastDischargeMagic then
+          self.__IRegister__:setBool("lastDischargeMagic", false)
+          enemyManager:popEnemyAt("cryst3C4", MAX_ROW - 1, 1)
+        else
+          self.__IRegister__:setBool("lastDischargeMagic", true)
           enemyManager:popEnemyAt("naut3C5", MAX_ROW - 1, 1)
+        end
       end
     elseif level == 20 then
       -- 敵がいなかったら敵を出す
@@ -224,7 +259,7 @@ Map = {
 いちどオクスに交代してね！
 ]])
 	elseif level == 16 then
-      local popup = layer:addPopupWindow(4)
+      local popup = layer:addPopupWindow(2)
       popup:setText(0, "れんけいプレイ！", [[
 ．．．ふう。これで全てのワザを
 説明したかな？じゃあ、そろそろふたりの
@@ -241,25 +276,8 @@ Map = {
 モンスターのなかにはどっちかの属性が効きにくい
 っていう『耐性』をもったモンスターもいるのよ。
 ]])
-      popup:setText(2, "『耐性』モンスターは光る！", [[
-『耐性』のあるモンスターはぴかぴかと
-光っているからすぐわかるはずよ。
-
-青く光るモンスターは『物理耐性』、
-オクスのこうげきワザが効きにくいわ。
-]])
-
---＊ここに戦闘を入れる　青い敵をだして、倒したら
---赤い敵を出して、ポップアップ
-popup:setText(3, "『耐性』モンスターは光る！", [[
-で、赤く光るモンスターは『魔法耐性』。
-私、ラスカのこうげきワザが効きにくいの。
-
-『耐性』モンスターがいたら、なるべく『チェンジ』して
-戦わないと、いつの間にか追いつめられちゃうわ！
-気をつけてね！
-]])
 --＊バリアーもちの敵を出す。
+--赤の敵を先に出す
 	elseif level == 18 then
       local popup = layer:addPopupWindow(2)
       popup:setText(0, "『大盾』と『魔鏡』", [[
