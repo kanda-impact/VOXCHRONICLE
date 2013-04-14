@@ -11,7 +11,7 @@ end
 
 Map = {
   name = "草原",
-  wayMusic = "shinka",
+  wayMusic = "1b",
   bossMusic = "",
   backgroundImage = "field_background0.png",
   skin = "skinB",

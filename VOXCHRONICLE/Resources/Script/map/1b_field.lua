@@ -44,13 +44,13 @@ end
 
 Map = {
   name = "平原",
-  wayMusic = "volca",
+  wayMusic = "1b",
   bossMusic = "",
   backgroundImage = "field_background0.png",
   skin = "skinB",
   ending = "",
   nextMaps = {"2b_cave","2c_cyber"},
-  initialLevel = 8,
+  initialLevel = 1,
   maxLevel = 10,
   getEnemyTable = function(level)
     local time = getTime()
@@ -72,7 +72,6 @@ Map = {
     enemyManager:loadEnemyTextureAsync("slime.png")
     enemyManager:loadEnemyTextureAsync("moth.png")
     enemyManager:loadEnemyTextureAsync("hornet.png")
-    print("hoge")
   end,
   getEnemyPopRate = function(level)
     if level <= 2 then
