@@ -1,6 +1,6 @@
 Map = {
   name = "Lesson2",
-  wayMusic = "Ceres78",
+  wayMusic = "chabo",
   bossMusic = "",
   backgroundImage = "tutorial_background.png",
   skin = "skinA",
