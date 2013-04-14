@@ -49,11 +49,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-<<<<<<< HEAD
 	<string>3255</string>
-=======
-	<string>3248</string>
->>>>>>> parent of eb584bb... 画像を全て圧縮したよ！１！！
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIPrerenderedIcon</key>
