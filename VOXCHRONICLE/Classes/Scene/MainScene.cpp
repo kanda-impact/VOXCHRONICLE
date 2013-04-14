@@ -550,7 +550,9 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _effectLayer->setCharacterEffect(_characterManager->getCurrentCharacter());
     }
     
-    _skin->getController()->updateSkills(_characterManager, _level, false);
+    if (skill || _isLevelUped) {
+      _skin->getController()->updateSkills(_characterManager, _level, false);
+    }
     
     this->updateGUI(); // GUI更新
     
