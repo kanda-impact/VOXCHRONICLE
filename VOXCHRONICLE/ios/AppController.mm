@@ -227,7 +227,7 @@ void SignalHandler(int sig) {
 
 #pragma mark UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
-  CCTextureCache::sharedTextureCache()->removeAllTextures();
+  CCTextureCache::sharedTextureCache()->removeUnusedTextures();
 #if TESTING
   [TestFlight submitFeedback:@"メモリリークしたんでなんとかしてください"];
 #endif
