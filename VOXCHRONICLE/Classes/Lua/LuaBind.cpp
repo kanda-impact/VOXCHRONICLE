@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Sun Apr 14 06:34:27 2013.
+** Generated automatically by tolua++-1.0.92 on Mon Apr 15 15:55:04 2013.
 */
 
 #ifndef __cplusplus
@@ -36,6 +36,7 @@ TOLUA_API int  tolua_VOXCHRONICLE_open (lua_State* tolua_S);
 /* function to register type */
 static void tolua_reg_types (lua_State* tolua_S)
 {
+ tolua_usertype(tolua_S,"CCPoint");
  tolua_usertype(tolua_S,"EnemySkill");
  tolua_usertype(tolua_S,"CCLayer");
  tolua_usertype(tolua_S,"IRegister");
@@ -2546,6 +2547,69 @@ static int tolua_VOXCHRONICLE_PopupWindow_setText00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: addImage of class  PopupWindow */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_PopupWindow_addImage00
+static int tolua_VOXCHRONICLE_PopupWindow_addImage00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"PopupWindow",0,&tolua_err) ||
+     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  PopupWindow* self = (PopupWindow*)  tolua_tousertype(tolua_S,1,0);
+  const char* filename = ((const char*)  tolua_tostring(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'addImage'", NULL);
+#endif
+  {
+   self->addImage(filename);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'addImage'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: addImage of class  PopupWindow */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_PopupWindow_addImage01
+static int tolua_VOXCHRONICLE_PopupWindow_addImage01(lua_State* tolua_S)
+{
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"PopupWindow",0,&tolua_err) ||
+     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
+     (tolua_isvaluenil(tolua_S,3,&tolua_err) || !tolua_isusertype(tolua_S,3,"CCPoint",0,&tolua_err)) ||
+     !tolua_isnoobj(tolua_S,4,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+ {
+  PopupWindow* self = (PopupWindow*)  tolua_tousertype(tolua_S,1,0);
+  const char* filename = ((const char*)  tolua_tostring(tolua_S,2,0));
+  CCPoint point = *((CCPoint*)  tolua_tousertype(tolua_S,3,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'addImage'", NULL);
+#endif
+  {
+   self->addImage(filename,point);
+  }
+ }
+ return 0;
+tolua_lerror:
+ return tolua_VOXCHRONICLE_PopupWindow_addImage00(tolua_S);
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* method: getRegister of class  IRegister */
 #ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_IRegister_getRegister00
 static int tolua_VOXCHRONICLE_IRegister_getRegister00(lua_State* tolua_S)
@@ -3743,6 +3807,8 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
   tolua_beginmodule(tolua_S,"PopupWindow");
    tolua_function(tolua_S,"getPage",tolua_VOXCHRONICLE_PopupWindow_getPage00);
    tolua_function(tolua_S,"setText",tolua_VOXCHRONICLE_PopupWindow_setText00);
+   tolua_function(tolua_S,"addImage",tolua_VOXCHRONICLE_PopupWindow_addImage00);
+   tolua_function(tolua_S,"addImage",tolua_VOXCHRONICLE_PopupWindow_addImage01);
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"IRegister","IRegister","",NULL);
   tolua_beginmodule(tolua_S,"IRegister");

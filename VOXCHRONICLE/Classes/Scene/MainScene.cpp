@@ -507,9 +507,11 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       
       CCSprite* levelup = CCSprite::create("levelup.png");
       levelup->setPosition(ccp(-100, 180));
-      levelup->runAction(CCSequence::create(CCMoveBy::create(1.5f, ccp(680, 0)),
-                         CCRemoveFromParentAction::create(),
-                         NULL));
+      levelup->runAction(CCSequence::create(CCEaseSineIn::create(CCMoveTo::create(0.75f, ccp(240, 180))),
+                                            CCDelayTime::create(1.0f),
+                                            CCEaseSineIn::create(CCMoveTo::create(0.75f, ccp(680, 180))),
+                                            CCRemoveFromParentAction::create(),
+                                            NULL));
       _effectLayer->addChild(levelup);
       
       _enemyManager->removeAllEnemiesQueue();
@@ -544,6 +546,14 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     
     _log->setGraterCount(PlayLogKeyMaxRepeatCount, _characterManager->getRepeatCountRaw()); // repeatCount追加
     ++_mapTurnCount;
+    
+    // テンション4段階で技を使ってたらフラッシュ
+    if (skill && _characterManager->getTension() == 4 && skill->getIdentifier() != "tension") {
+      BlinkLayer* bLayer = new BlinkLayer(ccc4(255, 255, 255, 255), 0.1f);
+      bLayer->autorelease();
+      this->addChild(bLayer, MainSceneZOrderUI);
+    }
+    
     // このターンにテンション使ってないときreset
     if (_characterManager->getLastSkill() != NULL && _characterManager->getLastSkill()->getIdentifier() != "tension") {
       _characterManager->resetTension();

@@ -100,7 +100,7 @@ void ExtraScene::onCreditButtonPressed(cocos2d::CCObject *sender) {
   
   StaffRollScene* scene = new StaffRollScene(array);
   scene->autorelease();
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
   this->nextScene(scene, false);
 }
 

@@ -103,7 +103,7 @@ void FreePlayScene::onEnterTransitionDidFinish() {
 }
 
 void FreePlayScene::onMenuItemPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/start.mp3").c_str());
   Map* map = (Map*)((CCNode*)sender)->getUserObject();
   MainScene* layer = new MainScene();

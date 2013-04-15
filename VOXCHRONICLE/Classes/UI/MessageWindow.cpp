@@ -64,8 +64,16 @@ VQString* MessageWindow::getCurrentMessage() {
 
 void MessageWindow::setMessageSpeed(float speed) {
   _messageSpeed = speed;
-  this->unschedule(schedule_selector(MessageWindow::updateNextText));
+  this->start();
+}
+
+void MessageWindow::start() {
+  this->stop();
   this->schedule(schedule_selector(MessageWindow::updateNextText), _messageSpeed);
+}
+
+void MessageWindow::stop() {
+  this->unschedule(schedule_selector(MessageWindow::updateNextText));
 }
 
 void MessageWindow::setOnMessageFinishedFunction(boost::function<void (VQString*, MessageWindow *)> finish) {

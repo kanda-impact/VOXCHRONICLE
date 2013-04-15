@@ -27,7 +27,6 @@ if __name__ == '__main__':
         print filename
         if ext == '.png' and not filename in IGNORES:
             original = Image.open(os.path.join(base, SRC, file))
-            tmb = original.copy()
             width, height = original.size
-            tmb.thumbnail((width / 2, height / 2))
+            tmb = original.resize((width / 2, height / 2), Image.ANTIALIAS)
             tmb.save(os.path.join(base, DST, '%s%s' % (filename, ext)))
