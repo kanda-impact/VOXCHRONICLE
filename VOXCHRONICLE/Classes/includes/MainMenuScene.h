@@ -19,6 +19,7 @@ class MainMenuScene :public CCLayer {
   void onStartPressed(CCObject* sender);
   void onTutorialPressed(CCObject* sender);
   void onExtraPressed(CCObject* sender);
+  void onBackPressed(CCObject* sender);
   bool _fromTitle;
  public:
   MainMenuScene(bool fromTitle);

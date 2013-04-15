@@ -10,6 +10,7 @@
 #include "SelectScene.h"
 #include "FileUtils.h"
 #include "SimpleAudioEngine.h"
+#include "TitleScene.h"
 #include "TutorialScene.h"
 #include "ExtraScene.h"
 
@@ -35,6 +36,13 @@ MainMenuScene::MainMenuScene(bool fromTitle) {
   menu->alignItemsHorizontallyWithPadding(0);
   this->addChild(menu);
   _fromTitle = fromTitle;
+  
+  CCMenu* backMenu = CCMenu::create(CCMenuItemImage::create("mainmenu_back.png",
+                                                            "mainmenu_back_pressed.png",
+                                                            this,
+                                                            menu_selector(MainMenuScene::onBackPressed)), NULL);
+  backMenu->setPosition(ccp(director->getWinSize().width / 2.0, 28));
+  this->addChild(backMenu);
 }
 
 void MainMenuScene::onEnterTransitionDidFinish() {
@@ -67,5 +75,15 @@ void MainMenuScene::onExtraPressed(cocos2d::CCObject *sender) {
   ExtraScene* layer = ExtraScene::create();
   scene->addChild(layer);
   CCTransitionSlideInR* transition = CCTransitionSlideInR::create(0.25f, scene);
+  CCDirector::sharedDirector()->pushScene(transition);
+}
+
+void MainMenuScene::onBackPressed(cocos2d::CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cancel.mp3").c_str());
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
+  CCScene* scene = CCScene::create();
+  TitleScene* layer = TitleScene::create();
+  scene->addChild(layer);
+  CCTransitionFade* transition = CCTransitionFade::create(0.5f, scene);
   CCDirector::sharedDirector()->pushScene(transition);
 }
