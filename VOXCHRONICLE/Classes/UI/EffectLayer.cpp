@@ -22,10 +22,10 @@ typedef enum {
 
 typedef enum {
   EffectLayerZOrderFocus,
+  EffectLayerZOrderCutin,
   EffectLayerZOrderDamageLabel,
   EffectLayerZOrderTension,
   EffectLayerZOrderCharacter,
-  EffectLayerZOrderCutin,
   EffectLayerZOrderWarning,
   EffectLayerZOrderWait,
   EffectLayerZOrderWindow
@@ -176,11 +176,13 @@ PopupWindow* EffectLayer::addPopupWindow(int pages) {
 void EffectLayer::addCutin(Skill *skill, EffectLayerCutinType cutinType, float duration) {
   // カットインを追加する
   const int height = 100;
+  const float slideTime = duration * 0.0625;
+  const float stopTime = duration * 0.375;
   CCSize size = CCDirector::sharedDirector()->getWinSize();
   CCSprite* holdCutin = (CCSprite*)this->getChildByTag(EffectLayerTagCutin);
   if (cutinType == EffectLayerCutinTypeCastOff || holdCutin) {
     if (!holdCutin) return;
-    holdCutin->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width, height)),
+    holdCutin->runAction(CCSequence::create(CCMoveTo::create(slideTime, ccp(size.width, height)),
                                             CCRemoveFromParentAction::create(),
                                             NULL));
     if (cutinType == EffectLayerCutinTypeCastOff) {
@@ -194,21 +196,21 @@ void EffectLayer::addCutin(Skill *skill, EffectLayerCutinType cutinType, float d
     cutin->setScale(0.5);
     if (cutinType == EffectLayerCutinTypeNormal) {
       // 通常カットイン
-      cutin->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)),
-                                          CCDelayTime::create(duration * 0.25),
-                                          CCMoveTo::create(duration * 0.125, ccp(size.width, height)),
+      cutin->runAction(CCSequence::create(CCMoveTo::create(slideTime, ccp(size.width / 2.0, height)),
+                                          CCDelayTime::create(stopTime),
+                                          CCMoveTo::create(slideTime, ccp(size.width, height)),
                                           CCRemoveFromParentAction::create(),
                                           NULL));
     } else if (cutinType == EffectLayerCutinTypeFailure) {
       // ミスったとき
-      cutin->runAction(CCSequence::create(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)),
-                                          CCRotateBy::create(duration * 0.125, 45),
-                                          CCDelayTime::create(duration * 0.125),
-                                          CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, -100)),
+      cutin->runAction(CCSequence::create(CCMoveTo::create(slideTime, ccp(size.width / 2.0, height)),
+                                          CCRotateBy::create(stopTime / 2.0, 45),
+                                          CCDelayTime::create(stopTime / 2.0),
+                                          CCMoveTo::create(slideTime, ccp(size.width / 2.0, -100)),
                                           CCRemoveFromParentAction::create(),
                                           NULL));
     } else if (cutinType == EffectLayerCutinTypeHold) {
-      cutin->runAction(CCMoveTo::create(duration * 0.125, ccp(size.width / 2.0, height)));
+      cutin->runAction(CCMoveTo::create(slideTime, ccp(size.width / 2.0, height)));
     }
     if (_cutinExtention) {
       cutin->addChild(_cutinExtention);
