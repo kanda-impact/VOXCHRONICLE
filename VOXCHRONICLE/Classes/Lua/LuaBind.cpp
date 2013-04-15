@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Mon Apr 15 15:55:04 2013.
+** Generated automatically by tolua++-1.0.92 on Mon Apr 15 17:10:59 2013.
 */
 
 #ifndef __cplusplus
@@ -2555,20 +2555,22 @@ static int tolua_VOXCHRONICLE_PopupWindow_addImage00(lua_State* tolua_S)
  tolua_Error tolua_err;
  if (
      !tolua_isusertype(tolua_S,1,"PopupWindow",0,&tolua_err) ||
-     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,3,&tolua_err)
+     !tolua_isnumber(tolua_S,2,0,&tolua_err) ||
+     !tolua_isstring(tolua_S,3,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,4,&tolua_err)
  )
   goto tolua_lerror;
  else
 #endif
  {
   PopupWindow* self = (PopupWindow*)  tolua_tousertype(tolua_S,1,0);
-  const char* filename = ((const char*)  tolua_tostring(tolua_S,2,0));
+  int page = ((int)  tolua_tonumber(tolua_S,2,0));
+  const char* filename = ((const char*)  tolua_tostring(tolua_S,3,0));
 #ifndef TOLUA_RELEASE
   if (!self) tolua_error(tolua_S,"invalid 'self' in function 'addImage'", NULL);
 #endif
   {
-   self->addImage(filename);
+   self->addImage(page,filename);
   }
  }
  return 0;
@@ -2587,21 +2589,23 @@ static int tolua_VOXCHRONICLE_PopupWindow_addImage01(lua_State* tolua_S)
  tolua_Error tolua_err;
  if (
      !tolua_isusertype(tolua_S,1,"PopupWindow",0,&tolua_err) ||
-     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
-     (tolua_isvaluenil(tolua_S,3,&tolua_err) || !tolua_isusertype(tolua_S,3,"CCPoint",0,&tolua_err)) ||
-     !tolua_isnoobj(tolua_S,4,&tolua_err)
+     !tolua_isnumber(tolua_S,2,0,&tolua_err) ||
+     !tolua_isstring(tolua_S,3,0,&tolua_err) ||
+     (tolua_isvaluenil(tolua_S,4,&tolua_err) || !tolua_isusertype(tolua_S,4,"CCPoint",0,&tolua_err)) ||
+     !tolua_isnoobj(tolua_S,5,&tolua_err)
  )
   goto tolua_lerror;
  else
  {
   PopupWindow* self = (PopupWindow*)  tolua_tousertype(tolua_S,1,0);
-  const char* filename = ((const char*)  tolua_tostring(tolua_S,2,0));
-  CCPoint point = *((CCPoint*)  tolua_tousertype(tolua_S,3,0));
+  int page = ((int)  tolua_tonumber(tolua_S,2,0));
+  const char* filename = ((const char*)  tolua_tostring(tolua_S,3,0));
+  CCPoint point = *((CCPoint*)  tolua_tousertype(tolua_S,4,0));
 #ifndef TOLUA_RELEASE
   if (!self) tolua_error(tolua_S,"invalid 'self' in function 'addImage'", NULL);
 #endif
   {
-   self->addImage(filename,point);
+   self->addImage(page,filename,point);
   }
  }
  return 0;

@@ -6,7 +6,7 @@ Map = {
   skin = "skinA",
   ending = "",
   nextMaps = {},
-  initialLevel = 8,
+  initialLevel = 1,
   maxLevel = 10,
   getEnemyTable = function(level)
     if level == 10 then
@@ -16,6 +16,9 @@ Map = {
   end,
   onFinishPlaying = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
+    if level == 10 then
+      characterManager:setExp(characterManager:getExp(10))
+    end
     local layer = EffectLayer:sharedLayer()
     if level == 4 then
       local popuped = self.__IRegister__:getBool("popuped") -- ポップアップしたかフラグ
@@ -249,6 +252,7 @@ Map = {
 
 まずは 剣 のマークをタッチして
 『アタック』 のワザを試しましょ！]])
+      popup:addImage(2, "tutorial1_3.png")
     elseif level == 2 then
       local popup = layer:addPopupWindow(3)
       popup:setText(0, "レベルアップで強くなろう！",

@@ -10,6 +10,7 @@
 #include "SimpleAudioEngine.h"
 #include <boost/bind.hpp>
 #include "CCRemoveFromParentAction.h"
+#include "SEManager.h"
 
 using namespace CocosDenshion;
 
@@ -51,7 +52,7 @@ PopupWindow::PopupWindow(int pages) {
     CCMenu* cursors = CCMenu::create(left, right, NULL);
     cursors->setAnchorPoint(ccp(0.5, 0.5));
     cursors->setPosition(ccp(this->getContentSize().width / 2.0, this->getContentSize().height / 2.0));
-    cursors->alignItemsHorizontallyWithPadding(425);
+    cursors->alignItemsHorizontallyWithPadding(400);
     this->addChild(cursors, 0, PopupWindowTagCursor);
   }
 }
@@ -86,6 +87,7 @@ void PopupWindow::setPage(int page) {
     _currentPage = page;
     CCNode *next = (CCNode*)_pages->objectAtIndex(_currentPage);
     this->addChild(next, 0, PopupWindowTagWindow);
+    this->onPopupAppeared(this);
   } else if (page == _maxPages) {
     this->runAction(CCSequence::create(CCScaleTo::create(0.3f, 0),
                                        CCRemoveFromParentAction::create(),
@@ -118,7 +120,7 @@ void PopupWindow::onUpdateFunction(VQString *string, MessageWindow *window) {
 }
 
 void PopupWindow::onFinishedFunction(VQString *string, MessageWindow *window) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("message_finish.mp3");
+  SEManager::sharedManager()->registerEffect("message_finish.mp3");
 }
 
 void PopupWindow::onCursorPressed(cocos2d::CCNode *node) {
@@ -134,7 +136,6 @@ void PopupWindow::onCursorPressed(cocos2d::CCNode *node) {
     }
     this->onWindowTouched();
     this->nextPage();
-    this->onPopupAppeared(this);
   }
 }
 
@@ -155,14 +156,15 @@ bool PopupWindow::isMessageEnded() {
   return true;
 }
 
-void PopupWindow::addImage(const char* filename, CCPoint point) {
+void PopupWindow::addImage(int page, const char* filename, CCPoint point) {
   CCSprite* sprite = CCSprite::create(filename);
   sprite->setPosition(point);
-  this->addChild(sprite);
+  CCNode* node = this->getPage(page);
+  node->addChild(sprite);
 }
 
-void PopupWindow::addImage(const char *filename) {
-  this->addImage(filename, ccp(0, -50));
+void PopupWindow::addImage(int page, const char *filename) {
+  this->addImage(page, filename, ccp(200, 70));
 }
 
 void PopupWindow::onPopupStart(cocos2d::CCObject *sender) {

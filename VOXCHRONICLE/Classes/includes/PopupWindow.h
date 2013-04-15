@@ -37,8 +37,8 @@ class PopupWindow :public CCSprite {
   void onUpdateFunction(VQString* string, MessageWindow* window);
   void onFinishedFunction(VQString* string, MessageWindow* window);
   void onWindowTouched();
-  void addImage(const char* filename, CCPoint point);
-  void addImage(const char* filename);
+  void addImage(int page, const char* filename, CCPoint point);
+  void addImage(int page, const char* filename);
   void onPopupStart(CCObject* sender);
   void onPopupAppeared(CCObject* sender);
 };
