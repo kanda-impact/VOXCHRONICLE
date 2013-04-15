@@ -703,6 +703,8 @@ void MainScene::changeMap(Map* nextMap) {
       this->removeChild(_map->getBackground(), true);
     }
     _map->release();
+    CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
+    CCTextureCache::sharedTextureCache()->removeAllTextures();
   }
   nextMap->retain();
   _log->getMapHistory()->addObject(nextMap); // マップ履歴にマップ追加
@@ -730,8 +732,6 @@ void MainScene::changeMap(Map* nextMap) {
   _characterManager->setRepeatCount(0); // repeatCountをリセット
   this->updateGUI();
   _map->performOnLoad(_characterManager, _enemyManager);
-  CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
-  CCTextureCache::sharedTextureCache()->removeAllTextures();
 }
 
 void MainScene::changeSkin(Skin *newSkin, bool crossFade) {

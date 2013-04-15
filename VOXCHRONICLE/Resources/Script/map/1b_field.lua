@@ -52,13 +52,28 @@ Map = {
   nextMaps = {"2b_cave","2c_cyber"},
   initialLevel = 1,
   maxLevel = 10,
+  --[[  getEnemyTable = function(level)
+  local time = getTime()
+  if time == 1 then -- 夕方面
+  return sunsetTable(level)
+  else --その他
+  return normalTable(level)
+  end
+  end,]]
   getEnemyTable = function(level)
-    local time = getTime()
-    if time == 1 then -- 夕方面
-      return sunsetTable(level)
-    else --その他
-      return normalTable(level)
+    if level <= 2 then
+      --return {}
+      return {slime1B7 = 3, moth1B0 = 2}
+    elseif level <= 4 then
+      return {flower1B0 = 1, moth1B0 = 5}
+    elseif level <= 6 then
+      return {flower1B0 = 1, hornet1B1 = 1}
+    elseif level <= 8 then
+      return {slime1B7 = 1, flower1B0 = 1, moth1B0 = 2}
+    elseif level <= 10 then
+      return {slime1B7 = 1, flower1B0 = 1, moth1B0 = 1, hornet1B1 = 1}
     end
+    return {}
   end,
   onLevelUp = function(self, characterManager, enemyManager)
   end,
@@ -97,25 +112,27 @@ Map = {
     data:setClearedForMap("fp_field")
   end,
   fixedEnemies = {
-   -- {"flower1B0",0}
+  -- {"flower1B0",0}
   }
 }
+
+return Map
 --[[
 Map['onLevelUp'] = function(self, characterManager, enemyManager)
-  local time = self.__IRegister__:getRegister('currentTime', 0)
-  if time == 1 then -- 夕方面
-    Map['popEnemyTable'] = sunsetTable
-  else --その他
-    Map['popEnemyTable'] = normalTable
-  end
-  local time = getTime()
-  local level = characterManager:getLevel()
-  if time == 1 then
-    if level == 9 then
-      enemyManager:popEnemyAt("flower1S0", 6, 1)
-    elseif level == 10 then
-      enemyManager:popEnemyAt("kawaztan1S0", 3, 1)
-    end
-  end
-  
+local time = self.__IRegister__:getRegister('currentTime', 0)
+if time == 1 then -- 夕方面
+Map['popEnemyTable'] = sunsetTable
+else --その他
+Map['popEnemyTable'] = normalTable
+end
+local time = getTime()
+local level = characterManager:getLevel()
+if time == 1 then
+if level == 9 then
+enemyManager:popEnemyAt("flower1S0", 6, 1)
+elseif level == 10 then
+enemyManager:popEnemyAt("kawaztan1S0", 3, 1)
+end
+end
+
 end]]
