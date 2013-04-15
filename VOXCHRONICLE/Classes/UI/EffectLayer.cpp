@@ -197,7 +197,7 @@ void EffectLayer::addCutin(Skill *skill, EffectLayerCutinType cutinType, float d
   CCSprite* cutin = CCSprite::create(FileUtils::getFilePath(cutinFile.c_str()).c_str());
   if (cutin != NULL) {
     cutin->setPosition(ccp(0, height));
-    cutin->setScale(0.5);
+    cutin->setScale(1.0f);
     if (cutinType == EffectLayerCutinTypeNormal) {
       // 通常カットイン
       cutin->runAction(CCSequence::create(CCMoveTo::create(slideTime, ccp(size.width / 2.0, height)),
@@ -226,6 +226,7 @@ void EffectLayer::addCutin(Skill *skill, EffectLayerCutinType cutinType, float d
       cutin->runAction(CCMoveTo::create(slideTime, ccp(size.width / 2.0, height)));
     }
     if (_cutinExtention) {
+      _cutinExtention->setScale(0.5);
       cutin->addChild(_cutinExtention);
     }
     this->addChild(cutin, EffectLayerZOrderCutin, EffectLayerTagCutin);
