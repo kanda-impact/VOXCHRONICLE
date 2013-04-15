@@ -427,24 +427,14 @@ void EffectLayer::updateFocus(EnemyManager *manager) {
 void EffectLayer::addWaitMarker(float duration) {
   if (!this->getChildByTag(EffectLayerTagWait)) {
     CCDirector* director = CCDirector::sharedDirector();
-    const float delay = 0.2;
     CCSprite* wait = CCSprite::create("wait_front.png");
-    CCSprite* marker = CCSprite::create("wait_back.png");
+    //CCSprite* marker = CCSprite::create("wait_back.png");
     wait->runAction(CCSequence::create(CCFadeIn::create(0.5f),
                                        CCDelayTime::create(duration),
                                        CCRemoveFromParentAction::create(),
                                        CCFadeOut::create(0.5f),
                                        NULL));
-    marker->runAction(CCSequence::create(CCFadeIn::create(0.5f),
-                                         CCRepeat::create(CCSequence::create(CCRotateBy::create(0, 15),
-                                                                                           CCDelayTime::create(delay),
-                                                                                           NULL), duration / delay),
-                                         CCFadeOut::create(0.5f),
-                                         CCRemoveFromParentAction::create()));
     wait->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
-    marker->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
-    
-    this->addChild(marker, EffectLayerZOrderWait, EffectLayerTagWait);
     this->addChild(wait, EffectLayerZOrderWait);
   }
 }
