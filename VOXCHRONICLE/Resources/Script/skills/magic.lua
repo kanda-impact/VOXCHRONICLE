@@ -12,11 +12,13 @@ Skill = {
   loop = true,
   canRepeat = true,
   performSkill = function(self, target, characterManager, enemyManager)
-    local basename = "magic_effect"
-    local number = characterManager:getRepeatCount()
-    local ext = ".mp3"
-    local filename = basename..number..ext
-    SimpleAudioEngine:sharedEngine():playEffect(filename)
+    if not self:getType() == SkillTypeMagical and not self:getItem() == EnemyItemBarrier then
+      local basename = "magic_effect"
+      local number = characterManager:getRepeatCount()
+      local ext = ".mp3"
+      local filename = basename..number..ext
+      SimpleAudioEngine:sharedEngine():playEffect(filename)
+    end
   end,
   getPower = function(characterManager)
     local repeatCount = characterManager:getRepeatCount()

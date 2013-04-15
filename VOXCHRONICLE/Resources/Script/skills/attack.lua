@@ -14,11 +14,13 @@ Skill = {
   skillRange = SkillRangeSingle,
   skillType = SkillTypePhysical,
   performSkill = function(self, target, characterManager, enemyManager)
-    local basename = "attack_effect"
-    local number = characterManager:getRepeatCount()
-    local ext = ".mp3"
-    local filename = basename..number..ext
-    SimpleAudioEngine:sharedEngine():playEffect(filename)
+    if not self:getType() == SkillTypePhysical and not self:getItem() == EnemyItemShield then
+      local basename = "attack_effect"
+      local number = characterManager:getRepeatCount()
+      local ext = ".mp3"
+      local filename = basename..number..ext
+      SimpleAudioEngine:sharedEngine():playEffect(filename)
+    end
   end,
   getPower = function(characterManager)
     local repeatCount = characterManager:getRepeatCount()
