@@ -60,7 +60,7 @@ bool TutorialLayer::init() {
 }
 
 void TutorialLayer::onTutorialButtonPressed(cocos2d::CCObject *sender) {
-  SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
+  SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/tutorial_decide.mp3").c_str());
   LuaObject* lua = LuaObject::create("setting");
   int tag = ((CCNode*)sender)->getTag();
