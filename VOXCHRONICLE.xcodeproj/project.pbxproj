@@ -2833,7 +2833,7 @@
 		07C6085516164FEE0084708C /* tolua_map.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tolua_map.c; sourceTree = "<group>"; };
 		07C6085616164FEE0084708C /* tolua_push.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tolua_push.c; sourceTree = "<group>"; };
 		07C6085716164FEE0084708C /* tolua_to.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tolua_to.c; sourceTree = "<group>"; };
-		07C6093C161674650084708C /* attack.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attack.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		07C6093C161674650084708C /* attack.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attack.lua; sourceTree = "<group>"; };
 		07C61EAA169033630010B6ED /* knockback_effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = knockback_effect.mp3; path = Resources/SE/knockback_effect.mp3; sourceTree = "<group>"; };
 		07C61EAB169033630010B6ED /* run_effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = run_effect.mp3; path = Resources/SE/run_effect.mp3; sourceTree = "<group>"; };
 		07C61EAC169033630010B6ED /* shield_break.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = shield_break.mp3; path = Resources/SE/shield_break.mp3; sourceTree = "<group>"; };

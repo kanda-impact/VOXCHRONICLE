@@ -210,6 +210,7 @@ void MainScene::onEnterTransitionDidFinish() {
   CCDictionary* dict = CCDictionary::create();
   dict->setObject(CCString::create(_characterManager->getCurrentCharacter()->getName()), "chara");
   MessageManager::sharedManager()->pushRandomMessageFromLua("welcome", dict);
+  _effectLayer->addWaitMarker(_musicManager->getMusic()->getCurrentMainTrack()->getDuration() * _musicManager->getMusicSet()->getIntroCount());
 }
 
 void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber) {
@@ -707,6 +708,7 @@ void MainScene::addDamageEffect() {
 }
 
 void MainScene::changeMap(Map* nextMap) {
+  bool init = _map == NULL;
   if (_map) {
     // 前の背景画像削除
     if (_map->getBackground()) {
@@ -738,10 +740,12 @@ void MainScene::changeMap(Map* nextMap) {
   _musicManager->setFinishCount(0);
   _skin->getController()->setEnable(false);
   _musicManager->pushIntroTracks();
-  _effectLayer->addWaitMarker(_musicManager->getMusic()->getCurrentMainTrack()->getDuration() * _musicManager->getMusicSet()->getIntroCount());
   _characterManager->setRepeatCount(0); // repeatCountをリセット
   this->updateGUI();
   _map->performOnLoad(_characterManager, _enemyManager);
+  if (!init) {
+    _effectLayer->addWaitMarker(_musicManager->getMusic()->getCurrentMainTrack()->getDuration() * _musicManager->getMusicSet()->getIntroCount());
+  }
 }
 
 void MainScene::changeSkin(Skin *newSkin, bool crossFade) {

@@ -134,6 +134,7 @@ void PopupWindow::onCursorPressed(cocos2d::CCNode *node) {
     }
     this->onWindowTouched();
     this->nextPage();
+    this->onPopupAppeared(this);
   }
 }
 
@@ -170,6 +171,7 @@ void PopupWindow::onPopupStart(cocos2d::CCObject *sender) {
 
 void PopupWindow::onPopupAppeared(cocos2d::CCObject *sender) {
   CCNode* window = this->getPage(_currentPage);
+  if (!window) return;
   MessageWindow* mWindow = (MessageWindow*)window->getChildByTag(PopupWindowTagMessageWindow);
   if (mWindow) {
     mWindow->start();

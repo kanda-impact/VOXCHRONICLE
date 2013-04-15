@@ -14,7 +14,7 @@ Skill = {
   skillRange = SkillRangeSingle,
   skillType = SkillTypePhysical,
   performSkill = function(self, target, characterManager, enemyManager)
-    if not self:getType() == SkillTypePhysical and not self:getItem() == EnemyItemShield then
+    if not (target:getType() == SkillTypePhysical) and not (target:getItem() == EnemyItemShield) then
       local basename = "attack_effect"
       local number = characterManager:getRepeatCount()
       local ext = ".mp3"
