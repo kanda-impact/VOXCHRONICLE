@@ -103,9 +103,10 @@ void EffectLayer::addEffectOnEnemy(Enemy *enemy, const char *prefix, int frameCo
   CCDirector* director = CCDirector::sharedDirector();
   if (enemy) {
     position = ccpAdd(enemy->getPosition(), ccp(0, enemy->getContentSize().height * enemy->getCurrentScale(enemy->getRow()) * 0.5f));
-    effect->setScale(enemy->getScale());
+    effect->setScale(enemy->getScale() * 4);
   } else {
     position = ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f);
+    effect->setScale(4.0f);
   }
   effect->setPosition(position);
   for (int i = 0; i < frameCount; ++i) {
@@ -129,9 +130,9 @@ void EffectLayer::addSkillEffect(Skill *skill, CCArray* targets) {
     int frames = skill->getEffectFrames();
     if (effectType == SkillEffectTypeTarget) { // 1体のみにアニメーションを表示させるとき
       Enemy* target = (Enemy*)targets->objectAtIndex(0);
-      this->addEffectOnEnemy(target, skill->getIdentifier().c_str(), frames, CCRectMake(0, 0, 200, 200));
+      this->addEffectOnEnemy(target, skill->getIdentifier().c_str(), frames, CCRectMake(0, 0, 50, 50));
     } else { // 全体にアニメーションを表示させるとき
-      CCRect rect = CCRectMake(0, 0, director->getWinSize().width, director->getWinSize().height);
+      CCRect rect = CCRectMake(0, 0, director->getWinSize().width / 4.0, director->getWinSize().height / 4.0);
       this->addEffectOnEnemy(NULL, skill->getIdentifier().c_str(), frames, rect);
     }
   }
@@ -227,7 +228,7 @@ void EffectLayer::addQTEAttack(Enemy *boss) {
   CCPoint position = ccpAdd(boss->getPosition(), ccp(0, boss->getContentSize().height * boss->getCurrentScale(boss->getRow()) * 0.5f));
   effect->setScale(boss->getScale());
   effect->setPosition(position);
-  CCRect rect = CCRectMake(0, 0, 200, 200);
+  CCRect rect = CCRectMake(0, 0, 50, 50);
   for (int i = 0; i < 5; ++i) {
     const char* frameName = (string(prefix) + lexical_cast<string>(i) + string(".png")).c_str();
     animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath(frameName).c_str(), rect));
@@ -243,6 +244,7 @@ void EffectLayer::addQTEAttack(Enemy *boss) {
                                        CCFadeOut::create(0.1f),
                                        CCRemoveFromParentAction::create(),
                                        NULL));
+  effect->setScale(4.0);
   this->addChild(effect);
 }
 

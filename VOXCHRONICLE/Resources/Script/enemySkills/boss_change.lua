@@ -32,7 +32,7 @@ EnemySkill = {
       enemyManager:removeEnemy(user)
       
       local layer = EffectLayer:sharedLayer()
-      layer:addEffectOnEnemy(nil, "run", 3, CCRectMake(0, 0, 480, 320))
+      layer:addEffectOnEnemy(nil, "run", 3, CCRectMake(0, 0, 120, 80))
       user:setRegister(key, turn + 1) -- ターンを+1する
     elseif turn == 3 then
       user:setRegister(key, 0) -- 溜めターンを0にする

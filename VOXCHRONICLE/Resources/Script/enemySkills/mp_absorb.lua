@@ -5,7 +5,7 @@ EnemySkill = {
     SimpleAudioEngine:sharedEngine():playEffect("enemy_burn.mp3")
     
     local layer = EffectLayer:sharedLayer()
-    layer:addEffectOnEnemy(nil, "run", 3, CCRectMake(0, 0, 480, 320))
+    layer:addEffectOnEnemy(nil, "run", 3, CCRectMake(0, 0, 120, 80))
     
     local mManager = MessageManager:sharedManager()
     characterManager:addMP(-1 * characterManager:getMP())

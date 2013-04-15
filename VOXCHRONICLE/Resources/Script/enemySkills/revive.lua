@@ -11,7 +11,7 @@ EnemySkill = {
       local message = user:getName().."は　蘇生魔法を　唱えた！"
       mManager:pushMessage(message)
       user:setRegister(key, 1)
-      layer:addEffectOnEnemy(user, "enemy_skill", 3, CCRectMake(0, 0, 200, 200))
+      layer:addEffectOnEnemy(user, "enemy_skill", 3, CCRectMake(0, 0, 100, 100))
     elseif turn == 1 then
       SimpleAudioEngine:sharedEngine():playEffect("enemy_revive.mp3")
       
@@ -21,7 +21,7 @@ EnemySkill = {
       target:setHP(maxHP * 0.5)
       layer:addDamageLabelOnEnemy(target, maxHP * 0.5, DamageLabelTypeCure)
       
-      layer:addEffectOnEnemy(target, "enemy_cure", 3, CCRectMake(0, 0, 200, 200))
+      layer:addEffectOnEnemy(target, "enemy_cure", 3, CCRectMake(0, 0, 100, 100))
     
       local message = "なんと"..target:getName().."は　いきかえった！"
       MessageManager:sharedManager():pushMessage(message)

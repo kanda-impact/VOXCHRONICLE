@@ -14,7 +14,7 @@ EnemySkill = {
       local message2 = characterManager:getCurrentCharacter():getName().."の　テンションが　もとにもどってしまった！"
       mManager:pushMessage(message2)
       local layer = EffectLayer:sharedLayer()
-      layer:addEffectOnEnemy(nil, "run", 3, CCRectMake(0, 0, 480, 320))
+      layer:addEffectOnEnemy(nil, "run", 3, CCRectMake(0, 0, 120, 80))
       characterManager:setRepeatCount(0)
       characterManager:resetTension() -- テンションを0にする
       user:setRegister(key, 0) -- 溜めターンを0にする

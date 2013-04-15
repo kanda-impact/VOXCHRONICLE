@@ -66,6 +66,7 @@ bool MainScene::init(Map* map) {
   if ( !CCLayer::init() ) {
     return false;
   }
+  CCTextureCache::sharedTextureCache()->removeAllTextures();
   _backScene = MainBackSceneTitle;
   Enemy::loadLifeColors();
   Music* music = new Music(3);
@@ -138,6 +139,8 @@ bool MainScene::init(Map* map) {
   _effectLayer->setCharacterEffect(_characterManager->getCurrentCharacter()); // キャラクター登録
   
   this->setTouchEnabled(true);
+  
+  CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
   
   return true;
 }
@@ -727,6 +730,8 @@ void MainScene::changeMap(Map* nextMap) {
   _characterManager->setRepeatCount(0); // repeatCountをリセット
   this->updateGUI();
   _map->performOnLoad(_characterManager, _enemyManager);
+  CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
+  CCTextureCache::sharedTextureCache()->removeAllTextures();
 }
 
 void MainScene::changeSkin(Skin *newSkin, bool crossFade) {
