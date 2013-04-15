@@ -24,7 +24,7 @@ using namespace boost;
 
 const char* kLuaFileName = "staffroll";
 
-StaffRollScene::StaffRollScene(CCArray* maps) {
+StaffRollScene::StaffRollScene(CCArray* mapNames) {
   CCTextureCache::sharedTextureCache()->removeUnusedTextures();
   _music = new Music(3);
   _music->setTrackDidBackFunction(boost::bind(&StaffRollScene::trackDidBack, this, _1, _2, _3));
@@ -41,8 +41,10 @@ StaffRollScene::StaffRollScene(CCArray* maps) {
   _lua->retain();
   _isAddCutin = new deque<bool>();
   CCObject* obj = NULL;
-  CCARRAY_FOREACH(maps, obj) {
-    Map* map = (Map*)obj;
+  CCARRAY_FOREACH(mapNames, obj) {
+    CCString* mapName = (CCString*)obj;
+    Map* map = new Map(mapName->getCString());
+    map->autorelease();
     _currentCharacterType = CharacterTypeVox;
     this->pushTracksFor(map->getWayMusic());
     _currentCharacterType = CharacterTypeVox;

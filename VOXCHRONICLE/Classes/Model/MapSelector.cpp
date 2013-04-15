@@ -67,6 +67,7 @@ MapSelector::MapSelector(CCArray* nextMaps) {
   _selectedMap = NULL;
   _effectID = 0;
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("selector.mp3", true);
+  CCLog("left = %d, right = %d", leftMap->retainCount(), rightMap->retainCount());
 }
 
 MapSelector::~MapSelector() {
@@ -74,6 +75,9 @@ MapSelector::~MapSelector() {
     //CocosDenshion::SimpleAudioEngine::sharedEngine()->stopEffect(_effectID);
   }
   _nextMaps->release();
+  if (_selectedMap) {
+    _selectedMap->release();
+  }
 }
 
 void MapSelector::buttonPressed(cocos2d::CCObject *sender) {
@@ -90,6 +94,7 @@ void MapSelector::buttonPressed(cocos2d::CCObject *sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/selector_decide.mp3").c_str());
   _selectedMap = (Map*)sprite->getUserObject();
+  _selectedMap->retain();
 }
 
 Map* MapSelector::getSelectedMap() {

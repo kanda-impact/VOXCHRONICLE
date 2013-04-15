@@ -24,9 +24,7 @@ typedef enum {
   EndingSceneTagShadowBackground
 } EndingSceneTag;
 
-EndingScene::EndingScene(const char* endingScript, CCArray* maps) {
-  _maps = maps;
-  maps->retain();
+EndingScene::EndingScene(const char* endingScript) {
   LuaObject* obj = LuaObject::create(endingScript);
   CCDirector* director = CCDirector::sharedDirector();
   
@@ -68,12 +66,12 @@ EndingScene::EndingScene(const char* endingScript, CCArray* maps) {
 }
 
 EndingScene::~EndingScene() {
-  _maps->release();
 }
 
 void EndingScene::goToNextScene(cocos2d::CCObject *sender) {
   CCScene* scene = CCScene::create();
-  StaffRollScene* layer = new StaffRollScene(_maps);
+  PlayLog* log = (PlayLog*)this->getUserObject();
+  StaffRollScene* layer = new StaffRollScene(log->getMapHistory());
   layer->setUserObject(this->getUserObject());
   layer->autorelease();
   scene->addChild(layer);

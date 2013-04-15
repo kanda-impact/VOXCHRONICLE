@@ -88,15 +88,9 @@ void ExtraScene::onDictionaryButtonPressed(cocos2d::CCObject *sender) {
 void ExtraScene::onCreditButtonPressed(cocos2d::CCObject *sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/decide.mp3").c_str());
   CCArray* array = CCArray::create();
-  Map* map0 = new Map("001");
-  map0->autorelease();
-  array->addObject(map0);
-  Map* map1 = new Map("002");
-  map1->autorelease();
-  array->addObject(map1);
-  Map* map2 = new Map("003");
-  map2->autorelease();
-  array->addObject(map2);
+  array->addObject(CCString::create("1a_simple"));
+  array->addObject(CCString::create("2a_forest"));
+  array->addObject(CCString::create("3a_ruin"));
   
   StaffRollScene* scene = new StaffRollScene(array);
   scene->autorelease();

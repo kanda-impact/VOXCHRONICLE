@@ -55,7 +55,7 @@ class StaffRollScene :public CCLayer {
   void addCutin(const char* text, TextType type, CutinType cutinType);
   void onBackButtonPressed(CCObject* sender);
  public:
-  StaffRollScene(CCArray* maps);
+  StaffRollScene(CCArray* mapNames);
   virtual ~StaffRollScene();
   void onEnterTransitionDidFinish();
 };

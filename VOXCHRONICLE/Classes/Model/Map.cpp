@@ -150,6 +150,7 @@ CCArray* Map::getNextMaps() {
   CCArray* maps = CCArray::create();
   for (vector<string>::iterator it = _nextMaps->begin(); it != _nextMaps->end(); ++it) {
     Map* newMap = new Map(it->c_str());
+    newMap->autorelease();
     maps->addObject(newMap);
   }
   return maps;

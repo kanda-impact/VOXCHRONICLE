@@ -350,9 +350,9 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       _state = VCStateMain;
       _skin->getController()->setEnable(true);
       this->removeChild(_mapSelector, true);
+      this->changeMap(nextMap);
       _mapSelector->release();
       _mapSelector = NULL;
-      this->changeMap(nextMap);
     } else {
       _musicManager->pushSilentTracks(); // 選択されてなかったら、次の小節も無音
     }
@@ -720,7 +720,7 @@ void MainScene::changeMap(Map* nextMap) {
     CCTextureCache::sharedTextureCache()->removeAllTextures();
   }
   nextMap->retain();
-  _log->getMapHistory()->addObject(nextMap); // マップ履歴にマップ追加
+  _log->getMapHistory()->addObject(CCString::create(nextMap->getIdentifier())); // マップ履歴にマップのIdentifier追加
   _map = nextMap;
   _level = nextMap->createInitialLevel(_characterManager); // レベルを生成する
   _enemyManager->setLevel(_level); // レベルをセット
@@ -830,7 +830,7 @@ void MainScene::onFinishTracksCompleted() {
     string endingScript = _map->getEndingName();
     CCAssert(endingScript.length() != 0, "Ending Script is not defined.");
     _musicManager->getMusic()->stop();
-    EndingScene* endingLayer = new EndingScene(endingScript.c_str(), _log->getMapHistory());
+    EndingScene* endingLayer = new EndingScene(endingScript.c_str());
     endingLayer->autorelease();
     endingLayer->setUserObject(_log); // PlayLogをユーザーデータに
     CCScene* ending = CCScene::create();
