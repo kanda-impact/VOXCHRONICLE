@@ -27,7 +27,8 @@ typedef enum {
   EffectLayerCutinTypeNormal,
   EffectLayerCutinTypeFailure,
   EffectLayerCutinTypeHold,
-  EffectLayerCutinTypeCastOff
+  EffectLayerCutinTypeCastOff,
+  EffectLayerCutinTypeRegist
 } EffectLayerCutinType;
 
 typedef enum {

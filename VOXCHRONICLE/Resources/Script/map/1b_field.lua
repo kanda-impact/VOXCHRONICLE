@@ -8,39 +8,39 @@ function getTime()
   end
   return 2
 end
-
-local normalTable = function(level)
-  if level <= 2 then
-    --return {}
-    return {slime1B7 = 3, moth1B0 = 2}
-  elseif level <= 4 then
-    return {flower1B0 = 1, moth1B0 = 5}
-  elseif level <= 6 then
-    return {flower1B0 = 1, hornet1B1 = 1}
-  elseif level <= 8 then
-    return {slime1B7 = 1, flower1B0 = 1, moth1B0 = 2}
-  elseif level <= 10 then
-    return {slime1B7 = 1, flower1B0 = 1, moth1B0 = 1, hornet1B1 = 1}
-  end
-  return {}
-end
-
-local sunsetTable = function(level)
-  if level <= 2 then
-    --return {}
-    return {slime1S7 = 1, moth1S6 = 2}
-  elseif level <= 4 then
-    return {flower1S0 = 1, moth1S6 = 7}
-  elseif level <= 6 then
-    return {flower1S0 = 3, hornet1S1 = 1, bat1S5 = 1}
-  elseif level <= 8 then
-    return {slime1S7 = 2, moth1S6 = 2, hornet1S1 = 1}
-  elseif level <= 9 then
-    return {flower1S0 = 1, moth1S6 = 1, bat1S5 = 1}
-  end
-  --return {slime1S7 = 1, flower1S0 = 1, moth1S0 = 1, hornet1S1 = 1, bat1S2 =1}
-  return {}
-end
+--
+--local normalTable = function(level)
+--  if level <= 2 then
+--    --return {}
+--    return {slime1B7 = 3, moth1B0 = 2}
+--  elseif level <= 4 then
+--    return {flower1B0 = 1, moth1B0 = 5}
+--  elseif level <= 6 then
+--    return {flower1B0 = 1, hornet1B1 = 1}
+--  elseif level <= 8 then
+--    return {slime1B7 = 1, flower1B0 = 1, moth1B0 = 2}
+--  elseif level <= 10 then
+--    return {slime1B7 = 1, flower1B0 = 1, moth1B0 = 1, hornet1B1 = 1}
+--  end
+--  return {}
+--end
+--
+--local sunsetTable = function(level)
+--  if level <= 2 then
+--    --return {}
+--    return {slime1S7 = 1, moth1S6 = 2}
+--  elseif level <= 4 then
+--    return {flower1S0 = 1, moth1S6 = 7}
+--  elseif level <= 6 then
+--    return {flower1S0 = 3, hornet1S1 = 1, bat1S5 = 1}
+--  elseif level <= 8 then
+--    return {slime1S7 = 2, moth1S6 = 2, hornet1S1 = 1}
+--  elseif level <= 9 then
+--    return {flower1S0 = 1, moth1S6 = 1, bat1S5 = 1}
+--  end
+--  --return {slime1S7 = 1, flower1S0 = 1, moth1S0 = 1, hornet1S1 = 1, bat1S2 =1}
+--  return {}
+--end
 
 Map = {
   name = "平原",

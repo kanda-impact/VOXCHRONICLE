@@ -213,6 +213,15 @@ void EffectLayer::addCutin(Skill *skill, EffectLayerCutinType cutinType, float d
                                           CCMoveTo::create(slideTime, ccp(size.width / 2.0, -100)),
                                           CCRemoveFromParentAction::create(),
                                           NULL));
+    } else if (cutinType == EffectLayerCutinTypeRegist) {
+      // 耐性こうげきしたとき
+      cutin->runAction(CCSequence::create(CCMoveTo::create(slideTime, ccp(size.width / 2.0, height)),
+                                          CCRepeat::create(CCSequence::create(CCRotateTo::create(stopTime / 6.0, 15),
+                                                                              CCRotateTo::create(stopTime / 6.0, -15),
+                                                                              NULL), 3),
+                                          CCMoveTo::create(slideTime, ccp(size.width, height)),
+                                          CCRemoveFromParentAction::create(),
+                                          NULL));
     } else if (cutinType == EffectLayerCutinTypeHold) {
       cutin->runAction(CCMoveTo::create(slideTime, ccp(size.width / 2.0, height)));
     }

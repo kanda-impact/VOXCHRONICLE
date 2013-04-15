@@ -12,11 +12,18 @@ Skill = {
   loop = true,
   canRepeat = true,
   performSkill = function(self, target, characterManager, enemyManager)
-    print(target:getType())
-    print(target:getItem())
-    print(SkillTypeMagical)
-    print(EnemyItemBarrier)
-    if not (target:getType() == SkillTypeMagical) and not (target:getItem() == EnemyItemBarrier) then
+    local hit = true
+    if target:getItem() == EnemyItemBarrier then
+      hit = false
+    elseif target:getType() == SkillTypeMagical then
+      local power = self:getPower(characterManager)
+      if target:getHP() > math.ceil(power / 2.0) then
+        hit = false
+      end
+    end
+    
+    if hit then
+
       local basename = "magic_effect"
       local number = characterManager:getRepeatCount()
       local ext = ".mp3"
