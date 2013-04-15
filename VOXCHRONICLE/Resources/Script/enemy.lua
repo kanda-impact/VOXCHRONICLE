@@ -48,7 +48,7 @@ function getColor(hp)
   elseif hp >= 5 then
     key = math.ceil((hp - 5) / 2) + 5
   else
-    key = hp   
+    key = hp
   end
 
   local length = #colors -- 長さをとります
@@ -66,8 +66,8 @@ function getColors(count)
   return colors
 end
 
---[[ 
-モンスター図鑑で利用するモンスターを返してください 
+--[[
+モンスター図鑑で利用するモンスターを返してください
 Speciesに仕様変更になりました
 図鑑ナンバー対応表
 1ジクー
@@ -125,8 +125,59 @@ Speciesに仕様変更になりました
 53かわずたん
 ]]
 dictionary = {
-  "acorn",
-  "bat",
-  "coin",
-  "cryst"
+  'acorn',
+  'bat',
+  'coin',
+  'cryst',
+  'dragon',
+  'egg',
+  'exob',
+  'flame',
+  'flower',
+  'fortress',
+  'gargoyle',
+  'geek',
+  'ginet',
+  'heart',
+  'hornet',
+  'iron',
+  'jfish',
+  'kani',
+  'kawaztan',
+  'knight',
+  'kraken',
+  'L_bit',
+  'L_plclaw',
+  'L_plfoot',
+  'L_strclaw',
+  'L_strfoot',
+  'last1',
+  'last2',
+  'leaf',
+  'mask',
+  'mimic',
+  'moth',
+  'mukade',
+  'musi',
+  'naut',
+  'neko',
+  'nisok',
+  'pak',
+  'planet',
+  'R_bit',
+  'R_plclaw',
+  'R_plfoot',
+  'R_strclaw',
+  'R_strfoot',
+  'robot',
+  'save_cryst',
+  'slime',
+  't2pha',
+  'tetufez',
+  'tnt',
+  'toadstool',
+  'typhoon',
+  'wave',
+  'whale',
+  'wisp'
 }

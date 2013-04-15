@@ -1,13 +1,13 @@
-function getTime()
-  local time = VQTime:sharedTime()
-  local hour = time:getCurrentHour()
-  if 6 <= hour and hour < 16 then -- 朝
-    return 0
-  elseif 16 <= hour and hour < 19 then -- 夕方
-    return 1
-  end
-  return 2
-end
+--function getTime()
+--  local time = VQTime:sharedTime()
+--  local hour = time:getCurrentHour()
+--  if 6 <= hour and hour < 16 then -- 朝
+--    return 0
+--  elseif 16 <= hour and hour < 19 then -- 夕方
+--    return 1
+--  end
+--  return 2
+--end
 --
 --local normalTable = function(level)
 --  if level <= 2 then
@@ -78,11 +78,18 @@ Map = {
   onLevelUp = function(self, characterManager, enemyManager)
   end,
   onLoad = function(self, characterManager, enemyManager)
-    local number = getTime()
-    local imageName = "field_background"..number..".png"
+    local currentTime = 2
+    local time = VQTime:sharedTime()
+    local hour = time:getCurrentHour()
+    if 6 <= hour and hour < 16 then -- 朝
+      currentTime = 0
+    elseif 16 <= hour and hour < 19 then -- 夕方
+      currentTime = 1
+    end
+    local imageName = "field_background"..currentTime..".png"
     self:changeBackgroundImage(imageName)
     local level = characterManager:getLevel()
-    self.__IRegister__:setRegister("currentTime", number)
+    self.__IRegister__:setRegister("currentTime", currentTime)
     enemyManager:loadEnemyTextureAsync("flower.png")
     enemyManager:loadEnemyTextureAsync("slime.png")
     enemyManager:loadEnemyTextureAsync("moth.png")
@@ -115,8 +122,6 @@ Map = {
   -- {"flower1B0",0}
   }
 }
-
-return Map
 --[[
 Map['onLevelUp'] = function(self, characterManager, enemyManager)
 local time = self.__IRegister__:getRegister('currentTime', 0)
