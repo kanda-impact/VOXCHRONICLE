@@ -32,10 +32,10 @@ Controller::Controller(const char* skinPrefix) {
   // controller.luaから配置データを読みます
   LuaObject* lua = new LuaObject(FileUtils::getFilePath("Script/controller.lua").c_str());
   lua->autorelease();
-  CCLuaValueArray* xs = lua->getArray("x");
-  CCLuaValueArray* ys = lua->getArray("y");
-  CCLuaValueArray* scales = lua->getArray("scale");
-  CCLuaValueArray* rotations = lua->getArray("rotation");
+  shared_ptr<CCLuaValueArray> xs = lua->getArray("x");
+  shared_ptr<CCLuaValueArray> ys = lua->getArray("y");
+  shared_ptr<CCLuaValueArray> scales = lua->getArray("scale");
+  shared_ptr<CCLuaValueArray> rotations = lua->getArray("rotation");
   CCLuaValueArrayIterator xsit = xs->begin();
   CCLuaValueArrayIterator ysit = ys->begin();
   CCLuaValueArrayIterator scalesit = scales->begin();

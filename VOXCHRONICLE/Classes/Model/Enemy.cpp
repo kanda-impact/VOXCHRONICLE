@@ -45,7 +45,7 @@ void Enemy::loadLifeColors() {
       if (lua_pcall(L, 1, 1, 0)) {
         cout << lua_tostring(L, lua_gettop(L)) << endl;
       }
-      CCLuaValueArray* colorArray = obj->getArray();
+      shared_ptr<CCLuaValueArray> colorArray = obj->getArray();
       for (CCLuaValueArrayIterator it = colorArray->begin(); it != colorArray->end(); ++it) {
         CCArray* c = CCArray::create();
         CCLuaValueDict colors = it->dictValue();

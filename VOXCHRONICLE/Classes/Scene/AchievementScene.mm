@@ -19,7 +19,7 @@ bool AchievementScene::init() {
   UIWindow* window = [[UIApplication sharedApplication] keyWindow];
   UIViewController* controller = window.rootViewController;
   GKAchievementViewController* avc = [[[GKAchievementViewController alloc] init] autorelease];
-  AchievementSceneDelegate* delegate = [[AchievementSceneDelegate alloc] init];
+  AchievementSceneDelegate* delegate = [[[AchievementSceneDelegate alloc] init] autorelease];
   avc.achievementDelegate = delegate;
   [controller presentModalViewController:avc animated:YES];
   

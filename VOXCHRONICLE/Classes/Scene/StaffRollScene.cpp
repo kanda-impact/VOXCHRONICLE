@@ -55,7 +55,7 @@ StaffRollScene::StaffRollScene(CCArray* mapNames) {
   }
   
   _lua->getLuaEngineWithLoad();
-  CCLuaValueArray* texts = _lua->getArray("texts");
+  shared_ptr<CCLuaValueArray> texts = _lua->getArray("texts");
   for (CCLuaValueArrayIterator it = texts->begin(); it != texts->end(); ++it) {
     CCLuaValueDict dict = it->dictValue();
     CCArray* t = CCArray::create();
@@ -186,7 +186,7 @@ void StaffRollScene::onFinishPlaying(cocos2d::CCObject *sender) {
 
 void StaffRollScene::pushTracksFor(MusicSet* set) {
   _lua->getLuaEngineWithLoad();
-  CCLuaValueArray* tracks = _lua->getArray("tracks");
+  shared_ptr<CCLuaValueArray> tracks = _lua->getArray("tracks");
   for (CCLuaValueArrayIterator it = tracks->begin(); it != tracks->end(); ++it) {
     string track = it->stringValue();
     if (track == "intro") {

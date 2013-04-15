@@ -44,7 +44,7 @@ Map::Map(const char* mapName) {
   _backgroundImageName = _lua->getString("backgroundImage");
   _thumbnailImageName = _lua->getString("thumbnailImage");
   _ending = _lua->getString("ending");
-  CCLuaValueArray* nexts = _lua->getArray("nextMaps");
+  shared_ptr<CCLuaValueArray> nexts = _lua->getArray("nextMaps");
   _initialLevel = _lua->getInt("initialLevel");
   _maxLevel = _lua->getInt("maxLevel");
   _nextMaps = new vector<string>();
@@ -53,7 +53,7 @@ Map::Map(const char* mapName) {
     _nextMaps->push_back(it->stringValue());
   }
   
-  CCLuaValueDict* table = _lua->getTable("fixedEnemies");
+  shared_ptr<CCLuaValueDict> table = _lua->getTable("fixedEnemies");
   if (table) {
     for (CCLuaValueDictIterator it = table->begin(); it != table->end(); ++it) {
       if (it->second.getType() != CCLuaValueTypeDict) {
@@ -98,7 +98,7 @@ Level* Map::createLevel(int level, CharacterManager* manager) {
       cout << lua_tostring(L, lua_gettop(L)) << endl;
     }
     list< pair<string, int> > enemyTable;
-    CCLuaValueDict* dict = _lua->recursivelyLoadTable(lua_gettop(L));
+    shared_ptr<CCLuaValueDict> dict = _lua->recursivelyLoadTable(lua_gettop(L));
     for (CCLuaValueDictIterator it = dict->begin(); it != dict->end(); ++it) {
       string key = it->first;
       CCLuaValue value = it->second;
@@ -261,7 +261,7 @@ void Map::loadSkillTable(Character* character) {
     if (lua_pcall(L, 1, 1, 0)) {
       cout << lua_tostring(L, lua_gettop(L)) << endl;
     }
-    CCLuaValueDict* sks = lua->recursivelyLoadTable(lua_gettop(L));
+    shared_ptr<CCLuaValueDict> sks = lua->recursivelyLoadTable(lua_gettop(L));
     for (int i = 1; i <= sks->size(); ++i) {
       CCLuaValueDict a = (*sks)[boost::lexical_cast<string>(i).c_str()].dictValue();
       string skillName;

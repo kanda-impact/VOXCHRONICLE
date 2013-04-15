@@ -45,6 +45,7 @@ void CCAchievementManager::reportAchievements(cocos2d::CCArray *identifiers, coc
     float percent = (float)((CCInteger*)percents->objectAtIndex(i))->getValue() / 100.0;
     achievement.percentComplete = percent;
     achievement.showsCompletionBanner = showBanner;
+    [achievement autorelease];
   }
   [GKAchievement reportAchievements:achievements
               withCompletionHandler:^(NSError *error) {

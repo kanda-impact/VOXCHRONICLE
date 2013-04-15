@@ -34,7 +34,7 @@ Skill::Skill(const char* identifier) {
   _loop = _lua->getBoolean("loop");
   _cutinType = _lua->getInt("cutinType");
   _canRepeat = _lua->getBoolean("canRepeat");
-  CCLuaValueArray* mes = _lua->getArray("messages");
+  shared_ptr<CCLuaValueArray> mes = _lua->getArray("messages");
   
   // エフェクトを先読みしておきます
   for (int i = 0; i < _effectFrames; ++i) {

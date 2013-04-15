@@ -50,7 +50,7 @@ bool FreePlayScene::init(const char* script, bool unlock) {
   bg->setPosition(ccp(director->getWinSize().width / 2.0, director->getWinSize().height / 2.0));
   this->addChild(bg);
   
-  CCLuaValueArray* array = lua->getArray("stages");
+  shared_ptr<CCLuaValueArray> array = lua->getArray("stages");
   int i = 0;
   for (CCLuaValueArrayIterator it = array->begin(); it != array->end(); ++it, ++i) {
     int col = floor(i / 5);

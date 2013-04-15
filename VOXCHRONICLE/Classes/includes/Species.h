@@ -40,7 +40,7 @@ class Species :public CCObject {
   bool _hasFrame;
   LuaObject* _lua;
   CCSize _enemySize;
-  CCLuaValueArray* _disableSkills;
+  shared_ptr<CCLuaValueArray> _disableSkills;
  public:
   static Species* getSpecies(const char* identifier);
   static void purgeSpeciesCache();

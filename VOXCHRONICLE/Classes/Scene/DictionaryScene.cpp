@@ -22,7 +22,7 @@ bool DictionaryScene::init() {
   LuaObject* lua = LuaObject::create("enemy.lua");
   lua_State* L = lua->getLuaEngineWithLoad()->getLuaState();
   lua_getglobal(L, "dictionary");
-  CCLuaValueArray* array = lua->getArray();
+  shared_ptr<CCLuaValueArray> array = lua->getArray();
   _enemies = CCArray::create();
   _enemies->retain();
   _enemy = NULL;

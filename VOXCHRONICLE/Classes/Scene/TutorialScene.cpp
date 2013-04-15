@@ -64,7 +64,7 @@ void TutorialLayer::onTutorialButtonPressed(cocos2d::CCObject *sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/tutorial_decide.mp3").c_str());
   LuaObject* lua = LuaObject::create("setting");
   int tag = ((CCNode*)sender)->getTag();
-  CCLuaValueArray* array = lua->getArray("tutorials");
+  shared_ptr<CCLuaValueArray> array = lua->getArray("tutorials");
   int i = 0;
   for (CCLuaValueArrayIterator it = array->begin(); it != array->end(); ++it) {
     if (i == tag) {

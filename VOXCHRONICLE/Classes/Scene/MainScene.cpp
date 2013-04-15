@@ -182,6 +182,7 @@ void MainScene::teardown() {
   EffectLayer::purgeEffectLayer();
   CCTextureCache::sharedTextureCache()->removeUnusedTextures();
   Species::purgeSpeciesCache();
+  CCLuaEngine::defaultEngine()->cleanStack();
   CCLog("teardown");
 }
 
