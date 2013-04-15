@@ -224,6 +224,8 @@ class EffectLayer : public CCLayer {
 class PopupWindow : public CCSprite {
 	CCNode* getPage(int page);
 	void setText(int page, const char* headerText, const char* message);
+	void addImage(const char* filename);
+	void addImage(const char* filename, CCPoint point);
 };
 
 class IRegister {

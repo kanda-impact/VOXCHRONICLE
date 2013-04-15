@@ -49,6 +49,8 @@ class MessageWindow :public CCNode {
   bool isEndMessage();
   void setDelay(float d);
   void setLastDelay(float d);
+  void start();
+  void stop();
   
   /**
    強制的にメッセージを終了させます

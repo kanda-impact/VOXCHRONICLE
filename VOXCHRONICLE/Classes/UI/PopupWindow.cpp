@@ -110,6 +110,7 @@ void PopupWindow::setText(int page, const char *headerText, const char *text) {
   window->pushMessage(text);
   window->setOnMessageFinishedFunction(boost::bind(&PopupWindow::onFinishedFunction, this, _1, _2));
   window->setOnMessageUpdatedFunction(boost::bind(&PopupWindow::onUpdateFunction, this, _1, _2));
+  window->stop();
 }
 
 void PopupWindow::onUpdateFunction(VQString *string, MessageWindow *window) {
@@ -151,4 +152,26 @@ bool PopupWindow::isMessageEnded() {
     return mWindow->isEndMessage();
   }
   return true;
+}
+
+void PopupWindow::addImage(const char* filename, CCPoint point) {
+  CCSprite* sprite = CCSprite::create(filename);
+  sprite->setPosition(point);
+  this->addChild(sprite);
+}
+
+void PopupWindow::addImage(const char *filename) {
+  this->addImage(filename, ccp(0, -50));
+}
+
+void PopupWindow::onPopupStart(cocos2d::CCObject *sender) {
+  SimpleAudioEngine::sharedEngine()->playEffect("window_open.mp3");
+}
+
+void PopupWindow::onPopupAppeared(cocos2d::CCObject *sender) {
+  CCNode* window = this->getPage(_currentPage);
+  MessageWindow* mWindow = (MessageWindow*)window->getChildByTag(PopupWindowTagMessageWindow);
+  if (mWindow) {
+    mWindow->start();
+  }
 }

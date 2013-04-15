@@ -163,12 +163,15 @@ void EffectLayer::setCharacterEffect(Character *character) {
 
 PopupWindow* EffectLayer::addPopupWindow(int pages) {
   CCAssert(this->getPopupWindow() == NULL, "");
-  SimpleAudioEngine::sharedEngine()->playEffect("window_open.mp3");
   PopupWindow* window = PopupWindow::create(pages);
   CCDirector* director = CCDirector::sharedDirector();
   window->setPosition(ccp(director->getWinSize().width / 2.0, director->getWinSize().height / 2.0f));
   window->setScale(0);
-  window->runAction(CCScaleTo::create(0.3f, 1.0));
+  window->runAction(CCSequence::create(CCDelayTime::create(0.5f),
+                                       CCCallFuncN::create(window, callfuncN_selector(PopupWindow::onPopupStart)),
+                                       CCScaleTo::create(0.3f, 1.0),
+                                       CCCallFuncN::create(window, callfuncN_selector(PopupWindow::onPopupAppeared)),
+                                       NULL));
   this->addChild(window, EffectLayerZOrderWindow, EffectLayerTagTutorial);
   return window;
 }
