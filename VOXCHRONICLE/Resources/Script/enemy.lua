@@ -125,59 +125,82 @@ Speciesに仕様変更になりました
 53かわずたん
 ]]
 dictionary = {
-  'acorn',
-  'bat',
-  'coin',
-  'cryst',
-  'dragon',
-  'egg',
-  'exob',
-  'flame',
-  'flower',
-  'fortress',
-  'gargoyle',
   'geek',
-  'ginet',
-  'heart',
-  'hornet',
-  'iron',
-  'jfish',
-  'kani',
-  'kawaztan',
-  'knight',
-  'kraken',
-  'L_bit',
-  'L_plclaw',
-  'L_plfoot',
-  'L_strclaw',
-  'L_strfoot',
-  'last1',
-  'last2',
+  'tetufez',  
+  'ginet', 
+  'tnt',  
   'leaf',
-  'mask',
+  'slime',  
+  'acorn',  
+  'moth',  
+  'hornet',  
+  'toadstool',  
+  'flower',  
+  'wisp'  
+  'typhoon',    
   'mimic',
-  'moth',
-  'mukade',
-  'musi',
+  'mask',  
+  'gargoyle',  
+  'bat',  
+  'mukade',  
+  'cryst',
+  'dragon',  
   'naut',
+  'jfish',  
+  'whale',  
+  'coin',  
+  'heart',
+  'flame',
+  'egg',
+  'kani',
   'neko',
   'nisok',
   'pak',
-  'planet',
-  'R_bit',
-  'R_plclaw',
-  'R_plfoot',
-  'R_strclaw',
-  'R_strfoot',
-  'robot',
-  'save_cryst',
-  'slime',
   't2pha',
-  'tetufez',
-  'tnt',
-  'toadstool',
-  'typhoon',
+  'planet',
+  'exob',
+  'fortress',
+  'knight',
+  'iron',
+  'kraken',
+　　'R_plfoot',
+　　'L_plfoot',
+  'R_strfoot',
+  'L_strfoot',
+  'R_plclaw',
+  'L_plclaw',
+  'R_strclaw',
+  'L_strclaw',
   'wave',
-  'whale',
-  'wisp'
+  'last1',
+  'last2',
+  'L_bit',
+  'R_bit',  
+  'kawaztan',
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+  
+  
+
+  
+  
+  
+  
+
+  
+
+
 }
