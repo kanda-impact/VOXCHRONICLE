@@ -136,7 +136,7 @@ dictionary = {
   'hornet',  
   'toadstool',  
   'flower',  
-  'wisp'  
+  'wisp',
   'typhoon',    
   'mimic',
   'mask',  
@@ -176,31 +176,5 @@ dictionary = {
   'last2',
   'L_bit',
   'R_bit',  
-  'kawaztan',
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-
-
-
-
-
-  
-  
-
-  
-  
-  
-  
-
-  
-
-
+  'kawaztan'
 }
