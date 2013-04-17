@@ -44,6 +44,7 @@ Controller::Controller(const char* skinPrefix) {
   for (int i = 0; i < COMMAND_COUNT; ++i) {
     string index = boost::lexical_cast<string>(i + 1);
     SkillTrigger* trigger = new SkillTrigger(_skinPrefix.c_str());
+    trigger->autorelease();
     trigger->setPosition(ccp(xsit->floatValue(), ysit->floatValue()));
     trigger->getBackground()->setRotation(rotationsit->floatValue());
     trigger->getBackground()->setScale(scalesit->floatValue());
@@ -151,7 +152,7 @@ void Controller::updateSkills(CharacterManager* manager, Level* level, bool rese
       trigger->setColor(SkillTriggerColorLaska);
     }
   }
-  if (index >= 0) {
+ if (index >= 0) {
     SkillTrigger* trigger = (SkillTrigger*)_triggers->objectAtIndex(index);
     if (reset && trigger->getSkillTriggerState() == SkillTriggerStateNormal) {
       ((SkillTrigger*)trigger)->setPress(true);

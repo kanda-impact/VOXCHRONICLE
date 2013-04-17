@@ -2858,6 +2858,7 @@
 		07C6469016E1CDF000B29842 /* SaveData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SaveData.h; path = Classes/includes/SaveData.h; sourceTree = "<group>"; };
 		07C6F6AB1615D6300084708C /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = Classes/Model/Enemy.cpp; sourceTree = "<group>"; };
 		07C6F6AF1615D6420084708C /* EnemyManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyManager.cpp; path = Classes/Model/EnemyManager.cpp; sourceTree = "<group>"; };
+		07D351D6171EA77300C547DD /* EndingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EndingScene.h; path = Classes/includes/EndingScene.h; sourceTree = "<group>"; };
 		07D8740615ED13CD009CC446 /* MainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainScene.cpp; path = Classes/Scene/MainScene.cpp; sourceTree = "<group>"; };
 		07D8741D15F01500009CC446 /* ALBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ALBuffer.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/ALBuffer.h; sourceTree = "<group>"; };
 		07D8741E15F01500009CC446 /* ALBuffer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ALBuffer.m; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/ALBuffer.m; sourceTree = "<group>"; };
@@ -3088,7 +3089,6 @@
 		07F470731691AD340062975F /* MusicSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicSet.h; path = Classes/includes/MusicSet.h; sourceTree = "<group>"; };
 		07F88F1716DB842100FE6B2B /* endingC.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = endingC.mp3; path = Resources/Music/general/endingC.mp3; sourceTree = "<group>"; };
 		07F88F1D16DBC66800FE6B2B /* SelectScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SelectScene.cpp; path = Classes/Scene/SelectScene.cpp; sourceTree = "<group>"; };
-		07F88F2016DBC7A900FE6B2B /* EndingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EndingScene.h; path = Classes/includes/EndingScene.h; sourceTree = "<group>"; };
 		07F88F2116DBC7AA00FE6B2B /* SelectScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectScene.h; path = Classes/includes/SelectScene.h; sourceTree = "<group>"; };
 		07F933E016C16B0300A2F1CA /* ttn1_drum0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ttn1_drum0.caf; path = Resources/Music/ttn1/ttn1_drum0.caf; sourceTree = "<group>"; };
 		07F933E116C16B0300A2F1CA /* ttn1_drum1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ttn1_drum1.caf; path = Resources/Music/ttn1/ttn1_drum1.caf; sourceTree = "<group>"; };
@@ -3669,7 +3669,7 @@
 				07C6467316DE3FB200B29842 /* EffectLayer.cpp */,
 				07C6467616DE406F00B29842 /* EffectLayer.h */,
 				079D274816D2210C006D6A8F /* EndingScene.cpp */,
-				07F88F2016DBC7A900FE6B2B /* EndingScene.h */,
+				07D351D6171EA77300C547DD /* EndingScene.h */,
 				07ADDF9816F72048007825D2 /* ExtraScene.cpp */,
 				07ADDF9B16F72525007825D2 /* ExtraScene.h */,
 				07B8B61E170AFF3100DB739F /* FreePlayScene.cpp */,

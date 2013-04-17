@@ -1,5 +1,5 @@
 Setting = {
-  initialMap = "001",
+  initialMap = "1a_simple",
   easyMap = "1a_simple",
   hardMap = "1b_field",
   tutorials = {"tutorial0", "tutorial1", "tutorial2"},

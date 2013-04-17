@@ -28,6 +28,7 @@ Music::Music(int trackCount) {
 }
 
 Music::~Music() {
+  _tracks->release();
 }
 
 Track* Music::getTrack(int trackNumber) {

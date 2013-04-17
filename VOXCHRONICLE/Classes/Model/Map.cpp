@@ -27,16 +27,16 @@ Map::Map(const char* mapName) {
   
   // スキンの生成
   _skin = new Skin(_lua->getString("skin"));
+  _wayMusic = NULL;
+  _bossMusic = NULL;
   
   // MusicSetの生成
   string wayMusicName = _lua->getString("wayMusic");
   string bossMusicName = _lua->getString("bossMusic");
   _wayMusic = new MusicSet(wayMusicName.c_str());
-  _wayMusic->retain();
   _bossMusic = NULL;
   if (bossMusicName.length() > 0) {
     _bossMusic = new MusicSet(bossMusicName.c_str());
-    _bossMusic->retain();
   }
   
   // スクリプトから各種データ読み込み
@@ -130,6 +130,7 @@ Level* Map::createLevel(int level, CharacterManager* manager) {
     }
   }
   lv->setSkillTable(_skillCache);
+  lv->autorelease();
   return lv;
 }
 

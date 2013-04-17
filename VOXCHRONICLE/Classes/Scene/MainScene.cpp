@@ -89,8 +89,6 @@ bool MainScene::init(Map* map) {
   
   _log = new PlayLog();
   
-  //LuaObject* setting = LuaObject::create("Script/setting");
-  
   CCDirector* director = CCDirector::sharedDirector();
   
   // EnemyManager
@@ -504,7 +502,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _preLevel = currentLevel;
       _map->performOnLevel(_characterManager, _enemyManager); // スクリプトを呼んでやる
       _characterManager->updateParameters();
-      _level = _map->createLevel(currentLevel, _characterManager);
+      this->setLevel(_map->createLevel(currentLevel, _characterManager));
       _enemyManager->setLevel(_level);
       this->updateGUI();
       
@@ -600,6 +598,10 @@ void MainScene::registerWithTouchDispatcher() {
 }
 
 bool MainScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
+  CCScene* scene = CCScene::create();
+  TitleScene* title = TitleScene::create();
+  scene->addChild(title);
+  CCDirector::sharedDirector()->replaceScene(scene);
   if (_state == VCStateWindow) {
     PopupWindow* layer = _effectLayer->getPopupWindow();
     if (layer) {
@@ -723,7 +725,8 @@ void MainScene::changeMap(Map* nextMap) {
   nextMap->retain();
   _log->getMapHistory()->addObject(CCString::create(nextMap->getIdentifier())); // マップ履歴にマップのIdentifier追加
   _map = nextMap;
-  _level = nextMap->createInitialLevel(_characterManager); // レベルを生成する
+  this->setLevel(nextMap->createInitialLevel(_characterManager)); // レベルを生成する
+
   _enemyManager->setLevel(_level); // レベルをセット
   _enemyManager->removeAllEnemiesQueue(); // キューを初期化
   _mapTurnCount = 0; // マップカウント0に戻す
@@ -740,8 +743,9 @@ void MainScene::changeMap(Map* nextMap) {
   
   _musicManager->setIntroCount(0);
   _musicManager->setFinishCount(0);
+   _musicManager->pushIntroTracks();
+   
   _skin->getController()->setEnable(false);
-  _musicManager->pushIntroTracks();
   _characterManager->setRepeatCount(0); // repeatCountをリセット
   this->updateGUI();
   _map->performOnLoad(_characterManager, _enemyManager);
@@ -905,4 +909,14 @@ void MainScene::setPlayLog(PlayLog* log) {
 
 void MainScene::setBackScene(MainBackScene backScene) {
   _backScene = backScene;
+}
+
+void MainScene::setLevel(Level* lv) {
+  if (_level) {
+    _level->release();
+  }
+  _level = lv;
+  if (lv) {
+    lv->retain();
+  }
 }

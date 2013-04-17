@@ -117,6 +117,8 @@ class MainScene : public CCLayer {
   
   void setBackScene(MainBackScene backScene);
   
+  void setLevel(Level* lv);
+  
   CREATE_FUNC(MainScene);
 };
 
