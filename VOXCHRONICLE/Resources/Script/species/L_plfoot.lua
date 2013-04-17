@@ -13,7 +13,7 @@ Enemy = {
   end,
   disableSkills = {"knockback"},
   description = [[
-    文章は開発中の物です。
+    （あれっ？おれの出番？ひょっとしてちょっとヤバいんじゃない？）
   ]],
   habitat = "",
   animationFrames = 4,

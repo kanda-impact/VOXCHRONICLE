@@ -1,5 +1,5 @@
 Music = {
-  name = "スハリー草原",
+  name = "ターヴァナ平原",
   composer = "るしゃな",
   prefix = "1-b",
   type = MusicSetTypeWay,

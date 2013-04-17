@@ -1,5 +1,5 @@
 Music = {
-  name = "ターヴァナ荒野",
+  name = "スハリィ荒野",
   composer = "geekdrums",
   prefix = "volca",
   type = MusicSetTypeWay,

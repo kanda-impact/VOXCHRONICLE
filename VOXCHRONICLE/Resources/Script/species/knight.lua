@@ -18,7 +18,7 @@ Enemy = {
   end,
   disableSkills = {"knockback"},
   description = [[
-  きっとぜんまい仕掛け。たぶんぜんまい仕掛け。ちょっと錆びついてるがまだまだ現役。
+  かつてこの城の主に仕えていたナイトの亡霊。その目的はとうの昔に忘れて、目の前の敵と戦う事だけに執着する存在に成り果ててしまった。
   ]],
   habitat = "",
   animationFrames = 4,
