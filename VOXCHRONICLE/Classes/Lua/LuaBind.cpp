@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Mon Apr 15 17:10:59 2013.
+** Generated automatically by tolua++-1.0.92 on Thu Apr 18 14:09:51 2013.
 */
 
 #ifndef __cplusplus
@@ -2236,6 +2236,43 @@ static int tolua_VOXCHRONICLE_MessageManager_pushRandomMessageFromLua00(lua_Stat
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: pushRandomMessageFromFunction of class  MessageManager */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_MessageManager_pushRandomMessageFromFunction00
+static int tolua_VOXCHRONICLE_MessageManager_pushRandomMessageFromFunction00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"MessageManager",0,&tolua_err) ||
+     !tolua_isstring(tolua_S,2,0,&tolua_err) ||
+     !tolua_isusertype(tolua_S,3,"CharacterManager",0,&tolua_err) ||
+     !tolua_isusertype(tolua_S,4,"EnemyManager",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,5,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  MessageManager* self = (MessageManager*)  tolua_tousertype(tolua_S,1,0);
+  const char* scriptName = ((const char*)  tolua_tostring(tolua_S,2,0));
+  CharacterManager* characterManager = ((CharacterManager*)  tolua_tousertype(tolua_S,3,0));
+  EnemyManager* enemyManager = ((EnemyManager*)  tolua_tousertype(tolua_S,4,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'pushRandomMessageFromFunction'", NULL);
+#endif
+  {
+   self->pushRandomMessageFromFunction(scriptName,characterManager,enemyManager);
+  }
+ }
+ return 0;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'pushRandomMessageFromFunction'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* method: sharedLayer of class  EffectLayer */
 #ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_EffectLayer_sharedLayer00
 static int tolua_VOXCHRONICLE_EffectLayer_sharedLayer00(lua_State* tolua_S)
@@ -3796,6 +3833,7 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
    tolua_function(tolua_S,"sharedManager",tolua_VOXCHRONICLE_MessageManager_sharedManager00);
    tolua_function(tolua_S,"pushMessage",tolua_VOXCHRONICLE_MessageManager_pushMessage00);
    tolua_function(tolua_S,"pushRandomMessageFromLua",tolua_VOXCHRONICLE_MessageManager_pushRandomMessageFromLua00);
+   tolua_function(tolua_S,"pushRandomMessageFromFunction",tolua_VOXCHRONICLE_MessageManager_pushRandomMessageFromFunction00);
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"EffectLayer","EffectLayer","CCLayer",NULL);
   tolua_beginmodule(tolua_S,"EffectLayer");

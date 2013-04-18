@@ -92,4 +92,6 @@ Messages = {
     "むこうに　おはなばたけが　みえます",
     "{chara}！　おうとうしろ　{chara}ーーーーー！"
 }
-return Messages
+return function(characterManager, enemyManager)
+  return Messages
+end
