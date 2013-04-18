@@ -9,4 +9,6 @@ Messages = {
     "なんと　ボタンを　おすと　こうどうします",
     "けんをとれ　たたかいが　はじまるぞ",
 }
-return Messages
+return function(characterManager, enemyManager)
+  return Messages
+end

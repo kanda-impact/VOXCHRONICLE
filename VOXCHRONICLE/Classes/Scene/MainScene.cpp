@@ -208,7 +208,7 @@ void MainScene::onEnterTransitionDidFinish() {
   _skin->getStatusLayer()->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
   CCDictionary* dict = CCDictionary::create();
   dict->setObject(CCString::create(_characterManager->getCurrentCharacter()->getName()), "chara");
-  MessageManager::sharedManager()->pushRandomMessageFromLua("welcome", dict);
+  MessageManager::sharedManager()->pushRandomMessageFromFunction("welcome", _characterManager, _enemyManager);
   _effectLayer->addWaitMarker(_musicManager->getMusic()->getCurrentMainTrack()->getDuration() * _musicManager->getMusicSet()->getIntroCount());
 }
 
@@ -490,7 +490,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     }
     
     if (_currentSkillInfo.type == SkillPerformTypeFailure) { // MP切れで失敗したとき
-      MessageManager::sharedManager()->pushRandomMessageFromLua("empty"); // MP切れメッセージ
+      MessageManager::sharedManager()->pushRandomMessageFromFunction("empty", _characterManager, _enemyManager); // MP切れメッセージ
       SaveData::sharedData()->addCountFor(SaveDataCountKeyMPMiss); // MP切れ
     }
     

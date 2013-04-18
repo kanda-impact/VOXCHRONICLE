@@ -11,4 +11,6 @@ Messages = {
     "わーお　まりょくが　たりない!　大ピンチ！",
     "なぜか　まほうがでない"
 }
-return Messages
+return function(characterManager, enemyManager)
+  return Messages
+end
