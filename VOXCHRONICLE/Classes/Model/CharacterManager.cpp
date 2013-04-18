@@ -228,7 +228,7 @@ void CharacterManager::updateParameters() {
 }
 
 float CharacterManager::getLevelOffsetRate(int attackLevel, int defenseLevel) {
-  CCLuaEngine* engine = CCLuaEngine::defaultEngine();
+  /*CCLuaEngine* engine = CCLuaEngine::defaultEngine();
   lua_State* L = engine->getLuaState();
   std::string path = CCFileUtils::sharedFileUtils()->fullPathFromRelativePath(FileUtils::getFilePath("Script/character/character.lua").c_str());
   engine->executeScriptFile(path.c_str());
@@ -242,7 +242,8 @@ float CharacterManager::getLevelOffsetRate(int attackLevel, int defenseLevel) {
   if (offset < 0) {
     return 0;
   }
-  return offset;
+  return offset;*/
+  return 1; // ほぼ死にステなので恒久的に1を返します
 }
 
 int CharacterManager::getDrumLevel() {

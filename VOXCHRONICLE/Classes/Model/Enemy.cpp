@@ -126,7 +126,6 @@ Enemy* Enemy::initWithSpecies(const char* speciesName) {
   file << "Script/enemies/" << speciesName;
   _identifier = speciesName;
   _scriptPath = file.str();
-  _register = new map<string, int>();
   _lua = NULL;
   _maxHP = 1;
   _hp = _maxHP;
@@ -413,6 +412,7 @@ bool Enemy::performSkill(CharacterManager* characterManager, EnemyManager* enemy
   string skillName = _species->choiceEnemySkill(this, characterManager, enemyManager);
   if (skillName.size() == 0) return false; // 技の名前が何か返ってきたとき、その技を生成して実行してやる
   EnemySkill* skill = new EnemySkill(skillName.c_str());
+  skill->autorelease();
   skill->performSkill(this, characterManager, enemyManager);
   return true;
 }
