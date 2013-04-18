@@ -38,7 +38,7 @@ namespace VISS {
    public:
     Music();
     Music(int trackCount);
-    ~Music();
+    virtual ~Music();
     Track* getTrack(int trackNumber);
     Track* getNextTrack(int trackNumber);
     Track* pushTrack(const char* fileName, int trackNumber);

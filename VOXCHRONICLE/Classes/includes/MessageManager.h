@@ -12,6 +12,9 @@
 #include <iostream>
 #include "cocos2d.h"
 #include "MessageWindow.h"
+#include "Map.h"
+#include "CharacterManager.h"
+#include "EnemyManager.h"
 
 using namespace cocos2d;
 
@@ -60,6 +63,14 @@ class MessageManager :public CCObject {
    @param CCDictionary* dict CCStringが含まれる置換されるメッセージ
    */
   void pushRandomMessageFromLua(const char* luaName, CCDictionary* dict);
+  
+  /**
+   Luaの関数を実行してランダムメッセージを取り出します
+   細かい条件を指定したいたわしさん向け
+   指定するスクリプトファイルでは、characterManager, enemyManagerを
+   引数に取り、tableを返却する関数をスタックの一番上に積んでください
+   */
+  void pushRandomMessageFromFunction(const char* scriptFile, Map* map, CharacterManager* manager, EnemyManager* enemyManager);
 };
 
 #endif /* defined(__VOXCHRONICLE__MessageManager__) */

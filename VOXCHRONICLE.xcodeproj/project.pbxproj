@@ -2858,6 +2858,7 @@
 		07C6469016E1CDF000B29842 /* SaveData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SaveData.h; path = Classes/includes/SaveData.h; sourceTree = "<group>"; };
 		07C6F6AB1615D6300084708C /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = Classes/Model/Enemy.cpp; sourceTree = "<group>"; };
 		07C6F6AF1615D6420084708C /* EnemyManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyManager.cpp; path = Classes/Model/EnemyManager.cpp; sourceTree = "<group>"; };
+		07D351D6171EA77300C547DD /* EndingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EndingScene.h; path = Classes/includes/EndingScene.h; sourceTree = "<group>"; };
 		07D8740615ED13CD009CC446 /* MainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainScene.cpp; path = Classes/Scene/MainScene.cpp; sourceTree = "<group>"; };
 		07D8741D15F01500009CC446 /* ALBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ALBuffer.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/ALBuffer.h; sourceTree = "<group>"; };
 		07D8741E15F01500009CC446 /* ALBuffer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ALBuffer.m; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/ALBuffer.m; sourceTree = "<group>"; };
@@ -3088,7 +3089,6 @@
 		07F470731691AD340062975F /* MusicSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicSet.h; path = Classes/includes/MusicSet.h; sourceTree = "<group>"; };
 		07F88F1716DB842100FE6B2B /* endingC.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = endingC.mp3; path = Resources/Music/general/endingC.mp3; sourceTree = "<group>"; };
 		07F88F1D16DBC66800FE6B2B /* SelectScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SelectScene.cpp; path = Classes/Scene/SelectScene.cpp; sourceTree = "<group>"; };
-		07F88F2016DBC7A900FE6B2B /* EndingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EndingScene.h; path = Classes/includes/EndingScene.h; sourceTree = "<group>"; };
 		07F88F2116DBC7AA00FE6B2B /* SelectScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectScene.h; path = Classes/includes/SelectScene.h; sourceTree = "<group>"; };
 		07F933E016C16B0300A2F1CA /* ttn1_drum0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ttn1_drum0.caf; path = Resources/Music/ttn1/ttn1_drum0.caf; sourceTree = "<group>"; };
 		07F933E116C16B0300A2F1CA /* ttn1_drum1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ttn1_drum1.caf; path = Resources/Music/ttn1/ttn1_drum1.caf; sourceTree = "<group>"; };
@@ -3669,7 +3669,7 @@
 				07C6467316DE3FB200B29842 /* EffectLayer.cpp */,
 				07C6467616DE406F00B29842 /* EffectLayer.h */,
 				079D274816D2210C006D6A8F /* EndingScene.cpp */,
-				07F88F2016DBC7A900FE6B2B /* EndingScene.h */,
+				07D351D6171EA77300C547DD /* EndingScene.h */,
 				07ADDF9816F72048007825D2 /* ExtraScene.cpp */,
 				07ADDF9B16F72525007825D2 /* ExtraScene.h */,
 				07B8B61E170AFF3100DB739F /* FreePlayScene.cpp */,
@@ -4408,26 +4408,26 @@
 		07C6064016164F810084708C /* Script */ = {
 			isa = PBXGroup;
 			children = (
-				079D275916D3B9F6006D6A8F /* skins */,
-				079D274B16D223A2006D6A8F /* endings */,
-				078D452516CE87D900E21DC5 /* species */,
-				07448CBB16C2899C00F005C6 /* messages */,
-				07660CCC1690E8BD0092104F /* enemySkills */,
-				07660C4B169097F00092104F /* musics */,
-				07FD921C1621097700E74459 /* character */,
-				0731E4FA16184A59006AEF3D /* map */,
-				077DF756170DD69900F0C799 /* space_boss.lua */,
-				07C6093A161674650084708C /* enemies */,
-				07C6093B161674650084708C /* skills */,
-				07C6064116164F810084708C /* hello.lua */,
 				07F20F7A17114F3C0099ACD8 /* achievement.lua */,
-				07E1351A1621A04300CCF72E /* setting.lua */,
-				079F89A6169EE596001357B5 /* debug.lua */,
-				074E137A171067EC00308F67 /* freeplay.lua */,
+				07FD921C1621097700E74459 /* character */,
 				07D8D649169F3BD900B646E5 /* controller.lua */,
+				079F89A6169EE596001357B5 /* debug.lua */,
+				079D274B16D223A2006D6A8F /* endings */,
+				07C6093A161674650084708C /* enemies */,
 				079D275716D38B7E006D6A8F /* enemy.lua */,
-				0754384716E3985600802970 /* staffroll.lua */,
+				07660CCC1690E8BD0092104F /* enemySkills */,
+				074E137A171067EC00308F67 /* freeplay.lua */,
+				07C6064116164F810084708C /* hello.lua */,
 				07ADDF8C16F254C8007825D2 /* hsv.lua */,
+				0731E4FA16184A59006AEF3D /* map */,
+				07448CBB16C2899C00F005C6 /* messages */,
+				07660C4B169097F00092104F /* musics */,
+				07E1351A1621A04300CCF72E /* setting.lua */,
+				07C6093B161674650084708C /* skills */,
+				079D275916D3B9F6006D6A8F /* skins */,
+				077DF756170DD69900F0C799 /* space_boss.lua */,
+				078D452516CE87D900E21DC5 /* species */,
+				0754384716E3985600802970 /* staffroll.lua */,
 			);
 			name = Script;
 			path = Resources/Script;
@@ -7482,6 +7482,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -7518,6 +7519,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
+				RUN_CLANG_STATIC_ANALYZER = NO;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -7586,6 +7588,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
+				RUN_CLANG_STATIC_ANALYZER = NO;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

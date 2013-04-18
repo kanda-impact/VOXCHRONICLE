@@ -94,9 +94,9 @@ void EndingScene::onEnterTransitionDidFinish() {
   PlayLog* log = (PlayLog*)this->getUserObject();
   CCObject* obj = NULL;
   stringstream ss;
-  CCARRAY_FOREACH(_maps, obj) {
-    Map* map = (Map*)obj;
-    ss << map->getIdentifier() << " ";
+  CCARRAY_FOREACH(log->getMapHistory(), obj) {
+    CCString* map = (CCString*)obj;
+    ss << map->getCString() << " ";
   }
   ss << endl;
   ss << "death = " << log->getCount(PlayLogKeyDead) << endl;

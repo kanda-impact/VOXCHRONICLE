@@ -89,8 +89,6 @@ bool MainScene::init(Map* map) {
   
   _log = new PlayLog();
   
-  //LuaObject* setting = LuaObject::create("Script/setting");
-  
   CCDirector* director = CCDirector::sharedDirector();
   
   // EnemyManager
@@ -182,6 +180,7 @@ void MainScene::teardown() {
   EffectLayer::purgeEffectLayer();
   CCTextureCache::sharedTextureCache()->removeUnusedTextures();
   Species::purgeSpeciesCache();
+  CCLuaEngine::defaultEngine()->cleanStack();
   CCLog("teardown");
 }
 
@@ -209,7 +208,7 @@ void MainScene::onEnterTransitionDidFinish() {
   _skin->getStatusLayer()->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
   CCDictionary* dict = CCDictionary::create();
   dict->setObject(CCString::create(_characterManager->getCurrentCharacter()->getName()), "chara");
-  MessageManager::sharedManager()->pushRandomMessageFromLua("welcome", dict);
+  MessageManager::sharedManager()->pushRandomMessageFromFunction("welcome", _map, _characterManager, _enemyManager);
   _effectLayer->addWaitMarker(_musicManager->getMusic()->getCurrentMainTrack()->getDuration() * _musicManager->getMusicSet()->getIntroCount());
 }
 
@@ -491,7 +490,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     }
     
     if (_currentSkillInfo.type == SkillPerformTypeFailure) { // MP切れで失敗したとき
-      MessageManager::sharedManager()->pushRandomMessageFromLua("empty"); // MP切れメッセージ
+      MessageManager::sharedManager()->pushRandomMessageFromFunction("empty", _map, _characterManager, _enemyManager); // MP切れメッセージ
       SaveData::sharedData()->addCountFor(SaveDataCountKeyMPMiss); // MP切れ
     }
     
@@ -503,7 +502,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _preLevel = currentLevel;
       _map->performOnLevel(_characterManager, _enemyManager); // スクリプトを呼んでやる
       _characterManager->updateParameters();
-      _level = _map->createLevel(currentLevel, _characterManager);
+      this->setLevel(_map->createLevel(currentLevel, _characterManager));
       _enemyManager->setLevel(_level);
       this->updateGUI();
       
@@ -599,6 +598,10 @@ void MainScene::registerWithTouchDispatcher() {
 }
 
 bool MainScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
+  CCScene* scene = CCScene::create();
+  TitleScene* title = TitleScene::create();
+  scene->addChild(title);
+  CCDirector::sharedDirector()->replaceScene(scene);
   if (_state == VCStateWindow) {
     PopupWindow* layer = _effectLayer->getPopupWindow();
     if (layer) {
@@ -638,7 +641,7 @@ void MainScene::onGameOver() {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("Music/general/gameover.mp3").c_str());
   CCDictionary* dict = CCDictionary::create();
   dict->setObject(CCString::create(_characterManager->getCurrentCharacter()->getName()), "chara");
-  MessageManager::sharedManager()->pushRandomMessageFromLua("death", dict);
+  MessageManager::sharedManager()->pushRandomMessageFromFunction("death", _map, _characterManager, _enemyManager);
   _state = VCStateGameOver;
   GameOverLayer* gameover = new GameOverLayer(this);
   gameover->setMainBackScene(_backScene);
@@ -722,7 +725,8 @@ void MainScene::changeMap(Map* nextMap) {
   nextMap->retain();
   _log->getMapHistory()->addObject(CCString::create(nextMap->getIdentifier())); // マップ履歴にマップのIdentifier追加
   _map = nextMap;
-  _level = nextMap->createInitialLevel(_characterManager); // レベルを生成する
+  this->setLevel(nextMap->createInitialLevel(_characterManager)); // レベルを生成する
+
   _enemyManager->setLevel(_level); // レベルをセット
   _enemyManager->removeAllEnemiesQueue(); // キューを初期化
   _mapTurnCount = 0; // マップカウント0に戻す
@@ -739,8 +743,9 @@ void MainScene::changeMap(Map* nextMap) {
   
   _musicManager->setIntroCount(0);
   _musicManager->setFinishCount(0);
+   _musicManager->pushIntroTracks();
+   
   _skin->getController()->setEnable(false);
-  _musicManager->pushIntroTracks();
   _characterManager->setRepeatCount(0); // repeatCountをリセット
   this->updateGUI();
   _map->performOnLoad(_characterManager, _enemyManager);
@@ -839,6 +844,7 @@ void MainScene::onFinishTracksCompleted() {
     CCTransitionFade* fade = CCTransitionFade::create(7.0f, ending, ccc3(255, 255, 255));
     CCDirector::sharedDirector()->replaceScene(fade);
     SaveData::sharedData()->setClearedForMap(_map->getIdentifier().c_str());
+    SaveData::sharedData()->addCountFor(SaveDataCountKeyClear); // クリア回数
     _map->performOnClear(_characterManager, _enemyManager);
     this->teardown();
   } else if (_map->isBossStage() && _level->getLevel() == _map->getMaxLevel()) { // ボスステージで、現在が最高レベルの時
@@ -904,4 +910,14 @@ void MainScene::setPlayLog(PlayLog* log) {
 
 void MainScene::setBackScene(MainBackScene backScene) {
   _backScene = backScene;
+}
+
+void MainScene::setLevel(Level* lv) {
+  if (_level) {
+    _level->release();
+  }
+  _level = lv;
+  if (lv) {
+    lv->retain();
+  }
 }

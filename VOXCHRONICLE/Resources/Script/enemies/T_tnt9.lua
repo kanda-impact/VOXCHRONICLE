@@ -4,7 +4,7 @@ Enemy = {
   hp = 30,
   attack = 2,
   getExp = function(default)
-      return 60
+      return 0
   end,
   item = EnemyItemNone,
   type = SkillTypeNormal

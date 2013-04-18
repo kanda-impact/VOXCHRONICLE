@@ -33,6 +33,7 @@ typedef enum {
   SaveDataCountKeyHitDamage,
   SaveDataCountKeyAttackDamage,
   SaveDataCountKeyDictionaryCount,
+  SaveDataCountKeyClear, // クリア回数
   SaveDataCountKeyNum
 } SaveDataCountKey;
 
@@ -46,7 +47,7 @@ class SaveData :public CCObject {
  private:
   CCDictionary* _countDictionary;
   CCArray* _achievements;
-  CCLuaValueArray* _enemyDictionary;
+  shared_ptr<CCLuaValueArray> _enemyDictionary;
   
   list<AchievementInfo>* _achievementInfos;
   

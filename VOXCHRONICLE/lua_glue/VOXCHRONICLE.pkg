@@ -117,6 +117,7 @@ enum SaveDataCountKey {
 	SaveDataCountKeyHitDamage,
 	SaveDataCountKeyAttackDamage,
 	SaveDataCountKeyDictionaryCount,
+	SaveDataCountKeyClear,
 	SaveDataCountKeyNum
 };
 
@@ -209,6 +210,7 @@ class MessageManager : public CCObject {
 	static MessageManager* sharedManager();
 	void pushMessage(const char* message);
 	void pushRandomMessageFromLua(const char* luaFile);
+	void pushRandomMessageFromFunction(const char* scriptName, Map* map, CharacterManager* characterManager, EnemyManager* enemyManager);
 };
 
 class EffectLayer : public CCLayer {

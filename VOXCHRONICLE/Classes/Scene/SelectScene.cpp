@@ -128,7 +128,7 @@ void SelectScene::createThumbnails() {
   const int x[] = {190, 240, 290.5, 165, 215, 265, 315};
   const int y[] = {262, 262, 261, 303, 303, 303, 303};
   LuaObject* obj = LuaObject::create("setting");
-  CCLuaValueArray* maps = obj->getArray("maps");
+  shared_ptr<CCLuaValueArray> maps = obj->getArray("maps");
   int i = 0;
   for (CCLuaValueArrayIterator it = maps->begin(); it != maps->end(); ++it, ++i) {
     string mapName = it->stringValue();

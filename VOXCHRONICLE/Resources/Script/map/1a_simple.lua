@@ -21,17 +21,17 @@ Map = {
       return {slime1A0 = 1, acorn1A0 = 2}
     end
   end,
-    onLoad = function(self, characterManager, enemyManager)
+  onLoad = function(self, characterManager, enemyManager)
     enemyManager:loadEnemyTextureAsync("leaf.png")
     enemyManager:loadEnemyTextureAsync("slime.png")
     enemyManager:loadEnemyTextureAsync("acorn.png")
   end,
-  
+
   getEnemyPopRate = function(level)
     if level <= 6 then
-        return 0.6
+      return 0.6
     else
-    return 0.4
+      return 0.4
     end
     return 0.4
   end,

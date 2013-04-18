@@ -17,6 +17,7 @@ using namespace cocos2d;
 class AchievementScene :public CCLayer {
 public:
   virtual bool init();
+  virtual ~AchievementScene();
   CREATE_FUNC(AchievementScene);
 };
 

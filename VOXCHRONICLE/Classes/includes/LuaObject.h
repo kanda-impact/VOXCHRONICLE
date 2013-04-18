@@ -16,6 +16,7 @@
 
 using namespace std;
 using namespace cocos2d;
+using namespace boost;
 
 class LuaObject :public CCObject {
  private:
@@ -25,7 +26,7 @@ class LuaObject :public CCObject {
   const char* _scriptName;
   std::string _path;
   float getFloatFromTable(lua_State* state, int index);
-  void internalLoadSubTableWithKey(string key, lua_State* state, CCLuaValueDict* dict);
+  void internalLoadSubTableWithKey(string key, lua_State* state, shared_ptr<CCLuaValueDict> dict);
   void loadTable();
   static bool isInitialized;
   CCArray* _ccObjectPool;
@@ -39,17 +40,17 @@ class LuaObject :public CCObject {
   bool getBoolean(const char* key);
   const char* getString(const char* key);
   lua_CFunction getFunction(const char* key);
-  CCLuaValueDict* getTable();
-  CCLuaValueDict* getTable(const char* key);
-  CCLuaValueArray* getArray();
-  CCLuaValueArray* getArray(const char* key);
+  shared_ptr<CCLuaValueDict> getTable();
+  shared_ptr<CCLuaValueDict> getTable(const char* key);
+  shared_ptr<CCLuaValueArray> getArray();
+  shared_ptr<CCLuaValueArray> getArray(const char* key);
   const void* getObject(const char* key);
   CCLuaEngine* getLuaEngine();
   CCLuaEngine* getLuaEngineWithLoad();
   void pushCCObject(CCObject* object, const char* typeName);
-  static CCLuaValueDict* loadLuaTableFromFile(const char* scriptName);
-  CCLuaValueDict* recursivelyLoadTable(int index);
-  static CCLuaValueArray* luaTableToArray(CCLuaValueDict* dict);
+  static shared_ptr<CCLuaValueDict> loadLuaTableFromFile(const char* scriptName);
+  shared_ptr<CCLuaValueDict> recursivelyLoadTable(int index);
+  static shared_ptr<CCLuaValueArray> luaTableToArray(shared_ptr<CCLuaValueDict> dict);
 };
 
 #endif /* defined(__VOXCHRONICLE__LuaObject__) */

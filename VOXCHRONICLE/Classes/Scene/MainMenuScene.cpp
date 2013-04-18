@@ -13,6 +13,7 @@
 #include "TitleScene.h"
 #include "TutorialScene.h"
 #include "ExtraScene.h"
+#include "SaveData.h"
 
 MainMenuScene::MainMenuScene(bool fromTitle) {
   CCDirector* director = CCDirector::sharedDirector();
@@ -31,6 +32,7 @@ MainMenuScene::MainMenuScene(bool fromTitle) {
                                                    "mainmenu_extra_pressed.png",
                                                    this,
                                                    menu_selector(MainMenuScene::onExtraPressed));
+  extra->setEnabled(SaveData::sharedData()->getCountFor(SaveDataCountKeyClear) > 0); // クリア回数が1回以上の時のみ解放
   CCMenu* menu = CCMenu::create(tutorial, start, extra, NULL);
   menu->setPosition(center);
   menu->alignItemsHorizontallyWithPadding(0);

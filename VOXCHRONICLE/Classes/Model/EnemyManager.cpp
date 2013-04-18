@@ -42,7 +42,11 @@ EnemyManager::EnemyManager() {
 }
 
 EnemyManager::~EnemyManager() {
+  _level->release();
   _trash->release();
+  if (_boss) {
+    _boss->release();
+  }
   _enemyNamesQueue->release();
   delete _enemyPopLots;
 }
@@ -400,7 +404,13 @@ Enemy* EnemyManager::getBoss() {
 }
 
 void EnemyManager::setBoss(Enemy* boss) {
+  if (_boss) {
+    _boss->release();
+  }
   _boss = boss;
+  if (boss) {
+    boss->retain();
+  }
 }
 
 float EnemyManager::calcScale(float row) {

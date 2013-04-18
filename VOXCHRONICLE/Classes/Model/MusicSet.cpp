@@ -32,8 +32,6 @@ MusicSet::MusicSet(const char* identifier) {
 }
 
 MusicSet::~MusicSet() {
-  delete _common;
-  delete _ignoreDrums;
   _lua->release();
 }
 

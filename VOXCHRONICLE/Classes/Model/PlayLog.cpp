@@ -16,7 +16,7 @@ PlayLog::PlayLog() {
   _mapHistory = CCArray::create();
   _mapHistory->retain();
   LuaObject* lua = LuaObject::create("achievement.lua");
-  CCLuaValueArray* array = lua->getArray("playLog");
+  shared_ptr<CCLuaValueArray> array = lua->getArray("playLog");
   for (CCLuaValueArrayIterator it = array->begin(); it != array->end(); ++it) {
     CCLuaValueDict dict = (it->dictValue());
     SaveDataCountKey key = (SaveDataCountKey)dict["1"].floatValue();

@@ -33,7 +33,7 @@ SaveData::SaveData() {
   this->load();
   _achievementInfos = new list<AchievementInfo>();
   LuaObject* lua = LuaObject::create("achievement.lua");
-  CCLuaValueArray* array = lua->getArray("saveData");
+  shared_ptr<CCLuaValueArray> array = lua->getArray("saveData");
   for (CCLuaValueArrayIterator it = array->begin(); it != array->end(); ++it) {
     CCLuaValueDict dict = (it->dictValue());
     SaveDataCountKey key = (SaveDataCountKey)dict["1"].floatValue();
@@ -52,7 +52,6 @@ SaveData::SaveData() {
 }
 
 SaveData::~SaveData() {
-  delete _enemyDictionary;
   delete _achievementInfos;
   _countDictionary->release();
   _achievements->release();

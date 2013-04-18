@@ -32,10 +32,10 @@ Controller::Controller(const char* skinPrefix) {
   // controller.luaから配置データを読みます
   LuaObject* lua = new LuaObject(FileUtils::getFilePath("Script/controller.lua").c_str());
   lua->autorelease();
-  CCLuaValueArray* xs = lua->getArray("x");
-  CCLuaValueArray* ys = lua->getArray("y");
-  CCLuaValueArray* scales = lua->getArray("scale");
-  CCLuaValueArray* rotations = lua->getArray("rotation");
+  shared_ptr<CCLuaValueArray> xs = lua->getArray("x");
+  shared_ptr<CCLuaValueArray> ys = lua->getArray("y");
+  shared_ptr<CCLuaValueArray> scales = lua->getArray("scale");
+  shared_ptr<CCLuaValueArray> rotations = lua->getArray("rotation");
   CCLuaValueArrayIterator xsit = xs->begin();
   CCLuaValueArrayIterator ysit = ys->begin();
   CCLuaValueArrayIterator scalesit = scales->begin();
@@ -44,6 +44,7 @@ Controller::Controller(const char* skinPrefix) {
   for (int i = 0; i < COMMAND_COUNT; ++i) {
     string index = boost::lexical_cast<string>(i + 1);
     SkillTrigger* trigger = new SkillTrigger(_skinPrefix.c_str());
+    trigger->autorelease();
     trigger->setPosition(ccp(xsit->floatValue(), ysit->floatValue()));
     trigger->getBackground()->setRotation(rotationsit->floatValue());
     trigger->getBackground()->setScale(scalesit->floatValue());
@@ -151,7 +152,7 @@ void Controller::updateSkills(CharacterManager* manager, Level* level, bool rese
       trigger->setColor(SkillTriggerColorLaska);
     }
   }
-  if (index >= 0) {
+ if (index >= 0) {
     SkillTrigger* trigger = (SkillTrigger*)_triggers->objectAtIndex(index);
     if (reset && trigger->getSkillTriggerState() == SkillTriggerStateNormal) {
       ((SkillTrigger*)trigger)->setPress(true);

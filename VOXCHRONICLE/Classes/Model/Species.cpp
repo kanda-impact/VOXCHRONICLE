@@ -54,7 +54,6 @@ Species* Species::getSpecies(const char *identifier) {
 
 Species::~Species() {
   _lua->release();
-  delete _disableSkills;
   CCLog("species %s is released", this->getIdentifier().c_str());
 }
 
