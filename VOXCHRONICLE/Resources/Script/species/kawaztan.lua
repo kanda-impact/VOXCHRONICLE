@@ -41,10 +41,10 @@ Enemy = {
         return ""
       elseif rand <= 100 then -- 7割はその他の攻撃
         local r2 = math.random(100)
-        if r2 < 50 then
+        if r2 < 40 then
           self:setCounter(1)
           return "kawaz_beam"
-        elseif r2 <= 70 then
+        elseif r2 <= 60 then
           return "charge_attack_kawaz"
         elseif r2 > 90 then
           if self:getItem() == EnemyItemNone then

@@ -16,7 +16,7 @@ EnemySkill = {
         local sequence = CCSequence:create(actions)
         user:runAction(CCRepeat:create(sequence, 10))
       elseif turn == 2 then
-        -- 溜めターンが1ターンに到達したら溜め攻撃発動
+        -- 溜めターンが2ターンに到達したら溜め攻撃発動
         characterManager:damage(8) -- ダメージを与える
         user:setRegister(key, 0) -- 溜めターンをリセット
         user:setDefaultAnimationClip() -- グラを元に戻す
@@ -35,7 +35,7 @@ EnemySkill = {
         user:runAction(CCRepeat:create(sequence, 10))
       elseif turn == 1 then
         -- 溜めターンが1ターンに到達したら溜め攻撃発動
-        characterManager:damage(3) -- ダメージを与える
+        characterManager:damage(2) -- ダメージを与える
         user:setRegister(key, 0) -- 溜めターンをリセット
         user:setDefaultAnimationClip() -- グラを元に戻す
         MessageManager:sharedManager():pushMessage(user:getName().."は　すばやく　切りかかってきた")
