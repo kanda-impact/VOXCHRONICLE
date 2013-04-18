@@ -6,7 +6,6 @@
 //
 //
 
-#include <algorithm>
 #include <boost/shared_ptr.hpp>
 #include <boost/xpressive/xpressive.hpp>
 #include "MessageManager.h"
@@ -94,21 +93,25 @@ void MessageManager::pushRandomMessageFromLua(const char *luaName, cocos2d::CCDi
   this->pushMessage(random->getCString(), dict);
 }
 
-void MessageManager::pushRandomMessageFromFunction(const char *scriptFile, CharacterManager *characterManager, EnemyManager *enemyManager) {
+void MessageManager::pushRandomMessageFromFunction(const char *scriptFile, Map* map, CharacterManager *characterManager, EnemyManager *enemyManager) {
   LuaObject* lua = LuaObject::create(scriptFile);
   lua_State* L = lua->getLuaEngineWithLoad()->getLuaState();
   if (lua_isfunction(L, lua_gettop(L))) {
+    lua->pushCCObject(map, "Map");
     lua->pushCCObject(characterManager, "CharacterManager");
     lua->pushCCObject(enemyManager, "EnemyManager");
-    if (lua_pcall(L, 2, 1, 0)) {
+    if (lua_pcall(L, 3, 1, 0)) {
       cout << lua_tostring(L, lua_gettop(L)) << endl;
     }
-    boost::shared_ptr<CCLuaValueArray> messages = lua->getArray();
+    boost::shared_ptr<CCLuaValueArray> messages = lua->luaTableToArray(lua->recursivelyLoadTable(lua_gettop(L)));
+    CCArray* array = CCArray::create();
     if (messages->size() > 0) {
-      std::random_shuffle(messages->begin(), messages->end());
-      CCLuaValue value = messages->front();
-      string message = value.stringValue();
-      this->pushMessage(message.c_str());
+      for (CCLuaValueArrayIterator it = messages->begin(); it != messages->end(); ++it) {
+        CCString* str = CCString::create(it->stringValue());
+        array->addObject(str);
+      }
+      CCString* random = (CCString*)array->randomObject();
+      this->pushMessage(random->getCString());
     }
   }
 }

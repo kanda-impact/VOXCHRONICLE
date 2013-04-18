@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Thu Apr 18 16:18:00 2013.
+** Generated automatically by tolua++-1.0.92 on Thu Apr 18 21:57:47 2013.
 */
 
 #ifndef __cplusplus
@@ -2245,9 +2245,10 @@ static int tolua_VOXCHRONICLE_MessageManager_pushRandomMessageFromFunction00(lua
  if (
      !tolua_isusertype(tolua_S,1,"MessageManager",0,&tolua_err) ||
      !tolua_isstring(tolua_S,2,0,&tolua_err) ||
-     !tolua_isusertype(tolua_S,3,"CharacterManager",0,&tolua_err) ||
-     !tolua_isusertype(tolua_S,4,"EnemyManager",0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,5,&tolua_err)
+     !tolua_isusertype(tolua_S,3,"Map",0,&tolua_err) ||
+     !tolua_isusertype(tolua_S,4,"CharacterManager",0,&tolua_err) ||
+     !tolua_isusertype(tolua_S,5,"EnemyManager",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,6,&tolua_err)
  )
   goto tolua_lerror;
  else
@@ -2255,13 +2256,14 @@ static int tolua_VOXCHRONICLE_MessageManager_pushRandomMessageFromFunction00(lua
  {
   MessageManager* self = (MessageManager*)  tolua_tousertype(tolua_S,1,0);
   const char* scriptName = ((const char*)  tolua_tostring(tolua_S,2,0));
-  CharacterManager* characterManager = ((CharacterManager*)  tolua_tousertype(tolua_S,3,0));
-  EnemyManager* enemyManager = ((EnemyManager*)  tolua_tousertype(tolua_S,4,0));
+  Map* map = ((Map*)  tolua_tousertype(tolua_S,3,0));
+  CharacterManager* characterManager = ((CharacterManager*)  tolua_tousertype(tolua_S,4,0));
+  EnemyManager* enemyManager = ((EnemyManager*)  tolua_tousertype(tolua_S,5,0));
 #ifndef TOLUA_RELEASE
   if (!self) tolua_error(tolua_S,"invalid 'self' in function 'pushRandomMessageFromFunction'", NULL);
 #endif
   {
-   self->pushRandomMessageFromFunction(scriptName,characterManager,enemyManager);
+   self->pushRandomMessageFromFunction(scriptName,map,characterManager,enemyManager);
   }
  }
  return 0;

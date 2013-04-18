@@ -1,14 +1,14 @@
-Messages = {
+return function(map, characterManager, enemyManager)
+  local chara = characterManager:getCurrentCharacter():getName()
+  return {
     "モンスターが　あらわれた",
     "モンスターだ　どうする？　こまんど▼",
     "ついに　まものが　あらわれた",
-    "{chara}の　ぼうけんが　いま　はじまる！",
-    "{chara}は　たたかいに　おもむいた",
+    string.format("%sの　ぼうけんが　いま　はじまる！", chara),
+    string.format("%sは　たたかいに　おもむいた", chara),
     "やってやるぜ　おやじの　かたき！",
     "こんどこそ　まけない",
     "なんと　ボタンを　おすと　こうどうします",
     "けんをとれ　たたかいが　はじまるぞ",
-}
-return function(characterManager, enemyManager)
-  return Messages
+  }
 end

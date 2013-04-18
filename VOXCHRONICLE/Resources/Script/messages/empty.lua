@@ -1,4 +1,5 @@
-Messages = {
+return function(map, characterManager, enemyManager)
+  return {
     "しかし　まりょくが　たりない",
     "まほうは　ふはつに　おわった",
     "ここで　つうこんの　まりょくぶそく！",
@@ -11,6 +12,5 @@ Messages = {
     "わーお　まりょくが　たりない!　大ピンチ！",
     "なぜか　まほうがでない"
 }
-return function(characterManager, enemyManager)
-  return Messages
+  
 end

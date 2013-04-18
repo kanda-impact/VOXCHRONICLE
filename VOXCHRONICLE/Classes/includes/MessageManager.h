@@ -12,6 +12,7 @@
 #include <iostream>
 #include "cocos2d.h"
 #include "MessageWindow.h"
+#include "Map.h"
 #include "CharacterManager.h"
 #include "EnemyManager.h"
 
@@ -69,7 +70,7 @@ class MessageManager :public CCObject {
    指定するスクリプトファイルでは、characterManager, enemyManagerを
    引数に取り、tableを返却する関数をスタックの一番上に積んでください
    */
-  void pushRandomMessageFromFunction(const char* scriptFile, CharacterManager* manager, EnemyManager* enemyManager);
+  void pushRandomMessageFromFunction(const char* scriptFile, Map* map, CharacterManager* manager, EnemyManager* enemyManager);
 };
 
 #endif /* defined(__VOXCHRONICLE__MessageManager__) */

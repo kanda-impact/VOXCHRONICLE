@@ -208,7 +208,7 @@ void MainScene::onEnterTransitionDidFinish() {
   _skin->getStatusLayer()->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
   CCDictionary* dict = CCDictionary::create();
   dict->setObject(CCString::create(_characterManager->getCurrentCharacter()->getName()), "chara");
-  MessageManager::sharedManager()->pushRandomMessageFromFunction("welcome", _characterManager, _enemyManager);
+  MessageManager::sharedManager()->pushRandomMessageFromFunction("welcome", _map, _characterManager, _enemyManager);
   _effectLayer->addWaitMarker(_musicManager->getMusic()->getCurrentMainTrack()->getDuration() * _musicManager->getMusicSet()->getIntroCount());
 }
 
@@ -490,7 +490,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     }
     
     if (_currentSkillInfo.type == SkillPerformTypeFailure) { // MP切れで失敗したとき
-      MessageManager::sharedManager()->pushRandomMessageFromFunction("empty", _characterManager, _enemyManager); // MP切れメッセージ
+      MessageManager::sharedManager()->pushRandomMessageFromFunction("empty", _map, _characterManager, _enemyManager); // MP切れメッセージ
       SaveData::sharedData()->addCountFor(SaveDataCountKeyMPMiss); // MP切れ
     }
     
@@ -641,7 +641,7 @@ void MainScene::onGameOver() {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("Music/general/gameover.mp3").c_str());
   CCDictionary* dict = CCDictionary::create();
   dict->setObject(CCString::create(_characterManager->getCurrentCharacter()->getName()), "chara");
-  MessageManager::sharedManager()->pushRandomMessageFromFunction("death", _characterManager, _enemyManager);
+  MessageManager::sharedManager()->pushRandomMessageFromFunction("death", _map, _characterManager, _enemyManager);
   _state = VCStateGameOver;
   GameOverLayer* gameover = new GameOverLayer(this);
   gameover->setMainBackScene(_backScene);

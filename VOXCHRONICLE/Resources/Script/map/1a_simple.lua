@@ -28,7 +28,12 @@ Map = {
   end,
 
   getEnemyPopRate = function(level)
-    return 0
+    if level <= 6 then
+      return 0.6
+    else
+      return 0.4
+    end
+    return 0.4
   end,
   onClear = function(self, characterManager, enemyManager)
     local data = SaveData:sharedData()
