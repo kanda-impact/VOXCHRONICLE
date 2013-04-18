@@ -1,5 +1,6 @@
 return function(map, characterManager, enemyManager)
   return {
+  --ＭＰを使い切った時
     "しかし　まりょくが　たりない",
     "まほうは　ふはつに　おわった",
     "ここで　つうこんの　まりょくぶそく！",

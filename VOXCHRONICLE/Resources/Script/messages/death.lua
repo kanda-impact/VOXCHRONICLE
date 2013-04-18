@@ -94,5 +94,18 @@ return function(map, characterManager, enemyManager)
     "ご　りんじゅう",
     "むこうに　おはなばたけが　みえます",
     "${chara}！　おうとうしろ　${chara}ーーーーー！"
+--死亡時（全ステージ共通部分）
+--各ステージ部分
+--1a
+--1b昼
+--2a
+--2b
+--2c
+--3a
+--3b
+--3c
+--3d
+--1b夕暮れ
+--１ｂ夜
 }
 end
