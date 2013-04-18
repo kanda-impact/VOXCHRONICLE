@@ -231,9 +231,9 @@ string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& perform
     }
   } else {
     if (_characterManager->getLastSkill() == NULL) {
-      int waitCount = _characterManager->getRepeatCount();
+      //int waitCount = _characterManager->getRepeatCount();
       _characterManager->setRepeatCount((_characterManager->getRepeatCount() + 1) % _musicSet->getWaitCount());
-      return this->buildTrackName("wait", NULL, waitCount);
+      //return this->buildTrackName("wait", NULL, waitCount);
     } else {
       _characterManager->setRepeatCount(0);
       _characterManager->setRepeatCountRaw(0);

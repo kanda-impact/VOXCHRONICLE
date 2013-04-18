@@ -55,6 +55,7 @@ Species* Species::getSpecies(const char *identifier) {
 }
 
 Species::~Species() {
+  CCTextureCache::sharedTextureCache()->removeTexture(_sheet);
   _lua->release();
   _sheet->release();
   CCLog("species %s is released", this->getIdentifier().c_str());

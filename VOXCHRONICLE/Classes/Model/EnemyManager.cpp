@@ -365,7 +365,7 @@ void EnemyManager::pushEnemiesQueue(cocos2d::CCArray *enemies) {
 
 void EnemyManager::nextTurn (CharacterManager* characterManager, bool moveOnly) {
   this->lotPopEnemy();
-  /*CCObject* obj = NULL;
+  CCObject* obj = NULL;
   // コピーしないとだめじゃね
   if (!this->getEnemies()) return;
   CCArray* enemies = CCArray::create();
@@ -386,7 +386,7 @@ void EnemyManager::nextTurn (CharacterManager* characterManager, bool moveOnly) 
     if (enemy->getEnable() && enemy->getRow() >= MAX_ROW) { // MAX_ROWより大きいとき、敵を消す
       this->removeEnemy(enemy);
     }
-  }*/
+  }
 }
 
 void EnemyManager::removeAllEnemiesQueue() {

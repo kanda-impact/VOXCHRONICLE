@@ -175,6 +175,9 @@ Enemy::~Enemy() {
     _lua->release();
   }
   _species->release();
+  if (_frameSprite) {
+    _frameSprite->release();
+  }
   CCLog("enemy %s is released", this->getIdentifier().c_str());
 }
 
