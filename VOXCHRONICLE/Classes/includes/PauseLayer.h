@@ -27,6 +27,7 @@ class PauseLayer :public GameOverLayer {
   CCMenu* _confirmMenu;
   CCLabelTTF* _descriptionLabel;
   PauseLayerState _state;
+  CCSet* _pausedTargets;
   void changeState(PauseLayerState newState);
   void onReplayPressed(CCObject* sender);
   void onTitlePressed(CCObject* sender);
@@ -41,6 +42,8 @@ class PauseLayer :public GameOverLayer {
  public:
   PauseLayer(MainScene* main);
   ~PauseLayer();
+  CCSet* getPausedTargets();
+  void setPausedTargets(CCSet* sets);
 };
 
 #endif /* defined(__VOXCHRONICLE__PauseLayer__) */

@@ -42,6 +42,7 @@ EnemyManager::EnemyManager() {
 }
 
 EnemyManager::~EnemyManager() {
+  this->removeAllChildrenWithCleanup(true);
   _level->release();
   _trash->release();
   if (_boss) {
@@ -364,7 +365,7 @@ void EnemyManager::pushEnemiesQueue(cocos2d::CCArray *enemies) {
 
 void EnemyManager::nextTurn (CharacterManager* characterManager, bool moveOnly) {
   this->lotPopEnemy();
-  CCObject* obj = NULL;
+  /*CCObject* obj = NULL;
   // コピーしないとだめじゃね
   if (!this->getEnemies()) return;
   CCArray* enemies = CCArray::create();
@@ -385,7 +386,7 @@ void EnemyManager::nextTurn (CharacterManager* characterManager, bool moveOnly) 
     if (enemy->getEnable() && enemy->getRow() >= MAX_ROW) { // MAX_ROWより大きいとき、敵を消す
       this->removeEnemy(enemy);
     }
-  }
+  }*/
 }
 
 void EnemyManager::removeAllEnemiesQueue() {
@@ -421,7 +422,7 @@ float EnemyManager::calcScale(float row) {
   return scale;
 }
 
-CCPoint& EnemyManager::calcLinePosition(int row, int col) {
+void EnemyManager::calcLinePosition(int row, int col, CCPoint& point) {
   CCPoint root = CCPointZero;
   CCPoint end = CCPointZero;
   const float width = 480;
@@ -437,7 +438,8 @@ CCPoint& EnemyManager::calcLinePosition(int row, int col) {
   
   CCPoint sub = ccpSub(end, root);
   CCPoint p = ccpAdd(root, ccpMult(sub, 1.0f - scale));
-  return p;
+  point.x = p.x;
+  point.y = p.y;
 }
 
 void EnemyManager::removeAllEnemies() {

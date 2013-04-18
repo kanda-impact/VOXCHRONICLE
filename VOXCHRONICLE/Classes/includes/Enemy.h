@@ -28,6 +28,11 @@ class EnemyManager;
 class Enemy : public CCSprite, public IRegister {
 private:
   static CCArray* _lifeColors;
+  void update(float dt);
+  void setLifeColor();
+  bool setAnimationAndFrame(int xOffset, int yOffset, int frames, bool hasFrame);
+  int getExpFromLua();
+  CCSprite* createFrameSprite(int xOffset, int yOffset, int frames);
   
   int _hp;
   int _maxHP;
@@ -41,20 +46,16 @@ private:
   int _attack;
   bool _enable;
   bool _movable;
+  string _scriptPath;
+  string _identifier;
+  
   CCSize _enemySize;
-  Species* _species;
   SkillType _type;
   EnemyItem _item;
-  void update(float dt);
-  void setLifeColor();
+  Species* _species;
+  
   LuaObject* _lua;
-  string _scriptPath;
-  bool setAnimationAndFrame(int xOffset, int yOffset, int frames, bool hasFrame);
-  CCSprite* createFrameSprite(int xOffset, int yOffset, int frames);
-  CCTexture2D* _sheet;
   CCSprite* _frameSprite;
-  int getExpFromLua();
-  string _identifier;
  public:
   static void loadLifeColors();
   static Enemy* create(const char* enemyName);

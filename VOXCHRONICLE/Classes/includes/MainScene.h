@@ -73,8 +73,6 @@ class MainScene : public CCLayer {
   
   MusicManager* _musicManager;
   
-  CCSet* _pausedTargets;
-  
   void onEnterTransitionDidFinish();
   virtual void onExit();
   
