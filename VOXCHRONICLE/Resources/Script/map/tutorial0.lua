@@ -52,11 +52,13 @@ Map = {
     if level == 1 then
       -- 敵が1体もいなくなったらモンスター生成
       if enemyCount == 0 then
-        enemyManager:popEnemyAt("T_slime30", 3, 1)
+        local enemy = enemyManager:popEnemyAt("T_slime30", 3, 1)
+        enemy:setExp(30)
       end
     elseif level == 2 then
       if enemyCount == 0 then
-        enemyManager:popEnemyAt("T_flower", 5, 1)
+        local enemy = enemyManager:popEnemyAt("T_flower", 5, 1)
+        enemy:setExp(30)
       end
     elseif level == 3 then
       if enemyCount == 0 then
@@ -113,13 +115,15 @@ Map = {
         enemy:setExp(0)
       end
       if enemyCount == 0 then
-        enemyManager:popEnemyAt("T_tetufez", 5, 1)
+        local enemy = enemyManager:popEnemyAt("T_tetufez", 5, 1)
+        enemy:setExp(60)
         self.__IRegister__:setRegister("enemyCount", killedEnemyCount + 1)
       end
     elseif level == 7 then
       local isAnnihilation = self.__IRegister__:getBool("isAnnihiration")
       if isAnnihilation and enemyCount == 0 then
-        enemyManager:popEnemyAt("T_moth", MAX_ROW - 1, enemyCount % 3) -- 全滅済みなら毎ターン雑魚を後ろに出す
+        local enemy = enemyManager:popEnemyAt("T_moth", MAX_ROW - 1, enemyCount % 3) -- 全滅済みなら毎ターン雑魚を後ろに出す
+        enemy:setExp(10)
       end
       if enemyCount == 0 then
         if not isAnnihilation then
@@ -160,7 +164,8 @@ Map = {
 どんどん倒して先に進んでいって
 ]])         
           end
-          enemyManager:popEnemyAt("T_slime60",5,1) -- スライム再生成
+          local slime = enemyManager:popEnemyAt("T_slime60",5,1) -- スライム再生成
+          slime:setExp(60)
         else -- ポップアップ前
           if isShield then --前に盾状態だったら
             self.__IRegister__:setBool("popuped", true) -- ポップアップフラグ立てる
@@ -213,7 +218,8 @@ Map = {
 
 上手く使って体力の高い奴もやっつけちゃえ！
 ]])
-        enemyManager:popEnemyAt("T_tnt9", 4, 1)
+        local enemy = enemyManager:popEnemyAt("T_tnt9", 4, 1)
+        enemy:setExp(60)
         local maxHP = characterManager:getMaxHP()
         if characterManager:getHP() <= maxHP then
           characterManager:addHP(maxHP) -- ダメージを受けているはずなので全快させる
@@ -405,11 +411,9 @@ Map = {
 でしっかりレクチャーするわ！
 じゃ、次回もよろしくね！バイバイ！
 ]])
-      --if get == nil then
-
       local data = SaveData:sharedData()
-      data:unlockAchievement("clearTutorialA")
-      data:setClearedForMap("fp_tutorial")
+      data:unlockAchievement("clearTutorialA") -- 実績アンロック
+      data:setClearedForMap("fp_tutorial") -- フリープレイ
     end
   end,
   getEnemyPopRate = function(level)
