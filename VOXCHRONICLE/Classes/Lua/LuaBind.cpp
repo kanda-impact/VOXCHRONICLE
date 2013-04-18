@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Thu Apr 18 14:09:51 2013.
+** Generated automatically by tolua++-1.0.92 on Thu Apr 18 16:18:00 2013.
 */
 
 #ifndef __cplusplus
@@ -3744,6 +3744,7 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
   tolua_constant(tolua_S,"SaveDataCountKeyHitDamage",SaveDataCountKeyHitDamage);
   tolua_constant(tolua_S,"SaveDataCountKeyAttackDamage",SaveDataCountKeyAttackDamage);
   tolua_constant(tolua_S,"SaveDataCountKeyDictionaryCount",SaveDataCountKeyDictionaryCount);
+  tolua_constant(tolua_S,"SaveDataCountKeyClear",SaveDataCountKeyClear);
   tolua_constant(tolua_S,"SaveDataCountKeyNum",SaveDataCountKeyNum);
   tolua_constant(tolua_S,"DamageLabelTypeAttack",DamageLabelTypeAttack);
   tolua_constant(tolua_S,"DamageLabelTypeHit",DamageLabelTypeHit);

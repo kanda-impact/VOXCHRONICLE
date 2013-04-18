@@ -844,6 +844,7 @@ void MainScene::onFinishTracksCompleted() {
     CCTransitionFade* fade = CCTransitionFade::create(7.0f, ending, ccc3(255, 255, 255));
     CCDirector::sharedDirector()->replaceScene(fade);
     SaveData::sharedData()->setClearedForMap(_map->getIdentifier().c_str());
+    SaveData::sharedData()->addCountFor(SaveDataCountKeyClear); // クリア回数
     _map->performOnClear(_characterManager, _enemyManager);
     this->teardown();
   } else if (_map->isBossStage() && _level->getLevel() == _map->getMaxLevel()) { // ボスステージで、現在が最高レベルの時

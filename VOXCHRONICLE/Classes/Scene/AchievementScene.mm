@@ -19,9 +19,15 @@ bool AchievementScene::init() {
   UIWindow* window = [[UIApplication sharedApplication] keyWindow];
   UIViewController* controller = window.rootViewController;
   GKAchievementViewController* avc = [[[GKAchievementViewController alloc] init] autorelease];
-  AchievementSceneDelegate* delegate = [[[AchievementSceneDelegate alloc] init] autorelease];
+  // ToDo delegateオブジェクトがメモリリークしてるけどあとで直す
+  // delegateはweakプロパティになってるから云々
+  AchievementSceneDelegate* delegate = [[AchievementSceneDelegate alloc] init];
   avc.achievementDelegate = delegate;
   [controller presentModalViewController:avc animated:YES];
   
   return true;
+}
+
+AchievementScene::~AchievementScene() {
+  
 }

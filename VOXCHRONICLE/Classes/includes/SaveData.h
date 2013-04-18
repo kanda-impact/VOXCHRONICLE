@@ -33,6 +33,7 @@ typedef enum {
   SaveDataCountKeyHitDamage,
   SaveDataCountKeyAttackDamage,
   SaveDataCountKeyDictionaryCount,
+  SaveDataCountKeyClear, // クリア回数
   SaveDataCountKeyNum
 } SaveDataCountKey;
 
