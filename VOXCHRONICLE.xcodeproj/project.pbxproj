@@ -1435,6 +1435,8 @@
 		B0AADBE617114D9900FB214E /* t2pha3D1.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBE517114D9800FB214E /* t2pha3D1.lua */; };
 		B0AADBE817114DE400FB214E /* whale3D7.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBE717114DE200FB214E /* whale3D7.lua */; };
 		B0AADBEA171151A300FB214E /* kraken3D0.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBE9171151A100FB214E /* kraken3D0.lua */; };
+		B0C37E491719F62900B4BE55 /* kawaz_laugh.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0C37E481719F62900B4BE55 /* kawaz_laugh.lua */; };
+		B0C37E4B1719F97F00B4BE55 /* typeChange.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0C37E4A1719F97F00B4BE55 /* typeChange.lua */; };
 		B0C65BD7171969F600FF6723 /* charge_attack_kawaz.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0C65BD6171969F600FF6723 /* charge_attack_kawaz.lua */; };
 		B0D60BFA16FD89B50071C406 /* coin2C2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0D60BF916FD89B50071C406 /* coin2C2.lua */; };
 		B0D60BFC16FD89FF0071C406 /* heart2C2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0D60BFB16FD89FE0071C406 /* heart2C2.lua */; };
@@ -3238,6 +3240,8 @@
 		B0AADBE517114D9800FB214E /* t2pha3D1.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = t2pha3D1.lua; sourceTree = "<group>"; };
 		B0AADBE717114DE200FB214E /* whale3D7.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = whale3D7.lua; sourceTree = "<group>"; };
 		B0AADBE9171151A100FB214E /* kraken3D0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kraken3D0.lua; sourceTree = "<group>"; };
+		B0C37E481719F62900B4BE55 /* kawaz_laugh.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = kawaz_laugh.lua; path = enemySkills/kawaz_laugh.lua; sourceTree = "<group>"; };
+		B0C37E4A1719F97F00B4BE55 /* typeChange.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = typeChange.lua; path = enemySkills/typeChange.lua; sourceTree = "<group>"; };
 		B0C65BD6171969F600FF6723 /* charge_attack_kawaz.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = charge_attack_kawaz.lua; path = enemySkills/charge_attack_kawaz.lua; sourceTree = "<group>"; };
 		B0D60BF916FD89B50071C406 /* coin2C2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = coin2C2.lua; sourceTree = "<group>"; };
 		B0D60BFB16FD89FE0071C406 /* heart2C2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = heart2C2.lua; sourceTree = "<group>"; };
@@ -3800,8 +3804,10 @@
 				07F20F8C1712BA8C0099ACD8 /* charge_attack_last.lua */,
 				B0C65BD6171969F600FF6723 /* charge_attack_kawaz.lua */,
 				07F20F8D1712BA8C0099ACD8 /* equip.lua */,
+				B0C37E4A1719F97F00B4BE55 /* typeChange.lua */,
 				07F20F8E1712BA8C0099ACD8 /* mp_absorb.lua */,
 				07F20F941712C2E50099ACD8 /* laugh.lua */,
+				B0C37E481719F62900B4BE55 /* kawaz_laugh.lua */,
 				077931CF1715CE140023E46E /* revive.lua */,
 				072921411715E4490083F905 /* cure_all_skill.lua */,
 			);
@@ -7055,6 +7061,8 @@
 				07C5ADB91720E3B30072C57A /* chabo_voxtension1.caf in Resources */,
 				07C5ADBA1720E3B30072C57A /* chabo_voxtension2.caf in Resources */,
 				07C5ADBB1720E3B30072C57A /* chabo_voxtension3.caf in Resources */,
+				B0C37E491719F62900B4BE55 /* kawaz_laugh.lua in Resources */,
+				B0C37E4B1719F97F00B4BE55 /* typeChange.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
