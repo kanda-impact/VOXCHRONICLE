@@ -117,10 +117,6 @@
 		070EF5C516F8B424005ED3B2 /* chabo_miss.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59416F8B424005ED3B2 /* chabo_miss.caf */; };
 		070EF5C616F8B424005ED3B2 /* chabo_shield0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59516F8B424005ED3B2 /* chabo_shield0.caf */; };
 		070EF5C716F8B424005ED3B2 /* chabo_silent.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59616F8B424005ED3B2 /* chabo_silent.caf */; };
-		070EF5C816F8B424005ED3B2 /* chabo_tension0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59716F8B424005ED3B2 /* chabo_tension0.caf */; };
-		070EF5C916F8B424005ED3B2 /* chabo_tension1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59816F8B424005ED3B2 /* chabo_tension1.caf */; };
-		070EF5CA16F8B424005ED3B2 /* chabo_tension2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59916F8B424005ED3B2 /* chabo_tension2.caf */; };
-		070EF5CB16F8B424005ED3B2 /* chabo_tension3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59A16F8B424005ED3B2 /* chabo_tension3.caf */; };
 		070EF5CC16F8B424005ED3B2 /* chabo_voxattack0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59B16F8B424005ED3B2 /* chabo_voxattack0.caf */; };
 		070EF5CD16F8B424005ED3B2 /* chabo_voxattack1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59C16F8B424005ED3B2 /* chabo_voxattack1.caf */; };
 		070EF5CE16F8B424005ED3B2 /* chabo_voxattack2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 070EF59D16F8B424005ED3B2 /* chabo_voxattack2.caf */; };
@@ -878,6 +874,10 @@
 		07B8B61F170AFF3100DB739F /* FreePlayScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B8B61E170AFF3100DB739F /* FreePlayScene.cpp */; };
 		07B8B626170C599900DB739F /* AchievementScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B8B624170C599800DB739F /* AchievementScene.mm */; };
 		07B95E1B15F304120024C672 /* Track.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B95E1915F303E30024C672 /* Track.mm */; };
+		07C5ADB81720E3B30072C57A /* chabo_voxtension0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07C5ADB41720E3B20072C57A /* chabo_voxtension0.caf */; };
+		07C5ADB91720E3B30072C57A /* chabo_voxtension1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07C5ADB51720E3B20072C57A /* chabo_voxtension1.caf */; };
+		07C5ADBA1720E3B30072C57A /* chabo_voxtension2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07C5ADB61720E3B20072C57A /* chabo_voxtension2.caf */; };
+		07C5ADBB1720E3B30072C57A /* chabo_voxtension3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07C5ADB71720E3B30072C57A /* chabo_voxtension3.caf */; };
 		07C6064216164F810084708C /* hello.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07C6064116164F810084708C /* hello.lua */; };
 		07C6085816164FEE0084708C /* CCAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6064916164FED0084708C /* CCAction.cpp */; };
 		07C6085916164FEE0084708C /* CCActionCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07C6064B16164FED0084708C /* CCActionCamera.cpp */; };
@@ -1561,10 +1561,6 @@
 		070EF59416F8B424005ED3B2 /* chabo_miss.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_miss.caf; sourceTree = "<group>"; };
 		070EF59516F8B424005ED3B2 /* chabo_shield0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_shield0.caf; sourceTree = "<group>"; };
 		070EF59616F8B424005ED3B2 /* chabo_silent.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_silent.caf; sourceTree = "<group>"; };
-		070EF59716F8B424005ED3B2 /* chabo_tension0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_tension0.caf; sourceTree = "<group>"; };
-		070EF59816F8B424005ED3B2 /* chabo_tension1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_tension1.caf; sourceTree = "<group>"; };
-		070EF59916F8B424005ED3B2 /* chabo_tension2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_tension2.caf; sourceTree = "<group>"; };
-		070EF59A16F8B424005ED3B2 /* chabo_tension3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_tension3.caf; sourceTree = "<group>"; };
 		070EF59B16F8B424005ED3B2 /* chabo_voxattack0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_voxattack0.caf; sourceTree = "<group>"; };
 		070EF59C16F8B424005ED3B2 /* chabo_voxattack1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_voxattack1.caf; sourceTree = "<group>"; };
 		070EF59D16F8B424005ED3B2 /* chabo_voxattack2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_voxattack2.caf; sourceTree = "<group>"; };
@@ -2354,6 +2350,10 @@
 		07B8B624170C599800DB739F /* AchievementScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AchievementScene.mm; path = Classes/Scene/AchievementScene.mm; sourceTree = "<group>"; };
 		07B8B625170C599800DB739F /* AchievementScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AchievementScene.h; path = Classes/Scene/AchievementScene.h; sourceTree = "<group>"; };
 		07B95E1915F303E30024C672 /* Track.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = Track.mm; path = Classes/VISS/Track.mm; sourceTree = "<group>"; };
+		07C5ADB41720E3B20072C57A /* chabo_voxtension0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_voxtension0.caf; sourceTree = "<group>"; };
+		07C5ADB51720E3B20072C57A /* chabo_voxtension1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_voxtension1.caf; sourceTree = "<group>"; };
+		07C5ADB61720E3B20072C57A /* chabo_voxtension2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_voxtension2.caf; sourceTree = "<group>"; };
+		07C5ADB71720E3B30072C57A /* chabo_voxtension3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_voxtension3.caf; sourceTree = "<group>"; };
 		07C6064116164F810084708C /* hello.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hello.lua; sourceTree = "<group>"; };
 		07C6064916164FED0084708C /* CCAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCAction.cpp; sourceTree = "<group>"; };
 		07C6064A16164FED0084708C /* CCAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAction.h; sourceTree = "<group>"; };
@@ -3366,10 +3366,6 @@
 				070EF59416F8B424005ED3B2 /* chabo_miss.caf */,
 				070EF59516F8B424005ED3B2 /* chabo_shield0.caf */,
 				070EF59616F8B424005ED3B2 /* chabo_silent.caf */,
-				070EF59716F8B424005ED3B2 /* chabo_tension0.caf */,
-				070EF59816F8B424005ED3B2 /* chabo_tension1.caf */,
-				070EF59916F8B424005ED3B2 /* chabo_tension2.caf */,
-				070EF59A16F8B424005ED3B2 /* chabo_tension3.caf */,
 				070EF59B16F8B424005ED3B2 /* chabo_voxattack0.caf */,
 				070EF59C16F8B424005ED3B2 /* chabo_voxattack1.caf */,
 				070EF59D16F8B424005ED3B2 /* chabo_voxattack2.caf */,
@@ -3380,6 +3376,10 @@
 				070EF5A216F8B424005ED3B2 /* chabo_voxrun0.caf */,
 				070EF5A316F8B424005ED3B2 /* chabo_voxrun1.caf */,
 				070EF5A416F8B424005ED3B2 /* chabo_voxslash0.caf */,
+				07C5ADB41720E3B20072C57A /* chabo_voxtension0.caf */,
+				07C5ADB51720E3B20072C57A /* chabo_voxtension1.caf */,
+				07C5ADB61720E3B20072C57A /* chabo_voxtension2.caf */,
+				07C5ADB71720E3B30072C57A /* chabo_voxtension3.caf */,
 				070EF5A516F8B424005ED3B2 /* chabo_wait0.caf */,
 			);
 			name = chabo;
@@ -6619,10 +6619,6 @@
 				070EF5C516F8B424005ED3B2 /* chabo_miss.caf in Resources */,
 				070EF5C616F8B424005ED3B2 /* chabo_shield0.caf in Resources */,
 				070EF5C716F8B424005ED3B2 /* chabo_silent.caf in Resources */,
-				070EF5C816F8B424005ED3B2 /* chabo_tension0.caf in Resources */,
-				070EF5C916F8B424005ED3B2 /* chabo_tension1.caf in Resources */,
-				070EF5CA16F8B424005ED3B2 /* chabo_tension2.caf in Resources */,
-				070EF5CB16F8B424005ED3B2 /* chabo_tension3.caf in Resources */,
 				070EF5CC16F8B424005ED3B2 /* chabo_voxattack0.caf in Resources */,
 				070EF5CD16F8B424005ED3B2 /* chabo_voxattack1.caf in Resources */,
 				070EF5CE16F8B424005ED3B2 /* chabo_voxattack2.caf in Resources */,
@@ -7055,6 +7051,10 @@
 				0794F686171AD3990016917D /* 1-b_voxtension3.caf in Resources */,
 				0794F687171AD3990016917D /* 1-b_voxwait0.caf in Resources */,
 				0794F688171AD3990016917D /* 1-b_voxwait1.caf in Resources */,
+				07C5ADB81720E3B30072C57A /* chabo_voxtension0.caf in Resources */,
+				07C5ADB91720E3B30072C57A /* chabo_voxtension1.caf in Resources */,
+				07C5ADBA1720E3B30072C57A /* chabo_voxtension2.caf in Resources */,
+				07C5ADBB1720E3B30072C57A /* chabo_voxtension3.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

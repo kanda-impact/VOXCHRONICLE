@@ -30,6 +30,7 @@ MainMenuScene::MainMenuScene(bool fromTitle) {
                                                       menu_selector(MainMenuScene::onTutorialPressed));
   CCMenuItemImage* extra = CCMenuItemImage::create("mainmenu_extra.png",
                                                    "mainmenu_extra_pressed.png",
+                                                   "mainmenu_extra_disable.png",
                                                    this,
                                                    menu_selector(MainMenuScene::onExtraPressed));
   extra->setEnabled(SaveData::sharedData()->getCountFor(SaveDataCountKeyClear) > 0); // クリア回数が1回以上の時のみ解放
