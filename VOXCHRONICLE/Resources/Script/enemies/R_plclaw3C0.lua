@@ -1,12 +1,12 @@
 Enemy = {
   species = "R_plclaw",
   level = 1,
-  hp = 80,
+  hp = 36,
   getExp = function(default)
       return 0
   end,
   item = EnemyItemNone,
-  type = SkillTypeNormal,
+  type = SkillTypePhysical,
 }
 
 return Enemy
