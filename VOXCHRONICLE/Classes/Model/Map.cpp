@@ -69,6 +69,7 @@ Map::Map(const char* mapName) {
 }
 
 Map::~Map() {
+  delete _nextMaps;
   delete _fixedEnemyTable;
   if (_wayMusic != NULL) {
     _wayMusic->release();

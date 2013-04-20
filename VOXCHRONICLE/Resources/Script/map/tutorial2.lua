@@ -9,7 +9,13 @@ Map = {
   initialLevel = 21,
   maxLevel = 30,
   getEnemyTable = function(level)
-    return {T_moth7 = 15}
+    return {}
+  end,
+  onBack = function(self, characterManager, enemyManager)
+    if not enemyManager:getEnemies() or enemyManager:getEnemies():count() == 0 then
+      local enemy = enemyManager:popEnemyAt("T_moth7", 4, 1)
+      enemy:setExp(60)
+    end
   end,
   onLevelUp = function(self, characterManager, enemyManager)
     self.__IRegister__:clearRegister()

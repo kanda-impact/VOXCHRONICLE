@@ -45,7 +45,8 @@ typedef enum {
   MainBackSceneTitle,
   MainBackSceneMainMenu,
   MainBackSceneTutorial,
-  MainBackSceneFreePlay
+  MainBackSceneFreePlay,
+  MainBackSceneDebug
 } MainBackScene;
 
 using namespace VISS;
@@ -72,8 +73,6 @@ class MainScene : public CCLayer {
   VCState _state;
   
   MusicManager* _musicManager;
-  
-  CCSet* _pausedTargets;
   
   void onEnterTransitionDidFinish();
   virtual void onExit();

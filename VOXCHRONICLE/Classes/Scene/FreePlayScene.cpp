@@ -10,7 +10,6 @@
 #include "LuaObject.h"
 #include "macros.h"
 #include "Map.h"
-#include "MainScene.h"
 #include "FileUtils.h"
 #include "ExtraScene.h"
 #include "SaveData.h"
@@ -43,6 +42,11 @@ bool FreePlayScene::init(const char* script, bool unlock) {
   CCArray* items = CCArray::create();
   for (int i = 0; i < 3; ++i) {
     items->addObject(CCArray::create());
+  }
+  
+  _backScene = MainBackSceneFreePlay;
+  if (string(script) == "debug.lua") {
+    _backScene = MainBackSceneDebug;
   }
   
   CCDirector* director = CCDirector::sharedDirector();
@@ -109,7 +113,7 @@ void FreePlayScene::onMenuItemPressed(cocos2d::CCObject *sender) {
   MainScene* layer = new MainScene();
   layer->autorelease();
   layer->init(map);
-  layer->setBackScene(MainBackSceneFreePlay);
+  layer->setBackScene(_backScene);
   CCScene* scene = CCScene::create();
   scene->addChild(layer);
   CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);

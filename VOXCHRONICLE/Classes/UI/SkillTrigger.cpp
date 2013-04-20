@@ -83,7 +83,7 @@ void SkillTrigger::setSkill(Skill* skill) {
     icon->setScale(0.5f);
     
   }
-  //this->setSkillTriggerState(SkillTriggerStateNormal);
+  this->setSkillTriggerState(SkillTriggerStateNormal);
 }
 
 int SkillTrigger::getSkillTriggerState() {

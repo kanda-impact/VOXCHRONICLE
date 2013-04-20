@@ -29,6 +29,8 @@ Species::Species(const char* identifier) {
   } else {
     _enemySize = CCSizeMake(0, 0);
   }
+  _sheet = CCTextureCache::sharedTextureCache()->addImage(this->getImageName().c_str());
+  _sheet->retain();
 }
 
 void Species::purgeSpeciesCache() {
@@ -53,7 +55,9 @@ Species* Species::getSpecies(const char *identifier) {
 }
 
 Species::~Species() {
+  CCTextureCache::sharedTextureCache()->removeTexture(_sheet);
   _lua->release();
+  _sheet->release();
   CCLog("species %s is released", this->getIdentifier().c_str());
 }
 
@@ -145,4 +149,8 @@ string Species::getHabitat() {
 
 CCSize Species::getEnemySize() {
   return _enemySize;
+}
+
+CCTexture2D* Species::getSheet() {
+  return _sheet;
 }

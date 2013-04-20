@@ -57,6 +57,8 @@ void PauseLayer::buildUI() {
   _confirmMenu->retain();
   _descriptionLabel->retain();
   
+  _pausedTargets = new CCSet();
+  
   this->addChild(_topMenu);
 }
 
@@ -64,6 +66,9 @@ PauseLayer::~PauseLayer() {
   _topMenu->release();
   _confirmMenu->release();
   _descriptionLabel->release();
+  if (_pausedTargets) {
+    _pausedTargets->release();
+  }
 }
 
 void PauseLayer::registerWithTouchDispatcher() {
@@ -87,7 +92,6 @@ void PauseLayer::onTitlePressed(CCObject* sender) {
 void PauseLayer::onCancelPressed(CCObject* sender) {
   MainScene* scene = (MainScene*)this->getParent();
   scene->setPause(false);
-  scene->release();
 }
 
 void PauseLayer::onYesPressed(CCObject* sender) {
@@ -96,10 +100,8 @@ void PauseLayer::onYesPressed(CCObject* sender) {
   this->removeFromParentAndCleanup(true);
   if (_state == PauseLayerStateConfirmReplay) {
     this->replayButtonPressed(NULL);
-    scene->release();
   } else if (_state == PauseLayerStateConfirmTitle) {
     this->titleButtonPressed(NULL);
-    scene->release();
   }
 }
 
@@ -122,4 +124,18 @@ void PauseLayer::changeState(PauseLayerState newState) {
     _descriptionLabel->setVisible(true);
   }
   _state = newState;
+}
+
+CCSet* PauseLayer::getPausedTargets() {
+  return _pausedTargets;
+}
+
+void PauseLayer::setPausedTargets(cocos2d::CCSet *sets) {
+  if (_pausedTargets) {
+    _pausedTargets->release();
+  }
+  _pausedTargets = sets;
+  if (sets) {
+    sets->retain();
+  }
 }

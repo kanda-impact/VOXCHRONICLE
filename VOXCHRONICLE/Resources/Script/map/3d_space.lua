@@ -59,8 +59,8 @@ Map = {
       enemyManager:popEnemyAt("knight3D1", 7, 0)
       enemyManager:popEnemyAt("knight3D2", 7, 2)
     elseif level == 27 then
-      enemyManager:popEnemyAt("fortress3D0", 7, 0)
-      enemyManager:popEnemyAt("fortress3D0", 7, 2)
+      enemyManager:popEnemyAt("fortress3D1", 7, 0)
+      enemyManager:popEnemyAt("fortress3D2", 7, 2)
 
       CCTextureCache:sharedTextureCache():removeTextureForKey("knight.png")
 

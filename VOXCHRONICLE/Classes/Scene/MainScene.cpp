@@ -79,8 +79,6 @@ bool MainScene::init(Map* map) {
   _effectLayer = EffectLayer::sharedLayer();
   _effectLayer->reloadEffects();
   
-  _pausedTargets = NULL;
-  
   _currentSkillInfo.skillTrackName = "";
   _currentSkillInfo.type = SkillPerformTypeNone;
   _currentSkillInfo.skill = NULL;
@@ -162,9 +160,6 @@ MainScene::~MainScene() {
   _map->release();
   _musicManager->release();
   
-  if (_pausedTargets != NULL) {
-    _pausedTargets->release();
-  }
   CCLog("main scene is released");
 }
 
@@ -598,10 +593,6 @@ void MainScene::registerWithTouchDispatcher() {
 }
 
 bool MainScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
-  CCScene* scene = CCScene::create();
-  TitleScene* title = TitleScene::create();
-  scene->addChild(title);
-  CCDirector::sharedDirector()->replaceScene(scene);
   if (_state == VCStateWindow) {
     PopupWindow* layer = _effectLayer->getPopupWindow();
     if (layer) {
@@ -860,20 +851,25 @@ void MainScene::onFinishTracksCompleted() {
 
 void MainScene::setPause(bool pause) {
   CCScheduler* scheduler = CCDirector::sharedDirector()->getScheduler();
-  if (pause && _pausedTargets == NULL) {
+  if (pause && !this->getChildByTag(PAUSE_LAYER_TAG)) {
     PauseLayer* layer = new PauseLayer(this);
     layer->setMainBackScene(_backScene);
     layer->autorelease();
-    _pausedTargets = scheduler->pauseAllTargets();
-    _pausedTargets->retain();
+    CCSet* targets = scheduler->pauseAllTargets();
+    targets->removeObject(this);
+    layer->setPausedTargets(targets);
     _musicManager->getMusic()->pause();
     this->addChild(layer, 1000, PAUSE_LAYER_TAG);
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/pause.mp3").c_str());
   } else {
-    _musicManager->getMusic()->play();
-    scheduler->resumeTargets(_pausedTargets);
-    _pausedTargets = NULL;
-    this->removeChildByTag(PAUSE_LAYER_TAG, true);
+    PauseLayer* layer = (PauseLayer*)this->getChildByTag(PAUSE_LAYER_TAG);
+    if (layer) {
+      _musicManager->getMusic()->play();
+      scheduler->resumeTarget(this);
+      scheduler->resumeTargets(layer->getPausedTargets());
+      layer->setPausedTargets(NULL);
+      this->removeChildByTag(PAUSE_LAYER_TAG, true);
+    }
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cancel.mp3").c_str());
   }
 }

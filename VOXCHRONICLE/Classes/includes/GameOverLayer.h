@@ -22,8 +22,8 @@ class GameOverLayer :public CCLayer {
   void addGameOverButtons();
  protected:
   virtual void buildUI();
-  void replayButtonPressed(CCObject *sender);
-  void titleButtonPressed(CCObject *sender);
+  virtual void replayButtonPressed(CCObject *sender);
+  virtual void titleButtonPressed(CCObject *sender);
  public:
   GameOverLayer(MainScene* main);
   virtual ~GameOverLayer();

@@ -98,16 +98,12 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
   _exp = this->getExpFromLua();
   _attack = _lua->getInt("attack");
   _frameSprite = NULL;
-  stringstream ss;
-  ss << _species->getImageName().c_str();
-  _sheet = CCTextureCache::sharedTextureCache()->addImage(ss.str().c_str());
-  _sheet->retain();
   _enemySize = _species->getEnemySize();
   if (_enemySize.width == 0 || _enemySize.height == 0) {
-    int width = _sheet->getContentSize().width / _species->getAnimationFrames();
+    int width = _species->getSheet()->getContentSize().width / _species->getAnimationFrames();
     _enemySize = CCSizeMake(width, width);
   }
-  bool success = (bool)this->initWithTexture(_sheet, CCRectMake(0, 0,
+  bool success = (bool)this->initWithTexture(_species->getSheet(), CCRectMake(0, 0,
                                                                 _enemySize.width,
                                                                 _enemySize.height));
   
@@ -122,6 +118,7 @@ Enemy* Enemy::initWithScriptName(const char* scriptName) {
 }
 
 Enemy* Enemy::initWithSpecies(const char* speciesName) {
+  // ToDo 実装ゴミってるから共通化
   stringstream file;
   file << "Script/enemies/" << speciesName;
   _identifier = speciesName;
@@ -146,14 +143,12 @@ Enemy* Enemy::initWithSpecies(const char* speciesName) {
   _frameSprite = NULL;
   stringstream ss;
   ss << _species->getImageName().c_str();
-  _sheet = CCTextureCache::sharedTextureCache()->addImage(ss.str().c_str());
-  _sheet->retain();
   _enemySize = _species->getEnemySize();
   if (_enemySize.width == 0 || _enemySize.height == 0) {
-    int width = _sheet->getContentSize().width / _species->getAnimationFrames();
+    int width = _species->getSheet()->getContentSize().width / _species->getAnimationFrames();
     _enemySize = CCSizeMake(width, width);
   }
-  bool success = (bool)this->initWithTexture(_sheet, CCRectMake(0, 0,
+  bool success = (bool)this->initWithTexture(_species->getSheet(), CCRectMake(0, 0,
                                                                 _enemySize.width,
                                                                 _enemySize.height));
   
@@ -180,7 +175,9 @@ Enemy::~Enemy() {
     _lua->release();
   }
   _species->release();
-  _sheet->release();
+  if (_frameSprite) {
+    _frameSprite->release();
+  }
   CCLog("enemy %s is released", this->getIdentifier().c_str());
 }
 
@@ -304,7 +301,8 @@ int Enemy::getExp() {
 }
 
 void Enemy::setRowAndCol(int row, float col) {
-  CCPoint p = EnemyManager::calcLinePosition(row, col);
+  CCPoint p = CCPointZero;
+  EnemyManager::calcLinePosition(row, col, p);
   this->setPosition(ccp(p.x, p.y));
   this->setAnchorPoint(ccp(0.5f, 0.0f));
   // 並び順の変更
@@ -438,14 +436,14 @@ bool Enemy::setAnimationAndFrame(int xOffset, int yOffset, int frames, bool hasF
     this->removeChildByTag(EnemyTagFrame, true); // フレームを取る
   }
   stringstream ss;
-  bool success = _sheet != NULL;
+  bool success = _species->getSheet() != NULL;
   
   if (success) {
     int width = _enemySize.width;
     int height = _enemySize.height;
     CCAnimation* animation = CCAnimation::create();
     for (int i = 0; i < frames; ++i) {
-      CCSpriteFrame* frame = CCSpriteFrame::createWithTexture(_sheet, CCRectMake(xOffset * width + width * i, yOffset * height, width, height));
+      CCSpriteFrame* frame = CCSpriteFrame::createWithTexture(_species->getSheet(), CCRectMake(xOffset * width + width * i, yOffset * height, width, height));
       animation->addSpriteFrame(frame);
     }
     animation->setLoops(-1);
@@ -472,10 +470,10 @@ bool Enemy::setAnimationAndFrame(int xOffset, int yOffset, int frames, bool hasF
 CCSprite* Enemy::createFrameSprite(int xOffset, int yOffset, int frames) {
   int width = _enemySize.width;
   int height = _enemySize.height;
-  CCSprite* frame = CCSprite::createWithTexture(_sheet, CCRectMake(xOffset * width, yOffset * height, width, height));
+  CCSprite* frame = CCSprite::createWithTexture(_species->getSheet(), CCRectMake(xOffset * width, yOffset * height, width, height));
   CCAnimation* animation = CCAnimation::create();
   for (int i = 0; i < frames; ++i) {
-    CCSpriteFrame* frame = CCSpriteFrame::createWithTexture(_sheet, CCRectMake(xOffset * width + width * i, yOffset * height, width, height));
+    CCSpriteFrame* frame = CCSpriteFrame::createWithTexture(_species->getSheet(), CCRectMake(xOffset * width + width * i, yOffset * height, width, height));
     animation->addSpriteFrame(frame);
   }
   animation->setLoops(-1);

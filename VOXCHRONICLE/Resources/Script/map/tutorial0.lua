@@ -33,7 +33,7 @@ Map = {
 
 急いでいるときには便利だけど、モンスターの
 いないうちにこうげき準備していた方が良いこと
-も多いから、ご利用は計画的に．．．ね？
+も多いから、ご利用は計画的に･･････ね？
         ]])
         end
       end
@@ -78,9 +78,9 @@ Map = {
         popup:setText(0, "ぶつかるとダメージ！", [[
 ぎゃあん！いったーい！！
 モンスターを倒しきれなくてぶつかっちゃうと
-わたしたちの体力（HP）がへっちゃうの！
+わたしたちの体力(HP)がへっちゃうの！
 
-体力（HP）が0になるとゲームオーバー。
+体力(HP)が0になるとゲームオーバー。
 やり直しになっちゃうから気をつけてね！]])
         self.__IRegister__:setBool('popuped', true)
       end
@@ -100,6 +100,7 @@ Map = {
         local enemies = {"T_ginet", "T_flower"}
         local index = math.min(killedEnemyCount + 1, 2)
         local enemy = enemyManager:popEnemyAt(enemies[index], 5, 1)
+        enemy:setAttack(0)
         if index == 2 then
           enemy:setExp(60)
         else
@@ -137,12 +138,12 @@ Map = {
 いちばん手前のモンスターから後ろ4列分まで
 しか届かないから、注意してね！
           ]])
-          enemyManager:popEnemyAt("T_moth7", 1, 0)
-          enemyManager:popEnemyAt("T_moth7", 1, 1)
-          enemyManager:popEnemyAt("T_moth7", 1, 2)
-          enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, 0)
-          enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, 1)
-          enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, 2)
+          enemyManager:popEnemyAt("T_moth7", 1, 0):setExp(10)
+          enemyManager:popEnemyAt("T_moth7", 1, 1):setExp(10)
+          enemyManager:popEnemyAt("T_moth7", 1, 2):setExp(10)
+          enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, 0):setExp(10)
+          enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, 1):setExp(10)
+          enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, 2):setExp(10)
         end
       end
     elseif level == 8 then
@@ -167,7 +168,7 @@ Map = {
           local slime = enemyManager:popEnemyAt("T_slime60",5,1) -- スライム再生成
           slime:setExp(60)
         else -- ポップアップ前
-          if isShield then --前に盾状態だったら
+          if isShield or (characterManager:getLastSkill() and characterManager:getLastSkill():getIdentifier() == "shield") then --前に盾状態だったら
             self.__IRegister__:setBool("popuped", true) -- ポップアップフラグ立てる
             local popup = layer:addPopupWindow(2)--ＴＡＷＡＳＩ「盾で防げたらの条件を追加してちょ」
             popup:setText(0, "『ガード』の注意点", [[
@@ -181,22 +182,20 @@ Map = {
 あと『ガード』は無敵になれるけど、こうげきを
 防いだあとすぐに、もういちど『ガード』する
 ことはできないから、タイミングを考えようね。
-
-モンスターの中には、わたしたちにぶつからないで
-手前で立ち止まっちゃう奴とかもいるしね！
 ]])
             enemyManager:popEnemyAt("T_slime60",5,1)
           else --前に使ったスキルが盾でない時
             local popup = layer:addPopupWindow(1)
             popup:setText(0, "ピンチのときは『ガード』", [[
 ちょっと、ちょっと、オクス！
-あの敵には攻撃が効かないんだってば！
+あの敵は体力が高くて
+今のオクスじゃ倒しきれないんだってば！
 今はガマンしてモンスターをやりすごして。
 『ガード』のワザは 盾 のマークをタッチ！
 
 回復してあげるからもう一回頑張ってみて
 ]])
-            local enemy = enemyManager:popEnemyAt("T_geekT3", 3, 1) -- 盾持ちを生成
+            local enemy = enemyManager:popEnemyAt("T_tnt", 3, 1) -- 盾持ちを生成すると混同しちゃうからHPの高いヤツを出す
             enemy:setExp(0)
             local maxHP = characterManager:getMaxHP()
             if characterManager:getHP() <= maxHP then
@@ -220,6 +219,7 @@ Map = {
 ]])
         local enemy = enemyManager:popEnemyAt("T_tnt9", 4, 1)
         enemy:setExp(60)
+        enemy:setHP(25)
         local maxHP = characterManager:getMaxHP()
         if characterManager:getHP() <= maxHP then
           characterManager:addHP(maxHP) -- ダメージを受けているはずなので全快させる
@@ -375,7 +375,7 @@ Map = {
 『パワー』 をためると次のワザの効果がアップ！
 
 『アタック』なら、3回攻撃しないと倒せない
-モンスターも１回で倒せちゃったりするよ！
+モンスターも1回で倒せちゃったりするよ！
 ]])
       popup:setText(2, "『パワー』は使いきり！", [[
 でもね『パワー』 は、ワザを使うと、すぐに
@@ -415,16 +415,19 @@ Map = {
       enemyManager:popEnemyAt("T_geekT3",3,1)
       local popup = layer:addPopupWindow(2)
       popup:setText(0, "ピンチのときは『ガード』", [[
-んん！？あのモンスターは『大盾』を
-持ってるね！くわしくはあとで説明する
-けど、オクスのこうげきワザが効かないの。
+わっ！あのモンスターはかなりHPが高いみたいね
 
-私なら何とかできるけど、今は
-とりあえず『ガード』で防ごうか。
+今のオクスじゃ太刀打ちできないみたい
+ちょっと悔しいけれど、
+ここは『ガード』で防いでみようか
 ]])
       popup:setText(1, "ピンチのときは『ガード』", [[
-『ガード』のワザは 盾 のマークをタッチ！
-盾を構えて『ガード』状態になるよ。      
+『ガード』のワザは 盾のマークをタッチ！
+盾を構えて『ガード』状態になるよ
+
+『ガード』は次にワザを入力するまでは
+ダメージを防ぐまでずっと有効だから
+慌てずに使ってみて！
 ]])
 
     elseif level == 9 then
@@ -434,7 +437,7 @@ Map = {
 『ノックバック』だよ！
 たつまきマークをタッチして使おう。
 
-『ノックバック』はモンスターを１匹、後ろに
+『ノックバック』はモンスターを1匹、後ろに
 ふっとばすことができるんだ。使いドコロが
 難しいけど、使いこなすと戦いが楽になるよ
 ]])

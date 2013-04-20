@@ -13,10 +13,13 @@
 
 #include "cocos2d.h"
 
+#include "MainScene.h"
+
 using namespace cocos2d;
 
 class FreePlayScene :public CCLayer {
  private:
+  MainBackScene _backScene;
   void onMenuItemPressed(CCObject* sender);
  public:
   virtual bool init(const char* script, bool unlock);

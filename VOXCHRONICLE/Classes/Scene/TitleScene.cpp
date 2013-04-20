@@ -53,23 +53,6 @@ bool TitleScene::init() {
   menu->setPosition(ccp(winSize.width / 2, 80));
   this->addChild(menu);
   
-  int r = rand() % 1024;
-  if (r == 0) {
-    CCSprite* mask = CCSprite::create("easter0.png");
-    CCAnimation* animation = CCAnimation::create();
-    animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("easter0.png").c_str(), CCRectMake(0, 0, 480, 320)));
-    animation->addSpriteFrame(CCSpriteFrame::create(FileUtils::getFilePath("easter1.png").c_str(), CCRectMake(0, 0, 480, 320)));
-    animation->setLoops(10);
-    animation->setDelayPerUnit(10.0 / 60.0);
-    mask->runAction(CCSequence::create(CCAnimate::create(animation),
-                                       CCFadeOut::create(1.0f),
-                                       CCPlace::create(ccp(1000, 1000)),
-                                       NULL));
-    this->addChild(mask);
-    mask->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
-    
-  }
-  
   CCMenuItemLabel* seOff = CCMenuItemLabel::create(CCLabelTTF::create("SE OFF", FONT_NAME, 24));
   seOff->setTag(0);
   CCMenuItemLabel* seOn = CCMenuItemLabel::create(CCLabelTTF::create("SE ON", FONT_NAME, 24));
@@ -78,7 +61,7 @@ bool TitleScene::init() {
   item->setSelectedIndex(SimpleAudioEngine::sharedEngine()->getEffectsVolume() == 0 ? 0 : 1);
   CCMenu* seMenu = CCMenu::create(item, NULL);
   seMenu->setPosition(ccp(280, 20));
-  //this->addChild(seMenu);
+  this->addChild(seMenu);
   
   CCLabelTTF* credit = CCLabelTTF::create("2009-2013 Kawaz all rights reserved.", "Helvetica", 12);
   credit->setColor(ccc3(220, 220, 220));
@@ -96,12 +79,13 @@ void TitleScene::nextScene(CCLayer* layer) {
 }
 
 void TitleScene::onEnterTransitionDidFinish() {
-  //CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(FileUtils::getFilePath("Music/general/title.mp3").c_str(), true);
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(FileUtils::getFilePath("Music/general/title.mp3").c_str(), true);
 }
 
 void TitleScene::onStartButtonPressed(CCObject* sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/start.mp3").c_str());
-  MainScene* scene = MainScene::create();
+  MainMenuScene* scene = new MainMenuScene(true);
+  scene->autorelease();
   CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
   nextScene(scene);
 }

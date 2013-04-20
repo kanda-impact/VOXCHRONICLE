@@ -40,6 +40,7 @@ class Species :public CCObject {
   bool _hasFrame;
   LuaObject* _lua;
   CCSize _enemySize;
+  CCTexture2D* _sheet;
   shared_ptr<CCLuaValueArray> _disableSkills;
  public:
   static Species* getSpecies(const char* identifier);
@@ -60,6 +61,7 @@ class Species :public CCObject {
   LuaObject* getLuaObject();
   bool isEnableSkill(Skill* skill);
   CCSize getEnemySize();
+  CCTexture2D* getSheet();
 };
 
 #endif /* defined(__VOXCHRONICLE__Species__) */
