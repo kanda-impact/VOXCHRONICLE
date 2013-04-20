@@ -96,7 +96,7 @@ void TitleScene::nextScene(CCLayer* layer) {
 }
 
 void TitleScene::onEnterTransitionDidFinish() {
-  //CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(FileUtils::getFilePath("Music/general/title.mp3").c_str(), true);
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(FileUtils::getFilePath("Music/general/title.mp3").c_str(), true);
 }
 
 void TitleScene::onStartButtonPressed(CCObject* sender) {

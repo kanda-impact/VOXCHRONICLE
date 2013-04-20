@@ -23,6 +23,7 @@
  */
 
 #import "SimpleAudioEngine_objc.h"
+#import "OALSimpleAudio.h"
 
 @implementation SimpleAudioEngine
 
@@ -83,38 +84,39 @@ static CDBufferManager *bufferManager = nil;
 #pragma mark SimpleAudioEngine - background music
 
 -(void) preloadBackgroundMusic:(NSString*) filePath {
-    [am preloadBackgroundMusic:filePath];
+  [[OALSimpleAudio sharedInstance] preloadBg:filePath];
 }
 
 -(void) playBackgroundMusic:(NSString*) filePath
 {
-    [am playBackgroundMusic:filePath loop:TRUE];
+  [[OALSimpleAudio sharedInstance] playBg:filePath loop:YES];
+
 }
 
 -(void) playBackgroundMusic:(NSString*) filePath loop:(BOOL) loop
 {
-    [am playBackgroundMusic:filePath loop:loop];
+  [[OALSimpleAudio sharedInstance] playBg:filePath loop:loop];
 }
 
 -(void) stopBackgroundMusic
 {
-    [am stopBackgroundMusic];
+  [[OALSimpleAudio sharedInstance] stopBg];
 }
 
 -(void) pauseBackgroundMusic {
-    [am pauseBackgroundMusic];
-}    
+  [OALSimpleAudio sharedInstance].backgroundTrack.paused = YES;
+}
 
 -(void) resumeBackgroundMusic {
-    [am resumeBackgroundMusic];
-}    
+  [OALSimpleAudio sharedInstance].backgroundTrack.paused = NO;
+}
 
 -(void) rewindBackgroundMusic {
     [am rewindBackgroundMusic];
 }
 
 -(BOOL) isBackgroundMusicPlaying {
-    return [am isBackgroundMusicPlaying];
+    return [OALSimpleAudio sharedInstance].backgroundTrack.playing;
 }    
 
 -(BOOL) willPlayBackgroundMusic {
@@ -130,12 +132,8 @@ static CDBufferManager *bufferManager = nil;
 
 -(ALuint) playEffect:(NSString*) filePath loop:(BOOL) loop pitch:(Float32) pitch pan:(Float32) pan gain:(Float32) gain
 {
-    int soundId = [bufferManager bufferForFile:filePath create:YES];
-    if (soundId != kCDNoBuffer) {
-        return [soundEngine playSound:soundId sourceGroupId:0 pitch:pitch pan:pan gain:gain loop:loop];
-    } else {
-        return CD_MUTE;
-    }    
+  [[OALSimpleAudio sharedInstance] playEffect:filePath volume:1.0 pitch:pitch pan:pan loop:loop];
+  return NULL;
 }
 
 -(void) stopEffect:(ALuint) soundId {
@@ -207,23 +205,27 @@ static CDBufferManager *bufferManager = nil;
 #pragma mark SimpleAudioEngine - BackgroundMusicVolume
 -(float) backgroundMusicVolume
 {
-    return am.backgroundMusic.volume;
+    return [OALSimpleAudio sharedInstance].backgroundTrack.volume;
+    //return am.backgroundMusic.volume;
 }    
 
 -(void) setBackgroundMusicVolume:(float) volume
 {
-    am.backgroundMusic.volume = volume;
+    [OALSimpleAudio sharedInstance].backgroundTrack.volume = volume;
+    //am.backgroundMusic.volume = volume;
 }    
 
 #pragma mark SimpleAudioEngine - EffectsVolume
 -(float) effectsVolume
 {
-    return am.soundEngine.masterGain;
+    return [OALSimpleAudio sharedInstance].effectsVolume;
+    //return am.soundEngine.masterGain;
 }    
 
 -(void) setEffectsVolume:(float) volume
 {
-    am.soundEngine.masterGain = volume;
+    [OALSimpleAudio sharedInstance].effectsVolume = volume;
+    //am.soundEngine.masterGain = volume;
 }    
 
 -(CDSoundSource *) soundSourceForFile:(NSString*) filePath {
