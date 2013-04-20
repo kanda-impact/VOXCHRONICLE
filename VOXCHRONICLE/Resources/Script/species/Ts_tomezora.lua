@@ -13,7 +13,7 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
-たわしさんまかせた
+２本の長い触手が電極の役割を果たしている。たくさん繋がるとその分強力になる。
 ]],
   habitat = "",
   animationFrames = 4,
