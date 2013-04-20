@@ -9,7 +9,9 @@ Map = {
   initialLevel = 11,
   maxLevel = 21,
   getEnemyTable = function(level)
-    return {}
+    if level == 20 then
+      return {T_tomezora2 = 1, T_tetufez2 = 2, T_geek2 = 1, T_leaf2 = 1, T_flower2 = 1}
+    end
   end,
   onBack = function(self, characterManager, enemyManager)
     math.random(100)
@@ -102,7 +104,7 @@ Map = {
         end
         self.__IRegister__:setRegister("waitTurn", waitTurn)
       end
-      
+
       -- 敵が1体もいなくなったらモンスター生成
       if enemyCount == 0 then
         -- とてもわかりにくいけど最初のターン以外の場合
@@ -146,61 +148,33 @@ Map = {
       if enemyCount == 0 and healedMp then
         enemyManager:popEnemyAt("T_geek", 3, 1):setExp(60)
       end
-    elseif level == 16 or level == 17 then
-      local isAnnihilation = self.__IRegister__:getBool("isAnnihilation")
-      local popuped = self.__IRegister__:getBool("popuped")
-      local lastDischargeMagic = self.__IRegister__:getBool("lastDischargeMagic")
+    elseif level == 16 or level == 17 or level == 18 or level == 19 then
       -- 敵が1体もいなくなったらモンスター生成
       if enemyCount == 0 then
-        if isAnnihilation then
-          if not popuped and level == 16 then
-            self.__IRegister__:setBool("popuped", true)
-            local popup = layer:addPopupWindow(1)
-            --＊ここに戦闘を入れる　青い敵をだして、倒したら
-            --赤い敵を出して、ポップアップ
-            popup:setText(0, "『耐性』モンスターは光る！", [[
-で、赤く光るモンスターは『魔法耐性』。
-私、ラスカのこうげきワザが効きにくいの。
-
-『耐性』モンスターがいたら、なるべく『チェンジ』して
-戦わないと、いつの間にか追いつめられちゃうわ！
-気をつけてね！
-]])
-            enemyManager:popEnemyAt("slime3B1", 5, 1)
-          else
-            if lastDischargeMagic then
-              self.__IRegister__:setBool("lastDischargeMagic", false)
-              enemyManager:popEnemyAt("slime3B1", 5, 1)
-            else
-              self.__IRegister__:setBool("lastDischargeMagic", true)
-              enemyManager:popEnemyAt("wisp3A2", 5, 1)
-            end
-          end
-        else
-          enemyManager:popEnemyAt("wisp3A2", 5, 1)
-          self.__IRegister__:setBool("isAnnihilation", true) -- 最初からいる敵が全滅した
-        end
-      end
-    elseif level == 18 or level == 19 then
-      local lastDischargeMagic = self.__IRegister__:getBool("lastDischargeMagic")
-      -- 敵が1体もいなくなったらモンスター生成
-      if enemyCount == 0 then
-        if lastDischargeMagic then
-          self.__IRegister__:setBool("lastDischargeMagic", false)
-          enemyManager:popEnemyAt("cryst3C4", MAX_ROW - 1, 1)
-        else
-          self.__IRegister__:setBool("lastDischargeMagic", true)
-          enemyManager:popEnemyAt("naut3C5", MAX_ROW - 1, 1)
+        if level == 16 then
+          local enemy = enemyManager:popEnemyAt("T_flower", 3, 1)
+          enemy:setExp(60)
+          enemy:setHP(18)
+          enemy:setSkillType(SkillTypeMagical)
+        elseif level == 17 then
+          local enemy = enemyManager:popEnemyAt("T_slime12", 3, 1)
+          enemy:setExp(60)
+          enemy:setHP(22)
+          enemy:setSkillType(SkillTypePhysical)
+        elseif level == 18 then
+          local enemy = enemyManager:popEnemyAt("T_flower", 3, 1)
+          enemy:setExp(60)
+          enemy:setHP(12)
+          enemy:setItem(EnemyItemBarrier)
+        elseif level == 19 then
+          local enemy = enemyManager:popEnemyAt("T_leaf", 3, 1)
+          enemy:setExp(60)
+          enemy:setHP(12)
+          enemy:setItem(EnemyItemShield)
         end
       end
     elseif level == 20 then
-      -- 敵がいなかったら敵を出す
-      if enemyCount == 0 then
-        enemyManager:popEnemyAt("cryst3C4", MAX_ROW - 1, 0)
-        enemyManager:popEnemyAt("naut3C5", MAX_ROW - 1, 1)
-        enemyManager:popEnemyAt("flame2C2", 5, 1)
-        enemyManager:popEnemyAt("T_moth7", 3, 2)
-      end
+      -- 何もしない
     end
     self.__IRegister__:setRegister("preHP", characterManager:getHP())
   end,
@@ -289,48 +263,88 @@ Map = {
 いちどオクスに交代してね！
 ]])
     elseif level == 16 then
-      local popup = layer:addPopupWindow(2)
+      local popup = layer:addPopupWindow(3)
       popup:setText(0, "れんけいプレイ！", [[
 ･･････ふう。これで全てのワザを
 説明したかな？じゃあ、そろそろふたりの
 れんけいプレイと行ってみようか！
 
-『チェンジ』を使ってモンスターをうまく倒していく
+『チェンジ』を使ってモンスターをうまく倒す
 ためには覚えておいてほしいことがあるの。
 ]])
       popup:setText(1, "物理ワザと魔法ワザ", [[
-実は、わたしたちの攻撃ワザには『属性』があるの。
+実は、わたしたちのワザには『属性』があるの。
 オクスは剣だから『物理』属性、
 私、ラスカは魔法だから『魔法』属性。
 
-モンスターのなかにはどっちかの属性が効きにくい
-っていう『耐性』をもったモンスターもいるのよ。
+モンスターにはどちらかのこうげきが効きにくい
+『耐性』をもったモンスターもいるのよ。
+]])
+      popup:setText(2, "『耐性』モンスターは光る！", [[
+赤く光るモンスターは『魔法耐性』。
+私、ラスカのこうげきワザが効きにくいの。
+
+オクスにチェンジしてこうげきを当ててみて
 ]])
       --＊バリアーもちの敵を出す。
       --赤の敵を先に出す
+    elseif level == 17 then
+      local popup = layer:addPopupWindow(1)
+      popup:setText(0, "れんけいプレイ！", [[
+お次は青く光る敵ね
+こいつはオクスのこうげきワザが効きにくいの
+
+私、ラスカにチェンジして
+こうげきをお見舞いしちゃえ！
+]])
     elseif level == 18 then
-      local popup = layer:addPopupWindow(2)
-      popup:setText(0, "『大盾』と『魔鏡』", [[
-あ！あのモンスターが持ってる装備に注目して！
-あれは『魔境』といって、私の魔法攻撃が
+      local popup = layer:addPopupWindow(3)
+      popup:setText(0, "れんけいプレイ！", [[
+『耐性』は理解できたかな？
+なるべく『チェンジ』して戦わないと、
+いつの間にか追いつめられちゃうわ！
+
+青く光る敵には赤のラスカ
+赤い敵には青のオクスって覚えてね
+
+]])   
+      popup:setText(1, "モンスターの装備『魔鏡』", [[
+次はあのモンスターが持ってる装備に注目して！
+あれは『魔境』といって、私のこうげきが
 一切きかないの！
 
 『耐性』もかなりやっかいだけど、
-この『魔鏡』と『大盾』はもっとやっかいよ！
+この『魔鏡』はもっとやっかいよ！
 ]])
-      popup:setText(1, "『大盾』と『魔鏡』", [[
-『魔境』をやぶるにはオクスの『物理』攻撃がぜったいに
+      popup:setText(2, "モンスターの装備『魔鏡』", [[
+『魔境』をやぶるにはオクスのこうげきがぜったいに
 必要！攻撃がきかないときはすぐ『チェンジ』して
 オクスで戦ってね！
+]])
+    elseif level == 19 then
+      local popup = layer:addPopupWindow(3)
+      popup:setText(0, "モンスターの装備『魔鏡』", [[
+おみごと！
+モンスターの装備は一度破壊するとあとは
+普通にこうげきが通るようになるわ
+]])
+      popup:setText(1, "モンスターの装備『大盾』", [[
+今度のアイツは『大盾』を持っているわね
+『大盾』は『魔鏡』の反対
+オクスのこうげきが一切効かないの
+そんなときはラスカに交代して倒してね
+]])
+      popup:setText(2, "『魔鏡』と『大盾』", [[
+モンスターの装備も『耐性』と同じ
 
-それと、逆に私じゃないと壊せない、『大盾』って
-のもあるから、ちゃんと覚えておいてね！
+反対の色の攻撃を当てれば
+破壊できるって覚えて！
 ]])
     elseif level == 20 then
       local popup = layer:addPopupWindow(3)
       popup:setText(0, "ラスカ編完了！", [[
-さって。『チェンジ』関係の話はこんなトコロねー。
-強敵も多いけど、わたしたち二人が上手く力を
+さって、『チェンジ』関係の話はこんなトコロねー。
+強敵も多いけど、わたしたち２人が上手く力を
 合わせていければ恐い物なしなんだから！
 がんばりましょ！
 ]])
@@ -351,6 +365,8 @@ Map = {
 むずかしい～～！！ってなったら
 ぜひ参考にしてみてね。じゃ、バイバ～イ！
 ]])
+      data:unlockAchievement("clearTutorialB") -- 実績アンロック
+      data:setClearedForMap("fp_tutorial") -- フリープレイ
     end
   end,
   onFinishPlaying = function(self, characterManager, enemyManager)
@@ -362,7 +378,10 @@ Map = {
     end
   end,
   getEnemyPopRate = function(level)
-    return 0.7
+    if level == 20 then
+      return 0.4
+    end
+    return 0
   end,
   fixedEnemies = {
   }
