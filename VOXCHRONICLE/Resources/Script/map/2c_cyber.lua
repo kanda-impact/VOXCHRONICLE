@@ -45,14 +45,14 @@ Map = {
     enemyManager:loadEnemyTextureAsync("nisok.png")
   end,
   getEnemyPopRate = function(level)
-    if level <=13 then
-    return 0.7
-    elseif level <=14 then
-    return 0.65
+    if level <=12 then
+    return 0.6
+    elseif level <=17 then
+    return 0.55
     elseif level <=19 then
     return 0.55
     elseif level <=20 then
-    return 0.4
+    return 0.3
     end
   end,
   onClear = function(self, characterManager, enemyManager)
