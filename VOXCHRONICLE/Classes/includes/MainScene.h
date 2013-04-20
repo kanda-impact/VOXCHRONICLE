@@ -45,7 +45,8 @@ typedef enum {
   MainBackSceneTitle,
   MainBackSceneMainMenu,
   MainBackSceneTutorial,
-  MainBackSceneFreePlay
+  MainBackSceneFreePlay,
+  MainBackSceneDebug
 } MainBackScene;
 
 using namespace VISS;
