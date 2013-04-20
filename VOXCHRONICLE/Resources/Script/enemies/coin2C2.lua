@@ -1,7 +1,7 @@
 Enemy = {
   species = "coin",
   level = 1,
-  hp = 18,
+  hp = 12,
   getExp = function(default)
       return 10
   end,
