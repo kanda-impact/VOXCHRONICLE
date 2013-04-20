@@ -23,10 +23,11 @@ Map = {
     end
     if level == 11 then
       -- ラスカにチェンジしないと先には進めない
-      if characterManager:getCurrentCharacter():getName() == "ラスカ" then
+      if characterManager:getCurrentCharacter():getCharacterType() == CharacterTypeLaska then
       	-- ラスカにチェンジ済なので、敵が1体もいなくなったらモンスター生成
       	if enemyCount == 0 then
-          enemyManager:popEnemyAt("T_slime30", 3, 1)
+          local slime = enemyManager:popEnemyAt("T_slime30", 3, 1)
+          slime:setExp(30) -- 経験値30
       	end
       end
     elseif level == 12 then

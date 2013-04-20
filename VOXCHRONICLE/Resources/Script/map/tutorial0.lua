@@ -137,12 +137,12 @@ Map = {
 いちばん手前のモンスターから後ろ4列分まで
 しか届かないから、注意してね！
           ]])
-          enemyManager:popEnemyAt("T_moth7", 1, 0)
-          enemyManager:popEnemyAt("T_moth7", 1, 1)
-          enemyManager:popEnemyAt("T_moth7", 1, 2)
-          enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, 0)
-          enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, 1)
-          enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, 2)
+          enemyManager:popEnemyAt("T_moth7", 1, 0):setExp(10)
+          enemyManager:popEnemyAt("T_moth7", 1, 1):setExp(10)
+          enemyManager:popEnemyAt("T_moth7", 1, 2):setExp(10)
+          enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, 0):setExp(10)
+          enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, 1):setExp(10)
+          enemyManager:popEnemyAt("T_moth7", MAX_ROW - 1, 2):setExp(10)
         end
       end
     elseif level == 8 then
@@ -167,7 +167,7 @@ Map = {
           local slime = enemyManager:popEnemyAt("T_slime60",5,1) -- スライム再生成
           slime:setExp(60)
         else -- ポップアップ前
-          if isShield then --前に盾状態だったら
+          if isShield or (characterManager:getLastSkill() and characterManager:getLastSkill():getIdentifier() == "shield") then --前に盾状態だったら
             self.__IRegister__:setBool("popuped", true) -- ポップアップフラグ立てる
             local popup = layer:addPopupWindow(2)--ＴＡＷＡＳＩ「盾で防げたらの条件を追加してちょ」
             popup:setText(0, "『ガード』の注意点", [[
