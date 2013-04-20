@@ -133,7 +133,8 @@ void DictionaryScene::loadEnemyByIndex(int idx) {
     _enemy->setColor(ccc3(5, 5, 5));
     _enemy->setSilhouette();
   }
-  CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+  CCTextureCache::sharedTextureCache()->removeAllTextures();
+  Species::purgeSpeciesCache();
 }
 
 string DictionaryScene::repeatChar(const char *c, int times) {
