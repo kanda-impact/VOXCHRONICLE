@@ -35,9 +35,15 @@ Map = {
     elseif level == 12 then
       -- 敵が1体もいなくなったらモンスター生成
       if enemyCount == 0 then
+<<<<<<< HEAD
         enemyManager:popEnemyAt("T_moth", 2, 0)
         enemyManager:popEnemyAt("T_tnt", MAX_ROW - 1, 1):setExp(60)
         enemyManager:popEnemyAt("T_moth", 2, 2)
+=======
+        enemyManager:popEnemyAt("T_moth", 4, 0)
+        enemyManager:popEnemyAt("T_tnt", MAX_ROW - 1, 1):setExp(60)
+        enemyManager:popEnemyAt("T_moth", 4, 2)
+>>>>>>> 0f19199... チュートリアルの細かいカ所変更
       end
     elseif level == 13 then
       -- 敵が1体もいなくなったらモンスター生成
@@ -104,12 +110,20 @@ Map = {
         end
         self.__IRegister__:setRegister("waitTurn", waitTurn)
       end
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> 0f19199... チュートリアルの細かいカ所変更
       -- 敵が1体もいなくなったらモンスター生成
       if enemyCount == 0 then
         -- とてもわかりにくいけど最初のターン以外の場合
         if isNotFirstTurn and usedCure then
+<<<<<<< HEAD
           enemyManager:popEnemyAt("T_moth7", 3, 1):setExp(60)
+=======
+          enemyManager:popEnemyAt("T_moth7", 3, 1):setExp(30)
+>>>>>>> 0f19199... チュートリアルの細かいカ所変更
         elseif not isNotFirstTurn then
           self.__IRegister__:setBool("isNotFirstTurn", true)
           enemyManager:popEnemyAt("flame2C2", 0, 1)
@@ -146,9 +160,13 @@ Map = {
       end
       -- 回復スキル使用フラグが立っていて敵がいなかったら敵を出す
       if enemyCount == 0 and healedMp then
+<<<<<<< HEAD
         local geek = enemyManager:popEnemyAt("T_geek", 3, 1)
         geek:setExp(60)
         geek:setHP(3)
+=======
+        enemyManager:popEnemyAt("T_geek", 3, 1):setExp(60)
+>>>>>>> 0f19199... チュートリアルの細かいカ所変更
       end
     elseif level == 16 or level == 17 or level == 18 or level == 19 then
       -- 敵が1体もいなくなったらモンスター生成
@@ -266,7 +284,11 @@ Map = {
 いちどオクスに交代してね！
 ]])
     elseif level == 16 then
+<<<<<<< HEAD
       local popup = layer:addPopupWindow(3)
+=======
+      local popup = layer:addPopupWindow(2)
+>>>>>>> 0f19199... チュートリアルの細かいカ所変更
       popup:setText(0, "れんけいプレイ！", [[
 ･･････ふう。これで全てのワザを
 説明したかな？じゃあ、そろそろふたりの
@@ -283,6 +305,7 @@ Map = {
 モンスターにはどちらかのこうげきが効きにくい
 『耐性』をもったモンスターもいるのよ。
 ]])
+<<<<<<< HEAD
       popup:setText(2, "赤い敵には青いこうげき", [[
 赤く光るモンスターは『魔法耐性』。
 私、ラスカのこうげきワザが効きにくいの。
@@ -314,6 +337,15 @@ Map = {
       popup:setText(1, "モンスターの装備『魔鏡』", [[
 次はあのモンスターが持ってる装備に注目して！
 あれは『魔鏡』といって、私のこうげきが
+=======
+      --＊バリアーもちの敵を出す。
+      --赤の敵を先に出す
+    elseif level == 18 then
+      local popup = layer:addPopupWindow(2)
+      popup:setText(0, "『大盾』と『魔鏡』", [[
+あ！あのモンスターが持ってる装備に注目して！
+あれは『魔境』といって、私の魔法攻撃が
+>>>>>>> 0f19199... チュートリアルの細かいカ所変更
 一切きかないの！
 
 『耐性』もかなりやっかいだけど、
@@ -371,6 +403,14 @@ Map = {
 ]])
       data:unlockAchievement("clearTutorialB") -- 実績アンロック
       data:setClearedForMap("fp_tutorial") -- フリープレイ
+    end
+  end,
+  onFinishPlaying = function(self, characterManager, enemyManager)
+    local level = characterManager:getLevel()
+    if level == 13 or level == 14 then -- MPが0になったら強制的に全回復してあげる
+      if characterManager:getMP() == 0 then
+        characterManager:setMP(characterManager:getMaxMP())
+      end
     end
   end,
   onFinishPlaying = function(self, characterManager, enemyManager)

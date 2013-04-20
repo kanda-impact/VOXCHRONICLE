@@ -49,7 +49,11 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
+<<<<<<< HEAD
 	<string>3422</string>
+=======
+	<string>3397</string>
+>>>>>>> 0f19199... チュートリアルの細かいカ所変更
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIPrerenderedIcon</key>
