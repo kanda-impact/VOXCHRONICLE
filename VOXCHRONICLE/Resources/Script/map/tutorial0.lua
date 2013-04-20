@@ -100,6 +100,7 @@ Map = {
         local enemies = {"T_ginet", "T_flower"}
         local index = math.min(killedEnemyCount + 1, 2)
         local enemy = enemyManager:popEnemyAt(enemies[index], 5, 1)
+        enemy:setAttack(0)
         if index == 2 then
           enemy:setExp(60)
         else
@@ -181,9 +182,6 @@ Map = {
 あと『ガード』は無敵になれるけど、こうげきを
 防いだあとすぐに、もういちど『ガード』する
 ことはできないから、タイミングを考えようね。
-
-モンスターの中には、わたしたちにぶつからないで
-手前で立ち止まっちゃう奴とかもいるしね！
 ]])
             enemyManager:popEnemyAt("T_slime60",5,1)
           else --前に使ったスキルが盾でない時
@@ -221,6 +219,7 @@ Map = {
 ]])
         local enemy = enemyManager:popEnemyAt("T_tnt9", 4, 1)
         enemy:setExp(60)
+        enemy:setHP(25)
         local maxHP = characterManager:getMaxHP()
         if characterManager:getHP() <= maxHP then
           characterManager:addHP(maxHP) -- ダメージを受けているはずなので全快させる

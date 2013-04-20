@@ -35,9 +35,9 @@ Map = {
     elseif level == 12 then
       -- 敵が1体もいなくなったらモンスター生成
       if enemyCount == 0 then
-        enemyManager:popEnemyAt("T_moth", 4, 0)
+        enemyManager:popEnemyAt("T_moth", 2, 0)
         enemyManager:popEnemyAt("T_tnt", MAX_ROW - 1, 1):setExp(60)
-        enemyManager:popEnemyAt("T_moth", 4, 2)
+        enemyManager:popEnemyAt("T_moth", 2, 2)
       end
     elseif level == 13 then
       -- 敵が1体もいなくなったらモンスター生成
@@ -109,7 +109,7 @@ Map = {
       if enemyCount == 0 then
         -- とてもわかりにくいけど最初のターン以外の場合
         if isNotFirstTurn and usedCure then
-          enemyManager:popEnemyAt("T_moth7", 3, 1):setExp(30)
+          enemyManager:popEnemyAt("T_moth7", 3, 1):setExp(60)
         elseif not isNotFirstTurn then
           self.__IRegister__:setBool("isNotFirstTurn", true)
           enemyManager:popEnemyAt("flame2C2", 0, 1)
@@ -146,7 +146,9 @@ Map = {
       end
       -- 回復スキル使用フラグが立っていて敵がいなかったら敵を出す
       if enemyCount == 0 and healedMp then
-        enemyManager:popEnemyAt("T_geek", 3, 1):setExp(60)
+        local geek = enemyManager:popEnemyAt("T_geek", 3, 1)
+        geek:setExp(60)
+        geek:setHP(3)
       end
     elseif level == 16 or level == 17 or level == 18 or level == 19 then
       -- 敵が1体もいなくなったらモンスター生成
@@ -190,7 +192,8 @@ Map = {
 『チェンジ』マークにタッチして
 私に交代してちょうだい。
 
-音楽もかわって気分一新よ！]])
+音楽もかわって気分一新よ！
+]])
       popup:setText(1, "ラスカに『チェンジ』！", [[
 オクス君は剣士だけど、私、ラスカは魔法使い
 私は魔法をつかって攻撃するわ。
@@ -310,14 +313,14 @@ Map = {
 ]])   
       popup:setText(1, "モンスターの装備『魔鏡』", [[
 次はあのモンスターが持ってる装備に注目して！
-あれは『魔境』といって、私のこうげきが
+あれは『魔鏡』といって、私のこうげきが
 一切きかないの！
 
 『耐性』もかなりやっかいだけど、
 この『魔鏡』はもっとやっかいよ！
 ]])
       popup:setText(2, "モンスターの装備『魔鏡』", [[
-『魔境』を破るには
+『魔鏡』を破るには
 オクスのこうげきが絶対に必要！
 こうげきが効かないときはすぐ『チェンジ』して
 オクスで戦ってね！
