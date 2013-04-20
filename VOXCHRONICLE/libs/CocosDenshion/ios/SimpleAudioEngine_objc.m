@@ -132,8 +132,9 @@ static CDBufferManager *bufferManager = nil;
 
 -(ALuint) playEffect:(NSString*) filePath loop:(BOOL) loop pitch:(Float32) pitch pan:(Float32) pan gain:(Float32) gain
 {
-  [[OALSimpleAudio sharedInstance] playEffect:filePath volume:1.0 pitch:pitch pan:pan loop:loop];
-  return NULL;
+    OALSimpleAudio* audio = [OALSimpleAudio sharedInstance];
+    [[OALSimpleAudio sharedInstance] playEffect:filePath volume:audio.effectsVolume pitch:pitch pan:pan loop:loop];
+    return NULL;
 }
 
 -(void) stopEffect:(ALuint) soundId {

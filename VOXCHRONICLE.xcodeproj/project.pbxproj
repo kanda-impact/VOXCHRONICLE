@@ -1134,6 +1134,7 @@
 		07D351E3172252D600C547DD /* chabo_voxtension1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07D351E0172252D500C547DD /* chabo_voxtension1.caf */; };
 		07D351E4172252D600C547DD /* chabo_voxtension2.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07D351E1172252D600C547DD /* chabo_voxtension2.caf */; };
 		07D351E6172252E400C547DD /* chabo_voxtension3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07D351E5172252E400C547DD /* chabo_voxtension3.caf */; };
+		07D351EA17225B3E00C547DD /* field_boss.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07D351E917225B3C00C547DD /* field_boss.lua */; };
 		07D8740715ED13CD009CC446 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07D8740615ED13CD009CC446 /* MainScene.cpp */; };
 		07D8745815F01A15009CC446 /* ALBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8741E15F01500009CC446 /* ALBuffer.m */; };
 		07D8745915F01A15009CC446 /* ALCaptureDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8742015F01500009CC446 /* ALCaptureDevice.m */; };
@@ -1353,7 +1354,6 @@
 		07F9343C16C16B0300A2F1CA /* ttn1_voxtension3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07F9340D16C16B0300A2F1CA /* ttn1_voxtension3.caf */; };
 		07F9343D16C16B0300A2F1CA /* ttn1_voxwait0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07F9340E16C16B0300A2F1CA /* ttn1_voxwait0.caf */; };
 		07F9343F16C16B1400A2F1CA /* ttn1.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F9343E16C16B1400A2F1CA /* ttn1.lua */; };
-		07F9344116C16BBE00A2F1CA /* 1b.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F9344016C16BBE00A2F1CA /* 1b.lua */; };
 		07F9344316C16BCF00A2F1CA /* ttn.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07F9344216C16BCF00A2F1CA /* ttn.lua */; };
 		07F9344816C16C9800A2F1CA /* ttn1_counter0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07F9344416C16C9800A2F1CA /* ttn1_counter0.caf */; };
 		07F9344916C16C9800A2F1CA /* ttn1_counter1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07F9344516C16C9800A2F1CA /* ttn1_counter1.caf */; };
@@ -2897,6 +2897,7 @@
 		07D351E0172252D500C547DD /* chabo_voxtension1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_voxtension1.caf; sourceTree = "<group>"; };
 		07D351E1172252D600C547DD /* chabo_voxtension2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_voxtension2.caf; sourceTree = "<group>"; };
 		07D351E5172252E400C547DD /* chabo_voxtension3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chabo_voxtension3.caf; sourceTree = "<group>"; };
+		07D351E917225B3C00C547DD /* field_boss.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = field_boss.lua; path = map/field_boss.lua; sourceTree = "<group>"; };
 		07D8740615ED13CD009CC446 /* MainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainScene.cpp; path = Classes/Scene/MainScene.cpp; sourceTree = "<group>"; };
 		07D8741D15F01500009CC446 /* ALBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ALBuffer.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/ALBuffer.h; sourceTree = "<group>"; };
 		07D8741E15F01500009CC446 /* ALBuffer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ALBuffer.m; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/ALBuffer.m; sourceTree = "<group>"; };
@@ -3175,7 +3176,6 @@
 		07F9340D16C16B0300A2F1CA /* ttn1_voxtension3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ttn1_voxtension3.caf; path = Resources/Music/ttn1/ttn1_voxtension3.caf; sourceTree = "<group>"; };
 		07F9340E16C16B0300A2F1CA /* ttn1_voxwait0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ttn1_voxwait0.caf; path = Resources/Music/ttn1/ttn1_voxwait0.caf; sourceTree = "<group>"; };
 		07F9343E16C16B1400A2F1CA /* ttn1.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ttn1.lua; path = musics/ttn1.lua; sourceTree = "<group>"; };
-		07F9344016C16BBE00A2F1CA /* 1b.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 1b.lua; path = map/1b.lua; sourceTree = "<group>"; };
 		07F9344216C16BCF00A2F1CA /* ttn.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ttn.lua; path = map/ttn.lua; sourceTree = "<group>"; };
 		07F9344416C16C9800A2F1CA /* ttn1_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ttn1_counter0.caf; path = Resources/Music/ttn1/ttn1_counter0.caf; sourceTree = "<group>"; };
 		07F9344516C16C9800A2F1CA /* ttn1_counter1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ttn1_counter1.caf; path = Resources/Music/ttn1/ttn1_counter1.caf; sourceTree = "<group>"; };
@@ -3474,7 +3474,6 @@
 				075B92E116D51FFA00DBB2D1 /* attaq.lua */,
 				077EDE2416874B1F009B9F6B /* 3b.lua */,
 				079D274416D21B83006D6A8F /* bossdebug.lua */,
-				07F9344016C16BBE00A2F1CA /* 1b.lua */,
 				07F9344216C16BCF00A2F1CA /* ttn.lua */,
 				07864BEF169D881500AAAF15 /* 2a.lua */,
 				0738FB4516C530DD00FE2816 /* 2b.lua */,
@@ -3498,6 +3497,7 @@
 				B07E38CB16E10ACF00473629 /* 3d_space.lua */,
 				0701424B16E2319900B00887 /* 3c_ocean.lua */,
 				0701424D16E243BC00B00887 /* ocean_boss.lua */,
+				07D351E917225B3C00C547DD /* field_boss.lua */,
 			);
 			name = map;
 			sourceTree = "<group>";
@@ -6232,7 +6232,6 @@
 				07F9343C16C16B0300A2F1CA /* ttn1_voxtension3.caf in Resources */,
 				07F9343D16C16B0300A2F1CA /* ttn1_voxwait0.caf in Resources */,
 				07F9343F16C16B1400A2F1CA /* ttn1.lua in Resources */,
-				07F9344116C16BBE00A2F1CA /* 1b.lua in Resources */,
 				07F9344316C16BCF00A2F1CA /* ttn.lua in Resources */,
 				07F9344816C16C9800A2F1CA /* ttn1_counter0.caf in Resources */,
 				07F9344916C16C9800A2F1CA /* ttn1_counter1.caf in Resources */,
@@ -7135,6 +7134,7 @@
 				07D351E3172252D600C547DD /* chabo_voxtension1.caf in Resources */,
 				07D351E4172252D600C547DD /* chabo_voxtension2.caf in Resources */,
 				07D351E6172252E400C547DD /* chabo_voxtension3.caf in Resources */,
+				07D351EA17225B3E00C547DD /* field_boss.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

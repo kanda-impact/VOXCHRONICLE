@@ -7,7 +7,7 @@ Enemy = {
   counter = 2,
   getSpeed = function(enemy, characterManager)
     local row = enemy:getRow()
-    if row <= 3 then
+    if row <= 1 then
       return 0
     end
     return 1
