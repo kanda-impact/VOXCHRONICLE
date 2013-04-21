@@ -7566,6 +7566,7 @@
 					"\"$(PROJECT_NAME)/libs/CocosDenshion/include\"",
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 					/usr/local/include/boost/../,
+					/opt/boxen/homebrew/include/boost/../,
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/VOXCHRONICLE/Resources/ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
@@ -7603,6 +7604,7 @@
 					"\"$(PROJECT_NAME)/libs/CocosDenshion/include\"",
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 					/usr/local/include/boost/../,
+					/opt/boxen/homebrew/include/boost/../,
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/VOXCHRONICLE/Resources/ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
@@ -7672,6 +7674,7 @@
 					"\"$(PROJECT_NAME)/libs/CocosDenshion/include\"",
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 					/usr/local/include/boost/../,
+					/opt/boxen/homebrew/include/boost/../,
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/VOXCHRONICLE/Resources/ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
