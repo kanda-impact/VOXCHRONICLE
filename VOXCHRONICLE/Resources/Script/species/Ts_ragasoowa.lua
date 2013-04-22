@@ -13,7 +13,7 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
-たわしさんまかせた
+ダンジョンに君臨するモンスターの元締め。宝を守って空を飛び灼熱の炎を吐く。
 ]],
   habitat = "",
   animationFrames = 5,
