@@ -1,7 +1,7 @@
 Enemy = {
   species = "R_strfoot",
   level = 1,
-  hp = 64,
+  hp = 32,
   getExp = function(default)
       return 0
   end,

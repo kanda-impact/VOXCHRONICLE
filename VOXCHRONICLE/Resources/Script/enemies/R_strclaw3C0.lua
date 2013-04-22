@@ -1,7 +1,7 @@
 Enemy = {
   species = "R_strclaw",
   level = 1,
-  hp = 60,
+  hp = 30,
   getExp = function(default)
       return 0
   end,
