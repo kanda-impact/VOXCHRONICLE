@@ -200,6 +200,7 @@ Map* MainScene::getMap() {
 }
 
 void MainScene::onEnterTransitionDidFinish() {
+  SimpleAudioEngine::sharedEngine()->unloadAllEffect();
   _skin->getController()->setEnable(false);
   _musicManager->getMusic()->play();
   _skin->getStatusLayer()->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
