@@ -397,7 +397,7 @@ void Enemy::setItem(EnemyItem item) {
       filename = "Image/barrier.png";
       sprite = CCSprite::create(FileUtils::getFilePath(filename.c_str()).c_str());
       sprite->setColor(LSK_COLOR);
-      sprite->setScale(2.0f);
+      sprite->setScale(1.0f);
     }
     point = ccp(this->getContentSize().width / 2.0f, this->getContentSize().height / 2.0f);
     sprite->setOpacity(164);
