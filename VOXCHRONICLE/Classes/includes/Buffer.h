@@ -30,6 +30,7 @@ namespace VISS {
    public:
     Buffer(const char* trackName);
     ~Buffer();
+    std::string getTrackName();
 #if IS_IOS
     BufferWrapper* getBuffer();
 #endif

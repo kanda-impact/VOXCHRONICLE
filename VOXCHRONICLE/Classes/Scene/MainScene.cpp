@@ -66,6 +66,7 @@ bool MainScene::init(Map* map) {
   if ( !CCLayer::init() ) {
     return false;
   }
+  SimpleAudioEngine::sharedEngine()->unloadAllEffect();
   CCTextureCache::sharedTextureCache()->removeAllTextures();
   _backScene = MainBackSceneTitle;
   Enemy::loadLifeColors();
@@ -159,7 +160,7 @@ MainScene::~MainScene() {
   _level->release();
   _map->release();
   _musicManager->release();
-  
+  VISS::BufferCache::sharedCache()->purgeAllBuffers();
   CCLog("main scene is released");
 }
 
@@ -176,6 +177,7 @@ void MainScene::teardown() {
   CCTextureCache::sharedTextureCache()->removeUnusedTextures();
   Species::purgeSpeciesCache();
   CCLuaEngine::defaultEngine()->cleanStack();
+  SimpleAudioEngine::sharedEngine()->unloadAllEffect();
   CCLog("teardown");
 }
 

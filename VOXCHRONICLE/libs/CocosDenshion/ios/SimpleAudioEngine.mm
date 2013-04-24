@@ -112,6 +112,11 @@ static void static_unloadEffect(const char* pszFilePath)
     [[SimpleAudioEngine sharedEngine] unloadEffect: [NSString stringWithUTF8String: pszFilePath]];
 }
 
+static void static_unloadAllEffect()
+{
+    [[SimpleAudioEngine sharedEngine] unloadAllEffect];
+}
+
 static void static_pauseEffect(unsigned int uSoundId)
 {
     [[SimpleAudioEngine sharedEngine] pauseEffect: uSoundId];
@@ -252,6 +257,12 @@ void SimpleAudioEngine::unloadEffect(const char* pszFilePath)
             static_unloadEffect(pszFilePath);
 }
 
+void SimpleAudioEngine::unloadAllEffect()
+{
+  static_unloadAllEffect();
+}
+
+  
 void SimpleAudioEngine::pauseEffect(unsigned int uSoundId)
 {
     static_pauseEffect(uSoundId);

@@ -91,6 +91,8 @@
 -(void) preloadEffect:(NSString*) filePath;
 /** unloads an audio effect from memory */
 -(void) unloadEffect:(NSString*) filePath;
+/** unloads all effects from memory */
+-(void) unloadAllEffect;
 /** Gets a CDSoundSource object set up to play the specified file. */
 -(CDSoundSource *) soundSourceForFile:(NSString*) filePath;
 

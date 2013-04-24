@@ -30,7 +30,6 @@ bool TitleScene::init() {
   if ( !CCLayer::init() ) {
     return false;
   }
-  VISS::BufferCache::sharedCache()->purgeAllBuffers();
   this->setTouchEnabled(true);
   CCDirector* director = CCDirector::sharedDirector();
   CCSize winSize = director->getWinSize();
