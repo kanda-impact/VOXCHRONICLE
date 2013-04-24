@@ -13,6 +13,7 @@
 #include "macros.h"
 #include "MessageManager.h"
 #include "PlayLog.h"
+#include "BufferCache.h"
 
 #include "MainMenuScene.h"
 #include "FreePlayScene.h"
@@ -93,6 +94,7 @@ void GameOverLayer::titleButtonPressed(CCObject *sender) {
   }
   CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
   CCDirector::sharedDirector()->replaceScene(transition);
+  VISS::BufferCache::sharedCache()->purgeAllBuffers();
 }
 
 void GameOverLayer::setMainBackScene(MainBackScene scene) {

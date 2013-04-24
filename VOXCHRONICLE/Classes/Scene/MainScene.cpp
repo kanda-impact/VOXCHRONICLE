@@ -160,7 +160,6 @@ MainScene::~MainScene() {
   _level->release();
   _map->release();
   _musicManager->release();
-  VISS::BufferCache::sharedCache()->purgeAllBuffers();
   CCLog("main scene is released");
 }
 
