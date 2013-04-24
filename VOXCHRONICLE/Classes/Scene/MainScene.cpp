@@ -236,7 +236,7 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
     }
   }
   if (preTension != _characterManager->getTension()) { // テンションが変わってたら技の状態を更新
-    _skin->getController()->updateSkills(_characterManager, _level, true);
+    _skin->getController()->updateSkills(_characterManager, _level, false);
   }
   _map->performOnBack(_characterManager, _enemyManager);
   _effectLayer->updateFocus(_enemyManager);
@@ -561,9 +561,9 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _effectLayer->setCharacterEffect(_characterManager->getCurrentCharacter());
     }
     
-    if (skill || _isLevelUped) {
-      _skin->getController()->updateSkills(_characterManager, _level, false);
-    }
+    // スキルがなかった場合は、現在のトリガー状態を次のターンに持ち越すためにトリガー位置をリセットしません
+    // スキルがあった場合はトリガー位置をリセットします
+    _skin->getController()->updateSkills(_characterManager, _level, skill != NULL);
     
     this->updateGUI(); // GUI更新
     
@@ -753,7 +753,7 @@ void MainScene::changeSkin(Skin *newSkin, bool crossFade) {
   const float kCrossFadeSpeed = 1.0f;
   if (_skin != NULL) {
     newSkin->setController(_skin->getController()); // 古いコントローラーを受け渡す
-    _skin->getController()->updateSkills(_characterManager, _level, false); // スキン更新
+    _skin->getController()->updateSkills(_characterManager, _level, true); // スキン更新
     if (crossFade) {
       CCArray* nodes = CCArray::create();
       if (_skin->getBackground()) nodes->addObject(_skin->getBackground());
