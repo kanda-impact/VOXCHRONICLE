@@ -103,7 +103,6 @@ bool Music::play() {
         return false;
       }
     }
-    cocos2d::CCDirector::sharedDirector()->getScheduler()->scheduleUpdateForTarget(this, -127, false);
     this->setScheduleForMain();
   }
   return true;
