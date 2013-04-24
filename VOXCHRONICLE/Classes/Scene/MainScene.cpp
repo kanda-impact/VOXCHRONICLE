@@ -66,6 +66,7 @@ bool MainScene::init(Map* map) {
   if ( !CCLayer::init() ) {
     return false;
   }
+  SimpleAudioEngine::sharedEngine()->unloadAllEffect();
   CCTextureCache::sharedTextureCache()->removeAllTextures();
   _backScene = MainBackSceneTitle;
   Enemy::loadLifeColors();
@@ -176,6 +177,7 @@ void MainScene::teardown() {
   CCTextureCache::sharedTextureCache()->removeUnusedTextures();
   Species::purgeSpeciesCache();
   CCLuaEngine::defaultEngine()->cleanStack();
+  SimpleAudioEngine::sharedEngine()->unloadAllEffect();
   CCLog("teardown");
 }
 

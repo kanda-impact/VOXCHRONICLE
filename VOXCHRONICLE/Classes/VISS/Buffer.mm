@@ -30,3 +30,7 @@ Buffer::~Buffer() {
 Buffer::BufferWrapper* Buffer::getBuffer() {
   return _wrapper.get();
 }
+
+std::string Buffer::getTrackName() {
+  return _trackName;
+}

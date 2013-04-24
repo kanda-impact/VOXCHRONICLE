@@ -43,5 +43,13 @@ Buffer* BufferCache::addBuffer(const char* trackName) {
 }
 
 void BufferCache::purgeAllBuffers() {
+  CCObject* obj = NULL;
+  CCARRAY_FOREACH(_cache->allKeys(), obj) {
+    CCString* key = (CCString*)obj;
+    Buffer* buffer = (Buffer*)_cache->objectForKey(key->getCString());
+    if (buffer->retainCount() > 1) {
+      CCLog("not release!!! %s", buffer->getTrackName().c_str());
+    }
+  }
   _cache->removeAllObjects();
 }
