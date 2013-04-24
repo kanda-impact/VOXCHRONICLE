@@ -19,6 +19,7 @@ class TutorialLayer :public CCLayer {
   void onTutorialButtonPressed(CCObject* sender);
   void onBackButtonPressed(CCObject* sender);
  public:
+  virtual void onEnterTransitionDidFinish();
   virtual bool init();
   CREATE_FUNC(TutorialLayer);
 };

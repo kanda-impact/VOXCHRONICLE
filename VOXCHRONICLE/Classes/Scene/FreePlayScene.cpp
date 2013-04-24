@@ -38,7 +38,7 @@ bool FreePlayScene::init(const char* script, bool unlock) {
   }
   this->setTouchEnabled(true);
   
-  LuaObject* lua = new LuaObject(script);
+  LuaObject* lua = LuaObject::create(script);
   CCArray* items = CCArray::create();
   for (int i = 0; i < 3; ++i) {
     items->addObject(CCArray::create());
@@ -104,6 +104,9 @@ bool FreePlayScene::init(const char* script, bool unlock) {
 
 void FreePlayScene::onEnterTransitionDidFinish() {
   CCLayer::onEnterTransitionDidFinish();
+  if (!SimpleAudioEngine::sharedEngine()->isBackgroundMusicPlaying()) {
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(FileUtils::getFilePath("Music/general/menu.mp3").c_str(), true);
+  }
 }
 
 void FreePlayScene::onMenuItemPressed(cocos2d::CCObject *sender) {
