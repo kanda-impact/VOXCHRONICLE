@@ -68,6 +68,9 @@ Enemy = {
     end
     if r < 5 then
       return "beam"
+    elseif r < 50 then
+      return "typeChange_last"
+      
     end
     return ""
   end
