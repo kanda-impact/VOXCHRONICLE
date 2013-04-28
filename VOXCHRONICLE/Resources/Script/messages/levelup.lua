@@ -1,15 +1,12 @@
 return function(map, characterManager, enemyManager)
   local chara = characterManager:getCurrentCharacter():getName()
-  return {
   --Ｌｖアップの時
-    "モンスターが　あらわれた",
-    "モンスターだ　どうする？　こまんど▼",
-    "ついに　まものが　あらわれた",
-    string.format("%sの　ぼうけんが　いま　はじまる！", chara),
-    string.format("%sは　たたかいに　おもむいた", chara),
-    "やってやるぜ　おやじの　かたき！",
-    "こんどこそ　まけない",
-    "なんと　ボタンを　おすと　こうどうします",
-    "けんをとれ　たたかいが　はじまるぞ",
+return {
+    "${chara}　レベルアップ！",
+    "${chara}の　レベルが　あがった",
+    "けいけんちが　たまった",
+    "レベルアップ　したわよ！",
+    "レベルあーーっぷ",
   }
+
 end

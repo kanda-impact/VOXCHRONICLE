@@ -41,5 +41,11 @@ Skill = {
   skillRange = SkillRangeSingle,
   skillType = SkillTypeMagical,
   messages = {
+  "ラスカの　アイスブレイク！"
+  "たちふさがるものを　ひょうけつさせる！"
+  "くうきが　こおりついていく"
+  "こおりつけ！　モンスター！"
+  "つえのさきから　れいきがほどばしる"
+  "ラスカの　ブリザード　アタック"
   }
 }

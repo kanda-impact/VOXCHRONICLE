@@ -28,6 +28,11 @@ Skill = {
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone,
   messages = {
-    ""
+    "オクスは　ラスカに　まりょくをそそぎこんだ"
+    "ラスカの　まりょくをかいふくさせた"
+    "まりょくを　じゅうてんした"
+    "まりょくが　みちていく"
+    "ラスカのＭＰが　かいふくした"
+    "ラスカの　ちからが　かいふくした"
   }
 }

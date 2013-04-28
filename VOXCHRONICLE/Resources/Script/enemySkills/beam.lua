@@ -8,7 +8,14 @@ EnemySkill = {
     layer:addEffectOnEnemy(user, "enemy_skill", 3, CCRectMake(0, 0, 50, 50))
     
     local mManager = MessageManager:sharedManager()
-    mManager:pushMessage(user:getName().."の　体から　閃光が　ほとばしる！")
+      local messages = {
+      user:getName().."の　からだから　せんこうが　ほとばしる！", 
+      user:getName().."の　レーザー　こうげき！！", 
+      user:getName().."から　エネルギーこうせんが！",
+      }
+      math.random(100)
+      local message = messages[math.random(#messages)]
+    mManager:pushMessage(message)
   end
 }
 return EnemySkill
