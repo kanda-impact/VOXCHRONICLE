@@ -29,7 +29,7 @@ Map = {
     enemyManager:loadEnemyTextureAsync("typhoon.png")
     enemyManager:loadEnemyTextureAsync("mimic.png")
     enemyManager:loadEnemyTextureAsync("gargoyle.png")
-    data:setClearedForMap("fp_ruin")
+    SaveData:sharedData():setClearedForMap("fp_ruin")
   end,
   onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
@@ -42,7 +42,7 @@ Map = {
       CCTextureCache:sharedTextureCache():removeTextureForKey("gargoyle.png")
 
       fortress = enemyManager:popEnemyAt("fortress3A0", MAX_ROW - 1, 1)
-      data:setClearedForMap("fp_ruin_boss")
+      SaveData:sharedData():setClearedForMap("fp_ruin_boss")
       enemyManager:setBoss(fortress)
     end
   end,

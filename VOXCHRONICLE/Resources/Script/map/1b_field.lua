@@ -94,7 +94,7 @@ Map = {
     enemyManager:loadEnemyTextureAsync("slime.png")
     enemyManager:loadEnemyTextureAsync("moth.png")
     enemyManager:loadEnemyTextureAsync("hornet.png")
-    data:setClearedForMap("fp_field")
+    SaveData:sharedData():setClearedForMap("fp_field")
   end,
   getEnemyPopRate = function(level)
     if level <= 2 then

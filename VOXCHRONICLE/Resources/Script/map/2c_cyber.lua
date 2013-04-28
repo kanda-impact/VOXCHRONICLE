@@ -43,7 +43,7 @@ Map = {
     enemyManager:loadEnemyTextureAsync("kani.png")
     enemyManager:loadEnemyTextureAsync("pak.png")    
     enemyManager:loadEnemyTextureAsync("nisok.png")
-    data:setClearedForMap("fp_cyber")
+    SaveData:sharedData():setClearedForMap("fp_cyber")
   end,
   getEnemyPopRate = function(level)
     if level <=12 then

@@ -48,7 +48,7 @@ Map = {
 
       knight = enemyManager:popEnemyAt("knight_boss", MAX_ROW - 1, 1)
       enemyManager:setBoss(knight)
-      data:setClearedForMap("fp_castle_boss")
+      SaveData:sharedData():setClearedForMap("fp_castle_boss")
     end
   end,
   getEnemyPopRate = function(level)

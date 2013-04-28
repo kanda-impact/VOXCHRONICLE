@@ -25,7 +25,7 @@ Map = {
     enemyManager:loadEnemyTextureAsync("t2pha.png")
     enemyManager:loadEnemyTextureAsync("exob.png")
     enemyManager:loadEnemyTextureAsync("planet.png")
-    data:setClearedForMap("fp_space")
+    SaveData:sharedData():setClearedForMap("fp_space")
   end,
   onBack = function(self, characterManager, enemyManager)
     local enemies = enemyManager:getEnemies()
@@ -107,7 +107,7 @@ Map = {
     elseif level == 30 then
       local boss = enemyManager:popEnemyAt("last1_boss", 3, 1)
       enemyManager:setBoss(boss)
-      data:setClearedForMap("fp_space_boss")
+      SaveData:sharedData():setClearedForMap("fp_space_boss")
     end
   end,
   onClear = function(self, characterManager, enemyManager)

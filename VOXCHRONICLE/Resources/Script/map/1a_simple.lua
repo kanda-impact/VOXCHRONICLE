@@ -25,7 +25,7 @@ Map = {
     enemyManager:loadEnemyTextureAsync("leaf.png")
     enemyManager:loadEnemyTextureAsync("slime.png")
     enemyManager:loadEnemyTextureAsync("acorn.png")
-    data:setClearedForMap("fp_simple")
+    SaveData:sharedData():setClearedForMap("fp_simple")
   end,
 
   getEnemyPopRate = function(level)

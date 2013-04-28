@@ -30,7 +30,7 @@ Map = {
     enemyManager:loadEnemyTextureAsync("bat.png")
     enemyManager:loadEnemyTextureAsync("mukade.png")
     enemyManager:loadEnemyTextureAsync("wisp.png")
-    data:setClearedForMap("fp_cave")
+    SaveData:sharedData():setClearedForMap("fp_cave")
   end,
   getEnemyPopRate = function(level)
     if level <= 12  then
