@@ -18,6 +18,34 @@ Skill = {
       newRow = MAX_ROW - 1
     end
     target:setRow(newRow)
+    -- メッセージ周り  
+    --ノックバックが成功した時
+    local normalMessages = {
+      "モンスターを　はじきとばした",
+      "とっぷうが　てきを　ふきとばした",
+      "たつまきが　てきを　うしろへおいやる",
+      "ふきとばしの　こうかが　はつどうした",
+      "ふしぎなちからで　てきがふきとんだ"
+    }
+    
+    --ノックバック耐性で敵が吹き飛ばせなかった時
+    local disableMessages = {
+      "モンスターは　びくともしない",
+      "こうかは　なかったようだ",
+      "てきがおもすぎて　ふきとばない",
+      "ふきとばしのちからが　はじかれてしまった"
+    }
+    
+    local species = target:getSpecies()
+    local messages = {}
+    if species:isEnableSkill(self) then
+      messages = normalMessages
+    else
+      messages = disableMessages
+    end
+    math.random(100)
+    local messageManager = MessageManager:sharedManager()
+    messageManager:pushMessage(messages[math.random(#messages)])
   end,
   getPower = function(characterManager)
     local tension = characterManager:getTension()
@@ -26,20 +54,5 @@ Skill = {
   end,
   skillRange = SkillRangeSingle,
   skillType = SkillTypePhysical,
---ノックバックが成功した時
-  messages = {
-    "モンスターを　はじきとばした",
-    "とっぷうが　てきを　ふきとばした",
-    "たつまきが　てきを　うしろへおいやる",
-    "ふきとばしの　こうかが　はつどうした",
-    "ふしぎなちからで　てきがふきとんだ"
-  },
---ノックバック耐性で敵が吹き飛ばせなかった時
-  messages = {
-    "モンスターは　びくともしない",
-    "こうかは　なかったようだ",
-    "てきがおもすぎて　ふきとばない",
-    "ふきとばしのちからが　はじかれてしまった"
-  }
-
+  messages = {}
 }

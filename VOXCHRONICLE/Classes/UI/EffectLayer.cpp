@@ -445,11 +445,12 @@ void EffectLayer::addWaitMarker(float duration) {
     wait->runAction(CCSequence::create(CCFadeIn::create(0.5f),
                                        CCDelayTime::create(duration),
                                        CCRemoveFromParentAction::create(),
+                                       CCFadeOut::create(0.5f),
                                        NULL));
     marker->runAction(CCSequence::create(CCFadeIn::create(0.5f),
                                          CCRepeat::create(CCSequence::create(CCRotateBy::create(0, 15),
-                                                                                           CCDelayTime::create(delay),
-                                                                                           NULL), duration / delay),
+                                                                             CCDelayTime::create(delay),
+                                                                             NULL), duration / delay),
                                          CCFadeOut::create(0.5f),
                                          CCRemoveFromParentAction::create()));
     wait->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
