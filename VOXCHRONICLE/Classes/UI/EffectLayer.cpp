@@ -457,6 +457,5 @@ void EffectLayer::addWaitMarker(float duration) {
     marker->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
     
     this->addChild(marker, EffectLayerZOrderWait, EffectLayerTagWait);
-    this->addChild(wait, EffectLayerZOrderWait);
   }
 }
