@@ -9,9 +9,9 @@
 #include "MessageWindow.h"
 #include <sstream>
 
-const float kDefaultMessageWindowDelay = 1.5f;
-const float kDefaultMessageWindowLastDelay = 3.0f;
-const float kDefaultMessageWindowSpeed = 1.0f / 60.0f;
+const float kDefaultMessageWindowDelay = 0.75f;
+const float kDefaultMessageWindowLastDelay = 1.0f;
+const float kDefaultMessageWindowSpeed = 0.5f / 60.0f;
 
 MessageWindow::MessageWindow(const char* fontName, float size, CCSize dimensions) {
   _messageQueue = CCArray::create();
