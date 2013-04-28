@@ -10,15 +10,15 @@ EnemySkill = {
     for col = 0, 2 do
       enemy = enemyManager:popEnemyAt("t2pha3D1", 2, col)
     end
-      local messages = {
+--[[      local messages = {
 user:getName().."は mmm",
  "iii",
- "uuu",
+ "uuu"
 }
       math.random(100)
       local message = messages[math.random(#messages)]
       mManager:pushMessage(message)
-    --user:getName().."は "..enemy:getName().."を　召喚した"
+    --user:getName().."は "..enemy:getName().."を　召喚した"]]
   end
 }
 return EnemySkill
