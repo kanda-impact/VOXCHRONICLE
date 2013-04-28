@@ -600,4 +600,5 @@ void Enemy::setAttack(int attack) {
 void Enemy::setMaxHP(int maxHP) {
   _maxHP = maxHP;
   _hp = maxHP;
+  this->setLifeColor();
 }
