@@ -43,6 +43,7 @@ Map = {
     enemyManager:loadEnemyTextureAsync("kani.png")
     enemyManager:loadEnemyTextureAsync("pak.png")    
     enemyManager:loadEnemyTextureAsync("nisok.png")
+    data:setClearedForMap("fp_cyber")
   end,
   getEnemyPopRate = function(level)
     if level <=12 then
@@ -58,7 +59,6 @@ Map = {
   onClear = function(self, characterManager, enemyManager)
     local data = SaveData:sharedData()
     data:unlockAchievement("clear2C")
-    data:setClearedForMap("fp_cyber")
   end,
 
   fixedEnemies = {

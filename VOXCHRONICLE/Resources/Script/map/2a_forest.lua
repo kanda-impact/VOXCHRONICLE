@@ -30,6 +30,7 @@ Map = {
     enemyManager:loadEnemyTextureAsync("moth.png")
     enemyManager:loadEnemyTextureAsync("hornet.png")    
     enemyManager:loadEnemyTextureAsync("toadstool.png")
+    data:setClearedForMap("fp_forest")
   end,
   getEnemyPopRate = function(level)
   if level <= 12 then
@@ -47,7 +48,6 @@ Map = {
   onClear = function(self, characterManager, enemyManager)
     local data = SaveData:sharedData()
     data:unlockAchievement("clear2A")
-    data:setClearedForMap("fp_forest")
   end,
 
   fixedEnemies = {

@@ -25,6 +25,7 @@ Map = {
     enemyManager:loadEnemyTextureAsync("leaf.png")
     enemyManager:loadEnemyTextureAsync("slime.png")
     enemyManager:loadEnemyTextureAsync("acorn.png")
+    data:setClearedForMap("fp_simple")
   end,
 
   getEnemyPopRate = function(level)
@@ -38,7 +39,6 @@ Map = {
   onClear = function(self, characterManager, enemyManager)
     local data = SaveData:sharedData()
     data:unlockAchievement("clear1A")
-    data:setClearedForMap("fp_simple")
   end,
 
   fixedEnemies = {

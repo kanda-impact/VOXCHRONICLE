@@ -94,6 +94,7 @@ Map = {
     enemyManager:loadEnemyTextureAsync("slime.png")
     enemyManager:loadEnemyTextureAsync("moth.png")
     enemyManager:loadEnemyTextureAsync("hornet.png")
+    data:setClearedForMap("fp_field")
   end,
   getEnemyPopRate = function(level)
     if level <= 2 then
@@ -116,7 +117,6 @@ Map = {
       data:unlockAchievement("tasonobara")
     end
     data:unlockAchievement("clear1B")
-    data:setClearedForMap("fp_field")
   end,
   fixedEnemies = {
   -- {"flower1B0",0}

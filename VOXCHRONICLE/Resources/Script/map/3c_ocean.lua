@@ -37,6 +37,7 @@ Map = {
     enemyManager:loadEnemyTextureAsync("jfish.png")
     enemyManager:loadEnemyTextureAsync("cryst.png")
     enemyManager:loadEnemyTextureAsync("whale.png")
+    data:setClearedForMap("fp_ocean")
     end,
   onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
@@ -68,13 +69,12 @@ Map = {
       enemyManager:popEnemyAt("L_plclaw3C0", 2, 0)
       enemyManager:popEnemyAt("R_plclaw3C0", 1, 2)
       enemyManager:popEnemyAt("L_strclaw3C0", 1, 0)
+      data:setClearedForMap("fp_ocean_boss")
     end
   end,
   onClear = function(self, characterManager, enemyManager)
     local data = SaveData:sharedData()
     data:unlockAchievement("clear3C")
-    data:setClearedForMap("fp_ocean")
-    data:setClearedForMap("fp_ocean_boss")
     SaveData:sharedData():addDefeatedCountForEmemy("wave3C0")
   end,
 
