@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Thu Apr 18 21:57:47 2013.
+** Generated automatically by tolua++-1.0.92 on Sun Apr 28 20:01:59 2013.
 */
 
 #ifndef __cplusplus
@@ -16,6 +16,7 @@ TOLUA_API int  tolua_VOXCHRONICLE_open (lua_State* tolua_S);
 #include "LuaCocos2d.h"
 #include "Skill.h"
 #include "Enemy.h"
+#include "Species.h"
 #include "Character.h"
 #include "CharacterManager.h"
 #include "EnemyManager.h"
@@ -46,17 +47,18 @@ static void tolua_reg_types (lua_State* tolua_S)
  tolua_usertype(tolua_S,"VQTime");
  tolua_usertype(tolua_S,"MessageManager");
  tolua_usertype(tolua_S,"SaveData");
- tolua_usertype(tolua_S,"CCNode");
+ tolua_usertype(tolua_S,"Species");
  tolua_usertype(tolua_S,"EffectLayer");
  tolua_usertype(tolua_S,"CCArray");
  tolua_usertype(tolua_S,"Map");
  tolua_usertype(tolua_S,"EnemyManager");
  tolua_usertype(tolua_S,"PlayLog");
+ tolua_usertype(tolua_S,"SEManager");
  tolua_usertype(tolua_S,"CharacterManager");
  tolua_usertype(tolua_S,"CCSprite");
- tolua_usertype(tolua_S,"SEManager");
- tolua_usertype(tolua_S,"CCObject");
  tolua_usertype(tolua_S,"PopupWindow");
+ tolua_usertype(tolua_S,"CCObject");
+ tolua_usertype(tolua_S,"CCNode");
  tolua_usertype(tolua_S,"CCRect");
 }
 
@@ -983,6 +985,38 @@ static int tolua_VOXCHRONICLE_Enemy_hasRegister00(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* method: getSpecies of class  Enemy */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_Enemy_getSpecies00
+static int tolua_VOXCHRONICLE_Enemy_getSpecies00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"Enemy",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,2,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  Enemy* self = (Enemy*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'getSpecies'", NULL);
+#endif
+  {
+   Species* tolua_ret = (Species*)  self->getSpecies();
+    tolua_pushusertype(tolua_S,(void*)tolua_ret,"Species");
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'getSpecies'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* get function: __IRegister__ of class  Enemy */
 #ifndef TOLUA_DISABLE_tolua_get_Enemy___IRegister__
 static int tolua_get_Enemy___IRegister__(lua_State* tolua_S)
@@ -997,6 +1031,40 @@ static int tolua_get_Enemy___IRegister__(lua_State* tolua_S)
    tolua_pushusertype(tolua_S,(void*)((IRegister*)self), "IRegister");
 #endif
  return 1;
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* method: isEnableSkill of class  Species */
+#ifndef TOLUA_DISABLE_tolua_VOXCHRONICLE_Species_isEnableSkill00
+static int tolua_VOXCHRONICLE_Species_isEnableSkill00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isusertype(tolua_S,1,"Species",0,&tolua_err) ||
+     !tolua_isusertype(tolua_S,2,"Skill",0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  Species* self = (Species*)  tolua_tousertype(tolua_S,1,0);
+  Skill* skill = ((Skill*)  tolua_tousertype(tolua_S,2,0));
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in function 'isEnableSkill'", NULL);
+#endif
+  {
+   bool tolua_ret = (bool)  self->isEnableSkill(skill);
+   tolua_pushboolean(tolua_S,(bool)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'isEnableSkill'.",&tolua_err);
+ return 0;
+#endif
 }
 #endif //#ifndef TOLUA_DISABLE
 
@@ -3785,7 +3853,12 @@ TOLUA_API int tolua_VOXCHRONICLE_open (lua_State* tolua_S)
    tolua_function(tolua_S,"getRegister",tolua_VOXCHRONICLE_Enemy_getRegister00);
    tolua_function(tolua_S,"setRegister",tolua_VOXCHRONICLE_Enemy_setRegister00);
    tolua_function(tolua_S,"hasRegister",tolua_VOXCHRONICLE_Enemy_hasRegister00);
+   tolua_function(tolua_S,"getSpecies",tolua_VOXCHRONICLE_Enemy_getSpecies00);
    tolua_variable(tolua_S,"__IRegister__",tolua_get_Enemy___IRegister__,NULL);
+  tolua_endmodule(tolua_S);
+  tolua_cclass(tolua_S,"Species","Species","CCObject",NULL);
+  tolua_beginmodule(tolua_S,"Species");
+   tolua_function(tolua_S,"isEnableSkill",tolua_VOXCHRONICLE_Species_isEnableSkill00);
   tolua_endmodule(tolua_S);
   tolua_cclass(tolua_S,"Character","Character","CCObject",NULL);
   tolua_beginmodule(tolua_S,"Character");
