@@ -20,9 +20,9 @@ Skill = {
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone,
   messages = {
-    "{chara}は　たてをかまえた"
-    "{chara}は　シールドを　てんかいした"
-    "オクスが　たてをかまえ　まえにでた"
+    "{chara}は　たてをかまえた",
+    "{chara}は　シールドを　てんかいした",
+    "オクスが　たてをかまえ　まえにでた",
     "ラスカが　まほうのかべを　てんかいした"
   }
 }

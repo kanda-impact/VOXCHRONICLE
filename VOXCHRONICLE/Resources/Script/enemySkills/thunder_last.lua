@@ -16,7 +16,9 @@ EnemySkill = {
       user:setRegister(key, 1)
     elseif turn == 1 then
       layer:addEffectOnEnemy(nil, "thunder", 3, CCRectMake(0, 0, 120, 80))
+      if not characterManager:getShield()  then
       characterManager:addMP(-1)
+      end
       characterManager:damage(8)
       mManager:pushMessage(characterManager:getCurrentCharacter():getName().."の　こころに きずがついた")
       user:setRegister(key, 0)
