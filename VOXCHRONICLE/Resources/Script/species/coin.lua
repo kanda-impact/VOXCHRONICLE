@@ -15,6 +15,7 @@ Enemy = {
   description = [[
 電子に通貨の概念を与える試みの末うまれた。
 100枚集めたら１UPしない。
+生息地：電脳世界　攻撃力：ふつう　移動：そこそこ
   ]],
   habitat = "",
   animationFrames = 4,

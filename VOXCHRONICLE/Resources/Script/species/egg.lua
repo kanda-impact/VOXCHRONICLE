@@ -15,6 +15,7 @@ Enemy = {
   description = [[
   電子に自己増殖機能を与える試みの末うまれた。
   転ぶまでは増えつづける。
+  生息地：電脳世界　攻撃力：ふつう　移動：そこそこ
   ]],
   habitat = "",
   animationFrames = 4,

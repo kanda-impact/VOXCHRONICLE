@@ -14,6 +14,7 @@ Enemy = {
   disableSkills = {},
   description = [[
 ２本の長い触手が電極の役割を果たしている。たくさん繋がるとその分強力になる。
+生息地：チュートリアル　攻撃力：そこそこ　移動：ふつう
 ]],
   habitat = "",
   animationFrames = 4,

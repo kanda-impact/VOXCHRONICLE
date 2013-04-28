@@ -15,6 +15,7 @@ Enemy = {
   description = [[
   雪原でしばしば目撃される。
   原始的で合理的な巨体の持ち主。
+  生息地：チュートリアル　攻撃力：そこそこ　移動：おそい
   ]],
   habitat = "",
   animationFrames = 5,

@@ -14,6 +14,7 @@ Enemy = {
   disableSkills = {},
   description = [[
 ダンジョンに君臨するモンスターの元締め。宝を守って空を飛び灼熱の炎を吐く。
+生息地：チュートリアル　攻撃力：つよい　移動：おそい
 ]],
   habitat = "",
   animationFrames = 5,

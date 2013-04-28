@@ -14,6 +14,7 @@ Enemy = {
   disableSkills = {},
   description = [[
 いわゆるモーニングスター。かつては広く活躍したが、年代ものなのか、とってももろい。魔法生物といえども、歳には勝てないのだ
+生息地：古城ほか　攻撃力：ふつう　移動：ふつう
   ]],
   habitat = "",
   animationFrames = 1,

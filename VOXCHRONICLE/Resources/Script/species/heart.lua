@@ -15,6 +15,7 @@ Enemy = {
   description = [[
   電子に生命を与える試みの末うまれた。
   われわれは　どこからきて　どこへ　ゆくのか
+  生息地：電脳世界　攻撃力：よわい　移動：ふつう
   ]],
   habitat = "",
   animationFrames = 4,
