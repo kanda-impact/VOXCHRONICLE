@@ -84,6 +84,8 @@
 		070BAF63172CEEEA007A741A /* T_knight.lua in Resources */ = {isa = PBXBuildFile; fileRef = 070BAF62172CEEEA007A741A /* T_knight.lua */; };
 		070BAF65172CF90C007A741A /* T_knight22.lua in Resources */ = {isa = PBXBuildFile; fileRef = 070BAF64172CF90C007A741A /* T_knight22.lua */; };
 		070BAF69172D09EF007A741A /* Ts_knight22.lua in Resources */ = {isa = PBXBuildFile; fileRef = 070BAF68172D09EF007A741A /* Ts_knight22.lua */; };
+		070BAF6D172D153F007A741A /* T_tomezora23.lua in Resources */ = {isa = PBXBuildFile; fileRef = 070BAF6C172D153F007A741A /* T_tomezora23.lua */; };
+		070BAF6F172D1621007A741A /* Ts_tomezora23.lua in Resources */ = {isa = PBXBuildFile; fileRef = 070BAF6E172D1620007A741A /* Ts_tomezora23.lua */; };
 		070E4020163C29E600A76BEA /* BlinkLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 070E401E163C29E600A76BEA /* BlinkLayer.cpp */; };
 		070E4045163CB10400A76BEA /* title.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 070E4041163CB10400A76BEA /* title.mp3 */; };
 		070E4047163CB3BE00A76BEA /* gameover.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 070E4046163CB3BE00A76BEA /* gameover.mp3 */; };
@@ -1143,7 +1145,6 @@
 		07D351F11722869700C547DD /* T_geek2.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07D351EC1722869600C547DD /* T_geek2.lua */; };
 		07D351F21722869700C547DD /* T_leaf2.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07D351ED1722869600C547DD /* T_leaf2.lua */; };
 		07D351F31722869700C547DD /* T_tetufez2.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07D351EE1722869700C547DD /* T_tetufez2.lua */; };
-		07D351F41722869700C547DD /* T_tomezora2.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07D351EF1722869700C547DD /* T_tomezora2.lua */; };
 		07D8740715ED13CD009CC446 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07D8740615ED13CD009CC446 /* MainScene.cpp */; };
 		07D8745815F01A15009CC446 /* ALBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8741E15F01500009CC446 /* ALBuffer.m */; };
 		07D8745915F01A15009CC446 /* ALCaptureDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8742015F01500009CC446 /* ALCaptureDevice.m */; };
@@ -1556,6 +1557,8 @@
 		070BAF62172CEEEA007A741A /* T_knight.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_knight.lua; sourceTree = "<group>"; };
 		070BAF64172CF90C007A741A /* T_knight22.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_knight22.lua; sourceTree = "<group>"; };
 		070BAF68172D09EF007A741A /* Ts_knight22.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Ts_knight22.lua; path = species/Ts_knight22.lua; sourceTree = "<group>"; };
+		070BAF6C172D153F007A741A /* T_tomezora23.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_tomezora23.lua; sourceTree = "<group>"; };
+		070BAF6E172D1620007A741A /* Ts_tomezora23.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Ts_tomezora23.lua; path = species/Ts_tomezora23.lua; sourceTree = "<group>"; };
 		070E401E163C29E600A76BEA /* BlinkLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BlinkLayer.cpp; path = Classes/UI/BlinkLayer.cpp; sourceTree = "<group>"; };
 		070E4021163C29FB00A76BEA /* BlinkLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlinkLayer.h; path = Classes/includes/BlinkLayer.h; sourceTree = "<group>"; };
 		070E4041163CB10400A76BEA /* title.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = title.mp3; path = Resources/Music/general/title.mp3; sourceTree = "<group>"; };
@@ -2915,7 +2918,6 @@
 		07D351EC1722869600C547DD /* T_geek2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_geek2.lua; sourceTree = "<group>"; };
 		07D351ED1722869600C547DD /* T_leaf2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_leaf2.lua; sourceTree = "<group>"; };
 		07D351EE1722869700C547DD /* T_tetufez2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_tetufez2.lua; sourceTree = "<group>"; };
-		07D351EF1722869700C547DD /* T_tomezora2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_tomezora2.lua; sourceTree = "<group>"; };
 		07D8740615ED13CD009CC446 /* MainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainScene.cpp; path = Classes/Scene/MainScene.cpp; sourceTree = "<group>"; };
 		07D8741D15F01500009CC446 /* ALBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ALBuffer.h; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/ALBuffer.h; sourceTree = "<group>"; };
 		07D8741E15F01500009CC446 /* ALBuffer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ALBuffer.m; path = libs/ios/ObjectAL/ObjectAL/ObjectAL/OpenAL/ALBuffer.m; sourceTree = "<group>"; };
@@ -4061,6 +4063,7 @@
 				B0821D3A1707AD61009417B5 /* Ts_tetufez.lua */,
 				B017551F1707A1A8008053BB /* Ts_tnt.lua */,
 				072588311720F3A2003FD587 /* Ts_tomezora.lua */,
+				070BAF6E172D1620007A741A /* Ts_tomezora23.lua */,
 				0796694116FD4C550001F8B2 /* typhoon.lua */,
 				0796694216FD4C550001F8B2 /* wave.lua */,
 				B01755111707222D008053BB /* wave_root.lua */,
@@ -5510,7 +5513,6 @@
 				070BAF64172CF90C007A741A /* T_knight22.lua */,
 				07D351ED1722869600C547DD /* T_leaf2.lua */,
 				07D351EE1722869700C547DD /* T_tetufez2.lua */,
-				07D351EF1722869700C547DD /* T_tomezora2.lua */,
 				B0821D3E1707AE5E009417B5 /* T_flower.lua */,
 				B0821D461707AEF0009417B5 /* T_geek.lua */,
 				B06D41CB1712745F006ABB6A /* T_geekT3.lua */,
@@ -5527,6 +5529,7 @@
 				B0821D481707AF4D009417B5 /* T_tnt.lua */,
 				0770706617198C4800E3F836 /* T_tnt9.lua */,
 				072588361720F523003FD587 /* T_tomezora.lua */,
+				070BAF6C172D153F007A741A /* T_tomezora23.lua */,
 				B07E38F916E129DA00473629 /* toadstool2A0.lua */,
 				B0AA405116F58D2200674A2A /* typhoon3A2.lua */,
 				078FFC2816E2D549001C9A4F /* typhoon3A6.lua */,
@@ -7166,11 +7169,12 @@
 				07D351F11722869700C547DD /* T_geek2.lua in Resources */,
 				07D351F21722869700C547DD /* T_leaf2.lua in Resources */,
 				07D351F31722869700C547DD /* T_tetufez2.lua in Resources */,
-				07D351F41722869700C547DD /* T_tomezora2.lua in Resources */,
 				070BAF61172CEEC9007A741A /* Ts_knight.lua in Resources */,
 				070BAF63172CEEEA007A741A /* T_knight.lua in Resources */,
 				070BAF65172CF90C007A741A /* T_knight22.lua in Resources */,
 				070BAF69172D09EF007A741A /* Ts_knight22.lua in Resources */,
+				070BAF6D172D153F007A741A /* T_tomezora23.lua in Resources */,
+				070BAF6F172D1621007A741A /* Ts_tomezora23.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -41,6 +41,24 @@ Map = {
       end
       
       self.__IRegister__:setRegister("preHP", characterManager:getHP())
+      local preHP = self.__IRegister__:getRegister("preHP", characterManager:getHP())
+      local shieldState = self.__IRegister__:getBool("shieldState")
+    elseif level == 23 then
+      local exp = characterManager:getExp()
+      local next = 60 * 24
+      local sub = next - exp
+      local tomezoraExp = 10
+      local count = math.floor(sub / tomezoraExp)
+      local enemyCount = 0
+      if enemyManager:getEnemies() then
+        enemyCount = enemyManager:getEnemies():count()
+      end
+      if enemyCount < count then
+        local enemy = enemyManager:popEnemyAt("T_tomezora23", MAX_ROW - 1, enemyCount % 3)
+        enemy:setMaxHP(10)
+        enemy:setExp(10)
+        enemy:setAttack(2)
+      end
     else
       if not enemyManager:getEnemies() or enemyManager:getEnemies():count() == 0 then
         local enemy = enemyManager:popEnemyAt("T_moth7", 4, 1)
@@ -69,6 +87,7 @@ Map = {
     self.__IRegister__:clearRegister()
     local level = characterManager:getLevel()
     local layer = EffectLayer:sharedLayer()
+    characterManager:setExp(characterManager:getExpWithLevel(level))
     if level == 21 then
       local popup = layer:addPopupWindow(2)
       popup:setText(0, "テクニック編開始！", [[
@@ -115,6 +134,7 @@ Map = {
 手前でずっと攻撃してくるわ
 ]])
     elseif level == 24 then
+      enemyManager:removeAllEnemies()
       local popup = layer:addPopupWindow(2)
       popup:setText(0, "『パワーチャージ』を極めよう！", [[
 このゲームで大切なのはムダな行動を
@@ -174,8 +194,6 @@ Map = {
 エンディングがあるから、
 是非全てのステージをプレイしてみてね！
 ]])
-
-
     elseif level == 29 then
       local popup = layer:addPopupWindow(1)
       popup:setText(0, "最小ターンクリアへの道", [[
@@ -200,8 +218,6 @@ Map = {
 以上、ラスカによるテクニック解説でした～！
 じゃ～ね～
 ]])
-
-
     end
   end,
   getEnemyPopRate = function(level)

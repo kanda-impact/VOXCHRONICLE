@@ -32,7 +32,7 @@ Enemy = {
       local r = math.random(100)
       if guarded then
         return ""
-      elseif r < 80 or isCharge then
+      elseif r < 100 or isCharge then
         return "sword"
       end
     end

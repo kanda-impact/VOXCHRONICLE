@@ -36,8 +36,10 @@ Map = {
       -- 敵が1体もいなくなったらモンスター生成
       if enemyCount == 0 then
         enemyManager:popEnemyAt("T_moth", 2, 0)
-        enemyManager:popEnemyAt("T_tnt", MAX_ROW - 1, 1):setExp(60)
+        local ragasoowa = enemyManager:popEnemyAt("T_ragasoowa", MAX_ROW - 1, 1)
         enemyManager:popEnemyAt("T_moth", 2, 2)
+        ragasoowa:setMaxHP(30)
+        ragasoowa:setExp(60)
       end
     elseif level == 13 then
       -- 敵が1体もいなくなったらモンスター生成
@@ -64,10 +66,10 @@ Map = {
         local popup = layer:addPopupWindow(1)
         popup:setText(0, "いのちをだいじに", [[
 きゃあ！いつの間にか体力(HP)がピンチに！
-モンスターもいないし
 この辺でHPの回復をしましょ？
 
 ハートのマークをタッチで『HPヒーリング』。
+魔力(MP)を1消費しちゃうけど、
 いやしの魔法でHPが回復するわ。
 ]])
       end
