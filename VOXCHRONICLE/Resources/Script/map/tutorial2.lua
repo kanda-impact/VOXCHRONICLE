@@ -13,21 +13,33 @@ Map = {
   end,
   onBack = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
+    local layer = EffectLayer:sharedLayer()
     if level == 21 then
     elseif level == 22 then
       local preHP = self.__IRegister__:getRegister("preHP", characterManager:getHP())
-      if preHP < characterManager:getHP() then
-        local popup = layer:addPopupWindow(2)
+      local shieldState = self.__IRegister__:getBool("shieldState")
+      if characterManager:getHP() < preHP then
+        local popup = layer:addPopupWindow(1)
         popup:setText(0, "遠距離攻撃にご用心", [[
-きゃぁ！
-ボスモンスターの遠距離攻撃を食らっちゃった！
+きゃぁ！遠距離攻撃を食らっちゃった！
+
 ボスモンスターの遠距離攻撃は強力だから注意
 攻撃前には前兆があるから、良く見極めて
 タイミング良く盾で『ガード』してね
-
 ]])
         characterManager:addHP(characterManager:getMaxHP())
+      elseif shieldState and not characterManager:getShield() then -- シールド成功した場合
+        local popup = layer:addPopupWindow(1)
+        popup:setText(0, "『遠距離攻撃』には『ガード』", [[
+おみごと！
+
+ボスモンスターの攻撃は強力だから
+うまく『ガード』を使いこなしてね
+]])
+        local boss = enemyManager:getEnemies():objectAtIndex(0)
+        boss.__IRegister__:setBool("isGuarded", true)        
       end
+      
       self.__IRegister__:setRegister("preHP", characterManager:getHP())
     else
       if not enemyManager:getEnemies() or enemyManager:getEnemies():count() == 0 then
@@ -49,6 +61,8 @@ Map = {
 注意して！
 ]])
       end
+    elseif level == 22 then
+      self.__IRegister__:setBool("shieldState", characterManager:getShield()) -- シールド状態をここで監視
     end
   end,
   onLevelUp = function(self, characterManager, enemyManager)
@@ -74,7 +88,7 @@ Map = {
 ]])
     local knight = enemyManager:popEnemyAt("T_knight", 3, 1)
     knight:setExp(60)
-    knight:setHP(30)
+    knight:setMaxHP(30)
     elseif level == 22 then
       enemyManager:removeAllEnemies() -- 敵全滅
       local popup = layer:addPopupWindow(2)
@@ -89,7 +103,7 @@ Map = {
 ]])
    local knight = enemyManager:popEnemyAt("T_knight22", 3, 1)
    knight:setExp(60)
-   knight:setHP(20)
+   knight:setMaxHP(40)
    elseif level == 23 then
       local popup = layer:addPopupWindow(1)
       popup:setText(0, "『貼りつきモンスター』に注意", [[

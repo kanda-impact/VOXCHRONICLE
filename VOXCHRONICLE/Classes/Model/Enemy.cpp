@@ -352,6 +352,7 @@ int Enemy::getHP() {
 
 void Enemy::setHP(int hp) {
   _hp = hp;
+  this->setLifeColor();
 }
 
 bool Enemy::canMove(CharacterManager* manager) {

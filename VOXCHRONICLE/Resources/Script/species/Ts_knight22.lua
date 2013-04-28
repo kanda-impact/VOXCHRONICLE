@@ -23,7 +23,20 @@ Enemy = {
   habitat = "",
   animationFrames = 4,
   performSkill = function(self)
-    return "sword"
+    local isCharge = self:getRegister("swordTurn", 0) > 0 -- チャージ中かどうか
+    local turn = self.__IRegister__:getRegister("turn", 0)
+    self.__IRegister__:setRegister("turn", turn + 1)
+    local guarded = self.__IRegister__:getBool("isGuarded")
+    math.random(100)
+    if turn > 2 then
+      local r = math.random(100)
+      if guarded then
+        return ""
+      elseif r < 80 or isCharge then
+        return "sword"
+      end
+    end
+    return ""
   end
 }
 
