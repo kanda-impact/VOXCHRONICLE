@@ -215,24 +215,12 @@ void SignalHandler(int sig) {
    */
 #if TESTING
   TFLog(@"memory warning!!!!!!!!!!");
-  [TestFlight passCheckpoint:@"MemoryWarning"];
-#endif
-  UIAlertView* memoryWarning = [[UIAlertView alloc] initWithTitle:@"Memory Warning"
-                                                          message:@"もう入らないよぉ……"
-                                                         delegate:self
-                                                cancelButtonTitle:@"消しちゃう"
-                                                otherButtonTitles:nil];
-  [memoryWarning show];
-}
-
-#pragma mark UIAlertViewDelegate
-- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
-  CCTextureCache::sharedTextureCache()->removeUnusedTextures();
-#if TESTING
   [TestFlight submitFeedback:@"メモリリークしたんでなんとかしてください"];
 #endif
+  CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+  Species::purgeSpeciesCache();
+  SimpleAudioEngine::sharedEngine()->unloadAllEffect();
 }
-
 
 - (void)dealloc {
   [super dealloc];
