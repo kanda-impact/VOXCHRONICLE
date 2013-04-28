@@ -19,7 +19,7 @@ MessageWindow::MessageWindow(const char* fontName, float size, CCSize dimensions
   _textIndex = 0;
   _delay = kDefaultMessageWindowDelay;
   _lastDelay = kDefaultMessageWindowLastDelay;
-  _label = CCLabelTTF::create("", fontName, size, dimensions, kCCTextAlignmentLeft, kCCVerticalTextAlignmentTop);
+  _label = CCLabelTTF::create("", fontName, size, dimensions, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
   _label->retain();
   _label->setColor(ccc3(255, 255, 255));
   this->addChild(_label);
