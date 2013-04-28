@@ -93,7 +93,8 @@ return function(map, characterManager, enemyManager)
     "ご　りんじゅう",
     "むこうに　おはなばたけが　みえます",
     "${chara}！　おうとうしろ　${chara}ーーーーー！"
-
+    }
+--[[
 --各ステージ部分
 --1a
 return {
@@ -183,4 +184,5 @@ return {
     "",
     "",
   }
+  ]]
 end
