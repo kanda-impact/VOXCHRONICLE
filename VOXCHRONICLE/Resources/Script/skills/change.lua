@@ -19,7 +19,19 @@ Skill = {
   end,
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone,
+--オクスからラスカへ
+messages = {
+    "シャバデゥビ　タッチ　コウターイ！"
+    "チェンジ！"
+    "たのんだぜ　ラスカ"
+    "まかせたぞ　ラスカ"
+    "たのむ　ラスカ！"
+    }
+--ラスカからオクスへ
   messages = {
-    ""
-  }
+    "ちぇーーんじ"
+    "まかせるわ　オクス"
+    "たのむわよ　オクス"
+    "いっけー　オクス"
+    }
 }

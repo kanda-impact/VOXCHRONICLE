@@ -16,7 +16,7 @@ Enemy = {
   end,
   disableSkills = {"knockback"},
   description = [[
-  ラスボスだよー
+この世界の音を自分の音でかき消さんとする、いつから存在しているのかもわからない魔物。7.22chから繰り出される重低音は強力。
   ]],
   habitat = "",
   animationFrames = 4,

@@ -16,7 +16,7 @@ Enemy = {
   end,
   disableSkills = {"knockback"},
   description = [[
-  残念、倒したと思った？突然出てきてプレイヤーを絶望の淵に陥れるのを生き甲斐とする生命体
+この世界のあらゆる音やリズムをねじまげて、自分の音と同化させてしまう力を持つまでになったこの世界で最悪の魔物。
   ]],
   habitat = "",
   animationFrames = 4,

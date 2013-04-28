@@ -13,7 +13,7 @@ Enemy = {
   end,
   disableSkills = {"attack", "magic", "knockback", "bow", "thunder", "slash"}, -- 全技を無効化する
   description = [[
- 波である。 ざぷーーーーーーん。無敵です。
+自然の驚異。翻弄されたくなければ、このうねりを耐え忍んで進むしかない。
   ]],
   habitat = "",
   animationFrames = 1,

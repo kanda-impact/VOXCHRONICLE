@@ -8,7 +8,7 @@ EnemySkill = {
     local layer = EffectLayer:sharedLayer()
       
     if turn == 0 then
-      local message = user:getName().."は　蘇生魔法を　唱えた！"
+      local message = user:getName().."は　ふっかつじゅもんを　唱えた！"
       mManager:pushMessage(message)
       user:setRegister(key, 1)
       layer:addEffectOnEnemy(user, "enemy_skill", 3, CCRectMake(0, 0, 100, 100))

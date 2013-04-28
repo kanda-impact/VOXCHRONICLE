@@ -25,7 +25,14 @@ EnemySkill = {
       local newEnemy = enemyManager:popEnemyAt("last2_boss", 1, 1)
       local bitR = enemyManager:popEnemyAt("R_bit_boss", 1, 2)
       
-      local message2 = user:getName().."は "..newEnemy:getName().."に姿を変えた！"
+      local message2 ={
+       user:getName().."は "..newEnemy:getName().."に　すがたをかえた！",
+       user:getName().."は "..newEnemy:getName().."に　へんしんした！",
+       user:getName().."のしょうたいは"..newEnemy:getName().."だった！",
+       user:getName().."はしんのすがた"..newEnemy:getName().."になった！",
+       }
+      math.random(100)
+      local message2 = messages[math.random(#messages)]
       mManager:pushMessage(message2)
       
       enemyManager:setBoss(newEnemy)

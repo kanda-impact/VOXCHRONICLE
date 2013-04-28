@@ -1,5 +1,5 @@
 Music = {
-  name = "メイガラの森",
+  name = "ガメイラの森",
   composer = "shinka_cb",
   prefix = "2a",
   type = MusicSetTypeWay,
