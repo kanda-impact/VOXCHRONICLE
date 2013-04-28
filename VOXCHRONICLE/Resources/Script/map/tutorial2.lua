@@ -12,9 +12,43 @@ Map = {
     return {}
   end,
   onBack = function(self, characterManager, enemyManager)
-    if not enemyManager:getEnemies() or enemyManager:getEnemies():count() == 0 then
-      local enemy = enemyManager:popEnemyAt("T_moth7", 4, 1)
-      enemy:setExp(60)
+    local level = characterManager:getLevel()
+    if level == 21 then
+    elseif level == 22 then
+      local preHP = self.__IRegister__:getRegister("preHP", characterManager:getHP())
+      if preHP < characterManager:getHP() then
+        local popup = layer:addPopupWindow(2)
+        popup:setText(0, "遠距離攻撃にご用心", [[
+きゃぁ！
+ボスモンスターの遠距離攻撃を食らっちゃった！
+ボスモンスターの遠距離攻撃は強力だから注意
+攻撃前には前兆があるから、良く見極めて
+タイミング良く盾で『ガード』してね
+
+]])
+        characterManager:addHP(characterManager:getMaxHP())
+      end
+      self.__IRegister__:setRegister("preHP", characterManager:getHP())
+    else
+      if not enemyManager:getEnemies() or enemyManager:getEnemies():count() == 0 then
+        local enemy = enemyManager:popEnemyAt("T_moth7", 4, 1)
+        enemy:setExp(60)
+      end
+    end
+  end,
+  onFinishPlaying = function(self, characterManager, enemyManager)
+    local level = characterManager:getLevel()
+    if level == 21 then
+      if characterManager:getLastSkill() and characterManager:getLastSkill():getIdentifier() == 'knockback' then
+        local popup = layer:addPopupWindow(1)
+        popup:setText(0, "ノックバックは効かない！", [[
+あいつには『ノックバック』が効かないみたいね
+ボスモンスターのような巨大な敵には
+効かないことがあるの
+
+注意して！
+]])
+      end
     end
   end,
   onLevelUp = function(self, characterManager, enemyManager)
@@ -22,7 +56,7 @@ Map = {
     local level = characterManager:getLevel()
     local layer = EffectLayer:sharedLayer()
     if level == 21 then
-      local popup = layer:addPopupWindow(1)
+      local popup = layer:addPopupWindow(2)
       popup:setText(0, "テクニック編開始！", [[
 めざせ！オクス上級者！テクニック編へようこそ～。
 解説は引き続き、私、ラスカが担当させて
@@ -30,11 +64,22 @@ Map = {
 
 じゃあとりあえず大切な内容からいってみよう！
 ]])
+      popup:setText(1, "決戦！ボスモンスター", [[
+レベル30まで到達するとボスモンスターが
+出現するよ
+
+ボスモンスターは仲間を呼んだり、
+強力なワザを使ってきたり
+さまざまな攻撃をしてくるの
+]])
+    local knight = enemyManager:popEnemyAt("T_knight", 3, 1)
+    knight:setExp(60)
+    knight:setHP(30)
     elseif level == 22 then
+      enemyManager:removeAllEnemies() -- 敵全滅
       local popup = layer:addPopupWindow(2)
       popup:setText(0, "『遠距離攻撃』には『ガード』", [[
-レベル30まで到達すると出現するボスモンスター
-には、ぶつかってくるだけじゃなく『遠距離攻撃』を
+ボスモンスターの中には『遠距離攻撃』を
 してくるやつもいるよ！
 ]])
       popup:setText(1, "『遠距離攻撃』には『ガード』", [[
@@ -42,6 +87,9 @@ Map = {
 『遠距離攻撃』の前には前兆があるから、
 上手く見極めてガードしてね！
 ]])
+   local knight = enemyManager:popEnemyAt("T_knight22", 3, 1)
+   knight:setExp(60)
+   knight:setHP(20)
    elseif level == 23 then
       local popup = layer:addPopupWindow(1)
       popup:setText(0, "『貼りつきモンスター』に注意", [[
