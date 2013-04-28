@@ -32,13 +32,13 @@ Map = {
       return {}
     end
   end,
-[[  onLoad = function(self, characterManager, enemyManager)
+  onLoad = function(self, characterManager, enemyManager)
     enemyManager:loadEnemyTextureAsync("naut.png")
     enemyManager:loadEnemyTextureAsync("jfish.png")
     enemyManager:loadEnemyTextureAsync("cryst.png")
     enemyManager:loadEnemyTextureAsync("whale.png")
     SaveData:sharedData():setClearedForMap("fp_ocean")
-    end,
+  end,
   onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
     if level == 29 then
@@ -62,7 +62,7 @@ Map = {
       enemyManager:popEnemyAt("R_plfoot3C0", 2, 2)
       SaveData:sharedData():setClearedForMap("fp_ocean_boss")
     end
-  end,]]
+  end,
     onBack = function(self, characterMavager, enemyManager)
     local enemyCount = enemyManager:getEnemies():count()
     local key0 = "bossRound"
