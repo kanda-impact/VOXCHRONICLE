@@ -36,6 +36,7 @@ class MessageWindow :public CCNode {
   void updateNextText(CCObject* sender);
   bool _ended;
   CCLabelTTF* _label;
+  CCLabelTTF* _shadow;
  public:
   MessageWindow(const char* fontName, float size, CCSize dimensions);
   ~MessageWindow();

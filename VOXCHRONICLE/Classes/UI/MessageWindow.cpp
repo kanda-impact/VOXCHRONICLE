@@ -10,7 +10,7 @@
 #include <sstream>
 
 const float kDefaultMessageWindowDelay = 0.75f;
-const float kDefaultMessageWindowLastDelay = 1.0f;
+const float kDefaultMessageWindowLastDelay = 2.0f;
 const float kDefaultMessageWindowSpeed = 0.5f / 60.0f;
 
 MessageWindow::MessageWindow(const char* fontName, float size, CCSize dimensions) {
@@ -22,6 +22,11 @@ MessageWindow::MessageWindow(const char* fontName, float size, CCSize dimensions
   _label = CCLabelTTF::create("", fontName, size, dimensions, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
   _label->retain();
   _label->setColor(ccc3(255, 255, 255));
+  _shadow = CCLabelTTF::create("", fontName, size, dimensions, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
+  _shadow->retainCount();
+  _shadow->setColor(ccc3(33, 33, 33));
+  _shadow->setPosition(ccp(2, -2));
+  this->addChild(_shadow);
   this->addChild(_label);
   _onFinishedFunction = NULL;
   _onUpdatedFunction = NULL;
@@ -32,6 +37,7 @@ MessageWindow::MessageWindow(const char* fontName, float size, CCSize dimensions
 MessageWindow::~MessageWindow() {
   _messageQueue->release();
   _label->release();
+  _shadow->release();
 }
 
 void MessageWindow::pushMessage(const char* message) {
@@ -102,6 +108,7 @@ void MessageWindow::setLastDelay(float d) {
 
 void MessageWindow::updateNextText(CCObject* sender) {
   _label->setString(this->getCurrentMessage()->getCString());
+  _shadow->setString(this->getCurrentMessage()->getCString());
   if (_messageQueue->count() == 0) return;
   if (this->isEndMessage()) return;
   if (_messageQueue->count() > 0 && _textIndex < this->getCurrentWholeMessage()->length()) {

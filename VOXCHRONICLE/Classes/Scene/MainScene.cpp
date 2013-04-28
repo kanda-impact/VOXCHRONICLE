@@ -99,7 +99,7 @@ bool MainScene::init(Map* map) {
   _musicManager = new MusicManager(music, NULL, _enemyManager, _characterManager);
   _state = VCStateIntro;
   
-  _messageWindow = new MessageWindow(FONT_NAME, 16, CCSizeMake(300, 40));
+  _messageWindow = new MessageWindow(FONT_NAME, 16, CCSizeMake(400, 40));
   _messageWindow->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height - 70));
   MessageManager::sharedManager()->setDefaultMessageWindow(_messageWindow);
   this->addChild(_messageWindow, MainSceneZOrderMessageWindow);
