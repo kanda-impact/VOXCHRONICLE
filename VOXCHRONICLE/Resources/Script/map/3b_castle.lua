@@ -33,6 +33,7 @@ Map = {
     enemyManager:loadEnemyTextureAsync("mimic.png")
     enemyManager:loadEnemyTextureAsync("gargoyle.png")
     enemyManager:loadEnemyTextureAsync("dragon.png")
+    data:setClearedForMap("fp_castle")
   end,
    onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
@@ -47,6 +48,7 @@ Map = {
 
       knight = enemyManager:popEnemyAt("knight_boss", MAX_ROW - 1, 1)
       enemyManager:setBoss(knight)
+      SaveData:sharedData():setClearedForMap("fp_castle_boss")
     end
   end,
   getEnemyPopRate = function(level)
@@ -58,8 +60,6 @@ Map = {
   onClear = function(self, characterManager, enemyManager)
     local data = SaveData:sharedData()
     data:unlockAchievement("clear3B")
-    data:setClearedForMap("fp_castle")
-    data:setClearedForMap("fp_castle_boss")
   end,
   fixedEnemies = {
   }

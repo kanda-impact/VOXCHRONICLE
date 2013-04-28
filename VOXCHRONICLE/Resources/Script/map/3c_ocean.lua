@@ -37,44 +37,72 @@ Map = {
     enemyManager:loadEnemyTextureAsync("jfish.png")
     enemyManager:loadEnemyTextureAsync("cryst.png")
     enemyManager:loadEnemyTextureAsync("whale.png")
-    end,
+    SaveData:sharedData():setClearedForMap("fp_ocean")
+  end,
   onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
     if level == 29 then
-    enemyManager:loadEnemyTextureAsync("kraken_body.png")
-    enemyManager:loadEnemyTextureAsync("R_strfoot.png")
-    enemyManager:loadEnemyTextureAsync("R_plfoot.png")
-    enemyManager:loadEnemyTextureAsync("R_plclaw.png")
-    enemyManager:loadEnemyTextureAsync("R_strclaw.png")
-    enemyManager:loadEnemyTextureAsync("L_strfoot.png")
-    enemyManager:loadEnemyTextureAsync("L_plfoot.png")
-    enemyManager:loadEnemyTextureAsync("L_plclaw.png")
-    enemyManager:loadEnemyTextureAsync("L_strclaw.png")
+      enemyManager:loadEnemyTextureAsync("kraken_body.png")
+      enemyManager:loadEnemyTextureAsync("R_strfoot.png")
+      enemyManager:loadEnemyTextureAsync("R_plfoot.png")
+      enemyManager:loadEnemyTextureAsync("R_plclaw.png")
+      enemyManager:loadEnemyTextureAsync("R_strclaw.png")
+      enemyManager:loadEnemyTextureAsync("L_strfoot.png")
+      enemyManager:loadEnemyTextureAsync("L_plfoot.png")
+      enemyManager:loadEnemyTextureAsync("L_plclaw.png")
+      enemyManager:loadEnemyTextureAsync("L_strclaw.png")
 
     elseif level == 30 then
       CCTextureCache:sharedTextureCache():removeTextureForKey("naut.png")
       CCTextureCache:sharedTextureCache():removeTextureForKey("whale.png")
       CCTextureCache:sharedTextureCache():removeTextureForKey("jfish.png")
 
-
-      local kraken = enemyManager:popEnemyAt("kraken3C0", 3, 1) -- 頭
-      enemyManager:setBoss(kraken)
-      -- 足
-      enemyManager:popEnemyAt("R_strfoot3C0", 4, 2)
-      enemyManager:popEnemyAt("L_plfoot3C0", 4, 0)
-      enemyManager:popEnemyAt("R_plfoot3C0", 3, 2)
-      enemyManager:popEnemyAt("L_strfoot3C0", 3, 0)
-      enemyManager:popEnemyAt("R_strclaw3C0", 2, 2)
-      enemyManager:popEnemyAt("L_plclaw3C0", 2, 0)
-      enemyManager:popEnemyAt("R_plclaw3C0", 1, 2)
-      enemyManager:popEnemyAt("L_strclaw3C0", 1, 0)
+      enemyManager:popEnemyAt("L_plfoot3C0", 2, 0)
+      enemyManager:popEnemyAt("L_strfoot3C0", 3, 1)
+      enemyManager:popEnemyAt("R_plfoot3C0", 2, 2)
+      SaveData:sharedData():setClearedForMap("fp_ocean_boss")
     end
   end,
+  onBack = function(self, characterManager, enemyManager)
+    local enemyCount = enemyManager:getEnemies():count()
+    local key0 = "bossRound"
+    local round = self.__IRegister__:getRegister(key0, 0)
+    local rand = math.random(20)
+    local key1 = "blankTurn"
+    local blank = self.__IRegister__:getRegister(key1, 5)
+    local level = characterManager:getLevel()
+    if level == 30 then
+      if blank > 0 then
+        self.__IRegister__:setRegister(key1, blank -1)
+      else--
+        if round <= 1 and rand ==1 and enemyCount >= 2 then
+          enemyManager:popEnemyAt("wave3C0", 7, 1)
+        end
+        if enemyCount == 0 then
+          if round == 0 then
+            round = self.__IRegister__:setRegister(key0, 1)
+
+            enemyManager:popEnemyAt("L_plclaw3C0", 2, 0)
+            enemyManager:popEnemyAt("R_strfoot3C0", 3, 1)
+            enemyManager:popEnemyAt("R_plclaw3C0", 2, 2)
+          elseif round == 1 then
+            round = self.__IRegister__:setRegister(key0, 2)
+
+            enemyManager:popEnemyAt("R_strclaw3C0", 2, 2)
+            enemyManager:popEnemyAt("L_strclaw3C0", 2, 0)
+            local kraken = enemyManager:popEnemyAt("kraken3C0", 3, 1) -- 頭
+            enemyManager:setBoss(kraken)
+          elseif round >= 2 then
+            round = self.__IRegister__:setRegister(key0, 3)
+          end
+        end--
+      end
+    end
+  end,
+
   onClear = function(self, characterManager, enemyManager)
     local data = SaveData:sharedData()
     data:unlockAchievement("clear3C")
-    data:setClearedForMap("fp_ocean")
-    data:setClearedForMap("fp_ocean_boss")
     SaveData:sharedData():addDefeatedCountForEmemy("wave3C0")
   end,
 
@@ -82,7 +110,7 @@ Map = {
     return 0.16
   end,
   fixedEnemies = {
-  {"wave3C1",1720}
+    {"wave3C1",1720}
 
   }
 }

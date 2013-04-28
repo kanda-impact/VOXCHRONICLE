@@ -30,6 +30,7 @@ Map = {
     enemyManager:loadEnemyTextureAsync("bat.png")
     enemyManager:loadEnemyTextureAsync("mukade.png")
     enemyManager:loadEnemyTextureAsync("wisp.png")
+    SaveData:sharedData():setClearedForMap("fp_cave")
   end,
   getEnemyPopRate = function(level)
     if level <= 12  then
@@ -47,7 +48,6 @@ Map = {
   onClear = function(self, characterManager, enemyManager)
     local data = SaveData:sharedData()
     data:unlockAchievement("clear2B")
-    data:setClearedForMap("fp_cave")
   end,
 
   fixedEnemies = {
