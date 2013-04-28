@@ -23,7 +23,7 @@ MessageWindow::MessageWindow(const char* fontName, float size, CCSize dimensions
   _label->retain();
   _label->setColor(ccc3(255, 255, 255));
   _shadow = CCLabelTTF::create("", fontName, size, dimensions, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
-  _shadow->retainCount();
+  _shadow->retain();
   _shadow->setColor(ccc3(33, 33, 33));
   _shadow->setPosition(ccp(2, -2));
   this->addChild(_shadow);

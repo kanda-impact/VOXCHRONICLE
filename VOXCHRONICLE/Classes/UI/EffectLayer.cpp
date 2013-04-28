@@ -442,16 +442,17 @@ void EffectLayer::addWaitMarker(float duration) {
     const float delay = 0.2;
     CCSprite* wait = CCSprite::create("wait_front.png");
     CCSprite* marker = CCSprite::create("wait_back.png");
-    wait->runAction(CCSequence::create(CCFadeIn::create(0.5f),
-                                       CCDelayTime::create(duration),
+    marker->setOpacity(0);
+    wait->runAction(CCSequence::create(CCFadeIn::create(0.2f),
+                                       CCDelayTime::create(duration - 0.4),
                                        CCRemoveFromParentAction::create(),
-                                       CCFadeOut::create(0.5f),
+                                       CCFadeOut::create(0.2f),
                                        NULL));
-    marker->runAction(CCSequence::create(CCFadeIn::create(0.5f),
+    marker->runAction(CCSequence::create(CCFadeIn::create(0.2f),
                                          CCRepeat::create(CCSequence::create(CCRotateBy::create(0, 15),
                                                                              CCDelayTime::create(delay),
-                                                                             NULL), duration / delay),
-                                         CCFadeOut::create(0.5f),
+                                                                             NULL), (duration - 0.4) / delay),
+                                         CCFadeOut::create(0.2f),
                                          CCRemoveFromParentAction::create()));
     wait->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
     marker->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
