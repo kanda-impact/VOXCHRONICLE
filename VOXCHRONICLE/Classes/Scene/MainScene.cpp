@@ -285,7 +285,6 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       _isLevelUped = false;
       if (_level->getLevel() == _map->getMaxLevel() && _map->isBossStage()) { // 最高レベルのとき、かつボス面のとき
         // 道中フィニッシュ曲を流す。フィニッシュ曲が終わったらボス面に切り替えてイントロ曲を流す
-        MessageManager::sharedManager()->pushRandomMessageFromFunction("levelup", _map, _characterManager, _enemyManager); // レベルアップメッセージ
         _state = VCStateFinish;
         _skin->getController()->setEnable(false);
         _musicManager->getMusic()->removeAllNextTracks();
@@ -428,6 +427,15 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
           _effectLayer->addDamageLabelOnEnemy(enemy, damage, DamageLabelTypeAttack);
         }
         
+        // メッセージ追加
+        if (enemyCount == 1) {
+          if (damageType == DamageTypePhysicalResist) {
+            MessageManager::sharedManager()->pushRandomMessageFromFunction("resist_physical", _map, _characterManager, _enemyManager);
+          } else if (damageType == DamageTypeMagicalResist) {
+            MessageManager::sharedManager()->pushRandomMessageFromFunction("resist_magical", _map, _characterManager, _enemyManager);
+          }
+        }
+        
         // 敵毎に効果音を鳴らす
         string fileName = "";
         switch (damageType) {
@@ -443,11 +451,9 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
             break;
           case DamageTypePhysicalResist:
             fileName = "physical_resist.mp3";
-            MessageManager::sharedManager()->pushRandomMessageFromFunction("resist_physical", _map, _characterManager, _enemyManager);
             break;
           case DamageTypeMagicalResist:
             fileName = "magical_resist.mp3";
-            MessageManager::sharedManager()->pushRandomMessageFromFunction("resist_magical", _map, _characterManager, _enemyManager);
             break;
           default:
             break;
@@ -509,6 +515,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/levelup.mp3").c_str());
       _musicManager->setIntroCount(0);
       _preLevel = currentLevel;
+      MessageManager::sharedManager()->pushRandomMessageFromFunction("levelup", _map, _characterManager, _enemyManager); // レベルアップメッセージ
       _map->performOnLevel(_characterManager, _enemyManager); // スクリプトを呼んでやる
       _characterManager->updateParameters();
       this->setLevel(_map->createLevel(currentLevel, _characterManager));
