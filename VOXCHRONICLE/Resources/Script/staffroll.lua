@@ -12,6 +12,8 @@ StaffRoll = {
     "lskmagic2",
     "lskmagic3",
     "change",
+    "qte",
+    "qte",
     "finish"
   },
   texts = {
@@ -41,25 +43,28 @@ StaffRoll = {
 --stage3
 {"Sound Effect", "nmb", "効果音全般"},
 {"Music Direction", "Tetu_fs", "音楽システム監修"},
-{"Music Compose", "geekdrums", "1A　荒野ステージ"},
+{"Music Compose", "nmb", "チュートリアル曲道中"},
+{"", "geekdrums", "1A　荒野ステージ"},
 {"", "るしゃな", "1B　平原ステージ"},
 {"", "shinka_cb", "2A　森林ステージ"},
 {"", "yuki_mm", "2B　炭鉱ステージ"},
 {"", "Yudaidhun", "2C　電脳ステージ"},
 {"", "TTNTAWASi", "3A　遺跡ステージ道中"},
 {"", "ハワイ長万部", "3A　遺跡ステージボス"},
-{"", "Tetu_fs", "3B　古城ステージ道中・ボス"},
 --BOSS
+{"", "Tetu_fs", "3B　古城ステージ道中・ボス"},
 {"", "negiyan", "3C　深海ステージ道中"},
 {"", "Ceres78", "3C　深海ステージボス"},
-{"", "nmb", "宙域道中・チュートリアルステージ"},
+{"", "nmb", "3D 宙域ステージ道中"},
 {"", "AttaQ", "3D　宙域ステージ曲ボス"},
 {"", "Tetu_fs", "メニュー・タイトル・ゲームオーバー、図鑑"},
 {"", "nmb", "エンディングA"},
 {"", "Tetu_fs", "エンディングB"},
 {"", "Yudaidhun", "エンディングC"},
 {"", "AttaQ", "エンディングD"},
-{"Denug", "wildhawk", ""},
+--3面QTE
+{"Voice", "Tetu_fs", "フルボイスモード"},
+{"Debug", "wildhawk", "テストプレイ、開発補助"},
 --3面アウトロ
 {"Special Thanks", "All Kawaz Members", ""},
 {"Executive Producer", "geekdrums", ""},

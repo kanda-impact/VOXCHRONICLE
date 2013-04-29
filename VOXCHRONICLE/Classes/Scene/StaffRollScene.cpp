@@ -207,6 +207,10 @@ void StaffRollScene::pushTracksFor(MusicSet* set) {
       } else {
         this->pushWaitTracks("lsk", set);
       }
+    } else if (track == "qte") {
+      if (set->getType() == MusicSetTypeBoss) {
+        this->pushTrack("qte", set);
+      }
     } else {
       this->pushTrack(track.c_str(), set);
     }
