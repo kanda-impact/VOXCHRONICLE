@@ -8,7 +8,7 @@ DSTS = (
     ("Image", (0.5, 0.5)),
     ("Retina", (1.0, 1.0))
 )
-IGNORES = ['cyber_default', 'cave_default', 'grass_default']
+IGNORES = ['3d_background0', 'cyber_default', 'cave_default', 'grass_default']
 COMPRESS_COMMAND = 'pngquant --speed %(speed)d --quality=%(quality)s --force --ext %(ext)s %(src)s'
 SPEED = 1
 QUALITY = '50-80'
