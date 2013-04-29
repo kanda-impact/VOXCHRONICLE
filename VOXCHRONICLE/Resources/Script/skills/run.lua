@@ -35,5 +35,8 @@ Skill = {
     "かぜをきって　はしる　{chara}",
     "{chara}は　てきに　せっきんした",
     "{chara}は　うってでることにした"
-  }
+  },
+  getMessageTable = function(map, characterManager, enemyManager)
+    return {}
+  end
 }

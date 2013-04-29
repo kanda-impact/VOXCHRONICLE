@@ -36,5 +36,8 @@ Skill = {
     "つかれが　ふきとんだ",
     "いたいの　いたいの　とんでいけー",
     "からだの　いたみが　きえていく"
-  }
+  },
+  getMessageTable = function(map, characterManager, enemyManager)
+    return {}
+  end
 }

@@ -25,5 +25,8 @@ Skill = {
     "{chara}は　シールドを　てんかいした",
     "オクスが　たてをかまえ　まえにでた",
     "ラスカが　まほうのかべを　てんかいした"
-  }
+  },
+  getMessageTable = function(map, characterManager, enemyManager)
+    return {}
+  end
 }

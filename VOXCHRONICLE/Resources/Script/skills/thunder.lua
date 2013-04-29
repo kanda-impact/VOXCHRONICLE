@@ -29,5 +29,8 @@ Skill = {
     "{chara}の　らいげきが　てきをつらぬく！",
     "てきぜんたいに　らいげきが　ふりそそぐ",
     "くらえぇー！ラスカサンダーー！！"
-  }
+  },
+  getMessageTable = function(map, characterManager, enemyManager)
+    return {}
+  end
 }

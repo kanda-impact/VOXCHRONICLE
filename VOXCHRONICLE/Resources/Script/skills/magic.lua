@@ -48,5 +48,8 @@ Skill = {
   "こおりつけ！　モンスター！",
   "つえのさきから　れいきがほどばしる",
   "ラスカの　ブリザード　アタック"
-  }
+  },
+  getMessageTable = function(map, characterManager, enemyManager)
+    return {}
+  end
 }

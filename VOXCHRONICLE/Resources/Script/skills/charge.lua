@@ -35,5 +35,8 @@ Skill = {
     "まりょくが　みちていく",
     "ラスカのＭＰが　かいふくした",
     "ラスカの　ちからが　かいふくした"
-  }
+  },
+  getMessageTable = function(map, characterManager, enemyManager)
+    return {}
+  end
 }

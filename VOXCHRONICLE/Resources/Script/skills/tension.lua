@@ -43,5 +43,8 @@ Skill = {
     "うぉぉおおお！",
     "パワー　ちゃーーじ！！！",
     "ちからが　みなぎっていく！！"
-  }
+  },
+  getMessageTable = function(map, characterManager, enemyManager)
+    return {}
+  end
 }

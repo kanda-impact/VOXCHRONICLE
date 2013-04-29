@@ -63,7 +63,6 @@ class Skill :public CCObject {
   SkillRange _range;
   SkillType _type;
   LuaObject* _lua;
-  CCArray* _messages;
   int _cutinType;
  public:
   Skill(const char* identifier);
@@ -88,7 +87,6 @@ class Skill :public CCObject {
   SkillRange getRange();
   SkillType getType();
   LuaObject* getLuaObject();
-  CCArray* getMessages();
 };
 
 typedef struct {

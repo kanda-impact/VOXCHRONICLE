@@ -33,17 +33,21 @@ Skill = {
       SimpleAudioEngine:sharedEngine():playEffect(filename)
     end
   end,
+  getMessageTable = function(map, characterManager, enemyManager)
+    return {
+      "オクスは　おもいきり　けんをふりおろした",
+      "オクスは　けんで　こうげきした",
+      "オクスの　けんが　てきをきる",
+      "オクスの　こうげき！"
+    }
+  end,
   getPower = function(characterManager)
     local repeatCount = characterManager:getRepeatCount()
     repeatPower = {0,1,2,3}
     local tension = characterManager:getTension()
     t = {3, 9, 12, 15, 30}
     return t[tension + 1] +repeatPower[repeatCount + 1]
-  end,
-  messages = {
-    "オクスは　おもいきり　けんをふりおろした",
-    "オクスは　けんで　こうげきした",
-    "オクスの　けんが　てきをきる",
-    "オクスの　こうげき！"
-  }
+  end
 }
+
+return Skill

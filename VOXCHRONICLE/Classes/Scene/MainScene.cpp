@@ -485,14 +485,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       
       
       // メッセージを追加する
-      CCArray* messages = skill->getMessages();
-      if (messages->count() > 0) {
-        CCString* str = (CCString*)messages->randomObject();
-        // この辺の実装酷いからなんとかする
-        CCDictionary* dict = CCDictionary::create();
-        dict->setObject(CCString::create(_characterManager->getCurrentCharacter()->getName()), "chara");
-        MessageManager::sharedManager()->pushMessage(str->getCString(), dict);
-      }
+      MessageManager::sharedManager()->pushRandomMessageFromSkill(skill, _map, _characterManager, _enemyManager);
       
       _effectLayer->addSkillEffect(skill, enemies);
       if (!_characterManager->getShield()) {
@@ -770,6 +763,9 @@ void MainScene::changeMap(Map* nextMap) {
   if (!init) {
     _effectLayer->addWaitMarker(_musicManager->getMusic()->getCurrentMainTrack()->getDuration() * _musicManager->getMusicSet()->getIntroCount());
   }
+  CCTextureCache::sharedTextureCache()->removeUnusedTextures();
+  Species::purgeSpeciesCache();
+  SimpleAudioEngine::sharedEngine()->unloadAllEffect();
 }
 
 void MainScene::changeSkin(Skin *newSkin, bool crossFade) {

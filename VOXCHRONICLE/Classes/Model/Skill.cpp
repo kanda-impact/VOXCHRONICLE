@@ -14,6 +14,8 @@
 #include "FileUtils.h"
 #include "CharacterManager.h"
 
+#include "MessageManager.h"
+
 using namespace boost;
 
 Skill::Skill(const char* identifier) {
@@ -47,22 +49,10 @@ Skill::Skill(const char* identifier) {
   std::stringstream icon;
   icon << "Images/" + this->getIdentifier() << "_icon.png";
   CCTextureCache::sharedTextureCache()->addImage(FileUtils::getFilePath(icon.str().c_str()).c_str());
-  
-
-  // メッセージ一覧を生成します
-  _messages = CCArray::create();
-  _messages->retain();
-  if (mes) {
-    for (CCLuaValueArrayIterator it = mes->begin(); it != mes->end(); ++it) {
-      CCString* str = CCString::create(it->stringValue());
-      _messages->addObject(str);
-    }
-  }
 }
 
 Skill::~Skill() {
   _lua->release();
-  _messages->release();
 }
 
 string Skill::getName() {
@@ -163,10 +153,7 @@ SkillEffectType Skill::getEffectType() {
   }
 }
 
-CCArray* Skill::getMessages() {
-  return _messages;
-}
-
 int Skill::getCutinType() {
   return _cutinType;
 }
+

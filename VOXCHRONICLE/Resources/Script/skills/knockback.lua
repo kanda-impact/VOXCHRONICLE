@@ -55,5 +55,7 @@ Skill = {
   end,
   skillRange = SkillRangeSingle,
   skillType = SkillTypePhysical,
-  messages = {}
+  getMessageTable = function(map, characterManager, enemyManager)
+    return {}
+  end
 }

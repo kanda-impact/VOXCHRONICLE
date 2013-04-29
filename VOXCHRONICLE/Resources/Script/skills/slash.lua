@@ -27,5 +27,8 @@ Skill = {
     "いくぜ　オクススラッシュ！！",
     "ちからをこめた　いちげき！！",
     "ぜんたいを　きりきざむ！！　オクススラッシュ！"
-  }
+  },
+  getMessageTable = function(map, characterManager, enemyManager)
+    return {}
+  end
 }
