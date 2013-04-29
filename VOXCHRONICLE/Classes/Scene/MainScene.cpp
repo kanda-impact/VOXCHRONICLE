@@ -415,9 +415,23 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         DamageType damageType = (DamageType)((CCInteger*)damageTypes->objectAtIndex(i))->getValue();
         if (damage > 0 || damageType == DamageTypeBarrierBreak || damageType == DamageTypeShieldBreak || damageType == DamageTypeNoDamage) {
           isHit = true;
-        } else if (damageType != DamageTypeDeath) {
-          // ヒットしたとき、敵キャラを点滅させる
-          enemy->runAction(CCRepeat::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.05, 64), CCFadeTo::create(0.05, 255)), 3));
+          if (damageType != DamageTypeDeath) {
+            // ヒットしたとき、敵キャラを点滅させる。ぷるぷるさせる
+            CCArray* actions = CCArray::create();
+            CCPoint origin = enemy->getPosition();
+            const int times = 6;
+            const float blinkDuration = 0.05;
+            for (int i = 0; i < 10; ++i) {
+              float x = -damage / 2 + rand() % damage;
+              float y = -damage / 2 + rand() % damage;
+              CCPlace* move = CCPlace::create(ccpAdd(origin, ccp(x, y)));
+              CCDelayTime* delay = CCDelayTime::create(blinkDuration * 2 * 3 / times);
+              actions->addObject(CCSequence::create(move, delay, NULL));
+            }
+            actions->addObject(CCPlace::create(origin)); // 元に復帰
+            enemy->runAction(CCSpawn::createWithTwoActions(CCRepeat::create(CCSequence::createWithTwoActions(CCFadeTo::create(blinkDuration, 64), CCFadeTo::create(blinkDuration, 255)), 3),
+                                                           CCSequence::create(actions)));
+          }
         }
         if (damageType == DamageTypeDeath) { // 敵キャラを殺したとき
           SaveData::sharedData()->addCountFor(SaveDataCountKeyDefeat); // 殺しカウント++
