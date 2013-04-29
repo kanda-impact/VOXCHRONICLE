@@ -11,6 +11,7 @@ Skill = {
   turn = 1,
   loop = true,
   canRepeat = true,
+  keepTension = true,
   performSkill = function(self, target, characterManager, enemyManager)
     enemyManager:nextTurn(characterManager, true, true)
   end,

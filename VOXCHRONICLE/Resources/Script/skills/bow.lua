@@ -10,6 +10,7 @@ Skill = {
   cutinType = EffectLayerCutinTypeNormal,
   loop = true,
   maxRepeat = 1,
+  keepTension = false,
   turn = 1,
   getPower = function(characterManager)
     local tension = characterManager:getTension()

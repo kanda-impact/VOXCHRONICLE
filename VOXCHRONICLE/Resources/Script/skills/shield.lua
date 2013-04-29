@@ -11,6 +11,7 @@ Skill = {
   turn = 1,
   loop = true,
   canRepeat = false,
+  keepTension = false,
   performSkill = function(self, target, characterManager, enemyManager)
     characterManager:setShield(true)
   end,

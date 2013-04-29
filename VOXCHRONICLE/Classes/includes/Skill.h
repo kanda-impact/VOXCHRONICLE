@@ -57,6 +57,7 @@ class Skill :public CCObject {
   bool _se;
   bool _loop;
   bool _canRepeat;
+  bool _keepTension;
   string _name;
   string _identifier;
   SkillRange _range;
@@ -82,6 +83,7 @@ class Skill :public CCObject {
   bool hasSE();
   bool isLoop();
   bool canRepeat();
+  bool isKeepTension();
   SkillEffectType getEffectType();
   SkillRange getRange();
   SkillType getType();

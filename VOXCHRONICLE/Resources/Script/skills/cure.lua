@@ -11,6 +11,7 @@ Skill = {
   turn = 1,
   loop = true,
   canRepeat = true,
+  keepTension = false,
   performSkill = function(self, target, characterManager, enemyManager)
     local tension = characterManager:getTension() -- テンションをとって
     local power = self:getPower(characterManager) -- パワーとって

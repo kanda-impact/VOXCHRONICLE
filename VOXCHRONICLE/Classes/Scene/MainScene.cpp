@@ -572,7 +572,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     }
     
     // このターンにテンション使ってないときreset
-    if (_characterManager->getLastSkill() != NULL && _characterManager->getLastSkill()->getIdentifier() != "tension") {
+    if (_characterManager->getLastSkill() != NULL && !_characterManager->getLastSkill()->isKeepTension()) {
       _characterManager->resetTension();
     }
     _effectLayer->setTensionEffect(_characterManager->getTension());

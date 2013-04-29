@@ -9,6 +9,7 @@ Skill = {
   canRepeat = true,
   cutinType = EffectLayerCutinTypeNormal,
   maxRepeat = 4,
+  keepTension = false,
   turn = 1,
   loop = true,
   skillRange = SkillRangeSingle,
