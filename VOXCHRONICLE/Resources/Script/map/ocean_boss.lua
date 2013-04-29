@@ -43,34 +43,47 @@ Map = {
     if blank > 0 then
       self.__IRegister__:setRegister(key1, blank -1)
     else--
-    if round <= 1 and rand ==1 and enemyCount >= 2 then
-      enemyManager:popEnemyAt("wave3C0", 7, 1)
-    end
-    if enemyCount == 0 then
-      if round == 0 then
-        round = self.__IRegister__:setRegister(key0, 1)
-
-        enemyManager:popEnemyAt("L_plclaw3C0", 2, 0)
-        enemyManager:popEnemyAt("R_strfoot3C0", 3, 1)
-        enemyManager:popEnemyAt("R_plclaw3C0", 2, 2)
-      elseif round == 1 then
-        round = self.__IRegister__:setRegister(key0, 2)
-
-        enemyManager:popEnemyAt("R_strclaw3C0", 2, 2)
-        enemyManager:popEnemyAt("L_strclaw3C0", 2, 0)
-        local kraken = enemyManager:popEnemyAt("kraken3C0", 3, 1) -- 頭
-        enemyManager:setBoss(kraken)
-      elseif round >= 2 then
-        round = self.__IRegister__:setRegister(key0, 3)
+      if round <= 1 and rand ==1 and enemyCount >= 2 then
+        enemyManager:popEnemyAt("wave3C0", 7, 1)
       end
-    end--
+      if enemyCount == 0 then
+        if round == 0 then
+          round = self.__IRegister__:setRegister(key0, 1)
+
+          enemyManager:popEnemyAt("L_plclaw3C0", 2, 0)
+          enemyManager:popEnemyAt("R_strfoot3C0", 3, 1)
+          enemyManager:popEnemyAt("R_plclaw3C0", 2, 2)
+        elseif round == 1 then
+          round = self.__IRegister__:setRegister(key0, 2)
+
+          enemyManager:popEnemyAt("R_strclaw3C0", 2, 2)
+          enemyManager:popEnemyAt("L_strclaw3C0", 2, 0)
+          local kraken = enemyManager:popEnemyAt("kraken3C0", 3, 1) -- 頭
+          enemyManager:setBoss(kraken)
+        elseif round >= 2 then
+          round = self.__IRegister__:setRegister(key0, 3)
+        end
+      end--
+    end
+    
+    local boss = enemyManager:getBoss()
+    if boss then
+      local key = "crakenAchieve"
+      local count = enemyManager:getEnemies():count()
+      self.__IRegister__:setRegister(key,count)
+      print(count)
     end
   end,
   getEnemyPopRate = function(level)
     return 0.6
   end,
   onClear = function(self, characterManager, enemyManager)
-    SaveData:sharedData():addDefeatedCountForEmemy("wave3C0")
+    local data = SaveData:sharedData()
+    local key = "crakenAchieve"
+    if self.__IRegister__:getRegister(key,0) == 1 then
+      data:unlockAchievement("bossCex")
+    end
+    data:addDefeatedCountForEmemy("wave3C0")
   end,
 
   fixedEnemies = {
