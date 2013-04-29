@@ -31,10 +31,18 @@ Map = {
     enemyManager:loadEnemyTextureAsync("gargoyle.png")
     SaveData:sharedData():setClearedForMap("fp_ruin")
   end,
+  onBack = function(self, characterManager, enemyManager)
+    local key = "fortressAchieve"
+    local boss = enemyManager:getBoss()
+    if boss then
+      local bossRow = enemyManager:getBoss():getRow()
+      self.__IRegister__:setRegister(key,bossRow)
+    end
+  end,
   onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
     if level == 29 then
-    enemyManager:loadEnemyTextureAsync("fortress.png")
+      enemyManager:loadEnemyTextureAsync("fortress.png")
     elseif level == 30 then
       CCTextureCache:sharedTextureCache():removeTextureForKey("mask.png")
       CCTextureCache:sharedTextureCache():removeTextureForKey("wisp.png")
@@ -61,6 +69,11 @@ Map = {
   onClear = function(self, characterManager, enemyManager)
     local data = SaveData:sharedData()
     data:unlockAchievement("clear3A")
+    local key = "fortressAchieve"
+    local row = self.__IRegister__:getRegister(key,1)
+    if row == 0 then
+      data:unlockAchievement("nagoya")
+    end
   end,
   fixedEnemies = {
   }

@@ -14,6 +14,15 @@ Map = {
   onLoad = function(self, characterManager, enemyManager)
     enemyManager:loadEnemyTextureAsync("fortress.png")
   end,
+  onBack = function(self, characterManager, enemyManager)
+    local key = "fortressAchieve"
+    local boss = enemyManager:getBoss()
+    if boss then
+      local bossRow = enemyManager:getBoss():getRow()
+      self.__IRegister__:setRegister(key,bossRow)
+      print(bossRow)
+    end
+  end,
   onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
     if level == 10 then
@@ -24,6 +33,11 @@ Map = {
   onClear = function(self, characterManager, enemyManager)
     local data = SaveData:sharedData()
     data:unlockAchievement("clear3A")
+    local key = "fortressAchieve"
+    local row = self.__IRegister__:getRegister(key,1)
+    if row == 0 then
+      data:unlockAchievement("nagoya")
+    end
   end,
   getEnemyPopRate = function(level)
     if level <= 22 then
