@@ -22,7 +22,7 @@ typedef enum {
 
 PopupWindow* PopupWindow::create(int pages) {
   PopupWindow* window = new PopupWindow(pages);
-  window->retain();
+  window->autorelease();
   return window;
 }
 
