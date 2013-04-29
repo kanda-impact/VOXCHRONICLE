@@ -17,6 +17,8 @@
 #include "ResultScene.h"
 #include <sstream>
 
+#include "UIApplicationWrapper.h"
+
 #define EXT ".caf"
 
 using namespace std;
@@ -84,6 +86,7 @@ StaffRollScene::~StaffRollScene() {
 
 void StaffRollScene::onEnterTransitionDidFinish() {
   _music->play();
+  UIApplicationWrapper::sharedApplication()->setIdleTimerDisabled(true);
 }
 
 void StaffRollScene::trackDidBack(VISS::Music *music, VISS::Track *currentTrack, int trackNumber) {
@@ -169,6 +172,7 @@ void StaffRollScene::addCutin(const char *text, TextType type, CutinType cutinTy
 }
 
 void StaffRollScene::onFinishPlaying(cocos2d::CCObject *sender) {
+  UIApplicationWrapper::sharedApplication()->setIdleTimerDisabled(false);
   PlayLog* log = (PlayLog*)this->getUserObject();
   CCScene* scene = CCScene::create();
   if (log == NULL) {
