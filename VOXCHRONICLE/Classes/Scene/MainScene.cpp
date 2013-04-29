@@ -99,7 +99,7 @@ bool MainScene::init(Map* map) {
   _musicManager = new MusicManager(music, NULL, _enemyManager, _characterManager);
   _state = VCStateIntro;
   
-  _messageWindow = new MessageWindow(FONT_NAME, 16, CCSizeMake(300, 40));
+  _messageWindow = new MessageWindow(FONT_NAME, 16, CCSizeMake(400, 40));
   _messageWindow->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height - 70));
   MessageManager::sharedManager()->setDefaultMessageWindow(_messageWindow);
   this->addChild(_messageWindow, MainSceneZOrderMessageWindow);
@@ -205,7 +205,11 @@ void MainScene::onEnterTransitionDidFinish() {
   _skin->getStatusLayer()->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
   CCDictionary* dict = CCDictionary::create();
   dict->setObject(CCString::create(_characterManager->getCurrentCharacter()->getName()), "chara");
-  MessageManager::sharedManager()->pushRandomMessageFromFunction("welcome", _map, _characterManager, _enemyManager);
+  if (_log->getCount(PlayLogKeyDead) == 0) {
+    MessageManager::sharedManager()->pushRandomMessageFromFunction("welcome", _map, _characterManager, _enemyManager);
+  } else {
+    MessageManager::sharedManager()->pushRandomMessageFromFunction("continue", _map, _characterManager, _enemyManager);
+  }
   _effectLayer->addWaitMarker(_musicManager->getMusic()->getCurrentMainTrack()->getDuration() * _musicManager->getMusicSet()->getIntroCount());
 }
 
@@ -213,7 +217,7 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
   int preTension = _characterManager->getTension(); // 敵の行動前テンション
   if (_state == VCStateMain) {
     int preHP = _characterManager->getHP();
-    _enemyManager->nextTurn(_characterManager, false);
+    _enemyManager->nextTurn(_characterManager, false, false);
     CCObject* obj = NULL;
     CCARRAY_FOREACH(_enemyManager->getEnemies(), obj) {
       Enemy* enemy = (Enemy*)obj;
@@ -300,6 +304,7 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
           this->gotoNextStage();
         } else {
           _enemyManager->removeAllNormalEnemies(); // 雑魚キャラを全滅させます
+          MessageManager::sharedManager()->pushRandomMessageFromFunction("clear", _map, _characterManager, _enemyManager);
           _musicManager->pushFinishTracks();
         }
       }
@@ -328,12 +333,14 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
         actions->addObject(CCSequence::create(move, delay, NULL));
       }
       boss->runAction(CCSequence::create(actions));
+      MessageManager::sharedManager()->pushRandomMessageFromFunction("qte_attack", _map, _characterManager, _enemyManager);
     } else {
       _musicManager->pushQTETracks();
     }
   } else if (_state == VCStateQTEFinish) { // QTE終了時
     int count = _musicManager->getFinishCount();
     if (count == 2) { // 3小節目
+      MessageManager::sharedManager()->pushRandomMessageFromFunction("qte_explosion", _map, _characterManager, _enemyManager); // 爆発メッセージ
       SaveData::sharedData()->addDefeatedCountForEnemy(_enemyManager->getBoss()->getSpecies()->getIdentifier().c_str()); // ボスの倒したカウンター増加
       _enemyManager->removeEnemy(_enemyManager->getBoss());
       _enemyManager->setBoss(NULL);
@@ -372,6 +379,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     Skill* skill = _currentSkillInfo.skill;
     SkillPerformType performType = _currentSkillInfo.type;
     string name = _currentSkillInfo.skillTrackName;
+    int preMP = _characterManager->getMP();
     int preExp = _characterManager->getExp();
     int getExp = 0;
     
@@ -419,6 +427,15 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
           _effectLayer->addDamageLabelOnEnemy(enemy, damage, DamageLabelTypeAttack);
         }
         
+        // メッセージ追加
+        if (enemyCount == 1) {
+          if (damageType == DamageTypePhysicalResist) {
+            MessageManager::sharedManager()->pushRandomMessageFromFunction("resist_physical", _map, _characterManager, _enemyManager);
+          } else if (damageType == DamageTypeMagicalResist) {
+            MessageManager::sharedManager()->pushRandomMessageFromFunction("resist_magical", _map, _characterManager, _enemyManager);
+          }
+        }
+        
         // 敵毎に効果音を鳴らす
         string fileName = "";
         switch (damageType) {
@@ -463,6 +480,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath(seStream.str().c_str()).c_str());
       } else if (enemies->count() == 0) { // 誰もいないときピロリ音
         SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("miss.mp3").c_str());
+        MessageManager::sharedManager()->pushRandomMessageFromFunction("notarget", _map, _characterManager, _enemyManager); // ピロリメッセージ
       }
       
       
@@ -487,7 +505,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     }
     
     if (_currentSkillInfo.type == SkillPerformTypeFailure) { // MP切れで失敗したとき
-      MessageManager::sharedManager()->pushRandomMessageFromFunction("empty", _map, _characterManager, _enemyManager); // MP切れメッセージ
+      MessageManager::sharedManager()->pushRandomMessageFromFunction("mpmiss", _map, _characterManager, _enemyManager); // MP切れメッセージ
       SaveData::sharedData()->addCountFor(SaveDataCountKeyMPMiss); // MP切れ
     }
     
@@ -497,6 +515,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/levelup.mp3").c_str());
       _musicManager->setIntroCount(0);
       _preLevel = currentLevel;
+      MessageManager::sharedManager()->pushRandomMessageFromFunction("levelup", _map, _characterManager, _enemyManager); // レベルアップメッセージ
       _map->performOnLevel(_characterManager, _enemyManager); // スクリプトを呼んでやる
       _characterManager->updateParameters();
       this->setLevel(_map->createLevel(currentLevel, _characterManager));
@@ -553,7 +572,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     }
     
     // このターンにテンション使ってないときreset
-    if (_characterManager->getLastSkill() != NULL && _characterManager->getLastSkill()->getIdentifier() != "tension") {
+    if (_characterManager->getLastSkill() != NULL && !_characterManager->getLastSkill()->isKeepTension()) {
       _characterManager->resetTension();
     }
     _effectLayer->setTensionEffect(_characterManager->getTension());
@@ -567,11 +586,16 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     
     this->updateGUI(); // GUI更新
     
+    if (preMP > 0 && _characterManager->getMP() == 0) {
+      MessageManager::sharedManager()->pushRandomMessageFromFunction("empty", _map, _characterManager, _enemyManager);
+    }
+    
     if (!_characterManager->isPerforming()) {
       _enemyManager->purgeAllTrash();
     }
     if (_enemyManager->getBoss() && _enemyManager->getBoss()->getHP() <= 0) { // ボスが死んでたらQTEに移行する
       _state = VCStateQTEWait;
+      MessageManager::sharedManager()->pushRandomMessageFromFunction("qte_wait", _map, _characterManager, _enemyManager); // QTEメッセージ
       _musicManager->setMinDrumScore(4);
       _skin->getController()->setEnable(false);
       _qteTrigger = new QTETrigger(_enemyManager);
@@ -695,6 +719,7 @@ void MainScene::addDamageEffect() {
     this->runAction(CCSequence::create(actions));
   } else if (sumDamage == 0 && queueCount > 0 && !isShield) { // 0のとき、かつqueueが空だったとき
     SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/guard.mp3").c_str());
+    MessageManager::sharedManager()->pushRandomMessageFromFunction("guard", _map, _characterManager, _enemyManager); // ガードメッセージ
   }
   if (isDead) { // 死んだとき
     this->onGameOver();
@@ -803,6 +828,7 @@ void MainScene::startBossBattle() {
   this->changeMusic(_map->getCurrentMusic(_level), false);
   _characterManager->setRepeatCount(0);
   _skin->getController()->setEnable(false);
+  MessageManager::sharedManager()->pushRandomMessageFromFunction("warning", _map, _characterManager, _enemyManager); // ボス出現メッセージ
   _musicManager->pushIntroTracks();
 }
 
@@ -817,6 +843,7 @@ void MainScene::gotoNextStage() {
       _skin->getController()->setEnable(false);
       this->addChild(_mapSelector, MainSceneZOrderUI);
       _state = VCStateMapSelect;
+      MessageManager::sharedManager()->pushRandomMessageFromFunction("map_select", _map, _characterManager, _enemyManager); // マップセレクター
     }
   }
 }

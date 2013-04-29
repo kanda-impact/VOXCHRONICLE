@@ -11,6 +11,7 @@ Skill = {
   turn = 1,
   loop = true,
   canRepeat = true,
+  keepTension = false,
   performSkill = function(self, target, characterManager, enemyManager)
     local tension = characterManager:getTension() -- テンションをとって
     local power = self:getPower(characterManager) -- パワーとって
@@ -28,12 +29,12 @@ Skill = {
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone,
   messages = {
-    "きずが　かいふくした"
-    "みるみる　きずが　ふさがっていく"
-    "たいりょくが　かいふくした"
-    "かつりょくが　みなぎる"
-    "つかれが　ふきとんだ"
-    "いたいの　いたいの　とんでいけー"
+    "きずが　かいふくした",
+    "みるみる　きずが　ふさがっていく",
+    "たいりょくが　かいふくした",
+    "かつりょくが　みなぎる",
+    "つかれが　ふきとんだ",
+    "いたいの　いたいの　とんでいけー",
     "からだの　いたみが　きえていく"
   }
 }

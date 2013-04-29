@@ -1,6 +1,7 @@
 $#include "LuaCocos2d.h"
 $#include "Skill.h"
 $#include "Enemy.h"
+$#include "Species.h"
 $#include "Character.h"
 $#include "CharacterManager.h"
 $#include "EnemyManager.h"
@@ -160,7 +161,12 @@ class Enemy : public CCSprite, public IRegister {
 	int getRegister(const char* key, int defaultValue);
 	void setRegister(const char* key, int value);
 	bool hasRegister(const char* key);
-}:
+	Species* getSpecies();
+};
+
+class Species : public CCObject {
+	bool isEnableSkill(Skill* skill);
+};
 
 class Character : public CCObject {
 	string getName();
@@ -195,7 +201,7 @@ class CharacterManager : public CCObject {
 };
 
 class EnemyManager : public CCLayer {
-	void nextTurn(CharacterManager* manager, bool moveOnly);
+	void nextTurn(CharacterManager* manager, bool moveOnly, bool forcePopup);
 	Enemy* popEnemyAt(const char* enemy, float row, int col);
 	Enemy* getBoss();
 	CCArray* getEnemies();

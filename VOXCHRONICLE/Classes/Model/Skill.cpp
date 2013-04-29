@@ -34,6 +34,7 @@ Skill::Skill(const char* identifier) {
   _loop = _lua->getBoolean("loop");
   _cutinType = _lua->getInt("cutinType");
   _canRepeat = _lua->getBoolean("canRepeat");
+  _keepTension = _lua->getBoolean("keepTension");
   shared_ptr<CCLuaValueArray> mes = _lua->getArray("messages");
   
   // エフェクトを先読みしておきます
@@ -143,6 +144,10 @@ bool Skill::isLoop() {
 
 bool Skill::canRepeat() {
   return _canRepeat;
+}
+
+bool Skill::isKeepTension() {
+  return _keepTension;
 }
 
 SkillEffectType Skill::getEffectType() {

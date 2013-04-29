@@ -45,6 +45,7 @@ typedef struct {
 
 class SaveData :public CCObject {
  private:
+  bool _fullvoice;
   CCDictionary* _countDictionary;
   CCArray* _achievements;
   shared_ptr<CCLuaValueArray> _enemyDictionary;
@@ -71,6 +72,8 @@ class SaveData :public CCObject {
   void unlockAchievement(const char* identifier);
   void setUnlockedAchievement(const char* identifier);
   int getAllEnemyDictionaryCount();
+  bool isFullVoice();
+  void setFullVoice(bool b);
 };
 
 #endif /* defined(__VOXCHRONICLE__SaveData__) */

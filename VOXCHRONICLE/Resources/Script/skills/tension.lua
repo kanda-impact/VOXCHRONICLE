@@ -11,6 +11,7 @@ Skill = {
   turn = 1,
   loop = false,
   canRepeat = true,
+  keepTension = true,
   performSkill = function(self, target, characterManager, enemyManager)
     characterManager:addTension(1)
     local tension = characterManager:getTension()
@@ -33,14 +34,14 @@ Skill = {
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone,
   messages = {
-    "{chara}は　ちからをためた"
-    "{chara}の　テンションがあがっていく"
-    "{chara}は　りきんでいる"
-    "{chara}の　ボルテージが　ふくれあがる"
-    "もえあがる　こころが　せいめいりょくを　たかめる"
-    "たかまれ　おれたちの　BEAT!!"
-    "うぉぉおおお！"
-    "パワー　ちゃーーじ！！！"
+    "{chara}は　ちからをためた",
+    "{chara}の　テンションがあがっていく",
+    "{chara}は　りきんでいる",
+    "{chara}の　ボルテージが　ふくれあがる",
+    "もえあがる　こころが　せいめいりょくを　たかめる",
+    "たかまれ　おれたちの　BEAT!!",
+    "うぉぉおおお！",
+    "パワー　ちゃーーじ！！！",
     "ちからが　みなぎっていく！！"
   }
 }

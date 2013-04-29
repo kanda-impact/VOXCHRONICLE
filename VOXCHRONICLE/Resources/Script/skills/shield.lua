@@ -11,6 +11,7 @@ Skill = {
   turn = 1,
   loop = true,
   canRepeat = false,
+  keepTension = false,
   performSkill = function(self, target, characterManager, enemyManager)
     characterManager:setShield(true)
   end,
@@ -20,9 +21,9 @@ Skill = {
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone,
   messages = {
-    "{chara}は　たてをかまえた"
-    "{chara}は　シールドを　てんかいした"
-    "オクスが　たてをかまえ　まえにでた"
+    "{chara}は　たてをかまえた",
+    "{chara}は　シールドを　てんかいした",
+    "オクスが　たてをかまえ　まえにでた",
     "ラスカが　まほうのかべを　てんかいした"
   }
 }

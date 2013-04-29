@@ -11,6 +11,7 @@ Skill = {
   turn = 1,
   loop = true,
   canRepeat = true,
+  keepTension = false,
   performSkill = function(self, target, characterManager, enemyManager)
     local hit = true
     if target:getItem() == EnemyItemBarrier then
@@ -41,11 +42,11 @@ Skill = {
   skillRange = SkillRangeSingle,
   skillType = SkillTypeMagical,
   messages = {
-  "ラスカの　アイスブレイク！"
-  "たちふさがるものを　ひょうけつさせる！"
-  "くうきが　こおりついていく"
-  "こおりつけ！　モンスター！"
-  "つえのさきから　れいきがほどばしる"
+  "ラスカの　アイスブレイク！",
+  "たちふさがるものを　ひょうけつさせる！",
+  "くうきが　こおりついていく",
+  "こおりつけ！　モンスター！",
+  "つえのさきから　れいきがほどばしる",
   "ラスカの　ブリザード　アタック"
   }
 }

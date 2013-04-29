@@ -11,6 +11,7 @@ Skill = {
   turn = 1,
   loop = true,
   canRepeat = true,
+  keepTension = false,
   skillRange = SkillRangeFront,
   skillType = SkillTypePhysical,
   getPower = function(characterManager)
@@ -19,12 +20,12 @@ Skill = {
     return t[tension + 1]
   end,
   messages = {
-    "オクスは　おもいきり　けんをふりまわした"
-    "ひっさつの　オクススラッシュ！！"
-    "オクスの　はんいこうげき！"
-    "オクスの　けんから　しょうげきはが！！"
-    "いくぜ　オクススラッシュ！！"
-    "ちからをこめた　いちげき！！"
+    "オクスは　おもいきり　けんをふりまわした",
+    "ひっさつの　オクススラッシュ！！",
+    "オクスの　はんいこうげき！",
+    "オクスの　けんから　しょうげきはが！！",
+    "いくぜ　オクススラッシュ！！",
+    "ちからをこめた　いちげき！！",
     "ぜんたいを　きりきざむ！！　オクススラッシュ！"
   }
 }

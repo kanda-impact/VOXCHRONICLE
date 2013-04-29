@@ -11,6 +11,7 @@ Skill = {
   turn = 1,
   loop = true,
   canRepeat = true,
+  keepTension = false,
   performSkill = function(self, target, characterManager, enemyManager)
     local tension = characterManager:getTension() -- テンションをとって
     local power = self:getPower(characterManager) -- パワーとって
@@ -28,11 +29,11 @@ Skill = {
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone,
   messages = {
-    "オクスは　ラスカに　まりょくをそそぎこんだ"
-    "ラスカの　まりょくをかいふくさせた"
-    "まりょくを　じゅうてんした"
-    "まりょくが　みちていく"
-    "ラスカのＭＰが　かいふくした"
+    "オクスは　ラスカに　まりょくをそそぎこんだ",
+    "ラスカの　まりょくをかいふくさせた",
+    "まりょくを　じゅうてんした",
+    "まりょくが　みちていく",
+    "ラスカのＭＰが　かいふくした",
     "ラスカの　ちからが　かいふくした"
   }
 }

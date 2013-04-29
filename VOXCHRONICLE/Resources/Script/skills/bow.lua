@@ -10,6 +10,7 @@ Skill = {
   cutinType = EffectLayerCutinTypeNormal,
   loop = true,
   maxRepeat = 1,
+  keepTension = false,
   turn = 1,
   getPower = function(characterManager)
     local tension = characterManager:getTension()
@@ -19,11 +20,11 @@ Skill = {
   skillRange = SkillRangeBack,
   skillType = SkillTypeMagical,
   messages = {
-    "{chara}は　ゆみを　はなった"
-    "てんくうから　ひかりが　ほどばしる"
-    "まりょくで　ゆみを　つくりだす"
-    "もっとも　たいりょくあるものを　ねらう！"
-    "きょだいな　やじりを　しょうかんした"
+    "{chara}は　ゆみを　はなった",
+    "てんくうから　ひかりが　ほどばしる",
+    "まりょくで　ゆみを　つくりだす",
+    "もっとも　たいりょくあるものを　ねらう！",
+    "きょだいな　やじりを　しょうかんした",
     "うちつらぬけ！！　スナイプ！！"
   }
 }

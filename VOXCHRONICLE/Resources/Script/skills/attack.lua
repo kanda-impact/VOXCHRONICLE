@@ -9,6 +9,7 @@ Skill = {
   canRepeat = true,
   cutinType = EffectLayerCutinTypeNormal,
   maxRepeat = 4,
+  keepTension = false,
   turn = 1,
   loop = true,
   skillRange = SkillRangeSingle,
@@ -40,9 +41,9 @@ Skill = {
     return t[tension + 1] +repeatPower[repeatCount + 1]
   end,
   messages = {
-    "オクスは　おもいきり　けんをふりおろした"
-    "オクスは　けんで　こうげきした"
-    "オクスの　けんが　てきをきる"
+    "オクスは　おもいきり　けんをふりおろした",
+    "オクスは　けんで　こうげきした",
+    "オクスの　けんが　てきをきる",
     "オクスの　こうげき！"
   }
 }

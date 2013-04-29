@@ -363,8 +363,12 @@ void EnemyManager::pushEnemiesQueue(cocos2d::CCArray *enemies) {
   }
 }
 
-void EnemyManager::nextTurn (CharacterManager* characterManager, bool moveOnly) {
-  this->lotPopEnemy();
+void EnemyManager::nextTurn (CharacterManager* characterManager, bool moveOnly, bool forcePopup) {
+  if (forcePopup) {
+    this->popEnemy();
+  } else {
+    this->lotPopEnemy();
+  }
   CCObject* obj = NULL;
   // コピーしないとだめじゃね
   if (!this->getEnemies()) return;

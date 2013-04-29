@@ -9,6 +9,7 @@ return function(map, characterManager, enemyManager)
     "よし！　きりぬけたぞ！",
     "モンスターを　たおした",
   }
+--[[  
 --各ステージ部分
 --1a
   return {
@@ -59,4 +60,5 @@ return function(map, characterManager, enemyManager)
     "平原の　おわりがみえた",
     "さあ　たたかいはこれからだ",
   }
+]]
 end

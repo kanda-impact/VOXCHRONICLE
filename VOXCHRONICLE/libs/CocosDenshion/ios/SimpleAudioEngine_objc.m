@@ -147,21 +147,21 @@ static CDBufferManager *bufferManager = nil;
 }
 
 -(void) pauseAllEffects {
-  [OALSimpleAudio sharedInstance].paused = true;
+    [OALSimpleAudio sharedInstance].paused = true;
   //[soundEngine pauseAllSounds];
 }
 
 -(void) resumeEffect:(ALuint) soundId {
-  [soundEngine resumeSound: soundId];
+    [soundEngine resumeSound: soundId];
 }
 
 -(void) resumeAllEffects {
-  [OALSimpleAudio sharedInstance].paused = false;
+    [OALSimpleAudio sharedInstance].paused = false;
   //[soundEngine resumeAllSounds];
 }
 
 -(void) stopAllEffects {
-  [soundEngine stopAllSounds];
+    [[OALSimpleAudio sharedInstance] stopAllEffects];
 }
 
 -(void) preloadEffect:(NSString*) filePath
