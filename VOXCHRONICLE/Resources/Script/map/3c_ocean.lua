@@ -98,6 +98,8 @@ Map = {
         end--
       end
     end
+    
+    
   end,
 
   onClear = function(self, characterManager, enemyManager)
