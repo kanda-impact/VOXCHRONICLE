@@ -47,6 +47,7 @@ Map = {
   wayMusic = "1b",
   bossMusic = "",
   backgroundImage = "field_background0.png",
+  thumbnailImage = "forest_thumbnail.png",
   skin = "skinB",
   ending = "",
   nextMaps = {"2b_cave","2c_cyber"},

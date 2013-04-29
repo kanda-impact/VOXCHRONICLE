@@ -20,7 +20,6 @@ Map = {
     if boss then
       local bossRow = enemyManager:getBoss():getRow()
       self.__IRegister__:setRegister(key,bossRow)
-      print(bossRow)
     end
   end,
   onLevelUp = function(self, characterManager, enemyManager)
