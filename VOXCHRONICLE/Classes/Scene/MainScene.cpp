@@ -518,9 +518,9 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       
       CCSprite* levelup = CCSprite::create("levelup.png");
       levelup->setPosition(ccp(-100, 180));
-      levelup->runAction(CCSequence::create(CCEaseSineIn::create(CCMoveTo::create(0.75f, ccp(240, 180))),
+      levelup->runAction(CCSequence::create(CCEaseSineIn::create(CCMoveTo::create(0.5f, ccp(240, 180))),
                                             CCDelayTime::create(1.0f),
-                                            CCEaseSineIn::create(CCMoveTo::create(0.75f, ccp(680, 180))),
+                                            CCEaseSineIn::create(CCMoveTo::create(0.5f, ccp(680, 180))),
                                             CCRemoveFromParentAction::create(),
                                             NULL));
       _effectLayer->addChild(levelup);
