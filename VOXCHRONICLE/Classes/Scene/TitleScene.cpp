@@ -190,11 +190,11 @@ void TitleScene::onDemoStart() {
 void TitleScene::onDemoEnd() {
   _isDemo = false;
   this->removeDemo();
-  _touchToStart->setVisible(true);
-  SimpleAudioEngine::sharedEngine()->stopAllEffects();
 }
 
 void TitleScene::removeDemo() {
+  SimpleAudioEngine::sharedEngine()->stopAllEffects();
+  _touchToStart->setVisible(true);
   CCNode* demo = this->getChildByTag(TitleSceneTagDemoBackground);
   CCNode* label = demo->getChildByTag(TitleSceneTagDemoText);
   demo->removeChild(label, true);

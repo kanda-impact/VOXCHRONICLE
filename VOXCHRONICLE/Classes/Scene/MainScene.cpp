@@ -896,7 +896,6 @@ void MainScene::setPause(bool pause) {
       layer->setPausedTargets(NULL);
       this->removeChildByTag(PAUSE_LAYER_TAG, true);
     }
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cancel.mp3").c_str());
   }
 }
 

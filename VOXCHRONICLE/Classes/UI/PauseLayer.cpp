@@ -91,6 +91,7 @@ void PauseLayer::onTitlePressed(CCObject* sender) {
 
 void PauseLayer::onCancelPressed(CCObject* sender) {
   MainScene* scene = (MainScene*)this->getParent();
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/cancel.mp3").c_str());
   scene->setPause(false);
 }
 
