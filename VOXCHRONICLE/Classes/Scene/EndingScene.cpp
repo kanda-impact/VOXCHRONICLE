@@ -90,7 +90,7 @@ void EndingScene::onEnterTransitionDidFinish() {
   CCDirector* director = CCDirector::sharedDirector();
   CCLayer* bg = (CCLayer*)this->getChildByTag(EndingSceneTagShadowBackground);
   bg->runAction(CCSequence::create(CCDelayTime::create(18.0f),
-                                   CCFadeOut::create(0.5f),
+                                   CCFadeTo::create(0.5f, 0),
                                    CCRemoveFromParentAction::create(), NULL));
   CCLayer* labels = (CCLayer*)bg->getChildByTag(EndingSceneTagLabel);
   labels->runAction(CCMoveTo::create(12.0f, ccp(director->getWinSize().width / 2.0f, director->getWinSize().height /2.0f)));

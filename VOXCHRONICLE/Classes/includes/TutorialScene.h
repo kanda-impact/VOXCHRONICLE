@@ -16,8 +16,10 @@ using namespace cocos2d;
 
 class TutorialLayer :public CCLayer {
  private:
+  int _selectNumber;
   void onTutorialButtonPressed(CCObject* sender);
   void onBackButtonPressed(CCObject* sender);
+  void onGameStart(CCObject* sender);
  public:
   virtual void onEnterTransitionDidFinish();
   virtual bool init();

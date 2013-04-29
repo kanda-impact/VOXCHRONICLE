@@ -198,7 +198,7 @@ void TitleScene::removeDemo() {
   CCNode* demo = this->getChildByTag(TitleSceneTagDemoBackground);
   CCNode* label = demo->getChildByTag(TitleSceneTagDemoText);
   demo->removeChild(label, true);
-  demo->runAction(CCSequence::create(CCFadeOut::create(0.5f), CCRemoveFromParentAction::create(), NULL));
+  demo->runAction(CCSequence::create(CCFadeTo::create(0.5f, 0), CCRemoveFromParentAction::create(), NULL));
 }
 
 void TitleScene::didAccelerate(CCAcceleration *pAccelerationValue) {

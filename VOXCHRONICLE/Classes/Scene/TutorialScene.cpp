@@ -14,6 +14,11 @@
 #include "Map.h"
 #include "MainScene.h"
 
+typedef enum {
+  TutorialLayerTagMenu,
+  TutorialLayerTagBack
+} TutorialLayerTag;
+
 bool TutorialLayer::init() {
   if (!CCLayer::init()) {
     return false;
@@ -53,8 +58,10 @@ bool TutorialLayer::init() {
   tutorialMenu->setPosition(ccp(225, center.y));
   backMenu->setPosition(ccp(480 - 40, center.y));
   
-  this->addChild(tutorialMenu);
-  this->addChild(backMenu);
+  this->addChild(tutorialMenu, 0, TutorialLayerTagMenu);
+  this->addChild(backMenu, 0, TutorialLayerTagBack);
+  
+  _selectNumber = -1;
   
   return true;
 }
@@ -69,12 +76,34 @@ void TutorialLayer::onEnterTransitionDidFinish() {
 void TutorialLayer::onTutorialButtonPressed(cocos2d::CCObject *sender) {
   SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/tutorial_decide.mp3").c_str());
+  _selectNumber = ((CCNode*)sender)->getTag();
+  CCMenu* main = (CCMenu*)this->getChildByTag(TutorialLayerTagMenu);
+  CCMenu* back = (CCMenu*)this->getChildByTag(TutorialLayerTagBack);
+  main->setEnabled(false);
+  back->setEnabled(false);
+  CCMenuItemImage* item = (CCMenuItemImage*)sender;
+  item->runAction(CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.05f, 128),
+                                                                           CCFadeTo::create(0.05f, 255))));
+  
+  this->scheduleOnce(schedule_selector(TutorialLayer::onGameStart), 3.0f); // 遅延してゲーム開始
+}
+
+void TutorialLayer::onBackButtonPressed(cocos2d::CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/menu_cancel.mp3").c_str());
+  CCScene* scene = CCScene::create();
+  MainMenuScene* layer = new MainMenuScene(false);
+  layer->autorelease();
+  scene->addChild(layer);
+  CCTransitionSlideInR* transition = CCTransitionSlideInR::create(0.25f, scene);
+  CCDirector::sharedDirector()->pushScene(transition);
+}
+
+void TutorialLayer::onGameStart(cocos2d::CCObject *sender) {
   LuaObject* lua = LuaObject::create("setting");
-  int tag = ((CCNode*)sender)->getTag();
   shared_ptr<CCLuaValueArray> array = lua->getArray("tutorials");
   int i = 0;
   for (CCLuaValueArrayIterator it = array->begin(); it != array->end(); ++it) {
-    if (i == tag) {
+    if (i == _selectNumber) {
       string mapName = it->stringValue();
       Map* map = new Map(mapName.c_str());
       map->autorelease();
@@ -90,14 +119,4 @@ void TutorialLayer::onTutorialButtonPressed(cocos2d::CCObject *sender) {
     }
     ++i;
   }
-}
-
-void TutorialLayer::onBackButtonPressed(cocos2d::CCObject *sender) {
-  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/menu_cancel.mp3").c_str());
-  CCScene* scene = CCScene::create();
-  MainMenuScene* layer = new MainMenuScene(false);
-  layer->autorelease();
-  scene->addChild(layer);
-  CCTransitionSlideInR* transition = CCTransitionSlideInR::create(0.25f, scene);
-  CCDirector::sharedDirector()->pushScene(transition);
 }
