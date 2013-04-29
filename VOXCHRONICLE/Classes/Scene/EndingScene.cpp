@@ -28,6 +28,7 @@ EndingScene::EndingScene(const char* endingScript) {
   LuaObject* obj = LuaObject::create(endingScript);
   CCDirector* director = CCDirector::sharedDirector();
   
+  _identifier = endingScript;
   string text = obj->getString("text");
   _musicDuration = obj->getInt("duration");
   _music = obj->getString("music");
@@ -81,10 +82,15 @@ void EndingScene::goToNextScene(cocos2d::CCObject *sender) {
 
 void EndingScene::onEnterTransitionDidFinish() {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(_music.c_str(), false);
+  if (SaveData::sharedData()->isFullVoice()) { // フルボイスモード！
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.4f);
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect((_identifier + "_voice.mp3").c_str());
+  }
   this->getScheduler()->scheduleSelector(schedule_selector(EndingScene::goToNextScene), this, 0, false, 0, _musicDuration);
   CCDirector* director = CCDirector::sharedDirector();
   CCLayer* bg = (CCLayer*)this->getChildByTag(EndingSceneTagShadowBackground);
   bg->runAction(CCSequence::create(CCDelayTime::create(18.0f),
+                                   CCFadeOut::create(0.5f),
                                    CCRemoveFromParentAction::create(), NULL));
   CCLayer* labels = (CCLayer*)bg->getChildByTag(EndingSceneTagLabel);
   labels->runAction(CCMoveTo::create(12.0f, ccp(director->getWinSize().width / 2.0f, director->getWinSize().height /2.0f)));

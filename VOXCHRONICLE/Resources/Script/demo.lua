@@ -1,5 +1,5 @@
 Demo = {
-  scrollDuration = 20, -- スクロール秒数
+  scrollDuration = 35, -- スクロール秒数
   stopDuration = 6, -- スクロール後秒数
   delay = 10, -- 開始までの秒数
   moveToX = 240,

@@ -141,6 +141,7 @@ bool TitleScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
 }
 
 void TitleScene::onDemoStart() {
+  SaveData* data = SaveData::sharedData();
   _isDemo = true;
   CCDirector* director = CCDirector::sharedDirector();
   string text = _demo->getString("text");
@@ -166,7 +167,7 @@ void TitleScene::onDemoStart() {
   CCLayer* labels = CCLayer::create();
   
   labels->addChild(shadowLabel);
-  labels->setPosition(ccp(director->getWinSize().width / 2.0f, - director->getWinSize().height / 2.0f * 2));
+  labels->setPosition(ccp(director->getWinSize().width / 2.0f, - director->getWinSize().height / 2.0f - 50));
   labels->addChild(label);
   bg->addChild(labels, 0, TitleSceneTagDemoText);
   
@@ -179,6 +180,10 @@ void TitleScene::onDemoStart() {
                                        CCCallFunc::create(this, callfunc_selector(TitleScene::onDemoEnd)),
                                        NULL)
   );
+  if (data->isFullVoice()) {
+    SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.4f);
+    SimpleAudioEngine::sharedEngine()->playEffect("demo.mp3");
+  }
   _touchToStart->setVisible(false);
 }
 
@@ -186,6 +191,7 @@ void TitleScene::onDemoEnd() {
   _isDemo = false;
   this->removeDemo();
   _touchToStart->setVisible(true);
+  SimpleAudioEngine::sharedEngine()->stopAllEffects();
 }
 
 void TitleScene::removeDemo() {

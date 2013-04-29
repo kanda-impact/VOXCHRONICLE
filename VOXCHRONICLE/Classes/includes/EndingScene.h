@@ -17,6 +17,7 @@ using namespace cocos2d;
 class EndingScene :public CCLayer {
 private:
   int _musicDuration;
+  std::string _identifier;
   std::string _music;
   void goToNextScene(CCObject* sender);
   void onEnterTransitionDidFinish();
