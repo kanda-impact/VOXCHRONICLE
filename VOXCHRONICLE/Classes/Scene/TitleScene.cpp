@@ -51,13 +51,12 @@ bool TitleScene::init() {
   
   CCLabelTTF* startLabel = CCLabelTTF::create("Start", FONT_NAME, 32);
   CCLabelTTF* debugLabel = CCLabelTTF::create("Debug", FONT_NAME, 32);
-  
-  CCMenu* menu = CCMenu::create(CCMenuItemLabel::create(startLabel, this, menu_selector(TitleScene::onStartButtonPressed)),
-                                CCMenuItemLabel::create(debugLabel, this, menu_selector(TitleScene::onDebugButtonPressed)),
+  //CCMenuItemLabel::create(startLabel, this, menu_selector(TitleScene::onStartButtonPressed))
+  CCMenu* menu = CCMenu::create(CCMenuItemLabel::create(debugLabel, this, menu_selector(TitleScene::onDebugButtonPressed)),
                                 NULL);
   menu->alignItemsHorizontallyWithPadding(50);
   menu->setPosition(ccp(winSize.width / 2, 80));
-  //this->addChild(menu);
+  this->addChild(menu);
   
   CCMenuItemLabel* seOff = CCMenuItemLabel::create(CCLabelTTF::create("SE OFF", FONT_NAME, 24));
   seOff->setTag(0);

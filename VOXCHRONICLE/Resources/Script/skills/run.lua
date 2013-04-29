@@ -12,7 +12,7 @@ Skill = {
   loop = true,
   canRepeat = true,
   performSkill = function(self, target, characterManager, enemyManager)
-    enemyManager:nextTurn(characterManager, true)
+    enemyManager:nextTurn(characterManager, true, true)
   end,
   getPower = function(characterManager)
     return 0

@@ -217,7 +217,7 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
   int preTension = _characterManager->getTension(); // 敵の行動前テンション
   if (_state == VCStateMain) {
     int preHP = _characterManager->getHP();
-    _enemyManager->nextTurn(_characterManager, false);
+    _enemyManager->nextTurn(_characterManager, false, false);
     CCObject* obj = NULL;
     CCARRAY_FOREACH(_enemyManager->getEnemies(), obj) {
       Enemy* enemy = (Enemy*)obj;
