@@ -13,6 +13,7 @@
 #include "macros.h"
 #include "MessageManager.h"
 #include "PlayLog.h"
+#include "BufferCache.h"
 
 #include "MainMenuScene.h"
 #include "FreePlayScene.h"
@@ -84,18 +85,16 @@ void GameOverLayer::titleButtonPressed(CCObject *sender) {
   } else if (_backScene == MainBackSceneFreePlay) {
     FreePlayScene* layer = FreePlayScene::create("freeplay.lua", false);
     scene->addChild(layer);
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(FileUtils::getFilePath("Music/general/menu.mp3").c_str(), true);
   } else if (_backScene == MainBackSceneTutorial) {
     TutorialLayer* layer = TutorialLayer::create();
     scene->addChild(layer);
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(FileUtils::getFilePath("Music/general/menu.mp3").c_str(), true);
   } else if (_backScene == MainBackSceneDebug) {
     FreePlayScene* layer = FreePlayScene::create("debug.lua", true);
     scene->addChild(layer);
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(FileUtils::getFilePath("Music/general/menu.mp3").c_str(), true);
   }
   CCTransitionFade* transition = CCTransitionFade::create(0.5, scene);
   CCDirector::sharedDirector()->replaceScene(transition);
+  VISS::BufferCache::sharedCache()->purgeAllBuffers();
 }
 
 void GameOverLayer::setMainBackScene(MainBackScene scene) {

@@ -154,7 +154,7 @@ void Controller::updateSkills(CharacterManager* manager, Level* level, bool rese
   }
  if (index >= 0) {
     SkillTrigger* trigger = (SkillTrigger*)_triggers->objectAtIndex(index);
-    if (reset && trigger->getSkillTriggerState() == SkillTriggerStateNormal) {
+    if (!reset && trigger->getSkillTriggerState() == SkillTriggerStateNormal) {
       ((SkillTrigger*)trigger)->setPress(true);
       this->reorderChild((SkillTrigger*)trigger, ControllerZOrderTriggerPressed);
     }

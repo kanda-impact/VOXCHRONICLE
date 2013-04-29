@@ -59,6 +59,13 @@ bool TutorialLayer::init() {
   return true;
 }
 
+void TutorialLayer::onEnterTransitionDidFinish() {
+  CCLayer::onEnterTransitionDidFinish();
+  if (!SimpleAudioEngine::sharedEngine()->isBackgroundMusicPlaying()) {
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(FileUtils::getFilePath("Music/general/menu.mp3").c_str(), true);
+  }
+}
+
 void TutorialLayer::onTutorialButtonPressed(cocos2d::CCObject *sender) {
   SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/tutorial_decide.mp3").c_str());

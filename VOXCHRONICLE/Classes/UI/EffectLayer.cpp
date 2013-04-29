@@ -370,16 +370,11 @@ void EffectLayer::addWarning(float delay) {
   const float animationDuration = 0.1f;
   CCDirector* director = CCDirector::sharedDirector();
   CCNode* node = CCNode::create();
-  CCSprite* warning = CCSprite::create("warning0.png");
-  CCArray* frames = CCArray::create();
-  frames->addObject(CCSpriteFrame::create("warning0.png", CCRectMake(0, 0, 480, 123)));
-  frames->addObject(CCSpriteFrame::create("warning1.png", CCRectMake(0, 0, 480, 123)));
-  CCAnimation* animation = CCAnimation::createWithSpriteFrames(frames);
-  animation->setDelayPerUnit(animationDuration);
-  animation->setLoops((delay / animation->getDelayPerUnit()) / 2);
+  CCSprite* warning = CCSprite::create("warning1.png");
+  
   warning->setOpacity(0);
   warning->runAction(CCSequence::create(CCFadeIn::create(fadeDuration),
-                                        CCAnimate::create(animation),
+                                        CCDelayTime::create(delay),
                                         CCFadeOut::create(fadeDuration),
                                         NULL));
   CCSprite* band0 = CCSprite::create("warning2.png");

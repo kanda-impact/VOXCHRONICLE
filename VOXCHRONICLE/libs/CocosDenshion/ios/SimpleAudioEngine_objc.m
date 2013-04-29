@@ -142,11 +142,13 @@ static CDBufferManager *bufferManager = nil;
 }    
 
 -(void) pauseEffect:(ALuint) soundId {
-  [soundEngine pauseSound: soundId];
+    [OALSimpleAudio sharedInstance].paused = true;
+  //[soundEngine pauseSound: soundId];
 }
 
 -(void) pauseAllEffects {
-  [soundEngine pauseAllSounds];
+  [OALSimpleAudio sharedInstance].paused = true;
+  //[soundEngine pauseAllSounds];
 }
 
 -(void) resumeEffect:(ALuint) soundId {
@@ -154,7 +156,8 @@ static CDBufferManager *bufferManager = nil;
 }
 
 -(void) resumeAllEffects {
-  [soundEngine resumeAllSounds];
+  [OALSimpleAudio sharedInstance].paused = false;
+  //[soundEngine resumeAllSounds];
 }
 
 -(void) stopAllEffects {
@@ -172,7 +175,13 @@ static CDBufferManager *bufferManager = nil;
 -(void) unloadEffect:(NSString*) filePath
 {
     CDLOGINFO(@"Denshion::SimpleAudioEngine unloadedEffect %@",filePath);
-    [bufferManager releaseBufferForFile:filePath];
+    //[bufferManager releaseBufferForFile:filePath];
+    [[OALSimpleAudio sharedInstance] unloadEffect:filePath];
+}
+
+- (void) unloadAllEffect
+{
+  [[OALSimpleAudio sharedInstance] unloadAllEffects];
 }
 
 #pragma mark Audio Interrupt Protocol

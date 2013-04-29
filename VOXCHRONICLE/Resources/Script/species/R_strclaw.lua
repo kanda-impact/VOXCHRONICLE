@@ -1,7 +1,7 @@
 Enemy = {
   name = "右カギーＶ（ヴイ）",
   imageName = "R_strclaw",
-  attack = 4,
+  attack = 3,
   baseExp = 6,
   hasFrame = true,
   counter = 2,
@@ -23,7 +23,7 @@ Enemy = {
     local turn = self:getRegister(key, 0) -- 溜めているターンを取得
     math.random(100)
     local rand = math.random(100)
-    if turn > 0 or rand <= 10 then -- 溜めてる最中、または5%の確率で
+    if turn > 0 or rand <= 25 then -- 溜めてる最中、または5%の確率で
       return "foot"
     end
     return ""

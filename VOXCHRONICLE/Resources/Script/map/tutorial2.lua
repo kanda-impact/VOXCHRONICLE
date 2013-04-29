@@ -12,17 +12,84 @@ Map = {
     return {}
   end,
   onBack = function(self, characterManager, enemyManager)
-    if not enemyManager:getEnemies() or enemyManager:getEnemies():count() == 0 then
-      local enemy = enemyManager:popEnemyAt("T_moth7", 4, 1)
-      enemy:setExp(60)
+    local level = characterManager:getLevel()
+    local layer = EffectLayer:sharedLayer()
+    if level == 21 then
+    elseif level == 22 then
+      local preHP = self.__IRegister__:getRegister("preHP", characterManager:getHP())
+      local shieldState = self.__IRegister__:getBool("shieldState")
+      if characterManager:getHP() < preHP then
+        local popup = layer:addPopupWindow(1)
+        popup:setText(0, "遠距離攻撃にご用心", [[
+きゃぁ！遠距離攻撃を食らっちゃった！
+
+ボスモンスターの遠距離攻撃は強力だから注意
+攻撃前には前兆があるから、良く見極めて
+タイミング良く盾で『ガード』してね
+]])
+        characterManager:addHP(characterManager:getMaxHP())
+      elseif shieldState and not characterManager:getShield() then -- シールド成功した場合
+        local popup = layer:addPopupWindow(1)
+        popup:setText(0, "『遠距離攻撃』には『ガード』", [[
+おみごと！
+
+ボスモンスターの攻撃は強力だから
+うまく『ガード』を使いこなしてね
+]])
+        local boss = enemyManager:getEnemies():objectAtIndex(0)
+        boss.__IRegister__:setBool("isGuarded", true)        
+      end
+      
+      self.__IRegister__:setRegister("preHP", characterManager:getHP())
+      local preHP = self.__IRegister__:getRegister("preHP", characterManager:getHP())
+      local shieldState = self.__IRegister__:getBool("shieldState")
+    elseif level == 23 then
+      local exp = characterManager:getExp()
+      local next = 60 * 24
+      local sub = next - exp
+      local tomezoraExp = 10
+      local count = math.floor(sub / tomezoraExp)
+      local enemyCount = 0
+      if enemyManager:getEnemies() then
+        enemyCount = enemyManager:getEnemies():count()
+      end
+      if enemyCount < count then
+        local enemy = enemyManager:popEnemyAt("T_tomezora23", MAX_ROW - 1, enemyCount % 3)
+        enemy:setMaxHP(10)
+        enemy:setExp(10)
+        enemy:setAttack(2)
+      end
+    else
+      if not enemyManager:getEnemies() or enemyManager:getEnemies():count() == 0 then
+        local enemy = enemyManager:popEnemyAt("T_moth7", 4, 1)
+        enemy:setExp(60)
+      end
+    end
+  end,
+  onFinishPlaying = function(self, characterManager, enemyManager)
+    local level = characterManager:getLevel()
+    if level == 21 then
+      if characterManager:getLastSkill() and characterManager:getLastSkill():getIdentifier() == 'knockback' then
+        local popup = layer:addPopupWindow(1)
+        popup:setText(0, "ノックバックは効かない！", [[
+あいつには『ノックバック』が効かないみたいね
+ボスモンスターのような巨大な敵には
+効かないことがあるの
+
+注意して！
+]])
+      end
+    elseif level == 22 then
+      self.__IRegister__:setBool("shieldState", characterManager:getShield()) -- シールド状態をここで監視
     end
   end,
   onLevelUp = function(self, characterManager, enemyManager)
     self.__IRegister__:clearRegister()
     local level = characterManager:getLevel()
     local layer = EffectLayer:sharedLayer()
+    characterManager:setExp(characterManager:getExpWithLevel(level))
     if level == 21 then
-      local popup = layer:addPopupWindow(1)
+      local popup = layer:addPopupWindow(2)
       popup:setText(0, "テクニック編開始！", [[
 めざせ！オクス上級者！テクニック編へようこそ～。
 解説は引き続き、私、ラスカが担当させて
@@ -30,11 +97,22 @@ Map = {
 
 じゃあとりあえず大切な内容からいってみよう！
 ]])
+      popup:setText(1, "決戦！ボスモンスター", [[
+レベル30まで到達するとボスモンスターが
+出現するよ
+
+ボスモンスターは仲間を呼んだり、
+強力なワザを使ってきたり
+さまざまな攻撃をしてくるの
+]])
+    local knight = enemyManager:popEnemyAt("T_knight", 3, 1)
+    knight:setExp(60)
+    knight:setMaxHP(30)
     elseif level == 22 then
+      enemyManager:removeAllEnemies() -- 敵全滅
       local popup = layer:addPopupWindow(2)
       popup:setText(0, "『遠距離攻撃』には『ガード』", [[
-レベル30まで到達すると出現するボスモンスター
-には、ぶつかってくるだけじゃなく『遠距離攻撃』を
+ボスモンスターの中には『遠距離攻撃』を
 してくるやつもいるよ！
 ]])
       popup:setText(1, "『遠距離攻撃』には『ガード』", [[
@@ -42,6 +120,9 @@ Map = {
 『遠距離攻撃』の前には前兆があるから、
 上手く見極めてガードしてね！
 ]])
+   local knight = enemyManager:popEnemyAt("T_knight22", 3, 1)
+   knight:setExp(60)
+   knight:setMaxHP(40)
    elseif level == 23 then
       local popup = layer:addPopupWindow(1)
       popup:setText(0, "『貼りつきモンスター』に注意", [[
@@ -53,6 +134,7 @@ Map = {
 手前でずっと攻撃してくるわ
 ]])
     elseif level == 24 then
+      enemyManager:removeAllEnemies()
       local popup = layer:addPopupWindow(2)
       popup:setText(0, "『パワーチャージ』を極めよう！", [[
 このゲームで大切なのはムダな行動を
@@ -112,8 +194,6 @@ Map = {
 エンディングがあるから、
 是非全てのステージをプレイしてみてね！
 ]])
-
-
     elseif level == 29 then
       local popup = layer:addPopupWindow(1)
       popup:setText(0, "最小ターンクリアへの道", [[
@@ -138,8 +218,6 @@ Map = {
 以上、ラスカによるテクニック解説でした～！
 じゃ～ね～
 ]])
-
-
     end
   end,
   getEnemyPopRate = function(level)

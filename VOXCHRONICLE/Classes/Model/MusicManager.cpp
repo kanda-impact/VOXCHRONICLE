@@ -36,6 +36,7 @@ MusicManager::MusicManager(Music* music, MusicSet* musicSet, EnemyManager* enemy
 
 MusicManager::~MusicManager() {
   _music->stop();
+  CCDirector::sharedDirector()->getScheduler()->unscheduleAllSelectorsForTarget(_music);
   _music->release();
   if (_musicSet) {
     _musicSet->release();

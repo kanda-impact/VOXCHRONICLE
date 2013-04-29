@@ -25,11 +25,15 @@ Enemy = {
     math.random(100)
     local r = math.random(100)
     local tensionTurn = self:getRegister("tensionWave", 0)
-    --local swordTurn = self:getRegister("", 0)
-    if tensionTurn > 0 or r < characterManager:getTension() * 10 then
+    local regist = self:getRegister("skill_last", 0)
+    if regist ==1 then
+      return "thunder_last"
+    elseif tensionTurn > 0 or r < characterManager:getTension() * 10 then
       return "reset_tension"
     elseif self:getItem() == EnemyItemNone and r < 15 then
       return "equip"
+    elseif r < 20 then
+      return "thunder_last"
     end
     return ""
   end
