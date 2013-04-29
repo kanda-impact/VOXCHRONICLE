@@ -2,7 +2,6 @@ StaffRoll = {
   tracks = {
     "intro",
     "wait",
-    "wait",
     "voxattack0",
     "voxattack1",
     "voxattack2",
@@ -24,9 +23,9 @@ StaffRoll = {
 {"Program", "giginet", "メインプログラム"},
 {"Level Design", "hak", "ステージデザイン"},
 {"Level Design", "giginet", "ボス、敵スキルデザイン"},
-{"script", "kataasitobi", "チュートリアルプロット"},
+{"Script", "kataasitobi", "チュートリアルプロット"},
 {"", "miio", "スクリプトサポート"},
-{"", "TTNTAWASi", "チュートリアル文章、メッセージ"}
+{"", "TTNTAWASi", "チュートリアル文章、メッセージ"},
 {"", "AttaQ", "実績デザイン、文章"},
 --stage2
 {"", "wildhawk", "実績、チュートリアルサポート"},
@@ -34,11 +33,11 @@ StaffRoll = {
 {"", "mishima_", "ロゴ、メニューUI、ゲームUI"},
 {"", "mab", "モンスターデザイン"},
 {"", "TTNTAWASi", "エフェクト・コマンド・ロゴ"},
-{"", "sugawara", "ステージ背景"},
-{"", "negiyan", "文字"},
-{"", "はこねこ", "ステージ背景、文字、ゲームUI"},
+{"", "negiyan", "ゲームUI"},
+{"", "はこねこ", "ステージ背景、チュートリアルデザイン"},
 {"", "うめ", "ステージ背景"},
 {"", "kataasitobi", "エンディングイラスト"},
+{"", "sugawara", "ステージ背景"},
 --stage3
 {"Sound Effect", "nmb", "効果音全般"},
 {"Music Direction", "Tetu_fs", "音楽システム監修"},
@@ -60,7 +59,7 @@ StaffRoll = {
 {"", "Tetu_fs", "エンディングB"},
 {"", "Yudaidhun", "エンディングC"},
 {"", "AttaQ", "エンディングD"},
-{"debag play", "wildhawk", "プレイヤー代表、提言"},
+{"Denug", "wildhawk", ""},
 --3面アウトロ
 {"Special Thanks", "All Kawaz Members", ""},
 {"Executive Producer", "geekdrums", ""},
