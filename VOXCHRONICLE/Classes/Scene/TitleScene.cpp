@@ -6,6 +6,11 @@
 //
 //
 
+typedef enum {
+  TitleSceneTagDemoText,
+  TitleSceneTagDemoBackground
+} TitleSceneTag;
+
 #include <sstream>
 #include "SimpleAudioEngine.h"
 #include "TitleScene.h"
@@ -16,6 +21,8 @@
 #include "macros.h"
 #include "BufferCache.h"
 #include "StaffRollScene.h"
+
+#include "CCRemoveFromParentAction.h"
 
 using namespace cocos2d;
 
@@ -50,7 +57,7 @@ bool TitleScene::init() {
                                 NULL);
   menu->alignItemsHorizontallyWithPadding(50);
   menu->setPosition(ccp(winSize.width / 2, 80));
-  this->addChild(menu);
+  //this->addChild(menu);
   
   CCMenuItemLabel* seOff = CCMenuItemLabel::create(CCLabelTTF::create("SE OFF", FONT_NAME, 24));
   seOff->setTag(0);
@@ -60,14 +67,30 @@ bool TitleScene::init() {
   item->setSelectedIndex(SimpleAudioEngine::sharedEngine()->getEffectsVolume() == 0 ? 0 : 1);
   CCMenu* seMenu = CCMenu::create(item, NULL);
   seMenu->setPosition(ccp(280, 20));
-  this->addChild(seMenu);
+  //this->addChild(seMenu);
   
   CCLabelTTF* credit = CCLabelTTF::create("2009-2013 Kawaz all rights reserved.", "Helvetica", 12);
   credit->setColor(ccc3(220, 220, 220));
   credit->setPosition(ccp(director->getWinSize().width / 2.0, 25));
   this->addChild(credit);
   
+  this->setTouchEnabled(true);
+  
+  _isDemo = false;
+  _demo = new LuaObject("demo.lua");
+  
+  _touchToStart = CCLabelTTF::create("touch to start", "Helvetica", 32);
+  _touchToStart->setPosition(ccp(director->getWinSize().width / 2.0, 70));
+  _touchToStart->runAction(CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(1.5f, 64), CCFadeTo::create(1.5f, 255))));
+  this->addChild(_touchToStart);
+  _touchToStart->retain();
+  
   return true;
+}
+
+TitleScene::~TitleScene() {
+  _demo->release();
+  _touchToStart->release();
 }
 
 void TitleScene::nextScene(CCLayer* layer) {
@@ -79,6 +102,7 @@ void TitleScene::nextScene(CCLayer* layer) {
 
 void TitleScene::onEnterTransitionDidFinish() {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(FileUtils::getFilePath("Music/general/title.mp3").c_str(), true);
+  this->scheduleOnce(schedule_selector(TitleScene::onDemoStart), _demo->getNumber("delay"));
 }
 
 void TitleScene::onStartButtonPressed(CCObject* sender) {
@@ -99,4 +123,73 @@ void TitleScene::onDebugButtonPressed(CCObject* sender) {
 void TitleScene::onSETogglePressed(cocos2d::CCObject *sender) {
   CCMenuItemToggle* item = (CCMenuItemToggle*)sender;
   SimpleAudioEngine::sharedEngine()->setEffectsVolume(item->getSelectedIndex());
+}
+
+void TitleScene::registerWithTouchDispatcher() {
+  CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 100, true);
+}
+
+bool TitleScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
+  if (_isDemo) {
+    _isDemo = false;
+    this->removeDemo();
+  } else {
+    this->onStartButtonPressed(this);
+  }
+  return false;
+}
+
+void TitleScene::onDemoStart() {
+  _isDemo = true;
+  CCDirector* director = CCDirector::sharedDirector();
+  string text = _demo->getString("text");
+  CCLabelTTF* label = CCLabelTTF::create(text.c_str(),
+                                         "Helvetica",
+                                         21,
+                                         CCSizeMake(director->getWinSize().width - 50, director->getWinSize().height * 2),
+                                         kCCTextAlignmentCenter,
+                                         kCCVerticalTextAlignmentCenter);
+  CCLabelTTF* shadowLabel = CCLabelTTF::create(text.c_str(),
+                                               "Helvetica",
+                                               21,
+                                               CCSizeMake(director->getWinSize().width - 50, director->getWinSize().height * 2),
+                                               kCCTextAlignmentCenter,
+                                               kCCVerticalTextAlignmentCenter);
+  
+  label->setColor(ccc3(255, 255, 255));
+  shadowLabel->setColor(ccc3(33, 33, 33));
+  shadowLabel->setPosition(ccpAdd(label->getPosition(), ccp(2, -2)));
+  
+  CCLayerColor* bg = CCLayerColor::create(ccc4(0, 0, 0, 128), director->getWinSize().width, director->getWinSize().height);
+  this->addChild(bg, 0, TitleSceneTagDemoBackground);
+  CCLayer* labels = CCLayer::create();
+  
+  labels->addChild(shadowLabel);
+  labels->setPosition(ccp(director->getWinSize().width / 2.0f, - director->getWinSize().height / 2.0f * 2));
+  labels->addChild(label);
+  bg->addChild(labels, 0, TitleSceneTagDemoText);
+  
+  bg->setOpacity(0);
+  bg->runAction(CCFadeTo::create(0.5, 128));
+  labels->runAction(CCSequence::create(CCDelayTime::create(0.5f),
+                                       CCMoveTo::create(_demo->getNumber("scrollDuration"),
+                                                        ccp(_demo->getNumber("moveToX"), _demo->getNumber("moveToY"))),
+                                       CCDelayTime::create(_demo->getNumber("stopDuration")),
+                                       CCCallFunc::create(this, callfunc_selector(TitleScene::onDemoEnd)),
+                                       NULL)
+  );
+  _touchToStart->setVisible(false);
+}
+
+void TitleScene::onDemoEnd() {
+  _isDemo = false;
+  this->removeDemo();
+  _touchToStart->setVisible(true);
+}
+
+void TitleScene::removeDemo() {
+  CCNode* demo = this->getChildByTag(TitleSceneTagDemoBackground);
+  CCNode* label = demo->getChildByTag(TitleSceneTagDemoText);
+  demo->removeChild(label, true);
+  demo->runAction(CCSequence::create(CCFadeOut::create(0.5f), CCRemoveFromParentAction::create(), NULL));
 }
