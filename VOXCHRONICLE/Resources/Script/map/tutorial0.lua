@@ -17,7 +17,7 @@ Map = {
   onFinishPlaying = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
     if level == 10 then
-      characterManager:setExp(characterManager:getExp(10))
+      characterManager:setExp(characterManager:getExpWithLevel(10))
     end
     local layer = EffectLayer:sharedLayer()
     if level == 4 then
@@ -82,6 +82,7 @@ Map = {
 
 体力(HP)が0になるとゲームオーバー。
 やり直しになっちゃうから気をつけてね！]])
+      popup:addImage(0, "tutorial3_2.png")
         self.__IRegister__:setBool('popuped', true)
       end
     elseif level == 4 then
@@ -163,7 +164,7 @@ Map = {
 いいんだってば！
 敵を盾で防いでばかりだと、先に進めないから
 どんどん倒して先に進んでいって
-]])         
+]])
           end
           local slime = enemyManager:popEnemyAt("T_slime60",5,1) -- スライム再生成
           slime:setExp(60)
@@ -195,6 +196,7 @@ Map = {
 
 回復してあげるからもう一回頑張ってみて
 ]])
+            popup:addImage(0, "tutorial8_1.png")
             local enemy = enemyManager:popEnemyAt("T_tnt", 3, 1) -- 盾持ちを生成すると混同しちゃうからHPの高いヤツを出す
             enemy:setExp(0)
             local maxHP = characterManager:getMaxHP()
@@ -217,6 +219,7 @@ Map = {
 
 上手く使って体力の高い奴もやっつけちゃえ！
 ]])
+            popup:addImage(0, "tutorial9_1.png")
         local enemy = enemyManager:popEnemyAt("T_tnt9", 4, 1)
         enemy:setExp(60)
         enemy:setHP(25)
@@ -253,6 +256,7 @@ Map = {
 自分の行動に合わせて音楽が変わるのが
 このゲーム最大のウリなので、ぜひ音量を上げて
 ノリノリでプレイしてみてね。]])
+      popup:addImage(1, "tutorial1_2.png")
       popup:setText(2, "音楽にあわせて行動しよう！", [[
 行動するときは画面下左右のワザアイコンをタッチ！
 
@@ -270,6 +274,7 @@ Map = {
 
 10レベルごとに次のステージに行けるんだ！
 30レベルまでたどり着くとゲームクリアだよ！！]])
+      popup:addImage(0, "tutorial2_1.png")
       popup:setText(1,
       "こうげきは、近くの敵から",
       [[
@@ -279,6 +284,7 @@ Map = {
 
 モンスターが現われたら、バシバシ攻撃して
 どんどんやっつけていこう！]])
+      popup:addImage(1, "tutorial2_2.png")
       popup:setText(2,
       "『連続こうげき』してみよう！",
       [[
@@ -287,8 +293,8 @@ Map = {
 
 『連続こうげき』することで攻撃力と音楽が変化
 するよ！気持ちイイのでぜひ試してみてね！
-]]
-      )
+]])
+      popup:addImage(2, "tutorial2_3.png")
     elseif level == 3 then
       local popup = layer:addPopupWindow(1)
       popup:setText(0, "モンスターの色",
@@ -299,6 +305,7 @@ Map = {
 そう！モンスターの体力は色でわかるんだ！
 あいての顔色をよくカンサツすることが大切よ！
 ]])
+      popup:addImage(0, "tutorial3_1.png")
     elseif level == 4 then
       local popup = layer:addPopupWindow(2)
       popup:setText(0, "新しい行動（ワザ）！",
@@ -309,6 +316,7 @@ Map = {
 どんどんレベル上げて、新しいワザをおぼえよう！
 そして、おぼえたワザはさっそく試してみよう！
 ]])
+      popup:addImage(0, "tutorial4_1.png")
       popup:setText(1, "攻めこめ！『ダッシュ』",
       [[
 今回できるようになったワザは『ダッシュ』！
@@ -319,6 +327,7 @@ Map = {
 敵がいなかったり少なかったりしたときには
 積極的にダッシュしてみよう！
 ]])
+      popup:addImage(1, "tutorial4_2.png")
     elseif level == 5 then
       local popup = layer:addPopupWindow(3)
       popup:setText(0, "ためよう！『パワーチャージ』！",
@@ -328,6 +337,7 @@ Map = {
 パワーチャージ マークをタッチすると文字通り
  『パワー』 をためることができるんだ。
 ]])
+      popup:addImage(0, "tutorial5_1.png")
       popup:setText(1, "ためよう！『パワーチャージ』！",
       [[
 『パワー』 をためると次のワザの効果がアップ！
@@ -335,6 +345,7 @@ Map = {
 『アタック』なら、3回攻撃しないと倒せない
 モンスターも1回で倒せちゃったりするよ！
 ]])
+      popup:addImage(1, "tutorial5_2.png")
       popup:setText(2, "『パワー』は使いきり！", [[
 でもね『パワー』 は、ワザを使うと、すぐに
 使いきっちゃうから気を付けて！
@@ -353,6 +364,7 @@ Map = {
 していくよ！余裕をつくってためまくって、
 体力の高いモンスターも一撃で倒そう！！
 ]])
+      popup:addImage(0, "tutorial6_1.png")
     elseif level == 7 then
       local popup = layer:addPopupWindow(2)
       popup:setText(0, "必殺『オクススラッシュ』！", [[
@@ -361,6 +373,7 @@ Map = {
 
 でも大丈夫！こんな時こそ
 必殺の『オクススラッシュ』！！]])
+      popup:addImage(0, "tutorial7_1.png")
       popup:setText(1, "必殺『オクススラッシュ』！", [[
 『オクススラッシュ』は複数のモンスターを
 同時にこうげきできる強力なワザだよ！
@@ -369,6 +382,7 @@ Map = {
 いないと使えないけれど、モンスターの軍団も
 一気に倒すことができちゃうよ！
 ]])
+      popup:addImage(1, "tutorial7_2.png")
     elseif level == 8 then
       enemyManager:popEnemyAt("T_geekT3",3,1)
       local popup = layer:addPopupWindow(2)
@@ -387,7 +401,7 @@ Map = {
 ダメージを防ぐまでずっと有効だから
 慌てずに使ってみて！
 ]])
-
+      popup:addImage(1, "tutorial8_1.png")
     elseif level == 9 then
       local popup = layer:addPopupWindow(1)
       popup:setText(0, "特殊ワザ『ノックバック』", [[
@@ -399,6 +413,7 @@ Map = {
 ふっとばすことができるんだ。使いドコロが
 難しいけど、使いこなすと戦いが楽になるよ
 ]])
+      popup:addImage(0, "tutorial9_1.png")
       enemyManager:popEnemyAt("T_tnt9", 4, 1)
       self.__IRegister__:setBool("knockbackPoped", true)
     elseif level == 10 then
@@ -409,6 +424,7 @@ Map = {
 『ポーズ』ボタンにタッチして
 チュートリアルを終わってね。
 ]])
+      popup:addImage(0, "tutorial10_2.png")
       popup:setText(1, "免許皆伝！？", [[
 ああ！でもちょっとまって！まだ大事なワザを
 説明してないじゃない！今作の目玉なのに！
