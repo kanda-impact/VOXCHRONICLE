@@ -26,6 +26,7 @@ class MessageWindow :public CCNode {
   boost::function<void (VQString*, MessageWindow*)> _onFinishedFunction;
   boost::function<void (VQString*, MessageWindow*)> _onUpdatedFunction;
   int _textIndex;
+  int _textSpeed;
   float _messageSpeed;
   void onMessageFinished();
   void onMessageUpdated();
@@ -52,6 +53,7 @@ class MessageWindow :public CCNode {
   void setLastDelay(float d);
   void start();
   void stop();
+  void setTextSpeed(int textSpeed);
   
   /**
    強制的にメッセージを終了させます

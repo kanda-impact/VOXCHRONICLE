@@ -101,6 +101,7 @@ bool MainScene::init(Map* map) {
   
   _messageWindow = new MessageWindow(FONT_NAME, 16, CCSizeMake(400, 40));
   _messageWindow->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height - 70));
+  _messageWindow->setTextSpeed(2);
   MessageManager::sharedManager()->setDefaultMessageWindow(_messageWindow);
   this->addChild(_messageWindow, MainSceneZOrderMessageWindow);
   

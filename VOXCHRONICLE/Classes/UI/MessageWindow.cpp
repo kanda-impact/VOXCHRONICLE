@@ -16,6 +16,7 @@ const float kDefaultMessageWindowSpeed = 0.5f / 60.0f;
 MessageWindow::MessageWindow(const char* fontName, float size, CCSize dimensions) {
   _messageQueue = CCArray::create();
   _messageQueue->retain();
+  _textSpeed = 1;
   _textIndex = 0;
   _delay = kDefaultMessageWindowDelay;
   _lastDelay = kDefaultMessageWindowLastDelay;
@@ -111,15 +112,16 @@ void MessageWindow::updateNextText(CCObject* sender) {
   _shadow->setString(this->getCurrentMessage()->getCString());
   if (_messageQueue->count() == 0) return;
   if (this->isEndMessage()) return;
-  if (_messageQueue->count() > 0 && _textIndex < this->getCurrentWholeMessage()->length()) {
+  if (_messageQueue->count() > 0 && _textIndex <= this->getCurrentWholeMessage()->length()) {
     if (_onUpdatedFunction) {
-      _onUpdatedFunction(this->getCurrentWholeMessage()->substringWithRange(_textIndex, 1), this);
+      int length = this->getCurrentWholeMessage()->length();
+      _onUpdatedFunction(this->getCurrentWholeMessage()->substringWithRange(_textIndex, min(_textSpeed, length - _textIndex - 1)), this);
     }
-    _textIndex += 1;
+    _textIndex += _textSpeed;
     // メッセージが終わったら、次のメッセージに
     if (!_ended && _textIndex > this->getCurrentWholeMessage()->length() - 1) {
       _ended = true;
-      _textIndex = this->getCurrentWholeMessage()->length() - 1;
+      _textIndex = this->getCurrentWholeMessage()->length();
       if (_onFinishedFunction) {
         _onFinishedFunction(this->getCurrentWholeMessage(), this);
       }
@@ -140,4 +142,8 @@ void MessageWindow::finishMessage() {
   if (_ended) return;
   _textIndex = this->getCurrentWholeMessage()->length() - 2; // 最大文字-1文字
   this->updateNextText(this);
+}
+
+void MessageWindow::setTextSpeed(int textSpeed) {
+  _textSpeed = textSpeed;
 }
