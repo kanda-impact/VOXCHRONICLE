@@ -24,7 +24,7 @@ class DictionaryScene :public CCLayer {
   Enemy* _enemy;
   CCArray* _enemies;
   CCLabelTTF* _nameLabel;
-  CCLabelTTF* _habitatLabel;
+  CCLabelTTF* _numberLabel;
   CCLabelTTF* _descriptionLabel;
   string repeatChar(const char * string, int times);
  public:

@@ -13,6 +13,10 @@
 #include "ExtraScene.h"
 #include "SaveData.h"
 
+#include <boost/lexical_cast.hpp>
+
+using namespace boost;
+
 bool DictionaryScene::init() {
   if (!CCLayer::init()) {
     return false;
@@ -43,20 +47,20 @@ bool DictionaryScene::init() {
   background->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
   this->addChild(background);
   
-  _nameLabel = CCLabelTTF::create("敵キャラ名", "Helvetica", 24, CCSizeMake(200, 30), kCCTextAlignmentLeft);
-  _habitatLabel = CCLabelTTF::create("生息地", "Helvetica", 16, CCSizeMake(200, 30), kCCTextAlignmentLeft, kCCVerticalTextAlignmentCenter);
+  _nameLabel = CCLabelTTF::create("敵キャラ名", "Helvetica", 24, CCSizeMake(350, 30), kCCTextAlignmentLeft);
+  _numberLabel = CCLabelTTF::create("生息地", "Helvetica", 16, CCSizeMake(50, 30), kCCTextAlignmentLeft, kCCVerticalTextAlignmentCenter);
   _descriptionLabel = CCLabelTTF::create("ここに敵キャラの解説が入ります", "Helvetica", 16, CCSizeMake(440, 120), kCCTextAlignmentLeft, kCCVerticalTextAlignmentTop);
   _nameLabel->setAnchorPoint(ccp(0.5f, 0.5f));
-  _nameLabel->setPosition(ccp(125, 135));
-  _habitatLabel->setAnchorPoint(ccp(0.5f, 0.5f));
-  _habitatLabel->setPosition(ccp(345, 135));
+  _nameLabel->setPosition(ccp(200, 135));
+  _numberLabel->setAnchorPoint(ccp(0.5f, 0.5f));
+  _numberLabel->setPosition(ccp(450, 135));
   CCSprite* dictionaryWindow = CCSprite::create("dictionary_window.png");
   dictionaryWindow->setPosition(ccp(director->getWinSize().width / 2.0, 80));
   _descriptionLabel->setAnchorPoint(ccp(0.5f, 0.5f));
   _descriptionLabel->setPosition(ccp(director->getWinSize().width / 2.0f, 60));
   this->addChild(dictionaryWindow);
   this->addChild(_nameLabel);
-  this->addChild(_habitatLabel);
+  this->addChild(_numberLabel);
   this->addChild(_descriptionLabel);
   
   CCMenuItemImage* left = CCMenuItemImage::create("dictionary_cursor_left.png",
@@ -123,12 +127,12 @@ void DictionaryScene::loadEnemyByIndex(int idx) {
   this->addChild(_enemy);
   if (isDefeated) {
     _nameLabel->setString(_enemy->getName().c_str());
-    _habitatLabel->setString(_enemy->getSpecies()->getHabitat().c_str());
+    _numberLabel->setString(lexical_cast<string>(idx + 1).c_str());
     _descriptionLabel->setString(_enemy->getSpecies()->getDescription().c_str());
     _enemy->setColor(ccc3(255, 255, 255));
   } else {
     _nameLabel->setString(this->repeatChar("?", _enemy->getName().size()).c_str());
-    _habitatLabel->setString(this->repeatChar("?", _enemy->getSpecies()->getHabitat().size()).c_str());
+    _numberLabel->setString(lexical_cast<string>(idx + 1).c_str());
     _descriptionLabel->setString(this->repeatChar("?", _enemy->getSpecies()->getDescription().size()).c_str());
     _enemy->setColor(ccc3(5, 5, 5));
     _enemy->setSilhouette();
