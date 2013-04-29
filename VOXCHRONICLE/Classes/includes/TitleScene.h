@@ -16,7 +16,7 @@
 
 using namespace cocos2d;
 
-class TitleScene : public cocos2d::CCLayer {
+class TitleScene : public cocos2d::CCLayer, cocos2d::CCAccelerometerDelegate {
 private:
   virtual void nextScene(CCLayer* layer);
   void onStartButtonPressed(CCObject* sender);
@@ -35,6 +35,7 @@ public:
   void onEnterTransitionDidFinish();
   bool ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent);
   void registerWithTouchDispatcher();
+  virtual void 	didAccelerate (CCAcceleration *pAccelerationValue);
   CREATE_FUNC(TitleScene);
 };
 

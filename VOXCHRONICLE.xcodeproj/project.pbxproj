@@ -385,6 +385,7 @@
 		077EDE3C1687EEBF009B9F6B /* barrier_break.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDE3A1687EEBD009B9F6B /* barrier_break.mp3 */; };
 		07864BF0169D881500AAAF15 /* 2a.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07864BEF169D881500AAAF15 /* 2a.lua */; };
 		0789A0D1172E2CE000FFB262 /* demo.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A0D0172E2CE000FFB262 /* demo.lua */; };
+		0789A0D3172E529400FFB262 /* fullvoice.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0789A0D2172E529400FFB262 /* fullvoice.mp3 */; };
 		078D452316CE809C00E21DC5 /* Species.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 078D452116CE809B00E21DC5 /* Species.cpp */; };
 		078D45A116CF1FB100E21DC5 /* 3Bb_counter0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078D456316CF1FB100E21DC5 /* 3Bb_counter0.caf */; };
 		078D45A216CF1FB100E21DC5 /* 3Bb_counter1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078D456416CF1FB100E21DC5 /* 3Bb_counter1.caf */; };
@@ -1877,6 +1878,7 @@
 		077EDE3A1687EEBD009B9F6B /* barrier_break.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = barrier_break.mp3; path = Resources/SE/barrier_break.mp3; sourceTree = "<group>"; };
 		07864BEF169D881500AAAF15 /* 2a.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 2a.lua; path = map/2a.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		0789A0D0172E2CE000FFB262 /* demo.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = demo.lua; sourceTree = "<group>"; };
+		0789A0D2172E529400FFB262 /* fullvoice.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fullvoice.mp3; path = Resources/SE/fullvoice.mp3; sourceTree = "<group>"; };
 		078D452116CE809B00E21DC5 /* Species.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Species.cpp; path = Classes/Model/Species.cpp; sourceTree = "<group>"; };
 		078D452416CE80CF00E21DC5 /* Species.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Species.h; path = Classes/includes/Species.h; sourceTree = "<group>"; };
 		078D456316CF1FB100E21DC5 /* 3Bb_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 3Bb_counter0.caf; path = Resources/Music/3Bb/3Bb_counter0.caf; sourceTree = "<group>"; };
@@ -5956,6 +5958,7 @@
 				074E136D1710231E00308F67 /* window_close.mp3 */,
 				074E136E1710231E00308F67 /* window_next.mp3 */,
 				074E136F1710231E00308F67 /* window_open.mp3 */,
+				0789A0D2172E529400FFB262 /* fullvoice.mp3 */,
 				077EDDF416870767009B9F6B /* decide.mp3 */,
 			);
 			name = SE;
@@ -7191,6 +7194,7 @@
 				B002ECC617297A1700FEE88F /* equip_last.lua in Resources */,
 				B002ECCA17297EA400FEE88F /* thunder_last.lua in Resources */,
 				0789A0D1172E2CE000FFB262 /* demo.lua in Resources */,
+				0789A0D3172E529400FFB262 /* fullvoice.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -167,3 +167,11 @@ void SaveData::setUnlockedAchievement(const char *identifier) {
 int SaveData::getAllEnemyDictionaryCount() {
   return _enemyDictionary->size();
 }
+
+bool SaveData::isFullVoice() {
+  return _fullvoice;
+}
+
+void SaveData::setFullVoice(bool b) {
+  _fullvoice = b;
+}

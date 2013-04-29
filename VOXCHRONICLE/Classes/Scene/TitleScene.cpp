@@ -84,6 +84,8 @@ bool TitleScene::init() {
   this->addChild(_touchToStart);
   _touchToStart->retain();
   
+  this->setAccelerometerEnabled(true);
+  
   return true;
 }
 
@@ -191,4 +193,15 @@ void TitleScene::removeDemo() {
   CCNode* label = demo->getChildByTag(TitleSceneTagDemoText);
   demo->removeChild(label, true);
   demo->runAction(CCSequence::create(CCFadeOut::create(0.5f), CCRemoveFromParentAction::create(), NULL));
+}
+
+void TitleScene::didAccelerate(CCAcceleration *pAccelerationValue) {
+  SaveData* data = SaveData::sharedData();
+  if (!data->isFullVoice()) {
+    if (pAccelerationValue->x > 1.8 || pAccelerationValue->y > 1.8 || pAccelerationValue->z > 1.8) {
+      SimpleAudioEngine::sharedEngine()->playEffect("fullvoice.mp3");
+      data->setFullVoice(true);
+      data->unlockAchievement("unlockFullVoice");
+    }
+  }
 }
