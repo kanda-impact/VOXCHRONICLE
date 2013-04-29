@@ -66,12 +66,20 @@ Map = {
       end--
     end
     
+    -- 実績判定周り
     local boss = enemyManager:getBoss()
     if boss then
       local key = "crakenAchieve"
       local count = enemyManager:getEnemies():count()
+      local enemies = enemyManager:getEnemies()
+      for i=1, enemies:count() do
+        local enemy = enemies:objectAtIndex(i - 1)
+        if enemy and enemy:getSpecies():getIdentifier() == 'wave' then
+          count = count - 1
+        end
+      end
+      
       self.__IRegister__:setRegister(key,count)
-      print(count)
     end
   end,
   getEnemyPopRate = function(level)
@@ -83,9 +91,8 @@ Map = {
     if self.__IRegister__:getRegister(key,0) == 1 then
       data:unlockAchievement("bossCex")
     end
-    data:addDefeatedCountForEmemy("wave3C0")
+    data:addDefeatedCountForEnemy("wave")
   end,
-
   fixedEnemies = {
   }
 }

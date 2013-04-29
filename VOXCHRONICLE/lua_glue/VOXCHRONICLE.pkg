@@ -166,6 +166,7 @@ class Enemy : public CCSprite, public IRegister {
 
 class Species : public CCObject {
 	bool isEnableSkill(Skill* skill);
+	string getIdentifier();
 };
 
 class Character : public CCObject {

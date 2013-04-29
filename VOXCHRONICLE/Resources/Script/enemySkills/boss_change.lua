@@ -38,6 +38,8 @@ EnemySkill = {
       enemyManager:setBoss(newEnemy)
       enemyManager:removeEnemy(user)
       
+      SaveData:sharedData():addDefeatedCountForEmemy("last1")
+      
       local layer = EffectLayer:sharedLayer()
       layer:addEffectOnEnemy(nil, "run", 3, CCRectMake(0, 0, 120, 80))
       user:setRegister(key, turn + 1) -- ターンを+1する

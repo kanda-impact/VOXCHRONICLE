@@ -113,6 +113,7 @@ Map = {
   onClear = function(self, characterManager, enemyManager)
     local data = SaveData:sharedData()
     data:unlockAchievement("clear3D")
+    SaveData:sharedData():addDefeatedCountForEmemy("wave")
   end,
   getEnemyPopRate = function(level)
     if level >= 25 then
