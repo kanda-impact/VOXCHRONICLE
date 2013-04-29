@@ -98,10 +98,10 @@ return function(map, characterManager, enemyManager)
 --1a
 return {
     "だいじょうぶ　すこしずつ　なれていこう",
-    "",
+    "まあ　そういうことも　あるさ",
     "",
     "チュートリアルは　みてくれた？",
-    "まあ　そういうことも　あるさ",
+    "ま　まって　やめないで",
   }
 --1b昼
 return {
