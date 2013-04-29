@@ -8,7 +8,7 @@ Map = {
   backgroundImage = "3d_background0.png",
   thumbnailImage = "space_thumbnail.png",
   nextMaps = {},
-  initialLevel = 29,
+  initialLevel = 21,
   maxLevel = 30,
   getEnemyTable = function(level)
     if level <= 22 then
@@ -34,6 +34,15 @@ Map = {
     if level == 25 or level == 29 then
       if enemyCount == 0 then
         enemyManager:popEnemyAt("planet15_3D0", 7, 1)
+      end
+    end
+    local boss = enemyManager:getBoss()
+    local bossHP = boss:getHP()
+    if boss then
+      if bossHP > 0 then
+        local key = "lastBossAchieve"
+        local count = enemyManager:getEnemies():count()
+        self.__IRegister__:setRegister(key,count)
       end
     end
   end,
@@ -103,15 +112,20 @@ Map = {
       enemyManager:loadEnemyTextureAsync("2last.png")
       enemyManager:loadEnemyTextureAsync("bit.png")
 
-      enemyManager:popEnemyAt("save_cryst3D0", 7, 1)
+      enemyManager:popEnemyAt("save_cryst3D0", 4, 1)
     elseif level == 30 then
       local boss = enemyManager:popEnemyAt("last1_boss", 3, 1)
       enemyManager:setBoss(boss)
       SaveData:sharedData():setClearedForMap("fp_space_boss")
     end
+
   end,
   onClear = function(self, characterManager, enemyManager)
     local data = SaveData:sharedData()
+    local key = "lastBossAchieve"
+    if self.__IRegister__:getRegister(key,0) >= 3 then
+      data:unlockAchievement("bossDex")
+    end
     data:unlockAchievement("clear3D")
   end,
   getEnemyPopRate = function(level)
