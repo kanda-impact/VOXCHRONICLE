@@ -47,8 +47,8 @@ typedef enum {
   MainSceneZOrderStatus,
   MainSceneZOrderController,
   MainSceneZOrderFocus,
-  MainSceneZOrderMessageWindow,
   MainSceneZOrderEffect,
+  MainSceneZOrderMessageWindow,
   MainSceneZOrderDamageLabel,
   MainSceneZOrderCutIn,
   MainSceneZOrderUI
