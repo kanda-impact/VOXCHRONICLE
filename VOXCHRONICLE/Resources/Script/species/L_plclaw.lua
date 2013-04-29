@@ -14,6 +14,7 @@ Enemy = {
   disableSkills = {"knockback"},
   description = [[
   （おれが死んでも代わりはいるもの）
+  生息地：深海ほか　攻撃力：そこそこ　移動：しない
   ]],
   habitat = "",
   animationFrames = 4,

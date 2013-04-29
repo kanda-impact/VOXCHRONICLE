@@ -15,6 +15,7 @@ Enemy = {
   description = [[
   電子に自由を与える試みの末うまれた。
   歩く事が目的であって行く宛はない。
+  生息地：電脳世界　攻撃力：そこそこ　移動：ふつう
   ]],
   habitat = "",
   animationFrames = 4,

@@ -14,6 +14,7 @@ Enemy = {
   disableSkills = {},
   description = [[
 電子に愛を与える試みの末うまれた。人間の事は暖かい棒くらいしにか思っていないようだ。
+生息地：電脳世界　攻撃力：ふつう　移動：そこそこ
   ]],
   habitat = "",
   animationFrames = 4,

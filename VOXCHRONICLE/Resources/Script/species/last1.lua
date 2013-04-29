@@ -17,6 +17,7 @@ Enemy = {
   disableSkills = {"knockback"},
   description = [[
 この世界の音を自分の音でかき消さんとする、いつから存在しているのかもわからない魔物。7.22chから繰り出される重低音は強力。
+生息地：宙域　攻撃力：つよい　移動：∞
   ]],
   habitat = "",
   animationFrames = 4,

@@ -12,10 +12,11 @@ Enemy = {
     return 2
   end,
   description = [[
-    どう見てもマツボックリです、本当にありがとうございました。
-    確かにコロコロしながらやってくるが、彼らはY軸回転を採用したようである。
+どう見てもマツボックリです、本当にありがとうございました。
+確かにコロコロしながらやってくるが、彼らはY軸回転を採用したようである。
+生息地：荒野ほか　攻撃力：そこそこ　移動：ふつう
   ]],
-  habitat = "森林ほか",
+  habitat = "",
   disableSkills = {},
   animationFrames = 4,
   performSkill = function(self)

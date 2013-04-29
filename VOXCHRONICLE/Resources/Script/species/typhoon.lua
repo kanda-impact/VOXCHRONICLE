@@ -14,6 +14,7 @@ Enemy = {
   disableSkills = {},
   description = [[
   つむじ風が集まった台風のこども。時折キウーユが混じって遊んでいたりする。
+  生息地：遺跡　攻撃力：そこそこ　移動：ふつう
   ]],
   habitat = "",
   animationFrames = 4,

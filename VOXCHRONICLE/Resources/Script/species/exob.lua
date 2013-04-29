@@ -15,6 +15,7 @@ Enemy = {
   description = [[
   あまねく宇宙に普遍的に存在している、
   故郷の星をもたない謎生命。
+  生息地：宙域　攻撃力：そこそこ　移動：ふつう
   ]],
   habitat = "",
   animationFrames = 4,

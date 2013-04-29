@@ -22,6 +22,7 @@ Enemy = {
   description = [[
   節１個から全身を再生できるのでどんどん増える。
   １匹見たら３０匹いると思え。
+  生息地：炭鉱　攻撃力：ふつう　移動：はやい
   ]],
   habitat = "",
   animationFrames = 4,
