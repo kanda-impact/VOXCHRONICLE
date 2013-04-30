@@ -38,6 +38,24 @@ typedef enum {
   DamageLabelTypeMPCure
 } DamageLabelType;
 
+typedef enum {
+  EffectLayerTagTutorial,
+  EffectLayerTagCutin,
+  EffectLayerTagWait
+} EffectLayerTag;
+
+typedef enum {
+  EffectLayerZOrderFocus,
+  EffectLayerZOrderCutin,
+  EffectLayerZOrderDamageLabel,
+  EffectLayerZOrderTension,
+  EffectLayerZOrderCharacter,
+  EffectLayerZOrderWarning,
+  EffectLayerZOrderMessage,
+  EffectLayerZOrderWait,
+  EffectLayerZOrderWindow
+} EffectLayerZOrder;
+
 class EffectLayer :public CCLayer {
  private:
   CCSprite* _tensionEffectLayer;

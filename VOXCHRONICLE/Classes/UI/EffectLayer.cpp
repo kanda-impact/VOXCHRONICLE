@@ -14,23 +14,6 @@
 
 using namespace boost;
 
-typedef enum {
-  EffectLayerTagTutorial,
-  EffectLayerTagCutin,
-  EffectLayerTagWait
-} EffectLayerTag;
-
-typedef enum {
-  EffectLayerZOrderFocus,
-  EffectLayerZOrderCutin,
-  EffectLayerZOrderDamageLabel,
-  EffectLayerZOrderTension,
-  EffectLayerZOrderCharacter,
-  EffectLayerZOrderWarning,
-  EffectLayerZOrderWait,
-  EffectLayerZOrderWindow
-} EffectLayerZOrder;
-
 static EffectLayer* _shared = NULL;
 
 EffectLayer* EffectLayer::sharedLayer() {

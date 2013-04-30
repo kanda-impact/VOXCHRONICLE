@@ -95,6 +95,7 @@ void MessageManager::pushRandomMessageFromLua(const char *luaName, cocos2d::CCDi
 
 void MessageManager::pushRandomMessageFromFunction(const char *scriptFile, Map* map, CharacterManager *characterManager, EnemyManager *enemyManager) {
   LuaObject* lua = LuaObject::create(scriptFile);
+  lua->getLuaEngineWithLoad();
   this->pushRandomMessageFromObject(lua, map, characterManager, enemyManager);
 }
 
@@ -107,7 +108,7 @@ void MessageManager::pushRandomMessageFromSkill(Skill* skill, Map* map, Characte
 }
 
 void MessageManager::pushRandomMessageFromObject(LuaObject *lua, Map *map, CharacterManager *characterManager, EnemyManager *enemyManager) {
-  lua_State* L = lua->getLuaEngineWithLoad()->getLuaState();
+  lua_State* L = lua->getLuaEngine()->getLuaState();
   if (lua_isfunction(L, lua_gettop(L))) {
     lua->pushCCObject(map, "Map");
     lua->pushCCObject(characterManager, "CharacterManager");
