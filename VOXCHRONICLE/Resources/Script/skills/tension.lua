@@ -33,18 +33,32 @@ Skill = {
   end,
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone,
+  --テンションを溜める
   messages = {
     "{chara}は　ちからをためた",
     "{chara}の　テンションがあがっていく",
     "{chara}は　りきんでいる",
     "{chara}の　ボルテージが　ふくれあがる",
-    "もえあがる　こころが　せいめいりょくを　たかめる",
-    "たかまれ　おれたちの　BEAT!!",
-    "うぉぉおおお！",
+    "もえあがる　こころ"
+    "せいめいりょくが　たかまる！",
+    "たかまれ　われらの　BEAT!!",
     "パワー　ちゃーーじ！！！",
     "ちからが　みなぎっていく！！"
   },
   getMessageTable = function(map, characterManager, enemyManager)
     return {}
-  end
+  end,
+  --テンションマックス時
+  messages = {
+    "さいだいパワーだ！！",
+    "ＭＡＸ！ハイテンション！！",
+    "ぜんりょくぜんかいっ！！",
+    "ボルテージ　さいだい！",
+    "もえつきるほど　ヒート　ッ！",
+    "さいきょうの　パワー　みせてやる",
+    "BEATはさいこうちょうだ",
+    "うぉぉおおお！",
+    "マキシマム　パワー！！",
+    "POWER MAXIMAM!!"
+  }
 }

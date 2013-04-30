@@ -28,6 +28,7 @@ Skill = {
   end,
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone,
+  --回復成功時
   messages = {
     "きずが　かいふくした",
     "みるみる　きずが　ふさがっていく",
@@ -39,5 +40,14 @@ Skill = {
   },
   getMessageTable = function(map, characterManager, enemyManager)
     return {}
-  end
+  end,
+   --すでに満タンだった場合
+    messages = {
+    "そもそも　からだにきずが　なかった",
+    "まだだいじょうぶ　あんしんしろ",
+    "おちつけ　まだだいじょうぶだ",
+    "ＨＰは　さいだいち　デス",
+    "すでに　きずは　ふさがっている",
+    "とんでいく　いたみが　なかった",
+  }
 }

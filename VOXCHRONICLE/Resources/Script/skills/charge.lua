@@ -28,6 +28,7 @@ Skill = {
   end,
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone,
+  --回復成功時
   messages = {
     "オクスは　ラスカに　まりょくをそそぎこんだ",
     "ラスカの　まりょくをかいふくさせた",
@@ -38,5 +39,12 @@ Skill = {
   },
   getMessageTable = function(map, characterManager, enemyManager)
     return {}
-  end
+  end,
+   --MPが最大の時に回復
+     messages = {
+    "もう　はいらないよぉ",
+    "ラスカの　まりょくは　すでにいっぱいだ",
+    "まりょくは　すでにさいだいだ",
+    "すでに　さいだい　です",
+  }
 }

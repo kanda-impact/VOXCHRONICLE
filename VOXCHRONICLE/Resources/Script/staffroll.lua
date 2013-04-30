@@ -64,7 +64,7 @@ StaffRoll = {
 {"", "AttaQ", "エンディングD"},
 --3面QTE
 {"Voice", "Tetu_fs", "フルボイスモード"},
-{"Debug", "wildhawk", "テストプレイ、開発補助"},
+{"Quality Assurance", "wildhawk", "デバッグチーフ・品質管理"},
 --3面アウトロ
 {"Special Thanks", "All Kawaz Members", ""},
 {"Executive Producer", "geekdrums", ""},
