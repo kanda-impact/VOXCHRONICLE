@@ -7,7 +7,7 @@ cd $(cd $(dirname $0);pwd)
 function check() {
     if [ $? -ne 0 ]; then
         echo $SRC
-        SUCCEED=1
+        SUCCEED=0
         continue
     fi
 }
@@ -47,7 +47,7 @@ for SRC in `find ${SRC_DIR} -name "*.lua"`; do
     check
 done
 
-if [ $SUCCEED -eq 1 ]; then
+if [ $SUCCEED -eq 0 ]; then
     echo ">>>>> FAILED <<<<<"
     exit 1
 fi

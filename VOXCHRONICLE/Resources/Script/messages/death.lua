@@ -99,8 +99,7 @@ return function(map, characterManager, enemyManager)
     "むこうに　おはなばたけが　みえます",
     "${chara}！　おうとうしろ　${chara}ーーーーー！"
   }
-
-  return concat(commonPattern, (function()
+  local getExtraPatterns = function()
     --各ステージ部分
 
     --1a
@@ -224,5 +223,5 @@ return function(map, characterManager, enemyManager)
       }
     end
   end
-  )())
+  return concat(commonPattern, getExtraPatterns())
 end

@@ -18,7 +18,7 @@ return function(map, characterManager, enemyManager)
     "たたかいかたを　かえてみるか",
     "こんどこそ　まけない",
   }
-  return concat(commonPattern, (function()
+  local getExtraPattern = function()
     --各ステージ部分
     --1a
     if mapId == "1a_simple" then
@@ -140,5 +140,5 @@ return function(map, characterManager, enemyManager)
       }
     end
   end
-  )())
+  return concat(commonPattern, getExtraPattern())
 end

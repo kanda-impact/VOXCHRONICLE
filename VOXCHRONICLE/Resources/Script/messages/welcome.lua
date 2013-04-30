@@ -15,7 +15,7 @@ return function(map, characterManager, enemyManager)
     "まものの　においがする．．．",
     "てきがくるぞ　きをつけろ",
   }
-  return concat(commonPattern, (function()
+  local getExtraPatterns = function()
     --ステージ開始時1a
     if mapId == "1a_simple" then
       return {
@@ -154,5 +154,5 @@ return function(map, characterManager, enemyManager)
       }
     end
   end
-  )())
+  return concat(commonPattern, getExtraPatterns())
 end

@@ -1,9 +1,7 @@
 require("concat")
 require("timezone")
+
 return function(map, characterManager, enemyManager)
-  local chara = characterManager:getCurrentCharacter():getName()
-  local mapId = map:getIdentifier()
-  local currentTimeZone = getCurrentTimeZone()
   --ステージクリア―時
   --クリア時（全ステージ共通部分）
   local commonPattern =  {
@@ -13,7 +11,10 @@ return function(map, characterManager, enemyManager)
     "よし！　きりぬけたぞ！",
     "モンスターを　たおした",
   }
-  return concat(commonPattern, (function()
+  local chara = characterManager:getCurrentCharacter():getName()
+  local mapId = map:getIdentifier()
+  local currentTimeZone = getCurrentTimeZone()
+  local getExtraPattern = function()
     --各ステージ部分
     --1a
     if mapId == "1a_simple" then
@@ -85,5 +86,5 @@ return function(map, characterManager, enemyManager)
       }
     end
   end
-  )())
+  return concat(commonPattern, getExtraPattern())
 end

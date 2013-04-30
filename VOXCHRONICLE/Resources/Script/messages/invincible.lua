@@ -15,7 +15,7 @@ return function(map, characterManager, enemyManager)
     "あたらなければ　どうということは　ない",
     "てきの　こうげきが　くうを　きった",
     "こうげきなんて　ぜんぜん　へいき",
-    "${chara}　むそうちゅう"
+    "${chara}　むそうちゅう",
     "バーリアー！へいきだもーん！！"
   }
 end
