@@ -107,6 +107,7 @@ void PopupWindow::setText(int page, const char *headerText, const char *text) {
   node->addChild(header);
   MessageWindow* window = new MessageWindow("Helvetica", 16, CCSizeMake(370, 240));
   window->setPosition(ccp(200, 130));
+  window->setEnableShadow(false); // 処理落ち防止のために影を消す
   node->addChild(window, 0, PopupWindowTagMessageWindow);
   window->setLastDelay(INTMAX_MAX);
   window->pushMessage(text);

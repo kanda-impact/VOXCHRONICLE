@@ -1,6 +1,6 @@
 Map = {
-  name = "荒野",
-  wayMusic = "volca",
+  name = "森林",
+  wayMusic = "forest",
   bossMusic = "",
   backgroundImage = "simple_background.png",
   skin = "skinA",

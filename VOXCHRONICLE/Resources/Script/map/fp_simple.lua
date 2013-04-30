@@ -1,5 +1,5 @@
 Map = {
-  name = "シンプル",
+  name = "荒野",
   wayMusic = "volca",
   bossMusic = "",
   backgroundImage = "simple_background.png",
