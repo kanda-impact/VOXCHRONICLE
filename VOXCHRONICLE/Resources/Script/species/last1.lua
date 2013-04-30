@@ -26,7 +26,8 @@ Enemy = {
     local row = self:getRow()
     local key = "directAttack"
     local chargeTurn = self.__IRegister__:getRegister(key, 0)
-    if self:getHP() < 50 then -- HPが50以下なら
+    local cureCount = self.__IRegister__:getRegister("cureCount", 0)
+    if self:getHP() < 1050 then -- HPが50以下なら
       return "boss_change" -- 第2形態変身
     end
     if chargeTurn > 0 then -- 溜め中の時
@@ -38,7 +39,7 @@ Enemy = {
       self:setCounter(0)
       return "warp" -- 確実にワープする
     elseif row == 0 then -- 最前列にいるとき
-    self:setCounter(2)
+      self:setCounter(2)
       return "charge_attack_last" -- 確実に溜め攻撃
     else -- それ以外の時
       local rand = math.random(100) -- 乱数出して
@@ -56,19 +57,20 @@ Enemy = {
             return "equip"
           end
         elseif r2 < 70 then -- 敵が1体だけなら10%で
-          if enemyManager:getEnemies():count() == 1 then 
+          if enemyManager:getEnemies():count() == 1 then
             self:setCounter(1)
             return "call_last" -- t2ファージ召喚
           end
-        elseif  r2 < 83 then -- HPが7割以下なら10%で回復
+        elseif  r2 < 83 - cureCount then -- HPが7割以下なら10%で回復
           if self:getHP() < self:getMaxHP() * 0.7 then
             self:setCounter(3)
+            self.__IRegister__:setRegister("cureCount", cureCount + 3)
             return "cure_skill" -- 回復
           end
         elseif r2 < 90 then -- 現在MPによって
           if characterManager:getMP() > characterManager:getMaxMP() * 0.5 then
             self:setCounter(3)
-            return "mp_absorb" -- MP吸収   
+            return "mp_absorb" -- MP吸収
           end
         end
       end
