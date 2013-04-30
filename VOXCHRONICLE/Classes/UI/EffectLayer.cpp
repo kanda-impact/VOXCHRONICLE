@@ -42,6 +42,7 @@ EffectLayer::EffectLayer() {
   _characterEffectLayer->retain();
   _cutinExtention = NULL;
   _focus = NULL;
+  _cutinColor = ccc3(255, 255, 255);
   this->reloadEffects();
 }
 
@@ -179,20 +180,23 @@ void EffectLayer::addCutin(Skill *skill, EffectLayerCutinType cutinType, float d
     }
   }
   string cutinFile = "Image/" + string(skill->getIdentifier()) + "_icon.png";
+  CCNode* cutinNode = CCNode::create();
   CCSprite* cutin = CCSprite::create(FileUtils::getFilePath(cutinFile.c_str()).c_str());
   if (cutin != NULL) {
-    cutin->setPosition(ccp(0, height));
-    cutin->setScale(1.0f);
+    cutinNode->addChild(cutin);
+    cutinNode->setPosition(ccp(0, height));
+    cutinNode->setScale(1.0f);
+    cutin->setColor(_cutinColor);
     if (cutinType == EffectLayerCutinTypeNormal) {
       // 通常カットイン
-      cutin->runAction(CCSequence::create(CCMoveTo::create(slideTime, ccp(size.width / 2.0, height)),
+      cutinNode->runAction(CCSequence::create(CCMoveTo::create(slideTime, ccp(size.width / 2.0, height)),
                                           CCDelayTime::create(stopTime),
                                           CCMoveTo::create(slideTime, ccp(size.width, height)),
                                           CCRemoveFromParentAction::create(),
                                           NULL));
     } else if (cutinType == EffectLayerCutinTypeFailure) {
       // ミスったとき
-      cutin->runAction(CCSequence::create(CCMoveTo::create(slideTime, ccp(size.width / 2.0, height)),
+      cutinNode->runAction(CCSequence::create(CCMoveTo::create(slideTime, ccp(size.width / 2.0, height)),
                                           CCRotateBy::create(stopTime / 2.0, 45),
                                           CCDelayTime::create(stopTime / 2.0),
                                           CCMoveTo::create(slideTime, ccp(size.width / 2.0, -100)),
@@ -200,7 +204,7 @@ void EffectLayer::addCutin(Skill *skill, EffectLayerCutinType cutinType, float d
                                           NULL));
     } else if (cutinType == EffectLayerCutinTypeRegist) {
       // 耐性こうげきしたとき
-      cutin->runAction(CCSequence::create(CCMoveTo::create(slideTime, ccp(size.width / 2.0, height)),
+      cutinNode->runAction(CCSequence::create(CCMoveTo::create(slideTime, ccp(size.width / 2.0, height)),
                                           CCRepeat::create(CCSequence::create(CCRotateTo::create(stopTime / 6.0, 15),
                                                                               CCRotateTo::create(stopTime / 6.0, -15),
                                                                               NULL), 3),
@@ -208,13 +212,13 @@ void EffectLayer::addCutin(Skill *skill, EffectLayerCutinType cutinType, float d
                                           CCRemoveFromParentAction::create(),
                                           NULL));
     } else if (cutinType == EffectLayerCutinTypeHold) {
-      cutin->runAction(CCMoveTo::create(slideTime, ccp(size.width / 2.0, height)));
+      cutinNode->runAction(CCMoveTo::create(slideTime, ccp(size.width / 2.0, height)));
     }
     if (_cutinExtention) {
       _cutinExtention->setScale(0.5);
-      cutin->addChild(_cutinExtention);
+      cutinNode->addChild(_cutinExtention);
     }
-    this->addChild(cutin, EffectLayerZOrderCutin, EffectLayerTagCutin);
+    this->addChild(cutinNode, EffectLayerZOrderCutin, EffectLayerTagCutin);
   }
   this->setCutinExtension(NULL);
 }
@@ -352,7 +356,7 @@ string EffectLayer::getDamageLabelName(DamageLabelType type) {
 
 void EffectLayer::addWarning(float delay) {
   const float fadeDuration = 0.5f;
-  const float animationDuration = 0.1f;
+  //const float animationDuration = 0.1f;
   CCDirector* director = CCDirector::sharedDirector();
   CCNode* node = CCNode::create();
   CCSprite* warning = CCSprite::create("warning1.png");
@@ -444,4 +448,8 @@ void EffectLayer::addWaitMarker(float duration) {
     
     this->addChild(marker, EffectLayerZOrderWait, EffectLayerTagWait);
   }
+}
+
+void EffectLayer::setCutinColor(ccColor3B color) {
+  _cutinColor = color;
 }

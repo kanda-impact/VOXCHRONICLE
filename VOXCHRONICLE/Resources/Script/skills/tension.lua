@@ -22,7 +22,7 @@ Skill = {
     cross:setAnchorPoint(ccp(0.5, 0.5))
     tensionLabel:setAnchorPoint(ccp(0.5, 0.5))
     cross:setPosition(ccp(0, 15))
-    node:setPosition(ccp(105, 40))
+    node:setPosition(ccp(55, -10))
     node:addChild(tensionLabel)
     tensionLabel:setPosition(ccp(80, 10))
     node:addChild(cross)
