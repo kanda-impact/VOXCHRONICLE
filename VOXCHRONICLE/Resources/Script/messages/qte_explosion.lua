@@ -4,7 +4,7 @@ return function(map, characterManager, enemyManager)
 return {
     "ばく☆さん！！",
     "せいばい！！",
-    "\ちゅどーーーん/",
+    "＼ちゅどーーーん／",
     "ボスは　あえなく　くだけちった",
     "あくは　ついえた",
     "ボスモンスターを　たおした",

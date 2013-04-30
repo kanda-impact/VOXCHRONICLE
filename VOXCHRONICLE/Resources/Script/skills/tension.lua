@@ -34,7 +34,7 @@ Skill = {
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone,
   --テンションを溜める
-  messages = {
+--[[  messages = {
     "{chara}は　ちからをためた",
     "{chara}の　テンションがあがっていく",
     "{chara}は　りきんでいる",
@@ -44,12 +44,12 @@ Skill = {
     "たかまれ　われらの　BEAT!!",
     "パワー　ちゃーーじ！！！",
     "ちからが　みなぎっていく！！"
-  },
+  },]]
   getMessageTable = function(map, characterManager, enemyManager)
     return {}
   end,
   --テンションマックス時
-  messages = {
+--[[  messages = {
     "さいだいパワーだ！！",
     "ＭＡＸ！ハイテンション！！",
     "ぜんりょくぜんかいっ！！",
@@ -60,5 +60,5 @@ Skill = {
     "うぉぉおおお！",
     "マキシマム　パワー！！",
     "POWER MAXIMAM!!"
-  }
+  }]]
 }
