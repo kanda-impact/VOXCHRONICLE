@@ -1,6 +1,6 @@
 /*
 ** Lua binding: VOXCHRONICLE
-** Generated automatically by tolua++-1.0.92 on Mon Apr 29 23:13:07 2013.
+** Generated automatically by tolua++-1.0.92 on Tue Apr 30 22:14:15 2013.
 */
 
 #ifndef __cplusplus
@@ -2466,10 +2466,11 @@ static int tolua_VOXCHRONICLE_EffectLayer_addEffectOnEnemy00(lua_State* tolua_S)
   if (!self) tolua_error(tolua_S,"invalid 'self' in function 'addEffectOnEnemy'", NULL);
 #endif
   {
-   self->addEffectOnEnemy(enemy,prefix,frameCount,rect);
+   CCSprite* tolua_ret = (CCSprite*)  self->addEffectOnEnemy(enemy,prefix,frameCount,rect);
+    tolua_pushusertype(tolua_S,(void*)tolua_ret,"CCSprite");
   }
  }
- return 0;
+ return 1;
 #ifndef TOLUA_RELEASE
  tolua_lerror:
  tolua_error(tolua_S,"#ferror in function 'addEffectOnEnemy'.",&tolua_err);

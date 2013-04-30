@@ -223,7 +223,7 @@ class MessageManager : public CCObject {
 class EffectLayer : public CCLayer {
 	static EffectLayer* sharedLayer();
 	PopupWindow* addPopupWindow(int pages);
-	void addEffectOnEnemy(Enemy* enemy, const char* prefix, int frameCount, CCRect rect);
+	CCSprite* addEffectOnEnemy(Enemy* enemy, const char* prefix, int frameCount, CCRect rect);
 	void addDamageLabel(int damage, int offset, DamageLabelType type);
 	void addDamageLabelOnEnemy(Enemy* target, int damage, DamageLabelType type);
 	void setCutinExtension(CCNode* extension);

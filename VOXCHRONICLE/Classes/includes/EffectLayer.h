@@ -68,12 +68,12 @@ class EffectLayer :public CCLayer {
   static void purgeEffectLayer();
   EffectLayer();
   ~EffectLayer();
-  void addEffectOnEnemy(Enemy* enemy, const char* prefix, int frameCount, CCRect rect);
-  void addEffectOnEnemy(Enemy* enemy, const char* prefix, int frameCount, CCRect rect, float delay);
+  CCSprite* addEffectOnEnemy(Enemy* enemy, const char* prefix, int frameCount, CCRect rect);
+  CCSprite* addEffectOnEnemy(Enemy* enemy, const char* prefix, int frameCount, CCRect rect, float delay);
+  CCSprite* addSkillEffect(Skill* skill, CCArray* targets);
   void addMusicInfo(Map* map, Level* level);
   void addDamageLabel(int damage, int offset, DamageLabelType type);
   void addDamageLabelOnEnemy(Enemy* enemy, int damage, DamageLabelType type);
-  void addSkillEffect(Skill* skill, CCArray* targets);
   void setTensionEffect(int tension);
   void setCharacterEffect(Character* character);
   PopupWindow* addPopupWindow(int pages);

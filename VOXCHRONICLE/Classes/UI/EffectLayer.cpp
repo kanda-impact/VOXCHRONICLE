@@ -75,11 +75,11 @@ EffectLayer::~EffectLayer() {
   }
 }
 
-void EffectLayer::addEffectOnEnemy(Enemy *enemy, const char *prefix, int frameCount, CCRect rect) {
-  this->addEffectOnEnemy(enemy, prefix, frameCount, rect, 4.0 / 60.0);
+CCSprite* EffectLayer::addEffectOnEnemy(Enemy *enemy, const char *prefix, int frameCount, CCRect rect) {
+  return this->addEffectOnEnemy(enemy, prefix, frameCount, rect, 4.0 / 60.0);
 }
 
-void EffectLayer::addEffectOnEnemy(Enemy *enemy, const char *prefix, int frameCount, CCRect rect, float delay) {
+CCSprite* EffectLayer::addEffectOnEnemy(Enemy *enemy, const char *prefix, int frameCount, CCRect rect, float delay) {
   CCSprite* effect = CCSprite::create((string(prefix) + string("0.png")).c_str());
   CCAnimation* animation = CCAnimation::create();
   CCPoint position;
@@ -102,9 +102,10 @@ void EffectLayer::addEffectOnEnemy(Enemy *enemy, const char *prefix, int frameCo
                                        CCRemoveFromParentAction::create(),
                                        NULL));
   this->addChild(effect);
+  return effect;
 }
 
-void EffectLayer::addSkillEffect(Skill *skill, CCArray* targets) {
+CCSprite* EffectLayer::addSkillEffect(Skill *skill, CCArray* targets) {
   // エフェクトを追加する
   CCDirector* director = CCDirector::sharedDirector();
   SkillEffectType effectType = skill->getEffectType();
@@ -113,12 +114,13 @@ void EffectLayer::addSkillEffect(Skill *skill, CCArray* targets) {
     int frames = skill->getEffectFrames();
     if (effectType == SkillEffectTypeTarget) { // 1体のみにアニメーションを表示させるとき
       Enemy* target = (Enemy*)targets->objectAtIndex(0);
-      this->addEffectOnEnemy(target, skill->getIdentifier().c_str(), frames, CCRectMake(0, 0, 50, 50));
+      return this->addEffectOnEnemy(target, skill->getIdentifier().c_str(), frames, CCRectMake(0, 0, 50, 50));
     } else { // 全体にアニメーションを表示させるとき
       CCRect rect = CCRectMake(0, 0, director->getWinSize().width / 4.0, director->getWinSize().height / 4.0);
-      this->addEffectOnEnemy(NULL, skill->getIdentifier().c_str(), frames, rect);
+      return this->addEffectOnEnemy(NULL, skill->getIdentifier().c_str(), frames, rect);
     }
   }
+  return NULL;
 }
 
 void EffectLayer::setTensionEffect(int tension) {
