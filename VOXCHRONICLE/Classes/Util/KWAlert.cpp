@@ -8,6 +8,7 @@
 
 #include "KWAlert.h"
 #include "KWAlertDelegate.h"
+#include "CCRemoveFromParentAction.h"
 
 KWAlertDelegate* KWAlert::getDelegate() {
   return _delegate;
@@ -57,7 +58,9 @@ void KWAlert::show() {
 }
 
 void KWAlert::dismiss() {
-  this->runAction(CCScaleTo::create(0.2, 0));
+  this->runAction(CCSequence::create(CCScaleTo::create(0.2, 0),
+                                     CCRemoveFromParentAction::create(),
+                                     NULL));
 }
 
 KWAlert::~KWAlert() {

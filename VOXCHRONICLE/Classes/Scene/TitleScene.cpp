@@ -51,7 +51,7 @@ bool TitleScene::init() {
     this->addChild(sprite);
   }
   
-  CCLabelTTF* startLabel = CCLabelTTF::create("Start", FONT_NAME, 32);
+  //CCLabelTTF* startLabel = CCLabelTTF::create("Start", FONT_NAME, 32);
   CCLabelTTF* debugLabel = CCLabelTTF::create("Debug", FONT_NAME, 32);
   //CCMenuItemLabel::create(startLabel, this, menu_selector(TitleScene::onStartButtonPressed))
   CCMenu* menu = CCMenu::create(CCMenuItemLabel::create(debugLabel, this, menu_selector(TitleScene::onDebugButtonPressed)),

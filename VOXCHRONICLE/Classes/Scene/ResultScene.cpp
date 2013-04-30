@@ -11,6 +11,8 @@
 #include "TitleScene.h"
 #include <boost/lexical_cast.hpp>
 
+#include "KWAlert.h"
+
 using namespace boost;
 
 bool ResultScene::init () {
@@ -31,9 +33,10 @@ bool ResultScene::init () {
                                                  "credit_back_pressed.png",
                                                  this,
                                                  menu_selector(ResultScene::onBackButtonPressed));
-  CCMenu* backMenu = CCMenu::create(backItem, NULL);
-  backMenu->setPosition(ccp(440, 290));
-  this->addChild(backMenu);
+  _backMenu = CCMenu::create(backItem, NULL);
+  _backMenu->retain();
+  _backMenu->setPosition(ccp(440, 290));
+  this->addChild(_backMenu);
   _isAppeard = false;
   
   return true;
@@ -83,16 +86,33 @@ void ResultScene::buildUI() {
   this->addChild(continueNumber);
   
   this->isTouchEnabled();
-  
+   
 }
 
 void ResultScene::onEnterTransitionDidFinish() {
   _isAppeard = true;
+  // 初回クリア時
+  if (SaveData::sharedData()->getCountFor(SaveDataCountKeyClear) <= 1 || true) { // ポップアップを出します
+    this->setTouchEnabled(false);
+    LuaObject* setting = LuaObject::create("setting");
+    CCDirector* director = CCDirector::sharedDirector();
+    CCArray* names = CCArray::create(CCString::create("OK"), NULL);
+    KWAlert* alert = new KWAlert("dialog_window.png", names);
+    alert->setPosition(ccp(director->getWinSize().width / 2.0, director->getWinSize().height / 2.0));
+    alert->autorelease();
+    this->addChild(alert);
+    alert->setText(setting->getString("extraUnlockMessage"));
+    alert->setDelegate(this);
+    alert->show();
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/unlock_achievement.mp3").c_str());
+    _backMenu->setEnabled(false);
+  }
 }
 
 
 ResultScene::~ResultScene() {
   _log->release();
+  _backMenu->release();
 }
 
 void ResultScene::registerWithTouchDispatcher() {
@@ -122,4 +142,11 @@ void ResultScene::onBackButtonPressed(cocos2d::CCObject *sender) {
   scene->addChild(TitleScene::create());
   CCTransitionFade* fade = CCTransitionFade::create(2.0f, scene);
   CCDirector::sharedDirector()->replaceScene(fade);
+}
+
+void ResultScene::clickedButtonAtIndex(KWAlert *alert, int index) {
+  alert->dismiss();
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/window_close.mp3").c_str());
+  this->setTouchEnabled(true);
+  _backMenu->setEnabled(true);
 }
