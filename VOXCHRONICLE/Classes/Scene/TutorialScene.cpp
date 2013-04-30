@@ -95,7 +95,7 @@ void TutorialLayer::onBackButtonPressed(cocos2d::CCObject *sender) {
   layer->autorelease();
   scene->addChild(layer);
   CCTransitionSlideInR* transition = CCTransitionSlideInR::create(0.25f, scene);
-  CCDirector::sharedDirector()->pushScene(transition);
+  CCDirector::sharedDirector()->replaceScene(transition);
 }
 
 void TutorialLayer::onGameStart(cocos2d::CCObject *sender) {
@@ -114,7 +114,7 @@ void TutorialLayer::onGameStart(cocos2d::CCObject *sender) {
       CCScene* scene = CCScene::create();
       scene->addChild(layer);
       CCTransitionFade* fade = CCTransitionFade::create(0.5f, scene);
-      CCDirector::sharedDirector()->pushScene(fade);
+      CCDirector::sharedDirector()->replaceScene(fade);
       return;
     }
     ++i;

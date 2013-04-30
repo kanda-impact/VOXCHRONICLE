@@ -17,6 +17,10 @@
 using namespace cocos2d;
 
 class ResultScene :public CCLayer {
+ private:
+  bool _isAppeard;
+  virtual void registerWithTouchDispatcher();
+  virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
   PlayLog* _log;
  public:
   virtual bool init();
@@ -24,6 +28,7 @@ class ResultScene :public CCLayer {
   void setPlayLog(PlayLog* log);
   CREATE_FUNC(ResultScene);
   void buildUI();
+  virtual void onEnterTransitionDidFinish();
   void onBackButtonPressed(CCObject* sender);
 };
 

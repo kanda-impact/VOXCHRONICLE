@@ -392,6 +392,8 @@
 		0789A0DC172E563100FFB262 /* endingD_voice.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0789A0D8172E563100FFB262 /* endingD_voice.mp3 */; };
 		0789A0E2172E594E00FFB262 /* demo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0789A0E1172E594E00FFB262 /* demo.mp3 */; };
 		0789A0FD172EFEDD00FFB262 /* UIApplicationWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0789A0FB172EFEDD00FFB262 /* UIApplicationWrapper.mm */; };
+		0789A101173002F300FFB262 /* KWAlert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0789A0FF173002F300FFB262 /* KWAlert.cpp */; };
+		0789A1051730048D00FFB262 /* KWAlertDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0789A1031730048C00FFB262 /* KWAlertDelegate.cpp */; };
 		078D452316CE809C00E21DC5 /* Species.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 078D452116CE809B00E21DC5 /* Species.cpp */; };
 		078D45A116CF1FB100E21DC5 /* 3Bb_counter0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078D456316CF1FB100E21DC5 /* 3Bb_counter0.caf */; };
 		078D45A216CF1FB100E21DC5 /* 3Bb_counter1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078D456416CF1FB100E21DC5 /* 3Bb_counter1.caf */; };
@@ -1895,6 +1897,10 @@
 		0789A0E1172E594E00FFB262 /* demo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = demo.mp3; path = Resources/Voice/demo.mp3; sourceTree = "<group>"; };
 		0789A0FB172EFEDD00FFB262 /* UIApplicationWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UIApplicationWrapper.mm; sourceTree = "<group>"; };
 		0789A0FE172EFF2E00FFB262 /* UIApplicationWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIApplicationWrapper.h; path = VOXCHRONICLE/Classes/includes/UIApplicationWrapper.h; sourceTree = SOURCE_ROOT; };
+		0789A0FF173002F300FFB262 /* KWAlert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KWAlert.cpp; sourceTree = "<group>"; };
+		0789A1021730036A00FFB262 /* KWAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KWAlert.h; path = VOXCHRONICLE/Classes/includes/KWAlert.h; sourceTree = SOURCE_ROOT; };
+		0789A1031730048C00FFB262 /* KWAlertDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KWAlertDelegate.cpp; sourceTree = "<group>"; };
+		0789A107173005C800FFB262 /* KWAlertDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KWAlertDelegate.h; path = VOXCHRONICLE/Classes/includes/KWAlertDelegate.h; sourceTree = SOURCE_ROOT; };
 		078D452116CE809B00E21DC5 /* Species.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Species.cpp; path = Classes/Model/Species.cpp; sourceTree = "<group>"; };
 		078D452416CE80CF00E21DC5 /* Species.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Species.h; path = Classes/includes/Species.h; sourceTree = "<group>"; };
 		078D456316CF1FB100E21DC5 /* 3Bb_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 3Bb_counter0.caf; path = Resources/Music/3Bb/3Bb_counter0.caf; sourceTree = "<group>"; };
@@ -3496,6 +3502,10 @@
 				0778C5E117100DD20017D230 /* VQTime.mm */,
 				0789A0FE172EFF2E00FFB262 /* UIApplicationWrapper.h */,
 				0789A0FB172EFEDD00FFB262 /* UIApplicationWrapper.mm */,
+				0789A0FF173002F300FFB262 /* KWAlert.cpp */,
+				0789A1021730036A00FFB262 /* KWAlert.h */,
+				0789A1031730048C00FFB262 /* KWAlertDelegate.cpp */,
+				0789A107173005C800FFB262 /* KWAlertDelegate.h */,
 			);
 			name = Util;
 			path = Classes/Util;
@@ -7567,6 +7577,8 @@
 				077D0C2817144467006C3F17 /* TestFlightWrapper.mm in Sources */,
 				077070651719043200E3F836 /* ResultScene.cpp in Sources */,
 				0789A0FD172EFEDD00FFB262 /* UIApplicationWrapper.mm in Sources */,
+				0789A101173002F300FFB262 /* KWAlert.cpp in Sources */,
+				0789A1051730048D00FFB262 /* KWAlertDelegate.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

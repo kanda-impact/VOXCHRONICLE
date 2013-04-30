@@ -34,6 +34,7 @@ bool ResultScene::init () {
   CCMenu* backMenu = CCMenu::create(backItem, NULL);
   backMenu->setPosition(ccp(440, 290));
   this->addChild(backMenu);
+  _isAppeard = false;
   
   return true;
 }
@@ -81,11 +82,28 @@ void ResultScene::buildUI() {
   this->addChild(continueLabel);
   this->addChild(continueNumber);
   
+  this->isTouchEnabled();
+  
+}
+
+void ResultScene::onEnterTransitionDidFinish() {
+  _isAppeard = true;
 }
 
 
 ResultScene::~ResultScene() {
   _log->release();
+}
+
+void ResultScene::registerWithTouchDispatcher() {
+  CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 100, true);
+}
+
+bool ResultScene::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
+  if (_isAppeard) {
+    this->onBackButtonPressed(this);
+  }
+  return true;
 }
 
 void ResultScene::setPlayLog(PlayLog *log) {

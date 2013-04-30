@@ -105,7 +105,7 @@ void ExtraScene::onBackButtonPressed(cocos2d::CCObject *sender) {
   layer->autorelease();
   scene->addChild(layer);
   CCTransitionSlideInL* transition = CCTransitionSlideInL::create(0.25f, scene);
-  CCDirector::sharedDirector()->pushScene(transition);
+  CCDirector::sharedDirector()->replaceScene(transition);
 }
 
 void ExtraScene::nextScene(CCLayer* layer, bool slide) {

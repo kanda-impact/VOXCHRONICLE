@@ -24,7 +24,7 @@ Achievement = {
     {PlayLogKeyMaxDefeat, 10, "defeat10"}, -- 一気呵成
     {PlayLogKeyMaxRepeatCount, 20, "repeat20"}, -- こだわりのワンパターン
     {PlayLogKeyMaxRepeatChangeCount, 10, "change10"}, -- 戦場の踊り子
-    {PlayLogKeyTurn, 250, "clearSpeedy"} -- 疾風迅雷
+    {PlayLogKeyTurn, 200, "clearSpeedy"} -- オクス・ザ・ヘッジホッグ
   },
   -- クリア時に実績チェックのために呼び出されます
   checkAchievementOnClear = function(playlog, characterManager, enemyManager)

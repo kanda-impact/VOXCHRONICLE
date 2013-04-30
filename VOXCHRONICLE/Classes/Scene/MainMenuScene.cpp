@@ -60,7 +60,7 @@ void MainMenuScene::onStartPressed(cocos2d::CCObject *sender) {
   SelectScene* layer = SelectScene::create();
   scene->addChild(layer);
   CCTransitionSlideInT* transition = CCTransitionSlideInT::create(0.25f, scene);
-  CCDirector::sharedDirector()->pushScene(transition);
+  CCDirector::sharedDirector()->replaceScene(transition);
 }
 
 void MainMenuScene::onTutorialPressed(cocos2d::CCObject *sender) {
@@ -69,7 +69,7 @@ void MainMenuScene::onTutorialPressed(cocos2d::CCObject *sender) {
   TutorialLayer* layer = TutorialLayer::create();
   scene->addChild(layer);
   CCTransitionSlideInL* transition = CCTransitionSlideInL::create(0.25f, scene);
-  CCDirector::sharedDirector()->pushScene(transition);
+  CCDirector::sharedDirector()->replaceScene(transition);
 }
 
 void MainMenuScene::onExtraPressed(cocos2d::CCObject *sender) {
@@ -78,7 +78,7 @@ void MainMenuScene::onExtraPressed(cocos2d::CCObject *sender) {
   ExtraScene* layer = ExtraScene::create();
   scene->addChild(layer);
   CCTransitionSlideInR* transition = CCTransitionSlideInR::create(0.25f, scene);
-  CCDirector::sharedDirector()->pushScene(transition);
+  CCDirector::sharedDirector()->replaceScene(transition);
 }
 
 void MainMenuScene::onBackPressed(cocos2d::CCObject *sender) {
@@ -88,5 +88,5 @@ void MainMenuScene::onBackPressed(cocos2d::CCObject *sender) {
   TitleScene* layer = TitleScene::create();
   scene->addChild(layer);
   CCTransitionFade* transition = CCTransitionFade::create(0.5f, scene);
-  CCDirector::sharedDirector()->pushScene(transition);
+  CCDirector::sharedDirector()->replaceScene(transition);
 }
