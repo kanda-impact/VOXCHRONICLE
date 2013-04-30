@@ -1,3 +1,4 @@
+#!/bin/sh
 SRC_DIR=$1
 SUCCEED=1
 
