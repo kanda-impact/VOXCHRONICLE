@@ -1,6 +1,8 @@
 #!/bin/sh
-SRC_DIR=$1
+SRC_DIR=$(cd $(dirname $1) && pwd)
 SUCCEED=1
+
+cd $(cd $(dirname $0);pwd)
 
 function check() {
     if [ $? -ne 0 ]; then
@@ -10,8 +12,7 @@ function check() {
     fi
 }
 
-
-for SRC in `find $SRC_DIR -name "*.lua"`; do
+for SRC in `find ${SRC_DIR} -name "*.lua"`; do
     CLEAN_ASM="while(<>){s/^\t(\d+)\t\[\d+\]/\t\1/;s/(main|function) <[^\]]+>/function/;s/0x[0-9a-f]+//;print}"
 
     # Some shell settings
