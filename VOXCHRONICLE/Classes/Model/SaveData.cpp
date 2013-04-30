@@ -15,7 +15,7 @@
 
 using namespace boost;
 
-static SaveData* _shared = NULL;
+SaveData* SaveData::_shared = NULL;
 const string countDataPrefix = "count_";
 
 SaveData* SaveData::sharedData() {

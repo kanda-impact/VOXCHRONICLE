@@ -45,6 +45,7 @@ typedef struct {
 
 class SaveData :public CCObject {
  private:
+  static SaveData* _shared;
   bool _fullvoice;
   CCDictionary* _countDictionary;
   CCArray* _achievements;
