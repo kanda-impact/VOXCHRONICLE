@@ -3,6 +3,7 @@ EnemySkill = {
   name = "直接攻撃",
   performSkill = function(self, user, characterManager, enemyManager)
     local key = "skillCharge"
+    local layer = EffectLayer:sharedLayer()
     local turn = user:getRegister(key, 0) -- 溜めているターンを取得
     if user:getType() == SkillTypeMagical then
       if turn <= 1 then
@@ -20,6 +21,7 @@ EnemySkill = {
         characterManager:damage(8) -- ダメージを与える
         user:setRegister(key, 0) -- 溜めターンをリセット
         user:setDefaultAnimationClip() -- グラを元に戻す
+        layer:addEffectOnEnemy(nil, "thunder", 6, CCRectMake(0, 0, 120, 80)):setColor(ccc3(255, 1, 78))
         MessageManager:sharedManager():pushMessage(user:getName().."は　強力な　魔法を　放った")
       end
     else
@@ -35,9 +37,10 @@ EnemySkill = {
         user:runAction(CCRepeat:create(sequence, 10))
       elseif turn == 1 then
         -- 溜めターンが1ターンに到達したら溜め攻撃発動
-        characterManager:damage(2) -- ダメージを与える
+        characterManager:damage(3) -- ダメージを与える
         user:setRegister(key, 0) -- 溜めターンをリセット
         user:setDefaultAnimationClip() -- グラを元に戻す
+        layer:addEffectOnEnemy(nil, "attack", 4, CCRectMake(0, 0, 50, 50)):setColor(ccc3(0, 255, 230))
         MessageManager:sharedManager():pushMessage(user:getName().."は　すばやく　切りかかってきた")
       end
     end

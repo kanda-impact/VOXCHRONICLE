@@ -38,7 +38,7 @@ EnemySkill = {
       enemyManager:setBoss(newEnemy)
       enemyManager:removeEnemy(user)
       
-      SaveData:sharedData():addDefeatedCountForEmemy("last1")
+      SaveData:sharedData():addDefeatedCountForEnemy("last1")
       
       local layer = EffectLayer:sharedLayer()
       layer:addEffectOnEnemy(nil, "run", 3, CCRectMake(0, 0, 120, 80))

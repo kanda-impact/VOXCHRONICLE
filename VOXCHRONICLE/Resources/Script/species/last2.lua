@@ -26,7 +26,7 @@ Enemy = {
     local r = math.random(100)
     local tensionTurn = self:getRegister("tensionWave", 0)
     local regist = self:getRegister("skill_last", 0)
-    if regist ==1 then
+    if regist >=1 then
       return "thunder_last"
     elseif tensionTurn > 0 or r < characterManager:getTension() * 10 then
       return "reset_tension"

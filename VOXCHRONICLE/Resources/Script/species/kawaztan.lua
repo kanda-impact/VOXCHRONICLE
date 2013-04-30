@@ -32,6 +32,12 @@ Enemy = {
     ]] --  MessageManager:sharedManager():pushMessage(user:getName().."は　ちからを　ためている")
     -- 溜め初回ターンの時
     local chargeTurn = self.__IRegister__:getRegister(key, 0)
+    local brank = self.__IRegister__:getRegister("brank", 0)
+    local cureCount = self.__IRegister__:getRegister("cureCount", 0)
+    print("brank:"..brank.."cure:"..cureCount)
+    if brank > 0 then
+      self.__IRegister__:setRegister("brank", brank - 1)
+    end
     if chargeTurn > 0 then -- 溜め中の時
       self:setCounter(2)
       return "charge_attack_kawaz" -- 直接攻撃する
@@ -47,23 +53,27 @@ Enemy = {
           return "kawaz_beam"
         elseif r2 <= 60 then
           return "charge_attack_kawaz"
-        elseif r2 > 90 then
-          if self:getItem() == EnemyItemNone then
-            self:setCounter(3)
-            return "equip"
+        elseif brank == 0 then
+          self.__IRegister__:setRegister("brank", 2) --スキルリキャストタイム 特殊攻撃は連続で使えない
+          if r2 > 90 then
+            if self:getItem() == EnemyItemNone then
+              self:setCounter(3)
+              return "equip"
+            end
+          elseif  r2 > 80 + cureCount then -- HPが7割以下なら10%で回復
+            if self:getHP() < self:getMaxHP() * 0.7 then
+              self:setCounter(3)
+              self.__IRegister__:setRegister("cureCount", cureCount + 2)
+              return "cure_skill" -- 回復
+            end
+          elseif r2 > 70 then
+            return "typeChange"
+          elseif r2 > 60 then -- 現在MPによって
+            if characterManager:getMP() > characterManager:getMaxMP() * 0.6 then
+              self:setCounter(3)
+              return "mp_absorb" -- MP吸収
+            end
           end
-        elseif  r2 > 80 then -- HPが7割以下なら10%で回復
-          if self:getHP() < self:getMaxHP() * 0.7 then
-            self:setCounter(3)
-            return "cure_skill" -- 回復
-          end
-        elseif r2 > 70 then -- 現在MPによって
-          if characterManager:getMP() > characterManager:getMaxMP() * 0.6 then
-            self:setCounter(3)
-            return "mp_absorb" -- MP吸収
-          end
-        elseif r2 > 60 then
-          return "typeChange"
         end
       end
     end
