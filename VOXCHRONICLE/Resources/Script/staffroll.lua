@@ -60,7 +60,7 @@ StaffRoll = {
 {"", "Tetu_fs", "エンディングB"},
 {"", "Yudaidhun", "エンディングC"},
 {"", "AttaQ", "エンディングD"},
-{"debag play", "wildhawk", "プレイヤー代表、提言"},
+{"Quality Assurance", "wildhawk", "デバッグチーフ・品質管理"},
 --3面アウトロ
 {"Special Thanks", "All Kawaz Members", ""},
 {"Executive Producer", "geekdrums", ""},

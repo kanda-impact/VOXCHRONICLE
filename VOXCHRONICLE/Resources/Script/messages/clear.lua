@@ -49,9 +49,10 @@ return function(map, characterManager, enemyManager)
 --1b夕暮れ
   return {
     "ゆうぐれを　こえて",
-    "さいごのは　なんだったんだ",
+    "平原　クリアー",
+    "平原の　おわりがみえた",
+    "さあ　たたかいはこれからだ",",
     "かった！　おれたちはつよい！",
-    "ぜんりょく　だしきったわね",
   }
 --１ｂ夜
   return {
