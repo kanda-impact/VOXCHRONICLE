@@ -220,7 +220,11 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
     int preHP = _characterManager->getHP();
     _enemyManager->nextTurn(_characterManager, false, false);
     CCObject* obj = NULL;
+    CCArray* enemies = CCArray::create();
     CCARRAY_FOREACH(_enemyManager->getEnemies(), obj) {
+      enemies->addObject(obj); // ここでshallowコピーを作る
+    }
+    CCARRAY_FOREACH(enemies, obj) {
       Enemy* enemy = (Enemy*)obj;
       if (enemy->getRow() < 0) {
         int damage = floor(0.5 + enemy->getAttack() * _characterManager->getLevelOffsetRate(enemy->getLevel(), _characterManager->getLevel()));
@@ -232,6 +236,12 @@ void MainScene::trackDidBack(Music *music, Track *currentTrack, int trackNumber)
     SaveData::sharedData()->addCountFor(SaveDataCountKeyHitDamage, sub); // 被ダメージカウント
     _log->setCount(PlayLogKeyHitDamage, sub + _log->getCount(PlayLogKeyHitDamage)); // 被ダメージカウント
     
+    if (_characterManager->getDamageInfoQueue()->size() > 0) {
+      if (_characterManager->getShield()) { // 盾装備してたとき
+        SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/guard.mp3").c_str());
+        _characterManager->setShield(false); // 盾問答無用で外します
+      }
+    }
     this->addDamageEffect();
     this->updateGUI();
     
@@ -421,12 +431,16 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
             CCPoint origin = enemy->getPosition();
             const int times = 6;
             const float blinkDuration = 0.05;
-            for (int i = 0; i < 10; ++i) {
-              float x = -damage / 2 + rand() % damage;
-              float y = -damage / 2 + rand() % damage;
-              CCPlace* move = CCPlace::create(ccpAdd(origin, ccp(x, y)));
-              CCDelayTime* delay = CCDelayTime::create(blinkDuration * 2 * 3 / times);
-              actions->addObject(CCSequence::create(move, delay, NULL));
+            if (damage == 0) {
+              actions->addObject(CCDelayTime::create(blinkDuration * 2 * 3));
+            } else {
+              for (int i = 0; i < 10; ++i) {
+                float x = -damage / 2 + rand() % damage;
+                float y = -damage / 2 + rand() % damage;
+                CCPlace* move = CCPlace::create(ccpAdd(origin, ccp(x, y)));
+                CCDelayTime* delay = CCDelayTime::create(blinkDuration * 2 * 3 / times);
+                actions->addObject(CCSequence::create(move, delay, NULL));
+              }
             }
             actions->addObject(CCPlace::create(origin)); // 元に復帰
             enemy->runAction(CCSpawn::createWithTwoActions(CCRepeat::create(CCSequence::createWithTwoActions(CCFadeTo::create(blinkDuration, 64), CCFadeTo::create(blinkDuration, 255)), 3),
@@ -731,9 +745,6 @@ void MainScene::addDamageEffect() {
   }
   if (isDead) { // 死んだとき
     this->onGameOver();
-  } else if (isShield) { // 盾装備してたとき
-    SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/guard.mp3").c_str());
-    _characterManager->setShield(false); // 盾問答無用で外します
   }
 }
 
