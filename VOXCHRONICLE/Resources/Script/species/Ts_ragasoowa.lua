@@ -18,6 +18,8 @@ Enemy = {
 ]],
   habitat = "",
   animationFrames = 5,
+  width = 204,
+  height = 163,
   performSkill = function(self)
   return ""
   end
