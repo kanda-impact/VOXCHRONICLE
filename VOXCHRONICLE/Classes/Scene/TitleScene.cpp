@@ -166,13 +166,13 @@ void TitleScene::onDemoStart() {
   CCLabelTTF* label = CCLabelTTF::create(text.c_str(),
                                          "Helvetica",
                                          21,
-                                         CCSizeMake(director->getWinSize().width - 50, director->getWinSize().height * 2),
+                                         CCSizeMake(director->getWinSize().width - 50, _demo->getNumber("boxHeight")),
                                          kCCTextAlignmentCenter,
                                          kCCVerticalTextAlignmentCenter);
   CCLabelTTF* shadowLabel = CCLabelTTF::create(text.c_str(),
                                                "Helvetica",
                                                21,
-                                               CCSizeMake(director->getWinSize().width - 50, director->getWinSize().height * 2),
+                                               CCSizeMake(director->getWinSize().width - 50, _demo->getNumber("boxHeight")),
                                                kCCTextAlignmentCenter,
                                                kCCVerticalTextAlignmentCenter);
   

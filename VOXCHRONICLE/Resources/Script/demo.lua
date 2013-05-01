@@ -3,7 +3,8 @@ Demo = {
   stopDuration = 6, -- スクロール後秒数
   delay = 9, -- 開始までの秒数
   moveToX = 240,
-  moveToY = 200,
+  moveToY = 450,
+  boxHeight = 960,
   text = [[
 王歴２１２７年。
 
