@@ -438,7 +438,7 @@ void EffectLayer::addWaitMarker(float duration) {
                                        CCFadeOut::create(0.2f),
                                        NULL));
     marker->runAction(CCSequence::create(CCFadeIn::create(0.2f),
-                                         CCRepeat::create(CCSequence::create(CCRotateBy::create(0, 15),
+                                         CCRepeat::create(CCSequence::create(CCRotateBy::create(0, 60),
                                                                              CCDelayTime::create(delay),
                                                                              NULL), (duration - 0.4) / delay),
                                          CCFadeOut::create(0.2f),
