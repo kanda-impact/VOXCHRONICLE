@@ -1,5 +1,5 @@
 Enemy = {
-  name = "右カギーＶ（ヴイ）",
+  name = "右ガギィＶ（ヴイ）",
   imageName = "R_strclaw",
   attack = 3,
   baseExp = 6,
@@ -13,7 +13,7 @@ Enemy = {
   end,
   disableSkills = {"knockback"},
   description = [[
-（このかたきは…おれが討つ！）
+（なかまのかたきは…おれが討つ！）
 生息地：深海ほか　攻撃力：そこそこ　移動：しない
   ]],
   habitat = "",

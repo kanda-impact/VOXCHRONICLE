@@ -176,7 +176,7 @@ dictionary = {
   'wave',
   'last1',
   'last2',
+  'R_bit',
   'L_bit',
-  'R_bit',  
   'kawaztan'
 }
