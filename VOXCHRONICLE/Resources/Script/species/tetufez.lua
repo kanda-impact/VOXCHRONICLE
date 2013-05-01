@@ -1,5 +1,5 @@
 Enemy = {
-  name = "テツフェズ",
+  name = "ツテフェズ",
   imageName = "tetufez",
   attack = 1,
   baseExp = 1,
@@ -13,9 +13,9 @@ Enemy = {
   end,
   disableSkills = {},
   description = [[
-  魔物であるか人工的な魔法生物であるか
-  諸説あるがわかっていない。叩くといい音がする。
-  生息地：チュートリアル　攻撃力：ふつう　移動：ふつう
+魔物か人工魔法生物か諸説あるがわかっていない。
+叩くといい音がする。
+生息地：チュートリアル　攻撃力：ふつう　移動：ふつう
   ]],
   habitat = "",
   animationFrames = 4,
