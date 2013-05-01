@@ -82,7 +82,7 @@ Map = {
 
 体力(HP)が0になるとゲームオーバー。
 やり直しになっちゃうから気をつけてね！]])
-      popup:addImage(0, "tutorial3_2.png")
+        popup:addImage(0, "tutorial3_2.png")
         self.__IRegister__:setBool('popuped', true)
       end
     elseif level == 4 then
@@ -202,6 +202,7 @@ Map = {
             local maxHP = characterManager:getMaxHP()
             if characterManager:getHP() <= maxHP then
               characterManager:addHP(maxHP) -- ダメージを受けているはずなので全快させる
+              characterManager:addTension(-characterManager:getTension()) -- 萎えさせる
             end
           end
         end
@@ -219,7 +220,7 @@ Map = {
 
 上手く使って体力の高い奴もやっつけちゃえ！
 ]])
-            popup:addImage(0, "tutorial9_1.png")
+        popup:addImage(0, "tutorial9_1.png")
         local enemy = enemyManager:popEnemyAt("T_tnt9", 4, 1)
         enemy:setExp(60)
         enemy:setHP(25)
@@ -384,7 +385,8 @@ Map = {
 ]])
       popup:addImage(1, "tutorial7_2.png")
     elseif level == 8 then
-      enemyManager:popEnemyAt("T_geekT3",3,1)
+      local enemy = enemyManager:popEnemyAt("T_geekT3",3,1)
+      enemy:setHP(34)
       local popup = layer:addPopupWindow(2)
       popup:setText(0, "ピンチのときは『ガード』", [[
 わっ！あのモンスターはかなりHPが高いみたいね
