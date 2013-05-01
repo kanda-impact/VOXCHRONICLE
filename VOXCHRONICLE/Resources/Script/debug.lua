@@ -12,7 +12,8 @@ DebugData = {
     "bossdebug",
     "ocean_boss",
     "space_boss",
-    "map_select",
+--    "map_select",
+    "space_boss2",
     "field_boss"
   }
 }
