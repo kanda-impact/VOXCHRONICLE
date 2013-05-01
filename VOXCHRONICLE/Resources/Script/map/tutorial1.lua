@@ -10,7 +10,7 @@ Map = {
   maxLevel = 21,
   getEnemyTable = function(level)
     if level == 20 then
-      return {T_tomezora2 = 1, T_tetufez2 = 2, T_geek2 = 1, T_leaf2 = 1, T_flower2 = 1}
+      return {T_tomezora = 1, T_tetufez2 = 2, T_geek2 = 1, T_leaf2 = 1, T_flower2 = 1}
     end
   end,
   onBack = function(self, characterManager, enemyManager)
@@ -72,6 +72,7 @@ Map = {
 魔力(MP)を1消費しちゃうけど、
 いやしの魔法でHPが回復するわ。
 ]])
+      popup:addImage(0, "tutorial14_1.png")
       end
       -- 回復スキルの使用判定を行う
       if lastSkill and lastSkill:getIdentifier() == "cure" and not usedCure then
@@ -89,6 +90,7 @@ Map = {
 消費する魔力(MP)は変わらずに回復量が
 ぐぐーんと増えちゃうからおトクなの
 ]])
+        popup:addImage(1, "tutorial14_2.png")
         usedCure = true
         self.__IRegister__:setBool("usedCure", usedCure)
       elseif not layer:getPopupWindow() and self.__IRegister__:getBool("isGotDamage") and not self.__IRegister__:getBool("usedCure") then -- ダメージ受けた後かつ、回復使用前
@@ -102,6 +104,7 @@ Map = {
 『HPヒーリング』を使うには
 ハートのマークをタッチよ！
 ]])
+          popup:addImage(0, "tutorial14_1.png")
           waitTurn = 0
         end
         self.__IRegister__:setRegister("waitTurn", waitTurn)
@@ -132,12 +135,14 @@ Map = {
 
 これで魔力(MP)が回復するのよ！
 ]])
+        popup:addImage(0, "tutorial15_2.png")
         popup:setText(1, "HPはラスカ、MPはオクス", [[
 つまり、オクスはMP。私、ラスカはHP回復
 ってカンジにそれぞれ回復できるものが
 ちがうから、じょうずに『チェンジ』して
 回復していってね！！
-]])
+]])      
+        popup:addImage(1, "tutorial15_3.png")
         --＊魔力回復の後の敵１セットでＯＫ
       end
       -- オクスが回復スキル使ったら敵を出すようにフラグを立てる
@@ -194,7 +199,8 @@ Map = {
 私に交代してちょうだい。
 
 音楽もかわって気分一新よ！
-]])
+]])            
+      popup:addImage(0, "tutorial11_1.png")
       popup:setText(1, "ラスカに『チェンジ』！", [[
 オクス君は剣士だけど、私、ラスカは魔法使い
 私は魔法をつかって攻撃するわ。
@@ -202,6 +208,7 @@ Map = {
 オクスの時と操作はかわらないから
 いろいろ試してみてね！
 ]])
+      popup:addImage(1, "tutorial11_2.png")
       --＊後ろにＨＰの高い敵を１体
       --手前にＨＰ低い敵２体（ジクー）
     elseif level == 12 then
@@ -213,12 +220,14 @@ Map = {
 『スナイプ』もかなり特殊なワザで、
 一番HPの高いモンスターにいきなり攻撃できるの！
 ]])
+      popup:addImage(0, "tutorial12_1.png")
       popup:setText(1, "狙い撃て『スナイプ』！", [[
 弱い敵が手前にたくさんいるときに
 後ろから体力が高いヤツが迫ってくる
 
 そんなとき、そいつを『スナイプ』で狙ってみて！
 ]])
+      popup:addImage(1, "tutorial12_2.png")
     elseif level == 13 then
       enemyManager:removeAllEnemies() -- 前のレベルで残った敵を全滅
       local popup = layer:addPopupWindow(4)
@@ -241,6 +250,7 @@ Map = {
 『パワー』をためないと使えないけど
 モンスターをまとめて攻撃できる強力なワザよ！
 ]])
+      popup:addImage(1, "tutorial13_1.png")
       popup:setText(2, "魔力（MP）に注意！", [[
 言い忘れたけど、私、ラスカの行動（ワザ）
 では、魔力(MP)を消費しちゃうものがあるの。
@@ -249,11 +259,13 @@ Map = {
 とは違って、魔力(MP)を2ポイント使っちゃうの
 のこり魔力(MP)には注意してね！
 ]])
+      popup:addImage(2, "tutorial13_3.png")
       popup:setText(3, "奥義！『ラスカサンダー』！", [[
 魔力を消費しちゃう分、回数には限りがあるけど
 その分、高威力だしモンスター全体を
 こうげきできるから、上手に使い分けてね！
-]])
+]])      
+      popup:addImage(3, "tutorial13_2.png")
       characterManager:addMP(characterManager:getMaxMP())
       --＊サンダーで敵を倒した後　火の玉を近くにポップアップ
       --速攻でオクスにぶつけ死なない程度に傷を負わせる
@@ -268,6 +280,7 @@ Map = {
 
 いちどオクスに交代してね！
 ]])
+    popup:addImage(0, "tutorial15_1.png")
     elseif level == 16 then
       local popup = layer:addPopupWindow(3)
       popup:setText(0, "れんけいプレイ！", [[
@@ -278,6 +291,7 @@ Map = {
 『チェンジ』を使ってモンスターをうまく倒す
 ためには覚えておいてほしいことがあるの。
 ]])
+      popup:addImage(0, "tutorial11_2.png")
       popup:setText(1, "物理ワザと魔法ワザ", [[
 実は、わたしたちのワザには『属性』があるの。
 オクスは剣だから『物理』属性、
@@ -292,6 +306,7 @@ Map = {
 
 オクスにチェンジしてこうげきを当ててみて
 ]])
+      popup:addImage(2, "tutorial16_1.png")
       --＊バリアーもちの敵を出す。
       --赤の敵を先に出す
     elseif level == 17 then
@@ -303,6 +318,7 @@ Map = {
 私、ラスカにチェンジして
 こうげきをお見舞いしちゃえ！
 ]])
+      popup:addImage(0, "tutorial17_1.png")
     elseif level == 18 then
       local popup = layer:addPopupWindow(3)
       popup:setText(0, "青には赤、赤には青", [[
@@ -328,6 +344,7 @@ Map = {
 こうげきが効かないときはすぐ『チェンジ』して
 オクスで戦ってね！
 ]])
+      popup:addImage(2, "tutorial15_2.png")
     elseif level == 19 then
       local popup = layer:addPopupWindow(3)
       popup:setText(0, "モンスターの装備『魔鏡』", [[

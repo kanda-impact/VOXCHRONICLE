@@ -24,6 +24,8 @@ private:
 public:
   EndingScene(const char* endingScript);
   ~EndingScene();
+  virtual bool ccTouchBegan(cocos2d::CCTouch* pTouch, cocos2d::CCEvent* pEvent);
+  virtual void registerWithTouchDispatcher();
 };
 
 #endif /* defined(__VOXCHRONICLE__EndingScene__) */

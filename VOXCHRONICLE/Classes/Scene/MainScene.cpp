@@ -436,9 +436,10 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
             if (damage == 0) {
               actions->addObject(CCDelayTime::create(blinkDuration * 2 * 3));
             } else {
+              float scale = enemy->getCurrentScale(enemy->getRow());
               for (int i = 0; i < 10; ++i) {
-                float x = -damage / 2 + rand() % damage;
-                float y = -damage / 2 + rand() % damage;
+                float x = -damage / 2 + rand() % damage * scale;
+                float y = -damage / 2 + rand() % damage * scale;
                 CCPlace* move = CCPlace::create(ccpAdd(origin, ccp(x, y)));
                 CCDelayTime* delay = CCDelayTime::create(blinkDuration * 2 * 3 / times);
                 actions->addObject(CCSequence::create(move, delay, NULL));
