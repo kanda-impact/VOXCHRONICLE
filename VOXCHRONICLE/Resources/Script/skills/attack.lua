@@ -65,7 +65,7 @@ Skill = {
       "しゅぎょうの　せいかだ",
       "スパーーン",
       "しんくうはだ！",
-      "かげをきるほどの　けんげき"
+      "かぜをきるほどの　けんげき",
     }
   end,
   getPower = function(characterManager)
