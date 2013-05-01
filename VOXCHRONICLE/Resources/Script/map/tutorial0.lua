@@ -24,7 +24,7 @@ Map = {
       local popuped = self.__IRegister__:getBool("popuped") -- ポップアップしたかフラグ
       if enemyManager:getEnemies():count() == 1 and not popuped then
         local enemy = enemyManager:getEnemies():lastObject() -- モンスター取り出す
-        if enemy:getRow() < 4 then
+        if enemy:getRow() < 5 then
           self.__IRegister__:setBool("popuped", true)
           -- 前の裏拍で敵が出現したあと、ポップアップを出します
           local popup = layer:addPopupWindow(1)
@@ -188,13 +188,12 @@ Map = {
           else --前に使ったスキルが盾でない時
             local popup = layer:addPopupWindow(1)
             popup:setText(0, "ピンチのときは『ガード』", [[
-ちょっと、ちょっと、オクス！
-あの敵は体力が高くて
-今のオクスじゃ倒しきれないんだってば！
-今はガマンしてモンスターをやりすごして。
+失敗しちゃったね
 『ガード』のワザは 盾 のマークをタッチ！
+使ってからこうげきを食らうまでは、
+落ち着いて相手が来るのを待ってみて
 
-回復してあげるからもう一回頑張ってみて
+回復してあげるからもう一回頑張ってね
 ]])
             popup:addImage(0, "tutorial8_1.png")
             local enemy = enemyManager:popEnemyAt("T_tnt", 3, 1) -- 盾持ちを生成すると混同しちゃうからHPの高いヤツを出す
@@ -414,7 +413,7 @@ Map = {
 難しいけど、使いこなすと戦いが楽になるよ
 ]])
       popup:addImage(0, "tutorial9_1.png")
-      enemyManager:popEnemyAt("T_tnt9", 4, 1)
+      enemyManager:popEnemyAt("T_tnt9", 4, 1):setExp(60)
       self.__IRegister__:setBool("knockbackPoped", true)
     elseif level == 10 then
       local popup = layer:addPopupWindow(2)
