@@ -18,7 +18,7 @@ EnemySkill = {
     elseif turn >= 2 then
       layer:addEffectOnEnemy(nil, "thunder", 6, CCRectMake(0, 0, 120, 80)):setColor(ccc3(230, 0, 138))
       if not characterManager:getShield()  then
-      characterManager:addMP(-1)
+      characterManager:addMP(-2)
       end
       characterManager:damage(8)
       user:setDefaultAnimationClip() -- グラを元に戻す

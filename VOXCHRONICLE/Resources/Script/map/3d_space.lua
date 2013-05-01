@@ -33,7 +33,8 @@ Map = {
     local level = characterManager:getLevel()
     if level == 25 or level == 29 then
       if enemyCount == 0 then
-        enemyManager:popEnemyAt("planet15_3D0", 7, 1)
+        enemyManager:popEnemyAt("save_cryst3D0", 4, 1)
+        characterManager:setExp(characterManager:getExpWithLevel(level))
       end
     end
     local boss = enemyManager:getBoss()
@@ -52,8 +53,7 @@ Map = {
     if level == 25 then
       CCTextureCache:sharedTextureCache():removeTextureForKey("t2pha.png")
       CCTextureCache:sharedTextureCache():removeTextureForKey("exob.png")
-
-      enemyManager:popEnemyAt("planet15_3D0", 7, 1)
+      characterManager:setExp(characterManager:getExpWithLevel(25))
 
       --characterManager:setExp(characterManager:getExpWithLevel(level))
 
@@ -112,7 +112,6 @@ Map = {
       enemyManager:loadEnemyTextureAsync("2last.png")
       enemyManager:loadEnemyTextureAsync("bit.png")
 
-      enemyManager:popEnemyAt("save_cryst3D0", 4, 1)
     elseif level == 30 then
       local boss = enemyManager:popEnemyAt("last1_boss", 3, 1)
       enemyManager:setBoss(boss)
