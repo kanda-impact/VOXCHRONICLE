@@ -1473,6 +1473,7 @@
 		B0AA405016F58CB300674A2A /* mask3A1.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AA404F16F58CB300674A2A /* mask3A1.lua */; };
 		B0AA405216F58D2300674A2A /* typhoon3A2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AA405116F58D2200674A2A /* typhoon3A2.lua */; };
 		B0AA405416F58E0100674A2A /* mask3A11.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AA405316F58DFF00674A2A /* mask3A11.lua */; };
+		B0AA93CA17315C020039EEF7 /* rapid_attack_last.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AA93C917315C020039EEF7 /* rapid_attack_last.lua */; };
 		B0AADBDC17114A9200FB214E /* knight3D1.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBDB17114A9200FB214E /* knight3D1.lua */; };
 		B0AADBDE17114BF500FB214E /* knight3D2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBDD17114BF500FB214E /* knight3D2.lua */; };
 		B0AADBE017114C5C00FB214E /* fortress3D0.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBDF17114C5B00FB214E /* fortress3D0.lua */; };
@@ -1483,6 +1484,7 @@
 		B0AADBEA171151A300FB214E /* kraken3D0.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBE9171151A100FB214E /* kraken3D0.lua */; };
 		B0C37E491719F62900B4BE55 /* kawaz_laugh.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0C37E481719F62900B4BE55 /* kawaz_laugh.lua */; };
 		B0C37E4B1719F97F00B4BE55 /* typeChange.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0C37E4A1719F97F00B4BE55 /* typeChange.lua */; };
+		B0C52CEB17317D1900D1B304 /* space_boss2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0C52CEA17317D1500D1B304 /* space_boss2.lua */; };
 		B0C65BD7171969F600FF6723 /* charge_attack_kawaz.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0C65BD6171969F600FF6723 /* charge_attack_kawaz.lua */; };
 		B0D60BFA16FD89B50071C406 /* coin2C2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0D60BF916FD89B50071C406 /* coin2C2.lua */; };
 		B0D60BFC16FD89FF0071C406 /* heart2C2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0D60BFB16FD89FE0071C406 /* heart2C2.lua */; };
@@ -3327,6 +3329,7 @@
 		B0AA404F16F58CB300674A2A /* mask3A1.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mask3A1.lua; sourceTree = "<group>"; };
 		B0AA405116F58D2200674A2A /* typhoon3A2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = typhoon3A2.lua; sourceTree = "<group>"; };
 		B0AA405316F58DFF00674A2A /* mask3A11.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mask3A11.lua; sourceTree = "<group>"; };
+		B0AA93C917315C020039EEF7 /* rapid_attack_last.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = rapid_attack_last.lua; path = enemySkills/rapid_attack_last.lua; sourceTree = "<group>"; };
 		B0AADBDB17114A9200FB214E /* knight3D1.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knight3D1.lua; sourceTree = "<group>"; };
 		B0AADBDD17114BF500FB214E /* knight3D2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knight3D2.lua; sourceTree = "<group>"; };
 		B0AADBDF17114C5B00FB214E /* fortress3D0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fortress3D0.lua; sourceTree = "<group>"; };
@@ -3337,6 +3340,7 @@
 		B0AADBE9171151A100FB214E /* kraken3D0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kraken3D0.lua; sourceTree = "<group>"; };
 		B0C37E481719F62900B4BE55 /* kawaz_laugh.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = kawaz_laugh.lua; path = enemySkills/kawaz_laugh.lua; sourceTree = "<group>"; };
 		B0C37E4A1719F97F00B4BE55 /* typeChange.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = typeChange.lua; path = enemySkills/typeChange.lua; sourceTree = "<group>"; };
+		B0C52CEA17317D1500D1B304 /* space_boss2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = space_boss2.lua; path = map/space_boss2.lua; sourceTree = "<group>"; };
 		B0C65BD6171969F600FF6723 /* charge_attack_kawaz.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = charge_attack_kawaz.lua; path = enemySkills/charge_attack_kawaz.lua; sourceTree = "<group>"; };
 		B0D60BF916FD89B50071C406 /* coin2C2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = coin2C2.lua; sourceTree = "<group>"; };
 		B0D60BFB16FD89FE0071C406 /* heart2C2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = heart2C2.lua; sourceTree = "<group>"; };
@@ -3562,6 +3566,8 @@
 				B07E38CB16E10ACF00473629 /* 3d_space.lua */,
 				0701424B16E2319900B00887 /* 3c_ocean.lua */,
 				0701424D16E243BC00B00887 /* ocean_boss.lua */,
+				077DF756170DD69900F0C799 /* space_boss.lua */,
+				B0C52CEA17317D1500D1B304 /* space_boss2.lua */,
 				07D351E917225B3C00C547DD /* field_boss.lua */,
 			);
 			name = map;
@@ -3918,6 +3924,7 @@
 				B06D41EB171939F9006ABB6A /* kawaz_beam.lua */,
 				07F20F8B1712BA8C0099ACD8 /* call_last.lua */,
 				07F20F8C1712BA8C0099ACD8 /* charge_attack_last.lua */,
+				B0AA93C917315C020039EEF7 /* rapid_attack_last.lua */,
 				B0C65BD6171969F600FF6723 /* charge_attack_kawaz.lua */,
 				07F20F8D1712BA8C0099ACD8 /* equip.lua */,
 				B002ECC517297A1700FEE88F /* equip_last.lua */,
@@ -4580,7 +4587,6 @@
 				07E1351A1621A04300CCF72E /* setting.lua */,
 				07C6093B161674650084708C /* skills */,
 				079D275916D3B9F6006D6A8F /* skins */,
-				077DF756170DD69900F0C799 /* space_boss.lua */,
 				078D452516CE87D900E21DC5 /* species */,
 				0754384716E3985600802970 /* staffroll.lua */,
 			);
@@ -7266,6 +7272,11 @@
 				0789A1101731480700FFB262 /* variable_expansion.lua in Resources */,
 				0789A1121731785D00FFB262 /* T_tnt24.lua in Resources */,
 				0789A1141731795100FFB262 /* Ts_tnt24.lua in Resources */,
+				2AC94B2D172D8FD0002857A8 /* concat.lua in Resources */,
+				2AC94B2F172D9FFD002857A8 /* timezone.lua in Resources */,
+				2ABEF49C172EC14C0064D118 /* variable_expansion.lua in Resources */,
+				B0AA93CA17315C020039EEF7 /* rapid_attack_last.lua in Resources */,
+				B0C52CEB17317D1900D1B304 /* space_boss2.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

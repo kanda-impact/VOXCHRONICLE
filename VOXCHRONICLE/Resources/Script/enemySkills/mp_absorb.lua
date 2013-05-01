@@ -10,7 +10,8 @@ EnemySkill = {
     local mManager = MessageManager:sharedManager()
     characterManager:addMP(-1 * characterManager:getMP())
     mManager:pushMessage(user:getName().."の　全身から 波動が　ほとばしる")
-    mManager:pushMessage(characterManager:getCurrentCharacter():getName().."の MPが　全てなくなってしまった")
+    --mManager:pushMessage(characterManager:getCurrentCharacter():getName().."の　MPが　全てなくなってしまった")
+    mManager:pushMessage("MPが　全てなくなってしまった")--主語禁止（オクスの時に使われて「オクスのMPがなくなってしまった」となるため）
   end
 }
 return EnemySkill

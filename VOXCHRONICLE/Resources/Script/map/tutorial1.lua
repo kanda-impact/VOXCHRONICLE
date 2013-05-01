@@ -10,7 +10,7 @@ Map = {
   maxLevel = 21,
   getEnemyTable = function(level)
     if level == 20 then
-      return {T_tomezora2 = 1, T_tetufez2 = 2, T_geek2 = 1, T_leaf2 = 1, T_flower2 = 1}
+      return {T_tomezora = 1, T_tetufez2 = 2, T_geek2 = 1, T_leaf2 = 1, T_flower2 = 1}
     end
   end,
   onBack = function(self, characterManager, enemyManager)

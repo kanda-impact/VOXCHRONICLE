@@ -56,7 +56,7 @@ Enemy = {
       end
     end
     -- ベホマラー
-    local sumMaxHP = 0
+    --[[local sumMaxHP = 0
     local sumHP = 0
     for i=0, enemyManager:getEnemies():count() - 1 do
       local enemy = enemyManager:getEnemies():objectAtIndex(i)
@@ -64,13 +64,14 @@ Enemy = {
         sumMaxHP = sumMaxHP + enemy:getMaxHP()
         sumHP = sumHP + enemy:getHP()
       end
-    end
-    if sumHP / sumMaxHP < 0.6 and r < 5 then
+    end]]
+    --if sumHP / sumMaxHP < 0.6 and r < 5 then
+    if r <= 2 then
       return "cure_all_skill"
     end
-    if r < 5 then
+    if r < 8 then
       return "beam"
-    elseif r < 10 then
+    elseif r < 14 then
       return "typeChange_last"
     end
     return ""
