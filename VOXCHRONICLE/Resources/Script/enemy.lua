@@ -125,11 +125,11 @@ Speciesに仕様変更になりました
 53かわずたん
 ]]
 dictionary = {
-  'geek',
-  'tetufez',  
-  'ginet', 
+  'Ts_geek',
+  'Ts_tetufez',  
+  'Ts_ginet', 
   'Ts_tomezora',
-  'tnt',
+  'Ts_tnt',
   'Ts_ragasoowa',  
   'leaf',
   'slime',  

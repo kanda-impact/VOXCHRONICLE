@@ -222,7 +222,7 @@ Map = {
     elseif level == 13 then
       enemyManager:removeAllEnemies() -- 前のレベルで残った敵を全滅
       local popup = layer:addPopupWindow(4)
-      popup:setText(0, "弓で『スナイプ』！", [[
+      popup:setText(0, "狙い撃て『スナイプ』！", [[
 『スナイプ』の使い方はわかったかしら？
 
 『スナイプ』は次に攻撃が当たるモンスターが

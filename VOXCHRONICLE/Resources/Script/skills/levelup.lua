@@ -12,4 +12,5 @@ Skill = {
   end,
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone
+  --レベルアップは文字でないよー注意だよー
 }
