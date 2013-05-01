@@ -57,7 +57,7 @@ Map = {
         local enemy = enemyManager:popEnemyAt("T_tomezora23", MAX_ROW - 1, enemyCount % 3)
         enemy:setMaxHP(10)
         enemy:setExp(10)
-        enemy:setAttack(2)
+        enemy:setAttack(1)
       end
     else
       if not enemyManager:getEnemies() or enemyManager:getEnemies():count() == 0 then

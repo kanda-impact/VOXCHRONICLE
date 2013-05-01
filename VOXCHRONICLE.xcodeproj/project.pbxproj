@@ -1471,6 +1471,7 @@
 		B0AA405016F58CB300674A2A /* mask3A1.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AA404F16F58CB300674A2A /* mask3A1.lua */; };
 		B0AA405216F58D2300674A2A /* typhoon3A2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AA405116F58D2200674A2A /* typhoon3A2.lua */; };
 		B0AA405416F58E0100674A2A /* mask3A11.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AA405316F58DFF00674A2A /* mask3A11.lua */; };
+		B0AA93CA17315C020039EEF7 /* rapid_attack_last.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AA93C917315C020039EEF7 /* rapid_attack_last.lua */; };
 		B0AADBDC17114A9200FB214E /* knight3D1.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBDB17114A9200FB214E /* knight3D1.lua */; };
 		B0AADBDE17114BF500FB214E /* knight3D2.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBDD17114BF500FB214E /* knight3D2.lua */; };
 		B0AADBE017114C5C00FB214E /* fortress3D0.lua in Resources */ = {isa = PBXBuildFile; fileRef = B0AADBDF17114C5B00FB214E /* fortress3D0.lua */; };
@@ -3323,6 +3324,7 @@
 		B0AA404F16F58CB300674A2A /* mask3A1.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mask3A1.lua; sourceTree = "<group>"; };
 		B0AA405116F58D2200674A2A /* typhoon3A2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = typhoon3A2.lua; sourceTree = "<group>"; };
 		B0AA405316F58DFF00674A2A /* mask3A11.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mask3A11.lua; sourceTree = "<group>"; };
+		B0AA93C917315C020039EEF7 /* rapid_attack_last.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = rapid_attack_last.lua; path = enemySkills/rapid_attack_last.lua; sourceTree = "<group>"; };
 		B0AADBDB17114A9200FB214E /* knight3D1.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knight3D1.lua; sourceTree = "<group>"; };
 		B0AADBDD17114BF500FB214E /* knight3D2.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knight3D2.lua; sourceTree = "<group>"; };
 		B0AADBDF17114C5B00FB214E /* fortress3D0.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fortress3D0.lua; sourceTree = "<group>"; };
@@ -3914,6 +3916,7 @@
 				B06D41EB171939F9006ABB6A /* kawaz_beam.lua */,
 				07F20F8B1712BA8C0099ACD8 /* call_last.lua */,
 				07F20F8C1712BA8C0099ACD8 /* charge_attack_last.lua */,
+				B0AA93C917315C020039EEF7 /* rapid_attack_last.lua */,
 				B0C65BD6171969F600FF6723 /* charge_attack_kawaz.lua */,
 				07F20F8D1712BA8C0099ACD8 /* equip.lua */,
 				B002ECC517297A1700FEE88F /* equip_last.lua */,
@@ -7250,6 +7253,7 @@
 				2AC94B2D172D8FD0002857A8 /* concat.lua in Resources */,
 				2AC94B2F172D9FFD002857A8 /* timezone.lua in Resources */,
 				2ABEF49C172EC14C0064D118 /* variable_expansion.lua in Resources */,
+				B0AA93CA17315C020039EEF7 /* rapid_attack_last.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
