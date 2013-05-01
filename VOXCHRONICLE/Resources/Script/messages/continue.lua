@@ -1,8 +1,9 @@
 require("concat")
 require("timezone")
+require("variable_expantion")
 --コンティニュ―後にゲームが再開した時
 return function(map, characterManager, enemyManager)
-  local chara = characterManager:getCurrentCharacter():getName()
+  chara = characterManager:getCurrentCharacter():getName()
   local mapId = map:getIdentifier()
   local currentTimeZone = getCurrentTimeZone()
   --コンティニュ―時（全ステージ共通部分）
@@ -44,7 +45,7 @@ return function(map, characterManager, enemyManager)
     --2a
     if mapId == "2a_forest" then
       return {
-        "",
+        "いっぴきずつたおしては　きりがないな...",
         "",
         "",
         "",
@@ -55,19 +56,17 @@ return function(map, characterManager, enemyManager)
     --2b
     if mapId == "2b_cave" then
       return {
-        "",
-        "",
-        "",
-        "",
-        "",
+      "あのコウモリは　すばやいぞ",
+      "てきのおおだては　ゆみでもねらえるわよ",
+      "まにあわないときは　ガードやノックバックをかつようしよう",
       }
     end
 
     --2c
     if mapId == "2c_cyber" then
       return {
-        "",
-        "",
+        "たいせいがあっても　たおせればもんだいない",
+        "あきらめるには　まだはやい",
         "",
         "",
         "",
@@ -77,7 +76,7 @@ return function(map, characterManager, enemyManager)
     --3a
     if mapId == "3a_ruin" then
       return {
-        "",
+        _("#{chara}はほろびぬ！なんどでもよみがえるさ！"),
         "",
         "",
         "",
@@ -107,14 +106,14 @@ return function(map, characterManager, enemyManager)
       }
     end
 
-    --3d
-    if mapId == "3d_space" then
+    --3d 昼
+    if mapId == "3d_space" and currentTimeZone == 0 then
       return {
-        "",
-        "",
-        "",
-        "",
-        "",
+        "そうびと　たいせいに　ちゅうもく",
+        "チェンジを　つかいこなすのだ",
+        "きをとりなおして　いこう",
+        "こんなところじゃ　おわれない！",
+        "つぎは　ほんきで　いくぞ！",
       }
     end
 
@@ -129,107 +128,16 @@ return function(map, characterManager, enemyManager)
       }
     end
 
-    --１ｂ夜
+    --１b夜
     if mapId == "1b_field" and currentTimeZone == 2 then
       return {
-        "",
-        "",
-        "",
-        "",
-        "",
+        "そうびと　たいせいに　ちゅうもく",
+        "チェンジを　つかいこなすのだ",
+        "きをとりなおして　いこう",
+        "ねむくない　ねむくない...",
+        "むりはしちゃ　ダメよ？",
       }
     end
   end
   return concat(commonPattern, getExtraPattern())
 end
-----各ステージ部分
-----1a
-----[[
---return {
---    "てきを　どんどん　こうげきしよう",
---    "パワーチャージを　つかってみよう",
---    "とりあえず　けんのマークをおしてみよう",
---    "ならうより　なれるのだ",
---  }
-----1b昼
---return {
---    "そうびと　たいせいに　ちゅうもく",
---    "チェンジを　つかいこなすのだ",
---    "きをとりなおして　いこう",
---    "こんなところじゃ　おわれない！",
---    "つぎは　ほんきで　いくぞ！",
---  }
-----2a
---return {
---    "",
---    "",
---    "",
---    "いっぴきずつたおしては　きりがないな...",
---    "",
---  }
-----2b
---return {
---    "あのコウモリは　すばやいぞ",
---    "てきのおおだては　ゆみでもねらえるわよ",
---    "まにあわないときは　ガードやノックバックをかつようしよう",
---    "",
---    "",
---  }
-----2c
---return {
---    "",
---    "",
---    "",
---    "たいせいがあっても　たおせればもんだいない",
---    "あきらめるには　まだはやい",
---  }
-----3a
---return {
---    string.format("%sはほろびぬ！なんどでもよみがえるさ！", chara),
---    "",
---    "",
---    "",
---    "",
---  }
-----3b
---return {
---    "",
---    "",
---    "",
---    "",
---    "",
---  }
-----3c
---return {
---    "",
---    "",
---    "",
---    "",
---    "",
---  }
-----3d
---return {
---    "",
---    "",
---    "",
---    "",
---    "",
---  }
-----1b夕暮れ
---return {
---    "",
---    "",
---    "",
---    "",
---    "",
---  }
-----１ｂ夜
---return {
---    "そうびと　たいせいに　ちゅうもく",
---    "チェンジを　つかいこなすのだ",
---    "きをとりなおして　いこう",
---    "ねむくない　ねむくない...",
---    "むりはしちゃ　ダメよ？",
---  }
---  ]]
---end

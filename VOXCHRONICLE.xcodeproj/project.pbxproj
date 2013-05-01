@@ -394,6 +394,10 @@
 		0789A0FD172EFEDD00FFB262 /* UIApplicationWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0789A0FB172EFEDD00FFB262 /* UIApplicationWrapper.mm */; };
 		0789A101173002F300FFB262 /* KWAlert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0789A0FF173002F300FFB262 /* KWAlert.cpp */; };
 		0789A1051730048D00FFB262 /* KWAlertDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0789A1031730048C00FFB262 /* KWAlertDelegate.cpp */; };
+		0789A10D1731480700FFB262 /* concat.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1091731480700FFB262 /* concat.lua */; };
+		0789A10E1731480700FFB262 /* hsv.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A10A1731480700FFB262 /* hsv.lua */; };
+		0789A10F1731480700FFB262 /* timezone.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A10B1731480700FFB262 /* timezone.lua */; };
+		0789A1101731480700FFB262 /* variable_expansion.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A10C1731480700FFB262 /* variable_expansion.lua */; };
 		078D452316CE809C00E21DC5 /* Species.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 078D452116CE809B00E21DC5 /* Species.cpp */; };
 		078D45A116CF1FB100E21DC5 /* 3Bb_counter0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078D456316CF1FB100E21DC5 /* 3Bb_counter0.caf */; };
 		078D45A216CF1FB100E21DC5 /* 3Bb_counter1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078D456416CF1FB100E21DC5 /* 3Bb_counter1.caf */; };
@@ -867,7 +871,6 @@
 		07ADDF8916F22959007825D2 /* easy_decide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF7F16F22959007825D2 /* easy_decide.mp3 */; };
 		07ADDF8A16F22959007825D2 /* enemy_burn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF8016F22959007825D2 /* enemy_burn.mp3 */; };
 		07ADDF8B16F22959007825D2 /* enemy_cure.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF8116F22959007825D2 /* enemy_cure.mp3 */; };
-		07ADDF8D16F254C8007825D2 /* hsv.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF8C16F254C8007825D2 /* hsv.lua */; };
 		07ADDF9A16F72048007825D2 /* ExtraScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07ADDF9816F72048007825D2 /* ExtraScene.cpp */; };
 		07ADDF9E16F73518007825D2 /* DictionaryScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07ADDF9C16F73514007825D2 /* DictionaryScene.cpp */; };
 		07ADDFA116F7621F007825D2 /* paper.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDFA016F7621F007825D2 /* paper.mp3 */; };
@@ -1386,9 +1389,6 @@
 		07FADBC516BBFA3600200F83 /* Ground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07FADBC316BBFA3500200F83 /* Ground.cpp */; };
 		07FD921E1621099B00E74459 /* vox.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921D1621099B00E74459 /* vox.lua */; };
 		07FD922016210A2300E74459 /* lsk.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921F16210A2300E74459 /* lsk.lua */; };
-		2ABEF49C172EC14C0064D118 /* variable_expansion.lua in Resources */ = {isa = PBXBuildFile; fileRef = 2ABEF49B172EC14C0064D118 /* variable_expansion.lua */; };
-		2AC94B2D172D8FD0002857A8 /* concat.lua in Resources */ = {isa = PBXBuildFile; fileRef = 2AC94B2C172D8FD0002857A8 /* concat.lua */; };
-		2AC94B2F172D9FFD002857A8 /* timezone.lua in Resources */ = {isa = PBXBuildFile; fileRef = 2AC94B2E172D9FFC002857A8 /* timezone.lua */; };
 		B002ECC417293FD900FEE88F /* typeChange_last.lua in Resources */ = {isa = PBXBuildFile; fileRef = B002ECC317293FD900FEE88F /* typeChange_last.lua */; };
 		B002ECC617297A1700FEE88F /* equip_last.lua in Resources */ = {isa = PBXBuildFile; fileRef = B002ECC517297A1700FEE88F /* equip_last.lua */; };
 		B002ECCA17297EA400FEE88F /* thunder_last.lua in Resources */ = {isa = PBXBuildFile; fileRef = B002ECC917297EA400FEE88F /* thunder_last.lua */; };
@@ -1901,6 +1901,10 @@
 		0789A1021730036A00FFB262 /* KWAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KWAlert.h; path = VOXCHRONICLE/Classes/includes/KWAlert.h; sourceTree = SOURCE_ROOT; };
 		0789A1031730048C00FFB262 /* KWAlertDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KWAlertDelegate.cpp; sourceTree = "<group>"; };
 		0789A107173005C800FFB262 /* KWAlertDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KWAlertDelegate.h; path = VOXCHRONICLE/Classes/includes/KWAlertDelegate.h; sourceTree = SOURCE_ROOT; };
+		0789A1091731480700FFB262 /* concat.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = concat.lua; path = modules/concat.lua; sourceTree = "<group>"; };
+		0789A10A1731480700FFB262 /* hsv.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hsv.lua; path = modules/hsv.lua; sourceTree = "<group>"; };
+		0789A10B1731480700FFB262 /* timezone.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = timezone.lua; path = modules/timezone.lua; sourceTree = "<group>"; };
+		0789A10C1731480700FFB262 /* variable_expansion.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = variable_expansion.lua; path = modules/variable_expansion.lua; sourceTree = "<group>"; };
 		078D452116CE809B00E21DC5 /* Species.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Species.cpp; path = Classes/Model/Species.cpp; sourceTree = "<group>"; };
 		078D452416CE80CF00E21DC5 /* Species.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Species.h; path = Classes/includes/Species.h; sourceTree = "<group>"; };
 		078D456316CF1FB100E21DC5 /* 3Bb_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 3Bb_counter0.caf; path = Resources/Music/3Bb/3Bb_counter0.caf; sourceTree = "<group>"; };
@@ -2385,7 +2389,6 @@
 		07ADDF7F16F22959007825D2 /* easy_decide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = easy_decide.mp3; path = Resources/SE/easy_decide.mp3; sourceTree = "<group>"; };
 		07ADDF8016F22959007825D2 /* enemy_burn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = enemy_burn.mp3; path = Resources/SE/enemy_burn.mp3; sourceTree = "<group>"; };
 		07ADDF8116F22959007825D2 /* enemy_cure.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = enemy_cure.mp3; path = Resources/SE/enemy_cure.mp3; sourceTree = "<group>"; };
-		07ADDF8C16F254C8007825D2 /* hsv.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hsv.lua; sourceTree = "<group>"; };
 		07ADDF9816F72048007825D2 /* ExtraScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ExtraScene.cpp; path = Classes/Scene/ExtraScene.cpp; sourceTree = "<group>"; };
 		07ADDF9B16F72525007825D2 /* ExtraScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExtraScene.h; path = Classes/includes/ExtraScene.h; sourceTree = "<group>"; };
 		07ADDF9C16F73514007825D2 /* DictionaryScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DictionaryScene.cpp; path = Classes/Scene/DictionaryScene.cpp; sourceTree = "<group>"; };
@@ -3238,9 +3241,6 @@
 		07FADBC416BBFA3600200F83 /* Ground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ground.h; path = Classes/UI/Ground.h; sourceTree = "<group>"; };
 		07FD921D1621099B00E74459 /* vox.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vox.lua; path = character/vox.lua; sourceTree = "<group>"; };
 		07FD921F16210A2300E74459 /* lsk.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lsk.lua; path = character/lsk.lua; sourceTree = "<group>"; };
-		2ABEF49B172EC14C0064D118 /* variable_expansion.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = variable_expansion.lua; sourceTree = "<group>"; };
-		2AC94B2C172D8FD0002857A8 /* concat.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = concat.lua; sourceTree = "<group>"; };
-		2AC94B2E172D9FFC002857A8 /* timezone.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = timezone.lua; sourceTree = "<group>"; };
 		B002ECC317293FD900FEE88F /* typeChange_last.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = typeChange_last.lua; path = enemySkills/typeChange_last.lua; sourceTree = "<group>"; };
 		B002ECC517297A1700FEE88F /* equip_last.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = equip_last.lua; path = enemySkills/equip_last.lua; sourceTree = "<group>"; };
 		B002ECC917297EA400FEE88F /* thunder_last.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = thunder_last.lua; path = enemySkills/thunder_last.lua; sourceTree = "<group>"; };
@@ -4053,6 +4053,17 @@
 			name = Voice;
 			sourceTree = "<group>";
 		};
+		0789A108173147DE00FFB262 /* modules */ = {
+			isa = PBXGroup;
+			children = (
+				0789A1091731480700FFB262 /* concat.lua */,
+				0789A10A1731480700FFB262 /* hsv.lua */,
+				0789A10B1731480700FFB262 /* timezone.lua */,
+				0789A10C1731480700FFB262 /* variable_expansion.lua */,
+			);
+			name = modules;
+			sourceTree = "<group>";
+		};
 		078D452516CE87D900E21DC5 /* species */ = {
 			isa = PBXGroup;
 			children = (
@@ -4546,10 +4557,8 @@
 		07C6064016164F810084708C /* Script */ = {
 			isa = PBXGroup;
 			children = (
-				2ABEF49B172EC14C0064D118 /* variable_expansion.lua */,
+				0789A108173147DE00FFB262 /* modules */,
 				07F20F7A17114F3C0099ACD8 /* achievement.lua */,
-				2AC94B2E172D9FFC002857A8 /* timezone.lua */,
-				2AC94B2C172D8FD0002857A8 /* concat.lua */,
 				07FD921C1621097700E74459 /* character */,
 				07D8D649169F3BD900B646E5 /* controller.lua */,
 				079F89A6169EE596001357B5 /* debug.lua */,
@@ -4560,7 +4569,6 @@
 				07660CCC1690E8BD0092104F /* enemySkills */,
 				074E137A171067EC00308F67 /* freeplay.lua */,
 				07C6064116164F810084708C /* hello.lua */,
-				07ADDF8C16F254C8007825D2 /* hsv.lua */,
 				0731E4FA16184A59006AEF3D /* map */,
 				07448CBB16C2899C00F005C6 /* messages */,
 				07660C4B169097F00092104F /* musics */,
@@ -6727,7 +6735,6 @@
 				07ADDF8916F22959007825D2 /* easy_decide.mp3 in Resources */,
 				07ADDF8A16F22959007825D2 /* enemy_burn.mp3 in Resources */,
 				07ADDF8B16F22959007825D2 /* enemy_cure.mp3 in Resources */,
-				07ADDF8D16F254C8007825D2 /* hsv.lua in Resources */,
 				B0AA405016F58CB300674A2A /* mask3A1.lua in Resources */,
 				B0AA405216F58D2300674A2A /* typhoon3A2.lua in Resources */,
 				B0AA405416F58E0100674A2A /* mask3A11.lua in Resources */,
@@ -7247,9 +7254,10 @@
 				0789A0DB172E563100FFB262 /* endingC_voice.mp3 in Resources */,
 				0789A0DC172E563100FFB262 /* endingD_voice.mp3 in Resources */,
 				0789A0E2172E594E00FFB262 /* demo.mp3 in Resources */,
-				2AC94B2D172D8FD0002857A8 /* concat.lua in Resources */,
-				2AC94B2F172D9FFD002857A8 /* timezone.lua in Resources */,
-				2ABEF49C172EC14C0064D118 /* variable_expansion.lua in Resources */,
+				0789A10D1731480700FFB262 /* concat.lua in Resources */,
+				0789A10E1731480700FFB262 /* hsv.lua in Resources */,
+				0789A10F1731480700FFB262 /* timezone.lua in Resources */,
+				0789A1101731480700FFB262 /* variable_expansion.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
