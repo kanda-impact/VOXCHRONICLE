@@ -398,6 +398,8 @@
 		0789A10E1731480700FFB262 /* hsv.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A10A1731480700FFB262 /* hsv.lua */; };
 		0789A10F1731480700FFB262 /* timezone.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A10B1731480700FFB262 /* timezone.lua */; };
 		0789A1101731480700FFB262 /* variable_expansion.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A10C1731480700FFB262 /* variable_expansion.lua */; };
+		0789A1121731785D00FFB262 /* T_tnt24.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1111731785D00FFB262 /* T_tnt24.lua */; };
+		0789A1141731795100FFB262 /* Ts_tnt24.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1131731795100FFB262 /* Ts_tnt24.lua */; };
 		078D452316CE809C00E21DC5 /* Species.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 078D452116CE809B00E21DC5 /* Species.cpp */; };
 		078D45A116CF1FB100E21DC5 /* 3Bb_counter0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078D456316CF1FB100E21DC5 /* 3Bb_counter0.caf */; };
 		078D45A216CF1FB100E21DC5 /* 3Bb_counter1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078D456416CF1FB100E21DC5 /* 3Bb_counter1.caf */; };
@@ -1905,6 +1907,8 @@
 		0789A10A1731480700FFB262 /* hsv.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hsv.lua; path = modules/hsv.lua; sourceTree = "<group>"; };
 		0789A10B1731480700FFB262 /* timezone.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = timezone.lua; path = modules/timezone.lua; sourceTree = "<group>"; };
 		0789A10C1731480700FFB262 /* variable_expansion.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = variable_expansion.lua; path = modules/variable_expansion.lua; sourceTree = "<group>"; };
+		0789A1111731785D00FFB262 /* T_tnt24.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_tnt24.lua; sourceTree = "<group>"; };
+		0789A1131731795100FFB262 /* Ts_tnt24.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Ts_tnt24.lua; path = species/Ts_tnt24.lua; sourceTree = "<group>"; };
 		078D452116CE809B00E21DC5 /* Species.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Species.cpp; path = Classes/Model/Species.cpp; sourceTree = "<group>"; };
 		078D452416CE80CF00E21DC5 /* Species.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Species.h; path = Classes/includes/Species.h; sourceTree = "<group>"; };
 		078D456316CF1FB100E21DC5 /* 3Bb_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 3Bb_counter0.caf; path = Resources/Music/3Bb/3Bb_counter0.caf; sourceTree = "<group>"; };
@@ -4130,6 +4134,7 @@
 				B017551717079F1D008053BB /* Ts_slime30.lua */,
 				B0821D3A1707AD61009417B5 /* Ts_tetufez.lua */,
 				B017551F1707A1A8008053BB /* Ts_tnt.lua */,
+				0789A1131731795100FFB262 /* Ts_tnt24.lua */,
 				072588311720F3A2003FD587 /* Ts_tomezora.lua */,
 				070BAF6E172D1620007A741A /* Ts_tomezora23.lua */,
 				0796694116FD4C550001F8B2 /* typhoon.lua */,
@@ -5597,6 +5602,7 @@
 				07B8B6101708BBA200DB739F /* T_tetufez7.lua */,
 				B0821D481707AF4D009417B5 /* T_tnt.lua */,
 				0770706617198C4800E3F836 /* T_tnt9.lua */,
+				0789A1111731785D00FFB262 /* T_tnt24.lua */,
 				072588361720F523003FD587 /* T_tomezora.lua */,
 				070BAF6C172D153F007A741A /* T_tomezora23.lua */,
 				B07E38F916E129DA00473629 /* toadstool2A0.lua */,
@@ -7258,6 +7264,8 @@
 				0789A10E1731480700FFB262 /* hsv.lua in Resources */,
 				0789A10F1731480700FFB262 /* timezone.lua in Resources */,
 				0789A1101731480700FFB262 /* variable_expansion.lua in Resources */,
+				0789A1121731785D00FFB262 /* T_tnt24.lua in Resources */,
+				0789A1141731795100FFB262 /* Ts_tnt24.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
