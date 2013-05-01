@@ -41,15 +41,14 @@ Skill = {
   end,
   skillRange = SkillRangeSingle,
   skillType = SkillTypeMagical,
-  messages = {
-  "ラスカの　アイスブレイク！",
-  "たちふさがるものを　ひょうけつさせる！",
-  "くうきが　こおりついていく",
-  "こおりつけ！　モンスター！",
-  "つえのさきから　れいきがほどばしる",
-  "ラスカの　ブリザード　アタック"
-  },
-  getMessageTable = function(map, characterManager, enemyManager)
-    return {}
+  getMessageTable = function(self, targets, map, characterManager, enemyManager)
+    return {
+      "ラスカの　アイスブレイク！",
+      "たちふさがるものを　ひょうけつさせる！",
+      "くうきが　こおりついていく",
+      "こおりつけ！　モンスター！",
+      "つえのさきから　れいきがほどばしる",
+      "ラスカの　ブリザード　アタック"
+    }
   end
 }

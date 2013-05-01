@@ -1,3 +1,4 @@
+require("variable_expansion")
 Skill = {
   name = "シールド",
   identifier = "shield",
@@ -20,13 +21,14 @@ Skill = {
   end,
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone,
-  messages = {
-    "{chara}は　たてをかまえた",
-    "{chara}は　シールドを　てんかいした",
-    "オクスが　たてをかまえ　まえにでた",
-    "ラスカが　まほうのかべを　てんかいした"
-  },
-  getMessageTable = function(map, characterManager, enemyManager)
-    return {}
+  getMessageTable = function(self, targets, map, characterManager, enemyManager)
+    chara = characterManager:getCurrentCharacter():getName()
+    return {
+      _("#{chara}は　たてをかまえた"),
+      _("#{chara}は　シールドを　てんかいした"),
+      "オクスが　たてをかまえ　まえにでた",
+      "ラスカが　まほうのかべを　てんかいした",
+      "そうびは　もっているだけじゃ　いみがないぞ"
+    }
   end
 }

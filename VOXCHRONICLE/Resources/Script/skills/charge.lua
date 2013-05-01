@@ -28,23 +28,18 @@ Skill = {
   end,
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone,
-  --回復成功時
-  messages = {
-    "オクスは　ラスカに　まりょくをそそぎこんだ",
-    "ラスカの　まりょくをかいふくさせた",
-    "まりょくを　じゅうてんした",
-    "まりょくが　みちていく",
-    "ラスカのＭＰが　かいふくした",
-    "ラスカの　ちからが　かいふくした"
-  },
-  getMessageTable = function(map, characterManager, enemyManager)
-    return {}
+  getMessageTable = function(self, targets, map, characterManager, enemyManager)
+    return {
+      "オクスは　ラスカに　まりょくをそそぎこんだ",
+      "ラスカの　まりょくをかいふくさせた",
+      "まりょくを　じゅうてんした",
+      "まりょくが　みちていく",
+      "ラスカのＭＰが　かいふくした",
+      "ラスカの　ちからが　かいふくした",
+      "もう　はいらないよぉ",
+      "ラスカの　まりょくは　すでにいっぱいだ",
+      "まりょくは　すでにさいだいだ",
+      "すでに　さいだい　です",
+    }
   end,
-   --MPが最大の時に回復
-     messages = {
-    "もう　はいらないよぉ",
-    "ラスカの　まりょくは　すでにいっぱいだ",
-    "まりょくは　すでにさいだいだ",
-    "すでに　さいだい　です",
-  }
 }

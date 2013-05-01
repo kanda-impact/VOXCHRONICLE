@@ -26,9 +26,9 @@ Skill = {
   end,
   skillRange = SkillRangeBack,
   skillType = SkillTypeMagical,
-  getMessageTable = function()
+  getMessageTable = function(self, targets, map, characterManager, enemyManager)
     return{
-      "{chara}は　ゆみを　はなった",
+      "ラスカは　ゆみを　はなった",
       "てんくうから　ひかりが　ほどばしる",
       "まりょくで　ゆみを　つくりだす",
       "もっとも　たいりょくあるものを　ねらう！",

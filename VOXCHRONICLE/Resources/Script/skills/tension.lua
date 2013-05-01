@@ -33,32 +33,34 @@ Skill = {
   end,
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone,
-  --テンションを溜める
---[[  messages = {
-    "{chara}は　ちからをためた",
-    "{chara}の　テンションがあがっていく",
-    "{chara}は　りきんでいる",
-    "{chara}の　ボルテージが　ふくれあがる",
-    "もえあがる　こころ"
-    "せいめいりょくが　たかまる！",
-    "たかまれ　われらの　BEAT!!",
-    "パワー　ちゃーーじ！！！",
-    "ちからが　みなぎっていく！！"
-  },]]
-  getMessageTable = function(map, characterManager, enemyManager)
-    return {}
+  getMessageTable = function(self, targets, map, characterManager, enemyManager)
+    chara = characterManager:getCurrentCharacter():getName()
+    local tension = characterManager:getTension()
+    if tension >= 3 then -- テンションマックスのとき
+    -- この関数はワザの仕様直前に呼ばれるので、3以上だったら最大値判定にしてやる
+      return {
+        "さいだいパワーだ！！",
+        "ＭＡＸ！ハイテンション！！",
+        "ぜんりょくぜんかいっ！！",
+        "ボルテージ　さいだい！",
+        "もえつきるほど　ヒート　ッ！",
+        "さいきょうの　パワー　みせてやる",
+        "BEATはさいこうちょうだ",
+        "うぉぉおおお！",
+        "マキシマム　パワー！！",
+        "POWER MAXIMAM!!"
+      }
+    end
+    return { -- 通常時
+      _("#{chara}は　ちからをためた"),
+      _("#{chara}の　テンションがあがっていく"),
+      _("#{chara}は　りきんでいる"),
+      _("#{chara}の　ボルテージが　ふくれあがる"),
+      "もえあがる　こころ"
+      "せいめいりょくが　たかまる！",
+      "たかまれ　われらの　BEAT!!",
+      "パワー　ちゃーーじ！！！",
+      "ちからが　みなぎっていく！！"
+    }
   end,
-  --テンションマックス時
---[[  messages = {
-    "さいだいパワーだ！！",
-    "ＭＡＸ！ハイテンション！！",
-    "ぜんりょくぜんかいっ！！",
-    "ボルテージ　さいだい！",
-    "もえつきるほど　ヒート　ッ！",
-    "さいきょうの　パワー　みせてやる",
-    "BEATはさいこうちょうだ",
-    "うぉぉおおお！",
-    "マキシマム　パワー！！",
-    "POWER MAXIMAM!!"
-  }]]
 }

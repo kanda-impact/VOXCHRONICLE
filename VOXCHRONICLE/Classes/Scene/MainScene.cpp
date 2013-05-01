@@ -406,7 +406,9 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
      ・その技がその種族によって無効化されている
      */
     if (skill && performType == SkillPerformTypeSuccess) {
+      
       CCArray* targets = _enemyManager->getTargets(skill);
+      MessageManager::sharedManager()->pushRandomMessageFromSkill(skill, targets, _map, _characterManager, _enemyManager); // メッセージを追加する
       CCDictionary* info = _enemyManager->performSkill(skill, targets, _characterManager); // ここで経験値が貰える
       CCArray* enemies = (CCArray*)info->objectForKey("enemies");
       CCArray* damages = (CCArray*)info->objectForKey("damages");
@@ -511,10 +513,6 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("miss.mp3").c_str());
         MessageManager::sharedManager()->pushRandomMessageFromFunction("notarget", _map, _characterManager, _enemyManager); // ピロリメッセージ
       }
-      
-      
-      // メッセージを追加する
-      MessageManager::sharedManager()->pushRandomMessageFromSkill(skill, _map, _characterManager, _enemyManager);
       
       _effectLayer->addSkillEffect(skill, enemies);
       if (!_characterManager->getShield()) {

@@ -72,7 +72,7 @@ class MessageManager :public CCObject {
    */
   void pushRandomMessageFromFunction(const char* scriptFile, Map* map, CharacterManager* manager, EnemyManager* enemyManager);
   
-  void pushRandomMessageFromSkill(Skill* skill, Map* map, CharacterManager* manager, EnemyManager* enemyManager);
+  void pushRandomMessageFromSkill(Skill* skill, CCArray* targets, Map* map, CharacterManager* manager, EnemyManager* enemyManager);
 
   void pushRandomMessageFromObject(LuaObject* lua, Map* map, CharacterManager* manager, EnemyManager* enemyManager);
 };

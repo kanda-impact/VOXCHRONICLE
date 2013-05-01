@@ -99,12 +99,31 @@ void MessageManager::pushRandomMessageFromFunction(const char *scriptFile, Map* 
   this->pushRandomMessageFromObject(lua, map, characterManager, enemyManager);
 }
 
-void MessageManager::pushRandomMessageFromSkill(Skill* skill, Map* map, CharacterManager *characterManager, EnemyManager *enemyManager) {
+void MessageManager::pushRandomMessageFromSkill(Skill* skill, CCArray* targets, Map* map, CharacterManager *characterManager, EnemyManager *enemyManager) {
   LuaObject* lua = skill->getLuaObject();
   lua_State* L = lua->getLuaEngineWithLoad()->getLuaState();
   lua_getglobal(L, "Skill");
   lua_getfield(L, lua_gettop(L), "getMessageTable");
-  this->pushRandomMessageFromObject(lua, map, characterManager, enemyManager);
+  if (lua_isfunction(L, lua_gettop(L))) {
+    lua->pushCCObject(skill, "Skill");
+    lua->pushCCObject(targets, "CCArray");
+    lua->pushCCObject(map, "Map");
+    lua->pushCCObject(characterManager, "CharacterManager");
+    lua->pushCCObject(enemyManager, "EnemyManager");
+    if (lua_pcall(L, 5, 1, 0)) {
+      cout << lua_tostring(L, lua_gettop(L)) << endl;
+    }
+    boost::shared_ptr<CCLuaValueArray> messages = lua->luaTableToArray(lua->recursivelyLoadTable(lua_gettop(L)));
+    CCArray* array = CCArray::create();
+    if (messages->size() > 0) {
+      for (CCLuaValueArrayIterator it = messages->begin(); it != messages->end(); ++it) {
+        CCString* str = CCString::create(it->stringValue());
+        array->addObject(str);
+      }
+      CCString* random = (CCString*)array->randomObject();
+      this->pushMessage(random->getCString());
+    }
+  }
 }
 
 void MessageManager::pushRandomMessageFromObject(LuaObject *lua, Map *map, CharacterManager *characterManager, EnemyManager *enemyManager) {

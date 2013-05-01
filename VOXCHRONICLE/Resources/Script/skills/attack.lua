@@ -33,7 +33,7 @@ Skill = {
       SimpleAudioEngine:sharedEngine():playEffect(filename)
     end
   end,
-  getMessageTable = function(map, characterManager, enemyManager)
+  getMessageTable = function(self, targets, map, characterManager, enemyManager)
     return {
       "オクスは　おもいきり　けんをふりおろした",
       "オクスは　けんで　こうげきした",
