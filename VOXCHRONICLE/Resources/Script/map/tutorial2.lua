@@ -72,7 +72,7 @@ Map = {
       if not enemyManager:getEnemies() or enemyManager:getEnemies():count() < 3 then
         local enemyName = "T_geek"
         if turn % 3 == 0 then
-          enemyName = "T_tnt"
+          enemyName = "T_tnt24"
         elseif turn % 3 == 1 then
           enemyName = "T_tomezora23"
         end
