@@ -36,6 +36,7 @@ Map = {
 ボスモンスターの攻撃は強力だから
 うまく『ガード』を使いこなしてね
 ]])
+        popup:addImage(0, "tutorial8_1.png")
         local boss = enemyManager:getEnemies():objectAtIndex(0)
         boss.__IRegister__:setBool("isGuarded", true)        
       end
@@ -54,7 +55,7 @@ Map = {
         enemyCount = enemyManager:getEnemies():count()
       end
       if enemyCount < count then
-        local enemy = enemyManager:popEnemyAt("T_tomezora23", MAX_ROW - 1, enemyCount % 3)
+        local enemy = enemyManager:popEnemyAt("T_tomezora23", 3, enemyCount % 3)
         enemy:setMaxHP(10)
         enemy:setExp(10)
         enemy:setAttack(2)
@@ -68,18 +69,18 @@ Map = {
   end,
   onFinishPlaying = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
-    if level == 21 then
-      if characterManager:getLastSkill() and characterManager:getLastSkill():getIdentifier() == 'knockback' then
-        local popup = layer:addPopupWindow(1)
-        popup:setText(0, "ノックバックは効かない！", [[
-あいつには『ノックバック』が効かないみたいね
-ボスモンスターのような巨大な敵には
-効かないことがあるの
-
-注意して！
-]])
-      end
-    elseif level == 22 then
+    if level == 22 then
+--      if characterManager:getLastSkill() and characterManager:getLastSkill():getIdentifier() == 'knockback' then
+--        local layer = EffectLayer:sharedLayer()
+--        local popup = layer:addPopupWindow(1)
+--        popup:setText(0, "ノックバックは効かない！", [[
+--あいつには『ノックバック』が効かないみたいね
+--ボスモンスターのような巨大な敵には
+--効かないことがあるの
+--
+--注意して！
+--]])
+--      end
       self.__IRegister__:setBool("shieldState", characterManager:getShield()) -- シールド状態をここで監視
     end
   end,
@@ -105,7 +106,7 @@ Map = {
 強力なワザを使ってきたり
 さまざまな攻撃をしてくるの
 ]])
-    local knight = enemyManager:popEnemyAt("T_knight", 3, 1)
+    local knight = enemyManager:popEnemyAt("T_knight", 5, 1)
     knight:setExp(60)
     knight:setMaxHP(30)
     elseif level == 22 then
@@ -120,7 +121,8 @@ Map = {
 『遠距離攻撃』の前には前兆があるから、
 上手く見極めてガードしてね！
 ]])
-   local knight = enemyManager:popEnemyAt("T_knight22", 3, 1)
+      popup:addImage(1, "tutorial8_1.png")
+   local knight = enemyManager:popEnemyAt("T_knight22", 2, 1)
    knight:setExp(60)
    knight:setMaxHP(40)
    elseif level == 23 then

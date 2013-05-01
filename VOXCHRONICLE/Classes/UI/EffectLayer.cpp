@@ -312,7 +312,7 @@ void EffectLayer::addDamageLabel(int damage, int offset, DamageLabelType type) {
   damageLabel->runAction(CCSequence::create(CCDelayTime::create(0.2 * offset), // 時間ずらそう
                                             CCScaleTo::create(0.1, 1.0),
                                             CCDelayTime::create(0.5),
-                                            CCEaseSineIn::create(CCMoveBy::create(0.2, ccp(0, -150))),
+                                            CCEaseSineOut::create(CCMoveBy::create(0.2, ccp(0, -150))),
                                             CCRemoveFromParentAction::create(),
                                             NULL));
 }
