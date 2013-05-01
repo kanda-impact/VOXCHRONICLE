@@ -1,9 +1,10 @@
+require("variable_expansion")
 return function(map, characterManager, enemyManager)
   local chara = characterManager:getCurrentCharacter():getName()
   --Ｌｖアップの時
 return {
-    string.format("%s　レベルアップ！", chara),
-    string.format("%sの　レベルが　あがった", chara),
+    _("#{chara}　レベルアップ！"),
+    _("#{chara}の　レベルが　あがった"),
     "けいけんちが　たまった",
     "レベルアップ　したわよ！",
     "レベルあーーっぷ",
