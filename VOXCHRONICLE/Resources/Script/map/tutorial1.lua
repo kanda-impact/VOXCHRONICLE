@@ -38,7 +38,7 @@ Map = {
         enemyManager:popEnemyAt("T_moth", 2, 0)
         local ragasoowa = enemyManager:popEnemyAt("T_ragasoowa", MAX_ROW - 1, 1)
         enemyManager:popEnemyAt("T_moth", 2, 2)
-        ragasoowa:setMaxHP(30)
+        ragasoowa:setMaxHP(25)
         ragasoowa:setExp(60)
       end
     elseif level == 13 then
@@ -330,6 +330,7 @@ Map = {
 赤い敵には青のオクスって覚えてね
 
 ]])   
+      popup:addImage(0, "tutorial17_2.png")
       popup:setText(1, "モンスターの装備『魔鏡』", [[
 次はあのモンスターが持ってる装備に注目して！
 あれは『魔鏡』といって、私のこうげきが
@@ -338,13 +339,14 @@ Map = {
 『耐性』もかなりやっかいだけど、
 この『魔鏡』はもっとやっかいよ！
 ]])
+      popup:addImage(1, "tutorial18_1.png")
       popup:setText(2, "モンスターの装備『魔鏡』", [[
 『魔鏡』を破るには
 オクスのこうげきが絶対に必要！
 こうげきが効かないときはすぐ『チェンジ』して
 オクスで戦ってね！
 ]])
-      popup:addImage(2, "tutorial15_2.png")
+      popup:addImage(2, "tutorial11_1.png")
     elseif level == 19 then
       local popup = layer:addPopupWindow(3)
       popup:setText(0, "モンスターの装備『魔鏡』", [[
@@ -352,18 +354,21 @@ Map = {
 モンスターの装備は一度破壊するとあとは
 普通にこうげきが通るようになるわ
 ]])
+
       popup:setText(1, "モンスターの装備『大盾』", [[
 今度のアイツは『大盾』を持っているわね
 『大盾』は『魔鏡』の反対
 オクスのこうげきが一切効かないの
 そんなときはラスカに交代して倒してね
 ]])
+      popup:addImage(1, "tutorial19_1.png")
       popup:setText(2, "『魔鏡』と『大盾』", [[
 モンスターの装備も『耐性』と同じ
 
 反対の色の攻撃を当てれば
 破壊できるって覚えて！
 ]])
+      popup:addImage(2, "tutorial19_2.png")
     elseif level == 20 then
       local popup = layer:addPopupWindow(3)
       popup:setText(0, "ラスカ編完了！", [[
@@ -380,6 +385,7 @@ Map = {
 不安だったらここで練習していってね。
 チュートリアルはポーズからやめられるわよ！
 ]])
+      popup:addImage(1, "tutorial10_2.png")
       --盾のモンスターも出す
       popup:setText(2, "これにて免許皆伝！", [[
 あとは、ラスカちゃん直伝！虎の子の
