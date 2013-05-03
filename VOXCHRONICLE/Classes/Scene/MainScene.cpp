@@ -101,7 +101,8 @@ bool MainScene::init(Map* map) {
   
   _messageWindow = new MessageWindow(FONT_NAME, 16, CCSizeMake(400, 40));
   _messageWindow->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height - 70));
-  _messageWindow->setTextSpeed(2);
+  _messageWindow->setTextSpeed(4);
+  _messageWindow->setLastDelay(5.0f);
   MessageManager::sharedManager()->setDefaultMessageWindow(_messageWindow);
   _effectLayer->addChild(_messageWindow, EffectLayerZOrderMessage);
   
