@@ -35,10 +35,10 @@ KWAlert::KWAlert(const char* background, CCArray* buttonNames) {
       items->addObject(image);
       ++i;
     }
-    CCMenu* menu = CCMenu::createWithArray(items);
-    menu->setPosition(ccp(200, 40));
-    menu->alignItemsHorizontallyWithPadding(40);
-    this->addChild(menu);
+    _menu = CCMenu::createWithArray(items);
+    _menu->setPosition(ccp(200, 40));
+    _menu->alignItemsHorizontallyWithPadding(40);
+    this->addChild(_menu);
     _label = CCLabelTTF::create("", "Helvetica", 16, CCSizeMake(380, 180), kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
     _label->retain();
     _label->setPosition(ccp(200, 50));
@@ -69,4 +69,8 @@ KWAlert::~KWAlert() {
 
 void KWAlert::setText(const char *text) {
   _label->setString(text);
+}
+
+void KWAlert::setEnabled(bool enable) {
+  _menu->setEnabled(enable);
 }

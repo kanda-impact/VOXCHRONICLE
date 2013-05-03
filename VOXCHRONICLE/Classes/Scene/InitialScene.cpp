@@ -32,6 +32,7 @@ bool InitialScene::init() {
 }
 
 void InitialScene::clickedButtonAtIndex(KWAlert *alert, int index) {
+  alert->setEnabled(false);
   if (index == 0) {
     this->scheduleOnce(schedule_selector(InitialScene::onGotoTutorial), 2.f);
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/tutorial_decide.mp3").c_str());
