@@ -16,6 +16,13 @@ EnemySkill = {
       user:setRegister(key, turn + 1)
       user:setRegister("skillType", 0)
       user:setRow(2)
+      -- 点滅させる処理を入れる
+      local actions = CCArray:create()
+      actions:addObject(CCFadeTo:create(0.05, 128))
+      actions:addObject(CCFadeTo:create(0.05, 255))
+      local sequence = CCSequence:create(actions)
+      user:runAction(CCRepeat:create(sequence, 10))
+      
     elseif turn >= 2 then
       layer:addEffectOnEnemy(nil, "thunder", 6, CCRectMake(0, 0, 120, 80)):setColor(ccc3(230, 0, 138))
       if not characterManager:getShield()  then
