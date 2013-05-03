@@ -20,6 +20,8 @@ using namespace cocos2d;
 
 class TitleScene : public cocos2d::CCLayer, public cocos2d::CCAccelerometerDelegate {
 private:
+  int _shakeCount;
+  bool _isShaking;
   virtual void nextScene(CCLayer* layer);
   void onStartButtonPressed(CCObject* sender);
   void onDebugButtonPressed(CCObject* sender);
