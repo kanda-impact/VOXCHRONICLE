@@ -436,9 +436,10 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
             if (damage == 0) {
               actions->addObject(CCDelayTime::create(blinkDuration * 2 * 3));
             } else {
+              float scale = enemy->getCurrentScale(enemy->getRow());
               for (int i = 0; i < 10; ++i) {
-                float x = -damage / 2 + rand() % damage;
-                float y = -damage / 2 + rand() % damage;
+                float x = -damage / 2 + rand() % damage * scale;
+                float y = -damage / 2 + rand() % damage * scale;
                 CCPlace* move = CCPlace::create(ccpAdd(origin, ccp(x, y)));
                 CCDelayTime* delay = CCDelayTime::create(blinkDuration * 2 * 3 / times);
                 actions->addObject(CCSequence::create(move, delay, NULL));
@@ -464,6 +465,14 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
             MessageManager::sharedManager()->pushRandomMessageFromFunction("resist_physical", _map, _characterManager, _enemyManager);
           } else if (damageType == DamageTypeMagicalResist) {
             MessageManager::sharedManager()->pushRandomMessageFromFunction("resist_magical", _map, _characterManager, _enemyManager);
+          } else if (damageType == DamageTypeShieldBreak) {
+            MessageManager::sharedManager()->pushRandomMessageFromFunction("shield_physical_break", _map, _characterManager, _enemyManager);
+          } else if (damageType == DamageTypeBarrierBreak) {
+            MessageManager::sharedManager()->pushRandomMessageFromFunction("barrier_magical_break", _map, _characterManager, _enemyManager);
+          } else if (damageType == DamageTypePhysicalInvalid) {
+            MessageManager::sharedManager()->pushRandomMessageFromFunction("shield_physical_invalid", _map, _characterManager, _enemyManager);
+          } else if (damageType == DamageTypeMagicalInvalid) {
+            MessageManager::sharedManager()->pushRandomMessageFromFunction("barrier_magical_invalid", _map, _characterManager, _enemyManager);
           }
         }
         
@@ -522,6 +531,8 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _effectLayer->addCutin(skill, isHit ? (EffectLayerCutinType)skill->getCutinType() : EffectLayerCutinTypeFailure, _musicManager->getMusic()->getCurrentMainTrack()->getDuration());
       
       getExp = ((CCInteger*)info->objectForKey("exp"))->getValue();
+    } else if (skill == NULL && _characterManager->getRepeatCountRaw() >= 3) {
+      MessageManager::sharedManager()->pushRandomMessageFromFunction("noaction", _map, _characterManager, _enemyManager); // 3ターン何もしないメッセージ
     }
     
     if (_currentSkillInfo.type == SkillPerformTypeFailure) { // MP切れで失敗したとき
@@ -532,6 +543,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     // レベルアップ判定
     if (this->checkLevelUp() ) {
       int currentLevel = _characterManager->getLevel();
+      int skillCount = _level->getSkills((Character*)_characterManager->getCharacters()->objectAtIndex(0))->count() + _level->getSkills((Character*)_characterManager->getCharacters()->objectAtIndex(1))->count();
       SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/levelup.mp3").c_str());
       _musicManager->setIntroCount(0);
       _preLevel = currentLevel;
@@ -540,6 +552,12 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _characterManager->updateParameters();
       this->setLevel(_map->createLevel(currentLevel, _characterManager));
       _enemyManager->setLevel(_level);
+      int newSkillCount = _level->getSkills((Character*)_characterManager->getCharacters()->objectAtIndex(0))->count() + _level->getSkills((Character*)_characterManager->getCharacters()->objectAtIndex(1))->count();
+      
+      if (skillCount < newSkillCount) { // 新しくワザを覚えていたとき
+        MessageManager::sharedManager()->pushRandomMessageFromFunction("new_skill", _map, _characterManager, _enemyManager); // ワザ取得メッセージ
+      }
+      
       this->updateGUI();
       
       CCSprite* levelup = CCSprite::create("levelup.png");

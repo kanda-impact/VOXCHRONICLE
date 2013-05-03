@@ -45,11 +45,7 @@ bool AppDelegate::applicationDidFinishLaunching()
   srand((unsigned int)time(NULL));
   
   // turn on display FPS
-#if DEBUG
-  pDirector->setDisplayStats(true);
-#else
   pDirector->setDisplayStats(false);
-#endif
   // set FPS. the default value is 1.0/60 if you don't call this
   pDirector->setAnimationInterval(1.0 / 60);
   
@@ -58,7 +54,7 @@ bool AppDelegate::applicationDidFinishLaunching()
   
   CCScriptEngineManager::sharedManager()->setScriptEngine(CCLuaEngine::defaultEngine());
   
-  CCTransitionFade* transition = CCTransitionFade::create(2.0f, pScene);
+  CCTransitionFade* transition = CCTransitionFade::create(1.0f, pScene);
   
   // run
   pDirector->runWithScene(transition);

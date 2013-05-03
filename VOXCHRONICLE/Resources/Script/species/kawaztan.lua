@@ -34,7 +34,6 @@ Enemy = {
     local chargeTurn = self.__IRegister__:getRegister(key, 0)
     local brank = self.__IRegister__:getRegister("brank", 0)
     local cureCount = self.__IRegister__:getRegister("cureCount", 0)
-    print("brank:"..brank.."cure:"..cureCount)
     if brank > 0 then
       self.__IRegister__:setRegister("brank", brank - 1)
     end

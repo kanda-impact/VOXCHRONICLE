@@ -1,7 +1,7 @@
 Ending = {
   background = "endingB.png",
   music = "endingB.mp3",
-  duration = 21,
+  duration = 23,
   text = [[
 朽ち果てつつある古城で、魔鎧との死闘を
 繰り広げ、これに勝利したオクス

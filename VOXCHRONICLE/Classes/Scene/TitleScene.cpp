@@ -24,9 +24,12 @@ typedef enum {
 
 #include "KWAlert.h"
 
+#include <boost/lexical_cast.hpp>
+
 #include "CCRemoveFromParentAction.h"
 
 using namespace cocos2d;
+using namespace boost;
 
 CCScene* TitleScene::scene() {
   CCScene* scene = CCScene::create();
@@ -166,13 +169,13 @@ void TitleScene::onDemoStart() {
   CCLabelTTF* label = CCLabelTTF::create(text.c_str(),
                                          "Helvetica",
                                          21,
-                                         CCSizeMake(director->getWinSize().width - 50, director->getWinSize().height * 2),
+                                         CCSizeMake(director->getWinSize().width - 50, _demo->getNumber("boxHeight")),
                                          kCCTextAlignmentCenter,
                                          kCCVerticalTextAlignmentCenter);
   CCLabelTTF* shadowLabel = CCLabelTTF::create(text.c_str(),
                                                "Helvetica",
                                                21,
-                                               CCSizeMake(director->getWinSize().width - 50, director->getWinSize().height * 2),
+                                               CCSizeMake(director->getWinSize().width - 50, _demo->getNumber("boxHeight")),
                                                kCCTextAlignmentCenter,
                                                kCCVerticalTextAlignmentCenter);
   
@@ -217,13 +220,15 @@ void TitleScene::removeDemo() {
   CCNode* label = demo->getChildByTag(TitleSceneTagDemoText);
   demo->removeChild(label, true);
   demo->runAction(CCSequence::create(CCFadeTo::create(0.5f, 0), CCRemoveFromParentAction::create(), NULL));
+  SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1.0f);
 }
 
 void TitleScene::didAccelerate(CCAcceleration *pAccelerationValue) {
   SaveData* data = SaveData::sharedData();
   if (!data->isFullVoice()) {
     if (pAccelerationValue->x > 1.8 || pAccelerationValue->y > 1.8 || pAccelerationValue->z > 1.8) {
-      SimpleAudioEngine::sharedEngine()->playEffect("fullvoice.mp3");
+      int number = rand() % 4;
+      SimpleAudioEngine::sharedEngine()->playEffect(("fullvoice" + lexical_cast<string>(number) + ".mp3").c_str());
       data->setFullVoice(true);
       data->unlockAchievement("unlockFullVoice");
     }

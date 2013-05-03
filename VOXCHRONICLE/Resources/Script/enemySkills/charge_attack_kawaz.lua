@@ -37,7 +37,11 @@ EnemySkill = {
         user:runAction(CCRepeat:create(sequence, 10))
       elseif turn == 1 then
         -- 溜めターンが1ターンに到達したら溜め攻撃発動
-        characterManager:damage(3) -- ダメージを与える
+        if user:getType() == SkillTypeNormal then
+        characterManager:damage(1)
+        end
+        characterManager:damage(1)
+        characterManager:damage(1) -- ダメージを与える
         user:setRegister(key, 0) -- 溜めターンをリセット
         user:setDefaultAnimationClip() -- グラを元に戻す
         layer:addEffectOnEnemy(nil, "attack", 4, CCRectMake(0, 0, 50, 50)):setColor(ccc3(0, 255, 230))
