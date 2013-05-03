@@ -19,6 +19,8 @@
 
 #include "UIApplicationWrapper.h"
 
+#include <boost/algorithm/string/predicate.hpp>
+
 #define EXT ".caf"
 
 using namespace std;
@@ -227,7 +229,7 @@ void StaffRollScene::pushTrack(const char *identifier, MusicSet* set) {
   _music->pushTrack(set->getPrefixedMusicName(ss.str().c_str()).c_str(), MusicChannelMain);
   // ドラムとリフは仮ですが、いずれランダムで載るようにする？
   _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelCounter);
-  _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelDrum);
+  this->pushDrumTrack(identifier, set);
   ++_maxTrackCount;
   _isAddCutin->push_back(true);
 }
@@ -238,8 +240,7 @@ void StaffRollScene::pushTracks(const char *identifier, int count, MusicSet* set
     ss << identifier << i << EXT;
     _music->pushTrack(set->getPrefixedMusicName(ss.str().c_str()).c_str(), MusicChannelMain);
     _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelCounter);
-    _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelDrum);
-    ++_maxTrackCount;
+    this->pushDrumTrack(identifier, set);
     _isAddCutin->push_back(false);
   }
 }
@@ -254,10 +255,19 @@ void StaffRollScene::pushWaitTracks(const char *characterIdentifier, MusicSet* s
     ss << "wait" << i << EXT;
     _music->pushTrack(set->getPrefixedMusicName(ss.str().c_str()).c_str(), MusicChannelMain);
     _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelCounter);
-    _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelDrum);
+    this->pushDrumTrack("wait", set);
     _isAddCutin->push_back(false);
     ++_maxTrackCount;
   }
+}
+
+void StaffRollScene::pushDrumTrack(const char *identifier, MusicSet* set) {
+  if (boost::algorithm::starts_with(identifier, "intro") || boost::algorithm::starts_with(identifier, "finish") || boost::algorithm::starts_with(identifier, "qte")) {
+    _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelDrum);
+  } else {
+    _music->pushTrack(set->getPrefixedMusicName((string("drum1") + string(EXT)).c_str()).c_str(), MusicChannelDrum);
+  }    ++_maxTrackCount;
+  
 }
 
 void StaffRollScene::onBackButtonPressed(cocos2d::CCObject *sender) {
