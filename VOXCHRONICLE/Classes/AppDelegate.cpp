@@ -4,7 +4,9 @@
 #include "CCScriptSupport.h"
 #include "CCLuaEngine.h"
 #include "TitleScene.h"
+#include "InitialScene.h"
 #include "macros.h"
+#include "SaveData.h"
 
 USING_NS_CC;
 using namespace std;
@@ -49,15 +51,25 @@ bool AppDelegate::applicationDidFinishLaunching()
   // set FPS. the default value is 1.0/60 if you don't call this
   pDirector->setAnimationInterval(1.0 / 60);
   
-  // create a scene. it's an autorelease object
-  CCScene *pScene = TitleScene::scene();
-  
   CCScriptEngineManager::sharedManager()->setScriptEngine(CCLuaEngine::defaultEngine());
   
-  CCTransitionFade* transition = CCTransitionFade::create(1.0f, pScene);
+  if (SaveData::sharedData()->getCountFor(SaveDataCountKeyBoot) == 1 || true) { // 初回起動時
+    CCScene *pScene = CCScene::create();
+    InitialScene* initial = InitialScene::create();
+    
+    pScene->addChild(initial);
+    
+    // run
+    pDirector->runWithScene(pScene);
+  } else {
+    // create a scene. it's an autorelease object
+    CCScene *pScene = TitleScene::scene();
   
-  // run
-  pDirector->runWithScene(transition);
+    CCTransitionFade* transition = CCTransitionFade::create(1.0f, pScene);
+  
+    // run
+    pDirector->runWithScene(transition);
+  }
   
   return true;
 }

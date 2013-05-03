@@ -411,6 +411,7 @@
 		0789A1371733E6B200FFB262 /* fullvoice2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1331733E6B200FFB262 /* fullvoice2.mp3 */; };
 		0789A1381733E6B200FFB262 /* fullvoice3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1341733E6B200FFB262 /* fullvoice3.mp3 */; };
 		0789A13A1733F7E100FFB262 /* revive_foot.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1391733F7E100FFB262 /* revive_foot.lua */; };
+		0789A13D17342F6D00FFB262 /* InitialScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0789A13B17342F6900FFB262 /* InitialScene.cpp */; };
 		078D452316CE809C00E21DC5 /* Species.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 078D452116CE809B00E21DC5 /* Species.cpp */; };
 		078D45A116CF1FB100E21DC5 /* 3Bb_counter0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078D456316CF1FB100E21DC5 /* 3Bb_counter0.caf */; };
 		078D45A216CF1FB100E21DC5 /* 3Bb_counter1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078D456416CF1FB100E21DC5 /* 3Bb_counter1.caf */; };
@@ -1933,6 +1934,8 @@
 		0789A1331733E6B200FFB262 /* fullvoice2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fullvoice2.mp3; path = Resources/SE/fullvoice2.mp3; sourceTree = "<group>"; };
 		0789A1341733E6B200FFB262 /* fullvoice3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fullvoice3.mp3; path = Resources/SE/fullvoice3.mp3; sourceTree = "<group>"; };
 		0789A1391733F7E100FFB262 /* revive_foot.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = revive_foot.lua; path = enemySkills/revive_foot.lua; sourceTree = "<group>"; };
+		0789A13B17342F6900FFB262 /* InitialScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InitialScene.cpp; path = Classes/Scene/InitialScene.cpp; sourceTree = "<group>"; };
+		0789A13E17342FD200FFB262 /* InitialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InitialScene.h; path = Classes/includes/InitialScene.h; sourceTree = "<group>"; };
 		078D452116CE809B00E21DC5 /* Species.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Species.cpp; path = Classes/Model/Species.cpp; sourceTree = "<group>"; };
 		078D452416CE80CF00E21DC5 /* Species.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Species.h; path = Classes/includes/Species.h; sourceTree = "<group>"; };
 		078D456316CF1FB100E21DC5 /* 3Bb_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 3Bb_counter0.caf; path = Resources/Music/3Bb/3Bb_counter0.caf; sourceTree = "<group>"; };
@@ -3843,6 +3846,8 @@
 				07F0D79A163C1EFD005592AF /* TitleScene.h */,
 				0754383E16E3865700802970 /* TutorialScene.cpp */,
 				0754384216E391E600802970 /* TutorialScene.h */,
+				0789A13B17342F6900FFB262 /* InitialScene.cpp */,
+				0789A13E17342FD200FFB262 /* InitialScene.h */,
 			);
 			name = Scene;
 			sourceTree = "<group>";
@@ -7647,6 +7652,7 @@
 				0789A0FD172EFEDD00FFB262 /* UIApplicationWrapper.mm in Sources */,
 				0789A101173002F300FFB262 /* KWAlert.cpp in Sources */,
 				0789A1051730048D00FFB262 /* KWAlertDelegate.cpp in Sources */,
+				0789A13D17342F6D00FFB262 /* InitialScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
