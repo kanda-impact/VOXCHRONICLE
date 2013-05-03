@@ -61,7 +61,11 @@ void GameOverLayer::replayButtonPressed(CCObject *sender) {
   
   MainScene* newScene = new MainScene();
   newScene->autorelease();
-  newScene->init(newMap);
+  if (_main->isBossBattle()) {
+    newScene->init(newMap, newMap->getMaxLevel());
+  } else {
+    newScene->init(newMap);
+  }
   scene->addChild(newScene);
   newMap->release();
   

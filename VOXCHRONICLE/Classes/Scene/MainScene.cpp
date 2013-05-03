@@ -63,6 +63,10 @@ bool MainScene::init() {
 }
 
 bool MainScene::init(Map* map) {
+  return this->init(map, map->getInitialLevel());
+}
+
+bool MainScene::init(Map* map, int initialLevel) {
   if ( !CCLayer::init() ) {
     return false;
   }
@@ -115,7 +119,7 @@ bool MainScene::init(Map* map) {
   controller->autorelease();
   skin->setController(controller);
   
-  this->changeMap(map); // マップの設定
+  this->changeMap(map, initialLevel); // マップの設定
   _characterManager->setLevel(_level->getLevel()); // 初期レベル設定
   
   this->addChild(_enemyManager, MainSceneZOrderEnemyManager);
@@ -766,6 +770,10 @@ void MainScene::addDamageEffect() {
 }
 
 void MainScene::changeMap(Map* nextMap) {
+  this->changeMap(nextMap, nextMap->getInitialLevel());
+}
+
+void MainScene::changeMap(Map* nextMap, int initialLevel) {
   bool init = _map == NULL;
   if (_map) {
     // 前の背景画像削除
@@ -779,7 +787,7 @@ void MainScene::changeMap(Map* nextMap) {
   nextMap->retain();
   _log->getMapHistory()->addObject(CCString::create(nextMap->getIdentifier())); // マップ履歴にマップのIdentifier追加
   _map = nextMap;
-  this->setLevel(nextMap->createInitialLevel(_characterManager)); // レベルを生成する
+  this->setLevel(nextMap->createLevel(initialLevel, _characterManager)); // レベルを生成する
 
   _enemyManager->setLevel(_level); // レベルをセット
   _enemyManager->removeAllEnemiesQueue(); // キューを初期化
