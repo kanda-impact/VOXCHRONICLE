@@ -43,8 +43,6 @@ bool ResultScene::init () {
 }
 
 void ResultScene::buildUI() {
-  CCDirector* director = CCDirector::sharedDirector();
-  
   // history表示生成
   CCArray* history = _log->getMapHistory();
   CCNode* historyNode = CCNode::create();
@@ -63,12 +61,41 @@ void ResultScene::buildUI() {
   }
   this->addChild(historyNode);
   
+  // ハイスコア
+  CCString* lastMap = (CCString*)history->lastObject();
+  bool isHighScore = SaveData::sharedData()->updateScore(lastMap->getCString(), _log->getCount(PlayLogKeyTurn));
+  
+  int highScore = SaveData::sharedData()->getScore(lastMap->getCString());
+  
   CCLabelTTF* clearTurn = CCLabelTTF::create("クリアターン", "Helvetica", 24);
-  clearTurn->setPosition(ccp(director->getWinSize().width / 2.0, 180));
+  clearTurn->setPosition(ccp(80, 180));
   CCLabelTTF* clear = CCLabelTTF::create(lexical_cast<string>(_log->getCount(PlayLogKeyTurn)).c_str(), "Helvetica", 24);
-  clear->setPosition(ccp(director->getWinSize().width / 2.0, 145));
+  clear->setPosition(ccp(80, 145));
   this->addChild(clearTurn);
   this->addChild(clear);
+  
+  CCLabelTTF* highScoreLabel = CCLabelTTF::create("最速ターン", "Helvetica", 18);
+  highScoreLabel->setPosition(ccp(230, 180));
+  CCLabelTTF* highScoreTurnLabel = CCLabelTTF::create(lexical_cast<string>(highScore).c_str(), "Helvetica", 18);
+  highScoreTurnLabel->setPosition(ccp(230, 145));
+  this->addChild(highScoreTurnLabel);
+  this->addChild(highScoreLabel);
+  
+  if (isHighScore) {
+    CCAction* blink0 = CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.08, 128),
+                                                                               CCFadeTo::create(0.08, 255)));
+    CCAction* blink1 = CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.08, 128),
+                                                                               CCFadeTo::create(0.08, 255)));
+    CCAction* blink2 = CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.08, 128),
+                                                                               CCFadeTo::create(0.08, 255)));
+    CCAction* blink3 = CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.08, 128),
+                                                                               CCFadeTo::create(0.08, 255)));
+    
+    clearTurn->runAction(blink0);
+    clear->runAction(blink1);
+    highScoreLabel->runAction(blink2);
+    highScoreTurnLabel->runAction(blink3);
+  }
   
   CCLabelTTF* totalDamage = CCLabelTTF::create("受けたダメージ", "Helvetica", 18, CCSizeMake(150, 30), kCCTextAlignmentRight);
   totalDamage->setPosition(ccp(140, 90));
