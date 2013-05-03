@@ -200,7 +200,7 @@ Map = {
 
 音楽もかわって気分一新よ！
 ]])            
-      popup:addImage(0, "tutorial11_1.png")
+      popup:addImage(0, "tutorial11_3.png")
       popup:setText(1, "ラスカに『チェンジ』！", [[
 オクス君は剣士だけど、私、ラスカは魔法使い
 私は魔法をつかって攻撃するわ。
