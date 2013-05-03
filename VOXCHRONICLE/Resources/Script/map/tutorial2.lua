@@ -18,6 +18,10 @@ Map = {
     end
     return {}
   end,
+  onLoad = function(self, characterManager, enemyManager)
+    enemyManager:loadEnemyTextureAsync("ragasoowa.png")
+    enemyManager:loadEnemyTextureAsync("knight.png")
+  end,
   onBack = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
     local layer = EffectLayer:sharedLayer()
@@ -45,6 +49,7 @@ Map = {
 うまく『ガード』を使いこなしてね
 ]])
         local boss = enemyManager:getEnemies():objectAtIndex(0)
+        boss:setHP(3)
         boss.__IRegister__:setBool("isGuarded", true)        
       end
       
@@ -64,7 +69,7 @@ Map = {
       if enemyCount < math.min(count, 2) and not layer:getPopupWindow() then -- ポップアップが出ているときは出さない
         local enemy = enemyManager:popEnemyAt("T_tomezora23", 2, enemyCount % 3)
         enemy:setMaxHP(10)
-        enemy:setExp(10)
+        enemy:setExp(20)
         enemy:setAttack(1)
       end
     elseif level == 26 or level == 27 then
@@ -76,8 +81,8 @@ Map = {
         elseif turn % 3 == 1 then
           enemyName = "T_tomezora23"
         end
-        local enemy = enemyManager:popEnemyAt(enemyName, 4, math.random(3) - 1)
-        enemy:setExp(10)
+        local enemy = enemyManager:popEnemyAt(enemyName, 5, math.random(3) - 1)
+        enemy:setExp(15)
         enemy:setAttack(1)
       end
       turn = turn + 1
@@ -133,9 +138,10 @@ Map = {
 強力なワザを使ってきたり
 さまざまな攻撃をしてくるの
 ]])
-    local knight = enemyManager:popEnemyAt("T_knight", 5, 1)
-    knight:setExp(60)
-    knight:setMaxHP(30)
+    local ragasoowa = enemyManager:popEnemyAt("T_ragasoowa", 3, 1)
+    ragasoowa:setExp(60)
+    ragasoowa:setMaxHP(30)
+    ragasoowa:setScale(1.6)
     elseif level == 22 then
       enemyManager:removeAllEnemies() -- 敵全滅
       local popup = layer:addPopupWindow(2)
@@ -151,7 +157,7 @@ Map = {
       popup:addImage(1, "tutorial8_1.png")
    local knight = enemyManager:popEnemyAt("T_knight22", 2, 1)
    knight:setExp(60)
-   knight:setMaxHP(40)
+   knight:setMaxHP(100)
    elseif level == 23 then
       local popup = layer:addPopupWindow(1)
       popup:setText(0, "『貼りつきモンスター』に注意", [[
