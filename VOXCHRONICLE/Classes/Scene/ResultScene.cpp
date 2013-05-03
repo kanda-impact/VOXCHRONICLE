@@ -35,7 +35,7 @@ bool ResultScene::init () {
                                                  menu_selector(ResultScene::onBackButtonPressed));
   _backMenu = CCMenu::create(backItem, NULL);
   _backMenu->retain();
-  _backMenu->setPosition(ccp(440, 290));
+  _backMenu->setPosition(ccp(430, 290));
   this->addChild(_backMenu);
   _isAppeard = false;
   
