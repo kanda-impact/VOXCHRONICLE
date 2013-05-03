@@ -242,6 +242,7 @@ void StaffRollScene::pushTracks(const char *identifier, int count, MusicSet* set
     _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelCounter);
     this->pushDrumTrack(identifier, set);
     _isAddCutin->push_back(false);
+    ++_maxTrackCount;
   }
 }
 
@@ -262,12 +263,11 @@ void StaffRollScene::pushWaitTracks(const char *characterIdentifier, MusicSet* s
 }
 
 void StaffRollScene::pushDrumTrack(const char *identifier, MusicSet* set) {
-  if (boost::algorithm::starts_with(identifier, "intro") || boost::algorithm::starts_with(identifier, "finish") || boost::algorithm::starts_with(identifier, "qte")) {
+  if (boost::algorithm::starts_with(identifier, "intro") || boost::algorithm::starts_with(identifier, "finish") || boost::algorithm::starts_with(identifier, "qte") || boost::algorithm::starts_with(identifier, "silent")) {
     _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelDrum);
   } else {
     _music->pushTrack(set->getPrefixedMusicName((string("drum1") + string(EXT)).c_str()).c_str(), MusicChannelDrum);
-  }    ++_maxTrackCount;
-  
+  }  
 }
 
 void StaffRollScene::onBackButtonPressed(cocos2d::CCObject *sender) {
