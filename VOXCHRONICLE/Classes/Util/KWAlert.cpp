@@ -39,7 +39,7 @@ KWAlert::KWAlert(const char* background, CCArray* buttonNames) {
     menu->setPosition(ccp(200, 40));
     menu->alignItemsHorizontallyWithPadding(40);
     this->addChild(menu);
-    _label = CCLabelTTF::create("", "Helvetica", 16, CCSizeMake(380, 180), kCCTextAlignmentLeft, kCCVerticalTextAlignmentTop);
+    _label = CCLabelTTF::create("", "Helvetica", 16, CCSizeMake(380, 180), kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
     _label->retain();
     _label->setPosition(ccp(200, 50));
     this->addChild(_label);
