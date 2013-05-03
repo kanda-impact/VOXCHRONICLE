@@ -395,6 +395,7 @@ Map = {
 むずかしい～～！！ってなったら
 ぜひ参考にしてみてね。じゃ、バイバ～イ！
 ]])
+      local data = SaveData:sharedData()
       data:unlockAchievement("clearTutorialB") -- 実績アンロック
       data:setClearedForMap("fp_tutorial") -- フリープレイ
     end
