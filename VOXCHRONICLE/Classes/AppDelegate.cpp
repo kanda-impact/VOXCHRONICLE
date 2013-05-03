@@ -4,7 +4,6 @@
 #include "CCScriptSupport.h"
 #include "CCLuaEngine.h"
 #include "TitleScene.h"
-#include "InitialScene.h"
 #include "macros.h"
 #include "SaveData.h"
 
@@ -53,23 +52,13 @@ bool AppDelegate::applicationDidFinishLaunching()
   
   CCScriptEngineManager::sharedManager()->setScriptEngine(CCLuaEngine::defaultEngine());
   
-  if (SaveData::sharedData()->getCountFor(SaveDataCountKeyBoot) == 1 || true) { // 初回起動時
-    CCScene *pScene = CCScene::create();
-    InitialScene* initial = InitialScene::create();
-    
-    pScene->addChild(initial);
-    
-    // run
-    pDirector->runWithScene(pScene);
-  } else {
-    // create a scene. it's an autorelease object
-    CCScene *pScene = TitleScene::scene();
+  // create a scene. it's an autorelease object
+  CCScene *pScene = TitleScene::scene();
   
-    CCTransitionFade* transition = CCTransitionFade::create(1.0f, pScene);
+  CCTransitionFade* transition = CCTransitionFade::create(1.0f, pScene);
   
-    // run
-    pDirector->runWithScene(transition);
-  }
+  // run
+  pDirector->runWithScene(transition);
   
   return true;
 }

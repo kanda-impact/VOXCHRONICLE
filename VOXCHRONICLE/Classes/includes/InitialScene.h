@@ -20,6 +20,7 @@ class InitialScene :public CCLayer, KWAlertDelegate {
   virtual bool init();
   virtual void clickedButtonAtIndex(KWAlert* alert, int index);
   void onGotoTutorial();
+  void onEnterTransitionDidFinish();
   CREATE_FUNC(InitialScene);
 };
 

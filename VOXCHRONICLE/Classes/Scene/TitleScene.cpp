@@ -19,6 +19,7 @@ typedef enum {
 #include "FreePlayScene.h"
 #include "macros.h"
 #include "BufferCache.h"
+#include "InitialScene.h"
 
 #include "KWAlert.h"
 
@@ -111,10 +112,15 @@ void TitleScene::onEnterTransitionDidFinish() {
 
 void TitleScene::onStartButtonPressed(CCObject* sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/start.mp3").c_str());
-  MainMenuScene* scene = new MainMenuScene(true);
-  scene->autorelease();
   CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
-  nextScene(scene);
+  if (SaveData::sharedData()->getCountFor(SaveDataCountKeyBoot) == 1 || true) {
+    InitialScene* scene = InitialScene::create();
+    nextScene(scene);
+  } else {
+    MainMenuScene* scene = new MainMenuScene(true);
+    scene->autorelease();
+    nextScene(scene);
+  }
 }
 
 void TitleScene::onDebugButtonPressed(CCObject* sender) {

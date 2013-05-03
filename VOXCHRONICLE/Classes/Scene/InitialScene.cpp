@@ -12,10 +12,15 @@
 #include "KWAlert.h"
 #include "Map.h"
 #include "MainScene.h"
-#include "TitleScene.h"
+#include "MainMenuScene.h"
 
 bool InitialScene::init() {
   this->setTouchEnabled(false);
+  
+  return true;
+}
+
+void InitialScene::onEnterTransitionDidFinish() {
   LuaObject* setting = LuaObject::create("setting");
   CCDirector* director = CCDirector::sharedDirector();
   CCArray* names = CCArray::create(CCString::create("はい"), CCString::create("いいえ"), NULL);
@@ -27,8 +32,6 @@ bool InitialScene::init() {
   alert->setDelegate(this);
   alert->show();
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/window_open.mp3").c_str());
-  
-  return true;
 }
 
 void InitialScene::clickedButtonAtIndex(KWAlert *alert, int index) {
@@ -41,9 +44,10 @@ void InitialScene::clickedButtonAtIndex(KWAlert *alert, int index) {
     alert->dismiss();
     CCDirector* director = CCDirector::sharedDirector();
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/window_close.mp3").c_str());
-    TitleScene* title = TitleScene::create();
+    MainMenuScene* menu = new MainMenuScene(true);
+    menu->autorelease();
     CCScene* scene = CCScene::create();
-    scene->addChild(title);
+    scene->addChild(menu);
     CCTransitionFade* transition = CCTransitionFade::create(1.0f, scene);
     director->replaceScene(transition);
   }
