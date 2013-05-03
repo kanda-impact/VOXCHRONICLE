@@ -25,7 +25,7 @@ StaffRoll = {
 {"Program", "giginet", "メインプログラム"},
 {"Level Design", "hak", "ステージデザイン"},
 {"Level Design", "giginet", "ボス、敵スキルデザイン"},
-{"script", "kataasitobi", "チュートリアルプロット"},
+{"Script", "kataasitobi", "チュートリアルプロット"},
 {"", "miio", "スクリプトサポート"},
 {"", "TTNTAWASi", "チュートリアル文章、メッセージ"},
 {"", "AttaQ", "実績デザイン、文章"},

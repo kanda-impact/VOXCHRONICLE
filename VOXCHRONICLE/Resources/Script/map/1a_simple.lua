@@ -27,7 +27,7 @@ Map = {
     enemyManager:loadEnemyTextureAsync("slime.png")
     enemyManager:loadEnemyTextureAsync("acorn.png")
     SaveData:sharedData():setClearedForMap("fp_simple")
-    EffectLayer:sharedLayer():setCutinColor(ccc3(157, 241, 255))
+    --EffectLayer:sharedLayer():setCutinColor(ccc3(157, 241, 255))
   end,
 
   getEnemyPopRate = function(level)
