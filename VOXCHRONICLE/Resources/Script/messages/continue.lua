@@ -1,6 +1,6 @@
 require("concat")
 require("timezone")
-require("variable_expantion")
+require("variable_expansion")
 --コンティニュ―後にゲームが再開した時
 return function(map, characterManager, enemyManager)
   chara = characterManager:getCurrentCharacter():getName()
