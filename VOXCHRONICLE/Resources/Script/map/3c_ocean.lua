@@ -124,7 +124,7 @@ Map = {
     if self.__IRegister__:getRegister(key,0) == 1 then
       data:unlockAchievement("bossCex")
     end
-    SaveData:sharedData():addDefeatedCountForEmemy("wave")
+    SaveData:sharedData():addDefeatedCountForEnemy("wave")
   end,
 
   getEnemyPopRate = function(level)
