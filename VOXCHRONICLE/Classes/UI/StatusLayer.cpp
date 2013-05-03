@@ -148,10 +148,10 @@ void StatusLayer::onPauseButtonPressed(CCObject* sender) {
 }
 
 void StatusLayer::setExp(int current, int next) {
-#if DEBUG
+/*
   CCLabelTTF* currentLabel = (CCLabelTTF*)this->getChildByTag(CurrentExpLabelTag);
   CCLabelTTF* nextLabel = (CCLabelTTF*)this->getChildByTag(NextExpLabelTag);
   currentLabel->setString(lexical_cast<string>(current).c_str());
   nextLabel->setString(lexical_cast<string>(next).c_str());
-#endif
+*/
 }

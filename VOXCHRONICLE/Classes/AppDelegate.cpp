@@ -45,11 +45,7 @@ bool AppDelegate::applicationDidFinishLaunching()
   srand((unsigned int)time(NULL));
   
   // turn on display FPS
-#if DEBUG
-  pDirector->setDisplayStats(true);
-#else
   pDirector->setDisplayStats(false);
-#endif
   // set FPS. the default value is 1.0/60 if you don't call this
   pDirector->setAnimationInterval(1.0 / 60);
   
