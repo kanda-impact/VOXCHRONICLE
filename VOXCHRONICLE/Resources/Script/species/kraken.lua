@@ -31,7 +31,9 @@ Enemy = {
       return "reset_tension"
     end
     -- 波はwaitTurnターン以内には出ない
-    if enemyManager:getEnemies():count() < 3 and random <= 30 then
+    local reviveTime = self.__IRegister__:getRegister("reviveTime", 0)
+    if enemyManager:getEnemies():count() < 3 and random <= (80 / math.min(10, math.pow(reviveTime + 1, 2))) then
+      self.__IRegister__:setRegister("reviveTime", reviveTime + 1)
       return "revive_foot"
     end
     if random <= 30 and turn == 0 then
