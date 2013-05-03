@@ -54,7 +54,7 @@ bool AppDelegate::applicationDidFinishLaunching()
   
   CCScriptEngineManager::sharedManager()->setScriptEngine(CCLuaEngine::defaultEngine());
   
-  CCTransitionFade* transition = CCTransitionFade::create(2.0f, pScene);
+  CCTransitionFade* transition = CCTransitionFade::create(1.0f, pScene);
   
   // run
   pDirector->runWithScene(transition);
