@@ -31,6 +31,9 @@ Enemy = {
       return "reset_tension"
     end
     -- 波はwaitTurnターン以内には出ない
+    if enemyManager:getEnemies():count() < 3 and random <= 30 then
+      return "revive_foot"
+    end
     if random <= 30 and turn == 0 then
       self:setRegister(key, 1)
       return "wave_skill"
