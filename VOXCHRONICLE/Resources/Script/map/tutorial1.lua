@@ -36,10 +36,10 @@ Map = {
       -- 敵が1体もいなくなったらモンスター生成
       if enemyCount == 0 then
         enemyManager:popEnemyAt("T_moth", 2, 0)
-        local ragasoowa = enemyManager:popEnemyAt("T_ragasoowa", MAX_ROW - 1, 1)
+        local tnt = enemyManager:popEnemyAt("T_tnt", MAX_ROW - 1, 1)
         enemyManager:popEnemyAt("T_moth", 2, 2)
-        ragasoowa:setMaxHP(25)
-        ragasoowa:setExp(60)
+        tnt:setMaxHP(20)
+        tnt:setExp(60)
       end
     elseif level == 13 then
       -- 敵が1体もいなくなったらモンスター生成

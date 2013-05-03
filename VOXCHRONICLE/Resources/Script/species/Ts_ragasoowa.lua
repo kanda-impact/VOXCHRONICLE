@@ -6,6 +6,10 @@ Enemy = {
   hasFrame = false,
   counter = 0,
   getSpeed = function(enemy, characterManager)
+    local row = enemy:getRow()
+    if row < 2 then
+      return 0
+    end
     return 1
   end,
   getFrequency = function(enemy, characterManager)
