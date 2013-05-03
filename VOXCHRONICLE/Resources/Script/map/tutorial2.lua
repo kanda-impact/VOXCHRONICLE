@@ -268,7 +268,7 @@ Map = {
 以上、ラスカによるテクニック解説でした～！
 じゃ～ね～
 ]])
-      popup:addImage(2, "tutorial10_1.png")
+      popup:addImage(2, "tutorial10_2.png")
       local data = SaveData:sharedData()
       data:unlockAchievement("clearTutorialC") -- 実績アンロック
       data:setClearedForMap("fp_tutorial") -- フリープレイ
