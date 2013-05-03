@@ -138,6 +138,7 @@ Map = {
 強力なワザを使ってきたり
 さまざまな攻撃をしてくるの
 ]])
+      popup:addImage(1, "tutorial21_1.png")
     local ragasoowa = enemyManager:popEnemyAt("T_ragasoowa", 3, 1)
     ragasoowa:setExp(60)
     ragasoowa:setMaxHP(30)
@@ -149,6 +150,7 @@ Map = {
 ボスモンスターの中には『遠距離攻撃』を
 してくるやつもいるよ！
 ]])
+      popup:addImage(0, "tutorial22_1.png")
       popup:setText(1, "『遠距離攻撃』には『ガード』", [[
 『遠距離攻撃』は『ガード』で防ぐしかないんだ。
 『遠距離攻撃』の前には前兆があるから、
@@ -168,6 +170,7 @@ Map = {
 こいつはわたしたちに激突してこないで
 手前でずっと攻撃してくるわ
 ]])
+      popup:addImage(0, "tutorial23_1.png")
     elseif level == 24 then
       enemyManager:removeAllEnemies()
       local popup = layer:addPopupWindow(2)
@@ -186,7 +189,8 @@ Map = {
 モンスターの体力（色）に合わせて
 『パワー』の回数を調整できるようになると
 効率的に戦えるようになるわよ！
-]])
+]])  
+    popup:addImage(1, "tutorial24_2.png")
     elseif level == 25 then
       local popup = layer:addPopupWindow(1)
       popup:setText(0, "『パワー』の保持！", [[
@@ -197,7 +201,7 @@ Map = {
 逆にその他の行動を行うと
 キャンセルされちゃうから覚えておいてね！
 ]])
- 
+      popup:addImage(0, "tutorial25_1.png")
     elseif level == 26 then
       local popup = layer:addPopupWindow(1)
       popup:setText(0, "モンスターの速さ", [[
@@ -208,6 +212,7 @@ Map = {
 優先的に攻撃するので、追い越してくる
 モンスターがいるときには気を付けたほうがいいかも。
 ]])
+    popup:addImage(0, "tutorial26_1.png")
     elseif level == 27 then
       local popup = layer:addPopupWindow(1)
       popup:setText(0, "同じ位置への攻撃！", [[
@@ -217,7 +222,8 @@ Map = {
 ２体同時に攻撃できるよ
 
 タイミングを見極めよう！
-]])
+]])  
+      popup:addImage(0, "tutorial27_1.png")
     elseif level == 28 then
       local popup = layer:addPopupWindow(1)
       popup:setText(0, "ステージの分岐", [[
@@ -229,6 +235,7 @@ Map = {
 エンディングがあるから、
 是非全てのステージをプレイしてみてね！
 ]])
+      popup:addImage(0, "tutorial28_1.png")
     elseif level == 29 then
       local popup = layer:addPopupWindow(1)
       popup:setText(0, "最小ターンクリアへの道", [[
@@ -238,21 +245,33 @@ Map = {
 ゲームになれてきたら、より少ないターン
 でのクリアに挑戦してみると面白いわよ！
 ]])
+    popup:addImage(0, "tutorial29_1.png")
     elseif level == 30 then
-      local popup = layer:addPopupWindow(2)
+      local popup = layer:addPopupWindow(3)
       popup:setText(0, "さらなるテクニックは君の手で！", [[
 プレイテクニックは、大体こんなところかなぁ。
 他にも色々とコツはあるはずだから、
 君の手でプレイしながらみつけてみてね。
 ]])
+      popup:addImage(0, "tutorial30_1.png")
       popup:setText(1, "オクスクロニクルをしゃぶりつくせ！", [[
 オクスクロニクルには
 実績機能やモンスター図鑑
 なんかもついてるから、気に入ってくれた人は
 骨の髄までオクスクロニクルを楽しんでくれると嬉しいな！
+]])
+      popup:addImage(1, "tutorial30_2.png")
+      popup:setText(2, "いざ、冒険の旅！", [[
+さて、準備も整ったところで
+いざ、冒険の旅にしゅっぱ〜つ！
+
 以上、ラスカによるテクニック解説でした～！
 じゃ～ね～
 ]])
+      popup:addImage(2, "tutorial10_1.png")
+      local data = SaveData:sharedData()
+      data:unlockAchievement("clearTutorialC") -- 実績アンロック
+      data:setClearedForMap("fp_tutorial") -- フリープレイ
     end
   end,
   getEnemyPopRate = function(level)
