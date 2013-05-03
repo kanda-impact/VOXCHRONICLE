@@ -97,6 +97,8 @@ void ResultScene::buildUI() {
     highScoreTurnLabel->runAction(blink3);
   }
   
+  SaveData::sharedData()->save();
+  
   CCLabelTTF* totalDamage = CCLabelTTF::create("受けたダメージ", "Helvetica", 18, CCSizeMake(150, 30), kCCTextAlignmentRight);
   totalDamage->setPosition(ccp(140, 90));
   CCLabelTTF* damage = CCLabelTTF::create(lexical_cast<string>(_log->getCount(PlayLogKeyHitDamage)).c_str(), "Helvetica", 18,
