@@ -2,6 +2,7 @@ Ending = {
   background = "endingB.jpg",
   music = "endingB.mp3",
   duration = 23,
+  achievement = "clear3B",
   text = [[
 朽ち果てつつある古城で、魔鎧との死闘を
 繰り広げ、これに勝利したオクス

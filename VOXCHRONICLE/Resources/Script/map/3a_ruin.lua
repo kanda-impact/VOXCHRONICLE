@@ -68,7 +68,6 @@ Map = {
   end,
   onClear = function(self, characterManager, enemyManager)
     local data = SaveData:sharedData()
-    data:unlockAchievement("clear3A")
     local key = "fortressAchieve"
     local row = self.__IRegister__:getRegister(key,1)
     if row == 0 then
