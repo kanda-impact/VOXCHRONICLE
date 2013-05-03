@@ -38,6 +38,7 @@ void EffectLayer::purgeEffectLayer() {
 EffectLayer::EffectLayer() {
   _tensionEffectLayer = CCSprite::create("tension_effect.png");
   _tensionEffectLayer->retain();
+  _tensionEffectLayer->setScale(4.0f);
   _characterEffectLayer = CCSprite::create("mode_vox.png");
   _characterEffectLayer->retain();
   _cutinExtention = NULL;
@@ -56,6 +57,7 @@ void EffectLayer::reloadEffects() {
   _tensionEffectLayer->setVisible(false);
   CCTextureCache::sharedTextureCache()->addImage("mode_lsk.png"); // テクスチャーを読んでおく
   _characterEffectLayer->setPosition(center);
+  _characterEffectLayer->setScale(4);
   if (!_characterEffectLayer->getParent()) {
     this->addChild(_characterEffectLayer, EffectLayerZOrderCharacter);
   }
@@ -136,6 +138,7 @@ void EffectLayer::setTensionEffect(int tension) {
                                                          CCFadeTo::create(delay, 20));
     _tensionEffectLayer->runAction(CCRepeatForever::create(blink));
   }
+  _tensionEffectLayer->setScale(4.0f);
 }
 
 void EffectLayer::setCharacterEffect(Character *character) {
@@ -146,6 +149,7 @@ void EffectLayer::setCharacterEffect(Character *character) {
     CCTexture2D* texture = CCTextureCache::sharedTextureCache()->addImage("mode_lsk.png");
     _characterEffectLayer->setTexture(texture);
   }
+  _characterEffectLayer->setScale(4);
 }
 
 PopupWindow* EffectLayer::addPopupWindow(int pages) {
