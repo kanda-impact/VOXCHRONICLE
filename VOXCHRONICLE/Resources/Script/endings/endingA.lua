@@ -1,5 +1,5 @@
 Ending = {
-  background = "endingA.png",
+  background = "endingA.jpg",
   music = "endingA.mp3",
   duration = 25,
   text = [[
