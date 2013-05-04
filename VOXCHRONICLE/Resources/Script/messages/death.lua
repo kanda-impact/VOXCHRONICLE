@@ -124,7 +124,7 @@ return function(map, characterManager, enemyManager)
         "まさか　いきなりハードを　えらんだのでは？",
         "おいおい　こんなのまだ　じょのくち　だぜ？",
         "あまくみては　いけないな...",
-        ""
+        
       }
     elseif mapId == "1b_field" and currentTimeZone == TimeZoneDay then -- 1b夕方
       extraPattern = {
@@ -171,15 +171,15 @@ return function(map, characterManager, enemyManager)
         "ぐしゃっ",
         "ぺたんこに　なった",
         "まにあわなかった...",
-        "まるで　きょうせいスクロールの　かべのようだった"
+        "まるで　かべのようだった",
       }
     elseif mapId == "3b_castle" and level == 30 then    --B
     extraPattern = {
         "たて！　きさまのちから　そのていどでは　ないはずだ",
         "まだだ...　まだ　たたかいたりぬ",
         "でなおして　くるがいい",
-        "",
-        _("#{chara}　きさまの　な　おぼえておこう")
+        "はっはっは　その　ていどか",
+        _("#{chara}　きさまの　な　おぼえておこう"),
       }
     elseif mapId == "3c_ocean" and level == 30 then    --C
     extraPattern = {
@@ -187,7 +187,7 @@ return function(map, characterManager, enemyManager)
         "イカんともしがたい",
         "かずのぼうりょくには　かなわなかった",
         "あのゲソ　たおしても　キリがない!?",
-        "スルメに　してやる...!"
+        "スルメに　してやる...!",
     }
     elseif mapId == "3d_space" and level == 30 then    --Dボス
     extraPattern = {
@@ -201,33 +201,41 @@ return function(map, characterManager, enemyManager)
     extraPattern = {
         "てんしのような　あくまのえがお",
         "おまえのような　1ボスがいるか！",
-        "",
-        "",
-        "",
+        "すごいやつ　だったケロ。",
+        "また　あそんでくれ　ケロ～！",
+        "かわずたんは　たのしかったようだ",
     }
     elseif mapId == "3a_ruin" then
       extraPattern = {
-        "",
+        "がれきに　うもれてゆく",
+        "いせきの　れきしの　いちぶに　なった",
+        "でんせつの　だんじょんにて　ぼっす",
+        "もうすこし　だったのに．．．",
+        "あとちょっと　だったのに．．．",
       }
     elseif mapId == "3b_castle" then
       extraPattern = {
         "しろの　ぼうれいへと　なりはてるのか．．．",
-        "",
-        "",
-        "",
+        "しろとともに　くちはてていく",
+        "くそ．．．　あとすこし　だったのに",
+        "まものが　つよかった",
+        "まだ　あきらめたくない．．．！",
       }
     elseif mapId == "3c_ocean" then
       extraPattern = {
         "うみの　もくずと　きえた",
-        "",
+        _("#{chara} ちんぼつ"),
+        "さかなたちの　エサと　なった",
+        "ごぼごぼごぼ～",
+        _("#{chara}は おぼれてしまった"),
       }
     elseif mapId == "3d_space" then
       extraPattern = {
-        "うちゅうの　もくずと　きえた",
-        _("そして　#{chara}は　かんがえるのを　やめた")
+        "うちゅうの　もくずに　なった",
+        _("そして　#{chara}は　かんがえるのを　やめた"),
         "うちゅうに　ただよう　デブリに　なった",
         "あっとうてきなちからで　けしさられた",
-        "",
+        "しんくうにて　くちはてた",
       }
       
     end 

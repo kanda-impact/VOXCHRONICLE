@@ -38,7 +38,15 @@ Skill = {
       local target = targets:objectAtIndex(0)
       tolua.cast(target, "Enemy")
       if target:getSpecies():getIdentifier() == "wave" then --波用メッセージ
-      return{}
+      return{
+      "おおうなばらには　まるでこうかがない",
+      "けんは　むなしく　あらなみに　のみこまれた",
+      "きったところで　いみがなかった",
+      "なみには　こうかが　ないようだ",
+      "あらなにみは　けんげきは　つうじない",
+      "なみに　けんをふるっても　いみないわ！",
+      "こうかが　なかった",
+      }
       elseif target:getType() == SkillTypePhysical or target:getItem() == EnemyItemShield or not target:getSpecies():isEnableSkill(self) then -- 効かない相手にはメッセージ表示しない
         return {}
       end
