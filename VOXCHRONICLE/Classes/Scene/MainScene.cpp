@@ -70,6 +70,7 @@ bool MainScene::init(Map* map, int initialLevel) {
   if ( !CCLayer::init() ) {
     return false;
   }
+  isContinue = false;
   _initialLevel = initialLevel;
   SimpleAudioEngine::sharedEngine()->unloadAllEffect();
   CCTextureCache::sharedTextureCache()->removeAllTextures();
@@ -212,10 +213,11 @@ void MainScene::onEnterTransitionDidFinish() {
   _skin->getStatusLayer()->setMarkerDuration(_musicManager->getMusic()->getTrack(0)->getDuration() / 4.0f);
   CCDictionary* dict = CCDictionary::create();
   dict->setObject(CCString::create(_characterManager->getCurrentCharacter()->getName()), "chara");
-  if (_log->getCount(PlayLogKeyDead) == 0) {
-    MessageManager::sharedManager()->pushRandomMessageFromFunction("welcome", _map, _characterManager, _enemyManager);
-  } else {
+  if (_isContinue) {
     MessageManager::sharedManager()->pushRandomMessageFromFunction("continue", _map, _characterManager, _enemyManager);
+    _isContinue = false;
+  } else {
+    MessageManager::sharedManager()->pushRandomMessageFromFunction("welcome", _map, _characterManager, _enemyManager);
   }
   _effectLayer->addWaitMarker(_musicManager->getMusic()->getCurrentMainTrack()->getDuration() * _musicManager->getMusicSet()->getIntroCount());
 }
@@ -1003,4 +1005,8 @@ void MainScene::setLevel(Level* lv) {
   if (lv) {
     lv->retain();
   }
+}
+
+void MainScene::setIsContinue(bool c) {
+  _isContinue = c;
 }
