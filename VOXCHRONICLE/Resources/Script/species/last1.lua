@@ -61,16 +61,16 @@ Enemy = {
             self:setCounter(1)
             return "call_last" -- t2ファージ召喚
           end
-        elseif  r2 < 83 - cureCount then -- HPが7割以下なら10%で回復
-          if self:getHP() < self:getMaxHP() * 0.7 then
-            self:setCounter(3)
-            self.__IRegister__:setRegister("cureCount", cureCount + 3)
-            return "cure_skill" -- 回復
-          end
-        elseif r2 < 90 then -- 現在MPによって
+        elseif r2 < 80 then -- 現在MPによって
           if characterManager:getMP() > characterManager:getMaxMP() * 0.5 then
             self:setCounter(3)
             return "mp_absorb" -- MP吸収
+          end
+        elseif  r2 < 93 - cureCount then -- HPが7割以下なら10%で回復
+          if self:getHP() < self:getMaxHP() * 0.7 then
+            self:setCounter(3)
+            self.__IRegister__:setRegister("cureCount", cureCount + 5)
+            return "cure_skill" -- 回復
           end
         end
       end

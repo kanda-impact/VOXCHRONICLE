@@ -3,10 +3,10 @@ require("timezone")
 require("variable_expansion")
 -- 死亡時メッセージ
 return function(map, characterManager, enemyManager)
-  local chara = characterManager:getCurrentCharacter():getName()
+  chara = characterManager:getCurrentCharacter():getName()
   local mapId = map:getIdentifier()
   local currentTimeZone = getCurrentTimeZone()
-
+  local level = characterManager:getLevel()
   --死亡時（全ステージ共通部分）
   local commonPattern =  {
       _("#{chara}は　とうとう　しんでしまった"),
@@ -159,6 +159,39 @@ return function(map, characterManager, enemyManager)
         "さすが　ハード．．．がくっ",
         "シールドだけじゃ　さばききれない",
       }
+        --ボスの死亡台詞
+    elseif mapId == "3a_ruin" and level == 30 then    --A
+    extraPattern = {
+        "うちゅうの　もくずと　きえた",
+        _("そして　#{chara}は　かんがえるのを　やめた"),
+        "うちゅうに　ただよう　デブリに　なった",
+        "あっとうてきなちからで　けしさられた",
+        "",
+      }
+    elseif mapId == "3b_castle" and level == 30 then    --B
+    extraPattern = {
+        "うちゅうの　もくずと　きえた",
+        _("そして　#{chara}は　かんがえるのを　やめた"),
+        "うちゅうに　ただよう　デブリに　なった",
+        "あっとうてきなちからで　けしさられた",
+        "",
+      }
+    elseif mapId == "3c_ocean" and level == 30 then    --C
+    extraPattern = {
+        "うちゅうの　もくずと　きえた",
+        _("そして　#{chara}は　かんがえるのを　やめた"),
+        "うちゅうに　ただよう　デブリに　なった",
+        "あっとうてきなちからで　けしさられた",
+        "",
+    }
+    elseif mapId == "3d_space" and level == 30 then    --Dボス
+    extraPattern = {
+        "うちゅうの　もくずと　きえた",
+        _("そして　#{chara}は　かんがえるのを　やめた"),
+        "うちゅうに　ただよう　デブリに　なった",
+        "あっとうてきなちからで　けしさられた",
+        "",
+    }
     elseif mapId == "3a_ruin" then
       extraPattern = {
         "",
@@ -182,39 +215,11 @@ return function(map, characterManager, enemyManager)
         "あっとうてきなちからで　けしさられた",
         "",
       }
+      
     end 
     local r = math.random(100)
     if r < 20 then -- 2割の確率で個別テーブルを返します
       return extraPattern
     end
-    
-    
-    --ボスの死亡台詞
-    --A
-    extraPattern = {
-        "うちゅうの　もくずと　きえた",
-        _("そして　#{chara}は　かんがえるのを　やめた"),
-        "うちゅうに　ただよう　デブリに　なった",
-        "あっとうてきなちからで　けしさられた",
-        "",
-      }
-    --B
-    extraPattern = {
-        "うちゅうの　もくずと　きえた",
-        _("そして　#{chara}は　かんがえるのを　やめた"),
-        "うちゅうに　ただよう　デブリに　なった",
-        "あっとうてきなちからで　けしさられた",
-        "",
-      }
-    --C
-    extraPattern = {
-        "うちゅうの　もくずと　きえた",
-        _("そして　#{chara}は　かんがえるのを　やめた"),
-        "うちゅうに　ただよう　デブリに　なった",
-        "あっとうてきなちからで　けしさられた",
-        "",
-    }
-    --D
-    
     return commonPattern
 end
