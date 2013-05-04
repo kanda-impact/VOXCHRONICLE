@@ -70,6 +70,7 @@ bool MainScene::init(Map* map, int initialLevel) {
   if ( !CCLayer::init() ) {
     return false;
   }
+  _initialLevel = initialLevel;
   SimpleAudioEngine::sharedEngine()->unloadAllEffect();
   CCTextureCache::sharedTextureCache()->removeAllTextures();
   _backScene = MainBackSceneTitle;
@@ -271,9 +272,9 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       _skin->getController()->setEnable(true);
       _characterManager->setRepeatCount(0);
       _skin->getController()->resetAllTriggers();
-      //if (_level->getLevel() == _map->getInitialLevel()) {
+      if (_level->getLevel() == _initialLevel) {
         _map->performOnLevel(_characterManager, _enemyManager); // 初期レベルの時、スクリプトを呼んでやる
-      //}
+      }
       _state = VCStateMain;
     }
   }

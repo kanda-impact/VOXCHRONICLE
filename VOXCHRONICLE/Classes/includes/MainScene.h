@@ -56,6 +56,7 @@ class MainScene : public CCLayer {
  private:
   int _preLevel;
   int _mapTurnCount;
+  int _initialLevel;
   bool _isLevelUped;
   MainBackScene _backScene;
   SkillPerformInfo _currentSkillInfo;
