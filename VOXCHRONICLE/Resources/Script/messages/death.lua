@@ -97,7 +97,7 @@ return function(map, characterManager, enemyManager)
       _("#{chara}は　いよいよもって　しんだ"),
       _("ご　りんじゅう"),
       _("むこうに　おはなばたけが　みえます"),
-      _("#{chara}！　おうとうしろ　#{chara}ーーーーー！")
+      _("#{chara}！　おうとうしろ　#{chara}ーーーーー！"),
       "ちからつきてしまった",
       "しょうしょう　あそびすぎたか",
       "しゅぎょうして　でなおさねば．．．！",
@@ -116,33 +116,33 @@ return function(map, characterManager, enemyManager)
         "だいじょうぶ　すこしずつ　なれていこう",
         "まあ　そういうことも　あるさ",
         "チュートリアルは　みてくれた？",
-        "ま　まって　やめないでー！",
+        "ま　まって　やめないでー！"
       }
     elseif mapId == "1b_field" and currentTimeZone == TimeZoneDay then -- 1b昼
       extraPattern = {
         "さすがハード　ひとすじなわでは　いかないってかんじ？",
         "まさか　いきなりハードを　えらんだのでは？",
         "おいおい　こんなのまだ　じょのくち　だぜ？",
-        "あまくみては　いけないな...",
+        "あまくみては　いけないな..."
       }
     elseif mapId == "1b_field" and currentTimeZone == TimeZoneDay then -- 1b夕方
       extraPattern = {
         "たそがれに　しずむ",
-        "ああ．．．ゆうひが　しずむ．．．",
+        "ああ．．．ゆうひが　しずむ．．．"
       }
 
     elseif mapId == "1b_field" and currentTimeZone == TimeZoneDay then -- 1b夜
       extraPattern = {
         "くらやみに　のみこまれた",
         "やみよに　みえなくなった",
-        "よくあさには　あとかたものこらない　だろう",
+        "よくあさには　あとかたものこらない　だろう"
       }
     elseif mapId == "2a_forest" then
       extraPattern = {
         "やられても　くじけるな",
         "めげずに　がんばって",
         "もういちど　ちょうせんしよう",
-        "パワーチャージを　つかってみよう",
+        "パワーチャージを　つかってみよう"
       }
     elseif mapId == "2b_cave" then
       extraPattern = {
@@ -150,14 +150,14 @@ return function(map, characterManager, enemyManager)
         "ぐぅ．．．さすが　てごわい",
         "",
         "",
-        "",
+        ""
       }
     elseif mapId == "2c_cyber" then
       extraPattern = {
         "こんなの　できねーよー",
         "むずかしいよう",
         "さすが　ハード．．．がくっ",
-        "シールドだけじゃ　さばききれない",
+        "シールドだけじゃ　さばききれない"
       }
         --ボスの死亡台詞
     elseif mapId == "3a_ruin" and level == 30 then    --A
@@ -166,7 +166,7 @@ return function(map, characterManager, enemyManager)
         _("そして　#{chara}は　かんがえるのを　やめた"),
         "うちゅうに　ただよう　デブリに　なった",
         "あっとうてきなちからで　けしさられた",
-        "",
+        ""
       }
     elseif mapId == "3b_castle" and level == 30 then    --B
     extraPattern = {
@@ -174,7 +174,7 @@ return function(map, characterManager, enemyManager)
         _("そして　#{chara}は　かんがえるのを　やめた"),
         "うちゅうに　ただよう　デブリに　なった",
         "あっとうてきなちからで　けしさられた",
-        "",
+        ""
       }
     elseif mapId == "3c_ocean" and level == 30 then    --C
     extraPattern = {
@@ -182,7 +182,7 @@ return function(map, characterManager, enemyManager)
         _("そして　#{chara}は　かんがえるのを　やめた"),
         "うちゅうに　ただよう　デブリに　なった",
         "あっとうてきなちからで　けしさられた",
-        "",
+        ""
     }
     elseif mapId == "3d_space" and level == 30 then    --Dボス
     extraPattern = {

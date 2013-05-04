@@ -30,7 +30,9 @@ Skill = {
     if targets:count() > 0 then
       local target = targets:objectAtIndex(0)
       tolua.cast(target, "Enemy")
-      if target:getType() == SkillTypeMagical or target:getItem() == EnemyItemBarrier or not target:getSpecies():isEnableSkill(self) then -- 効かない相手にはメッセージ表示しない
+      if target:getSpecies():getIdentifier() == "wave" then --波用メッセージ
+      return{}
+      elseif target:getType() == SkillTypeMagical or target:getItem() == EnemyItemBarrier or not target:getSpecies():isEnableSkill(self) then -- 効かない相手にはメッセージ表示しない
         return {}
       end
     end
