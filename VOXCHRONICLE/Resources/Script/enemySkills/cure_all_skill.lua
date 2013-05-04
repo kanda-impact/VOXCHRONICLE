@@ -13,6 +13,8 @@ EnemySkill = {
       user:setHP(user:getHP() + cure)  
     end
     local message = user:getName().."たちの　きずが　みるみるふさがっていく！"
+    --user:getName().."たちの　たいりょくが　かいふくした！"
+    --user:getName().."たちが　げんき　ぴんぴんに　なった！"
     MessageManager:sharedManager():pushMessage(message)
   end
 }

@@ -6,12 +6,14 @@ EnemySkill = {
     local turn = user:getRegister(key, 0)
     local mManager = MessageManager:sharedManager() -- メッセージマネージャーを取り出す
     if turn == 0 then
-      local message = user:getName().."の　ゆびさきから　はどうが　ほとばしる"
+      local message = user:getName().."の　めから　はどうが　ほとばしる"
+      --user:getName().."の　オーラが　ふくれあがる"
       mManager:pushMessage(message)
       user:setRegister(key, 1)
     elseif turn == 1 then
       SimpleAudioEngine:sharedEngine():playEffect("enemy_burn.mp3")
       local message2 = characterManager:getCurrentCharacter():getName().."の　パワーが　もとにもどってしまった！"
+      --getCurrentCharacter():getName().."の　やるきが　おもいきりなえた！"
       mManager:pushMessage(message2)
       local layer = EffectLayer:sharedLayer()
       layer:addEffectOnEnemy(nil, "run", 3, CCRectMake(0, 0, 120, 80))

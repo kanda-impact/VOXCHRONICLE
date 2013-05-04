@@ -36,7 +36,12 @@ EnemySkill = {
       layer:addEffectOnEnemy(foot, "enemy_cure", 3, CCRectMake(0, 0, 100, 100))
     end
   
-    local message = "なんと　"..user:getName().."の　足が　再生した！"
+    local messages = {
+      "なんと　"..user:getName().."の　足が　再生した！",
+      "なんと"..target:getName().."の　あしが　ふっかつした！",
+      target:getName().."の　あしが　またはえてきた！"
+    }
+    local message = messages[math.random(#messages)]
     MessageManager:sharedManager():pushMessage(message)
   end
 }
