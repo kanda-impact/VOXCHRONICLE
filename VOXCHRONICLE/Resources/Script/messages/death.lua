@@ -124,7 +124,6 @@ return function(map, characterManager, enemyManager)
         "まさか　いきなりハードを　えらんだのでは？",
         "おいおい　こんなのまだ　じょのくち　だぜ？",
         "あまくみては　いけないな...",
-        ""
       }
     elseif mapId == "1b_field" and currentTimeZone == TimeZoneDay then -- 1b夕方
       extraPattern = {
@@ -169,13 +168,13 @@ return function(map, characterManager, enemyManager)
     extraPattern = {
         "ぷちっ",
         "ぐしゃっ",
-        "ぺたんこに　なった",
+        "ぺたんこになった",
         "まにあわなかった...",
         "まるで　きょうせいスクロールの　かべのようだった"
       }
     elseif mapId == "3b_castle" and level == 30 then    --B
     extraPattern = {
-        "たて！　きさまのちから　そのていどでは　ないはずだ",
+        "たて！　きさまのちからは　そのていどでは　ないはずだ",
         "まだだ...　まだ　たたかいたりぬ",
         "でなおして　くるがいい",
         "",
@@ -194,7 +193,7 @@ return function(map, characterManager, enemyManager)
         "あっとうてきなちからで　けしさられた",
         _("そして　#{chara}は　かんがえるのを　やめた"),
         "このせかいから　おとがきえた",
-        "あいつは...あいつだけは、たおさないと...!!",
+        "あいつは...あいつだけは　たおさないと...!!",
         "やっと　ここまできたのに...!",
     }
     elseif mapId == "3d_space" and level == 30 then    --かわずたん
@@ -207,11 +206,13 @@ return function(map, characterManager, enemyManager)
     }
     elseif mapId == "3a_ruin" then
       extraPattern = {
+        "このまま　くちはてていく　さだめ",
+        "",
         "",
       }
     elseif mapId == "3b_castle" then
       extraPattern = {
-        "しろの　ぼうれいへと　なりはてるのか．．．",
+        "しろの　ぼうれいと　なりはてるのか．．．",
         "",
         "",
         "",
@@ -219,6 +220,7 @@ return function(map, characterManager, enemyManager)
     elseif mapId == "3c_ocean" then
       extraPattern = {
         "うみの　もくずと　きえた",
+        "くらい　くらい　うみのそこにしずんだ",
         "",
       }
     elseif mapId == "3d_space" then
@@ -226,7 +228,7 @@ return function(map, characterManager, enemyManager)
         "うちゅうの　もくずと　きえた",
         _("そして　#{chara}は　かんがえるのを　やめた")
         "うちゅうに　ただよう　デブリに　なった",
-        "あっとうてきなちからで　けしさられた",
+        "ラスカ　きみはどこにおちたい？",
         "",
       }
       
