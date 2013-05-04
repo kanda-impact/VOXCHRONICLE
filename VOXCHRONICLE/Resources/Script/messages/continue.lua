@@ -78,6 +78,39 @@ return function(map, characterManager, enemyManager)
       }
     end
 
+    --3aBoss
+    if mapId == "3d_space" and currentTimeZone == 30 then
+      return {
+        "とにかく　こうげきしまくるんだ！",
+        "やられるまえに　やるしかない！",
+        "おちついてこうげきすれば　だいじょうぶ"
+      }
+    end
+    --3bBoss
+    if mapId == "3d_space" and currentTimeZone == 30 then
+      return {
+        "けんをかまえたら　ガードのじゅんびをしよう",
+        "ちょくせつこうげきできるコマンドがあるわよね？",
+        "てっきゅうは　いっきにかたづけよう"
+      }
+    end
+    --3cBoss
+    if mapId == "3d_space" and currentTimeZone == 30 then
+      return {
+        "ほんたいをねらって　こうげきするのよ！",
+        "つなみにはこうげきがきかない　ガードでやりすごそう",
+        "あしのさいせいは　だんだんにぶくなるはずだ"
+      }
+    end
+    --3dBoss
+    if mapId == "3d_space" and currentTimeZone == 30 then
+      return {
+        "いつでもファージーをたおせるようにしておこう",
+        "ボスのワザが　どういうこうかなのか　はあくしておこう",
+        "てきのこうどうをみてから　コマンドをえらぶという　てもあるぞ"
+      }
+    end
+    
     --3a
     if mapId == "3a_ruin" then
       return {
@@ -104,8 +137,8 @@ return function(map, characterManager, enemyManager)
     if mapId == "3c_ocean" then
       return {
         "まりょくをおしみなく　つかっていこう",
-        "",
         "むりだとおもったら　ガードでやりすごすのも　たいせつよ",
+        "はやさがちがうてきは　ガードのタイミングにきをつけて",
         "はりついてくるてきに　ガードをじゃまされないようにね　",
         "はりついてくるてきは　はやめにたおしておこう"
       }
@@ -114,11 +147,11 @@ return function(map, characterManager, enemyManager)
     --3d
     if mapId == "3d_space" and currentTimeZone == 0 then
       return {
-        "",
-        "",
-        "",
-        "",
-        "はりつかれても　しななきゃやすい"
+        "とんでもなく　はやいアイツにちゅうい",
+        "せっかくパワーチャージしたのに　わりこまれるとかなしい",
+        "はりつかれても　しななきゃやすい",
+        "のこりのHPやMPを　つねにチェックしておこう",
+        "ここまでこれたきみなら　きっとだいじょうぶ！"
       }
     end
 
@@ -136,7 +169,9 @@ return function(map, characterManager, enemyManager)
     --1b夕暮れ kawaztan
     if mapId == "1b_field" and currentTimeZone == 1 then
       return {
-      　　　　"",
+        "こまめにヒーリングをかけよう",
+        "きょうりょくなワザはしっかりガードしよう",
+        "いちどラスボスをたおしたきみなら　かならずかてる！"
       }
     end
 
