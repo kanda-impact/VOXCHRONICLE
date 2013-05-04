@@ -123,16 +123,21 @@ return function(map, characterManager, enemyManager)
         "さすがハード　ひとすじなわでは　いかないってかんじ？",
         "まさか　いきなりハードを　えらんだのでは？",
         "おいおい　こんなのまだ　じょのくち　だぜ？",
-        "あまくみては　いけないな..."
+        "あまくみては　いけないな...",
+        ""
       }
     elseif mapId == "1b_field" and currentTimeZone == TimeZoneDay then -- 1b夕方
       extraPattern = {
+        "さすがハード　ひとすじなわでは　いかないってかんじ？",
+        "まさか　いきなりハードを　えらんだのでは？",
         "たそがれに　しずむ",
         "ああ．．．ゆうひが　しずむ．．．"
       }
 
     elseif mapId == "1b_field" and currentTimeZone == TimeZoneDay then -- 1b夜
       extraPattern = {
+        "さすがハード　ひとすじなわでは　いかないってかんじ？",
+        "まさか　いきなりハードを　えらんだのでは？",
         "くらやみに　のみこまれた",
         "やみよに　みえなくなった",
         "よくあさには　あとかたものこらない　だろう"
@@ -148,9 +153,9 @@ return function(map, characterManager, enemyManager)
       extraPattern = {
         "くらいよー　せまいよー　こわいよー",
         "ぐぅ．．．さすが　てごわい",
-        "",
-        "",
-        ""
+        "もう　たいようを　みることはできない",
+        "てきがそとまで　はこびだしてくれないかな...",
+        "じめんが　つめたい"
       }
     elseif mapId == "2c_cyber" then
       extraPattern = {
@@ -165,37 +170,37 @@ return function(map, characterManager, enemyManager)
         "ぷちっ",
         "ぐしゃっ",
         "ぺたんこに　なった",
-        "",
-        ""
+        "まにあわなかった...",
+        "まるで　きょうせいスクロールの　かべのようだった"
       }
     elseif mapId == "3b_castle" and level == 30 then    --B
     extraPattern = {
-        "きさまの　じつりょくは　そのていどか？",
+        "たて！　きさまのちから　そのていどでは　ないはずだ",
+        "まだだ...　まだ　たたかいたりぬ",
+        "でなおして　くるがいい",
         "",
-        "",
-        "",
-        ""
+        _("#{chara}　きさまの　な　おぼえておこう")
       }
     elseif mapId == "3c_ocean" and level == 30 then    --C
     extraPattern = {
-        "タコなぐりに　されてしまった",
-        "",
-        "",
-        "",
-        ""
+        "タコなぐりにされてしまった",
+        "イカんともしがたい",
+        "かずのぼうりょくには　かなわなかった",
+        "あのゲソ　たおしても　キリがない!?",
+        "スルメに　してやる...!"
     }
     elseif mapId == "3d_space" and level == 30 then    --Dボス
     extraPattern = {
-        "うちゅうの　もくずと　きえた",
-        _("そして　#{chara}は　かんがえるのを　やめた"),
-        "うちゅうに　ただよう　デブリに　なった",
         "あっとうてきなちからで　けしさられた",
-        "",
+        _("そして　#{chara}は　かんがえるのを　やめた"),
+        "このせかいから　おとがきえた",
+        "あいつは...あいつだけは、たおさないと...!!",
+        "やっと　ここまできたのに...!",
     }
     elseif mapId == "3d_space" and level == 30 then    --かわずたん
     extraPattern = {
         "てんしのような　あくまのえがお",
-        "",
+        "おまえのような　1ボスがいるか！",
         "",
         "",
         "",
