@@ -4,6 +4,7 @@ EnemySkill = {
   performSkill = function(self, user, characterManager, enemyManager)
     local key = "directAttack"
     local turn = user:getRegister(key, 0) -- 溜めているターンを取得
+    local mManager = MessageManager:shaderManager()
     if turn == 0 then
       -- 溜め初回ターンの時
       -- user:setAnimationClip("attack", 1, true) -- グラを変更する
@@ -20,8 +21,13 @@ EnemySkill = {
       characterManager:damage(10) -- ダメージを与える
       user:setRegister(key, 0) -- 溜めターンをリセット
       user:setDefaultAnimationClip() -- グラを元に戻す
-      MessageManager:sharedManager():pushMessage(user:getName().."は　強力な　一撃を　放った")
-      (user:getName().."の　あっとうてきな　いちげき！！")
+
+      local text = {
+        user:getName().."は　強力な　一撃を　放った",
+        user:getName().."の　あっとうてきな　いちげき！！"
+      }
+      local rand = math.random(#text)
+      mManager:pushMessage(text[rand])
     end
   end
 }

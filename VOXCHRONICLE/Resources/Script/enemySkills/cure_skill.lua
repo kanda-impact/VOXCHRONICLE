@@ -6,8 +6,15 @@ EnemySkill = {
     local layer = EffectLayer:sharedLayer()
     SimpleAudioEngine:sharedEngine():playEffect("enemy_cure.mp3")
     layer:addEffectOnEnemy(user, "enemy_cure", 3, CCRectMake(0, 0, 50, 50))
-    local message = user:getName().."の　きずが　みるみるふさがっていく！"
-    --user:getName().."の　たいりょくが　かいふくした！"
+
+    local mManager = MessageManager:shaderManager()
+
+    local text = {
+      user:getName().."の　きずが　みるみるふさがっていく！",
+      user:getName().."の　たいりょくが　かいふくした！"
+    }
+    local rand = math.random(#text)
+    mManager:pushMessage(text[rand])
 
     layer:addDamageLabelOnEnemy(user, cure, DamageLabelTypeCure)
     MessageManager:sharedManager():pushMessage(message)
