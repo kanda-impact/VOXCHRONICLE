@@ -9,6 +9,8 @@
 #include "MessageWindow.h"
 #include <sstream>
 
+const int kMAX_MESSAGE_QUEUE = 6;
+
 const float kDefaultMessageWindowDelay = 0.75f;
 const float kDefaultMessageWindowLastDelay = 2.0f;
 const float kDefaultMessageWindowSpeed = 1.0f / 60.0f;
@@ -45,6 +47,9 @@ MessageWindow::~MessageWindow() {
 void MessageWindow::pushMessage(const char* message) {
   VQString* str = VQString::create(message);
   if (str->length() == 0) return;
+  if (_messageQueue->count() > kMAX_MESSAGE_QUEUE) {
+    _messageQueue->removeAllObjects();
+  }
   if (this->isLastMessage() && this->isEndMessage()) { // 最後のメッセージで終わってたら
     this->unschedule(schedule_selector(MessageWindow::updateNextMessage));
     _messageQueue->addObject(str);
