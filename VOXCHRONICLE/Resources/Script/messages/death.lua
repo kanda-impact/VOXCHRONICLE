@@ -118,21 +118,32 @@ return function(map, characterManager, enemyManager)
         "チュートリアルは　みてくれた？",
         "ま　まって　やめないでー！"
       }
+    elseif (mapId == "1b_field" or mapId == "field_boss") and map.__IRegister__:getBool("isBattleKawaztan") then    --かわずたん
+      extraPattern = {
+          "てんしのような　あくまのえがお",
+          "おまえのような　1ボスがいるか！",
+          "",
+          "",
+          "",
+      }
     elseif mapId == "1b_field" and currentTimeZone == TimeZoneDay then -- 1b昼
       extraPattern = {
         "さすがハード　ひとすじなわでは　いかないってかんじ？",
         "まさか　いきなりハードを　えらんだのでは？",
         "おいおい　こんなのまだ　じょのくち　だぜ？",
-        "あまくみては　いけないな..."
+        "あまくみては　いけないな...",
       }
     elseif mapId == "1b_field" and currentTimeZone == TimeZoneDay then -- 1b夕方
       extraPattern = {
+        "さすがハード　ひとすじなわでは　いかないってかんじ？",
+        "まさか　いきなりハードを　えらんだのでは？",
         "たそがれに　しずむ",
         "ああ．．．ゆうひが　しずむ．．．"
       }
-
     elseif mapId == "1b_field" and currentTimeZone == TimeZoneDay then -- 1b夜
       extraPattern = {
+        "さすがハード　ひとすじなわでは　いかないってかんじ？",
+        "まさか　いきなりハードを　えらんだのでは？",
         "くらやみに　のみこまれた",
         "やみよに　みえなくなった",
         "よくあさには　あとかたものこらない　だろう"
@@ -148,9 +159,9 @@ return function(map, characterManager, enemyManager)
       extraPattern = {
         "くらいよー　せまいよー　こわいよー",
         "ぐぅ．．．さすが　てごわい",
-        "",
-        "",
-        ""
+        "もう　たいようを　みることはできない",
+        "てきがそとまで　はこびだしてくれないかな...",
+        "じめんが　つめたい"
       }
     elseif mapId == "2c_cyber" then
       extraPattern = {
@@ -160,53 +171,47 @@ return function(map, characterManager, enemyManager)
         "シールドだけじゃ　さばききれない"
       }
         --ボスの死亡台詞
-    elseif mapId == "3a_ruin" and level == 30 then    --A
+    elseif (mapId == "3a_ruin" or mapId == "ruin_boss") and level == 30 then    --A
     extraPattern = {
         "ぷちっ",
         "ぐしゃっ",
-        "ぺたんこに　なった",
-        "",
-        ""
+        "ぺたんこになった",
+        "まにあわなかった...",
+        "まるで　きょうせいスクロールの　かべのようだった"
       }
-    elseif mapId == "3b_castle" and level == 30 then    --B
+    elseif (mapId == "3b_castle" or mapId == "bossdebug") and level == 30 then    --B
     extraPattern = {
-        "きさまの　じつりょくは　そのていどか？",
+        "たて！　きさまのちからは　そのていどでは　ないはずだ",
+        "まだだ...　まだ　たたかいたりぬ",
+        "でなおして　くるがいい",
         "",
-        "",
-        "",
-        ""
+        _("#{chara}　きさまの　な　おぼえておこう")
       }
-    elseif mapId == "3c_ocean" and level == 30 then    --C
+    elseif (mapId == "3c_ocean" or mapId == "ocean_boss") and level == 30 then    --C
     extraPattern = {
-        "タコなぐりに　されてしまった",
-        "",
-        "",
-        "",
-        ""
+        "タコなぐりにされてしまった",
+        "イカんともしがたい",
+        "かずのぼうりょくには　かなわなかった",
+        "あのゲソ　たおしても　キリがない!?",
+        "スルメに　してやる...!"
     }
-    elseif mapId == "3d_space" and level == 30 then    --Dボス
+    elseif (mapId == "3d_space" or mapId == "space_boss") and level == 30 then    --Dボス
     extraPattern = {
-        "うちゅうの　もくずと　きえた",
-        _("そして　#{chara}は　かんがえるのを　やめた"),
-        "うちゅうに　ただよう　デブリに　なった",
         "あっとうてきなちからで　けしさられた",
-        "",
-    }
-    elseif mapId == "3d_space" and level == 30 then    --かわずたん
-    extraPattern = {
-        "てんしのような　あくまのえがお",
-        "",
-        "",
-        "",
-        "",
+        _("そして　#{chara}は　かんがえるのを　やめた"),
+        "このせかいから　おとがきえた",
+        "あいつは...あいつだけは　たおさないと...!!",
+        "やっと　ここまできたのに...!",
     }
     elseif mapId == "3a_ruin" then
       extraPattern = {
+        "このまま　くちはてていく　さだめ",
+        "",
         "",
       }
     elseif mapId == "3b_castle" then
       extraPattern = {
-        "しろの　ぼうれいへと　なりはてるのか．．．",
+        "しろの　ぼうれいと　なりはてるのか．．．",
         "",
         "",
         "",
@@ -214,6 +219,7 @@ return function(map, characterManager, enemyManager)
     elseif mapId == "3c_ocean" then
       extraPattern = {
         "うみの　もくずと　きえた",
+        "くらい　くらい　うみのそこにしずんだ",
         "",
       }
     elseif mapId == "3d_space" then
@@ -221,7 +227,7 @@ return function(map, characterManager, enemyManager)
         "うちゅうの　もくずと　きえた",
         _("そして　#{chara}は　かんがえるのを　やめた")
         "うちゅうに　ただよう　デブリに　なった",
-        "あっとうてきなちからで　けしさられた",
+        "ラスカ　きみはどこにおちたい？",
         "",
       }
       
