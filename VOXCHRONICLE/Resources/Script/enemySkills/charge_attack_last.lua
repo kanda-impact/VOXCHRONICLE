@@ -21,6 +21,7 @@ EnemySkill = {
       user:setRegister(key, 0) -- 溜めターンをリセット
       user:setDefaultAnimationClip() -- グラを元に戻す
       MessageManager:sharedManager():pushMessage(user:getName().."は　強力な　一撃を　放った")
+      (user:getName().."の　あっとうてきな　いちげき！！")
     end
   end
 }

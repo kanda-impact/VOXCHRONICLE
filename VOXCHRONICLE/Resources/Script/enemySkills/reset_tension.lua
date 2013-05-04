@@ -13,6 +13,7 @@ EnemySkill = {
     elseif turn == 1 then
       SimpleAudioEngine:sharedEngine():playEffect("enemy_burn.mp3")
       local message2 = characterManager:getCurrentCharacter():getName().."の　パワーが　もとにもどってしまった！"
+      --getCurrentCharacter():getName().."の　やるきが　おもいきりなえた！"
       mManager:pushMessage(message2)
       local layer = EffectLayer:sharedLayer()
       layer:addEffectOnEnemy(nil, "run", 3, CCRectMake(0, 0, 120, 80))
