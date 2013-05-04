@@ -125,6 +125,8 @@ Map = {
       elseif level == 10 then
         enemyManager:popEnemyAt("kawaztan1S0", 3, 1)
         self.__IRegister__:setBool("isBattleKawaztan", true)
+        local data = SaveData:sharedData()
+        data:setClearedForMap("field_boss") -- フリープレイ解放
       end
     end
 
