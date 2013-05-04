@@ -33,6 +33,7 @@ class MusicManager :public CCObject {
   int _finishCount;
   int _minDrumScore;
   bool _isImpact;
+  bool _isAfterIntro;
   string _extension;
   Music* _music;
   MusicSet* _musicSet;
@@ -182,6 +183,8 @@ class MusicManager :public CCObject {
   void pushQTETracks();
   
   void preloadAllTracks(CharacterManager* manager, Level* level);
+  
+  void updateAfterIntro();
 };
 
 #endif /* defined(__VOXCHRONICLE__MusicManager__) */
