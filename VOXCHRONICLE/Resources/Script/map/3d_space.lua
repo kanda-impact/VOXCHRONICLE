@@ -56,7 +56,12 @@ Map = {
       characterManager:setExp(characterManager:getExpWithLevel(25))
 
       --characterManager:setExp(characterManager:getExpWithLevel(level))
-
+      local enemies = enemyManager:getEnemies()
+      for i = 0, enemies:count() do
+        local enemy = enemies:objectAtIndex(i)
+        tolua.cast(enemy, "Enemy")
+        enemies:setExp(0)
+      end
       enemyManager:loadEnemyTextureAsync("fortress.png")
       enemyManager:loadEnemyTextureAsync("knight.png")
       enemyManager:loadEnemyTextureAsync("iron.png")
