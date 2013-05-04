@@ -85,6 +85,7 @@ string MusicManager::getTrackFileName(const char *trackName) {
 
 void MusicManager::pushIntroTracks() {
   string main, counter, drum;
+  _isAfterIntro = true;
   int introCount = _musicSet->getIntroCount();
   if (introCount == 0) {
     // イントロなしのとき、いきなり曲を鳴らします
@@ -150,6 +151,7 @@ void MusicManager::pushNextTracks(Skill* skill, SkillPerformInfo& performInfo) {
   // メロディの設定
   SkillPerformType performType = SkillPerformTypeNone;
   string name = this->checkSkillTrackName(skill, performType);
+  this->updateAfterIntro();
   performInfo.skillTrackName = name;
   performInfo.type = performType;
   performInfo.skill = skill;
@@ -232,9 +234,12 @@ string MusicManager::checkSkillTrackName(Skill* skill, SkillPerformType& perform
     }
   } else {
     if (_characterManager->getLastSkill() == NULL) {
-      int waitCount = _characterManager->getRepeatCount();
-      _characterManager->setRepeatCount((_characterManager->getRepeatCount() + 1) % _musicSet->getWaitCount());
-      return this->buildTrackName("wait", NULL, waitCount);
+      int newWaitCount = ((_characterManager->getRepeatCount() + 1) % _musicSet->getWaitCount());
+      if (_isAfterIntro) {
+        newWaitCount = 0;
+      }
+      _characterManager->setRepeatCount(newWaitCount);
+      return this->buildTrackName("wait", NULL, newWaitCount);
     } else {
       _characterManager->setRepeatCount(0);
       _characterManager->setRepeatCountRaw(0);
@@ -358,5 +363,11 @@ void MusicManager::preloadMusic(const char *trackName, int maxCount) {
       string file = buildTrackName(trackName, NULL, i, chara);
       BufferCache::sharedCache()->addBuffer(this->getTrackFileName(file.c_str()).c_str());
     }
+  }
+}
+
+void MusicManager::updateAfterIntro() {
+  if (_isAfterIntro) {
+    _isAfterIntro = false;
   }
 }
