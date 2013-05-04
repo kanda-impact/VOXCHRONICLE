@@ -9,6 +9,7 @@ return function(map, characterManager, enemyManager)
     "たたかいを　きりぬけた",
     "よし！　きりぬけたぞ！",
     "モンスターを　たおした",
+    "つぎぃ　いってみよ～",
   }
   local chara = characterManager:getCurrentCharacter():getName()
   local mapId = map:getIdentifier()
@@ -75,12 +76,26 @@ return function(map, characterManager, enemyManager)
         "かった！　おれたちはつよい！",
       }
     end
+       --1b夕暮れ　かわずたん
+    if mapId == "1b_field" and currentTimeZone == 1 then
+      return {
+        "ゆうぐれを　こえて",
+        "平原　クリアー",
+        "平原の　おわりがみえた",
+        "さあ　たたかいはこれからだ",
+        "かった！　おれたちはつよい！",
+        "あいつは　なんだったんだ？！",
+        "やったー　たおしたぞー",
+        "まいったケロ～",
+        "そうぜつな　たたかいだったぜ．．．",
+      }
+    end
     --１ｂ夜
     if mapId == "1b_field" and currentTimeZone == 2 then
       return {
         "もうじき　よるがあけそうね",
         "平原　クリアー",
-        "平原の　おわりがみえた",
+        "平原に　おわりがみえた",
         "さあ　たたかいはこれからだ"
       }
     end

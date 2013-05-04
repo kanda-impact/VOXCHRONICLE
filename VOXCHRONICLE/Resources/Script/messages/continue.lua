@@ -58,7 +58,8 @@ return function(map, characterManager, enemyManager)
       return {
       "あのコウモリは　すばやいぞ",
       "てきのおおだては　ゆみでもねらえるわよ",
-      "まにあわないときは　ガードやノックバックをかつようしよう",
+      "まにあわないときは　ガードもしよう",
+      "ノックバックも　つかってみよう",
       }
     end
 
@@ -106,25 +107,32 @@ return function(map, characterManager, enemyManager)
       }
     end
 
-    --3d 昼
+    --3d
     if mapId == "3d_space" and currentTimeZone == 0 then
       return {
-        "そうびと　たいせいに　ちゅうもく",
-        "チェンジを　つかいこなすのだ",
-        "きをとりなおして　いこう",
-        "こんなところじゃ　おわれない！",
-        "つぎは　ほんきで　いくぞ！",
+        "",
+        "",
+        "",
+        "",
+        "",
       }
     end
 
     --1b夕暮れ
     if mapId == "1b_field" and currentTimeZone == 1 then
       return {
-        "",
-        "",
-        "",
-        "",
-        "",
+      　          "そうびと　たいせいに　ちゅうもく",
+        "チェンジを　つかいこなすのだ",
+        "きをとりなおして　いこう",
+        "こんなところじゃ　おわれない！",
+        "つぎは　ほんきで　いくぞ！",
+      }
+    end
+    
+    --1b夕暮れ kawaztan
+    if mapId == "1b_field" and currentTimeZone == 1 then
+      return {
+      　          
       }
     end
 

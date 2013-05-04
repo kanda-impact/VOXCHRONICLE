@@ -52,12 +52,12 @@ return function(map, characterManager, enemyManager)
       _("#{chara}はほろびぬ！　なんどでも　よみがえるさ"),
       _("お　おぼえてろー"),
       _("うわーん"),
-      _("だが　だいに　だいさんの　#{chara}が　......かならず"),
+      _("だが　だいに　だいさんの　#{chara}が　...かならず"),
       _("こんなところで　くちるなんて　もったいない"),
-      _("#{chara}のなきがらは　まものたちが　おいしくいただきました"),
+      _("#{chara}のなきがらは　おいしくいただかれた"),
       _("どういうこと　だってばよ......"),
       _("わがしょうがいに　いっぺんのくい　なし"),
-      _("べ　べつにあんたのために　やられたわけじゃないんだからね"),
+      _("あんたのために　やられたわけじゃないんだからね"),
       _("か......　かてない......　だと"),
       _("もっと　がんばれ！　きみなら　できる"),
       _("ゆだん　たいてき"),
@@ -98,6 +98,14 @@ return function(map, characterManager, enemyManager)
       _("ご　りんじゅう"),
       _("むこうに　おはなばたけが　みえます"),
       _("#{chara}！　おうとうしろ　#{chara}ーーーーー！")
+      "ちからつきてしまった",
+      "しょうしょう　あそびすぎたか",
+      "しゅぎょうして　でなおさねば．．．！",
+      "やつは　なにもの　だったんだ．．．",
+      "くっ．．．　つよすぎる．．．",
+      "あび　きょうかん",
+      "どうして　こうなった？",
+      "まものは　たのしそうに　わらっている",
     }
     local extraPattern = {}
     math.random(100)
@@ -108,7 +116,7 @@ return function(map, characterManager, enemyManager)
         "だいじょうぶ　すこしずつ　なれていこう",
         "まあ　そういうことも　あるさ",
         "チュートリアルは　みてくれた？",
-        "ま　まって　やめないで",
+        "ま　まって　やめないでー！",
       }
     elseif mapId == "1b_field" and currentTimeZone == TimeZoneDay then -- 1b昼
       extraPattern = {
@@ -116,15 +124,18 @@ return function(map, characterManager, enemyManager)
         "まさか　いきなりハードを　えらんだのでは？",
         "おいおい　こんなのまだ　じょのくち　だぜ？",
         "あまくみては　いけないな...",
-        "しょうしょう　あそびすぎたか",
       }
     elseif mapId == "1b_field" and currentTimeZone == TimeZoneDay then -- 1b夕方
       extraPattern = {
         "たそがれに　しずむ",
+        "ああ．．．ゆうひが　しずむ．．．",
       }
+
     elseif mapId == "1b_field" and currentTimeZone == TimeZoneDay then -- 1b夜
       extraPattern = {
-        "",
+        "くらやみに　のみこまれた",
+        "やみよに　みえなくなった",
+        "よくあさには　あとかたものこらない　だろう",
       }
     elseif mapId == "2a_forest" then
       extraPattern = {
@@ -154,6 +165,9 @@ return function(map, characterManager, enemyManager)
       }
     elseif mapId == "3b_castle" then
       extraPattern = {
+        "しろの　ぼうれいへと　なりはてるのか．．．",
+        "",
+        "",
         "",
       }
     elseif mapId == "3c_ocean" then
@@ -163,9 +177,9 @@ return function(map, characterManager, enemyManager)
     elseif mapId == "3d_space" then
       extraPattern = {
         "うちゅうの　もくずと　きえた",
-        "",
-        "",
-        "",
+        _("そして　#{chara}は　かんがえるのを　やめた")
+        "うちゅうに　ただよう　デブリに　なった",
+        "あっとうてきなちからで　けしさられた",
         "",
       }
     end 
@@ -173,5 +187,37 @@ return function(map, characterManager, enemyManager)
     if r < 20 then -- 2割の確率で個別テーブルを返します
       return extraPattern
     end
+    
+    
+    --ボスの死亡台詞
+    --A
+    extraPattern = {
+        "うちゅうの　もくずと　きえた",
+        _("そして　#{chara}は　かんがえるのを　やめた")
+        "うちゅうに　ただよう　デブリに　なった",
+        "あっとうてきなちからで　けしさられた",
+        "",
+      }
+    end 
+    --B
+    extraPattern = {
+        "うちゅうの　もくずと　きえた",
+        _("そして　#{chara}は　かんがえるのを　やめた")
+        "うちゅうに　ただよう　デブリに　なった",
+        "あっとうてきなちからで　けしさられた",
+        "",
+      }
+    end 
+    --C
+    extraPattern = {
+        "うちゅうの　もくずと　きえた",
+        _("そして　#{chara}は　かんがえるのを　やめた")
+        "うちゅうに　ただよう　デブリに　なった",
+        "あっとうてきなちからで　けしさられた",
+        "",
+      }
+    end 
+    --D
+    
     return commonPattern
 end
