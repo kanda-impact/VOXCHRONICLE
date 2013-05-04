@@ -15,7 +15,7 @@
 
 Music = {
   name = "古城ルパティナ",
-  composer = "tetu_fs",
+  composer = "Tetu_fs",
   prefix = "dub",
   type = MusicSetTypeWay,
   introCount = 2,

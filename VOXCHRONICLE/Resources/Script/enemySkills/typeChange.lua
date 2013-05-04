@@ -9,13 +9,20 @@ EnemySkill = {
     if not user:getType() == SkillTypeNormal and rand <= 2 then
       user:setSkillType(SkillTypeNormal) --耐性なし
       mManager:pushMessage(userName.."は　たいせいを　ととのえた")
+    --user:getName()..は　ぼうぎょを　といた                 
     else
       if chara == CharacterTypeVox then -- 物理耐性
         user:setSkillType(SkillTypePhysical)
         mManager:pushMessage(userName.."は　まもりを　かためた")
+        --user:getName()..は　ぼうぎょしょうへきを　てんかいした！
+        --ぼうぎょ　しょうへき　ケロー！
       elseif chara == CharacterTypeLaska then -- 魔法耐性
         user:setSkillType(SkillTypeMagical)
         mManager:pushMessage(userName.."の　まわりを　見えない霧が　包み込む")
+        --user:getName()..は　まほうしょうへきを　てんかいした！
+        --user:getName()..の　まほうの　カベ！
+        --user:getName()..は　まほうが　ききにくくなった！
+        --まほう　しょうへき　ケローっ！
       end
     end
   end

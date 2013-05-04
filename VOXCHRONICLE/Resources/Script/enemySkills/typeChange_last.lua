@@ -11,9 +11,13 @@ EnemySkill = {
     if chara == CharacterTypeVox then -- 物理耐性
       someEnemy:setSkillType(SkillTypePhysical)
       mManager:pushMessage(userName.."は　まもりを　かためた")
+      --user:getName()..は　ぼうぎょしょうへきを　てんかいした！
     elseif chara == CharacterTypeLaska then -- 魔法耐性
       someEnemy:setSkillType(SkillTypeMagical)
       mManager:pushMessage(userName.."の　まわりを　見えない霧が　包み込む")
+        --user:getName()..は　まほうしょうへきを　てんかいした！
+        --user:getName()..の　まほうの　カベ！
+        --user:getName()..は　まほうが　ききにくくなった！
     end
   end
 }

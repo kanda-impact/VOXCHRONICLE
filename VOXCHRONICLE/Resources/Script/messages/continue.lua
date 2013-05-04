@@ -165,9 +165,9 @@ return function(map, characterManager, enemyManager)
         "きをとりなおして　いこう"
       }
     end
-      
     --1b夕暮れ kawaztan
-    if mapId == "1b_field" and currentTimeZone == 1 then
+    local isBattleKawaz = map.__IRegister__:getBool("isBattleKawaztan", false)
+    if mapId == "1b_field" and currentTimeZone == 1 and isBattleKawaz then
       return {
         "こまめにヒーリングをかけよう",
         "きょうりょくなワザはしっかりガードしよう",

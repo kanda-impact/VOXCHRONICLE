@@ -1,6 +1,6 @@
 Music = {
   name = "レッスン オクスクロニクル！",
-  composer = "nmb",
+  composer = "ちゃぼ",
   prefix = "chabo",
   type = MusicSetTypeWay,
   introCount = 4,

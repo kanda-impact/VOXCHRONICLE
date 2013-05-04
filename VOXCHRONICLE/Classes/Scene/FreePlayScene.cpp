@@ -81,6 +81,15 @@ bool FreePlayScene::init(const char* script, bool unlock) {
     array->addObject(item);
   }
   
+  for (int j = i + 1; j < 15; ++j) { // 透明ボタンの追加 足りない分を透明ボタンでpad
+    CCSprite* buttonSprite = CCSprite::create("free.png");
+    CCMenuItemSprite* item = CCMenuItemSprite::create(buttonSprite, buttonSprite);
+    item->setVisible(false);
+    int col = floor(j / 5);
+    CCArray* array = (CCArray*)items->objectAtIndex(col);
+    array->addObject(item);
+  }
+  
   CCMenuItemImage* back = CCMenuItemImage::create("dictionary_back.png",
                                                   "dictionary_back_pressed.png",
                                                   this,

@@ -1,6 +1,6 @@
 -- のろい
 EnemySkill = {
-  name = "のろいのことば",
+  name = "やみのいなずまがぼくをせめる",
   performSkill = function(self, user, characterManager, enemyManager)
     SimpleAudioEngine:sharedEngine():playEffect("enemy_burn.mp3")
 
@@ -13,6 +13,9 @@ EnemySkill = {
       -- 溜め初回ターンの時
       user:setAnimationClip("attack", 1, true) -- グラを変更する
       mManager:pushMessage(user:getName().."は　やみのまほうを　となえている")
+      --(user:getName().."はなにかを　くりだして　きそうだ")
+      --(user:getName().."が　あやしい　うごきをしている")
+      --(user:getName().."が　なにか　しかけてくる！？")
       user:setRegister(key, turn + 1)
       user:setRegister("skillType", 0)
       user:setRow(2)
@@ -31,6 +34,9 @@ EnemySkill = {
       characterManager:damage(10)
       user:setDefaultAnimationClip() -- グラを元に戻す
       mManager:pushMessage("やみのいなずまが　"..characterManager:getCurrentCharacter():getName().."を　つらぬく！")
+      --あかい　らいげきが　（キャラ）　を　うちぬく！
+      --（ラスボス名）の　ダークサンダー！！
+      --やみの　でんきだ！　ビリビリビリっ！！
       user:setRegister(key, 0)
       user:setRow(1)
     else

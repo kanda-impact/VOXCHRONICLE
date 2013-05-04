@@ -23,6 +23,10 @@ EnemySkill = {
         user:setDefaultAnimationClip() -- グラを元に戻す
         layer:addEffectOnEnemy(nil, "thunder", 6, CCRectMake(0, 0, 120, 80)):setColor(ccc3(255, 1, 78))
         MessageManager:sharedManager():pushMessage(user:getName().."は　強力な　魔法を　放った")
+        --(user:getName().."の　スーパー　マジカル！")
+        --(user:getName().."の　ちょう　ひっさつ　まほう！")
+        --(ひっさつ　じゅもんを　くらうケロー！")
+        --(ケロケロケロリン　ピリピリピーン！")
       end
     else
       if turn == 0 then
@@ -46,6 +50,10 @@ EnemySkill = {
         user:setDefaultAnimationClip() -- グラを元に戻す
         layer:addEffectOnEnemy(nil, "attack", 4, CCRectMake(0, 0, 50, 50)):setColor(ccc3(0, 255, 230))
         MessageManager:sharedManager():pushMessage(user:getName().."は　すばやく　切りかかってきた")
+        --(user:getName().."は　おもいきり　きりつけてきた")
+        --(user:getName().."は　きょうきを　ふりまわした")
+        --(user:getName().."がむしゃらに　けんを　ふりまわす")
+        --("ひっさつけんを　くらうケロ～！")
       end
     end
   end

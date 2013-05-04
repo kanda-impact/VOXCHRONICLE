@@ -27,6 +27,8 @@ typedef enum {
 
 #include "CCRemoveFromParentAction.h"
 
+#include "UIApplicationWrapper.h"
+
 using namespace cocos2d;
 using namespace boost;
 
@@ -116,9 +118,10 @@ void TitleScene::onEnterTransitionDidFinish() {
 void TitleScene::onStartButtonPressed(CCObject* sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/start.mp3").c_str());
   CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
-  if (SaveData::sharedData()->getCountFor(SaveDataCountKeyBoot) == 1) {
+  if (SaveData::sharedData()->isInitialBoot()) {
     InitialScene* scene = InitialScene::create();
     nextScene(scene);
+    SaveData::sharedData()->setInitialBoot(false);
   } else {
     MainMenuScene* scene = new MainMenuScene(true);
     scene->autorelease();
@@ -155,6 +158,7 @@ bool TitleScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
 void TitleScene::onDemoStart() {
   SaveData* data = SaveData::sharedData();
   _isDemo = true;
+  UIApplicationWrapper::sharedApplication()->setIdleTimerDisabled(true);
   CCDirector* director = CCDirector::sharedDirector();
   string text = _demo->getString("text");
   CCLabelTTF* label = CCLabelTTF::create(text.c_str(),
@@ -205,6 +209,7 @@ void TitleScene::onDemoEnd() {
 }
 
 void TitleScene::removeDemo() {
+  UIApplicationWrapper::sharedApplication()->setIdleTimerDisabled(false);
   SimpleAudioEngine::sharedEngine()->stopAllEffects();
   _touchToStart->setVisible(true);
   CCNode* demo = this->getChildByTag(TitleSceneTagDemoBackground);
