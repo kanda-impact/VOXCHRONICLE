@@ -34,6 +34,12 @@ Skill = {
     end
   end,
   getMessageTable = function(self, targets, map, characterManager, enemyManager)
+    if targets:count() > 0 then
+      local target = targets:count()
+      if target:getSkillType() == SkillTypePhysical or target:getItem() == EnemyItemShield or target:getSpecies():isEnableSkill(self) then -- 効かない相手にはメッセージ表示しない
+        return {}
+      end 
+    end
     return {
       "おもいきり　けんをふりおろした",
       "けんで　こうげきした",
