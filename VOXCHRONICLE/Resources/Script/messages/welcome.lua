@@ -1,6 +1,7 @@
 require("concat")
 require("timezone")
 return function(map, characterManager, enemyManager)
+  math.random(100)
   chara = characterManager:getCurrentCharacter():getName()
   local mapId = map:getIdentifier()
   local currentTimeZone = getCurrentTimeZone()

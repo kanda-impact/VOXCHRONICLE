@@ -1,4 +1,3 @@
-math.randomseed(os.time()) -- 種の初期化
 EnemySkill = {
   name = "鉄球投げ",
   performSkill = function(self, user, characterManager, enemyManager)

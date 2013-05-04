@@ -269,6 +269,8 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     if (_musicManager->getIntroCount() == maxIntroCount) { // イントロが終わったとき
       _musicManager->setIntroCount(0);
       _skin->getController()->setEnable(true);
+      _characterManager->setRepeatCount(0);
+      _skin->getController()->resetAllTriggers();
       if (_level->getLevel() == _map->getInitialLevel()) {
         _map->performOnLevel(_characterManager, _enemyManager); // 初期レベルの時、スクリプトを呼んでやる
       }
