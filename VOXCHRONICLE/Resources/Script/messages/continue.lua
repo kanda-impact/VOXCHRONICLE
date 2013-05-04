@@ -132,8 +132,8 @@ return function(map, characterManager, enemyManager)
       
     --1b夕暮れ kawaztan
     if mapId == "1b_field" and currentTimeZone == 1 then
-      return {
-      　　　　"",
+        return {
+        "",
       }
     end
 
