@@ -16,10 +16,26 @@ Map = {
   end,
   onFinishPlaying = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
-    if level == 10 then
-      characterManager:setExp(characterManager:getExpWithLevel(10))
-    end
     local layer = EffectLayer:sharedLayer()
+    if level == 10 then
+      if not layer:getPopupWindow() then
+        characterManager:setExp(characterManager:getExpWithLevel(10))
+        local turn = self.__IRegister__:getRegister("currentTurn", 0)
+        if turn == 10 then -- 10ターン立った！
+          local popup = layer:addPopupWindow(1)
+          popup:setText(0, "いざ戦いへ！", [[
+トレーニングにはもう満足した？
+ぼうけんの旅に出るには、右上の
+ポーズボタンからメニューに戻ってね
+
+練習を続けたかったらまんぞくするまで
+いろいろ試してみて！
+]])
+          popup:addImage(0, "tutorial10_2.png")
+        end
+        self.__IRegister__:setRegister("currentTurn", turn + 1)
+      end
+    end
     if level == 4 then
       local popuped = self.__IRegister__:getBool("popuped") -- ポップアップしたかフラグ
       if enemyManager:getEnemies():count() == 1 and not popuped then
