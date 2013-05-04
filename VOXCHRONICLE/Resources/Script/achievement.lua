@@ -17,7 +17,7 @@ Achievement = {
     {SaveDataCountKeyDictionaryCount, dictionaryEnemyCount, "enemy100"},
     {SaveDataCountKeyHitDamage, 1000, "hit1000"},
     {SaveDataCountKeyAttackDamage, 10000, "attack10000"},
-    {SaveDataCountKeyDead, 1000, "play1000"}
+    {SaveDataCountKeyDead, 100, "play1000"} -- 100回遊べるRPG
   },
   -- 1回のプレイ中のカウントに依存する実績を書きます
   playLog = {
