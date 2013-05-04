@@ -66,18 +66,8 @@ return function(map, characterManager, enemyManager)
       }
     end
 
-    --1b夕暮れ
-    if mapId == "1b_field" and currentTimeZone == 1 then
-      return {
-        "ゆうぐれを　こえて",
-        "平原　クリアー",
-        "平原の　おわりがみえた",
-        "さあ　たたかいはこれからだ",
-        "かった！　おれたちはつよい！",
-      }
-    end
        --1b夕暮れ　かわずたん
-    local isBattleKawaz = map.__IRegister__:getBool("isBattleKawaztan", false)
+    local isBattleKawaz = map.__IRegister__:getBool("isBattleKawaztan")
     if mapId == "1b_field" and currentTimeZone == 1 and isBattleKawaz then
       return {
         "ゆうぐれを　こえて",
@@ -91,6 +81,18 @@ return function(map, characterManager, enemyManager)
         "そうぜつな　たたかいだったぜ．．．",
       }
     end
+
+    --1b夕暮れ
+    if mapId == "1b_field" and currentTimeZone == 1 then
+      return {
+        "ゆうぐれを　こえて",
+        "平原　クリアー",
+        "平原の　おわりがみえた",
+        "さあ　たたかいはこれからだ",
+        "かった！　おれたちはつよい！",
+      }
+    end
+
     --１ｂ夜
     if mapId == "1b_field" and currentTimeZone == 2 then
       return {

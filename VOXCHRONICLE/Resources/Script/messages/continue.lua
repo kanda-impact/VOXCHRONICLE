@@ -155,7 +155,17 @@ return function(map, characterManager, enemyManager)
       }
     end
 
-    --1b夕暮れ
+    --1b夕暮れ kawaztan
+    local isBattleKawaz = map.__IRegister__:getBool("isBattleKawaztan")
+    if mapId == "1b_field" and currentTimeZone == 1 and isBattleKawaz then
+      return {
+        "こまめにヒーリングをかけよう",
+        "きょうりょくなワザはしっかりガードしよう",
+        "いちどラスボスをたおしたきみなら　かならずかてる！"
+      }
+    end
+    
+     --1b夕暮れ
     if mapId == "1b_field" and currentTimeZone == 1 then
       return {
         "そうびと　たいせいに　ちゅうもく",
@@ -163,15 +173,6 @@ return function(map, characterManager, enemyManager)
         "ＭＰかんりは　できてるかな？",
         "こんなところじゃ　おわれない！",
         "きをとりなおして　いこう"
-      }
-    end
-    --1b夕暮れ kawaztan
-    local isBattleKawaz = map.__IRegister__:getBool("isBattleKawaztan", false)
-    if mapId == "1b_field" and currentTimeZone == 1 and isBattleKawaz then
-      return {
-        "こまめにヒーリングをかけよう",
-        "きょうりょくなワザはしっかりガードしよう",
-        "いちどラスボスをたおしたきみなら　かならずかてる！"
       }
     end
 
