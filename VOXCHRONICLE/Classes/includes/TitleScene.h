@@ -18,8 +18,10 @@
 
 using namespace cocos2d;
 
-class TitleScene : public cocos2d::CCLayer, public cocos2d::CCAccelerometerDelegate, public KWAlertDelegate {
+class TitleScene : public cocos2d::CCLayer, public cocos2d::CCAccelerometerDelegate {
 private:
+  int _shakeCount;
+  bool _isShaking;
   virtual void nextScene(CCLayer* layer);
   void onStartButtonPressed(CCObject* sender);
   void onDebugButtonPressed(CCObject* sender);
@@ -30,7 +32,6 @@ private:
   bool _isDemo;
   CCNode* _touchToStart;
   LuaObject* _demo;
-  void onGotoTutorial();
 public:
   virtual bool init();
   virtual ~TitleScene();
@@ -39,7 +40,6 @@ public:
   bool ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent);
   void registerWithTouchDispatcher();
   virtual void 	didAccelerate (CCAcceleration *pAccelerationValue);
-  virtual void clickedButtonAtIndex(KWAlert* alert, int index);
   CREATE_FUNC(TitleScene);
 };
 

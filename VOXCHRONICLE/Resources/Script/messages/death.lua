@@ -3,10 +3,10 @@ require("timezone")
 require("variable_expansion")
 -- 死亡時メッセージ
 return function(map, characterManager, enemyManager)
-  local chara = characterManager:getCurrentCharacter():getName()
+  chara = characterManager:getCurrentCharacter():getName()
   local mapId = map:getIdentifier()
   local currentTimeZone = getCurrentTimeZone()
-
+  local level = characterManager:getLevel()
   --死亡時（全ステージ共通部分）
   local commonPattern =  {
       _("#{chara}は　とうとう　しんでしまった"),
@@ -97,7 +97,7 @@ return function(map, characterManager, enemyManager)
       _("#{chara}は　いよいよもって　しんだ"),
       _("ご　りんじゅう"),
       _("むこうに　おはなばたけが　みえます"),
-      _("#{chara}！　おうとうしろ　#{chara}ーーーーー！")
+      _("#{chara}！　おうとうしろ　#{chara}ーーーーー！"),
       "ちからつきてしまった",
       "しょうしょう　あそびすぎたか",
       "しゅぎょうして　でなおさねば．．．！",
@@ -116,33 +116,33 @@ return function(map, characterManager, enemyManager)
         "だいじょうぶ　すこしずつ　なれていこう",
         "まあ　そういうことも　あるさ",
         "チュートリアルは　みてくれた？",
-        "ま　まって　やめないでー！",
+        "ま　まって　やめないでー！"
       }
     elseif mapId == "1b_field" and currentTimeZone == TimeZoneDay then -- 1b昼
       extraPattern = {
         "さすがハード　ひとすじなわでは　いかないってかんじ？",
         "まさか　いきなりハードを　えらんだのでは？",
         "おいおい　こんなのまだ　じょのくち　だぜ？",
-        "あまくみては　いけないな...",
+        "あまくみては　いけないな..."
       }
     elseif mapId == "1b_field" and currentTimeZone == TimeZoneDay then -- 1b夕方
       extraPattern = {
         "たそがれに　しずむ",
-        "ああ．．．ゆうひが　しずむ．．．",
+        "ああ．．．ゆうひが　しずむ．．．"
       }
 
     elseif mapId == "1b_field" and currentTimeZone == TimeZoneDay then -- 1b夜
       extraPattern = {
         "くらやみに　のみこまれた",
         "やみよに　みえなくなった",
-        "よくあさには　あとかたものこらない　だろう",
+        "よくあさには　あとかたものこらない　だろう"
       }
     elseif mapId == "2a_forest" then
       extraPattern = {
         "やられても　くじけるな",
         "めげずに　がんばって",
         "もういちど　ちょうせんしよう",
-        "パワーチャージを　つかってみよう",
+        "パワーチャージを　つかってみよう"
       }
     elseif mapId == "2b_cave" then
       extraPattern = {
@@ -150,15 +150,48 @@ return function(map, characterManager, enemyManager)
         "ぐぅ．．．さすが　てごわい",
         "",
         "",
-        "",
+        ""
       }
     elseif mapId == "2c_cyber" then
       extraPattern = {
         "こんなの　できねーよー",
         "むずかしいよう",
         "さすが　ハード．．．がくっ",
-        "シールドだけじゃ　さばききれない",
+        "シールドだけじゃ　さばききれない"
       }
+        --ボスの死亡台詞
+    elseif mapId == "3a_ruin" and level == 30 then    --A
+    extraPattern = {
+        "うちゅうの　もくずと　きえた",
+        _("そして　#{chara}は　かんがえるのを　やめた"),
+        "うちゅうに　ただよう　デブリに　なった",
+        "あっとうてきなちからで　けしさられた",
+        ""
+      }
+    elseif mapId == "3b_castle" and level == 30 then    --B
+    extraPattern = {
+        "うちゅうの　もくずと　きえた",
+        _("そして　#{chara}は　かんがえるのを　やめた"),
+        "うちゅうに　ただよう　デブリに　なった",
+        "あっとうてきなちからで　けしさられた",
+        ""
+      }
+    elseif mapId == "3c_ocean" and level == 30 then    --C
+    extraPattern = {
+        "うちゅうの　もくずと　きえた",
+        _("そして　#{chara}は　かんがえるのを　やめた"),
+        "うちゅうに　ただよう　デブリに　なった",
+        "あっとうてきなちからで　けしさられた",
+        ""
+    }
+    elseif mapId == "3d_space" and level == 30 then    --Dボス
+    extraPattern = {
+        "うちゅうの　もくずと　きえた",
+        _("そして　#{chara}は　かんがえるのを　やめた"),
+        "うちゅうに　ただよう　デブリに　なった",
+        "あっとうてきなちからで　けしさられた",
+        "",
+    }
     elseif mapId == "3a_ruin" then
       extraPattern = {
         "",
@@ -182,42 +215,11 @@ return function(map, characterManager, enemyManager)
         "あっとうてきなちからで　けしさられた",
         "",
       }
+      
     end 
     local r = math.random(100)
     if r < 20 then -- 2割の確率で個別テーブルを返します
       return extraPattern
     end
-    
-    
-    --ボスの死亡台詞
-    --A
-    extraPattern = {
-        "うちゅうの　もくずと　きえた",
-        _("そして　#{chara}は　かんがえるのを　やめた")
-        "うちゅうに　ただよう　デブリに　なった",
-        "あっとうてきなちからで　けしさられた",
-        "",
-      }
-    end 
-    --B
-    extraPattern = {
-        "うちゅうの　もくずと　きえた",
-        _("そして　#{chara}は　かんがえるのを　やめた")
-        "うちゅうに　ただよう　デブリに　なった",
-        "あっとうてきなちからで　けしさられた",
-        "",
-      }
-    end 
-    --C
-    extraPattern = {
-        "うちゅうの　もくずと　きえた",
-        _("そして　#{chara}は　かんがえるのを　やめた")
-        "うちゅうに　ただよう　デブリに　なった",
-        "あっとうてきなちからで　けしさられた",
-        "",
-      }
-    end 
-    --D
-    
     return commonPattern
 end

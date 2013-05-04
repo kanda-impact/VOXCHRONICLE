@@ -14,7 +14,7 @@ Map = {
     elseif 28 <= level and level <= 29  then
       return {leaf1A0 = 5, acorn1A0 = 2 }
     elseif level == 30 then
-      return {slime1A0 = 1, acorn1A0 = 2, T_tomezora2 = 1, T_tetufez2 = 2, T_geek2 = 1, T_leaf2 = 1, T_flower2 = 1}
+      return {slime1A0 = 1, acorn1A0 = 2, T_tomezora23 = 1, T_tetufez2 = 2, T_geek2 = 1, T_leaf2 = 1, T_flower2 = 1}
     end
     return {}
   end,
@@ -268,7 +268,7 @@ Map = {
 以上、ラスカによるテクニック解説でした～！
 じゃ～ね～
 ]])
-      popup:addImage(2, "tutorial10_1.png")
+      popup:addImage(2, "tutorial10_2.png")
       local data = SaveData:sharedData()
       data:unlockAchievement("clearTutorialC") -- 実績アンロック
       data:setClearedForMap("fp_tutorial") -- フリープレイ

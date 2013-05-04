@@ -89,6 +89,7 @@ class MainScene : public CCLayer {
   
   void addDamageEffect();
   void changeMap(Map* nextMap);
+  void changeMap(Map* nextMap, int initialLevel);
   void changeMusic(MusicSet* mSet, bool enablePreload);
   
   void startBossBattle();
@@ -100,6 +101,7 @@ class MainScene : public CCLayer {
   virtual void registerWithTouchDispatcher();
   
  public:
+  virtual bool init(Map* map, int initialLevel);
   virtual bool init(Map* map);
   virtual bool init();
   bool isBossBattle();

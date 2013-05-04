@@ -121,18 +121,17 @@ return function(map, characterManager, enemyManager)
     --1b夕暮れ
     if mapId == "1b_field" and currentTimeZone == 1 then
       return {
-      　          "そうびと　たいせいに　ちゅうもく",
+        "そうびと　たいせいに　ちゅうもく",
         "チェンジを　つかいこなすのだ",
         "きをとりなおして　いこう",
         "こんなところじゃ　おわれない！",
-        "つぎは　ほんきで　いくぞ！",
+        "つぎは　ほんきで　いくぞ！"
       }
     end
-    
+      
     --1b夕暮れ kawaztan
     if mapId == "1b_field" and currentTimeZone == 1 then
       return {
-      　          
       }
     end
 

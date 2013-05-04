@@ -21,6 +21,7 @@
 
 GameOverLayer::GameOverLayer(MainScene* main) {
   _main = main;
+  this->setTouchEnabled(true);
   // 巡回参照してた
   this->buildUI();
 }
@@ -61,7 +62,11 @@ void GameOverLayer::replayButtonPressed(CCObject *sender) {
   
   MainScene* newScene = new MainScene();
   newScene->autorelease();
-  newScene->init(newMap);
+  if (_main->isBossBattle()) {
+    newScene->init(newMap, newMap->getMaxLevel());
+  } else {
+    newScene->init(newMap);
+  }
   scene->addChild(newScene);
   newMap->release();
   
@@ -99,4 +104,12 @@ void GameOverLayer::titleButtonPressed(CCObject *sender) {
 
 void GameOverLayer::setMainBackScene(MainBackScene scene) {
   _backScene = scene;
+}
+
+void GameOverLayer::registerWithTouchDispatcher() {
+  CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 200, true);
+}
+
+bool GameOverLayer::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
+  return true;
 }

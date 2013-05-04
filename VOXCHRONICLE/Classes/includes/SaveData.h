@@ -68,6 +68,8 @@ class SaveData :public CCObject {
   void setCountFor(SaveDataCountKey key, int value);
   void addCountFor(SaveDataCountKey key);
   void addCountFor(SaveDataCountKey key, int value);
+  int getScore(const char* mapIdentifier);
+  bool updateScore(const char* mapIdentifier, int turn);
   int getCountFor(SaveDataCountKey key);
   bool isUnlockAchievement(const char* identifier);
   void unlockAchievement(const char* identifier);

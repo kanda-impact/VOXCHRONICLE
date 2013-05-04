@@ -75,7 +75,7 @@ StaffRollScene::StaffRollScene(CCArray* mapNames) {
                                                  this,
                                                  menu_selector(StaffRollScene::onBackButtonPressed));
   CCMenu* backMenu = CCMenu::create(backItem, NULL);
-  backMenu->setPosition(ccp(440, 290));
+  backMenu->setPosition(ccp(430, 290));
   this->addChild(backMenu);
 }
 
@@ -248,12 +248,12 @@ void StaffRollScene::pushTracks(const char *identifier, int count, MusicSet* set
 
 void StaffRollScene::pushWaitTracks(const char *characterIdentifier, MusicSet* set) {
   int waitCount = set->getWaitCount();
-  for (int i = 0; i < waitCount; ++i) {
+  for (int i = 0; i < 2; ++i) {
     stringstream ss;
     if (!set->isCommon("wait")) {
       ss << characterIdentifier;
     }
-    ss << "wait" << i << EXT;
+    ss << "wait" << MIN(i, waitCount - 1) << EXT; // waitcountが0なら0を2小節 2なら0, 1
     _music->pushTrack(set->getPrefixedMusicName(ss.str().c_str()).c_str(), MusicChannelMain);
     _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelCounter);
     this->pushDrumTrack("wait", set);
@@ -266,8 +266,16 @@ void StaffRollScene::pushDrumTrack(const char *identifier, MusicSet* set) {
   if (boost::algorithm::starts_with(identifier, "intro") || boost::algorithm::starts_with(identifier, "finish") || boost::algorithm::starts_with(identifier, "qte") || boost::algorithm::starts_with(identifier, "silent")) {
     _music->pushTrack(set->getPrefixedMusicName((string("silent") + string(EXT)).c_str()).c_str(), MusicChannelDrum);
   } else {
-    _music->pushTrack(set->getPrefixedMusicName((string("drum1") + string(EXT)).c_str()).c_str(), MusicChannelDrum);
-  }  
+    if (set->isCommon("drum")) {
+      _music->pushTrack(set->getPrefixedMusicName((string("drum1") + string(EXT)).c_str()).c_str(), MusicChannelDrum);
+    } else {
+      if (_currentCharacterType == CharacterTypeVox) {
+        _music->pushTrack(set->getPrefixedMusicName((string("voxdrum1") + string(EXT)).c_str()).c_str(), MusicChannelDrum);
+      } else {
+        _music->pushTrack(set->getPrefixedMusicName((string("lskdrum1") + string(EXT)).c_str()).c_str(), MusicChannelDrum);
+      }
+    }
+  }
 }
 
 void StaffRollScene::onBackButtonPressed(cocos2d::CCObject *sender) {

@@ -5,6 +5,7 @@
 #include "CCLuaEngine.h"
 #include "TitleScene.h"
 #include "macros.h"
+#include "SaveData.h"
 
 USING_NS_CC;
 using namespace std;
@@ -49,10 +50,10 @@ bool AppDelegate::applicationDidFinishLaunching()
   // set FPS. the default value is 1.0/60 if you don't call this
   pDirector->setAnimationInterval(1.0 / 60);
   
+  CCScriptEngineManager::sharedManager()->setScriptEngine(CCLuaEngine::defaultEngine());
+  
   // create a scene. it's an autorelease object
   CCScene *pScene = TitleScene::scene();
-  
-  CCScriptEngineManager::sharedManager()->setScriptEngine(CCLuaEngine::defaultEngine());
   
   CCTransitionFade* transition = CCTransitionFade::create(1.0f, pScene);
   

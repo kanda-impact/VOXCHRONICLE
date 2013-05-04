@@ -63,6 +63,10 @@ bool MainScene::init() {
 }
 
 bool MainScene::init(Map* map) {
+  return this->init(map, map->getInitialLevel());
+}
+
+bool MainScene::init(Map* map, int initialLevel) {
   if ( !CCLayer::init() ) {
     return false;
   }
@@ -115,7 +119,7 @@ bool MainScene::init(Map* map) {
   controller->autorelease();
   skin->setController(controller);
   
-  this->changeMap(map); // マップの設定
+  this->changeMap(map, initialLevel); // マップの設定
   _characterManager->setLevel(_level->getLevel()); // 初期レベル設定
   
   this->addChild(_enemyManager, MainSceneZOrderEnemyManager);
@@ -265,9 +269,11 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     if (_musicManager->getIntroCount() == maxIntroCount) { // イントロが終わったとき
       _musicManager->setIntroCount(0);
       _skin->getController()->setEnable(true);
-      if (_level->getLevel() == _map->getInitialLevel()) {
+      _characterManager->setRepeatCount(0);
+      _skin->getController()->resetAllTriggers();
+      //if (_level->getLevel() == _map->getInitialLevel()) {
         _map->performOnLevel(_characterManager, _enemyManager); // 初期レベルの時、スクリプトを呼んでやる
-      }
+      //}
       _state = VCStateMain;
     }
   }
@@ -549,7 +555,9 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _musicManager->setIntroCount(0);
       _preLevel = currentLevel;
       MessageManager::sharedManager()->pushRandomMessageFromFunction("levelup", _map, _characterManager, _enemyManager); // レベルアップメッセージ
-      _map->performOnLevel(_characterManager, _enemyManager); // スクリプトを呼んでやる
+      if (!_map->isBossStage() || _map->getMaxLevel() != _level->getLevel()) {
+        _map->performOnLevel(_characterManager, _enemyManager); // スクリプトを呼んでやる
+      }
       _characterManager->updateParameters();
       this->setLevel(_map->createLevel(currentLevel, _characterManager));
       _enemyManager->setLevel(_level);
@@ -766,6 +774,10 @@ void MainScene::addDamageEffect() {
 }
 
 void MainScene::changeMap(Map* nextMap) {
+  this->changeMap(nextMap, nextMap->getInitialLevel());
+}
+
+void MainScene::changeMap(Map* nextMap, int initialLevel) {
   bool init = _map == NULL;
   if (_map) {
     // 前の背景画像削除
@@ -779,7 +791,7 @@ void MainScene::changeMap(Map* nextMap) {
   nextMap->retain();
   _log->getMapHistory()->addObject(CCString::create(nextMap->getIdentifier())); // マップ履歴にマップのIdentifier追加
   _map = nextMap;
-  this->setLevel(nextMap->createInitialLevel(_characterManager)); // レベルを生成する
+  this->setLevel(nextMap->createLevel(initialLevel, _characterManager)); // レベルを生成する
 
   _enemyManager->setLevel(_level); // レベルをセット
   _enemyManager->removeAllEnemiesQueue(); // キューを初期化
@@ -926,6 +938,9 @@ void MainScene::setPause(bool pause) {
     CCSet* targets = scheduler->pauseAllTargets();
     targets->removeObject(this);
     layer->setPausedTargets(targets);
+    if (_qteTrigger) {
+      _qteTrigger->getMenu()->setEnabled(false);
+    }
     _musicManager->getMusic()->pause();
     this->addChild(layer, 1000, PAUSE_LAYER_TAG);
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/pause.mp3").c_str());
@@ -937,6 +952,9 @@ void MainScene::setPause(bool pause) {
       scheduler->resumeTargets(layer->getPausedTargets());
       layer->setPausedTargets(NULL);
       this->removeChildByTag(PAUSE_LAYER_TAG, true);
+      if (_qteTrigger) {
+        _qteTrigger->getMenu()->setEnabled(true);
+      }
     }
   }
 }

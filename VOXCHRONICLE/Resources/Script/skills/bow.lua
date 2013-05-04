@@ -27,15 +27,24 @@ Skill = {
   skillRange = SkillRangeBack,
   skillType = SkillTypeMagical,
   getMessageTable = function(self, targets, map, characterManager, enemyManager)
+    if targets:count() > 0 then
+      local target = targets:objectAtIndex(0)
+      tolua.cast(target, "Enemy")
+      if target:getSpecies():getIdentifier() == "wave" then --波用メッセージ
+      return{}
+      elseif target:getType() == SkillTypeMagical or target:getItem() == EnemyItemBarrier or not target:getSpecies():isEnableSkill(self) then -- 効かない相手にはメッセージ表示しない
+        return {}
+      end
+    end
     return{
       "ラスカは　ゆみを　はなった",
       "てんくうから　ひかりが　ほどばしる",
       "まりょくで　ゆみを　つくりだす",
       "もっとも　たいりょくあるものを　ねらう！",
       "きょだいな　やじりを　しょうかんした",
-      "うちつらぬけ！！　スナイプ！！"
-      "シュパーーン！！"
-      "いけー！　つらぬけ！"
+      "うちつらぬけ！！　スナイプ！！",
+      "シュパーーン！！",
+      "いけー！　つらぬけ！",
       "えんきょり　こうげきだ！"
     }
   end
