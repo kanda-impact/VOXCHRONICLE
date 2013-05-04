@@ -8,21 +8,33 @@ EnemySkill = {
     local userName = user:getName()
     if not user:getType() == SkillTypeNormal and rand <= 2 then
       user:setSkillType(SkillTypeNormal) --耐性なし
-      mManager:pushMessage(userName.."は　たいせいを　ととのえた")
-    --user:getName()..は　ぼうぎょを　といた                 
+      local text = {
+        user:getName().."は　ぼうぎょを　といた",
+        userName.."は　たいせいを　ととのえた"
+      }
+      local rand = math.random(#text)
+      mManager:pushMessage(text[rand])
     else
       if chara == CharacterTypeVox then -- 物理耐性
         user:setSkillType(SkillTypePhysical)
-        mManager:pushMessage(userName.."は　まもりを　かためた")
-        --user:getName()..は　ぼうぎょしょうへきを　てんかいした！
-        --ぼうぎょ　しょうへき　ケロー！
+        local text = {
+          userName.."は　まもりを　かためた",
+          user:getName().."は　ぼうぎょしょうへきを　てんかいした！",
+          "ぼうぎょ　しょうへき　ケロー！"
+        }
+        local rand = math.random(#text)
+        mManager:pushMessage(text[rand])
       elseif chara == CharacterTypeLaska then -- 魔法耐性
         user:setSkillType(SkillTypeMagical)
-        mManager:pushMessage(userName.."の　まわりを　見えない霧が　包み込む")
-        --user:getName()..は　まほうしょうへきを　てんかいした！
-        --user:getName()..の　まほうの　カベ！
-        --user:getName()..は　まほうが　ききにくくなった！
-        --まほう　しょうへき　ケローっ！
+        local text = {
+          user:getName().."は　まほうしょうへきを　てんかいした！",
+          user:getName().."の　まほうの　カベ！",
+          user:getName().."は　まほうが　ききにくくなった！",
+          "まほう　しょうへき　ケローっ！",
+          userName.."の　まわりを　見えない霧が　包み込む"
+        }
+        local rand = math.random(#text)
+        mManager:pushMessage(text[rand])
       end
     end
   end

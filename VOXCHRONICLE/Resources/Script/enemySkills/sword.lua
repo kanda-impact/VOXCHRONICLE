@@ -4,14 +4,20 @@ EnemySkill = {
   performSkill = function(self, user, characterManager, enemyManager)
     local key = "swordTurn"
     local turn = user:getRegister(key, 0) -- 溜めているターンを取得
+    local mManager = MessageManager:sharedManager()
     if turn == 0 then
       -- 溜め初回ターンの時
       user:setAnimationClip("attack", 1, true) -- グラを変更する
       user:setRegister(key, turn + 1)
-      MessageManager:sharedManager():pushMessage(user:getName().."は　ちからを　ためている")
-      --(user:getName().."は　けんを　かまえた"),
-      --(user:getName().."は　はきを　はなっている"),
-      
+      local text = {
+        user:getName().."は　けんを　かまえた",
+        user:getName().."は　はきを　はなっている",
+        user:getName().."は　ちからを　ためている"
+      }
+      local rand = math.random(#text)
+      mManager:pushMessage(text[rand])
+
+
     elseif turn == 1 then
       user:setRegister(key, turn + 1) -- ターンを+1する
       -- 点滅させる処理を入れる
@@ -26,10 +32,14 @@ EnemySkill = {
       characterManager:damage(power) -- ダメージを与える
       user:setRegister(key, 0) -- 溜めターンをリセット
       user:setDefaultAnimationClip() -- グラを元に戻す
-      MessageManager:sharedManager():pushMessage(user:getName().."は　きょうりょくな　いちげきを　はなった！")
-      --(user:getName().."の　こんしんの　いちげき！")
-      --(user:getName().."の　あっとうてきな　けんげき！")
-      --(user:getName().."けんを　おもいきり　ふりおろした")
+      local text = {
+        user:getName().."は　きょうりょくな　いちげきを　はなった！",
+        user:getName().."の　こんしんの　いちげき！",
+        user:getName().."の　あっとうてきな　けんげき！",
+        user:getName().."けんを　おもいきり　ふりおろした"
+      }
+      local rand = math.random(#text)
+      mManager:pushMessage(text[rand])
     end
   end
 }

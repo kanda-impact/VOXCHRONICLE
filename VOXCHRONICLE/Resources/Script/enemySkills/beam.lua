@@ -15,7 +15,7 @@ EnemySkill = {
       }
       math.random(100)
       local message = messages[math.random(#messages)]
-    mManager:pushMessage(message)
+    --mManager:pushMessage(message)
   end
 }
 return EnemySkill
