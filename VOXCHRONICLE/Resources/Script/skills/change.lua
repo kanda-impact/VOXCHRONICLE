@@ -13,43 +13,38 @@ Skill = {
   turn = 1,
   loop = true,
   performSkill = function(self, target, characterManager, enemyManager)
-  
-    --ノックバックが成功した時
-    local voxMessages = {
-      "シャバデゥビ　タッチ　コウターイ！",
-      "チェンジ！",
-      "たのんだぜ　ラスカ",
-      "まかせたぞ　ラスカ",
-      "たのむ　ラスカ！"
-    }
-    
-    --ノックバック耐性で敵が吹き飛ばせなかった時
-    local lskMessages = {
-      "ちぇーーんじ",
-      "まかせるわ　オクス",
-      "たのむわよ　オクス",
-      "いっけー　オクス"
-    }
-    
-    local messages = {}
-    if characterManager:getCurrentCharacter():getCharacterType() == CharacterTypeVox then
-      messages = voxMessages
-    else
-      messages = lskMessages
-    end
-    math.random(100)
-    local messageManager = MessageManager:sharedManager()
-    messageManager:pushMessage(messages[math.random(#messages)])
-    
-    characterManager:changeCharacter()
-      
+    characterManager:changeCharacter()  
   end,
   getPower = function(characterManager)
     return 0
   end,
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone,
-  getMessageTable = function(map, characterManager, enemyManager)
+  getMessageTable = function(self, targets, map, characterManager, enemyManager)
+    if characterManager:getCurrentCharacter():getCharacterType() == CharacterTypeVox then
+      return { -- オクス→ラスカ
+        "シャバデゥビ　タッチ　コウターイ！",
+        "チェンジ！",
+        "たのんだぜ　ラスカ",
+        "まかせたぞ　ラスカ",
+        "たのむ　ラスカ！",
+        "チェーンジ！",
+        "ラスカ！　たのんだ！",
+        "ラスカ！　こうたいだ！",
+        "チェンジだ！　まかせるぜ！",
+      } 
+    else
+      return { -- ラスカ→オクス
+        "ちぇーーんじ",
+        "まかせるわ　オクス",
+        "たのむわよ　オクス",
+        "いっけー　オクス",
+        "チェンジ！",
+        "こうたい　するわよ！",
+        "オクス！　まかせたわ",
+        "がんばれ　オクス―",
+      }
+    end
     return {}
   end
 }

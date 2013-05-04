@@ -1,3 +1,4 @@
+require("variable_expansion")
 Skill = {
   name = "ラスカサンダー",
   identifier = "thunder",
@@ -19,18 +20,18 @@ Skill = {
     t = {0, 6, 10, 14, 18}
     return t[tension + 1]
   end,
-  messages = {
-    "{chara}は　ぜんたいまほうを　となえた",
-    "{chara}から　はげしいいかずちが　ほどばしる",
-    "{chara}サンダーーーーーーー！！！！",
-    "てきぜんたいに　きょうりょくな　でんげきが！",
-    "{chara}は　きょうりょくな　まほうを　つかった",
-    "{chara}の　サンダーボルト　こうげき",
-    "{chara}の　らいげきが　てきをつらぬく！",
-    "てきぜんたいに　らいげきが　ふりそそぐ",
-    "くらえぇー！ラスカサンダーー！！"
-  },
-  getMessageTable = function(map, characterManager, enemyManager)
-    return {}
+  getMessageTable = function(self, targets, map, characterManager, enemyManager)
+    chara = characterManager:getCurrentCharacter():getName()
+    return {
+      _("#{chara}は　ぜんたいまほうを　となえた"),
+      _("#{chara}から　はげしいいかずちが　ほどばしる"),
+      _("#{chara}サンダーーーーーーー！！！！"),
+      "てきぜんたいに　きょうりょくな　でんげきが！",
+      _("#{chara}は　きょうりょくな　まほうを　つかった"),
+      _("#{chara}の　サンダーボルト　こうげき"),
+      _("#{chara}の　らいげきが　てきをつらぬく！"),
+      "てきぜんたいに　らいげきが　ふりそそぐ",
+      "くらえぇー！ラスカサンダーー！！"
+    }
   end
 }

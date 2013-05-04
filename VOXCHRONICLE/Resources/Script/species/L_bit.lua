@@ -1,6 +1,6 @@
 math.randomseed(os.time())
 Enemy = {
-  name = "左ビット",
+  name = "左ティアムー",
   imageName = "bit",
   attack = 15,
   baseExp = 1,
@@ -14,8 +14,8 @@ Enemy = {
   end,
   disableSkills = {"knockback"},
   description = [[
-ワート・モショウが呼び出したしもべ。ワート・モショウの作り出す不規則な音を拾い、増幅させる。
-すぐに倒されてしまうが右ビットの蘇生呪文で不死鳥の如く蘇る
+左側のしもべ。こちらもワート・モショウの作り出す不規則な音を拾い、増幅させる。
+倒されても右ビットの蘇生呪文で不死鳥の如く蘇る。
 生息地：宙域　攻撃力：ふつう　移動：しない
   ]],
   habitat = "",

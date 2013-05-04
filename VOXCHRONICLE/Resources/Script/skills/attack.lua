@@ -33,12 +33,46 @@ Skill = {
       SimpleAudioEngine:sharedEngine():playEffect(filename)
     end
   end,
-  getMessageTable = function(map, characterManager, enemyManager)
+  getMessageTable = function(self, targets, map, characterManager, enemyManager)
+    if targets and targets:count() > 0 then
+      local target = targets:objectAtIndex(0)
+      tolua.cast(target, "Enemy")
+      if target:getType() == SkillTypePhysical or target:getItem() == EnemyItemShield or not target:getSpecies():isEnableSkill(self) then -- 効かない相手にはメッセージ表示しない
+        return {}
+      end
+    end
     return {
-      "オクスは　おもいきり　けんをふりおろした",
-      "オクスは　けんで　こうげきした",
+      "おもいきり　けんをふりおろした",
+      "けんで　こうげきした",
       "オクスの　けんが　てきをきる",
-      "オクスの　こうげき！"
+      "オクスの　こうげき！",
+      "けんげき！！",
+      "ソードで　ズババッ！！",
+      "ザシュ！！",
+      "ズバン！！",
+      "ソードアタック！",
+      "まっぷたつに　してやるぜ",
+      "ぶったぎるぜ！",
+      "けんを　ふりおろす！",
+      "けんの　さびに　してやるぜ",
+      "やっつけてやる！",
+      "こうげきだぁぁー！",
+      "また　きってしまった",
+      "こよいの　けんは　ちにうえている",
+      "にくをきり　ほねをたつ",
+      "でんかの　ほうとう",
+      "きります！　きります！",
+      "SLASH!!",
+      "きりまくり！",
+      "くらえー！！",
+      "くらぇい！",
+      "いあいぎり！",
+      "やめられない　とまらない",
+      "コシのある　いちげき",
+      "しゅぎょうの　せいかだ",
+      "スパーーン",
+      "しんくうはだ！",
+      "かぜをきるほどの　けんげき",
     }
   end,
   getPower = function(characterManager)

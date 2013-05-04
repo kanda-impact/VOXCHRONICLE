@@ -47,18 +47,29 @@ bool DictionaryScene::init() {
   background->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f));
   this->addChild(background);
   
+  int maxCount = _enemies->count();
+  
+  CCLabelTTF* number = CCLabelTTF::create("No.", "Helvetica", 16);
+  number->setPosition(ccp(380, 135));
+  number->setAnchorPoint(ccp(0.5f, 0.5f));
+  CCLabelTTF* maxNumber = CCLabelTTF::create(("/ " + lexical_cast<string>(maxCount)).c_str(), "Helvetica", 16);
+  maxNumber->setPosition(ccp(430, 135));
+  maxNumber->setAnchorPoint(ccp(0.5, 0.5));
+  
   _nameLabel = CCLabelTTF::create("敵キャラ名", "Helvetica", 24, CCSizeMake(350, 30), kCCTextAlignmentLeft);
-  _numberLabel = CCLabelTTF::create("生息地", "Helvetica", 16, CCSizeMake(50, 30), kCCTextAlignmentLeft, kCCVerticalTextAlignmentCenter);
+  _numberLabel = CCLabelTTF::create("", "Helvetica", 16, CCSizeMake(50, 30), kCCTextAlignmentRight, kCCVerticalTextAlignmentCenter);
   _descriptionLabel = CCLabelTTF::create("ここに敵キャラの解説が入ります", "Helvetica", 16, CCSizeMake(440, 120), kCCTextAlignmentLeft, kCCVerticalTextAlignmentTop);
   _nameLabel->setAnchorPoint(ccp(0.5f, 0.5f));
   _nameLabel->setPosition(ccp(200, 135));
   _numberLabel->setAnchorPoint(ccp(0.5f, 0.5f));
-  _numberLabel->setPosition(ccp(450, 135));
+  _numberLabel->setPosition(ccp(388, 135));
   CCSprite* dictionaryWindow = CCSprite::create("dictionary_window.png");
   dictionaryWindow->setPosition(ccp(director->getWinSize().width / 2.0, 80));
   _descriptionLabel->setAnchorPoint(ccp(0.5f, 0.5f));
   _descriptionLabel->setPosition(ccp(director->getWinSize().width / 2.0f, 60));
   this->addChild(dictionaryWindow);
+  this->addChild(maxNumber);
+  this->addChild(number);
   this->addChild(_nameLabel);
   this->addChild(_numberLabel);
   this->addChild(_descriptionLabel);

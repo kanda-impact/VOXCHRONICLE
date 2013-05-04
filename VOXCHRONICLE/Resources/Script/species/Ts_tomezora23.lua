@@ -7,10 +7,12 @@ Enemy = {
   counter = 0,
   getSpeed = function(enemy, characterManager)
     local row = enemy:getRow()
-    if row == 0 then
+    if row == 1 then
+      return 1
+    elseif row == 0 then
       return 0
     end
-    return 1
+    return 2
   end,
   getFrequency = function(enemy, characterManager)
     return 2

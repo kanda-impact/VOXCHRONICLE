@@ -36,6 +36,7 @@ class MessageWindow :public CCNode {
   void updateNextMessage(CCObject* sender);
   void updateNextText(CCObject* sender);
   bool _ended;
+  bool _enableShadow;
   CCLabelTTF* _label;
   CCLabelTTF* _shadow;
  public:
@@ -54,6 +55,7 @@ class MessageWindow :public CCNode {
   void start();
   void stop();
   void setTextSpeed(int textSpeed);
+  void setEnableShadow(bool shadow);
   
   /**
    強制的にメッセージを終了させます

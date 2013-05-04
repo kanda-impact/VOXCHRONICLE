@@ -101,7 +101,7 @@ void SkillTrigger::setSkillTriggerState(SkillTriggerState state) {
   if (_state == SkillTriggerStateUnknown) {
     _currentOpacity = 64;
   } else if (_state == SkillTriggerStateDisable) {
-    _currentOpacity = 160;
+    _currentOpacity = 120;
   }
   _background->setOpacity(_currentOpacity);
   CCSprite* icon = (CCSprite*)this->getChildByTag(iconTag);

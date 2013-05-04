@@ -41,10 +41,6 @@ CCLabelTTF* currentExp = CCLabelTTF::create("0", "Helvetica", 16);
   currentExp->setPosition(ccp(30, 250));
   CCLabelTTF* nextExp = CCLabelTTF::create("0", "Helvetica", 16);
   nextExp->setPosition(ccp(30, 230));
-#if DEBUG
-  this->addChild(currentExp, 0, CurrentExpLabelTag);
-  this->addChild(nextExp, 0, NextExpLabelTag);
-#endif
 }
 
 StatusLayer::~StatusLayer() {
@@ -148,10 +144,10 @@ void StatusLayer::onPauseButtonPressed(CCObject* sender) {
 }
 
 void StatusLayer::setExp(int current, int next) {
-#if DEBUG
+/*
   CCLabelTTF* currentLabel = (CCLabelTTF*)this->getChildByTag(CurrentExpLabelTag);
   CCLabelTTF* nextLabel = (CCLabelTTF*)this->getChildByTag(NextExpLabelTag);
   currentLabel->setString(lexical_cast<string>(current).c_str());
   nextLabel->setString(lexical_cast<string>(next).c_str());
-#endif
+*/
 }

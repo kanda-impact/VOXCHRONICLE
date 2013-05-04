@@ -41,15 +41,28 @@ Skill = {
   end,
   skillRange = SkillRangeSingle,
   skillType = SkillTypeMagical,
-  messages = {
-  "ラスカの　アイスブレイク！",
-  "たちふさがるものを　ひょうけつさせる！",
-  "くうきが　こおりついていく",
-  "こおりつけ！　モンスター！",
-  "つえのさきから　れいきがほどばしる",
-  "ラスカの　ブリザード　アタック"
-  },
-  getMessageTable = function(map, characterManager, enemyManager)
-    return {}
+  getMessageTable = function(self, targets, map, characterManager, enemyManager)
+    if targets:count() > 0 then
+      local target = targets:objectAtIndex(0)
+      tolua.cast(target, "Enemy")
+      if target:getType() == SkillTypeMagical or target:getItem() == EnemyItemBarrier or not target:getSpecies():isEnableSkill(self) then -- 効かない相手にはメッセージ表示しない
+        return {}
+      end 
+    end
+    return {
+      "ラスカの　アイスブレイク！",
+      "たちふさがるものを　ひょうけつさせる！",
+      "くうきが　こおりついていく",
+      "こおりつけ！　モンスター！",
+      "ひょうけつさせるっ！",
+      "こおりつけぃ！",
+      "こおりの　せいれいよ！",
+      "れいとうびーむ！",
+      "いてつく　はどうよ！",
+      "カチコチ　カキーン",
+      "れいとう　まほうよ！！",
+      "つえのさきから　れいきがほどばしる",
+      "ラスカの　ブリザード　アタック"
+    }
   end
 }

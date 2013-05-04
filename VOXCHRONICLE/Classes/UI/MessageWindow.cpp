@@ -11,7 +11,7 @@
 
 const float kDefaultMessageWindowDelay = 0.75f;
 const float kDefaultMessageWindowLastDelay = 2.0f;
-const float kDefaultMessageWindowSpeed = 0.5f / 60.0f;
+const float kDefaultMessageWindowSpeed = 1.0f / 60.0f;
 
 MessageWindow::MessageWindow(const char* fontName, float size, CCSize dimensions) {
   _messageQueue = CCArray::create();
@@ -27,6 +27,7 @@ MessageWindow::MessageWindow(const char* fontName, float size, CCSize dimensions
   _shadow->retain();
   _shadow->setColor(ccc3(33, 33, 33));
   _shadow->setPosition(ccp(2, -2));
+  this->setEnableShadow(true);
   this->addChild(_shadow);
   this->addChild(_label);
   _onFinishedFunction = NULL;
@@ -109,7 +110,9 @@ void MessageWindow::setLastDelay(float d) {
 
 void MessageWindow::updateNextText(CCObject* sender) {
   _label->setString(this->getCurrentMessage()->getCString());
-  _shadow->setString(this->getCurrentMessage()->getCString());
+  if (_enableShadow) {
+    _shadow->setString(this->getCurrentMessage()->getCString());
+  }
   if (_messageQueue->count() == 0) return;
   if (this->isEndMessage()) return;
   if (_messageQueue->count() > 0 && _textIndex <= this->getCurrentWholeMessage()->length()) {
@@ -146,4 +149,9 @@ void MessageWindow::finishMessage() {
 
 void MessageWindow::setTextSpeed(int textSpeed) {
   _textSpeed = textSpeed;
+}
+
+void MessageWindow::setEnableShadow(bool shadow) {
+  _shadow->setVisible(shadow);
+  _enableShadow = shadow;
 }

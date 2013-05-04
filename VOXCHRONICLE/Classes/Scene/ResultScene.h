@@ -14,13 +14,16 @@
 #include "cocos2d.h"
 #include "PlayLog.h"
 
+#include "KWAlertDelegate.h"
+
 using namespace cocos2d;
 
-class ResultScene :public CCLayer {
+class ResultScene :public CCLayer, public KWAlertDelegate {
  private:
   bool _isAppeard;
   virtual void registerWithTouchDispatcher();
   virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
+  CCMenu* _backMenu;
   PlayLog* _log;
  public:
   virtual bool init();
@@ -30,6 +33,7 @@ class ResultScene :public CCLayer {
   void buildUI();
   virtual void onEnterTransitionDidFinish();
   void onBackButtonPressed(CCObject* sender);
+  virtual void clickedButtonAtIndex(KWAlert* alert, int index);
 };
 
 #endif /* defined(__VOXCHRONICLE__ResultScene__) */

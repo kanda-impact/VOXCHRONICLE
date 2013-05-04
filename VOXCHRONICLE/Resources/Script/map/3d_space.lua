@@ -125,7 +125,6 @@ Map = {
     if self.__IRegister__:getRegister(key,0) >= 3 then
       data:unlockAchievement("bossDex")
     end
-    data:unlockAchievement("clear3D")
     SaveData:sharedData():addDefeatedCountForEmemy("wave")
   end,
   getEnemyPopRate = function(level)

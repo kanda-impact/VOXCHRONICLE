@@ -25,11 +25,11 @@ QTETrigger::QTETrigger(EnemyManager* manager) {
                                                       disableSprite,
                                                       this,
                                                       menu_selector(QTETrigger::onButtonPressed));
-  CCMenu* menu = CCMenu::create(button, NULL);
+  _menu = CCMenu::create(button, NULL);
   CCDirector* director = CCDirector::sharedDirector();
   CCPoint center = CCPointMake(director->getWinSize().width / 2.0f, director->getWinSize().height / 2.0f);
-  menu->setPosition(center);
-  this->addChild(menu);
+  _menu->setPosition(center);
+  this->addChild(_menu);
   _pressed = false;
 }
 
@@ -54,4 +54,8 @@ void QTETrigger::onButtonPressed(CCObject* sender) {
 
 bool QTETrigger::isButtonPressed() {
   return _pressed;
+}
+
+CCMenu* QTETrigger::getMenu() {
+  return _menu;
 }

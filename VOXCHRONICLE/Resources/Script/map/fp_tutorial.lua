@@ -1,5 +1,5 @@
 Map = {
-  name = "チュートリアル",
+  name = "レッスン",
   wayMusic = "chabo",
   bossMusic = "",
   backgroundImage = "tutorial_background.png",

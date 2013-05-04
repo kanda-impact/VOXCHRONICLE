@@ -3,7 +3,7 @@ Map = {
   wayMusic = "volca",
   bossMusic = "",
   backgroundImage = "simple_background.png",
-  thumbnailImage = "cyber_thumbnail.png",
+  thumbnailImage = "simple_hexagon.png",
   skin = "skinA",
   ending = "",
   nextMaps = {"2a_forest", "2b_cave"},
@@ -27,6 +27,7 @@ Map = {
     enemyManager:loadEnemyTextureAsync("slime.png")
     enemyManager:loadEnemyTextureAsync("acorn.png")
     SaveData:sharedData():setClearedForMap("fp_simple")
+    --EffectLayer:sharedLayer():setCutinColor(ccc3(157, 241, 255))
   end,
 
   getEnemyPopRate = function(level)

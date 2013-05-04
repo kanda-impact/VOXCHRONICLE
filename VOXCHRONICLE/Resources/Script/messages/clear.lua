@@ -1,6 +1,5 @@
 require("concat")
 require("timezone")
-
 return function(map, characterManager, enemyManager)
   --ステージクリア―時
   --クリア時（全ステージ共通部分）
@@ -10,6 +9,7 @@ return function(map, characterManager, enemyManager)
     "たたかいを　きりぬけた",
     "よし！　きりぬけたぞ！",
     "モンスターを　たおした",
+    "つぎぃ　いってみよ～",
   }
   local chara = characterManager:getCurrentCharacter():getName()
   local mapId = map:getIdentifier()
@@ -70,74 +70,35 @@ return function(map, characterManager, enemyManager)
     if mapId == "1b_field" and currentTimeZone == 1 then
       return {
         "ゆうぐれを　こえて",
-        "さいごのは　なんだったんだ",
+        "平原　クリアー",
+        "平原の　おわりがみえた",
+        "さあ　たたかいはこれからだ",
         "かった！　おれたちはつよい！",
-        "ぜんりょく　だしきったわね",
       }
     end
-
+       --1b夕暮れ　かわずたん
+    if mapId == "1b_field" and currentTimeZone == 1 then
+      return {
+        "ゆうぐれを　こえて",
+        "平原　クリアー",
+        "平原の　おわりがみえた",
+        "さあ　たたかいはこれからだ",
+        "かった！　おれたちはつよい！",
+        "あいつは　なんだったんだ？！",
+        "やったー　たおしたぞー",
+        "まいったケロ～",
+        "そうぜつな　たたかいだったぜ．．．",
+      }
+    end
     --１ｂ夜
     if mapId == "1b_field" and currentTimeZone == 2 then
       return {
         "もうじき　よるがあけそうね",
         "平原　クリアー",
-        "平原の　おわりがみえた",
-        "さあ　たたかいはこれからだ",
+        "平原に　おわりがみえた",
+        "さあ　たたかいはこれからだ"
       }
     end
   end
   return concat(commonPattern, getExtraPattern())
 end
---[[  
---各ステージ部分
---1a
-  return {
-    "らくしょう　らくしょう",
-    "へへへ　どんなもんだい！",
-    "荒野　クリアー！",
-    "ここからが　しょうねんば！",
-  }
---1b昼
-  return {
-    "ふぅ　なんとかなったぜ",
-    "平原を　こえた",
-    "平原　クリアー！",
-    "きょうは　いいてんきだな",
-  }
---2a
-  return {
-    "もりを　ぬけた",
-    "森林　クリアー",
-    "どくきのこ　つよかったな",
-    "もりを　ぬけるわよ！",
-  }
---2b
-  return {
-    "炭鉱の　でぐちについた",
-    "炭鉱　クリアー",
-    "くずれおちなくて　よかった",
-    "炭鉱には　ジャズがにあう",
-  }
---2c
-  return {
-    "電脳世界　クリアー",
-    "電脳世界から　だっしゅつした",
-    "すさまじい　たたかいだったぜ",
-    "おそろしい　せかいだった",
-  }
---1b夕暮れ
-  return {
-    "ゆうぐれを　こえて",
-    "平原　クリアー",
-    "平原の　おわりがみえた",
-    "さあ　たたかいはこれからだ",",
-    "かった！　おれたちはつよい！",
-  }
---１ｂ夜
-  return {
-    "もうじき　よるがあけそうね",
-    "平原　クリアー",
-    "平原の　おわりがみえた",
-    "さあ　たたかいはこれからだ",
-  }
-]]

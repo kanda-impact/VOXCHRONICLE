@@ -28,6 +28,8 @@ class GameOverLayer :public CCLayer {
   GameOverLayer(MainScene* main);
   virtual ~GameOverLayer();
   void setMainBackScene(MainBackScene scene);
+  virtual bool ccTouchBegan(cocos2d::CCTouch* pTouch, cocos2d::CCEvent* pEvent);
+  virtual void registerWithTouchDispatcher();
 };
 
 

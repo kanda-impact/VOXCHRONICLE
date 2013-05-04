@@ -1,5 +1,5 @@
 Enemy = {
-  name = "右カギー",
+  name = "右ガギィ",
   imageName = "R_plclaw",
   attack = 3,
   baseExp = 6,
@@ -14,7 +14,7 @@ Enemy = {
   disableSkills = {"knockback"},
   description = [[
 （いい奴はみんな死んじまった…！）
-生息地：深海ほか　攻撃力：そこそこ　移動：しない
+生息地：深海ほか　攻撃力：ふつう　移動：しない
   ]],
   habitat = "",
   animationFrames = 4,

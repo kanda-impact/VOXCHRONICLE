@@ -17,19 +17,18 @@ Achievement = {
     {SaveDataCountKeyDictionaryCount, dictionaryEnemyCount, "enemy100"},
     {SaveDataCountKeyHitDamage, 1000, "hit1000"},
     {SaveDataCountKeyAttackDamage, 10000, "attack10000"},
-    {SaveDataCountKeyDead, 1000, "play1000"}
+    {SaveDataCountKeyDead, 100, "play1000"} -- 100回遊べるRPG
   },
   -- 1回のプレイ中のカウントに依存する実績を書きます
   playLog = {
     {PlayLogKeyMaxDefeat, 10, "defeat10"}, -- 一気呵成
     {PlayLogKeyMaxRepeatCount, 20, "repeat20"}, -- こだわりのワンパターン
     {PlayLogKeyMaxRepeatChangeCount, 10, "change10"}, -- 戦場の踊り子
-    {PlayLogKeyTurn, 200, "clearSpeedy"} -- オクス・ザ・ヘッジホッグ
   },
   -- クリア時に実績チェックのために呼び出されます
   checkAchievementOnClear = function(playlog, characterManager, enemyManager)
     local data = SaveData:sharedData()
-    if playlog:getCount(PlayLogKeyTurn) <= 300 then -- 疾風迅雷
+    if playlog:getCount(PlayLogKeyTurn) <= 200 then -- オクス・ザ・ヘッジホッグ
       data:unlockAchievement("clearSpeedy")
     end
     if playlog:getCount(PlayLogKeyRunCount) >= 20 then -- りえきは　ないと　いったのに

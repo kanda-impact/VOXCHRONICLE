@@ -48,6 +48,7 @@ EndingScene::EndingScene(const char* endingScript) {
   label->setColor(ccc3(255, 255, 255));
   shadowLabel->setColor(ccc3(33, 33, 33));
   shadowLabel->setPosition(ccpAdd(label->getPosition(), ccp(2, -2)));
+  
   string backgroundImage = obj->getString("background");
   if (backgroundImage.length() > 0) {
     CCSprite* sprite = CCSprite::create(backgroundImage.c_str());
@@ -63,13 +64,20 @@ EndingScene::EndingScene(const char* endingScript) {
   labels->setPosition(ccp(director->getWinSize().width / 2.0f, - director->getWinSize().height / 2.0f));
   labels->addChild(label);
   bg->addChild(labels, 0, EndingSceneTagLabel);
+  this->setTouchEnabled(true);
   
+  _achievementId = obj->getString("achievement");
 }
 
 EndingScene::~EndingScene() {
 }
 
 void EndingScene::goToNextScene(cocos2d::CCObject *sender) {
+  // 実績解除
+  SaveData::sharedData()->unlockAchievement(_achievementId.c_str());
+  
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->stopAllEffects();
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
   CCScene* scene = CCScene::create();
   PlayLog* log = (PlayLog*)this->getUserObject();
   StaffRollScene* layer = new StaffRollScene(log->getMapHistory());
@@ -89,7 +97,7 @@ void EndingScene::onEnterTransitionDidFinish() {
   this->getScheduler()->scheduleSelector(schedule_selector(EndingScene::goToNextScene), this, 0, false, 0, _musicDuration);
   CCDirector* director = CCDirector::sharedDirector();
   CCLayer* bg = (CCLayer*)this->getChildByTag(EndingSceneTagShadowBackground);
-  bg->runAction(CCSequence::create(CCDelayTime::create(18.0f),
+  bg->runAction(CCSequence::create(CCDelayTime::create(_musicDuration - 3.0f),
                                    CCFadeTo::create(0.5f, 0),
                                    CCRemoveFromParentAction::create(), NULL));
   CCLayer* labels = (CCLayer*)bg->getChildByTag(EndingSceneTagLabel);
@@ -112,5 +120,27 @@ void EndingScene::onEnterTransitionDidFinish() {
   CCLog("%s", ss.str().c_str());
   Kawaz::TestFlightWrapper::submitFeedback(ss.str().c_str());
 #endif
-
 }
+
+void EndingScene::registerWithTouchDispatcher() {
+  CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 100, true);
+}
+ 
+bool EndingScene::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
+  CCLayer* bg = (CCLayer*)this->getChildByTag(EndingSceneTagShadowBackground);
+  if (bg) {
+    CCLayer* labels = (CCLayer*)bg->getChildByTag(EndingSceneTagLabel);
+    if (labels->numberOfRunningActions() > 0) { // ラベルまだ動いてる
+      labels->stopAllActions();
+      CCDirector* director = CCDirector::sharedDirector();
+      labels->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height /2.0f));
+    } else { // もう止まってたら
+      bg->stopAllActions();
+      this->removeChild(bg, true);
+    }
+  } else { // 背景がもう消えてたら
+    this->goToNextScene(this);
+  }
+  return true;
+}
+

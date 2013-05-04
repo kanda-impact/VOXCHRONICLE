@@ -394,6 +394,24 @@
 		0789A0FD172EFEDD00FFB262 /* UIApplicationWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0789A0FB172EFEDD00FFB262 /* UIApplicationWrapper.mm */; };
 		0789A101173002F300FFB262 /* KWAlert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0789A0FF173002F300FFB262 /* KWAlert.cpp */; };
 		0789A1051730048D00FFB262 /* KWAlertDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0789A1031730048C00FFB262 /* KWAlertDelegate.cpp */; };
+		0789A10D1731480700FFB262 /* concat.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1091731480700FFB262 /* concat.lua */; };
+		0789A10E1731480700FFB262 /* hsv.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A10A1731480700FFB262 /* hsv.lua */; };
+		0789A10F1731480700FFB262 /* timezone.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A10B1731480700FFB262 /* timezone.lua */; };
+		0789A1101731480700FFB262 /* variable_expansion.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A10C1731480700FFB262 /* variable_expansion.lua */; };
+		0789A1121731785D00FFB262 /* T_tnt24.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1111731785D00FFB262 /* T_tnt24.lua */; };
+		0789A1141731795100FFB262 /* Ts_tnt24.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1131731795100FFB262 /* Ts_tnt24.lua */; };
+		0789A1161731B51400FFB262 /* new_skill.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1151731B51400FFB262 /* new_skill.lua */; };
+		0789A1201731B5EC00FFB262 /* noaction.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A11A1731B5EB00FFB262 /* noaction.lua */; };
+		0789A1211731B5EC00FFB262 /* shield_physical_break.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A11B1731B5EB00FFB262 /* shield_physical_break.lua */; };
+		0789A1251731B6F700FFB262 /* barrier_magical_break.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1231731B6F200FFB262 /* barrier_magical_break.lua */; };
+		0789A1261731B6F700FFB262 /* barrier_magical_invalid.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1241731B6F500FFB262 /* barrier_magical_invalid.lua */; };
+		0789A1281731B8C800FFB262 /* shield_physical_invalid.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1271731B8C800FFB262 /* shield_physical_invalid.lua */; };
+		0789A1351733E6B200FFB262 /* fullvoice0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1311733E6B200FFB262 /* fullvoice0.mp3 */; };
+		0789A1361733E6B200FFB262 /* fullvoice1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1321733E6B200FFB262 /* fullvoice1.mp3 */; };
+		0789A1371733E6B200FFB262 /* fullvoice2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1331733E6B200FFB262 /* fullvoice2.mp3 */; };
+		0789A1381733E6B200FFB262 /* fullvoice3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1341733E6B200FFB262 /* fullvoice3.mp3 */; };
+		0789A13A1733F7E100FFB262 /* revive_foot.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1391733F7E100FFB262 /* revive_foot.lua */; };
+		0789A13D17342F6D00FFB262 /* InitialScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0789A13B17342F6900FFB262 /* InitialScene.cpp */; };
 		078D452316CE809C00E21DC5 /* Species.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 078D452116CE809B00E21DC5 /* Species.cpp */; };
 		078D45A116CF1FB100E21DC5 /* 3Bb_counter0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078D456316CF1FB100E21DC5 /* 3Bb_counter0.caf */; };
 		078D45A216CF1FB100E21DC5 /* 3Bb_counter1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 078D456416CF1FB100E21DC5 /* 3Bb_counter1.caf */; };
@@ -867,7 +885,6 @@
 		07ADDF8916F22959007825D2 /* easy_decide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF7F16F22959007825D2 /* easy_decide.mp3 */; };
 		07ADDF8A16F22959007825D2 /* enemy_burn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF8016F22959007825D2 /* enemy_burn.mp3 */; };
 		07ADDF8B16F22959007825D2 /* enemy_cure.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF8116F22959007825D2 /* enemy_cure.mp3 */; };
-		07ADDF8D16F254C8007825D2 /* hsv.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF8C16F254C8007825D2 /* hsv.lua */; };
 		07ADDF9A16F72048007825D2 /* ExtraScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07ADDF9816F72048007825D2 /* ExtraScene.cpp */; };
 		07ADDF9E16F73518007825D2 /* DictionaryScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07ADDF9C16F73514007825D2 /* DictionaryScene.cpp */; };
 		07ADDFA116F7621F007825D2 /* paper.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDFA016F7621F007825D2 /* paper.mp3 */; };
@@ -1155,6 +1172,7 @@
 		07D351F11722869700C547DD /* T_geek2.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07D351EC1722869600C547DD /* T_geek2.lua */; };
 		07D351F21722869700C547DD /* T_leaf2.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07D351ED1722869600C547DD /* T_leaf2.lua */; };
 		07D351F31722869700C547DD /* T_tetufez2.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07D351EE1722869700C547DD /* T_tetufez2.lua */; };
+		07D4947F1734A15A0025785F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586915EBB4BB0083D348 /* Default.png */; };
 		07D8740715ED13CD009CC446 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07D8740615ED13CD009CC446 /* MainScene.cpp */; };
 		07D8745815F01A15009CC446 /* ALBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8741E15F01500009CC446 /* ALBuffer.m */; };
 		07D8745915F01A15009CC446 /* ALCaptureDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8742015F01500009CC446 /* ALCaptureDevice.m */; };
@@ -1386,9 +1404,6 @@
 		07FADBC516BBFA3600200F83 /* Ground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07FADBC316BBFA3500200F83 /* Ground.cpp */; };
 		07FD921E1621099B00E74459 /* vox.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921D1621099B00E74459 /* vox.lua */; };
 		07FD922016210A2300E74459 /* lsk.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07FD921F16210A2300E74459 /* lsk.lua */; };
-		2ABEF49C172EC14C0064D118 /* variable_expansion.lua in Resources */ = {isa = PBXBuildFile; fileRef = 2ABEF49B172EC14C0064D118 /* variable_expansion.lua */; };
-		2AC94B2D172D8FD0002857A8 /* concat.lua in Resources */ = {isa = PBXBuildFile; fileRef = 2AC94B2C172D8FD0002857A8 /* concat.lua */; };
-		2AC94B2F172D9FFD002857A8 /* timezone.lua in Resources */ = {isa = PBXBuildFile; fileRef = 2AC94B2E172D9FFC002857A8 /* timezone.lua */; };
 		B002ECC417293FD900FEE88F /* typeChange_last.lua in Resources */ = {isa = PBXBuildFile; fileRef = B002ECC317293FD900FEE88F /* typeChange_last.lua */; };
 		B002ECC617297A1700FEE88F /* equip_last.lua in Resources */ = {isa = PBXBuildFile; fileRef = B002ECC517297A1700FEE88F /* equip_last.lua */; };
 		B002ECCA17297EA400FEE88F /* thunder_last.lua in Resources */ = {isa = PBXBuildFile; fileRef = B002ECC917297EA400FEE88F /* thunder_last.lua */; };
@@ -1903,6 +1918,25 @@
 		0789A1021730036A00FFB262 /* KWAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KWAlert.h; path = VOXCHRONICLE/Classes/includes/KWAlert.h; sourceTree = SOURCE_ROOT; };
 		0789A1031730048C00FFB262 /* KWAlertDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KWAlertDelegate.cpp; sourceTree = "<group>"; };
 		0789A107173005C800FFB262 /* KWAlertDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KWAlertDelegate.h; path = VOXCHRONICLE/Classes/includes/KWAlertDelegate.h; sourceTree = SOURCE_ROOT; };
+		0789A1091731480700FFB262 /* concat.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = concat.lua; path = modules/concat.lua; sourceTree = "<group>"; };
+		0789A10A1731480700FFB262 /* hsv.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hsv.lua; path = modules/hsv.lua; sourceTree = "<group>"; };
+		0789A10B1731480700FFB262 /* timezone.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = timezone.lua; path = modules/timezone.lua; sourceTree = "<group>"; };
+		0789A10C1731480700FFB262 /* variable_expansion.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = variable_expansion.lua; path = modules/variable_expansion.lua; sourceTree = "<group>"; };
+		0789A1111731785D00FFB262 /* T_tnt24.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_tnt24.lua; sourceTree = "<group>"; };
+		0789A1131731795100FFB262 /* Ts_tnt24.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Ts_tnt24.lua; path = species/Ts_tnt24.lua; sourceTree = "<group>"; };
+		0789A1151731B51400FFB262 /* new_skill.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = new_skill.lua; path = messages/new_skill.lua; sourceTree = "<group>"; };
+		0789A11A1731B5EB00FFB262 /* noaction.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = noaction.lua; path = messages/noaction.lua; sourceTree = "<group>"; };
+		0789A11B1731B5EB00FFB262 /* shield_physical_break.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = shield_physical_break.lua; path = messages/shield_physical_break.lua; sourceTree = "<group>"; };
+		0789A1231731B6F200FFB262 /* barrier_magical_break.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = barrier_magical_break.lua; path = messages/barrier_magical_break.lua; sourceTree = "<group>"; };
+		0789A1241731B6F500FFB262 /* barrier_magical_invalid.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = barrier_magical_invalid.lua; path = messages/barrier_magical_invalid.lua; sourceTree = "<group>"; };
+		0789A1271731B8C800FFB262 /* shield_physical_invalid.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = shield_physical_invalid.lua; path = messages/shield_physical_invalid.lua; sourceTree = "<group>"; };
+		0789A1311733E6B200FFB262 /* fullvoice0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fullvoice0.mp3; path = Resources/SE/fullvoice0.mp3; sourceTree = "<group>"; };
+		0789A1321733E6B200FFB262 /* fullvoice1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fullvoice1.mp3; path = Resources/SE/fullvoice1.mp3; sourceTree = "<group>"; };
+		0789A1331733E6B200FFB262 /* fullvoice2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fullvoice2.mp3; path = Resources/SE/fullvoice2.mp3; sourceTree = "<group>"; };
+		0789A1341733E6B200FFB262 /* fullvoice3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fullvoice3.mp3; path = Resources/SE/fullvoice3.mp3; sourceTree = "<group>"; };
+		0789A1391733F7E100FFB262 /* revive_foot.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = revive_foot.lua; path = enemySkills/revive_foot.lua; sourceTree = "<group>"; };
+		0789A13B17342F6900FFB262 /* InitialScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InitialScene.cpp; path = Classes/Scene/InitialScene.cpp; sourceTree = "<group>"; };
+		0789A13E17342FD200FFB262 /* InitialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InitialScene.h; path = Classes/includes/InitialScene.h; sourceTree = "<group>"; };
 		078D452116CE809B00E21DC5 /* Species.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Species.cpp; path = Classes/Model/Species.cpp; sourceTree = "<group>"; };
 		078D452416CE80CF00E21DC5 /* Species.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Species.h; path = Classes/includes/Species.h; sourceTree = "<group>"; };
 		078D456316CF1FB100E21DC5 /* 3Bb_counter0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 3Bb_counter0.caf; path = Resources/Music/3Bb/3Bb_counter0.caf; sourceTree = "<group>"; };
@@ -2387,7 +2421,6 @@
 		07ADDF7F16F22959007825D2 /* easy_decide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = easy_decide.mp3; path = Resources/SE/easy_decide.mp3; sourceTree = "<group>"; };
 		07ADDF8016F22959007825D2 /* enemy_burn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = enemy_burn.mp3; path = Resources/SE/enemy_burn.mp3; sourceTree = "<group>"; };
 		07ADDF8116F22959007825D2 /* enemy_cure.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = enemy_cure.mp3; path = Resources/SE/enemy_cure.mp3; sourceTree = "<group>"; };
-		07ADDF8C16F254C8007825D2 /* hsv.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hsv.lua; sourceTree = "<group>"; };
 		07ADDF9816F72048007825D2 /* ExtraScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ExtraScene.cpp; path = Classes/Scene/ExtraScene.cpp; sourceTree = "<group>"; };
 		07ADDF9B16F72525007825D2 /* ExtraScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExtraScene.h; path = Classes/includes/ExtraScene.h; sourceTree = "<group>"; };
 		07ADDF9C16F73514007825D2 /* DictionaryScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DictionaryScene.cpp; path = Classes/Scene/DictionaryScene.cpp; sourceTree = "<group>"; };
@@ -3240,9 +3273,6 @@
 		07FADBC416BBFA3600200F83 /* Ground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ground.h; path = Classes/UI/Ground.h; sourceTree = "<group>"; };
 		07FD921D1621099B00E74459 /* vox.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vox.lua; path = character/vox.lua; sourceTree = "<group>"; };
 		07FD921F16210A2300E74459 /* lsk.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lsk.lua; path = character/lsk.lua; sourceTree = "<group>"; };
-		2ABEF49B172EC14C0064D118 /* variable_expansion.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = variable_expansion.lua; sourceTree = "<group>"; };
-		2AC94B2C172D8FD0002857A8 /* concat.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = concat.lua; sourceTree = "<group>"; };
-		2AC94B2E172D9FFC002857A8 /* timezone.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = timezone.lua; sourceTree = "<group>"; };
 		B002ECC317293FD900FEE88F /* typeChange_last.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = typeChange_last.lua; path = enemySkills/typeChange_last.lua; sourceTree = "<group>"; };
 		B002ECC517297A1700FEE88F /* equip_last.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = equip_last.lua; path = enemySkills/equip_last.lua; sourceTree = "<group>"; };
 		B002ECC917297EA400FEE88F /* thunder_last.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = thunder_last.lua; path = enemySkills/thunder_last.lua; sourceTree = "<group>"; };
@@ -3747,6 +3777,12 @@
 				07448CBC16C289B800F005C6 /* welcome.lua */,
 				07448CBE16C28E0D00F005C6 /* empty.lua */,
 				0738FBB116C534D800FE2816 /* death.lua */,
+				0789A1151731B51400FFB262 /* new_skill.lua */,
+				0789A11A1731B5EB00FFB262 /* noaction.lua */,
+				0789A11B1731B5EB00FFB262 /* shield_physical_break.lua */,
+				0789A1271731B8C800FFB262 /* shield_physical_invalid.lua */,
+				0789A1231731B6F200FFB262 /* barrier_magical_break.lua */,
+				0789A1241731B6F500FFB262 /* barrier_magical_invalid.lua */,
 			);
 			name = messages;
 			sourceTree = "<group>";
@@ -3811,6 +3847,8 @@
 				07F0D79A163C1EFD005592AF /* TitleScene.h */,
 				0754383E16E3865700802970 /* TutorialScene.cpp */,
 				0754384216E391E600802970 /* TutorialScene.h */,
+				0789A13B17342F6900FFB262 /* InitialScene.cpp */,
+				0789A13E17342FD200FFB262 /* InitialScene.h */,
 			);
 			name = Scene;
 			sourceTree = "<group>";
@@ -3906,31 +3944,32 @@
 		07660CCC1690E8BD0092104F /* enemySkills */ = {
 			isa = PBXGroup;
 			children = (
-				077931C91715C7FE0023E46E /* boss_change.lua */,
-				07F20F801711BC7F0099ACD8 /* cure_skill.lua */,
-				07F20F821711BC7F0099ACD8 /* warp.lua */,
-				0701425B16E24A2800B00887 /* foot.lua */,
-				0701425C16E24A2800B00887 /* wave_skill.lua */,
-				0715C2321690E8F600009479 /* ironball.lua */,
-				07DCD6861692953500FBBC3A /* sword.lua */,
-				B002ECC317293FD900FEE88F /* typeChange_last.lua */,
-				072AB85D16DB7A12005385A5 /* reset_tension.lua */,
-				0737EF2016F0D70A00C46E6C /* direct_attack.lua */,
 				07F20F8A1712BA8C0099ACD8 /* beam.lua */,
-				B06D41EB171939F9006ABB6A /* kawaz_beam.lua */,
+				077931C91715C7FE0023E46E /* boss_change.lua */,
 				07F20F8B1712BA8C0099ACD8 /* call_last.lua */,
-				07F20F8C1712BA8C0099ACD8 /* charge_attack_last.lua */,
-				B0AA93C917315C020039EEF7 /* rapid_attack_last.lua */,
 				B0C65BD6171969F600FF6723 /* charge_attack_kawaz.lua */,
+				07F20F8C1712BA8C0099ACD8 /* charge_attack_last.lua */,
+				072921411715E4490083F905 /* cure_all_skill.lua */,
+				07F20F801711BC7F0099ACD8 /* cure_skill.lua */,
+				0737EF2016F0D70A00C46E6C /* direct_attack.lua */,
 				07F20F8D1712BA8C0099ACD8 /* equip.lua */,
 				B002ECC517297A1700FEE88F /* equip_last.lua */,
-				B0C37E4A1719F97F00B4BE55 /* typeChange.lua */,
-				07F20F8E1712BA8C0099ACD8 /* mp_absorb.lua */,
-				B002ECC917297EA400FEE88F /* thunder_last.lua */,
-				07F20F941712C2E50099ACD8 /* laugh.lua */,
+				0701425B16E24A2800B00887 /* foot.lua */,
+				0715C2321690E8F600009479 /* ironball.lua */,
+				B06D41EB171939F9006ABB6A /* kawaz_beam.lua */,
 				B0C37E481719F62900B4BE55 /* kawaz_laugh.lua */,
+				07F20F941712C2E50099ACD8 /* laugh.lua */,
+				07F20F8E1712BA8C0099ACD8 /* mp_absorb.lua */,
+				B0AA93C917315C020039EEF7 /* rapid_attack_last.lua */,
+				072AB85D16DB7A12005385A5 /* reset_tension.lua */,
 				077931CF1715CE140023E46E /* revive.lua */,
-				072921411715E4490083F905 /* cure_all_skill.lua */,
+				0789A1391733F7E100FFB262 /* revive_foot.lua */,
+				07DCD6861692953500FBBC3A /* sword.lua */,
+				B002ECC917297EA400FEE88F /* thunder_last.lua */,
+				B0C37E4A1719F97F00B4BE55 /* typeChange.lua */,
+				B002ECC317293FD900FEE88F /* typeChange_last.lua */,
+				07F20F821711BC7F0099ACD8 /* warp.lua */,
+				0701425C16E24A2800B00887 /* wave_skill.lua */,
 			);
 			name = enemySkills;
 			sourceTree = "<group>";
@@ -4060,6 +4099,17 @@
 			name = Voice;
 			sourceTree = "<group>";
 		};
+		0789A108173147DE00FFB262 /* modules */ = {
+			isa = PBXGroup;
+			children = (
+				0789A1091731480700FFB262 /* concat.lua */,
+				0789A10A1731480700FFB262 /* hsv.lua */,
+				0789A10B1731480700FFB262 /* timezone.lua */,
+				0789A10C1731480700FFB262 /* variable_expansion.lua */,
+			);
+			name = modules;
+			sourceTree = "<group>";
+		};
 		078D452516CE87D900E21DC5 /* species */ = {
 			isa = PBXGroup;
 			children = (
@@ -4126,6 +4176,7 @@
 				B017551717079F1D008053BB /* Ts_slime30.lua */,
 				B0821D3A1707AD61009417B5 /* Ts_tetufez.lua */,
 				B017551F1707A1A8008053BB /* Ts_tnt.lua */,
+				0789A1131731795100FFB262 /* Ts_tnt24.lua */,
 				072588311720F3A2003FD587 /* Ts_tomezora.lua */,
 				070BAF6E172D1620007A741A /* Ts_tomezora23.lua */,
 				0796694116FD4C550001F8B2 /* typhoon.lua */,
@@ -4553,10 +4604,8 @@
 		07C6064016164F810084708C /* Script */ = {
 			isa = PBXGroup;
 			children = (
-				2ABEF49B172EC14C0064D118 /* variable_expansion.lua */,
+				0789A108173147DE00FFB262 /* modules */,
 				07F20F7A17114F3C0099ACD8 /* achievement.lua */,
-				2AC94B2E172D9FFC002857A8 /* timezone.lua */,
-				2AC94B2C172D8FD0002857A8 /* concat.lua */,
 				07FD921C1621097700E74459 /* character */,
 				07D8D649169F3BD900B646E5 /* controller.lua */,
 				079F89A6169EE596001357B5 /* debug.lua */,
@@ -4567,7 +4616,6 @@
 				07660CCC1690E8BD0092104F /* enemySkills */,
 				074E137A171067EC00308F67 /* freeplay.lua */,
 				07C6064116164F810084708C /* hello.lua */,
-				07ADDF8C16F254C8007825D2 /* hsv.lua */,
 				0731E4FA16184A59006AEF3D /* map */,
 				07448CBB16C2899C00F005C6 /* messages */,
 				07660C4B169097F00092104F /* musics */,
@@ -5595,6 +5643,7 @@
 				07B8B6101708BBA200DB739F /* T_tetufez7.lua */,
 				B0821D481707AF4D009417B5 /* T_tnt.lua */,
 				0770706617198C4800E3F836 /* T_tnt9.lua */,
+				0789A1111731785D00FFB262 /* T_tnt24.lua */,
 				072588361720F523003FD587 /* T_tomezora.lua */,
 				070BAF6C172D153F007A741A /* T_tomezora23.lua */,
 				B07E38F916E129DA00473629 /* toadstool2A0.lua */,
@@ -6011,6 +6060,10 @@
 				074E136D1710231E00308F67 /* window_close.mp3 */,
 				074E136E1710231E00308F67 /* window_next.mp3 */,
 				074E136F1710231E00308F67 /* window_open.mp3 */,
+				0789A1311733E6B200FFB262 /* fullvoice0.mp3 */,
+				0789A1321733E6B200FFB262 /* fullvoice1.mp3 */,
+				0789A1331733E6B200FFB262 /* fullvoice2.mp3 */,
+				0789A1341733E6B200FFB262 /* fullvoice3.mp3 */,
 				0789A0D2172E529400FFB262 /* fullvoice.mp3 */,
 				077EDDF416870767009B9F6B /* decide.mp3 */,
 			);
@@ -6733,7 +6786,6 @@
 				07ADDF8916F22959007825D2 /* easy_decide.mp3 in Resources */,
 				07ADDF8A16F22959007825D2 /* enemy_burn.mp3 in Resources */,
 				07ADDF8B16F22959007825D2 /* enemy_cure.mp3 in Resources */,
-				07ADDF8D16F254C8007825D2 /* hsv.lua in Resources */,
 				B0AA405016F58CB300674A2A /* mask3A1.lua in Resources */,
 				B0AA405216F58D2300674A2A /* typhoon3A2.lua in Resources */,
 				B0AA405416F58E0100674A2A /* mask3A11.lua in Resources */,
@@ -7253,11 +7305,26 @@
 				0789A0DB172E563100FFB262 /* endingC_voice.mp3 in Resources */,
 				0789A0DC172E563100FFB262 /* endingD_voice.mp3 in Resources */,
 				0789A0E2172E594E00FFB262 /* demo.mp3 in Resources */,
-				2AC94B2D172D8FD0002857A8 /* concat.lua in Resources */,
-				2AC94B2F172D9FFD002857A8 /* timezone.lua in Resources */,
-				2ABEF49C172EC14C0064D118 /* variable_expansion.lua in Resources */,
+				0789A10D1731480700FFB262 /* concat.lua in Resources */,
+				0789A10E1731480700FFB262 /* hsv.lua in Resources */,
+				0789A10F1731480700FFB262 /* timezone.lua in Resources */,
+				0789A1101731480700FFB262 /* variable_expansion.lua in Resources */,
+				0789A1121731785D00FFB262 /* T_tnt24.lua in Resources */,
+				0789A1141731795100FFB262 /* Ts_tnt24.lua in Resources */,
 				B0AA93CA17315C020039EEF7 /* rapid_attack_last.lua in Resources */,
 				B0C52CEB17317D1900D1B304 /* space_boss2.lua in Resources */,
+				0789A1161731B51400FFB262 /* new_skill.lua in Resources */,
+				0789A1201731B5EC00FFB262 /* noaction.lua in Resources */,
+				0789A1211731B5EC00FFB262 /* shield_physical_break.lua in Resources */,
+				0789A1251731B6F700FFB262 /* barrier_magical_break.lua in Resources */,
+				0789A1261731B6F700FFB262 /* barrier_magical_invalid.lua in Resources */,
+				0789A1281731B8C800FFB262 /* shield_physical_invalid.lua in Resources */,
+				0789A1351733E6B200FFB262 /* fullvoice0.mp3 in Resources */,
+				0789A1361733E6B200FFB262 /* fullvoice1.mp3 in Resources */,
+				0789A1371733E6B200FFB262 /* fullvoice2.mp3 in Resources */,
+				0789A1381733E6B200FFB262 /* fullvoice3.mp3 in Resources */,
+				0789A13A1733F7E100FFB262 /* revive_foot.lua in Resources */,
+				07D4947F1734A15A0025785F /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7587,6 +7654,7 @@
 				0789A0FD172EFEDD00FFB262 /* UIApplicationWrapper.mm in Sources */,
 				0789A101173002F300FFB262 /* KWAlert.cpp in Sources */,
 				0789A1051730048D00FFB262 /* KWAlertDelegate.cpp in Sources */,
+				0789A13D17342F6D00FFB262 /* InitialScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7687,8 +7755,8 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
+				PROVISIONING_PROFILE = "F7DBD22B-EDDC-41A5-8F77-DA6474A252A1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F7DBD22B-EDDC-41A5-8F77-DA6474A252A1";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				WRAPPER_EXTENSION = app;
 			};
@@ -7725,8 +7793,8 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
+				PROVISIONING_PROFILE = "F7DBD22B-EDDC-41A5-8F77-DA6474A252A1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F7DBD22B-EDDC-41A5-8F77-DA6474A252A1";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -7795,8 +7863,8 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0AC54DE3-E98E-4755-910E-A0F7E6B0F09E";
+				PROVISIONING_PROFILE = "F7DBD22B-EDDC-41A5-8F77-DA6474A252A1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F7DBD22B-EDDC-41A5-8F77-DA6474A252A1";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

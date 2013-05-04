@@ -27,7 +27,7 @@ MapSelector::MapSelector(CCArray* nextMaps) {
     leftSprite->addChild(leftThumbnail);
   }
   CCSprite* leftFrame = CCSprite::create("selector_easy.png");
-  leftSprite->addChild(leftFrame);
+  leftSprite->addChild(leftFrame, 0, 1);
   leftSprite->setContentSize(leftFrame->getTextureRect().size);
   leftSprite->setPosition(ccp(62.5, 100));
   leftFrame->runAction(CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(1.5, 128),
@@ -47,7 +47,7 @@ MapSelector::MapSelector(CCArray* nextMaps) {
     rightSprite->addChild(rightThumbnail);
   }
   CCSprite* rightFrame = CCSprite::create("selector_hard.png");
-  rightSprite->addChild(rightFrame);
+  rightSprite->addChild(rightFrame, 0, 1);
   rightSprite->setContentSize(rightFrame->getTextureRect().size);
   rightSprite->setPosition(ccp(62.5, 100));
   rightFrame->runAction(CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(1.5, 128),
@@ -67,7 +67,6 @@ MapSelector::MapSelector(CCArray* nextMaps) {
   _selectedMap = NULL;
   _effectID = 0;
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("selector.mp3", true);
-  CCLog("left = %d, right = %d", leftMap->retainCount(), rightMap->retainCount());
 }
 
 MapSelector::~MapSelector() {
@@ -81,23 +80,19 @@ MapSelector::~MapSelector() {
 }
 
 void MapSelector::buttonPressed(cocos2d::CCObject *sender) {
-  CCSprite* sprite = (CCSprite*)sender;
-  /*CCObject* obj = NULL;
-  if (sprite->getChildren() != NULL) {
-    CCARRAY_FOREACH(sprite->getChildren(), obj) {
-      CCNode* child = (CCNode*)obj;
-      child->stopAllActions();
-      child->runAction(CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.5, 128),
-                                                                                CCFadeTo::create(0.5, 255))));
-    }
-  }*/
+  CCMenuItemSprite* item = (CCMenuItemSprite*)sender;
+  CCSprite* sprite = (CCSprite*)item->getNormalImage();
+  CCSprite* frame = (CCSprite*)sprite->getChildByTag(1);
+  frame->runAction(CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.01, 128),
+                                                                            CCFadeTo::create(0.01, 255))));
+  
   CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/selector_decide.mp3").c_str());
   if (_selectedMap) {
     _selectedMap->release();
     _selectedMap = NULL;
   }
-  _selectedMap = (Map*)sprite->getUserObject();
+  _selectedMap = (Map*)item->getUserObject();
   if (_selectedMap) {
     _selectedMap->retain();
   }

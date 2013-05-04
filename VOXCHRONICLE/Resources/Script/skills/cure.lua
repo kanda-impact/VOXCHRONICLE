@@ -28,26 +28,27 @@ Skill = {
   end,
   skillRange = SkillRangeSelf,
   skillType = SkillTypeNone,
-  --回復成功時
-  messages = {
-    "きずが　かいふくした",
-    "みるみる　きずが　ふさがっていく",
-    "たいりょくが　かいふくした",
-    "かつりょくが　みなぎる",
-    "つかれが　ふきとんだ",
-    "いたいの　いたいの　とんでいけー",
-    "からだの　いたみが　きえていく"
-  },
-  getMessageTable = function(map, characterManager, enemyManager)
-    return {}
+  getMessageTable = function(self, targets, map, characterManager, enemyManager)
+    local hp = characterManager:getHP()
+    local maxHP = characterManager:getMaxHP()
+    if hp == maxHP then
+      return { -- 元からHP最大だったとき
+        "そもそも　からだにきずが　なかった",
+        "まだだいじょうぶ　あんしんしろ",
+        "おちつけ　まだだいじょうぶだ",
+        "ＨＰは　さいだいち　デス",
+        "すでに　きずは　ふさがっている",
+        "とんでいく　いたみが　なかった",
+      }
+    end
+    return {
+      "きずが　かいふくした",
+      "みるみる　きずが　ふさがっていく",
+      "たいりょくが　かいふくした",
+      "かつりょくが　みなぎる",
+      "つかれが　ふきとんだ",
+      "いたいの　いたいの　とんでいけー",
+      "からだの　いたみが　きえていく"
+    }
   end,
-   --すでに満タンだった場合
-    messages = {
-    "そもそも　からだにきずが　なかった",
-    "まだだいじょうぶ　あんしんしろ",
-    "おちつけ　まだだいじょうぶだ",
-    "ＨＰは　さいだいち　デス",
-    "すでに　きずは　ふさがっている",
-    "とんでいく　いたみが　なかった",
-  }
 }

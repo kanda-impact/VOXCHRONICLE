@@ -1,3 +1,4 @@
+require("variable_expansion")
 Skill = {
   name = "ダッシュ",
   identifier = "run",
@@ -20,23 +21,30 @@ Skill = {
   end,
   skillRange = SkillRangeSelf,
   skillType = SkillTypePhysical,
-  messages = {
-    "{chara}は　てきとの　きょりを　つめた",
-    "{chara}は　はしりだした!　......あしたへ！",
-    "{chara}は　さきを　いそいだ",
-    "せっかちな　{chara}　いそぐ　いそぐ",
-    "あんまり　はしると　けがするよ？",
-    "いそいでも　りえきはないのだ",
-    "いそぎすぎは　ちゅういだ",
-    "スプリント！！",
-    "てきは　まだか　はやくこい",
-    "やすんでも　まりょくは　かいふくしません",
-    "こないなら　こっちから　いくぜ！",
-    "かぜをきって　はしる　{chara}",
-    "{chara}は　てきに　せっきんした",
-    "{chara}は　うってでることにした"
-  },
-  getMessageTable = function(map, characterManager, enemyManager)
-    return {}
+  getMessageTable = function(self, targets, map, characterManager, enemyManager)
+    chara = characterManager:getCurrentCharacter():getName()
+    return {
+      _("#{chara}は　てきとの　きょりを　つめた"),
+      _("#{chara}は　はしりだした!　......あしたへ！"),
+      _("#{chara}は　さきを　いそいだ"),
+      _("せっかちな　#{chara}　いそぐ　いそぐ"),
+      "あんまり　はしると　けがするよ？",
+      "いそぐと　てきが　ふえるぞ",
+      "いそぎすぎは　ちゅういだ",
+      "ランニーング！",
+      "レッツ　スプリント！！",
+      "てきは　まだか　はやくこい",
+      "かかんに　せめる！",
+      _("おーーっと　ここで#{chara}　ダッシュ！"),
+      "はしった！　　はしった！",
+      "ダッシュ　ダーッシュ　ダッシュ！",
+      "だだだだだー",
+      "はしるぜー　ちょうはしるぜー",
+      "やすんでも　まりょくは　かいふくしません",
+      "こないなら　こっちから　いくぜ！",
+      _("かぜをきって　はしる　#{chara}"),
+      _("#{chara}は　てきに　せっきんした"),
+      _("#{chara}は　うってでることにした")
+    }
   end
 }

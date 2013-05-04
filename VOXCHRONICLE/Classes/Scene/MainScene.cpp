@@ -63,6 +63,10 @@ bool MainScene::init() {
 }
 
 bool MainScene::init(Map* map) {
+  return this->init(map, map->getInitialLevel());
+}
+
+bool MainScene::init(Map* map, int initialLevel) {
   if ( !CCLayer::init() ) {
     return false;
   }
@@ -101,7 +105,8 @@ bool MainScene::init(Map* map) {
   
   _messageWindow = new MessageWindow(FONT_NAME, 16, CCSizeMake(400, 40));
   _messageWindow->setPosition(ccp(director->getWinSize().width / 2.0f, director->getWinSize().height - 70));
-  _messageWindow->setTextSpeed(2);
+  _messageWindow->setTextSpeed(4);
+  _messageWindow->setLastDelay(5.0f);
   MessageManager::sharedManager()->setDefaultMessageWindow(_messageWindow);
   _effectLayer->addChild(_messageWindow, EffectLayerZOrderMessage);
   
@@ -114,7 +119,7 @@ bool MainScene::init(Map* map) {
   controller->autorelease();
   skin->setController(controller);
   
-  this->changeMap(map); // マップの設定
+  this->changeMap(map, initialLevel); // マップの設定
   _characterManager->setLevel(_level->getLevel()); // 初期レベル設定
   
   this->addChild(_enemyManager, MainSceneZOrderEnemyManager);
@@ -264,9 +269,11 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
     if (_musicManager->getIntroCount() == maxIntroCount) { // イントロが終わったとき
       _musicManager->setIntroCount(0);
       _skin->getController()->setEnable(true);
-      if (_level->getLevel() == _map->getInitialLevel()) {
+      _characterManager->setRepeatCount(0);
+      _skin->getController()->resetAllTriggers();
+      //if (_level->getLevel() == _map->getInitialLevel()) {
         _map->performOnLevel(_characterManager, _enemyManager); // 初期レベルの時、スクリプトを呼んでやる
-      }
+      //}
       _state = VCStateMain;
     }
   }
@@ -406,7 +413,9 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
      ・その技がその種族によって無効化されている
      */
     if (skill && performType == SkillPerformTypeSuccess) {
+      
       CCArray* targets = _enemyManager->getTargets(skill);
+      MessageManager::sharedManager()->pushRandomMessageFromSkill(skill, targets, _map, _characterManager, _enemyManager); // メッセージを追加する
       CCDictionary* info = _enemyManager->performSkill(skill, targets, _characterManager); // ここで経験値が貰える
       CCArray* enemies = (CCArray*)info->objectForKey("enemies");
       CCArray* damages = (CCArray*)info->objectForKey("damages");
@@ -434,9 +443,10 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
             if (damage == 0) {
               actions->addObject(CCDelayTime::create(blinkDuration * 2 * 3));
             } else {
+              float scale = enemy->getCurrentScale(enemy->getRow());
               for (int i = 0; i < 10; ++i) {
-                float x = -damage / 2 + rand() % damage;
-                float y = -damage / 2 + rand() % damage;
+                float x = -damage / 2 + rand() % damage * scale;
+                float y = -damage / 2 + rand() % damage * scale;
                 CCPlace* move = CCPlace::create(ccpAdd(origin, ccp(x, y)));
                 CCDelayTime* delay = CCDelayTime::create(blinkDuration * 2 * 3 / times);
                 actions->addObject(CCSequence::create(move, delay, NULL));
@@ -462,6 +472,14 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
             MessageManager::sharedManager()->pushRandomMessageFromFunction("resist_physical", _map, _characterManager, _enemyManager);
           } else if (damageType == DamageTypeMagicalResist) {
             MessageManager::sharedManager()->pushRandomMessageFromFunction("resist_magical", _map, _characterManager, _enemyManager);
+          } else if (damageType == DamageTypeShieldBreak) {
+            MessageManager::sharedManager()->pushRandomMessageFromFunction("shield_physical_break", _map, _characterManager, _enemyManager);
+          } else if (damageType == DamageTypeBarrierBreak) {
+            MessageManager::sharedManager()->pushRandomMessageFromFunction("barrier_magical_break", _map, _characterManager, _enemyManager);
+          } else if (damageType == DamageTypePhysicalInvalid) {
+            MessageManager::sharedManager()->pushRandomMessageFromFunction("shield_physical_invalid", _map, _characterManager, _enemyManager);
+          } else if (damageType == DamageTypeMagicalInvalid) {
+            MessageManager::sharedManager()->pushRandomMessageFromFunction("barrier_magical_invalid", _map, _characterManager, _enemyManager);
           }
         }
         
@@ -512,10 +530,6 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         MessageManager::sharedManager()->pushRandomMessageFromFunction("notarget", _map, _characterManager, _enemyManager); // ピロリメッセージ
       }
       
-      
-      // メッセージを追加する
-      MessageManager::sharedManager()->pushRandomMessageFromSkill(skill, _map, _characterManager, _enemyManager);
-      
       _effectLayer->addSkillEffect(skill, enemies);
       if (!_characterManager->getShield()) {
         _effectLayer->addCutin(NULL, EffectLayerCutinTypeCastOff, _musicManager->getMusic()->getCurrentMainTrack()->getDuration());
@@ -524,6 +538,8 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _effectLayer->addCutin(skill, isHit ? (EffectLayerCutinType)skill->getCutinType() : EffectLayerCutinTypeFailure, _musicManager->getMusic()->getCurrentMainTrack()->getDuration());
       
       getExp = ((CCInteger*)info->objectForKey("exp"))->getValue();
+    } else if (skill == NULL && _characterManager->getRepeatCountRaw() >= 3) {
+      MessageManager::sharedManager()->pushRandomMessageFromFunction("noaction", _map, _characterManager, _enemyManager); // 3ターン何もしないメッセージ
     }
     
     if (_currentSkillInfo.type == SkillPerformTypeFailure) { // MP切れで失敗したとき
@@ -534,14 +550,23 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
     // レベルアップ判定
     if (this->checkLevelUp() ) {
       int currentLevel = _characterManager->getLevel();
+      int skillCount = _level->getSkills((Character*)_characterManager->getCharacters()->objectAtIndex(0))->count() + _level->getSkills((Character*)_characterManager->getCharacters()->objectAtIndex(1))->count();
       SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("SE/levelup.mp3").c_str());
       _musicManager->setIntroCount(0);
       _preLevel = currentLevel;
       MessageManager::sharedManager()->pushRandomMessageFromFunction("levelup", _map, _characterManager, _enemyManager); // レベルアップメッセージ
-      _map->performOnLevel(_characterManager, _enemyManager); // スクリプトを呼んでやる
+      if (!_map->isBossStage() || _map->getMaxLevel() != _level->getLevel()) {
+        _map->performOnLevel(_characterManager, _enemyManager); // スクリプトを呼んでやる
+      }
       _characterManager->updateParameters();
       this->setLevel(_map->createLevel(currentLevel, _characterManager));
       _enemyManager->setLevel(_level);
+      int newSkillCount = _level->getSkills((Character*)_characterManager->getCharacters()->objectAtIndex(0))->count() + _level->getSkills((Character*)_characterManager->getCharacters()->objectAtIndex(1))->count();
+      
+      if (skillCount < newSkillCount) { // 新しくワザを覚えていたとき
+        MessageManager::sharedManager()->pushRandomMessageFromFunction("new_skill", _map, _characterManager, _enemyManager); // ワザ取得メッセージ
+      }
+      
       this->updateGUI();
       
       CCSprite* levelup = CCSprite::create("levelup.png");
@@ -749,6 +774,10 @@ void MainScene::addDamageEffect() {
 }
 
 void MainScene::changeMap(Map* nextMap) {
+  this->changeMap(nextMap, nextMap->getInitialLevel());
+}
+
+void MainScene::changeMap(Map* nextMap, int initialLevel) {
   bool init = _map == NULL;
   if (_map) {
     // 前の背景画像削除
@@ -762,7 +791,7 @@ void MainScene::changeMap(Map* nextMap) {
   nextMap->retain();
   _log->getMapHistory()->addObject(CCString::create(nextMap->getIdentifier())); // マップ履歴にマップのIdentifier追加
   _map = nextMap;
-  this->setLevel(nextMap->createInitialLevel(_characterManager)); // レベルを生成する
+  this->setLevel(nextMap->createLevel(initialLevel, _characterManager)); // レベルを生成する
 
   _enemyManager->setLevel(_level); // レベルをセット
   _enemyManager->removeAllEnemiesQueue(); // キューを初期化
@@ -909,6 +938,9 @@ void MainScene::setPause(bool pause) {
     CCSet* targets = scheduler->pauseAllTargets();
     targets->removeObject(this);
     layer->setPausedTargets(targets);
+    if (_qteTrigger) {
+      _qteTrigger->getMenu()->setEnabled(false);
+    }
     _musicManager->getMusic()->pause();
     this->addChild(layer, 1000, PAUSE_LAYER_TAG);
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/pause.mp3").c_str());
@@ -920,6 +952,9 @@ void MainScene::setPause(bool pause) {
       scheduler->resumeTargets(layer->getPausedTargets());
       layer->setPausedTargets(NULL);
       this->removeChildByTag(PAUSE_LAYER_TAG, true);
+      if (_qteTrigger) {
+        _qteTrigger->getMenu()->setEnabled(true);
+      }
     }
   }
 }

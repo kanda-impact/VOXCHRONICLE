@@ -14,9 +14,8 @@ Enemy = {
   end,
   disableSkills = {"knockback"},
   description = [[
- 深海を根城にする海の荒くれ王者。
- 通りかかる帆船を襲い、沈没させてはコレクションして最大サイズを競う。
- 生息地：深海ほか　攻撃力：つよい　移動：しない
+深海を根城にする海の荒くれ王者。通りかかる帆船を襲い、沈没させてはコレクションして最大サイズを競う。
+生息地：深海ほか　攻撃力：つよい　移動：しない
   ]],
   habitat = "",
   animationFrames = 4,
@@ -32,6 +31,11 @@ Enemy = {
       return "reset_tension"
     end
     -- 波はwaitTurnターン以内には出ない
+    local reviveTime = self.__IRegister__:getRegister("reviveTime", 0)
+    if enemyManager:getEnemies():count() < 3 and random <= (80 / math.min(10, math.pow(reviveTime + 1, 2))) then
+      self.__IRegister__:setRegister("reviveTime", reviveTime + 1)
+      return "revive_foot"
+    end
     if random <= 30 and turn == 0 then
       self:setRegister(key, 1)
       return "wave_skill"

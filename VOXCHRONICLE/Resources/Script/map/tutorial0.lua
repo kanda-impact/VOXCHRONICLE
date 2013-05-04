@@ -24,7 +24,7 @@ Map = {
       local popuped = self.__IRegister__:getBool("popuped") -- ポップアップしたかフラグ
       if enemyManager:getEnemies():count() == 1 and not popuped then
         local enemy = enemyManager:getEnemies():lastObject() -- モンスター取り出す
-        if enemy:getRow() < 4 then
+        if enemy:getRow() < 5 then
           self.__IRegister__:setBool("popuped", true)
           -- 前の裏拍で敵が出現したあと、ポップアップを出します
           local popup = layer:addPopupWindow(1)
@@ -160,10 +160,10 @@ Map = {
           if isShield then
             local popup = layer:addPopupWindow(1) --2回目も盾で防いだら隠しメッセージ
             popup:setText(0, "『ガード』の使いすぎ注意", [[
-盾で防ぐのは倒しきれないモンスターだけで
-いいんだってば！
-敵を盾で防いでばかりだと、先に進めないから
-どんどん倒して先に進んでいって
+盾で防ぐのは倒しきれないモンスターだけ
+のほうがよいわよ。
+
+敵を盾で防いでばかりだと、レベルが上がらず先に進めないからどんどん倒して先に進んでいって
 ]])
           end
           local slime = enemyManager:popEnemyAt("T_slime60",5,1) -- スライム再生成
@@ -176,8 +176,7 @@ Map = {
 よし！防げた！『ガード』状態はモンスターの
 どんなこうげきも防ぐことができるよ！
 
-でも『ガード』状態はモンスターのこうげきを防ぐか
-ほかの行動をとると解除されちゃうから気をつけて！　
+でも『ガード』じょうたいはモンスターのこうげきを防ぐか、ほかの行動をとると解除されちゃうから気をつけて！　
 ]])
             popup:setText(1, "『ガード』の注意点", [[
 あと『ガード』は無敵になれるけど、こうげきを
@@ -188,13 +187,12 @@ Map = {
           else --前に使ったスキルが盾でない時
             local popup = layer:addPopupWindow(1)
             popup:setText(0, "ピンチのときは『ガード』", [[
-ちょっと、ちょっと、オクス！
-あの敵は体力が高くて
-今のオクスじゃ倒しきれないんだってば！
-今はガマンしてモンスターをやりすごして。
+失敗しちゃったね
 『ガード』のワザは 盾 のマークをタッチ！
+使ってからこうげきを食らうまでは、
+落ち着いて相手が来るのを待ってみて
 
-回復してあげるからもう一回頑張ってみて
+回復してあげるからもう一回頑張ってね
 ]])
             popup:addImage(0, "tutorial8_1.png")
             local enemy = enemyManager:popEnemyAt("T_tnt", 3, 1) -- 盾持ちを生成すると混同しちゃうからHPの高いヤツを出す
@@ -251,20 +249,18 @@ Map = {
 ]])
       popup:setText(1, "コレってどんなゲーム？",
       [[
-このゲームは、近づいてくるモンスターを倒しながら
-画面奥にどんどん進んでいくゲームよ。
+近づいてくるモンスターを倒しながら画面奥にどんどん進んでいくゲームよ。
 
 自分の行動に合わせて音楽が変わるのが
 このゲーム最大のウリなので、ぜひ音量を上げて
 ノリノリでプレイしてみてね。]])
       popup:addImage(1, "tutorial1_2.png")
       popup:setText(2, "音楽にあわせて行動しよう！", [[
-行動するときは画面下左右のワザアイコンをタッチ！
+行動するときは画面下左右のワザアイコンをタッチ！タイムマーカーが一周するごとにワザが実行されるわ。
 
-タイムマーカーが一周するごとに行動が実行されるわ。
 行動（ワザ）は先にえらんでおいて大丈夫よ！
-
-まずは 剣 のマークをタッチして『アタック』 を試しましょ！]])
+まずは 剣 のマークをタッチして『アタック』 を
+試しましょ！]])
       popup:addImage(2, "tutorial1_3.png")
     elseif level == 2 then
       local popup = layer:addPopupWindow(3)
@@ -324,7 +320,7 @@ Map = {
 走ってる マークにタッチすることで使えるの。
 モンスターとのキョリをちぢめることができるよ！
 
-モンスターを呼び寄せる効果もあるから
+モンスターを呼びよせる効果もあるから
 敵がいなかったり少なかったりしたときには
 積極的にダッシュしてみよう！
 ]])
@@ -407,16 +403,14 @@ Map = {
     elseif level == 9 then
       local popup = layer:addPopupWindow(1)
       popup:setText(0, "特殊ワザ『ノックバック』", [[
-今おぼえたワザは、オクス専用のワザ
-『ノックバック』だよ！
-たつまきマークをタッチして使おう。
+今おぼえたワザは、オクス専用のワザ『ノックバック』だよ！たつまきマークをタッチして使おう。
 
 『ノックバック』はモンスターを1匹、後ろに
 ふっとばすことができるんだ。使いドコロが
 難しいけど、使いこなすと戦いが楽になるよ
 ]])
       popup:addImage(0, "tutorial9_1.png")
-      enemyManager:popEnemyAt("T_tnt9", 4, 1)
+      enemyManager:popEnemyAt("T_tnt9", 4, 1):setExp(60)
       self.__IRegister__:setBool("knockbackPoped", true)
     elseif level == 10 then
       local popup = layer:addPopupWindow(2)

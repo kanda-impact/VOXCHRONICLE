@@ -228,6 +228,7 @@ class EffectLayer : public CCLayer {
 	void addDamageLabelOnEnemy(Enemy* target, int damage, DamageLabelType type);
 	void setCutinExtension(CCNode* extension);
 	PopupWindow* getPopupWindow();
+	void setCutinColor(ccColor3B color);
 };
 
 class PopupWindow : public CCSprite {

@@ -63,6 +63,7 @@ class EffectLayer :public CCLayer {
   string getDamageLabelName(DamageLabelType type);
   CCNode* _cutinExtention;
   CCSprite* _focus;
+  ccColor3B _cutinColor;
  public:
   static EffectLayer* sharedLayer();
   static void purgeEffectLayer();
@@ -86,6 +87,7 @@ class EffectLayer :public CCLayer {
   void reloadFocus(Skin* skin);
   void updateFocus(EnemyManager* manager);
   void addWaitMarker(float duration);
+  void setCutinColor(ccColor3B color);
 };
 
 #endif /* defined(__VOXCHRONICLE__EffectLayer__) */

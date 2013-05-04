@@ -13,8 +13,8 @@ Enemy = {
   end,
   disableSkills = {"knockback"},
   description = [[
-    （あれっ？おれの出番？ひょっとしてちょっとヤバいんじゃない？）
-    生息地：深海ほか　攻撃力：そこそこ　移動：しない
+（あれっ？おれの出番？ひょっとしてちょっとヤバいんじゃない？）
+生息地：深海ほか　攻撃力：ふつう　移動：しない
   ]],
   habitat = "",
   animationFrames = 4,

@@ -175,3 +175,18 @@ bool SaveData::isFullVoice() {
 void SaveData::setFullVoice(bool b) {
   _fullvoice = b;
 }
+
+int SaveData::getScore(const char* mapIdentifier) {
+  string key = string("highscore_") + string(mapIdentifier);
+  return CCUserDefault::sharedUserDefault()->getIntegerForKey(key.c_str());
+}
+
+bool SaveData::updateScore(const char* mapIdentifier, int turn) {
+  int highscore = this->getScore(mapIdentifier);
+  if (turn >= highscore || highscore == 0) {
+    string key = string("highscore_") + string(mapIdentifier);
+    CCUserDefault::sharedUserDefault()->setIntegerForKey(key.c_str(), turn);
+    return true;
+  }
+  return false;
+}

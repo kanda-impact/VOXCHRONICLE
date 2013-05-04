@@ -1,3 +1,4 @@
+require("variable_expansion")
 Skill = {
   name = "オクススラッシュ",
   identifier = "slash",
@@ -19,16 +20,15 @@ Skill = {
     t = {0, 4, 6, 9, 12}
     return t[tension + 1]
   end,
-  messages = {
-    "オクスは　おもいきり　けんをふりまわした",
-    "ひっさつの　オクススラッシュ！！",
-    "オクスの　はんいこうげき！",
-    "オクスの　けんから　しょうげきはが！！",
-    "いくぜ　オクススラッシュ！！",
-    "ちからをこめた　いちげき！！",
-    "ぜんたいを　きりきざむ！！　オクススラッシュ！"
-  },
-  getMessageTable = function(map, characterManager, enemyManager)
-    return {}
+  getMessageTable = function(self, targets, map, characterManager, enemyManager)
+    return {
+      "オクスは　おもいきり　けんをふりまわした",
+      "ひっさつの　オクススラッシュ！！",
+      "オクスの　はんいこうげき！",
+      "オクスの　けんから　しょうげきはが！！",
+      "いくぜ　オクススラッシュ！！",
+      "ちからをこめた　いちげき！！",
+      "ぜんたいを　きりきざむ！！　オクススラッシュ！"
+    }
   end
 }

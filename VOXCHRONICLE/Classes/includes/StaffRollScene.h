@@ -54,6 +54,7 @@ class StaffRollScene :public CCLayer {
   void onFinishPlaying(CCObject* sender);
   void addCutin(const char* text, TextType type, CutinType cutinType);
   void onBackButtonPressed(CCObject* sender);
+  void pushDrumTrack(const char* identifier, MusicSet* set);
  public:
   StaffRollScene(CCArray* mapNames);
   virtual ~StaffRollScene();
