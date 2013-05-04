@@ -1,6 +1,6 @@
 Music = {
   name = "深海ダリウス",
-  composer = "negiyan",
+  composer = "ねぎやん",
   prefix = "negi-3c",
   type = MusicSetTypeWay,
   introCount = 2,

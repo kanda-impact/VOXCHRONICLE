@@ -1,6 +1,6 @@
 Music = {
   name = "深海ボス　ヴゥゥ・マー",
-  composer = "Ceres78",
+  composer = "Ceres",
   prefix = "Ceres78_3-C",
   type = MusicSetTypeBoss,
   introCount = 4,

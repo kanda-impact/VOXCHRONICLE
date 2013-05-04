@@ -1,6 +1,6 @@
 Music = {
   name = "古城ボス　ウィル・デ・ヤゥク",
-  composer = "tetu_fs",
+  composer = "Tetu_fs",
   prefix = "3Bb",
   type = MusicSetTypeBoss,
   introCount = 2,
