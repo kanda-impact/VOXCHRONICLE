@@ -73,6 +73,7 @@ Map = {
     if row == 0 then
       data:unlockAchievement("nagoya")
     end
+    data:setClearedForMap("ruin_boss") -- フリープレイ解放
   end,
   fixedEnemies = {
   }

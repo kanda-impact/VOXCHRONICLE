@@ -73,6 +73,7 @@ Map = {
     if bossAttack > 0 then
       data:unlockAchievement("bossBex")
     end
+    data:setClearedForMap("bossdebug") -- フリープレイ解放
   end,
   fixedEnemies = {
   }
