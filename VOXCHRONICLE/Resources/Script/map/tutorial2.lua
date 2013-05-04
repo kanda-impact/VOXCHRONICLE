@@ -124,7 +124,7 @@ Map = {
     if level == 21 then
       local popup = layer:addPopupWindow(2)
       popup:setText(0, "テクニック編開始！", [[
-めざせ！オクス上級者！テクニック編へようこそ～。
+めざせ！オクス上級者！テクニック編へようこそ!
 解説は引き続き、私、ラスカが担当させて
 頂きま～す♪
 
