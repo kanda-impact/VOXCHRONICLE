@@ -20,7 +20,7 @@ return function(map, characterManager, enemyManager)
     _("#{generations}世代目の　オクスが　たびだつ"),
     _("オクス　#{generations}世　いきます！"),
     _("ああ　オクス　#{generations}世が　ゆく．．．！"),
-    _("ただいま　オクス　#{generations}世")
+
   }
   local getExtraPatterns = function()
     --ステージ開始時1a
