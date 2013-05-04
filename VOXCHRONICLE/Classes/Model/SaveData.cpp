@@ -49,6 +49,8 @@ SaveData::SaveData() {
   lua_State* L = dict->getLuaEngineWithLoad()->getLuaState();
   lua_getglobal(L, "dictionary");
   _enemyDictionary = dict->getArray();
+  
+  _isInitialBoot = this->getCountFor(SaveDataCountKeyBoot) == 0;
 }
 
 SaveData::~SaveData() {
@@ -189,4 +191,12 @@ bool SaveData::updateScore(const char* mapIdentifier, int turn) {
     return true;
   }
   return false;
+}
+
+bool SaveData::isInitialBoot() {
+  return _isInitialBoot;
+}
+
+void SaveData::setInitialBoot(bool f) {
+  _isInitialBoot = f;
 }

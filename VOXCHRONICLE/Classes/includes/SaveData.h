@@ -47,6 +47,7 @@ class SaveData :public CCObject {
  private:
   static SaveData* _shared;
   bool _fullvoice;
+  bool _isInitialBoot;
   CCDictionary* _countDictionary;
   CCArray* _achievements;
   shared_ptr<CCLuaValueArray> _enemyDictionary;
@@ -77,6 +78,8 @@ class SaveData :public CCObject {
   int getAllEnemyDictionaryCount();
   bool isFullVoice();
   void setFullVoice(bool b);
+  bool isInitialBoot();
+  void setInitialBoot(bool f);
 };
 
 #endif /* defined(__VOXCHRONICLE__SaveData__) */
