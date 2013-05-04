@@ -162,26 +162,26 @@ return function(map, characterManager, enemyManager)
         --ボスの死亡台詞
     elseif mapId == "3a_ruin" and level == 30 then    --A
     extraPattern = {
-        "うちゅうの　もくずと　きえた",
-        _("そして　#{chara}は　かんがえるのを　やめた"),
-        "うちゅうに　ただよう　デブリに　なった",
-        "あっとうてきなちからで　けしさられた",
+        "ぷちっ",
+        "ぐしゃっ",
+        "ぺたんこに　なった",
+        "",
         ""
       }
     elseif mapId == "3b_castle" and level == 30 then    --B
     extraPattern = {
-        "うちゅうの　もくずと　きえた",
-        _("そして　#{chara}は　かんがえるのを　やめた"),
-        "うちゅうに　ただよう　デブリに　なった",
-        "あっとうてきなちからで　けしさられた",
+        "きさまの　じつりょくは　そのていどか？",
+        "",
+        "",
+        "",
         ""
       }
     elseif mapId == "3c_ocean" and level == 30 then    --C
     extraPattern = {
-        "うちゅうの　もくずと　きえた",
-        _("そして　#{chara}は　かんがえるのを　やめた"),
-        "うちゅうに　ただよう　デブリに　なった",
-        "あっとうてきなちからで　けしさられた",
+        "タコなぐりに　されてしまった",
+        "",
+        "",
+        "",
         ""
     }
     elseif mapId == "3d_space" and level == 30 then    --Dボス
@@ -190,6 +190,14 @@ return function(map, characterManager, enemyManager)
         _("そして　#{chara}は　かんがえるのを　やめた"),
         "うちゅうに　ただよう　デブリに　なった",
         "あっとうてきなちからで　けしさられた",
+        "",
+    }
+    elseif mapId == "3d_space" and level == 30 then    --かわずたん
+    extraPattern = {
+        "てんしのような　あくまのえがお",
+        "",
+        "",
+        "",
         "",
     }
     elseif mapId == "3a_ruin" then
@@ -205,6 +213,7 @@ return function(map, characterManager, enemyManager)
       }
     elseif mapId == "3c_ocean" then
       extraPattern = {
+        "うみの　もくずと　きえた",
         "",
       }
     elseif mapId == "3d_space" then

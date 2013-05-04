@@ -67,6 +67,7 @@ void GameOverLayer::replayButtonPressed(CCObject *sender) {
   } else {
     newScene->init(newMap);
   }
+  newScene->setIsContinue(true); // コンティニュー状態に
   scene->addChild(newScene);
   newMap->release();
   

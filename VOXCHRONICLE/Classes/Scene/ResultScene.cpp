@@ -63,9 +63,14 @@ void ResultScene::buildUI() {
   
   // ハイスコア
   CCString* lastMap = (CCString*)history->lastObject();
-  bool isHighScore = SaveData::sharedData()->updateScore(lastMap->getCString(), _log->getCount(PlayLogKeyTurn));
+  int currentScore = _log->getCount(PlayLogKeyTurn);
+  bool isHighScore = SaveData::sharedData()->updateScore(lastMap->getCString(), currentScore);
   
   int highScore = SaveData::sharedData()->getScore(lastMap->getCString());
+  
+  if (currentScore < highScore) {
+    highScore = currentScore;
+  }
   
   CCLabelTTF* clearTurn = CCLabelTTF::create("クリアターン", "Helvetica", 24);
   clearTurn->setPosition(ccp(80, 180));
@@ -90,7 +95,6 @@ void ResultScene::buildUI() {
                                                                                CCFadeTo::create(0.08, 255)));
     CCAction* blink3 = CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.08, 128),
                                                                                CCFadeTo::create(0.08, 255)));
-    
     clearTurn->runAction(blink0);
     clear->runAction(blink1);
     highScoreLabel->runAction(blink2);
@@ -115,7 +119,6 @@ void ResultScene::buildUI() {
   this->addChild(continueNumber);
   
   this->isTouchEnabled();
-   
 }
 
 void ResultScene::onEnterTransitionDidFinish() {

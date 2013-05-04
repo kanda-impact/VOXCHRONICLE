@@ -80,6 +80,22 @@ Map = {
   return {}
   end,]]
   onLevelUp = function(self, characterManager, enemyManager)
+    local time = getTime()
+    local level = characterManager:getLevel()
+    local data = SaveData:sharedData()
+    local reverse = data:isClearedMap("3d_space")
+    if time == 1 and reverse then
+      if level == 9 then
+        local enemies = enemyManager:getEnemies()
+        for i = 0, enemies:count() do
+          local enemy = enemies:objectAtIndex(i)
+          tolua.cast(enemy, "Enemy")
+          enemies:setExp(0)
+        end
+      elseif level == 10 then
+        enemyManager:popEnemyAt("kawaztan1S0", 3, 1)
+      end
+    end
   end,
   onLoad = function(self, characterManager, enemyManager)
     local currentTime = 2
@@ -99,6 +115,19 @@ Map = {
     enemyManager:loadEnemyTextureAsync("moth.png")
     enemyManager:loadEnemyTextureAsync("hornet.png")
     SaveData:sharedData():setClearedForMap("fp_field")
+    local time = getTime()
+    local level = characterManager:getLevel()
+    local data = SaveData:sharedData()
+    local reverse = data:isClearedMap("3d_space")
+    if time == 1 and reverse then
+      if level == 9 then
+        enemyManager:popEnemyAt("save_crist3D0", 3, 1)
+      elseif level == 10 then
+        enemyManager:popEnemyAt("kawaztan1S0", 3, 1)
+        self.__IRegister__:setBool("isBattleKawaztan", true)
+      end
+    end
+
   end,
   onBack = function(self, characterManager, enemyManager)
     local time = getTime()
@@ -106,10 +135,9 @@ Map = {
     local data = SaveData:sharedData()
     local reverse = data:isClearedMap("3d_space")
     if time == 1 and reverse then
-      if level == 9 then
-        enemyManager:popEnemyAt("flower1S0", 6, 1)
-      elseif level == 10 then
-        enemyManager:popEnemyAt("kawaztan1S0", 3, 1)
+      local count = enemyManager:getEnemies():count()
+      if level == 9 and count == 0 then
+        enemyManager:popEnemyAt("save_crist3D0", 3, 1)
       end
     end
 

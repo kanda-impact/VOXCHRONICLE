@@ -16,6 +16,7 @@ using namespace cocos2d;
 
 class ExtraScene :public CCLayer {
 private:
+  void onFreePlayButtonPressed(CCObject* sender);
   void onSoundTestButtonPressed(CCObject* sender);
   void onDictionaryButtonPressed(CCObject* sender);
   void onAchievementButtonPressed(CCObject* sender);

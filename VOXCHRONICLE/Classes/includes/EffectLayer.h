@@ -85,6 +85,7 @@ class EffectLayer :public CCLayer {
   void addWarning(float delay);
   void setCutinExtension(CCNode* extension);
   void reloadFocus(Skin* skin);
+  CCSprite* getFocus();
   void updateFocus(EnemyManager* manager);
   void addWaitMarker(float duration);
   void setCutinColor(ccColor3B color);

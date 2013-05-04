@@ -77,7 +77,8 @@ return function(map, characterManager, enemyManager)
       }
     end
        --1b夕暮れ　かわずたん
-    if mapId == "1b_field" and currentTimeZone == 1 then
+    local isBattleKawaz = map.__IRegister__:getBool("isBattleKawaztan", false)
+    if mapId == "1b_field" and currentTimeZone == 1 and isBattleKawaz then
       return {
         "ゆうぐれを　こえて",
         "平原　クリアー",

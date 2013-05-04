@@ -28,6 +28,7 @@ return function(map, characterManager, enemyManager)
         "パワーチャージを　つかってみよう",
         "チュートリアルも　みてみてね",
         "けんのマークを　れんだしよう",
+        "とにかく　けんのマークとか　いろいろおしてみよう",
       }
     end
 
@@ -128,10 +129,11 @@ return function(map, characterManager, enemyManager)
         "つぎは　ほんきで　いくぞ！"
       }
     end
-      
     --1b夕暮れ kawaztan
-    if mapId == "1b_field" and currentTimeZone == 1 then
+    local isBattleKawaz = map.__IRegister__:getBool("isBattleKawaztan", false)
+    if mapId == "1b_field" and currentTimeZone == 1 and isBattleKawaz then
       return {
+      "",
       }
     end
 

@@ -142,7 +142,9 @@ void MessageManager::pushRandomMessageFromObject(LuaObject *lua, Map *map, Chara
         CCString* str = CCString::create(it->stringValue());
         array->addObject(str);
       }
-      CCString* random = (CCString*)array->randomObject();
+      // randomObject使うと種が初期化されずに辛い
+      int i = rand() % array->count();
+      CCString* random = (CCString*)array->objectAtIndex(i);
       this->pushMessage(random->getCString());
     }
   }

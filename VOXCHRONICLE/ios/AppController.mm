@@ -153,6 +153,7 @@ void SignalHandler(int sig) {
   [OALSimpleAudio sharedInstance].reservedSources = 4;
   
   cocos2d::CCApplication::sharedApplication()->run();
+  
   return YES;
 }
 
