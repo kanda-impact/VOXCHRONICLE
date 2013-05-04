@@ -1172,6 +1172,7 @@
 		07D351F11722869700C547DD /* T_geek2.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07D351EC1722869600C547DD /* T_geek2.lua */; };
 		07D351F21722869700C547DD /* T_leaf2.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07D351ED1722869600C547DD /* T_leaf2.lua */; };
 		07D351F31722869700C547DD /* T_tetufez2.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07D351EE1722869700C547DD /* T_tetufez2.lua */; };
+		07D4947F1734A15A0025785F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791586915EBB4BB0083D348 /* Default.png */; };
 		07D8740715ED13CD009CC446 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07D8740615ED13CD009CC446 /* MainScene.cpp */; };
 		07D8745815F01A15009CC446 /* ALBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8741E15F01500009CC446 /* ALBuffer.m */; };
 		07D8745915F01A15009CC446 /* ALCaptureDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D8742015F01500009CC446 /* ALCaptureDevice.m */; };
@@ -7323,6 +7324,7 @@
 				0789A1371733E6B200FFB262 /* fullvoice2.mp3 in Resources */,
 				0789A1381733E6B200FFB262 /* fullvoice3.mp3 in Resources */,
 				0789A13A1733F7E100FFB262 /* revive_foot.lua in Resources */,
+				07D4947F1734A15A0025785F /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
