@@ -55,8 +55,8 @@ Enemy = {
           end
         end
         if leftBitDead then
-          return "revive" -- 蘇生呪文
           self:setRegister("blank",0)
+          return "revive" -- 蘇生呪文
         end
       end
       self:setRegister("blank",blankTurn + 1)
