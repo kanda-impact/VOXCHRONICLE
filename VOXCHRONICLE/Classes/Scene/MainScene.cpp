@@ -647,6 +647,7 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _musicManager->setMinDrumScore(4);
       _skin->getController()->setEnable(false);
       _qteTrigger = new QTETrigger(_enemyManager);
+      _effectLayer->getFocus()->setVisible(false); // フォーカス非表示にする
       this->addChild(_qteTrigger, MainSceneZOrderUI);
       SEManager::sharedManager()->registerEffect(FileUtils::getFilePath("qte.mp3").c_str());
     }
