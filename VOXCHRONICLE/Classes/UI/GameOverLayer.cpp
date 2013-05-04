@@ -21,6 +21,7 @@
 
 GameOverLayer::GameOverLayer(MainScene* main) {
   _main = main;
+  this->setTouchEnabled(true);
   // 巡回参照してた
   this->buildUI();
 }
@@ -103,4 +104,12 @@ void GameOverLayer::titleButtonPressed(CCObject *sender) {
 
 void GameOverLayer::setMainBackScene(MainBackScene scene) {
   _backScene = scene;
+}
+
+void GameOverLayer::registerWithTouchDispatcher() {
+  CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 200, true);
+}
+
+bool GameOverLayer::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) {
+  return true;
 }

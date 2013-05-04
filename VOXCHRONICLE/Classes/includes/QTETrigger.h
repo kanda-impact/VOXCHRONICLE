@@ -20,10 +20,12 @@ class QTETrigger :public CCLayer {
   EnemyManager* _enemyManager;
   void onButtonPressed(CCObject* sender);
   bool _pressed;
+  CCMenu* _menu;
  public:
   QTETrigger(EnemyManager* manager);
   ~QTETrigger();
   bool isButtonPressed();
+  CCMenu* getMenu();
 };
 
 #endif /* defined(__VOXCHRONICLE__QTETrigger__) */
