@@ -122,9 +122,9 @@ return function(map, characterManager, enemyManager)
       extraPattern = {
           "てんしのような　あくまのえがお",
           "おまえのような　1ボスがいるか！",
-          "",
-          "",
-          "",
+          "すごいやつ　だったケロ。",
+          "また　あそんでくれ　ケロ～！",
+          "かわずたんは　たのしかったようだ"
       }
     elseif mapId == "1b_field" and currentTimeZone == TimeZoneDay then -- 1b昼
       extraPattern = {
@@ -177,15 +177,15 @@ return function(map, characterManager, enemyManager)
         "ぐしゃっ",
         "ぺたんこになった",
         "まにあわなかった...",
-        "まるで　きょうせいスクロールの　かべのようだった"
+        "まるで　かべのようだった",
       }
     elseif (mapId == "3b_castle" or mapId == "bossdebug") and level == 30 then    --B
     extraPattern = {
         "たて！　きさまのちからは　そのていどでは　ないはずだ",
         "まだだ...　まだ　たたかいたりぬ",
         "でなおして　くるがいい",
-        "",
-        _("#{chara}　きさまの　な　おぼえておこう")
+        "はっはっは　その　ていどか",
+        _("#{chara}　きさまの　な　おぼえておこう"),
       }
     elseif (mapId == "3c_ocean" or mapId == "ocean_boss") and level == 30 then    --C
     extraPattern = {
@@ -193,7 +193,7 @@ return function(map, characterManager, enemyManager)
         "イカんともしがたい",
         "かずのぼうりょくには　かなわなかった",
         "あのゲソ　たおしても　キリがない!?",
-        "スルメに　してやる...!"
+        "スルメに　してやる...!",
     }
     elseif (mapId == "3d_space" or mapId == "space_boss") and level == 30 then    --Dボス
     extraPattern = {
@@ -206,31 +206,38 @@ return function(map, characterManager, enemyManager)
     elseif mapId == "3a_ruin" then
       extraPattern = {
         "このまま　くちはてていく　さだめ",
-        "",
-        "",
+        "がれきに　うもれてゆく",
+        "いせきの　れきしの　いちぶに　なった",
+        "でんせつの　だんじょんにて　ぼっす",
+        "もうすこし　だったのに．．．",
+        "あとちょっと　だったのに．．．",
       }
     elseif mapId == "3b_castle" then
       extraPattern = {
-        "しろの　ぼうれいと　なりはてるのか．．．",
-        "",
-        "",
-        "",
+        "しろの　ぼうれいへと　なりはてるのか．．．",
+        "しろとともに　くちはてていく",
+        "くそ．．．　あとすこし　だったのに",
+        "まものが　つよかった",
+        "まだ　あきらめたくない．．．！",
       }
     elseif mapId == "3c_ocean" then
       extraPattern = {
         "うみの　もくずと　きえた",
         "くらい　くらい　うみのそこにしずんだ",
-        "",
+        _("#{chara} ちんぼつ"),
+        "さかなたちの　エサと　なった",
+        "ごぼごぼごぼ～",
+        _("#{chara}は おぼれてしまった"),
       }
     elseif mapId == "3d_space" then
       extraPattern = {
-        "うちゅうの　もくずと　きえた",
-        _("そして　#{chara}は　かんがえるのを　やめた")
+        "うちゅうの　もくずに　なった",
+        _("そして　#{chara}は　かんがえるのを　やめた"),
         "うちゅうに　ただよう　デブリに　なった",
         "ラスカ　きみはどこにおちたい？",
-        "",
-      }
-      
+        "あっとうてきなちからで　けしさられた",
+        "しんくうにて　くちはてた",
+      } 
     end 
     local r = math.random(100)
     if r < 20 then -- 2割の確率で個別テーブルを返します
