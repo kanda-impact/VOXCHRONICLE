@@ -6,6 +6,7 @@ return function(map, characterManager, enemyManager)
   chara = characterManager:getCurrentCharacter():getName()
   local mapId = map:getIdentifier()
   local currentTimeZone = getCurrentTimeZone()
+  local level = characterManager:getLevel()
   --コンティニュ―時（全ステージ共通部分）
   local commonPattern =  {
     "さあ　もういちど！",
@@ -79,7 +80,7 @@ return function(map, characterManager, enemyManager)
     end
 
     --3aBoss
-    if mapId == "3d_space" and currentTimeZone == 30 then
+    if (mapId == "3a_ruin" or mapId == "ruin_boss") and level == 30 then
       return {
         "とにかく　こうげきしまくるんだ！",
         "やられるまえに　やるしかない！",
@@ -87,7 +88,7 @@ return function(map, characterManager, enemyManager)
       }
     end
     --3bBoss
-    if mapId == "3d_space" and currentTimeZone == 30 then
+    if (mapId == "3b_castle" or mapId == "bossdebug") and level == 30 then
       return {
         "けんをかまえたら　ガードのじゅんびをしよう",
         "ちょくせつこうげきできるコマンドがあるわよね？",
@@ -95,7 +96,7 @@ return function(map, characterManager, enemyManager)
       }
     end
     --3cBoss
-    if mapId == "3d_space" and currentTimeZone == 30 then
+    if (mapId == "3c_ocean" or mapId == "ocean_boss") and level == 30 then
       return {
         "ほんたいをねらって　こうげきするのよ！",
         "つなみにはこうげきがきかない　ガードでやりすごそう",
@@ -103,7 +104,7 @@ return function(map, characterManager, enemyManager)
       }
     end
     --3dBoss
-    if mapId == "3d_space" and currentTimeZone == 30 then
+    if (mapId == "3d_space" or mapId == "space_boss") and level == 30 then
       return {
         "いつでもファージーをたおせるようにしておこう",
         "ボスのワザが　どういうこうかなのか　はあくしておこう",

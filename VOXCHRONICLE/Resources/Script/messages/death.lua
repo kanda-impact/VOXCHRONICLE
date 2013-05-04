@@ -118,6 +118,14 @@ return function(map, characterManager, enemyManager)
         "チュートリアルは　みてくれた？",
         "ま　まって　やめないでー！"
       }
+    elseif (mapId == "1b_field" or mapId == "field_boss") and map.__IRegister__:getBool("isBattleKawaztan") then    --かわずたん
+      extraPattern = {
+          "てんしのような　あくまのえがお",
+          "おまえのような　1ボスがいるか！",
+          "",
+          "",
+          "",
+      }
     elseif mapId == "1b_field" and currentTimeZone == TimeZoneDay then -- 1b昼
       extraPattern = {
         "さすがハード　ひとすじなわでは　いかないってかんじ？",
@@ -132,7 +140,6 @@ return function(map, characterManager, enemyManager)
         "たそがれに　しずむ",
         "ああ．．．ゆうひが　しずむ．．．"
       }
-
     elseif mapId == "1b_field" and currentTimeZone == TimeZoneDay then -- 1b夜
       extraPattern = {
         "さすがハード　ひとすじなわでは　いかないってかんじ？",
@@ -164,7 +171,7 @@ return function(map, characterManager, enemyManager)
         "シールドだけじゃ　さばききれない"
       }
         --ボスの死亡台詞
-    elseif mapId == "3a_ruin" and level == 30 then    --A
+    elseif (mapId == "3a_ruin" or mapId == "ruin_boss") and level == 30 then    --A
     extraPattern = {
         "ぷちっ",
         "ぐしゃっ",
@@ -172,7 +179,7 @@ return function(map, characterManager, enemyManager)
         "まにあわなかった...",
         "まるで　きょうせいスクロールの　かべのようだった"
       }
-    elseif mapId == "3b_castle" and level == 30 then    --B
+    elseif (mapId == "3b_castle" or mapId == "bossdebug") and level == 30 then    --B
     extraPattern = {
         "たて！　きさまのちからは　そのていどでは　ないはずだ",
         "まだだ...　まだ　たたかいたりぬ",
@@ -180,7 +187,7 @@ return function(map, characterManager, enemyManager)
         "",
         _("#{chara}　きさまの　な　おぼえておこう")
       }
-    elseif mapId == "3c_ocean" and level == 30 then    --C
+    elseif (mapId == "3c_ocean" or mapId == "ocean_boss") and level == 30 then    --C
     extraPattern = {
         "タコなぐりにされてしまった",
         "イカんともしがたい",
@@ -188,21 +195,13 @@ return function(map, characterManager, enemyManager)
         "あのゲソ　たおしても　キリがない!?",
         "スルメに　してやる...!"
     }
-    elseif mapId == "3d_space" and level == 30 then    --Dボス
+    elseif (mapId == "3d_space" or mapId == "space_boss") and level == 30 then    --Dボス
     extraPattern = {
         "あっとうてきなちからで　けしさられた",
         _("そして　#{chara}は　かんがえるのを　やめた"),
         "このせかいから　おとがきえた",
         "あいつは...あいつだけは　たおさないと...!!",
         "やっと　ここまできたのに...!",
-    }
-    elseif mapId == "3d_space" and level == 30 then    --かわずたん
-    extraPattern = {
-        "てんしのような　あくまのえがお",
-        "おまえのような　1ボスがいるか！",
-        "",
-        "",
-        "",
     }
     elseif mapId == "3a_ruin" then
       extraPattern = {
