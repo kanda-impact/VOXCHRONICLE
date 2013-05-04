@@ -116,7 +116,7 @@ void TitleScene::onEnterTransitionDidFinish() {
 void TitleScene::onStartButtonPressed(CCObject* sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/start.mp3").c_str());
   CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
-  if (SaveData::sharedData()->getCountFor(SaveDataCountKeyBoot) == 1 || true) {
+  if (SaveData::sharedData()->getCountFor(SaveDataCountKeyBoot) == 1) {
     InitialScene* scene = InitialScene::create();
     nextScene(scene);
   } else {

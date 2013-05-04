@@ -121,7 +121,7 @@ void ResultScene::buildUI() {
 void ResultScene::onEnterTransitionDidFinish() {
   _isAppeard = true;
   // 初回クリア時
-  if (SaveData::sharedData()->getCountFor(SaveDataCountKeyClear) <= 1 || true) { // ポップアップを出します
+  if (SaveData::sharedData()->getCountFor(SaveDataCountKeyClear) <= 1) { // ポップアップを出します
     this->setTouchEnabled(false);
     LuaObject* setting = LuaObject::create("setting");
     CCDirector* director = CCDirector::sharedDirector();
