@@ -195,7 +195,7 @@ return function(map, characterManager, enemyManager)
         "あのゲソ　たおしても　キリがない!?",
         "スルメに　してやる...!",
     }
-    elseif (mapId == "3d_space" or mapId == "space_boss") and level == 30 then    --Dボス
+    elseif (mapId == "3d_space" or mapId == "space_boss" or mapId == "space_boss2") and level == 30 then    --Dボス
     extraPattern = {
         "あっとうてきなちからで　けしさられた",
         _("そして　#{chara}は　かんがえるのを　やめた"),

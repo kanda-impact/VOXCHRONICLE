@@ -104,7 +104,7 @@ return function(map, characterManager, enemyManager)
       }
     end
     --3dBoss
-    if (mapId == "3d_space" or mapId == "space_boss") and level == 30 then
+    if (mapId == "3d_space" or mapId == "space_boss" or mapId == "space_boss2") and level == 30 then
       return {
         "いつでもファージーをたおせるようにしておこう",
         "ボスのワザが　どういうこうかなのか　はあくしておこう",
