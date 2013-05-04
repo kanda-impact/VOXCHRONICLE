@@ -60,7 +60,7 @@ return function(map, characterManager, enemyManager)
     if mapId == "2b_cave" then
       return {
       "あのコウモリは　すばやいぞ",
-      "てきのそうびに　きをつけよう"
+      "てきのそうびに　きをつけよう",
       "あかいかがみは　オクスのこうげきで　たたきわれるわよ",
       "あおいたては　ラスカのまほうで　うちやぶれるぞ",
       "たおしきれないときは　ガードでやりすごそう"
