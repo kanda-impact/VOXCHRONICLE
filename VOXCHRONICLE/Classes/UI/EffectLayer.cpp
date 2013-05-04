@@ -425,7 +425,7 @@ void EffectLayer::updateFocus(EnemyManager *manager) {
     _focus->setPosition(ccpAdd(nearest->getPosition(), ccp(0, nearest->getContentSize().height * nearest->getCurrentScale(nearest->getRow()) * 0.8)));
     _focus->setScale(MAX(nearest->getCurrentScale(nearest->getRow()), 0.4));
   } else {
-    _focus->setVisible(false);
+    _focus->setPosition(ccp(1000, 1000)); // 画面外に飛ばす
   }
 }
 
