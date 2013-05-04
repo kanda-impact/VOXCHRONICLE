@@ -58,6 +58,7 @@ class MainScene : public CCLayer {
   int _mapTurnCount;
   int _initialLevel;
   bool _isLevelUped;
+  bool _isContinue;
   MainBackScene _backScene;
   SkillPerformInfo _currentSkillInfo;
   EnemyManager* _enemyManager;
@@ -120,6 +121,7 @@ class MainScene : public CCLayer {
   void setBackScene(MainBackScene backScene);
   
   void setLevel(Level* lv);
+  void setIsContinue(bool c);
   
   CREATE_FUNC(MainScene);
 };

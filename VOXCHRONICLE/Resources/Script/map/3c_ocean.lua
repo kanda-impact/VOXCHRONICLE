@@ -123,7 +123,8 @@ Map = {
     if self.__IRegister__:getRegister(key,0) == 1 then
       data:unlockAchievement("bossCex")
     end
-    SaveData:sharedData():addDefeatedCountForEnemy("wave")
+    data:addDefeatedCountForEnemy("wave")
+    data:setClearedForMap("ocean_boss") -- フリープレイ解放
   end,
 
   getEnemyPopRate = function(level)

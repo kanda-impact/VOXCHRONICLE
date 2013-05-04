@@ -1,5 +1,5 @@
 Map = {
-  name = "戦闘！ワート・モショウ",
+  name = "宙域ボス：２",
   wayMusic = "nmb",
   bossMusic = "AttaQ3-D",
   backgroundImage = "3d_background0.png",

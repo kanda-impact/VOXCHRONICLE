@@ -142,9 +142,9 @@ void DictionaryScene::loadEnemyByIndex(int idx) {
     _descriptionLabel->setString(_enemy->getSpecies()->getDescription().c_str());
     _enemy->setColor(ccc3(255, 255, 255));
   } else {
-    _nameLabel->setString(this->repeatChar("?", _enemy->getName().size()).c_str());
+    _nameLabel->setString(this->repeatChar("?", _enemy->getName().size() / 2.0).c_str());
     _numberLabel->setString(lexical_cast<string>(idx + 1).c_str());
-    _descriptionLabel->setString(this->repeatChar("?", _enemy->getSpecies()->getDescription().size()).c_str());
+    _descriptionLabel->setString(this->repeatChar("?", _enemy->getSpecies()->getDescription().size() / 2.0).c_str());
     _enemy->setColor(ccc3(5, 5, 5));
     _enemy->setSilhouette();
   }

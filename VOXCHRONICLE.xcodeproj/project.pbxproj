@@ -348,6 +348,7 @@
 		076F1D3515EB94780013A45E /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 076F1D3415EB94780013A45E /* AppController.mm */; };
 		076F1D3815EB94780013A45E /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 076F1D3715EB94780013A45E /* RootViewController.mm */; };
 		076F1D3C15EB94780013A45E /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 076F1D3B15EB94780013A45E /* AppDelegate.cpp */; };
+		076F4ACD17358678006982E7 /* soundtest.lua in Resources */ = {isa = PBXBuildFile; fileRef = 076F4ACC17358678006982E7 /* soundtest.lua */; };
 		077070651719043200E3F836 /* ResultScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 077070631719043100E3F836 /* ResultScene.cpp */; };
 		0770706717198C4800E3F836 /* T_tnt9.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0770706617198C4800E3F836 /* T_tnt9.lua */; };
 		0772FEB616C260BA00A50931 /* VQString.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0772FEB416C260BA00A50931 /* VQString.mm */; };
@@ -1865,6 +1866,7 @@
 		076F1D3715EB94780013A45E /* RootViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = RootViewController.mm; path = ios/RootViewController.mm; sourceTree = "<group>"; };
 		076F1D3A15EB94780013A45E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		076F1D3B15EB94780013A45E /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
+		076F4ACC17358678006982E7 /* soundtest.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = soundtest.lua; sourceTree = "<group>"; };
 		077070631719043100E3F836 /* ResultScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResultScene.cpp; path = Classes/Scene/ResultScene.cpp; sourceTree = "<group>"; };
 		077070641719043200E3F836 /* ResultScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultScene.h; path = Classes/Scene/ResultScene.h; sourceTree = "<group>"; };
 		0770706617198C4800E3F836 /* T_tnt9.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = T_tnt9.lua; sourceTree = "<group>"; };
@@ -4624,6 +4626,7 @@
 				079D275916D3B9F6006D6A8F /* skins */,
 				078D452516CE87D900E21DC5 /* species */,
 				0754384716E3985600802970 /* staffroll.lua */,
+				076F4ACC17358678006982E7 /* soundtest.lua */,
 			);
 			name = Script;
 			path = Resources/Script;
@@ -7325,6 +7328,7 @@
 				0789A1381733E6B200FFB262 /* fullvoice3.mp3 in Resources */,
 				0789A13A1733F7E100FFB262 /* revive_foot.lua in Resources */,
 				07D4947F1734A15A0025785F /* Default.png in Resources */,
+				076F4ACD17358678006982E7 /* soundtest.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

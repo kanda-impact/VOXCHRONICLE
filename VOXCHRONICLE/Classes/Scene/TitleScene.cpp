@@ -27,6 +27,8 @@ typedef enum {
 
 #include "CCRemoveFromParentAction.h"
 
+#include "UIApplicationWrapper.h"
+
 using namespace cocos2d;
 using namespace boost;
 
@@ -156,6 +158,7 @@ bool TitleScene::ccTouchBegan(CCTouch* pTouch, CCEvent* pEvent) {
 void TitleScene::onDemoStart() {
   SaveData* data = SaveData::sharedData();
   _isDemo = true;
+  UIApplicationWrapper::sharedApplication()->setIdleTimerDisabled(true);
   CCDirector* director = CCDirector::sharedDirector();
   string text = _demo->getString("text");
   CCLabelTTF* label = CCLabelTTF::create(text.c_str(),
@@ -206,6 +209,7 @@ void TitleScene::onDemoEnd() {
 }
 
 void TitleScene::removeDemo() {
+  UIApplicationWrapper::sharedApplication()->setIdleTimerDisabled(false);
   SimpleAudioEngine::sharedEngine()->stopAllEffects();
   _touchToStart->setVisible(true);
   CCNode* demo = this->getChildByTag(TitleSceneTagDemoBackground);

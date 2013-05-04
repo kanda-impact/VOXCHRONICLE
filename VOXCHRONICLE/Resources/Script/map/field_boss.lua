@@ -1,11 +1,11 @@
 Map = {
-  name = "戦闘！かわずたん",
+  name = "かわずたん！",
   wayMusic = "1b",
   bossMusic = "",
   backgroundImage = "field_background1.png",
   skin = "skinB",
   ending = "",
-  nextMaps = {},
+  nextMaps = {"2b_cave", "2c_cyber"},
   initialLevel = 10,
   maxLevel = 11,
   getEnemyTable = function(level)

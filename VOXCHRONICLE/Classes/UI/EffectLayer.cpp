@@ -429,6 +429,10 @@ void EffectLayer::updateFocus(EnemyManager *manager) {
   }
 }
 
+CCSprite* EffectLayer::getFocus() {
+  return _focus;
+}
+
 void EffectLayer::addWaitMarker(float duration) {
   if (!this->getChildByTag(EffectLayerTagWait)) {
     CCDirector* director = CCDirector::sharedDirector();

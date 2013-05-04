@@ -131,6 +131,7 @@ Map = {
       data:unlockAchievement("bossDex")
     end
     SaveData:sharedData():addDefeatedCountForEmemy("wave")
+    data:setClearedForMap("space_boss") -- フリープレイ解放
   end,
   getEnemyPopRate = function(level)
     if level >= 25 then

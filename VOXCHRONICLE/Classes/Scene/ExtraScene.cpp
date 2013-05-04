@@ -29,6 +29,10 @@ bool ExtraScene::init() {
   background->setPosition(center);
   this->addChild(background);
   
+  CCMenuItemImage* freeplay = CCMenuItemImage::create("freeplay_button.png",
+                                                      "freeplay_button_pressed.png",
+                                                      this,
+                                                      menu_selector(ExtraScene::onFreePlayButtonPressed));
   CCMenuItemImage* soundtest = CCMenuItemImage::create("soundtest_button.png",
                                                        "soundtest_button_pressed.png",
                                                        this,
@@ -49,12 +53,12 @@ bool ExtraScene::init() {
                                                   "extra_back_pressed.png",
                                                   this,
                                                   menu_selector(ExtraScene::onBackButtonPressed));
-  CCMenu* extraMenu = CCMenu::create(dictionary, soundtest, achievement, credit, NULL);
+  CCMenu* extraMenu = CCMenu::create(freeplay, soundtest, dictionary, achievement, credit, NULL);
   CCMenu* backMenu = CCMenu::createWithItem(back);
   
   extraMenu->alignItemsVerticallyWithPadding(10);
   
-  extraMenu->setPosition(ccp(250, center.y + 30));
+  extraMenu->setPosition(ccp(250, center.y));
   backMenu->setPosition(ccp(40, center.y));
   
   this->addChild(extraMenu);
@@ -67,9 +71,15 @@ void ExtraScene::onExit() {
   CCLayer::onExit();
 }
 
-void ExtraScene::onSoundTestButtonPressed(cocos2d::CCObject *sender) {
+void ExtraScene::onFreePlayButtonPressed(cocos2d::CCObject *sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/menu_decide.mp3").c_str());
   FreePlayScene* scene = FreePlayScene::create("freeplay.lua", false);
+  nextScene(scene, true);
+}
+
+void ExtraScene::onSoundTestButtonPressed(cocos2d::CCObject *sender) {
+  CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/menu_decide.mp3").c_str());
+  FreePlayScene* scene = FreePlayScene::create("soundtest.lua", false);
   nextScene(scene, true);
 }
 

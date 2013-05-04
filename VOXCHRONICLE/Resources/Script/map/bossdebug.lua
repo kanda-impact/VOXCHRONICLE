@@ -1,5 +1,5 @@
 Map = {
-  name = "戦闘！ナイト",
+  name = "古城ボス",
   wayMusic = "dub",
   bossMusic = "3Bb",
   ending = "endingB",
