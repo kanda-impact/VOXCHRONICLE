@@ -20,6 +20,7 @@ class KWAlert :public CCSprite {
  private:
   CCLabelTTF* _label;
   KWAlertDelegate* _delegate;
+  CCMenu* _menu;
   void onButtonPressed(CCObject* sender);
  public:
   KWAlert(const char* background, CCArray* buttonNames);
@@ -29,6 +30,7 @@ class KWAlert :public CCSprite {
   void setText(const char* text);
   KWAlertDelegate* getDelegate();
   void setDelegate(KWAlertDelegate* delegate);
+  void setEnabled(bool enable);
 };
 
 #endif /* defined(__VOXCHRONICLE__KWAlert__) */

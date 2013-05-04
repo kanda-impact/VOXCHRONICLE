@@ -34,6 +34,13 @@ Skill = {
     end
   end,
   getMessageTable = function(self, targets, map, characterManager, enemyManager)
+    if targets and targets:count() > 0 then
+      local target = targets:objectAtIndex(0)
+      tolua.cast(target, "Enemy")
+      if target:getType() == SkillTypePhysical or target:getItem() == EnemyItemShield or not target:getSpecies():isEnableSkill(self) then -- 効かない相手にはメッセージ表示しない
+        return {}
+      end
+    end
     return {
       "おもいきり　けんをふりおろした",
       "けんで　こうげきした",

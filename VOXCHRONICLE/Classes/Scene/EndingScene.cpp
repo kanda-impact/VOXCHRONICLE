@@ -65,12 +65,17 @@ EndingScene::EndingScene(const char* endingScript) {
   labels->addChild(label);
   bg->addChild(labels, 0, EndingSceneTagLabel);
   this->setTouchEnabled(true);
+  
+  _achievementId = obj->getString("achievement");
 }
 
 EndingScene::~EndingScene() {
 }
 
 void EndingScene::goToNextScene(cocos2d::CCObject *sender) {
+  // 実績解除
+  SaveData::sharedData()->unlockAchievement(_achievementId.c_str());
+  
   CocosDenshion::SimpleAudioEngine::sharedEngine()->stopAllEffects();
   CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
   CCScene* scene = CCScene::create();

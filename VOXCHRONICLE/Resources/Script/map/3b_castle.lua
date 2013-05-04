@@ -33,6 +33,7 @@ Map = {
     enemyManager:loadEnemyTextureAsync("mimic.png")
     enemyManager:loadEnemyTextureAsync("gargoyle.png")
     enemyManager:loadEnemyTextureAsync("dragon.png")
+    local data = SaveData:sharedData()
     data:setClearedForMap("fp_castle")
   end,
    onLevelUp = function(self, characterManager, enemyManager)
@@ -67,7 +68,6 @@ Map = {
   end,
   onClear = function(self, characterManager, enemyManager)
     local data = SaveData:sharedData()
-    data:unlockAchievement("clear3B")
     local key = "knightAchieve"
     local bossAttack = self.__IRegister__:getRegister(key,0)
     if bossAttack > 0 then

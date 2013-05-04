@@ -2,6 +2,7 @@ Ending = {
   background = "endingD.jpg",
   music = "endingD.mp3",
   duration = 27,
+  achievement = "clear3D",
   text = [[
 圧倒的な力であらゆる脅威を退けるオクス
 ついにはその身を宇宙にまで進め

@@ -1,9 +1,12 @@
 require("concat")
 require("timezone")
 return function(map, characterManager, enemyManager)
-  local chara = characterManager:getCurrentCharacter():getName()
+  math.random(100)
+  chara = characterManager:getCurrentCharacter():getName()
   local mapId = map:getIdentifier()
   local currentTimeZone = getCurrentTimeZone()
+  local data = SaveData:sharedData()
+  generations = data:getCountFor(SaveDataCountKeyDead) + 1 -- オクスN世
   --開始時メッセージ関係
   --ステージ開始時共通
   local commonPattern = {
@@ -14,6 +17,10 @@ return function(map, characterManager, enemyManager)
     "さあ　いくわよ！！",
     "まものの　においがする．．．",
     "てきがくるぞ　きをつけろ",
+    _("#{generations}世代目の　オクスが　たびだつ"),
+    _("オクス　#{generations}世　いきます！"),
+    _("ああ　オクス　#{generations}世が　ゆく．．．！"),
+    _("ただいま　オクス　#{generations}世")
   }
   local getExtraPatterns = function()
     --ステージ開始時1a

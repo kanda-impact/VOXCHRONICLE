@@ -119,7 +119,6 @@ Map = {
 
   onClear = function(self, characterManager, enemyManager)
     local data = SaveData:sharedData()
-    data:unlockAchievement("clear3C")
     local key = "crakenAchieve"
     if self.__IRegister__:getRegister(key,0) == 1 then
       data:unlockAchievement("bossCex")

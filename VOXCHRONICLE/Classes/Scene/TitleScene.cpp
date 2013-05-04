@@ -14,13 +14,12 @@ typedef enum {
 #include <sstream>
 #include "SimpleAudioEngine.h"
 #include "TitleScene.h"
-#include "MainScene.h"
 #include "MainMenuScene.h"
 #include "FileUtils.h"
 #include "FreePlayScene.h"
 #include "macros.h"
 #include "BufferCache.h"
-#include "StaffRollScene.h"
+#include "InitialScene.h"
 
 #include "KWAlert.h"
 
@@ -89,6 +88,9 @@ bool TitleScene::init() {
   this->addChild(_touchToStart);
   _touchToStart->retain();
   
+  _shakeCount = 0;
+  _isShaking = false;
+  
   this->setAccelerometerEnabled(true);
 
   return true;
@@ -108,31 +110,20 @@ void TitleScene::nextScene(CCLayer* layer) {
 
 void TitleScene::onEnterTransitionDidFinish() {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic(FileUtils::getFilePath("Music/general/title.mp3").c_str(), true);
-  
-  if (SaveData::sharedData()->getCountFor(SaveDataCountKeyBoot) > 1 && false) {
-    this->scheduleOnce(schedule_selector(TitleScene::onDemoStart), _demo->getNumber("delay"));
-  } else { // 初回起動時
-    this->setTouchEnabled(false);
-    LuaObject* setting = LuaObject::create("setting");
-    CCDirector* director = CCDirector::sharedDirector();
-    CCArray* names = CCArray::create(CCString::create("はい"), CCString::create("いいえ"), NULL);
-    KWAlert* alert = new KWAlert("dialog_window.png", names);
-    alert->setPosition(ccp(director->getWinSize().width / 2.0, director->getWinSize().height / 2.0));
-    alert->autorelease();
-    this->addChild(alert);
-    alert->setText(setting->getString("introductionMessage"));
-    alert->setDelegate(this);
-    alert->show();
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/window_open.mp3").c_str());
-  }
+  this->scheduleOnce(schedule_selector(TitleScene::onDemoStart), _demo->getNumber("delay"));
 }
 
 void TitleScene::onStartButtonPressed(CCObject* sender) {
   CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/start.mp3").c_str());
-  MainMenuScene* scene = new MainMenuScene(true);
-  scene->autorelease();
   CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
-  nextScene(scene);
+  if (SaveData::sharedData()->getCountFor(SaveDataCountKeyBoot) == 1) {
+    InitialScene* scene = InitialScene::create();
+    nextScene(scene);
+  } else {
+    MainMenuScene* scene = new MainMenuScene(true);
+    scene->autorelease();
+    nextScene(scene);
+  }
 }
 
 void TitleScene::onDebugButtonPressed(CCObject* sender) {
@@ -227,37 +218,18 @@ void TitleScene::didAccelerate(CCAcceleration *pAccelerationValue) {
   SaveData* data = SaveData::sharedData();
   if (!data->isFullVoice()) {
     if (pAccelerationValue->x > 1.8 || pAccelerationValue->y > 1.8 || pAccelerationValue->z > 1.8) {
-      int number = rand() % 4;
-      SimpleAudioEngine::sharedEngine()->playEffect(("fullvoice" + lexical_cast<string>(number) + ".mp3").c_str());
-      data->setFullVoice(true);
-      data->unlockAchievement("unlockFullVoice");
+      if (!_isShaking) { // 3回振るとチュートリアル解放
+        _isShaking = true;
+        ++_shakeCount;
+        if (_shakeCount >= 3) {
+          int number = rand() % 4;
+          SimpleAudioEngine::sharedEngine()->playEffect(("fullvoice" + lexical_cast<string>(number) + ".mp3").c_str());
+          data->setFullVoice(true);
+          data->unlockAchievement("unlockFullVoice");
+        }
+      }
+    } else {
+      _isShaking = false;
     }
   }
-}
-
-void TitleScene::clickedButtonAtIndex(KWAlert *alert, int index) {
-  if (index == 0) {
-    this->scheduleOnce(schedule_selector(TitleScene::onGotoTutorial), 2.f);
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/tutorial_decide.mp3").c_str());
-    this->setTouchEnabled(false);
-  } else {
-    alert->dismiss();
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/window_close.mp3").c_str());
-    this->setTouchEnabled(true);
-    this->scheduleOnce(schedule_selector(TitleScene::onDemoStart), _demo->getNumber("delay"));
-  }
-}
-
-void TitleScene::onGotoTutorial() {
-  SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
-  Map* map = new Map("tutorial0"); // ハードコード安定
-  map->autorelease();
-  MainScene* layer = new MainScene();
-  layer->autorelease();
-  layer->init(map);
-  layer->setBackScene(MainBackSceneMainMenu);
-  CCScene* scene = CCScene::create();
-  scene->addChild(layer);
-  CCTransitionFade* fade = CCTransitionFade::create(0.5f, scene);
-  CCDirector::sharedDirector()->replaceScene(fade);
 }

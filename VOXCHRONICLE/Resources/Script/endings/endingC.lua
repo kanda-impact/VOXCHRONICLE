@@ -2,6 +2,7 @@ Ending = {
   background = "endingC.jpg",
   music = "endingC.mp3",
   duration = 23,
+  achievement = "clear3C",
   text = [[
 オクスはラスカとの長い共闘で、徐々に精神が融合し次元を超えた存在へと昇華していく
 
