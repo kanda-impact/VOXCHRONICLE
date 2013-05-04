@@ -28,6 +28,7 @@ return function(map, characterManager, enemyManager)
         "パワーチャージを　つかってみよう",
         "チュートリアルも　みてみてね",
         "けんのマークを　れんだしよう",
+        "とにかく　けんのマークとか　いろいろおしてみよう",
       }
     end
 
@@ -132,6 +133,7 @@ return function(map, characterManager, enemyManager)
     --1b夕暮れ kawaztan
     if mapId == "1b_field" and currentTimeZone == 1 then
       return {
+      　　　　"",
       }
     end
 
