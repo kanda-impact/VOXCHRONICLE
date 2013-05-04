@@ -271,9 +271,9 @@ void MainScene::trackWillFinishPlaying(Music *music, Track *currentTrack, Track 
       _skin->getController()->setEnable(true);
       _characterManager->setRepeatCount(0);
       _skin->getController()->resetAllTriggers();
-      if (_level->getLevel() == _map->getInitialLevel()) {
+      //if (_level->getLevel() == _map->getInitialLevel()) {
         _map->performOnLevel(_characterManager, _enemyManager); // 初期レベルの時、スクリプトを呼んでやる
-      }
+      //}
       _state = VCStateMain;
     }
   }
@@ -555,7 +555,9 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
       _musicManager->setIntroCount(0);
       _preLevel = currentLevel;
       MessageManager::sharedManager()->pushRandomMessageFromFunction("levelup", _map, _characterManager, _enemyManager); // レベルアップメッセージ
-      _map->performOnLevel(_characterManager, _enemyManager); // スクリプトを呼んでやる
+      if (!_map->isBossStage() || _map->getMaxLevel() != _level->getLevel()) {
+        _map->performOnLevel(_characterManager, _enemyManager); // スクリプトを呼んでやる
+      }
       _characterManager->updateParameters();
       this->setLevel(_map->createLevel(currentLevel, _characterManager));
       _enemyManager->setLevel(_level);
