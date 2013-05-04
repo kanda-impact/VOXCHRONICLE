@@ -43,8 +43,9 @@ Skill = {
   skillType = SkillTypeMagical,
   getMessageTable = function(self, targets, map, characterManager, enemyManager)
     if targets:count() > 0 then
-      local target = targets:count()
-      if target:getSkillType() == SkillTypeMagical or target:getItem() == EnemyItemBarrier or target:getSpecies():isEnableSkill(self) then -- 効かない相手にはメッセージ表示しない
+      local target = targets:objectAtIndex(0)
+      tolua.cast(target, "Enemy")
+      if target:getType() == SkillTypeMagical or target:getItem() == EnemyItemBarrier or not target:getSpecies():isEnableSkill(self) then -- 効かない相手にはメッセージ表示しない
         return {}
       end 
     end
