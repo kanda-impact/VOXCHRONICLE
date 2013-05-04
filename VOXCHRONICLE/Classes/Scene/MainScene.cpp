@@ -30,6 +30,8 @@
 #include "SEManager.h"
 #include "SaveData.h"
 
+#include "FreePlayScene.h"
+
 #include "CCRemoveFromParentAction.h"
 
 using namespace std;
@@ -70,7 +72,7 @@ bool MainScene::init(Map* map, int initialLevel) {
   if ( !CCLayer::init() ) {
     return false;
   }
-  isContinue = false;
+  _isContinue = false;
   _initialLevel = initialLevel;
   SimpleAudioEngine::sharedEngine()->unloadAllEffect();
   CCTextureCache::sharedTextureCache()->removeAllTextures();
@@ -905,23 +907,27 @@ void MainScene::gotoNextStage() {
 
 void MainScene::onFinishTracksCompleted() {
   if (_state == VCStateQTEFinish) { // QTEFinishのとき
-    // おそらくボス撃破後なので、エンディングに移行します
     _enemyManager->removeAllNormalEnemies();
-    string endingScript = _map->getEndingName();
-    CCAssert(endingScript.length() != 0, "Ending Script is not defined.");
     _musicManager->getMusic()->stop();
-    EndingScene* endingLayer = new EndingScene(endingScript.c_str());
-    endingLayer->autorelease();
-    endingLayer->setUserObject(_log); // PlayLogをユーザーデータに
-    CCScene* ending = CCScene::create();
-    ending->addChild(endingLayer);
-    _log->checkAchievementsOnClear(_characterManager, _enemyManager);
-    CCTransitionFade* fade = CCTransitionFade::create(7.0f, ending, ccc3(255, 255, 255));
-    CCDirector::sharedDirector()->replaceScene(fade);
-    SaveData::sharedData()->setClearedForMap(_map->getIdentifier().c_str());
-    SaveData::sharedData()->addCountFor(SaveDataCountKeyClear); // クリア回数
-    _map->performOnClear(_characterManager, _enemyManager);
-    this->teardown();
+    if (_log->getMapHistory()->count() == 3) { // マップが3のとき
+      // おそらくボス撃破後なので、エンディングに移行します
+      string endingScript = _map->getEndingName();
+      CCAssert(endingScript.length() != 0, "Ending Script is not defined.");
+      EndingScene* endingLayer = new EndingScene(endingScript.c_str());
+      endingLayer->autorelease();
+      endingLayer->setUserObject(_log); // PlayLogをユーザーデータに
+      CCScene* ending = CCScene::create();
+      ending->addChild(endingLayer);
+      _log->checkAchievementsOnClear(_characterManager, _enemyManager);
+      SaveData::sharedData()->setClearedForMap(_map->getIdentifier().c_str());
+      SaveData::sharedData()->addCountFor(SaveDataCountKeyClear); // クリア回数
+      _map->performOnClear(_characterManager, _enemyManager);
+      this->teardown();
+    } else { // それ以外の時、フリープレイっぽいのでフリープレイ画面に戻します
+      CCScene* freePlay = FreePlayScene::scene("freeplay", false);
+      CCTransitionFade* fade = CCTransitionFade::create(7.0f, freePlay, ccc3(255, 255, 255));
+      CCDirector::sharedDirector()->replaceScene(fade);
+    }
   } else if (_map->isBossStage() && _level->getLevel() == _map->getMaxLevel()) { // ボスステージで、現在が最高レベルの時
     // ボス戦を開始します
     this->startBossBattle();
