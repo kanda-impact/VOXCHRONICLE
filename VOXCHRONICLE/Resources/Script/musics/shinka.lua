@@ -1,6 +1,6 @@
 Music = {
   name = "ガメイラの森",
-  composer = "shinka_cb",
+  composer = "SHiNKA",
   prefix = "2a",
   type = MusicSetTypeWay,
   introCount = 2,

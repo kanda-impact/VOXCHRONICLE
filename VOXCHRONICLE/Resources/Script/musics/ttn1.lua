@@ -1,6 +1,6 @@
 Music = {
   name = "ツアドラグ遺跡",
-  composer = "ttntawasi",
+  composer = "TTNTAWASi",
   prefix = "ttn1",
   type = MusicSetTypeWay,
   introCount = 2,
