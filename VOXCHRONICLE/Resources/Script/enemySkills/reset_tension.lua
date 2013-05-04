@@ -6,7 +6,8 @@ EnemySkill = {
     local turn = user:getRegister(key, 0)
     local mManager = MessageManager:sharedManager() -- メッセージマネージャーを取り出す
     if turn == 0 then
-      local message = user:getName().."の　ゆびさきから　はどうが　ほとばしる"
+      local message = user:getName().."の　めから　はどうが　ほとばしる"
+      --user:getName().."の　オーラが　ふくれあがる"
       mManager:pushMessage(message)
       user:setRegister(key, 1)
     elseif turn == 1 then

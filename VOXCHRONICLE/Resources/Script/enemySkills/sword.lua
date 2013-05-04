@@ -9,6 +9,9 @@ EnemySkill = {
       user:setAnimationClip("attack", 1, true) -- グラを変更する
       user:setRegister(key, turn + 1)
       MessageManager:sharedManager():pushMessage(user:getName().."は　ちからを　ためている")
+      --(user:getName().."は　けんを　かまえた"),
+      --(user:getName().."は　はきを　はなっている"),
+      
     elseif turn == 1 then
       user:setRegister(key, turn + 1) -- ターンを+1する
       -- 点滅させる処理を入れる
@@ -24,6 +27,9 @@ EnemySkill = {
       user:setRegister(key, 0) -- 溜めターンをリセット
       user:setDefaultAnimationClip() -- グラを元に戻す
       MessageManager:sharedManager():pushMessage(user:getName().."は　きょうりょくな　いちげきを　はなった！")
+      --(user:getName().."の　こんしんの　いちげき！")
+      --(user:getName().."の　あっとうてきな　けんげき！")
+      --(user:getName().."けんを　おもいきり　ふりおろした")
     end
   end
 }

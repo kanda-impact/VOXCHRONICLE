@@ -8,7 +8,9 @@ EnemySkill = {
     local layer = EffectLayer:sharedLayer()
       
     if turn == 0 then
-      local message = user:getName().."は　ふっかつじゅもんを　唱えた！"
+      local message = user:getName().."は　ふっかつじゅもんを　となえた！"
+      --user:getName().."は　そせいまほうを　つかった！"
+      --user:getName().."は　ふっかつの　ひじゅつを　つかった"
       mManager:pushMessage(message)
       user:setRegister(key, 1)
       layer:addEffectOnEnemy(user, "enemy_skill", 3, CCRectMake(0, 0, 100, 100))
@@ -24,6 +26,9 @@ EnemySkill = {
       layer:addEffectOnEnemy(target, "enemy_cure", 3, CCRectMake(0, 0, 100, 100))
     
       local message = "なんと"..target:getName().."は　いきかえった！"
+      --"なんと"..target:getName().."は　いきをふきかえした！"
+      --"なんと"..target:getName().."が　ふっかつした！"
+      --"なんと"..target:getName().."が　さいせいした！"
       MessageManager:sharedManager():pushMessage(message)
       user:setRegister(key, 0) -- 溜めターンを0にする
     end
