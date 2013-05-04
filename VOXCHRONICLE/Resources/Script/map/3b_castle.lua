@@ -33,6 +33,7 @@ Map = {
     enemyManager:loadEnemyTextureAsync("mimic.png")
     enemyManager:loadEnemyTextureAsync("gargoyle.png")
     enemyManager:loadEnemyTextureAsync("dragon.png")
+    local data = SaveData:sharedData()
     data:setClearedForMap("fp_castle")
   end,
    onLevelUp = function(self, characterManager, enemyManager)
