@@ -43,9 +43,9 @@ Enemy = {
       return "revive"
     end
     local r = math.random(100)
-    if brankTurn >= 10 then
+    local blankTurn = self:getRegister("blank",0)
+    if blankTurn >= 10 then
       if enemyManager:getEnemies():count() < 3 and r < 8 then -- 誰か死んでるかつ10%
-        local brankTurn = self:getRegister("brank",0)
         local leftBitDead = true
         for i=0, enemyManager:getEnemies():count() - 1 do
           local enemy = enemyManager:getEnemies():objectAtIndex(i)
@@ -56,10 +56,10 @@ Enemy = {
         end
         if leftBitDead then
           return "revive" -- 蘇生呪文
-          self:setRegister("brank",0)
+          self:setRegister("blank",0)
         end
       end
-      self:setRegister("brank",brankTurn + 1)
+      self:setRegister("blank",blankTurn + 1)
     end
     -- ベホマラー
     --[[local sumMaxHP = 0
