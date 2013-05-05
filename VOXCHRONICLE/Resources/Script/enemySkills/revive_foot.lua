@@ -38,11 +38,11 @@ EnemySkill = {
   
     local messages = {
       "なんと　"..user:getName().."の　足が　再生した！",
-      "なんと"..target:getName().."の　あしが　ふっかつした！",
-      target:getName().."の　あしが　またはえてきた！"
+      "なんと"..user:getName().."の　あしが　ふっかつした！",
+      user:getName().."の　あしが　またはえてきた！"
     }
-    local message = messages[math.random(#messages)]
-    MessageManager:sharedManager():pushMessage(message)
+    local rand = math.random(#messages)
+    MessageManager:sharedManager():pushMessage(messages[rand])
   end
 }
 return EnemySkill
