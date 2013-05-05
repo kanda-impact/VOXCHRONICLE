@@ -81,6 +81,8 @@ MapSelector::~MapSelector() {
 
 void MapSelector::buttonPressed(cocos2d::CCObject *sender) {
   CCMenuItemSprite* item = (CCMenuItemSprite*)sender;
+  CCMenu* menu = (CCMenu*)item->getParent();
+  menu->setEnabled(false);
   CCSprite* sprite = (CCSprite*)item->getNormalImage();
   CCSprite* frame = (CCSprite*)sprite->getChildByTag(1);
   frame->runAction(CCRepeatForever::create(CCSequence::createWithTwoActions(CCFadeTo::create(0.01, 128),
