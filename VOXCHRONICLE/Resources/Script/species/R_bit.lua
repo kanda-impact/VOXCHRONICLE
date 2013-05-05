@@ -59,6 +59,7 @@ Enemy = {
           return "revive" -- 蘇生呪文
         end
       end
+    else
       self:setRegister("blank",blankTurn + 1)
     end
     -- ベホマラー
