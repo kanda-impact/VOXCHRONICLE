@@ -13,6 +13,7 @@
 #include "FileUtils.h"
 #include "ExtraScene.h"
 #include "SaveData.h"
+#include <boost/algorithm/string/predicate.hpp>
 
 FreePlayScene* FreePlayScene::create(const char *script, bool unlock) {
   FreePlayScene* scene = new FreePlayScene();
@@ -44,9 +45,14 @@ bool FreePlayScene::init(const char* script, bool unlock) {
     items->addObject(CCArray::create());
   }
   
+  // ハードコード安定
   _backScene = MainBackSceneFreePlay;
-  if (string(script) == "debug.lua") {
+  if (boost::algorithm::istarts_with(script, "debug")) {
     _backScene = MainBackSceneDebug;
+  } else if (boost::algorithm::istarts_with(script, "freeplay")) {
+    _backScene = MainBackSceneFreePlay;
+  } else if (boost::algorithm::istarts_with(script, "soundtest")) {
+    _backScene = MainBackSceneSoundTest;
   }
   
   CCDirector* director = CCDirector::sharedDirector();

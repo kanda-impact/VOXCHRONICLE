@@ -88,6 +88,9 @@ void GameOverLayer::titleButtonPressed(CCObject *sender) {
     MainMenuScene* menu = new MainMenuScene(true);
     menu->autorelease();
     scene->addChild(menu);
+  } else if (_backScene == MainBackSceneSoundTest) {
+    FreePlayScene* layer = FreePlayScene::create("soundtest.lua", false);
+    scene->addChild(layer);
   } else if (_backScene == MainBackSceneFreePlay) {
     FreePlayScene* layer = FreePlayScene::create("freeplay.lua", false);
     scene->addChild(layer);

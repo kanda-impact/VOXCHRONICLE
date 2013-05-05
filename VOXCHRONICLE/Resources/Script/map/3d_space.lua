@@ -126,12 +126,13 @@ Map = {
   end,
   onClear = function(self, characterManager, enemyManager)
     local data = SaveData:sharedData()
+    data:setClearedForMap("space_boss") -- フリープレイ解放
+    data:setClearedForMap("space_boss2") -- フリープレイ解放2
     local key = "lastBossAchieve"
-    if self.__IRegister__:getRegister(key,0) >= 3 then
+    if self.__IRegister__:getRegister(key, 0) >= 3 then
       data:unlockAchievement("bossDex")
     end
-    SaveData:sharedData():addDefeatedCountForEmemy("wave")
-    data:setClearedForMap("space_boss") -- フリープレイ解放
+    data:addDefeatedCountForEnemy("wave") -- 波を倒した扱いに
   end,
   getEnemyPopRate = function(level)
     if level >= 25 then
