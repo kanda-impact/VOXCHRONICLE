@@ -119,6 +119,7 @@ class MainScene : public CCLayer {
   
   void teardown();
   
+  MainBackScene getBackScene();
   void setBackScene(MainBackScene backScene);
   
   void setLevel(Level* lv);
