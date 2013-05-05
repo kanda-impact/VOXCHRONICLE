@@ -16,7 +16,8 @@ Map = {
     elseif level <= 24 then
       return {planet3D0 = 1, t2pha3D1 = 3}
     elseif level <= 29 then
-      return {exob3D5 = 1, planet3D0 = 1, t2pha3D1 = 1}
+      return{}
+      --return {exob3D5 = 1, planet3D0 = 1, t2pha3D1 = 1}
     end
     return {}
     --return {exob3D5 = 3, planet3D0 = 1, t2pha3D1 = 1, whale3D7 = 1}
@@ -36,14 +37,15 @@ Map = {
         enemyManager:popEnemyAt("save_cryst3D0", 4, 1)
         characterManager:setExp(characterManager:getExpWithLevel(level))
       end
-    end
-    local boss = enemyManager:getBoss()
-    local bossHP = boss:getHP()
-    if boss then
-      if bossHP > 0 then
-        local key = "lastBossAchieve"
-        local count = enemyManager:getEnemies():count()
-        self.__IRegister__:setRegister(key,count)
+    elseif level == 30 then
+      local boss = enemyManager:getBoss()
+      local bossHP = boss:getHP()
+      if boss then
+        if bossHP > 0 then
+          local key = "lastBossAchieve"
+          local count = enemyManager:getEnemies():count()
+          self.__IRegister__:setRegister(key,count)
+        end
       end
     end
   end,
@@ -60,7 +62,7 @@ Map = {
       for i = 0, enemies:count() do
         local enemy = enemies:objectAtIndex(i)
         tolua.cast(enemy, "Enemy")
-        enemies:setExp(0)
+        enemy:setExp(0)
       end
       enemyManager:loadEnemyTextureAsync("fortress.png")
       enemyManager:loadEnemyTextureAsync("knight.png")

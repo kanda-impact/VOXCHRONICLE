@@ -45,7 +45,7 @@ Enemy = {
     local r = math.random(100)
     local blankTurn = self:getRegister("blank",0)
     if blankTurn >= 10 then
-      if enemyManager:getEnemies():count() < 3 and r < 8 then -- 誰か死んでるかつ10%
+      if enemyManager:getEnemies():count() < 3 and r < 15 then -- 誰か死んでるかつ10%
         local leftBitDead = true
         for i=0, enemyManager:getEnemies():count() - 1 do
           local enemy = enemyManager:getEnemies():objectAtIndex(i)
@@ -59,6 +59,7 @@ Enemy = {
           return "revive" -- 蘇生呪文
         end
       end
+    else
       self:setRegister("blank",blankTurn + 1)
     end
     -- ベホマラー

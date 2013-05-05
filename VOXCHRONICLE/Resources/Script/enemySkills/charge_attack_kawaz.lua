@@ -5,7 +5,7 @@ EnemySkill = {
     local key = "skillCharge"
     local layer = EffectLayer:sharedLayer()
     local turn = user:getRegister(key, 0) -- 溜めているターンを取得
-    local mManager = MessageManager:shaderManager()
+    local mManager = MessageManager:sharedManager()
     if user:getType() == SkillTypeMagical then
       if turn <= 1 then
         -- 溜め初回ターンの時

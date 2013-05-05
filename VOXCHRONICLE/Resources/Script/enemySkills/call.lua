@@ -7,7 +7,7 @@ EnemySkill = {
     local col = user:getCol()
     local newCol = (col + math.random(0, 1)) % 3
     local enemy = enemyManager:popEnemyAt(species, row, newCol)
-    local mManager = MessageManager:shaderManager()
+    local mManager = MessageManager:sharedManager()
     local text = {
       user:getName().."は　なかまを　よんだ",
       user:getName().."は　なかまを　ふやした",
