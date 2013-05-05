@@ -17,7 +17,6 @@ EnemySkill = {
     mManager:pushMessage(text[rand])
 
     layer:addDamageLabelOnEnemy(user, cure, DamageLabelTypeCure)
-    MessageManager:sharedManager():pushMessage(message)
     user:setHP(user:getHP() + cure)
   end
 }
