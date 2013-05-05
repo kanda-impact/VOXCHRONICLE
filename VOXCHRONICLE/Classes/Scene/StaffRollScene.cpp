@@ -8,7 +8,7 @@
 
 #include "StaffRollScene.h"
 #include "Map.h"
-#include "TitleScene.h"
+#include "ExtraScene.h"
 #include <boost/bind.hpp>
 #include <boost/lexical_cast.hpp>
 #include "FileUtils.h"
@@ -178,16 +178,18 @@ void StaffRollScene::onFinishPlaying(cocos2d::CCObject *sender) {
   PlayLog* log = (PlayLog*)this->getUserObject();
   CCScene* scene = CCScene::create();
   if (log == NULL) {
-    scene->addChild(TitleScene::create());
+    scene->addChild(ExtraScene::create());
+    SimpleAudioEngine::sharedEngine()->playBackgroundMusic("menu.mp3", true);
+    CCTransitionFade* fade = CCTransitionFade::create(0.5f, scene);
+    CCDirector::sharedDirector()->replaceScene(fade);
   } else { // PlayLogがあったらResultSceneへ
     ResultScene* layer = ResultScene::create();
     layer->setPlayLog(log);
     layer->buildUI();
     scene->addChild(layer);
+    CCTransitionFade* fade = CCTransitionFade::create(2.0f, scene);
+    CCDirector::sharedDirector()->replaceScene(fade);
   }
-  CCTransitionFade* fade = CCTransitionFade::create(2.0f, scene);
-  CCDirector::sharedDirector()->replaceScene(fade);
-  
 }
 
 void StaffRollScene::pushTracksFor(MusicSet* set) {
