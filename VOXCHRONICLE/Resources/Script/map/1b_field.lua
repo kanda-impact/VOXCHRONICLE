@@ -46,7 +46,7 @@ Map = {
   name = "平原",
   wayMusic = "1b",
   bossMusic = "",
-  backgroundImage = "field_background0.png",
+  backgroundImage = "field_background0.jpg",
   thumbnailImage = "field_hexagon.png",
   skin = "skinB",
   ending = "",
@@ -106,7 +106,7 @@ Map = {
     elseif 16 <= hour and hour < 19 then -- 夕方
       currentTime = 1
     end
-    local imageName = "field_background"..currentTime..".png"
+    local imageName = "field_background"..currentTime..".jpg"
     self:changeBackgroundImage(imageName)
     local level = characterManager:getLevel()
     self.__IRegister__:setRegister("currentTime", currentTime)

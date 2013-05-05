@@ -1,8 +1,8 @@
 Map = {
-  name = "かわずたん！",
+  name = "かわずたん",
   wayMusic = "1b",
   bossMusic = "",
-  backgroundImage = "field_background1.png",
+  backgroundImage = "field_background1.jpg",
   skin = "skinB",
   ending = "",
   nextMaps = {"2b_cave", "2c_cyber"},

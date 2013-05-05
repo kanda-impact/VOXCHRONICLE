@@ -999,6 +999,10 @@ void MainScene::setPlayLog(PlayLog* log) {
   }
 }
 
+MainBackScene MainScene::getBackScene() {
+  return _backScene;
+}
+
 void MainScene::setBackScene(MainBackScene backScene) {
   _backScene = backScene;
 }

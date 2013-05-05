@@ -13,7 +13,7 @@ Map = {
   name = "草原",
   wayMusic = "1b",
   bossMusic = "",
-  backgroundImage = "field_background0.png",
+  backgroundImage = "field_background0.jpg",
   skin = "skinB",
   ending = "",
   nextMaps = {},
@@ -21,7 +21,7 @@ Map = {
   maxLevel = 30,
   onLoad = function(self, characterManager, enemyManager)
     local number = getTime()
-    local imageName = "field_background"..number..".png"
+    local imageName = "field_background"..number..".jpg"
     self:changeBackgroundImage(imageName)
     local level = characterManager:getLevel()
     enemyManager:loadEnemyTextureAsync("leaf.png")
