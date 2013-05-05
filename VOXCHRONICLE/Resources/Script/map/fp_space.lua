@@ -15,11 +15,11 @@ Map = {
   end,
   onLevel = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
-    if level == 19 then
+    if level == 9 then
       enemyManager:loadEnemyTextureAsync("moth.png")
       enemyManager:loadEnemyTextureAsync("hornet.png")
       enemyManager:loadEnemyTextureAsync("toadstool.png")
-    elseif level == 29 then
+    elseif level == 19 then
       enemyManager:loadEnemyTextureAsync("mask.png")
       enemyManager:loadEnemyTextureAsync("wisp.png")
       enemyManager:loadEnemyTextureAsync("typhoon.png")
@@ -56,7 +56,7 @@ Map = {
       return {mimic3A1 = 2,mask3A1 = 6,gargoyle3A0 = 2}
     elseif level <= 28 then
       return {mask3A1 = 3, wisp3A2 = 3, typhoon3A2 = 1, mimic3A1 = 1}
-    elseif level < 30 then
+    elseif level <= 30 then
       return {mask3A1 = 3, typhoon3A2 = 3,gargoyle3A0 = 1}
     end
   end,
