@@ -20,7 +20,7 @@ StaffRoll = {
 {"", "VOXCHRONICLE Staff", ""},
 --stage1
 {"Produce", "geekdrums", "原案・監修"},
-{"Direction", "TTNTAWASi", "企画・世界観・雑用"},
+{"Direction", "TTNTAWASi", "ゲームデザイン・世界観・雑用"},
 {"Management", "giginet", "スケジュール・タスク管理・雑用"},
 {"Program", "giginet", "メインプログラム"},
 {"Level Design", "hak", "ステージデザイン"},
