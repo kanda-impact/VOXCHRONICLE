@@ -118,7 +118,7 @@ void ResultScene::buildUI() {
   this->addChild(continueLabel);
   this->addChild(continueNumber);
   
-  this->isTouchEnabled();
+  this->setTouchEnabled(true);
 }
 
 void ResultScene::onEnterTransitionDidFinish() {
