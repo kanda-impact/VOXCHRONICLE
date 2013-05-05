@@ -185,7 +185,7 @@ int SaveData::getScore(const char* mapIdentifier) {
 
 bool SaveData::updateScore(const char* mapIdentifier, int turn) {
   int highscore = this->getScore(mapIdentifier);
-  if (turn >= highscore || highscore == 0) {
+  if (turn < highscore || highscore == 0) {
     string key = string("highscore_") + string(mapIdentifier);
     CCUserDefault::sharedUserDefault()->setIntegerForKey(key.c_str(), turn);
     return true;
