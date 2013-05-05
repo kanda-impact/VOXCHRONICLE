@@ -40,7 +40,7 @@ EnemySkill = {
       user:setDefaultAnimationClip() -- グラを元に戻す
       local text = {
         "やみのいなずまが　"..characterManager:getCurrentCharacter():getName().."を　つらぬく！",
-        "あかい　らいげきが　（キャラ）　を　うちぬく！",
+        "あかい　らいげきが　"..characterManager:getCurrentCharacter():getName().."を　うちぬく！",
         user:getName().."の　ダークサンダー！！",
         "やみの　でんきだ！　ビリビリビリっ！！"
       }
