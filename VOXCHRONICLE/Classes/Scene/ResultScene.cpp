@@ -25,7 +25,7 @@ bool ResultScene::init () {
   CCSprite* result = CCSprite::create("result.png");
   result->setPosition(ccp(director->getWinSize().width / 2.0, 280));
   CCSprite* congraturations = CCSprite::create("congratulations.png");
-  congraturations->setPosition(ccp(director->getWinSize().width / 2.0, 230));
+  congraturations->setPosition(ccp(director->getWinSize().width / 2.0, 240));
   this->addChild(result);
   this->addChild(congraturations);
   
@@ -66,23 +66,41 @@ void ResultScene::buildUI() {
   int currentScore = _log->getCount(PlayLogKeyTurn);
   bool isHighScore = SaveData::sharedData()->updateScore(lastMap->getCString(), currentScore);
   
+  CCLabelTTF* routeLabel = CCLabelTTF::create("クリアルート", "Helvetica", 18, CCSizeMake(150, 30), kCCTextAlignmentRight, kCCVerticalTextAlignmentCenter);
+  CCLabelTTF* route = CCLabelTTF::create("A", "Helvetica", 18, CCSizeMake(50, 30), kCCTextAlignmentLeft, kCCVerticalTextAlignmentCenter);
+  routeLabel->setPosition(ccp(190, 170));
+  route->setPosition(ccp(305, 170));
+  this->addChild(routeLabel);
+  this->addChild(route);
+  
+  // クリアルート表示。ハードコード
+  if (string(lastMap->getCString()) == "3a_ruin") {
+    route->setString("A");
+  } else if (string(lastMap->getCString()) == "3b_castle") {
+    route->setString("B");
+  } else if (string(lastMap->getCString()) == "3c_ocean") {
+    route->setString("C");
+  } else if (string(lastMap->getCString()) == "3d_space") {
+    route->setString("D");
+  }
+  
   int highScore = SaveData::sharedData()->getScore(lastMap->getCString());
   
   if (currentScore < highScore) {
     highScore = currentScore;
   }
   
-  CCLabelTTF* clearTurn = CCLabelTTF::create("クリアターン", "Helvetica", 24);
+  CCLabelTTF* clearTurn = CCLabelTTF::create("クリアターン", "Helvetica", 24, CCSizeMake(150, 30), kCCTextAlignmentCenter, kCCVerticalTextAlignmentCenter);
   clearTurn->setPosition(ccp(80, 180));
-  CCLabelTTF* clear = CCLabelTTF::create(lexical_cast<string>(_log->getCount(PlayLogKeyTurn)).c_str(), "Helvetica", 24);
+  CCLabelTTF* clear = CCLabelTTF::create(lexical_cast<string>(_log->getCount(PlayLogKeyTurn)).c_str(), "Helvetica", 24, CCSizeMake(150, 30), kCCTextAlignmentCenter, kCCVerticalTextAlignmentCenter);
   clear->setPosition(ccp(80, 145));
   this->addChild(clearTurn);
   this->addChild(clear);
   
-  CCLabelTTF* highScoreLabel = CCLabelTTF::create("最速ターン", "Helvetica", 18);
-  highScoreLabel->setPosition(ccp(230, 180));
-  CCLabelTTF* highScoreTurnLabel = CCLabelTTF::create(lexical_cast<string>(highScore).c_str(), "Helvetica", 18);
-  highScoreTurnLabel->setPosition(ccp(230, 145));
+  CCLabelTTF* highScoreLabel = CCLabelTTF::create("過去最速", "Helvetica", 18, CCSizeMake(150, 30), kCCTextAlignmentRight, kCCVerticalTextAlignmentCenter);
+  highScoreLabel->setPosition(ccp(190, 140));
+  CCLabelTTF* highScoreTurnLabel = CCLabelTTF::create(lexical_cast<string>(highScore).c_str(), "Helvetica", 18, CCSizeMake(50, 30), kCCTextAlignmentLeft, kCCVerticalTextAlignmentCenter);
+  highScoreTurnLabel->setPosition(ccp(305, 140));
   this->addChild(highScoreTurnLabel);
   this->addChild(highScoreLabel);
   
@@ -103,9 +121,9 @@ void ResultScene::buildUI() {
   
   SaveData::sharedData()->save();
   
-  CCLabelTTF* totalDamage = CCLabelTTF::create("受けたダメージ", "Helvetica", 18, CCSizeMake(150, 30), kCCTextAlignmentRight);
+  CCLabelTTF* totalDamage = CCLabelTTF::create("受けたダメージ", "Helvetica", 16, CCSizeMake(150, 30), kCCTextAlignmentRight);
   totalDamage->setPosition(ccp(140, 90));
-  CCLabelTTF* damage = CCLabelTTF::create(lexical_cast<string>(_log->getCount(PlayLogKeyHitDamage)).c_str(), "Helvetica", 18,
+  CCLabelTTF* damage = CCLabelTTF::create(lexical_cast<string>(_log->getCount(PlayLogKeyHitDamage)).c_str(), "Helvetica", 16,
                                           CCSizeMake(60, 30), kCCTextAlignmentLeft);
   damage->setPosition(ccp(280, 90));
   this->addChild(totalDamage);
