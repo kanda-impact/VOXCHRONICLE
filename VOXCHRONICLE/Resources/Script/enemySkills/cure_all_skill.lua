@@ -10,7 +10,7 @@ EnemySkill = {
       layer:addEffectOnEnemy(user, "enemy_skill", 3, CCRectMake(0, 0, 50, 50))
       layer:addEffectOnEnemy(target, "enemy_cure", 3, CCRectMake(0, 0, 50, 50))
       layer:addDamageLabelOnEnemy(target, cure, DamageLabelTypeCure)
-      user:setHP(user:getHP() + cure)
+      target:setHP(target:getHP() + cure)
     end
 
     local mManager = MessageManager:sharedManager()
