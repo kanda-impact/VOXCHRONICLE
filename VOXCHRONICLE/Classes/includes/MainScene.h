@@ -46,6 +46,7 @@ typedef enum {
   MainBackSceneMainMenu,
   MainBackSceneTutorial,
   MainBackSceneFreePlay,
+  MainBackSceneSoundTest,
   MainBackSceneDebug
 } MainBackScene;
 
