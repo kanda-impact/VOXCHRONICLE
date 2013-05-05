@@ -4,7 +4,7 @@ EnemySkill = {
   performSkill = function(self, user, characterManager, enemyManager)
     local key = "directAttack"
     local turn = user:getRegister(key, 0) -- 溜めているターンを取得
-    local mManager = MessageManager:shaderManager()
+    local mManager = MessageManager:sharedManager()
     if turn == 0 then
       -- 溜め初回ターンの時
       -- user:setAnimationClip("attack", 1, true) -- グラを変更する

@@ -13,7 +13,7 @@ EnemySkill = {
       user:setHP(user:getHP() + cure)
     end
 
-    local mManager = MessageManager:shaderManager()
+    local mManager = MessageManager:sharedManager()
 
     local text = {
       user:getName().."たちの　きずが　みるみるふさがっていく！",
