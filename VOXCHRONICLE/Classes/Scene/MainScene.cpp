@@ -923,6 +923,8 @@ void MainScene::onFinishTracksCompleted() {
       SaveData::sharedData()->addCountFor(SaveDataCountKeyClear); // クリア回数
       _map->performOnClear(_characterManager, _enemyManager);
       this->teardown();
+      CCTransitionFade* fade = CCTransitionFade::create(7.0f, ending, ccc3(255, 255, 255));
+      CCDirector::sharedDirector()->replaceScene(fade);
     } else { // それ以外の時、フリープレイっぽいのでフリープレイ画面に戻します
       CCScene* freePlay = FreePlayScene::scene("freeplay", false);
       CCTransitionFade* fade = CCTransitionFade::create(7.0f, freePlay, ccc3(255, 255, 255));
