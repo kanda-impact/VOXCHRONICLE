@@ -1,6 +1,6 @@
 Music = {
   name = "クシフォウ炭鉱",
-  composer = "yuki_mm",
+  composer = "ゆうき",
   prefix = "2b",
   type = MusicSetTypeWay,
   introCount = 2,

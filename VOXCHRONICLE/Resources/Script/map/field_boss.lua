@@ -1,5 +1,5 @@
 Map = {
-  name = "かわずたん！",
+  name = "かわずたん",
   wayMusic = "1b",
   bossMusic = "",
   backgroundImage = "field_background1.png",
