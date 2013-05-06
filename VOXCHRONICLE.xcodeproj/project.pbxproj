@@ -76,7 +76,6 @@
 		0703A7EC16F9CA1000093DD4 /* AttaQ3-D_finish3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0703A7E816F9CA1000093DD4 /* AttaQ3-D_finish3.caf */; };
 		0703A7EE16F9CA3200093DD4 /* AttaQ3-D_qte.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0703A7ED16F9CA3200093DD4 /* AttaQ3-D_qte.caf */; };
 		0703A7F116FA1BCA00093DD4 /* 3Bb_counter3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0703A7F016FA1BCA00093DD4 /* 3Bb_counter3.caf */; };
-		0703E2241707229F006617AB /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0703E2231707229F006617AB /* Icon.png */; };
 		0704344416BFEEC600339F8A /* nmb_drum4.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0704344316BFEEC600339F8A /* nmb_drum4.caf */; };
 		0704344716BFF3CB00339F8A /* MusicManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0704344516BFF3CB00339F8A /* MusicManager.cpp */; };
 		070BAF61172CEEC9007A741A /* Ts_knight.lua in Resources */ = {isa = PBXBuildFile; fileRef = 070BAF60172CEEC9007A741A /* Ts_knight.lua */; };
@@ -6987,7 +6986,6 @@
 				07A3D5E01705F4D0009AE7F3 /* endingD.mp3 in Resources */,
 				B017550A1706E23A008053BB /* dragon2B0.lua in Resources */,
 				B017550C1706E280008053BB /* wisp2B6.lua in Resources */,
-				0703E2241707229F006617AB /* Icon.png in Resources */,
 				B01755121707222F008053BB /* wave_root.lua in Resources */,
 				B01755141707225F008053BB /* wave3C1.lua in Resources */,
 				B017551617079EFD008053BB /* Ts_flower.lua in Resources */,

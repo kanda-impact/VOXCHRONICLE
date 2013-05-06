@@ -1,4 +1,5 @@
 DebugData = {
+  description = "デバッグモードです",
   stages = {
     -- デバッグメニューに表示するステージ名のリストを定義します
     "2a_forest",

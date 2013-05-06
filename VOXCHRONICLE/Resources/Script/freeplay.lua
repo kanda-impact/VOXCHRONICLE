@@ -1,4 +1,5 @@
 DebugData = {
+  description = "ステージ・ボスごとに遊べます。エンディングは見れません",
   stages = {
     -- フリープレイ
     "2a_forest",

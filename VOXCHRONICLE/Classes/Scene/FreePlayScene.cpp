@@ -107,12 +107,17 @@ bool FreePlayScene::init(const char* script, bool unlock) {
     CCArray* array = (CCArray*)items->objectAtIndex(i);
     if (array->count() > 0) {
       CCMenu* menu = CCMenu::createWithArray(array);
-      menu->setPosition(ccp(88 + 150 * i, 160));
+      menu->setPosition(ccp(88 + 150 * i, 150));
       menu->alignItemsVerticallyWithPadding(15);
       this->addChild(menu);
     }
     
   }
+  
+  string description = lua->getString("description");
+  CCLabelTTF* descriptionLabel = CCLabelTTF::create(description.c_str(), "Helvetica", 16);
+  descriptionLabel->setPosition(ccp(240, 300));
+  this->addChild(descriptionLabel);
   
   return true;
 }
