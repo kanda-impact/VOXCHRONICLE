@@ -257,6 +257,12 @@
 		0739C4481615D2FD00CB864D /* CharacterManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0739C4461615D2FD00CB864D /* CharacterManager.cpp */; };
 		0739C44B1615D30800CB864D /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0739C4491615D30800CB864D /* Character.cpp */; };
 		073D39FB1738376C0051DAFB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 073D39FA1738376B0051DAFB /* Default-568h@2x.png */; };
+		073D39FC17383B140051DAFB /* acorn2A1.lua in Resources */ = {isa = PBXBuildFile; fileRef = B03F7B1E16E2B36F00D7FF9C /* acorn2A1.lua */; };
+		073D39FD17383B150051DAFB /* leaf1A0.lua in Resources */ = {isa = PBXBuildFile; fileRef = B03F7B1816E2B28E00D7FF9C /* leaf1A0.lua */; };
+		073D39FE17383B150051DAFB /* slime1A0.lua in Resources */ = {isa = PBXBuildFile; fileRef = B03F7B1A16E2B2DF00D7FF9C /* slime1A0.lua */; };
+		073D39FF17383B150051DAFB /* 1a_simple.lua in Resources */ = {isa = PBXBuildFile; fileRef = B07E38C316E1071C00473629 /* 1a_simple.lua */; };
+		073D3A0017383B150051DAFB /* 2c_cyber.lua in Resources */ = {isa = PBXBuildFile; fileRef = B07E38C516E1073400473629 /* 2c_cyber.lua */; };
+		073D3A0117383B150051DAFB /* 3d_space.lua in Resources */ = {isa = PBXBuildFile; fileRef = B07E38CB16E10ACF00473629 /* 3d_space.lua */; };
 		07425E31168072C4001134D0 /* charge.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07425E30168072C4001134D0 /* charge.lua */; };
 		07448CBD16C289B800F005C6 /* welcome.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07448CBC16C289B800F005C6 /* welcome.lua */; };
 		07448CBF16C28E0D00F005C6 /* empty.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07448CBE16C28E0D00F005C6 /* empty.lua */; };
@@ -6104,6 +6110,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				077931C81715C6D10023E46E /* last2.lua in Resources */,
+				070141DD16E1F34E00B00887 /* 3c_ocean.lua in Resources */,
+				073D39FC17383B140051DAFB /* acorn2A1.lua in Resources */,
+				073D39FD17383B150051DAFB /* leaf1A0.lua in Resources */,
+				073D39FE17383B150051DAFB /* slime1A0.lua in Resources */,
+				073D39FF17383B150051DAFB /* 1a_simple.lua in Resources */,
+				073D3A0017383B150051DAFB /* 2c_cyber.lua in Resources */,
+				073D3A0117383B150051DAFB /* 3d_space.lua in Resources */,
 				0791587615EBB50E0083D348 /* fps_images.png in Resources */,
 				0791587715EBB50E0083D348 /* Icon-72.png in Resources */,
 				0791587815EBB50E0083D348 /* Icon-Small-50.png in Resources */,
@@ -6558,7 +6572,6 @@
 				070141DA16E1F34E00B00887 /* 2b_cave.lua in Resources */,
 				070141DB16E1F34E00B00887 /* 3a_ruin.lua in Resources */,
 				070141DC16E1F34E00B00887 /* 3b_castle.lua in Resources */,
-				070141DD16E1F34E00B00887 /* 3c_ocean.lua in Resources */,
 				070141DF16E1F6E400B00887 /* dhun.lua in Resources */,
 				0701421116E1F7EE00B00887 /* dhun_counter0.caf in Resources */,
 				0701421216E1F7EE00B00887 /* dhun_counter1.caf in Resources */,
@@ -7112,7 +7125,6 @@
 				077D0C251713B51D006C3F17 /* 2a_voxwait1.caf in Resources */,
 				077931C61715C6D10023E46E /* R_bit.lua in Resources */,
 				077931C71715C6D10023E46E /* L_bit.lua in Resources */,
-				077931C81715C6D10023E46E /* last2.lua in Resources */,
 				077931CA1715C7FE0023E46E /* boss_change.lua in Resources */,
 				077931CD1715C8420023E46E /* L_bit_boss.lua in Resources */,
 				077931CE1715C8420023E46E /* R_bit_boss.lua in Resources */,
