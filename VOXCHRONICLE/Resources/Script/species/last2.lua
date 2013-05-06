@@ -46,7 +46,7 @@ Enemy = {
           return "thunder_last"
         end
       else
-        if r <= 25 then
+        if r <= 20 then
           return "thunder_last"
         elseif r <= 50 then
           return "rapid_attack_last"
