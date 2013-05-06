@@ -256,6 +256,7 @@
 		0738FBB216C534D800FE2816 /* death.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0738FBB116C534D800FE2816 /* death.lua */; };
 		0739C4481615D2FD00CB864D /* CharacterManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0739C4461615D2FD00CB864D /* CharacterManager.cpp */; };
 		0739C44B1615D30800CB864D /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0739C4491615D30800CB864D /* Character.cpp */; };
+		073D39FB1738376C0051DAFB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 073D39FA1738376B0051DAFB /* Default-568h@2x.png */; };
 		07425E31168072C4001134D0 /* charge.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07425E30168072C4001134D0 /* charge.lua */; };
 		07448CBD16C289B800F005C6 /* welcome.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07448CBC16C289B800F005C6 /* welcome.lua */; };
 		07448CBF16C28E0D00F005C6 /* empty.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07448CBE16C28E0D00F005C6 /* empty.lua */; };
@@ -1332,9 +1333,6 @@
 		07F210101712E2EC0099ACD8 /* 2a_voxwait0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07F20FDA1712E2EC0099ACD8 /* 2a_voxwait0.caf */; };
 		07F210121712E52F0099ACD8 /* 2a_voxshield0.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07F210111712E52F0099ACD8 /* 2a_voxshield0.caf */; };
 		07F210141712E5B20099ACD8 /* 2a_drum4.caf in Resources */ = {isa = PBXBuildFile; fileRef = 07F210131712E5B20099ACD8 /* 2a_drum4.caf */; };
-		07F350F916F8846F00F95FDD /* make_glue.sh in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F616F8846F00F95FDD /* make_glue.sh */; };
-		07F350FA16F8846F00F95FDD /* tolua++ in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F716F8846F00F95FDD /* tolua++ */; };
-		07F350FB16F8846F00F95FDD /* VOXCHRONICLE.pkg in Resources */ = {isa = PBXBuildFile; fileRef = 07F350F816F8846F00F95FDD /* VOXCHRONICLE.pkg */; };
 		07F40F10163D0FC0009FC104 /* Music.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F40F0F163D0FC0009FC104 /* Music.cpp */; };
 		07F88F1816DB842100FE6B2B /* endingC.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07F88F1716DB842100FE6B2B /* endingC.mp3 */; };
 		07F88F1F16DBC66800FE6B2B /* SelectScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07F88F1D16DBC66800FE6B2B /* SelectScene.cpp */; };
@@ -1570,7 +1568,6 @@
 		0703A7E816F9CA1000093DD4 /* AttaQ3-D_finish3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_finish3.caf"; sourceTree = "<group>"; };
 		0703A7ED16F9CA3200093DD4 /* AttaQ3-D_qte.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AttaQ3-D_qte.caf"; sourceTree = "<group>"; };
 		0703A7F016FA1BCA00093DD4 /* 3Bb_counter3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 3Bb_counter3.caf; path = Resources/Music/3Bb/3Bb_counter3.caf; sourceTree = "<group>"; };
-		0703E2231707229F006617AB /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		0704344316BFEEC600339F8A /* nmb_drum4.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = nmb_drum4.caf; sourceTree = "<group>"; };
 		0704344516BFF3CB00339F8A /* MusicManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MusicManager.cpp; path = Classes/Model/MusicManager.cpp; sourceTree = "<group>"; };
 		070BAF60172CEEC9007A741A /* Ts_knight.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Ts_knight.lua; path = species/Ts_knight.lua; sourceTree = "<group>"; };
@@ -1754,6 +1751,7 @@
 		0738FBB116C534D800FE2816 /* death.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = death.lua; path = messages/death.lua; sourceTree = "<group>"; };
 		0739C4461615D2FD00CB864D /* CharacterManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CharacterManager.cpp; path = Classes/Model/CharacterManager.cpp; sourceTree = "<group>"; };
 		0739C4491615D30800CB864D /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Character.cpp; path = Classes/Model/Character.cpp; sourceTree = "<group>"; };
+		073D39FA1738376B0051DAFB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		07425E30168072C4001134D0 /* charge.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = charge.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		07448CBC16C289B800F005C6 /* welcome.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = welcome.lua; path = messages/welcome.lua; sourceTree = "<group>"; };
 		07448CBE16C28E0D00F005C6 /* empty.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = empty.lua; path = messages/empty.lua; sourceTree = "<group>"; };
@@ -3188,9 +3186,6 @@
 		07F20FDA1712E2EC0099ACD8 /* 2a_voxwait0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2a_voxwait0.caf; path = Resources/Music/shinka/2a_voxwait0.caf; sourceTree = "<group>"; };
 		07F210111712E52F0099ACD8 /* 2a_voxshield0.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2a_voxshield0.caf; path = Resources/Music/shinka/2a_voxshield0.caf; sourceTree = "<group>"; };
 		07F210131712E5B20099ACD8 /* 2a_drum4.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = 2a_drum4.caf; path = Resources/Music/shinka/2a_drum4.caf; sourceTree = "<group>"; };
-		07F350F616F8846F00F95FDD /* make_glue.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = make_glue.sh; sourceTree = "<group>"; };
-		07F350F716F8846F00F95FDD /* tolua++ */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "tolua++"; sourceTree = "<group>"; };
-		07F350F816F8846F00F95FDD /* VOXCHRONICLE.pkg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VOXCHRONICLE.pkg; sourceTree = "<group>"; };
 		07F40F0F163D0FC0009FC104 /* Music.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Music.cpp; path = Classes/VISS/Music.cpp; sourceTree = "<group>"; };
 		07F470721691AD340062975F /* EnemySkill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemySkill.h; path = Classes/includes/EnemySkill.h; sourceTree = "<group>"; };
 		07F470731691AD340062975F /* MusicSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicSet.h; path = Classes/includes/MusicSet.h; sourceTree = "<group>"; };
@@ -3958,7 +3953,7 @@
 		076F1A4115EB94750013A45E = {
 			isa = PBXGroup;
 			children = (
-				0703E2231707229F006617AB /* Icon.png */,
+				073D39FA1738376B0051DAFB /* Default-568h@2x.png */,
 				076F1A6015EB94750013A45E /* VOXCHRONICLE */,
 				076F1A4F15EB94750013A45E /* Frameworks */,
 				076F1A4D15EB94750013A45E /* Products */,
@@ -5908,9 +5903,6 @@
 		07F350F516F8846F00F95FDD /* lua_glue */ = {
 			isa = PBXGroup;
 			children = (
-				07F350F616F8846F00F95FDD /* make_glue.sh */,
-				07F350F716F8846F00F95FDD /* tolua++ */,
-				07F350F816F8846F00F95FDD /* VOXCHRONICLE.pkg */,
 			);
 			path = lua_glue;
 			sourceTree = "<group>";
@@ -6754,9 +6746,6 @@
 				B0AA405416F58E0100674A2A /* mask3A11.lua in Resources */,
 				B04AE42B16F95A3800295885 /* mimic3A1.lua in Resources */,
 				07ADDFA116F7621F007825D2 /* paper.mp3 in Resources */,
-				07F350F916F8846F00F95FDD /* make_glue.sh in Resources */,
-				07F350FA16F8846F00F95FDD /* tolua++ in Resources */,
-				07F350FB16F8846F00F95FDD /* VOXCHRONICLE.pkg in Resources */,
 				070EF5A616F8B424005ED3B2 /* chabo_counter0.caf in Resources */,
 				070EF5A716F8B424005ED3B2 /* chabo_counter1.caf in Resources */,
 				070EF5A816F8B424005ED3B2 /* chabo_counter2.caf in Resources */,
@@ -7287,6 +7276,7 @@
 				0789A13A1733F7E100FFB262 /* revive_foot.lua in Resources */,
 				07D4947F1734A15A0025785F /* Default.png in Resources */,
 				076F4ACD17358678006982E7 /* soundtest.lua in Resources */,
+				073D39FB1738376C0051DAFB /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

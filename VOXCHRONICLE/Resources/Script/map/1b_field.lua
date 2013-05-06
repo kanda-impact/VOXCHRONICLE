@@ -86,7 +86,6 @@ Map = {
     local reverse = data:isClearedMap("3d_space")
     if time == 1 and reverse then
       if level == 10 then
-        print("kawaztan")
         enemyManager:removeAllEnemies()
         enemyManager:popEnemyAt("kawaztan1S0", 3, 1)
         self.__IRegister__:setBool("isBattleKawaztan", true)
