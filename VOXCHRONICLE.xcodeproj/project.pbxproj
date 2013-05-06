@@ -7659,8 +7659,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kohki Miki (3YM67K3AKM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kohki Miki (3YM67K3AKM)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Kohki Miki";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Kohki Miki";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					NDEBUG,
@@ -7679,8 +7679,8 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "F2B047D9-C4BC-42AB-A807-BC6368926CA0";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F2B047D9-C4BC-42AB-A807-BC6368926CA0";
+				PROVISIONING_PROFILE = "C1A4A547-21FB-443E-B705-2DF7BDE9B064";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C1A4A547-21FB-443E-B705-2DF7BDE9B064";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
