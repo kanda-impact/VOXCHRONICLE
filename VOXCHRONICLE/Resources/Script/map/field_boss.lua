@@ -21,8 +21,6 @@ Map = {
     end
   end,
   onClear = function(self, characterManager, enemyManager)
-    local data = SaveData:sharedData()
-    data:unlockAchievement("tasonobara")
   end,
   getEnemyPopRate = function(level)
     return 0
