@@ -44,7 +44,8 @@ Enemy = {
     end
     local r = math.random(100)
     local blankTurn = self:getRegister("blank",0)
-    if blankTurn >= 10 then
+    --local reviveSkillCount = self:getRegister("reviveSkillCount",0)
+    if blankTurn >= 15 then
       if enemyManager:getEnemies():count() < 3 and r < 15 then -- 誰か死んでるかつ10%
         local leftBitDead = true
         for i=0, enemyManager:getEnemies():count() - 1 do
@@ -56,6 +57,7 @@ Enemy = {
         end
         if leftBitDead then
           self:setRegister("blank",0)
+          --self:getRegister("reviveSkillCount",reviveSkillCount +2)
           return "revive" -- 蘇生呪文
         end
       end
