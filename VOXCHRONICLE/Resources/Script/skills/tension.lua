@@ -48,7 +48,7 @@ Skill = {
         "BEATはさいこうちょうだ",
         "うぉぉおおお！",
         "マキシマム　パワー！！",
-        "POWER MAXIMAM!!"
+        "POWER MAXIMUM!!"
       }
     end
     return { -- 通常時

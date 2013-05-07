@@ -85,15 +85,12 @@ Map = {
     local data = SaveData:sharedData()
     local reverse = data:isClearedMap("3d_space")
     if time == 1 and reverse then
-      if level == 9 then
-        local enemies = enemyManager:getEnemies()
-        for i = 0, enemies:count() do
-          local enemy = enemies:objectAtIndex(i)
-          tolua.cast(enemy, "Enemy")
-          enemies:setExp(0)
-        end
-      elseif level == 10 then
+      if level == 10 then
+        enemyManager:removeAllEnemies()
         enemyManager:popEnemyAt("kawaztan1S0", 3, 1)
+        self.__IRegister__:setBool("isBattleKawaztan", true)
+        local data = SaveData:sharedData()
+        data:setClearedForMap("field_boss") -- フリープレイ解放
       end
     end
   end,
@@ -120,9 +117,7 @@ Map = {
     local data = SaveData:sharedData()
     local reverse = data:isClearedMap("3d_space")
     if time == 1 and reverse then
-      if level == 9 then
-        enemyManager:popEnemyAt("save_crist3D0", 3, 1)
-      elseif level == 10 then
+      if level == 10 then
         enemyManager:popEnemyAt("kawaztan1S0", 3, 1)
         self.__IRegister__:setBool("isBattleKawaztan", true)
         local data = SaveData:sharedData()
@@ -136,13 +131,6 @@ Map = {
     local level = characterManager:getLevel()
     local data = SaveData:sharedData()
     local reverse = data:isClearedMap("3d_space")
-    if time == 1 and reverse then
-      local count = enemyManager:getEnemies():count()
-      if level == 9 and count == 0 then
-        enemyManager:popEnemyAt("save_crist3D0", 3, 1)
-      end
-    end
-
   end,
   getEnemyPopRate = function(level)
     if level <= 2 then

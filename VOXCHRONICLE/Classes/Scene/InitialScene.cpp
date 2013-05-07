@@ -60,7 +60,7 @@ void InitialScene::onGotoTutorial() {
   MainScene* layer = new MainScene();
   layer->autorelease();
   layer->init(map);
-  layer->setBackScene(MainBackSceneMainMenu);
+  layer->setBackScene(MainBackSceneTutorial);
   CCScene* scene = CCScene::create();
   scene->addChild(layer);
   CCTransitionFade* fade = CCTransitionFade::create(0.5f, scene);

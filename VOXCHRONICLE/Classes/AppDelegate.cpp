@@ -30,6 +30,7 @@ bool AppDelegate::applicationDidFinishLaunching()
   CCDirector *pDirector = CCDirector::sharedDirector();
   pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
   
+  CCEGLView::sharedOpenGLView()->setDesignResolutionSize(480, 320, kResolutionExactFit);
 #if IS_IOS
   if (pDirector->enableRetinaDisplay(true)) {
     // iphone hd
@@ -44,7 +45,7 @@ bool AppDelegate::applicationDidFinishLaunching()
   // enable High Resource Mode(2x, such as iphone4) and maintains low resource on other devices.
   
   srand((unsigned int)time(NULL));
-  
+  //pDirector->setContentScaleFactor(1136 / 480);
   // turn on display FPS
   pDirector->setDisplayStats(false);
   // set FPS. the default value is 1.0/60 if you don't call this

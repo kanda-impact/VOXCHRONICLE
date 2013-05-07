@@ -6,6 +6,7 @@ EnemySkill = {
     local layer = EffectLayer:sharedLayer()
     for i=0, enemyManager:getEnemies():count() - 1 do
       local target = enemyManager:getEnemies():objectAtIndex(i)
+      target = tolua.cast(target, "Enemy")
       SEManager:sharedManager():registerEffect("enemy_cure.mp3", 0.1)
       layer:addEffectOnEnemy(user, "enemy_skill", 3, CCRectMake(0, 0, 50, 50))
       layer:addEffectOnEnemy(target, "enemy_cure", 3, CCRectMake(0, 0, 50, 50))

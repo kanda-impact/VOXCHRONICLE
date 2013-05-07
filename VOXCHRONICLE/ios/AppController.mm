@@ -149,8 +149,16 @@ void SignalHandler(int sig) {
   }
   [window makeKeyAndVisible];
   
+  CCLog("%f", [window bounds].size.width);
+  if ([window bounds].size.height == 568) {
+    // iPhone5
+    CGAffineTransform move = CGAffineTransformMakeTranslation(0, 44 * 1136.f / 960.f);
+    CGAffineTransform trans = CGAffineTransformScale(move, 1.0f, 1136.f / 960.f);
+    [window setTransform:trans];
+  }
+  
   [[UIApplication sharedApplication] setStatusBarHidden: YES];
-  [OALSimpleAudio sharedInstance].reservedSources = 4;
+  [OALSimpleAudio sharedInstance].reservedSources = 6;
   
   cocos2d::CCApplication::sharedApplication()->run();
   

@@ -1,4 +1,5 @@
 DebugData = {
+  description = "弱い敵を相手に、自由なコマンドで曲を演奏して楽しめます。",
   stages = {
     -- サウンドテスト用
     "fp_tutorial",

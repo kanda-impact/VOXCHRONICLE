@@ -66,7 +66,7 @@ void ResultScene::buildUI() {
   int currentScore = _log->getCount(PlayLogKeyTurn);
   bool isHighScore = SaveData::sharedData()->updateScore(lastMap->getCString(), currentScore);
   
-  CCLabelTTF* routeLabel = CCLabelTTF::create("クリアルート", "Helvetica", 18, CCSizeMake(150, 30), kCCTextAlignmentRight, kCCVerticalTextAlignmentCenter);
+  CCLabelTTF* routeLabel = CCLabelTTF::create("ルート", "Helvetica", 18, CCSizeMake(150, 30), kCCTextAlignmentRight, kCCVerticalTextAlignmentCenter);
   CCLabelTTF* route = CCLabelTTF::create("A", "Helvetica", 18, CCSizeMake(50, 30), kCCTextAlignmentLeft, kCCVerticalTextAlignmentCenter);
   routeLabel->setPosition(ccp(190, 170));
   route->setPosition(ccp(305, 170));

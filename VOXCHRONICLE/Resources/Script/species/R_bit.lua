@@ -43,14 +43,14 @@ Enemy = {
       return "revive"
     end
     local r = math.random(100)
-    local blankTurn = self:getRegister("blank",0)
-    --local reviveSkillCount = self:getRegister("reviveSkillCount",0)
-    if blankTurn >= 15 then
-      if enemyManager:getEnemies():count() < 3 and r < 15 then -- 誰か死んでるかつ10%
+    local blankTurn = self:getRegister("blank", 0)
+    if blankTurn >= 20 then -- 20ターンは確実に待つ
+      if enemyManager:getEnemies():count() < 3 and r < 10 then -- 誰か死んでるかつ10%
         local leftBitDead = true
         for i=0, enemyManager:getEnemies():count() - 1 do
           local enemy = enemyManager:getEnemies():objectAtIndex(i)
-          if enemy:getIdentifier() == "L_bit_boss" then
+          enemy = tolua.cast(enemy, "Enemy")
+          if enemy and enemy:getIdentifier() == "L_bit_boss" then
             leftBitDead = false
             break
           end
@@ -65,22 +65,15 @@ Enemy = {
       self:setRegister("blank",blankTurn + 1)
     end
     -- ベホマラー
-    --[[local sumMaxHP = 0
-    local sumHP = 0
-    for i=0, enemyManager:getEnemies():count() - 1 do
-    local enemy = enemyManager:getEnemies():objectAtIndex(i)
-    if enemy then
-    sumMaxHP = sumMaxHP + enemy:getMaxHP()
-    sumHP = sumHP + enemy:getHP()
+    local boss = enemyManager:getBoss()
+    if boss then
+      if boss:getHP() < boss:getMaxHP() * 0.6 and r < 2 then -- ボスのHP6割以下、かつ5%
+        return "cure_all_skill"
+      end
     end
-    end]]
-    --if sumHP / sumMaxHP < 0.6 and r < 5 then
-    if r <= 2 then
-      return "cure_all_skill"
-    end
-    if r < 8 then
+    if r < 2 then -- 2%でレーザー
       return "beam"
-    elseif r < 14 then
+    elseif r < 18 then -- 属性変化
       return "typeChange_last"
     end
     return ""

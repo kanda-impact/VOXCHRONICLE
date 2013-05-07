@@ -22,6 +22,11 @@ Enemy = {
   habitat = "",
   animationFrames = 4,
   performSkill = function(self, characterManager, enemyManager)
+    local turn = self.__IRegister__:getRegister("turn", 0) -- 最初の1~2ターンは何もしない
+    if turn < 1 then
+      self.__IRegister__:setRegister("turn", turn + 1)
+      return ""
+    end
     math.random(100)
     local row = self:getRow()
     local key = "directAttack"
