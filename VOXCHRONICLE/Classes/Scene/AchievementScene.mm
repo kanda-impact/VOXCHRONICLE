@@ -25,6 +25,11 @@ bool AchievementScene::init() {
   avc.achievementDelegate = delegate;
   [controller presentModalViewController:avc animated:YES];
   
+  if ([window bounds].size.height == 568) {
+    // iPhone5だったら元に戻してやる
+    [window setTransform:CGAffineTransformIdentity];
+  }
+  
   return true;
 }
 
