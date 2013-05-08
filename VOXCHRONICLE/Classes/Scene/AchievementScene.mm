@@ -23,12 +23,7 @@ bool AchievementScene::init() {
   // delegateはweakプロパティになってるから云々
   AchievementSceneDelegate* delegate = [[AchievementSceneDelegate alloc] init];
   avc.achievementDelegate = delegate;
-  [controller presentModalViewController:avc animated:YES];
-  
-  if ([window bounds].size.height == 568) {
-    // iPhone5だったら元に戻してやる
-    [window setTransform:CGAffineTransformIdentity];
-  }
+  [controller presentModalViewController:avc animated:NO];
   
   return true;
 }

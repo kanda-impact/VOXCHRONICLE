@@ -152,9 +152,10 @@ void SignalHandler(int sig) {
   CCLog("%f", [window bounds].size.width);
   if ([window bounds].size.height == 568) {
     // iPhone5
-    CGAffineTransform move = CGAffineTransformMakeTranslation(0, 44 * 1136.f / 960.f);
-    CGAffineTransform trans = CGAffineTransformScale(move, 1.0f, 1136.f / 960.f);
-    [window setTransform:trans];
+    CGAffineTransform transform = __glView.transform;
+    CGAffineTransform move = CGAffineTransformTranslate(transform, 44 * 1136.f / 960.f, 0);
+    CGAffineTransform trans = CGAffineTransformScale(move, 1136.f / 960.f, 1.0f);
+    [__glView setTransform:trans];
   }
   
   [[UIApplication sharedApplication] setStatusBarHidden: YES];
