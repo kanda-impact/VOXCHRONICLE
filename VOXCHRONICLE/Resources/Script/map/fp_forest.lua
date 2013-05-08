@@ -1,9 +1,9 @@
 Map = {
   name = "森林",
-  wayMusic = "forest",
+  wayMusic = "shinka",
   bossMusic = "",
-  backgroundImage = "simple_background.png",
-  skin = "skinA",
+  backgroundImage = "forest_background.png",
+  skin = "skinB",
   ending = "",
   nextMaps = {},
   initialLevel = 1,
