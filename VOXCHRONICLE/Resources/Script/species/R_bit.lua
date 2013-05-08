@@ -57,6 +57,7 @@ Enemy = {
         end
         if leftBitDead then
           self:setRegister("blank",0)
+          --self:getRegister("reviveSkillCount",reviveSkillCount +2)
           return "revive" -- 蘇生呪文
         end
       end

@@ -23,7 +23,7 @@ bool AchievementScene::init() {
   // delegateはweakプロパティになってるから云々
   AchievementSceneDelegate* delegate = [[AchievementSceneDelegate alloc] init];
   avc.achievementDelegate = delegate;
-  [controller presentModalViewController:avc animated:YES];
+  [controller presentModalViewController:avc animated:NO];
   
   return true;
 }
