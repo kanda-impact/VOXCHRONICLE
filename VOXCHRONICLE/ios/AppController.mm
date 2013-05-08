@@ -110,7 +110,7 @@ void SignalHandler(int sig) {
   if (iosVersion >= 6) { // iOS6向け
     localPlayer.authenticateHandler = ^(UIViewController* ui, NSError* error) {
       if (ui != nil) {
-        [viewController presentModalViewController:ui animated:YES];
+        //[viewController presentModalViewController:ui animated:YES];
       } else if (localPlayer.isAuthenticated) {
         NSLog(@"authentication is completed");
         [self onCompleteAuthenticationToGameCenter];
