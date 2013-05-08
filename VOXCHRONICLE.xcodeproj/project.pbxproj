@@ -411,10 +411,6 @@
 		0789A1251731B6F700FFB262 /* barrier_magical_break.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1231731B6F200FFB262 /* barrier_magical_break.lua */; };
 		0789A1261731B6F700FFB262 /* barrier_magical_invalid.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1241731B6F500FFB262 /* barrier_magical_invalid.lua */; };
 		0789A1281731B8C800FFB262 /* shield_physical_invalid.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1271731B8C800FFB262 /* shield_physical_invalid.lua */; };
-		0789A1351733E6B200FFB262 /* fullvoice0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1311733E6B200FFB262 /* fullvoice0.mp3 */; };
-		0789A1361733E6B200FFB262 /* fullvoice1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1321733E6B200FFB262 /* fullvoice1.mp3 */; };
-		0789A1371733E6B200FFB262 /* fullvoice2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1331733E6B200FFB262 /* fullvoice2.mp3 */; };
-		0789A1381733E6B200FFB262 /* fullvoice3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1341733E6B200FFB262 /* fullvoice3.mp3 */; };
 		0789A13A1733F7E100FFB262 /* revive_foot.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A1391733F7E100FFB262 /* revive_foot.lua */; };
 		0789A13D17342F6D00FFB262 /* InitialScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0789A13B17342F6900FFB262 /* InitialScene.cpp */; };
 		078D452316CE809C00E21DC5 /* Species.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 078D452116CE809B00E21DC5 /* Species.cpp */; };
@@ -1922,10 +1918,6 @@
 		0789A1231731B6F200FFB262 /* barrier_magical_break.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = barrier_magical_break.lua; path = messages/barrier_magical_break.lua; sourceTree = "<group>"; };
 		0789A1241731B6F500FFB262 /* barrier_magical_invalid.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = barrier_magical_invalid.lua; path = messages/barrier_magical_invalid.lua; sourceTree = "<group>"; };
 		0789A1271731B8C800FFB262 /* shield_physical_invalid.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = shield_physical_invalid.lua; path = messages/shield_physical_invalid.lua; sourceTree = "<group>"; };
-		0789A1311733E6B200FFB262 /* fullvoice0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fullvoice0.mp3; path = Resources/SE/fullvoice0.mp3; sourceTree = "<group>"; };
-		0789A1321733E6B200FFB262 /* fullvoice1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fullvoice1.mp3; path = Resources/SE/fullvoice1.mp3; sourceTree = "<group>"; };
-		0789A1331733E6B200FFB262 /* fullvoice2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fullvoice2.mp3; path = Resources/SE/fullvoice2.mp3; sourceTree = "<group>"; };
-		0789A1341733E6B200FFB262 /* fullvoice3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fullvoice3.mp3; path = Resources/SE/fullvoice3.mp3; sourceTree = "<group>"; };
 		0789A1391733F7E100FFB262 /* revive_foot.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = revive_foot.lua; path = enemySkills/revive_foot.lua; sourceTree = "<group>"; };
 		0789A13B17342F6900FFB262 /* InitialScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = InitialScene.cpp; path = Classes/Scene/InitialScene.cpp; sourceTree = "<group>"; };
 		0789A13E17342FD200FFB262 /* InitialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InitialScene.h; path = Classes/includes/InitialScene.h; sourceTree = "<group>"; };
@@ -6039,10 +6031,6 @@
 				074E136D1710231E00308F67 /* window_close.mp3 */,
 				074E136E1710231E00308F67 /* window_next.mp3 */,
 				074E136F1710231E00308F67 /* window_open.mp3 */,
-				0789A1311733E6B200FFB262 /* fullvoice0.mp3 */,
-				0789A1321733E6B200FFB262 /* fullvoice1.mp3 */,
-				0789A1331733E6B200FFB262 /* fullvoice2.mp3 */,
-				0789A1341733E6B200FFB262 /* fullvoice3.mp3 */,
 				0789A0D2172E529400FFB262 /* fullvoice.mp3 */,
 				077EDDF416870767009B9F6B /* decide.mp3 */,
 			);
@@ -7281,10 +7269,6 @@
 				0789A1251731B6F700FFB262 /* barrier_magical_break.lua in Resources */,
 				0789A1261731B6F700FFB262 /* barrier_magical_invalid.lua in Resources */,
 				0789A1281731B8C800FFB262 /* shield_physical_invalid.lua in Resources */,
-				0789A1351733E6B200FFB262 /* fullvoice0.mp3 in Resources */,
-				0789A1361733E6B200FFB262 /* fullvoice1.mp3 in Resources */,
-				0789A1371733E6B200FFB262 /* fullvoice2.mp3 in Resources */,
-				0789A1381733E6B200FFB262 /* fullvoice3.mp3 in Resources */,
 				0789A13A1733F7E100FFB262 /* revive_foot.lua in Resources */,
 				07D4947F1734A15A0025785F /* Default.png in Resources */,
 				076F4ACD17358678006982E7 /* soundtest.lua in Resources */,
