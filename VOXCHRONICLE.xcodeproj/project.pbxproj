@@ -263,6 +263,9 @@
 		073D39FF17383B150051DAFB /* 1a_simple.lua in Resources */ = {isa = PBXBuildFile; fileRef = B07E38C316E1071C00473629 /* 1a_simple.lua */; };
 		073D3A0017383B150051DAFB /* 2c_cyber.lua in Resources */ = {isa = PBXBuildFile; fileRef = B07E38C516E1073400473629 /* 2c_cyber.lua */; };
 		073D3A0117383B150051DAFB /* 3d_space.lua in Resources */ = {isa = PBXBuildFile; fileRef = B07E38CB16E10ACF00473629 /* 3d_space.lua */; };
+		073D3A051739DEB20051DAFB /* fullvoice0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 073D3A021739DEB20051DAFB /* fullvoice0.mp3 */; };
+		073D3A061739DEB20051DAFB /* fullvoice1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 073D3A031739DEB20051DAFB /* fullvoice1.mp3 */; };
+		073D3A071739DEB20051DAFB /* fullvoice2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 073D3A041739DEB20051DAFB /* fullvoice2.mp3 */; };
 		07425E31168072C4001134D0 /* charge.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07425E30168072C4001134D0 /* charge.lua */; };
 		07448CBD16C289B800F005C6 /* welcome.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07448CBC16C289B800F005C6 /* welcome.lua */; };
 		07448CBF16C28E0D00F005C6 /* empty.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07448CBE16C28E0D00F005C6 /* empty.lua */; };
@@ -390,7 +393,6 @@
 		077EDE3C1687EEBF009B9F6B /* barrier_break.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 077EDE3A1687EEBD009B9F6B /* barrier_break.mp3 */; };
 		07864BF0169D881500AAAF15 /* 2a.lua in Resources */ = {isa = PBXBuildFile; fileRef = 07864BEF169D881500AAAF15 /* 2a.lua */; };
 		0789A0D1172E2CE000FFB262 /* demo.lua in Resources */ = {isa = PBXBuildFile; fileRef = 0789A0D0172E2CE000FFB262 /* demo.lua */; };
-		0789A0D3172E529400FFB262 /* fullvoice.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0789A0D2172E529400FFB262 /* fullvoice.mp3 */; };
 		0789A0D9172E563100FFB262 /* endingA_voice.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0789A0D5172E563100FFB262 /* endingA_voice.mp3 */; };
 		0789A0DA172E563100FFB262 /* endingB_voice.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0789A0D6172E563100FFB262 /* endingB_voice.mp3 */; };
 		0789A0DB172E563100FFB262 /* endingC_voice.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0789A0D7172E563100FFB262 /* endingC_voice.mp3 */; };
@@ -1754,6 +1756,9 @@
 		0739C4461615D2FD00CB864D /* CharacterManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CharacterManager.cpp; path = Classes/Model/CharacterManager.cpp; sourceTree = "<group>"; };
 		0739C4491615D30800CB864D /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Character.cpp; path = Classes/Model/Character.cpp; sourceTree = "<group>"; };
 		073D39FA1738376B0051DAFB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		073D3A021739DEB20051DAFB /* fullvoice0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fullvoice0.mp3; path = Resources/SE/fullvoice0.mp3; sourceTree = "<group>"; };
+		073D3A031739DEB20051DAFB /* fullvoice1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fullvoice1.mp3; path = Resources/SE/fullvoice1.mp3; sourceTree = "<group>"; };
+		073D3A041739DEB20051DAFB /* fullvoice2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fullvoice2.mp3; path = Resources/SE/fullvoice2.mp3; sourceTree = "<group>"; };
 		07425E30168072C4001134D0 /* charge.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = charge.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		07448CBC16C289B800F005C6 /* welcome.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = welcome.lua; path = messages/welcome.lua; sourceTree = "<group>"; };
 		07448CBE16C28E0D00F005C6 /* empty.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = empty.lua; path = messages/empty.lua; sourceTree = "<group>"; };
@@ -1894,7 +1899,6 @@
 		077EDE3A1687EEBD009B9F6B /* barrier_break.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = barrier_break.mp3; path = Resources/SE/barrier_break.mp3; sourceTree = "<group>"; };
 		07864BEF169D881500AAAF15 /* 2a.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = 2a.lua; path = map/2a.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		0789A0D0172E2CE000FFB262 /* demo.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = demo.lua; sourceTree = "<group>"; };
-		0789A0D2172E529400FFB262 /* fullvoice.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fullvoice.mp3; path = Resources/SE/fullvoice.mp3; sourceTree = "<group>"; };
 		0789A0D5172E563100FFB262 /* endingA_voice.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = endingA_voice.mp3; path = Resources/Voice/endingA_voice.mp3; sourceTree = "<group>"; };
 		0789A0D6172E563100FFB262 /* endingB_voice.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = endingB_voice.mp3; path = Resources/Voice/endingB_voice.mp3; sourceTree = "<group>"; };
 		0789A0D7172E563100FFB262 /* endingC_voice.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = endingC_voice.mp3; path = Resources/Voice/endingC_voice.mp3; sourceTree = "<group>"; };
@@ -5993,6 +5997,9 @@
 				074E13701710231E00308F67 /* enemy_wave.mp3 */,
 				078D45E916CFA02C00E21DC5 /* explosion.mp3 */,
 				077EDE311687E490009B9F6B /* guard.mp3 */,
+				073D3A021739DEB20051DAFB /* fullvoice0.mp3 */,
+				073D3A031739DEB20051DAFB /* fullvoice1.mp3 */,
+				073D3A041739DEB20051DAFB /* fullvoice2.mp3 */,
 				07ADDF7916F22959007825D2 /* hard_decide.mp3 */,
 				07C61EAA169033630010B6ED /* knockback_effect.mp3 */,
 				07F20FA01712CEE00099ACD8 /* lastboss_beam.mp3 */,
@@ -6031,7 +6038,6 @@
 				074E136D1710231E00308F67 /* window_close.mp3 */,
 				074E136E1710231E00308F67 /* window_next.mp3 */,
 				074E136F1710231E00308F67 /* window_open.mp3 */,
-				0789A0D2172E529400FFB262 /* fullvoice.mp3 */,
 				077EDDF416870767009B9F6B /* decide.mp3 */,
 			);
 			name = SE;
@@ -7249,7 +7255,6 @@
 				B002ECC617297A1700FEE88F /* equip_last.lua in Resources */,
 				B002ECCA17297EA400FEE88F /* thunder_last.lua in Resources */,
 				0789A0D1172E2CE000FFB262 /* demo.lua in Resources */,
-				0789A0D3172E529400FFB262 /* fullvoice.mp3 in Resources */,
 				0789A0D9172E563100FFB262 /* endingA_voice.mp3 in Resources */,
 				0789A0DA172E563100FFB262 /* endingB_voice.mp3 in Resources */,
 				0789A0DB172E563100FFB262 /* endingC_voice.mp3 in Resources */,
@@ -7273,6 +7278,9 @@
 				07D4947F1734A15A0025785F /* Default.png in Resources */,
 				076F4ACD17358678006982E7 /* soundtest.lua in Resources */,
 				073D39FB1738376C0051DAFB /* Default-568h@2x.png in Resources */,
+				073D3A051739DEB20051DAFB /* fullvoice0.mp3 in Resources */,
+				073D3A061739DEB20051DAFB /* fullvoice1.mp3 in Resources */,
+				073D3A071739DEB20051DAFB /* fullvoice2.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

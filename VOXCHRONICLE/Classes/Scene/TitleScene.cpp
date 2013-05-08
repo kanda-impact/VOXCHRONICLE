@@ -229,7 +229,8 @@ void TitleScene::didAccelerate(CCAcceleration *pAccelerationValue) {
         _isShaking = true;
         ++_shakeCount;
         if (_shakeCount >= 3) {
-          SimpleAudioEngine::sharedEngine()->playEffect("fullvoice.mp3");
+          int number = rand() % 3;
+          SimpleAudioEngine::sharedEngine()->playEffect(("fullvoice" + lexical_cast<string>(number) + ".mp3").c_str());
           data->setFullVoice(true);
           data->unlockAchievement("unlockFullVoice");
         }
