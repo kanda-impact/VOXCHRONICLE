@@ -36,7 +36,7 @@ EnemySkill = {
         user:getName().."は　きょうりょくな　いちげきを　はなった！",
         user:getName().."の　こんしんの　いちげき！",
         user:getName().."の　あっとうてきな　けんげき！",
-        user:getName().."けんを　おもいきり　ふりおろした"
+        user:getName().."は　けんを　おもいきり　ふりおろした"
       }
       local rand = math.random(#text)
       mManager:pushMessage(text[rand])
