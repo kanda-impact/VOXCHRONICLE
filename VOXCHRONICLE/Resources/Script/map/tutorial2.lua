@@ -142,7 +142,6 @@ Map = {
     local ragasoowa = enemyManager:popEnemyAt("T_ragasoowa", 3, 1)
     ragasoowa:setExp(60)
     ragasoowa:setMaxHP(30)
-    ragasoowa:setScale(1.6)
     elseif level == 22 then
       enemyManager:removeAllEnemies() -- 敵全滅
       local popup = layer:addPopupWindow(2)
