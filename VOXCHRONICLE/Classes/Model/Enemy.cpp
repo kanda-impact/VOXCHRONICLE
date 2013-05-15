@@ -226,10 +226,10 @@ int Enemy::damage(int power, Skill* skill, CharacterManager* characterManager, D
   } else if ((_item == EnemyItemShield && skill->getType() == SkillTypeMagical) ||
              (_item == EnemyItemBarrier && skill->getType() == SkillTypePhysical)) {
     damage = 0;
+    damageType = _item == EnemyItemShield ? DamageTypeShieldBreak : DamageTypeBarrierBreak;
     if (!simulate) { // simulateがfalseのときだけ、アイテムを消去してやる
       this->setItem(EnemyItemNone);
     }
-    damageType = _item == EnemyItemShield ? DamageTypeShieldBreak : DamageTypeBarrierBreak;
     return damage;
   }
   
