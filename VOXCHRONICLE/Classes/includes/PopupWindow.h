@@ -41,6 +41,7 @@ class PopupWindow :public CCSprite {
   void addImage(int page, const char* filename);
   void onPopupStart(CCObject* sender);
   void onPopupAppeared(CCObject* sender);
+  void setEnabled(bool enable);
 };
 
 #endif /* defined(__VOXCHRONICLE__PopupWindow__) */

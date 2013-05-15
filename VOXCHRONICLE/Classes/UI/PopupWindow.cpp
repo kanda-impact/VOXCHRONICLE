@@ -180,3 +180,10 @@ void PopupWindow::onPopupAppeared(cocos2d::CCObject *sender) {
     mWindow->start();
   }
 }
+
+void PopupWindow::setEnabled(bool enable) {
+  CCMenu* cursor = (CCMenu*)this->getChildByTag(PopupWindowTagCursor);
+  if (cursor) {
+    cursor->setEnabled(enable);
+  }
+}

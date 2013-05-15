@@ -953,6 +953,9 @@ void MainScene::setPause(bool pause) {
     if (_qteTrigger) {
       _qteTrigger->getMenu()->setEnabled(false);
     }
+    if (_effectLayer->getPopupWindow()) {
+      _effectLayer->getPopupWindow()->setEnabled(false);
+    }
     _musicManager->getMusic()->pause();
     this->addChild(layer, 1000, PAUSE_LAYER_TAG);
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(FileUtils::getFilePath("SE/pause.mp3").c_str());
@@ -960,6 +963,9 @@ void MainScene::setPause(bool pause) {
     PauseLayer* layer = (PauseLayer*)this->getChildByTag(PAUSE_LAYER_TAG);
     if (layer) {
       _musicManager->getMusic()->play();
+      if (_effectLayer->getPopupWindow()) {
+        _effectLayer->getPopupWindow()->setEnabled(true);
+      }
       scheduler->resumeTarget(this);
       scheduler->resumeTargets(layer->getPausedTargets());
       layer->setPausedTargets(NULL);
