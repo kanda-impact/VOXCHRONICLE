@@ -26,6 +26,7 @@ class CCAchievementManager :public CCObject {
   void reportAchievements(CCArray *identifiers, CCArray *percents, bool showBanner, function<void (CCArray* identifiers, bool error)> onComplete);
   void loadAhievements(function<void (CCArray* achievements, bool error)> onCompleter);
   void authenticate();
+  bool isAuthenticated();
 };
 
 #endif /* defined(__VOXCHRONICLE__GKAchievementManager__) */

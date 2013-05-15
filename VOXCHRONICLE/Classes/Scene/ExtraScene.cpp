@@ -39,8 +39,10 @@ bool ExtraScene::init() {
                                                        menu_selector(ExtraScene::onSoundTestButtonPressed));
   CCMenuItemImage* achievement = CCMenuItemImage::create("achievement_button.png",
                                                          "achievement_button_pressed.png",
+                                                         "achievement_button_disable.png",
                                                          this,
                                                          menu_selector(ExtraScene::onAchievementButtonPressed));
+  achievement->setEnabled(CCAchievementManager::sharedManager()->isAuthenticated()); // GameCenterにログインしていないとき、無効化
   CCMenuItemImage* dictionary = CCMenuItemImage::create("dictionary_button.png",
                                                         "dictionary_button_pressed.png",
                                                         this,

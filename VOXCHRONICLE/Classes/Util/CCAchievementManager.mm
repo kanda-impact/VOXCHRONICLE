@@ -59,3 +59,7 @@ void CCAchievementManager::loadAhievements(function<void (CCArray* achievements,
     }
   }];
 }
+
+bool CCAchievementManager::isAuthenticated() {
+  return [GKLocalPlayer localPlayer].authenticated;
+}
