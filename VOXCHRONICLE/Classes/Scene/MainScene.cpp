@@ -473,7 +473,6 @@ void MainScene::trackDidFinishPlaying(Music *music, Track *finishedTrack, Track 
         
         // メッセージ追加
         if (enemyCount == 1) {
-          CCLog("damageType = %d", damageType);
           if (damageType == DamageTypePhysicalResist) {
             MessageManager::sharedManager()->pushRandomMessageFromFunction("resist_physical", _map, _characterManager, _enemyManager);
           } else if (damageType == DamageTypeMagicalResist) {
