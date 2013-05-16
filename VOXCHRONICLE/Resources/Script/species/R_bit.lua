@@ -67,7 +67,7 @@ Enemy = {
     -- ベホマラー
     local boss = enemyManager:getBoss()
     if boss then
-      if boss:getHP() < boss:getMaxHP() * 0.6 and r < 2 then -- ボスのHP6割以下、かつ5%
+      if boss:getHP() < boss:getMaxHP() * 0.6 and r < 4 then -- ボスのHP6割以下、かつ5%
         return "cure_all_skill"
       end
     end
