@@ -16,6 +16,25 @@ Map = {
     enemyManager:loadEnemyTextureAsync("2last.png")
     enemyManager:loadEnemyTextureAsync("bit.png")
   end,
+  onBack = function(self, characterManager, enemyManager)
+    local enemies = enemyManager:getEnemies()
+    local enemyCount = enemies:count()
+    local level = characterManager:getLevel()
+    if level == 30 then
+      local boss = enemyManager:getBoss()
+      if boss then
+        local bossHP = boss:getHP()
+        local key = "lastBossAchieve"
+        local count = enemyManager:getEnemies():count()
+        if bossHP > 0 then
+          self.__IRegister__:setRegister(key,count)
+        elseif bossHP <= 0 and self.__IRegister__:getRegister(key,count) ==3 then
+          self.__IRegister__:setRegister(key,100)
+        end
+      end
+    end
+  end,
+
   onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
     if level == 30 then
@@ -25,6 +44,15 @@ Map = {
       local bitR = enemyManager:popEnemyAt("R_bit_boss", 1, 2)
     end
   end,
+  onClear = function(self, characterManager, enemyManager)
+    local data = SaveData:sharedData()
+    local key = "lastBossAchieve"
+    local achieveCount = self.__IRegister__:getRegister(key, 0)
+    if achieveCount >= 100 then
+      data:unlockAchievement("bossDex")
+    end
+  end,
+
   getEnemyPopRate = function(level)
     return 0
   end,
