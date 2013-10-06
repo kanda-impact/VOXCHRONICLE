@@ -34,17 +34,20 @@ Map = {
     local level = characterManager:getLevel()
     if level == 25 or level == 29 then
       if enemyCount == 0 then
-        enemyManager:popEnemyAt("save_cryst3D0", 4, 1)
+        enemyManager:popEnemyAt("save_cryst3D0", 2, 1)
         characterManager:setExp(characterManager:getExpWithLevel(level))
       end
     elseif level == 30 then
       local boss = enemyManager:getBoss()
-      local bossHP = boss:getHP()
       if boss then
+        local bossHP = boss:getHP()
+        local key = "lastBossAchieve"
+        local key1 ="lastBossCount"
+        local count = enemyManager:getEnemies():count()
         if bossHP > 0 then
-          local key = "lastBossAchieve"
-          local count = enemyManager:getEnemies():count()
-          self.__IRegister__:setRegister(key,count)
+          self.__IRegister__:setRegister(key1,count)
+        elseif bossHP <= 0 and self.__IRegister__:getRegister(key1,count) ==3 then
+          self.__IRegister__:setRegister(key,100)
         end
       end
     end
@@ -53,13 +56,12 @@ Map = {
   onLevelUp = function(self, characterManager, enemyManager)
     local level = characterManager:getLevel()
     if level == 25 then
-      CCTextureCache:sharedTextureCache():removeTextureForKey("t2pha.png")
       CCTextureCache:sharedTextureCache():removeTextureForKey("exob.png")
       characterManager:setExp(characterManager:getExpWithLevel(25))
 
       --characterManager:setExp(characterManager:getExpWithLevel(level))
       local enemies = enemyManager:getEnemies()
-      for i = 0, enemies:count() do
+      for i = 1, enemies:count() do
         local enemy = enemies:objectAtIndex(i)
         tolua.cast(enemy, "Enemy")
         enemy:setExp(0)
@@ -68,6 +70,7 @@ Map = {
       enemyManager:loadEnemyTextureAsync("knight.png")
       enemyManager:loadEnemyTextureAsync("iron.png")
     elseif level == 26 then
+      CCTextureCache:sharedTextureCache():removeTextureForKey("t2pha.png")
       CCTextureCache:sharedTextureCache():removeTextureForKey("planet.png")
 
       --characterManager:setExp(characterManager:getExpWithLevel(level))
@@ -131,7 +134,7 @@ Map = {
     data:setClearedForMap("space_boss") -- フリープレイ解放
     data:setClearedForMap("space_boss2") -- フリープレイ解放2
     local key = "lastBossAchieve"
-    if self.__IRegister__:getRegister(key, 0) >= 3 then
+    if self.__IRegister__:getRegister(key, 0) >= 1 then
       data:unlockAchievement("bossDex")
     end
     data:addDefeatedCountForEnemy("wave") -- 波を倒した扱いに
