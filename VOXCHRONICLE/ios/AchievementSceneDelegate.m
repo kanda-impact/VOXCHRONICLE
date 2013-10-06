@@ -16,7 +16,8 @@
   [viewController dismissModalViewControllerAnimated:NO];
   
   UIWindow* window = [[UIApplication sharedApplication] keyWindow];
-  if ([window bounds].size.height == 568) {
+  float version = [[UIDevice currentDevice].systemVersion floatValue];
+  if ([window bounds].size.height == 568 && version < 7.0) {
     // iPhone5
     UIView* glView = [window.subviews objectAtIndex:0];
     CGAffineTransform transform = glView.transform;
