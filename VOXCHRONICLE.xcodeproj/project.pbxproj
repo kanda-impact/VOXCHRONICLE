@@ -874,6 +874,8 @@
 		07A3D5DD1705F3B4009AE7F3 /* magic_effect2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A3D5D91705F3B4009AE7F3 /* magic_effect2.mp3 */; };
 		07A3D5DE1705F3B4009AE7F3 /* magic_effect3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A3D5DA1705F3B4009AE7F3 /* magic_effect3.mp3 */; };
 		07A3D5E01705F4D0009AE7F3 /* endingD.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07A3D5DF1705F4D0009AE7F3 /* endingD.mp3 */; };
+		07A86D9018391E63007834DF /* Icon-120@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07A86D8F18391E63007834DF /* Icon-120@2x.png */; };
+		07A86D9218391F5F007834DF /* Icon-80@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07A86D9118391F5F007834DF /* Icon-80@2x.png */; };
 		07A8E9F316320DBC00E007C9 /* MessageWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */; };
 		07ADDF8216F22959007825D2 /* enemy_revive.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF7816F22959007825D2 /* enemy_revive.mp3 */; };
 		07ADDF8316F22959007825D2 /* hard_decide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07ADDF7916F22959007825D2 /* hard_decide.mp3 */; };
@@ -2395,6 +2397,8 @@
 		07A3D5D91705F3B4009AE7F3 /* magic_effect2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = magic_effect2.mp3; path = Resources/SE/magic_effect2.mp3; sourceTree = "<group>"; };
 		07A3D5DA1705F3B4009AE7F3 /* magic_effect3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = magic_effect3.mp3; path = Resources/SE/magic_effect3.mp3; sourceTree = "<group>"; };
 		07A3D5DF1705F4D0009AE7F3 /* endingD.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = endingD.mp3; path = Resources/Music/general/endingD.mp3; sourceTree = "<group>"; };
+		07A86D8F18391E63007834DF /* Icon-120@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-120@2x.png"; path = "Resources/ios/Icon-120@2x.png"; sourceTree = "<group>"; };
+		07A86D9118391F5F007834DF /* Icon-80@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-80@2x.png"; path = "Resources/ios/Icon-80@2x.png"; sourceTree = "<group>"; };
 		07A8E9F116320DBC00E007C9 /* MessageWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MessageWindow.cpp; path = Classes/UI/MessageWindow.cpp; sourceTree = "<group>"; };
 		07ADDF7816F22959007825D2 /* enemy_revive.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = enemy_revive.mp3; path = Resources/SE/enemy_revive.mp3; sourceTree = "<group>"; };
 		07ADDF7916F22959007825D2 /* hard_decide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = hard_decide.mp3; path = Resources/SE/hard_decide.mp3; sourceTree = "<group>"; };
@@ -4240,6 +4244,8 @@
 		0791586815EBB4AF0083D348 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				07A86D9118391F5F007834DF /* Icon-80@2x.png */,
+				07A86D8F18391E63007834DF /* Icon-120@2x.png */,
 				0791586915EBB4BB0083D348 /* Default.png */,
 				07D8D653169F6D9100B646E5 /* Default@2x.png */,
 				0791586A15EBB4BB0083D348 /* fps_images.png */,
@@ -6081,6 +6087,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0450;
+				TargetAttributes = {
+					076F1A4B15EB94750013A45E = {
+						DevelopmentTeam = 2AWR7Z4WYE;
+					};
+				};
 			};
 			buildConfigurationList = 076F1A4615EB94750013A45E /* Build configuration list for PBXProject "VOXCHRONICLE" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -6905,6 +6916,7 @@
 				0796697116FD4C550001F8B2 /* toadstool.lua in Resources */,
 				0796697216FD4C550001F8B2 /* typhoon.lua in Resources */,
 				0796697316FD4C550001F8B2 /* wave.lua in Resources */,
+				07A86D9218391F5F007834DF /* Icon-80@2x.png in Resources */,
 				0796697416FD4C550001F8B2 /* whale.lua in Resources */,
 				0796697516FD4C550001F8B2 /* wisp.lua in Resources */,
 				0796697816FD4DB20001F8B2 /* magical_resist.mp3 in Resources */,
@@ -6996,6 +7008,7 @@
 				B0821D411707AE88009417B5 /* T_leaf.lua in Resources */,
 				B0821D431707AEA6009417B5 /* Ts_slime12.lua in Resources */,
 				B0821D451707AEC2009417B5 /* T_slime12.lua in Resources */,
+				07A86D9018391E63007834DF /* Icon-120@2x.png in Resources */,
 				B0821D471707AEF1009417B5 /* T_geek.lua in Resources */,
 				B0821D491707AF4D009417B5 /* T_tnt.lua in Resources */,
 				B0821D4B1707AFA7009417B5 /* T_ginet.lua in Resources */,
@@ -7683,8 +7696,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kohki Miki (3YM67K3AKM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kohki Miki (3YM67K3AKM)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -7711,8 +7724,8 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F7DBD22B-EDDC-41A5-8F77-DA6474A252A1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F7DBD22B-EDDC-41A5-8F77-DA6474A252A1";
+				PROVISIONING_PROFILE = "D0811619-B17F-4F10-BFBC-2151AFFB864E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D0811619-B17F-4F10-BFBC-2151AFFB864E";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				WRAPPER_EXTENSION = app;
 			};
@@ -7722,8 +7735,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kohki Miki (3YM67K3AKM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kohki Miki (3YM67K3AKM)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = VOXCHRONICLE/Prefix.pch;
@@ -7756,8 +7769,8 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F7DBD22B-EDDC-41A5-8F77-DA6474A252A1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F7DBD22B-EDDC-41A5-8F77-DA6474A252A1";
+				PROVISIONING_PROFILE = "A798466F-8410-41D5-93B3-02EF275DC4CD";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A798466F-8410-41D5-93B3-02EF275DC4CD";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -7799,8 +7812,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Kohki Miki (3YM67K3AKM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kohki Miki (3YM67K3AKM)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = VOXCHRONICLE/Prefix.pch;
@@ -7826,8 +7839,8 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F7DBD22B-EDDC-41A5-8F77-DA6474A252A1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F7DBD22B-EDDC-41A5-8F77-DA6474A252A1";
+				PROVISIONING_PROFILE = "D0811619-B17F-4F10-BFBC-2151AFFB864E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D0811619-B17F-4F10-BFBC-2151AFFB864E";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
